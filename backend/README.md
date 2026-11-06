@@ -8,11 +8,15 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 
 | Gate | State |
 |---|---|
-| H0: tooling, ADR 0001-0009, contract loader and validator | done |
-| B1: typed layout, all-pairs paths, conveyor cell topology, G1-G4 | done |
-| B3/B4: one order end to end (fixture 32.8 s ... 469 s) | next |
+| H0: tooling, ADR 0001-0009, contract loader and hardened validator | done |
+| B1: typed layout, all-pairs paths, 179-cell conveyor topology, G1-G4 | done |
+| B2: deterministic synthetic scenarios, history, canonical hashing (`cli materialize`) | done |
+| B3/B4 slice: one order end to end, analytical fixture 32.8 s ... 469 s ... 474 s | done |
+| B5 part: receiving, inbound forklift, reserve staging (R1-R3, I6) | done |
+| Next: invariant checker + 30 s snapshots, run exporter for Tilek, mass-flow runs | open |
 
-Nothing here simulates the warehouse yet. The analytical fixture times are expectations, not engine output.
+The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
+Mass-flow results (240/600 orders per hour) are not measured yet.
 
 ## Setup
 
@@ -48,7 +52,10 @@ uv run --directory backend pre-commit install -c backend/.pre-commit-config.yaml
 |---|---|
 | `app/contracts/` | Strict immutable Pydantic models of the shared JSON files, loader, semantic validation |
 | `app/navigation/` | Exact all-pairs shortest paths on the picker graph |
-| `app/conveyor/` | Directed 179-cell conveyor topology compiled from segment ports |
+| `app/conveyor/` | 179-cell topology and the atomic one-hop tick (`transfer.py`) |
+| `app/simulation/` | Time grid, phase scheduler on SimPy, engine and subsystems (picking, conveyor, packing, shipping, outbound, receiving) |
+| `app/inventory/` | Transactional ledger with conservation checks |
+| `app/data/`, `app/storage/` | Synthetic scenario materializer, canonical JSON and hashes |
 | `app/cli.py` | Command-line tools |
 | `tests/acceptance/` | One test per numbered gate (G1, S1, C1, ...) |
 | `docs/adr/` | Architecture decisions |
