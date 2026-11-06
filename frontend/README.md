@@ -1,52 +1,66 @@
-# Клиент участника A
+# QoimaTwin visual frontend
 
-Подготовлен технический стенд: Vue 3 + TypeScript + Vite + Three.js,
-GLTFLoader/OrbitControls, локальный calibration.glb и прямой импорт общих
-контрактов. Это проверка окружения перед 3D-дизайном, не реализация склада/replay.
+Vue3 + TypeScript + Vite + Three.js. Основной экран — склад72×48м:
+288 стеллажей,864 адреса,600 начальных партий,24 сотрудника,2 погрузчика,
+6 упаковочных постов и179 логических ячеек конвейера. Один renderer,
+instancing/LOD и21 отдельный стенд моделей с четырьмя ракурсами.
 
-Из корня репозитория в PowerShell:
+Начальный режим **VISUAL DEMO / synthetic** воспроизводит500-секундную
+согласованную визуальную фикстуру. Есть play/pause/reset/seek, выбор объектов,
+следование сотруднику/заказу, обзор/вид сверху, локальные референсы,
+low/high, reduced motion и оригинальные процедурные SFX с начальным mute.
+Импорт inline Run2.0 подготовлен; расчёты, бизнес-snapshots, API streaming
+и A/B ещё не подключены к viewer. Геометрия и скорость картинки не являются
+доказательством пропускной способности или экономии.
+
+## Запуск из исходников
+
+Node22.12+, проверены Node24.19/npm11.17. Из этой папки:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File tools/start-client.ps1
+npm ci
+npm run dev
 ```
 
-Адрес: http://127.0.0.1:5173. Установка с нуля:
+Открыть http://127.0.0.1:5173. Production:
 
 ```powershell
-cd frontend
-npm.cmd ci --ignore-scripts --no-audit --no-fund
-npm.cmd run build
-npm.cmd run verify:assets
-npm.cmd run test:smoke
+npm run build
+npm run preview
 ```
 
-Нужны Node >=22.12 и установленный Google Chrome для smoke tests. На этой
-машине проверены Node 24.19.0 / npm 11.17.0. Chrome не загружается тестом.
-Все runtime-ресурсы локальные. Для проверки production: `npm.cmd run preview`,
-http://127.0.0.1:4173. Smoke test сам запускает и закрывает этот preview.
+Открыть http://127.0.0.1:4173. Все модели/референсы загружаются локально;
+для готового viewer API/CDN не требуются. `/api` в dev имеет настраиваемый
+proxy из `.env.example`; наличие proxy не означает подключённый backend.
 
-`/api` в dev проксируется на http://127.0.0.1:8000; адрес меняется в локальном
-`.env` по примеру `.env.example`. Реального backend пока нет. Стенд не посылает
-фиктивные API-запросы и не выдаёт ручную фикстуру за результат UCI.
+## Проверки и калибровка
 
-## Ответственность
+```powershell
+npm run typecheck
+npm run verify:assets
+npm run test:smoke
+```
 
-- `src/app`: экран, панели и состояния запроса (A).
-- `src/scene`: Three.js, модели, registry, камеры, выбор объектов (A).
-- `src/replay`: часы и восстановление состояния (A; реализация впереди).
-- `src/contracts`: прямое чтение канонических файлов из корня (общая граница).
-- `public/models`: runtime GLB; исходники Blender в `assets/blender` (A).
+Smoke использует установленный Google Chrome и сам запускает production
+preview. Для уже запущенного static viewer можно задать
+`$env:QOIMA_TEST_BASE_URL='http://127.0.0.1:4180'`.
+Pure replay/audio отдельно: `npx playwright test --config src/replay/replay-core.config.ts`.
+Его outputDir изолирован от browser PNG. Полный regression содержит30 проверок.
 
-Следующий шаг: graybox по layout.example.json и проигрывание
-hand_checked_run.json; затем собственные rack/crate/picker/pack assets.
-Один renderer, два scissor viewport, общий clock/camera; резерв — A/B toggle.
+`?calibration=v2` проверяет реальные оси/anchors/размеры GLB v2;
+`?calibration=1` сохраняет старый технический стенд. Старые ассеты не
+растягиваются в большой склад. Редактируемые v2 модели находятся в
+`../assets/v2/blender/`, runtime — `public/models/v2/`.
 
-Донор Xxcool/smart-warehouse сохранён в исходном ZIP и распакован только в
-игнорируемом `work/donor-reference`. Его исходная сборка воспроизведена; его
-декоративные KPI, циклы AGV и большие GLB не скопированы в рабочий клиент.
-Three r169 оставлен совместимым с донором. Инструменты сборки обновлены после
-проверки npm audit; фактические версии зафиксированы package-lock.json.
+## Передача и свидетельства
 
-Vite сообщает о крупном ленивом Three/GLTFLoader chunk (~577 kB / 146 kB gzip).
-Сейчас это известная характеристика стенда; бюджет сцены и FPS проверяются
-после появления склада, а не выводятся из успешной сборки.
+- [Replay API](src/replay/README.md) и [интеграция](../docs/visual/MOTION_AND_INTEGRATION.md).
+- [Текущий backend handoff](../docs/visual/BACKEND_HANDOFF.md): reviewed SHA,2.0/2.1 и границы exporter/snapshot/chunk.
+- [Browser QA](../docs/visual/BROWSER_QA.json), [модели](../docs/visual/MODEL_QA.md), [performance](../docs/visual/PERFORMANCE.md).
+- [Источники и права](../docs/visual/SOURCES_AND_RIGHTS.md). Донорские декоративные KPI/AGV/GLB не используются.
+
+Скрипты записи в `tools/` снимают настоящий viewer. Для них дополнительно
+нужен `npx playwright install ffmpeg`; MP4 кодируется через
+`../tools/visual/finalize_media.py --ffmpeg <путь-к-ffmpeg>`.
+Three/GLTFLoader создают ленивый chunk около583kB; фактический FPS измерен
+отдельно и не выводится из размера JS или успешной сборки.

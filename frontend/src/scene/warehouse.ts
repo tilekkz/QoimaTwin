@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { layout } from '../contracts';
+import { legacyLayout as layout } from '../contracts';
 
 export const assetCatalog = [
   { id: 'rack-bay', label: 'Стеллаж', note: 'Стойки, укосины и три уровня', reference: 'rack-bay-reference.png' },

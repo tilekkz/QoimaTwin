@@ -1,0 +1,781 @@
+{
+  "asset_id": "packing-station",
+  "layout_version": "qoima-72x48-v2",
+  "root_name": "pack_station__PACK",
+  "units": "metres_radians",
+  "coordinate_system": "right_handed_Y_up",
+  "forward_axis": "+Z",
+  "reference": "assets/references/packing-station-reference.png",
+  "origin": "floor_centre",
+  "root_properties": {
+    "layout_version": "qoima-72x48-v2",
+    "asset_id": "packing-station",
+    "role": "packing_station",
+    "tabletop_top_m": 0.85,
+    "origin_description": "floor at centre of table footprint",
+    "reference": "assets/references/packing-station-reference.png",
+    "forward_axis": "+Z",
+    "origin": "floor_centre",
+    "animation_api_version": "1.0",
+    "preserve_articulation": true,
+    "equipment_bounds_runtime_json": "{\"printer\": {\"min\": [-0.9600000381469727, 0.8500000238418579, -0.4050000309944153], \"max\": [-0.46799999475479126, 1.127000093460083, -0.08500000089406967]}, \"monitor\": {\"min\": [-0.24500000476837158, 0.8500000238418579, -0.5099999904632568], \"max\": [0.24500000476837158, 1.4200000762939453, -0.28999996185302734]}, \"scanner\": {\"min\": [-0.4000000059604645, 0.8499999642372131, -0.33000001311302185], \"max\": [-0.22999998927116394, 1.1230000257492065, -0.1599999964237213]}}",
+    "printer_to_scanner_clearance_x_m": 0.06799998879432678,
+    "input_tote_to_printer_clearance_z_m": 0.10500000089406968,
+    "passive_transfer_supports": true,
+    "passive_transfer_note": "Passive roller counters only; no motors, cells or transport timing. Surface paths are transfer anchors.",
+    "dimensions_m": [
+      2.2,
+      1.42,
+      3.0
+    ]
+  },
+  "animation": "Apply deltas relative to each stored rest transform; never overwrite the tilted steering rest quaternion.",
+  "nodes": [
+    {
+      "name": "anchor_hand_left",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        -0.029999999329447746,
+        1.0499999523162842,
+        0.2199999988079071
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.029999999329447746,
+        1.0499999523162842,
+        0.2199999988079071
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_hand_right",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.4300000071525574,
+        1.0499999523162842,
+        0.2199999988079071
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.4300000071525574,
+        1.0499999523162842,
+        0.2199999988079071
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_input_tote",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        -0.7200000286102295,
+        0.8500000238418579,
+        0.23000000417232513
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.7200000286102295,
+        0.8500000238418579,
+        0.23000000417232513
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_label_output",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        -0.5199999809265137,
+        0.8899999856948853,
+        -0.24500000476837158
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.5199999809265137,
+        0.8899999856948853,
+        -0.24500000476837158
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m",
+        "normal_runtime": [
+          1,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "anchor_output_parcel",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.7200000286102295,
+        0.8500000238418579,
+        0.28999999165534973
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.7200000286102295,
+        0.8500000238418579,
+        0.28999999165534973
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_input_branch",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        1.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.0,
+        0.8999999761581421,
+        1.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_input_cross",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        1.25
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.0,
+        0.8999999761581421,
+        1.25
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_input_table",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        -0.7200000286102295,
+        0.8500000238418579,
+        0.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.7200000286102295,
+        0.8500000238418579,
+        0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_input_turn",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        -0.7200000286102295,
+        0.8999999761581421,
+        1.25
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.7200000286102295,
+        0.8999999761581421,
+        1.25
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_output_cross",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        -1.2000000476837158
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.0,
+        0.8999999761581421,
+        -1.2000000476837158
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_output_outfeed",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        -1.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.0,
+        0.8999999761581421,
+        -1.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_output_table",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.7200000286102295,
+        0.8500000238418579,
+        -0.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.7200000286102295,
+        0.8500000238418579,
+        -0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_transfer_output_turn",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.7200000286102295,
+        0.8999999761581421,
+        -1.2000000476837158
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.7200000286102295,
+        0.8999999761581421,
+        -1.2000000476837158
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "passive_transfer_surface",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_work_parcel",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.23000000417232513,
+        0.8500000238418579,
+        0.004999999888241291
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.23000000417232513,
+        0.8500000238418579,
+        0.004999999888241291
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_worker",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.05000000074505806,
+        0.0,
+        0.8500000238418579
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.05000000074505806,
+        0.0,
+        0.8500000238418579
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "pivot_packing_carton",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        0.23000000417232513,
+        0.8500000238418579,
+        0.004999999888241291
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.23000000417232513,
+        0.8500000238418579,
+        0.004999999888241291
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "cargo_fixture",
+        "coordinate_system": "runtime_Y_up_m",
+        "runtime_default_visible": false,
+        "visibility_rule": "show only while representing the current authoritative packing cargo"
+      }
+    },
+    {
+      "name": "pivot_carton_flap_front",
+      "parent": "pivot_packing_carton",
+      "position_local_runtime": [
+        0.0,
+        0.2999999523162842,
+        0.2150000035762787
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.23000000417232513,
+        1.149999976158142,
+        0.2199999988079071
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "functional_pivot",
+        "coordinate_system": "runtime_Y_up_m",
+        "motion": "rotation",
+        "axis_local_runtime": [
+          1,
+          0,
+          0
+        ],
+        "minimum": -2.530727415391778,
+        "maximum": 0,
+        "units": "radians",
+        "closed_delta_radians": -2.530727415391778
+      }
+    },
+    {
+      "name": "pivot_carton_flap_left",
+      "parent": "pivot_packing_carton",
+      "position_local_runtime": [
+        -0.24000000953674316,
+        0.2999999523162842,
+        0.0
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.01000000536441803,
+        1.149999976158142,
+        0.004999999888241291
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "functional_pivot",
+        "coordinate_system": "runtime_Y_up_m",
+        "motion": "rotation",
+        "axis_local_runtime": [
+          0,
+          0,
+          1
+        ],
+        "minimum": -2.530727415391778,
+        "maximum": 0,
+        "units": "radians",
+        "closed_delta_radians": -2.530727415391778
+      }
+    },
+    {
+      "name": "pivot_carton_flap_rear",
+      "parent": "pivot_packing_carton",
+      "position_local_runtime": [
+        0.0,
+        0.2999999523162842,
+        -0.2149999886751175
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.23000000417232513,
+        1.149999976158142,
+        -0.20999999344348907
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "functional_pivot",
+        "coordinate_system": "runtime_Y_up_m",
+        "motion": "rotation",
+        "axis_local_runtime": [
+          1,
+          0,
+          0
+        ],
+        "minimum": 0,
+        "maximum": 2.530727415391778,
+        "units": "radians",
+        "closed_delta_radians": 2.530727415391778
+      }
+    },
+    {
+      "name": "pivot_carton_flap_right",
+      "parent": "pivot_packing_carton",
+      "position_local_runtime": [
+        0.23999999463558197,
+        0.2999999523162842,
+        0.0
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.4699999988079071,
+        1.149999976158142,
+        0.004999999888241291
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "functional_pivot",
+        "coordinate_system": "runtime_Y_up_m",
+        "motion": "rotation",
+        "axis_local_runtime": [
+          0,
+          0,
+          1
+        ],
+        "minimum": 0,
+        "maximum": 2.530727415391778,
+        "units": "radians",
+        "closed_delta_radians": 2.530727415391778
+      }
+    },
+    {
+      "name": "pivot_scanner",
+      "parent": "pack_station__PACK",
+      "position_local_runtime": [
+        -0.3149999976158142,
+        0.8939999938011169,
+        -0.27000001072883606
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.3149999976158142,
+        0.8939999938011169,
+        -0.27000001072883606
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "functional_pivot",
+        "coordinate_system": "runtime_Y_up_m",
+        "motion": "rotation",
+        "axis_local_runtime": [
+          1,
+          0,
+          0
+        ],
+        "minimum": -1.5707963267948966,
+        "maximum": 1.5707963267948966,
+        "units": "radians"
+      }
+    },
+    {
+      "name": "anchor_scanner_grip",
+      "parent": "pivot_scanner",
+      "position_local_runtime": [
+        0.0,
+        0.08799999952316284,
+        0.013999998569488525
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.3149999976158142,
+        0.9819999933242798,
+        -0.25600001215934753
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_scanner_lens",
+      "parent": "pivot_scanner",
+      "position_local_runtime": [
+        0.0,
+        0.18699997663497925,
+        0.09350001811981201
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.3149999976158142,
+        1.0809999704360962,
+        -0.17649999260902405
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    }
+  ]
+}

@@ -92,9 +92,9 @@ def ico(name, loc, radius, mat, parent=None, scale=(1,1,1), subdivisions=1):
     bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
     return _finish_object(obj,name,mat,parent)
 
-def finish(asset_id, root, batch_runtime=True):
-    source=ROOT/'assets'/'blender'/f'{asset_id}.blend'
-    output=ROOT/'frontend'/'public'/'models'/f'{asset_id}.glb'
+def finish(asset_id, root, batch_runtime=True, namespace=None):
+    source=(ROOT/'assets'/namespace/'blender' if namespace else ROOT/'assets'/'blender')/f'{asset_id}.blend'
+    output=(ROOT/'frontend'/'public'/'models'/namespace if namespace else ROOT/'frontend'/'public'/'models')/f'{asset_id}.glb'
     source.parent.mkdir(parents=True,exist_ok=True)
     output.parent.mkdir(parents=True,exist_ok=True)
     root['asset_id']=asset_id
@@ -103,7 +103,7 @@ def finish(asset_id, root, batch_runtime=True):
     bpy.ops.wm.save_as_mainfile(filepath=str(source))
     meshes=[obj for obj in root.children_recursive if obj.type=='MESH']
     if root.type=='MESH': meshes.append(root)
-    if batch_runtime:
+    if batch_runtime or any(obj.modifiers for obj in meshes):
         bpy.ops.object.select_all(action='DESELECT')
         for obj in meshes: obj.select_set(True)
         bpy.context.view_layer.objects.active=meshes[0]
@@ -136,5 +136,5 @@ def finish(asset_id, root, batch_runtime=True):
         obj.data.calc_loop_triangles()
         triangles+=len(obj.data.loop_triangles)
     report={'asset_id':asset_id,'source':str(source),'glb_bytes':output.stat().st_size,'runtime_meshes':len(objects),'triangles':triangles,'bounds_blender':{'min':minimum,'max':maximum},'runtime_size':[maximum[0]-minimum[0],maximum[2]-minimum[2],maximum[1]-minimum[1]]}
-    (ROOT/'assets'/'blender'/f'{asset_id}.stats.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    (source.parent/f'{asset_id}.stats.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print('ASSET_EXPORTED '+json.dumps(report))

@@ -1,0 +1,1290 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "generatedUtc": "2026-11-06T22:27:32.546023+00:00",
+  "layoutVersion": "qoima-72x48-v2",
+  "basedOnBuildHash": "f64986bcaaf5a99b2eb57c7a2a69583b1f5297a564ab529ebdf204361f1ec9c1",
+  "execution": {
+    "command": "$env:QOIMA_TEST_BASE_URL='http://127.0.0.1:4180'; $env:PLAYWRIGHT_JSON_OUTPUT_FILE='../work/v2-browser-results-final.json'; npm run test:smoke -- --reporter=list,json",
+    "workingDirectory": "frontend",
+    "baseURL": "http://127.0.0.1:4180",
+    "serves": "frontend/dist via packaged static Node server",
+    "runner": "root normal exec; Chrome headless; one worker",
+    "exitCode": 0,
+    "rawReport": "work/v2-browser-results-final.json",
+    "rawReportSha256": "904a2e98f4fc402380ce2c868b4a697e457f1de683c2d90365181daa994e18f6",
+    "startedUtc": "2026-11-06T22:25:52.887Z",
+    "durationSeconds": 31.805
+  },
+  "tests": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "core": 16,
+    "browserProject": 14,
+    "byFile": {
+      "environment.spec.ts": 2,
+      "equipment.spec.ts": 3,
+      "replay-core.spec.ts": 16,
+      "warehouse.spec.ts": 9
+    },
+    "cases": [
+      {
+        "title": "local production build renders Blender GLB with canonical axes and units",
+        "file": "environment.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "missing GLB displays an error instead of an empty successful scene",
+        "file": "environment.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "all 21 exported GLBs are selected through UI and captured in four actual browser views",
+        "file": "equipment.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "actual posed driver, forklift and carried pallet anchors stay connected through travel and turns",
+        "file": "equipment.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "final GLB fork surfaces physically fit the empty pallet and cargo origins remain canonical",
+        "file": "equipment.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "all 24 employees persist; drivers represent the two vehicles",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "same absolute clock after different frame sizes, speeds and backward seeks",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "half-open actions and event boundary applied once",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "scripted belt hold stops the same cargo then resumes without teleport",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "tote sits on basket base and stays with parked cart heading during pick",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "forklift reverse rolls backwards continuously and survives seek",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "parked cart turns continuously at pick/travel boundaries and waypoints",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "all graph travel follows existing edges; service connectors stay in their zone",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "parent parcel follows loaded pallet regardless of track ordering and backward seek",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "pallet stays grounded until fork contact, then lifts continuously; seal timer is 300s",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "reduced motion preserves logical state and mechanical lift while removing cosmetic pose",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "adapter cell boundary mapping is directed and unknown payload locations are reported",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "invalid overlaps, duplicate events and NaN routes are rejected",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "sound limiter deduplicates, caps four voices and summarizes accelerated events",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "audio starts muted and never constructs sound during silent QA or seek",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "mocked audio bus includes motor in four-voice cap and stops on pause/seek",
+        "file": "replay-core.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "v2 overview renders the complete local registry with one canvas and mute",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "zoom, slot selection, quality and responsive UI retain the full warehouse",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "play/pause, seek and reset hold the blocked tote and never duplicate cargo",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "all reference gallery images load from the local project",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "reduced motion pauses presentation without dropping actors or making sound",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "wrong Run version is rejected through import UI without replacing the scene",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "follow order changes tote to parcel to pallet, pans on seek and clears after dispatch",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "actual WebAudio unlocks through UI, emits a cue and stops on pause, seek, reset and mute",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      },
+      {
+        "title": "v2 GLB calibration preserves metre axes, actual heights and three bin anchors",
+        "file": "warehouse.spec.ts",
+        "status": "expected",
+        "results": [
+          "passed"
+        ]
+      }
+    ]
+  },
+  "buildFingerprint": {
+    "sha256": "f64986bcaaf5a99b2eb57c7a2a69583b1f5297a564ab529ebdf204361f1ec9c1",
+    "method": "SHA256 of sorted relative UTF-8 path + NUL + raw SHA256(content) for every file in frontend/dist",
+    "fileCount": 58,
+    "entrypointSha256": "211c5433accee5b0bdce4bec83f73d3be2f878afec335a3340dfcaf79662317e",
+    "javascript": [
+      "assets/App-NITTXdEj.js",
+      "assets/CalibrationV2-CDRS1tTw.js",
+      "assets/OrbitControls-BYtU5Bhj.js",
+      "assets/calibration-BJPxNwsQ.js",
+      "assets/index-CwwCEUPq.js",
+      "assets/largeWarehouse-SItJUNRu.js"
+    ],
+    "catalogModelTreeSha256": "2f84db689a1dae853347e1e31768b16669a1db4269ee237ce1c8c94b3c09db1d",
+    "catalogModels": [
+      {
+        "assetId": "standing-worker",
+        "path": "models/v2/standing-worker.glb",
+        "bytes": 196596,
+        "sha256": "b0d728a626cae8304ad83df5e00e2eac2ae72f77d32d83f89abdf773352568c7"
+      },
+      {
+        "assetId": "picker-worker",
+        "path": "models/v2/picker-worker.glb",
+        "bytes": 201184,
+        "sha256": "4d966485b383892d99234639599e1ea72c47b404a2d86c53893ad28d3bb34f7b"
+      },
+      {
+        "assetId": "driver",
+        "path": "models/v2/driver.glb",
+        "bytes": 201252,
+        "sha256": "3b2e9f0d4f2b43c65413bcab88c3cac64f9f5e00b6150186a0e0c8c7cc850eab"
+      },
+      {
+        "assetId": "picking-cart",
+        "path": "models/v2/picking-cart.glb",
+        "bytes": 209708,
+        "sha256": "bb44ae8235b091cc7059155f6047ef4158d485a888fd0a826043c230851c4131"
+      },
+      {
+        "assetId": "rack-high",
+        "path": "models/v2/rack-high.glb",
+        "bytes": 182104,
+        "sha256": "29ee947c520f3272030c22e402a0f24e0520587e9d18dd9adc2074739dbff15c"
+      },
+      {
+        "assetId": "conveyor-high",
+        "path": "models/v2/conveyor-high.glb",
+        "bytes": 48676,
+        "sha256": "95e4893dbfd6a9e4b6132c72f707d84f2cba3c0e584dde303aa7b1b57262422b"
+      },
+      {
+        "assetId": "conveyor-corner",
+        "path": "models/v2/conveyor-corner.glb",
+        "bytes": 51156,
+        "sha256": "552a30226a3336c31634b57846d5fd289ef9ef6835bf19aca893c8a25df4a75b"
+      },
+      {
+        "assetId": "conveyor-diverter",
+        "path": "models/v2/conveyor-diverter.glb",
+        "bytes": 57872,
+        "sha256": "b1875807653325cbf3193968b46cf09804e9036b29113b126748f9d859b8e9bc"
+      },
+      {
+        "assetId": "order-tote",
+        "path": "models/v2/order-tote.glb",
+        "bytes": 46696,
+        "sha256": "a139f68a6693fdb9bb26403f2ec53f373955b0941946dfea687fb63941d40f10"
+      },
+      {
+        "assetId": "sealed-parcel",
+        "path": "models/v2/sealed-parcel.glb",
+        "bytes": 34968,
+        "sha256": "507c3e799323c09403aab65e613555ff5700364e9d45ff2cf02e7ab0fbf90403"
+      },
+      {
+        "assetId": "packing-station",
+        "path": "models/v2/packing-station.glb",
+        "bytes": 251852,
+        "sha256": "8d10e1a8050240036ab2f73de2b57947fb45cd888c08671a3d9bae2e491cfc22"
+      },
+      {
+        "assetId": "forklift",
+        "path": "models/v2/forklift.glb",
+        "bytes": 741760,
+        "sha256": "25ccaa766a918894ba14a4d19d6a13527dda4ad2a324aeadc6e3d87031d2b16e"
+      },
+      {
+        "assetId": "dock",
+        "path": "models/v2/dock.glb",
+        "bytes": 123340,
+        "sha256": "0c7ef9fe2e8d471c21c1ca1f1037fb3875491455ee2e190227d05a2137cd46f2"
+      },
+      {
+        "assetId": "crate",
+        "path": "models/v2/crate.glb",
+        "bytes": 40708,
+        "sha256": "367898f693c7404c35ac7437fd6cc42a29d47f6cba82e51746c74004cb582835"
+      },
+      {
+        "assetId": "pallet",
+        "path": "models/v2/pallet.glb",
+        "bytes": 64072,
+        "sha256": "bdec8bdb4a6fac5fef819f882370aa04dfb2ccd2a8427b96e6572b690cd7f1b4"
+      },
+      {
+        "assetId": "buffer-pallet",
+        "path": "models/v2/buffer-pallet.glb",
+        "bytes": 98432,
+        "sha256": "2673797191a10f221fb12c8553eec0cbf290485a3c9c4f040dcc04c996cc4a2a"
+      },
+      {
+        "assetId": "environment-shell",
+        "path": "models/v2/environment-shell.glb",
+        "bytes": 593028,
+        "sha256": "91863b69f713ce9ae60cab436f89347236cf5f6829685f46d00dc3dc0f275739"
+      },
+      {
+        "assetId": "rack-low",
+        "path": "models/v2/rack-low.glb",
+        "bytes": 19044,
+        "sha256": "583617d54f42ed3ec69f172e0d4d6454cac8265b4d1e3916c1e5c53badb96715"
+      },
+      {
+        "assetId": "worker-low",
+        "path": "models/v2/worker-low.glb",
+        "bytes": 60488,
+        "sha256": "c366bf07eadc0e98ba14dc40929bcefb64822a325afa3428c030c7a3fc50336d"
+      },
+      {
+        "assetId": "conveyor-low",
+        "path": "models/v2/conveyor-low.glb",
+        "bytes": 8864,
+        "sha256": "d65d374228996f4370ac990eaab39b2dd71ec17bff9c683e6e7489488d1184ed"
+      },
+      {
+        "assetId": "tote-low",
+        "path": "models/v2/tote-low.glb",
+        "bytes": 3260,
+        "sha256": "7cf46e0ac825a5ca6148f15e84cc6cb7f6f88bca7e60b8cd227a2a5782b22827"
+      }
+    ]
+  },
+  "overviewActual": {
+    "calls": 137,
+    "triangles": 265168,
+    "memory": {
+      "geometries": 85,
+      "textures": 2
+    },
+    "counts": {
+      "racks": 288,
+      "slots": 864,
+      "occupied": 600,
+      "actors": 24,
+      "vehicles": 2,
+      "packs": 6,
+      "conveyorCells": 179,
+      "skuCount": 200
+    }
+  },
+  "standActual": {
+    "catalogAssets": 21,
+    "views": 84,
+    "runtimeGlbBytes": 3235060,
+    "allViewsRenderedPositiveGeometry": true,
+    "allViewsPaused": true
+  },
+  "checksPassed": [
+    "24 employee IDs persist in actual rendered registry and motion state; 288 racks, 600 rendered occupied slots, 864 logical slots, 179 conveyor cells, 2 vehicles, 6 packing stations.",
+    "One canvas, local model/reference requests, model selection, four UI view buttons, zoom, slot selection, quality changes and responsive layouts.",
+    "Play/pause/reset, exact fractional API seek, quantized UI seek, tote hold at 43/45 seconds, deterministic backward seeks and no duplicate active cargo.",
+    "Actual posed driver seat, hand, forklift, pallet and parcel world anchors remain connected during carry and turns.",
+    "Final GLB vertex geometry validates fork/pallet contact, floor/centre cargo origins, packing anchors, transfer support and unobstructed cargo lanes.",
+    "Follow order transfers tote to parcel to pallet, explicit seek pans without changing viewing angle, and dispatch clears follow/selection.",
+    "Reduced motion, wrong Run version rejection, legacy missing-GLB error and v2 axes/metre/height/bin-anchor calibration.",
+    "Actual AudioContext graph unlocks from UI, emits a cue, caps voices at four and clears them on pause/seek/reset/mute; Chromium --mute-audio suppresses speaker output."
+  ],
+  "screenshots": {
+    "assetViewCount": 84,
+    "assets": [
+      "standing-worker",
+      "picker-worker",
+      "driver",
+      "picking-cart",
+      "rack-high",
+      "conveyor-high",
+      "conveyor-corner",
+      "conveyor-diverter",
+      "order-tote",
+      "sealed-parcel",
+      "packing-station",
+      "forklift",
+      "dock",
+      "crate",
+      "pallet",
+      "buffer-pallet",
+      "environment-shell",
+      "rack-low",
+      "worker-low",
+      "conveyor-low",
+      "tote-low"
+    ],
+    "views": [
+      "front",
+      "side",
+      "rear",
+      "quarter"
+    ],
+    "pathPattern": "frontend/test-results/v2-runtime/<asset-id>/<front|side|rear|quarter>.png",
+    "inventory": [
+      {
+        "assetId": "standing-worker",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/standing-worker/front.png",
+        "bytes": 69381,
+        "width": 1366,
+        "height": 768,
+        "sha256": "b4e520211e2617a1ac875a4b8679efb86112e267271e889c3c1a376bfdea4dce"
+      },
+      {
+        "assetId": "standing-worker",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/standing-worker/side.png",
+        "bytes": 61653,
+        "width": 1366,
+        "height": 768,
+        "sha256": "de7f3c54b2198d0b17acbd8cecd16029f65b9fc100d65bb19d6963dfccbb5be1"
+      },
+      {
+        "assetId": "standing-worker",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/standing-worker/rear.png",
+        "bytes": 67991,
+        "width": 1366,
+        "height": 768,
+        "sha256": "e464a8518a92031860f09555ca148b55ca4dc6cea8ed49d3e2f742f0473befba"
+      },
+      {
+        "assetId": "standing-worker",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/standing-worker/quarter.png",
+        "bytes": 71255,
+        "width": 1366,
+        "height": 768,
+        "sha256": "38d8928ae3621e8bf89f17d570c1ee10945bc8c3375643bcb4388f5a784eae6b"
+      },
+      {
+        "assetId": "picker-worker",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/picker-worker/front.png",
+        "bytes": 71150,
+        "width": 1366,
+        "height": 768,
+        "sha256": "964930e46071beb455976c0e5f797169c3a45f6369f47bdebc65380f5f2fb21e"
+      },
+      {
+        "assetId": "picker-worker",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/picker-worker/side.png",
+        "bytes": 63851,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a1420d37bce6a7c321c901416547e36d9993cfe897a9b023682993a5e6c8dd88"
+      },
+      {
+        "assetId": "picker-worker",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/picker-worker/rear.png",
+        "bytes": 68494,
+        "width": 1366,
+        "height": 768,
+        "sha256": "be0c71c1665be2feba9e3f58892b9fd65308b1c92a31d26fbb5881f9cc523091"
+      },
+      {
+        "assetId": "picker-worker",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/picker-worker/quarter.png",
+        "bytes": 73325,
+        "width": 1366,
+        "height": 768,
+        "sha256": "2d1f8bcfc1638c3b2099c4d9a17b4d4899c9d46197cd9c14f3b56e2c8d2c75cb"
+      },
+      {
+        "assetId": "driver",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/driver/front.png",
+        "bytes": 74897,
+        "width": 1366,
+        "height": 768,
+        "sha256": "14adf01ed2bba819d53ccf8efe02c92a0f69ef3fabed925d7a449f08ef045767"
+      },
+      {
+        "assetId": "driver",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/driver/side.png",
+        "bytes": 71422,
+        "width": 1366,
+        "height": 768,
+        "sha256": "db12e484b808f810e3a56f275746be1d7afb06940349d447db69e071864fc2bd"
+      },
+      {
+        "assetId": "driver",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/driver/rear.png",
+        "bytes": 70427,
+        "width": 1366,
+        "height": 768,
+        "sha256": "2c8246cfc80515596ba90963195faaee0dde9272b2ed2b733c7a06270b379388"
+      },
+      {
+        "assetId": "driver",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/driver/quarter.png",
+        "bytes": 78671,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a3df9d435196efb6a193181a18c97cf49b4aad33beae3f57b6deba12f7a60ec4"
+      },
+      {
+        "assetId": "picking-cart",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/picking-cart/front.png",
+        "bytes": 66557,
+        "width": 1366,
+        "height": 768,
+        "sha256": "9e8d7a5a42282a01b9f77fe8ad35ac8ab5a9718bc5946fc028fd35dae9c15359"
+      },
+      {
+        "assetId": "picking-cart",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/picking-cart/side.png",
+        "bytes": 70284,
+        "width": 1366,
+        "height": 768,
+        "sha256": "71156fb100e1651ba3020c6041e8c00fb767dffae0e2dc5cd96957539456e973"
+      },
+      {
+        "assetId": "picking-cart",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/picking-cart/rear.png",
+        "bytes": 67569,
+        "width": 1366,
+        "height": 768,
+        "sha256": "47596bc846667d5282341d13ad7eac0adefedeeb19224048d5219f5d621b8c16"
+      },
+      {
+        "assetId": "picking-cart",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/picking-cart/quarter.png",
+        "bytes": 77915,
+        "width": 1366,
+        "height": 768,
+        "sha256": "f8a223202dfb6cf065a3c998c50ebd1f5b757f64b84658f5fde3a76d147f934f"
+      },
+      {
+        "assetId": "rack-high",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/rack-high/front.png",
+        "bytes": 52824,
+        "width": 1366,
+        "height": 768,
+        "sha256": "0b497e311d6a4e0b8674c473b3318eeadd5a546050fd32c728f39d89b325758b"
+      },
+      {
+        "assetId": "rack-high",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/rack-high/side.png",
+        "bytes": 57762,
+        "width": 1366,
+        "height": 768,
+        "sha256": "f662b5e846b641deb6fd9414b0da82ee20216f6678826465512ab9449060f0fa"
+      },
+      {
+        "assetId": "rack-high",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/rack-high/rear.png",
+        "bytes": 53507,
+        "width": 1366,
+        "height": 768,
+        "sha256": "33b6993c19e92ef106820f0aedc53a35548fa83f2e9f0bdd593cf3e6c16910dc"
+      },
+      {
+        "assetId": "rack-high",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/rack-high/quarter.png",
+        "bytes": 64378,
+        "width": 1366,
+        "height": 768,
+        "sha256": "85e57e52174cfb75609468d18d6895601349f9946e906bcc65437ff64794e719"
+      },
+      {
+        "assetId": "conveyor-high",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/conveyor-high/front.png",
+        "bytes": 69834,
+        "width": 1366,
+        "height": 768,
+        "sha256": "415acda65bf9f1287169bc9697db1449350b504d9c47cea4e2896b36f1fb50e1"
+      },
+      {
+        "assetId": "conveyor-high",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/conveyor-high/side.png",
+        "bytes": 73442,
+        "width": 1366,
+        "height": 768,
+        "sha256": "2ab96773b42641f463e163e8f10227fc0a6b4903c7de154e11de4e7db9c714a4"
+      },
+      {
+        "assetId": "conveyor-high",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/conveyor-high/rear.png",
+        "bytes": 70175,
+        "width": 1366,
+        "height": 768,
+        "sha256": "c0739e6b82f2453cc5788820f5caba1dd8d4b97c538f5d70fc9708dabe760ef6"
+      },
+      {
+        "assetId": "conveyor-high",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/conveyor-high/quarter.png",
+        "bytes": 78206,
+        "width": 1366,
+        "height": 768,
+        "sha256": "eed77f66f0ee654f2a11c55d59bbc9d4315a87c9c7661295d522180fb55e89df"
+      },
+      {
+        "assetId": "conveyor-corner",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/conveyor-corner/front.png",
+        "bytes": 70818,
+        "width": 1366,
+        "height": 768,
+        "sha256": "4f64937f5be7809aeb02d7c64473f02eca68682b33187ae5a55258eb57a4b57d"
+      },
+      {
+        "assetId": "conveyor-corner",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/conveyor-corner/side.png",
+        "bytes": 73966,
+        "width": 1366,
+        "height": 768,
+        "sha256": "f1a87bcea8fdbd656e13ecba9011b2444586c9930da8885bbe3d7588da1710da"
+      },
+      {
+        "assetId": "conveyor-corner",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/conveyor-corner/rear.png",
+        "bytes": 71544,
+        "width": 1366,
+        "height": 768,
+        "sha256": "86d0a5ca99b9f977403cb32749a1a7d0115363889e84cc5f64ed864bd3a9e3d0"
+      },
+      {
+        "assetId": "conveyor-corner",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/conveyor-corner/quarter.png",
+        "bytes": 79443,
+        "width": 1366,
+        "height": 768,
+        "sha256": "ef5884fc3a14f050dc64d0e7a11adef67230eed7639ae20724937044b2f0de9e"
+      },
+      {
+        "assetId": "conveyor-diverter",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/conveyor-diverter/front.png",
+        "bytes": 72686,
+        "width": 1366,
+        "height": 768,
+        "sha256": "8b4e17dddb7f288e16d035e69a74c5a0b21dd89bbb6447e5df5e4f0e1c02a80f"
+      },
+      {
+        "assetId": "conveyor-diverter",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/conveyor-diverter/side.png",
+        "bytes": 77134,
+        "width": 1366,
+        "height": 768,
+        "sha256": "18f5e58c6c89f00971b8d0a590cf1c3ec2ac2b05f6ebb33fa9815046386ec109"
+      },
+      {
+        "assetId": "conveyor-diverter",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/conveyor-diverter/rear.png",
+        "bytes": 72946,
+        "width": 1366,
+        "height": 768,
+        "sha256": "c62af8aba9aa1befc4b5b785e7b254ebeef9f2c348b66ccad65f36207af36ade"
+      },
+      {
+        "assetId": "conveyor-diverter",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/conveyor-diverter/quarter.png",
+        "bytes": 82262,
+        "width": 1366,
+        "height": 768,
+        "sha256": "e7e44929213aa7a3752994f2a67751a88d0f5f31ca84c26eef7131f0517e7a9b"
+      },
+      {
+        "assetId": "order-tote",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/order-tote/front.png",
+        "bytes": 74922,
+        "width": 1366,
+        "height": 768,
+        "sha256": "c345d719ddd66c0bf50eb4ffa6b2d86666b21b01d3587ffce7ec65a25f054c65"
+      },
+      {
+        "assetId": "order-tote",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/order-tote/side.png",
+        "bytes": 78303,
+        "width": 1366,
+        "height": 768,
+        "sha256": "ebbd346f3fe31f4f314e2f1beb9fa9d29e8d447b94d5e84b401376209782896d"
+      },
+      {
+        "assetId": "order-tote",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/order-tote/rear.png",
+        "bytes": 75213,
+        "width": 1366,
+        "height": 768,
+        "sha256": "fe153e459f26b53ed7bbe51307f19b315e83c65ce971688e88298159636ed08c"
+      },
+      {
+        "assetId": "order-tote",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/order-tote/quarter.png",
+        "bytes": 78133,
+        "width": 1366,
+        "height": 768,
+        "sha256": "7cafd4835f4d12fbc7ec7f8ae013d8a3e32a52fcc5c2467589b9fcd89359d5c2"
+      },
+      {
+        "assetId": "sealed-parcel",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/sealed-parcel/front.png",
+        "bytes": 58769,
+        "width": 1366,
+        "height": 768,
+        "sha256": "10eff8b8984f7d6d079d930f9429648fc2890653224bc65651f983613a785799"
+      },
+      {
+        "assetId": "sealed-parcel",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/sealed-parcel/side.png",
+        "bytes": 58504,
+        "width": 1366,
+        "height": 768,
+        "sha256": "4df62e49a6d10fc2041b878f4bf0b5f8a4d35708f5bf5932dde64ded173b24f9"
+      },
+      {
+        "assetId": "sealed-parcel",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/sealed-parcel/rear.png",
+        "bytes": 58602,
+        "width": 1366,
+        "height": 768,
+        "sha256": "6c4dea9b210add90036fe38dcacb4b8d3823e331af12bd644eaa435c6823dd8b"
+      },
+      {
+        "assetId": "sealed-parcel",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/sealed-parcel/quarter.png",
+        "bytes": 61595,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a82c16e7f188dd7697284bfb646b791114008152b20e572f245902757067e8c6"
+      },
+      {
+        "assetId": "packing-station",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/packing-station/front.png",
+        "bytes": 85889,
+        "width": 1366,
+        "height": 768,
+        "sha256": "1edbefef072648a47a61898e8c58ce9894827975331435749f85fc299ea08ade"
+      },
+      {
+        "assetId": "packing-station",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/packing-station/side.png",
+        "bytes": 95159,
+        "width": 1366,
+        "height": 768,
+        "sha256": "e45ae03729a3e18da2a34a807bfb5dd045f5f5e17578bd3058759557811ac17d"
+      },
+      {
+        "assetId": "packing-station",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/packing-station/rear.png",
+        "bytes": 85074,
+        "width": 1366,
+        "height": 768,
+        "sha256": "b8a75bc9f6ae9f9fef692b684fd6a20f0e67da68b059dbf1011b68eb00999a34"
+      },
+      {
+        "assetId": "packing-station",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/packing-station/quarter.png",
+        "bytes": 91502,
+        "width": 1366,
+        "height": 768,
+        "sha256": "30ccf67ea42ed17eb8ca14376792878e83432330fc9c7f31ff48ed7535fc90fd"
+      },
+      {
+        "assetId": "forklift",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/forklift/front.png",
+        "bytes": 71280,
+        "width": 1366,
+        "height": 768,
+        "sha256": "3cf4d354e561db3f464fd7ba5f07dd4740be1c6e043be6d5fdf55e572d054416"
+      },
+      {
+        "assetId": "forklift",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/forklift/side.png",
+        "bytes": 88559,
+        "width": 1366,
+        "height": 768,
+        "sha256": "d9b74089b50c0e1e75ce01a61066e944f773f4a5599bfe390c9c11d0ebeac5ba"
+      },
+      {
+        "assetId": "forklift",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/forklift/rear.png",
+        "bytes": 65679,
+        "width": 1366,
+        "height": 768,
+        "sha256": "630d4e2c892142f82e13f2ccb416d3afad6c66331c476b0879ed72105cb51f0d"
+      },
+      {
+        "assetId": "forklift",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/forklift/quarter.png",
+        "bytes": 85288,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a0a3028e7cf43e728f403d7a29d4e34826bfea383570756b87bc4faa08323505"
+      },
+      {
+        "assetId": "dock",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/dock/front.png",
+        "bytes": 55398,
+        "width": 1366,
+        "height": 768,
+        "sha256": "45075d7778bfe2aaa2612cc9c62d1fbd080231e2e4a62635fb6082501c57fefb"
+      },
+      {
+        "assetId": "dock",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/dock/side.png",
+        "bytes": 55911,
+        "width": 1366,
+        "height": 768,
+        "sha256": "264a542f5018bfde1f4f4da8a466613295eac0101c6d00fc3ca16346cd7dd5cb"
+      },
+      {
+        "assetId": "dock",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/dock/rear.png",
+        "bytes": 54088,
+        "width": 1366,
+        "height": 768,
+        "sha256": "5ec562c40cd2d0fec673443b2cab3596da4fe9323435ac193ff0e08b67d0af27"
+      },
+      {
+        "assetId": "dock",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/dock/quarter.png",
+        "bytes": 67179,
+        "width": 1366,
+        "height": 768,
+        "sha256": "29cccc3eb5d6f4837778c4bf8ad0d545ac7db28274c071e39ffaa0f731fbabc4"
+      },
+      {
+        "assetId": "crate",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/crate/front.png",
+        "bytes": 62912,
+        "width": 1366,
+        "height": 768,
+        "sha256": "7771c81567bf59e3ca8df64760837b87cbe3b330422a291e3812a59e2f02e44e"
+      },
+      {
+        "assetId": "crate",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/crate/side.png",
+        "bytes": 67077,
+        "width": 1366,
+        "height": 768,
+        "sha256": "8b903021a1113d430f4f6ebcd8e4ce26a86a73bebbe49feff18cde4a57a835ae"
+      },
+      {
+        "assetId": "crate",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/crate/rear.png",
+        "bytes": 62512,
+        "width": 1366,
+        "height": 768,
+        "sha256": "d30c9691055559977a972365203c8e6333c94ab958260894b217f1316e5fe0bf"
+      },
+      {
+        "assetId": "crate",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/crate/quarter.png",
+        "bytes": 67496,
+        "width": 1366,
+        "height": 768,
+        "sha256": "91fad319173255e34708078116219ec68bb2fa15a21d9b63ec6ff4bccbf7e4c4"
+      },
+      {
+        "assetId": "pallet",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/pallet/front.png",
+        "bytes": 56965,
+        "width": 1366,
+        "height": 768,
+        "sha256": "259d44500ff26a80f5f79041512f1dad1fe821eb641870512dbd4946f52fdaec"
+      },
+      {
+        "assetId": "pallet",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/pallet/side.png",
+        "bytes": 62927,
+        "width": 1366,
+        "height": 768,
+        "sha256": "f33c50f9baf2931ab70ec5a788ab9b53060ef769bf4f061e0af6e7dd5a52168a"
+      },
+      {
+        "assetId": "pallet",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/pallet/rear.png",
+        "bytes": 56664,
+        "width": 1366,
+        "height": 768,
+        "sha256": "8dae007fb5d5426f3add52aa42e0cc3eb67d6cee3fd95b2114177750da41aafb"
+      },
+      {
+        "assetId": "pallet",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/pallet/quarter.png",
+        "bytes": 79241,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a06aa2d2245cc5a4e90516b70012769936be78f7652f9ad99514f62b30c5cbad"
+      },
+      {
+        "assetId": "buffer-pallet",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/buffer-pallet/front.png",
+        "bytes": 55854,
+        "width": 1366,
+        "height": 768,
+        "sha256": "45ac0f93d3efa646097e5f09768e36f6bafbc396be936937c342e21abb442869"
+      },
+      {
+        "assetId": "buffer-pallet",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/buffer-pallet/side.png",
+        "bytes": 63276,
+        "width": 1366,
+        "height": 768,
+        "sha256": "12734f9d96f6f3d8fb92391b77a82727b0f03cb04f9613961dc8c300e326ec10"
+      },
+      {
+        "assetId": "buffer-pallet",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/buffer-pallet/rear.png",
+        "bytes": 55567,
+        "width": 1366,
+        "height": 768,
+        "sha256": "2dcd78fc119a12da99d867360d1e482ea50846fa38998550d60353f6b211a615"
+      },
+      {
+        "assetId": "buffer-pallet",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/buffer-pallet/quarter.png",
+        "bytes": 80828,
+        "width": 1366,
+        "height": 768,
+        "sha256": "5e616972e0382937b3220eb9d7e694e75384eae14927be1e6dc7de99472c8706"
+      },
+      {
+        "assetId": "environment-shell",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/environment-shell/front.png",
+        "bytes": 54384,
+        "width": 1366,
+        "height": 768,
+        "sha256": "50c1c8c2a9a4d4bdbd047c6ca8b2eac24cf422a8f5c5217f3e2de070364e66d1"
+      },
+      {
+        "assetId": "environment-shell",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/environment-shell/side.png",
+        "bytes": 73279,
+        "width": 1366,
+        "height": 768,
+        "sha256": "0dda4d43f145cbb2d1fd433fbcceb6e6b03718bd837b5ffe4c14b78ce22f0c53"
+      },
+      {
+        "assetId": "environment-shell",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/environment-shell/rear.png",
+        "bytes": 66950,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a938083339109269d27faa51b76e8c22d5f4a44fbe58bf619f1603e6ee08f0f5"
+      },
+      {
+        "assetId": "environment-shell",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/environment-shell/quarter.png",
+        "bytes": 76679,
+        "width": 1366,
+        "height": 768,
+        "sha256": "b1d2729d476db6be9113850c87b444a8ccdf3e25a15dd2f9ac50b3e65e183dcf"
+      },
+      {
+        "assetId": "rack-low",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/rack-low/front.png",
+        "bytes": 50164,
+        "width": 1366,
+        "height": 768,
+        "sha256": "300ad43cd229d3d5b401b22fa897c1c869f0854d82afce3035e5cbb825e47a24"
+      },
+      {
+        "assetId": "rack-low",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/rack-low/side.png",
+        "bytes": 53460,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a6e9730184b42331308330c33d12be036c798478174a1737a208be8abad8ad3b"
+      },
+      {
+        "assetId": "rack-low",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/rack-low/rear.png",
+        "bytes": 50506,
+        "width": 1366,
+        "height": 768,
+        "sha256": "aa1615506ba451ea6387ce2b5dd513708f00265dbb2033c2fe2b292a6a46bc3e"
+      },
+      {
+        "assetId": "rack-low",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/rack-low/quarter.png",
+        "bytes": 56966,
+        "width": 1366,
+        "height": 768,
+        "sha256": "ca7c24eb31226d1586a533907bc281064e0b0c8ca508a0076cdd136adcf30f09"
+      },
+      {
+        "assetId": "worker-low",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/worker-low/front.png",
+        "bytes": 61321,
+        "width": 1366,
+        "height": 768,
+        "sha256": "e2a8c523337670157f1fbe27205677d7d95c4f75dc540b95845ae4bbe3db14e9"
+      },
+      {
+        "assetId": "worker-low",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/worker-low/side.png",
+        "bytes": 57393,
+        "width": 1366,
+        "height": 768,
+        "sha256": "a2b746db7ef31b19632b2cbabfcf57a208008c56f934257b356f3406e51df9dd"
+      },
+      {
+        "assetId": "worker-low",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/worker-low/rear.png",
+        "bytes": 61513,
+        "width": 1366,
+        "height": 768,
+        "sha256": "9ab68f213ff8eac6351d64a071dab30c4b87f4a0edd34710bd75533df338210b"
+      },
+      {
+        "assetId": "worker-low",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/worker-low/quarter.png",
+        "bytes": 63779,
+        "width": 1366,
+        "height": 768,
+        "sha256": "cdeb79b3cec3064ad5da5df227f3641658fecea72547e59610add2012fe36720"
+      },
+      {
+        "assetId": "conveyor-low",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/conveyor-low/front.png",
+        "bytes": 66543,
+        "width": 1366,
+        "height": 768,
+        "sha256": "ad115def5176243916ede804bb810140405319f016282330cfc4ffebae490aa5"
+      },
+      {
+        "assetId": "conveyor-low",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/conveyor-low/side.png",
+        "bytes": 70173,
+        "width": 1366,
+        "height": 768,
+        "sha256": "4cde3a038651f17bbc7b4bc4796b70917916d78d7f3559d8e62dc61d458cf234"
+      },
+      {
+        "assetId": "conveyor-low",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/conveyor-low/rear.png",
+        "bytes": 67263,
+        "width": 1366,
+        "height": 768,
+        "sha256": "35f001b2f113cd6560a0a252efdb96398c45d0b0f350e6f114337f6a2bf5c110"
+      },
+      {
+        "assetId": "conveyor-low",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/conveyor-low/quarter.png",
+        "bytes": 73707,
+        "width": 1366,
+        "height": 768,
+        "sha256": "7bc4a76e779dcd5a6f1b54df8d2bb87715b484d98a856f0280091966726efe10"
+      },
+      {
+        "assetId": "tote-low",
+        "view": "front",
+        "path": "frontend/test-results/v2-runtime/tote-low/front.png",
+        "bytes": 65988,
+        "width": 1366,
+        "height": 768,
+        "sha256": "c46e7e129363d715e7a7c59a55e2bafd17d08265742e1a3ba67af4fb15230f7d"
+      },
+      {
+        "assetId": "tote-low",
+        "view": "side",
+        "path": "frontend/test-results/v2-runtime/tote-low/side.png",
+        "bytes": 67955,
+        "width": 1366,
+        "height": 768,
+        "sha256": "7db793683f2c2789267b1410d2d221704553f803b2b78551d369c324335e1941"
+      },
+      {
+        "assetId": "tote-low",
+        "view": "rear",
+        "path": "frontend/test-results/v2-runtime/tote-low/rear.png",
+        "bytes": 65395,
+        "width": 1366,
+        "height": 768,
+        "sha256": "02a2aed96917656872a3b818a8317df7e4c7fa2c01a737a4e5cfa794ebe6094c"
+      },
+      {
+        "assetId": "tote-low",
+        "view": "quarter",
+        "path": "frontend/test-results/v2-runtime/tote-low/quarter.png",
+        "bytes": 64164,
+        "width": 1366,
+        "height": 768,
+        "sha256": "d8dc63e0b8fabdafd95ef8ab2b8817effd585177c7aa0506126c31d8cb95bfd4"
+      }
+    ],
+    "additional": [
+      "frontend/test-results/v2-runtime/blocked-tote.png",
+      "frontend/test-results/v2-runtime/calibration-v2.png",
+      "frontend/test-results/v2-runtime/follow-order-dispatched.png",
+      "frontend/test-results/v2-runtime/forklift-carry-contact.png",
+      "frontend/test-results/v2-runtime/overview.png",
+      "frontend/test-results/v2-runtime/responsive-390.png",
+      "frontend/test-results/v2-runtime/responsive-720.png",
+      "frontend/test-results/v2-runtime/top.png"
+    ]
+  },
+  "visualReview": {
+    "scope": "Final capture files were inventoried and hashed after the focusBounds safe-camera fix. This document does not claim a new visual review of all final PNGs.",
+    "priorAcceptedReviewIndex": "assets/v2/qa-browser/browser-contact-index.json",
+    "priorAcceptedReviewStatus": "All 21 sheets / 84 views visually accepted earlier; identical final GLBs confirmed by SHA-256.",
+    "finalCatalogGlbHashesMatchAcceptedReview": true,
+    "subagentBrowserQuarterImagesActuallyViewedFromPreviousCompletedCapture": [
+      "standing-worker",
+      "sealed-parcel",
+      "forklift",
+      "order-tote",
+      "packing-station"
+    ],
+    "subagentFourViewComparisonSheetsActuallyViewed": [
+      "assets/v2/qa-browser/conveyor-corner-browser-reference.png",
+      "assets/v2/qa-browser/packing-station-browser-reference.png"
+    ],
+    "findings": [
+      "Exported personnel, cardboard, charcoal steel, yellow equipment and teal tote retain material colors and readable volume.",
+      "Tote is visibly hollow with wall thickness and handle openings; forklift mast, wheels and paired forks read as connected construction.",
+      "Orthogonal conveyor transfer deck and external guards agree with accepted source; packing benches have connected supports and clear tabletop lanes.",
+      "Packing work carton is deliberately hidden in the static model stand and is displayed only by authoritative runtime PACK cargo."
+    ],
+    "audibleMixAssessed": false,
+    "latestChange": "focusBounds frames targets at x<7 or x>63 from the open interior to avoid dock-beam/stock occlusion; root reports fresh F01/F02 camera review. No model geometry changed."
+  },
+  "closedExpectationIssues": [
+    {
+      "issue": "Float32 exact transfer-port boundary may miss a downward support ray.",
+      "resolution": "Probe centre and +/-0.1mm X/Z; retain maximum 20.1mm support gap. No geometry change was needed."
+    },
+    {
+      "issue": "Native HTML range step=.1 rounds decimal event times.",
+      "resolution": "Require requested/control difference <=.051 seconds and replay clock equal to actual control value. A separate direct API seek verifies exact time 12.34567."
+    }
+  ]
+}

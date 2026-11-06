@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+const baseURL=(process.env.QOIMA_TEST_BASE_URL||'http://127.0.0.1:4173').replace(/\/$/,'');
 
 test('local production build renders Blender GLB with canonical axes and units', async ({ page, context }) => {
   const errors: string[] = [];
@@ -6,10 +7,10 @@ test('local production build renders Blender GLB with canonical axes and units',
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('request', (request) => {
-    if (!request.url().startsWith('http://127.0.0.1:4173/') && !request.url().startsWith('data:')) remote.push(request.url());
+    if (!request.url().startsWith(baseURL+'/') && !request.url().startsWith('data:')) remote.push(request.url());
   });
-  await context.route('**/*', (route) => route.request().url().startsWith('http://127.0.0.1:4173/') ? route.continue() : route.abort());
-  await page.goto('http://127.0.0.1:4173/?calibration=1');
+  await context.route('**/*', (route) => route.request().url().startsWith(baseURL+'/') ? route.continue() : route.abort());
+  await page.goto(baseURL+'/?calibration=1');
   await expect(page.locator('main')).toHaveAttribute('data-phase', 'ready');
   await expect(page.locator('canvas')).toHaveCount(1);
   const diagnostics = JSON.parse(await page.locator('#diagnostics').textContent() || '{}');
@@ -29,7 +30,7 @@ test('local production build renders Blender GLB with canonical axes and units',
 
 test('missing GLB displays an error instead of an empty successful scene', async ({ page }) => {
   await page.route('**/models/calibration.glb', (route) => route.fulfill({ status: 404, body: 'missing' }));
-  await page.goto('http://127.0.0.1:4173/?calibration=1');
+  await page.goto(baseURL+'/?calibration=1');
   await expect(page.locator('main')).toHaveAttribute('data-phase', 'error');
   await expect(page.getByRole('status')).not.toBeEmpty();
 });

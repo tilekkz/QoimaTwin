@@ -1,0 +1,69 @@
+{
+  "asset_id": "conveyor-corner",
+  "layout_version": "qoima-72x48-v2",
+  "coordinate_system": "right_handed_Y_up_metres",
+  "root_name": "conveyor_corner_root",
+  "reference": "assets/references/v2/conveyor.png",
+  "root_properties": {
+    "layout_version": "qoima-72x48-v2",
+    "asset_id": "conveyor-corner",
+    "role": "conveyor_corner",
+    "forward_axis": "+Z",
+    "reference": "assets/references/v2/conveyor.png",
+    "family_variant": "orthogonal_L_transfer",
+    "path_runtime": [
+      0.0,
+      0.9,
+      -0.5,
+      0.0,
+      0.9,
+      0.0,
+      0.5,
+      0.9,
+      0.0
+    ],
+    "path_rule": "Two orthogonal half-metre legs; no route smoothing or timing change.",
+    "belt_surface_y": 0.9,
+    "cell_length_m": 1.0
+  },
+  "nodes": [
+    {
+      "name": "port_input",
+      "parent": "conveyor_corner_root",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        -0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "conveyor_port",
+        "port_name": "input",
+        "direction_runtime": [
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "name": "port_output",
+      "parent": "conveyor_corner_root",
+      "position_local_runtime": [
+        0.5,
+        0.8999999761581421,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "conveyor_port",
+        "port_name": "output",
+        "direction_runtime": [
+          1,
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

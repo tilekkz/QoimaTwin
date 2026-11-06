@@ -6,12 +6,13 @@ from mathutils import Vector
 
 ROOT=Path(__file__).resolve().parents[2]
 asset=sys.argv[sys.argv.index('--')+1]
-out=ROOT/'assets'/'previews'/asset
+namespace=sys.argv[sys.argv.index('--namespace')+1] if '--namespace' in sys.argv else None
+out=(ROOT/'assets'/namespace/'previews' if namespace else ROOT/'assets'/'previews')/asset
 out.mkdir(parents=True,exist_ok=True)
 scene=bpy.context.scene
 scene.render.engine='BLENDER_WORKBENCH'
-scene.render.resolution_x=640
-scene.render.resolution_y=640
+scene.render.resolution_x=900
+scene.render.resolution_y=900
 scene.render.resolution_percentage=100
 scene.render.image_settings.file_format='PNG'
 scene.display.shading.light='STUDIO'
@@ -39,9 +40,15 @@ scene.camera=cam
 data.type='ORTHO'
 data.ortho_scale=extent*1.3
 for name,direction in [('front',(0,-1,.03)),('side',(1,0,.03)),('rear',(0,1,.03)),('three-quarter',(1.1,-1.5,1))]:
-    if asset in {'environment','warehouse'} and name=='three-quarter': direction=(1.1,1.5,1.2)
+    if asset in {'environment','warehouse','environment-shell','large-warehouse'} and name=='three-quarter': direction=(1.1,1.5,1.2)
     cam.location=target+Vector(direction).normalized()*extent*3
     cam.rotation_euler=(target-cam.location).to_track_quat('-Z','Y').to_euler()
+    # Fit the actual projected corners: diagonals can exceed max(world extent).
+    inverse=cam.rotation_euler.to_quaternion().inverted()
+    projected=[inverse@(point-target) for point in points]
+    width=max(p.x for p in projected)-min(p.x for p in projected)
+    height=max(p.y for p in projected)-min(p.y for p in projected)
+    data.ortho_scale=max(width,height)*1.16
     scene.render.filepath=str(out/f'{name}.png')
     bpy.ops.render.render(write_still=True)
 print(f'ASSET_QA_RENDERED {asset}')

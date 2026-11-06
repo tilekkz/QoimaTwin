@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: four-view design reference for a modular industrial warehouse conveyor game asset.
+Primary request: Show the SAME straight one-metre conveyor module in four consistent views: orthographic front, orthographic left side, orthographic rear, and a larger elevated three-quarter view. Clean 2x2 grid, neutral medium-light grey studio background/floor. This is a component model sheet, not a warehouse scene.
+Subject: Real physically connected 1m long, approximately .68m wide motorized conveyor with exact belt transport surface .9m above the floor. A matte muted teal belt between two narrow industrial yellow edge rails, charcoal steel lower channel frames, four slim square steel legs, bolted feet, lower stabilizing cross bars. Dimensional dark end rollers, small underslung motor and reduction gearbox, visible end connector flanges and small side fasteners. Every part connects coherently; the belt is continuous and level; open front and rear cargo ports without blocking bars across the belt. Moderate yellow side guides rise slightly above belt edges.
+Style: Premium crafted low-poly miniature industrial game asset like the user's warehouse visual references: charcoal/blue steel, warm industrial yellow accents, small soft edge bevels, matte materials, legible mass and thickness, no photoreal complexity or cables everywhere.
+Views: Same object and identical parts/counts/proportions in each view. Soft broad studio light, readable self-shadow, no floor grid. Front is +forward along belt length. Entire object fits each panel.
+Family note: a corner or three-way diverter would use this same teal belt, yellow rail and charcoal leg construction; do not depict separate variant objects on this sheet.
+Constraints: No cargo, no boxes or tote, no person, no warehouse, no brands/logos/watermarks. No floating wheels, no disconnected legs, no thin wireframe parts. Only small view labels if needed.
+
+Generated with built-in image_gen on 2026-11-07; design reference only. Canonical geometry/anchors follow contracts.

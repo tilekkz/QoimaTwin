@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { expected, fixtureRun, layout } from '../contracts';
+import { expected, fixtureRun, legacyLayout as layout } from '../contracts';
 
 const canvasHost = ref<HTMLDivElement>();
 const status = ref('Проверка WebGL и локального GLB…');
