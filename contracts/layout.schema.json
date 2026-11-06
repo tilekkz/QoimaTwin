@@ -1,14 +1,11 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://qoyma.local/schema/layout-v1.json",
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
+      "const": "2.0"
     },
     "layout_version": {
-      "type": "string",
-      "minLength": 1
+      "const": "qoima-72x48-v2"
     },
     "units": {
       "type": "object",
@@ -60,16 +57,24 @@
       ],
       "additionalProperties": false
     },
-    "nodes": {
+    "zones": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "node_id": {
+          "zone_id": {
             "type": "string",
             "minLength": 1
           },
-          "pos": {
+          "min": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "max": {
             "type": "array",
             "items": {
               "type": "number"
@@ -79,37 +84,241 @@
           }
         },
         "required": [
-          "node_id",
-          "pos"
+          "zone_id",
+          "min",
+          "max"
         ],
         "additionalProperties": false
       }
     },
-    "edges": {
+    "picker_graph": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "node_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "pos": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "required": [
+              "node_id",
+              "pos"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "string",
+                "minLength": 1
+              },
+              "b": {
+                "type": "string",
+                "minLength": 1
+              },
+              "length_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "a",
+              "b",
+              "length_m"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "nodes",
+        "edges"
+      ],
+      "additionalProperties": false
+    },
+    "forklift_graphs": {
+      "type": "object",
+      "properties": {
+        "inbound": {
+          "type": "object",
+          "properties": {
+            "nodes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "node_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pos": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "required": [
+                  "node_id",
+                  "pos"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "edges": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "a": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "b": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "length_m": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "required": [
+                  "a",
+                  "b",
+                  "length_m"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "nodes",
+            "edges"
+          ],
+          "additionalProperties": false
+        },
+        "outbound": {
+          "type": "object",
+          "properties": {
+            "nodes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "node_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pos": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                },
+                "required": [
+                  "node_id",
+                  "pos"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "edges": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "a": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "b": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "length_m": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "required": [
+                  "a",
+                  "b",
+                  "length_m"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "nodes",
+            "edges"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "inbound",
+        "outbound"
+      ],
+      "additionalProperties": false
+    },
+    "racks": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "a": {
+          "rack_id": {
             "type": "string",
             "minLength": 1
           },
-          "b": {
-            "type": "string",
-            "minLength": 1
+          "root": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
           },
-          "length_m": {
-            "type": "number",
-            "exclusiveMinimum": 0
+          "size": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
           }
         },
         "required": [
-          "a",
-          "b",
-          "length_m"
+          "rack_id",
+          "root",
+          "size"
         ],
         "additionalProperties": false
-      }
+      },
+      "minItems": 288,
+      "maxItems": 288
     },
     "slots": {
       "type": "array",
@@ -120,27 +329,28 @@
             "type": "string",
             "minLength": 1
           },
-          "pick_node_id": {
+          "rack_id": {
             "type": "string",
             "minLength": 1
           },
+          "level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "kind": {
+            "enum": [
+              "pickface",
+              "reserve"
+            ]
+          },
+          "service_node_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "bin_anchor": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "minItems": 3,
-            "maxItems": 3
-          },
-          "rack_center": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            },
-            "minItems": 3,
-            "maxItems": 3
-          },
-          "rack_size": {
             "type": "array",
             "items": {
               "type": "number"
@@ -151,37 +361,282 @@
         },
         "required": [
           "slot_id",
-          "pick_node_id",
-          "bin_anchor",
-          "rack_center",
-          "rack_size"
+          "rack_id",
+          "level",
+          "kind",
+          "service_node_id",
+          "bin_anchor"
         ],
         "additionalProperties": false
-      }
+      },
+      "minItems": 864,
+      "maxItems": 864
     },
-    "pack_node_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "buffer_node_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "pack_mesh_center": {
+    "inductions": {
       "type": "array",
       "items": {
-        "type": "number"
+        "type": "object",
+        "properties": {
+          "induction_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "home_node_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "feed_segment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "handoff_anchor": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "induction_id",
+          "home_node_id",
+          "feed_segment_id",
+          "handoff_anchor"
+        ],
+        "additionalProperties": false
       },
       "minItems": 3,
       "maxItems": 3
     },
-    "buffer_bin_anchor": {
+    "pack_stations": {
       "type": "array",
       "items": {
-        "type": "number"
+        "type": "object",
+        "properties": {
+          "pack_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "worker_pos": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "input_segment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "output_segment_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "buffer_capacity": {
+            "const": 4
+          },
+          "input_anchor": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "output_anchor": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "pack_id",
+          "worker_pos",
+          "input_segment_id",
+          "output_segment_id",
+          "buffer_capacity",
+          "input_anchor",
+          "output_anchor"
+        ],
+        "additionalProperties": false
       },
-      "minItems": 3,
-      "maxItems": 3
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "relocation_home_node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relocation_buffer_node_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conveyor": {
+      "type": "object",
+      "properties": {
+        "cell_length_m": {
+          "const": 1
+        },
+        "loop_length_m": {
+          "const": 112
+        },
+        "total_cell_count": {
+          "const": 179
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "segment_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "from": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "to": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "length_m": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "cell_length_m": {
+                "const": 1
+              },
+              "cell_count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "role": {
+                "enum": [
+                  "tote",
+                  "parcel"
+                ]
+              }
+            },
+            "required": [
+              "segment_id",
+              "from",
+              "to",
+              "length_m",
+              "cell_length_m",
+              "cell_count",
+              "role"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from_segment_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "to_segment_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "at": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "required": [
+              "from_segment_id",
+              "to_segment_id",
+              "at"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "terminal": {
+          "type": "object",
+          "properties": {
+            "segment_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "shipping_buffer_pos": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "segment_id",
+            "shipping_buffer_pos"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "cell_length_m",
+        "loop_length_m",
+        "total_cell_count",
+        "segments",
+        "connections",
+        "terminal"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "racks": {
+          "const": 288
+        },
+        "slots": {
+          "const": 864
+        },
+        "pickfaces": {
+          "const": 288
+        },
+        "reserve_slots": {
+          "const": 576
+        },
+        "picker_nodes": {
+          "const": 184
+        },
+        "picker_edges": {
+          "const": 205
+        }
+      },
+      "required": [
+        "racks",
+        "slots",
+        "pickfaces",
+        "reserve_slots",
+        "picker_nodes",
+        "picker_edges"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
@@ -189,13 +644,19 @@
     "layout_version",
     "units",
     "bounds",
-    "nodes",
-    "edges",
+    "zones",
+    "picker_graph",
+    "forklift_graphs",
+    "racks",
     "slots",
-    "pack_node_id",
-    "buffer_node_id",
-    "pack_mesh_center",
-    "buffer_bin_anchor"
+    "inductions",
+    "pack_stations",
+    "relocation_home_node_id",
+    "relocation_buffer_node_id",
+    "conveyor",
+    "counts"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qoyma.local/schema/layout-v2.json"
 }

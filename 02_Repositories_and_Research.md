@@ -1,16 +1,16 @@
 # Репозитории и исследование Qoyma Twin
 
-Проверено 06.11.2026. Разделяем уровни уверенности: «собран локально», «прочитаны конкретные исходники/лицензия», «референс с ограничениями». README и красивое видео сами по себе не доказывают наличие планировщика или симуляции.
+Source audit выполнен06.11.2026; проектные рекомендации обновлены07.11.2026 подv2. Новые донорские сборки не выполнялись. Разделяем уровни уверенности: «собран локально», «прочитаны конкретные исходники/лицензия», «референс с ограничениями». README и красивое видео сами по себе не доказывают наличие планировщика или симуляции.
 
 ## Основной набор для двух дней
 
 | Репозиторий / библиотека | Что взять | Лицензия и проверка | Решение |
 |---|---|---|---|
 | [Xxcool/smart-warehouse](https://github.com/Xxcool/smart-warehouse) | Vue/Three оболочка, GLTFLoader, OrbitControls, raycast, прототип popover; GLB как визуальный референс/источник повторных деталей | MIT-файл прочитан; commit ea8c968515a4fc19be26aaf1a3f9419aec159438; install и production build успешно выполнены | Основной визуальный донор |
-| [SimPy](https://gitlab.com/team-simpy/simpy) | Environment, timeout, Store, последовательные процессы двух работников и упаковки | MIT; [официальная документация ресурсов](https://simpy.readthedocs.io/en/latest/topical_guides/resources.html) и пример процессов | Основная библиотека симуляции |
+| [SimPy](https://gitlab.com/team-simpy/simpy) | Environment, timeout, Store, процессы24работников, finite Store, упаковка/приёмка/отгрузка; conveyor требует своей transition logic | MIT; [официальная документация ресурсов](https://simpy.readthedocs.io/en/latest/topical_guides/resources.html) и пример процессов | Основная библиотека симуляции |
 | [TerexSpace/whse-optimize-toolkit](https://github.com/TerexSpace/whse-optimize-toolkit) | Типы данных/CSV-адаптер и идея ABC из небольших файлов | MIT прочитана; bounded source audit, целый проект не запускался | Точечный донор, не основа всего backend |
 | [scikit-learn](https://github.com/scikit-learn/scikit-learn) | Pipeline, OneHotEncoder, HistGradientBoostingRegressor | BSD-3-Clause; локальный CPU forecast probe выполнен | Основной ML, готовые прогнозы приложены |
-| [Nixtla/mlforecast](https://github.com/Nixtla/mlforecast) | Формат panel, лаги, временная cross-validation | Apache-2.0, LICENSE/pyproject прочитаны; не запускался | Резерв, если команда уже знакома; для20SKU не нужен дополнительный стек |
+| [Nixtla/mlforecast](https://github.com/Nixtla/mlforecast) | Формат panel, лаги, временная cross-validation | Apache-2.0, LICENSE/pyproject прочитаны; не запускался | Резерв, если команда уже знакома; для200SKU наCPU distributed стек не нужен |
 | [google/or-tools](https://github.com/google/or-tools) | CP-SAT назначение с ограничениями | Apache-2.0; официальный assignment sample проверен | Расширение после MVP, без него проще |
 | [donmccurdy/glTF-Transform](https://github.com/donmccurdy/glTF-Transform) | Проверка/оптимизация GLB при необходимости | MIT согласно репозиторию; в этом исследовании не запускался | Инструмент Тилека, после проверки IDs после оптимизации |
 
@@ -29,7 +29,7 @@
 
 Фактический `public/smart_warehouse.glb`: 4,039,312 байт, 831 node, 825 meshes, 886 primitives, примерно59,790 индексированных треугольников, 42 материала, встроенных textures нет. В `public/models` лежит копия того же размера. Это собственный разбор JSON-chunk GLB, не измерение draw calls в работающей сцене. Большое число мешей и physical/transmission материалов может быть дороже числа полигонов.
 
-Не переносить целиком заводской двор с грузовиками/холодильником/роборуками в наш маленький склад. Быстрее взять viewer и повторяемые элементы, а 20×18м сцену сделать модульно по общей геометрии. Исходный автор заявляет Blender-пайплайн, но в проверенном дереве готовый `.blend` не подтверждён: способность открыть GLB в Blender не равна наличию редактируемого авторского проекта.
+Для v2 использовать viewer и повторяемые элементы, а72×48м сцену собрать модульно по contracts/layout.example.json. Новый масштаб требует instancing/LOD, конвейера и24сотрудников; циклическийAGVдонора не заменяет операционную модель. ПользовательскийZIPразобран в07. Исходный автор заявляет Blender-пайплайн, но в проверенном дереве готовый `.blend` не подтверждён: способность открыть GLB в Blender не равна наличию редактируемого авторского проекта.
 
 В пакет включён чистый source archive выбранного commit с MIT; node_modules/dist не включены. Код/GLB находятся под общей лицензией репозитория, отдельный документ цепочки происхождения ассетов не обнаружен в проверенном наборе. Для конкурсного оригинального вида разумно сделать свои простые модели и сохранить атрибуцию реально перенесённых частей.
 
@@ -37,7 +37,7 @@
 
 Проверенные файлы: [heuristics.py](https://github.com/TerexSpace/whse-optimize-toolkit/blob/main/src/wms_optlab/slotting/heuristics.py), [milp_models.py](https://github.com/TerexSpace/whse-optimize-toolkit/blob/main/src/wms_optlab/slotting/milp_models.py), [topology.py](https://github.com/TerexSpace/whse-optimize-toolkit/blob/main/src/wms_optlab/layout/topology.py), [adapters_erp.py](https://github.com/TerexSpace/whse-optimize-toolkit/blob/main/src/wms_optlab/data/adapters_erp.py).
 
-ABC суммирует quantities. Для Qoyma заменить на unique invoice-SKU visits. Capacity в прочитанной MILP-части помечена TODO, поэтому название функции не доказывает учёт вместимости. Без explicit aisle_connectivity topology создаёт fully connected Manhattan graph: на нашем складе такие связи могут проходить через стеллажи. Передавать только явные разрешённые связи. Бюджет2 swaps и выполнимые transfer через буфер реализуются отдельно.
+ABC суммирует quantities. Для Qoyma заменить на unique invoice-SKU visits. Capacity в прочитанной MILP-части помечена TODO, поэтому название функции не доказывает учёт вместимости. Без explicit aisle_connectivity topology создаёт fully connected Manhattan graph: на нашем складе такие связи могут проходить через стеллажи. Передавать только явные разрешённые связи. Бюджетыv2 до2/8 swaps и выполнимые transfer через буфер реализуются отдельно.
 
 Не переносить ERP/MILP-зависимости ради функции сортировки из нескольких строк. Если заимствование не экономит время интеграции, написать эквивалентную собственную предметную функцию по ТЗ и оставить репозиторий исследовательским референсом.
 

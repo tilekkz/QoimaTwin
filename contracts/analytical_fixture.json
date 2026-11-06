@@ -1,0 +1,72 @@
+{
+  "schema_version": "2.0",
+  "fixture_kind": "analytical_expectation_not_engine_output",
+  "layout_version": "qoima-72x48-v2",
+  "scenario": {
+    "scenario_id": "v2-isolated-one-order",
+    "kind": "synthetic_fixture",
+    "arrivals": [
+      {
+        "order_id": "TEST_001",
+        "arrival_s": 0,
+        "lines": [
+          {
+            "sku_id": "FIXTURE_01",
+            "quantity": 1
+          },
+          {
+            "sku_id": "FIXTURE_02",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "assignment_override": {
+      "S_A01_B01_L_01": "FIXTURE_01",
+      "S_A02_B01_L_01": "FIXTURE_02"
+    },
+    "picker_id": "P01",
+    "home_node_id": "I01",
+    "forced_pack_id": "PK01",
+    "receipts": [],
+    "other_orders": []
+  },
+  "expected": {
+    "route_m": [
+      4,
+      8.5,
+      8.5
+    ],
+    "picker_distance_m": 21,
+    "walk_s": 17.5,
+    "pick_service_s": 12.3,
+    "handoff_s": 3,
+    "handoff_ready_s": 32.8,
+    "feed_accepted_s": 33,
+    "first_conveyor_move_s": 34,
+    "to_pack_conveyor_m": 19,
+    "pack_buffer_arrival_s": 52,
+    "pack_started_s": 52,
+    "pack_service_s": 24.1,
+    "pack_completed_s": 76.1,
+    "outfeed_accepted_s": 77,
+    "to_shipping_conveyor_m": 47,
+    "shipping_buffer_arrival_s": 124,
+    "scan_completed_s": 132,
+    "pallet_sealed_s": 432,
+    "forklift_empty_to_pick_m": 6,
+    "forklift_loaded_m": 8,
+    "forklift_return_m": 10,
+    "dispatched_s": 469,
+    "forklift_available_s": 474
+  },
+  "assumptions": [
+    "No other orders or receipts; no competing transport",
+    "All 24 actors exist; only P01/K01/one shipper/F02 active",
+    "Forced PK01 is a fixture override; one order and no competing WIP would select it naturally",
+    "Pallet closes 300 seconds after first parcel; no early drain flush",
+    "Feed/outfeed admissions only on integer ticks after timed work",
+    "First movement occurs one full tick after admission",
+    "Shipping seal is processed before assigning F02 at the same timestamp"
+  ]
+}
