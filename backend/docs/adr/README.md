@@ -15,3 +15,4 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0007](0007-contract-v2-1.md) | Contract v2.1 proposal for the run export |
 | [0008](0008-run-identity-hashing.md) | Run identity from canonical JSON hashes |
 | [0009](0009-spec-ambiguity-resolutions.md) | Resolutions of spec ambiguities |
+| [0010](0010-replay-snapshots-and-chunks.md) | Settled replay snapshots and half-open event chunks |

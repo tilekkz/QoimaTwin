@@ -12,6 +12,7 @@ from enum import StrEnum
 from functools import partial
 
 from app.conveyor.topology import ConveyorTopology
+from app.simulation.checkpoint import Checkpointer
 from app.simulation.clock import TimeGrid
 from app.simulation.context import GraphGeometry, RunInputs, SimContext, build_ledger
 from app.simulation.conveyor_driver import ConveyorDriver
@@ -24,6 +25,7 @@ from app.simulation.receiving import Receiving
 from app.simulation.recorder import Recorder
 from app.simulation.scheduler import Phase, PhaseScheduler
 from app.simulation.shipping import Shipping
+from app.simulation.snapshot_state import StateCapture
 
 MAX_DISPATCH_ROUNDS = 10_000
 
@@ -77,13 +79,23 @@ class Engine:
         self.outbound = Outbound(self.ctx, self)
         self.receiving = Receiving(self.ctx, self)
         self.check_invariants = check_invariants
+        self.checkpoints = Checkpointer(
+            self.ctx.ticks(inputs.config.snapshot_interval_s), StateCapture(self), self._last_seq
+        )
         self.ctx.sched.on_tick_settled = self._on_tick_settled
         self._schedule_arrivals()
         self._schedule_receipts()
+        horizon = self.ctx.ticks(inputs.scenario.horizon_s)
+        deadline = horizon + self.ctx.ticks(inputs.config.max_drain_s)
+        self.checkpoints.begin(self.ctx.sched.peek_next_tick(), deadline)
+
+    def _last_seq(self) -> int:
+        return len(self.ctx.recorder.events) - 1
 
     def _on_tick_settled(self, tick: int, next_tick: int | None) -> None:
         if self.check_invariants:
             verify_invariants(self)
+        self.checkpoints.on_tick_settled(tick, next_tick)
 
     def _schedule_arrivals(self) -> None:
         for order in sorted(
