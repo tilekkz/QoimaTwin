@@ -1,0 +1,35 @@
+{
+  "checked_date": "2026-11-06",
+  "repository": "https://github.com/Xxcool/smart-warehouse",
+  "commit": "ea8c968515a4fc19be26aaf1a3f9419aec159438",
+  "license": "MIT",
+  "verification": {
+    "source_read": [
+      "package.json",
+      "LICENSE",
+      "src/core/WarehouseScene.ts",
+      "src/core/constants.ts",
+      "src/App.vue",
+      "src/components/LeftTelemetryHud.vue"
+    ],
+    "dependency_install": "passed: npm install --ignore-scripts --no-audit --no-fund",
+    "production_build": "passed: vue-tsc && vite build",
+    "runtime_ui_test": "not performed in this task",
+    "fps": "not measured",
+    "graph_coverage": "MCP transport unavailable; bounded direct-source fallback, not exhaustive audit"
+  },
+  "asset_probe": {
+    "path": "public/smart_warehouse.glb",
+    "bytes": 4039312,
+    "nodes": 831,
+    "meshes": 825,
+    "primitives": 886,
+    "indexed_triangles": 59790,
+    "materials": 42,
+    "textures": 0
+  },
+  "adaptation": "visual donor only: replace phase animations and constant telemetry with own run replay",
+  "source_archive": "donors/smart-warehouse-ea8c968-source.zip",
+  "tested_lockfile": "donors/smart-warehouse-tested-package-lock.json",
+  "node_version": "24.22.1"
+}

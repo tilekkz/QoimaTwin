@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "layout_version": "qoyma-20x18-v1",
+  "plan_id": "example-promotion-22382x5-hgb-v1",
+  "source_assignment_id": "frozen-abc28-20111003-v1",
+  "forecast_id": "daily-hgb-20111003-plus-declared-22382x5",
+  "max_swaps": 2,
+  "actual_swaps": 1,
+  "assignment_after": {
+    "S_A2_B1": "85099B",
+    "S_A1_B3": "85123A",
+    "S_A2_B2": "22423",
+    "S_A3_B2": "20725",
+    "S_A1_B1": "84879",
+    "S_A2_B3": "20727",
+    "S_A3_B3": "47566",
+    "S_A4_B1": "22197",
+    "S_A1_B2": "21212",
+    "S_A2_B4": "22386",
+    "S_A3_B4": "22383",
+    "S_A4_B2": "22469",
+    "S_A3_B1": "22382",
+    "S_A2_B5": "21931",
+    "S_A3_B5": "22411",
+    "S_A4_B3": "22384",
+    "S_A1_B4": "21232",
+    "S_A4_B4": "21080",
+    "S_A1_B5": "84991",
+    "S_A4_B5": "21754"
+  },
+  "swaps": [
+    {
+      "sku_a": "22382",
+      "sku_b": "85123A",
+      "slot_a_before": "S_A1_B3",
+      "slot_b_before": "S_A3_B1"
+    }
+  ],
+  "transfers": [
+    {
+      "seq": 1,
+      "sku_id": "22382",
+      "from_location": "S_A1_B3",
+      "to_location": "BUFFER"
+    },
+    {
+      "seq": 2,
+      "sku_id": "85123A",
+      "from_location": "S_A3_B1",
+      "to_location": "S_A1_B3"
+    },
+    {
+      "seq": 3,
+      "sku_id": "22382",
+      "from_location": "BUFFER",
+      "to_location": "S_A3_B1"
+    }
+  ],
+  "relocation_labor_s": 125.66666666666667,
+  "relocation_walk_m": 93.2,
+  "surrogate_before_s": 1742.8321110268191,
+  "surrogate_after_including_relocation_s": 1677.0339135256568,
+  "expected_net_surrogate_saved_s": 65.79819750116242,
+  "provenance": "Controlled synthetic planned campaign input, not learned uplift or historical savings",
+  "actual_synthetic_flow_result": null
+}

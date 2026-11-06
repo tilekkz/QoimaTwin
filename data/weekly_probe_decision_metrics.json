@@ -1,0 +1,649 @@
+{
+  "probe_kind": "bounded travel/labor feasibility, NOT full app or 2-picker/packing-queue simulation",
+  "created_date": "2026-11-06",
+  "canonical_graph": {
+    "nodes": 31,
+    "edges": 33,
+    "coordinates_xz_m": {
+      "N_A1_Z2": [
+        3,
+        2
+      ],
+      "N_A1_Z4": [
+        3,
+        4
+      ],
+      "N_A1_Z6": [
+        3,
+        6
+      ],
+      "N_A1_Z8": [
+        3,
+        8
+      ],
+      "N_A1_Z10": [
+        3,
+        10
+      ],
+      "N_A1_Z12": [
+        3,
+        12
+      ],
+      "N_A1_Z15": [
+        3,
+        15
+      ],
+      "N_A2_Z2": [
+        7,
+        2
+      ],
+      "N_A2_Z4": [
+        7,
+        4
+      ],
+      "N_A2_Z6": [
+        7,
+        6
+      ],
+      "N_A2_Z8": [
+        7,
+        8
+      ],
+      "N_A2_Z10": [
+        7,
+        10
+      ],
+      "N_A2_Z12": [
+        7,
+        12
+      ],
+      "N_A2_Z15": [
+        7,
+        15
+      ],
+      "N_A3_Z2": [
+        11,
+        2
+      ],
+      "N_A3_Z4": [
+        11,
+        4
+      ],
+      "N_A3_Z6": [
+        11,
+        6
+      ],
+      "N_A3_Z8": [
+        11,
+        8
+      ],
+      "N_A3_Z10": [
+        11,
+        10
+      ],
+      "N_A3_Z12": [
+        11,
+        12
+      ],
+      "N_A3_Z15": [
+        11,
+        15
+      ],
+      "N_A4_Z2": [
+        15,
+        2
+      ],
+      "N_A4_Z4": [
+        15,
+        4
+      ],
+      "N_A4_Z6": [
+        15,
+        6
+      ],
+      "N_A4_Z8": [
+        15,
+        8
+      ],
+      "N_A4_Z10": [
+        15,
+        10
+      ],
+      "N_A4_Z12": [
+        15,
+        12
+      ],
+      "N_A4_Z15": [
+        15,
+        15
+      ],
+      "N_FRONT_9": [
+        9,
+        2
+      ],
+      "N_BUFFER": [
+        18,
+        2
+      ],
+      "N_PACK": [
+        9,
+        1.4
+      ]
+    },
+    "undirected_edges": [
+      [
+        "N_A1_Z2",
+        "N_A1_Z4"
+      ],
+      [
+        "N_A1_Z4",
+        "N_A1_Z6"
+      ],
+      [
+        "N_A1_Z6",
+        "N_A1_Z8"
+      ],
+      [
+        "N_A1_Z8",
+        "N_A1_Z10"
+      ],
+      [
+        "N_A1_Z10",
+        "N_A1_Z12"
+      ],
+      [
+        "N_A1_Z12",
+        "N_A1_Z15"
+      ],
+      [
+        "N_A2_Z2",
+        "N_A2_Z4"
+      ],
+      [
+        "N_A2_Z4",
+        "N_A2_Z6"
+      ],
+      [
+        "N_A2_Z6",
+        "N_A2_Z8"
+      ],
+      [
+        "N_A2_Z8",
+        "N_A2_Z10"
+      ],
+      [
+        "N_A2_Z10",
+        "N_A2_Z12"
+      ],
+      [
+        "N_A2_Z12",
+        "N_A2_Z15"
+      ],
+      [
+        "N_A3_Z2",
+        "N_A3_Z4"
+      ],
+      [
+        "N_A3_Z4",
+        "N_A3_Z6"
+      ],
+      [
+        "N_A3_Z6",
+        "N_A3_Z8"
+      ],
+      [
+        "N_A3_Z8",
+        "N_A3_Z10"
+      ],
+      [
+        "N_A3_Z10",
+        "N_A3_Z12"
+      ],
+      [
+        "N_A3_Z12",
+        "N_A3_Z15"
+      ],
+      [
+        "N_A4_Z2",
+        "N_A4_Z4"
+      ],
+      [
+        "N_A4_Z4",
+        "N_A4_Z6"
+      ],
+      [
+        "N_A4_Z6",
+        "N_A4_Z8"
+      ],
+      [
+        "N_A4_Z8",
+        "N_A4_Z10"
+      ],
+      [
+        "N_A4_Z10",
+        "N_A4_Z12"
+      ],
+      [
+        "N_A4_Z12",
+        "N_A4_Z15"
+      ],
+      [
+        "N_A1_Z2",
+        "N_A2_Z2"
+      ],
+      [
+        "N_A2_Z2",
+        "N_FRONT_9"
+      ],
+      [
+        "N_FRONT_9",
+        "N_A3_Z2"
+      ],
+      [
+        "N_A3_Z2",
+        "N_A4_Z2"
+      ],
+      [
+        "N_A1_Z15",
+        "N_A2_Z15"
+      ],
+      [
+        "N_A2_Z15",
+        "N_A3_Z15"
+      ],
+      [
+        "N_A3_Z15",
+        "N_A4_Z15"
+      ],
+      [
+        "N_A4_Z2",
+        "N_BUFFER"
+      ],
+      [
+        "N_FRONT_9",
+        "N_PACK"
+      ]
+    ],
+    "slots_to_pick_nodes": {
+      "S_A1_B1": "N_A1_Z4",
+      "S_A1_B2": "N_A1_Z6",
+      "S_A1_B3": "N_A1_Z8",
+      "S_A1_B4": "N_A1_Z10",
+      "S_A1_B5": "N_A1_Z12",
+      "S_A2_B1": "N_A2_Z4",
+      "S_A2_B2": "N_A2_Z6",
+      "S_A2_B3": "N_A2_Z8",
+      "S_A2_B4": "N_A2_Z10",
+      "S_A2_B5": "N_A2_Z12",
+      "S_A3_B1": "N_A3_Z4",
+      "S_A3_B2": "N_A3_Z6",
+      "S_A3_B3": "N_A3_Z8",
+      "S_A3_B4": "N_A3_Z10",
+      "S_A3_B5": "N_A3_Z12",
+      "S_A4_B1": "N_A4_Z4",
+      "S_A4_B2": "N_A4_Z6",
+      "S_A4_B3": "N_A4_Z8",
+      "S_A4_B4": "N_A4_Z10",
+      "S_A4_B5": "N_A4_Z12"
+    }
+  },
+  "walk_speed_mps": 1.2,
+  "relocation_handle_s": 8.0,
+  "relocation_take_place_count_per_swap": 6,
+  "baseline": "ABC ranked by 28 calendar-day visits 2011-09-05 inclusive to 2011-10-03 exclusive; fixed for all20days",
+  "baseline_assignment": {
+    "85099B": "S_A2_B1",
+    "85123A": "S_A3_B1",
+    "22423": "S_A2_B2",
+    "20725": "S_A3_B2",
+    "84879": "S_A1_B1",
+    "20727": "S_A2_B3",
+    "47566": "S_A3_B3",
+    "22197": "S_A4_B1",
+    "21212": "S_A1_B2",
+    "22386": "S_A2_B4",
+    "22383": "S_A3_B4",
+    "22469": "S_A4_B2",
+    "22382": "S_A1_B3",
+    "21931": "S_A2_B5",
+    "22411": "S_A3_B5",
+    "22384": "S_A4_B3",
+    "21232": "S_A1_B4",
+    "21080": "S_A4_B4",
+    "84991": "S_A1_B5",
+    "21754": "S_A4_B5"
+  },
+  "baseline_past28_visits": {
+    "20725": 135,
+    "20727": 125,
+    "21080": 66,
+    "21212": 111,
+    "21232": 77,
+    "21754": 58,
+    "21931": 100,
+    "22197": 112,
+    "22382": 104,
+    "22383": 108,
+    "22384": 94,
+    "22386": 109,
+    "22411": 97,
+    "22423": 138,
+    "22469": 108,
+    "47566": 124,
+    "84879": 128,
+    "84991": 63,
+    "85099B": 191,
+    "85123A": 166
+  },
+  "planning": "at most2 disjoint swaps; greedy largest positive marginal reduction in predicted single-stop 2d objective including exact specified relocation walk+48s; no future basket use",
+  "actual_evaluation": "NN by graph distance and sku_id on each retained historical subset basket, start/end pack; same algorithm all methods; quantity handling is identical so cancels in differences",
+  "scenario_protocol": "4 independent Monday decisions, seven-calendar-day horizon with only Mon-Fri5operating-day demand; reset to ABC eachweek; not full Sunday-inclusive demand",
+  "day_count": 4,
+  "subset_order_count": 749,
+  "baseline_total_walk_m": 23640.800000000097,
+  "baseline_total_walk_s": 19700.666666666748,
+  "methods": {
+    "mean28": {
+      "no_op_days": 4,
+      "one_swap_days": 0,
+      "two_swap_days": 0,
+      "net_positive_days": 0,
+      "net_negative_days": 0,
+      "total_gross_walking_saved_s": 0.0,
+      "total_relocation_s": 0.0,
+      "total_net_labor_proxy_saved_s": 0.0,
+      "best_day_net_s": 0.0,
+      "worst_day_net_s": 0.0
+    },
+    "hgb": {
+      "no_op_days": 4,
+      "one_swap_days": 0,
+      "two_swap_days": 0,
+      "net_positive_days": 0,
+      "net_negative_days": 0,
+      "total_gross_walking_saved_s": 0.0,
+      "total_relocation_s": 0.0,
+      "total_net_labor_proxy_saved_s": 0.0,
+      "best_day_net_s": 0.0,
+      "worst_day_net_s": 0.0
+    }
+  },
+  "hgb_better_net_than_mean28_days": 0,
+  "hgb_worse_net_than_mean28_days": 0,
+  "plans_by_date": {
+    "2011-10-03": {
+      "mean28": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": null,
+        "diagnostic_pair_at_min_repeated_days": null,
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      },
+      "hgb": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 26.162076157752477,
+        "diagnostic_pair_at_min_repeated_days": [
+          "20725",
+          "47566"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      }
+    },
+    "2011-10-10": {
+      "mean28": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 10.105454545454913,
+        "diagnostic_pair_at_min_repeated_days": [
+          "22382",
+          "22469"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      },
+      "hgb": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 3.765312819204712,
+        "diagnostic_pair_at_min_repeated_days": [
+          "22382",
+          "22469"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      }
+    },
+    "2011-10-17": {
+      "mean28": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 17.10153846153808,
+        "diagnostic_pair_at_min_repeated_days": [
+          "22382",
+          "22469"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      },
+      "hgb": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 4.958826505050981,
+        "diagnostic_pair_at_min_repeated_days": [
+          "22423",
+          "85123A"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      }
+    },
+    "2011-10-24": {
+      "mean28": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 12.495000000000454,
+        "diagnostic_pair_at_min_repeated_days": [
+          "20725",
+          "84879"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      },
+      "hgb": {
+        "pairs": [],
+        "candidate_assignment": {
+          "85099B": "S_A2_B1",
+          "85123A": "S_A3_B1",
+          "22423": "S_A2_B2",
+          "20725": "S_A3_B2",
+          "84879": "S_A1_B1",
+          "20727": "S_A2_B3",
+          "47566": "S_A3_B3",
+          "22197": "S_A4_B1",
+          "21212": "S_A1_B2",
+          "22386": "S_A2_B4",
+          "22383": "S_A3_B4",
+          "22469": "S_A4_B2",
+          "22382": "S_A1_B3",
+          "21931": "S_A2_B5",
+          "22411": "S_A3_B5",
+          "22384": "S_A4_B3",
+          "21232": "S_A1_B4",
+          "21080": "S_A4_B4",
+          "84991": "S_A1_B5",
+          "21754": "S_A4_B5"
+        },
+        "relocation_walk_m": 0.0,
+        "diagnostic_min_repeated_demand_days_to_cover_one_swap": 5.687994631689674,
+        "diagnostic_pair_at_min_repeated_days": [
+          "22423",
+          "85123A"
+        ],
+        "diagnostic_warning": "Assumes exactly repeated forecast daily demand, not a validated multi-day forecast or operation plan."
+      }
+    }
+  },
+  "limitations": [
+    "Only20SKU subset, not full original orders",
+    "No queues, collisions, throughput or service-level claims",
+    "Planner single-stop surrogate may fail on multi-stop heldout baskets",
+    "Initial ABC could already be strong enough to make relocation unprofitable",
+    "Relocation cost and speed are scenario assumptions, not field measurements"
+  ],
+  "input_sha256": {
+    "weekly_probe_predictions.csv": "6acf6129833dc9f40698ef8dc5790673d14b8fb3cec7ce76f209367bf397b104",
+    "daily_pick_visits_20sku.csv": "a77aa057fb6f4ae91c1467ed32227a08fe8292c469066115e9548f8a84b5925f",
+    "test_basket_lines_20days.csv": "426a90414d3486c3864fda288a5f86edf50ad90afcb6f75cc253664379b310e6"
+  },
+  "elapsed_seconds": 0.07381709999754094
+}

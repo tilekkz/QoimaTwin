@@ -1,0 +1,33 @@
+{
+  "kind": "exploratory5weekday-window forecast; not a full7day demand forecast",
+  "train_rows": 8723,
+  "test_rows": 80,
+  "test_origins": [
+    "2011-10-03",
+    "2011-10-10",
+    "2011-10-17",
+    "2011-10-24"
+  ],
+  "target": "sum visits t..t+6 for Mon-Fri dates only; Sunday historical records retained in lag inputs",
+  "leakage_rule": "all train target window ends strictly before2011-10-03; all test features earlier than ownMonday; model fitted once, no test tuning",
+  "training_origins": "all eligible Monday-Friday origins, each future7calendar-day window has5weekday target dates",
+  "metrics": {
+    "naive_mean28": {
+      "mae": 4.779464285714285,
+      "wape": 0.21911584117887842,
+      "bias": -0.12320916905444126
+    },
+    "naive_last7weekday_total": {
+      "mae": 5.7875,
+      "wape": 0.2653295128939828,
+      "bias": 0.04756446991404011
+    },
+    "model_hgb": {
+      "mae": 4.158726344228188,
+      "wape": 0.19065794128266764,
+      "bias": 0.026564683656501546
+    }
+  },
+  "total_test_visits": 1745.0,
+  "elapsed_seconds": 0.3367733000050066
+}

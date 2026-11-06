@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.0",
+  "layout_version": "qoyma-20x18-v1",
+  "run_id": "hand-one-order-baseline-v1",
+  "data_version": "synthetic-hand-check-v1",
+  "config": {
+    "walk_speed_mps": 1.2,
+    "pick_base_s": 6,
+    "pick_per_unit_s": 0.15,
+    "dropoff_s": 3,
+    "pack_base_s": 20,
+    "pack_per_line_s": 2,
+    "pack_per_unit_s": 0.05,
+    "relocation_handle_s": 8,
+    "relocation_worker_count": 1,
+    "picker_count": 2,
+    "packer_count": 1,
+    "horizon_s": 28800,
+    "routing_policy": "graph-nearest-neighbor-v1",
+    "queue_policy": "fifo-order-id-v1",
+    "congestion": false
+  },
+  "initial_assignment": {
+    "S_A1_B1": "SAMPLE_01",
+    "S_A1_B2": "SAMPLE_02",
+    "S_A1_B3": "SAMPLE_03",
+    "S_A1_B4": "SAMPLE_04",
+    "S_A1_B5": "SAMPLE_05",
+    "S_A2_B1": "SAMPLE_06",
+    "S_A2_B2": "SAMPLE_07",
+    "S_A2_B3": "SAMPLE_08",
+    "S_A2_B4": "SAMPLE_09",
+    "S_A2_B5": "SAMPLE_10",
+    "S_A3_B1": "SAMPLE_11",
+    "S_A3_B2": "SAMPLE_12",
+    "S_A3_B3": "SAMPLE_13",
+    "S_A3_B4": "SAMPLE_14",
+    "S_A3_B5": "SAMPLE_15",
+    "S_A4_B1": "SAMPLE_16",
+    "S_A4_B2": "SAMPLE_17",
+    "S_A4_B3": "SAMPLE_18",
+    "S_A4_B4": "SAMPLE_19",
+    "S_A4_B5": "SAMPLE_20"
+  },
+  "scenario": {
+    "scenario_id": "hand-one-order-v1",
+    "provenance": "SYNTHETIC_HAND_CHECK_NOT_UCI",
+    "orders": [
+      {
+        "order_id": "HAND_ORDER_1",
+        "arrival_s": 0,
+        "lines": [
+          {
+            "sku_id": "SAMPLE_01",
+            "quantity": 1
+          },
+          {
+            "sku_id": "SAMPLE_06",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  "actions": [
+    {
+      "action_id": "A1",
+      "actor_id": "P1",
+      "kind": "WALK",
+      "start_s": 0.0,
+      "end_s": 7.166666666666667,
+      "order_id": "HAND_ORDER_1",
+      "waypoints": [
+        {
+          "node_id": "N_PACK",
+          "pos": [
+            9,
+            0,
+            1.4
+          ],
+          "at_s": 0.0
+        },
+        {
+          "node_id": "N_FRONT_9",
+          "pos": [
+            9,
+            0,
+            2
+          ],
+          "at_s": 0.5000000000000001
+        },
+        {
+          "node_id": "N_A2_FRONT",
+          "pos": [
+            7,
+            0,
+            2
+          ],
+          "at_s": 2.166666666666667
+        },
+        {
+          "node_id": "N_A1_FRONT",
+          "pos": [
+            3,
+            0,
+            2
+          ],
+          "at_s": 5.5
+        },
+        {
+          "node_id": "N_A1_B1",
+          "pos": [
+            3,
+            0,
+            4
+          ],
+          "at_s": 7.166666666666667
+        }
+      ]
+    },
+    {
+      "action_id": "A2",
+      "actor_id": "P1",
+      "kind": "PICK",
+      "start_s": 7.166666666666667,
+      "end_s": 13.316666666666666,
+      "order_id": "HAND_ORDER_1",
+      "pos": [
+        3,
+        0,
+        4
+      ],
+      "sku_id": "SAMPLE_01",
+      "slot_id": "S_A1_B1",
+      "quantity": 1
+    },
+    {
+      "action_id": "A3",
+      "actor_id": "P1",
+      "kind": "WALK",
+      "start_s": 13.316666666666666,
+      "end_s": 19.983333333333334,
+      "order_id": "HAND_ORDER_1",
+      "waypoints": [
+        {
+          "node_id": "N_A1_B1",
+          "pos": [
+            3,
+            0,
+            4
+          ],
+          "at_s": 13.316666666666666
+        },
+        {
+          "node_id": "N_A1_FRONT",
+          "pos": [
+            3,
+            0,
+            2
+          ],
+          "at_s": 14.983333333333333
+        },
+        {
+          "node_id": "N_A2_FRONT",
+          "pos": [
+            7,
+            0,
+            2
+          ],
+          "at_s": 18.316666666666666
+        },
+        {
+          "node_id": "N_A2_B1",
+          "pos": [
+            7,
+            0,
+            4
+          ],
+          "at_s": 19.983333333333334
+        }
+      ]
+    },
+    {
+      "action_id": "A4",
+      "actor_id": "P1",
+      "kind": "PICK",
+      "start_s": 19.983333333333334,
+      "end_s": 26.133333333333333,
+      "order_id": "HAND_ORDER_1",
+      "pos": [
+        7,
+        0,
+        4
+      ],
+      "sku_id": "SAMPLE_06",
+      "slot_id": "S_A2_B1",
+      "quantity": 1
+    },
+    {
+      "action_id": "A5",
+      "actor_id": "P1",
+      "kind": "WALK",
+      "start_s": 26.133333333333333,
+      "end_s": 29.96666666666667,
+      "order_id": "HAND_ORDER_1",
+      "waypoints": [
+        {
+          "node_id": "N_A2_B1",
+          "pos": [
+            7,
+            0,
+            4
+          ],
+          "at_s": 26.133333333333333
+        },
+        {
+          "node_id": "N_A2_FRONT",
+          "pos": [
+            7,
+            0,
+            2
+          ],
+          "at_s": 27.8
+        },
+        {
+          "node_id": "N_FRONT_9",
+          "pos": [
+            9,
+            0,
+            2
+          ],
+          "at_s": 29.46666666666667
+        },
+        {
+          "node_id": "N_PACK",
+          "pos": [
+            9,
+            0,
+            1.4
+          ],
+          "at_s": 29.96666666666667
+        }
+      ]
+    },
+    {
+      "action_id": "A6",
+      "actor_id": "P1",
+      "kind": "DROPOFF",
+      "start_s": 29.96666666666667,
+      "end_s": 32.96666666666667,
+      "order_id": "HAND_ORDER_1",
+      "pos": [
+        9,
+        0,
+        1.4
+      ]
+    },
+    {
+      "action_id": "A7",
+      "actor_id": "PACKER_1",
+      "kind": "PACK",
+      "start_s": 32.96666666666667,
+      "end_s": 57.06666666666667,
+      "order_id": "HAND_ORDER_1",
+      "pos": [
+        9,
+        0,
+        1.4
+      ]
+    }
+  ],
+  "events": [
+    {
+      "at_s": 0,
+      "kind": "order_arrived",
+      "order_id": "HAND_ORDER_1",
+      "seq": 0
+    },
+    {
+      "at_s": 0,
+      "kind": "order_assigned",
+      "order_id": "HAND_ORDER_1",
+      "actor_id": "P1",
+      "seq": 1
+    },
+    {
+      "at_s": 13.316666666666666,
+      "kind": "sku_picked",
+      "order_id": "HAND_ORDER_1",
+      "sku_id": "SAMPLE_01",
+      "slot_id": "S_A1_B1",
+      "quantity": 1,
+      "actor_id": "P1",
+      "seq": 2
+    },
+    {
+      "at_s": 26.133333333333333,
+      "kind": "sku_picked",
+      "order_id": "HAND_ORDER_1",
+      "sku_id": "SAMPLE_06",
+      "slot_id": "S_A2_B1",
+      "quantity": 1,
+      "actor_id": "P1",
+      "seq": 3
+    },
+    {
+      "at_s": 26.133333333333333,
+      "kind": "picked_last",
+      "order_id": "HAND_ORDER_1",
+      "actor_id": "P1",
+      "seq": 4
+    },
+    {
+      "at_s": 32.96666666666667,
+      "kind": "pick_finished",
+      "order_id": "HAND_ORDER_1",
+      "actor_id": "P1",
+      "seq": 5
+    },
+    {
+      "at_s": 32.96666666666667,
+      "kind": "pack_started",
+      "order_id": "HAND_ORDER_1",
+      "actor_id": "PACKER_1",
+      "seq": 6
+    },
+    {
+      "at_s": 57.06666666666667,
+      "kind": "order_completed",
+      "order_id": "HAND_ORDER_1",
+      "actor_id": "PACKER_1",
+      "seq": 7
+    }
+  ],
+  "orders_summary": [
+    {
+      "order_id": "HAND_ORDER_1",
+      "picker_id": "P1",
+      "arrival_s": 0,
+      "assigned_s": 0,
+      "picked_last_s": 26.133333333333333,
+      "pick_finished_s": 32.96666666666667,
+      "pack_started_s": 32.96666666666667,
+      "completed_s": 57.06666666666667
+    }
+  ],
+  "metrics": {
+    "total_distance_m": 21.200000000000003,
+    "picker_busy_s": {
+      "P1": 32.96666666666667,
+      "P2": 0
+    },
+    "packer_busy_s": 24.1,
+    "makespan_s": 57.06666666666667,
+    "mean_cycle_s": 57.06666666666667,
+    "p95_cycle_s": 57.06666666666667,
+    "mean_pick_cycle_s": 32.96666666666667,
+    "mean_pack_wait_s": 0,
+    "max_pack_queue": 0,
+    "time_weighted_mean_pack_queue": 0,
+    "completed_total": 1,
+    "completed_by_horizon": 1,
+    "backlog_at_horizon": 0,
+    "relocation_labor_s": 0
+  },
+  "actors": [
+    {
+      "actor_id": "P1",
+      "role": "picker",
+      "initial_pos": [
+        9,
+        0,
+        1.4
+      ]
+    },
+    {
+      "actor_id": "P2",
+      "role": "picker",
+      "initial_pos": [
+        9,
+        0,
+        1.4
+      ]
+    },
+    {
+      "actor_id": "PACKER_1",
+      "role": "packer",
+      "initial_pos": [
+        9,
+        0.85,
+        0.6
+      ]
+    }
+  ]
+}

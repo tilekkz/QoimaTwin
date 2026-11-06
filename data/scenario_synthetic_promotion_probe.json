@@ -1,0 +1,93 @@
+{
+  "scenario_kind": "controlled synthetic planned-promotion input, NOT historical evaluation",
+  "fixed_before_execution": {
+    "date": "2011-10-03",
+    "sku_id": "22382",
+    "multiplier": 5.0,
+    "other_sku_forecasts_unchanged": true
+  },
+  "baseline": "same frozen ABC28 2011-09-05 through2011-10-02",
+  "canonical_graph_nodes": 31,
+  "canonical_graph_edges": 33,
+  "methods": {
+    "mean28": {
+      "promoted_forecast_before": 3.7142857142857144,
+      "promoted_forecast_after": 18.571428571428573,
+      "pairs": [
+        [
+          "22382",
+          "85123A"
+        ]
+      ],
+      "swaps": 1,
+      "candidate_assignment": {
+        "85099B": "S_A2_B1",
+        "85123A": "S_A1_B3",
+        "22423": "S_A2_B2",
+        "20725": "S_A3_B2",
+        "84879": "S_A1_B1",
+        "20727": "S_A2_B3",
+        "47566": "S_A3_B3",
+        "22197": "S_A4_B1",
+        "21212": "S_A1_B2",
+        "22386": "S_A2_B4",
+        "22383": "S_A3_B4",
+        "22469": "S_A4_B2",
+        "22382": "S_A3_B1",
+        "21931": "S_A2_B5",
+        "22411": "S_A3_B5",
+        "22384": "S_A4_B3",
+        "21232": "S_A1_B4",
+        "21080": "S_A4_B4",
+        "84991": "S_A1_B5",
+        "21754": "S_A4_B5"
+      },
+      "relocation_labor_s": 125.66666666666667,
+      "relocation_walk_m": 93.2,
+      "baseline_single_stop_surrogate_s": 1582.5,
+      "candidate_single_stop_surrogate_s_excluding_relocation": 1413.9285714285716,
+      "expected_net_surrogate_saved_s": 42.90476190476177
+    },
+    "hgb": {
+      "promoted_forecast_before": 4.096334328012707,
+      "promoted_forecast_after": 20.48167164006354,
+      "pairs": [
+        [
+          "22382",
+          "85123A"
+        ]
+      ],
+      "swaps": 1,
+      "candidate_assignment": {
+        "85099B": "S_A2_B1",
+        "85123A": "S_A1_B3",
+        "22423": "S_A2_B2",
+        "20725": "S_A3_B2",
+        "84879": "S_A1_B1",
+        "20727": "S_A2_B3",
+        "47566": "S_A3_B3",
+        "22197": "S_A4_B1",
+        "21212": "S_A1_B2",
+        "22386": "S_A2_B4",
+        "22383": "S_A3_B4",
+        "22469": "S_A4_B2",
+        "22382": "S_A3_B1",
+        "21931": "S_A2_B5",
+        "22411": "S_A3_B5",
+        "22384": "S_A4_B3",
+        "21232": "S_A1_B4",
+        "21080": "S_A4_B4",
+        "84991": "S_A1_B5",
+        "21754": "S_A4_B5"
+      },
+      "relocation_labor_s": 125.66666666666667,
+      "relocation_walk_m": 93.2,
+      "baseline_single_stop_surrogate_s": 1742.8321110268191,
+      "candidate_single_stop_surrogate_s_excluding_relocation": 1551.36724685899,
+      "expected_net_surrogate_saved_s": 65.79819750116242
+    }
+  },
+  "actual_historical_effect": null,
+  "synthetic_orders_materialized": false,
+  "limitations": "5x is a declared campaign assumption applied equally to both forecasts, not learned uplift and not actual historical demand. No throughput or actual savings claim; no parameter sweep."
+}

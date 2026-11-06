@@ -1,0 +1,40 @@
+{
+  "target": "unique invoice-SKU visits per observed day",
+  "train_rows": 8803,
+  "test_rows": 400,
+  "cutoff_exclusive": "2011-10-03",
+  "models": "fixed prespecified HGB Poisson; no hyperparameter search; fixed model fit before test",
+  "test_protocol": "one-day-ahead rolling observations: lag features use only dates earlier than each forecast date, including earlier test/calendar days; no retraining",
+  "selection": "20SKU selected before cutoff. No forecast ranking selection based on test.",
+  "metrics": {
+    "naive_lag7": {
+      "mae": 2.2375,
+      "wape": 0.5128939828080229,
+      "bias": 0.04756446991404011
+    },
+    "naive_mean28": {
+      "mae": 1.6948214285714283,
+      "wape": 0.3884977486696684,
+      "bias": -0.1254195661072452
+    },
+    "naive_sameweekday4": {
+      "mae": 1.970625,
+      "wape": 0.4517191977077364,
+      "bias": 0.10329512893982808
+    },
+    "model_hgb": {
+      "mae": 1.6995040217208799,
+      "wape": 0.3895711224575083,
+      "bias": 0.02700328442797345
+    }
+  },
+  "elapsed_seconds": 0.38112769999861484,
+  "limitations": "Exploratory forecast probe, not completed slotting evaluation. Weekdays scored, actual historical weekend transactions remain valid lag inputs. No real warehouse savings claim.",
+  "runtime_versions": {
+    "python": "3.12.14",
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1"
+  }
+}
