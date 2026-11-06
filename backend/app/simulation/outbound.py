@@ -34,6 +34,7 @@ class Outbound:
         self.vehicle_id = vehicle.vehicle_id
         self.tasks: deque[Pallet] = deque()
         self.busy = False
+        self.current_pallet: Pallet | None = None
 
     def add_task(self, pallet: Pallet) -> None:
         self.tasks.append(pallet)
@@ -42,6 +43,7 @@ class Outbound:
         if self.busy or not self.tasks:
             return False
         pallet = self.tasks.popleft()
+        self.current_pallet = pallet
         pallet.state = PalletState.CLAIMED
         self.busy = True
         arrive = self._drive(HOME, PICK, self.ctx.now, "to_pickup", pallet.pallet_id)
@@ -82,6 +84,7 @@ class Outbound:
 
     def _available(self) -> None:
         self.busy = False
+        self.current_pallet = None
         self.ctx.request_dispatch()
 
     def _drive(self, source: str, target: str, start: int, operation: str, entity: str) -> int:

@@ -113,9 +113,12 @@ class Ledger:
     def check_conservation(self, skus: Iterable[str] | None = None) -> list[str]:
         """Return violations of `initial + accepted = physical units` and reservation bounds."""
         issues: list[str] = []
+        totals: dict[str, int] = defaultdict(int)
+        for holding, quantity in self._balances.items():
+            totals[holding.sku_id] += quantity
         for sku in sorted(skus) if skus is not None else self.skus():
             expected = self._initial.get(sku, 0) + self._accepted.get(sku, 0)
-            found = self.physical_units(sku)
+            found = totals.get(sku, 0)
             if expected != found:
                 issues.append(f"{sku}: expected {expected} units, found {found}")
         for holding, claim in sorted(self._reserved.items()):

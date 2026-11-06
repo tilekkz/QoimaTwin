@@ -26,7 +26,7 @@ def fixture(contracts_dir: Path) -> dict[str, Any]:
 
 @pytest.fixture(scope="module")
 def run(bundle: ContractBundle, fixture: dict[str, Any]) -> tuple[Engine, RunOutcome]:
-    engine = Engine(fixture_inputs(bundle, fixture))
+    engine = Engine(fixture_inputs(bundle, fixture), check_invariants=True)
     return engine, engine.run()
 
 

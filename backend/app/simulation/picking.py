@@ -53,6 +53,7 @@ class Picking:
         ]
         self.free_totes = [f"T{i:03d}" for i in range(1, ctx.config.totes_total + 1)]
         heapq.heapify(self.free_totes)
+        self.allocated_totes: set[str] = set()
         self.queue: deque[Order] = deque()
         self.jobs: dict[str, PickJob] = {}
 
@@ -117,6 +118,7 @@ class Picking:
     ) -> None:
         ctx = self.ctx
         picker.busy = True
+        self.allocated_totes.add(tote_id)
         job = PickJob(order, picker, tote_id)
         self.jobs[order.order_id] = job
         ctx.recorder.emit(
@@ -283,5 +285,6 @@ class Picking:
         ctx.request_dispatch()
 
     def release_tote(self, tote_id: str) -> None:
+        self.allocated_totes.remove(tote_id)
         heapq.heappush(self.free_totes, tote_id)
         self.ctx.request_dispatch()

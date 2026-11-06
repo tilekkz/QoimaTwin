@@ -72,5 +72,5 @@ def run_inputs(
 
 
 def simulate(inputs: RunInputs) -> tuple[Engine, RunOutcome]:
-    engine = Engine(inputs)
+    engine = Engine(inputs, check_invariants=True)
     return engine, engine.run()

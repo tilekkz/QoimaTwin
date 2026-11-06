@@ -15,6 +15,7 @@ from app.conveyor.topology import ConveyorTopology
 from app.simulation.clock import TimeGrid
 from app.simulation.context import GraphGeometry, RunInputs, SimContext, build_ledger
 from app.simulation.conveyor_driver import ConveyorDriver
+from app.simulation.invariants import check_invariants as verify_invariants
 from app.simulation.metrics import Metrics
 from app.simulation.outbound import Outbound
 from app.simulation.packing import Packing
@@ -50,7 +51,7 @@ class RunOutcome:
 
 
 class Engine:
-    def __init__(self, inputs: RunInputs) -> None:
+    def __init__(self, inputs: RunInputs, *, check_invariants: bool = False) -> None:
         layout = inputs.layout
         grid = TimeGrid.for_inputs(layout, inputs.config)
         ledger, sku_holding = build_ledger(inputs)
@@ -75,8 +76,14 @@ class Engine:
         self.shipping = Shipping(self.ctx, self)
         self.outbound = Outbound(self.ctx, self)
         self.receiving = Receiving(self.ctx, self)
+        self.check_invariants = check_invariants
+        self.ctx.sched.on_tick_settled = self._on_tick_settled
         self._schedule_arrivals()
         self._schedule_receipts()
+
+    def _on_tick_settled(self, tick: int, next_tick: int | None) -> None:
+        if self.check_invariants:
+            verify_invariants(self)
 
     def _schedule_arrivals(self) -> None:
         for order in sorted(
@@ -118,6 +125,8 @@ class Engine:
         raise RuntimeError("dispatch cycle did not reach a fixed point")
 
     def run(self) -> RunOutcome:
+        if self.check_invariants:
+            verify_invariants(self)
         ctx = self.ctx
         horizon = ctx.ticks(ctx.inputs.scenario.horizon_s)
         deadline = horizon + ctx.ticks(ctx.config.max_drain_s)
