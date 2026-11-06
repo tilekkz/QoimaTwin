@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from fractions import Fraction
 from itertools import pairwise
@@ -76,6 +77,7 @@ class SimContext:
     inbound: GraphGeometry
     sku_holding: dict[str, Holding]
     slot_node: dict[str, str]
+    dispatch_handler: Callable[[], None] | None = None
     dispatch_dirty: bool = False
     counters: dict[str, int] = field(default_factory=dict)
 
@@ -109,10 +111,12 @@ class SimContext:
             self.dispatch_dirty = True
             return
         tick = self.now if running is None or running < Phase.DISPATCH else self.now + 1
-        self.sched.schedule(tick, Phase.DISPATCH, self._dispatch_hook, unique="dispatch")
+        self.sched.schedule(tick, Phase.DISPATCH, self._run_dispatch, unique="dispatch")
 
-    def _dispatch_hook(self) -> None:
-        raise NotImplementedError  # replaced by the engine
+    def _run_dispatch(self) -> None:
+        if self.dispatch_handler is None:
+            raise RuntimeError("no dispatch handler is installed")
+        self.dispatch_handler()
 
 
 def build_ledger(inputs: RunInputs) -> tuple[Ledger, dict[str, Holding]]:

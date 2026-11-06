@@ -87,7 +87,7 @@ class Recorder:
     ) -> Action:
         if end_tick <= start_tick:
             raise RecorderError(f"{actor_id} {operation}: empty interval [{start_tick},{end_tick})")
-        if (state is ActorState.TRAVEL) != bool(waypoints) or (pos is None) == bool(waypoints):
+        if (state is ActorState.TRAVEL) != bool(waypoints) or (pos is not None) == bool(waypoints):
             raise RecorderError(f"{actor_id} {operation}: TRAVEL needs waypoints, others need pos")
         if waypoints and (waypoints[0].at_tick != start_tick or waypoints[-1].at_tick != end_tick):
             raise RecorderError(f"{actor_id} {operation}: waypoints do not span the action")
@@ -107,6 +107,9 @@ class Recorder:
         )
         self.actions.append(action)
         return action
+
+    def last_end(self, actor_id: str) -> int:
+        return self._last_end.get(actor_id, 0)
 
     def of_kind(self, kind: str) -> list[Event]:
         return [e for e in self.events if e.kind == kind]
