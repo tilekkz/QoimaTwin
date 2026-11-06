@@ -11,6 +11,7 @@ import jsonschema
 from pydantic import ValidationError
 
 from app.contracts.actors import ActorRegistry
+from app.contracts.base import checked_json_loads
 from app.contracts.config import SimulationConfig
 from app.contracts.layout import Layout
 
@@ -39,11 +40,13 @@ class ContractBundle:
 
 def _read_json(path: Path) -> Any:
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return checked_json_loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError as exc:
         raise ContractError(f"{path.name}: file not found in {path.parent}") from exc
     except json.JSONDecodeError as exc:
         raise ContractError(f"{path.name}: invalid JSON at line {exc.lineno}: {exc.msg}") from exc
+    except ValueError as exc:
+        raise ContractError(f"{path.name}: {exc}") from exc
 
 
 def _check_schemas(directory: Path) -> None:
@@ -72,6 +75,8 @@ def _parse[ModelT: (Layout, SimulationConfig, ActorRegistry)](
         raise ContractError(
             f"{path.name}: {exc.error_count()} model errors; first: {exc.errors()[0]}"
         ) from exc
+    except (ValueError, OSError) as exc:
+        raise ContractError(f"{path.name}: {exc}") from exc
 
 
 def load_contract_bundle(directory: Path) -> ContractBundle:

@@ -25,6 +25,10 @@ def _validate_contracts(contracts_dir: Path) -> int:
     try:
         bundle = load_contract_bundle(contracts_dir)
         issues = validate_bundle(bundle)
+        if issues:
+            report |= {"status": "failed", "issues": issues}
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return 1
         topology = ConveyorTopology.from_layout(bundle.layout)
         paths = AllPairsPaths.from_graph(bundle.layout.picker_graph)
     except (ContractError, TopologyError) as exc:

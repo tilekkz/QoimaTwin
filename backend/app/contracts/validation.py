@@ -115,6 +115,11 @@ def _check_racks_and_slots(layout: Layout) -> list[str]:
     racks = {r.rack_id: r for r in layout.racks}
     issues = [f"duplicate rack id {d}" for d in _duplicates(r.rack_id for r in layout.racks)]
     issues += [f"duplicate slot id {d}" for d in _duplicates(s.slot_id for s in layout.slots)]
+    issues += [
+        f"rack {r.rack_id} size components must be strictly positive"
+        for r in layout.racks
+        if any(v <= 0 for v in r.size)
+    ]
     issues += _check_rack_crossings(layout)
     for slot in layout.slots:
         if slot.rack_id not in racks:
@@ -124,8 +129,46 @@ def _check_racks_and_slots(layout: Layout) -> list[str]:
                 issues.append(
                     f"pickface slot {slot.slot_id} needs level 1 and a known service node"
                 )
+            elif slot.rack_id in racks:
+                issues += _check_service_position(layout, slot.service_node_id, racks[slot.rack_id])
         elif slot.service_node_id is not None or slot.level == 1:
             issues.append(f"reserve slot {slot.slot_id} must be level 2/3 without walk access")
+    return issues
+
+
+def _check_service_position(layout: Layout, node_id: str, rack: Rack) -> list[str]:
+    x, _, z = exact_vec(rack.root)
+    # A rack must lie 1.5 m to either side of one of the twelve aisle axes.
+    axes = {Fraction(10) + Fraction("4.5") * a for a in range(12)}
+    candidates = {x - Fraction("1.5"), x + Fraction("1.5")} & axes
+    pos = next(exact_vec(n.pos) for n in layout.picker_graph.nodes if n.node_id == node_id)
+    if len(candidates) != 1 or pos != (next(iter(candidates)), Fraction(0), z):
+        return [
+            f"pickface service node {node_id} must be on the aisle axis at rack {rack.rack_id} bay"
+        ]
+    return []
+
+
+def _check_picker_reachability(layout: Layout) -> list[str]:
+    neighbors: dict[str, set[str]] = {n.node_id: set() for n in layout.picker_graph.nodes}
+    for edge in layout.picker_graph.edges:
+        if edge.a in neighbors and edge.b in neighbors:
+            neighbors[edge.a].add(edge.b)
+            neighbors[edge.b].add(edge.a)
+    required = {s.service_node_id for s in layout.slots if s.kind == "pickface"}
+    required.update((layout.relocation_home_node_id, layout.relocation_buffer_node_id))
+    issues: list[str] = []
+    for home in sorted({i.home_node_id for i in layout.inductions}):
+        seen: set[str] = set()
+        pending = [home] if home in neighbors else []
+        while pending:
+            node = pending.pop()
+            if node not in seen:
+                seen.add(node)
+                pending.extend(sorted(neighbors[node] - seen))
+        for target in sorted(n for n in required if n is not None):
+            if target not in seen:
+                issues.append(f"picker home {home} cannot reach {target}")
     return issues
 
 
@@ -187,6 +230,51 @@ def _check_conveyor(layout: Layout) -> list[str]:
     return issues
 
 
+def _check_cargo_roles(layout: Layout) -> list[str]:
+    segments = {s.segment_id: s for s in layout.conveyor.segments}
+    totes = {i.feed_segment_id for i in layout.inductions}
+    totes.update(p.input_segment_id for p in layout.pack_stations)
+    parcels = {p.output_segment_id for p in layout.pack_stations}
+    parcels.add(layout.conveyor.terminal.segment_id)
+    issues: list[str] = []
+    for seg in layout.conveyor.segments:
+        expected = None
+        if seg.segment_id in totes or seg.segment_id.startswith(("FEED", "BRANCH")):
+            expected = "tote"
+        if seg.segment_id in parcels or seg.segment_id.startswith(("OUTFEED", "OUT_MAIN")):
+            expected = "parcel"
+        if expected is not None and seg.role != expected:
+            issues.append(f"segment {seg.segment_id} cargo role must be {expected}")
+    for link in layout.conveyor.connections:
+        src, dst = segments.get(link.from_segment_id), segments.get(link.to_segment_id)
+        if src is not None and dst is not None and src.role != dst.role:
+            issues.append(f"connection {src.segment_id}->{dst.segment_id} joins tote and parcel")
+    return issues
+
+
+def _check_topology(layout: Layout) -> list[str]:
+    # Local import keeps port_offset usable by the topology compiler without an import cycle.
+    from app.conveyor.topology import ConveyorTopology, TopologyError
+
+    try:
+        topology = ConveyorTopology.from_layout(layout)
+    except TopologyError as exc:
+        return [f"conveyor topology: {exc}"]
+    issues: list[str] = []
+    for induction, inlet in sorted(topology.induction_inlets.items()):
+        for pack in sorted(topology.pack_outlets):
+            try:
+                topology.next_cell_towards(inlet, pack)
+            except TopologyError as exc:
+                issues.append(f"induction {induction}: {exc}")
+    for pack, outlet in sorted(topology.pack_outlets.items()):
+        try:
+            topology.next_cell_towards(outlet, "SHIPPING")
+        except TopologyError as exc:
+            issues.append(f"outfeed {pack}: {exc}")
+    return issues
+
+
 def _check_counts(layout: Layout) -> list[str]:
     counts = layout.counts
     actual = {
@@ -209,7 +297,18 @@ def validate_layout(layout: Layout) -> list[str]:
     issues += _check_graph("forklift inbound", layout.forklift_graphs.inbound)
     issues += _check_graph("forklift outbound", layout.forklift_graphs.outbound)
     issues += _check_racks_and_slots(layout)
-    issues += _check_conveyor(layout)
+    conveyor_issues = _check_conveyor(layout)
+    issues += conveyor_issues
+    issues += _check_cargo_roles(layout)
+    for name, ids in (
+        ("pack_id", (p.pack_id for p in layout.pack_stations)),
+        ("induction_id", (i.induction_id for i in layout.inductions)),
+        ("zone_id", (z.zone_id for z in layout.zones)),
+    ):
+        issues += [f"duplicate {name} {d}" for d in _duplicates(ids)]
+    if not conveyor_issues:
+        issues += _check_topology(layout)
+    issues += _check_picker_reachability(layout)
     issues += _check_counts(layout)
     node_ids = {n.node_id for n in layout.picker_graph.nodes}
     for node in (layout.relocation_home_node_id, layout.relocation_buffer_node_id):
@@ -232,6 +331,9 @@ def validate_bundle(bundle: ContractBundle) -> list[str]:
         issues.append(
             f"tote pool {config.totes_total} must stay below {loop_cells} loop cells (ADR 0004)"
         )
+    if config.totes_total != 96:
+        issues.append(f"P0 tote pool must be exactly 96, got {config.totes_total}")
+    issues += _check_config_conveyor(bundle)
     issues += [f"duplicate actor id {d}" for d in _duplicates(a.actor_id for a in registry.actors)]
     staffing = config.staffing.model_dump()
     for role, count in staffing.items():
@@ -242,11 +344,34 @@ def validate_bundle(bundle: ContractBundle) -> list[str]:
     return issues
 
 
+def _check_config_conveyor(bundle: ContractBundle) -> list[str]:
+    config, layout = bundle.config, bundle.layout
+    issues: list[str] = []
+    if (
+        exact(config.conveyor_cell_m) / exact(config.conveyor_speed_mps) != 1
+        or exact(config.conveyor_tick_s) != 1
+    ):
+        issues.append("conveyor timing must satisfy cell / speed == tick == 1 (ADR 0002/0004)")
+    lengths = [layout.conveyor.cell_length_m, *(s.cell_length_m for s in layout.conveyor.segments)]
+    if any(exact(length) != exact(config.conveyor_cell_m) for length in lengths):
+        issues.append("conveyor cell length must equal config.conveyor_cell_m")
+    for station in layout.pack_stations:
+        if station.buffer_capacity != config.pack_buffer_capacity:
+            issues.append(f"pack station {station.pack_id} buffer_capacity differs from config")
+    return issues
+
+
 def _check_actor_links(bundle: ContractBundle) -> list[str]:
     layout, registry = bundle.layout, bundle.actors
     issues: list[str] = []
     homes = {i.home_node_id for i in layout.inductions}
     packs = {p.pack_id for p in layout.pack_stations}
+    packers = Counter(a.pack_id for a in registry.actors if a.role == "packer")
+    issues += [
+        f"pack station {pack} has {packers[pack]} packers, expected exactly one"
+        for pack in sorted(packs)
+        if packers[pack] != 1
+    ]
     vehicles = {v.vehicle_id: v for v in registry.vehicles}
     forklift_nodes = {
         "inbound": {n.node_id for n in layout.forklift_graphs.inbound.nodes},
