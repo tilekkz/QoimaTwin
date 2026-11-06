@@ -17,6 +17,8 @@ from simpy.core import EmptySchedule
 from simpy.events import EventPriority
 
 Handler = Callable[[], None]
+SettledHook = Callable[[int, int | None], None]
+"""(settled_tick, next_tick or None) - called once after all phases of a tick ran."""
 SortKey = tuple[str | int, ...]
 
 
@@ -69,6 +71,8 @@ class PhaseScheduler:
         self._buckets: dict[tuple[int, Phase], _Bucket] = {}
         self._seq = 0
         self._running: tuple[int, Phase] | None = None
+        self._active_tick: int | None = None
+        self.on_tick_settled: SettledHook | None = None
 
     @property
     def now(self) -> int:
@@ -109,13 +113,22 @@ class PhaseScheduler:
     def run(self, until: int | None = None) -> None:
         """Process events; with `until`, stop before any event at tick >= until."""
         while True:
-            next_tick = self._env.peek()
-            if next_tick == float("inf") or (until is not None and next_tick >= until):
+            peek = self._env.peek()
+            next_tick = None if peek == float("inf") else int(peek)
+            if self._active_tick is not None and next_tick != self._active_tick:
+                self._settle(next_tick)
+            if next_tick is None or (until is not None and next_tick >= until):
                 return
+            self._active_tick = next_tick
             try:
                 self._env.step()
             except EmptySchedule:  # pragma: no cover - guarded by peek
                 return
+
+    def _settle(self, next_tick: int | None) -> None:
+        settled, self._active_tick = self._active_tick, None
+        if settled is not None and self.on_tick_settled is not None:
+            self.on_tick_settled(settled, next_tick)
 
     def pending_count(self) -> int:
         return sum(

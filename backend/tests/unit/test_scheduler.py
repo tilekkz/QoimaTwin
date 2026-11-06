@@ -119,3 +119,26 @@ def test_handler_exception_propagates() -> None:
     sched.schedule(1, Phase.COMPLETION, boom)
     with pytest.raises(RuntimeError, match="handler failed"):
         sched.run()
+
+
+def test_settled_hook_runs_once_per_active_tick_with_next_tick() -> None:
+    sched = PhaseScheduler()
+    settled: list[tuple[int, int | None]] = []
+    sched.on_tick_settled = lambda tick, nxt: settled.append((tick, nxt))
+    sched.schedule(3, Phase.COMPLETION, lambda: None)
+    sched.schedule(3, Phase.DISPATCH, lambda: sched.schedule(9, Phase.ARRIVAL, lambda: None))
+    sched.schedule(5, Phase.CHECKPOINT, lambda: None)
+    sched.run()
+    assert settled == [(3, 5), (5, 9), (9, None)]
+
+
+def test_settled_hook_respects_until_and_resumes() -> None:
+    sched = PhaseScheduler()
+    settled: list[tuple[int, int | None]] = []
+    sched.on_tick_settled = lambda tick, nxt: settled.append((tick, nxt))
+    sched.schedule(2, Phase.COMPLETION, lambda: None)
+    sched.schedule(8, Phase.COMPLETION, lambda: None)
+    sched.run(until=5)
+    assert settled == [(2, 8)]
+    sched.run()
+    assert settled == [(2, 8), (8, None)]
