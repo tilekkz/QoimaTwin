@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: detailed multi-view reference sheet for a Blender low-poly warehouse prop.
+Primary request: Show the exact same very low wooden warehouse buffer pallet in four consistent views: orthographic front, orthographic left side, orthographic rear, and a larger elevated front three-quarter view, arranged in a clean 2 by 2 grid. Every panel shows the whole object.
+Scene/backdrop: neutral medium light grey seamless studio backdrop and floor; no warehouse and no other props.
+Subject: An EMPTY rectangular low-profile buffer platform, exact 1.4 metre width, 1.0 metre depth, and only 0.075 metre total height, a very thin practical miniature loading platform. Warm natural tan wooden slats running along the width, slight seams and gaps between each board, small soft edge bevels, three extremely shallow longitudinal support runners with six small low feet, real side/front fork-entry slots under the deck. Thin dark charcoal metal edge reinforcement along the two long sides; small industrial yellow paint patches on the four top corners, with subtle fastener heads. The deck is much thinner than an ordinary pallet: entire height to top is only 7.5 centimetres. No large block feet. Visible connected functional construction, no loose boards.
+Style/medium: premium crafted low-poly 3D warehouse game asset, small soft bevels on physical edges, matte simple materials, warm tan wood, charcoal grey rails and restrained yellow safety accents. Clear thickness and readable gaps.
+Composition/framing: Keep all parts, counts, proportions and colors identical across views, exaggerated tall orthographic framing is forbidden; preserve the extremely low side profile. Soft studio lighting and restrained occlusion.
+Constraints: EMPTY platform only, no carton, no tank, no worker, no cargo. Unbranded, no logo, no watermark, no warehouse scene. Four views of a single design, not four alternatives. No large industrial steel ramp or lift, no conventional tall pallet. Small view labels permitted, no other text.
+
+Generator: built-in image_gen, 2026-11-06. Four-view model design reference; geometry contract remains authoritative for dimensions.
