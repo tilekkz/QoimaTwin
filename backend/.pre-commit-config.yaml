@@ -1,0 +1,27 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check
+        entry: uv run --directory backend ruff check .
+        language: system
+        pass_filenames: false
+        files: ^backend/
+      - id: ruff-format
+        name: ruff format
+        entry: uv run --directory backend ruff format --check .
+        language: system
+        pass_filenames: false
+        files: ^backend/
+      - id: mypy
+        name: mypy strict
+        entry: uv run --directory backend mypy app tests
+        language: system
+        pass_filenames: false
+        files: ^backend/
+      - id: validate-contracts
+        name: validate contracts
+        entry: uv run --directory backend python -m app.cli validate-contracts
+        language: system
+        pass_filenames: false
+        files: ^(backend|contracts)/

@@ -1,0 +1,39 @@
+name: backend-ci
+
+on:
+  push:
+    paths: ["backend/**", "contracts/**", ".github/workflows/backend-ci.yml"]
+  pull_request:
+    paths: ["backend/**", "contracts/**", ".github/workflows/backend-ci.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - name: Install locked environment
+        run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check .
+      - name: Format
+        run: uv run ruff format --check .
+      - name: Type check
+        run: uv run mypy app tests
+      - name: Validate contracts
+        run: uv run python -m app.cli validate-contracts
+      - name: Tests with coverage
+        run: uv run pytest --cov --cov-report=term-missing
