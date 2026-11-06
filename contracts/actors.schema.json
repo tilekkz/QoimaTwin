@@ -1,0 +1,99 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "2.0"
+    },
+    "layout_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "picker",
+              "packer",
+              "receiver",
+              "shipper",
+              "forklift_driver"
+            ]
+          },
+          "initial_pos": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "home_node_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "vehicle_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pack_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "actor_id",
+          "role",
+          "initial_pos"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 24,
+      "maxItems": 24
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vehicle_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "driver_actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "graph_id": {
+            "enum": [
+              "inbound",
+              "outbound"
+            ]
+          }
+        },
+        "required": [
+          "vehicle_id",
+          "driver_actor_id",
+          "graph_id"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "required": [
+    "schema_version",
+    "layout_version",
+    "actors",
+    "vehicles"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

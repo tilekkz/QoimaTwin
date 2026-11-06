@@ -1,17 +1,70 @@
 {
+  "schema_version": "2.0",
+  "config_version": "large-v2-defaults-20261107",
+  "layout_version": "qoima-72x48-v2",
+  "staffing": {
+    "picker": 12,
+    "packer": 6,
+    "receiver": 2,
+    "shipper": 2,
+    "forklift_driver": 2
+  },
   "walk_speed_mps": 1.2,
   "pick_base_s": 6,
   "pick_per_unit_s": 0.15,
-  "dropoff_s": 3,
+  "handoff_s": 3,
   "pack_base_s": 20,
   "pack_per_line_s": 2,
   "pack_per_unit_s": 0.05,
-  "relocation_handle_s": 8,
+  "conveyor_cell_m": 1,
+  "conveyor_speed_mps": 1,
+  "conveyor_tick_s": 1,
+  "pack_buffer_capacity": 4,
+  "shipping_buffer_capacity": 40,
+  "totes_total": 96,
+  "receiving_queue_capacity": 8,
+  "reserve_staging_capacity": 40,
+  "sealed_pallet_queue_capacity": 8,
+  "receiving_pallets_per_hour": 20,
+  "receive_service_s": 90,
+  "forklift_speed_mps": 2,
+  "forklift_pickup_s": 15,
+  "forklift_drop_s": 15,
+  "shipping_scan_s": 8,
+  "parcels_per_pallet": 10,
+  "pallet_max_age_s": 300,
+  "open_pallet_count": 1,
+  "relocation_take_or_place_s": 8,
   "relocation_worker_count": 1,
-  "picker_count": 2,
-  "packer_count": 1,
-  "horizon_s": 28800,
-  "routing_policy": "graph-nearest-neighbor-v1",
-  "queue_policy": "fifo-order-id-v1",
-  "congestion": false
+  "ground_units_per_sku": 2000,
+  "reserve_bins_per_sku": 2,
+  "reserve_units_per_bin": 500,
+  "receipt_units_per_pallet": 500,
+  "max_drain_s": 7200,
+  "snapshot_interval_s": 30,
+  "chunk_duration_s": 60,
+  "profiles": {
+    "large-normal": {
+      "orders_per_hour": 240,
+      "preview_horizon_s": 3600,
+      "shift_horizon_s": 28800
+    },
+    "large-peak": {
+      "orders_per_hour": 600,
+      "preview_horizon_s": 3600,
+      "shift_horizon_s": 28800
+    }
+  },
+  "policies": {
+    "inventory_shortage": "unfulfilled_inventory_no_partial_reservation",
+    "order_dispatch": "eligible_fifo_by_arrival_and_order_id",
+    "picker_home": "four_per_induction_fixed",
+    "pack_target": "min_reserved_wip_then_pack_id",
+    "conveyor_merge": "round_robin",
+    "conveyor_transfer": "one_hop_per_tick_atomic",
+    "empty_tote_return": "instant_virtual_at_pack_complete",
+    "staff_breaks": "not_modelled",
+    "replenishment": "not_modelled",
+    "truck_capacity": "external_unbounded"
+  }
 }

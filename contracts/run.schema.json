@@ -1,174 +1,227 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://qoyma.local/schema/run-v1.json",
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "1.0"
-    },
-    "layout_version": {
-      "type": "string",
-      "minLength": 1
+      "const": "2.0"
     },
     "run_id": {
       "type": "string",
       "minLength": 1
     },
-    "data_version": {
+    "layout_version": {
       "type": "string",
       "minLength": 1
     },
-    "config": {
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experiment_type": {
+      "enum": [
+        "slotting",
+        "staffing",
+        "demand_stress",
+        "fixture"
+      ]
+    },
+    "input_hashes": {
       "type": "object",
-      "required": [
-        "walk_speed_mps",
-        "pick_base_s",
-        "pick_per_unit_s",
-        "dropoff_s",
-        "pack_base_s",
-        "pack_per_line_s",
-        "pack_per_unit_s",
-        "relocation_handle_s",
-        "relocation_worker_count",
-        "picker_count",
-        "packer_count",
-        "horizon_s",
-        "routing_policy",
-        "queue_policy",
-        "congestion"
-      ],
-      "additionalProperties": false,
       "properties": {
-        "walk_speed_mps": {
-          "type": "number",
-          "exclusiveMinimum": 0
-        },
-        "pick_base_s": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "pick_per_unit_s": {
-          "type": "number",
-          "minimum": 0
-        },
-        "dropoff_s": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "pack_base_s": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "pack_per_line_s": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "pack_per_unit_s": {
-          "type": "number",
-          "minimum": 0
-        },
-        "relocation_handle_s": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "relocation_worker_count": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "picker_count": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "packer_count": {
-          "type": "integer",
-          "minimum": 1
-        },
-        "horizon_s": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "routing_policy": {
+        "orders": {
           "type": "string",
-          "minLength": 1
+          "pattern": "^[0-9a-f]{64}$"
         },
-        "queue_policy": {
+        "receipts": {
           "type": "string",
-          "minLength": 1
+          "pattern": "^[0-9a-f]{64}$"
         },
-        "congestion": {
-          "type": "boolean"
+        "config": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "initial_inventory": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "assignment": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
+      },
+      "required": [
+        "orders",
+        "receipts",
+        "config",
+        "initial_inventory",
+        "assignment"
+      ],
+      "additionalProperties": false
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "failed"
+      ]
+    },
+    "termination_reason": {
+      "enum": [
+        "drained",
+        "unfulfilled_inventory",
+        "max_drain",
+        "deadlock",
+        "error"
+      ]
+    },
+    "horizon_s": {
+      "type": "number",
+      "minimum": 0
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "picker",
+              "packer",
+              "receiver",
+              "shipper",
+              "forklift_driver"
+            ]
+          },
+          "initial_pos": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "home_node_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "vehicle_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pack_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "actor_id",
+          "role",
+          "initial_pos"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 24,
+      "maxItems": 24
+    },
+    "cargo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cargo_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "tote",
+              "parcel",
+              "pallet",
+              "lot"
+            ]
+          },
+          "contents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sku_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "sku_id",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "order_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "cargo_id",
+          "kind",
+          "contents",
+          "order_ids"
+        ],
+        "additionalProperties": false
       }
     },
-    "initial_assignment": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "string",
-        "minLength": 1
-      },
-      "minProperties": 20,
-      "maxProperties": 20
-    },
-    "scenario": {
+    "initial_state": {
       "type": "object",
       "properties": {
-        "scenario_id": {
-          "type": "string",
-          "minLength": 1
+        "inventory_lots": {
+          "type": "array"
         },
-        "provenance": {
-          "type": "string",
-          "minLength": 1
-        },
-        "orders": {
+        "tote_pool": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "order_id": {
-                "type": "string",
-                "minLength": 1
-              },
-              "arrival_s": {
-                "type": "number",
-                "minimum": 0
-              },
-              "lines": {
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "sku_id": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "quantity": {
-                      "type": "number",
-                      "exclusiveMinimum": 0
-                    }
-                  },
-                  "required": [
-                    "sku_id",
-                    "quantity"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "order_id",
-              "arrival_s",
-              "lines"
-            ],
-            "additionalProperties": false
+            "type": "string",
+            "minLength": 1
           }
+        },
+        "cells": {
+          "type": "object"
+        },
+        "queues": {
+          "type": "object"
+        },
+        "merge_cursors": {
+          "type": "object"
+        },
+        "station_reserved_wip": {
+          "type": "object"
+        },
+        "pallet_state": {
+          "type": "object"
         }
       },
       "required": [
-        "scenario_id",
-        "provenance",
-        "orders"
+        "inventory_lots",
+        "tote_pool",
+        "cells",
+        "queues",
+        "merge_cursors",
+        "station_reserved_wip",
+        "pallet_state"
       ],
       "additionalProperties": false
     },
@@ -185,14 +238,18 @@
             "type": "string",
             "minLength": 1
           },
-          "kind": {
+          "state": {
             "enum": [
-              "WALK",
-              "PICK",
-              "DROPOFF",
-              "PACK",
+              "TRAVEL",
+              "BUSY_SERVICE",
+              "BLOCKED",
+              "WAIT_RESOURCE",
               "IDLE"
             ]
+          },
+          "operation": {
+            "type": "string",
+            "minLength": 1
           },
           "start_s": {
             "type": "number",
@@ -202,9 +259,11 @@
             "type": "number",
             "minimum": 0
           },
-          "order_id": {
-            "type": "string",
-            "minLength": 1
+          "entity_id": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "pos": {
             "type": "array",
@@ -214,21 +273,8 @@
             "minItems": 3,
             "maxItems": 3
           },
-          "sku_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "slot_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "quantity": {
-            "type": "number",
-            "exclusiveMinimum": 0
-          },
           "waypoints": {
             "type": "array",
-            "minItems": 2,
             "items": {
               "type": "object",
               "properties": {
@@ -261,63 +307,13 @@
         "required": [
           "action_id",
           "actor_id",
-          "kind",
+          "state",
+          "operation",
           "start_s",
-          "end_s"
+          "end_s",
+          "entity_id"
         ],
-        "additionalProperties": false,
-        "allOf": [
-          {
-            "if": {
-              "properties": {
-                "kind": {
-                  "const": "WALK"
-                }
-              }
-            },
-            "then": {
-              "required": [
-                "waypoints"
-              ]
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "kind": {
-                  "enum": [
-                    "PICK",
-                    "DROPOFF",
-                    "PACK",
-                    "IDLE"
-                  ]
-                }
-              }
-            },
-            "then": {
-              "required": [
-                "pos"
-              ]
-            }
-          },
-          {
-            "if": {
-              "properties": {
-                "kind": {
-                  "const": "PICK"
-                }
-              }
-            },
-            "then": {
-              "required": [
-                "sku_id",
-                "slot_id",
-                "quantity",
-                "order_id"
-              ]
-            }
-          }
-        ]
+        "additionalProperties": false
       }
     },
     "events": {
@@ -333,94 +329,72 @@
             "type": "number",
             "minimum": 0
           },
+          "phase": {
+            "type": "integer",
+            "minimum": 0
+          },
           "kind": {
             "enum": [
               "order_arrived",
+              "order_rejected_inventory",
               "order_assigned",
+              "stock_reserved",
               "sku_picked",
               "picked_last",
-              "pick_finished",
+              "handoff_ready",
+              "tote_inducted",
+              "cell_entered",
+              "cell_exited",
               "pack_started",
-              "order_completed"
+              "order_packed",
+              "parcel_outfed",
+              "shipping_arrived",
+              "parcel_scanned",
+              "pallet_sealed",
+              "order_dispatched",
+              "receipt_accepted",
+              "receipt_processed",
+              "pallet_putaway",
+              "stock_transferred",
+              "actor_state_changed",
+              "pallet_seal_pending"
             ]
           },
-          "order_id": {
+          "entity_id": {
             "type": "string",
             "minLength": 1
           },
-          "actor_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "sku_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "slot_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "quantity": {
-            "type": "number",
-            "exclusiveMinimum": 0
+          "payload": {
+            "type": "object"
           }
         },
         "required": [
           "seq",
           "at_s",
+          "phase",
           "kind",
-          "order_id"
+          "entity_id",
+          "payload"
         ],
         "additionalProperties": false
       }
     },
-    "orders_summary": {
+    "snapshots": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "order_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "picker_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "arrival_s": {
+          "at_s": {
             "type": "number",
             "minimum": 0
           },
-          "assigned_s": {
-            "type": "number",
-            "minimum": 0
-          },
-          "picked_last_s": {
-            "type": "number",
-            "minimum": 0
-          },
-          "pick_finished_s": {
-            "type": "number",
-            "minimum": 0
-          },
-          "pack_started_s": {
-            "type": "number",
-            "minimum": 0
-          },
-          "completed_s": {
-            "type": "number",
-            "minimum": 0
+          "state": {
+            "type": "object"
           }
         },
         "required": [
-          "order_id",
-          "picker_id",
-          "arrival_s",
-          "assigned_s",
-          "picked_last_s",
-          "pick_finished_s",
-          "pack_started_s",
-          "completed_s"
+          "at_s",
+          "state"
         ],
         "additionalProperties": false
       }
@@ -428,23 +402,31 @@
     "metrics": {
       "type": "object",
       "properties": {
-        "total_distance_m": {
-          "type": "number",
+        "arrived_total": {
+          "type": "integer",
           "minimum": 0
         },
-        "picker_busy_s": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "number",
-            "minimum": 0
-          }
-        },
-        "packer_busy_s": {
-          "type": "number",
+        "packed_total": {
+          "type": "integer",
           "minimum": 0
         },
-        "makespan_s": {
-          "type": "number",
+        "dispatched_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unfulfilled_inventory_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "backlog_at_horizon": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "all_orders_makespan_s": {
+          "type": [
+            "number",
+            "null"
+          ],
           "minimum": 0
         },
         "mean_cycle_s": {
@@ -461,111 +443,56 @@
           ],
           "minimum": 0
         },
-        "mean_pick_cycle_s": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0
+        "role_metrics": {
+          "type": "object"
         },
-        "mean_pack_wait_s": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "minimum": 0
+        "queue_metrics": {
+          "type": "object"
         },
-        "max_pack_queue": {
-          "type": "integer",
-          "minimum": 0
+        "conveyor_metrics": {
+          "type": "object"
         },
-        "time_weighted_mean_pack_queue": {
-          "type": "number",
-          "minimum": 0
-        },
-        "completed_total": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "completed_by_horizon": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "backlog_at_horizon": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "relocation_labor_s": {
-          "type": "number",
-          "minimum": 0
+        "inventory_balance": {
+          "type": "object"
         }
       },
       "required": [
-        "total_distance_m",
-        "picker_busy_s",
-        "packer_busy_s",
-        "makespan_s",
+        "arrived_total",
+        "packed_total",
+        "dispatched_total",
+        "unfulfilled_inventory_total",
+        "backlog_at_horizon",
+        "all_orders_makespan_s",
         "mean_cycle_s",
         "p95_cycle_s",
-        "mean_pick_cycle_s",
-        "mean_pack_wait_s",
-        "max_pack_queue",
-        "time_weighted_mean_pack_queue",
-        "completed_total",
-        "completed_by_horizon",
-        "backlog_at_horizon",
-        "relocation_labor_s"
+        "role_metrics",
+        "queue_metrics",
+        "conveyor_metrics",
+        "inventory_balance"
       ],
       "additionalProperties": false
-    },
-    "actors": {
-      "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
-      "items": {
-        "type": "object",
-        "properties": {
-          "actor_id": {
-            "type": "string",
-            "minLength": 1
-          },
-          "role": {
-            "enum": [
-              "picker",
-              "packer"
-            ]
-          },
-          "initial_pos": {
-            "type": "array",
-            "minItems": 3,
-            "maxItems": 3,
-            "items": {
-              "type": "number"
-            }
-          }
-        },
-        "required": [
-          "actor_id",
-          "role",
-          "initial_pos"
-        ],
-        "additionalProperties": false
-      }
     }
   },
   "required": [
     "schema_version",
-    "layout_version",
     "run_id",
-    "data_version",
-    "config",
-    "initial_assignment",
-    "scenario",
+    "layout_version",
+    "engine_version",
+    "scenario_id",
+    "experiment_type",
+    "input_hashes",
+    "status",
+    "termination_reason",
+    "horizon_s",
+    "actors",
+    "cargo",
+    "initial_state",
     "actions",
     "events",
-    "orders_summary",
-    "metrics",
-    "actors"
+    "snapshots",
+    "metrics"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qoyma.local/schema/run-v2.json"
 }
