@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING
 from app.contracts.base import exact
 from app.simulation.conveyor_driver import CargoInfo
 from app.simulation.recorder import ActorState, Vec3
-from app.simulation.scheduler import Phase
+from app.simulation.scheduler import Phase, ScheduledItem
 
 if TYPE_CHECKING:
     from app.simulation.context import SimContext
@@ -59,6 +59,7 @@ class Shipping:
         self.open_pallet: Pallet | None = None
         self.sealed_queue: list[Pallet] = []
         self.capacity = ctx.config.parcels_per_pallet
+        self.age_timers: dict[str, ScheduledItem] = {}
 
     # ----- buffer -----
     def can_accept(self) -> bool:
@@ -85,6 +86,9 @@ class Shipping:
             return False
         pallet.state = PalletState.SEALED
         pallet.generation += 1
+        timer = self.age_timers.pop(pallet.pallet_id, None)
+        if timer is not None:
+            timer.cancel()
         self.open_pallet = None
         self.sealed_queue.append(pallet)
         orders = [p.order_id for p in pallet.parcels]
@@ -161,7 +165,7 @@ class Shipping:
         if pallet.first_placement is None:
             pallet.first_placement = ctx.now
             generation = pallet.generation
-            ctx.sched.schedule(
+            self.age_timers[pallet.pallet_id] = ctx.sched.schedule(
                 ctx.now + ctx.ticks(exact(ctx.config.pallet_max_age_s)),
                 Phase.COMPLETION,
                 lambda: self._expired(pallet, generation),
@@ -174,6 +178,7 @@ class Shipping:
     def _expired(self, pallet: Pallet, generation: int) -> None:
         if pallet.generation != generation or pallet.state is not PalletState.OPEN:
             return
+        self.age_timers.pop(pallet.pallet_id, None)
         self._mark_pending(pallet, "age")
         self.ctx.request_dispatch()
 

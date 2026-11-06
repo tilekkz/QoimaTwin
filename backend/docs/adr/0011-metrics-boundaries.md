@@ -13,6 +13,7 @@ separately as unfulfilled_inventory. Cycles include only completions observed in
 packed cycles have a separate population. P95 uses rank (n-1)*0.95 and linear interpolation.
 Empty populations, zero denominators, and makespan without all arrivals dispatched yield null.
 Makespan is the last dispatch timestamp from simulation origin, not the forklift return.
+last_dispatch_s remains defined when at least one order was dispatched, even with backlog.
 Backlog age is cutoff minus arrival; includes rejected orders.
 
 Role utilization counts every roster actor, never vehicles. Active = TRAVEL + BUSY_SERVICE;

@@ -76,6 +76,7 @@ class Metrics:
             "backlog_max_age_s": max(ages, default=None),
             "rejection_reasons": {"unfulfilled_inventory": rejected} if rejected else {},
             "all_orders_makespan_s": makespan if records and not backlog else None,
+            "last_dispatch_s": makespan if done else None,
         }
 
 

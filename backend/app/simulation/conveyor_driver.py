@@ -58,6 +58,9 @@ class ConveyorDriver:
         self.cargo: dict[str, CargoInfo] = {}
         self.requests: list[AdmissionRequest] = []
         self.transfers: list[CellTransfer] = []
+        self.pack_inlets = {
+            p.pack_id: f"{p.input_segment_id}:0" for p in ctx.inputs.layout.pack_stations
+        }
 
     def register_cargo(self, cargo_id: str, kind: str, order_id: str, target: str) -> None:
         self.cargo[cargo_id] = CargoInfo(cargo_id, kind, order_id, target)
@@ -90,6 +93,10 @@ class ConveyorDriver:
         if exit_ is not None and exit_.target_id == info.target:
             return EXIT
         nxt = self.ctx.topology.next_cell_towards(cell, info.target)
+        if nxt == self.pack_inlets.get(info.target) and not self.engine.packing.can_accept(
+            info.target
+        ):
+            return cell  # ADR 0004: wait at the divert until the target post has room.
         return EXIT if nxt is None else nxt
 
     def _exit_open(self, cargo_id: str, cell: str) -> bool:

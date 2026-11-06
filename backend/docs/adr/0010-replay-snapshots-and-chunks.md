@@ -25,8 +25,8 @@ objects). These closures cannot be serialized, and some state lives only inside 
   (the analytical fixture still ends at 474 s; its last snapshot is at 450 s).
 - No extra snapshot is taken at `end_tick` unless it is a boundary. Replay reaches the final state by applying the
   events after the last snapshot.
-- Hook composition: `Engine._on_tick_settled` is the only hook. The invariant checker runs first, then the
-  checkpointer, so a snapshot is never taken of a state that failed its invariants.
+- Hook composition: `Engine._on_tick_settled` is the only hook. Invariants run first, then queue observation
+  (ADR0011), then the checkpointer, so a snapshot is never taken of a state that failed its invariants.
 
 ### Snapshot content
 
@@ -48,7 +48,7 @@ each access, so neither the caller nor the running engine can change a stored sn
 | `timers` | Pending scheduler descriptors `(tick, phase, key, seq, unique)`, cancelled items excluded |
 
 Not included: the event and action history, immutable inputs (layout, catalog, orders, receipts, initial lots) and
-metric accumulators. Metrics belong to the metrics module (B7). The exporter derives KPIs from events.
+metric accumulators. Metrics belong to the metrics module (B7); the exporter projects its summaries.
 
 Two parts of the state live only inside closures and are rebuilt from records:
 

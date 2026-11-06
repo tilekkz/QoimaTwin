@@ -16,10 +16,13 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 | Settled invariants, 30 s replay snapshots and 60 s chunks | done |
 | Schema-valid v2 run exporter and proposed bundle/fixture for Tilek | done |
 | Horizon/end metrics, linear p95, role utilization and time-weighted queues | done |
-| Next: remaining acceptance gates and measured mass flow | open |
+| C5-C8, K1-K6, D1-D8, T1-T6 acceptance gates | done |
+| One-hour normal/peak determinism, invariants, runtime and export-size measurements | see research report |
 
 The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
-Mass-flow results (240/600 orders per hour) are not measured yet.
+The materializer offers 240/600 orders per hour; measured dispatch and backlog are reported
+separately from those input counts.
+See [the one-hour acceptance and performance report](docs/research/2026-11-07-backend-ae-results.md).
 
 ## Setup
 
@@ -40,6 +43,7 @@ uv run pytest --cov                           # coverage gate: 85 % statement an
 uv run ruff check . && uv run ruff format --check .
 uv run mypy app tests                         # strict mode
 uv run python -m app.cli simulate --profile large-normal --horizon-s 3600 --out runs/normal
+uv run python tools/benchmark_runs.py --out D:/QoimaTwin-runs/new-benchmark-directory
 ```
 
 Optional git hooks (run from the repository root):
@@ -55,6 +59,8 @@ the supplied illustrative assignment, not a trained ABC plan. Output contains sc
 `run.json`, a proposed `manifest.json`, an initial-state/catalog file and 60-second chunks.
 Load catalog plus chunks for streaming; the full inline copy is optional for readers. Repeated
 actions in neighboring chunks have stable IDs. Verify exact byte hashes from the manifest.
+The manifest reports at_horizon and at_end metrics separately. Role utilization and waiting
+queue averages in run.json use [0,H); its counts and cycle statistics use the end of the run.
 The shared schemas remain v2.0; the transport envelope and files under
 `contracts/fixtures/proposed/` are proposals for Tilek, not an agreed v2.1 contract.
 

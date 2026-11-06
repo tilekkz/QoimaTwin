@@ -34,6 +34,8 @@ def test_T2_T3_backlog_includes_rejections() -> None:
     assert at_end["completion_rate"] == 0.5
     assert at_end["all_orders_makespan_s"] is None
     assert at_end["rejection_reasons"] == {"unfulfilled_inventory": 1}
+    assert at_end["last_dispatch_s"] == 10.0
+    assert at_h["last_dispatch_s"] is None
 
 
 def fixture_engine(bundle: ContractBundle, contracts_dir: Path, horizon: int) -> Engine:

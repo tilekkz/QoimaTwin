@@ -113,12 +113,15 @@ class PhaseScheduler:
     def run(self, until: int | None = None) -> None:
         """Process events; with `until`, stop before any event at tick >= until."""
         while True:
-            peek = self._env.peek()
-            next_tick = None if peek == float("inf") else int(peek)
+            next_tick = self.peek_next_tick()
             if self._active_tick is not None and next_tick != self._active_tick:
                 self._settle(next_tick)
             if next_tick is None or (until is not None and next_tick >= until):
                 return
+            # Empty buckets retain SimPy events after cancellation. Remove those only when
+            # advancing to real work; they do not settle ticks or extend the observed clock.
+            while self._env.peek() < next_tick:
+                self._env.step()
             self._active_tick = next_tick
             try:
                 self._env.step()
