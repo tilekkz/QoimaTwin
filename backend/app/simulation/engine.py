@@ -19,6 +19,7 @@ from app.simulation.metrics import Metrics
 from app.simulation.outbound import Outbound
 from app.simulation.packing import Packing
 from app.simulation.picking import Picking
+from app.simulation.receiving import Receiving
 from app.simulation.recorder import Recorder
 from app.simulation.scheduler import Phase, PhaseScheduler
 from app.simulation.shipping import Shipping
@@ -73,7 +74,9 @@ class Engine:
         self.packing = Packing(self.ctx, self)
         self.shipping = Shipping(self.ctx, self)
         self.outbound = Outbound(self.ctx, self)
+        self.receiving = Receiving(self.ctx, self)
         self._schedule_arrivals()
+        self._schedule_receipts()
 
     def _schedule_arrivals(self) -> None:
         for order in sorted(
@@ -87,13 +90,28 @@ class Engine:
                 key=(order.order_id,),
             )
 
+    def _schedule_receipts(self) -> None:
+        receipts = sorted(
+            self.ctx.inputs.scenario.receipts, key=lambda r: (r.arrival_s, r.receipt_id)
+        )
+        for receipt in receipts:
+            self.ctx.sched.schedule(
+                self.ctx.ticks(receipt.arrival_s),
+                Phase.ARRIVAL,
+                partial(self.receiving.on_arrival, receipt),
+                key=(receipt.receipt_id,),
+            )
+
     def _dispatch_cycle(self) -> None:
         for _ in range(MAX_DISPATCH_ROUNDS):
             self.ctx.dispatch_dirty = False
-            changed = self.shipping.seal_ready()
+            changed = self.receiving.admit()
+            changed |= self.shipping.seal_ready()
             changed |= self.outbound.assign()
             changed |= self.packing.start_services()
             changed |= self.shipping.start_scans()
+            changed |= self.receiving.start_services()
+            changed |= self.receiving.assign_putaway()
             changed |= self.picking.assign()
             if not changed and not self.ctx.dispatch_dirty:
                 return
@@ -107,6 +125,8 @@ class Engine:
         if ctx.sched.pending_count():
             return RunOutcome(RunStatus.PARTIAL, Termination.MAX_DRAIN, horizon, deadline)
         end = ctx.now
+        if self.receiving.blocked():
+            return RunOutcome(RunStatus.PARTIAL, Termination.DEADLOCK, horizon, end)
         if self.metrics.counts()["unfulfilled_inventory_total"]:
             return RunOutcome(RunStatus.PARTIAL, Termination.UNFULFILLED_INVENTORY, horizon, end)
         return RunOutcome(RunStatus.COMPLETE, Termination.DRAINED, horizon, end)
