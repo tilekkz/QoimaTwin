@@ -51,43 +51,17 @@ class ConveyorTopology:
 
     @classmethod
     def from_layout(cls, layout: Layout) -> ConveyorTopology:
-        conveyor = layout.conveyor
-        cell_length = exact(conveyor.cell_length_m)
-        segments = {s.segment_id: s for s in conveyor.segments}
-        succ: dict[str, set[str]] = {}
-        for seg in conveyor.segments:
-            for i in range(seg.cell_count):
-                succ[cell_id(seg.segment_id, i)] = set()
-                if i + 1 < seg.cell_count:
-                    succ[cell_id(seg.segment_id, i)].add(cell_id(seg.segment_id, i + 1))
-        for link in conveyor.connections:
-            src_seg, dst_seg = segments[link.from_segment_id], segments[link.to_segment_id]
-            src_off, dst_off = port_offset(src_seg, link.at), port_offset(dst_seg, link.at)
-            if src_off is None or dst_off is None:
-                raise TopologyError(
-                    f"port {link.from_segment_id}->{link.to_segment_id} is off-segment"
-                )
-            src = cell_id(src_seg.segment_id, int(src_off / cell_length) - 1)
-            dst = cell_id(dst_seg.segment_id, int(dst_off / cell_length))
-            if src not in succ or dst not in succ:
-                raise TopologyError(
-                    f"port {link.from_segment_id}->{link.to_segment_id} has no cell"
-                )
-            succ[src].add(dst)
-
-        exits: dict[str, CellExit] = {}
-        for station in layout.pack_stations:
-            last = segments[station.input_segment_id].cell_count - 1
-            exits[cell_id(station.input_segment_id, last)] = CellExit(
-                ExitKind.PACK_BUFFER, station.pack_id
-            )
-        terminal = segments[conveyor.terminal.segment_id]
-        exits[cell_id(terminal.segment_id, terminal.cell_count - 1)] = CellExit(
-            ExitKind.SHIPPING_BUFFER, "SHIPPING"
-        )
+        succ = _build_successors(layout)
+        exits = _build_exits(layout)
         for cell, outgoing in succ.items():
             if not outgoing and cell not in exits:
                 raise TopologyError(f"cell {cell} is a dead end")
+        for name, ids in (
+            ("induction", [i.induction_id for i in layout.inductions]),
+            ("pack", [p.pack_id for p in layout.pack_stations]),
+        ):
+            if len(set(ids)) != len(ids):
+                raise TopologyError(f"duplicate {name} id / exit target")
 
         successors = {c: tuple(sorted(s, key=cell_sort_key)) for c, s in succ.items()}
         pred: dict[str, list[str]] = {c: [] for c in succ}
@@ -96,7 +70,7 @@ class ConveyorTopology:
                 pred[nxt].append(cell)
         predecessors = {c: tuple(sorted(p, key=cell_sort_key)) for c, p in pred.items()}
         cells = tuple(sorted(succ, key=cell_sort_key))
-        return cls(
+        topology = cls(
             cells=cells,
             successors=successors,
             predecessors=predecessors,
@@ -111,6 +85,14 @@ class ConveyorTopology:
             },
         )
 
+        reachable = set(exits)
+        for hops in topology._next_hop.values():
+            reachable.update(hops)
+        unreachable = sorted(set(cells) - reachable, key=cell_sort_key)
+        if unreachable:
+            raise TopologyError(f"cells cannot reach any exit: {unreachable}")
+        return topology
+
     def next_cell_towards(self, cell: str, target_id: str) -> str | None:
         """Next cell on the route to the exit of `target_id`; None when `cell` is that exit cell."""
         hops = self._next_hop.get(target_id)
@@ -124,6 +106,9 @@ class ConveyorTopology:
 
     def travel_cells(self, start: str, end: str) -> int:
         """Cells traversed from entering `start` until leaving `end` (one second each at 1 m/s)."""
+        for cell in (start, end):
+            if cell not in self.successors:
+                raise TopologyError(f"unknown conveyor cell {cell}")
         queue: deque[tuple[str, int]] = deque([(start, 1)])
         seen = {start}
         while queue:
@@ -150,3 +135,58 @@ def _next_hops_towards(exit_cell: str, predecessors: dict[str, tuple[str, ...]])
                 hops[prev] = cell
                 queue.append(prev)
     return hops
+
+
+def _build_successors(layout: Layout) -> dict[str, set[str]]:
+    conveyor = layout.conveyor
+    segments = {s.segment_id: s for s in conveyor.segments}
+    if len(segments) != len(conveyor.segments):
+        raise TopologyError("duplicate segment id")
+    cell_length = exact(conveyor.cell_length_m)
+    succ = {
+        cell_id(seg.segment_id, i): (
+            {cell_id(seg.segment_id, i + 1)} if i + 1 < seg.cell_count else set()
+        )
+        for seg in conveyor.segments
+        for i in range(seg.cell_count)
+    }
+    for link in conveyor.connections:
+        source, target = segments.get(link.from_segment_id), segments.get(link.to_segment_id)
+        if source is None or target is None:
+            raise TopologyError("connection references unknown segment")
+        src_off, dst_off = port_offset(source, link.at), port_offset(target, link.at)
+        if src_off is None or dst_off is None:
+            raise TopologyError(f"port {source.segment_id}->{target.segment_id} is off-segment")
+        if src_off % cell_length or dst_off % cell_length:
+            raise TopologyError("port is not a valid cell boundary")
+        src = cell_id(source.segment_id, int(src_off / cell_length) - 1)
+        dst = cell_id(target.segment_id, int(dst_off / cell_length))
+        if src not in succ or dst not in succ:
+            raise TopologyError(f"port {source.segment_id}->{target.segment_id} has no cell")
+        succ[src].add(dst)
+    return succ
+
+
+def _build_exits(layout: Layout) -> dict[str, CellExit]:
+    segments = {s.segment_id: s for s in layout.conveyor.segments}
+    exits: dict[str, CellExit] = {}
+    targets: set[str] = set()
+    definitions = [
+        (p.input_segment_id, CellExit(ExitKind.PACK_BUFFER, p.pack_id))
+        for p in layout.pack_stations
+    ]
+    definitions.append(
+        (layout.conveyor.terminal.segment_id, CellExit(ExitKind.SHIPPING_BUFFER, "SHIPPING"))
+    )
+    for segment_id, exit_ in definitions:
+        if exit_.target_id in targets:
+            raise TopologyError(f"duplicate exit target {exit_.target_id}")
+        segment = segments.get(segment_id)
+        if segment is None:
+            raise TopologyError(f"exit references unknown segment {segment_id}")
+        cell = cell_id(segment_id, segment.cell_count - 1)
+        if cell in exits:
+            raise TopologyError(f"duplicate exit cell {cell}")
+        targets.add(exit_.target_id)
+        exits[cell] = exit_
+    return exits
