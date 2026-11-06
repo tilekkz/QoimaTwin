@@ -18,6 +18,7 @@ from app.simulation.context import GraphGeometry, RunInputs, SimContext, build_l
 from app.simulation.conveyor_driver import ConveyorDriver
 from app.simulation.invariants import check_invariants as verify_invariants
 from app.simulation.metrics import Metrics
+from app.simulation.metrics_summary import queues
 from app.simulation.outbound import Outbound
 from app.simulation.packing import Packing
 from app.simulation.picking import Picking
@@ -95,6 +96,7 @@ class Engine:
     def _on_tick_settled(self, tick: int, next_tick: int | None) -> None:
         if self.check_invariants:
             verify_invariants(self)
+        self.metrics.queue_samples.append((tick, queues(self)))
         self.checkpoints.on_tick_settled(tick, next_tick)
 
     def _schedule_arrivals(self) -> None:

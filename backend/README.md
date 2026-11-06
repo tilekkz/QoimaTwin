@@ -15,7 +15,8 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 | B5 part: receiving, inbound forklift, reserve staging (R1-R3, I6) | done |
 | Settled invariants, 30 s replay snapshots and 60 s chunks | done |
 | Schema-valid v2 run exporter and proposed bundle/fixture for Tilek | done |
-| Next: horizon/end metrics, remaining acceptance gates and measured mass flow | open |
+| Horizon/end metrics, linear p95, role utilization and time-weighted queues | done |
+| Next: remaining acceptance gates and measured mass flow | open |
 
 The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
 Mass-flow results (240/600 orders per hour) are not measured yet.

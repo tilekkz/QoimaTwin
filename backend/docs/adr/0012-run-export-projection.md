@@ -38,9 +38,9 @@ in a separate manifest with transport_version=qoima-run-bundle-1-proposal.
   Plan and forecast hashes are explicit null-artifact hashes until those inputs exist.
   Stock excludes slot placement. Integer-valued floats normalize to integers in identity
   hashing only; generic canonical_bytes preserves number types. Ordered routes remain ordered.
-- Before task D the v2 metrics projection exposes actual end counts/cycles/backlog and ledger;
-  role/queue/conveyor fields are empty, never invented measurements. Task D supplies these
-  summaries with explicit observation windows.
+- The v2 metrics projection uses end counts/cycles/ledger and horizon backlog/role utilization/
+  time-weighted queues. The manifest includes both full at_horizon and at_end windows (ADR0011).
+  conveyor_metrics remains empty; no unmeasured values are invented.
 
 The CLI uses the supplied illustrative assignment, not a claimed trained ABC placement.
 Shared schemas and frontend files stay unchanged. Proposed fixture files are clearly labelled.

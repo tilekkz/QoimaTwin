@@ -212,6 +212,23 @@ def test_manifest_rejects_metadata_override(exported: dict[str, Any], tmp_path: 
     assert not (tmp_path / "run.json").exists()
 
 
+def test_metrics_export_uses_horizon_utilization_and_end_cycles(
+    bundle: ContractBundle, contracts_dir: Path
+) -> None:
+    inputs = fixture_inputs(bundle, load_fixture(contracts_dir))
+    inputs = dataclasses.replace(
+        inputs, scenario=inputs.scenario.model_copy(update={"horizon_s": 10.0})
+    )
+    engine = Engine(inputs, check_invariants=True)
+    metrics = export_run(engine, engine.run())["metrics"]
+    assert metrics["backlog_at_horizon"] == 1
+    assert metrics["dispatched_total"] == 1
+    assert metrics["mean_cycle_s"] == 469.0
+    assert metrics["p95_cycle_s"] == 469.0
+    assert metrics["role_metrics"]["picker"]["active"] == 1 / 12
+    assert metrics["queue_metrics"]["orders"] == 0
+
+
 def test_chunk_supplies_actions_for_seek(exported: dict[str, Any], tmp_path: Path) -> None:
     manifest = write_run(exported, tmp_path)
     for time, actor, operation in [(5, "P01", "pick"), (455, "F02", "loading")]:

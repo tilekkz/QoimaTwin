@@ -26,6 +26,7 @@ def _simulate(profile: Profile, horizon_s: int, out_dir: Path) -> int:
     from app.simulation.context import RunInputs
     from app.simulation.engine import Engine
     from app.simulation.invariants import InvariantViolation
+    from app.simulation.metrics_summary import summary
 
     try:
         bundle = load_contract_bundle(default_contracts_dir())
@@ -47,6 +48,8 @@ def _simulate(profile: Profile, horizon_s: int, out_dir: Path) -> int:
                 "identity": fingerprint(inputs),
                 "ended_at_s": outcome.end_tick / engine.ctx.grid.ticks_per_second,
                 "provenance": inputs.scenario.provenance.model_dump(mode="json"),
+                "metrics": summary(engine, outcome),
+                "ticks_per_second": engine.ctx.grid.ticks_per_second,
             },
         )
     except (ContractError, ValueError, OSError, SchemaValidationError, InvariantViolation) as exc:

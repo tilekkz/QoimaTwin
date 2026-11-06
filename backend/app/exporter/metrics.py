@@ -1,39 +1,22 @@
-"""Minimal v2 counters; the detailed window metrics are published separately."""
+"""Schema-v2 KPIs: end counts/cycles and horizon utilization/waiting queues."""
 
-from typing import Any
+from typing import Any, cast
 
 from app.simulation.engine import Engine, RunOutcome
+from app.simulation.metrics_summary import summary
 
 
 def project_metrics(engine: Engine, outcome: RunOutcome) -> dict[str, Any]:
-    orders = list(engine.metrics.orders.values())
-    tps = engine.ctx.grid.ticks_per_second
-    cycles = sorted((r.dispatched - r.arrival) / tps for r in orders if r.dispatched is not None)
-    horizon = outcome.horizon_tick
-    backlog = sum(
-        r.arrival < horizon and (r.dispatched is None or r.dispatched >= horizon) for r in orders
-    )
-    index = (len(cycles) - 1) * 0.95
-    lower = int(index)
-    p95 = (
-        (
-            cycles[lower]
-            + (cycles[min(lower + 1, len(cycles) - 1)] - cycles[lower]) * (index - lower)
-        )
-        if cycles
-        else None
-    )
-    last = max((r.dispatched for r in orders if r.dispatched is not None), default=None)
+    windows = cast(dict[str, Any], summary(engine, outcome))
+    end, horizon = windows["at_end"], windows["at_horizon"]
     return {
-        **engine.metrics.counts(),
-        "backlog_at_horizon": backlog,
-        "all_orders_makespan_s": last / tps
-        if last is not None and len(cycles) == len(orders)
-        else None,
-        "mean_cycle_s": sum(cycles) / len(cycles) if cycles else None,
-        "p95_cycle_s": p95,
-        "role_metrics": {},
-        "queue_metrics": {},
+        **{key: end[key] for key in engine.metrics.counts()},
+        "backlog_at_horizon": horizon["backlog"],
+        "all_orders_makespan_s": end["all_orders_makespan_s"],
+        "mean_cycle_s": end["cycle"]["mean_s"],
+        "p95_cycle_s": end["cycle"]["p95_s"],
+        "role_metrics": horizon["utilization_by_role"],
+        "queue_metrics": horizon["queue_mean"],
         "conveyor_metrics": {},
         "inventory_balance": {
             sku: {str(kind): qty for kind, qty in engine.ctx.ledger.buckets(sku).items()}
