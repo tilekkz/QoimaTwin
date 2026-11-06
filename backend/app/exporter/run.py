@@ -1,0 +1,170 @@
+"""The immutable inline-v2 projection and a hashed chunk transport envelope."""
+
+import hashlib
+import math
+from bisect import bisect_right
+from pathlib import Path
+from typing import Any
+
+from app.data.scenario_materializer import _atomic_write
+from app.exporter.actions import project_actions
+from app.exporter.catalog import cargo_catalog, initial_state
+from app.exporter.events import project_events
+from app.exporter.identity import fingerprint
+from app.exporter.metrics import project_metrics
+from app.exporter.validation import validate_run
+from app.simulation.engine import Engine, RunOutcome
+from app.storage.canonical_json import canonical_bytes, sha256_hex
+from app.version import ENGINE_VERSION
+
+V2_HASHES = ("orders", "receipts", "config", "initial_inventory", "assignment")
+
+
+def export_run(engine: Engine, outcome: RunOutcome) -> dict[str, Any]:
+    inputs = engine.ctx.inputs
+    identity = fingerprint(inputs)
+    events = project_events(engine)
+    actions = project_actions(engine, outcome.end_tick)
+    result = {
+        "schema_version": "2.0",
+        "run_id": sha256_hex(identity),
+        "layout_version": inputs.layout.layout_version,
+        "engine_version": ENGINE_VERSION,
+        "scenario_id": inputs.scenario.scenario_id,
+        "experiment_type": inputs.experiment_type,
+        "input_hashes": {key: identity["hashes"][key] for key in V2_HASHES},
+        "status": str(outcome.status),
+        "termination_reason": str(outcome.termination),
+        "horizon_s": inputs.scenario.horizon_s,
+        "actors": [
+            a.model_dump(mode="json", exclude_none=True)
+            for a in sorted(inputs.actors.actors, key=lambda a: a.actor_id)
+        ],
+        "cargo": cargo_catalog(engine),
+        "initial_state": initial_state(engine),
+        "actions": actions,
+        "events": events,
+        "snapshots": _snapshots(engine, events, actions),
+        "metrics": project_metrics(engine, outcome),
+    }
+    validate_run(result)
+    return result
+
+
+def _snapshots(
+    engine: Engine, events: list[dict[str, Any]], actions: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    times = [event["at_s"] for event in events]
+    by_id = {action["action_id"]: action for action in actions}
+    result = []
+    for snapshot in engine.checkpoints.snapshots:
+        seconds = snapshot.at_tick / engine.ctx.grid.ticks_per_second
+        state = snapshot.state
+        _project_snapshot_actions(state, by_id, engine.ctx.grid.ticks_per_second)
+        state["checkpoint"] = {
+            "at_tick": snapshot.at_tick,
+            "last_seq": bisect_right(times, seconds) - 1,
+            "state_hash": sha256_hex(state),
+        }
+        result.append({"at_s": seconds, "state": state})
+    return result
+
+
+def _project_snapshot_actions(
+    state: dict[str, Any], actions: dict[str, dict[str, Any]], tps: int
+) -> None:
+    for actor in state["actors"]:
+        action = actor["action"]
+        if action is None:
+            continue
+        projected = actions.get(action["action_id"])
+        if projected is None:
+            # A service/drive scheduled exactly at the cutoff has performed no interval.
+            actor["pos"] = action["waypoints"][0][1] if action["waypoints"] else action["pos"]
+            actor["action"] = None
+            continue
+        action["end_tick"] = round(projected["end_s"] * tps)
+        if "waypoints" in projected:
+            action["waypoints"] = [
+                [p["node_id"], p["pos"], round(p["at_s"] * tps)] for p in projected["waypoints"]
+            ]
+
+
+def _publish(out_dir: Path, name: str, value: Any) -> dict[str, Any]:
+    raw = canonical_bytes(value)
+    path = out_dir / name
+    path.parent.mkdir(parents=True, exist_ok=True)
+    _atomic_write(path, raw)
+    return {"path": name, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+
+
+def _chunks(run: dict[str, Any], out_dir: Path, end_s: float) -> list[dict[str, Any]]:
+    buckets: list[list[dict[str, Any]]] = [[] for _ in range(int(end_s // 60) + 1)]
+    for event in run["events"]:
+        buckets[int(event["at_s"] // 60)].append(event)
+    chunks = []
+    for index, events in enumerate(buckets):
+        start, end = index * 60, (index + 1) * 60
+        payload = {
+            "run_id": run["run_id"],
+            "start_s": start,
+            "end_s": end,
+            "events": events,
+            "actions": [a for a in run["actions"] if a["start_s"] < end and a["end_s"] > start],
+            "snapshots": [s for s in run["snapshots"] if start <= s["at_s"] < end],
+        }
+        chunks.append(
+            {
+                **_publish(out_dir, f"chunks/{index:06d}.json", payload),
+                "start_s": start,
+                "end_s": end,
+                "first_seq": events[0]["seq"] if events else None,
+                "last_seq": events[-1]["seq"] if events else None,
+            }
+        )
+    return chunks
+
+
+def write_run(
+    run: dict[str, Any], out_dir: Path, *, metadata: dict[str, Any] | None = None
+) -> dict[str, Any]:
+    validate_run(run)
+    metadata = metadata or {}
+    allowed = {"identity", "provenance", "ended_at_s", "metrics", "ticks_per_second"}
+    if metadata.keys() - allowed:
+        raise ValueError("metadata cannot override authoritative manifest fields")
+    end_s = max(
+        [e["at_s"] for e in run["events"]]
+        + [a["end_s"] for a in run["actions"]]
+        + [s["at_s"] for s in run["snapshots"]]
+        + [0]
+    )
+    supplied_end = metadata.get("ended_at_s", end_s)
+    if (
+        not isinstance(supplied_end, (int, float))
+        or isinstance(supplied_end, bool)
+        or not math.isfinite(supplied_end)
+        or supplied_end < end_s
+    ):
+        raise ValueError("ended_at_s precedes exported data")
+    end_s = supplied_end
+    inline = _publish(out_dir, "run.json", run)
+    catalog = {
+        key: value for key, value in run.items() if key not in {"events", "actions", "snapshots"}
+    }
+    catalog_ref = _publish(out_dir, "catalog.json", catalog)
+    manifest = {
+        "transport_version": "qoima-run-bundle-1-proposal",
+        "schema_version": "2.0",
+        "run_id": run["run_id"],
+        "engine_version": run["engine_version"],
+        "layout_version": run["layout_version"],
+        "ended_at_s": end_s,
+        "input_hashes": run["input_hashes"],
+        "inline": inline,
+        "catalog": catalog_ref,
+        "chunks": _chunks(run, out_dir, end_s),
+        **metadata,
+    }
+    _publish(out_dir, "manifest.json", manifest)
+    return manifest

@@ -8,6 +8,8 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
+from jsonschema import ValidationError as SchemaValidationError
+
 from app.contracts.loader import ContractError, load_contract_bundle
 from app.contracts.validation import validate_bundle
 from app.conveyor.topology import ConveyorTopology, TopologyError
@@ -15,6 +17,51 @@ from app.data.scenario_materializer import Profile, materialize, write_materiali
 from app.navigation.shortest_paths import AllPairsPaths
 from app.settings import default_contracts_dir
 from app.version import ENGINE_VERSION
+
+
+def _simulate(profile: Profile, horizon_s: int, out_dir: Path) -> int:
+    from app.contracts.assignment import Assignment
+    from app.exporter.identity import fingerprint
+    from app.exporter.run import export_run, write_run
+    from app.simulation.context import RunInputs
+    from app.simulation.engine import Engine
+    from app.simulation.invariants import InvariantViolation
+
+    try:
+        bundle = load_contract_bundle(default_contracts_dir())
+        materialized = materialize(profile, horizon_s, bundle.config)
+        write_materialized(materialized, out_dir / "inputs")
+        assignment = Assignment.from_json_text(
+            (bundle.directory / "assignment.example.json").read_bytes()
+        )
+        inputs = RunInputs(
+            bundle.layout, bundle.config, bundle.actors, assignment, materialized.scenario
+        )
+        engine = Engine(inputs, check_invariants=True)
+        outcome = engine.run()
+        run = export_run(engine, outcome)
+        write_run(
+            run,
+            out_dir,
+            metadata={
+                "identity": fingerprint(inputs),
+                "ended_at_s": outcome.end_tick / engine.ctx.grid.ticks_per_second,
+                "provenance": inputs.scenario.provenance.model_dump(mode="json"),
+            },
+        )
+    except (ContractError, ValueError, OSError, SchemaValidationError, InvariantViolation) as exc:
+        print(json.dumps({"status": "failed", "issues": [str(exc)]}))
+        return 1
+    print(
+        json.dumps(
+            {
+                "status": run["status"],
+                "run_id": run["run_id"],
+                "termination_reason": run["termination_reason"],
+            }
+        )
+    )
+    return 0
 
 
 def _validate_contracts(contracts_dir: Path) -> int:
@@ -74,6 +121,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     materializer.add_argument("--horizon-s", type=int, required=True)
     materializer.add_argument("--out", type=Path, required=True)
+    simulator = commands.add_parser("simulate", help="simulate and export a validated run bundle")
+    simulator.add_argument(
+        "--profile", choices=("large-normal", "large-peak", "promotion"), required=True
+    )
+    simulator.add_argument("--horizon-s", type=int, required=True)
+    simulator.add_argument("--out", type=Path, required=True)
     return parser
 
 
@@ -83,6 +136,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _validate_contracts(args.contracts_dir or default_contracts_dir())
     if args.command == "materialize":
         return _materialize(args.profile, args.horizon_s, args.out)
+    if args.command == "simulate":
+        return _simulate(args.profile, args.horizon_s, args.out)
     return 2  # pragma: no cover - argparse rejects unknown commands
 
 

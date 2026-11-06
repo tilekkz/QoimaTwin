@@ -44,6 +44,7 @@ class CellTransfer:
     cargo_id: str
     source: str
     target: str
+    event_offset: int = 0
 
 
 class ConveyorDriver:
@@ -102,10 +103,10 @@ class ConveyorDriver:
         result = plan_tick(self.belt, self.occupancy, self._route, self._exit_open, self.cursors)
         self.occupancy, self.cursors = result.occupancy, result.cursors
         for move in result.moves:
-            self.transfers.append(CellTransfer(now, move.cargo, move.source, move.target))
+            self._record_transfer(now, move.cargo, move.source, move.target)
         for out in result.exits:
             exit_ = self.ctx.topology.exits[out.source]
-            self.transfers.append(CellTransfer(now, out.cargo, out.source, exit_.target_id))
+            self._record_transfer(now, out.cargo, out.source, exit_.target_id)
             info = self.cargo.pop(out.cargo)
             if exit_.kind is ExitKind.PACK_BUFFER:
                 self.engine.packing.accept(exit_.target_id, info)
@@ -124,6 +125,11 @@ class ConveyorDriver:
                 waiting.append(request)
                 continue
             self.occupancy[request.inlet] = request.cargo_id
-            self.transfers.append(CellTransfer(now, request.cargo_id, "inlet", request.inlet))
+            self._record_transfer(now, request.cargo_id, "inlet", request.inlet)
             request.on_admitted(request.inlet)
         self.requests = waiting
+
+    def _record_transfer(self, now: int, cargo: str, source: str, target: str) -> None:
+        self.transfers.append(
+            CellTransfer(now, cargo, source, target, len(self.ctx.recorder.events))
+        )

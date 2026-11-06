@@ -91,7 +91,7 @@ class Picking:
 
     def _lines(self, order: Order) -> list[ReservationLine] | None:
         lines = []
-        for line in order.lines:
+        for line in sorted(order.lines, key=lambda line: line.sku_id):
             holding = self.ctx.sku_holding.get(line.sku_id)
             if holding is None:
                 return None

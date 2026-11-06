@@ -13,7 +13,9 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 | B2: deterministic synthetic scenarios, history, canonical hashing (`cli materialize`) | done |
 | B3/B4 slice: one order end to end, analytical fixture 32.8 s ... 469 s ... 474 s | done |
 | B5 part: receiving, inbound forklift, reserve staging (R1-R3, I6) | done |
-| Next: invariant checker + 30 s snapshots, run exporter for Tilek, mass-flow runs | open |
+| Settled invariants, 30 s replay snapshots and 60 s chunks | done |
+| Schema-valid v2 run exporter and proposed bundle/fixture for Tilek | done |
+| Next: horizon/end metrics, remaining acceptance gates and measured mass flow | open |
 
 The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
 Mass-flow results (240/600 orders per hour) are not measured yet.
@@ -36,6 +38,7 @@ uv run pytest -m acceptance                   # numbered gates from 05_Acceptanc
 uv run pytest --cov                           # coverage gate: 85 % statement and branch
 uv run ruff check . && uv run ruff format --check .
 uv run mypy app tests                         # strict mode
+uv run python -m app.cli simulate --profile large-normal --horizon-s 3600 --out runs/normal
 ```
 
 Optional git hooks (run from the repository root):
@@ -45,6 +48,14 @@ uv run --directory backend pre-commit install -c backend/.pre-commit-config.yaml
 ```
 
 `QOIMA_CONTRACTS_DIR` overrides the contracts directory (default: `../contracts`).
+
+`simulate` materializes the synthetic inputs first, then runs with invariants enabled. It uses
+the supplied illustrative assignment, not a trained ABC plan. Output contains schema-valid
+`run.json`, a proposed `manifest.json`, an initial-state/catalog file and 60-second chunks.
+Load catalog plus chunks for streaming; the full inline copy is optional for readers. Repeated
+actions in neighboring chunks have stable IDs. Verify exact byte hashes from the manifest.
+The shared schemas remain v2.0; the transport envelope and files under
+`contracts/fixtures/proposed/` are proposals for Tilek, not an agreed v2.1 contract.
 
 ## Layout
 
