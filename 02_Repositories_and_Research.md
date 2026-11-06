@@ -12,7 +12,7 @@
 | [scikit-learn](https://github.com/scikit-learn/scikit-learn) | Pipeline, OneHotEncoder, HistGradientBoostingRegressor | BSD-3-Clause; локальный CPU forecast probe выполнен | Основной ML, готовые прогнозы приложены |
 | [Nixtla/mlforecast](https://github.com/Nixtla/mlforecast) | Формат panel, лаги, временная cross-validation | Apache-2.0, LICENSE/pyproject прочитаны; не запускался | Резерв, если команда уже знакома; для20SKU не нужен дополнительный стек |
 | [google/or-tools](https://github.com/google/or-tools) | CP-SAT назначение с ограничениями | Apache-2.0; официальный assignment sample проверен | Расширение после MVP, без него проще |
-| [donmccurdy/glTF-Transform](https://github.com/donmccurdy/glTF-Transform) | Проверка/оптимизация GLB при необходимости | MIT согласно репозиторию; в этом исследовании не запускался | Инструмент A, после проверки IDs после оптимизации |
+| [donmccurdy/glTF-Transform](https://github.com/donmccurdy/glTF-Transform) | Проверка/оптимизация GLB при необходимости | MIT согласно репозиторию; в этом исследовании не запускался | Инструмент Тилека, после проверки IDs после оптимизации |
 
 Рекомендуемая композиция: адаптировать небольшой визуальный слой Xxcool, свою модель склада написать поверх SimPy, прогноз — plain sklearn, ограниченные обмены — короткий собственный перебор. Попытка скрестить несколько целых WMS/robotics-приложений увеличивает работу.
 
