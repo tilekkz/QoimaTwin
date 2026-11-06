@@ -126,7 +126,11 @@ def test_settled_hook_runs_once_per_active_tick_with_next_tick() -> None:
     settled: list[tuple[int, int | None]] = []
     sched.on_tick_settled = lambda tick, nxt: settled.append((tick, nxt))
     sched.schedule(3, Phase.COMPLETION, lambda: None)
-    sched.schedule(3, Phase.DISPATCH, lambda: sched.schedule(9, Phase.ARRIVAL, lambda: None))
+
+    def later() -> None:
+        sched.schedule(9, Phase.ARRIVAL, lambda: None)
+
+    sched.schedule(3, Phase.DISPATCH, later)
     sched.schedule(5, Phase.CHECKPOINT, lambda: None)
     sched.run()
     assert settled == [(3, 5), (5, 9), (9, None)]
