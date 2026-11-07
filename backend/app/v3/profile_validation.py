@@ -20,6 +20,8 @@ def validate_jobs(
     places = {s.place_id: s for s in profile.slots}
     ports = {p.port_id: p for p in profile.ports}
     occupied = {p.slot_id: p.hu_id for p in profile.initial_placements}
+    origin = {hu_id: slot_id for slot_id, hu_id in occupied.items()}
+    origin |= {j.hu_id: j.slot_id for j in profile.jobs if j.direction == "inbound"}
     targets: set[str] = set()
     for job in profile.jobs:
         if job.hu_id not in loads or job.slot_id not in source_slots or job.port_id not in ports:
@@ -35,8 +37,8 @@ def validate_jobs(
             if job.slot_id in occupied or job.slot_id in targets or job.hu_id in occupied.values():
                 raise ValueError("receipt needs a compatible initially free unique address")
             targets.add(job.slot_id)
-        elif job.direction != "outbound" or occupied.get(job.slot_id) != job.hu_id:
-            raise ValueError("outbound must use its exact source placement")
+        elif job.direction != "outbound" or origin.get(job.hu_id) != job.slot_id:
+            raise ValueError("outbound must use its exact origin placement")
         _fit(hu.dimensions_xyz_m, hu.gross_mass_kg, hu.archetype, places[job.slot_id])
         for buffer in port.buffer_places:
             _fit(hu.dimensions_xyz_m, hu.gross_mass_kg, hu.archetype, buffer)

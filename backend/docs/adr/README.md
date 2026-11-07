@@ -40,3 +40,6 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0032](0032-v3-manual-execution-profile.md) | Source-bound synthetic manual profile and charged staging connectors |
 | [0033](0033-v3-manual-wire-replay.md) | Validated manual-run export, actual motions and settled replay chunks |
 | [0034](0034-v3-manual-observation-metrics.md) | Settled business counts, cycle and time-weighted resource observations |
+| [0035](0035-v3-manual-api-publication.md) | Registered manual profiles, shared spawn admission and immutable API runs |
+| [0038](0038-v3-profile-receipt-chain.md) | One received HU reused by outbound jobs and compiler admission parity |
+| [0039](0039-v3-manual-admission-and-wait-reasons.md) | Static explicit-job admission, valid slot reuse and causal waits |

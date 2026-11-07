@@ -258,3 +258,10 @@ loads one inline Run2.0 JSON file. Visual seek is implemented, but there is no A
 loader or proposal full/delta business-state decoder. This API does not change that frontend.
 It needs an agreed loader and handlers before streamed proposal runs can be replayed there.
 Renaming `schema_version` is not an adapter. Shared2.0 remains the default until that agreement.
+
+## V3 manual execution
+
+The separate [V3 manual API guide](v3-manual-api.md) documents registered frozen
+profiles, actual manual simulation, immutable files and bounded seek under
+`/api/v3/manual-runs`. It shares this API's calculation worker. Its proposal
+schema and limited capabilities are separate from the V2 endpoints above.

@@ -1,13 +1,20 @@
 """Exact fixed calendar materialization, always completed before engine creation."""
 
+import re
 from fractions import Fraction
 
 from app.v3.execution_types import TimedJob
 from app.v3.profile_models import ManualProposal
 from app.v3.runtime_time import operation_ticks
 
+# Plain JSON-style decimal text: no fractions, underscores, whitespace or leading plus.
+# The exponent is bounded so proposal text cannot force a huge exact integer.
+DECIMAL_TEXT = re.compile(r"-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]{1,3})?")
+
 
 def number(value: str, *, positive: bool = True) -> Fraction:
+    if not isinstance(value, str) or DECIMAL_TEXT.fullmatch(value) is None:
+        raise ValueError("synthetic numeric choice must be finite exact decimal text")
     try:
         result = Fraction(value)
     except (ValueError, ZeroDivisionError) as exc:
@@ -37,8 +44,21 @@ def materialize_jobs(proposal: ManualProposal) -> tuple[TimedJob, ...]:
     )
     if len({j.job_id for j in jobs}) != len(jobs):
         raise ValueError("duplicate timed job ID")
-    if len({j.hu_id for j in jobs}) != len(jobs):
-        raise ValueError("demo requires unique HU per job")
+    _chains(jobs)
     if any(j.arrival_tick >= proposal.horizon_tick for j in jobs):
         raise ValueError("arrival must precede frozen H")
     return tuple(sorted(jobs, key=lambda j: (j.arrival_tick, j.job_id)))
+
+
+def _chains(jobs: tuple[TimedJob, ...]) -> None:
+    """One job per HU and direction; a received HU may ship at or after its receipt tick."""
+    by_direction: dict[tuple[str, str], TimedJob] = {}
+    for job in jobs:
+        if (job.hu_id, job.direction) in by_direction:
+            raise ValueError("duplicate job: requires unique HU per direction")
+        by_direction[job.hu_id, job.direction] = job
+    for (hu_id, direction), job in by_direction.items():
+        receipt = by_direction.get((hu_id, "inbound"))
+        early = receipt is not None and job.arrival_tick < receipt.arrival_tick
+        if direction == "outbound" and early:
+            raise ValueError("outbound of a received HU arrives before its receipt")

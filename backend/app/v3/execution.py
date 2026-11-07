@@ -19,6 +19,8 @@ from app.v3.execution_types import (
 )
 from app.v3.execution_validate import fits, validate_profile
 
+WAIT_PRIORITY = ("resources", "port_window", "no_route")
+
 
 class ManualEngine:
     def __init__(
@@ -145,19 +147,22 @@ class ManualEngine:
         if not self._available_load(work):
             self.state.job_changed(self.scheduler.now, work, "waiting", "stock_or_slot")
             return
-        reason = "resources"
+        reasons: set[str] = set()
         for actor, buffer in self._candidates(work):
             steps = job_plan(self.profile, work.job, actor, buffer, self.graph.graph)
             if steps is None:
-                reason = "no_route"
+                reasons.add("no_route")
                 continue
             if not self._window(work, steps):
-                reason = "port_window"
+                reasons.add("port_window")
                 continue
             if self._acquire_start(work, actor, buffer):
                 work.steps = steps
                 self._continue(work)
                 return
+            reasons.add("resources")
+        # A candidate blocked only by leases outranks others' window or missing-route failures.
+        reason = next((r for r in WAIT_PRIORITY if r in reasons), "resources")
         self.state.job_changed(self.scheduler.now, work, "waiting", reason)
 
     def _window(self, work: Work, steps: list[Step]) -> bool:

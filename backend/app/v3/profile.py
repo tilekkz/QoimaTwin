@@ -14,6 +14,7 @@ from app.v3.execution_types import (
     SourceBinding,
     TimedJob,
 )
+from app.v3.execution_validate import validate_profile
 from app.v3.input_models import ImmutableDocument, V3Bundle
 from app.v3.inputs import load_v3_bundle
 from app.v3.materialize import calendar_tick, materialize_jobs
@@ -61,6 +62,7 @@ def compile_manual_profile(bundle: V3Bundle, proposal: ManualProposal) -> Compil
     if min(profile.handling.pickup_ticks, profile.handling.place_ticks) <= 0:
         raise ValueError("pickup and place durations must be positive")
     validate_jobs(bundle, proposal, profile, graph)
+    validate_profile(profile, bound)  # compiled output must pass engine admission (F3)
     return CompiledManualInputs(
         profile,
         bound,

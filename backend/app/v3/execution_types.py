@@ -13,7 +13,7 @@ ACTOR_IDS = tuple(
     + ["R01", "R02", "S01", "S02", "F01", "F02"]
 )
 MANUAL_ARCHETYPES = frozenset({"SMALL_CARTON", "STANDARD_CARTON"})
-MANUAL_ENGINE_VERSION = "qoima-manual-engine-v3-proposal-1"
+MANUAL_ENGINE_VERSION = "qoima-manual-engine-v3-proposal-2"
 
 
 @dataclass(frozen=True, slots=True)

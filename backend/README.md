@@ -20,8 +20,10 @@ uv run python -m app.api --store-root D:/QoimaTwin-runs/api-store
 ```
 
 The API serves `/api/v3/catalog`, `/api/v3/initial-state` and content-addressed source documents.
-Catalog export contains the static 530-HU state and its provenance. Its capabilities explicitly
-exclude an actual V3 engine run: timed whole-HU execution is the next isolated slice.
+Catalog export contains the static 530-HU state and its provenance. Actual timed whole-HU
+execution is available separately through the manual CLI and `/api/v3/manual-runs`; its
+registered four-job profile covers SMALL/STANDARD handling at two ports with paid return.
+See the [manual profile](docs/v3-manual-profile.md) and [manual API](docs/v3-manual-api.md).
 F1/F2/F3 test port mix, geometry/mass and elapsed time versus person-seconds using independent
 hand calculations. See [inputs](docs/v3-inputs.md), [analytical fixtures](docs/v3-analytical.md),
 and [source compatibility](docs/v3-admission-source.md). Shared contracts remain proposals until
@@ -195,3 +197,6 @@ four-job SMALL/STANDARD whole-HU receipt/shipping proposal, CLI materialization 
 actual-event replay and horizon/end metrics. It retains the full initial stock and actor
 identities, pays all declared travel/handling/return and checks ownership after settled ticks.
 It does not yet implement the complete V3 warehouse workflow or a Tilek frontend adapter.
+The [manual V3 API](docs/v3-manual-api.md) accepts the registered frozen profile,
+shares the existing single calculation worker with V2, publishes immutable artifacts,
+and exposes SHA-addressed files and bounded seek. Shared schemas remain unchanged.

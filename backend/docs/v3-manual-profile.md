@@ -65,3 +65,7 @@ The separate [fresh-process benchmark protocol](research/11_v3_manual_benchmark_
 compares repeated event, input and export hashes. This four-job example can only
 measure the bounded manual smoke profile; it supplies no full-shift normal/peak
 performance claim.
+
+Receipt-then-ship chains (ADR 0038): a later outbound job may ship a received HU from its
+receipt slot, using the same new HU ID. Arrival must not precede the receipt. The compiler
+also runs the engine admission check and requires plain decimal numeric text.

@@ -45,6 +45,10 @@ class JobService:
                 "engine_version": ENGINE_VERSION,
             }
         )
+        return await self.submit_job(job, key)
+
+    async def submit_job(self, job: Job, key: str) -> Json:
+        """Share one admission slot and cancellation/drain policy across API domains."""
         cached = self.context.store.read_reference("requests", key)
         if cached is not None:
             return dict(cached)

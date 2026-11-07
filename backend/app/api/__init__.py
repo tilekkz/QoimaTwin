@@ -17,6 +17,7 @@ from app.api.service import JobService
 from app.explanations import MercurySettings
 from app.settings import default_contracts_dir, repository_root
 from app.storage.artifacts import ArtifactStore
+from app.v3.api_manual import attach_manual_routes
 from app.v3.registration import attach_v3_routes
 
 
@@ -53,4 +54,5 @@ def create_app(
     attach_routes(app, context)
     attach_explanation_route(app, explanations)
     attach_v3_routes(app, v3_inputs)
+    attach_manual_routes(app, context, v3_inputs)
     return app

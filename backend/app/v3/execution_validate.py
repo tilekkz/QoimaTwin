@@ -113,6 +113,34 @@ def _jobs(profile: ExecutionProfile) -> None:
         if pair in seen:
             raise ValueError("HU has duplicate same-direction jobs")
         seen.add(pair)
+    _static_feasibility(profile)
+
+
+def _static_feasibility(profile: ExecutionProfile) -> None:
+    """Reject jobs that no event order can ever start; never turn them into endless waits."""
+    units = {hu.hu_id: hu for hu in profile.handling_units}
+    ports = {p.port_id: p for p in profile.ports}
+    initial = {p.hu_id: p.slot_id for p in profile.initial_placements}
+    origin = dict(initial)
+    origin |= {j.hu_id: j.slot_id for j in profile.jobs if j.direction == "inbound"}
+    leaves = {(j.hu_id, j.slot_id) for j in profile.jobs if j.direction == "outbound"}
+    for job in profile.jobs:
+        hu, port = units[job.hu_id], ports[job.port_id]
+        skill = "receive" if job.direction == "inbound" else "ship"
+        if not any(
+            a.actor_id in port.eligible_actor_ids
+            and skill in a.skills
+            and hu.gross_mass_kg <= a.max_gross_mass_kg
+            for a in profile.actors
+        ):
+            raise ValueError("job has no capable eligible worker")
+        if job.direction == "outbound" and origin.get(job.hu_id) != job.slot_id:
+            raise ValueError("outbound slot is not the HU origin slot")
+        if job.direction == "inbound" and any(
+            slot == job.slot_id and other != job.hu_id and (other, slot) not in leaves
+            for other, slot in initial.items()
+        ):
+            raise ValueError("receipt target stays occupied by an HU that never leaves")
 
 
 def _initial(profile: ExecutionProfile) -> None:
