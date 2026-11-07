@@ -7,6 +7,14 @@ import pytest
 from app.v3.runtime_graph import Arc, DirectedGraph, RouteRequirements
 
 
+def test_public_arcs_are_immutable_and_stably_ordered() -> None:
+    a = Arc("z", "A", "B", Fraction(1), Fraction(1))
+    b = Arc("a", "B", "A", Fraction(2), Fraction(2))
+    graph = DirectedGraph("walk", ("A", "B"), (a, b))
+    assert graph.arcs == (b, a)
+    assert isinstance(graph.arcs, tuple)
+
+
 def arc(name: str, source: str, target: str, cost: int = 1, **kwargs: object) -> Arc:
     return Arc(name, source, target, Fraction(cost), Fraction(cost), **kwargs)  # type: ignore[arg-type]
 

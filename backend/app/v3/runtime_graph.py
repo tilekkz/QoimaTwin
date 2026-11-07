@@ -164,6 +164,13 @@ class DirectedGraph:
         object.__setattr__(self, "node_ids", tuple(sorted(nodes)))
         object.__setattr__(self, "_adjacency", MappingProxyType(frozen))
 
+    @property
+    def arcs(self) -> tuple[Arc, ...]:
+        """Expose immutable source arcs in stable ID order for bound export validation."""
+        return tuple(
+            sorted((a for arcs in self._adjacency.values() for a in arcs), key=lambda a: a.arc_id)
+        )
+
     def shortest_path(
         self, source: str, target: str, required: RouteRequirements | None = None
     ) -> CandidateRoute | None:

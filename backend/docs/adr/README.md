@@ -36,3 +36,7 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0028](0028-v3-frozen-proposal-inputs.md) | Pinned V3 source package, exact compatibility and baseline conservation |
 | [0029](0029-v3-independent-analytical-fixtures.md) | Independent F1/F2/F3 hand-oracle fixtures |
 | [0030](0030-v3-static-admission-before-cost.md) | Exact static storage and route compatibility before scoring |
+| [0031](0031-v3-whole-hu-manual-execution.md) | Explicit manual HU jobs, paid return routes and finite stage leases |
+| [0032](0032-v3-manual-execution-profile.md) | Source-bound synthetic manual profile and charged staging connectors |
+| [0033](0033-v3-manual-wire-replay.md) | Validated manual-run export, actual motions and settled replay chunks |
+| [0034](0034-v3-manual-observation-metrics.md) | Settled business counts, cycle and time-weighted resource observations |

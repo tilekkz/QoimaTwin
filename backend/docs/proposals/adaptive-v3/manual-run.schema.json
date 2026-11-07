@@ -1,0 +1,1644 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:manual-run:v3-proposal:0.1.0",
+  "$defs": {
+    "place": {
+      "type": "object",
+      "properties": {
+        "place_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "usable_dimensions_xyz_m": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rational"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "max_payload_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "allowed_archetypes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "place_id",
+        "node_id",
+        "usable_dimensions_xyz_m",
+        "max_payload_kg",
+        "allowed_archetypes"
+      ],
+      "additionalProperties": false
+    },
+    "port": {
+      "type": "object",
+      "properties": {
+        "port_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "enum": [
+            "inbound",
+            "outbound"
+          ]
+        },
+        "service_node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "buffer_places": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/place"
+          }
+        },
+        "service_ticks": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "windows": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "eligible_actor_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "port_id",
+        "direction",
+        "service_node_id",
+        "buffer_places",
+        "service_ticks",
+        "windows",
+        "eligible_actor_ids"
+      ],
+      "additionalProperties": false
+    },
+    "timed_job": {
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arrival_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direction": {
+          "enum": [
+            "inbound",
+            "outbound"
+          ]
+        },
+        "hu_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "port_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "slot_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "job_id",
+        "arrival_tick",
+        "direction",
+        "hu_id",
+        "port_id",
+        "slot_id"
+      ],
+      "additionalProperties": false
+    },
+    "rational": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "integer"
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "additionalProperties": false
+    },
+    "binding": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "home_node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "speed_m_s": {
+          "$ref": "#/$defs/rational"
+        },
+        "max_gross_mass_kg": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "required": [
+        "actor_id",
+        "home_node_id",
+        "skills",
+        "speed_m_s",
+        "max_gross_mass_kg"
+      ],
+      "additionalProperties": false
+    },
+    "hu": {
+      "type": "object",
+      "properties": {
+        "hu_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sku_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "archetype": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gross_mass_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "dimensions_xyz_m": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rational"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "hu_id",
+        "sku_id",
+        "quantity",
+        "archetype",
+        "gross_mass_kg",
+        "dimensions_xyz_m"
+      ],
+      "additionalProperties": false
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "graph_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "arc_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "length_m": {
+          "$ref": "#/$defs/rational"
+        },
+        "cost_m": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "required": [
+        "graph_id",
+        "node_ids",
+        "arc_ids",
+        "length_m",
+        "cost_m"
+      ],
+      "additionalProperties": false
+    },
+    "motion": {
+      "type": "object",
+      "properties": {
+        "route": {
+          "$ref": "#/$defs/route"
+        },
+        "start_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_tick": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "route",
+        "start_tick",
+        "end_tick"
+      ],
+      "additionalProperties": false
+    },
+    "worker": {
+      "type": "object",
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "motion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/motion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "job_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "actor_id",
+        "node_id",
+        "motion",
+        "job_id"
+      ],
+      "additionalProperties": false
+    },
+    "job": {
+      "type": "object",
+      "properties": {
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "enum": [
+            "unreleased",
+            "waiting",
+            "active",
+            "returning",
+            "complete"
+          ]
+        },
+        "wait_reason": {
+          "anyOf": [
+            {
+              "enum": [
+                "not_arrived",
+                "resources",
+                "stock_or_slot",
+                "no_route",
+                "port_window",
+                "port_busy"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "job_id",
+        "state",
+        "wait_reason",
+        "actor_id"
+      ],
+      "additionalProperties": false
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "hu_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "unreleased",
+            "outside",
+            "stock",
+            "worker",
+            "buffer",
+            "service",
+            "shipped"
+          ]
+        },
+        "location_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "hu_id",
+        "kind",
+        "location_id"
+      ],
+      "additionalProperties": false
+    },
+    "lease": {
+      "type": "object",
+      "properties": {
+        "resource_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acquired_tick": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "resource_id",
+        "job_id",
+        "acquired_tick"
+      ],
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layout_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "graph_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/binding"
+          }
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/actor"
+          }
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/port"
+          }
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/place"
+          }
+        },
+        "handling_units": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hu"
+          }
+        },
+        "initial_placements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hu_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "slot_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "hu_id",
+              "slot_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/timed_job"
+          }
+        },
+        "handling": {
+          "type": "object",
+          "properties": {
+            "pickup_ticks": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "place_ticks": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "pickup_ticks",
+            "place_ticks"
+          ],
+          "additionalProperties": false
+        },
+        "provenance_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "profile_id",
+        "layout_version",
+        "graph_sha256",
+        "source_bindings",
+        "actors",
+        "ports",
+        "slots",
+        "handling_units",
+        "initial_placements",
+        "jobs",
+        "handling",
+        "provenance_note"
+      ],
+      "additionalProperties": false
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status": {
+          "enum": [
+            "partial",
+            "complete"
+          ]
+        },
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/job"
+          }
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/worker"
+          }
+        },
+        "owners": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/owner"
+          }
+        },
+        "leases": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/lease"
+          }
+        },
+        "stock_units": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "wip_units": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "outside_units": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "shipped_units": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      },
+      "required": [
+        "tick",
+        "status",
+        "jobs",
+        "workers",
+        "owners",
+        "leases",
+        "stock_units",
+        "wip_units",
+        "outside_units",
+        "shipped_units"
+      ],
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kind": {
+          "enum": [
+            "job_arrived",
+            "job_changed",
+            "worker_changed",
+            "lease_acquired",
+            "lease_released",
+            "hu_owner_changed",
+            "operation_started",
+            "operation_completed",
+            "hu_shipped",
+            "job_completed"
+          ]
+        },
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hu_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stage": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "location_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "resource_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "motion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/motion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owner": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/owner"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "job": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/job"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "worker": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/worker"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "seq",
+        "tick",
+        "kind",
+        "job_id",
+        "hu_id",
+        "actor_id",
+        "stage",
+        "location_id",
+        "resource_ids",
+        "motion",
+        "owner",
+        "job",
+        "worker"
+      ],
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "metrics_version": {
+          "const": "qoima-manual-metrics-v1"
+        },
+        "counts_boundary": {
+          "const": "settled_tick_inclusive"
+        },
+        "integral_window": {
+          "const": "[0,T)"
+        },
+        "cycle_completion": {
+          "const": "inbound_putaway_or_outbound_handover"
+        },
+        "at_horizon": {
+          "type": "object",
+          "properties": {
+            "tick": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "time_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "operational_status": {
+              "enum": [
+                "complete",
+                "partial"
+              ]
+            },
+            "inbound": {
+              "type": "object",
+              "properties": {
+                "arrived_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "backlog_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_units": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_mass_kg": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "mean_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "p95_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "arrived_hus",
+                "completed_hus",
+                "backlog_hus",
+                "completed_units",
+                "completed_mass_kg",
+                "mean_cycle_s",
+                "p95_cycle_s"
+              ],
+              "additionalProperties": false
+            },
+            "outbound": {
+              "type": "object",
+              "properties": {
+                "arrived_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "backlog_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_units": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_mass_kg": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "mean_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "p95_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "arrived_hus",
+                "completed_hus",
+                "backlog_hus",
+                "completed_units",
+                "completed_mass_kg",
+                "mean_cycle_s",
+                "p95_cycle_s"
+              ],
+              "additionalProperties": false
+            },
+            "worker_busy_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "worker_busy_s_by_actor": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "roster_utilization": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "role_busy_s": {
+              "type": "object",
+              "properties": {
+                "receive": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "ship": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "receive",
+                "ship"
+              ],
+              "additionalProperties": false
+            },
+            "role_pool_utilization": {
+              "type": "object",
+              "properties": {
+                "receive": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "ship": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "receive",
+                "ship"
+              ],
+              "additionalProperties": false
+            },
+            "queues": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "job_seconds": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "mean_jobs": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "wait_seconds_by_reason": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "propertyNames": {
+                      "enum": [
+                        "not_arrived",
+                        "resources",
+                        "stock_or_slot",
+                        "no_route",
+                        "port_window",
+                        "port_busy"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "job_seconds",
+                  "mean_jobs",
+                  "wait_seconds_by_reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "tick",
+            "time_s",
+            "operational_status",
+            "inbound",
+            "outbound",
+            "worker_busy_s",
+            "worker_busy_s_by_actor",
+            "roster_utilization",
+            "role_busy_s",
+            "role_pool_utilization",
+            "queues"
+          ],
+          "additionalProperties": false
+        },
+        "at_end": {
+          "type": "object",
+          "properties": {
+            "tick": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "time_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "operational_status": {
+              "enum": [
+                "complete",
+                "partial"
+              ]
+            },
+            "inbound": {
+              "type": "object",
+              "properties": {
+                "arrived_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "backlog_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_units": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_mass_kg": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "mean_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "p95_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "arrived_hus",
+                "completed_hus",
+                "backlog_hus",
+                "completed_units",
+                "completed_mass_kg",
+                "mean_cycle_s",
+                "p95_cycle_s"
+              ],
+              "additionalProperties": false
+            },
+            "outbound": {
+              "type": "object",
+              "properties": {
+                "arrived_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "backlog_hus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_units": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "completed_mass_kg": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "mean_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "p95_cycle_s": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "arrived_hus",
+                "completed_hus",
+                "backlog_hus",
+                "completed_units",
+                "completed_mass_kg",
+                "mean_cycle_s",
+                "p95_cycle_s"
+              ],
+              "additionalProperties": false
+            },
+            "worker_busy_s": {
+              "type": "number",
+              "minimum": 0
+            },
+            "worker_busy_s_by_actor": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "roster_utilization": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "role_busy_s": {
+              "type": "object",
+              "properties": {
+                "receive": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "ship": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "receive",
+                "ship"
+              ],
+              "additionalProperties": false
+            },
+            "role_pool_utilization": {
+              "type": "object",
+              "properties": {
+                "receive": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "ship": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "receive",
+                "ship"
+              ],
+              "additionalProperties": false
+            },
+            "queues": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "job_seconds": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "mean_jobs": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "wait_seconds_by_reason": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "propertyNames": {
+                      "enum": [
+                        "not_arrived",
+                        "resources",
+                        "stock_or_slot",
+                        "no_route",
+                        "port_window",
+                        "port_busy"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "job_seconds",
+                  "mean_jobs",
+                  "wait_seconds_by_reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "tick",
+            "time_s",
+            "operational_status",
+            "inbound",
+            "outbound",
+            "worker_busy_s",
+            "worker_busy_s_by_actor",
+            "roster_utilization",
+            "role_busy_s",
+            "role_pool_utilization",
+            "queues"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "metrics_version",
+        "counts_boundary",
+        "integral_window",
+        "cycle_completion",
+        "at_horizon",
+        "at_end"
+      ],
+      "additionalProperties": false
+    },
+    "operation": {
+      "type": "object",
+      "properties": {
+        "operation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hu_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "planned_end_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "observed_end_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completed": {
+          "type": "boolean"
+        },
+        "motion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/motion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "operation_id",
+        "job_id",
+        "hu_id",
+        "actor_id",
+        "stage",
+        "start_tick",
+        "planned_end_tick",
+        "observed_end_tick",
+        "completed",
+        "motion"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "qoima.manual-run.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "contract_status": {
+      "const": "proposal"
+    },
+    "data_kind": {
+      "const": "manual_execution_proposal"
+    },
+    "source_label": {
+      "const": "actual_engine_run"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile": {
+      "$ref": "#/$defs/profile"
+    },
+    "graph_document": {
+      "type": "object"
+    },
+    "clock": {
+      "type": "object",
+      "properties": {
+        "ticks_per_second": {
+          "const": 1000000
+        },
+        "duration_rounding": {
+          "const": "ceil_each_positive_operation"
+        }
+      },
+      "required": [
+        "ticks_per_second",
+        "duration_rounding"
+      ],
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "actual_engine_run": {
+          "const": true
+        },
+        "frontend_adapter": {
+          "const": false
+        },
+        "full_v3_warehouse": {
+          "const": false
+        }
+      },
+      "required": [
+        "actual_engine_run",
+        "frontend_adapter",
+        "full_v3_warehouse"
+      ],
+      "additionalProperties": false
+    },
+    "end_tick_limit": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "observed_until_tick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "initial_state": {
+      "$ref": "#/$defs/state"
+    },
+    "at_horizon": {
+      "$ref": "#/$defs/state"
+    },
+    "at_end": {
+      "$ref": "#/$defs/state"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/event"
+      }
+    },
+    "metrics": {
+      "$ref": "#/$defs/metrics"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/operation"
+      }
+    },
+    "snapshots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "through_seq": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "state_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state": {
+            "$ref": "#/$defs/state"
+          },
+          "active_operation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "tick",
+          "through_seq",
+          "state_hash",
+          "state",
+          "active_operation_ids"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "contract_status",
+    "data_kind",
+    "source_label",
+    "run_id",
+    "engine_version",
+    "profile",
+    "graph_document",
+    "clock",
+    "capabilities",
+    "end_tick_limit",
+    "observed_until_tick",
+    "initial_state",
+    "at_horizon",
+    "at_end",
+    "events",
+    "metrics",
+    "operations",
+    "snapshots"
+  ],
+  "additionalProperties": false
+}

@@ -9,6 +9,7 @@ from typing import Any
 
 from app.cli import JsonArgumentParser
 from app.errors import AppError, InvalidInputError, error_report, require_empty_output
+from app.v3.cli_manual import materialize_manual, simulate_manual
 from app.v3.export import write_static_export
 from app.v3.inputs import V3Bundle, load_v3_bundle
 from app.v3.settings import default_inputs
@@ -17,11 +18,13 @@ from app.v3.settings import default_inputs
 def build_parser() -> argparse.ArgumentParser:
     parser = JsonArgumentParser(prog="qoima v3", description="V3 proposal tools")
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ("validate", "catalog"):
+    for name in ("validate", "catalog", "materialize-manual", "simulate-manual"):
         command = commands.add_parser(name)
         command.add_argument("--inputs", type=Path, default=default_inputs())
-        if name == "catalog":
+        if name != "validate":
             command.add_argument("--out", type=Path, required=True)
+        if name.endswith("-manual"):
+            command.add_argument("--profile", type=Path, required=True)
     return parser
 
 
@@ -39,16 +42,27 @@ def _summary(bundle: V3Bundle) -> dict[str, Any]:
 def main(argv: Sequence[str]) -> int:
     try:
         args = build_parser().parse_args(argv)
-        if args.command == "catalog":
+        if args.command != "validate":
             require_empty_output(args.out)
-        bundle = load_v3_bundle(args.inputs)
-        report = _summary(bundle)
-        if args.command == "catalog":
-            report["export_id"] = write_static_export(bundle, args.out)["export_id"]
+        report = _execute(args)
     except AppError as exc:
         report = error_report(exc)
     except (OSError, ValueError) as exc:
         report = error_report(InvalidInputError(str(exc)))
+    except RuntimeError as exc:
+        report = error_report(exc)
     report.update(layout_version="qoima-144x72-v3-proposal", operational_admission=False)
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    return 0 if report["status"] == "passed" else 1
+    return 0 if report["status"] in {"passed", "complete"} else 1
+
+
+def _execute(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command == "materialize-manual":
+        return materialize_manual(args.inputs, args.profile, args.out)
+    if args.command == "simulate-manual":
+        return simulate_manual(args.inputs, args.profile, args.out)
+    bundle = load_v3_bundle(args.inputs)
+    report = _summary(bundle)
+    if args.command == "catalog":
+        report["export_id"] = write_static_export(bundle, args.out)["export_id"]
+    return report

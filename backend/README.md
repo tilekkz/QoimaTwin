@@ -189,3 +189,9 @@ eight validated Russian observations; repeating the request returned the same ca
 - Exact time: V2 uses 3,000,000 ticks/s (ADR 0002); V3 quantizes each positive operation upward to microseconds (ADR 0026). No float accumulation in execution clocks.
 - One mutation path for stock (ADR 0005). Conservation per SKU is checked after every settled timestamp.
 - Files in `frontend/` belong to Tilek. Changes to `contracts/` are agreed with him first (ADR 0007).
+
+The separate [V3 manual profile guide](docs/v3-manual-profile.md) describes the explicit
+four-job SMALL/STANDARD whole-HU receipt/shipping proposal, CLI materialization and execution,
+actual-event replay and horizon/end metrics. It retains the full initial stock and actor
+identities, pays all declared travel/handling/return and checks ownership after settled ticks.
+It does not yet implement the complete V3 warehouse workflow or a Tilek frontend adapter.

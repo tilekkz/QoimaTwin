@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:manual-manifest:v3-proposal:0.1.0",
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "qoima.manual-manifest.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "contract_status": {
+      "const": "proposal"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "clock": {
+      "type": "object",
+      "properties": {
+        "ticks_per_second": {
+          "const": 1000000
+        },
+        "duration_rounding": {
+          "const": "ceil_each_positive_operation"
+        }
+      },
+      "required": [
+        "ticks_per_second",
+        "duration_rounding"
+      ],
+      "additionalProperties": false
+    },
+    "observed_until_tick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_chunk_bytes": {
+      "type": "integer",
+      "minimum": 13,
+      "maximum": 8388608
+    },
+    "chunk_ticks": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "graph_document": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "event_chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "start_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "first_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_tick": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "bytes",
+          "sha256",
+          "start_tick",
+          "end_tick",
+          "first_tick",
+          "last_tick"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "snapshot_chunks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "start_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "end_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "first_tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_tick": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "path",
+          "bytes",
+          "sha256",
+          "start_tick",
+          "end_tick",
+          "first_tick",
+          "last_tick"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "contract_status",
+    "run_id",
+    "clock",
+    "observed_until_tick",
+    "max_chunk_bytes",
+    "chunk_ticks",
+    "metadata",
+    "graph_document",
+    "event_chunks",
+    "snapshot_chunks"
+  ],
+  "additionalProperties": false
+}
