@@ -1,0 +1,30 @@
+{
+  "asset_id": "conveyor-straight",
+  "stage": "declared_before_geometry",
+  "reference_id": "R04",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "origin": "floor centre of one standard one-metre module",
+  "bounds_runtime": {"min": [-0.45, 0, -0.5], "max": [0.45, 1.0, 0.5]},
+  "dimensions_m": [0.90, 1.0, 1.0],
+  "length_m": 1.0,
+  "outer_width_m": 0.90,
+  "usable_width_m": 0.82,
+  "deck_top_y_m": 0.92,
+  "deck_thickness_m": 0.06,
+  "rail_thickness_m": 0.04,
+  "rail_top_y_m": 1.0,
+  "foot_centres_xz_m": [[-0.36, -0.35], [-0.36, 0.35], [0.36, -0.35], [0.36, 0.35]],
+  "foot_size_xyz_m": [0.16, 0.07, 0.22],
+  "leg_y_interval_m": [0.06, 0.80],
+  "frame_y_interval_m": [0.74, 0.90],
+  "connection_ports": {
+    "anchor_port_minus": [0, 0.92, -0.5],
+    "anchor_port_plus": [0, 0.92, 0.5]
+  },
+  "service_anchors": {"anchor_floor": [0, 0, 0], "anchor_payload_centre": [0, 0.92, 0]},
+  "cargo_policy_ref": "docs/v3/contract-proposals/conveyor-v3.json",
+  "animation_policy": "Draft material panel segments identify belt only. Source-clock texture/stripe motion and payload movement are W runtime gates; no autonomous animation is exported.",
+  "reference_comparison": "R04 long straight is assembled from repeated1m modules. Single module is deliberately shorter; petrol thick rails, dark substantial belt, connected legs/feet/crossmembers and warm marker plates follow R04. No parcel baked into reusable geometry."
+}

@@ -1,0 +1,185 @@
+{
+  "task_id": "P08.2",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T08:07:09.004214+00:00",
+  "scope": "Actual editable source frame only, not final asset/export/device/people acceptance.",
+  "artifacts": {
+    "builder": {
+      "path": "tools/blender/v3/build_packing_station.py",
+      "bytes": 7159,
+      "sha256": "b1169fded9c1875f3476e8ea6c220204b5220bd6d9360dbc3cf2f3f140df3630"
+    },
+    "source": {
+      "path": "assets/v3/blender/packing-station.blend",
+      "bytes": 106100,
+      "sha256": "046dae94b719a0aef1071b36b48ee950ee4c0d272fa15518b36407bdc8d6d95f"
+    },
+    "stage_snapshot": {
+      "path": "assets/v3/iterations/packing-station/P08.2/packing-station.blend",
+      "bytes": 106100,
+      "sha256": "046dae94b719a0aef1071b36b48ee950ee4c0d272fa15518b36407bdc8d6d95f"
+    },
+    "evaluated_metrics": {
+      "path": "assets/v3/iterations/packing-station/P08.2/source-metrics.json",
+      "bytes": 8875,
+      "sha256": "a640ed7e40ecb46c5e90e500c70371434a5d7020306079be29ed9f3c11b0fe8b"
+    },
+    "actual_geometry_checks": {
+      "path": "assets/v3/iterations/packing-station/P08.2/geometry-checks.json",
+      "bytes": 52128,
+      "sha256": "0cc89981a604138c8f2eba453a4fb5260d16f40c89990687695c8bfedfd75857"
+    },
+    "views": [
+      {
+        "path": "assets/v3/iterations/packing-station/P08.2/views/front.png",
+        "bytes": 714674,
+        "sha256": "c12965101d9764623e155d596c0fbf6900ca8d1e1ea57d74196306f5e1b61783",
+        "view": "front",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      },
+      {
+        "path": "assets/v3/iterations/packing-station/P08.2/views/side.png",
+        "bytes": 813115,
+        "sha256": "a1e0df2413c66ffc94815ff89ef23f9d48c487b04c850d390f8057af93ba96eb",
+        "view": "side",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      },
+      {
+        "path": "assets/v3/iterations/packing-station/P08.2/views/rear.png",
+        "bytes": 714112,
+        "sha256": "6cee1a32adf1d4ccb76e6b3cb3bdcb1b31d8fe6bc4274be073d82146a90af773",
+        "view": "rear",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      },
+      {
+        "path": "assets/v3/iterations/packing-station/P08.2/views/three-quarter.png",
+        "bytes": 921923,
+        "sha256": "241fce4c61b9b7b3572d09a4a47d5f55a1f6f93ebef7df6effd48e037465cb38",
+        "view": "three-quarter",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      }
+    ],
+    "initial_before_fix": "assets/v3/iterations/packing-station/P08.2/initial"
+  },
+  "commands": {
+    "build": "blender --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_packing_station",
+    "render": "blender --background --factory-startup assets/v3/blender/packing-station.blend --threads 2 --python tools/blender/v3/render_asset.py -- packing-station --size 900 --out <absolute P08.2/views>",
+    "inspection": "blender --background --factory-startup assets/v3/blender/packing-station.blend --threads 2 --python assets/v3/iterations/packing-station/P08.2/inspect_source.py",
+    "all_process_exit_codes": 0,
+    "final_render_wall_s": 6.157,
+    "renderer_queue_released_to": "people_packing; root notified"
+  },
+  "summary": {
+    "meshes": 17,
+    "triangles": 940,
+    "materials": 3,
+    "actual_bounds_runtime": {
+      "min": [
+        -0.8999999761581421,
+        0.0,
+        -0.44999998807907104
+      ],
+      "max": [
+        0.8999999761581421,
+        0.9199999570846558,
+        0.44999998807907104
+      ]
+    },
+    "actual_size_xyz_m": [
+      1.7999999523162842,
+      0.9199999570846558,
+      0.8999999761581421
+    ],
+    "actual_worktop_gap_m": 1.0,
+    "worktop_y_m": 0.92,
+    "floor_min_y_m": 0,
+    "world_fixed_max_z_m": 5.649999988079071,
+    "checks": 455,
+    "failures": 0,
+    "clear_channel_ray_tests": 357,
+    "closed_positive_volume_meshes": 17,
+    "plan_parts_only": true,
+    "stage_source_byteidentical_snapshot": true,
+    "final_GLB_exported": false,
+    "devices_or_worker_created": false
+  },
+  "visual_review": {
+    "reference": "assets/references/v3/r04-packing-line.png",
+    "reference_actually_opened": true,
+    "all4_final_actual_PNGs_opened": true,
+    "front": "Two thick tan worktop wings and separate lower shelf wings, grounded post/feet; real central gap and low front tie are readable. No post/rail striped coplanar faces after correction.",
+    "side": "Front/rear legs join upper and lower wing supports; shelf thickness and notched post connections remain visible, no floating wood or rail.",
+    "rear": "Same grounded construction and open centre from opposite side; no hidden centre tabletop or shelf bridge.",
+    "three-quarter": "Both wings have real depth/side supports, four feet, small bevels and R04 matte tan/petrol/charcoal language; channel remains completely open above low tie.",
+    "comparison_limit": "R04 solid centre slab deliberately adapted to accepted L08 spur; devices/tools are a later child, so no final packing-station appearance or runtime acceptance claimed.",
+    "observed_unresolved_frame_defects": []
+  },
+  "fixes": [
+    {
+      "observed": "First side/quarter PNG showed dark striped coplanar faces where full-length rails/posts and shelf edges overlapped.",
+      "correction": "Inset rail width.08 and span.59 within approved envelopes; lowtie ends inside posts; 2mm open post pockets in lower shelf boards.17part IDs/outer footprint/1m channel preserved.",
+      "retest": "Rebuilt source, re-rendered all4 and actually reopened them;455 evaluated mesh checks and357 BVH channel rays passed.",
+      "before_evidence": "assets/v3/iterations/packing-station/P08.2/initial"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "assets/v3/specs/packing-station.dimensions.json",
+      "bytes": 19534,
+      "sha256": "6c26e8476fadec3698a719cea0467320b06b8560afae9635eb8c091d2166ac51"
+    },
+    {
+      "path": "docs/v3/contract-proposals/conveyor-v3.json",
+      "bytes": 94202,
+      "sha256": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612"
+    },
+    {
+      "path": "assets/references/v3/r04-packing-line.png",
+      "bytes": 1767786,
+      "sha256": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a"
+    },
+    {
+      "path": "tools/blender/v3/v3_common.py",
+      "bytes": 10390,
+      "sha256": "994b7f080ee1f8c1126b3d087cff6d7621ed4db7e1caca5b963a14d773e68e0c"
+    },
+    {
+      "path": "tools/blender/v3/render_asset.py",
+      "bytes": 7578,
+      "sha256": "b8a5ea985b1bbc30a9d47c4bb234a061e8d388d88eb96dafe1a15bae8789c62e"
+    }
+  ],
+  "knowledge_graph": {
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "tier": 2,
+    "coverage": "v3 helpers/renderer/runner not_tracked; new builder initially missing",
+    "fallback": "Current exact helper/renderer/runner source read; new builder read/executed directly. No graph index or helper edits."
+  },
+  "limits": [
+    "Frame-stage only; no finish()/GLB, devices, accessories, cargo, workers or business timestamps.",
+    "No conveyor geometry baked; accepted L08 numerical interface matched, paired actual belt/table runtime collision remains later integration.",
+    "P01 actual squat anatomy/lean contacts remain later P08.3/P01 proof; no arm/hand geometry changed in this child."
+  ],
+  "next_gate": "Root review/PASS, then separately assigned P08.3; do not self-start next child."
+}

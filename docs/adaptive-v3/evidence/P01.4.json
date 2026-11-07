@@ -1,0 +1,111 @@
+{
+  "task_id": "P01.4",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T09:42:05.405302+00:00",
+  "result": "Friendly R05 planar face, connected ears/hair and readable picker cart01 badge; retained source rig and dark shared clothing.",
+  "reference": "assets/references/v3/r05-workers.png actually opened; dedicated R05 role/body authority retained.",
+  "builder": {
+    "path": "tools/blender/v3/build_worker_base.py",
+    "sha256": "782cf31fab1158c932e524f49e81a6142bc97a46028d644915a41d37ac9e5a11"
+  },
+  "source": {
+    "path": "assets/v3/blender/worker-base.blend",
+    "sha256": "a18d1689d0f1e2c0000c94460439737ff39f524f99075552982bb78f5b0254cc",
+    "qa_gauges": false
+  },
+  "actual": {
+    "dimensions_m": [
+      0.7460470199584961,
+      1.6999997943639755,
+      0.3800000101327896
+    ],
+    "triangles": 2848,
+    "mesh_objects": 56,
+    "joints": 15,
+    "anchors": 7,
+    "joints_anchors_dimensions_equal_P01_3": true,
+    "unchanged_core_meshes_actual_vertices": 39,
+    "positive_actual_detail_contacts": 19,
+    "named_role_tint_slots": [
+      "V3_Worker_RoleVest",
+      "V3_Worker_RoleHeadwear"
+    ],
+    "badge_code_z_range_m": [
+      0.13899999856948853,
+      0.1419999897480011
+    ]
+  },
+  "checks_report": "assets/v3/iterations/worker-base/P01.4/iteration-02.actual-detail-checks.json",
+  "inspection": [
+    "Opened all6iteration01PNGs, found diagonal shading seam on concave cart icon.",
+    "Opened all6finaliteration02PNGs: front/side/rear/quarter and face/badge closeups.",
+    "Friendly visible U-shaped smile, two flat eyes/brows, attached cuboid ears and temple/nape hair under stepped helmet.",
+    "Badge cart silhouette and01 are readable; corrected convex basket has no observed diagonal shading seam.",
+    "Dark shared limbs/body, layered blue vest, helmet, source silhouette, contacts and anchors retained; no final visible detached detail."
+  ],
+  "corrections": [
+    {
+      "found": "Concave icon face produced diagonal shading seam in actual closeup.",
+      "fix": "Convex basket plus overlapping handle/grip with different front depths; all6views rerendered/opened."
+    },
+    {
+      "found": "Plan badge backZ.134 would float4mm above vestZ.130.",
+      "fix": "Badge backZ.128 embeds2mm; faceZ.140 supports ink. Face marks embed1.5mm; actual closed-mesh witnesses checked for ears/hair/badge/ink."
+    }
+  ],
+  "commands": {
+    "build": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_worker_base --stage P01.4 --iteration 02",
+    "check_render": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python assets/v3/iterations/worker-base/P01.4/check_and_render.py"
+  },
+  "render": {
+    "final_exit_code": 0,
+    "final_wall_seconds": 7.617,
+    "threads": 2,
+    "size_px": [
+      900,
+      900
+    ],
+    "final_directory": "assets/v3/iterations/worker-base/P01.4/iteration-02",
+    "views": 4,
+    "closeups": 2,
+    "queue_released": true
+  },
+  "preserved_P01_3_source_sha256": "b5e142c079a75c69fc991369ed57e5a750f752a6fa1487ad89dc1fe0471747a1",
+  "spec_sha256_unchanged": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+  "artifacts": {
+    "assets/v3/iterations/worker-base/P01.4/actual-detail-checks.json": "88e371d1924420244e7b5407fb57a67eed24f21e2b006f390894504246792e9b",
+    "assets/v3/iterations/worker-base/P01.4/badge-close.png": "14c2182c641ac91ee25138e453b55317776017c429260e33d690676807c38349",
+    "assets/v3/iterations/worker-base/P01.4/check_and_render.py": "284f70b5d1819f1b82e06d0f2b3f9102f04d2c10f95fdfe9375ef27884663904",
+    "assets/v3/iterations/worker-base/P01.4/face-close.png": "8445580afac98adc48c0252de54256d492a3cd94e25640f1f08c69ceb4df7cf8",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01/front.png": "6dd92fb531ad5a547d38a658b02a90ba7dc7577587b9ca1e3424f6974f00deb8",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01/rear.png": "ca933f1de45d8f1abc216ddd79d6584f956491ca3a4dc03d3d1ce73d7e85e404",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01/side.png": "78cba9c7258bc5ad11fb7eb77062958cd5bde92d803a12ccb7b3d7bd89ad23d7",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01/three-quarter.png": "ed00707d17268b0c9bc5bfe2537a46419cdb5325958f25a90a6b8ce5f55471fa",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01.blend": "67a4b156022ab5f42c94f61058bca77343db7ae2a096fca22afd8560f91aa026",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01.numeric.json": "1b8617bf2aa373acd84701b5511f03ea2205ea4aaa354f2146e3211a8788ef06",
+    "assets/v3/iterations/worker-base/P01.4/iteration-01.render.json": "6b3cff65466e72281e8c3cae473c8340cc5f163df7b741ad88dcb5fb0cb22e16",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02/badge-close.png": "912c2a1897b46516c6e31c3af5f9a68e39b14d8dc718c4b4b3a73af6b921d4ab",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02/face-close.png": "ada814bf92704f8ea266dbdfd608769197cee13feaf28d132e7e9233a13f6798",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02/front.png": "f34c2d9f0405f4fb80f5a6b150c9de112ccf680b431d481ac6de2ee12ab0fc45",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02/rear.png": "c768ac0c1f7cc1fab3d86781725dc3f08831ed7935ff8c25539a2549a8032f89",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02/side.png": "bd1dc066da4a4ca6e97b6aa415634df13d3fc84cc53d550c479dfe03f77db082",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02/three-quarter.png": "33602dc5c7cc0bb8504108e64021d49593d20f1fee4e2dab81af6670d8335d7b",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02.actual-detail-checks.json": "aeeac71b7136a8d8de2cfb2b26484f6de09810858e4a6657fb3ac86709c3e74f",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02.blend": "a18d1689d0f1e2c0000c94460439737ff39f524f99075552982bb78f5b0254cc",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02.numeric.json": "ae26f5a8e10884d62a152de5cdeecc4db531417928bb0e7f599b0e27b6259d84",
+    "assets/v3/iterations/worker-base/P01.4/iteration-02.render.json": "00b0baf1986b407bbca2bf03b4632a1a8714f9b5ec72fcac6642e1ab9db398a2"
+  },
+  "scope": [
+    "Source detail gate only, no GLB export/browser/runtime acceptance.",
+    "Only base picker badge01 built; other role colors/badges belong to role-instancing gate.",
+    "Head/torso attachments changed; existing39core meshes identical, so accepted limb pose checks were not needlessly rerendered.",
+    "P01.5 independent reference comparison remains next after root actual review."
+  ],
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "Six exact paths no_recorded_issue/not_tracked; direct source/image fallback; no refresh."
+  }
+}

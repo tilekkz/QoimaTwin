@@ -1,0 +1,118 @@
+{
+  "status": "PASS",
+  "scope": "Module integration geometry; no source job timing or operational throughput",
+  "method": "Actual GLB/Three world transforms + downward raycasts on all real assembly meshes, including guards",
+  "modules": 9,
+  "paired_ports": [
+    {
+      "from": [
+        "FEED",
+        "anchor_port_minus"
+      ],
+      "to": [
+        "CURVE",
+        "anchor_port_start"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 0
+    },
+    {
+      "from": [
+        "CURVE",
+        "anchor_port_end"
+      ],
+      "to": [
+        "MAIN_E2",
+        "anchor_port_plus"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 7.687732295867288e-8
+    },
+    {
+      "from": [
+        "MAIN_E2",
+        "anchor_port_minus"
+      ],
+      "to": [
+        "MAIN_E1",
+        "anchor_port_plus"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 2.1213485652082647e-7
+    },
+    {
+      "from": [
+        "MAIN_E1",
+        "anchor_port_minus"
+      ],
+      "to": [
+        "TRANSFER",
+        "anchor_port_east"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 1.434826813623878e-7
+    },
+    {
+      "from": [
+        "TRANSFER",
+        "anchor_port_west"
+      ],
+      "to": [
+        "MAIN_W1",
+        "anchor_port_plus"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 9.500605853304944e-8
+    },
+    {
+      "from": [
+        "MAIN_W1",
+        "anchor_port_minus"
+      ],
+      "to": [
+        "MAIN_W2",
+        "anchor_port_plus"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 1.5375464591734576e-7
+    },
+    {
+      "from": [
+        "TRANSFER",
+        "anchor_port_branch"
+      ],
+      "to": [
+        "SPUR_1",
+        "anchor_port_minus"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 0
+    },
+    {
+      "from": [
+        "SPUR_1",
+        "anchor_port_plus"
+      ],
+      "to": [
+        "SPUR_2",
+        "anchor_port_minus"
+      ],
+      "gap_m": 0,
+      "actual_glb_gap_m": 0
+    }
+  ],
+  "carrier_base_xz_m": [
+    0.6,
+    0.4
+  ],
+  "poses": 212,
+  "actual_surface_rays": 7420,
+  "edge_ray_tolerance_m": 0.000001,
+  "edge_ray_tolerance_retries": 28,
+  "min_coplanar_contact_fraction": 0.8857142857142857,
+  "min_surface_y_m": 0.8999999947845936,
+  "max_surface_y_m": 0.9200000241398811,
+  "allowable_engineered_disk_clearance_groove_depth_m": 0.02,
+  "raised_crossing_caps": 0,
+  "source_clock_tested": false
+}

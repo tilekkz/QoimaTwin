@@ -1,0 +1,15 @@
+{
+  "asset_id": "conveyor-diverter", "stage": "declared_before_geometry",
+  "reference_id": "R04", "units": "m", "up_axis": "Y", "forward_axis": "+Z",
+  "origin": "floor centre of main E/W transfer cell; branch exits+Z",
+  "bounds_runtime": {"min": [-0.50, 0, -0.45], "max": [0.50, 1, 0.50]},
+  "dimensions_m": [1, 1, 0.95],
+  "deck_top_y_m": 0.92, "rail_top_y_m": 1,
+  "main_length_m": 1, "outer_width_m": 0.90, "usable_width_m": 0.82,
+  "connection_ports": {"anchor_port_east": [0.5,0.92,0], "anchor_port_west": [-0.5,0.92,0], "anchor_port_branch": [0,0.92,0.5]},
+  "turntable": {"pivot": [0,0.90,0], "radius_m": 0.405, "depth_m": 0.02, "facets": 12, "hole_apothem_m": 0.407, "hole_side_normals_start_rad": 0, "rotation_axis": "Y", "clock": "source stop/pivot0.8s only"},
+  "functional_reference_resolution": "R04 depicts a warm transfer pad. A12-sided warm turntable provides the explicit L08 physical stop/pivot interface; frame silhouette, three open ends, materials and supports retain R04 direction.",
+  "cargo_corner_radius_m": 0.3605551275463989,
+  "minimum_turntable_support_inradius_after_bevel_m": 0.3887999596470726,
+  "clearance_policy": "Max0.60x0.40m cargo rotates inside0.82m clear square. No front rail crosses the branch. Actual source timestamps, reservations and backpressure remain W gates."
+}

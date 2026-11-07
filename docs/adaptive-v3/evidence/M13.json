@@ -1,0 +1,195 @@
+{
+  "task_id": "M13",
+  "status": "PASS",
+  "at": "2026-11-07T09:41:43.195759+00:00",
+  "accepted_children": [
+    "M13.1",
+    "M13.2",
+    "M13.3"
+  ],
+  "reference_id": "R04",
+  "fixture": "conveyor-kit",
+  "fixture_is_not_an_independent_art_asset": true,
+  "glb_sha256": "20d724e3d56cfd6e273fd55ef16474aaf0fc6a47d7bf75e82df393216ba6f20a",
+  "dimensions_m": [
+    6.700000286102295,
+    1.000000104367608,
+    2.9500001072883606
+  ],
+  "triangles": 12656,
+  "actual_geometry": {
+    "status": "PASS",
+    "scope": "Module integration geometry; no source job timing or operational throughput",
+    "method": "Actual GLB/Three world transforms + downward raycasts on all real assembly meshes, including guards",
+    "modules": 9,
+    "paired_ports": [
+      {
+        "from": [
+          "FEED",
+          "anchor_port_minus"
+        ],
+        "to": [
+          "CURVE",
+          "anchor_port_start"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 0
+      },
+      {
+        "from": [
+          "CURVE",
+          "anchor_port_end"
+        ],
+        "to": [
+          "MAIN_E2",
+          "anchor_port_plus"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 7.687732295867288e-08
+      },
+      {
+        "from": [
+          "MAIN_E2",
+          "anchor_port_minus"
+        ],
+        "to": [
+          "MAIN_E1",
+          "anchor_port_plus"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 2.1213485652082647e-07
+      },
+      {
+        "from": [
+          "MAIN_E1",
+          "anchor_port_minus"
+        ],
+        "to": [
+          "TRANSFER",
+          "anchor_port_east"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 1.434826813623878e-07
+      },
+      {
+        "from": [
+          "TRANSFER",
+          "anchor_port_west"
+        ],
+        "to": [
+          "MAIN_W1",
+          "anchor_port_plus"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 9.500605853304944e-08
+      },
+      {
+        "from": [
+          "MAIN_W1",
+          "anchor_port_minus"
+        ],
+        "to": [
+          "MAIN_W2",
+          "anchor_port_plus"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 1.5375464591734576e-07
+      },
+      {
+        "from": [
+          "TRANSFER",
+          "anchor_port_branch"
+        ],
+        "to": [
+          "SPUR_1",
+          "anchor_port_minus"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 0
+      },
+      {
+        "from": [
+          "SPUR_1",
+          "anchor_port_plus"
+        ],
+        "to": [
+          "SPUR_2",
+          "anchor_port_minus"
+        ],
+        "gap_m": 0,
+        "actual_glb_gap_m": 0
+      }
+    ],
+    "carrier_base_xz_m": [
+      0.6,
+      0.4
+    ],
+    "poses": 212,
+    "actual_surface_rays": 7420,
+    "edge_ray_tolerance_m": 1e-06,
+    "edge_ray_tolerance_retries": 28,
+    "min_coplanar_contact_fraction": 0.8857142857142857,
+    "min_surface_y_m": 0.8999999947845936,
+    "max_surface_y_m": 0.9200000241398811,
+    "allowable_engineered_disk_clearance_groove_depth_m": 0.02,
+    "raised_crossing_caps": 0,
+    "source_clock_tested": false
+  },
+  "khronos": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "browser_errors": 0,
+  "visual_review": "Root opened final four source and four actual browser views. All nine unit-scale modules form a coherent continuous line with correct quarter, open three-way transfer and two-module branch. Rails line up and all supports have volume/floor contacts. Separate child closeups already accepted against R04. Kit is an engineering assembly witness, so it is deliberately not separately bound in the art-reference catalogue.",
+  "defects_fixed": [
+    "Ray exactly at a rotated float32 module seam initially missed a submicrometre boundary; actualGLB paired ports have zero-to-float tolerance gap. Validator now probes1micrometre neighbour only for exact-edge misses and records retry count; no collision or substantive gap is bypassed.",
+    "Asset studio shadow bias changed to a fixed3mm depth-space equivalent to reduce planar shadow acne. Production build/typecheck passed and all four final kit browser views were refreshed/opened."
+  ],
+  "images": [
+    {
+      "path": "assets/v3/previews/conveyor-kit/front.png",
+      "sha256": "e002f1b5d0b5e0f4bc65f3d4cb8b0b9ee6e8261c11139b5e9b040f88a6b11eea",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/previews/conveyor-kit/side.png",
+      "sha256": "21926b590b856b497df1d5dc894d41f5fd415ea96395dd776ada88ba47f5c5a5",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/previews/conveyor-kit/rear.png",
+      "sha256": "69c62fa2ca9db092817dd7738d1c56a0988e0545619274d66a17d6df80844cbc",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/previews/conveyor-kit/three-quarter.png",
+      "sha256": "327188f0181888ba169c81cb19ac6a8c8cab4d2479c14ea76a0f2d58d9853f99",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-kit/front.png",
+      "sha256": "7e3d202278057f2395024bcf425dc890a0f2938094058387f4c9cd73d7572f74",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-kit/side.png",
+      "sha256": "3c0b5de5e226b265dddb59f6efc223308ec0cb649b3fe205dee5dff062e70de8",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-kit/rear.png",
+      "sha256": "af8e57ed9199e1c8f573b5c930d1d58f84948e6e83033d93b08cf0604462caf6",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-kit/quarter.png",
+      "sha256": "0348965b16d2861f41ab6b37bb2d8f4cd2b2e410e1678b5896346f35b4f3142c",
+      "actually_opened_by_root": true
+    }
+  ],
+  "deferred": [
+    "All cargo/strip motion must follow the materialised source clock and W reservations/seek reset gates",
+    "Fullwarehouse rendering/instancing/performance remain W/Q/H",
+    "Actual operational throughput/backend integration not claimed"
+  ]
+}

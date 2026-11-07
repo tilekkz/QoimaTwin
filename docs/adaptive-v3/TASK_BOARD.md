@@ -32,8 +32,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [L06](tasks/L06.md) | PASS | rack_crate | L02,L03,L04 | Построен пешеходный граф v3 |
 | [L07](tasks/L07.md) | PASS | warehouse_props | L02,L03,L04,L05 | Построен транспортный граф v3 |
 | [L08](tasks/L08.md) | PASS | root | L02,R04 | Описана связная conveyor topology v3 |
-| [L09](tasks/L09.md) | ACTIVE | warehouse_props | L02,L06,L07 | Размещены адреса хранения по пяти типам |
-| [L10](tasks/L10.md) | TODO | unassigned | L06,L07,L08,L09 | Собрана инженерная preview-сцена нового layout |
+| [L09](tasks/L09.md) | PASS | warehouse_props | L02,L06,L07 | Размещены адреса хранения по пяти типам |
+| [L10](tasks/L10.md) | ACTIVE | warehouse_props | L06,L07,L08,L09 | Собрана инженерная preview-сцена нового layout |
 | [L11](tasks/L11.md) | TODO | unassigned | L10 | Проверены пространственные конфликты layout |
 | [L12](tasks/L12.md) | TODO | unassigned | L11 | Зафиксирован layout manifest и его версия |
 | [C01](tasks/C01.md) | TODO | unassigned | R03,L12 | Описана структура CargoArchetype v3 |
@@ -60,7 +60,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M10](tasks/M10.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
 | [M11](tasks/M11.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
 | [M12](tasks/M12.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
-| [M13](tasks/M13.md) | TODO | unassigned | R10,R04,L08,I09 | Готов модульный комплект conveyor |
+| [M13](tasks/M13.md) | PASS | root | R10,R04,L08,I09 | Готов модульный комплект conveyor |
 | [M14](tasks/M14.md) | TODO | unassigned | R10,R06,C08,I09 | Готов анимируемый forklift |
 | [P01](tasks/P01.md) | TODO | unassigned | R10,R05,I09 | Готова единая базовая фигура человека |
 | [P02](tasks/P02.md) | TODO | unassigned | R10,P01,R05,I09 | Готовы визуальные варианты ролей |
@@ -116,9 +116,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M06.3](tasks/M06.3.md) | TODO | unassigned | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
 | [M07.1](tasks/M07.1.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
 | [M07.2](tasks/M07.2.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
-| [M13.1](tasks/M13.1.md) | ACTIVE | root | R10,R04,L08,I09 | Straight belt: supported transport surface and exact connection ports |
-| [M13.2](tasks/M13.2.md) | READY | unassigned | R10,R04,L08,I09 | 90-degree turn: joined supported path and correct inside/outside cargo clearance |
-| [M13.3](tasks/M13.3.md) | READY | unassigned | R10,R04,L08,I09 | T transfer: three open connection ends and no crossing walls |
+| [M13.1](tasks/M13.1.md) | PASS | root | R10,R04,L08,I09 | Straight belt: supported transport surface and exact connection ports |
+| [M13.2](tasks/M13.2.md) | PASS | root | R10,R04,L08,I09 | 90-degree turn: joined supported path and correct inside/outside cargo clearance |
+| [M13.3](tasks/M13.3.md) | PASS | root | R10,R04,L08,I09 | T transfer: three open connection ends and no crossing walls |
 | [P03.1](tasks/P03.1.md) | TODO | unassigned | R10,P02,M07,I09 | Picker working figure with valid rig proportions |
 | [P03.2](tasks/P03.2.md) | TODO | unassigned | R10,P02,M07,P03.1,I09 | Picking cart with grounded wheels, clear tote tray and coherent handle |
 | [P03.3](tasks/P03.3.md) | TODO | unassigned | R10,P02,M07,P03.2,I09 | Hands and both grip anchors stay in contact with handle |
@@ -152,15 +152,15 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [I09.2](tasks/I09.2.md) | PASS | root | R10 | Separate V3 browser asset stand and build entry |
 | [I09.3](tasks/I09.3.md) | PASS | root | I09.1,I09.2 | Calibration GLB/source/browser integration gate |
 | [P01.1](tasks/P01.1.md) | PASS | people_packing | R10,R05,I09 | Metric dimensions and named rig plan |
-| [P01.2](tasks/P01.2.md) | ACTIVE | people_packing | R10,R05,I09,P01.1 | Primary silhouette |
-| [P01.3](tasks/P01.3.md) | TODO | people_packing | R10,R05,I09,P01.2 | Functional joints and support |
-| [P01.4](tasks/P01.4.md) | TODO | people_packing | R10,R05,I09,P01.3 | Materials, face and badge |
+| [P01.2](tasks/P01.2.md) | PASS | people_packing | R10,R05,I09,P01.1 | Primary silhouette |
+| [P01.3](tasks/P01.3.md) | PASS | people_packing | R10,R05,I09,P01.2 | Functional joints and support |
+| [P01.4](tasks/P01.4.md) | ACTIVE | people_packing | R10,R05,I09,P01.3 | Materials, face and badge |
 | [P01.5](tasks/P01.5.md) | TODO | people_packing | R10,R05,I09,P01.4 | Four-view reference comparison and fixes |
 | [P01.6](tasks/P01.6.md) | TODO | people_packing | R10,R05,I09,P01.5 | Final GLB and actual browser stand |
 | [P01.7](tasks/P01.7.md) | TODO | people_packing | R10,R05,I09,P01.6 | Base articulation and parent integration gate |
 | [P08.1](tasks/P08.1.md) | PASS | rack_crate | R10,R04,I09 | Metric frame/worktop/transfer interface plan |
-| [P08.2](tasks/P08.2.md) | ACTIVE | rack_crate | R10,R04,I09,P08.1,L08 | Frame, legs and worktop geometry |
-| [P08.3](tasks/P08.3.md) | TODO | rack_crate | R10,R04,I09,P08.2 | Scanner, printer, screen and tape details |
-| [P08.4](tasks/P08.4.md) | TODO | rack_crate | R10,R04,I09,P08.3 | Pivots, payload and work interfaces |
+| [P08.2](tasks/P08.2.md) | PASS | rack_crate | R10,R04,I09,P08.1,L08 | Frame, legs and worktop geometry |
+| [P08.3](tasks/P08.3.md) | PASS | rack_crate | R10,R04,I09,P08.2 | Scanner, printer, screen and tape details |
+| [P08.4](tasks/P08.4.md) | ACTIVE | rack_crate | R10,R04,I09,P08.3 | Pivots, payload and work interfaces |
 | [P08.5](tasks/P08.5.md) | TODO | rack_crate | R10,R04,I09,P08.4 | Four-view comparison and corrections |
 | [P08.6](tasks/P08.6.md) | TODO | rack_crate | R10,R04,I09,P08.5 | Final GLB/browser and parent gate |
