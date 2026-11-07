@@ -6,6 +6,8 @@ if(assets.some(a=>!/^[a-z0-9][a-z0-9-]{0,63}$/.test(a)))throw Error('Invalid ass
 const views=(process.env.QOIMA_STAND_VIEWS||'front,side,rear,quarter').split(',');
 if(views.some(v=>!['front','side','rear','quarter','top'].includes(v)))throw Error('Invalid view');
 const base=process.env.QOIMA_STAND_BASE_URL||'http://127.0.0.1:4173';
+const variant=process.env.QOIMA_STAND_FIXTURE,focus=process.env.QOIMA_STAND_FOCUS;
+if(variant&&!['roles','pickup','driver'].includes(variant))throw Error('Invalid fixture variant');
 async function bounded(promise,ms){let timer;try{return await Promise.race([promise.then(()=>true,()=>false),new Promise(r=>{timer=setTimeout(()=>r(false),ms);})]);}finally{clearTimeout(timer);}}
 const started=Date.now();
 const server=await chromium.launchServer({channel:'chrome',headless:true,args:['--mute-audio'],timeout:30000});
@@ -24,9 +26,9 @@ try{
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   page.on('response',r=>{if(r.status()>=400)failedResources.push({url:r.url(),status:r.status()});});
   try{
-   await page.goto(`${base}/stand-v3.html?asset=${asset}`);await page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
+   await page.goto(`${base}/stand-v3.html?asset=${asset}${variant?'&fixture='+variant:''}`);await page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
    for(const view of views){
-    await page.evaluate(view=>window.__QOIMA_STAND_V3__.view(view),view);
+    await page.evaluate(({view,focus})=>focus?window.__QOIMA_STAND_V3__.focus(focus,view):window.__QOIMA_STAND_V3__.view(view),{view,focus});
     await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});
     await page.screenshot({path:`${out}/${view}.png`});
     frames.push({view,screenshot:`${out}/${view}.png`,state:await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot())});

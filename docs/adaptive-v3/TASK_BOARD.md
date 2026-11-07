@@ -68,7 +68,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P04](tasks/P04.md) | READY | unassigned | R10,P02,M07,P08,I09 | Готов комплект packer |
 | [P05](tasks/P05.md) | READY | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
 | [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
-| [P07](tasks/P07.md) | READY | unassigned | R10,P02,M14,I09 | Готов комплект driver |
+| [P07](tasks/P07.md) | PASS | root | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
 | [P09](tasks/P09.md) | TODO | unassigned | R10,R07,L12,I09 | Готов модульный environment/dock kit |
 | [P10](tasks/P10.md) | TODO | unassigned | R10,P03,P04,P05,P06,P07 | Подготовлен role registry и легенда |

@@ -42,7 +42,10 @@ try{
   await page.evaluate(t=>{window.__QOIMA_STAND_V3__.cycle.seek(t);window.__QOIMA_STAND_V3__.view('quarter');},t);
   await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});
   const s=await state();assert.equal(s.cargoUuid,initial.cargoUuid);near(s.actualHUWorld,pickupAt(timeline,t).HU_world);assert.equal(s.HU_count,1);
-  await page.screenshot({path:`${out}/t${String(t).padStart(2,'0')}-quarter.png`});report.browser_frames.push({time_s:t,state:s});
+  const paired=await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot().driver);
+  assert.equal(paired.actorId,'F01');assert.equal(paired.role,'forklift_driver');assert.equal(paired.warehouse_headcount_delta,0);near(paired.root_local,[0,.29,-.615]);near(paired.scale,[1,1,1]);
+  assert(paired.seat_error_m<2e-5&&Object.values(paired.grip_error_m).every(v=>v<2e-5)&&Object.values(paired.sole_error_m).every(v=>v<2e-5));
+  await page.screenshot({path:`${out}/t${String(t).padStart(2,'0')}-quarter.png`});report.browser_frames.push({time_s:t,state:s,driver:paired});
  }
  await page.evaluate(()=>window.__QOIMA_STAND_V3__.cycle.seek(8));await page.locator('#cycle-play').click();await page.waitForTimeout(250);assert((await state()).time>8);
  await page.locator('#cycle-play').click();const paused=await state();await page.waitForTimeout(200);assert.equal((await state()).time,paused.time);report.browser_checks.play_pause=true;
@@ -52,6 +55,7 @@ try{
  await page.locator('[data-cycle-time="30"]').click();assert.equal((await state()).complete,true);
  await page.locator('[data-cycle-time="8"]').click();await page.waitForTimeout(150);assert.equal((await state()).time,8);
  await page.screenshot({path:`${out}/reduced-static-pickup.png`});report.browser_checks.live_reduce_pauses_and_static_phases_work=true;
+ await page.locator('#cycle-time').focus();await page.keyboard.press('End');assert.equal((await state()).time,30);await page.keyboard.press('Home');assert.equal((await state()).time,0);await page.keyboard.press('ArrowRight');assert.equal((await state()).time,.01);report.browser_checks.reduced_keyboard_seek=true;
  await page.reload();await page.waitForFunction(()=>window.__QOIMA_STAND_V3__?.cycle.snapshot());assert.equal((await state()).time,0);assert.equal((await state()).playing,false);report.browser_checks.cold_reduce_static=true;
  await page.emulateMedia({reducedMotion:'no-preference'});await page.waitForTimeout(50);assert.equal((await state()).playing,false);
  await page.evaluate(()=>window.__QOIMA_STAND_V3__.cycle.seek(30));await page.locator('#cycle-play').click();await page.waitForTimeout(100);assert((await state()).time>0&&(await state()).time<1);await page.evaluate(()=>window.__QOIMA_STAND_V3__.cycle.pause());report.browser_checks.explicit_replay=true;
@@ -62,7 +66,7 @@ try{
  await page.route('**/data/v3/pallet-pickup-cycle.json',async route=>{arrived();await gate;await route.fulfill({status:200,contentType:'application/json',body:raw});});
  await page.evaluate(()=>{void window.__QOIMA_STAND_V3__.load('forklift-pallet-low-fixture');});await pending;
  await page.evaluate(()=>window.__QOIMA_STAND_V3__.load('calibration'));release();await page.waitForTimeout(100);
- const switched=await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot());assert.equal(switched.modelId,'calibration');assert.equal(switched.phase,'ready');assert.equal(switched.action,null);assert.equal(await page.locator('#cycle-controls').isHidden(),true);report.browser_checks.stale_async_load_does_not_replace_new_model=true;
+ const switched=await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot());assert.equal(switched.modelId,'calibration');assert.equal(switched.phase,'ready');assert.equal(switched.action,null);assert.equal(switched.driver,null);assert.equal(await page.locator('#cycle-controls').isHidden(),true);report.browser_checks.stale_async_load_does_not_replace_new_model=true;
  await page.unroute('**/data/v3/pallet-pickup-cycle.json');
  const memories=[];
  for(let i=0;i<3;i++){

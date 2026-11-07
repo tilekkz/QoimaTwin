@@ -6,8 +6,9 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { GTAOPass } from 'three/examples/jsm/postprocessing/GTAOPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
-import {createWorkerRolesFixture, applyWorkerRole, type WorkerRole} from './workerRoles';
+import {createWorkerRolesFixture, createWorkerInstance, disposeWorkerInstance, applyWorkerRole, type WorkerRole, type WorkerInstance} from './workerRoles';
 import {createPickupFixture,validatePickupTimeline} from './forkliftPickup';
+import {bindSeatedDriver,validateSeatedDriverPose} from './seatedDriver';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
@@ -71,6 +72,8 @@ let model:THREE.Group | undefined;
 let workerTemplate:THREE.Object3D | undefined;
 let rolesFixture:ReturnType<typeof createWorkerRolesFixture> | undefined;
 let pickupFixture:ReturnType<typeof createPickupFixture> | undefined;
+let seatedDriver:ReturnType<typeof bindSeatedDriver> | undefined;
+let driverActor:WorkerInstance|undefined;
 let pickupPlaying=false,pickupAnchorTime=0,pickupAnchorWall=0;
 let view:View='quarter';
 let modelId='calibration';
@@ -90,6 +93,10 @@ function disposeObject(object:THREE.Object3D){
 
 function releaseModel(){
   pickupPlaying=false;pickupFixture=undefined;element('cycle-controls').hidden=true;
+  // The role instance owns only its tints/badge. Detach it before disposing
+  // the vehicle, then release its shared worker template exactly once.
+  if(seatedDriver){seatedDriver.release();seatedDriver=undefined;}
+  if(driverActor){disposeWorkerInstance(driverActor);driverActor=undefined;}
   if(model)scene.remove(model);
   if(rolesFixture){rolesFixture.dispose();rolesFixture=undefined;}
   else if(model)disposeObject(model);
@@ -168,7 +175,7 @@ function snapshot(){
   model?.traverseVisible(node=>{if(node instanceof THREE.Mesh){triangles+=(node.geometry.index?.count??node.geometry.getAttribute('position').count)/3;for(const m of Array.isArray(node.material)?node.material:[node.material])materials.add(m.name);}});
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
-  return {modelId,phase,view,focus:activeFocus,fixture:pickupFixture?'pallet-pickup-visual-QA':rolesFixture?'five-role-visual-QA':null,action:pickupFixture?{...pickupFixture.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,fixture:pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':rolesFixture?'five-role-visual-QA':null,driver:seatedDriver?.snapshot()??null,action:pickupFixture?{...pickupFixture.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -177,7 +184,7 @@ function diagnostics(){
 }
 
 function updateReference(){
-  const referenceAsset=pickupFixture?'forklift':modelId;
+  const referenceAsset=pickupFixture||seatedDriver?'forklift':modelId;
   const id=manifest?.asset_reference_bindings[referenceAsset];const entry=manifest?.references.find(r=>r.reference_id===id);
   const link=element<HTMLAnchorElement>('reference-link');const img=element<HTMLImageElement>('reference');
   link.hidden=!entry;
@@ -203,6 +210,22 @@ async function loadModel(id:string){
       workerTemplate=gltf.scene;rolesFixture=createWorkerRolesFixture(workerTemplate);model=rolesFixture.root;
       element('model-title').textContent='Пять ролей · визуальный стенд';
     }else model=gltf.scene;
+    const requestedFixture=new URL(location.href).searchParams.get('fixture');
+    if((id==='forklift'&&requestedFixture==='driver')||(id==='forklift-pallet-low-fixture'&&requestedFixture==='pickup')){
+      const [worker,poseResponse]=await Promise.all([loader.loadAsync(base+'models/v3/worker-base.glb'),fetch(base+'data/v3/seated-driver-pose.json')]);
+      if(token!==serial){disposeObject(worker.scene);disposeObject(gltf.scene);return;}
+      workerTemplate=worker.scene;
+      if(!poseResponse.ok)throw Error('Поза водителя недоступна.');
+      const driverPose=validateSeatedDriverPose(await poseResponse.json());
+      if(token!==serial)return;
+      const vehicle=model.getObjectByName('forklift_root');if(!vehicle)throw Error('В сборке нет погрузчика.');
+      // The isolated stand owns this one sample. Production binding consumes
+      // the existing registry instance, so seating never duplicates a worker.
+      driverActor=createWorkerInstance(workerTemplate,'F01','forklift_driver');
+      seatedDriver=bindSeatedDriver(vehicle,driverActor,driverPose);
+      if(requestedFixture==='driver')element('model-title').textContent='Водитель в погрузчике';
+      updateReference();
+    }
     if(id==='forklift-pallet-low-fixture'&&new URL(location.href).searchParams.get('fixture')==='pickup'){
       const response=await fetch(base+'data/v3/pallet-pickup-cycle.json');
       if(!response.ok)throw Error('Описание цикла недоступно.');
@@ -217,7 +240,7 @@ async function loadModel(id:string){
     const centre=bounds.getCenter(new THREE.Vector3());const radius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
     ground.position.set(centre.x,Math.min(0,bounds.min.y)-.002,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
-    fit(view);setStatus('ready',pickupFixture?'Подхват и установка паллеты':rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),pickupFixture?'Выберите этап или запустите цикл справа':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
+    fit(view);setStatus('ready',pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),pickupFixture?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
   }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
 }
