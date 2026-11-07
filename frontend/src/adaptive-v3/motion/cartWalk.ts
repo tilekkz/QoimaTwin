@@ -41,7 +41,8 @@ function prepareArm(actor:THREE.Object3D,side:'L'|'R',cart:THREE.Object3D){
   // Read the actual rigid offset through that pivot instead of assuming that
   // hand.position alone is the complete forearm-to-wrist vector.
   const wristOffset=fore.worldToLocal(hand.getWorldPosition(new THREE.Vector3()));
-  const desiredHand=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),-Math.PI/2);
+  const desiredHand=new THREE.Quaternion().setFromEuler(new THREE.Euler(3*Math.PI/8,0,Math.PI,'XYZ'));
+  const roll=find('joint__palm_roll_'+side);
   const offset=anchor.position.clone().applyQuaternion(desiredHand);
   const seed=[upper.rotation.x,upper.rotation.z,fore.rotation.x];
   function solve(drop:number){
@@ -60,7 +61,7 @@ function prepareArm(actor:THREE.Object3D,side:'L'|'R',cart:THREE.Object3D){
     }
     if(point(v).distanceTo(goal)>1e-8)throw Error('Рука не достигает рукояти.');
     upper.rotation.set(v[0],0,v[1],'XYZ');fore.rotation.set(v[2],0,0,'XYZ');
-    q1.copy(upper.quaternion).multiply(fore.quaternion);hand.quaternion.copy(q1.invert().multiply(desiredHand));
+    q1.copy(upper.quaternion).multiply(fore.quaternion);hand.quaternion.copy(roll.quaternion.clone().invert().multiply(q1.invert()).multiply(desiredHand));
   }
   return solve;
 }

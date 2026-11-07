@@ -5,12 +5,12 @@
   "units": "m",
   "up_axis": "Y",
   "forward_axis": "+Z",
-  "generated_at": "2026-11-07T10:26:43.648336+00:00",
+  "generated_at": "2026-11-07T22:24:07.882781+00:00",
   "blender_version": "5.0.1",
   "source": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\blender\\worker-base.blend",
   "glb": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\public\\models\\v3\\worker-base.glb",
-  "glb_bytes": 181828,
-  "sha256": "c8546473c76f126844b427417db86e65be090fa04ad56c0deb9cb2bda92e73b7",
+  "glb_bytes": 183028,
+  "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
   "source_meshes": 56,
   "runtime_meshes": 23,
   "triangles": 2848,
@@ -63,14 +63,14 @@
       0.004999999888241291
     ],
     "anchor_hand_grip_L": [
-      -0.3070000112056732,
+      -0.25,
       0.6650000214576721,
-      0.07500000298023224
+      0.03199999779462814
     ],
     "anchor_hand_grip_R": [
-      0.3070000112056732,
+      0.25,
       0.6650000214576721,
-      0.07500000298023224
+      0.03199999779462814
     ]
   },
   "pivots": {
@@ -228,7 +228,7 @@
       "parent": "joint__upper_arm_L",
       "axis": "X"
     },
-    "joint__hand_L": {
+    "joint__palm_roll_L": {
       "position_runtime": [
         -0.30000001192092896,
         0.7150000333786011,
@@ -240,6 +240,20 @@
         0.014999999664723873
       ],
       "parent": "joint__forearm_L",
+      "axis": "Y"
+    },
+    "joint__hand_L": {
+      "position_runtime": [
+        -0.30000001192092896,
+        0.7150000333786011,
+        0.02499999850988388
+      ],
+      "local_runtime": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent": "joint__palm_roll_L",
       "axis": "X"
     },
     "joint__upper_arm_R": {
@@ -270,7 +284,7 @@
       "parent": "joint__upper_arm_R",
       "axis": "X"
     },
-    "joint__hand_R": {
+    "joint__palm_roll_R": {
       "position_runtime": [
         0.30000001192092896,
         0.7150000333786011,
@@ -282,6 +296,20 @@
         0.014999999664723873
       ],
       "parent": "joint__forearm_R",
+      "axis": "Y"
+    },
+    "joint__hand_R": {
+      "position_runtime": [
+        0.30000001192092896,
+        0.7150000333786011,
+        0.02499999850988388
+      ],
+      "local_runtime": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent": "joint__palm_roll_R",
       "axis": "X"
     }
   },
@@ -699,14 +727,14 @@
       "parent": "joint__hand_L",
       "bounds_runtime": {
         "min": [
-          -0.3619999885559082,
+          -0.28049999475479126,
           0.5850000381469727,
-          0.04450000077486038
+          -0.007000015117228031
         ],
         "max": [
-          -0.2680000066757202,
+          -0.23999999463558197,
           0.6425000429153442,
-          0.08500000089406967
+          0.08699998259544373
         ]
       },
       "vertices": 24
@@ -716,14 +744,14 @@
       "parent": "joint__hand_L",
       "bounds_runtime": {
         "min": [
-          -0.3619999885559082,
+          -0.33000001311302185,
           0.5850000977516174,
-          -0.005000002682209015
+          -0.007000015117228031
         ],
         "max": [
-          -0.2680000066757202,
+          -0.27250000834465027,
           0.7350000739097595,
-          0.05249999836087227
+          0.08699998259544373
         ]
       },
       "vertices": 24
@@ -733,14 +761,14 @@
       "parent": "joint__hand_L",
       "bounds_runtime": {
         "min": [
-          -0.28299999237060547,
+          -0.320000022649765,
           0.6890000700950623,
-          0.004999995231628418
+          -0.022000007331371307
         ],
         "max": [
-          -0.25300002098083496,
+          -0.23000000417232513,
           0.7290000319480896,
-          0.0949999988079071
+          0.007999994792044163
         ]
       },
       "vertices": 24
@@ -750,14 +778,14 @@
       "parent": "joint__hand_L",
       "bounds_runtime": {
         "min": [
-          -0.3619999885559082,
+          -0.28049999475479126,
           0.6875000596046448,
-          0.04450000077486038
+          -0.007000015117228031
         ],
         "max": [
-          -0.2680000066757202,
+          -0.23999999463558197,
           0.7350000739097595,
-          0.08500000089406967
+          0.08699998259544373
         ]
       },
       "vertices": 24
@@ -818,14 +846,14 @@
       "parent": "joint__hand_R",
       "bounds_runtime": {
         "min": [
-          0.2680000066757202,
+          0.23999999463558197,
           0.5850000381469727,
-          0.04450000077486038
+          -0.007000015117228031
         ],
         "max": [
-          0.3619999885559082,
+          0.28049999475479126,
           0.6425000429153442,
-          0.08500000089406967
+          0.08699998259544373
         ]
       },
       "vertices": 24
@@ -835,14 +863,14 @@
       "parent": "joint__hand_R",
       "bounds_runtime": {
         "min": [
-          0.2680000066757202,
+          0.27250000834465027,
           0.5850000977516174,
-          -0.005000002682209015
+          -0.007000015117228031
         ],
         "max": [
-          0.3619999885559082,
+          0.33000001311302185,
           0.7350000739097595,
-          0.05249999836087227
+          0.08699998259544373
         ]
       },
       "vertices": 24
@@ -852,14 +880,14 @@
       "parent": "joint__hand_R",
       "bounds_runtime": {
         "min": [
-          0.25300002098083496,
+          0.23000000417232513,
           0.6890000700950623,
-          0.004999995231628418
+          -0.022000007331371307
         ],
         "max": [
-          0.28299999237060547,
+          0.320000022649765,
           0.7290000319480896,
-          0.0949999988079071
+          0.007999994792044163
         ]
       },
       "vertices": 24
@@ -869,14 +897,14 @@
       "parent": "joint__hand_R",
       "bounds_runtime": {
         "min": [
-          0.2680000066757202,
+          0.23999999463558197,
           0.6875000596046448,
-          0.04450000077486038
+          -0.007000015117228031
         ],
         "max": [
-          0.3619999885559082,
+          0.28049999475479126,
           0.7350000739097595,
-          0.08500000089406967
+          0.08699998259544373
         ]
       },
       "vertices": 24
@@ -1405,14 +1433,14 @@
       "parent": "joint__hand_L",
       "bounds_runtime": {
         "min": [
-          -0.3619999885559082,
+          -0.33000001311302185,
           0.5850000381469727,
-          -0.005000002682209015
+          -0.022000009194016457
         ],
         "max": [
-          -0.25300002098083496,
+          -0.23000000417232513,
           0.7350000739097595,
-          0.0949999988079071
+          0.08699998259544373
         ]
       }
     },
@@ -1453,14 +1481,14 @@
       "parent": "joint__hand_R",
       "bounds_runtime": {
         "min": [
-          0.25300002098083496,
+          0.23000000417232513,
           0.5850000381469727,
-          -0.005000002682209015
+          -0.022000009194016457
         ],
         "max": [
-          0.3619999885559082,
+          0.33000001311302185,
           0.7350000739097595,
-          0.0949999988079071
+          0.08699998259544373
         ]
       }
     },
@@ -1640,225 +1668,6 @@
   "glb_header": {
     "magic": "glTF",
     "version": 2,
-    "declared_bytes": 181828
-  },
-  "accepted_source_before_export_sha256": "a18d1689d0f1e2c0000c94460439737ff39f524f99075552982bb78f5b0254cc",
-  "accepted_source_snapshot": "assets/v3/iterations/worker-base/P01.4/iteration-02.blend",
-  "editable_source_modifiers_before_finish": 110,
-  "source_sha256": "baa1c944421a7b3621f37adc48bd03dc6e05060a652bfa257b3ec81ff8a55400",
-  "export_entry_point": "build_worker_base --export (existing accepted source, no rebuild)",
-  "glb_numeric_verification": {
-    "status": "verified_numerically",
-    "method": "Independent CPython stdlib decode of actual GLB BIN float POSITION/NORMAL/index bytes and recursively composed glTF node TRS; no Blender/authoring xyz/helper bounds used.",
-    "bounds_runtime": {
-      "min": [
-        -0.3730235179704461,
-        1.4901161193847656e-08,
-        -0.15999999921768904
-      ],
-      "max": [
-        0.3730235178076827,
-        1.699999839067459,
-        0.21999999601393938
-      ]
-    },
-    "dimensions_m": [
-      0.7460470357781288,
-      1.699999824166298,
-      0.3799999952316284
-    ],
-    "nodes": 46,
-    "runtime_meshes": 23,
-    "triangles": 2848,
-    "finite_positions": 5773,
-    "finite_unit_normals": 5773,
-    "anchors": {
-      "anchor_floor_origin": [
-        0,
-        0,
-        0
-      ],
-      "anchor_neck_base": [
-        0.0,
-        1.149999976158142,
-        0.004999999888241291
-      ],
-      "anchor_seat_contact": [
-        0.0,
-        0.550000011920929,
-        -0.03500000108033419
-      ],
-      "anchor_hand_grip_L": [
-        -0.3070000112056732,
-        0.6650000214576721,
-        0.07500000298023224
-      ],
-      "anchor_foot_floor_L": [
-        -0.11499999463558197,
-        1.4901161193847656e-08,
-        0.0
-      ],
-      "anchor_hand_grip_R": [
-        0.3070000112056732,
-        0.6650000214576721,
-        0.07500000298023224
-      ],
-      "anchor_foot_floor_R": [
-        0.11499999463558197,
-        1.4901161193847656e-08,
-        0.0
-      ]
-    },
-    "pivots": {
-      "joint__pelvis": {
-        "position_runtime": [
-          0.0,
-          0.6200000047683716,
-          -0.004999999888241291
-        ],
-        "parent": "worker_base_root"
-      },
-      "joint__torso": {
-        "position_runtime": [
-          0.0,
-          0.675000011920929,
-          -0.004999999888241291
-        ],
-        "parent": "joint__pelvis"
-      },
-      "joint__head": {
-        "position_runtime": [
-          0.0,
-          1.1949999332427979,
-          0.004999999888241291
-        ],
-        "parent": "joint__torso"
-      },
-      "joint__upper_arm_L": {
-        "position_runtime": [
-          -0.2150000035762787,
-          1.1050000190734863,
-          0.0
-        ],
-        "parent": "joint__torso"
-      },
-      "joint__forearm_L": {
-        "position_runtime": [
-          -0.26500001549720764,
-          0.9050000309944153,
-          0.009999999776482582
-        ],
-        "parent": "joint__upper_arm_L"
-      },
-      "joint__hand_L": {
-        "position_runtime": [
-          -0.30000001192092896,
-          0.7150000333786011,
-          0.02499999850988388
-        ],
-        "parent": "joint__forearm_L"
-      },
-      "joint__thigh_L": {
-        "position_runtime": [
-          -0.0949999988079071,
-          0.5950000286102295,
-          -0.004999999888241291
-        ],
-        "parent": "joint__pelvis"
-      },
-      "joint__shin_L": {
-        "position_runtime": [
-          -0.10499999672174454,
-          0.36500000953674316,
-          0.004999999888241291
-        ],
-        "parent": "joint__thigh_L"
-      },
-      "joint__foot_L": {
-        "position_runtime": [
-          -0.11499999463558197,
-          0.14000001549720764,
-          -0.004999999888241291
-        ],
-        "parent": "joint__shin_L"
-      },
-      "joint__upper_arm_R": {
-        "position_runtime": [
-          0.2150000035762787,
-          1.1050000190734863,
-          0.0
-        ],
-        "parent": "joint__torso"
-      },
-      "joint__forearm_R": {
-        "position_runtime": [
-          0.26500001549720764,
-          0.9050000309944153,
-          0.009999999776482582
-        ],
-        "parent": "joint__upper_arm_R"
-      },
-      "joint__hand_R": {
-        "position_runtime": [
-          0.30000001192092896,
-          0.7150000333786011,
-          0.02499999850988388
-        ],
-        "parent": "joint__forearm_R"
-      },
-      "joint__thigh_R": {
-        "position_runtime": [
-          0.0949999988079071,
-          0.5950000286102295,
-          -0.004999999888241291
-        ],
-        "parent": "joint__pelvis"
-      },
-      "joint__shin_R": {
-        "position_runtime": [
-          0.10499999672174454,
-          0.36500000953674316,
-          0.004999999888241291
-        ],
-        "parent": "joint__thigh_R"
-      },
-      "joint__foot_R": {
-        "position_runtime": [
-          0.11499999463558197,
-          0.14000001549720764,
-          -0.004999999888241291
-        ],
-        "parent": "joint__shin_R"
-      }
-    },
-    "root_identity": true,
-    "all_joint_bind_rotations_identity": true,
-    "same_parent_batching_verified_source_parts": 56,
-    "materials": [
-      "V3_Worker_BootsShared",
-      "V3_Worker_TrousersShared",
-      "V3_Worker_SkinWarm",
-      "V3_Worker_HairDark",
-      "V3_Worker_BadgeInk",
-      "V3_Worker_RoleHeadwear",
-      "V3_Worker_ShirtShared",
-      "V3_Worker_BadgeBase",
-      "V3_Worker_RoleVest",
-      "V3_Worker_Reflective"
-    ],
-    "textures": 0,
-    "qa_gauges": 0,
-    "metric_tolerance_m": 2e-06,
-    "source_geometry_matches_P01_4_bounds": true,
-    "khronos": "pending root",
-    "browser_four_views": "pending root"
-  },
-  "editable_source_after_finish_verification": {
-    "status": "verified",
-    "method": "Reopened both accepted P01.4 snapshot and finish-saved canonical blend; all evaluated world vertices, mesh names/parents/materials and modifier types exactly equal.",
-    "mesh_objects": 56,
-    "editable_modifiers": 110,
-    "geometry_sha256": "3fe2c274501d73a82afd0ed68be7802d66efce0d35f7c43cd34598e395967f22",
-    "qa_gauges": 0
+    "declared_bytes": 183028
   }
 }

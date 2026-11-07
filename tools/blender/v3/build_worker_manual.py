@@ -27,10 +27,12 @@ if __name__=='__main__':
     controls={}
     for side in ('L','R'):
         hand=bpy.data.objects['joint__hand_'+side];basis=hand.matrix_basis.copy()
-        roll=pivot('joint__palm_roll_'+side,(0,0,0),hand.parent,'Y');roll.matrix_basis=basis
+        roll=next((o for o in worker.children_recursive if o.name=='joint__palm_roll_'+side),None)
+        if roll is None:
+            roll=pivot('joint__palm_roll_'+side,(0,0,0),hand.parent,'Y');roll.matrix_basis=basis
+            hand.parent=roll;hand.matrix_basis=Matrix.Identity(4)
         roll['joint_mode']='manual_forearm_axial_roll';roll['rotation_range_radians']=[-math.pi,math.pi]
         roll['meaning']='Explicit added manual forearm/pronation control; does not relax original hand Euler limits.'
-        hand.parent=roll;hand.matrix_basis=Matrix.Identity(4)
         controls[side]={'roll':roll}
         for label,part,axis,limit in [('upper','upper_pad','Y',.014),('lower','lower_pad','Y',.014),('thumb','thumb','Z',.005)]:
             node=pivot('joint__finger_'+label+'_'+side,(0,0,0),hand,axis)
@@ -80,6 +82,8 @@ if __name__=='__main__':
     for c in controls.values():
         c['roll'].rotation_euler=(0,0,0)
         for name in ('upper','lower','thumb'):c[name].location=xyz((0,0,0))
+    from correct_worker_palms import inward_palms
+    inward_palms(worker)
     worker['reference_id']='R05';worker['role']='manual_worker_template';worker['preserve_articulation']=True
     worker['body_mesh_geometry_unchanged']=True;worker['manual_control_spec']='docs/adaptive-v3/specs/P03.5.1.md'
     worker['manual_controls_json']=json.dumps({'roll':'forearm-localY[-pi,+pi]','finger_closing_travel_m':[0,.014],'thumb_retraction_m':[0,.005]})

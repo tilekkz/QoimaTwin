@@ -39,7 +39,7 @@ for(let i=0;i<=900;i++){
  const t=i/100,state=motion.apply(t);assert.equal(actor.root.uuid,actorUuid);assert.equal(tote.uuid,toteUuid);assert.equal(cart.uuid,cartUuid);assert.equal(tote.parent,cart);
  assert(state.actualFeet.some(f=>f.target.stance));
  actor.root.traverse(n=>{if(!limits[n.name])return;n.rotation.toArray().slice(0,3).forEach((a,j)=>assert(a>=limits[n.name].limits_radians_xyz[j][0]-1e-6&&a<=limits[n.name].limits_radians_xyz[j][1]+1e-6,'Rig limit '+n.name));});
- for(const hand of state.grip.hands){worstGrip=Math.max(worstGrip,hand.error_m,hand.axis_error);assert(hand.error_m<2e-5&&hand.axis_error<2e-5);}
+ for(const hand of state.grip.hands){worstGrip=Math.max(worstGrip,hand.error_m,hand.axis_error,hand.palm_down_error);assert(hand.error_m<2e-5&&hand.axis_error<2e-5&&hand.palm_down_error<2e-5);}
  for(const f of state.actualFeet){
   assert(Math.abs(f.world[1]-f.target.lift)<1e-6);assert(Math.abs(f.world[2]-(-.7975+f.target.travel))<1e-6);
   if(f.target.stance){if(stancePrevious[f.side]&&Math.abs(stancePrevious[f.side].target-f.target.travel)<1e-10){const drift=Math.hypot(...f.world.map((v,j)=>v-stancePrevious[f.side].point[j]));maxStanceSlide=Math.max(maxStanceSlide,drift);assert(drift<1e-6);}stancePrevious[f.side]={target:f.target.travel,point:f.world};}else delete stancePrevious[f.side];

@@ -51,7 +51,7 @@ if __name__=='__main__':
     for side,expected in zip(('L','R'),pose['grip_centres_worker_m']):
         node=next(o for o in worker.children_recursive if o.name=='anchor_hand_grip_'+side)
         point=runtime_xyz(node.matrix_world.translation);assert max(abs(a-b) for a,b in zip(point,expected))<2e-6
-        axis=runtime_xyz(node.matrix_world.to_3x3()@Vector((1,0,0)));assert max(abs(a-b) for a,b in zip(axis,[1,0,0]))<2e-6
+        axis=runtime_xyz(node.matrix_world.to_3x3()@Vector((1,0,0)));assert max(abs(a-b) for a,b in zip(axis,[-1,0,0]))<2e-6
         contacts.append({'side':side,'actual_grip_centre':point,'actual_grip_axis':axis})
     worker['reference_id']='R05';worker['pose_reference_id']='R11';worker['role_hint']='picker'
     worker['role']='working_figure_pose_checkpoint';worker['preserve_articulation']=True
@@ -62,6 +62,6 @@ if __name__=='__main__':
             'closed_outward_body_parts':len(parts),'physical_body_bounds_m':{'min':lo,'max':hi},'actual_grips':contacts,
             'joints':len(stats['pivots']),'anchors':len(stats['anchors']),'glb_sha256':stats['sha256'],
             'scope':'Pose checkpoint of unchanged physical P01body. Original decorative source ink excluded only from physical body QA and restored before saving; runtime uses accepted P02volumetric picker badge. Real cart contact/action comes later.'}
-    assert report['joints']==15 and report['anchors']==7
+    assert report['joints']==17 and report['anchors']==7
     (OUT/'actual-picker-figure-checks.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')
-    print('P031_FIGURE_VERIFIED '+json.dumps({'body_parts':len(parts),'joints':15,'anchors':7,'grip_targets':2,'height_m':hi[1]}))
+    print('P031_FIGURE_VERIFIED '+json.dumps({'body_parts':len(parts),'joints':17,'anchors':7,'grip_targets':2,'height_m':hi[1]}))

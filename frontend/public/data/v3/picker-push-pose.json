@@ -14,59 +14,79 @@
   "grip_radius_m": 0.0225,
   "grip_centres_cart_m": [
     [
-      -0.235,
+      -0.195,
       0.9775,
       -0.4375
     ],
     [
-      0.235,
+      0.195,
       0.9775,
       -0.4375
     ]
   ],
   "grip_centres_worker_m": [
     [
-      -0.235,
+      -0.195,
       0.9775,
       0.36
     ],
     [
-      0.235,
+      0.195,
       0.9775,
       0.36
     ]
   ],
   "jointEulerXYZ": {
     "joint__upper_arm_L": [
-      -0.5521627066847792,
+      -0.5485822409874084,
       0,
-      0.23271107834676083
+      0.4167222997288536
     ],
     "joint__forearm_L": [
-      -0.9256063027463024,
+      -1.3649913347977478,
       0,
+      0
+    ],
+    "joint__palm_roll_L": [
+      0,
+      3.141592653589793,
       0
     ],
     "joint__hand_L": [
-      -0.08075035450476523,
-      0.1976289181879253,
-      -0.1236815806245407
+      0.03560140245523315,
+      0.4113614536375404,
+      0.06861420958533705
     ],
     "joint__upper_arm_R": [
-      -0.5521627066847792,
+      -0.5485822409876177,
       0,
-      -0.23271107834676083
+      -0.4167222997282773
     ],
     "joint__forearm_R": [
-      -0.9256063027463024,
+      -1.3649913347957208,
       0,
       0
     ],
+    "joint__palm_roll_R": [
+      0,
+      -3.141592653589793,
+      0
+    ],
     "joint__hand_R": [
-      -0.08075035450476523,
-      -0.1976289181879253,
-      0.1236815806245407
+      0.03560140245707497,
+      -0.41136145363695814,
+      -0.06861420958532194
     ]
   },
-  "meaning": "Exact grip geometry declared before cart mesh; unchanged P01 body, upper/forearm angles solved against actual GLB and compensated hand orientation, no limb scaling."
+  "meaning": "FIX01.2 overhand cart grip: palm opening down, hand axis collinear with handle (-X), explicit axial pronation, original wrist/arm limits unchanged.",
+  "palm_open_direction_worker": [
+    0,
+    -0.9238795325112867,
+    0.38268343236508984
+  ],
+  "hand_axis_worker": [
+    -1,
+    0,
+    0
+  ]
 }

@@ -3,14 +3,14 @@ import type {WorkerInstance} from '../workerRoles';
 
 const assignedActors=new WeakSet<WorkerInstance>();
 const occupiedCarts=new WeakMap<THREE.Object3D,WorkerInstance>();
-const armNames=['joint__upper_arm_L','joint__forearm_L','joint__hand_L','joint__upper_arm_R','joint__forearm_R','joint__hand_R'] as const;
+const armNames=['joint__upper_arm_L','joint__forearm_L','joint__palm_roll_L','joint__hand_L','joint__upper_arm_R','joint__forearm_R','joint__palm_roll_R','joint__hand_R'] as const;
 type Triple=[number,number,number];
 export type PickerPushPose={schema_id:string;units:string;worker_scale:number;cart_offset_in_worker_m:Triple;grip_radius_m:number;grip_centres_cart_m:Triple[];jointEulerXYZ:Record<string,Triple>};
 
 export function validatePickerPushPose(value:unknown):PickerPushPose{
   const p=value as PickerPushPose;
   const triple=(v:unknown):v is Triple=>Array.isArray(v)&&v.length===3&&v.every(x=>typeof x==='number'&&Number.isFinite(x));
-  if(!p||p.schema_id!=='qoima.picker-push-pose.v3'||p.units!=='m'||p.worker_scale!==1||!triple(p.cart_offset_in_worker_m)||p.cart_offset_in_worker_m.join(',')!=='0,0,0.7975'||p.grip_radius_m!==.0225||!Array.isArray(p.grip_centres_cart_m)||p.grip_centres_cart_m.length!==2||p.grip_centres_cart_m.some((v,i)=>!triple(v)||v.join(',')!==[i===0?-.235:.235,.9775,-.4375].join(','))||Object.keys(p.jointEulerXYZ??{}).length!==armNames.length||armNames.some(n=>!triple(p.jointEulerXYZ[n])||p.jointEulerXYZ[n].some(a=>Math.abs(a)>Math.PI)))throw Error('Некорректная поза комплектовщика.');
+  if(!p||p.schema_id!=='qoima.picker-push-pose.v3'||p.units!=='m'||p.worker_scale!==1||!triple(p.cart_offset_in_worker_m)||p.cart_offset_in_worker_m.join(',')!=='0,0,0.7975'||p.grip_radius_m!==.0225||!Array.isArray(p.grip_centres_cart_m)||p.grip_centres_cart_m.length!==2||p.grip_centres_cart_m.some((v,i)=>!triple(v)||v.join(',')!==[i===0?-.195:.195,.9775,-.4375].join(','))||Object.keys(p.jointEulerXYZ??{}).length!==armNames.length||armNames.some(n=>!triple(p.jointEulerXYZ[n])||p.jointEulerXYZ[n].some(a=>Math.abs(a)>Math.PI)))throw Error('Некорректная поза комплектовщика.');
   return structuredClone(p);
 }
 
@@ -42,8 +42,9 @@ export function bindPickerGrip(cart:THREE.Object3D,actor:WorkerInstance,input:Pi
     cart.updateWorldMatrix(true,true);const inverse=cart.matrixWorld.clone().invert();
     const point=(n:THREE.Object3D)=>n.getWorldPosition(new THREE.Vector3()).applyMatrix4(inverse);
     const axes=(n:THREE.Object3D)=>new THREE.Vector3(1,0,0).transformDirection(n.matrixWorld).transformDirection(inverse);
+    const palm=(n:THREE.Object3D)=>new THREE.Vector3(0,0,1).transformDirection(n.matrixWorld).transformDirection(inverse);
     return {actorId:actor.actorId,actor_uuid:actor.root.uuid,cart_uuid:cart.uuid,role:actor.role,warehouse_headcount_delta:0,assignment:'pushing_existing_cart',root_local:actor.root.position.toArray(),scale:actor.root.scale.toArray(),
-      hands:['L','R'].map((side,i)=>({side,hand_cart_m:point(hands[i]!).toArray(),handle_cart_m:point(grips[i]!).toArray(),error_m:point(hands[i]!).distanceTo(point(grips[i]!)),hand_axis_cart:axes(hands[i]!).toArray(),axis_error:axes(hands[i]!).distanceTo(new THREE.Vector3(1,0,0))}))};
+      hands:['L','R'].map((side,i)=>({side,hand_cart_m:point(hands[i]!).toArray(),handle_cart_m:point(grips[i]!).toArray(),error_m:point(hands[i]!).distanceTo(point(grips[i]!)),hand_axis_cart:axes(hands[i]!).toArray(),axis_error:Math.min(axes(hands[i]!).distanceTo(new THREE.Vector3(1,0,0)),axes(hands[i]!).distanceTo(new THREE.Vector3(-1,0,0))),palm_direction_cart:palm(hands[i]!).toArray(),palm_down_error:palm(hands[i]!).distanceTo(new THREE.Vector3(0,-Math.sin(3*Math.PI/8),Math.cos(3*Math.PI/8)))}))};
   }
   function reset(){
     if(released||actor.disposed)throw Error('Привязка хвата освобождена.');
@@ -53,7 +54,7 @@ export function bindPickerGrip(cart:THREE.Object3D,actor:WorkerInstance,input:Pi
     for(const n of priorJoints.keys())n.quaternion.identity();
     for(const [name,angles] of Object.entries(pose.jointEulerXYZ))joints.get(name)!.rotation.set(...angles,'XYZ');
     actor.root.userData.assignment='pushing_existing_cart';actor.root.userData.cartAnchor='anchor_handle_centre';
-    if(snapshot().hands.some(h=>h.error_m>2e-5||h.axis_error>2e-5))throw Error('Кисти не совпали с реальной рукоятью.');
+    if(snapshot().hands.some(h=>h.error_m>2e-5||h.axis_error>2e-5||h.palm_down_error>2e-5))throw Error('Кисти не совпали с реальной рукоятью или хватом сверху.');
   }
   function release(){
     if(released)return;released=true;assignedActors.delete(actor);if(occupiedCarts.get(cart)===actor)occupiedCarts.delete(cart);

@@ -24,6 +24,7 @@ if __name__=='__main__':
     pose=json.loads((ROOT/paths[-1]).read_text())['driver'];reset()
     vehicle=append_source(paths[0],'forklift_root',None)
     worker=append_source(paths[1],'worker_base_root',vehicle,pose['worker_root_translation'])
+    for side in ('L','R'):bpy.data.objects['joint__palm_roll_'+side].rotation_euler=(0,0,0)
     conversion=Matrix(((1,0,0),(0,0,-1),(0,1,0)))
     for name,(a,b,c) in pose['jointEulerXYZ'].items():
         # Three intrinsicXYZ is Rx@Ry@Rz; map that matrix into Blender axes.

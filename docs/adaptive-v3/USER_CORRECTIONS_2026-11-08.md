@@ -29,3 +29,7 @@ A prompt cannot guarantee uninterrupted runtime, prevent host/application crashe
 Read current RESUME/CURRENT_FOCUS and this review first. Diagnose the three corrections before changing more models; declare bounded ownership/cards and keep one ACTIVE task. Correct relaxed palms, then above-handle grip and affected gait, then the carton opening. Revalidate and visually inspect actual GLBs/actions before closing gates. Only then implement P03.5.3 same-instance primary-unit pick and P03.6 loaded-tote handoff, followed by remaining personnel, whole V3 scene, runtime/UX/Q and separate V2/V3 runnable delivery. Do not stop at a checkpoint unless the user asks or a real limit blocks continuation.
 
 Full visual V3 remains incomplete. Arman's backend/DES/planner/ledger is outside our implementation scope. Synthetic visual fixtures are never actual engine runs or inventory changes. Preserve V2 branch and protected shared contracts.
+
+## Resolution in the continuation session — 2026-11-08
+
+The current user explicitly authorized implementation in this new chat. FIX01.1..FIX01.3 resolve the three corrections; their evidence files supersede the old pending/handoff-only state above. No visible windows were opened. Existing V2/backend state is preserved. Whole visual V3 is still incomplete; continue P03.5.3, then remaining gates.

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T22:12:07.065604+00:00",
+  "updated_at": "2026-11-07T22:36:48.413091+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -3205,7 +3205,7 @@
       "title": "Native open partial SMALL case and primary-unit source fixture",
       "parent": "P03.5",
       "owner": "root",
-      "status": "VERIFY",
+      "status": "PASS",
       "depends_on": [
         "P03.5.1",
         "M06.1",
@@ -3216,22 +3216,51 @@
         "docs/adaptive-v3/evidence/P03.5.2.json"
       ],
       "criteria": "Native open partial SMALL case and primary-unit source fixture; actual native contact and relevant browser/reference evidence reviewed",
-      "actual": "User review 2026-11-08 reopened the outer case unfolding/opening for diagnosis (screenshot03). Prior native/GLB/source support checks retained as historical evidence, visual acceptance on hold. New relaxed inward palms and top-down handle grip requirements recorded in USER_CORRECTIONS_2026-11-08.md; user asked no model implementation before new-chat handoff."
+      "actual": "Three user corrections complete and reviewed. Four fixed carton walls/four folded external flaps, unchanged closed HU/catalog. Native support/clearance, GLB 0/0 and four headless carton views pass. Evidence FIX01.1..3. Next P03.5.3: redesign top-entry reach/pick using same unit/actor instances; old front-entry plan is invalid."
     },
     {
       "id": "P03.5.3",
       "title": "Reach, pick primary units, withdraw and deposit without duplication",
       "parent": "P03.5",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
-        "P03.5.2"
+        "P03.5.2",
+        "FIX01.3"
       ],
       "outputs": [
         "docs/adaptive-v3/specs/P03.5.3.md",
         "docs/adaptive-v3/evidence/P03.5.3.json"
       ],
       "criteria": "Reach, pick primary units, withdraw and deposit without duplication; actual native contact and relevant browser/reference evidence reviewed"
+    },
+    {
+      "id": "FIX01.1",
+      "title": "Inward neutral palms on both worker templates",
+      "owner": "root",
+      "depends_on": [],
+      "status": "PASS",
+      "actual": "Both existing neutral templates now have inward axial palm rolls; unchanged 50 native body solids, connected cuffs, 1.7m height and no hand/leg triangle intersections. Export geometry and 0/0 validation pass. Four bounded headless views inspected; five-role material/identity regression passes. Evidence assets/v3/iterations/worker-base/FIX01.1 and current role QA."
+    },
+    {
+      "id": "FIX01.2",
+      "title": "Top-down cart grip and affected pose regressions",
+      "owner": "root",
+      "depends_on": [
+        "FIX01.1"
+      ],
+      "status": "PASS",
+      "actual": "Overhand cart grip reviewed in paired side/quarter and manual gait 3.5s headless captures. Six native glove/bar witnesses, no paired solid penetration; 901 runtime and 91 native poses per template, inward rest restored on release, wrist/cuff connections and palm-down direction throughout gait. Driver native/runtime and build pass. Headless UI pause/repeat/keyboard/seek/reduced-motion/error/stale-request/resource regressions pass with owned browsers terminated. Sources unchanged in volume and scale; only cart anchors moved inward40mm."
+    },
+    {
+      "id": "FIX01.3",
+      "title": "Four-flap outer SMALL carton opening",
+      "owner": "root",
+      "depends_on": [
+        "FIX01.2"
+      ],
+      "status": "PASS",
+      "actual": "Three user corrections complete and reviewed. Four fixed carton walls/four folded external flaps, unchanged closed HU/catalog. Native support/clearance, GLB 0/0 and four headless carton views pass. Evidence FIX01.1..3. Next P03.5.3: redesign top-entry reach/pick using same unit/actor instances; old front-entry plan is invalid."
     }
   ],
   "execution": {

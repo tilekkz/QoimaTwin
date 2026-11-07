@@ -85,7 +85,7 @@ try {
       const parts = JSON.parse(node.userData.source_parts_json);
       if (parts.includes('role_badge_cart')) assert.equal(node.visible, false);
     });
-    assert.equal(pivots, 15); assert.equal(anchors, 7); assert.equal(tints.size, 2); assert(badge);
+    assert.equal(pivots, 17); assert.equal(anchors, 7); assert.equal(tints.size, 2); assert(badge);
     for (const mat of tints) { assert(!ownedTints.has(mat)); ownedTints.add(mat); }
     const pos = badge.geometry.attributes.position, normals = badge.geometry.attributes.normal;
     assert([...pos.array].every(Number.isFinite));

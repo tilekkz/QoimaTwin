@@ -3,9 +3,9 @@
   "source_hashes": {
     "assets/v3/blender/small-carton.blend": "209470b224993bb314f0d9adf175b2f97c8d0ba8642512f59594bfe942324996",
     "assets/v3/blender/rack-small.blend": "14134f2e17526cfbf40780d76f459a3b11dc50acfaf19856c167039eb69c21ab",
-    "assets/v3/blender/picking-cart.blend": "a9e6292c11f79c9cfa11e7348691f7cb09640db453a6cd01396b818e21efadf0",
+    "assets/v3/blender/picking-cart.blend": "b58ae3fcd083df91d9240a860d20b623c2b0f64b80e71273eb990e19dc9f4919",
     "assets/v3/blender/order-tote.blend": "d3304052abed4f67a9581a4a97b3715fdf1400ebb4e17b6a87d16dbc7b012319",
-    "assets/v3/blender/worker-manual.blend": "fb0c7b7c138fc6600afdd5843bde0f48e903845499c518d953204e2f5e241f12",
+    "assets/v3/blender/worker-manual.blend": "767fa318d944b91c6ddc6ebadcdd297dd6301012824c8408dce194fd3e6e3d07",
     "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
   },
   "primary_unit": {
@@ -74,24 +74,26 @@
       ]
     },
     "original_case_mesh_count": 19,
-    "original_raw_meshes_unchanged": true,
+    "original_raw_meshes_unchanged_except": [
+      "lid_under_front",
+      "lid_under_rear"
+    ],
+    "four_vertical_walls_fixed": true,
+    "four_top_flaps_folded_outside": true,
+    "minor_flap_length_m": 0.1165,
     "integral_open_crease_parts": 4,
     "shell_connection_links": [
       [
-        "integral_open_crease_front",
+        "arrow_baseline",
         "shell_front"
       ],
       [
         "integral_open_crease_front",
-        "tape_front"
+        "lid_under_front"
       ],
       [
         "integral_open_crease_front",
-        "lid_major_left"
-      ],
-      [
-        "integral_open_crease_front",
-        "lid_major_right"
+        "shell_front"
       ],
       [
         "integral_open_crease_front",
@@ -102,20 +104,16 @@
         "shell_right"
       ],
       [
+        "integral_open_crease_front",
+        "tape_front"
+      ],
+      [
         "integral_open_crease_left",
         "lid_major_left"
       ],
       [
         "integral_open_crease_left",
         "shell_left"
-      ],
-      [
-        "integral_open_crease_rear",
-        "lid_major_left"
-      ],
-      [
-        "integral_open_crease_rear",
-        "lid_major_right"
       ],
       [
         "integral_open_crease_rear",
@@ -134,6 +132,10 @@
         "shell_right"
       ],
       [
+        "integral_open_crease_rear",
+        "tape_rear"
+      ],
+      [
         "integral_open_crease_right",
         "lid_major_right"
       ],
@@ -142,8 +144,28 @@
         "shell_right"
       ],
       [
-        "arrow_baseline",
+        "lid_major_left",
         "shell_front"
+      ],
+      [
+        "lid_major_left",
+        "shell_left"
+      ],
+      [
+        "lid_major_left",
+        "shell_rear"
+      ],
+      [
+        "lid_major_right",
+        "shell_front"
+      ],
+      [
+        "lid_major_right",
+        "shell_rear"
+      ],
+      [
+        "lid_major_right",
+        "shell_right"
       ],
       [
         "label_line_1",
@@ -162,28 +184,8 @@
         "shell_front"
       ],
       [
-        "lid_under_front",
+        "shell_bottom",
         "shell_front"
-      ],
-      [
-        "shell_front",
-        "tape_front"
-      ],
-      [
-        "shell_front",
-        "up_arrow_left"
-      ],
-      [
-        "shell_front",
-        "up_arrow_right"
-      ],
-      [
-        "shell_front",
-        "lid_major_left"
-      ],
-      [
-        "shell_front",
-        "lid_major_right"
       ],
       [
         "shell_bottom",
@@ -196,6 +198,26 @@
       [
         "shell_bottom",
         "shell_right"
+      ],
+      [
+        "shell_front",
+        "shell_left"
+      ],
+      [
+        "shell_front",
+        "shell_right"
+      ],
+      [
+        "shell_front",
+        "tape_front"
+      ],
+      [
+        "shell_front",
+        "up_arrow_left"
+      ],
+      [
+        "shell_front",
+        "up_arrow_right"
       ],
       [
         "shell_left",
@@ -475,17 +497,17 @@
     "peeled_tape_bottom_y_m": -3.230525180697441e-09,
     "open_handling_bounds_m": {
       "min": [
-        -0.16300003230571747,
+        -0.16300001740455627,
         -3.230525180697441e-09,
         -0.6894999742507935
       ],
       "max": [
-        0.16300003230571747,
-        0.4699999988079071,
-        0.14549998939037323
+        0.16300001740455627,
+        0.24000000953674316,
+        0.12350000441074371
       ]
     },
-    "glb_sha256": "c785f3a4a3df24a13c85083ff78030d8f9a7a42a46060e3af9b641463e585d38",
+    "glb_sha256": "6c0159b4d68b6ee6258b3c85e7084e8b3967654ccf1381a0333dd6662ab11e7f",
     "unit_count": 4,
     "pick_target_count": 2,
     "is_visual_fixture_not_inventory": true
@@ -595,6 +617,14 @@
       ],
       [
         "mitten_L_lower_pad",
+        "deck_support_ledge_upper_L"
+      ],
+      [
+        "mitten_L_lower_pad",
+        "frame_post_front_L"
+      ],
+      [
+        "mitten_L_lower_pad",
         "tray_end_upper_front"
       ],
       [
@@ -602,8 +632,8 @@
         "frame_post_front_L"
       ],
       [
-        "mitten_L_thumb",
-        "tray_end_upper_front"
+        "mitten_L_upper_pad",
+        "frame_post_front_L"
       ],
       [
         "mitten_L_upper_pad",
@@ -639,7 +669,7 @@
     "primary_contents": 4,
     "pick_targets": 2,
     "employee_instances": 0,
-    "glb_sha256": "52d9ee8ad5105ed4aab101249ff0312296df399f7efbb458d8ae6f8a5e41099e"
+    "glb_sha256": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1"
   },
   "original_files_unchanged": true,
   "scope": "Prepared source geometry only;4primary contents are visual fixture quantities, not extra HUs or an engine stock run. Actual reaching/picking/release remains P03.5.3."

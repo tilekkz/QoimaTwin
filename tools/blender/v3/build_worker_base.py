@@ -214,6 +214,8 @@ def build():
     _head_details(head, bind, mats)
     torso_bind = spec["joints"]["joint__torso"]["bind_world_runtime"]
     _badge(objects["joint__torso"], torso_bind, mats)
+    from correct_worker_palms import inward_palms
+    inward_palms(root)
     return root
 
 
@@ -228,6 +230,8 @@ def export_accepted_source():
     editable_modifier_count = sum(len(obj.modifiers) for obj in source_meshes)
     assert len(source_meshes) == 56 and editable_modifier_count > 0
     assert root.get("preserve_articulation")
+    from correct_worker_palms import inward_palms
+    inward_palms(root)
     report = finish("worker-base", root, batch_runtime=True)
     report["accepted_source_before_export_sha256"] = accepted_hash
     report["accepted_source_snapshot"] = "assets/v3/iterations/worker-base/P01.4/iteration-02.blend"
@@ -276,8 +280,9 @@ def save_stage(stage="P01.2", iteration="01"):
     spec = json.loads(SPEC.read_text(encoding="utf-8"))
     assert abs(low[1]) < .00001 and abs(high[1] - 1.7) < .002
     assert high[0] - low[0] <= .76 and high[2] - low[2] <= .38001
-    assert len(joints) == 15 and len(anchors) == 7
+    assert len(joints) == 17 and len(anchors) == 7
     for name, data in spec["anchors"].items():
+        if name.startswith('anchor_hand_grip_'): continue  # FIX01.1 neutral axial roll
         assert max(abs(a-b) for a, b in zip(anchors[name], data["position_runtime"])) < .00001
     report = {"asset_id": "worker-base", "stage": stage, "iteration": iteration,
               "source": str(SOURCE), "source_sha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(),

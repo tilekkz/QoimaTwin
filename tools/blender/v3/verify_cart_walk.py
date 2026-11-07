@@ -53,6 +53,9 @@ if __name__=='__main__':
             # polygon contact correction. Radial overlap exceeds the offset.
             assert math.dist(runtime_xyz(cn['joint__wheel_'+label].matrix_world.translation),runtime_xyz(cn['fixed_axle_'+label].matrix_world.translation))<.000643
         for side in ['L','R']:
+            palm=runtime_xyz(nodes['anchor_hand_grip_'+side].matrix_world.to_3x3()@xyz((0,0,1)))
+            assert palm[1]<-.9 and abs(palm[0])<2e-5,('palm not down',f['time'],side,palm)
+            assert connected(wmap['cuff_'+side],wmap['mitten_'+side+'_spine']),('wrist gap',f['time'],side)
             boot=wmap['boot_'+side];expected=f['state']['feet'][side]['lift'];assert abs(boot['low'][1]-expected)<EPS
             assert min(p['low'][1] for p in wp)>=-EPS
             sole_minima.append({'side':side,'sole_y_m':boot['low'][1],'stance':f['state']['feet'][side]['stance']})

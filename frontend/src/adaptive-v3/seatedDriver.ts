@@ -23,7 +23,8 @@ export function bindSeatedDriver(vehicle:THREE.Object3D,actor:WorkerInstance,pos
   const joints=new Map<string,THREE.Object3D>();
     for(const name of Object.keys(pose.driver.jointEulerXYZ)){const n=actor.root.getObjectByName(name);if(!n)throw Error('В работнике отсутствует '+name);joints.set(name,n);}
     const previousParent=actor.root.parent,previousPosition=actor.root.position.clone(),previousQuaternion=actor.root.quaternion.clone();
-    const previousJoints=new Map([...joints.values()].map(n=>[n,n.quaternion.clone()]));
+    const previousJoints=new Map<THREE.Object3D,THREE.Quaternion>();
+    actor.root.traverse(n=>{if(n.name.startsWith('joint__'))previousJoints.set(n,n.quaternion.clone());});
     const previousAssignment=actor.root.userData.assignment,previousAnchor=actor.root.userData.vehicleAnchor;
     let released=false;boundActors.add(actor);occupiedVehicles.set(vehicle,actor);
     vehicle.add(actor.root);
@@ -32,6 +33,7 @@ export function bindSeatedDriver(vehicle:THREE.Object3D,actor:WorkerInstance,pos
       if(actor.disposed||released)throw Error('Привязка водителя уже освобождена.');
       if(actor.role!=='forklift_driver')throw Error('Перед сменой роли водитель должен покинуть привязку к машине.');
       actor.root.position.fromArray(pose.driver.worker_root_translation);actor.root.quaternion.identity();
+      for(const side of ['L','R'])actor.root.getObjectByName('joint__palm_roll_'+side)?.quaternion.identity();
       for(const [name,angles] of Object.entries(pose.driver.jointEulerXYZ))joints.get(name)!.rotation.set(...angles,'XYZ');
       vehicle.updateMatrixWorld(true);
     }

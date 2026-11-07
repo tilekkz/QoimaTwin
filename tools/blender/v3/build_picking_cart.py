@@ -55,7 +55,7 @@ def build():
         anchor('anchor_'+label+'_tote_bottom',(0,y,0),root,'actual_tote_support_floor')
     cylinder('straight_grip_bar',(0,.9775,-.4375),.0225,.65,dark,root,axis='X',vertices=32)
     anchor('anchor_handle_centre',(0,.9775,-.4375),root,'push_handle_centre')
-    for side,x in [('L',-.235),('R',.235)]:anchor('anchor_grip_'+side,(x,.9775,-.4375),root,'actual_glove_contact_axis')
+    for side,x in [('L',-.195),('R',.195)]:anchor('anchor_grip_'+side,(x,.9775,-.4375),root,'actual_glove_contact_axis')
     for side,sx in [('L',-1),('R',1)]:
         for end,sz in [('rear',-1),('front',1)]:
             label=end+'_'+side;x=sx*.28;z=sz*.38

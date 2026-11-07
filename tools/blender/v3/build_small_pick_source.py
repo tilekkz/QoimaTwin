@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 import bpy
-from mathutils import Matrix
+from mathutils import Matrix,Vector
 
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from v3_common import ROOT,anchor,finish,group,material,pivot,reset,runtime_xyz,xyz
@@ -71,23 +71,35 @@ def make_case(catalog):
         for i,m in enumerate(obj.data.materials):
             if m.name not in copies:copy=m.copy();copy.name=m.name+'_open_case';copy.use_backface_culling=True;copies[m.name]=copy
             obj.data.materials[i]=copies[m.name]
-    for side,x,angle in [('left',-.16,math.pi/2),('right',.16,-math.pi/2)]:
-        node=pivot('joint__case_major_'+side,(x,.2365,0),shell,'Z')
+    # An open RSC carton keeps all four vertical walls. Only its four top
+    # flaps fold back down the OUTSIDE, with thickness beyond the outer wall.
+    # Correct the old 26mm under-flap placeholders to real half-depth flaps;
+    # the closed HU/catalog and every other original mesh remain untouched.
+    for side in ('front','rear'):
+        obj=originals['lid_under_'+side]
+        for vertex in obj.data.vertices:
+            point=Vector(runtime_xyz(obj.matrix_world@vertex.co))
+            point.z=(point.z-.0905)/.026*.1165 if side=='front' else (point.z+.0905)/.026*.1165
+            vertex.co=obj.matrix_world.inverted()@xyz(point)
+        obj.data.update()
+    for side,x,angle in [('left',-.16,-math.pi/2),('right',.16,math.pi/2)]:
+        node=pivot('joint__case_major_'+side,(x,.2395,0),shell,'Z')
         parent_at_rest(originals['lid_major_'+side],node);rotate(node,(0,0,angle));node['prepared_angle_rad']=angle
-    front=pivot('joint__case_front_display',(0,.2365,.118),shell,'X')
-    for name,obj in originals.items():
-        if name in ('shell_front','lid_under_front','tape_front','label_paper','arrow_baseline','up_arrow_left','up_arrow_right') or name.startswith('label_line_'):parent_at_rest(obj,front)
-    rotate(front,(math.pi,0,0));front['prepared_angle_rad']=math.pi
-    rear=pivot('joint__case_minor_rear',(0,.2365,-.1165),shell,'X');parent_at_rest(originals['lid_under_rear'],rear);rotate(rear,(-math.pi/2,0,0))
+    for side,z,angle in [('front',.1205,-math.pi/2),('rear',-.1205,math.pi/2)]:
+        node=pivot('joint__case_minor_'+side,(0,.2365,z),shell,'X')
+        parent_at_rest(originals['lid_under_'+side],node);rotate(node,(angle,0,0));node['prepared_angle_rad']=angle
     # Real integral crease material bridges the tiny chamfered edge gaps.
     # These are cardboard folds in the prepared handling state, not hardware
     # or a change to the original closed-HU body mesh coordinates.
     foldmat=originals['shell_bottom'].data.materials[0]
     for side,x in [('left',-.16),('right',.16)]:block('integral_open_crease_'+side,[x-.0005,.2355,-.115],[x+.0005,.2375,.115],foldmat,shell,.00005)
-    for side,z in [('front',.1165),('rear',-.1165)]:block('integral_open_crease_'+side,[-.1605,.2355,z-.0005],[.1605,.2375,z+.0005],foldmat,shell,.00005)
+    for side,z in [('front',.1185),('rear',-.1185)]:block('integral_open_crease_'+side,[-.157,.2315,z-.0025],[.157,.2375,z+.0025],foldmat,shell,.00005)
     peel=group('peeled_tape_piece',root);top=originals['tape_top'];world=top.matrix_world.copy();top.parent=peel;top.matrix_world=Matrix.Translation(xyz((0,-.2395,-.57)))@world
     peel['role']='pre_existing_packaging_piece_not_stock';peel['support_role']='rear_structural_deck_not_an_address'
-    bpy.context.view_layer.update();assert all(raw[n]==[tuple(v.co) for v in o.data.vertices] for n,o in originals.items())
+    corrected_flaps={'lid_under_front','lid_under_rear'}
+    bpy.context.view_layer.update();assert all(raw[n]==[tuple(v.co) for v in o.data.vertices] for n,o in originals.items() if n not in corrected_flaps)
+    for name in ('shell_front','shell_rear','shell_left','shell_right'):
+        assert originals[name].parent==shell,('a carton wall became a flap',name)
     recipe=next(p for p in catalog['packing_recipes'] if p['archetype_id']=='SMALL_CARTON');selected=[];unit_nodes=[]
     packaging=group('case_integral_supports',frame);padmat=material('V3_CASE_localized_cardboard_support','#A97C45');padmat.use_backface_culling=True;shared_unit_materials={}
     for item in recipe['unit_instances']:
@@ -154,10 +166,10 @@ def make_case(catalog):
         if item['pick_target']:continue
         empty_box(pp,[item['min_case_m'][0]+.003,.003,item['min_case_m'][2]],[item['max_case_m'][0]-.003,item['min_case_m'][1]-.003,item['max_case_m'][2]],'real hollow3mm cardboard U-riser')
     # All original case solids are retained, including the peeled tape.
-    assert len(originals)==19;assert all(raw[n]==[tuple(v.co) for v in o.data.vertices] for n,o in originals.items())
+    assert len(originals)==19;assert all(raw[n]==[tuple(v.co) for v in o.data.vertices] for n,o in originals.items() if n not in corrected_flaps)
     root['partial_units_json']=json.dumps(selected);root['pick_target_count']=2
     stats=finish('small-case-open-partial',root)
-    return {'closed_source_nominal_bounds_m':closed_bounds,'original_case_mesh_count':19,'original_raw_meshes_unchanged':True,'integral_open_crease_parts':4,'shell_connection_links':links,'closed_parts_in_open_model':len(parts),'primary_units':selected,'actual_unit_packaging_supports':supports,'actual_packaging_support_chain_contacts':packaging_chain,'actual_U_riser_bridge_leg_contacts':riser_bridge_contacts,'U_riser_wall_thickness_m':.003,'shared_primary_unit_materials':len(shared_unit_materials),'prepared_front_hinge_y_m':.2365,'peeled_tape_bottom_y_m':min(p['low'][1] for p in parts if p['name']=='tape_top'),'open_handling_bounds_m':stats['bounds_runtime'],'glb_sha256':stats['sha256'],'unit_count':4,'pick_target_count':2,'is_visual_fixture_not_inventory':True}
+    return {'closed_source_nominal_bounds_m':closed_bounds,'original_case_mesh_count':19,'original_raw_meshes_unchanged_except':sorted(corrected_flaps),'four_vertical_walls_fixed':True,'four_top_flaps_folded_outside':True,'minor_flap_length_m':.1165,'integral_open_crease_parts':4,'shell_connection_links':links,'closed_parts_in_open_model':len(parts),'primary_units':selected,'actual_unit_packaging_supports':supports,'actual_packaging_support_chain_contacts':packaging_chain,'actual_U_riser_bridge_leg_contacts':riser_bridge_contacts,'U_riser_wall_thickness_m':.003,'shared_primary_unit_materials':len(shared_unit_materials),'prepared_front_hinge_y_m':.2365,'peeled_tape_bottom_y_m':min(p['low'][1] for p in parts if p['name']=='tape_top'),'open_handling_bounds_m':stats['bounds_runtime'],'glb_sha256':stats['sha256'],'unit_count':4,'pick_target_count':2,'is_visual_fixture_not_inventory':True}
 
 def make_scene(case_checks):
     root=group('picker_pick_source_fixture_root');root['role']='visual_QA_fixture';root['source_kind']='visual_fixture';root['engine_operation']=False;root['reference_ids_json']=json.dumps(['R13.1','M06.1_REF','R11']);root['source_label']='Prepared partial case4primary packages,2later targets, one cart/empty tote. No warehouse ledger or employee baked.'

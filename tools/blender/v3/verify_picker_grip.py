@@ -24,11 +24,12 @@ if __name__=='__main__':
     worker=append_source(paths[0],'worker_base_root',None,(0,0,-.7975));pose_arms(worker,pose)
     wp,wbvh=physical_body(worker);cp,cbvh=collect(cart);tp,tbvh=collect(tote)
     bar=next(p for p in cp if p['name']=='straight_grip_bar');contacts=[];anchors=[]
-    for side,x in [('L',-.235),('R',.235)]:
+    for side,x in [('L',-.195),('R',.195)]:
         h=next(o for o in worker.children_recursive if o.name=='anchor_hand_grip_'+side)
         target=next(o for o in cart.children_recursive if o.name=='anchor_grip_'+side)
         assert (h.matrix_world.translation-target.matrix_world.translation).length<2e-5
-        axis=runtime_xyz(h.matrix_world.to_3x3()@Vector((1,0,0)));assert max(abs(a-b) for a,b in zip(axis,[1,0,0]))<2e-5
+        axis=runtime_xyz(h.matrix_world.to_3x3()@Vector((1,0,0)));assert max(abs(a-b) for a,b in zip(axis,[-1,0,0]))<2e-5
+        palm=runtime_xyz(h.matrix_world.to_3x3()@xyz((0,0,1)));assert palm[1]<-.85 and abs(palm[0])<2e-5
         anchors.append({'side':side,'hand':runtime_xyz(h.matrix_world.translation),'cart':runtime_xyz(target.matrix_world.translation),'hand_axis':axis})
         gloves=[p for p in wp if p['name'].startswith('mitten_'+side)]
         assert gloves,('missing physical glove',side,[p['name'] for p in wp])
@@ -44,6 +45,13 @@ if __name__=='__main__':
             if b is None or not candidates:continue
             a,name=min(candidates,key=lambda pair:(pair[0]-start).length)
             if (a-b).length<EPS:contacts.append({'side':side,'surface':name,'direction':label,'point':runtime_xyz(a),'gap_m':(a-b).length})
+        for label,local in [('finger_upper',(0,1,0)),('finger_lower',(0,-1,0)),('palm_back',(0,0,-1))]:
+            start=h.matrix_world.translation;d=h.matrix_world.to_3x3()@xyz(local)
+            b,_,_,_=bar['bvh'].ray_cast(start,d,.06)
+            hits=[(hit,p['name']) for p in gloves if (hit:=p['bvh'].ray_cast(start,d,.06)[0]) is not None]
+            if b is not None and hits:
+                a,name=min(hits,key=lambda item:(item[0]-start).length)
+                if (a-b).length<EPS:contacts.append(dict(side=side,surface=name,direction=label,point=runtime_xyz(a),gap_m=(a-b).length))
         assert any(c['side']==side for c in contacts),('no actual surface witness',side)
     checked=0
     for w in wp:
