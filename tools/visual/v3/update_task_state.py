@@ -58,7 +58,7 @@ txt=f'''# QoimaTwin v3 — resume
 Updated UTC: {state['updated_at']}
 Workspace: `{root.as_posix()}`
 Branch: `{branch}`; HEAD observed at this state update: `{head}`.
-Existing goal: complete visual v3 per `brief/01_START_CODEX.md`. Read live goal status; do not create a duplicate goal.
+Objective: complete visual v3 per the current user request and `brief/01_START_CODEX.md`. This checkpoint does not assert a live goal record.
 
 ## Current checkpoint
 

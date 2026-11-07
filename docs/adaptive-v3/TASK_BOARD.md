@@ -51,13 +51,13 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
-| [M04](tasks/M04.md) | ACTIVE | root | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
+| [M04](tasks/M04.md) | PASS | root_review | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
 | [M05](tasks/M05.md) | PASS | rack_crate | R10,R02,C04,I09,R13.5 | Готова модель FLEX storage |
 | [M06](tasks/M06.md) | PASS | root | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
 | [M07](tasks/M07.md) | PASS | root | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
 | [M08](tasks/M08.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
 | [M09](tasks/M09.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель IBC |
-| [M10](tasks/M10.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
+| [M10](tasks/M10.md) | PASS | root | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
 | [M11](tasks/M11.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
 | [M12](tasks/M12.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
 | [M13](tasks/M13.md) | PASS | root | R10,R04,L08,I09 | Готов модульный комплект conveyor |

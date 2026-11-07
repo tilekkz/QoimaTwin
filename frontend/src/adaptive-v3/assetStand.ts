@@ -2,6 +2,10 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { GTAOPass } from 'three/examples/jsm/postprocessing/GTAOPass.js';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {createWorkerRolesFixture, applyWorkerRole, type WorkerRole} from './workerRoles';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
@@ -26,6 +30,16 @@ renderer.domElement.setAttribute('aria-label','Трёхмерная модель
 const perspective = new THREE.PerspectiveCamera(32,1,.001,1000);
 const orthographic = new THREE.OrthographicCamera(-1,1,1,-1,.001,1000);
 let camera: THREE.PerspectiveCamera | THREE.OrthographicCamera = perspective;
+const target=new THREE.WebGLRenderTarget(1,1,{type:THREE.HalfFloatType,samples:4});
+const composer=new EffectComposer(renderer,target);
+const beauty=new RenderPass(scene,camera);
+const contactShade=new GTAOPass(scene,camera,1,1);
+contactShade.blendIntensity=.7;
+contactShade.updateGtaoMaterial({radius:.08,thickness:.25,distanceExponent:1.4,distanceFallOff:.8,scale:1.5,samples:16,screenSpaceRadius:false});
+contactShade.updatePdMaterial({radius:7,samples:16,rings:2});
+const output=new OutputPass();
+composer.addPass(beauty);composer.addPass(contactShade);composer.addPass(output);
+renderer.info.autoReset=false;
 const controls = new OrbitControls(camera,renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = .12;
@@ -120,6 +134,13 @@ function fit(next:View=view,focus?:THREE.Object3D){
     camera.aspect=aspect;camera.position.copy(centre).addScaledVector(direction,distance*1.08);
   }
   camera.near=Math.max(.001,radius*.002);camera.far=Math.max(100,radius*50);camera.updateProjectionMatrix();
+  beauty.camera=camera;contactShade.camera=camera;
+  const perspectiveFlag=camera instanceof THREE.PerspectiveCamera?1:0;
+  if(contactShade.gtaoMaterial.defines.PERSPECTIVE_CAMERA!==perspectiveFlag){contactShade.gtaoMaterial.defines.PERSPECTIVE_CAMERA=perspectiveFlag;contactShade.gtaoMaterial.needsUpdate=true;}
+  // Contact shading reveals real tube bores, bevels and nested joints. Its
+  // radius is metric, and the large warehouse engineering preview stays cheap.
+  contactShade.enabled=Math.max(...bounds.getSize(new THREE.Vector3()).toArray())<=8;
+  contactShade.updateGtaoMaterial({radius:THREE.MathUtils.clamp(radius*.12,.012,.30),thickness:THREE.MathUtils.clamp(radius*.4,.02,.8)});
   controls.object=camera;controls.target.copy(centre);controls.minDistance=radius*.15;controls.maxDistance=radius*30;controls.update();
 }
 
@@ -136,7 +157,7 @@ function snapshot(){
   model?.traverseVisible(node=>{if(node instanceof THREE.Mesh){triangles+=(node.geometry.index?.count??node.geometry.getAttribute('position').count)/3;for(const m of Array.isArray(node.material)?node.material:[node.material])materials.add(m.name);}});
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
-  return {modelId,phase,view,focus:activeFocus,fixture:rolesFixture?'five-role-visual-QA':null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,fixture:rolesFixture?'five-role-visual-QA':null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -184,13 +205,13 @@ async function loadModel(id:string){
 document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(button=>button.addEventListener('click',()=>{fit(button.dataset.view as View);diagnostics();}));
 element('reset-view').addEventListener('click',()=>{fit();diagnostics();});
 element('model-form').addEventListener('submit',event=>{event.preventDefault();void loadModel(modelInput.value.trim());});
-const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);if(model)fit();});resize.observe(host);
-function tick(){frameId=requestAnimationFrame(tick);controls.update();renderer.render(scene,camera);}tick();
+const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);composer.setSize(host.clientWidth,host.clientHeight);contactShade.setSize(Math.max(1,Math.round(host.clientWidth*renderer.getPixelRatio()*.65)),Math.max(1,Math.round(host.clientHeight*renderer.getPixelRatio()*.65)));if(model)fit();});resize.observe(host);
+function tick(){frameId=requestAnimationFrame(tick);controls.update();renderer.info.reset();composer.render();}tick();
 const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},focus:(name:string,next:View='quarter')=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);fit(next,n);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
 Object.assign(window,{__QOIMA_STAND_V3__:{...api,roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
 void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{manifest=value;updateReference();}).catch(()=>{element('reference-note').textContent='Каталог референсов временно недоступен.';});
 void loadModel(new URL(location.href).searchParams.get('asset')||'calibration');
-window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();renderer.dispose();},{once:true});
+window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();contactShade.dispose();beauty.dispose();output.dispose();composer.dispose();renderer.dispose();},{once:true});
 }
 void initialize().catch(error=>{
   shell.dataset.phase='error';element('status').dataset.error='true';element('status-title').textContent='Стенд не запустился';element('status-copy').textContent='Обновите страницу в браузере с поддержкой WebGL.';element('diagnostics').textContent=error instanceof Error?error.message:String(error);

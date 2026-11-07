@@ -10,6 +10,8 @@ async function bounded(promise,ms){let timer;try{return await Promise.race([prom
 const started=Date.now();
 const server=await chromium.launchServer({channel:'chrome',headless:true,args:['--mute-audio'],timeout:30000});
 const outputs=[];let browser,failure;
+const ownedAlive=()=>{try{process.kill(server.process().pid,0);return true;}catch(error){if(error.code==='ESRCH')return false;return true;}};
+async function settleExit(ms){if(!ownedAlive())return;const child=server.process();let listener;try{await bounded(new Promise(r=>{listener=()=>r();child.once('exit',listener);}),ms);}finally{if(listener)child.off('exit',listener);}}
 try{
  browser=await chromium.connect(server.wsEndpoint(),{timeout:15000});
  const context=await browser.newContext({viewport:{width:1440,height:1000},deviceScaleFactor:1});
@@ -39,13 +41,15 @@ try{
 let cleanup='graceful';
 if(!await bounded(server.close(),5000)){
  cleanup='forced_after_5s';
- if(!await bounded(server.kill(),3000)&&server.process().exitCode===null&&server.process().signalCode===null&&process.platform==='win32'){
+ await bounded(server.kill(),3000);await settleExit(1000);
+ if(ownedAlive()&&process.platform==='win32'){
   // The PID belongs to this launchServer call, never an enumerated user browser.
   await bounded(new Promise(r=>execFile('taskkill.exe',['/PID',String(server.process().pid),'/T','/F'],{windowsHide:true},()=>r())),3000);
+  await settleExit(1000);
  }
 }
 if(browser)await bounded(browser.close(),1000);
-const lifecycle={owned_pid:server.process().pid,cleanup,terminated:server.process().exitCode!==null||server.process().signalCode!==null,elapsed_ms:Date.now()-started};
+const lifecycle={owned_pid:server.process().pid,cleanup,terminated:!ownedAlive(),termination_check:'owned PID OS probe after bounded exit wait',elapsed_ms:Date.now()-started};
 for(const out of outputs)await writeFile(`${out}/browser-lifecycle.json`,JSON.stringify(lifecycle,null,2));
 if(!lifecycle.terminated&&!failure)failure=Error('Owned QA browser did not terminate');
 if(failure)console.error(String(failure));
