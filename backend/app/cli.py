@@ -41,6 +41,7 @@ def _horizon(value: str) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = JsonArgumentParser(prog="qoima", description="QoimaTwin backend tools")
     commands = parser.add_subparsers(dest="command", required=True)
+    commands.add_parser("v3", help="validate or export the pinned V3 proposal")
     validate = commands.add_parser("validate-contracts", help="check shared contract files")
     validate.add_argument("--contracts-dir", type=Path, default=None)
     for name in ("materialize", "simulate"):
@@ -105,6 +106,11 @@ def _execute(args: argparse.Namespace, bundle: ContractBundle) -> dict[str, Any]
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    selected = list(sys.argv[1:] if argv is None else argv)
+    if selected and selected[0] == "v3":
+        from app.v3.cli import main as v3_main
+
+        return v3_main(selected[1:])
     directory = default_contracts_dir().resolve()
     layout_version: str | None = None
     try:

@@ -17,6 +17,7 @@ from app.api.service import JobService
 from app.explanations import MercurySettings
 from app.settings import default_contracts_dir, repository_root
 from app.storage.artifacts import ArtifactStore
+from app.v3.registration import attach_v3_routes
 
 
 def create_app(
@@ -25,6 +26,7 @@ def create_app(
     processor: Processor | None = None,
     contracts_dir: Path | None = None,
     explanation_settings: MercurySettings | None = None,
+    v3_inputs: Path | None = None,
 ) -> FastAPI:
     store = ArtifactStore(store_root or repository_root() / "backend" / "artifacts" / "api")
     context = ApiContext.create(store, contracts_dir or default_contracts_dir())
@@ -50,4 +52,5 @@ def create_app(
     attach_error_handlers(app)
     attach_routes(app, context)
     attach_explanation_route(app, explanations)
+    attach_v3_routes(app, v3_inputs)
     return app

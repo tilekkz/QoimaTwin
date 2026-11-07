@@ -1,8 +1,31 @@
 # QoimaTwin backend
 
-Owner: Arman. Deterministic warehouse simulation, planning, forecast, run export and API for the 72×48 m warehouse
-(`qoima-72x48-v2`). The spec is in `../01_Technical_Specification.md`, the gates are in `../05_Acceptance_and_Demo.md`,
-and the decisions are in [`docs/adr/`](docs/adr/README.md).
+Owner: Arman. Deterministic warehouse simulation, planning, forecast, run export and API.
+The current development target is the 144x72 m adaptive V3 warehouse. Its isolated input,
+static compatibility and catalog modules live in `app/v3/`; the existing 72x48 m V2 engine
+retains its analytical regression. V2 requirements remain in `../01_Technical_Specification.md`
+and `../05_Acceptance_and_Demo.md`. Versioned decisions are in [`docs/adr/`](docs/adr/README.md).
+
+## Adaptive V3
+
+The backend pins Tilek's V3 proposal inputs at `22296bcf2c6bac5ade4cefc7c05c2b97831ec6ec`.
+They describe 776 slots, 530 initial HUs, 200 SKUs, 12,256 units and 9,403.85 kg. Loading checks
+exact source bytes, schemas and record relationships; geometry admission uses exact arithmetic.
+Directed routes and a separate microsecond time policy preserve the V3 geometry.
+
+```bash
+uv run python -m app.cli v3 validate
+uv run python -m app.cli v3 catalog --out runs/v3-catalog
+uv run python -m app.api --store-root D:/QoimaTwin-runs/api-store
+```
+
+The API serves `/api/v3/catalog`, `/api/v3/initial-state` and content-addressed source documents.
+Catalog export contains the static 530-HU state and its provenance. Its capabilities explicitly
+exclude an actual V3 engine run: timed whole-HU execution is the next isolated slice.
+F1/F2/F3 test port mix, geometry/mass and elapsed time versus person-seconds using independent
+hand calculations. See [inputs](docs/v3-inputs.md), [analytical fixtures](docs/v3-analytical.md),
+and [source compatibility](docs/v3-admission-source.md). Shared contracts remain proposals until
+agreed with Tilek; `frontend/` is unchanged by this backend work.
 
 ## Status
 
@@ -24,12 +47,12 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 | Local API with one spawn worker, immutable artifacts and bounded replay windows | implemented; see API guide |
 | Optional Mercury explanations from stored comparison facts | implemented; backend-only configuration and immutable cache |
 | Contract 2.1 proposal, atomic transfers, business replay and full/delta checkpoints | implemented as opt-in; shared contract agreement pending |
-| One-hour normal/peak determinism, invariants, runtime and export-size measurements | historical A?E report; final integrated measurements pending |
+| One-hour normal/peak determinism, invariants, runtime and export-size measurements | historical A-E report; final V2 measurements paused after the V3 scope change |
 
 The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
 The materializer offers 240/600 orders per hour; measured dispatch and backlog are reported
 separately from those input counts.
-The [A?E one-hour acceptance and performance report](docs/research/2026-11-07-backend-ae-results.md)
+The [A-E one-hour acceptance and performance report](docs/research/2026-11-07-backend-ae-results.md)
 records engine 0.2.2 results. It is historical evidence, not a benchmark of the current integrated
 backend. Final integrated one-hour repeats and eight-hour measurements remain pending.
 
@@ -94,8 +117,8 @@ The shared schemas remain v2.0; the transport envelope and files under
 backend-owned 2.1 schema and fixture live under `docs/proposals/contract-2.1/`. At inspected
 frontend commit `10496fd4ccd748676c036c371dd1a29881f046d1`, Tilek loads inline 2.0 and supports
 visual seek, but has no API/manifest/chunk loader or proposal business-state decoder. Changing
-the schema version alone does not provide that integration. No frontend compatibility command
-is documented until its separate adapter is available.
+the schema version alone does not provide that integration. The explicit `tilek-v2` adapter
+below supplies the existing reader; it is separate from the new V3 warehouse catalog.
 
 Forecast validation uses the first 42 historical days for fitting and the following 14 for evaluation;
 the final forecast uses all 56 observed days. CPU measurements remain outside forecast identity.
@@ -114,8 +137,8 @@ than a shared mutable DataFrame. See [ADR 0022](docs/adr/0022-persistent-history
 
 ## Local API and optional explanations
 
-The [API guide](docs/api.md) gives the complete catalog ? materialize ? mean28/HGB ? plan 0/2/8
-? compare ? manifest/chunks/file workflow, with IDs taken from responses. Heavy calculations
+The [API guide](docs/api.md) gives the catalog, materialization, mean28/HGB, plan 0/2/8,
+comparison and manifest/chunks/file workflow, with IDs taken from responses. Heavy calculations
 run in one owned spawn process; another uncached request receives 409 while it is busy. Completed
 requests reuse immutable artifacts. HTTP cancellation does not cancel admitted work; graceful
 shutdown waits for it. Default binding is loopback; browser integration needs a same-origin
@@ -154,6 +177,7 @@ eight validated Russian observations; repeating the request returned the same ca
 | `app/planning/`, `app/comparison/` | Frozen ABC, exact relocation routes and paired labor comparisons |
 | `app/api/` | Loopback-first HTTP routes, spawn-worker admission, immutable publication and replay windows |
 | `app/explanations/` | Optional Mercury provider, server-derived facts and semantic cache keys |
+| `app/v3/` | Pinned adaptive V3 inputs, exact static compatibility, directed routes, analytical fixtures and catalog API |
 | `app/exporter/` | Shared2.0 export and opt-in 2.1 proposal transport, checkpoint codec and public-state replay |
 | `app/cli.py` | Command-line tools |
 | `tests/acceptance/` | One test per numbered gate (G1, S1, C1, ...) |
@@ -162,6 +186,6 @@ eight validated Russian observations; repeating the request returned the same ca
 
 ## Rules
 
-- Exact time: integer ticks, 3,000,000 per second (ADR 0002). No float accumulation in the engine.
+- Exact time: V2 uses 3,000,000 ticks/s (ADR 0002); V3 quantizes each positive operation upward to microseconds (ADR 0026). No float accumulation in execution clocks.
 - One mutation path for stock (ADR 0005). Conservation per SKU is checked after every settled timestamp.
 - Files in `frontend/` belong to Tilek. Changes to `contracts/` are agreed with him first (ADR 0007).

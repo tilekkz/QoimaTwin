@@ -1,0 +1,6 @@
+"""Reviewed immutable source and package identity."""
+
+SOURCE_REVISION = "22296bcf2c6bac5ade4cefc7c05c2b97831ec6ec"
+PROVENANCE_SHA256 = "6bd6d445c4ba7ee3c6d2f99ff2603502b7584b5b5559c5139925091d6c657cab"
+LAYOUT_VERSION = "qoima-144x72-v3-proposal"
+LAYOUT_CONTENT_HASH = "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71"

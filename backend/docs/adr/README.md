@@ -31,3 +31,8 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0023](0023-derived-tote-resource-waits.md) | Shared resource waits derived from admissible orders and tote availability |
 | [0024](0024-provenance-publication-identity.md) | Provenance participates in immutable publication identity |
 | [0025](0025-tilek-visual-compatibility.md) | Explicit visual Run 2.0 projection for the existing Tilek loader |
+| [0026](0026-v3-runtime-time-and-directed-graphs.md) | V3 microsecond operation policy and directed filtered routes |
+| [0027](0027-v3-catalog-interface.md) | Separate V3 static catalog, source identity and interface capabilities |
+| [0028](0028-v3-frozen-proposal-inputs.md) | Pinned V3 source package, exact compatibility and baseline conservation |
+| [0029](0029-v3-independent-analytical-fixtures.md) | Independent F1/F2/F3 hand-oracle fixtures |
+| [0030](0030-v3-static-admission-before-cost.md) | Exact static storage and route compatibility before scoring |
