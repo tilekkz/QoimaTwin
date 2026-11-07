@@ -7,8 +7,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from app.simulation.engine import Engine
 
-TOTE_IDS = frozenset(f"T{i:03d}" for i in range(1, 97))
-
 
 class InvariantViolation(RuntimeError):
     """A settled state violates stock, ownership or finite capacity constraints."""
@@ -32,8 +30,9 @@ def _totes(engine: Engine) -> list[str]:
         return ["duplicate free tote"]
     if set(free) & allocated:
         return ["free and allocated tote pools overlap"]
-    if set(free) | allocated != TOTE_IDS:
-        return ["tote pool must contain exactly T001..T096"]
+    total = engine.ctx.config.totes_total
+    if set(free) | allocated != {f"T{i:03d}" for i in range(1, total + 1)}:
+        return [f"tote pool must contain exactly T001..T{total:03d}"]
     return []
 
 

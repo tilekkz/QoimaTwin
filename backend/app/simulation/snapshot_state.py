@@ -308,6 +308,7 @@ def timers_state(sched: PhaseScheduler) -> list[Json]:
         {
             "tick": i.tick,
             "phase": int(i.phase),
+            "rank": i.rank,
             "key": list(i.key),
             "seq": i.seq,
             "unique": str(i.unique) if i.unique is not None else None,
@@ -332,7 +333,8 @@ def action_json(action: Action) -> Json:
 def _end_pos(action: Action) -> Vec3:
     if action.waypoints:
         return action.waypoints[-1].pos
-    assert action.pos is not None
+    if action.pos is None:
+        raise RuntimeError(f"{action.action_id}: stationary action has no position")
     return action.pos
 
 

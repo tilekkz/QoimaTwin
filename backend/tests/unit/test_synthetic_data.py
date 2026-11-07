@@ -67,9 +67,9 @@ def test_arrivals_come_from_exact_rational(rate: int) -> None:
     assert orders[-1].arrival_s < 7200
 
 
-@pytest.mark.parametrize("horizon", [-3600, 1, 3599, 3601])
+@pytest.mark.parametrize("horizon", [-3600, True])
 def test_orders_reject_invalid_horizon(horizon: int) -> None:
-    with pytest.raises(ValueError, match="whole number of hours"):
+    with pytest.raises(ValueError, match="nonnegative integer"):
         generate_orders(stream_rng(ORDERS), build_catalog().normalized_weights, 240, horizon, "T")
 
 

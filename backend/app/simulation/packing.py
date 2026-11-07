@@ -118,7 +118,8 @@ class Packing:
     def _packed(self, station: Station) -> None:
         ctx = self.ctx
         tote = station.in_service
-        assert tote is not None
+        if tote is None:
+            raise RuntimeError(f"{station.pack_id}: packing completion has no tote in service")
         parcel_id = f"PCL_{tote.order_id}"
         ctx.ledger.transfer_location(
             Location(LocKind.PACK_WIP, station.pack_id), Location(LocKind.PARCEL, parcel_id)

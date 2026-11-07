@@ -2,8 +2,8 @@
 
 SimPy owns the clock and the future-event heap. Items scheduled for the same tick and phase are
 grouped in one bucket; SimPy fires one bucket event per `(tick, phase)` with `priority=phase`,
-so phases at one tick always run in order 0..4. Inside a bucket, items run sorted by `(key,
-seq)`.
+so phases at one tick always run in order 0..4. Inside a bucket, items run sorted by `(rank,
+key, seq)`. The default rank is zero; age expiry explicitly follows completed scans.
 """
 
 from __future__ import annotations
@@ -11,6 +11,7 @@ from __future__ import annotations
 from collections.abc import Callable, Hashable
 from dataclasses import dataclass, field
 from enum import IntEnum
+from heapq import heappop, heappush
 
 import simpy
 from simpy.core import EmptySchedule
@@ -44,15 +45,25 @@ class ScheduledItem:
     label: str
     unique: Hashable | None
     cancelled: bool = False
+    rank: int = 0
+    on_cancel: Handler | None = field(default=None, repr=False)
 
     def cancel(self) -> None:
+        if self.cancelled:
+            return
         self.cancelled = True
+        if self.on_cancel is not None:
+            self.on_cancel()
 
 
 @dataclass(slots=True)
 class _Bucket:
     items: list[ScheduledItem] = field(default_factory=list)
     unique: dict[Hashable, ScheduledItem] = field(default_factory=dict)
+    live: int = 0
+
+    def cancel_one(self) -> None:
+        self.live -= 1
 
 
 class _BucketEvent(simpy.Event):
@@ -69,6 +80,7 @@ class PhaseScheduler:
     def __init__(self) -> None:
         self._env = simpy.Environment(initial_time=0)
         self._buckets: dict[tuple[int, Phase], _Bucket] = {}
+        self._slots: list[tuple[int, Phase]] = []
         self._seq = 0
         self._running: tuple[int, Phase] | None = None
         self._active_tick: int | None = None
@@ -91,6 +103,7 @@ class PhaseScheduler:
         key: SortKey = (),
         label: str = "",
         unique: Hashable | None = None,
+        rank: int = 0,
     ) -> ScheduledItem:
         self._check_allowed(tick, phase)
         slot = (tick, phase)
@@ -101,9 +114,23 @@ class PhaseScheduler:
             _BucketEvent(self._env, phase, tick - self.now).callbacks.append(
                 lambda _event: self._fire(slot)
             )
-        if unique is not None and unique in bucket.unique:
-            return bucket.unique[unique]
-        item = ScheduledItem(tick, phase, key, self._seq, handler, label, unique)
+        previous = bucket.unique.get(unique) if unique is not None else None
+        if previous is not None and not previous.cancelled:
+            return previous
+        item = ScheduledItem(
+            tick,
+            phase,
+            key,
+            self._seq,
+            handler,
+            label,
+            unique,
+            rank=rank,
+            on_cancel=bucket.cancel_one,
+        )
+        if bucket.live == 0:
+            heappush(self._slots, slot)
+        bucket.live += 1
         self._seq += 1
         bucket.items.append(item)
         if unique is not None:
@@ -134,15 +161,16 @@ class PhaseScheduler:
             self.on_tick_settled(settled, next_tick)
 
     def pending_count(self) -> int:
-        return sum(
-            1 for bucket in self._buckets.values() for item in bucket.items if not item.cancelled
-        )
+        return sum(bucket.live for bucket in self._buckets.values())
 
     def peek_next_tick(self) -> int | None:
-        live = [
-            slot[0] for slot, b in self._buckets.items() if any(not i.cancelled for i in b.items)
-        ]
-        return min(live) if live else None
+        while self._slots:
+            slot = self._slots[0]
+            bucket = self._buckets.get(slot)
+            if bucket is not None and bucket.live:
+                return slot[0]
+            heappop(self._slots)
+        return None
 
     def _check_allowed(self, tick: int, phase: Phase) -> None:
         if tick < self.now:
@@ -157,7 +185,7 @@ class PhaseScheduler:
         bucket = self._buckets.pop(slot)
         self._running = slot
         try:
-            for item in sorted(bucket.items, key=lambda i: (i.key, i.seq)):
+            for item in sorted(bucket.items, key=lambda i: (i.rank, i.key, i.seq)):
                 if not item.cancelled:
                     item.handler()
         finally:

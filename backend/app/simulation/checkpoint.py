@@ -70,7 +70,8 @@ class Checkpointer:
         self._emit_before(next_tick if next_tick is not None else settled_tick + 1)
 
     def _emit_before(self, upper_exclusive: int) -> None:
-        assert self._limit is not None
+        if self._limit is None:
+            raise RuntimeError("checkpointer.begin() must run before capturing boundaries")
         while self._next_boundary < upper_exclusive and self._next_boundary <= self._limit:
             self._snapshots.append(self._take(self._next_boundary))
             self._next_boundary += self._interval

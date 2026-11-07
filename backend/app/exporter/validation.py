@@ -1,6 +1,7 @@
 """Shared JSON Schema plus payload and interval checks not expressed by v2."""
 
 import json
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -46,10 +47,14 @@ REQUIRED = {
 CELL_FIELDS = {"cargo_id", "cell_id", "transition_id", "from_container_id", "to_container_id"}
 
 
+@lru_cache(maxsize=8)
+def _validator(schema_text: str) -> Any:
+    return jsonschema.Draft202012Validator(json.loads(schema_text))
+
+
 def validate_run(run: dict[str, Any], contracts_dir: Path | None = None) -> None:
     path = (contracts_dir or default_contracts_dir()) / "run.schema.json"
-    schema = json.loads(path.read_text(encoding="utf-8"))
-    jsonschema.Draft202012Validator(schema).validate(run)
+    _validator(path.read_text(encoding="utf-8")).validate(run)
     previous = (-1.0, -1, -1)
     for seq, event in enumerate(run["events"]):
         key = (event["at_s"], event["phase"], event["seq"])

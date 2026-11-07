@@ -8,7 +8,7 @@ from app.simulation.engine import Engine
 def cargo_catalog(engine: Engine) -> list[dict[str, Any]]:
     inputs = engine.ctx.inputs
     cargo: dict[str, dict[str, Any]] = {}
-    for index in range(1, 97):
+    for index in range(1, inputs.config.totes_total + 1):
         cid = f"T{index:03d}"
         cargo[cid] = _cargo(cid, "tote", [], [])
     for lot in inputs.assignment.initial_lots:
@@ -54,7 +54,7 @@ def initial_state(engine: Engine) -> dict[str, Any]:
             lot.model_dump(mode="json")
             for lot in sorted(engine.ctx.inputs.assignment.initial_lots, key=lambda lot: lot.lot_id)
         ],
-        "tote_pool": [f"T{i:03d}" for i in range(1, 97)],
+        "tote_pool": [f"T{i:03d}" for i in range(1, engine.ctx.config.totes_total + 1)],
         "cells": {},
         "queues": {"orders": [], "shipping": [], "receiving": [], "sealed": []},
         "merge_cursors": {},

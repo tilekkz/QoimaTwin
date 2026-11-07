@@ -145,6 +145,7 @@ class Shipping:
             Phase.COMPLETION,
             lambda: self._placed(shipper, pallet, parcel),
             key=(shipper.actor_id,),
+            rank=0,  # Finished scans release reservations before same-tick age expiry.
         )
 
     def _placed(self, shipper: Shipper, pallet: Pallet, parcel: CargoInfo) -> None:
@@ -170,6 +171,7 @@ class Shipping:
                 Phase.COMPLETION,
                 lambda: self._expired(pallet, generation),
                 key=("pallet", pallet.pallet_id),
+                rank=1,
             )
         if len(pallet.parcels) >= self.capacity and pallet.state is PalletState.OPEN:
             self._mark_pending(pallet, "full")

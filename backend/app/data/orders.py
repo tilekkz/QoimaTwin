@@ -39,22 +39,23 @@ def iter_orders(
     Rates 240, 600 and history's 168 have no accumulated float error. The first
     two are exactly representable; 168 uses the nearest float of the rational.
     """
-    if type(horizon_s) is not int or horizon_s < 0 or horizon_s % 3600:
-        raise ValueError("horizon_s must be a nonnegative whole number of hours")
+    if type(horizon_s) is not int or horizon_s < 0:
+        raise ValueError("horizon_s must be a nonnegative integer")
     if type(orders_per_hour) is not int or orders_per_hour <= 0:
         raise ValueError("orders_per_hour must be a positive integer")
     normalize_weights(weights)  # Validate without changing the supplied probabilities.
     if sum(weight > 0 for weight in weights) < 4:
         raise ValueError("at least four SKUs must have positive sampling weight")
-    for hour in range(horizon_s // 3600):
-        for i in range(orders_per_hour):
-            arrival = Fraction(hour * 3600) + Fraction((2 * i + 1) * 1800, orders_per_hour)
-            index = hour * orders_per_hour + i
-            yield Order(
-                order_id=f"{id_prefix}{index:06d}",
-                arrival_s=float(arrival),
-                lines=_lines(rng, weights),
-            )
+    count_bound = (horizon_s * orders_per_hour + 3599) // 3600
+    for index in range(count_bound):
+        arrival = Fraction((2 * index + 1) * 1800, orders_per_hour)
+        if arrival >= horizon_s:
+            break
+        yield Order(
+            order_id=f"{id_prefix}{index:06d}",
+            arrival_s=float(arrival),
+            lines=_lines(rng, weights),
+        )
 
 
 def generate_orders(
