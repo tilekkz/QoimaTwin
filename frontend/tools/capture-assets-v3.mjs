@@ -1,5 +1,5 @@
 import {chromium} from '@playwright/test';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {execFile} from 'node:child_process';
 const assets=process.argv.slice(2);if(!assets.length)assets.push('calibration');
 if(assets.some(a=>!/^[a-z0-9][a-z0-9-]{0,63}$/.test(a)))throw Error('Invalid asset ID');
@@ -8,6 +8,9 @@ if(views.some(v=>!['front','side','rear','quarter','top'].includes(v)))throw Err
 const base=process.env.QOIMA_STAND_BASE_URL||'http://127.0.0.1:4173';
 const visible=process.env.QOIMA_VISIBLE_TESTS==='1',viewport=visible?{width:1280,height:720}:{width:1440,height:1000};
 const variant=process.env.QOIMA_STAND_FIXTURE,focus=process.env.QOIMA_STAND_FOCUS;
+const poseFile=process.env.QOIMA_STAND_POSE;
+const pose=poseFile?JSON.parse(await readFile(poseFile,'utf8')):null;
+if(pose&&Object.entries(pose).some(([name,angles])=>!/^joint__[a-zA-Z_]+$/.test(name)||!Array.isArray(angles)||angles.length!==3||!angles.every(Number.isFinite)))throw Error('Invalid inspection pose');
 if(variant&&!['roles','pickup','driver','grip'].includes(variant))throw Error('Invalid fixture variant');
 async function bounded(promise,ms){let timer;try{return await Promise.race([promise.then(()=>true,()=>false),new Promise(r=>{timer=setTimeout(()=>r(false),ms);})]);}finally{clearTimeout(timer);}}
 const started=Date.now();
@@ -28,6 +31,7 @@ try{
   page.on('response',r=>{if(r.status()>=400)failedResources.push({url:r.url(),status:r.status()});});
   try{
    await page.goto(`${base}/stand-v3.html?asset=${asset}${variant?'&fixture='+variant:''}`);await page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
+   if(pose)await page.evaluate(p=>{for(const [name,rotation] of Object.entries(p))window.__QOIMA_STAND_V3__.setNode(name,{rotation});},pose);
    for(const view of views){
     await page.evaluate(({view,focus})=>focus?window.__QOIMA_STAND_V3__.focus(focus,view):window.__QOIMA_STAND_V3__.view(view),{view,focus});
     await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});

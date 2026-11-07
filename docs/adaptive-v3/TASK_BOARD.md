@@ -180,7 +180,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.6.3](tasks/M14.6.3.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M14.6.2,M08,M09,M11,M12 | All six native loaded assemblies and low/high interface gate |
 | [P03.5.1](tasks/P03.5.1.md) | PASS | root | P03.4,P01.7,P02 | Manual picker wrist roll and closing mitten controls |
 | [P03.5.2](tasks/P03.5.2.md) | PASS | root | P03.5.1,M06.1,M01 | Native open partial SMALL case and primary-unit source fixture |
-| [P03.5.3](tasks/P03.5.3.md) | READY | unassigned | P03.5.2,FIX01.3 | Reach, pick primary units, withdraw and deposit without duplication |
+| [P03.5.3](tasks/P03.5.3.md) | FIX | root | P03.5.2,FIX01.3,P03.5.1.1 | Reach, pick primary units, withdraw and deposit without duplication |
 | [FIX01.1](tasks/FIX01.1.md) | PASS | root | — | Inward neutral palms on both worker templates |
 | [FIX01.2](tasks/FIX01.2.md) | PASS | root | FIX01.1 | Top-down cart grip and affected pose regressions |
 | [FIX01.3](tasks/FIX01.3.md) | PASS | root | FIX01.2 | Four-flap outer SMALL carton opening |
+| [P03.5.1.1](tasks/P03.5.1.1.md) | PASS | root | P03.5.1,FIX01.2 | Explicit manual overhead reach controls |

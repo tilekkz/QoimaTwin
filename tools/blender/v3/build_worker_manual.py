@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 import bpy
-from mathutils import Matrix
+from mathutils import Matrix,Vector
 
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from v3_common import ROOT,finish,material,pivot,reset,runtime_xyz,xyz
@@ -18,6 +18,22 @@ from build_standard_carton import collect
 from build_long_rack import block
 
 OUT=ROOT/'assets/v3/iterations/worker-base/P03.5.1';EPS=2e-6
+
+def add_reach_controls(worker):
+    """Explicit manual-only shoulder elevation and upper-arm axial swivel."""
+    for side in ('L','R'):
+        upper=bpy.data.objects['joint__upper_arm_'+side];basis=upper.matrix_basis.copy()
+        lift=pivot('joint__shoulder_lift_'+side,(0,0,0),upper.parent,'X');lift.matrix_basis=basis
+        lift['joint_mode']='manual_additional_shoulder_elevation';lift['rotation_range_radians']=[-.8,0]
+        lift['meaning']='Additional manual reach range. Original upper-arm delta limits remain unchanged; combined X elevation minimum is -3.0rad.'
+        upper.parent=lift;upper.matrix_basis=Matrix.Identity(4)
+        fore=bpy.data.objects['joint__forearm_'+side];basis=fore.matrix_basis.copy()
+        axis=Vector(runtime_xyz(fore.location)).normalized()
+        swivel=pivot('joint__elbow_swivel_'+side,(0,0,0),fore.parent,'Y');swivel.matrix_basis=basis
+        swivel['joint_mode']='upper_arm_axial_swivel';swivel['rotation_range_radians']=[-math.pi,math.pi]
+        swivel['custom_axis_runtime']=list(axis)
+        swivel['meaning']='Elbow-plane swivel about the actual upper-arm longitudinal axis. Distinct from wrist flexion and original elbow bend.'
+        fore.parent=swivel;fore.matrix_basis=Matrix.Identity(4)
 
 if __name__=='__main__':
     paths=['assets/v3/blender/worker-base.blend','frontend/public/models/v3/worker-base.glb','docs/v3/contract-proposals/cargo-catalog-v3.json']
@@ -41,6 +57,7 @@ if __name__=='__main__':
             node['meaning']='Same rigid closed mitten part; no geometry scaling or deformation.'
             obj=bpy.data.objects['mitten_'+side+'_'+part];obj.parent=node
             controls[side][label]=node
+    add_reach_controls(worker)
     bpy.context.view_layer.update();after,_=physical_body(worker)
     assert all(raw[o.name]==[tuple(v.co) for v in o.data.vertices] for o in worker.children_recursive if o.type=='MESH')
     by_name={p['name']:p for p in before}
@@ -88,8 +105,8 @@ if __name__=='__main__':
     worker['body_mesh_geometry_unchanged']=True;worker['manual_control_spec']='docs/adaptive-v3/specs/P03.5.1.md'
     worker['manual_controls_json']=json.dumps({'roll':'forearm-localY[-pi,+pi]','finger_closing_travel_m':[0,.014],'thumb_retraction_m':[0,.005]})
     OUT.mkdir(parents=True,exist_ok=True);stats=finish('worker-manual',worker)
-    assert len(stats['pivots'])==23 and len(stats['anchors'])==7
+    assert len(stats['pivots'])==27 and len(stats['anchors'])==7
     assert all(hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h for p,h in hashes.items())
-    report={'task_id':'P03.5.1','source_hashes':hashes,'body_parts':50,'raw_body_mesh_coordinates_unchanged':True,'neutral_world_vertex_error_m':neutral_error,'pivots':23,'anchors':7,'original15joint_limits_retained':True,'rigid_mitten_connection_poses':connections,'C02_two_unit_envelope_contacts':witnesses,'QA_envelopes_excluded_from_export':True,'glb_sha256':stats['sha256'],'scope':'Manual rig interface only. Two C02unit envelopes are temporary contact witnesses, not stock/model/action acceptance. Actual source/carry comes next.'}
+    report={'task_id':'P03.5.1','source_hashes':hashes,'body_parts':50,'raw_body_mesh_coordinates_unchanged':True,'neutral_world_vertex_error_m':neutral_error,'pivots':27,'anchors':7,'original15joint_delta_limits_retained':True,'manual_reach_extension':'P03.5.1.1: shoulder additionalX[-.8,0], combined elevation minimum-3.0rad; upper-arm-axis elbow-plane swivel[-pi,pi]. No mesh scaling. Neutral transforms unchanged.','rigid_mitten_connection_poses':connections,'C02_two_unit_envelope_contacts':witnesses,'QA_envelopes_excluded_from_export':True,'glb_sha256':stats['sha256'],'scope':'Manual rig interface only. Two C02unit envelopes are temporary contact witnesses, not stock/model/action acceptance. Actual source/carry comes next.'}
     (OUT/'actual-manual-rig-checks.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf8')
-    print('P0351_MANUAL_RIG_VERIFIED '+json.dumps({'body_parts':50,'neutral_vertex_error_m':neutral_error,'pivots':23,'anchors':7,'grip_envelope_contacts':len(witnesses)}))
+    print('P0351_MANUAL_RIG_VERIFIED '+json.dumps({'body_parts':50,'neutral_vertex_error_m':neutral_error,'pivots':27,'anchors':7,'grip_envelope_contacts':len(witnesses)}))

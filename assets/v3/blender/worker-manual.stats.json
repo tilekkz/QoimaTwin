@@ -5,12 +5,12 @@
   "units": "m",
   "up_axis": "Y",
   "forward_axis": "+Z",
-  "generated_at": "2026-11-07T22:29:12.384065+00:00",
+  "generated_at": "2026-11-07T22:43:21.599210+00:00",
   "blender_version": "5.0.1",
   "source": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\blender\\worker-manual.blend",
   "glb": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\public\\models\\v3\\worker-manual.glb",
-  "glb_bytes": 190540,
-  "sha256": "7e0e6bfaa36edf235ed53e3c088d10130c233f9b0e15aca4b52635d950733719",
+  "glb_bytes": 192732,
+  "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
   "source_meshes": 56,
   "runtime_meshes": 29,
   "triangles": 2848,
@@ -200,7 +200,7 @@
       "parent": "joint__torso",
       "axis": "X"
     },
-    "joint__upper_arm_L": {
+    "joint__shoulder_lift_L": {
       "position_runtime": [
         -0.2150000035762787,
         1.1050000190734863,
@@ -214,7 +214,21 @@
       "parent": "joint__torso",
       "axis": "X"
     },
-    "joint__forearm_L": {
+    "joint__upper_arm_L": {
+      "position_runtime": [
+        -0.2150000035762787,
+        1.1050000190734863,
+        -0.0
+      ],
+      "local_runtime": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent": "joint__shoulder_lift_L",
+      "axis": "X"
+    },
+    "joint__elbow_swivel_L": {
       "position_runtime": [
         -0.26500001549720764,
         0.9050000309944153,
@@ -226,6 +240,20 @@
         0.009999999776482582
       ],
       "parent": "joint__upper_arm_L",
+      "axis": "Y"
+    },
+    "joint__forearm_L": {
+      "position_runtime": [
+        -0.26500001549720764,
+        0.9050000309944153,
+        0.009999999776482582
+      ],
+      "local_runtime": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent": "joint__elbow_swivel_L",
       "axis": "X"
     },
     "joint__palm_roll_L": {
@@ -298,7 +326,7 @@
       "parent": "joint__hand_L",
       "axis": "Y"
     },
-    "joint__upper_arm_R": {
+    "joint__shoulder_lift_R": {
       "position_runtime": [
         0.2150000035762787,
         1.1050000190734863,
@@ -312,7 +340,21 @@
       "parent": "joint__torso",
       "axis": "X"
     },
-    "joint__forearm_R": {
+    "joint__upper_arm_R": {
+      "position_runtime": [
+        0.2150000035762787,
+        1.1050000190734863,
+        -0.0
+      ],
+      "local_runtime": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent": "joint__shoulder_lift_R",
+      "axis": "X"
+    },
+    "joint__elbow_swivel_R": {
       "position_runtime": [
         0.26500001549720764,
         0.9050000309944153,
@@ -324,6 +366,20 @@
         0.009999999776482582
       ],
       "parent": "joint__upper_arm_R",
+      "axis": "Y"
+    },
+    "joint__forearm_R": {
+      "position_runtime": [
+        0.26500001549720764,
+        0.9050000309944153,
+        0.009999999776482582
+      ],
+      "local_runtime": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "parent": "joint__elbow_swivel_R",
       "axis": "X"
     },
     "joint__palm_roll_R": {
@@ -1848,6 +1904,6 @@
   "glb_header": {
     "magic": "glTF",
     "version": 2,
-    "declared_bytes": 190540
+    "declared_bytes": 192732
   }
 }

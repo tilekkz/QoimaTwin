@@ -41,6 +41,7 @@ function prepareArm(actor:THREE.Object3D,side:'L'|'R',cart:THREE.Object3D){
   // Read the actual rigid offset through that pivot instead of assuming that
   // hand.position alone is the complete forearm-to-wrist vector.
   const wristOffset=fore.worldToLocal(hand.getWorldPosition(new THREE.Vector3()));
+  const elbowOffset=upper.worldToLocal(fore.getWorldPosition(new THREE.Vector3()));
   const desiredHand=new THREE.Quaternion().setFromEuler(new THREE.Euler(3*Math.PI/8,0,Math.PI,'XYZ'));
   const roll=find('joint__palm_roll_'+side);
   const offset=anchor.position.clone().applyQuaternion(desiredHand);
@@ -50,7 +51,7 @@ function prepareArm(actor:THREE.Object3D,side:'L'|'R',cart:THREE.Object3D){
     const q1=new THREE.Quaternion(),q2=new THREE.Quaternion(),q12=new THREE.Quaternion();
     const point=(a:number[])=>{
       q1.setFromEuler(new THREE.Euler(a[0],0,a[1],'XYZ'));q2.setFromAxisAngle(new THREE.Vector3(1,0,0),a[2]);q12.copy(q1).multiply(q2);
-      return shoulder.clone().add(fore.position.clone().applyQuaternion(q1)).add(wristOffset.clone().applyQuaternion(q12)).add(offset);
+      return shoulder.clone().add(elbowOffset.clone().applyQuaternion(q1)).add(wristOffset.clone().applyQuaternion(q12)).add(offset);
     };
     for(let i=0;i<10;i++){
       const p=point(v),error=goal.clone().sub(p);if(error.length()<1e-11)break;
