@@ -1,0 +1,813 @@
+{
+  "task_id": "I09.1",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T05:59:54.791018+00:00",
+  "workspace": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin",
+  "branch": "codex/twin-v3-adaptive",
+  "head_at_recording": "cb5777f108478aabe3b7117a19d2b471ad79d2de",
+  "purpose": "Isolated engineering export/inspection pipeline; no final art asset acceptance.",
+  "dependency": "R10 task PASS; current assets/references/v3/manifest.json read (9references, reference_complete).",
+  "skills": [
+    "blender-toolkit/SKILL.md",
+    "blender-threejs-export/SKILL.md",
+    "local codex-setup.md; file-background route overrides live/CDN example; browser stand owned by root"
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "parent_context": "asset_common10functions, trace9callers/6callees complete; direct source fallback requested",
+    "local_coverage": "legacy helper paths no_recorded_issue/metadata_changed; new4V3scripts missing before creation; card not_tracked. All exact legacy sources read; new scripts AST checked; no reindex."
+  },
+  "api": {
+    "coordinates": "All loc/start/end/anchor/pivot arguments are PARENT-LOCAL runtime XYZ metres. xyz maps once to Blender(x,-z,y); runtime_xyz inverses it. No second root rotation.",
+    "symbols": [
+      "xyz(point)",
+      "runtime_xyz(point)",
+      "reset()",
+      "material(name,color,roughness=.85,metallic=0)",
+      "group(name,parent=None,loc=(0,0,0))",
+      "box(name,loc,size,mat,parent=None,bevel=.008)",
+      "cylinder(name,loc,radius,depth,mat,parent=None,axis=Y,vertices=8)",
+      "beam(name,start,end,width,mat,parent=None)",
+      "anchor(name,loc=(0,0,0),parent=None,role=attachment_anchor)",
+      "pivot(name,loc=(0,0,0),parent=None,axis=Y)",
+      "finish(asset_id,root,batch_runtime=True)",
+      "PALETTE"
+    ],
+    "naming": "Caller anchor/pivot names preserved exactly; use semantic names such as joint__pelvis/anchor_handle.",
+    "batching": "Same immediate parent AND ordered material tuple only; never join across pivots/anchors. batch_runtime=False preserves individual mesh names. preserve_articulation=True is recorded; parent boundaries remain in both modes.",
+    "source": "Editable blend saved before modifier conversion/runtime batching. V3_ASSET/V3_STUDIO collections separate export root from later camera/floor.",
+    "stats": "bounds_runtime and dimensions_m/runtime_size in Y-up; anchors world positions; pivots world/local/parent/axis; components before batch and runtime_components actual vertex bounds; hash/header/triangles/mesh counts."
+  },
+  "artifacts": {
+    "tools/blender/v3/v3_common.py": {
+      "bytes": 10390,
+      "sha256": "994b7f080ee1f8c1126b3d087cff6d7621ed4db7e1caca5b963a14d773e68e0c"
+    },
+    "tools/blender/v3/run_build.py": {
+      "bytes": 1011,
+      "sha256": "b8e63d7fa97b4f539dc5ea85fa87ace70e687ced455ed18656ce735cca2f782f"
+    },
+    "tools/blender/v3/build_calibration.py": {
+      "bytes": 10772,
+      "sha256": "6a3cf7e5eb5832a0e085520cfc88ea21be203bed9ef69c4d68d1ef14eef352c8"
+    },
+    "tools/blender/v3/render_asset.py": {
+      "bytes": 7578,
+      "sha256": "b8a5ea985b1bbc30a9d47c4bb234a061e8d388d88eb96dafe1a15bae8789c62e"
+    },
+    "assets/v3/blender/calibration.blend": {
+      "bytes": 101880,
+      "sha256": "a3693d12d9ea9cea4db1e775ee1d109b9089a9947a67547d47412e2a2e778333"
+    },
+    "assets/v3/blender/calibration.stats.json": {
+      "bytes": 9038,
+      "sha256": "1775df91399b668953018b11ee131861cba7afa1683c858789c36cdbf83e1ad4"
+    },
+    "assets/v3/blender/calibration.expected.json": {
+      "bytes": 2700,
+      "sha256": "1d5dc4ebfd1ebcd3ef8cc916b6819c46fb4a4b3622abe0ed1695475f89ca3c5b"
+    },
+    "frontend/public/models/v3/calibration.glb": {
+      "bytes": 14708,
+      "sha256": "b2ceecef959d4cf42cb85510f35effeb09b7300ffc03457e76e09fc637d385b5"
+    }
+  },
+  "legacy_helpers_read_only_sha256": {
+    "tools/blender/asset_common.py": "f213155833a2a5ea25ce428ede7d795a01593862db2be38af1e46b65b93647bc",
+    "tools/blender/v2/v2_common.py": "2f28d9bb0f6d0680aa3a08e349fff67c173fa5ecc77535e2ef44705aaaeedad0",
+    "tools/blender/v2/run_build.py": "5c662156efd32c51784f650f9cf07d147dc6ded5cb647fb875f908ed8d1aa32e",
+    "tools/blender/render_asset.py": "7785de8fe2bfee598b801038c526126a9f5aff1a0e5091b0e4dfe7413e792bab",
+    "tools/blender/export_calibration.py": "fcb344c4748a5bd2dd2b9c0f7efff08b545c28e0ce5353c6ffe86044e7f79a9b",
+    "tools/blender/v2/export_calibration_v2.py": "2c36715a9d615efd2426d99ade868cd8d7d90d126ddb42586da9e47ab04efa36"
+  },
+  "legacy_hashes_unchanged": true,
+  "commands": {
+    "export": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_calibration",
+    "source_check": "Background --factory-startup before explicit blend; assert7source meshes, editable BEVEL+WEIGHTED_NORMAL, nested joint/anchor parents and0studio objects.",
+    "render_executed_on_fix": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup assets/v3/blender/calibration.blend --threads 2 --python tools/blender/v3/render_asset.py -- calibration --size 900"
+  },
+  "expected_declared_before_final_build": {
+    "asset_id": "calibration",
+    "namespace": "v3",
+    "layout_version": "qoima-144x72-v3",
+    "purpose": "Independent engineering fixture, not a final art asset",
+    "declared_before_geometry": true,
+    "units": "m",
+    "up_axis": "Y",
+    "forward_axis": "+Z",
+    "tolerance_m": 0.00001,
+    "bounds_runtime": {
+      "min": [
+        -0.05,
+        0,
+        -0.05
+      ],
+      "max": [
+        1,
+        2,
+        3
+      ]
+    },
+    "dimensions_m": [
+      1.05,
+      2,
+      3.05
+    ],
+    "axis_lengths_m": {
+      "X": 1,
+      "Y": 2,
+      "Z": 3
+    },
+    "root_name": "calibration_root__V3",
+    "root_transform": "identity",
+    "source_mesh_count": 7,
+    "runtime_mesh_count": 6,
+    "parts": {
+      "axis_X_1m": {
+        "centre": [
+          0.5,
+          0.05,
+          0
+        ],
+        "size": [
+          1,
+          0.1,
+          0.1
+        ]
+      },
+      "axis_Y_2m": {
+        "centre": [
+          0,
+          1,
+          0
+        ],
+        "size": [
+          0.1,
+          2,
+          0.1
+        ]
+      },
+      "axis_Z_3m": {
+        "centre": [
+          0,
+          0.05,
+          1.5
+        ],
+        "size": [
+          0.1,
+          0.1,
+          3
+        ]
+      },
+      "asymmetric_box": {
+        "centre": [
+          0.55,
+          0.4,
+          0.8
+        ],
+        "size": [
+          0.3,
+          0.8,
+          0.4
+        ],
+        "bevel_m": 0.008
+      },
+      "joint_A_part_1": {
+        "parent": "joint__calibration_A",
+        "local_centre": [
+          0.1,
+          0,
+          0
+        ],
+        "size": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "local_yaw_radians": 0.7853981633974483
+      },
+      "joint_A_part_2": {
+        "parent": "joint__calibration_A",
+        "local_centre": [
+          0.1,
+          0.15,
+          0
+        ],
+        "size": [
+          0.1,
+          0.1,
+          0.1
+        ]
+      },
+      "joint_B_part": {
+        "parent": "joint__calibration_B",
+        "local_centre": [
+          0,
+          0.1,
+          0
+        ],
+        "size": [
+          0.12,
+          0.2,
+          0.16
+        ]
+      }
+    },
+    "anchors": {
+      "anchor_origin": [
+        0,
+        0,
+        0
+      ],
+      "anchor_axis_X": [
+        1,
+        0,
+        0
+      ],
+      "anchor_axis_Y": [
+        0,
+        2,
+        0
+      ],
+      "anchor_axis_Z": [
+        0,
+        0,
+        3
+      ],
+      "anchor_asymmetric": [
+        0.35,
+        1.2,
+        2.4
+      ],
+      "anchor_signed": [
+        -0.4,
+        0.75,
+        -0.6
+      ],
+      "anchor_nested": [
+        0.75,
+        0.7,
+        2.05
+      ]
+    },
+    "pivots": {
+      "joint__calibration_A": {
+        "parent": "calibration_root__V3",
+        "local_runtime": [
+          0.45,
+          0.3,
+          1.7
+        ],
+        "position_runtime": [
+          0.45,
+          0.3,
+          1.7
+        ],
+        "axis": "Y"
+      },
+      "joint__calibration_B": {
+        "parent": "joint__calibration_A",
+        "local_runtime": [
+          0.25,
+          0.1,
+          0.2
+        ],
+        "position_runtime": [
+          0.7,
+          0.4,
+          1.9
+        ],
+        "axis": "X"
+      }
+    },
+    "nested_anchor_parent": "joint__calibration_B",
+    "nested_anchor_local_runtime": [
+      0.05,
+      0.3,
+      0.15
+    ],
+    "joint_A_batch_bounds_runtime": {
+      "min": [
+        0.4792893218813453,
+        0.25,
+        1.6292893218813453
+      ],
+      "max": [
+        0.6207106781186548,
+        0.5,
+        1.7707106781186548
+      ]
+    },
+    "batching_expectation": "Root tan mesh, joint A tan meshes, and joint B tan mesh remain in separate batches; only the two meshes under A join. Both pivots and all anchors survive.",
+    "notes": "Axis bars have finite 0.1m thickness; mesh bounds intentionally extend 0.05m into negative X/Z. Anchors do not enlarge mesh bounds. A's first mesh has45-degree yaw; joining its unrotated sibling retains a rotated local frame, so the A-batch test catches inflated transformed-local-AABB estimates. Numeric values are declared independently before building."
+  },
+  "actual": {
+    "blender_version": "5.0.1",
+    "glb_bytes": 14708,
+    "triangles": 116,
+    "source_meshes": 7,
+    "runtime_meshes": 6,
+    "bounds_runtime": {
+      "min": [
+        -0.05000000074505806,
+        0,
+        -0.05000000074505806
+      ],
+      "max": [
+        1,
+        2,
+        3
+      ]
+    },
+    "dimensions_m": [
+      1.050000000745058,
+      2,
+      3.050000000745058
+    ],
+    "anchors": {
+      "anchor_asymmetric": [
+        0.3499999940395355,
+        1.2000000476837158,
+        2.4000000953674316
+      ],
+      "anchor_axis_X": [
+        1,
+        0,
+        0
+      ],
+      "anchor_axis_Y": [
+        0,
+        2,
+        0
+      ],
+      "anchor_axis_Z": [
+        0,
+        0,
+        3
+      ],
+      "anchor_origin": [
+        0,
+        0,
+        0
+      ],
+      "anchor_signed": [
+        -0.4000000059604645,
+        0.75,
+        -0.6000000238418579
+      ],
+      "anchor_nested": [
+        0.75,
+        0.7000000476837158,
+        2.0500001907348633
+      ]
+    },
+    "pivots": {
+      "joint__calibration_A": {
+        "position_runtime": [
+          0.44999998807907104,
+          0.30000001192092896,
+          1.7000000476837158
+        ],
+        "local_runtime": [
+          0.44999998807907104,
+          0.30000001192092896,
+          1.7000000476837158
+        ],
+        "parent": "calibration_root__V3",
+        "axis": "Y"
+      },
+      "joint__calibration_B": {
+        "position_runtime": [
+          0.699999988079071,
+          0.4000000059604645,
+          1.9000000953674316
+        ],
+        "local_runtime": [
+          0.25,
+          0.10000000149011612,
+          0.20000000298023224
+        ],
+        "parent": "joint__calibration_A",
+        "axis": "X"
+      }
+    },
+    "maximum_anchor_error_m": 1.9073486345888568e-7,
+    "numeric_glb_decode": {
+      "status": "verified_numerically",
+      "method": "actual GLB float POSITION/NORMAL bytes + node TRS, independent of xyz",
+      "bounds_runtime": {
+        "min": [
+          -0.05000000074505806,
+          0,
+          -0.05000000074505806
+        ],
+        "max": [
+          1,
+          2,
+          3
+        ]
+      },
+      "dimensions_m": [
+        1.050000000745058,
+        2,
+        3.050000000745058
+      ],
+      "anchors": {
+        "anchor_origin": [
+          0,
+          0,
+          0
+        ],
+        "anchor_axis_X": [
+          1,
+          0,
+          0
+        ],
+        "anchor_axis_Y": [
+          0,
+          2,
+          0
+        ],
+        "anchor_axis_Z": [
+          0,
+          0,
+          3
+        ],
+        "anchor_asymmetric": [
+          0.3499999940395355,
+          1.2000000476837158,
+          2.4000000953674316
+        ],
+        "anchor_signed": [
+          -0.4000000059604645,
+          0.75,
+          -0.6000000238418579
+        ],
+        "anchor_nested": [
+          0.75,
+          0.7000000476837158,
+          2.0500001907348633
+        ]
+      },
+      "runtime_meshes": 6,
+      "finite_positions": 240,
+      "finite_unit_normals": 240,
+      "named_pivots_preserved": [
+        "joint__calibration_A",
+        "joint__calibration_B"
+      ],
+      "root_identity": true,
+      "parent_material_batching": true,
+      "rotated_joined_mesh_bounds": "verified against independent hand-declared A-batch bounds",
+      "khronos_validation": "pending root I09.3",
+      "browser_views": "not run; root I09.3"
+    }
+  },
+  "source_blend_reopened": {
+    "source_meshes": 7,
+    "editable_modifiers_on_asymmetric_box": [
+      "BEVEL",
+      "WEIGHTED_NORMAL"
+    ],
+    "nested_parents_preserved": true,
+    "asset_collection_objects": 17,
+    "studio_objects": 0,
+    "clean_command_exit_code": 0
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "result": "first export and byte/TRS numeric checks succeeded,84tri; declared bounds/anchors retained"
+    },
+    {
+      "iteration": 2,
+      "change": "Add8mm source-editable bevel to asymmetry box to exercise modifier export path;116tri,240finite positions/unit normals; same independent metric targets pass"
+    }
+  ],
+  "defects_and_fixes": [
+    {
+      "observed": "Opening a blend without --factory-startup registered unrelated user MPFB addon and emitted PermissionError for its Roaming log; artifact assertions still succeeded.",
+      "fix": "Use --factory-startup BEFORE blend path for source inspection/render command; clean rerun exited0 without addon traceback. User addon/settings were not modified."
+    }
+  ],
+  "verification_scope": {
+    "python_syntax": "all4owned scripts parsed",
+    "actual_glb_header": "glTF2 length matches actual14708bytes",
+    "numerics": "actual POSITION/NORMAL bytes and node TRS;7anchors/2pivots/rootidentity/rotated joined batch bounds/parent batching verified",
+    "source_editability": "actual saved blend reopened and inspected",
+    "renderer": "Actual Workbench 4 views rendered with 2 threads and opened after bounded FIX; projected and raster margins verified.",
+    "khronos_validation": "Root reported 0 errors/0 warnings in I09.3; not run by this worker.",
+    "browser_four_views": "Root reported 29 browser checks including 7 anchors/nested 90-degree rotations/reset; I09.3 closure remains root-owned.",
+    "final_art": "not accepted; no P01 or other final geometry created"
+  },
+  "next": "Root I09.3 validates actual GLB in independent browser/Khronos and executes queued renderer as needed; worker remains VERIFY.",
+  "last_updated_at": "2026-11-07T06:45:44.938Z",
+  "renderer_fix": {
+    "status": "VERIFY",
+    "reported_defect": "Quarter green-axis cap clipped/tight because world-AABB target was not the projected vertex-bounds centre.",
+    "scope": "Only renderer, this evidence/card and granted preview outputs changed; calibration GLB/source/helpers/expected/stats frozen.",
+    "math": "p_i=R^-1(v_i-C); c=((minX+maxX)/2,(minY+maxY)/2,0). Translate camera and target by R*c, retaining orientation. p'_i=R^-1(v_i-(C+R*c)); ortho_scale=2*max_i(abs(p'_ix),abs(p'_iy))*1.16.",
+    "guarantee": "900px square frame: |NDC_X/Y|<=1/1.16=0.8620689655; minimum dominant-edge asset margin 62.0689655px aside from rasterization.",
+    "previous_renderer_sha256": "431aebb828467dbe4383d5e2d27a182c262c25dec41941b4aaf8e7473385b9f2",
+    "final_renderer_sha256": "b8a5ea985b1bbc30a9d47c4bb234a061e8d388d88eb96dafe1a15bae8789c62e",
+    "frozen_artifacts_sha256": {
+      "tools/blender/v3/v3_common.py": "994b7f080ee1f8c1126b3d087cff6d7621ed4db7e1caca5b963a14d773e68e0c",
+      "tools/blender/v3/run_build.py": "b8e63d7fa97b4f539dc5ea85fa87ace70e687ced455ed18656ce735cca2f782f",
+      "tools/blender/v3/build_calibration.py": "6a3cf7e5eb5832a0e085520cfc88ea21be203bed9ef69c4d68d1ef14eef352c8",
+      "assets/v3/blender/calibration.blend": "a3693d12d9ea9cea4db1e775ee1d109b9089a9947a67547d47412e2a2e778333",
+      "assets/v3/blender/calibration.stats.json": "1775df91399b668953018b11ee131861cba7afa1683c858789c36cdbf83e1ad4",
+      "assets/v3/blender/calibration.expected.json": "1d5dc4ebfd1ebcd3ef8cc916b6819c46fb4a4b3622abe0ed1695475f89ca3c5b",
+      "frontend/public/models/v3/calibration.glb": "b2ceecef959d4cf42cb85510f35effeb09b7300ffc03457e76e09fc637d385b5"
+    },
+    "frozen_artifacts_unchanged": true,
+    "previous_png_sha256": {
+      "front": "f82647859072bfcd437b0b4f606e354900bf146f4392c55b1f348ff6feceacdf",
+      "side": "4e23fe2e3d3590ba89fa56cf882ccf5ddeb55f89d7b0b3e3460a950d041f4470",
+      "rear": "92fea0d34cfa5ce2dcfd8cb0b6eee6f94abc2a1da2fc152c52ec2d7d8fedb2a2",
+      "three-quarter": "c3d10a98c01599d525967370b5c529702a9ee02283cbb2a0f5e937bf5d301bb9"
+    },
+    "actual_render": {
+      "asset_id": "calibration",
+      "output": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\previews\\calibration",
+      "resolution_px": [
+        900,
+        900
+      ],
+      "fit_method": "projected bbox recenter +2*maxabs extent*1.16",
+      "exposure": 0.7,
+      "views": {
+        "front": {
+          "original_projected_bounds": {
+            "min": [
+              -0.5249999761581421,
+              -1.030293583869934
+            ],
+            "max": [
+              0.5249999761581421,
+              1.030293583869934
+            ]
+          },
+          "old_max_abs_ndc": 0.8620689655172414,
+          "projected_centre_shift": [
+            0,
+            0
+          ],
+          "projected_bounds": {
+            "min": [
+              -0.5249999761581421,
+              -1.030293583869934
+            ],
+            "max": [
+              0.5249999761581421,
+              1.030293583869934
+            ]
+          },
+          "ortho_scale": 2.3902812004089355,
+          "margin_factor": 1.16,
+          "ndc_bounds": {
+            "min": [
+              -0.439278839718376,
+              -0.862068934561899
+            ],
+            "max": [
+              0.439278839718376,
+              0.862068934561899
+            ]
+          },
+          "expected_asset_pixel_bounds": {
+            "left": 252.3245221267308,
+            "right": 647.6754778732692,
+            "top": 62.06897944714543,
+            "bottom": 837.9310205528545
+          },
+          "png": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\previews\\calibration\\front.png",
+          "sha256": "80dc3f4de93873914e89a158bb9b4fc5f2d829a8a159c3f690fd54e31b938188"
+        },
+        "side": {
+          "original_projected_bounds": {
+            "min": [
+              -1.5250002145767212,
+              -1.0102981328964233
+            ],
+            "max": [
+              1.5250004529953003,
+              1.010298252105713
+            ]
+          },
+          "old_max_abs_ndc": 0.8620690329051801,
+          "projected_centre_shift": [
+            1.1920928955078125e-7,
+            5.960464477539063e-8
+          ],
+          "projected_bounds": {
+            "min": [
+              -1.5250004529953003,
+              -1.0102981328964233
+            ],
+            "max": [
+              1.5250003337860107,
+              1.0102981328964233
+            ]
+          },
+          "ortho_scale": 3.53800106048584,
+          "margin_factor": 1.16,
+          "ndc_bounds": {
+            "min": [
+              -0.8620689631935196,
+              -0.5711123968728764
+            ],
+            "max": [
+              0.8620688958055863,
+              0.5711123968728764
+            ]
+          },
+          "expected_asset_pixel_bounds": {
+            "left": 62.0689665629162,
+            "right": 837.9310031125138,
+            "top": 192.99942140720563,
+            "bottom": 707.0005785927943
+          },
+          "png": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\previews\\calibration\\side.png",
+          "sha256": "1065057e63bdaeb1f1447a5e3a24f678248ec0d48f33d7d1d1f414bda4ca1a5b"
+        },
+        "rear": {
+          "original_projected_bounds": {
+            "min": [
+              -0.5250000953674316,
+              -1.0302940607070923
+            ],
+            "max": [
+              0.525000274181366,
+              0.9713059663772583
+            ]
+          },
+          "old_max_abs_ndc": 0.8874745434392338,
+          "projected_centre_shift": [
+            8.940696716308594e-8,
+            -0.029494047164916992
+          ],
+          "projected_bounds": {
+            "min": [
+              -0.5250002145767212,
+              -1.0008001327514648
+            ],
+            "max": [
+              0.5250002145767212,
+              1.0007998943328857
+            ]
+          },
+          "ortho_scale": 2.3218562602996826,
+          "margin_factor": 1.16,
+          "ndc_bounds": {
+            "min": [
+              -0.45222456148853873,
+              -0.8620689832214603
+            ],
+            "max": [
+              0.45222456148853873,
+              0.8620687778525207
+            ]
+          },
+          "expected_asset_pixel_bounds": {
+            "left": 246.49894733015756,
+            "right": 653.5010526698425,
+            "top": 62.0690499663657,
+            "bottom": 837.9310424496572
+          },
+          "png": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\previews\\calibration\\rear.png",
+          "sha256": "1e2ac2e69f966971e0288ae9c15e1b85280381f15ee52235e761b87ce83f8d0e"
+        },
+        "three-quarter": {
+          "original_projected_bounds": {
+            "min": [
+              -1.352569818496704,
+              -1.2750061750411987
+            ],
+            "max": [
+              1.3525700569152832,
+              1.4894063472747803
+            ]
+          },
+          "old_max_abs_ndc": 0.9289286448133243,
+          "projected_centre_shift": [
+            1.1920928955078125e-7,
+            0.10720008611679077
+          ],
+          "projected_bounds": {
+            "min": [
+              -1.3525699377059937,
+              -1.3822059631347656
+            ],
+            "max": [
+              1.3525700569152832,
+              1.3822062015533447
+            ]
+          },
+          "ortho_scale": 3.2067184448242188,
+          "margin_factor": 1.16,
+          "ndc_bounds": {
+            "min": [
+              -0.8435850923482849,
+              -0.8620688014351278
+            ],
+            "max": [
+              0.8435851666979927,
+              0.8620689501345432
+            ]
+          },
+          "expected_asset_pixel_bounds": {
+            "left": 70.38670844327177,
+            "right": 829.6133250140967,
+            "top": 62.06897243945556,
+            "bottom": 837.9309606458075
+          },
+          "png": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\previews\\calibration\\three-quarter.png",
+          "sha256": "8ec318877fd6e1abf1de036dd0aab56808aceaa8e3c176ce879104138c21b35c"
+        }
+      }
+    },
+    "actual_pngs": {
+      "front": {
+        "path": "assets/v3/previews/calibration/front.png",
+        "sha256": "80dc3f4de93873914e89a158bb9b4fc5f2d829a8a159c3f690fd54e31b938188",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "colored_pixel_bbox_exclusive": [
+          252,
+          62,
+          648,
+          838
+        ],
+        "color_mask_rule": "maxRGB-minRGB>=24; sanity check only, actual PNG also opened"
+      },
+      "side": {
+        "path": "assets/v3/previews/calibration/side.png",
+        "sha256": "1065057e63bdaeb1f1447a5e3a24f678248ec0d48f33d7d1d1f414bda4ca1a5b",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "colored_pixel_bbox_exclusive": [
+          62,
+          193,
+          838,
+          707
+        ],
+        "color_mask_rule": "maxRGB-minRGB>=24; sanity check only, actual PNG also opened"
+      },
+      "rear": {
+        "path": "assets/v3/previews/calibration/rear.png",
+        "sha256": "1e2ac2e69f966971e0288ae9c15e1b85280381f15ee52235e761b87ce83f8d0e",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "colored_pixel_bbox_exclusive": [
+          246,
+          63,
+          653,
+          838
+        ],
+        "color_mask_rule": "maxRGB-minRGB>=24; sanity check only, actual PNG also opened"
+      },
+      "three-quarter": {
+        "path": "assets/v3/previews/calibration/three-quarter.png",
+        "sha256": "8ec318877fd6e1abf1de036dd0aab56808aceaa8e3c176ce879104138c21b35c",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "colored_pixel_bbox_exclusive": [
+          70,
+          62,
+          829,
+          838
+        ],
+        "color_mask_rule": "maxRGB-minRGB>=24; sanity check only, actual PNG also opened"
+      }
+    },
+    "inspection": [
+      "Actually opened all four saved 900x900 PNGs after rerender.",
+      "Front: green axis cap, lower axis/base and tan probes complete; no cropped cap/base.",
+      "Side: blue axis ends and green cap visible; 62px margin on dominant horizontal extent.",
+      "Rear: green axis and red base complete with full vertical margins.",
+      "Three-quarter: green cap and blue tip complete; projected pixel bbox x70.39..829.61/y62.07..837.93.",
+      "Exposure +0.7 improves legibility; authored materials and all frozen source/export bytes unchanged. Floating joint probes are intentional numeric calibration geometry."
+    ],
+    "checks": {
+      "render_exit_code": 0,
+      "actual_png_open_count": 4,
+      "projection_margin_assertions": 4,
+      "colored_raster_bboxes_inside_frame": 4,
+      "browser_run_by_worker": false,
+      "new_geometry": false
+    },
+    "root_review": "Root subsequently opened all 4 corrected PNGs and read patch; accepted complete margins, fixed cap/tip and brighter studio. Root owns restoring PASS.",
+    "next": "Worker freezes VERIFY; root restores I09.1 PASS and closes I09.3. No P01 geometry yet."
+  }
+}

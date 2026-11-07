@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QoimaTwin · стенд модели V3</title>
+  <link rel="icon" href="data:," />
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#d8dcdb;color:#293d46;font:14px/1.5 system-ui,sans-serif}button,input,select{font:inherit;color:inherit}button,select,input{border:1px solid #c5cdca;border-radius:8px;background:#fafaf7;padding:9px 12px}button{cursor:pointer}button:hover{background:#e4ece8}button[aria-pressed=true]{background:#293d46;color:#fff;border-color:#293d46}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #3478f6;outline-offset:3px}header{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#f5f5ef;border-bottom:1px solid #cbd2cf}.brand{display:flex;align-items:center;gap:12px}.mark{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:#293d46;color:#f7f3e9;font:bold 24px Georgia}.brand strong{font-size:17px}.brand small{display:block;color:#637772;font-size:11px;letter-spacing:.12em}a{color:#2e7376;text-decoration:none}main{display:grid;grid-template-columns:minmax(0,1fr) 350px;height:calc(100dvh - 70px)}.stage{position:relative;min-width:0;overflow:hidden}.canvas-host{width:100%;height:100%}.canvas-host canvas{display:block;touch-action:none}.toolbar{position:absolute;top:22px;left:24px;right:24px;display:flex;gap:6px;flex-wrap:wrap}.toolbar button{background:#f5f5efd9;backdrop-filter:blur(8px)}.toolbar button[aria-pressed=true]{background:#293d46}.status{position:absolute;left:26px;bottom:25px;padding:12px 16px;max-width:calc(100% - 52px);border-radius:10px;background:#f5f5efe8;color:#536963;box-shadow:0 5px 20px #293d4608}.status[data-error=true]{color:#963f33;background:#fff2ed}.status strong{display:block;font-size:16px;color:#293d46}.status span{font-size:12px}.help{position:absolute;right:24px;bottom:26px;color:#5d726b;font-size:11px;pointer-events:none}.panel{overflow:auto;background:#f7f7f1;border-left:1px solid #cbd2cf;padding:24px}.eyebrow{font-size:10px;letter-spacing:.16em;color:#73847c;text-transform:uppercase}h1{font-size:23px;font-weight:550;margin:6px 0 22px;line-height:1.2}form{display:flex;gap:6px}form input{min-width:0;width:100%;background:#fff}h2{font-size:12px;font-weight:600;letter-spacing:.04em;margin:27px 0 11px}.reference{width:100%;height:auto;display:block;border:1px solid #dce0d9;border-radius:9px;background:#e2e4e0}.reference-link{display:block}.muted{color:#74847b;font-size:12px}dl{display:grid;grid-template-columns:1fr auto;gap:8px 12px;margin:0;font-size:12px}dt{color:#6a7d73}dd{margin:0;font-variant-numeric:tabular-nums}details{margin-top:22px;font-size:12px}summary{cursor:pointer;color:#6a7d73}pre{white-space:pre-wrap;word-break:break-word;font:10px/1.5 ui-monospace,monospace;color:#6a7d73}.source{margin-top:24px;padding-top:15px;border-top:1px solid #dce0d9;font-size:11px;color:#76867d}.source a{display:block;margin-top:5px}@media(max-width:900px){main{grid-template-columns:minmax(0,1fr) 270px}.panel{padding:18px}.help{display:none}header{padding:0 18px}}@media(max-width:650px){header{height:60px}.brand strong{font-size:14px}main{height:auto;display:block}.stage{height:68dvh;min-height:440px}.panel{border-left:0;border-top:1px solid #cbd2cf}h1{font-size:20px}.reference{max-height:360px;object-fit:contain}.toolbar{left:14px;right:14px;top:14px}.toolbar button{font-size:12px;padding:8px}.status{left:14px;bottom:14px;padding:9px 12px}}
+  </style>
+  <style>[hidden]{display:none!important}button:disabled{opacity:.45;cursor:not-allowed}</style>
+</head>
+<body>
+  <header><div class="brand"><span class="mark">Q</span><div><strong>QoimaTwin</strong><small>MODEL STUDIO / V3</small></div></div><a href="./">Открыть склад ↗</a></header>
+  <main data-phase="loading" id="stand">
+    <section class="stage" aria-label="Отдельный стенд трёхмерной модели">
+      <div class="canvas-host" id="canvas-host"></div>
+      <nav class="toolbar" aria-label="Ракурсы модели"><button data-view="quarter" aria-pressed="true">Объём</button><button data-view="front" aria-pressed="false">Спереди</button><button data-view="side" aria-pressed="false">Сбоку</button><button data-view="rear" aria-pressed="false">Сзади</button><button id="reset-view">Вписать</button></nav>
+      <div class="status" id="status" role="status"><strong id="status-title">Загружаем модель</strong><span id="status-copy">Подготавливаем свет и материалы…</span></div>
+      <div class="help">Вращение · колесо — приближение · правая кнопка — перемещение</div>
+    </section>
+    <aside class="panel">
+      <div class="eyebrow">Отдельная модель</div><h1 id="model-title">Калибровка</h1>
+      <form id="model-form"><input id="model-id" aria-label="Идентификатор модели V3" value="calibration" spellcheck="false" pattern="[a-z0-9][a-z0-9-]{0,63}" /><button type="submit">Открыть</button></form>
+      <h2>Независимый референс</h2><a class="reference-link" id="reference-link" target="_blank" rel="noopener" hidden><img id="reference" class="reference" alt="Принятый референс модели" /></a><p class="muted" id="reference-note">Калибровочный образец проверяется по размерам.</p>
+      <h2>Габариты в метрах</h2><dl><dt>Ширина X</dt><dd id="size-x">—</dd><dt>Высота Y</dt><dd id="size-y">—</dd><dt>Глубина Z</dt><dd id="size-z">—</dd><dt>Треугольники</dt><dd id="triangles">—</dd><dt>Материалы</dt><dd id="materials">—</dd></dl>
+      <details><summary>Данные проверки</summary><pre id="diagnostics">Ожидаем экспорт GLB.</pre></details>
+      <div class="source">Метрическая сцена · Y вверх · локальная модель GLB<a href="./references/v3/contact-sheet.html" target="_blank" rel="noopener">Открыть все референсы ↗</a></div>
+    </aside>
+  </main>
+  <script type="module" src="/src/adaptive-v3/assetStand.ts"></script>
+</body>
+</html>

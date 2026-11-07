@@ -1,0 +1,48 @@
+{
+  "task_id": "I09.2",
+  "status": "VERIFY",
+  "at": "2026-11-07T05:51:59.447Z",
+  "browser": "156.0.8078.81",
+  "base": "http://127.0.0.1:4173",
+  "build": "production Vite multi-entry build; typecheck passed",
+  "checks": [
+    {
+      "check": "first-load feedback",
+      "actual": "loading status visible; model request held",
+      "pass": true
+    },
+    {
+      "check": "missing GLB",
+      "actual": "Модель не открылась",
+      "pass": true
+    },
+    {
+      "check": "asset path whitelist",
+      "actual": "invalid path rejected before model fetch",
+      "pass": true
+    },
+    {
+      "check": "WebGL unavailable",
+      "actual": "visible error and browser/reload recovery text",
+      "pass": true
+    },
+    {
+      "check": "preserved default V2 entry",
+      "actual": {
+        "phase": "ready",
+        "layoutVersion": "qoima-72x48-v2"
+      },
+      "pass": true
+    }
+  ],
+  "ready_geometry": "Not accepted by this child; actual calibration integration required in I09.3",
+  "state_matrix": {
+    "initial": "reserved frame and loading status",
+    "loading": "visible status; view controls disabled",
+    "ready": "model/metric/reference regions; actual geometry gate I09.3",
+    "missing_or_invalid": "specific error + editable model ID/Open action",
+    "reference_partial": "model region independent; explicit catalog unavailable note",
+    "webgl_unavailable": "startup fallback + recovery text",
+    "auth_permission": "not applicable: local public model/reference files, no account API"
+  }
+}

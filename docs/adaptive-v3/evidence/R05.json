@@ -1,0 +1,46 @@
+{
+  "task_id": "R05",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T04:58:59.520322+00:00",
+  "dependencies": {
+    "R01": "PASS read from accepted task/provenance and image actually viewed",
+    "I06": "PASS task and V2_LIMITATIONS.md read"
+  },
+  "outputs": [
+    "assets/references/v3/r05-workers.png",
+    "assets/references/v3/prompts/r05.txt",
+    "assets/references/v3/provenance/r05.json"
+  ],
+  "reference_sha256": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+  "dimensions_px": [
+    1536,
+    1024
+  ],
+  "method": "Actual saved PNG opened; all 4 hero views and 5 role variants inspected against02_DESIGN_V3 and accepted R01.",
+  "actual": [
+    "Opened the actual saved 1536x1024 PNG, not only the generator thumbnail. Independent production reference; no V3 geometry generated.",
+    "Front: square planar head and friendly face; cuboid vest/limbs; shoulders join torso, mitten hands join sleeves, boots meet floor; blue trolley badge01 clearly visible.",
+    "Side: same stepped headwear/head depth, garment thickness, mitten hand and broad boot sole. A-pose projection explains arms appearing closer to vertical; no disconnected limb observed.",
+    "Rear: same headwear, block hair, vest back and wrapped reflective stripe; two connected sleeves/mitten hands and two grounded feet. No pointed nape or extra limb.",
+    "Three-quarter: head/torso/limb depth is clear; proportions and stepped headwear match orthographic-style views. Slight perspective is illustrative, not a dimensional drawing.",
+    "Bottom five variants preserve base construction and pose. Blue/cart01, orange/carton02, purple/incoming03, green/outgoing04, yellow/forklift05 are visibly distinct without relying on role words.",
+    "Compared against actually viewed accepted R01: clean cuboid masses, small bevels, matte flat face language and broad connected silhouette retained. V2 industrial character was not used as artistic target.",
+    "No significant reference defect found in this iteration. Metric height, exact shader RGB and working joint/attachment dimensions require later metadata/model/runtime checks; text1.70m is illustrative only."
+  ],
+  "significant_defects": [],
+  "fixes": [],
+  "generation_count": 1,
+  "limitations": [
+    "Reference only; no mesh, rig, GLB, runtime or measured1.70m acceptance is claimed.",
+    "Role hex values are design targets, not a pixel-color calibration.",
+    "Root actual-image review and PASS are pending."
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "relevant new prompt/card/provenance paths no_recorded_issue/not_tracked; exact sources and actual PNG read directly; no reindex performed"
+  },
+  "next": "root opens assets/references/v3/r05-workers.png and records its independent review; no modeling until reference/model prerequisites PASS"
+}

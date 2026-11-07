@@ -1,0 +1,2737 @@
+{
+  "schema_version": "qoima-worker-dimension-plan-v3.1",
+  "stage": "pre_geometry_declared_plan",
+  "review_status": "VERIFY",
+  "acceptance_authority": "docs/adaptive-v3/tasks/P01.1.md",
+  "declared_at": "2026-11-07T07:24:12.197046+00:00",
+  "asset_id": "worker-base",
+  "namespace": "v3",
+  "reference_id": "R05",
+  "reference_sha256": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "origin": "midpoint of sole contact anchors atY0; toe boxes extend forward; no global root rotation/scale",
+  "root_name": "worker_base_root",
+  "height_target_m": 1.7,
+  "height_tolerance_m": 0.002,
+  "floor_tolerance_m": 1e-05,
+  "neutral_envelope_max_xyz_m": [
+    0.76,
+    1.7,
+    0.38
+  ],
+  "predicted_primary_bounds_runtime": {
+    "min": [
+      -0.3744684344364526,
+      0.0,
+      -0.16
+    ],
+    "max": [
+      0.3744684344364526,
+      1.7,
+      0.22
+    ]
+  },
+  "predicted_primary_dimensions_m": [
+    0.7489368688729052,
+    1.7,
+    0.38
+  ],
+  "height_stations_m": [
+    0,
+    0.16,
+    0.595,
+    1.13,
+    1.175,
+    1.475,
+    1.7
+  ],
+  "height_station_increments_m": [
+    0.16,
+    0.435,
+    0.535,
+    0.045,
+    0.3,
+    0.225
+  ],
+  "bind_pose": "slight A-pose mirrored aroundX=0; mesh part frames may rotate but all joint bind frames remain runtime-XYZ identity",
+  "left_side_is_negative_x": true,
+  "mirror_euler_xyz_signs": [
+    1,
+    -1,
+    -1
+  ],
+  "bevel_policy": "8mm maximum single-step, flat primary faces; no organic head or separate spherical joint pads",
+  "parts": {
+    "pelvis_cloth": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__pelvis",
+      "centre_runtime": [
+        0,
+        0.62,
+        -0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.35,
+        0.14,
+        0.23
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "trousers",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.175,
+        0.07,
+        0.115
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.175,
+          0.55,
+          -0.12000000000000001
+        ],
+        "max": [
+          0.175,
+          0.69,
+          0.11
+        ]
+      }
+    },
+    "shirt_core": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__torso",
+      "centre_runtime": [
+        0,
+        0.885,
+        -0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.4,
+        0.49,
+        0.25
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.2,
+        0.245,
+        0.125
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.2,
+          0.64,
+          -0.13
+        ],
+        "max": [
+          0.2,
+          1.13,
+          0.12
+        ]
+      }
+    },
+    "connected_shoulder_band": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__torso",
+      "centre_runtime": [
+        0,
+        1.105,
+        -0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.46,
+        0.09,
+        0.24
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.23,
+        0.045,
+        0.12
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.23,
+          1.06,
+          -0.125
+        ],
+        "max": [
+          0.23,
+          1.15,
+          0.11499999999999999
+        ]
+      }
+    },
+    "vest_envelope": {
+      "shape": "garment_outer_envelope_not_solid_block",
+      "parent": "joint__torso",
+      "centre_runtime": [
+        0,
+        0.89,
+        -0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.42,
+        0.49,
+        0.27
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "role_vest",
+      "bevel_m": 0.008,
+      "construction_note": "Volumetric V-neck layer derived from shirt; nominal10mm X/Z clearance, no coplanar cloth faces.",
+      "half_extents_runtime": [
+        0.21,
+        0.245,
+        0.135
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.21,
+          0.645,
+          -0.14
+        ],
+        "max": [
+          0.21,
+          1.135,
+          0.13
+        ]
+      }
+    },
+    "short_neck": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__torso",
+      "centre_runtime": [
+        0,
+        1.1675,
+        0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.14,
+        0.095,
+        0.14
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "skin",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.07,
+        0.0475,
+        0.07
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.07,
+          1.1199999999999999,
+          -0.065
+        ],
+        "max": [
+          0.07,
+          1.215,
+          0.07500000000000001
+        ]
+      }
+    },
+    "cuboid_head": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__head",
+      "centre_runtime": [
+        0,
+        1.325,
+        0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.33,
+        0.3,
+        0.29
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "skin",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.165,
+        0.15,
+        0.145
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.165,
+          1.175,
+          -0.13999999999999999
+        ],
+        "max": [
+          0.165,
+          1.4749999999999999,
+          0.15
+        ]
+      }
+    },
+    "helmet_brim": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__head",
+      "centre_runtime": [
+        0,
+        1.48,
+        0.03
+      ],
+      "full_size_local_xyz_m": [
+        0.44,
+        0.05,
+        0.38
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "role_headwear",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.22,
+        0.025,
+        0.19
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.22,
+          1.455,
+          -0.16
+        ],
+        "max": [
+          0.22,
+          1.505,
+          0.22
+        ]
+      }
+    },
+    "helmet_crown": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__head",
+      "centre_runtime": [
+        0,
+        1.575,
+        0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.385,
+        0.17,
+        0.33
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "role_headwear",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.1925,
+        0.085,
+        0.165
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.1925,
+          1.49,
+          -0.16
+        ],
+        "max": [
+          0.1925,
+          1.66,
+          0.17
+        ]
+      }
+    },
+    "helmet_upper_step": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__head",
+      "centre_runtime": [
+        0,
+        1.6475,
+        0
+      ],
+      "full_size_local_xyz_m": [
+        0.3,
+        0.065,
+        0.3
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "role_headwear",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.15,
+        0.0325,
+        0.15
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.15,
+          1.615,
+          -0.15
+        ],
+        "max": [
+          0.15,
+          1.68,
+          0.15
+        ]
+      }
+    },
+    "helmet_centre_rib": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__head",
+      "centre_runtime": [
+        0,
+        1.675,
+        0
+      ],
+      "full_size_local_xyz_m": [
+        0.12,
+        0.05,
+        0.29
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "role_headwear",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.06,
+        0.025,
+        0.145
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.06,
+          1.6500000000000001,
+          -0.145
+        ],
+        "max": [
+          0.06,
+          1.7,
+          0.145
+        ]
+      }
+    },
+    "upper_sleeve_L": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__upper_arm_L",
+      "centre_runtime": [
+        -0.24,
+        1.005,
+        0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.15,
+        0.2423976744055029,
+        0.18
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9702136640918898,
+          -0.24194854466131932,
+          0.012097427233065968
+        ],
+        [
+          0.24225079155575474,
+          0.9690031662230185,
+          -0.04845015831115094
+        ],
+        [
+          1.734723475976807e-18,
+          0.04993761694389226,
+          0.9987523388778448
+        ]
+      ],
+      "proximal_runtime": [
+        -0.215,
+        1.105,
+        0
+      ],
+      "distal_runtime": [
+        -0.265,
+        0.905,
+        0.01
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.10212653905489533,
+        0.14008258336656357,
+        0.09666712039108669
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.3421265390548953,
+          0.8649174166334364,
+          -0.09166712039108668
+        ],
+        "max": [
+          -0.13787346094510466,
+          1.1450825833665634,
+          0.10166712039108669
+        ]
+      }
+    },
+    "fore_sleeve_L": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__forearm_L",
+      "centre_runtime": [
+        -0.2825,
+        0.81,
+        0.0175
+      ],
+      "full_size_local_xyz_m": [
+        0.135,
+        0.22977822375076107,
+        0.16
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9835531662763045,
+          -0.18005859754266812,
+          0.014215152437579058
+        ],
+        [
+          0.1806188503668876,
+          0.9805023305631051,
+          -0.07740807872866617
+        ],
+        [
+          1.734723475976807e-18,
+          0.07870248542001067,
+          0.9968981486534686
+        ]
+      ],
+      "proximal_runtime": [
+        -0.265,
+        0.905,
+        0.01
+      ],
+      "distal_runtime": [
+        -0.3,
+        0.715,
+        0.025
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.08714097803025453,
+        0.13109919611786688,
+        0.08960472009893007
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.36964097803025453,
+          0.6789008038821331,
+          -0.07210472009893007
+        ],
+        "max": [
+          -0.19535902196974544,
+          0.941099196117867,
+          0.10710472009893007
+        ]
+      }
+    },
+    "cuff_L": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__forearm_L",
+      "centre_runtime": [
+        -0.29909690574816555,
+        0.7199025116528155,
+        0.02461295960635667
+      ],
+      "full_size_local_xyz_m": [
+        0.145,
+        0.045,
+        0.17
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9835531662763045,
+          -0.18005859754266812,
+          0.014215152437579058
+        ],
+        [
+          0.1806188503668876,
+          0.9805023305631051,
+          -0.07740807872866617
+        ],
+        [
+          1.734723475976807e-18,
+          0.07870248542001067,
+          0.9968981486534686
+        ]
+      ],
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.07537152868828705,
+        0.04180526202021421,
+        0.0875086229586643
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.3744684344364526,
+          0.6780972496326013,
+          -0.06289566335230762
+        ],
+        "max": [
+          -0.2237253770598785,
+          0.7617077736730297,
+          0.11212158256502097
+        ]
+      }
+    },
+    "mitten_L": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__hand_L",
+      "centre_runtime": [
+        -0.307,
+        0.66,
+        0.04
+      ],
+      "full_size_local_xyz_m": [
+        0.11,
+        0.15,
+        0.11
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "skin",
+      "bevel_m": 0.008,
+      "construction_note": "Squared palm/thumb envelope; later.045m grip notch for.040m bar; no thin finger rods.",
+      "half_extents_runtime": [
+        0.055,
+        0.075,
+        0.055
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.362,
+          0.5850000000000001,
+          -0.015
+        ],
+        "max": [
+          -0.252,
+          0.735,
+          0.095
+        ]
+      }
+    },
+    "trouser_thigh_L": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__thigh_L",
+      "centre_runtime": [
+        -0.1,
+        0.48,
+        0.0
+      ],
+      "full_size_local_xyz_m": [
+        0.17,
+        0.2664343724360582,
+        0.2
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9990579366726562,
+          -0.04335534442164356,
+          0.0018850149748540679
+        ],
+        [
+          0.0433963036602746,
+          0.9981149841863164,
+          -0.04339630366027463
+        ],
+        [
+          0.0,
+          0.043437224276306946,
+          0.9990561583550596
+        ]
+      ],
+      "proximal_runtime": [
+        -0.095,
+        0.595,
+        -0.005
+      ],
+      "distal_runtime": [
+        -0.105,
+        0.365,
+        0.005
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "trousers",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.09070105808306071,
+        0.14099499641882407,
+        0.1058469755742535
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.1907010580830607,
+          0.3390050035811759,
+          -0.1058469755742535
+        ],
+        "max": [
+          -0.009298941916939293,
+          0.620994996418824,
+          0.1058469755742535
+        ]
+      }
+    },
+    "trouser_shin_L": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__shin_L",
+      "centre_runtime": [
+        -0.11,
+        0.2525,
+        0.0
+      ],
+      "full_size_local_xyz_m": [
+        0.155,
+        0.2614440063519099,
+        0.19
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9990157477930046,
+          -0.04431316771876319,
+          -0.0019694741208339194
+        ],
+        [
+          0.04435691221877228,
+          0.9980305249223754,
+          0.04435691221877225
+        ],
+        [
+          -4.336808689942018e-19,
+          -0.0444006136207204,
+          0.9990138064662087
+        ]
+      ],
+      "proximal_runtime": [
+        -0.105,
+        0.365,
+        0.005
+      ],
+      "distal_runtime": [
+        -0.115,
+        0.14,
+        -0.005
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "trousers",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.08322214487389576,
+        0.13811687824077534,
+        0.10085737027859236
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.19322214487389577,
+          0.11438312175922466,
+          -0.10085737027859236
+        ],
+        "max": [
+          -0.02677785512610424,
+          0.39061687824077534,
+          0.10085737027859236
+        ]
+      }
+    },
+    "boot_L": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__foot_L",
+      "centre_runtime": [
+        -0.115,
+        0.08,
+        0.045
+      ],
+      "full_size_local_xyz_m": [
+        0.2,
+        0.16,
+        0.3
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "boots",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.1,
+        0.08,
+        0.15
+      ],
+      "bounds_runtime": {
+        "min": [
+          -0.21500000000000002,
+          0.0,
+          -0.105
+        ],
+        "max": [
+          -0.015,
+          0.16,
+          0.195
+        ]
+      }
+    },
+    "upper_sleeve_R": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__upper_arm_R",
+      "centre_runtime": [
+        0.24,
+        1.005,
+        0.005
+      ],
+      "full_size_local_xyz_m": [
+        0.15,
+        0.2423976744055029,
+        0.18
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9702136640918898,
+          0.24194854466131932,
+          -0.012097427233065968
+        ],
+        [
+          -0.24225079155575474,
+          0.9690031662230185,
+          -0.04845015831115094
+        ],
+        [
+          -1.734723475976807e-18,
+          0.04993761694389226,
+          0.9987523388778448
+        ]
+      ],
+      "proximal_runtime": [
+        0.215,
+        1.105,
+        0
+      ],
+      "distal_runtime": [
+        0.265,
+        0.905,
+        0.01
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.10212653905489533,
+        0.14008258336656357,
+        0.09666712039108669
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.13787346094510466,
+          0.8649174166334364,
+          -0.09166712039108668
+        ],
+        "max": [
+          0.3421265390548953,
+          1.1450825833665634,
+          0.10166712039108669
+        ]
+      }
+    },
+    "fore_sleeve_R": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__forearm_R",
+      "centre_runtime": [
+        0.2825,
+        0.81,
+        0.0175
+      ],
+      "full_size_local_xyz_m": [
+        0.135,
+        0.22977822375076107,
+        0.16
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9835531662763045,
+          0.18005859754266812,
+          -0.014215152437579058
+        ],
+        [
+          -0.1806188503668876,
+          0.9805023305631051,
+          -0.07740807872866617
+        ],
+        [
+          -1.734723475976807e-18,
+          0.07870248542001067,
+          0.9968981486534686
+        ]
+      ],
+      "proximal_runtime": [
+        0.265,
+        0.905,
+        0.01
+      ],
+      "distal_runtime": [
+        0.3,
+        0.715,
+        0.025
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.08714097803025453,
+        0.13109919611786688,
+        0.08960472009893007
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.19535902196974544,
+          0.6789008038821331,
+          -0.07210472009893007
+        ],
+        "max": [
+          0.36964097803025453,
+          0.941099196117867,
+          0.10710472009893007
+        ]
+      }
+    },
+    "cuff_R": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__forearm_R",
+      "centre_runtime": [
+        0.29909690574816555,
+        0.7199025116528155,
+        0.02461295960635667
+      ],
+      "full_size_local_xyz_m": [
+        0.145,
+        0.045,
+        0.17
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9835531662763045,
+          0.18005859754266812,
+          -0.014215152437579058
+        ],
+        [
+          -0.1806188503668876,
+          0.9805023305631051,
+          -0.07740807872866617
+        ],
+        [
+          -1.734723475976807e-18,
+          0.07870248542001067,
+          0.9968981486534686
+        ]
+      ],
+      "material_slot": "shirt",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.07537152868828705,
+        0.04180526202021421,
+        0.0875086229586643
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.2237253770598785,
+          0.6780972496326013,
+          -0.06289566335230762
+        ],
+        "max": [
+          0.3744684344364526,
+          0.7617077736730297,
+          0.11212158256502097
+        ]
+      }
+    },
+    "mitten_R": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__hand_R",
+      "centre_runtime": [
+        0.307,
+        0.66,
+        0.04
+      ],
+      "full_size_local_xyz_m": [
+        0.11,
+        0.15,
+        0.11
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "skin",
+      "bevel_m": 0.008,
+      "construction_note": "Squared palm/thumb envelope; later.045m grip notch for.040m bar; no thin finger rods.",
+      "half_extents_runtime": [
+        0.055,
+        0.075,
+        0.055
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.252,
+          0.5850000000000001,
+          -0.015
+        ],
+        "max": [
+          0.362,
+          0.735,
+          0.095
+        ]
+      }
+    },
+    "trouser_thigh_R": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__thigh_R",
+      "centre_runtime": [
+        0.1,
+        0.48,
+        0.0
+      ],
+      "full_size_local_xyz_m": [
+        0.17,
+        0.2664343724360582,
+        0.2
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9990579366726562,
+          0.04335534442164356,
+          -0.0018850149748540679
+        ],
+        [
+          -0.0433963036602746,
+          0.9981149841863164,
+          -0.04339630366027463
+        ],
+        [
+          0.0,
+          0.043437224276306946,
+          0.9990561583550596
+        ]
+      ],
+      "proximal_runtime": [
+        0.095,
+        0.595,
+        -0.005
+      ],
+      "distal_runtime": [
+        0.105,
+        0.365,
+        0.005
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "trousers",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.09070105808306071,
+        0.14099499641882407,
+        0.1058469755742535
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.009298941916939293,
+          0.3390050035811759,
+          -0.1058469755742535
+        ],
+        "max": [
+          0.1907010580830607,
+          0.620994996418824,
+          0.1058469755742535
+        ]
+      }
+    },
+    "trouser_shin_R": {
+      "shape": "beveled_cuboid_segment",
+      "parent": "joint__shin_R",
+      "centre_runtime": [
+        0.11,
+        0.2525,
+        0.0
+      ],
+      "full_size_local_xyz_m": [
+        0.155,
+        0.2614440063519099,
+        0.19
+      ],
+      "basis_xyz_runtime": [
+        [
+          0.9990157477930046,
+          0.04431316771876319,
+          0.0019694741208339194
+        ],
+        [
+          -0.04435691221877228,
+          0.9980305249223754,
+          0.04435691221877225
+        ],
+        [
+          4.336808689942018e-19,
+          -0.0444006136207204,
+          0.9990138064662087
+        ]
+      ],
+      "proximal_runtime": [
+        0.105,
+        0.365,
+        0.005
+      ],
+      "distal_runtime": [
+        0.115,
+        0.14,
+        -0.005
+      ],
+      "endpoint_overlap_m": 0.018,
+      "material_slot": "trousers",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.08322214487389576,
+        0.13811687824077534,
+        0.10085737027859236
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.02677785512610424,
+          0.11438312175922466,
+          -0.10085737027859236
+        ],
+        "max": [
+          0.19322214487389577,
+          0.39061687824077534,
+          0.10085737027859236
+        ]
+      }
+    },
+    "boot_R": {
+      "shape": "beveled_cuboid",
+      "parent": "joint__foot_R",
+      "centre_runtime": [
+        0.115,
+        0.08,
+        0.045
+      ],
+      "full_size_local_xyz_m": [
+        0.2,
+        0.16,
+        0.3
+      ],
+      "basis_xyz_runtime": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "material_slot": "boots",
+      "bevel_m": 0.008,
+      "half_extents_runtime": [
+        0.1,
+        0.08,
+        0.15
+      ],
+      "bounds_runtime": {
+        "min": [
+          0.015,
+          0.0,
+          -0.105
+        ],
+        "max": [
+          0.21500000000000002,
+          0.16,
+          0.195
+        ]
+      }
+    }
+  },
+  "joints": {
+    "joint__pelvis": {
+      "parent": "worker_base_root",
+      "bind_world_runtime": [
+        0,
+        0.62,
+        -0.005
+      ],
+      "bind_local_runtime": [
+        0,
+        0.62,
+        -0.005
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.1,
+          0.1
+        ],
+        [
+          -0.15,
+          0.15
+        ],
+        [
+          -0.1,
+          0.1
+        ]
+      ]
+    },
+    "joint__torso": {
+      "parent": "joint__pelvis",
+      "bind_world_runtime": [
+        0,
+        0.675,
+        -0.005
+      ],
+      "bind_local_runtime": [
+        0,
+        0.05500000000000005,
+        0.0
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.25,
+          1.2
+        ],
+        [
+          -0.6,
+          0.6
+        ],
+        [
+          -0.15,
+          0.15
+        ]
+      ]
+    },
+    "joint__head": {
+      "parent": "joint__torso",
+      "bind_world_runtime": [
+        0,
+        1.195,
+        0.005
+      ],
+      "bind_local_runtime": [
+        0,
+        0.52,
+        0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.25,
+          0.25
+        ],
+        [
+          -0.6,
+          0.6
+        ],
+        [
+          -0.12,
+          0.12
+        ]
+      ]
+    },
+    "joint__upper_arm_L": {
+      "parent": "joint__torso",
+      "bind_world_runtime": [
+        -0.215,
+        1.105,
+        0
+      ],
+      "bind_local_runtime": [
+        -0.215,
+        0.42999999999999994,
+        0.005
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -2.2,
+          0.7
+        ],
+        [
+          -0.55,
+          0.55
+        ],
+        [
+          -0.7,
+          0.7
+        ]
+      ]
+    },
+    "joint__forearm_L": {
+      "parent": "joint__upper_arm_L",
+      "bind_world_runtime": [
+        -0.265,
+        0.905,
+        0.01
+      ],
+      "bind_local_runtime": [
+        -0.05000000000000002,
+        -0.19999999999999996,
+        0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -2.2,
+          0.15
+        ],
+        [
+          -0.12,
+          0.12
+        ],
+        [
+          -0.12,
+          0.12
+        ]
+      ]
+    },
+    "joint__hand_L": {
+      "parent": "joint__forearm_L",
+      "bind_world_runtime": [
+        -0.3,
+        0.715,
+        0.025
+      ],
+      "bind_local_runtime": [
+        -0.034999999999999976,
+        -0.19000000000000006,
+        0.015000000000000001
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.6,
+          0.6
+        ],
+        [
+          -0.65,
+          0.65
+        ],
+        [
+          -0.4,
+          0.4
+        ]
+      ]
+    },
+    "joint__thigh_L": {
+      "parent": "joint__pelvis",
+      "bind_world_runtime": [
+        -0.095,
+        0.595,
+        -0.005
+      ],
+      "bind_local_runtime": [
+        -0.095,
+        -0.025000000000000022,
+        0.0
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -1.75,
+          0.65
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          -0.35,
+          0.35
+        ]
+      ]
+    },
+    "joint__shin_L": {
+      "parent": "joint__thigh_L",
+      "bind_world_runtime": [
+        -0.105,
+        0.365,
+        0.005
+      ],
+      "bind_local_runtime": [
+        -0.009999999999999995,
+        -0.22999999999999998,
+        0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.08,
+          2.35
+        ],
+        [
+          -0.08,
+          0.08
+        ],
+        [
+          -0.08,
+          0.08
+        ]
+      ]
+    },
+    "joint__foot_L": {
+      "parent": "joint__shin_L",
+      "bind_world_runtime": [
+        -0.115,
+        0.14,
+        -0.005
+      ],
+      "bind_local_runtime": [
+        -0.010000000000000009,
+        -0.22499999999999998,
+        -0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.4,
+          0.4
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          -0.15,
+          0.15
+        ]
+      ]
+    },
+    "joint__upper_arm_R": {
+      "parent": "joint__torso",
+      "bind_world_runtime": [
+        0.215,
+        1.105,
+        0
+      ],
+      "bind_local_runtime": [
+        0.215,
+        0.42999999999999994,
+        0.005
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -2.2,
+          0.7
+        ],
+        [
+          -0.55,
+          0.55
+        ],
+        [
+          -0.7,
+          0.7
+        ]
+      ]
+    },
+    "joint__forearm_R": {
+      "parent": "joint__upper_arm_R",
+      "bind_world_runtime": [
+        0.265,
+        0.905,
+        0.01
+      ],
+      "bind_local_runtime": [
+        0.05000000000000002,
+        -0.19999999999999996,
+        0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -2.2,
+          0.15
+        ],
+        [
+          -0.12,
+          0.12
+        ],
+        [
+          -0.12,
+          0.12
+        ]
+      ]
+    },
+    "joint__hand_R": {
+      "parent": "joint__forearm_R",
+      "bind_world_runtime": [
+        0.3,
+        0.715,
+        0.025
+      ],
+      "bind_local_runtime": [
+        0.034999999999999976,
+        -0.19000000000000006,
+        0.015000000000000001
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.6,
+          0.6
+        ],
+        [
+          -0.65,
+          0.65
+        ],
+        [
+          -0.4,
+          0.4
+        ]
+      ]
+    },
+    "joint__thigh_R": {
+      "parent": "joint__pelvis",
+      "bind_world_runtime": [
+        0.095,
+        0.595,
+        -0.005
+      ],
+      "bind_local_runtime": [
+        0.095,
+        -0.025000000000000022,
+        0.0
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -1.75,
+          0.65
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          -0.35,
+          0.35
+        ]
+      ]
+    },
+    "joint__shin_R": {
+      "parent": "joint__thigh_R",
+      "bind_world_runtime": [
+        0.105,
+        0.365,
+        0.005
+      ],
+      "bind_local_runtime": [
+        0.009999999999999995,
+        -0.22999999999999998,
+        0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.08,
+          2.35
+        ],
+        [
+          -0.08,
+          0.08
+        ],
+        [
+          -0.08,
+          0.08
+        ]
+      ]
+    },
+    "joint__foot_R": {
+      "parent": "joint__shin_R",
+      "bind_world_runtime": [
+        0.115,
+        0.14,
+        -0.005
+      ],
+      "bind_local_runtime": [
+        0.010000000000000009,
+        -0.22499999999999998,
+        -0.01
+      ],
+      "bind_rotation_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rotation_order": "XYZ",
+      "limits_radians_xyz": [
+        [
+          -0.4,
+          0.4
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          -0.15,
+          0.15
+        ]
+      ]
+    }
+  },
+  "anchors": {
+    "anchor_floor_origin": {
+      "parent": "worker_base_root",
+      "position_runtime": [
+        0,
+        0,
+        0
+      ],
+      "purpose": "logical actor floor centre",
+      "local_runtime": [
+        0,
+        0,
+        0
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    },
+    "anchor_neck_base": {
+      "parent": "joint__torso",
+      "position_runtime": [
+        0,
+        1.15,
+        0.005
+      ],
+      "purpose": "short neck/shoulder interface",
+      "local_runtime": [
+        0,
+        0.47499999999999987,
+        0.01
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    },
+    "anchor_seat_contact": {
+      "parent": "joint__pelvis",
+      "position_runtime": [
+        0,
+        0.55,
+        -0.035
+      ],
+      "purpose": "future seat plane normal+Y/forward+Z; not a vehicle fit acceptance",
+      "local_runtime": [
+        0,
+        -0.06999999999999995,
+        -0.030000000000000002
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    },
+    "anchor_hand_grip_L": {
+      "parent": "joint__hand_L",
+      "position_runtime": [
+        -0.307,
+        0.665,
+        0.075
+      ],
+      "purpose": "mitten grasp centre; bar axisX",
+      "local_runtime": [
+        -0.007000000000000006,
+        -0.04999999999999993,
+        0.049999999999999996
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    },
+    "anchor_foot_floor_L": {
+      "parent": "joint__foot_L",
+      "position_runtime": [
+        -0.115,
+        0,
+        0
+      ],
+      "purpose": "sole contact plane+Y",
+      "contact_patch_half_size_xz_m": [
+        0.08,
+        0.085
+      ],
+      "local_runtime": [
+        0.0,
+        -0.14,
+        0.005
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    },
+    "anchor_hand_grip_R": {
+      "parent": "joint__hand_R",
+      "position_runtime": [
+        0.307,
+        0.665,
+        0.075
+      ],
+      "purpose": "mitten grasp centre; bar axisX",
+      "local_runtime": [
+        0.007000000000000006,
+        -0.04999999999999993,
+        0.049999999999999996
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    },
+    "anchor_foot_floor_R": {
+      "parent": "joint__foot_R",
+      "position_runtime": [
+        0.115,
+        0,
+        0
+      ],
+      "purpose": "sole contact plane+Y",
+      "contact_patch_half_size_xz_m": [
+        0.08,
+        0.085
+      ],
+      "local_runtime": [
+        0.0,
+        -0.14,
+        0.005
+      ],
+      "frame_forward_axis": "+Z",
+      "frame_up_axis": "Y"
+    }
+  },
+  "declared_connections": [
+    {
+      "joint": "joint__torso",
+      "parts": [
+        "pelvis_cloth",
+        "shirt_core"
+      ],
+      "common_pivot_runtime": [
+        0,
+        0.675,
+        -0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.006999999999999958
+    },
+    {
+      "joint": "joint__head",
+      "parts": [
+        "short_neck",
+        "cuboid_head"
+      ],
+      "common_pivot_runtime": [
+        0,
+        1.195,
+        0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.01199999999999992
+    },
+    {
+      "joint": "joint__upper_arm_L",
+      "parts": [
+        "connected_shoulder_band",
+        "upper_sleeve_L"
+      ],
+      "common_pivot_runtime": [
+        -0.215,
+        1.105,
+        0
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.007000000000000013
+    },
+    {
+      "joint": "joint__forearm_L",
+      "parts": [
+        "upper_sleeve_L",
+        "fore_sleeve_L"
+      ],
+      "common_pivot_runtime": [
+        -0.265,
+        0.905,
+        0.01
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.010000000000000044
+    },
+    {
+      "joint": "joint__hand_L",
+      "parts": [
+        "fore_sleeve_L",
+        "mitten_L"
+      ],
+      "common_pivot_runtime": [
+        -0.3,
+        0.715,
+        0.025
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.009999999999999933
+    },
+    {
+      "joint": "joint__thigh_L",
+      "parts": [
+        "pelvis_cloth",
+        "trouser_thigh_L"
+      ],
+      "common_pivot_runtime": [
+        -0.095,
+        0.595,
+        -0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+    },
+    {
+      "joint": "joint__shin_L",
+      "parts": [
+        "trouser_thigh_L",
+        "trouser_shin_L"
+      ],
+      "common_pivot_runtime": [
+        -0.105,
+        0.365,
+        0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+    },
+    {
+      "joint": "joint__foot_L",
+      "parts": [
+        "trouser_shin_L",
+        "boot_L"
+      ],
+      "common_pivot_runtime": [
+        -0.115,
+        0.14,
+        -0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.010000000000000002
+    },
+    {
+      "joint": "joint__upper_arm_R",
+      "parts": [
+        "connected_shoulder_band",
+        "upper_sleeve_R"
+      ],
+      "common_pivot_runtime": [
+        0.215,
+        1.105,
+        0
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.007000000000000013
+    },
+    {
+      "joint": "joint__forearm_R",
+      "parts": [
+        "upper_sleeve_R",
+        "fore_sleeve_R"
+      ],
+      "common_pivot_runtime": [
+        0.265,
+        0.905,
+        0.01
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.010000000000000044
+    },
+    {
+      "joint": "joint__hand_R",
+      "parts": [
+        "fore_sleeve_R",
+        "mitten_R"
+      ],
+      "common_pivot_runtime": [
+        0.3,
+        0.715,
+        0.025
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.009999999999999933
+    },
+    {
+      "joint": "joint__thigh_R",
+      "parts": [
+        "pelvis_cloth",
+        "trouser_thigh_R"
+      ],
+      "common_pivot_runtime": [
+        0.095,
+        0.595,
+        -0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+    },
+    {
+      "joint": "joint__shin_R",
+      "parts": [
+        "trouser_thigh_R",
+        "trouser_shin_R"
+      ],
+      "common_pivot_runtime": [
+        0.105,
+        0.365,
+        0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+    },
+    {
+      "joint": "joint__foot_R",
+      "parts": [
+        "trouser_shin_R",
+        "boot_R"
+      ],
+      "common_pivot_runtime": [
+        0.115,
+        0.14,
+        -0.005
+      ],
+      "conservative_common_ball_radius_after_bevel_m": 0.010000000000000002
+    }
+  ],
+  "material_slots": {
+    "role_vest": {
+      "name": "V3_Worker_RoleVest",
+      "base_color": "#3478F6",
+      "instance_role_tint": true,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "role_headwear": {
+      "name": "V3_Worker_RoleHeadwear",
+      "base_color": "#3478F6",
+      "instance_role_tint": true,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "shirt": {
+      "name": "V3_Worker_ShirtShared",
+      "base_color": "#293D46",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "trousers": {
+      "name": "V3_Worker_TrousersShared",
+      "base_color": "#263440",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "boots": {
+      "name": "V3_Worker_BootsShared",
+      "base_color": "#263238",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "skin": {
+      "name": "V3_Worker_SkinWarm",
+      "base_color": "#D6A77A",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "hair": {
+      "name": "V3_Worker_HairDark",
+      "base_color": "#49362A",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "reflective": {
+      "name": "V3_Worker_Reflective",
+      "base_color": "#DADDD8",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "badge_base": {
+      "name": "V3_Worker_BadgeBase",
+      "base_color": "#E9EBE7",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    },
+    "badge_ink": {
+      "name": "V3_Worker_BadgeInk",
+      "base_color": "#293D46",
+      "instance_role_tint": false,
+      "roughness": 0.85,
+      "metallic": 0
+    }
+  },
+  "roles": {
+    "picker": {
+      "color": "#3478F6",
+      "role_code": "01",
+      "badge": "cart"
+    },
+    "packer": {
+      "color": "#F28C28",
+      "role_code": "02",
+      "badge": "carton"
+    },
+    "receiver": {
+      "color": "#9B59D0",
+      "role_code": "03",
+      "badge": "incoming_arrow"
+    },
+    "shipper": {
+      "color": "#2AA56A",
+      "role_code": "04",
+      "badge": "outgoing_arrow"
+    },
+    "forklift_driver": {
+      "color": "#F4C542",
+      "role_code": "05",
+      "badge": "forklift"
+    }
+  },
+  "role_policy": "Tint only vest/headwear per instance, dark base clothes shared. Codes01..05 are role design codes, not actor IDs. Do not globally recolor or add people on role change.",
+  "badge_layout_target": {
+    "centre_runtime": [
+      -0.105,
+      1.015,
+      0.138
+    ],
+    "size_xyz_m": [
+      0.09,
+      0.11,
+      0.008
+    ],
+    "actor_id_baked": false
+  },
+  "proposed_cart_interface": {
+    "authority": "R11 dimensions target; handleZ and attach relationship require later cart approval",
+    "cart_attach_offset_runtime": [
+      0,
+      0,
+      0.82
+    ],
+    "handle_local_runtime": [
+      0,
+      0.98,
+      -0.42
+    ],
+    "hand_targets_runtime": {
+      "L": [
+        -0.23,
+        0.98,
+        0.4
+      ],
+      "R": [
+        0.23,
+        0.98,
+        0.4
+      ]
+    },
+    "handle_bar_cross_section_target_m": 0.04,
+    "mitten_grip_opening_target_m": 0.045,
+    "cart_rear_envelope_world_z_m": 0.36,
+    "boot_to_cart_rear_gap_target_m": 0.165,
+    "pose_status": "reach screen only; neutral hands do not already hold these targets"
+  },
+  "seated_interface": {
+    "contact_anchor": "anchor_seat_contact",
+    "future_seated_origin_rule": "subtract seat contact from body frame and solve folded legs; never mount standing floor root directly on seat",
+    "screen_pose": {
+      "thigh_X_radians": -1.5707963267948966,
+      "shin_relative_X_radians": 1.5707963267948966,
+      "seat_relative_hip_R": [
+        0.095,
+        0.04499999999999993,
+        0.030000000000000002
+      ],
+      "seat_relative_knee_R": [
+        0.105,
+        0.05499999999999992,
+        0.26
+      ],
+      "seat_relative_ankle_R": [
+        0.115,
+        -0.17000000000000007,
+        0.25
+      ],
+      "seat_relative_sole_R": [
+        0.115,
+        -0.31000000000000005,
+        0.255
+      ],
+      "floorboard_drop_m": 0.31000000000000005,
+      "headwear_top_above_seat_m": 1.15,
+      "scope": "Declared skeletal transform only; actual vehicle seated fit deferred"
+    },
+    "vehicle_seat_or_steering_anchor_not_accepted": true
+  },
+  "mathematical_checks": {
+    "height_sum_m": 1.7,
+    "floor_min_y_m": 0.0,
+    "top_max_y_m": 1.7,
+    "predicted_primary_bounds_runtime": {
+      "min": [
+        -0.3744684344364526,
+        0.0,
+        -0.16
+      ],
+      "max": [
+        0.3744684344364526,
+        1.7,
+        0.22
+      ]
+    },
+    "predicted_primary_dimensions_m": [
+      0.7489368688729052,
+      1.7,
+      0.38
+    ],
+    "mirrored_part_pairs": 7,
+    "joint_parent_reconstructions": 15,
+    "right_handed_orthonormal_part_frames": 24,
+    "connection_checks": [
+      {
+        "joint": "joint__torso",
+        "parts": [
+          "pelvis_cloth",
+          "shirt_core"
+        ],
+        "common_pivot_runtime": [
+          0,
+          0.675,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.006999999999999958
+      },
+      {
+        "joint": "joint__head",
+        "parts": [
+          "short_neck",
+          "cuboid_head"
+        ],
+        "common_pivot_runtime": [
+          0,
+          1.195,
+          0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.01199999999999992
+      },
+      {
+        "joint": "joint__upper_arm_L",
+        "parts": [
+          "connected_shoulder_band",
+          "upper_sleeve_L"
+        ],
+        "common_pivot_runtime": [
+          -0.215,
+          1.105,
+          0
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.007000000000000013
+      },
+      {
+        "joint": "joint__forearm_L",
+        "parts": [
+          "upper_sleeve_L",
+          "fore_sleeve_L"
+        ],
+        "common_pivot_runtime": [
+          -0.265,
+          0.905,
+          0.01
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000044
+      },
+      {
+        "joint": "joint__hand_L",
+        "parts": [
+          "fore_sleeve_L",
+          "mitten_L"
+        ],
+        "common_pivot_runtime": [
+          -0.3,
+          0.715,
+          0.025
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999933
+      },
+      {
+        "joint": "joint__thigh_L",
+        "parts": [
+          "pelvis_cloth",
+          "trouser_thigh_L"
+        ],
+        "common_pivot_runtime": [
+          -0.095,
+          0.595,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__shin_L",
+        "parts": [
+          "trouser_thigh_L",
+          "trouser_shin_L"
+        ],
+        "common_pivot_runtime": [
+          -0.105,
+          0.365,
+          0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__foot_L",
+        "parts": [
+          "trouser_shin_L",
+          "boot_L"
+        ],
+        "common_pivot_runtime": [
+          -0.115,
+          0.14,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000002
+      },
+      {
+        "joint": "joint__upper_arm_R",
+        "parts": [
+          "connected_shoulder_band",
+          "upper_sleeve_R"
+        ],
+        "common_pivot_runtime": [
+          0.215,
+          1.105,
+          0
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.007000000000000013
+      },
+      {
+        "joint": "joint__forearm_R",
+        "parts": [
+          "upper_sleeve_R",
+          "fore_sleeve_R"
+        ],
+        "common_pivot_runtime": [
+          0.265,
+          0.905,
+          0.01
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000044
+      },
+      {
+        "joint": "joint__hand_R",
+        "parts": [
+          "fore_sleeve_R",
+          "mitten_R"
+        ],
+        "common_pivot_runtime": [
+          0.3,
+          0.715,
+          0.025
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999933
+      },
+      {
+        "joint": "joint__thigh_R",
+        "parts": [
+          "pelvis_cloth",
+          "trouser_thigh_R"
+        ],
+        "common_pivot_runtime": [
+          0.095,
+          0.595,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__shin_R",
+        "parts": [
+          "trouser_thigh_R",
+          "trouser_shin_R"
+        ],
+        "common_pivot_runtime": [
+          0.105,
+          0.365,
+          0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__foot_R",
+        "parts": [
+          "trouser_shin_R",
+          "boot_R"
+        ],
+        "common_pivot_runtime": [
+          0.115,
+          0.14,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000002
+      }
+    ],
+    "minimum_conservative_joint_overlap_radius_m": 0.006999999999999958,
+    "vertical_contact_intervals": [
+      {
+        "parts": [
+          "boot_R",
+          "trouser_shin_R"
+        ],
+        "y_overlap_interval_m": [
+          0.11438312175922466,
+          0.16
+        ],
+        "overlap_m": 0.045616878240775344
+      },
+      {
+        "parts": [
+          "trouser_shin_R",
+          "trouser_thigh_R"
+        ],
+        "y_overlap_interval_m": [
+          0.3390050035811759,
+          0.39061687824077534
+        ],
+        "overlap_m": 0.05161187465959943
+      },
+      {
+        "parts": [
+          "trouser_thigh_R",
+          "pelvis_cloth"
+        ],
+        "y_overlap_interval_m": [
+          0.55,
+          0.620994996418824
+        ],
+        "overlap_m": 0.07099499641882401
+      },
+      {
+        "parts": [
+          "pelvis_cloth",
+          "shirt_core"
+        ],
+        "y_overlap_interval_m": [
+          0.64,
+          0.69
+        ],
+        "overlap_m": 0.04999999999999993
+      },
+      {
+        "parts": [
+          "shirt_core",
+          "connected_shoulder_band"
+        ],
+        "y_overlap_interval_m": [
+          1.06,
+          1.13
+        ],
+        "overlap_m": 0.06999999999999984
+      },
+      {
+        "parts": [
+          "connected_shoulder_band",
+          "short_neck"
+        ],
+        "y_overlap_interval_m": [
+          1.1199999999999999,
+          1.15
+        ],
+        "overlap_m": 0.030000000000000027
+      },
+      {
+        "parts": [
+          "short_neck",
+          "cuboid_head"
+        ],
+        "y_overlap_interval_m": [
+          1.175,
+          1.215
+        ],
+        "overlap_m": 0.040000000000000036
+      },
+      {
+        "parts": [
+          "cuboid_head",
+          "helmet_brim"
+        ],
+        "y_overlap_interval_m": [
+          1.455,
+          1.4749999999999999
+        ],
+        "overlap_m": 0.019999999999999796
+      },
+      {
+        "parts": [
+          "helmet_brim",
+          "helmet_crown"
+        ],
+        "y_overlap_interval_m": [
+          1.49,
+          1.505
+        ],
+        "overlap_m": 0.014999999999999902
+      },
+      {
+        "parts": [
+          "helmet_crown",
+          "helmet_upper_step"
+        ],
+        "y_overlap_interval_m": [
+          1.615,
+          1.66
+        ],
+        "overlap_m": 0.04499999999999993
+      },
+      {
+        "parts": [
+          "helmet_upper_step",
+          "helmet_centre_rib"
+        ],
+        "y_overlap_interval_m": [
+          1.6500000000000001,
+          1.68
+        ],
+        "overlap_m": 0.029999999999999805
+      }
+    ],
+    "cart_reach_screen": {
+      "upper_arm_length_m": 0.20639767440550288,
+      "forearm_length_m": 0.19377822375076106,
+      "wrist_to_grip_length_m": 0.07105631569396202,
+      "maximum_chain_length_m": 0.471232213850226,
+      "shoulder_to_target_m": 0.41934472692523517,
+      "radial_reserve_m": 0.051887486924990844,
+      "effective_two_link_proxy_elbow_flex_radians": 0.9553691427181779,
+      "within_proxy_elbow_limit": true,
+      "scope": "Necessary reach/limit screen, not actual IK/rig or collision proof"
+    },
+    "seat_fold_screen": {
+      "thigh_X_radians": -1.5707963267948966,
+      "shin_relative_X_radians": 1.5707963267948966,
+      "seat_relative_hip_R": [
+        0.095,
+        0.04499999999999993,
+        0.030000000000000002
+      ],
+      "seat_relative_knee_R": [
+        0.105,
+        0.05499999999999992,
+        0.26
+      ],
+      "seat_relative_ankle_R": [
+        0.115,
+        -0.17000000000000007,
+        0.25
+      ],
+      "seat_relative_sole_R": [
+        0.115,
+        -0.31000000000000005,
+        0.255
+      ],
+      "floorboard_drop_m": 0.31000000000000005,
+      "headwear_top_above_seat_m": 1.15,
+      "scope": "Declared skeletal transform only; actual vehicle seated fit deferred"
+    },
+    "sole_anchor_midpoint_runtime": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "deferred_checks": [
+    "R05 silhouette in P01.2",
+    "Actual bevels/joins in four source and browser views",
+    "Posed limbs and body-intersection correction",
+    "Role/badge material cloning in P02",
+    "Cart grasp/tote support/movement in P03",
+    "Actual vehicle seat/headroom/footboard/steering fit",
+    "Exported GLB measured dimensions/anchors/normals/pivots"
+  ]
+}

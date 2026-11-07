@@ -1,0 +1,431 @@
+{
+  "task_id": "P01.1",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T07:24:12.197046+00:00",
+  "scope": "Dimension/rig declaration and pure numeric checks; no geometry, Blender, renderer or browser in this card.",
+  "inputs_sha256": {
+    "assets/references/v3/r05-workers.png": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+    "assets/references/v3/provenance/r05.json": "e43dd1943702f01afc265fec40b26fbff2bb5d84922367ac825292dad7984373",
+    "assets/references/v3/manifest.json": "89d19ec7cfc948f526b2461959535153defc1a52f817a1347c3ee17dbc2a59df",
+    "assets/references/v3/review.md": "1292ee04ba4c42cbcf95139347eae749284e612d93c424b2e1c310a27921cde9",
+    "tools/blender/v3/v3_common.py": "994b7f080ee1f8c1126b3d087cff6d7621ed4db7e1caca5b963a14d773e68e0c"
+  },
+  "actual_R05_png_viewed": true,
+  "authority": "R05 dedicated body; root acceptance in R10/cards overrides historical creatorVERIFY snapshot.",
+  "outputs": [
+    "assets/v3/specs/worker-base.dimensions.json",
+    "docs/adaptive-v3/models/P01.1.md"
+  ],
+  "dimensions_spec_sha256": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+  "actual_math_checks": {
+    "height_sum_m": 1.7,
+    "floor_min_y_m": 0.0,
+    "top_max_y_m": 1.7,
+    "predicted_primary_bounds_runtime": {
+      "min": [
+        -0.3744684344364526,
+        0.0,
+        -0.16
+      ],
+      "max": [
+        0.3744684344364526,
+        1.7,
+        0.22
+      ]
+    },
+    "predicted_primary_dimensions_m": [
+      0.7489368688729052,
+      1.7,
+      0.38
+    ],
+    "mirrored_part_pairs": 7,
+    "joint_parent_reconstructions": 15,
+    "right_handed_orthonormal_part_frames": 24,
+    "connection_checks": [
+      {
+        "joint": "joint__torso",
+        "parts": [
+          "pelvis_cloth",
+          "shirt_core"
+        ],
+        "common_pivot_runtime": [
+          0,
+          0.675,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.006999999999999958
+      },
+      {
+        "joint": "joint__head",
+        "parts": [
+          "short_neck",
+          "cuboid_head"
+        ],
+        "common_pivot_runtime": [
+          0,
+          1.195,
+          0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.01199999999999992
+      },
+      {
+        "joint": "joint__upper_arm_L",
+        "parts": [
+          "connected_shoulder_band",
+          "upper_sleeve_L"
+        ],
+        "common_pivot_runtime": [
+          -0.215,
+          1.105,
+          0
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.007000000000000013
+      },
+      {
+        "joint": "joint__forearm_L",
+        "parts": [
+          "upper_sleeve_L",
+          "fore_sleeve_L"
+        ],
+        "common_pivot_runtime": [
+          -0.265,
+          0.905,
+          0.01
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000044
+      },
+      {
+        "joint": "joint__hand_L",
+        "parts": [
+          "fore_sleeve_L",
+          "mitten_L"
+        ],
+        "common_pivot_runtime": [
+          -0.3,
+          0.715,
+          0.025
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999933
+      },
+      {
+        "joint": "joint__thigh_L",
+        "parts": [
+          "pelvis_cloth",
+          "trouser_thigh_L"
+        ],
+        "common_pivot_runtime": [
+          -0.095,
+          0.595,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__shin_L",
+        "parts": [
+          "trouser_thigh_L",
+          "trouser_shin_L"
+        ],
+        "common_pivot_runtime": [
+          -0.105,
+          0.365,
+          0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__foot_L",
+        "parts": [
+          "trouser_shin_L",
+          "boot_L"
+        ],
+        "common_pivot_runtime": [
+          -0.115,
+          0.14,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000002
+      },
+      {
+        "joint": "joint__upper_arm_R",
+        "parts": [
+          "connected_shoulder_band",
+          "upper_sleeve_R"
+        ],
+        "common_pivot_runtime": [
+          0.215,
+          1.105,
+          0
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.007000000000000013
+      },
+      {
+        "joint": "joint__forearm_R",
+        "parts": [
+          "upper_sleeve_R",
+          "fore_sleeve_R"
+        ],
+        "common_pivot_runtime": [
+          0.265,
+          0.905,
+          0.01
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000044
+      },
+      {
+        "joint": "joint__hand_R",
+        "parts": [
+          "fore_sleeve_R",
+          "mitten_R"
+        ],
+        "common_pivot_runtime": [
+          0.3,
+          0.715,
+          0.025
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999933
+      },
+      {
+        "joint": "joint__thigh_R",
+        "parts": [
+          "pelvis_cloth",
+          "trouser_thigh_R"
+        ],
+        "common_pivot_runtime": [
+          0.095,
+          0.595,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__shin_R",
+        "parts": [
+          "trouser_thigh_R",
+          "trouser_shin_R"
+        ],
+        "common_pivot_runtime": [
+          0.105,
+          0.365,
+          0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.009999999999999988
+      },
+      {
+        "joint": "joint__foot_R",
+        "parts": [
+          "trouser_shin_R",
+          "boot_R"
+        ],
+        "common_pivot_runtime": [
+          0.115,
+          0.14,
+          -0.005
+        ],
+        "conservative_common_ball_radius_after_bevel_m": 0.010000000000000002
+      }
+    ],
+    "minimum_conservative_joint_overlap_radius_m": 0.006999999999999958,
+    "vertical_contact_intervals": [
+      {
+        "parts": [
+          "boot_R",
+          "trouser_shin_R"
+        ],
+        "y_overlap_interval_m": [
+          0.11438312175922466,
+          0.16
+        ],
+        "overlap_m": 0.045616878240775344
+      },
+      {
+        "parts": [
+          "trouser_shin_R",
+          "trouser_thigh_R"
+        ],
+        "y_overlap_interval_m": [
+          0.3390050035811759,
+          0.39061687824077534
+        ],
+        "overlap_m": 0.05161187465959943
+      },
+      {
+        "parts": [
+          "trouser_thigh_R",
+          "pelvis_cloth"
+        ],
+        "y_overlap_interval_m": [
+          0.55,
+          0.620994996418824
+        ],
+        "overlap_m": 0.07099499641882401
+      },
+      {
+        "parts": [
+          "pelvis_cloth",
+          "shirt_core"
+        ],
+        "y_overlap_interval_m": [
+          0.64,
+          0.69
+        ],
+        "overlap_m": 0.04999999999999993
+      },
+      {
+        "parts": [
+          "shirt_core",
+          "connected_shoulder_band"
+        ],
+        "y_overlap_interval_m": [
+          1.06,
+          1.13
+        ],
+        "overlap_m": 0.06999999999999984
+      },
+      {
+        "parts": [
+          "connected_shoulder_band",
+          "short_neck"
+        ],
+        "y_overlap_interval_m": [
+          1.1199999999999999,
+          1.15
+        ],
+        "overlap_m": 0.030000000000000027
+      },
+      {
+        "parts": [
+          "short_neck",
+          "cuboid_head"
+        ],
+        "y_overlap_interval_m": [
+          1.175,
+          1.215
+        ],
+        "overlap_m": 0.040000000000000036
+      },
+      {
+        "parts": [
+          "cuboid_head",
+          "helmet_brim"
+        ],
+        "y_overlap_interval_m": [
+          1.455,
+          1.4749999999999999
+        ],
+        "overlap_m": 0.019999999999999796
+      },
+      {
+        "parts": [
+          "helmet_brim",
+          "helmet_crown"
+        ],
+        "y_overlap_interval_m": [
+          1.49,
+          1.505
+        ],
+        "overlap_m": 0.014999999999999902
+      },
+      {
+        "parts": [
+          "helmet_crown",
+          "helmet_upper_step"
+        ],
+        "y_overlap_interval_m": [
+          1.615,
+          1.66
+        ],
+        "overlap_m": 0.04499999999999993
+      },
+      {
+        "parts": [
+          "helmet_upper_step",
+          "helmet_centre_rib"
+        ],
+        "y_overlap_interval_m": [
+          1.6500000000000001,
+          1.68
+        ],
+        "overlap_m": 0.029999999999999805
+      }
+    ],
+    "cart_reach_screen": {
+      "upper_arm_length_m": 0.20639767440550288,
+      "forearm_length_m": 0.19377822375076106,
+      "wrist_to_grip_length_m": 0.07105631569396202,
+      "maximum_chain_length_m": 0.471232213850226,
+      "shoulder_to_target_m": 0.41934472692523517,
+      "radial_reserve_m": 0.051887486924990844,
+      "effective_two_link_proxy_elbow_flex_radians": 0.9553691427181779,
+      "within_proxy_elbow_limit": true,
+      "scope": "Necessary reach/limit screen, not actual IK/rig or collision proof"
+    },
+    "seat_fold_screen": {
+      "thigh_X_radians": -1.5707963267948966,
+      "shin_relative_X_radians": 1.5707963267948966,
+      "seat_relative_hip_R": [
+        0.095,
+        0.04499999999999993,
+        0.030000000000000002
+      ],
+      "seat_relative_knee_R": [
+        0.105,
+        0.05499999999999992,
+        0.26
+      ],
+      "seat_relative_ankle_R": [
+        0.115,
+        -0.17000000000000007,
+        0.25
+      ],
+      "seat_relative_sole_R": [
+        0.115,
+        -0.31000000000000005,
+        0.255
+      ],
+      "floorboard_drop_m": 0.31000000000000005,
+      "headwear_top_above_seat_m": 1.15,
+      "scope": "Declared skeletal transform only; actual vehicle seated fit deferred"
+    },
+    "sole_anchor_midpoint_runtime": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "Relevant paths no_recorded_issue/not_tracked; exact current sources/reference PNG read; no refresh"
+  },
+  "findings": [
+    "Floor0/top1.70 and tiled height sum1.70 verified.",
+    "Seven bilateral part pairs,15parent reconstructions and24right-handed part frames verified.",
+    "Fourteen common-pivot overlaps remain positive after8mm bevel; eleven vertical contact intervals checked.",
+    "Cart bar target within arm/grip chain; necessary screen only, actual FK/grasp/collision deferred.",
+    "Seat plane and90-degree skeleton fold declared; actual vehicle fit deferred."
+  ],
+  "defects_and_corrections": [
+    {
+      "phase": "pre-file numerical draft",
+      "finding": "Crown centredZ0 would extend5mm beyond declared rear envelope.",
+      "correction": "Crown centreZ+.005 aligns rear minZ-.16; all dimension/connection checks rerun before writing final spec."
+    }
+  ],
+  "unresolved_model_validation": "No mesh exists in this card; bounds/joins remain declared interfaces pending next child actual artifacts.",
+  "next": "Root reviews plan before P01.2 silhouette.",
+  "model_note_sha256": "a89cfcede5481996179ee3a5a543fc370fb69600fa463d6f5f64b63b5f3ec6cb",
+  "independent_reread_checks": {
+    "dimension_json_reopened": true,
+    "primary_extents_recomputed": true,
+    "height_stations_resummed": true,
+    "sole_anchor_midpoint": [
+      0,
+      0,
+      0
+    ],
+    "spec_hash_matches": true
+  }
+}

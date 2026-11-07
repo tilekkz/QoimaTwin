@@ -1,0 +1,49 @@
+{
+  "task_id": "R11",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T05:26:39.223655+00:00",
+  "dependencies": {
+    "R01": "PASS in actual task card, PNG viewed",
+    "R04": "PASS in actual task card, PNG viewed",
+    "R05": "PASS in actual task card, PNG viewed"
+  },
+  "outputs": [
+    "assets/references/v3/r11-picking-cart.png",
+    "assets/references/v3/prompts/r11.txt",
+    "assets/references/v3/provenance/r11.json"
+  ],
+  "reference_sha256": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+  "dimensions_px": [
+    1536,
+    1024
+  ],
+  "method": "Actual saved production PNG opened, all 4 cart views plus top-fit/worker-grip insets inspected against accepted R01/R04/R05 and R11 task criteria.",
+  "actual": [
+    "Opened the actual saved 1536x1024 RGB workspace PNG. Independent production concept created before any V3 cart geometry.",
+    "Front: four square post locations are consistent with tray corners; upper and lower thick shallow tray lips join the frame. Front wheel pair contacts the floor and rear casters are normally occluded. Tote sits inside the upper tray; handle is behind it.",
+    "Side: two distinct tray levels, square support posts, grounded caster assemblies and raised rear handle remain connected. Same tote and tray structure as front/rear; no third shelf, detached wheel or floating rail.",
+    "Rear: the two rear posts rise to one broad connected push bar. Lower tray remains open/empty; tote is supported inside the upper tray, and rear casters join the frame.",
+    "Three-quarter: tangible floor/lip thickness, square posts, under-tray air space and three visible grounded casters with the fourth normally hidden. Tote is separate, hollow and supported; the tray does not become a closed box.",
+    "Top fit inset shows a continuous visible tan clearance border around the centered petrol tote. All four sides of its base remain within the tray. Printed dimensions are concept targets, not measured outer-base validation.",
+    "Worker grip inset: one friendly cuboid blue picker, charcoal sleeves/navy trousers/charcoal boots and trolley01 badge; both mitten hands visibly contact the broad handle, elbows naturally bent and feet grounded. No hand holds the tote simultaneously.",
+    "Compared against actually viewed R01/R04/R05: matte petrol/charcoal/tan structure, thick open R04-like tote and blue cuboid picker language remain consistent. R05 remains the authority for detailed worker construction; this small inset specifies grip interaction.",
+    "No significant reference defect found in the first iteration. Later geometry must verify outer tote footprint, tray usable opening, all four wheel contacts, exact handle reach/pivots and loaded movement; image pixels do not establish engineering dimensions."
+  ],
+  "significant_defects": [],
+  "fixes": [],
+  "generation_count": 1,
+  "limitations": [
+    "Reference only; no geometry, rig, GLB or runtime constructed.",
+    "All dimensions remain synthetic prompt/card targets; future usable-tray/outer-tote measurements are mandatory.",
+    "Worker inset is grip context and does not replace accepted R05 worker construction.",
+    "Root actual-image review and PASS remain pending."
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "R11 card and R04/R05 provenance no_recorded_issue/not_tracked; direct exact-source and actual PNG fallback used; no reindex"
+  },
+  "next": "root independently views assets/references/v3/r11-picking-cart.png, then R09/R10 may cover this reference; no modeling yet"
+}

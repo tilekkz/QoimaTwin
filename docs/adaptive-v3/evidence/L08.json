@@ -1,0 +1,61 @@
+{
+  "task_id": "L08",
+  "status": "VERIFY",
+  "checks": {
+    "node_count": 34,
+    "edge_count": 45,
+    "physical_cells": 90,
+    "physical_modules": 87,
+    "packing_count": 6,
+    "all_six_workflows_reachable": true,
+    "reverse_upstream_path": false,
+    "main_physical_length_m": 73,
+    "curve_samples": 516,
+    "tote_corner_radial_min_m": 0.9708243919473798,
+    "tote_corner_radial_max_m": 1.5628499608087787,
+    "effective_radial_limits_m": [
+      0.86,
+      1.64
+    ],
+    "tote_turn_diagonal_with_clearance_m": 0.7611102550927978,
+    "deck_clear_width_m": 0.82,
+    "fixed_parts_max_z": 5.65,
+    "express_throat_fixed_obstructions": 0,
+    "spur_capacity_each": 1,
+    "curve_total_capacity": 1
+  },
+  "analytical_admission_policy_fixture": [
+    {
+      "case": "heavy",
+      "actual": "CARGO_CLASS_FORBIDDEN",
+      "expected": "CARGO_CLASS_FORBIDDEN"
+    },
+    {
+      "case": "long",
+      "actual": "CARGO_CLASS_FORBIDDEN",
+      "expected": "CARGO_CLASS_FORBIDDEN"
+    },
+    {
+      "case": "oversize light",
+      "actual": "DIMENSION_MISMATCH",
+      "expected": "DIMENSION_MISMATCH"
+    },
+    {
+      "case": "overweight standard",
+      "actual": "OVERWEIGHT",
+      "expected": "OVERWEIGHT"
+    },
+    {
+      "case": "scale override",
+      "actual": "DIMENSION_OVERRIDE_FORBIDDEN",
+      "expected": "DIMENSION_OVERRIDE_FORBIDDEN"
+    }
+  ],
+  "runtime_checks_deferred": [
+    "opposing spur lease exclusion",
+    "full downstream backpressure",
+    "manual output actual shipper/port reservation"
+  ],
+  "scope": "Engineering proposal and analytical policy fixture, not runtime or engine throughput",
+  "proposal_sha256": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612"
+}

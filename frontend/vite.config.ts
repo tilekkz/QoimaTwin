@@ -6,6 +6,14 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'QOIMA_');
   return {
     plugins: [vue()],
+    build: {
+      rollupOptions: {
+        input: {
+          main: fileURLToPath(new URL('./index.html', import.meta.url)),
+          standV3: fileURLToPath(new URL('./stand-v3.html', import.meta.url)),
+        },
+      },
+    },
     server: {
       host: '127.0.0.1',
       port: 5173,

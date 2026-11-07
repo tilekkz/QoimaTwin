@@ -1,0 +1,53 @@
+{
+  "task_id": "R06",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T05:11:09.986880+00:00",
+  "dependencies": {
+    "R01": "PASS in current task/provenance; accepted style board actually viewed before generation"
+  },
+  "outputs": [
+    "assets/references/v3/r06-forklift.png",
+    "assets/references/v3/prompts/r06.txt",
+    "assets/references/v3/provenance/r06.json"
+  ],
+  "reference_sha256": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+  "dimensions_px": [
+    1536,
+    1024
+  ],
+  "method": "Actual saved production PNG opened after final copy; front/side/rear/three-quarter inspected against brief and accepted R01; initial and corrected inset compared.",
+  "actual": [
+    "Actually opened the saved 1536x1024 RGB final PNG after copying it into the workspace; all four vehicle panels and the separate human inset inspected.",
+    "Front: symmetric two-rail mast tied to chassis, bridging carriage, exactly two attached fork heels and substantial parallel blades; front tyres join body and contact floor. Guard and steering/seat remain visible behind mast.",
+    "Side: same petrol chassis/tan counterweight, larger front and smaller rear wheels, connected front mast/carriage/fork heel-to-blade construction. Open entry, seat, steering column, foot space and roof height provide readable driver clearance.",
+    "Rear: broad tan counterweight, symmetric grounded rear wheel pair, connected overhead guard/roof and seat back; no rear-facing extra forks or floating rail.",
+    "Three-quarter: cuboid body depth, near front/rear tyres plus far front tyre, twin-channel mast, carriage and two uninterrupted forks are coherent with other views. Fourth tyre is normally occluded, not omitted from design.",
+    "Four-wheel construction is resolved across front/side/rear/quarter rather than forcing four visible tyres into every orthographic-style view. Mild camera elevation causes projected blade separation in side view; front view establishes equal low fork height. Exact equal-Y geometry remains a future model check.",
+    "Compared against actually viewed accepted R01: petrol/tan/charcoal palette, thick planar masses, small stepped bevels, matte surfaces and clean cartoon proportions retained; no realistic hose/bolt/tread noise.",
+    "Iteration 1 had an inset figure in a fully yellow jumpsuit, inconsistent with accepted R05 dark shared trousers/shirt. Targeted built-in image edit corrected inset to navy trousers, charcoal sleeves and yellow vest/headwear; final four vehicle constructions remain visually consistent after full reinspection, not claimed pixel-identical.",
+    "No significant unresolved reference defect found. Driver inset is a scale/style aid; actual seating anchors, clearances, lifting/pivot travel, physical dimensions and runtime are not accepted by this image alone."
+  ],
+  "significant_defects_found": [
+    {
+      "iteration": 1,
+      "defect": "fully yellow driver inset clothing conflicts with accepted R05",
+      "resolved_in": 2
+    }
+  ],
+  "unresolved_significant_defects": [],
+  "generation_count": 2,
+  "limitations": [
+    "Reference only; no V3 geometry/GLB/rig/runtime built.",
+    "Human inset/1.70m lettering and image projection do not establish metric equipment dimensions or validated seating clearance.",
+    "Normal wheel/fork occlusion must be resolved by explicit model metadata and four-view/runtime checks later.",
+    "Root independent actual-image review and PASS remain pending."
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "R06 prompt/card and R01 provenance no_recorded_issue/not_tracked; exact source and actual PNG fallback used; no reindex"
+  },
+  "next": "root opens assets/references/v3/r06-forklift.png; no geometry until reference/model prerequisites PASS"
+}

@@ -1,0 +1,428 @@
+{
+  "asset_id": "calibration",
+  "namespace": "v3",
+  "layout_version": "qoima-144x72-v3",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "generated_at": "2026-11-07T05:56:03.245512+00:00",
+  "blender_version": "5.0.1",
+  "source": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\blender\\calibration.blend",
+  "glb": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\public\\models\\v3\\calibration.glb",
+  "glb_bytes": 14708,
+  "sha256": "b2ceecef959d4cf42cb85510f35effeb09b7300ffc03457e76e09fc637d385b5",
+  "source_meshes": 7,
+  "runtime_meshes": 6,
+  "triangles": 116,
+  "bounds_runtime": {
+    "min": [
+      -0.05000000074505806,
+      0.0,
+      -0.05000000074505806
+    ],
+    "max": [
+      1.0,
+      2.0,
+      3.0
+    ]
+  },
+  "dimensions_m": [
+    1.050000000745058,
+    2.0,
+    3.050000000745058
+  ],
+  "runtime_size": [
+    1.050000000745058,
+    2.0,
+    3.050000000745058
+  ],
+  "anchors": {
+    "anchor_asymmetric": [
+      0.3499999940395355,
+      1.2000000476837158,
+      2.4000000953674316
+    ],
+    "anchor_axis_X": [
+      1.0,
+      0.0,
+      -0.0
+    ],
+    "anchor_axis_Y": [
+      0.0,
+      2.0,
+      -0.0
+    ],
+    "anchor_axis_Z": [
+      0.0,
+      0.0,
+      3.0
+    ],
+    "anchor_origin": [
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "anchor_signed": [
+      -0.4000000059604645,
+      0.75,
+      -0.6000000238418579
+    ],
+    "anchor_nested": [
+      0.75,
+      0.7000000476837158,
+      2.0500001907348633
+    ]
+  },
+  "pivots": {
+    "joint__calibration_A": {
+      "position_runtime": [
+        0.44999998807907104,
+        0.30000001192092896,
+        1.7000000476837158
+      ],
+      "local_runtime": [
+        0.44999998807907104,
+        0.30000001192092896,
+        1.7000000476837158
+      ],
+      "parent": "calibration_root__V3",
+      "axis": "Y"
+    },
+    "joint__calibration_B": {
+      "position_runtime": [
+        0.699999988079071,
+        0.4000000059604645,
+        1.9000000953674316
+      ],
+      "local_runtime": [
+        0.25,
+        0.10000000149011612,
+        0.20000000298023224
+      ],
+      "parent": "joint__calibration_A",
+      "axis": "X"
+    }
+  },
+  "components": [
+    {
+      "name": "asymmetric_box",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          0.4000000059604645,
+          0.0,
+          0.6000000238418579
+        ],
+        "max": [
+          0.7000000476837158,
+          0.800000011920929,
+          1.0
+        ]
+      },
+      "vertices": 24
+    },
+    {
+      "name": "axis_X_1m",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          0.0,
+          0.0,
+          -0.05000000074505806
+        ],
+        "max": [
+          1.0,
+          0.10000000149011612,
+          0.05000000074505806
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "axis_Y_2m",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          -0.05000000074505806,
+          0.0,
+          -0.05000000074505806
+        ],
+        "max": [
+          0.05000000074505806,
+          2.0,
+          0.05000000074505806
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "axis_Z_3m",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          -0.05000000074505806,
+          0.0,
+          -0.0
+        ],
+        "max": [
+          0.05000000074505806,
+          0.10000000149011612,
+          3.0
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "joint_B_part",
+      "parent": "joint__calibration_B",
+      "bounds_runtime": {
+        "min": [
+          0.6399999856948853,
+          0.4000000059604645,
+          1.8200000524520874
+        ],
+        "max": [
+          0.7599999904632568,
+          0.6000000238418579,
+          1.9800001382827759
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "joint_A_part_1",
+      "parent": "joint__calibration_A",
+      "bounds_runtime": {
+        "min": [
+          0.47928932309150696,
+          0.25,
+          1.6292893886566162
+        ],
+        "max": [
+          0.6207106709480286,
+          0.3500000238418579,
+          1.7707107067108154
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "joint_A_part_2",
+      "parent": "joint__calibration_A",
+      "bounds_runtime": {
+        "min": [
+          0.5,
+          0.4000000059604645,
+          1.6500000953674316
+        ],
+        "max": [
+          0.6000000238418579,
+          0.5,
+          1.75
+        ]
+      },
+      "vertices": 8
+    }
+  ],
+  "runtime_components": [
+    {
+      "name": "calibration__batch_00",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          0.4000000059604645,
+          0.0,
+          0.6000000238418579
+        ],
+        "max": [
+          0.7000000476837158,
+          0.800000011920929,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "calibration__batch_01",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          0.0,
+          0.0,
+          -0.05000000074505806
+        ],
+        "max": [
+          1.0,
+          0.10000000149011612,
+          0.05000000074505806
+        ]
+      }
+    },
+    {
+      "name": "calibration__batch_02",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          -0.05000000074505806,
+          0.0,
+          -0.05000000074505806
+        ],
+        "max": [
+          0.05000000074505806,
+          2.0,
+          0.05000000074505806
+        ]
+      }
+    },
+    {
+      "name": "calibration__batch_03",
+      "parent": "calibration_root__V3",
+      "bounds_runtime": {
+        "min": [
+          -0.05000000074505806,
+          0.0,
+          -0.0
+        ],
+        "max": [
+          0.05000000074505806,
+          0.10000000149011612,
+          3.0
+        ]
+      }
+    },
+    {
+      "name": "calibration__batch_05",
+      "parent": "joint__calibration_A",
+      "bounds_runtime": {
+        "min": [
+          0.47928932309150696,
+          0.25,
+          1.6292893886566162
+        ],
+        "max": [
+          0.6207106709480286,
+          0.5,
+          1.7707107067108154
+        ]
+      }
+    },
+    {
+      "name": "calibration__batch_04",
+      "parent": "joint__calibration_B",
+      "bounds_runtime": {
+        "min": [
+          0.6399999856948853,
+          0.4000000059604645,
+          1.8200000524520874
+        ],
+        "max": [
+          0.7599999904632568,
+          0.6000000238418579,
+          1.9800001382827759
+        ]
+      }
+    }
+  ],
+  "batching": "immediate_parent_and_material",
+  "preserve_articulation": true,
+  "root_matrix_blender": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "glb_header": {
+    "magic": "glTF",
+    "version": 2,
+    "declared_bytes": 14708
+  },
+  "glb_numeric_verification": {
+    "status": "verified_numerically",
+    "method": "actual GLB float POSITION/NORMAL bytes + node TRS, independent of xyz",
+    "bounds_runtime": {
+      "min": [
+        -0.05000000074505806,
+        0.0,
+        -0.05000000074505806
+      ],
+      "max": [
+        1.0,
+        2.0,
+        3.0
+      ]
+    },
+    "dimensions_m": [
+      1.050000000745058,
+      2.0,
+      3.050000000745058
+    ],
+    "anchors": {
+      "anchor_origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "anchor_axis_X": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "anchor_axis_Y": [
+        0.0,
+        2.0,
+        0.0
+      ],
+      "anchor_axis_Z": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "anchor_asymmetric": [
+        0.3499999940395355,
+        1.2000000476837158,
+        2.4000000953674316
+      ],
+      "anchor_signed": [
+        -0.4000000059604645,
+        0.75,
+        -0.6000000238418579
+      ],
+      "anchor_nested": [
+        0.75,
+        0.7000000476837158,
+        2.0500001907348633
+      ]
+    },
+    "runtime_meshes": 6,
+    "finite_positions": 240,
+    "finite_unit_normals": 240,
+    "named_pivots_preserved": [
+      "joint__calibration_A",
+      "joint__calibration_B"
+    ],
+    "root_identity": true,
+    "parent_material_batching": true,
+    "rotated_joined_mesh_bounds": "verified against independent hand-declared A-batch bounds",
+    "khronos_validation": "pending root I09.3",
+    "browser_views": "not run; root I09.3"
+  }
+}
