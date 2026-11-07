@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 from collections.abc import Iterator
+from pathlib import Path
 
 import pytest
 from numpy.random import Generator
@@ -12,7 +13,11 @@ from app.contracts.scenario import Order, OrderLine
 from app.data import history
 
 
-def test_history_cache_bytes_hash_and_defensive_copies(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_history_cache_bytes_hash_and_defensive_copies(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setenv("QOIMA_HISTORY_CACHE_DIR", str(tmp_path / "sparse-history"))
+
     def sparse(
         rng: Generator,
         weights: tuple[float, ...],

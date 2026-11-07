@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from pathlib import Path
 from typing import Any
 
@@ -16,6 +17,24 @@ from app.data.scenario_materializer import MaterializedScenario, materialize
 from app.settings import default_contracts_dir
 from app.simulation.engine import Engine, RunOutcome
 from app.simulation.fixtures import fixture_inputs, load_fixture
+
+
+@pytest.fixture(scope="session", autouse=True)
+def isolated_history_cache(tmp_path_factory: pytest.TempPathFactory) -> Iterator[None]:
+    """Tests never read or write the real user cache, including subprocess inheritance."""
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setenv("QOIMA_HISTORY_CACHE_DIR", str(tmp_path_factory.mktemp("history-cache")))
+        yield
+
+
+@pytest.fixture(autouse=True)
+def clear_history_memory_cache(isolated_history_cache: None) -> Iterator[None]:
+    """Keep monkeypatched generators independent of earlier test artifacts."""
+    from app.data.history import history_artifact
+
+    history_artifact.cache_clear()
+    yield
+    history_artifact.cache_clear()
 
 
 @pytest.fixture(scope="session")

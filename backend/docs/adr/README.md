@@ -24,3 +24,4 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0016](0016-planning-and-comparison-protocol.md) | Frozen ABC, greedy swaps, paired comparison and semantic input identity |
 | [0019](0019-canonical-json-and-benchmark-processes.md) | Canonical byte parity and isolated benchmark processes |
 | [0021](0021-changed-sku-conservation-audits.md) | Full initial audit and conservation checks for changed SKUs |
+| [0022](0022-persistent-history-artifact-cache.md) | Verified immutable history reuse across CLI processes |
