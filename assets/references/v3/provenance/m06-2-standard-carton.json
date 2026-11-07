@@ -1,0 +1,120 @@
+{
+  "reference_id": "M06.2_REF",
+  "task_id": "M06.2",
+  "asset_id": "standard-carton",
+  "status": "VERIFY",
+  "tool": "built_in_imagegen",
+  "intent": "independent_new_raster_then_targeted_raster_correction_before_geometry",
+  "model_or_render_inputs": false,
+  "source_image_path": "C:/Users/izbas/.codex/generated_images/01a1b22f-d55c-70c0-bbca-ca73113b0d1b/exec-0a8768a4-cca8-4b27-b511-c89980067674.png",
+  "source_generation_id": "exec-0a8768a4-cca8-4b27-b511-c89980067674",
+  "artifact": {
+    "path": "assets/references/v3/m06-2-standard-carton.png",
+    "sha256": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+    "bytes": 1636359,
+    "dimensions_px": [
+      1536,
+      1024
+    ]
+  },
+  "actual_final_prompt": {
+    "path": "assets/references/v3/prompts/m06-2-standard-carton.txt",
+    "sha256": "9e50ccafb2876aa7ee07d14b6053ac6439355e193fb2208417e9cc1e4f4c33b2",
+    "bytes": 1368
+  },
+  "initial_prompt": {
+    "path": "assets/references/v3/prompts/m06-2-standard-carton-initial.txt",
+    "sha256": "372baace5b6a4c7f5dcad3450d711b0858690c24c2dc6df6eac0436657941f06",
+    "bytes": 2668
+  },
+  "targeted_edit_input": {
+    "path": "assets/references/v3/m06-2-standard-carton-v2.png",
+    "sha256": "4d71ecb18bbf270c590106ba4ad8dd1e7575952eb609cb911cbdef8647ce54e9",
+    "bytes": 1642694
+  },
+  "initial_generation_id": "exec-32453323-fe5b-4900-8449-d46f6bc7db53",
+  "targets": {
+    "path": "assets/references/v3/m06-2-standard-carton.targets.json",
+    "sha256": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e",
+    "bytes": 1283
+  },
+  "visually_consulted_style_only": [
+    {
+      "path": "assets/references/v3/r03-cargo.png",
+      "sha256": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+      "bytes": 1770624
+    },
+    {
+      "path": "assets/references/v3/m06-1-small-carton.png",
+      "sha256": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+      "bytes": 1741957
+    }
+  ],
+  "review": {
+    "actual_final_png_opened": true,
+    "views": [
+      "front",
+      "right side",
+      "rear",
+      "three-quarter"
+    ],
+    "found_and_fixed": "Initial raster added an unrequested cross-tape band and side tail. Targeted independent raster edit removed cross band and tail before modelling. Root then identified wrong RIGHT SIDE roof stripe projection; second targeted raster edit makes it a narrow horizontal band on roof only.",
+    "findings": [
+      "Wider3:2 front and narrow3:4 side distinguish this STANDARD carton.",
+      "Same closed flush-top tan carton, label/arrows stay on front, rear plain except centre tape tail.",
+      "Single thin centre tape remains; plain right face has no tape tail below its top edge.",
+      "No thick rim, wooden frame, floating trim or missing view.",
+      "Final RIGHT SIDE roof band now projects horizontally across roof; plain vertical side face unchanged. Other three construction/marking layouts remain visually consistent."
+    ],
+    "notes": "Raster top perspective is conceptual, target dimensions/C02 packing remain engineering authority. Root image/binding review pending."
+  },
+  "geometry_created": false,
+  "previous_selected": {
+    "path": "assets/references/v3/m06-2-standard-carton-v2.png",
+    "sha256": "4d71ecb18bbf270c590106ba4ad8dd1e7575952eb609cb911cbdef8647ce54e9",
+    "bytes": 1642694
+  },
+  "previous_correction_prompt": {
+    "path": "assets/references/v3/prompts/m06-2-standard-carton-correction-1.txt",
+    "sha256": "44da3c22f85722e4c4344cf215ce8e6c26e77761f41a8a5ac1df3bbda1f642ec",
+    "bytes": 1172
+  },
+  "targeted_edit_history": [
+    {
+      "input": {
+        "path": "assets/references/v3/m06-2-standard-carton-v1.png",
+        "sha256": "df451128b349ac3daf3be9ae7d2a844b6f4f464aa20d5bbe8bf166d416255fb6",
+        "bytes": 1731423
+      },
+      "output": {
+        "path": "assets/references/v3/m06-2-standard-carton-v2.png",
+        "sha256": "4d71ecb18bbf270c590106ba4ad8dd1e7575952eb609cb911cbdef8647ce54e9",
+        "bytes": 1642694
+      },
+      "prompt": {
+        "path": "assets/references/v3/prompts/m06-2-standard-carton-correction-1.txt",
+        "sha256": "44da3c22f85722e4c4344cf215ce8e6c26e77761f41a8a5ac1df3bbda1f642ec",
+        "bytes": 1172
+      },
+      "purpose": "remove unwanted cross-tape and side face tail"
+    },
+    {
+      "input": {
+        "path": "assets/references/v3/m06-2-standard-carton-v2.png",
+        "sha256": "4d71ecb18bbf270c590106ba4ad8dd1e7575952eb609cb911cbdef8647ce54e9",
+        "bytes": 1642694
+      },
+      "output": {
+        "path": "assets/references/v3/m06-2-standard-carton.png",
+        "sha256": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+        "bytes": 1636359
+      },
+      "prompt": {
+        "path": "assets/references/v3/prompts/m06-2-standard-carton.txt",
+        "sha256": "9e50ccafb2876aa7ee07d14b6053ac6439355e193fb2208417e9cc1e4f4c33b2",
+        "bytes": 1368
+      },
+      "purpose": "correct RIGHT SIDE roof stripe to horizontal projection of the same worldZ band"
+    }
+  ]
+}

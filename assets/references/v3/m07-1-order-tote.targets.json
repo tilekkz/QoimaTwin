@@ -1,0 +1,123 @@
+{
+  "reference_id": "M07.1_REF",
+  "asset_id": "order-tote",
+  "units": "m",
+  "up_axis": "Y",
+  "front_axis": "+Z",
+  "origin": "floor centre",
+  "role": "workflow_container_template_not_C02_SKU_stock_or_lot",
+  "outer_dimensions_xyz_m": [
+    0.6,
+    0.34,
+    0.4
+  ],
+  "inner_usable_dimensions_xyz_m": [
+    0.56,
+    0.3,
+    0.36
+  ],
+  "inner_usable_bounds_runtime": {
+    "min": [
+      -0.28,
+      0.02,
+      -0.18
+    ],
+    "max": [
+      0.28,
+      0.32,
+      0.18
+    ]
+  },
+  "floor_support_y_m": 0.02,
+  "upper_usable_budget_end_y_m": 0.32,
+  "rim_top_y_m": 0.34,
+  "wall_skin_candidate_m": 0.003,
+  "ribbed_outer_wall_budget_m": 0.02,
+  "handles": {
+    "count": 4,
+    "faces": "one centred real opening on each of \u00b1X/\u00b1Z walls",
+    "short_end_opening_width_along_Z_m": 0.16,
+    "long_face_opening_width_along_X_m": 0.18,
+    "clear_opening_y_m": [
+      0.26,
+      0.31
+    ]
+  },
+  "synthetic_manual_mass_policy": {
+    "tare_kg": 3.0,
+    "payload_limit_kg": 12.0,
+    "manual_loaded_gross_limit_kg": 15,
+    "rule": "actual total contents including wrappers +tare <=15kg; geometry and handler rules still apply",
+    "physical_capacity_certification": false
+  },
+  "workflow_candidate_adopted_for_this_card": {
+    "parcel_outer_dimensions_xyz_m": [
+      0.36,
+      0.28,
+      0.28
+    ],
+    "parcel_wall_candidate_m": 0.003,
+    "tote_parcel_actual_centred_gaps_m": {
+      "X_each": 0.1,
+      "Z_each": 0.04,
+      "top_to_usable_ceiling": 0.02,
+      "support_bottom_gap": 0
+    },
+    "declared_budget_m": {
+      "X_each_min": 0.01,
+      "Z_each_min": 0.01,
+      "vertical_top_min": 0.02
+    },
+    "SMALL_HU_unchanged_dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "STANDARD_HU_unchanged_dimensions_xyz_m": [
+      0.6,
+      0.4,
+      0.3
+    ],
+    "STANDARD_in_tote_allowed": false,
+    "STANDARD_transport": "direct lower cart tray/belt; no shrinking"
+  },
+  "R11_explicit_revision_supplement": {
+    "original_synthetic_upper_tray_y_m": 0.62,
+    "new_candidate_upper_tray_y_m": 0.66,
+    "revision_m": 0.04,
+    "new_tray_underside_candidate_y_m": 0.64,
+    "lower_tray_y_m": 0.22,
+    "lower_clear_height_m": 0.42,
+    "STANDARD_HU_top_if_on_lower_y_m": 0.62,
+    "STANDARD_top_air_m": 0.02,
+    "handle_y_m": 0.98,
+    "outer_cart_dimensions_unchanged_xyz_m": [
+      0.72,
+      1,
+      0.92
+    ],
+    "scope": "This is explicit new workflowtarget plan, not modification/measurement of frozen R11 and not actual cart implementation."
+  },
+  "source_bindings": [
+    {
+      "path": "docs/adaptive-v3/DOWNSTREAM_DESIGN_NOTES.md",
+      "sha256": "048098519fc709acaefa7ea258025758f33a0a6b5c95ec836626456ad6079a48"
+    },
+    {
+      "path": "assets/references/v3/provenance/r11.json",
+      "sha256": "3730a2a567b519533c3247439c417fb676e885ad66f3aa0cdfc16917972a1cb7"
+    },
+    {
+      "path": "assets/references/v3/provenance/r04.json",
+      "sha256": "013fbfaa14799c76432111aa7974d81cf3c3f5d6bc12b48705b9858235eb41e9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    }
+  ],
+  "raster_is_engineering_authority": false,
+  "operational_admission": false,
+  "package_ancestry_and_actual_action_pending": true,
+  "floor_skin_candidate_m": 0.004
+}

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T15:06:31.865213+00:00",
+  "updated_at": "2026-11-07T16:41:29.169464+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -640,12 +640,13 @@
         "C08"
       ],
       "criteria": "Candidate rejection reason фиксируется до вычисления route/placement score",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/C09.md",
         "docs/adaptive-v3/evidence/C09.json"
-      ]
+      ],
+      "actual": "Canonical SKU/C02 compatibility then equipment/port/filtered-path before weighted route/score. 8 positive+94 negative cases; rejected score calls0. Independent16 directed path checks and37 weighted-route/callback guards PASS. Planning only, no fabricated M/P execution admission."
     },
     {
       "id": "C10",
@@ -656,12 +657,13 @@
         "C09"
       ],
       "criteria": "Все исходные назначения проходят compatibility; начальный baseline не специально испорчен",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/C10.md",
         "docs/adaptive-v3/evidence/C10.json"
-      ]
+      ],
+      "actual": "Initial stock/normal mix frozen before any comparison.530unchangedHUs/200SKU/12256units/9403.85kg; all530 compatibility and1639 directedlegs independentlyPASS,4 minimumgreedychoices checked, strict bytes reproduce.58 freeactive,8FLEXfree; actualoperations/composition remainfuture."
     },
     {
       "id": "C11",
@@ -670,7 +672,7 @@
         "C10"
       ],
       "criteria": "Различия объяснимы объявленными правилами, сохраняют inventory и не нарушают совместимость",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/C11.md",
@@ -796,8 +798,8 @@
         "I09"
       ],
       "criteria": "Три осмысленных формы из каталога; реальные размеры, толщина и различимый силуэт",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/M06.md",
         "docs/adaptive-v3/evidence/M06.json"
@@ -807,7 +809,8 @@
         "M06.2",
         "M06.3"
       ],
-      "kind": "parent"
+      "kind": "parent",
+      "actual": "Parent output verified against all3actual child root_reviewPASS and centralPASS; historicalM06.1 creatorVERIFY retained distinctly. Three realmetric hollow forms, exactC02, independent4source/4browser andKhronos0/0. Actualhandling separate."
     },
     {
       "id": "M07",
@@ -842,13 +845,13 @@
         "I09"
       ],
       "criteria": "Поддон, вилочные проёмы и груз образуют цельную конструкцию с attachment",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M08.md",
         "docs/adaptive-v3/evidence/M08.json"
       ],
-      "actual": "PALLET_LOAD: independent4viewref andfixed24unitpacking/contact/cap planbeforegeometry, thenone455kgHUasset."
+      "actual": "Root opened independent reference, all4source and4browser views.26 artifact hashes match; actual BIN/support/pair recheck PASS; cap-band contact confirmed, Khronos0/0, browser0errors/resources. One24-carton HU accepted, actual vehicle/action admission separate."
     },
     {
       "id": "M09",
@@ -860,12 +863,13 @@
         "I09"
       ],
       "criteria": "Объёмная ёмкость, каркас и опора; визуально не обычная картонная коробка",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "ACTIVE",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M09.md",
         "docs/adaptive-v3/evidence/M09.json"
-      ]
+      ],
+      "actual": "Root opened and registered M09_REF. Approved fixed C02 one sealed bottle/654kgHU, rounded shoulder/cap/valve within primaryunit bounds, sparse connected cage/base, actual M03+forkfixture contact proof before modelPASS."
     },
     {
       "id": "M10",
@@ -1070,7 +1074,7 @@
         "I09"
       ],
       "criteria": "Scan/receive/idle clips и рабочее место согласованы с входящим грузом",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/P05.md",
@@ -1831,7 +1835,7 @@
       "title": "Standard carton: different proportions and coherent folded/taped lid",
       "parent": "M06",
       "owner": "warehouse_props",
-      "status": "ACTIVE",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R03",
@@ -1845,14 +1849,14 @@
         "docs/adaptive-v3/evidence/M06.2.json"
       ],
       "criteria": "Standard carton: different proportions and coherent folded/taped lid; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Standardcarton: dedicatedindependent4viewref+precise .60x.40x.30 planbeforegeometry, thenactualthinwall assetgates."
+      "actual": "Root opened independent reference, source four-view sheet and all four actual browser GLB views; 16 fingerprints verified; Khronos 0 errors/0 warnings, browser 0 errors/failed resources. Hollow .60x.40x.30 carton accepted; carrying actions remain separate."
     },
     {
       "id": "M06.3",
       "title": "Heavy case: handles, grounded fork-access base and mass/handler binding",
       "parent": "M06",
-      "owner": "unassigned",
-      "status": "READY",
+      "owner": "warehouse_props",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R03",
@@ -1865,14 +1869,15 @@
         "frontend/public/models/v3/heavy-box.glb",
         "docs/adaptive-v3/evidence/M06.3.json"
       ],
-      "criteria": "Heavy case: handles, grounded fork-access base and mass/handler binding; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Heavy case: handles, grounded fork-access base and mass/handler binding; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Root opened ref, all4source+4browser finalviews; source/output hashes match, groundedcornerbase/realhandles/cavity coherent. Khronos0/0, browser0errors/resources. Fixed200kg/direct-underHU interface, actualfixture actions remainseparate."
     },
     {
       "id": "M07.1",
       "title": "Open tote: real cavity/handles, interior exceeds parcel and payload bounds",
       "parent": "M07",
-      "owner": "unassigned",
-      "status": "READY",
+      "owner": "warehouse_props",
+      "status": "ACTIVE",
       "depends_on": [
         "R10",
         "R03",
@@ -1886,7 +1891,8 @@
         "frontend/public/models/v3/order-tote.glb",
         "docs/adaptive-v3/evidence/M07.1.json"
       ],
-      "criteria": "Open tote: real cavity/handles, interior exceeds parcel and payload bounds; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Open tote: real cavity/handles, interior exceeds parcel and payload bounds; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Actual independenttote4viewreference rootPASS/registered. Fixedouter.60x.34x.40/inner.56x.30x.36, honestparcel fit/3kg+12kgmanualgross, realcavity/handles; one geometry/source/browser gate."
     },
     {
       "id": "M07.2",
@@ -2210,14 +2216,14 @@
         "docs/adaptive-v3/evidence/M14.2.json"
       ],
       "criteria": "Body/counterweight and four connected grounded wheels, front/side check; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Independentreach-forklift4view supplement beforebody; then ONLYgroundedbody/counterweight/4wheels stagedchild, finalmodelgates later."
+      "actual": "User found detached-looking frontwheel/axle. Reopen bodyfor substantial connectedframe/axle repair within samehull, fixedtyres/C08interfaces; preserveoldsource andcomparebeforeafter."
     },
     {
       "id": "M14.3",
       "title": "Cab/seat/guard and driver clearance, side/rear check",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "people_packing",
+      "status": "FIX",
       "depends_on": [
         "R10",
         "R06",
@@ -2229,7 +2235,8 @@
         "docs/adaptive-v3/specs/M14.3.md",
         "docs/adaptive-v3/evidence/M14.3.json"
       ],
-      "criteria": "Cab/seat/guard and driver clearance, side/rear check; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Cab/seat/guard and driver clearance, side/rear check; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Cabacceptance pending revised bodymount; retain previous accepted geometryhistory, refreshcontainedbody/cab aftermechanical/visual fix. No newmastuntilreview."
     },
     {
       "id": "M14.4",

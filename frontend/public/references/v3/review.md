@@ -1,3 +1,15 @@
+## M06.2_REF — root reference PASS
+
+Root opened finalcorrected4viewPNG. Widerclosedfoldedcarton, singlebufftape, frontlabel/arrows andplainside/rear areconsistent; side-rooftape nowhorizontal asrequired, cross-tapeiterationspreserved. ExactC02.60x.40x.30 and.004wall/.0005containedtape/11.5mmextra cavityallowance planapproved beforemesh. Nooversizedlip,nobakedstock. Actualthinwall/contact/packing/source/GLB gates remain.
+
+## M14.2-REACH — root reference PASS
+
+Root opened actual4viewPNG. Samepetrol/tancounterweight charcoaltyres, connected4wheelbody/openemptycab/twinmast/nestedguidecarriage andhighforks arecoherent. ExactM14.1/C08axle/heel/mastcoordinates overrideillustrativeraster heeloffset; petrolguard accepted inthissupplement ascurrentartdirection. No dimensional/collisionprooffromraster. Body-only7boxes+lowspine/dropconnector/frontsaddle planapproved:20mmrearplategap,80mmtyresidegap,270mmhighfront/280mmlowfrontgap anddriverabove supports; actualmeshproof required. Finalfullforklift/action gates remainopen.
+
+## M08_REF — root reference PASS
+
+Root opened actualfront/side/rear/quarterPNG. Threecolumns/fourlayers/twodeep24cartons, substantial baredeckmargins, connectedpallet/cap/petrolbands andmattekraft/wood depths agree. Exact C02positions/24contents andHU1.2x1.35x1.0 overridepixelproportions; noextraunits. Plan3bottomcrossboards/9blocks/5topslats,pads/separators/capandcontainedbands accepted beforemesh. Actualbandrouting/basecontact/packing must passmodelgates.
+
 ## R12 interface extension — C08v0.2
 
 Owncradle3.2x.15x.85 unchanged. HistoricalvehiclemountY.30 is overridden by C08v0.2 mountY.65, fork top.75, HUbottom.80 and stoppedreach+.40. See r12-c08-interface-targets-v2.json; originalimage/provenance/targets preserved, actualmodel/actions notaccepted.
@@ -138,3 +150,12 @@ R03 содержит восемь stable archetype_id из таблицы. R04 t
 Полные actual SHA-256/bytes/dimensions девяти PNG, provenance hashes, dimension supplements, per-image findings и resolutions — `docs/adaptive-v3/evidence/R09.json`. HTML содержит девять concept PNG плюс один common-scale PNG без сетевых ресурсов. Source identities повторно сверены, accepted PNG/prompts/provenance не изменялись.
 
 Root читает финальный review, открывает/captures HTML и решает R09 PASS. R09 VERIFY не разрешает geometry: R10 и relevant L/C/reference gates обязательны. Geometry, Blender, renderer/GPU и browser launch исполнителем не выполнялись.
+
+
+M06.3_REF root PASS: final actual PNG opened, side-width correction retained. Exact C02/support targets govern, no geometry/action acceptance.
+
+
+M09_REF root PASS: Actual four-view PNG opened: one rounded off-white bottle, petrol cap and front valve, complete sparse charcoal cage and grounded pallet. Rear/side have no duplicate valve, valve opening coherent. Exact C02 HU1.20x1.16x1.00/unit1.08x1.02x.88 and approved support/valve-bay targets govern metric geometry. One654kg HU contains one sealed primary unit; no fluid-as-unit or capacity/rating/action acceptance.
+
+
+M07.1_REF root PASS: Actual independent four-view PNG opened: open petrol ribbed tote, connected rim/base, genuine handle apertures and empty cavity; coherent front/side/rear/quarter. Exact outer.60x.34x.40/inner.56x.30x.36/Y.02support target approved. Upcoming.36x.28x.28parcel fits; STANDARDHU takes separate lower-tray route.3kgsynthetic tare+12kgpayload<=15kgmanualgross. New cart upper.66/lower.22/handle.98 supplement records4cmrevision without editing frozenR11. Workflowcontainer only; mesh/contacts/actions separate.

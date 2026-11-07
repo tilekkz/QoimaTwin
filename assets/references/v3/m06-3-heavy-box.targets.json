@@ -1,0 +1,101 @@
+{
+  "reference_id": "M06.3_REF",
+  "asset_id": "heavy-box",
+  "status": "pregeometry_dimension_plan",
+  "units": "m",
+  "origin": "floor centre",
+  "up_axis": "Y",
+  "front_axis": "+Z",
+  "handling_unit": {
+    "bounding_volume_m3": 0.312,
+    "contents_gross_mass_kg": 184.0,
+    "dimensions_xyz_m": [
+      0.8,
+      0.65,
+      0.6
+    ],
+    "gross_mass_kg": 200.0,
+    "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+    "packaging_tare_mass_kg": 16,
+    "packaging_type": "protective_crate",
+    "units_per_handling_unit": 8
+  },
+  "unit": {
+    "bounding_volume_m3": 0.012,
+    "contents_mass_kg": 22,
+    "dimensions_xyz_m": [
+      0.3,
+      0.2,
+      0.2
+    ],
+    "gross_mass_kg": 23.0,
+    "mass_scope": "contents_plus_primary_unit_packaging",
+    "packaging_tare_mass_kg": 1
+  },
+  "packing_recipe_source": "/packing_recipes/2",
+  "packing_grid_counts_xyz": [
+    2,
+    2,
+    2
+  ],
+  "packing_inner_bounds_runtime": {
+    "min": [
+      -0.35,
+      0.06,
+      -0.25
+    ],
+    "max": [
+      0.35,
+      0.6,
+      0.25
+    ]
+  },
+  "engineering_adaptation": {
+    "root_approved_before_generation": true,
+    "reference_R03_difference": "No misleading fork-through pockets in HU base; fixedC02 packing innerY.06 and C08 direct-under-HU interface take precedence.",
+    "contained_reinforced_base_max_y": 0.04,
+    "underside_bearing_pad_y": 0,
+    "pickup_support": "Only actual M03 raised/open support lanes or separately verified receivingfixture; no standalone ground pickup.",
+    "fork_contact": "Two forks directly below unchanged HU bottom; .08W/.07H/1.10L, centresX\u00b1.24.",
+    "positioning_handles_only": true,
+    "manual_200kg_handling_allowed": false,
+    "ground_fork_pocket_claim": false,
+    "operational_admission": false,
+    "later_actual_fixture_action_proof_required": true
+  },
+  "source_bindings": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    }
+  ],
+  "unit_contents_geometry_baked": false,
+  "raster_is_engineering_authority": false,
+  "underside_bearing_plan": {
+    "central_strip_bounds_xz": {
+      "min": [
+        -0.17,
+        -0.27
+      ],
+      "max": [
+        0.17,
+        0.27
+      ]
+    },
+    "fork_pad_centres_x": [
+      -0.24,
+      0.24
+    ],
+    "fork_pad_width": 0.12,
+    "bearing_y": 0,
+    "on_M03": "Only central rib supports this .8m-wideHU; pads\u00b1.24 remain above voids until forks engage. No outerrib/rating/operationalaction claim."
+  }
+}

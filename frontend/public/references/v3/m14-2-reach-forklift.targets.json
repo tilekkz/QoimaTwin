@@ -1,0 +1,124 @@
+{
+  "reference_id": "M14.2-REACH",
+  "stage": "M14.2 pre-geometry reference gate",
+  "status": "VERIFY",
+  "path": "assets/references/v3/m14-2-reach-forklift.png",
+  "sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+  "dimension_plan": "assets/v3/specs/forklift.dimensions.json",
+  "dimension_plan_sha256": "d13741cc15e2dc4486ec880cdcbba56fe2ebf7143481d5f24be40ea31a57818b",
+  "C08_sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+  "travel_envelope_xyz_m": [
+    1.2,
+    2.1,
+    3.0
+  ],
+  "wheel_centres": {
+    "front_L": [
+      -0.35,
+      0.3,
+      0.4
+    ],
+    "front_R": [
+      0.35,
+      0.3,
+      0.4
+    ],
+    "rear_L": [
+      -0.35,
+      0.225,
+      -1.0
+    ],
+    "rear_R": [
+      0.35,
+      0.225,
+      -1.0
+    ]
+  },
+  "tyre_radius_width_m": {
+    "front": [
+      0.3,
+      0.24
+    ],
+    "rear": [
+      0.225,
+      0.2
+    ]
+  },
+  "rear_steer_individual_limit_deg": 75,
+  "M14_2_only": [
+    "connected chassis",
+    "tan counterweight",
+    "four grounded rounded faceted tyres",
+    "contained tan hubs and axle/knuckle connections"
+  ],
+  "deferred": [
+    "cab/seat/guard",
+    "mast/reach carriage/forks",
+    "complete GLB",
+    "pickup/actions"
+  ],
+  "planned_body_stage_bounds": {
+    "min": [
+      -0.6,
+      0,
+      -1.5
+    ],
+    "max": [
+      0.6,
+      0.92,
+      0.7
+    ]
+  },
+  "additional_fixed_axle_supports_proposed_before_mesh": [
+    {
+      "name": "low_forward_spine",
+      "min": [
+        -0.1,
+        0.04,
+        -0.1
+      ],
+      "max": [
+        0.1,
+        0.09,
+        0.45
+      ]
+    },
+    {
+      "name": "rear_drop_connection",
+      "min": [
+        -0.1,
+        0.08,
+        -0.15
+      ],
+      "max": [
+        0.1,
+        0.2,
+        -0.07
+      ]
+    },
+    {
+      "name": "front_axle_saddle",
+      "min": [
+        -0.15,
+        0.08,
+        0.32
+      ],
+      "max": [
+        0.15,
+        0.36,
+        0.48
+      ]
+    }
+  ],
+  "why_axle_supports": "accepted front main spine stops behind lift plate; a connected low spine below rear-plate minY.11 and a forward axle saddle are needed to attach front axle without entering reach sweep. Bounds unchanged; root approval pending.",
+  "exact_numeric_overrides": [
+    "mast behind front tyres at Z<=.06",
+    "travel fork heel Z=.40 directly at front axle plane",
+    "bare/direct fork-topY.70, LONG.75",
+    "unchanged1.10blade; reach handling+.40 onlystopped"
+  ],
+  "proposed_source": "assets/v3/blender/forklift-body-wheels.blend",
+  "optional_stage_asset_id": "forklift-body-wheels",
+  "complete_forklift_GLb_not_exported": true,
+  "no_body_geometry_created": true
+}

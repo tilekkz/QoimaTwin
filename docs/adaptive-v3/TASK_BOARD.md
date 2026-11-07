@@ -44,19 +44,19 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [C06](tasks/C06.md) | PASS | root | C05 | Определена проверка габаритов и ориентации |
 | [C07](tasks/C07.md) | PASS | root | C05 | Определена проверка массы и обработки |
 | [C08](tasks/C08.md) | PASS | root | C02,L07 | Определены ограничения движения загруженной техники |
-| [C09](tasks/C09.md) | READY | unassigned | C06,C07,C08 | Задан порядок «совместимость, затем стоимость» |
-| [C10](tasks/C10.md) | TODO | unassigned | C03,C04,C09 | Подготовлено допустимое baseline-размещение |
-| [C11](tasks/C11.md) | TODO | unassigned | C10 | Подготовлено адаптированное размещение |
+| [C09](tasks/C09.md) | PASS | root | C06,C07,C08 | Задан порядок «совместимость, затем стоимость» |
+| [C10](tasks/C10.md) | PASS | root | C03,C04,C09 | Подготовлено допустимое baseline-размещение |
+| [C11](tasks/C11.md) | READY | unassigned | C10 | Подготовлено адаптированное размещение |
 | [C12](tasks/C12.md) | TODO | unassigned | C11,L12 | Передано предложение контрактов v3 |
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
 | [M04](tasks/M04.md) | READY | unassigned | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
 | [M05](tasks/M05.md) | PASS | rack_crate | R10,R02,C04,I09,R13.5 | Готова модель FLEX storage |
-| [M06](tasks/M06.md) | TODO | unassigned | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
+| [M06](tasks/M06.md) | PASS | root | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
 | [M07](tasks/M07.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
-| [M08](tasks/M08.md) | ACTIVE | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
-| [M09](tasks/M09.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель IBC |
+| [M08](tasks/M08.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
+| [M09](tasks/M09.md) | ACTIVE | rack_crate | R10,R03,C02,I09 | Готова модель IBC |
 | [M10](tasks/M10.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
 | [M11](tasks/M11.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
 | [M12](tasks/M12.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
@@ -66,7 +66,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P02](tasks/P02.md) | PASS | people_packing | R10,P01,R05,I09 | Готовы визуальные варианты ролей |
 | [P03](tasks/P03.md) | TODO | unassigned | R10,P02,M07,I09 | Готов комплект picker/cart |
 | [P04](tasks/P04.md) | TODO | unassigned | R10,P02,M07,P08,I09 | Готов комплект packer |
-| [P05](tasks/P05.md) | TODO | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
+| [P05](tasks/P05.md) | READY | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
 | [P06](tasks/P06.md) | TODO | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
 | [P07](tasks/P07.md) | TODO | unassigned | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
@@ -112,9 +112,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [H07](tasks/H07.md) | TODO | unassigned | H03,H04,H05,H06 | Подготовлен утренний README и resume checkpoint |
 | [H08](tasks/H08.md) | TODO | unassigned | H07,I07 | Зафиксирована собственная поставка без потери чужих правок |
 | [M06.1](tasks/M06.1.md) | PASS | warehouse_props | R10,R03,C02,I09 | Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim |
-| [M06.2](tasks/M06.2.md) | ACTIVE | warehouse_props | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
-| [M06.3](tasks/M06.3.md) | READY | unassigned | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
-| [M07.1](tasks/M07.1.md) | READY | unassigned | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
+| [M06.2](tasks/M06.2.md) | PASS | warehouse_props | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
+| [M06.3](tasks/M06.3.md) | PASS | warehouse_props | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
+| [M07.1](tasks/M07.1.md) | ACTIVE | warehouse_props | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
 | [M07.2](tasks/M07.2.md) | READY | unassigned | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
 | [M13.1](tasks/M13.1.md) | PASS | root | R10,R04,L08,I09 | Straight belt: supported transport surface and exact connection ports |
 | [M13.2](tasks/M13.2.md) | PASS | root | R10,R04,L08,I09 | 90-degree turn: joined supported path and correct inside/outside cargo clearance |
@@ -131,7 +131,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P09.4](tasks/P09.4.md) | READY | unassigned | R10,R07,L12,P09.3,I09 | Zone/route/port markings without covering logical passage or z fighting |
 | [M14.1](tasks/M14.1.md) | PASS | people_packing | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
 | [M14.2](tasks/M14.2.md) | ACTIVE | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
-| [M14.3](tasks/M14.3.md) | TODO | unassigned | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
+| [M14.3](tasks/M14.3.md) | FIX | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
 | [M14.4](tasks/M14.4.md) | TODO | unassigned | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
 | [M14.5](tasks/M14.5.md) | TODO | unassigned | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
 | [M14.6](tasks/M14.6.md) | TODO | unassigned | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
