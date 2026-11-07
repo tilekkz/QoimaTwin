@@ -1,0 +1,75 @@
+{
+  "authority": "new user visual/mechanical attachment correction + root approved plan",
+  "before_body_glb_sha256": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9",
+  "before_cab_glb_sha256": "7bafad7b673dca566d19ff6b15f43f40d6ab20110d066dfef400a76ce936ecf4",
+  "unchanged": [
+    "tyre radii/widths/centres",
+    "steering joints/limits",
+    "P01/seat/handanchors",
+    "C08 load/fork/reach dimensions",
+    "conservative1.2x2.1x3 hull"
+  ],
+  "changed_parts": [
+    "low_forward_spine",
+    "front_axle_saddle",
+    "axle_front"
+  ],
+  "added_parts": [
+    "lower_front_crossmember",
+    "outboard_frame_cheek_L",
+    "outboard_frame_cheek_R",
+    "front_bearing_collar_L",
+    "front_bearing_collar_R"
+  ],
+  "frame_design": {
+    "ramp_abs_x": 0.2,
+    "rear_plate_band_max_y": 0.095,
+    "rear_plate_band_z": [
+      0,
+      0.08
+    ],
+    "bearing_housing_bounds": {
+      "min": [
+        -0.22,
+        0.08,
+        0.28
+      ],
+      "max": [
+        0.22,
+        0.43,
+        0.52
+      ]
+    },
+    "shaft_radius": 0.09,
+    "collar_abs_x_range": [
+      0.185,
+      0.225
+    ],
+    "cheek_abs_x_range": [
+      0.57,
+      0.6
+    ],
+    "rear_crossmember_bounds": {
+      "min": [
+        -0.6,
+        0.025,
+        -0.1
+      ],
+      "max": [
+        0.6,
+        0.095,
+        0.09
+      ]
+    }
+  },
+  "expected_continuous_gaps_m": {
+    "rearplate_minY_to_low_frame": 0.015,
+    "outerguide_to_cheekX": 0.01,
+    "tyre_innerface_to_collarX": 0.005,
+    "tyre_front_to_rearcrossmemberZ": 0.01,
+    "high_forward_assembly_minY_to_newframe_maxY": 0.13,
+    "low_extended_forwardplate_minZ_to_newframe_maxZ": 0.24
+  },
+  "avoidance": "no fixed axle shaft crosses sideguideabsX.50..56 atY.30; hub support remains thick/inboard with9mm exposed stub",
+  "mast_geometry_created": false
+}

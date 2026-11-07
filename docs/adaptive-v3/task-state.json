@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T16:41:29.169464+00:00",
+  "updated_at": "2026-11-07T17:21:47.302046+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -762,12 +762,13 @@
         "R13.4"
       ],
       "criteria": "Конструкция поддерживает длинномер по длине; нет висящего центра груза",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "ACTIVE",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M04.md",
         "docs/adaptive-v3/evidence/M04.json"
-      ]
+      ],
+      "actual": "Plan functional LONGsupport/cradle rear-open relief withinunchangedC04/C08; actual3pointloadsupport, independentcorrectedref beforegeometry. No warehousegraphrebuild."
     },
     {
       "id": "M05",
@@ -863,13 +864,13 @@
         "I09"
       ],
       "criteria": "Объёмная ёмкость, каркас и опора; визуально не обычная картонная коробка",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M09.md",
         "docs/adaptive-v3/evidence/M09.json"
       ],
-      "actual": "Root opened and registered M09_REF. Approved fixed C02 one sealed bottle/654kgHU, rounded shoulder/cap/valve within primaryunit bounds, sparse connected cage/base, actual M03+forkfixture contact proof before modelPASS."
+      "actual": "Current IBCGLB geometry/BIN/source bindings verified; realstemdegeneracyfixed, oneunit654kg. Team4sourceviews+rootcurrentGLBfront/quarter/4captures, Khronos0/0/browser0. Actualvehicleactions separate."
     },
     {
       "id": "M10",
@@ -1877,7 +1878,7 @@
       "title": "Open tote: real cavity/handles, interior exceeds parcel and payload bounds",
       "parent": "M07",
       "owner": "warehouse_props",
-      "status": "ACTIVE",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R03",
@@ -1892,14 +1893,14 @@
         "docs/adaptive-v3/evidence/M07.1.json"
       ],
       "criteria": "Open tote: real cavity/handles, interior exceeds parcel and payload bounds; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Actual independenttote4viewreference rootPASS/registered. Fixedouter.60x.34x.40/inner.56x.30x.36, honestparcel fit/3kg+12kgmanualgross, realcavity/handles; one geometry/source/browser gate."
+      "actual": "Realribbedtote .60x.34x.40 with full.56x.30x.36 cavity/4holes/parcel-envelopefit.18hashesverified, team4sourceviews/rootactualTOP+4GLBangles, Khronos0/0/browser0; packageflow next."
     },
     {
       "id": "M07.2",
       "title": "Sealed parcel: paper/tape construction and verified full fit in tote",
       "parent": "M07",
-      "owner": "unassigned",
-      "status": "READY",
+      "owner": "warehouse_props",
+      "status": "ACTIVE",
       "depends_on": [
         "R10",
         "R03",
@@ -1913,7 +1914,8 @@
         "frontend/public/models/v3/sealed-parcel.glb",
         "docs/adaptive-v3/evidence/M07.2.json"
       ],
-      "criteria": "Sealed parcel: paper/tape construction and verified full fit in tote; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Sealed parcel: paper/tape construction and verified full fit in tote; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Create realsealedworkflowparcel .36x.28x.28/3mmwalls, containingunchangedSMALLHU andfullyfitting acceptedtote; referencefirst, declaredwraptare/ancestry, noinventoryinflation."
     },
     {
       "id": "M13.1",
@@ -2203,7 +2205,7 @@
       "title": "Body/counterweight and four connected grounded wheels, front/side check",
       "parent": "M14",
       "owner": "people_packing",
-      "status": "ACTIVE",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2216,14 +2218,14 @@
         "docs/adaptive-v3/evidence/M14.2.json"
       ],
       "criteria": "Body/counterweight and four connected grounded wheels, front/side check; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "User found detached-looking frontwheel/axle. Reopen bodyfor substantial connectedframe/axle repair within samehull, fixedtyres/C08interfaces; preserveoldsource andcomparebeforeafter."
+      "actual": "User wheelmountdefect repaired: castframe/housing/collars+joinedcheeks, exposedstub84to9mm. Actual45closedparts/52contacts/changedclearances/tyresrig preserved, beforeafterrootopened, browser5views0errors/KHR0/0."
     },
     {
       "id": "M14.3",
       "title": "Cab/seat/guard and driver clearance, side/rear check",
       "parent": "M14",
       "owner": "people_packing",
-      "status": "FIX",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2236,14 +2238,14 @@
         "docs/adaptive-v3/evidence/M14.3.json"
       ],
       "criteria": "Cab/seat/guard and driver clearance, side/rear check; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Cabacceptance pending revised bodymount; retain previous accepted geometryhistory, refreshcontainedbody/cab aftermechanical/visual fix. No newmastuntilreview."
+      "actual": "Updatedbody/cab repair32artifacthashes match; actualsourceandGLTF interfaces preserved, rootbeforeafter+currentWebGLside/quarter coherent. Samehull/P01/C08; body+cab accepted, mast/forks/actionsnext."
     },
     {
       "id": "M14.4",
       "title": "Twin mast, carriage and two parallel forks with functional lift connection",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "people_packing",
+      "status": "ACTIVE",
       "depends_on": [
         "R10",
         "R06",
@@ -2255,7 +2257,8 @@
         "docs/adaptive-v3/specs/M14.4.md",
         "docs/adaptive-v3/evidence/M14.4.json"
       ],
-      "criteria": "Twin mast, carriage and two parallel forks with functional lift connection; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Twin mast, carriage and two parallel forks with functional lift connection; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Build separateforklift-mast-stage fromacceptedM141/C08 and repairedframe; twinmast/lift/reach/twoparallelforks, boundedactualconnections/clearances+4views. Preservebody/cab."
     },
     {
       "id": "M14.5",
@@ -3080,5 +3083,20 @@
       ],
       "actual": "Allfive dedicated storage four-view references accepted and bound to assets, independent of model renders; exact engineering target reminders retained."
     }
-  ]
+  ],
+  "execution": {
+    "status": "stopped_for_chat_handoff",
+    "stopped_at_utc": "2026-11-07T17:21:47.302046+00:00",
+    "reason": "User requested ending development in this overloaded chat and preparing a fresh-chat handoff.",
+    "previous_goal": "cleared_by_user; live get_goal returned null",
+    "live_subagents": [],
+    "active_cards_are_unfinished_not_running": true,
+    "historical_owners": {
+      "M04": "rack_crate",
+      "M07.2": "warehouse_props",
+      "M14.4": "people_packing"
+    },
+    "unreviewed_candidate": "frontend/public/models/v3/forklift-mast-stage.glb",
+    "resume": "New chat must inspect the current checkout/card artifacts before reassigning unfinished cards."
+  }
 }

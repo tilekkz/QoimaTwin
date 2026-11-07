@@ -30,6 +30,46 @@ def _box_bounds(name, lo, hi, mat, parent, bevel=.008, kind="body"):
                     [b-a for a,b in zip(lo,hi)], mat, parent, bevel), name, kind)
 
 
+def _cast_profile_x(name,x_range,yz,mat,parent,bevel=.003):
+    """Closed cast-frame profile, extruded laterally with no negative scale."""
+    vertices=[xyz((x,y,z)) for x in x_range for y,z in yz]
+    n=len(yz)
+    faces=[tuple(range(n)),tuple(reversed(range(n,2*n)))]
+    faces += [(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+    mesh=bpy.data.meshes.new(name+"__editable_cast_profile")
+    mesh.from_pydata(vertices,[],faces);mesh.update()
+    bm=bmesh.new();bm.from_mesh(mesh)
+    bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+    if bm.calc_volume(signed=True)<0:bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+    bm.to_mesh(mesh);bm.free();mesh.update()
+    obj=bpy.data.objects.new(name,mesh)
+    bpy.context.collection.objects.link(obj);obj.parent=parent;mesh.materials.append(mat)
+    if bevel:
+        mod=obj.modifiers.new("Cast frame edge relief","BEVEL");mod.width=bevel;mod.segments=1
+        mod.harden_normals=True
+        normal=obj.modifiers.new("Weighted cast faces","WEIGHTED_NORMAL");normal.keep_sharp=True
+    return _tag(obj,name,"axle_frame")
+
+
+def _front_axle_frame(root,mats):
+    # Actual reach-truck load path. The low rear crossmember runs BEHIND the
+    # tyres and BELOW the moving guide/plate minimum; no shaft crosses their
+    # full-height outboard sweep at absX .50.. .56.
+    ramp=[(.025,-.12),(.025,.46),(.08,.52),(.43,.52),
+          (.40,.30),(.095,.105),(.095,-.12)]
+    _cast_profile_x("low_forward_spine",[-.20,.20],ramp,mats["steel"],root)
+    _box_bounds("lower_front_crossmember",[-.60,.025,-.10],[.60,.095,.09],
+                mats["petrol"],root,.004,"axle_frame")
+    cheek=[(.065,-.24),(.065,.46),(.12,.52),(.26,.52),
+           (.30,.32),(.50,-.12),(.50,-.24)]
+    for sign,side in ((-1,"L"),(1,"R")):
+        xr=sorted([sign*.57,sign*.60])
+        _cast_profile_x("outboard_frame_cheek_"+side,xr,cheek,mats["petrol"],root,.003)
+        obj=cylinder("front_bearing_collar_"+side,(sign*.205,.30,.40),.11,.040,
+                     mats["steel"],root,axis="X",vertices=24)
+        _tag(obj,obj.name,"axle_bearing")
+
+
 def _tyre(name, radius, width, inner_radius, mat, parent, segments=24):
     """Closed annular tyre with actual rounded shoulders and a contained hub.
 
@@ -152,10 +192,10 @@ def build_body_wheels():
     _box_bounds("counterweight_upper_step",[-.42,.84,-1.425],[.42,.92,-.935],mats["tan"],root,.010)
     # Approved fixed front-axle support chain, below the moving plate or behind
     # it. These parts do not occupy the high/extended-low reach sweep.
-    _box_bounds("low_forward_spine",[-.10,.04,-.10],[.10,.09,.45],mats["steel"],root,.003,"axle_support")
+    _front_axle_frame(root,mats)
     _box_bounds("rear_drop_connection",[-.10,.08,-.15],[.10,.20,-.07],mats["petrol"],root,.004,"axle_support")
-    _box_bounds("front_axle_saddle",[-.15,.08,.32],[.15,.36,.48],mats["steel"],root,.007,"axle_support")
-    for axle,y,z,r in (("front",.30,.40,.050),("rear",.225,-1.00,.035)):
+    _box_bounds("front_axle_saddle",[-.22,.08,.28],[.22,.43,.52],mats["steel"],root,.010,"axle_support")
+    for axle,y,z,r in (("front",.30,.40,.090),("rear",.225,-1.00,.035)):
         obj=cylinder("axle_"+axle,(0,y,z),r,.70,mats["steel"],root,axis="X",vertices=16)
         _tag(obj,"axle_"+axle,"axle")
     for data in plan["wheels"]:
@@ -263,18 +303,99 @@ def build_cab():
     return root
 
 
+def _rect_tube_z(name,x_range,y_range,z_range,wall,mat,parent):
+    """Closed hollow guide; open ends, fixed length and real inner clearance."""
+    x0,x1=x_range;y0,y1=y_range;z0,z1=z_range
+    outer=[(x0,y0),(x1,y0),(x1,y1),(x0,y1)]
+    inner=[(x0+wall,y0+wall),(x1-wall,y0+wall),
+           (x1-wall,y1-wall),(x0+wall,y1-wall)]
+    vertices=[xyz((x,y,z)) for z in (z0,z1) for ring in (outer,inner) for x,y in ring]
+    faces=[]
+    for i in range(4):
+        j=(i+1)%4
+        faces += [(i,j,j+8,i+8),(i+4,i+12,j+12,j+4),
+                  (i,i+4,j+4,j),(i+8,j+8,j+12,i+12)]
+    mesh=bpy.data.meshes.new(name+"__editable_hollow_profile")
+    mesh.from_pydata(vertices,[],faces);mesh.update()
+    bm=bmesh.new();bm.from_mesh(mesh);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+    if bm.calc_volume(signed=True)<0:bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+    bm.to_mesh(mesh);bm.free();mesh.update()
+    obj=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(obj)
+    obj.parent=parent;mesh.materials.append(mat)
+    mod=obj.modifiers.new("Guide edge relief","BEVEL");mod.width=.0007;mod.segments=1;mod.harden_normals=True
+    obj.modifiers.new("Weighted guide faces","WEIGHTED_NORMAL").keep_sharp=True
+    return _tag(obj,name,"reach_outer_guide")
+
+
+def build_mast():
+    """M14.4 mechanics stage. Body/cab source and outputs stay untouched."""
+    plan=json.loads(SPEC.read_text(encoding="utf-8"))
+    root=build_cab()
+    root["asset_id"]="forklift-mast-stage"
+    root["stage"]="M14.4_body_cab_mast_reach_forks"
+    root["staged_expected_dimensions_xyz_m"]=[1.2,2.1,3.0]
+    root["future_children"]="LONG cradle; complete GLB acceptance; pickup/setdown action"
+    root["mechanics_sequence"]="travel top.70/reach0; stop extend high; lower fullreach.40; lift extended; retract high"
+    mats={k:material(v["name"],v["color"],.85,0) for k,v in plan["materials"].items()}
+    # Real U channels leave a captured path for moving carriage shoes.
+    # Their original overall rail envelopes are unchanged.
+    for sign,side in ((-1,"L"),(1,"R")):
+        for label,a,b in (("inner_flange",.20,.214),("outer_flange",.266,.28)):
+            _box_bounds("mast_"+side+"_"+label,[min(sign*a,sign*b),.08,-.02],
+                        [max(sign*a,sign*b),2.1,.06],mats["steel"],root,.001,"mast_fixed")
+        _box_bounds("mast_"+side+"_rear_web",[min(sign*.20,sign*.28),.08,-.02],
+                    [max(sign*.20,sign*.28),2.1,-.006],mats["steel"],root,.001,"mast_fixed")
+    for part in plan["blueprint_boxes"]:
+        if part["name"] in ("mast_top_crossmember","mast_foot_rear_connection","mast_foot_low_crossmember"):
+            _box_bounds(part["name"],part["min"],part["max"],mats["steel"],root,.001,"mast_fixed")
+    carriage=pivot("joint__carriage",(0,.70,.04),root,"Y")
+    carriage["translation_axis_runtime"]="Y";carriage["translation_delta_range_m"]=[-.52,.80]
+    carriage["bind_fork_top_y_m"]=.70
+    _box_bounds("carriage_rear_plate",[-.56,-.07,.024],[.56,.16,.040],mats["steel"],carriage,.001,"carriage")
+    for sign,side in ((-1,"L"),(1,"R")):
+        xr=sorted((sign*.218,sign*.262))
+        _box_bounds("mast_shoe_"+side,[xr[0],-.055,-.030],[xr[1],.145,.027],mats["steel"],carriage,.001,"mast_shoe")
+        for level,y in (("lower",-.030),("upper",.120)):
+            obj=cylinder("mast_roller_"+side+"_"+level,(sign*.24,y,-.031),.015,.042,
+                         mats["tan"],carriage,axis="X",vertices=16)
+            _tag(obj,obj.name,"mast_roller")
+        xr=sorted((sign*.50,sign*.56))
+        _rect_tube_z("reach_outer_"+side,xr,[-.07,-.015],[-.06,.58],.008,mats["petrol"],carriage)
+    reach=pivot("joint__reach",(0,0,.36),carriage,"Z")
+    reach["translation_axis_runtime"]="Z";reach["translation_delta_range_m"]=[0,.40]
+    reach["requires_stopped_handling"]=True;reach["low_retracted_forbidden"]=True
+    for sign,side in ((-1,"L"),(1,"R")):
+        xr=sorted((sign*.512,sign*.548))
+        _box_bounds("reach_inner_"+side,[xr[0],-.0575,-.42],[xr[1],-.0275,.22],mats["steel"],reach,.001,"reach_inner_guide")
+    _box_bounds("carriage_forward_plate",[-.56,-.07,-.04],[.56,.04,0],mats["steel"],reach,.002,"carriage")
+    for sign,side in ((-1,"L"),(1,"R")):
+        fork=pivot("joint__fork_"+side,(sign*.40,0,0),reach,"X")
+        fork["translation_axis_runtime"]="X";fork["half_spacing_range_m"]=[.24,.40]
+        profile=[(-.07,-.025),(.30,-.025),(.30,0),(0,0),(0,1.10),(-.07,1.10)]
+        obj=_cast_profile_x("fork_"+side,[-.04,.04],profile,mats["tan"],fork,.002)
+        _tag(obj,obj.name,"fork_one_piece")
+        obj["blade_length_m"]=1.10;obj["blade_width_m"]=.08;obj["blade_thickness_m"]=.07
+        anchor("anchor_fork_top_"+side,(0,0,.55),fork,"fork_support")
+    anchor("anchor_LONG_cradle",(0,-.10,.60),reach,"future_attachment")
+    anchor("anchor_LONG_load",(0,.05,.60),reach,"future_load")
+    return root
+
+
 def build(stage="body-wheels"):
     if stage=="body-wheels":
         return build_body_wheels()
     if stage=="cab":
         return build_cab()
-    raise ValueError("Only body-wheels and cab stages are implemented")
+    if stage=="mast":
+        return build_mast()
+    raise ValueError("Unknown forklift stage")
 
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
-    parser.add_argument("--stage",choices=["body-wheels","cab"],default="body-wheels")
+    parser.add_argument("--stage",choices=["body-wheels","cab","mast"],default="body-wheels")
     arguments=sys.argv[sys.argv.index("--")+1:] if "--" in sys.argv else []
     args=parser.parse_args(arguments)
     reset()
-    finish(ASSET_ID if args.stage=="body-wheels" else "forklift-cab-stage",build(args.stage),batch_runtime=True)
+    asset={"body-wheels":ASSET_ID,"cab":"forklift-cab-stage","mast":"forklift-mast-stage"}[args.stage]
+    finish(asset,build(args.stage),batch_runtime=True)

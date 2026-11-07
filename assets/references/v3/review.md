@@ -159,3 +159,6 @@ M09_REF root PASS: Actual four-view PNG opened: one rounded off-white bottle, pe
 
 
 M07.1_REF root PASS: Actual independent four-view PNG opened: open petrol ribbed tote, connected rim/base, genuine handle apertures and empty cavity; coherent front/side/rear/quarter. Exact outer.60x.34x.40/inner.56x.30x.36/Y.02support target approved. Upcoming.36x.28x.28parcel fits; STANDARDHU takes separate lower-tray route.3kgsynthetic tare+12kgpayload<=15kgmanualgross. New cart upper.66/lower.22/handle.98 supplement records4cmrevision without editing frozenR11. Workflowcontainer only; mesh/contacts/actions separate.
+
+
+M07.2_REF root PASS: Actual four-view PNG opened: coherent closed warm carton, single buff tape band and front shipping label, plain side/rear, volumetric folded top. Exact.36x.28x.28 outer/.354x.274x.274 inner and composite3mm flush paper/board gauge govern geometry; illustrative side width approximate and no further pixel edits needed. Contains unchanged SMALLHU atzero supportgap and fits actual tote; wrapper.08kg+HU.94=1.02, toteassembly4.02. Per-instance package ancestry, no extraSKU/lot/stock.

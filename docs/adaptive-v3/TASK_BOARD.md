@@ -1,5 +1,7 @@
 # QoimaTwin v3 — task board
 
+> **ОСТАНОВЛЕНО ДЛЯ ПЕРЕДАЧИ В НОВЫЙ ЧАТ.** Пользователь завершил разработку в этом чате. Прежний goal удалён (live goal=null), живых субагентов нет. M04, M07.2 и M14.4 остались незавершёнными; их ACTIVE и owner — сохранённая точка работы, а не запущенные процессы. Кандидат forklift-mast-stage ещё не прошёл root acceptance. См. `handoff/README.md`.
+
 Source: `brief/01_START_CODEX.md` + `brief/03_MICROTASKS.md`. Cards: `tasks/ID.md`.
 One ACTIVE card per executor. Reviewed artifacts gate dependent work; broad parents gain children before execution.
 V2 preserved; visual fixtures and backend runs have separate labels. Root alone updates central state.
@@ -51,12 +53,12 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
-| [M04](tasks/M04.md) | READY | unassigned | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
+| [M04](tasks/M04.md) | ACTIVE | rack_crate | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
 | [M05](tasks/M05.md) | PASS | rack_crate | R10,R02,C04,I09,R13.5 | Готова модель FLEX storage |
 | [M06](tasks/M06.md) | PASS | root | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
 | [M07](tasks/M07.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
 | [M08](tasks/M08.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
-| [M09](tasks/M09.md) | ACTIVE | rack_crate | R10,R03,C02,I09 | Готова модель IBC |
+| [M09](tasks/M09.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель IBC |
 | [M10](tasks/M10.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
 | [M11](tasks/M11.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
 | [M12](tasks/M12.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
@@ -114,8 +116,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M06.1](tasks/M06.1.md) | PASS | warehouse_props | R10,R03,C02,I09 | Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim |
 | [M06.2](tasks/M06.2.md) | PASS | warehouse_props | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
 | [M06.3](tasks/M06.3.md) | PASS | warehouse_props | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
-| [M07.1](tasks/M07.1.md) | ACTIVE | warehouse_props | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
-| [M07.2](tasks/M07.2.md) | READY | unassigned | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
+| [M07.1](tasks/M07.1.md) | PASS | warehouse_props | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
+| [M07.2](tasks/M07.2.md) | ACTIVE | warehouse_props | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
 | [M13.1](tasks/M13.1.md) | PASS | root | R10,R04,L08,I09 | Straight belt: supported transport surface and exact connection ports |
 | [M13.2](tasks/M13.2.md) | PASS | root | R10,R04,L08,I09 | 90-degree turn: joined supported path and correct inside/outside cargo clearance |
 | [M13.3](tasks/M13.3.md) | PASS | root | R10,R04,L08,I09 | T transfer: three open connection ends and no crossing walls |
@@ -130,9 +132,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P09.3](tasks/P09.3.md) | PASS | people_packing | R10,R07,L12,P09.2,I09 | 144x72x8 cutaway shell, substantial walls/columns at ordinary scale |
 | [P09.4](tasks/P09.4.md) | READY | unassigned | R10,R07,L12,P09.3,I09 | Zone/route/port markings without covering logical passage or z fighting |
 | [M14.1](tasks/M14.1.md) | PASS | people_packing | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
-| [M14.2](tasks/M14.2.md) | ACTIVE | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
-| [M14.3](tasks/M14.3.md) | FIX | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
-| [M14.4](tasks/M14.4.md) | TODO | unassigned | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
+| [M14.2](tasks/M14.2.md) | PASS | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
+| [M14.3](tasks/M14.3.md) | PASS | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
+| [M14.4](tasks/M14.4.md) | ACTIVE | people_packing | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
 | [M14.5](tasks/M14.5.md) | TODO | unassigned | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
 | [M14.6](tasks/M14.6.md) | TODO | unassigned | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
 | [M14.7](tasks/M14.7.md) | TODO | unassigned | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |

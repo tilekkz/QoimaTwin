@@ -20,8 +20,8 @@
     ]
   },
   "preserve_body_default_stage": true,
-  "accepted_body_source_sha256": "2c526a4fb281b49cce7c3e6e7411836a5968911965950708414975857aa670ff",
-  "accepted_body_glb_sha256": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9",
+  "accepted_body_source_sha256": "047c84bbc27ea5ff73e160ddfd1d51155ef6962b4c7335b471ebb48c05d18e19",
+  "accepted_body_glb_sha256": "27b373611a8878024dd949ee13995991943201d6e390969b495cafebf4786c1b",
   "cab_boxes": [
     {
       "name": "seat_pedestal",
@@ -517,17 +517,17 @@
     "complete forklift acceptance"
   ],
   "actual": {
-    "source_meshes": 40,
-    "closed_positive_vehicle_parts": 40,
-    "contact_witnesses": 43,
-    "unchanged_body_parts": 25,
+    "source_meshes": 45,
+    "closed_positive_vehicle_parts": 45,
+    "contact_witnesses": 52,
+    "unchanged_body_parts": 30,
     "max_body_evaluated_vertex_delta_m": 0.0,
-    "source_sha256": "2a6c62a42e2db98a94f0a89fadcca8318e594505c170395c0b375592839bd147",
+    "source_sha256": "1ac874cb188c84b455d74aee75d7f22ed323e92eb092ae6e3c01f33e4145e080",
     "GLB": {
-      "sha256": "7bafad7b673dca566d19ff6b15f43f40d6ab20110d066dfef400a76ce936ecf4",
-      "bytes": 254156,
-      "triangles": 4810,
-      "vertices": 8874,
+      "sha256": "117dce493fd8bcf26a4d09c6d9558b19870628abe79153579830d1dd80729e68",
+      "bytes": 285172,
+      "triangles": 5410,
+      "vertices": 10010,
       "nodeCount": 34,
       "meshes": 18,
       "bounds": {
@@ -633,5 +633,96 @@
     "grip_anchors_or_P01_pose_changed": false,
     "actual_BVH_clear": true,
     "final_empty_and_paired4views_actually_opened": true
-  }
+  },
+  "front_attachment_repair": {
+    "recorded_at": "2026-11-07T16:59:02.561495+00:00",
+    "reason": "User observed detached-looking front wheels; root authorized bounded structural repair before mast.",
+    "changes": [
+      "closed cast central ramp",
+      "larger axle saddle and 90mm-radius shaft",
+      "two bearing collars",
+      "low crossmember and two connected tapered outboard frame cheeks"
+    ],
+    "fixed_hull_xyz_m": [
+      1.2,
+      2.1,
+      3.0
+    ],
+    "tyres_pivots_cab_driver_C08_unchanged": true,
+    "before_stub_m": 0.084,
+    "after_stub_m": 0.009000003337860107,
+    "actual_source_checks": "assets/v3/iterations/forklift/M14.3/front-axle-repair/actual-repair-checks.json",
+    "actual_GLTFLoader_checks": "assets/v3/iterations/forklift/M14.3/front-axle-repair/actual-repair-glb-checks.json",
+    "source_closed_positive_parts": 45,
+    "source_interior_contact_witnesses": 52,
+    "old_parts_unchanged_except_three_authorized_frame_parts": 37,
+    "new_body_cab_identical_parts": 30,
+    "actual_tyre_triangle_intersections": 0,
+    "continuous_declared_interface_clearances": [
+      {
+        "interface": "rearplate_minY_to_actual_ramp_slice",
+        "continuous_gap_m": 0.015000001192092896
+      },
+      {
+        "interface": "rearplate/outerguide_minY_to_rear_crossmember",
+        "continuous_gap_m": 0.015000001192092896
+      },
+      {
+        "interface": "outerguide/plate_max_absX_to_cheeks",
+        "continuous_gap_m": 0.009999992847442574
+      },
+      {
+        "interface": "high_forward_plate_and_forks",
+        "continuous_gap_m": 0.13
+      },
+      {
+        "interface": "low_extended_forward_plate",
+        "continuous_gap_m": 0.24000001907348634
+      },
+      {
+        "interface": "low_extended_fork_stem",
+        "continuous_gap_m": 0.25500001907348635
+      },
+      {
+        "interface": "rear_steered_tyre_envelope",
+        "continuous_gap_m": 0.5137785603195154
+      },
+      {
+        "interface": "unchanged_seated_worker_all_new_fixed_parts",
+        "continuous_gap_m": 0.029999911785125732
+      },
+      {
+        "interface": "front_tyre_inner_face_to_bearing_collar",
+        "continuous_gap_m": 0.004999995231628418
+      },
+      {
+        "interface": "rear_crossmember_to_front_tyre_rear_face",
+        "continuous_gap_m": 0.009999997913837433
+      },
+      {
+        "interface": "shaft_to_rotating_annular_tyre_bore",
+        "continuous_gap_m": 0.04384505628546442
+      }
+    ],
+    "clearance_scope": "Actual fixed repair solids against frozen declared moving interfaces; production mast/actions are not yet built or accepted.",
+    "negative_cases": {
+      "raised_rear_frame_20mm_rejected": true,
+      "cheek_shift20mm_into_guide_rejected": true
+    },
+    "actual_source_images_opened": [
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/before/wheel-close.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/front.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/side.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/rear.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/three-quarter.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/wheel-close.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/paired-after/three-quarter.png"
+    ],
+    "visual_findings": "Substantial centre housing and side frame connect wheel assembly to body. No detached axle reading in side/quarter. Four grounded tyres, unchanged cab/driver fit. No new visible defect in the seven opened PNGs.",
+    "mechanical_closeup_visibility": "Cab/control meshes hidden only in the identical before/after wheel-close camera; all full views and paired-quarter retain complete source hierarchy.",
+    "previous_previews": "Body-only four views and three older paired views are historical pre-repair images; current four cab views include the complete repaired body. Current driver witness is paired-after/three-quarter.png.",
+    "no_whole_route_or_unchanged_worker_pipeline_repeat": true,
+    "full_forklift_accepted": false
+  },
+  "accepted_body_revision_state": "Updated body repair under root review; previous acceptance archived."
 }

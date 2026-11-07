@@ -1,0 +1,489 @@
+{
+  "task_id": "M14.3",
+  "owner": "people_packing",
+  "status": "PASS",
+  "recorded_at": "2026-11-07T16:18:38.673568+00:00",
+  "scope": "accepted body unchanged +cab/seat/canopy/controls; no mast/reach/forks/actions",
+  "reference_id": "M14.2-REACH",
+  "reference_sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+  "actual_source": {
+    "closed_positive_parts": 40,
+    "connected_parts": 40,
+    "interior_contact_witnesses": 43,
+    "body_parts_unchanged": 25,
+    "max_body_evaluated_vertex_delta_m": 0,
+    "source_sha256": "2a6c62a42e2db98a94f0a89fadcca8318e594505c170395c0b375592839bd147",
+    "unexpected_worker_vehicle_triangle_intersections": 0,
+    "source_roof_gap_m": 0.05000019073486328,
+    "column_future_rear_plate_gap_m": 0.04499997943639755,
+    "allowed_coplanar_supports": [
+      {
+        "vehicle": "chassis_front_spine",
+        "worker": "boot_R",
+        "triangle_pairs": 8,
+        "kind": "nonpenetrating support plane"
+      },
+      {
+        "vehicle": "chassis_front_spine",
+        "worker": "boot_L",
+        "triangle_pairs": 8,
+        "kind": "nonpenetrating support plane"
+      },
+      {
+        "vehicle": "driver_floorboard",
+        "worker": "boot_R",
+        "triangle_pairs": 8,
+        "kind": "nonpenetrating support plane"
+      },
+      {
+        "vehicle": "driver_floorboard",
+        "worker": "boot_L",
+        "triangle_pairs": 8,
+        "kind": "nonpenetrating support plane"
+      },
+      {
+        "vehicle": "seat_cushion_rear",
+        "worker": "pelvis_cloth",
+        "triangle_pairs": 8,
+        "kind": "nonpenetrating support plane"
+      }
+    ]
+  },
+  "actual_runtime": {
+    "stage": "M14.3",
+    "sha256": "7bafad7b673dca566d19ff6b15f43f40d6ab20110d066dfef400a76ce936ecf4",
+    "bytes": 254156,
+    "triangles": 4810,
+    "vertices": 8874,
+    "normals": 8874,
+    "nodeCount": 34,
+    "meshes": 18,
+    "joints": [
+      {
+        "name": "joint__rear_steer_L",
+        "parent": "forklift_root",
+        "local": [
+          -0.3499999940395355,
+          0.22499999403953552,
+          -1
+        ]
+      },
+      {
+        "name": "joint__wheel_rear_L",
+        "parent": "joint__rear_steer_L",
+        "local": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "joint__rear_steer_R",
+        "parent": "forklift_root",
+        "local": [
+          0.3499999940395355,
+          0.22499999403953552,
+          -1
+        ]
+      },
+      {
+        "name": "joint__wheel_rear_R",
+        "parent": "joint__rear_steer_R",
+        "local": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "joint__steering_wheel",
+        "parent": "forklift_root",
+        "local": [
+          0,
+          1.2780096530914307,
+          -0.2534595727920532
+        ]
+      },
+      {
+        "name": "joint__wheel_front_L",
+        "parent": "forklift_root",
+        "local": [
+          -0.3499999940395355,
+          0.30000001192092896,
+          0.4000000059604645
+        ]
+      },
+      {
+        "name": "joint__wheel_front_R",
+        "parent": "forklift_root",
+        "local": [
+          0.3499999940395355,
+          0.30000001192092896,
+          0.4000000059604645
+        ]
+      }
+    ],
+    "anchors": {
+      "anchor_driver_seat": [
+        0,
+        0.8399999737739563,
+        -0.6499999761581421
+      ],
+      "anchor_floor_origin": [
+        0,
+        0,
+        0
+      ],
+      "anchor_footrest_L": [
+        -0.11500000208616257,
+        0.5299999713897705,
+        -0.39500001072883606
+      ],
+      "anchor_footrest_R": [
+        0.11500000208616257,
+        0.5299999713897705,
+        -0.39500001072883606
+      ],
+      "anchor_front_axle": [
+        0,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "anchor_rear_axle": [
+        0,
+        0.22499999403953552,
+        -1
+      ],
+      "anchor_steering_grip_L": [
+        -0.24188876152038574,
+        1.2780096530914307,
+        -0.2534595727920532
+      ],
+      "anchor_steering_grip_R": [
+        0.24188876152038574,
+        1.2780096530914307,
+        -0.2534595727920532
+      ]
+    },
+    "materials": [
+      "V3_Forklift_Charcoal",
+      "V3_Forklift_Petrol",
+      "V3_Forklift_Tan",
+      "V3_Forklift_Rubber"
+    ],
+    "maxNormalError": 4.687954936466454e-07,
+    "maxBatchBoundError": 5.960464477539063e-08,
+    "bounds": {
+      "min": [
+        -0.6000000238418579,
+        0,
+        -1.5
+      ],
+      "max": [
+        0.6000000238418579,
+        2.099999874830246,
+        0.7000000178813934
+      ]
+    },
+    "workerBounds": {
+      "min": [
+        -0.3186166839187567,
+        0.5300000337511301,
+        -0.774999999217689
+      ],
+      "max": [
+        0.31861668398389065,
+        1.9899998390674591,
+        -0.16780037650191984
+      ]
+    },
+    "actualWorkerVehicleAnchorMatches": [
+      {
+        "vehicle": "anchor_driver_seat",
+        "worker": "anchor_seat_contact",
+        "distance": 4.556651384525492e-08,
+        "world": [
+          0,
+          0.840000011920929,
+          -0.6500000010803342
+        ]
+      },
+      {
+        "vehicle": "anchor_footrest_L",
+        "worker": "anchor_foot_floor_L",
+        "distance": 6.961322706871522e-08,
+        "world": [
+          -0.11499999463558197,
+          0.5300000337511301,
+          -0.39499998070299625
+        ]
+      },
+      {
+        "vehicle": "anchor_footrest_R",
+        "worker": "anchor_foot_floor_R",
+        "distance": 6.961322706871522e-08,
+        "world": [
+          0.11499999463558197,
+          0.5300000337511301,
+          -0.39499998070299625
+        ]
+      },
+      {
+        "vehicle": "anchor_steering_grip_L",
+        "worker": "anchor_hand_grip_L",
+        "distance": 1.728983067211064e-08,
+        "world": [
+          -0.24188875983010355,
+          1.2780096372028482,
+          -0.2534595793976674
+        ]
+      },
+      {
+        "vehicle": "anchor_steering_grip_R",
+        "worker": "anchor_hand_grip_R",
+        "distance": 1.728983067211064e-08,
+        "world": [
+          0.24188875983010355,
+          1.2780096372028482,
+          -0.2534595793976674
+        ]
+      }
+    ],
+    "roofGap": 0.050000092983245814,
+    "actualGrips": [
+      {
+        "side": "L",
+        "maxAxial": 0.040000003328632246,
+        "maxRadial": 0.01800002007532245,
+        "actualVertexToHandTriangleMinAir": 0.004500682264832103
+      },
+      {
+        "side": "R",
+        "maxAxial": 0.04000006916358753,
+        "maxRadial": 0.018000072716718694,
+        "actualVertexToHandTriangleMinAir": 0.004500620302272852
+      }
+    ],
+    "exactReset": true,
+    "productionWorkerEmbedded": false,
+    "bodyGLBUnchanged": true,
+    "fullForkliftAccepted": false,
+    "browserKhronos": "pending root"
+  },
+  "source_views_opened": {
+    "iteration01": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "with_driver01": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "iteration02": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "with_driver02": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "iteration03": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "with_driver03": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ]
+  },
+  "defects_and_fixes": [
+    {
+      "found_in_actual_images": "column-base spike through nose",
+      "fix": "closed cut maxZ-.045 inside original capsule",
+      "changed_frozen_blueprint_or_body": false,
+      "actual_refresh_opened": true
+    },
+    {
+      "QA_only": "yellow tint with original picker01 badge would mislabel role",
+      "fix": "final QA uses completely unchanged neutral blue P01; runtime driver05 remains P02"
+    },
+    {
+      "root_actual_image_finding": "crossbar alone reads as scooter handlebar",
+      "fix": "circularR.14/tube.012 rim connected to existingcrossbar/hub under samepivot",
+      "body_P01_grips_anchors_unchanged": true,
+      "actual_BVH_clear": true,
+      "final8frames_actually_opened": true
+    }
+  ],
+  "execution": {
+    "build_exit": 0,
+    "source_checker_exit": 0,
+    "GLTFLoader_exit": 0,
+    "final_empty4view_exit": 0,
+    "final_pair4view_exit": 0,
+    "threads": 2,
+    "Blender": "5.0.1 background factory-startup, all processes closed",
+    "browser": "pending root",
+    "Khronos": "pending root"
+  },
+  "frozen_files_unchanged": {
+    "body_source": "2c526a4fb281b49cce7c3e6e7411836a5968911965950708414975857aa670ff",
+    "body_glb": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9",
+    "worker_glb": "c8546473c76f126844b427417db86e65be090fa04ad56c0deb9cb2bda92e73b7"
+  },
+  "artifacts": [
+    {
+      "path": "tools/blender/v3/build_forklift.py",
+      "bytes": 12702,
+      "sha256": "996d719e80f96184836e24132e93dddaee9d89fa96459eb22ac90f8030aa2078"
+    },
+    {
+      "path": "assets/v3/specs/forklift-cab-stage.json",
+      "bytes": 14927,
+      "sha256": "b5e58be101cde282e06ac1f75f79e9c4f3ce4b76a9e8d7d519697d95fbd24adb"
+    },
+    {
+      "path": "assets/v3/blender/forklift-cab-stage.blend",
+      "bytes": 135838,
+      "sha256": "2a6c62a42e2db98a94f0a89fadcca8318e594505c170395c0b375592839bd147"
+    },
+    {
+      "path": "assets/v3/blender/forklift-cab-stage.stats.json",
+      "bytes": 26863,
+      "sha256": "5ecbc60977ceb7297860022345142616a2b030cbc442abb2309266e0f001f185"
+    },
+    {
+      "path": "frontend/public/models/v3/forklift-cab-stage.glb",
+      "bytes": 254156,
+      "sha256": "7bafad7b673dca566d19ff6b15f43f40d6ab20110d066dfef400a76ce936ecf4"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/check_and_pair.py",
+      "bytes": 10258,
+      "sha256": "e3c5c3667fcaf318fb875958e83982eb320243e8820c137dcaf216ca545ebfd1"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/verify_glb.mjs",
+      "bytes": 8016,
+      "sha256": "e6eb0a450b52942a55bac8ea1b47b7c864ecf747a7e9ade4f81ad656dd8a759a"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/actual-cab-checks.json",
+      "bytes": 37432,
+      "sha256": "9d5cd254602a172280e9d1adcbd9b6bd3e7cb744af548ff05d4a40608afa5059"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/actual-glb-checks.json",
+      "bytes": 4677,
+      "sha256": "2d87c6e01a6dfb0e31a3044b76bb90010c61965db5469b9ea834c84d03b23925"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/iteration-03.blend",
+      "bytes": 135838,
+      "sha256": "2a6c62a42e2db98a94f0a89fadcca8318e594505c170395c0b375592839bd147"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/with-driver-03.blend",
+      "bytes": 188697,
+      "sha256": "3d8f8d14941cfe2e80edbd7241cea92b27491ad4091d0f0643fbc718bf07a0b7"
+    },
+    {
+      "path": "docs/adaptive-v3/specs/M14.3.md",
+      "bytes": 7141,
+      "sha256": "87c026a00e7eda045028526783a4e2bdc09ba568e85d6140ce0175214e163952"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/front.png",
+      "bytes": 774926,
+      "sha256": "d2a394ea0c919e2813f48fe745a591ab6cf4a7049339e0d0d9e56636c56a6199"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/side.png",
+      "bytes": 793135,
+      "sha256": "8457bf3889266d53066231d7f7b66d750959e3013622b08f8e6064103b632553"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/rear.png",
+      "bytes": 763727,
+      "sha256": "05d1a358381c4f86c415988d81f78ae1cd04ad30a9e94510310f9fe3cbdbb143"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/three-quarter.png",
+      "bytes": 922369,
+      "sha256": "65c0c0fb18d97ce65af4a6b89ff66384141d9aad26759ace2547fa6dc58d2214"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/with-driver/front.png",
+      "bytes": 825527,
+      "sha256": "8c304f3dd1d9b66f247f647cfa2ff212fe8c61d776ce022e8f0df71a7d46f02b"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/with-driver/side.png",
+      "bytes": 838149,
+      "sha256": "42f331645c385d938d988408434d813a39291746e0c0abd9c80a378d974e89f5"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/with-driver/rear.png",
+      "bytes": 790573,
+      "sha256": "01db596f570162783957ff0036a28aaf7a02d4203787fcf6e39f399670a0ac20"
+    },
+    {
+      "path": "assets/v3/previews/forklift-cab-stage/with-driver/three-quarter.png",
+      "bytes": 948672,
+      "sha256": "f99082e5dba7b1aeb63fab7d8dba1e3df422a9160c9ee77070b901b7ecaea413"
+    }
+  ],
+  "full_forklift_accepted": false,
+  "production_worker_embedded": false,
+  "shared_helpers_or_contracts_modified": false,
+  "remaining": [
+    "root actual source/browser/Khronos cab-stage gate",
+    "separate mast/reach/forks/actions children"
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-07T15:43:42Z",
+    "coverage": "owned/current paths no recorded issue, metadata_changed/not_tracked; exact source fallback and actual model decode used",
+    "no_manual_reindex": true,
+    "limitation": "no recorded gap is not completeness/freshness proof"
+  },
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T16:21:09.778598+00:00",
+    "actual_opened": [
+      "assets/v3/qa-browser/forklift-cab-stage/front.png",
+      "assets/v3/qa-browser/forklift-cab-stage/side.png",
+      "assets/v3/qa-browser/forklift-cab-stage/rear.png",
+      "assets/v3/qa-browser/forklift-cab-stage/quarter.png",
+      "assets/references/v3/m14-2-reach-forklift.png",
+      "assets/v3/iterations/forklift/M14.3/iteration-03/front.png",
+      "assets/v3/iterations/forklift/M14.3/iteration-03/side.png",
+      "assets/v3/iterations/forklift/M14.3/iteration-03/rear.png",
+      "assets/v3/iterations/forklift/M14.3/iteration-03/three-quarter.png",
+      "assets/v3/iterations/forklift/M14.3/with-driver-03/front.png",
+      "assets/v3/iterations/forklift/M14.3/with-driver-03/side.png",
+      "assets/v3/iterations/forklift/M14.3/with-driver-03/rear.png",
+      "assets/v3/iterations/forklift/M14.3/with-driver-03/three-quarter.png"
+    ],
+    "fingerprints_verified": 20,
+    "browser_evidence": "assets/v3/qa-browser/forklift-cab-stage/browser-capture.json",
+    "browser_errors": 0,
+    "failed_resources": 0,
+    "khronos_errors": 0,
+    "khronos_warnings": 0,
+    "findings": "Body+cab only. Circular steering rim restored reference readability, column spike removed. Actual worker pelvis/boots/grips/helmet fit; root GLTF verification confirms50mmroofgap,4.5006mmgripair, exactreset and unchangedbody. No completeforklift/mast/actions claim."
+  }
+}
