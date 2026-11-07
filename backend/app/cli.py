@@ -52,6 +52,10 @@ def build_parser() -> argparse.ArgumentParser:
         command.add_argument("--out", type=Path, required=True)
         if name == "simulate":
             command.add_argument("--assignment", type=Path, default=None)
+            command.add_argument(
+                "--format", dest="output_format", choices=("v2", "proposal"), default="v2"
+            )
+            command.add_argument("--include-inline", action="store_true")
     return parser
 
 
@@ -79,7 +83,15 @@ def _execute(args: argparse.Namespace, bundle: ContractBundle) -> dict[str, Any]
     if args.command == "validate-contracts":
         return _validate_contracts(bundle)
     if args.command == "simulate":
-        return simulate(bundle, args.profile, args.horizon_s, args.out, args.assignment)
+        return simulate(
+            bundle,
+            args.profile,
+            args.horizon_s,
+            args.out,
+            args.assignment,
+            args.output_format,
+            args.include_inline,
+        )
     result = materialize(args.profile, args.horizon_s, bundle.config)
     write_materialized(result, args.out)
     return {
