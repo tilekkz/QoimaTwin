@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, Any
 
 from app.simulation.recorder import Action
 from app.simulation.resource_metrics import intervals
+from app.simulation.resource_waits import derive_resource_waits
 
 if TYPE_CHECKING:
     from app.simulation.engine import Engine
@@ -34,6 +35,8 @@ def actor_ticks(engine: Engine, cutoff: int) -> dict[str, Counter[str]]:
         result[action.actor_id][action.state.value] += duration
     for actor, start in open_blocks(engine):
         result[actor]["BLOCKED"] += max(0, cutoff - start)
+    for wait in derive_resource_waits(engine, cutoff):
+        result[wait.actor_id]["WAIT_RESOURCE"] += wait.end_tick - wait.start_tick
     return result
 
 

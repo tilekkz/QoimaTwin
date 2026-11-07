@@ -28,6 +28,7 @@ from app.planning import PlanArtifact, PlanningInputError, apply_plan, assignmen
 from app.simulation.context import RunInputs
 from app.simulation.engine import Engine, RunOutcome
 from app.simulation.metrics_summary import open_blocks, summary
+from app.simulation.resource_waits import derive_resource_waits
 from app.storage.canonical_json import sha256_hex
 
 NOTES = (
@@ -119,7 +120,14 @@ def _run(
 
     def labor(cutoff: int) -> LaborSummary:
         actions = engine.ctx.recorder.actions
-        return labor_breakdown(actions, roles, open_blocks=blocks, cutoff_tick=cutoff, tps=tps)
+        return labor_breakdown(
+            actions,
+            roles,
+            open_blocks=blocks,
+            cutoff_tick=cutoff,
+            tps=tps,
+            resource_waits=derive_resource_waits(engine, cutoff),
+        )
 
     side = RunSide.model_validate(
         {

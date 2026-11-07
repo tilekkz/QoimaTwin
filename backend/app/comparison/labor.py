@@ -12,6 +12,7 @@ from fractions import Fraction
 
 from app.contracts.base import FrozenModel
 from app.simulation.recorder import Action, ActorState
+from app.simulation.resource_waits import ResourceWait
 
 _STATES = (
     ActorState.TRAVEL,
@@ -64,6 +65,7 @@ def _actor_ticks(
     roles: Mapping[str, str],
     open_blocks: Iterable[tuple[str, int]],
     cutoff: int,
+    resource_waits: Iterable[ResourceWait],
 ) -> dict[str, dict[ActorState, int]]:
     ticks = {actor: dict.fromkeys(_STATES, 0) for actor in sorted(roles)}
     for action in actions:
@@ -73,6 +75,11 @@ def _actor_ticks(
     for actor, start in open_blocks:
         if actor in ticks:
             ticks[actor][ActorState.BLOCKED] += max(0, cutoff - max(start, 0))
+    for wait in resource_waits:
+        if wait.actor_id in ticks:
+            ticks[wait.actor_id][ActorState.WAIT_RESOURCE] += max(
+                0, min(wait.end_tick, cutoff) - max(wait.start_tick, 0)
+            )
     return ticks
 
 
@@ -83,9 +90,10 @@ def labor_breakdown(
     open_blocks: Iterable[tuple[str, int]],
     cutoff_tick: int,
     tps: int,
+    resource_waits: Iterable[ResourceWait] = (),
 ) -> LaborSummary:
     """Exact per-actor and per-role totals; every roster actor appears, vehicles never."""
-    per_actor = _actor_ticks(actions, roles, open_blocks, cutoff_tick)
+    per_actor = _actor_ticks(actions, roles, open_blocks, cutoff_tick, resource_waits)
     per_role: dict[str, dict[ActorState, int]] = defaultdict(lambda: dict.fromkeys(_STATES, 0))
     for actor, states in per_actor.items():
         for state, value in states.items():

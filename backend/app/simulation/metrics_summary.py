@@ -36,6 +36,10 @@ def utilization(engine: Engine, cutoff: int) -> dict[str, dict[str, float | None
             "active": active / (count * cutoff) if cutoff else None,
             "blocked": states["BLOCKED"] / (count * cutoff) if cutoff else None,
             "wait_resource": states["WAIT_RESOURCE"] / (count * cutoff) if cutoff else None,
+            "idle": (count * cutoff - active - states["BLOCKED"] - states["WAIT_RESOURCE"])
+            / (count * cutoff)
+            if cutoff
+            else None,
         }
     return result
 

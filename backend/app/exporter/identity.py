@@ -47,9 +47,9 @@ def _semantic_hash(value: SemanticJson | None) -> str:
     return value.sha256 if value is not None else _hash(None)
 
 
-def fingerprint(inputs: RunInputs, *, engine_version: str = ENGINE_VERSION) -> dict[str, Any]:
+def _input_hashes(inputs: RunInputs) -> dict[str, str]:
     lots = sorted(inputs.assignment.initial_lots, key=lambda lot: lot.lot_id)
-    hashes = {
+    return {
         "layout": _hash(inputs.layout.model_dump(mode="json", by_alias=True)),
         "config": _hash(inputs.config.model_dump(mode="json", by_alias=True)),
         "actors": _hash(inputs.actors.model_dump(mode="json")),
@@ -77,13 +77,17 @@ def fingerprint(inputs: RunInputs, *, engine_version: str = ENGINE_VERSION) -> d
         "relocation_plan": _semantic_hash(inputs.relocation_json()),
         "forecast_snapshot": _semantic_hash(inputs.forecast_json()),
     }
+
+
+def fingerprint(inputs: RunInputs, *, engine_version: str = ENGINE_VERSION) -> dict[str, Any]:
     return {
         "canonicalization_version": CANONICALIZATION_VERSION,
-        "identity_version": "qoima-run-v1",
+        "identity_version": "qoima-run-v2",
         "engine_version": engine_version,
         "ticks_per_second": TimeGrid.for_inputs(inputs.layout, inputs.config).ticks_per_second,
         "horizon_s": _normalize(inputs.scenario.horizon_s),
         "scenario_id": inputs.scenario.scenario_id,
         "experiment_type": inputs.experiment_type,
-        "hashes": hashes,
+        "provenance_sha256": _hash(inputs.scenario.provenance.model_dump(mode="json")),
+        "hashes": _input_hashes(inputs),
     }
