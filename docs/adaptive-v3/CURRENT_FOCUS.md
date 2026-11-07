@@ -1,18 +1,13 @@
 # Current execution focus
 
-Resumed2026-11-07 in the new chat at the user request. Priority: finish visualTZ3 quickly with close reference fidelity, depth and connected geometry. Intermediate feature-branch pushes are authorized. Stopped handoff is historical.
+Continued at the user request2026-11-07/08: finish visualTZ3 with close reference fidelity, actual depth and connected metric geometry. Feature-branch pushes authorized. No live goal inferred and no extra memory update.
 
-M07.2/M07 PASS: real3mm sealed parcel, unchanged SMALL containment and native tote fit; package1.02kg/loaded tote4.02kg. Published948a183.
+All eight C02 cargo families now have reviewed native metre-scale models. M07 sealed package/native tote, M04 cantilever rack, M10 silver hollow LONG profiles, M11 DRUM and M12 FRAGILE complete their bounded model gates.
 
-M14.4/M14.5 PASS: real twin channels/shoes/rollers/nested reach and one-piece forks.18joins,43 unchanged body/cab parts plus one inward hidden-cap refinement,1260 continuous body-clearance pairs. Open slatted guard inside unchanged envelope.11joints/12anchors/3GLB states/5browser views. Published22296bc. Full HU/driver/actions remain M14.6..9.
+M14.6 complete geometry gate: final forklift68closedparts,11joints/14anchors; real vertical fork bores; six native loaded cargo families at18poses,72fork-contact witnesses and unchanged C08 travel component containment. No body/cab/HU scale or protected contract/backend edits. Final inner guide offset fixes actual platform interference.
 
-M04/M10 models are reviewed: rack20closedparts/21joins/18support rays, seven full lowered cradle-interface sweep hulls. Bundle24 real hollow C02 profiles with exact placements, integral skids/separators/end protection/two wraps. Native pairing verifies six rack/HU and four cradle-pad/HU zero-gap contacts. Exact outer envelopes preserved; upper12 LONG addresses remain blocked. U cradle is a C08 interface GAUGE: complete pins/locks/actions are not accepted. Bridge is operator side(vehicle-Z/rack+Z), open toward tips(vehicle+Z/rack-Z); this resolves ambiguous historical rear-open wording.
+LONG attachment: actual3.2x.15x.85 Ubase, real tunnels/positive pins; separate removable upper clamps with12top contacts, sockets and outward keepers. Keeper removal occurs200mm above rack support plane; pins first move outward then toward rack front, Uclamps lift vertically580mm.108actual bore rays,8free-pin hulls,10upper-rig removal hulls and81whole vehicle/cradle exit hulls clear the actual rack/HU. Upper rig must be removed/stowed for empty-cradle transit. Complete personnel/LONG action admission remains downstream; no invisible accessory removal accepted.
 
-V3 stand has metric contact shading for individual assets; large engineering scenes disable it. Final35-view batch completed without browser/resource errors; owned Chrome terminated in21.211s total. Source/GLB geometry gates and Khronos are separate. Vite stale transform cache was observed after external atomic TS edits: verify served module content, touch/rewrite the owned source natively or restart only the owned Vite. Current dev4173 belongs to this chat.
+M14.7 final GLB/runtime geometry gate complete. Latest50-browser-view batch0errors/0resources, ten GLBsKhronos0/0 and exact native-batch/normal/anchor/pivot comparisons pass. Final native assemblies reviewed in actual stand. Next M14.8: absolute-clock PALLET pickup/setdown with explicit pause/seek/reduced-motion, then M14.9 parent evidence gate. Driver P07 and whole V3 actions/runtime/UX/Q/H plus separate V2/V3 packages remain. V3 not complete.
 
-One heavy local Blender/browser job at a time; background Blender only. Preserve accepted body/cab/tote/SMALL files and protected contracts/backend. No extra Obsidian update. Graph qoima-twin generation2026-11-07T15:43:42Z is stale for recent V3 changes: graph-first, coverage, exact-source fallback. No complete graph freshness claim.
-
-Continue READY tasks: remaining DRUM/FRAGILE, M14.6..9, cart/actions, whole V3 scene/runtime/UX and Q/H gates. V3 is not complete. Separate V2/V3 runnable packages and comparison guide remain required.
-
-
-M11/M12 reviewed: all eight C02 cargo families now have native metric models. DRUM13closedparts/four fork contacts; FRAGILE58closedparts/two real backed grips/four cushion contacts/four fork contacts. Full pickup actions remain downstream. M10 restored R03 silver/tan palette with independent M10_METAL_REF; original concept/evidence preserved. Next execution M14.6.
+Use one background Blender/browser job at a time, preserve accepted source stages and protected contracts. Graph qoima-twin generation2026-11-07T15:43:42Z is stale for new V3 files: graph-first/coverage/exact-source fallback. No extra indexing/memory snapshot. Owned dev server4173; verify served TS after atomic changes (native rewrite or restart only owned server if stale).

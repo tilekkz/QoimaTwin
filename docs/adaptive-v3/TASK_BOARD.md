@@ -134,9 +134,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.3](tasks/M14.3.md) | PASS | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
 | [M14.4](tasks/M14.4.md) | PASS | root | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
 | [M14.5](tasks/M14.5.md) | PASS | root | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
-| [M14.6](tasks/M14.6.md) | ACTIVE | root | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
-| [M14.7](tasks/M14.7.md) | TODO | unassigned | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |
-| [M14.8](tasks/M14.8.md) | TODO | unassigned | R10,R06,C08,M14.7,I09 | Pickup/load action checked at3timestamps, no floating/interpenetration |
+| [M14.6](tasks/M14.6.md) | PASS | root | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
+| [M14.7](tasks/M14.7.md) | PASS | root | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |
+| [M14.8](tasks/M14.8.md) | READY | unassigned | R10,R06,C08,M14.7,I09 | Pickup/load action checked at3timestamps, no floating/interpenetration |
 | [M14.9](tasks/M14.9.md) | TODO | unassigned | R10,R06,C08,M14.8,I09 | Every child evidence read, final reference/render/browser/action integration verified |
 | [W14.1](tasks/W14.1.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Declare plan differences and invariant ports/staff for placement-only comparison |
 | [W14.2](tasks/W14.2.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.1 | Materialize orders/receipts/stock/ports/assumptions and compare input hashes |
@@ -175,3 +175,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [R13.4](tasks/R13.4.md) | PASS | root | R02,R10,L09 | LONG independent four-view production reference |
 | [R13.5](tasks/R13.5.md) | PASS | root | R02,R10,L09 | FLEX independent four-view production reference |
 | [R13](tasks/R13.md) | PASS | root | R02,L09 | Dedicated four-view storage construction pack |
+| [M14.6.1](tasks/M14.6.1.md) | PASS | root | R10,R06,C08,I09,M14.5 | Final vehicle with real lock bores and native pallet lift contacts |
+| [M14.6.2](tasks/M14.6.2.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M04,M10 | Actual LONG base/pins and separate upper bundle restraints |
+| [M14.6.3](tasks/M14.6.3.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M14.6.2,M08,M09,M11,M12 | All six native loaded assemblies and low/high interface gate |

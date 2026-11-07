@@ -17,6 +17,9 @@ from v3_common import ROOT, runtime_xyz, xyz
 from build_standard_carton import collect, empty_box
 
 OUT=ROOT/'assets/v3/iterations/forklift/M14.4'
+if '--output-dir' in sys.argv:
+    OUT=(ROOT/sys.argv[sys.argv.index('--output-dir')+1]).resolve()
+    assert ROOT.resolve() in OUT.parents,'QA output must stay in repository'
 EPS=2e-6
 root=bpy.data.objects['forklift_root']
 source=Path(bpy.data.filepath)
@@ -138,6 +141,8 @@ report={'task_id':'M14.4','status':'VERIFY','source_sha256':source_hash,'source_
  'surface_refinement':'M14.5 hidden chassis cap5mm below unchanged floorboard; fork heel backing inset1mm; welded contacts retained',
  'guide_air_m':{'shoe_each_X':.004,'rear_plate_to_fixed_rail_front':.004,'telescoping_each_X':.004,'telescoping_each_Y':.0045},
  'reach_stroke_m':.4,'fixed_guide_length_m':.64,'minimum_overlap_m':.24,
+ 'actual_inner_guide_bind_z_m':[byname['reach_inner_L']['low'][2],byname['reach_inner_L']['high'][2]],
+ 'actual_minimum_nested_overlap_m':min(min(byname['reach_inner_L']['high'][2]+delta,byname['reach_outer_L']['high'][2])-max(byname['reach_inner_L']['low'][2]+delta,byname['reach_outer_L']['low'][2]) for delta in (0,.4)),
  'roller_web_contact':'Four actual cylinder tangencies at Z=-.006',
  'continuous_moving_vs_body_clearance':regions,'fork_dimensions_W_H_L_m':[.08,.07,1.10],
  'limits':'This is the mast mechanics/source gate. Complete HU actions, cradle, runtime control constraints and paired driver remain separate M14/P/W gates.'}

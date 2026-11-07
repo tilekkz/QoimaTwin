@@ -4,8 +4,10 @@ import {createHash} from 'node:crypto';
 import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-const bytes=await readFile('public/models/v3/forklift-mast-stage.glb');
-const stats=JSON.parse(await readFile('../assets/v3/blender/forklift-mast-stage.stats.json','utf8'));
+const asset=process.argv[2]??'forklift-mast-stage';
+assert(['forklift-mast-stage','forklift'].includes(asset));
+const bytes=await readFile(`public/models/v3/${asset}.glb`);
+const stats=JSON.parse(await readFile(`../assets/v3/blender/${asset}.stats.json`,'utf8'));
 assert.equal(createHash('sha256').update(bytes).digest('hex'),stats.sha256);
 const gltf=await new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
 const root=gltf.scene.getObjectByName('forklift_root');assert(root);
@@ -30,7 +32,7 @@ root.traverse(n=>{
  triangles+=index.count/3;
  for(const m of Array.isArray(n.material)?n.material:[n.material])assert(m.roughness===.8500000238418579||Math.abs(m.roughness-.85)<1e-6);
 });
-assert.equal(joints.length,11);assert.equal(anchors.length,12);assert.equal(triangles,stats.triangles);assert(maxNormalError<1e-5);
+assert.equal(joints.length,11);assert.equal(anchors.length,asset==='forklift'?14:12);assert.equal(triangles,stats.triangles);assert(maxNormalError<1e-5);
 const bounds=new T.Box3().setFromPoints(points);assert(bounds.getSize(new T.Vector3()).toArray().every((v,i)=>Math.abs(v-[1.2,2.1,3][i])<2e-6));
 const carriage=root.getObjectByName('joint__carriage'),reach=root.getObjectByName('joint__reach');
 assert.equal(reach.parent,carriage);
@@ -47,8 +49,8 @@ for(const [label,top,extension,spacing] of [['travel',.7,0,.4],['extended low',.
 carriage.position.y=.7;reach.position.z=.36;
 for(const [side,sign] of [['L',-1],['R',1]])root.getObjectByName('joint__fork_'+side).position.x=sign*.4;
 gltf.scene.updateMatrixWorld(true);
-const report={asset:'forklift-mast-stage',sha256:stats.sha256,meshes,triangles,joints,anchors,maxNormalError,
+const report={asset,sha256:stats.sha256,meshes,triangles,joints,anchors,maxNormalError,
  dimensions_m:bounds.getSize(new T.Vector3()).toArray(),all_export_batch_bounds_match_source:true,unit_scale:true,
  motion_frames:frames,bind_restored:true,scope:'Final GLB geometry/axes/hierarchy/material and lift/reach transformation check. Complete cargo workflow is a later gate.'};
-await writeFile('../assets/v3/iterations/forklift/M14.4/actual-glb-checks.json',JSON.stringify(report,null,2)+'\n');
+await writeFile(`../assets/v3/iterations/forklift/${asset==='forklift'?'M14.6.1':'M14.4'}/actual-glb-checks.json`,JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({asset:report.asset,triangles,joints:joints.length,anchors:anchors.length,motion_frames:frames.length,verified:true}));

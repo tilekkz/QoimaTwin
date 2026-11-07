@@ -1,0 +1,149 @@
+{
+  "task_id": "M14.6.1",
+  "source_sha256": "e8933df70439ae82c719d80b835fa8cdfb08b97ba50362ab97c1cea24cb754c8",
+  "actual_lock_bores": [
+    {
+      "side": "L",
+      "axis": "Y",
+      "centre_xz_m": [
+        -0.4,
+        0.62
+      ],
+      "bore_radius_m": 0.01,
+      "pin_radius_m": 0.008,
+      "radial_air_m": 0.002
+    },
+    {
+      "side": "R",
+      "axis": "Y",
+      "centre_xz_m": [
+        0.4,
+        0.62
+      ],
+      "bore_radius_m": 0.01,
+      "pin_radius_m": 0.008,
+      "radial_air_m": 0.002
+    }
+  ],
+  "actual_native_pallet_frames": [
+    {
+      "fork_top_y_m": 0.18,
+      "reach_m": 0.4,
+      "actual_zero_gap_fork_contacts": [
+        [
+          -0.4,
+          0.18,
+          1.4
+        ],
+        [
+          -0.4,
+          0.18,
+          1.7699999999999998
+        ],
+        [
+          0.4,
+          0.18,
+          1.4
+        ],
+        [
+          0.4,
+          0.18,
+          1.7699999999999998
+        ]
+      ],
+      "actual_cargo_vehicle_clear": true,
+      "actual_platform_clear": true,
+      "continuous_platform_sweep": {
+        "translation_regions": "lowY.18.. .70/fullreach.40, highY.70..1.50/reach0.. .40",
+        "actual_vehicle_swept_hulls_clear": 14,
+        "actual_cargo_swept_hulls_clear": 84,
+        "proof": "Whole conservative endpoint hulls clear of exact platform triangles/interior; contact boundary allowed atY.18. Vehicle-body conditional regions are checked separately."
+      },
+      "travel_admitted": false,
+      "upper_reserve_access_admitted": false,
+      "asset_id": "forklift-pallet-low-fixture",
+      "glb_sha256": "b172dc6dd245208a49fdddebccd6ff5d64cc3771c4e0259dabdd633adbd2808a"
+    },
+    {
+      "fork_top_y_m": 0.7,
+      "reach_m": 0,
+      "actual_zero_gap_fork_contacts": [
+        [
+          -0.4,
+          0.7,
+          1
+        ],
+        [
+          -0.4,
+          0.7,
+          1.3699999999999999
+        ],
+        [
+          0.4,
+          0.7,
+          1
+        ],
+        [
+          0.4,
+          0.7,
+          1.3699999999999999
+        ]
+      ],
+      "actual_cargo_vehicle_clear": true,
+      "actual_platform_clear": true,
+      "continuous_platform_sweep": null,
+      "travel_admitted": true,
+      "upper_reserve_access_admitted": false,
+      "asset_id": "forklift-pallet-travel-fixture",
+      "glb_sha256": "4615da2d497ca3d6f4a7c130e2bb5490a50616bc97ad9f7526aeda49ee766eb4"
+    },
+    {
+      "fork_top_y_m": 1.5,
+      "reach_m": 0.4,
+      "actual_zero_gap_fork_contacts": [
+        [
+          -0.4,
+          1.5,
+          1.4
+        ],
+        [
+          -0.4,
+          1.5,
+          1.7699999999999998
+        ],
+        [
+          0.4,
+          1.5,
+          1.4
+        ],
+        [
+          0.4,
+          1.5,
+          1.7699999999999998
+        ]
+      ],
+      "actual_cargo_vehicle_clear": true,
+      "actual_platform_clear": true,
+      "continuous_platform_sweep": null,
+      "travel_admitted": false,
+      "upper_reserve_access_admitted": false,
+      "asset_id": "forklift-pallet-high-fixture",
+      "glb_sha256": "9a11ea0e7e1db462d5bfe1c8a37976279370f02222cdfa26681655ccfcde41c9"
+    }
+  ],
+  "guide_refinement": {
+    "fixed_length_m": 0.64,
+    "stroke_m": 0.4,
+    "inner_bind_z_m": [
+      -0.245,
+      0.395
+    ],
+    "extended_tip_z_m": 0.795,
+    "platform_front_z_m": 0.8,
+    "actual_front_air_m": 0.005,
+    "minimum_overlap_m": 0.415
+  },
+  "staged_sources_unchanged": true,
+  "actual_actions_accepted": false,
+  "limits": "Stopped high PALLET extends beyond travel height; it grants no travel/upper-slot access. Full motion and controlled placement withdrawal remain M14.8."
+}

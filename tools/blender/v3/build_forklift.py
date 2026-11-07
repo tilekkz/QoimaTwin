@@ -428,6 +428,39 @@ def build_mast():
     return root
 
 
+def build_complete():
+    """Separate final geometry with real C08 lock bores; frozen stages remain."""
+    root=build_mast();root["asset_id"]="forklift";root["stage"]="complete_geometry_for_action_QA"
+    root["geometry_complete"]=True;root["complete_forklift"]=False
+    root["full_workflow_accepted"]=False
+    root["future_children"]="native loaded contacts; LONG attachment/restraints; absolute-clock pickup action and driver"
+    # The staged guide originally projected220mm ahead of the forward plate,
+    # into the accepted HEAVY rib at the low fullreach pickup pose. Keep its
+    # true.64m length/.40stroke, but park225mm more behind the plate. The full
+    # extension then endsZ.795,5mm before the platformfrontZ.800; overlap with
+    # the plate is35mm and minimum nested-guide overlap improves to415mm.
+    for side in ("L","R"):
+        guide=bpy.data.objects["reach_inner_"+side];guide.location+=xyz((0,0,-.225))
+        guide["interface_refinement"]="225mm rearward at fixed length;5mm low-platform front air, min415mm guide overlap"
+    root["final_inner_guide_bind_z_m"]=[-.245,.395]
+    root["actual_minimum_nested_overlap_m"]=.415
+    cutter_mat=material("QA_only_boolean_cutters","#293D46")
+    for sign,side in ((-1,"L"),(1,"R")):
+        obj=bpy.data.objects["fork_"+side]
+        for mod in list(obj.modifiers):obj.modifiers.remove(mod)
+        cutter=cylinder("temporary_fork_lock_bore_"+side,(sign*.4,.665,.62),.010,.14,cutter_mat,vertices=32)
+        bpy.context.view_layer.update()
+        mod=obj.modifiers.new("Actual C08 vertical lock bore","BOOLEAN");mod.operation="DIFFERENCE";mod.solver="EXACT";mod.object=cutter
+        bpy.context.view_layer.objects.active=obj;bpy.ops.object.modifier_apply(modifier=mod.name)
+        bpy.data.objects.remove(cutter,do_unlink=True)
+        bevel=obj.modifiers.new("Fork and bore edge relief","BEVEL");bevel.width=.001;bevel.segments=1;bevel.harden_normals=True
+        obj.modifiers.new("Weighted fork faces","WEIGHTED_NORMAL").keep_sharp=True
+        obj["C08_lock_bore_radius_m"]=.010;obj["C08_lock_pin_radius_m"]=.008
+        obj["lock_bore_centre_runtime_local"]=[0,-.035,.22]
+        anchor("anchor_fork_lock_bore_"+side,(0,0,.22),obj.parent,"actual_vertical_lock_bore")
+    return root
+
+
 def build(stage="body-wheels"):
     if stage=="body-wheels":
         return build_body_wheels()
@@ -435,14 +468,16 @@ def build(stage="body-wheels"):
         return build_cab()
     if stage=="mast":
         return build_mast()
+    if stage=="complete":
+        return build_complete()
     raise ValueError("Unknown forklift stage")
 
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
-    parser.add_argument("--stage",choices=["body-wheels","cab","mast"],default="body-wheels")
+    parser.add_argument("--stage",choices=["body-wheels","cab","mast","complete"],default="body-wheels")
     arguments=sys.argv[sys.argv.index("--")+1:] if "--" in sys.argv else []
     args=parser.parse_args(arguments)
     reset()
-    asset={"body-wheels":ASSET_ID,"cab":"forklift-cab-stage","mast":"forklift-mast-stage"}[args.stage]
+    asset={"body-wheels":ASSET_ID,"cab":"forklift-cab-stage","mast":"forklift-mast-stage","complete":"forklift"}[args.stage]
     finish(asset,build(args.stage),batch_runtime=True)

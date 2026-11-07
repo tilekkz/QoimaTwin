@@ -752,6 +752,32 @@
       },
       "card": "docs/adaptive-v3/tasks/M10.md",
       "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
+    },
+    {
+      "reference_id": "M14_LONG_LOCK_REF",
+      "root_acceptance": "PASS",
+      "creator_review_status": "VERIFY",
+      "artifact": {
+        "path": "assets/references/v3/m14-long-cradle-locks.png",
+        "bytes": 1855870,
+        "sha256": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+        "dimensions_px": [
+          1536,
+          1024
+        ]
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m14-long-cradle-locks.json",
+        "bytes": 442,
+        "sha256": "0bfaaf89871d843239be00cfbbea4bb6c0fba781cc4986c8873dc1d6137ae3e6"
+      },
+      "evidence": {
+        "path": "docs/adaptive-v3/evidence/M14.6.2-reference.json",
+        "bytes": 1039,
+        "sha256": "2aae85d17fb3740c87c97d77a4d24e65c258af92774a5b420e321a907c21d0d3"
+      },
+      "card": "docs/adaptive-v3/tasks/M14.6.2.md",
+      "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
     }
   ],
   "prompts": [
@@ -954,6 +980,11 @@
       "path": "assets/references/v3/prompts/m10-long-bundle-metal.txt",
       "bytes": 1488,
       "sha256": "b624940b4d478e375b53a617db95ce0385ee4a2cb37c76318f06686603fca1d3"
+    },
+    {
+      "path": "assets/references/v3/prompts/m14-long-cradle-locks.txt",
+      "bytes": 2863,
+      "sha256": "d14b15bf1469ff6e8c85ad2401e1c6550b7882ed6f024294d9e90e82ace68101"
     }
   ],
   "engineering_supplements": [
@@ -1070,7 +1101,7 @@
     "large-gate": "R07",
     "environment-shell": "R07",
     "floor-markings": "R07",
-    "long-cradle": "R12",
+    "long-cradle": "M14_LONG_LOCK_REF",
     "large-gate-b2b": "R07",
     "forklift-body-wheels": "M14.2-REACH",
     "forklift-cab-stage": "M14.2-REACH",
@@ -1085,7 +1116,7 @@
   "component_priority": "Dedicated R02/R03/R04/R05/R06/R11 governs component design; R07 architecture and R08 camera/context do not replace those designs. R12 governs the separate long-cradle attachment; its contextual vehicle/cargo do not override R06/R03. Dedicated R13.x storage view refinements override R02 sketch topology for their bound asset; R02 style and L09/C04 dimensions retain authority.",
   "model_status": "No V3 geometry accepted by this manifest. Every model still requires dimensions, four-view compare, export and browser/action checks.",
   "status_scope": "Original R10 nine-reference baseline remains reference_complete/PASS; additive R12 is VERIFY pending root actual-image review.",
-  "reference_count": 28,
+  "reference_count": 29,
   "extensions": {
     "R12": {
       "status": "VERIFY",

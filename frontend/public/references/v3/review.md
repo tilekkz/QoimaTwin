@@ -177,3 +177,6 @@ M12_REF root PASS: PASS reference: warmtan thick corner frame, genuinely recesse
 
 
 M10_METAL_REF root PASS: PASS: returns original R03 light-metal/tan material family, preserves24 hollow members,4x6 layout, bands, skids and end protection. C02 positions/quantity/mass stay unchanged. Initial tan-geometry reference and its evidence retained as historical.
+
+
+M14_LONG_LOCK_REF root PASS: Four views and separate upper-restraint panel reviewed from saved PNG. Accept U-frame/open tip side, twin real pockets, upright positive pins and deployed top contact. Numeric targets correct generated .40m width annotation to C08 .14m; closed pin caps recessed <=.15m. Separate upper rig uses explicit containment, not a taller base or scaled HU.

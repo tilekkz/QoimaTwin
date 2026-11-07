@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T18:30:25.798947+00:00",
+  "updated_at": "2026-11-07T19:17:54.123435+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -2289,7 +2289,7 @@
       "title": "Low/high lift pivots and pallet attachment/fork contact",
       "parent": "M14",
       "owner": "root",
-      "status": "ACTIVE",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2302,14 +2302,19 @@
         "docs/adaptive-v3/evidence/M14.6.json"
       ],
       "criteria": "Low/high lift pivots and pallet attachment/fork contact; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Complete forklift geometry and native lift/contact fixtures, plus actual separate LONG attachment beforepickup action. Preserve acceptedstage files; bind C08 and actualHU sources."
+      "actual": "All three actual geometry/contact children PASS. Full action/driver operational acceptance remains M14.8/P07.",
+      "children": [
+        "M14.6.1",
+        "M14.6.2",
+        "M14.6.3"
+      ]
     },
     {
       "id": "M14.7",
       "title": "Final GLB in actual browser stand: metric axes/normals/materials",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2321,14 +2326,15 @@
         "docs/adaptive-v3/specs/M14.7.md",
         "docs/adaptive-v3/evidence/M14.7.json"
       ],
-      "criteria": "Final GLB in actual browser stand: metric axes/normals/materials; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Final GLB in actual browser stand: metric axes/normals/materials; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Final forklift11joints/14anchors/unit normals/native bounds. Latest50browser views0errors,10current GLBsKhronos0/0 and exact source comparison. See M14.7 evidence."
     },
     {
       "id": "M14.8",
       "title": "Pickup/load action checked at3timestamps, no floating/interpenetration",
       "parent": "M14",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "R06",
@@ -3088,6 +3094,80 @@
         "docs/adaptive-v3/evidence/R13.json"
       ],
       "actual": "Allfive dedicated storage four-view references accepted and bound to assets, independent of model renders; exact engineering target reminders retained."
+    },
+    {
+      "id": "M14.6.1",
+      "parent": "M14.6",
+      "title": "Final vehicle with real lock bores and native pallet lift contacts",
+      "depends_on": [
+        "R10",
+        "R06",
+        "C08",
+        "I09",
+        "M14.5"
+      ],
+      "criteria": "Actual native geometry/contact/swept-clearance proof, source/finalGLB and close views. No source dimension/mass scaling or implicit operational/engine claim.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "tools/blender/v3/build_forklift.py",
+        "tools/blender/v3/build_forklift_contacts.py",
+        "assets/v3/blender/forklift.blend",
+        "frontend/public/models/v3/forklift.glb",
+        "docs/adaptive-v3/evidence/M14.6.1.json"
+      ],
+      "actual": "Final native vehicle:68closedparts,2real bores,11joints/14anchors,12pallet contacts,continuous body/platform clearance,5browser views,Khronos0. Inner guides fixed without resizing cargo/platform."
+    },
+    {
+      "id": "M14.6.2",
+      "parent": "M14.6",
+      "title": "Actual LONG base/pins and separate upper bundle restraints",
+      "depends_on": [
+        "R10",
+        "R06",
+        "C08",
+        "I09",
+        "M14.6.1",
+        "M04",
+        "M10"
+      ],
+      "criteria": "Actual native geometry/contact/swept-clearance proof, source/finalGLB and close views. No source dimension/mass scaling or implicit operational/engine claim.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "tools/blender/v3/build_long_cradle.py",
+        "assets/v3/blender/long-cradle.blend",
+        "frontend/public/models/v3/long-cradle.glb",
+        "frontend/public/models/v3/long-restraint-rig.glb",
+        "docs/adaptive-v3/evidence/M14.6.2.json"
+      ],
+      "actual": "Real Ubase11closedparts, upper rig18closedparts;4lower/12upper contacts, unchanged closed component union, current browser/GLB0errors. Separate removable sockets/keepers and guide notches reviewed."
+    },
+    {
+      "id": "M14.6.3",
+      "parent": "M14.6",
+      "title": "All six native loaded assemblies and low/high interface gate",
+      "depends_on": [
+        "R10",
+        "R06",
+        "C08",
+        "I09",
+        "M14.6.1",
+        "M14.6.2",
+        "M08",
+        "M09",
+        "M11",
+        "M12"
+      ],
+      "criteria": "Actual native geometry/contact/swept-clearance proof, source/finalGLB and close views. No source dimension/mass scaling or implicit operational/engine claim.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "tools/blender/v3/verify_loaded_forklift.py",
+        "docs/adaptive-v3/evidence/M14.6.3.json",
+        "docs/adaptive-v3/evidence/M14.6.3.json"
+      ],
+      "actual": "6native HU families/18poses/72fork contacts, unchanged C08 component containment;108bore rays,8pin+10rig removal hulls,81whole rack-exit hulls;7GLBs0errors, actual browser reviewed."
     }
   ],
   "execution": {
