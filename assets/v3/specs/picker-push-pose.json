@@ -1,0 +1,72 @@
+{
+  "schema_id": "qoima.picker-push-pose.v3",
+  "units": "m",
+  "reference_ids": [
+    "R05",
+    "R11"
+  ],
+  "worker_scale": 1,
+  "cart_offset_in_worker_m": [
+    0,
+    0,
+    0.7975
+  ],
+  "grip_radius_m": 0.0225,
+  "grip_centres_cart_m": [
+    [
+      -0.235,
+      0.9775,
+      -0.4375
+    ],
+    [
+      0.235,
+      0.9775,
+      -0.4375
+    ]
+  ],
+  "grip_centres_worker_m": [
+    [
+      -0.235,
+      0.9775,
+      0.36
+    ],
+    [
+      0.235,
+      0.9775,
+      0.36
+    ]
+  ],
+  "jointEulerXYZ": {
+    "joint__upper_arm_L": [
+      -0.5521627066847792,
+      0,
+      0.23271107834676083
+    ],
+    "joint__forearm_L": [
+      -0.9256063027463024,
+      0,
+      0
+    ],
+    "joint__hand_L": [
+      -0.08075035450476523,
+      0.1976289181879253,
+      -0.1236815806245407
+    ],
+    "joint__upper_arm_R": [
+      -0.5521627066847792,
+      0,
+      -0.23271107834676083
+    ],
+    "joint__forearm_R": [
+      -0.9256063027463024,
+      0,
+      0
+    ],
+    "joint__hand_R": [
+      -0.08075035450476523,
+      -0.1976289181879253,
+      0.1236815806245407
+    ]
+  },
+  "meaning": "Exact grip geometry declared before cart mesh; unchanged P01 body, upper/forearm angles solved against actual GLB and compensated hand orientation, no limb scaling."
+}

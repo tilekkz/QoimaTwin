@@ -9,6 +9,7 @@ import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import {createWorkerRolesFixture, createWorkerInstance, disposeWorkerInstance, applyWorkerRole, type WorkerRole, type WorkerInstance} from './workerRoles';
 import {createPickupFixture,validatePickupTimeline} from './forkliftPickup';
 import {bindSeatedDriver,validateSeatedDriverPose} from './seatedDriver';
+import {bindPickerGrip,validatePickerPushPose} from './motion/grip';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
@@ -74,6 +75,8 @@ let rolesFixture:ReturnType<typeof createWorkerRolesFixture> | undefined;
 let pickupFixture:ReturnType<typeof createPickupFixture> | undefined;
 let seatedDriver:ReturnType<typeof bindSeatedDriver> | undefined;
 let driverActor:WorkerInstance|undefined;
+let figureActor:WorkerInstance|undefined;
+let pickerGrip:ReturnType<typeof bindPickerGrip>|undefined;
 let pickupPlaying=false,pickupAnchorTime=0,pickupAnchorWall=0;
 let view:View='quarter';
 let modelId='calibration';
@@ -96,7 +99,9 @@ function releaseModel(){
   // The role instance owns only its tints/badge. Detach it before disposing
   // the vehicle, then release its shared worker template exactly once.
   if(seatedDriver){seatedDriver.release();seatedDriver=undefined;}
+  if(pickerGrip){pickerGrip.release();pickerGrip=undefined;}
   if(driverActor){disposeWorkerInstance(driverActor);driverActor=undefined;}
+  if(figureActor){disposeWorkerInstance(figureActor);figureActor=undefined;}
   if(model)scene.remove(model);
   if(rolesFixture){rolesFixture.dispose();rolesFixture=undefined;}
   else if(model)disposeObject(model);
@@ -175,7 +180,7 @@ function snapshot(){
   model?.traverseVisible(node=>{if(node instanceof THREE.Mesh){triangles+=(node.geometry.index?.count??node.geometry.getAttribute('position').count)/3;for(const m of Array.isArray(node.material)?node.material:[node.material])materials.add(m.name);}});
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
-  return {modelId,phase,view,focus:activeFocus,fixture:pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':rolesFixture?'five-role-visual-QA':null,driver:seatedDriver?.snapshot()??null,action:pickupFixture?{...pickupFixture.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,fixture:pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:pickupFixture?{...pickupFixture.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -209,8 +214,23 @@ async function loadModel(id:string){
     if(id==='worker-base'&&new URL(location.href).searchParams.get('fixture')==='roles'){
       workerTemplate=gltf.scene;rolesFixture=createWorkerRolesFixture(workerTemplate);model=rolesFixture.root;
       element('model-title').textContent='Пять ролей · визуальный стенд';
+    }else if(id==='picker-figure'){
+      workerTemplate=gltf.scene;figureActor=createWorkerInstance(workerTemplate,'P01','picker');
+      model=new THREE.Group();model.name='picker_figure_inspection';model.add(figureActor.root);
     }else model=gltf.scene;
     const requestedFixture=new URL(location.href).searchParams.get('fixture');
+    if(id==='picking-cart-tote-fixture'&&requestedFixture==='grip'){
+      const [workerResult,poseResult]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-base.glb'),fetch(base+'data/v3/picker-push-pose.json').then(async r=>{if(!r.ok)throw Error('Поза комплектовщика недоступна.');return validatePickerPushPose(await r.json());})]);
+      if(workerResult.status==='rejected')throw workerResult.reason;
+      const worker=workerResult.value;
+      if(poseResult.status==='rejected'){disposeObject(worker.scene);throw poseResult.reason;}
+      const pose=poseResult.value;
+      if(token!==serial){disposeObject(worker.scene);disposeObject(gltf.scene);return;}
+      workerTemplate=worker.scene;
+      const cart=model.getObjectByName('picking-cart');if(!cart)throw Error('В сборке нет тележки.');
+      figureActor=createWorkerInstance(workerTemplate,'P01','picker');pickerGrip=bindPickerGrip(cart,figureActor,pose);
+      element('model-title').textContent='Комплектовщик с тележкой';
+    }
     if((id==='forklift'&&requestedFixture==='driver')||(id==='forklift-pallet-low-fixture'&&requestedFixture==='pickup')){
       const [worker,poseResponse]=await Promise.all([loader.loadAsync(base+'models/v3/worker-base.glb'),fetch(base+'data/v3/seated-driver-pose.json')]);
       if(token!==serial){disposeObject(worker.scene);disposeObject(gltf.scene);return;}

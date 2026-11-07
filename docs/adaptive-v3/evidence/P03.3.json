@@ -1,0 +1,47 @@
+{
+  "task_id": "P03.3",
+  "status": "PASS",
+  "at": "2026-11-07T20:22:51.026969+00:00",
+  "references": [
+    "R05",
+    "R11"
+  ],
+  "native_checks": "assets/v3/iterations/picking-cart/P03.3/actual-native-grip-checks.json",
+  "runtime_checks": "assets/v3/iterations/picking-cart/P03.3/actual-runtime-grip-checks.json",
+  "native_glove_surface_contacts": 6,
+  "native_sole_contacts": 2,
+  "native_hand_anchor_matches": 2,
+  "physical_body_parts": 50,
+  "unchanged_body_cart_and_tote": true,
+  "runtime_grip_error_m": 2.146580447777739e-08,
+  "world_pose_checks": 100,
+  "binding": "existing WorkerInstance; no clone or registry mutation",
+  "release": "restores parent/root/joints/metadata without disposing employee",
+  "guards": "role, scale, missing interface, duplicate actor, occupied cart, malformed/physically wrong pose; failed binding rollback verified",
+  "new_P02_badge_clear_of_cart_and_tote": true,
+  "browser": {
+    "reviewed": [
+      "front",
+      "side",
+      "rear",
+      "quarter",
+      "top"
+    ],
+    "close_hand_reviewed": [
+      "side",
+      "quarter"
+    ],
+    "errors": 0,
+    "failed_resources": 0,
+    "same_actor_and_cart_uuid_across_views": true,
+    "model_replacements": 3,
+    "stable_GPU_resources": {
+      "geometries": 46,
+      "textures": 10
+    },
+    "world_transforms": 3,
+    "owned_browsers": "26268 and21472 both gracefully terminated"
+  },
+  "build": "PASS",
+  "scope": "Standing coupled grip only. Gait, pick and tote handoff remain P03.4..6. No production headcount change or engine run claimed."
+}

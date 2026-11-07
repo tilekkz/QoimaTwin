@@ -7,7 +7,7 @@ const views=(process.env.QOIMA_STAND_VIEWS||'front,side,rear,quarter').split(','
 if(views.some(v=>!['front','side','rear','quarter','top'].includes(v)))throw Error('Invalid view');
 const base=process.env.QOIMA_STAND_BASE_URL||'http://127.0.0.1:4173';
 const variant=process.env.QOIMA_STAND_FIXTURE,focus=process.env.QOIMA_STAND_FOCUS;
-if(variant&&!['roles','pickup','driver'].includes(variant))throw Error('Invalid fixture variant');
+if(variant&&!['roles','pickup','driver','grip'].includes(variant))throw Error('Invalid fixture variant');
 async function bounded(promise,ms){let timer;try{return await Promise.race([promise.then(()=>true,()=>false),new Promise(r=>{timer=setTimeout(()=>r(false),ms);})]);}finally{clearTimeout(timer);}}
 const started=Date.now();
 const server=await chromium.launchServer({channel:'chrome',headless:true,args:['--mute-audio'],timeout:30000});
@@ -22,7 +22,7 @@ try{
   const at=Date.now(),override=process.env.QOIMA_STAND_OUTPUT;
   const out=override?(assets.length===1?override:`${override}/${asset}`):`../assets/v3/qa-browser/${asset}`;
   await mkdir(out,{recursive:true});outputs.push(out);
-  const page=await context.newPage(),errors=[],frames=[],failedResources=[];
+  const page=await context.newPage(),errors=[],frames=[],failedResources=[];let fixtureChecks;
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   page.on('response',r=>{if(r.status()>=400)failedResources.push({url:r.url(),status:r.status()});});
   try{
@@ -33,7 +33,23 @@ try{
     await page.screenshot({path:`${out}/${view}.png`});
     frames.push({view,screenshot:`${out}/${view}.png`,state:await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot())});
    }
-   await writeFile(`${out}/browser-capture.json`,JSON.stringify({at:new Date().toISOString(),browser:browser.version(),url:page.url(),viewport:{width:1440,height:1000},errors,failedResources,frames,timing_ms:{shared_browser_launch:launchMs,asset_capture:Date.now()-at}},null,2));
+   if(variant==='grip'){
+    const verify=state=>{if(state.grip?.actorId!=='P01'||state.nodes.filter(n=>n==='actor__P01').length!==1||state.nodes.filter(n=>n==='order-tote').length!==1||state.grip.hands.some(h=>h.error_m>2e-5||h.axis_error>2e-5))throw Error('Picker/cart instance or contact invariant failed');};
+    frames.forEach(f=>verify(f.state));
+    if(new Set(frames.map(f=>f.state.grip.actor_uuid)).size!==1||new Set(frames.map(f=>f.state.grip.cart_uuid)).size!==1)throw Error('Actor/cart identity changed across views');
+    fixtureChecks={same_actor_uuid_across_views:true,replacements:[],world_transform_checks:[]};
+    // GPU counters after whole-asset replacement reveal leaked worker templates
+    // or role-owned badge geometry. Only this stand owns the sample instance.
+    for(let i=0;i<3;i++){
+     await page.evaluate(async asset=>{await window.__QOIMA_STAND_V3__.load(asset);for(let n=0;n<5;n++)await new Promise(r=>requestAnimationFrame(r));},asset);
+     const state=await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot());verify(state);fixtureChecks.replacements.push(state.renderer.memory);
+    }
+    if(new Set(fixtureChecks.replacements.map(s=>JSON.stringify(s))).size!==1)throw Error('Picker fixture GPU resource count grew on replacement');
+    for(const yaw of [-.7,.3,1.2]){
+     const state=await page.evaluate(yaw=>{const api=window.__QOIMA_STAND_V3__;api.setNode('picking-cart-tote-fixture',{position:[2,0,-1],rotation:[0,yaw,0]});return api.snapshot();},yaw);verify(state);fixtureChecks.world_transform_checks.push(state.grip);
+    }
+   }
+   await writeFile(`${out}/browser-capture.json`,JSON.stringify({at:new Date().toISOString(),browser:browser.version(),url:page.url(),viewport:{width:1440,height:1000},errors,failedResources,frames,fixture_checks:fixtureChecks,timing_ms:{shared_browser_launch:launchMs,asset_capture:Date.now()-at}},null,2));
    if(errors.length||failedResources.length)throw Error(JSON.stringify({errors,failedResources}));
    console.log(JSON.stringify({asset,captures:frames.length,errors:0,failedResources:0,capture_ms:Date.now()-at,out}));
   }catch(error){await writeFile(`${out}/failure.json`,JSON.stringify({error:String(error),errors,failedResources},null,2));throw error;}

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T19:48:29.105564+00:00",
+  "updated_at": "2026-11-07T20:22:51.154061+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1990,8 +1990,8 @@
       "id": "P03.1",
       "title": "Picker working figure with valid rig proportions",
       "parent": "P03",
-      "owner": "unassigned",
-      "status": "READY",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "P02",
@@ -2004,14 +2004,15 @@
         "frontend/public/models/v3/picker-figure.glb",
         "docs/adaptive-v3/evidence/P03.1.json"
       ],
-      "criteria": "Picker working figure with valid rig proportions; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Picker working figure with valid rig proportions; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Unchanged P01body at1.70m,50closed physical parts,15joints/7anchors; exact solved hand centres/axes, P02volumetric badge in five reviewed views, native GLB normals/batches/Khronos0/0/build pass."
     },
     {
       "id": "P03.2",
       "title": "Picking cart with grounded wheels, clear tote tray and coherent handle",
       "parent": "P03",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "P02",
@@ -2025,14 +2026,15 @@
         "frontend/public/models/v3/picking-cart.glb",
         "docs/adaptive-v3/evidence/P03.2.json"
       ],
-      "criteria": "Picking cart with grounded wheels, clear tote tray and coherent handle; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Picking cart with grounded wheels, clear tote tray and coherent handle; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "R11 cart reviewed: 59 closed parts,110 real links,4 wheel-floor,8 deck-support and4 unchanged-tote contacts. Bare five views and native-tote side/quarter/top reviewed;10 browser captures clean,2GLBs Khronos0/0 and native geometry checks PASS. See evidence/P03.2.json. Rolling/contact actions remain children."
     },
     {
       "id": "P03.3",
       "title": "Hands and both grip anchors stay in contact with handle",
       "parent": "P03",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "P02",
@@ -2044,14 +2046,15 @@
         "frontend/src/adaptive-v3/motion/grip.ts",
         "docs/adaptive-v3/evidence/P03.3.json"
       ],
-      "criteria": "Hands and both grip anchors stay in contact with handle; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Hands and both grip anchors stay in contact with handle; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Existing picker/cart binding accepted:6native glove/bar surface contacts,2hand anchors/2soles,unchanged geometry.100CPUworld poses,guard rollback/reset/release/rebind/disposal pass.5paired views+2close views reviewed;3browser replacements stable46geometries/10textures and3world transforms exact. BuildPASS. evidence/P03.3.json; gait/pick/handoff remain."
     },
     {
       "id": "P03.4",
       "title": "Walk/cart absolute-clock gait with foot/wheel contacts",
       "parent": "P03",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "P02",
