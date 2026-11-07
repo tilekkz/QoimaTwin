@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T17:21:47.302046+00:00",
+  "updated_at": "2026-11-07T17:36:33.358692+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -762,13 +762,13 @@
         "R13.4"
       ],
       "criteria": "Конструкция поддерживает длинномер по длине; нет висящего центра груза",
-      "status": "ACTIVE",
-      "owner": "rack_crate",
+      "status": "READY",
+      "owner": "root_next",
       "outputs": [
         "docs/adaptive-v3/models/M04.md",
         "docs/adaptive-v3/evidence/M04.json"
       ],
-      "actual": "Plan functional LONGsupport/cradle rear-open relief withinunchangedC04/C08; actual3pointloadsupport, independentcorrectedref beforegeometry. No warehousegraphrebuild."
+      "actual": "Resumed queue: retain existing LONG proposal for next native rack/cradle support gate."
     },
     {
       "id": "M05",
@@ -824,8 +824,8 @@
         "I09"
       ],
       "criteria": "Открытая и закрытая тара различимы; дно, стенки, grab/placement anchors",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/M07.md",
         "docs/adaptive-v3/evidence/M07.json"
@@ -834,7 +834,8 @@
         "M07.1",
         "M07.2"
       ],
-      "kind": "parent"
+      "kind": "parent",
+      "actual": "Tote/parcel visual family accepted with actual nested SMALL-parcel-tote fixture, metric supports and4.02kg gross. Workflow replay remains downstream."
     },
     {
       "id": "M08",
@@ -1058,7 +1059,7 @@
         "I09"
       ],
       "criteria": "Рабочие pack/idle/blocked позы имеют реальные точки контакта со столом и тарой",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/P04.md",
@@ -1093,7 +1094,7 @@
         "I09"
       ],
       "criteria": "Scan/place/idle clips показывают укладку, а не бесконтактный взмах рукой",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/P06.md",
@@ -1899,8 +1900,8 @@
       "id": "M07.2",
       "title": "Sealed parcel: paper/tape construction and verified full fit in tote",
       "parent": "M07",
-      "owner": "warehouse_props",
-      "status": "ACTIVE",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R03",
@@ -1915,7 +1916,7 @@
         "docs/adaptive-v3/evidence/M07.2.json"
       ],
       "criteria": "Sealed parcel: paper/tape construction and verified full fit in tote; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Create realsealedworkflowparcel .36x.28x.28/3mmwalls, containingunchangedSMALLHU andfullyfitting acceptedtote; referencefirst, declaredwraptare/ancestry, noinventoryinflation."
+      "actual": "Accepted sealed parcel: real3mm shell/flush tape and print; unchanged SMALL fits, native tote fixture fits atscale1; five browser views and Khronos0errors/0warnings. Evidence M07.2.json."
     },
     {
       "id": "M13.1",
@@ -1985,7 +1986,7 @@
       "title": "Picker working figure with valid rig proportions",
       "parent": "P03",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "P02",
@@ -2244,7 +2245,7 @@
       "id": "M14.4",
       "title": "Twin mast, carriage and two parallel forks with functional lift connection",
       "parent": "M14",
-      "owner": "people_packing",
+      "owner": "root",
       "status": "ACTIVE",
       "depends_on": [
         "R10",
@@ -2258,7 +2259,7 @@
         "docs/adaptive-v3/evidence/M14.4.json"
       ],
       "criteria": "Twin mast, carriage and two parallel forks with functional lift connection; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Build separateforklift-mast-stage fromacceptedM141/C08 and repairedframe; twinmast/lift/reach/twoparallelforks, boundedactualconnections/clearances+4views. Preservebody/cab."
+      "actual": "Review existing mast candidate; actual support/channel/reach/fork geometry and swept clearance, close browser views; improve reference fidelity within frozen envelope."
     },
     {
       "id": "M14.5",
@@ -3085,18 +3086,14 @@
     }
   ],
   "execution": {
-    "status": "stopped_for_chat_handoff",
-    "stopped_at_utc": "2026-11-07T17:21:47.302046+00:00",
-    "reason": "User requested ending development in this overloaded chat and preparing a fresh-chat handoff.",
-    "previous_goal": "cleared_by_user; live get_goal returned null",
-    "live_subagents": [],
-    "active_cards_are_unfinished_not_running": true,
-    "historical_owners": {
-      "M04": "rack_crate",
-      "M07.2": "warehouse_props",
-      "M14.4": "people_packing"
-    },
-    "unreviewed_candidate": "frontend/public/models/v3/forklift-mast-stage.glb",
-    "resume": "New chat must inspect the current checkout/card artifacts before reassigning unfinished cards."
+    "status": "active",
+    "resumed_at_utc": "2026-11-07T17:36:32.564756+00:00",
+    "reason": "User requested continuation, speed, reference fidelity and an intermediate push.",
+    "current_executor": "root",
+    "heavy_job_policy": "One Blender/browser job at a time",
+    "next": [
+      "M14.4 actual mechanics/source/GLB acceptance",
+      "M04 functional LONG support"
+    ]
   }
 }

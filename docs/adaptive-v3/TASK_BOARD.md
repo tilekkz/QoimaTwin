@@ -1,7 +1,5 @@
 # QoimaTwin v3 — task board
 
-> **ОСТАНОВЛЕНО ДЛЯ ПЕРЕДАЧИ В НОВЫЙ ЧАТ.** Пользователь завершил разработку в этом чате. Прежний goal удалён (live goal=null), живых субагентов нет. M04, M07.2 и M14.4 остались незавершёнными; их ACTIVE и owner — сохранённая точка работы, а не запущенные процессы. Кандидат forklift-mast-stage ещё не прошёл root acceptance. См. `handoff/README.md`.
-
 Source: `brief/01_START_CODEX.md` + `brief/03_MICROTASKS.md`. Cards: `tasks/ID.md`.
 One ACTIVE card per executor. Reviewed artifacts gate dependent work; broad parents gain children before execution.
 V2 preserved; visual fixtures and backend runs have separate labels. Root alone updates central state.
@@ -53,10 +51,10 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
-| [M04](tasks/M04.md) | ACTIVE | rack_crate | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
+| [M04](tasks/M04.md) | READY | root_next | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
 | [M05](tasks/M05.md) | PASS | rack_crate | R10,R02,C04,I09,R13.5 | Готова модель FLEX storage |
 | [M06](tasks/M06.md) | PASS | root | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
-| [M07](tasks/M07.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
+| [M07](tasks/M07.md) | PASS | root | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
 | [M08](tasks/M08.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
 | [M09](tasks/M09.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель IBC |
 | [M10](tasks/M10.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
@@ -67,9 +65,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P01](tasks/P01.md) | PASS | root | R10,R05,I09 | Готова единая базовая фигура человека |
 | [P02](tasks/P02.md) | PASS | people_packing | R10,P01,R05,I09 | Готовы визуальные варианты ролей |
 | [P03](tasks/P03.md) | TODO | unassigned | R10,P02,M07,I09 | Готов комплект picker/cart |
-| [P04](tasks/P04.md) | TODO | unassigned | R10,P02,M07,P08,I09 | Готов комплект packer |
+| [P04](tasks/P04.md) | READY | unassigned | R10,P02,M07,P08,I09 | Готов комплект packer |
 | [P05](tasks/P05.md) | READY | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
-| [P06](tasks/P06.md) | TODO | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
+| [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
 | [P07](tasks/P07.md) | TODO | unassigned | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
 | [P09](tasks/P09.md) | TODO | unassigned | R10,R07,L12,I09 | Готов модульный environment/dock kit |
@@ -117,11 +115,11 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M06.2](tasks/M06.2.md) | PASS | warehouse_props | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
 | [M06.3](tasks/M06.3.md) | PASS | warehouse_props | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
 | [M07.1](tasks/M07.1.md) | PASS | warehouse_props | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
-| [M07.2](tasks/M07.2.md) | ACTIVE | warehouse_props | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
+| [M07.2](tasks/M07.2.md) | PASS | root | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
 | [M13.1](tasks/M13.1.md) | PASS | root | R10,R04,L08,I09 | Straight belt: supported transport surface and exact connection ports |
 | [M13.2](tasks/M13.2.md) | PASS | root | R10,R04,L08,I09 | 90-degree turn: joined supported path and correct inside/outside cargo clearance |
 | [M13.3](tasks/M13.3.md) | PASS | root | R10,R04,L08,I09 | T transfer: three open connection ends and no crossing walls |
-| [P03.1](tasks/P03.1.md) | TODO | unassigned | R10,P02,M07,I09 | Picker working figure with valid rig proportions |
+| [P03.1](tasks/P03.1.md) | READY | unassigned | R10,P02,M07,I09 | Picker working figure with valid rig proportions |
 | [P03.2](tasks/P03.2.md) | TODO | unassigned | R10,P02,M07,P03.1,I09 | Picking cart with grounded wheels, clear tote tray and coherent handle |
 | [P03.3](tasks/P03.3.md) | TODO | unassigned | R10,P02,M07,P03.2,I09 | Hands and both grip anchors stay in contact with handle |
 | [P03.4](tasks/P03.4.md) | TODO | unassigned | R10,P02,M07,P03.3,I09 | Walk/cart absolute-clock gait with foot/wheel contacts |
@@ -134,7 +132,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.1](tasks/M14.1.md) | PASS | people_packing | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
 | [M14.2](tasks/M14.2.md) | PASS | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
 | [M14.3](tasks/M14.3.md) | PASS | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
-| [M14.4](tasks/M14.4.md) | ACTIVE | people_packing | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
+| [M14.4](tasks/M14.4.md) | ACTIVE | root | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
 | [M14.5](tasks/M14.5.md) | TODO | unassigned | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
 | [M14.6](tasks/M14.6.md) | TODO | unassigned | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
 | [M14.7](tasks/M14.7.md) | TODO | unassigned | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |
