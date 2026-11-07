@@ -1,0 +1,41 @@
+{
+  "artifact_version": 1,
+  "contracts_text_lf_sha256": {
+    "actors.example.json": "bc2ac5c9e70659c0aa4174401180e5120fe2788d0605583d5353bc7b2e49ff8b",
+    "analytical_fixture.json": "547d9b2700c8de53d3bd9655fadeb672688a0214c642164da045289fb6ed2ee3",
+    "layout.example.json": "34a274513da8d9a874972f2854aec9ee09cc90973db39a0f6c2cc7258a70689a",
+    "simulation_defaults.json": "708525c4552cc673d6da9d07e71bf0548303e0c3525c5a44221595f45ae54aa2"
+  },
+  "event_regression": {
+    "app_text_lf_tree_sha256": "96d63de217e24685e96b1bb4b17d96d92c392ed2c1553743eb378d43f899173b",
+    "base_commit": "c8d631f",
+    "command": "uv run python -m tests.probes --fixture",
+    "events_sha256": "06f9e4dec60552d1fbf3780d65dd5f06c13047e1565cc7b1ba393a328be268ca",
+    "kind": "recorded_regression_signature_not_independent_numerical_oracle",
+    "manual_numerical_oracle": "contracts/analytical_fixture.json expected; fixture end 474 s",
+    "recorded_on": "2026-11-07",
+    "source_state": "base plus reviewed main 0.4 identity and resource WAIT prerequisites"
+  },
+  "fingerprint": {
+    "canonicalization_version": "qoima-json-v1",
+    "engine_version": "qoima-engine-0.4.0",
+    "experiment_type": "fixture",
+    "hashes": {
+      "actors": "56db112accb488898ca44dd271867c3c1922f8de4a79b3f4bc4b4bcfd23c55ad",
+      "assignment": "63ff5bb7b0ec242d70adafb1365ecb99afd2455399d8241a0ce383e124d6bc9d",
+      "config": "86bf30593b4510dbba46b1fbaaf7f52542fc5931a5f1ffa7bac5e6724015d4ef",
+      "forecast_snapshot": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "initial_inventory": "32cd3a8923dab97b2264e3b7215780197fbd4e780e5084f043a505ccb18a31e2",
+      "layout": "bada9cdd73280940a45823740cf87650f75094154b6bfa66644204dcedecb8d5",
+      "orders": "53d6cb0e89fb837ba3abe7fe5dbb0781decaf878a4e54bb69fda5059c3265ff0",
+      "receipts": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "relocation_plan": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    "horizon_s": 3600,
+    "identity_version": "qoima-run-v2",
+    "provenance_sha256": "6d6c637b3414732a07029c52e6fb50f54dfeae85733ab479e5625ab9357555ca",
+    "scenario_id": "v2-isolated-one-order",
+    "ticks_per_second": 3000000
+  },
+  "run_id": "f231af3525b94c3904226ec78f5cd270a3ab3129ee2ad509d22ab5031961a8e4"
+}

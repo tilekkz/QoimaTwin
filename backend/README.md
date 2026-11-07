@@ -21,12 +21,21 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 | Mean28/HGB temporal forecasts and immutable history cache | implemented; see forecast protocol |
 | Frozen ABC, greedy 0/2/8 swaps and paired comparison with relocation labor | implemented; see ADR 0016 |
 | C5-C8, K1-K6, D1-D8, T1-T6 acceptance gates | done |
-| One-hour normal/peak determinism, invariants, runtime and export-size measurements | see research report |
+| Local API with one spawn worker, immutable artifacts and bounded replay windows | implemented; see API guide |
+| Optional Mercury explanations from stored comparison facts | implemented; backend-only configuration and immutable cache |
+| Contract 2.1 proposal, atomic transfers, business replay and full/delta checkpoints | implemented as opt-in; shared contract agreement pending |
+| One-hour normal/peak determinism, invariants, runtime and export-size measurements | historical A?E report; final integrated measurements pending |
 
 The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
 The materializer offers 240/600 orders per hour; measured dispatch and backlog are reported
 separately from those input counts.
-See [the one-hour acceptance and performance report](docs/research/2026-11-07-backend-ae-results.md).
+The [A?E one-hour acceptance and performance report](docs/research/2026-11-07-backend-ae-results.md)
+records engine 0.2.2 results. It is historical evidence, not a benchmark of the current integrated
+backend. Final integrated one-hour repeats and eight-hour measurements remain pending.
+
+The current engine version is `qoima-engine-0.4.0`. Run identity uses `qoima-run-v2`, the nine
+semantic input hashes, the declared horizon and all scenario provenance; proposed wire output
+has a separate run identity namespace. See [ADR 0024](docs/adr/0024-provenance-publication-identity.md).
 
 ## Setup
 
@@ -47,7 +56,13 @@ uv run pytest -m acceptance                   # numbered gates from 05_Acceptanc
 uv run pytest -m "slow or not slow" -n 2 --dist loadscope --cov  # coverage gate: 85 %
 uv run ruff check . && uv run ruff format --check .
 uv run mypy app tests                         # strict mode
+uv run mypy --platform linux app tests         # check Linux typing branches on any host
+uv run python -O -m tests.probes --fixture     # optimized-Python determinism smoke
 uv run python -m app.cli simulate --profile large-normal --horizon-s 3600 --out runs/normal
+uv run python -m app.cli simulate --profile large-normal --horizon-s 600 --format tilek-v2 --out runs/tilek-demo
+uv run python -m app.cli simulate --profile large-normal --horizon-s 3600 --format proposal --out runs/proposal
+uv run python -m app.cli simulate --profile large-normal --horizon-s 3600 --format proposal --include-inline --out runs/proposal-inline
+uv run python -m app.api --store-root D:/QoimaTwin-runs/api-store  # loopback 127.0.0.1:8000
 uv run python tools/benchmark_runs.py --out D:/QoimaTwin-runs/new-benchmark-directory
 uv run python tools/benchmark_runs.py --horizon-s 28800 --out D:/QoimaTwin-runs/new-shift-directory
 ```
@@ -64,15 +79,23 @@ with a JSON report. Positive integer-second horizons up to 168 hours are support
 one hour are explicitly marked as shortened runs. `--assignment PATH` selects a validated assignment.
 
 `simulate` materializes the synthetic inputs first, then runs with invariants enabled. It uses
-the supplied illustrative assignment, not a trained ABC plan. Output contains schema-valid
-`run.json`, a proposed `manifest.json`, an initial-state/catalog file and 60-second chunks.
-Load catalog plus chunks for streaming; the full inline copy is optional for readers. Repeated
-actions in neighboring chunks have stable IDs. Verify exact byte hashes from the manifest.
+the supplied illustrative assignment, not a trained ABC plan. The default `--format v2` writes
+schema-valid shared 2.0 `run.json`, a proposed transport `manifest.json`, a catalog and 60-second
+chunks. `--format proposal` instead writes the backend 2.1 proposal catalog, event chunks and
+full/delta checkpoint files. Proposal inline `run.json` is omitted by default;
+`--include-inline` adds that duplicate document. Repeated actions in neighboring chunks have
+stable IDs. Verify exact uncompressed file-byte hashes from manifest descriptors.
+See the [proposal schema, fixture and replay guide](docs/proposals/contract-2.1/README.md).
 The manifest reports at_horizon and at_end metrics separately, with status and reasons for each
 subsystem. All legacy run.json scalar metrics use the horizon window: counts strictly before H,
 and duration integrals over [0,H). A fully dispatched orders flow can coexist with blocked receiving.
 The shared schemas remain v2.0; the transport envelope and files under
-`contracts/fixtures/proposed/` are proposals for Tilek, not an agreed v2.1 contract.
+`contracts/fixtures/proposed/` are proposals for Tilek, not an agreed v2.1 contract. The
+backend-owned 2.1 schema and fixture live under `docs/proposals/contract-2.1/`. At inspected
+frontend commit `10496fd4ccd748676c036c371dd1a29881f046d1`, Tilek loads inline 2.0 and supports
+visual seek, but has no API/manifest/chunk loader or proposal business-state decoder. Changing
+the schema version alone does not provide that integration. No frontend compatibility command
+is documented until its separate adapter is available.
 
 Forecast validation uses the first 42 historical days for fitting and the following 14 for evaluation;
 the final forecast uses all 56 observed days. CPU measurements remain outside forecast identity.
@@ -82,7 +105,42 @@ plans remain explicit no-ops and worse observed results remain visible. See
 [ADR 0015](docs/adr/0015-forecast-temporal-protocol.md) and
 [ADR 0016](docs/adr/0016-planning-and-comparison-protocol.md).
 
+Frozen synthetic history bytes are reused across processes through a verified persistent cache
+outside the checkout. Defaults are `~/AppData/Local/QoimaTwin/history-cache-v1` on Windows and
+`~/.cache/qoimatwin/history-cache-v1` elsewhere. `QOIMA_HISTORY_CACHE_DIR` can select an absolute
+external directory; paths inside the current checkout are rejected. Input/source fingerprints
+and stored byte hashes are checked before reuse; callers receive defensive decoded data rather
+than a shared mutable DataFrame. See [ADR 0022](docs/adr/0022-persistent-history-artifact-cache.md).
+
+## Local API and optional explanations
+
+The [API guide](docs/api.md) gives the complete catalog ? materialize ? mean28/HGB ? plan 0/2/8
+? compare ? manifest/chunks/file workflow, with IDs taken from responses. Heavy calculations
+run in one owned spawn process; another uncached request receives 409 while it is busy. Completed
+requests reuse immutable artifacts. HTTP cancellation does not cancel admitted work; graceful
+shutdown waits for it. Default binding is loopback; browser integration needs a same-origin
+setup or a development proxy. Replay file routes use descriptor SHA256 IDs, not bundle paths.
+
+Mercury runs only for an explicit `POST /api/compares/{comparison_id}/explanation` request. It
+explains stored comparison facts and supports complete or partial simulation outcomes; it does
+not choose the plan or alter metrics. Configure the key in the backend process environment or
+ignored `backend/.env`, never in HTTP bodies or frontend files. Results are cached by semantic
+facts/model/prompt inputs; provider failures are sanitized. See the [Mercury guide](docs/mercury.md).
+Neither the API examples nor this status table constitute a completed live-workflow or
+eight-hour performance measurement.
+
 ## Layout
+
+For Tilek's current inline reader, use `--format tilek-v2`. The separate
+[visual compatibility projection](docs/tilek-compatibility.md) preserves source metrics and
+timing while supplying pallet placements, attachments and forklift operation names.
+It passed 92 checks on the actual TypeScript from `polished@cb5777f` and `adaptive@22296bc`.
+See [the compatibility review](docs/research/2026-11-07-tilek-compatibility.md) for remaining
+reader limitations and the distinct, unfinished adaptive v3 warehouse proposal.
+
+A local HTTP workflow has exercised materialization, mean28/HGB, planning, paired simulation,
+raw file hashes, repeat seek windows and an actual Mercury 3 explanation. Protocol v3 returned
+eight validated Russian observations; repeating the request returned the same cached result.
 
 | Path | Content |
 |---|---|
@@ -94,6 +152,9 @@ plans remain explicit no-ops and worse observed results remain visible. See
 | `app/data/`, `app/storage/` | Synthetic scenario materializer, canonical JSON and hashes |
 | `app/forecast/` | Temporal mean28/HGB forecasts, WAPE and immutable semantic snapshots |
 | `app/planning/`, `app/comparison/` | Frozen ABC, exact relocation routes and paired labor comparisons |
+| `app/api/` | Loopback-first HTTP routes, spawn-worker admission, immutable publication and replay windows |
+| `app/explanations/` | Optional Mercury provider, server-derived facts and semantic cache keys |
+| `app/exporter/` | Shared2.0 export and opt-in 2.1 proposal transport, checkpoint codec and public-state replay |
 | `app/cli.py` | Command-line tools |
 | `tests/acceptance/` | One test per numbered gate (G1, S1, C1, ...) |
 | `docs/adr/` | Architecture decisions |

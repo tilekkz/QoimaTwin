@@ -22,6 +22,12 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0014](0014-runtime-publication-and-clock.md) | Live scheduler heap, exact short horizons and safe publication |
 | [0015](0015-forecast-temporal-protocol.md) | Temporal validation, immutable mean28/HGB forecasts and cached history |
 | [0016](0016-planning-and-comparison-protocol.md) | Frozen ABC, greedy swaps, paired comparison and semantic input identity |
+| [0017](0017-proposed-replay-contract.md) | Proposed atomic cargo transitions, complete business replay and bounded transport |
+| [0018](0018-local-api-and-immutable-artifacts.md) | Local experiment API, bounded workers and immutable artifact publication |
 | [0019](0019-canonical-json-and-benchmark-processes.md) | Canonical byte parity and isolated benchmark processes |
+| [0020](0020-optional-mercury-explanations.md) | Optional Mercury explanations from immutable comparison facts |
 | [0021](0021-changed-sku-conservation-audits.md) | Full initial audit and conservation checks for changed SKUs |
 | [0022](0022-persistent-history-artifact-cache.md) | Verified immutable history reuse across CLI processes |
+| [0023](0023-derived-tote-resource-waits.md) | Shared resource waits derived from admissible orders and tote availability |
+| [0024](0024-provenance-publication-identity.md) | Provenance participates in immutable publication identity |
+| [0025](0025-tilek-visual-compatibility.md) | Explicit visual Run 2.0 projection for the existing Tilek loader |
