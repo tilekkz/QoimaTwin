@@ -168,7 +168,7 @@ def test_incremental_audit_preserves_fixture_bytes_and_event_hash(
     incremental = Engine(inputs, check_invariants=True)
     actual = export_run(incremental, incremental.run(), validate=False)
 
-    def full_audit(ledger: Ledger) -> list[str]:
+    def full_audit(ledger: Ledger, *, full: bool = False) -> list[str]:
         return ledger.check_conservation()
 
     monkeypatch.setattr(Ledger, "check_dirty_conservation", full_audit)

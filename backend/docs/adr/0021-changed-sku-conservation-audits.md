@@ -43,6 +43,9 @@ forced-full-on-every-tick checking; the timeline regression remains 32.8 through
 
 Code must mutate inventory through the ledger's public operations. An out-of-band write to private
 maps after a successful audit does not mark a SKU; the explicit full audit detects that corruption.
+Invariant-enabled Engine runs also perform a full stock audit at the end, inside the error-outcome
+boundary. This supplements the initial full audit and incremental settled checks without treating
+private-map writes as supported mutations.
 This is a stated limit of incremental checking, not permission to bypass the ledger API. Any future
 restore/import implementation must populate through public operations or rebuild all indexes and
 reset the initial-audit flag. No restore/import capability is introduced here.

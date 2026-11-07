@@ -129,6 +129,8 @@ class Engine:
             if self.check_invariants:
                 verify_invariants(self)
             ctx.sched.run(until=deadline + 1)
+            if self.check_invariants:
+                verify_invariants(self, full_stock=True)
         except Exception as error:
             self.last_outcome = classify_outcome(self, horizon, deadline, error)
             raise

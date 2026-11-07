@@ -12,9 +12,9 @@ class InvariantViolation(RuntimeError):
     """A settled state violates stock, ownership or finite capacity constraints."""
 
 
-def check_invariants(engine: Engine) -> None:
+def check_invariants(engine: Engine, *, full_stock: bool = False) -> None:
     """Check independently tracked pools; reservations never add physical stock."""
-    issues = engine.ctx.ledger.check_dirty_conservation()
+    issues = engine.ctx.ledger.check_dirty_conservation(full=full_stock)
     issues.extend(_totes(engine))
     issues.extend(_cells(engine))
     issues.extend(_capacities(engine))
