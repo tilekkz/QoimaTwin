@@ -1,0 +1,541 @@
+{
+  "asset_id": "packing-station",
+  "namespace": "v3",
+  "stage": "P08.4",
+  "status": "VERIFY",
+  "units": "metres",
+  "coordinate_system": "parent_local_runtime_XYZ_Y_up",
+  "measured_at_utc": "2026-11-07T09:43:15.197007+00:00",
+  "measured_geometry_source": "assets/v3/iterations/packing-station/P08.3/packing-station.blend",
+  "measured_source_sha256": "220812c4f7adb1811d043a8b12f7696b48b6a4f521551e1fd79842ecbb5b7502",
+  "anchors": [
+    {
+      "anchor_id": "anchor_worker_service",
+      "local_xyz_m": [
+        0,
+        0,
+        0.9
+      ],
+      "role": "logical_service_floor",
+      "facing": [
+        0,
+        0,
+        -1
+      ],
+      "initial_plan_local_xyz_m": [
+        0,
+        0,
+        0.9
+      ],
+      "authority": "logical_contract_service"
+    },
+    {
+      "anchor_id": "anchor_transfer_south_in",
+      "local_xyz_m": [
+        0,
+        0.92,
+        -0.45
+      ],
+      "role": "shared_bidirectional_spur_port",
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "initial_plan_local_xyz_m": [
+        0,
+        0.92,
+        -0.45
+      ],
+      "authority": "transport_section_pending_pair_measurement"
+    },
+    {
+      "anchor_id": "anchor_transfer_south_out",
+      "local_xyz_m": [
+        0,
+        0.92,
+        -0.45
+      ],
+      "role": "same_physical_port_reverse_operation",
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "initial_plan_local_xyz_m": [
+        0,
+        0.92,
+        -0.45
+      ],
+      "authority": "transport_section_pending_pair_measurement"
+    },
+    {
+      "anchor_id": "anchor_spur_terminal",
+      "local_xyz_m": [
+        0,
+        0.92,
+        0.3
+      ],
+      "role": "transport_endpoint_support_plane",
+      "initial_plan_local_xyz_m": [
+        0,
+        0.92,
+        0.3
+      ],
+      "authority": "transport_section_pending_pair_measurement"
+    },
+    {
+      "anchor_id": "anchor_processing_base",
+      "local_xyz_m": [
+        0,
+        0.92,
+        0.1
+      ],
+      "role": "supported_payload_base_centre",
+      "payload_fit_status": "L08/C adopted payload still required",
+      "initial_plan_local_xyz_m": [
+        0,
+        0.92,
+        0.1
+      ],
+      "authority": "transport_section_pending_pair_measurement"
+    },
+    {
+      "anchor_id": "anchor_hand_work_L",
+      "local_xyz_m": [
+        -0.22,
+        1.15,
+        0.28
+      ],
+      "role": "near_wall_or_contents_future_hand_target_not_fixed_geometry",
+      "initial_plan_local_xyz_m": [
+        -0.22,
+        1.15,
+        0.28
+      ],
+      "authority": "unpaired_future_hand_pose_target"
+    },
+    {
+      "anchor_id": "anchor_hand_work_R",
+      "local_xyz_m": [
+        0.22,
+        1.15,
+        0.28
+      ],
+      "role": "near_wall_or_contents_future_hand_target_not_fixed_geometry",
+      "initial_plan_local_xyz_m": [
+        0.22,
+        1.15,
+        0.28
+      ],
+      "authority": "unpaired_future_hand_pose_target"
+    },
+    {
+      "anchor_id": "anchor_scanner_contact",
+      "local_xyz_m": [
+        -0.69,
+        1.16,
+        0.391
+      ],
+      "normal_runtime": [
+        -0.0,
+        0.0,
+        1.0
+      ],
+      "physical_part": "scanner_recessed_lens",
+      "role": "measured_optical_scan_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        -0.6,
+        1.15,
+        0.4
+      ],
+      "ray_origin": [
+        -0.69,
+        1.16,
+        0.7
+      ],
+      "ray_direction": [
+        0,
+        0,
+        -1
+      ],
+      "actual_hit_local_xyz_m": [
+        -0.6899999976158142,
+        1.159999966621399,
+        0.39100000262260437
+      ],
+      "ray_distance_m": 0.3089999854564667,
+      "old_proxy_nearest_actual_part": "scanner_frame_right",
+      "old_proxy_distance_to_geometry_m": 0.0010606886353343725,
+      "override_delta_m": 0.09099999999999997
+    },
+    {
+      "anchor_id": "anchor_label_pick",
+      "local_xyz_m": [
+        0.6,
+        1.03,
+        0.38
+      ],
+      "normal_runtime": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "physical_part": "label_presenter",
+      "role": "measured_paper_pick_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        0.6,
+        1.03,
+        0.4
+      ],
+      "ray_origin": [
+        0.6,
+        1.3,
+        0.38
+      ],
+      "ray_direction": [
+        0,
+        -1,
+        0
+      ],
+      "actual_hit_local_xyz_m": [
+        0.6000000238418579,
+        1.0299999713897705,
+        0.3799999952316284
+      ],
+      "ray_distance_m": 0.26999998092651367,
+      "old_proxy_nearest_actual_part": "label_presenter",
+      "old_proxy_distance_to_geometry_m": 0.00035352777922526,
+      "override_delta_m": 0.020000000000000018
+    },
+    {
+      "anchor_id": "anchor_tape_pull",
+      "local_xyz_m": [
+        0.735,
+        1.06,
+        0.4
+      ],
+      "normal_runtime": [
+        -0.0,
+        0.0,
+        1.0
+      ],
+      "physical_part": "tape_cutter_pedestal",
+      "role": "measured_cutter_front_surface_not_animated_tape_end",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        0.69,
+        1.08,
+        0.4
+      ],
+      "ray_origin": [
+        0.735,
+        1.06,
+        0.7
+      ],
+      "ray_direction": [
+        0,
+        0,
+        -1
+      ],
+      "actual_hit_local_xyz_m": [
+        0.7350000143051147,
+        1.059999942779541,
+        0.4000000059604645
+      ],
+      "ray_distance_m": 0.29999998211860657,
+      "old_proxy_nearest_actual_part": "tape_cutter_pedestal",
+      "old_proxy_distance_to_geometry_m": 0.0021214194130152464,
+      "override_delta_m": 0.04924428900898057
+    },
+    {
+      "anchor_id": "anchor_screen_face",
+      "local_xyz_m": [
+        -0.7,
+        1.33,
+        -0.302
+      ],
+      "normal_runtime": [
+        -0.0,
+        0.0,
+        1.0
+      ],
+      "physical_part": "screen_recess",
+      "role": "measured_blank_display_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        -0.7,
+        1.25,
+        -0.28
+      ],
+      "ray_origin": [
+        -0.7,
+        1.33,
+        0.7
+      ],
+      "ray_direction": [
+        0,
+        0,
+        -1
+      ],
+      "actual_hit_local_xyz_m": [
+        -0.699999988079071,
+        1.3300000429153442,
+        -0.3019999861717224
+      ],
+      "ray_distance_m": 1.0019999742507935,
+      "old_proxy_nearest_actual_part": "screen_row_2",
+      "old_proxy_distance_to_geometry_m": 0.0169999897480011,
+      "override_delta_m": 0.08296987405076622
+    },
+    {
+      "anchor_id": "anchor_tape_ring",
+      "local_xyz_m": [
+        0.81,
+        1.075,
+        0.26
+      ],
+      "role": "open_ring_centre",
+      "initial_plan_local_xyz_m": [
+        0.81,
+        1.075,
+        0.26
+      ],
+      "authority": "intentionally_empty_ring_axis_not_surface"
+    },
+    {
+      "anchor_id": "anchor_worktop_L",
+      "local_xyz_m": [
+        -0.7,
+        0.92,
+        0.0
+      ],
+      "normal_runtime": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "physical_part": "worktop_L",
+      "role": "measured_worktop_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": null,
+      "ray_origin": [
+        -0.7,
+        1.5,
+        0
+      ],
+      "ray_direction": [
+        0,
+        -1,
+        0
+      ],
+      "actual_hit_local_xyz_m": [
+        -0.699999988079071,
+        0.9199999570846558,
+        0.0
+      ],
+      "ray_distance_m": 0.5800000429153442
+    },
+    {
+      "anchor_id": "anchor_worktop_R",
+      "local_xyz_m": [
+        0.7,
+        0.92,
+        0.0
+      ],
+      "normal_runtime": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "physical_part": "worktop_R",
+      "role": "measured_worktop_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": null,
+      "ray_origin": [
+        0.7,
+        1.5,
+        0
+      ],
+      "ray_direction": [
+        0,
+        -1,
+        0
+      ],
+      "actual_hit_local_xyz_m": [
+        0.699999988079071,
+        0.9199999570846558,
+        0.0
+      ],
+      "ray_distance_m": 0.5800000429153442
+    }
+  ],
+  "overrides": [
+    {
+      "anchor_id": "anchor_scanner_contact",
+      "local_xyz_m": [
+        -0.69,
+        1.16,
+        0.391
+      ],
+      "normal_runtime": [
+        -0.0,
+        0.0,
+        1.0
+      ],
+      "physical_part": "scanner_recessed_lens",
+      "role": "measured_optical_scan_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        -0.6,
+        1.15,
+        0.4
+      ],
+      "ray_origin": [
+        -0.69,
+        1.16,
+        0.7
+      ],
+      "ray_direction": [
+        0,
+        0,
+        -1
+      ],
+      "actual_hit_local_xyz_m": [
+        -0.6899999976158142,
+        1.159999966621399,
+        0.39100000262260437
+      ],
+      "ray_distance_m": 0.3089999854564667,
+      "old_proxy_nearest_actual_part": "scanner_frame_right",
+      "old_proxy_distance_to_geometry_m": 0.0010606886353343725,
+      "override_delta_m": 0.09099999999999997
+    },
+    {
+      "anchor_id": "anchor_label_pick",
+      "local_xyz_m": [
+        0.6,
+        1.03,
+        0.38
+      ],
+      "normal_runtime": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "physical_part": "label_presenter",
+      "role": "measured_paper_pick_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        0.6,
+        1.03,
+        0.4
+      ],
+      "ray_origin": [
+        0.6,
+        1.3,
+        0.38
+      ],
+      "ray_direction": [
+        0,
+        -1,
+        0
+      ],
+      "actual_hit_local_xyz_m": [
+        0.6000000238418579,
+        1.0299999713897705,
+        0.3799999952316284
+      ],
+      "ray_distance_m": 0.26999998092651367,
+      "old_proxy_nearest_actual_part": "label_presenter",
+      "old_proxy_distance_to_geometry_m": 0.00035352777922526,
+      "override_delta_m": 0.020000000000000018
+    },
+    {
+      "anchor_id": "anchor_tape_pull",
+      "local_xyz_m": [
+        0.735,
+        1.06,
+        0.4
+      ],
+      "normal_runtime": [
+        -0.0,
+        0.0,
+        1.0
+      ],
+      "physical_part": "tape_cutter_pedestal",
+      "role": "measured_cutter_front_surface_not_animated_tape_end",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        0.69,
+        1.08,
+        0.4
+      ],
+      "ray_origin": [
+        0.735,
+        1.06,
+        0.7
+      ],
+      "ray_direction": [
+        0,
+        0,
+        -1
+      ],
+      "actual_hit_local_xyz_m": [
+        0.7350000143051147,
+        1.059999942779541,
+        0.4000000059604645
+      ],
+      "ray_distance_m": 0.29999998211860657,
+      "old_proxy_nearest_actual_part": "tape_cutter_pedestal",
+      "old_proxy_distance_to_geometry_m": 0.0021214194130152464,
+      "override_delta_m": 0.04924428900898057
+    },
+    {
+      "anchor_id": "anchor_screen_face",
+      "local_xyz_m": [
+        -0.7,
+        1.33,
+        -0.302
+      ],
+      "normal_runtime": [
+        -0.0,
+        0.0,
+        1.0
+      ],
+      "physical_part": "screen_recess",
+      "role": "measured_blank_display_surface",
+      "authority": "actual_saved_source_BVH_surface",
+      "initial_plan_local_xyz_m": [
+        -0.7,
+        1.25,
+        -0.28
+      ],
+      "ray_origin": [
+        -0.7,
+        1.33,
+        0.7
+      ],
+      "ray_direction": [
+        0,
+        0,
+        -1
+      ],
+      "actual_hit_local_xyz_m": [
+        -0.699999988079071,
+        1.3300000429153442,
+        -0.3019999861717224
+      ],
+      "ray_distance_m": 1.0019999742507935,
+      "old_proxy_nearest_actual_part": "screen_row_2",
+      "old_proxy_distance_to_geometry_m": 0.0169999897480011,
+      "override_delta_m": 0.08296987405076622
+    }
+  ],
+  "limits": [
+    "Hand/torso/foot workflow not accepted; changed scan/pick targets must be used by later P04, without stretching the worker.",
+    "Ring centre is intentionally in a void, not labelled a contact. Initial dimension plan remains unchanged."
+  ]
+}

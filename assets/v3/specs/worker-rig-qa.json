@@ -1,0 +1,2502 @@
+{
+  "schema": "qoima-worker-rig-qa-v1",
+  "asset_id": "worker-base",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "rotation_order": "THREE intrinsic XYZ (RxRyRz), radians",
+  "pose_semantics": "Reset each joint to captured bind local transform. Set quaternion from THREE.Euler(x,y,z,XYZ) or equivalent jointQuaternionsXYZW; add pelvisShift to joint__pelvis bind local position. Never accumulate. Source mathutils extrinsicXYZ inputs are recorded separately, not reusable as THREE intrinsic Euler angles.",
+  "root_name": "worker_base_root",
+  "glb": "frontend/public/models/v3/worker-base.glb",
+  "glb_sha256": "c8546473c76f126844b427417db86e65be090fa04ad56c0deb9cb2bda92e73b7",
+  "reference_source": "P01.3 actual saved FK poses, read independently in Blender; no new pose math predicted the expected anchors.",
+  "source_checks": "assets/v3/iterations/worker-base/P01.3/actual-mesh-checks.json",
+  "poses": [
+    {
+      "id": "neutral",
+      "jointEulerXYZ": {
+        "joint__pelvis": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__torso": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__head": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__forearm_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__forearm_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      "pelvisShift": [
+        0,
+        0,
+        0
+      ],
+      "expectedHandAnchors": {
+        "L": [
+          -0.3070000112056732,
+          0.6650000214576721,
+          0.07500000298023224
+        ],
+        "R": [
+          0.3070000112056732,
+          0.6650000214576721,
+          0.07500000298023224
+        ]
+      },
+      "expectedSoleAnchors": {
+        "L": [
+          -0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ],
+        "R": [
+          0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ]
+      },
+      "expectedAnchors": {
+        "anchor_floor_origin": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "anchor_neck_base": [
+          0.0,
+          1.149999976158142,
+          0.004999999888241291
+        ],
+        "anchor_seat_contact": [
+          0.0,
+          0.550000011920929,
+          -0.03500000014901161
+        ],
+        "anchor_hand_grip_L": [
+          -0.3070000112056732,
+          0.6650000214576721,
+          0.07500000298023224
+        ],
+        "anchor_foot_floor_L": [
+          -0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ],
+        "anchor_hand_grip_R": [
+          0.3070000112056732,
+          0.6650000214576721,
+          0.07500000298023224
+        ],
+        "anchor_foot_floor_R": [
+          0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ]
+      },
+      "expectedJointWorld": {
+        "joint__pelvis": [
+          0.0,
+          0.6200000047683716,
+          -0.004999999888241291
+        ],
+        "joint__torso": [
+          0.0,
+          0.675000011920929,
+          -0.004999999888241291
+        ],
+        "joint__head": [
+          0.0,
+          1.1949999332427979,
+          0.004999999888241291
+        ],
+        "joint__upper_arm_L": [
+          -0.2150000035762787,
+          1.1050000190734863,
+          -0.0
+        ],
+        "joint__forearm_L": [
+          -0.26500001549720764,
+          0.9050000309944153,
+          0.009999999776482582
+        ],
+        "joint__hand_L": [
+          -0.30000001192092896,
+          0.7150000333786011,
+          0.02499999850988388
+        ],
+        "joint__thigh_L": [
+          -0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "joint__shin_L": [
+          -0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "joint__foot_L": [
+          -0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ],
+        "joint__upper_arm_R": [
+          0.2150000035762787,
+          1.1050000190734863,
+          -0.0
+        ],
+        "joint__forearm_R": [
+          0.26500001549720764,
+          0.9050000309944153,
+          0.009999999776482582
+        ],
+        "joint__hand_R": [
+          0.30000001192092896,
+          0.7150000333786011,
+          0.02499999850988388
+        ],
+        "joint__thigh_R": [
+          0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "joint__shin_R": [
+          0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "joint__foot_R": [
+          0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ]
+      },
+      "jointWitnesses": [
+        {
+          "joint": "joint__torso",
+          "worldPoint": [
+            0.0,
+            0.675000011920929,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "shirt_core"
+          ],
+          "sourceSurfaceMargins": [
+            0.014999985694885254,
+            0.0350000262260437
+          ]
+        },
+        {
+          "joint": "joint__head",
+          "worldPoint": [
+            0.0,
+            1.1949999332427979,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "short_neck",
+            "cuboid_head"
+          ],
+          "sourceSurfaceMargins": [
+            0.020000100135803223,
+            0.019999980926513672
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_L",
+          "worldPoint": [
+            -0.2150000035762787,
+            1.1050000190734863,
+            -0.0
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.017999932169914246
+          ]
+        },
+        {
+          "joint": "joint__forearm_L",
+          "worldPoint": [
+            -0.26500001549720764,
+            0.9050000309944153,
+            0.009999999776482582
+          ],
+          "sourceParts": [
+            "upper_sleeve_L",
+            "fore_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000051379203796,
+            0.018000012263655663
+          ]
+        },
+        {
+          "joint": "joint__hand_L",
+          "worldPoint": [
+            -0.30000001192092896,
+            0.7150000333786011,
+            0.02499999850988388
+          ],
+          "sourceParts": [
+            "fore_sleeve_L",
+            "mitten_L_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999954521656036,
+            0.020000040531158447
+          ]
+        },
+        {
+          "joint": "joint__thigh_L",
+          "worldPoint": [
+            -0.0949999988079071,
+            0.5950000286102295,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999961972236633
+          ]
+        },
+        {
+          "joint": "joint__shin_L",
+          "worldPoint": [
+            -0.10499999672174454,
+            0.36500000953674316,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_thigh_L",
+            "trouser_shin_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.01799999177455902
+          ]
+        },
+        {
+          "joint": "joint__foot_L",
+          "worldPoint": [
+            -0.11499999463558197,
+            0.14000001549720764,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_shin_L",
+            "boot_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.019999995827674866
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_R",
+          "worldPoint": [
+            0.2150000035762787,
+            1.1050000190734863,
+            -0.0
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.018000051379203796
+          ]
+        },
+        {
+          "joint": "joint__forearm_R",
+          "worldPoint": [
+            0.26500001549720764,
+            0.9050000309944153,
+            0.009999999776482582
+          ],
+          "sourceParts": [
+            "upper_sleeve_R",
+            "fore_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999986186623573,
+            0.018000012263655663
+          ]
+        },
+        {
+          "joint": "joint__hand_R",
+          "worldPoint": [
+            0.30000001192092896,
+            0.7150000333786011,
+            0.02499999850988388
+          ],
+          "sourceParts": [
+            "fore_sleeve_R",
+            "mitten_R_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999952659010887,
+            0.020000040531158447
+          ]
+        },
+        {
+          "joint": "joint__thigh_R",
+          "worldPoint": [
+            0.0949999988079071,
+            0.5950000286102295,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999961972236633
+          ]
+        },
+        {
+          "joint": "joint__shin_R",
+          "worldPoint": [
+            0.10499999672174454,
+            0.36500000953674316,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_thigh_R",
+            "trouser_shin_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.01799999363720417
+          ]
+        },
+        {
+          "joint": "joint__foot_R",
+          "worldPoint": [
+            0.11499999463558197,
+            0.14000001549720764,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_shin_R",
+            "boot_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.019999995827674866
+          ]
+        }
+      ],
+      "tolerance": 2e-05,
+      "sourceSnapshot": "assets/v3/iterations/worker-base/P01.3/neutral.blend",
+      "sourceSnapshotSha256": "cd9d17a68c573360d4a071578ca8bb9e6b94aa65b720e73d6ad43941953f5fa2",
+      "sourceInputMathutilsExtrinsicXYZ": {
+        "joint__pelvis": [
+          0,
+          0,
+          0
+        ],
+        "joint__torso": [
+          0,
+          0,
+          0
+        ],
+        "joint__head": [
+          0,
+          0,
+          0
+        ],
+        "joint__upper_arm_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__forearm_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__hand_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__thigh_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__upper_arm_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__forearm_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__hand_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          0,
+          0,
+          0
+        ]
+      },
+      "jointQuaternionsXYZW": {
+        "joint__pelvis": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__torso": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__head": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__upper_arm_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__forearm_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__hand_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__thigh_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__shin_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__foot_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__upper_arm_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__forearm_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__hand_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__thigh_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__shin_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__foot_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "id": "bent-arm",
+      "jointEulerXYZ": {
+        "joint__pelvis": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__torso": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__head": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_L": [
+          -0.6475885848134203,
+          0.06045464133584016,
+          -0.07970559635450987
+        ],
+        "joint__forearm_L": [
+          -0.950000088297513,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_L": [
+          0.1499999949998593,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_R": [
+          -0.6475885848134203,
+          -0.06045464133584016,
+          0.07970559635450987
+        ],
+        "joint__forearm_R": [
+          -0.950000088297513,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_R": [
+          0.1499999949998593,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      "pelvisShift": [
+        0,
+        0,
+        0
+      ],
+      "expectedHandAnchors": {
+        "L": [
+          -0.3154268264770508,
+          1.0256165266036987,
+          0.3741398751735687
+        ],
+        "R": [
+          0.3154268264770508,
+          1.0256165266036987,
+          0.3741398751735687
+        ]
+      },
+      "expectedSoleAnchors": {
+        "L": [
+          -0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ],
+        "R": [
+          0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ]
+      },
+      "expectedAnchors": {
+        "anchor_floor_origin": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "anchor_neck_base": [
+          0.0,
+          1.149999976158142,
+          0.004999999888241291
+        ],
+        "anchor_seat_contact": [
+          0.0,
+          0.550000011920929,
+          -0.03500000014901161
+        ],
+        "anchor_hand_grip_L": [
+          -0.3154268264770508,
+          1.0256165266036987,
+          0.3741398751735687
+        ],
+        "anchor_foot_floor_L": [
+          -0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ],
+        "anchor_hand_grip_R": [
+          0.3154268264770508,
+          1.0256165266036987,
+          0.3741398751735687
+        ],
+        "anchor_foot_floor_R": [
+          0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ]
+      },
+      "expectedJointWorld": {
+        "joint__pelvis": [
+          0.0,
+          0.6200000047683716,
+          -0.004999999888241291
+        ],
+        "joint__torso": [
+          0.0,
+          0.675000011920929,
+          -0.004999999888241291
+        ],
+        "joint__head": [
+          0.0,
+          1.1949999332427979,
+          0.004999999888241291
+        ],
+        "joint__upper_arm_L": [
+          -0.2150000035762787,
+          1.1050000190734863,
+          -0.0
+        ],
+        "joint__forearm_L": [
+          -0.2800411880016327,
+          0.9575920104980469,
+          0.12899810075759888
+        ],
+        "joint__hand_L": [
+          -0.3128156065940857,
+          0.9815250635147095,
+          0.31847909092903137
+        ],
+        "joint__thigh_L": [
+          -0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "joint__shin_L": [
+          -0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "joint__foot_L": [
+          -0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ],
+        "joint__upper_arm_R": [
+          0.2150000035762787,
+          1.1050000190734863,
+          -0.0
+        ],
+        "joint__forearm_R": [
+          0.2800411880016327,
+          0.9575920104980469,
+          0.12899810075759888
+        ],
+        "joint__hand_R": [
+          0.3128156065940857,
+          0.9815250635147095,
+          0.31847909092903137
+        ],
+        "joint__thigh_R": [
+          0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "joint__shin_R": [
+          0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "joint__foot_R": [
+          0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ]
+      },
+      "jointWitnesses": [
+        {
+          "joint": "joint__torso",
+          "worldPoint": [
+            0.0,
+            0.675000011920929,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "shirt_core"
+          ],
+          "sourceSurfaceMargins": [
+            0.014999985694885254,
+            0.0350000262260437
+          ]
+        },
+        {
+          "joint": "joint__head",
+          "worldPoint": [
+            0.0,
+            1.1949999332427979,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "short_neck",
+            "cuboid_head"
+          ],
+          "sourceSurfaceMargins": [
+            0.020000100135803223,
+            0.019999980926513672
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_L",
+          "worldPoint": [
+            -0.2150000035762787,
+            1.1050000190734863,
+            -0.0
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.018000029027462006
+          ]
+        },
+        {
+          "joint": "joint__forearm_L",
+          "worldPoint": [
+            -0.2800411880016327,
+            0.9575920104980469,
+            0.12899810075759888
+          ],
+          "sourceParts": [
+            "upper_sleeve_L",
+            "fore_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000034615397453,
+            0.018000023439526558
+          ]
+        },
+        {
+          "joint": "joint__hand_L",
+          "worldPoint": [
+            -0.3128156065940857,
+            0.9815250635147095,
+            0.31847909092903137
+          ],
+          "sourceParts": [
+            "fore_sleeve_L",
+            "mitten_L_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.01799997314810753,
+            0.020000016316771507
+          ]
+        },
+        {
+          "joint": "joint__thigh_L",
+          "worldPoint": [
+            -0.0949999988079071,
+            0.5950000286102295,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999961972236633
+          ]
+        },
+        {
+          "joint": "joint__shin_L",
+          "worldPoint": [
+            -0.10499999672174454,
+            0.36500000953674316,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_thigh_L",
+            "trouser_shin_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.01799999177455902
+          ]
+        },
+        {
+          "joint": "joint__foot_L",
+          "worldPoint": [
+            -0.11499999463558197,
+            0.14000001549720764,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_shin_L",
+            "boot_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.019999995827674866
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_R",
+          "worldPoint": [
+            0.2150000035762787,
+            1.1050000190734863,
+            -0.0
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.017999926581978798
+          ]
+        },
+        {
+          "joint": "joint__forearm_R",
+          "worldPoint": [
+            0.2800411880016327,
+            0.9575920104980469,
+            0.12899810075759888
+          ],
+          "sourceParts": [
+            "upper_sleeve_R",
+            "fore_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800004579126835,
+            0.018000023439526558
+          ]
+        },
+        {
+          "joint": "joint__hand_R",
+          "worldPoint": [
+            0.3128156065940857,
+            0.9815250635147095,
+            0.31847909092903137
+          ],
+          "sourceParts": [
+            "fore_sleeve_R",
+            "mitten_R_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999976873397827,
+            0.020000046119093895
+          ]
+        },
+        {
+          "joint": "joint__thigh_R",
+          "worldPoint": [
+            0.0949999988079071,
+            0.5950000286102295,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999961972236633
+          ]
+        },
+        {
+          "joint": "joint__shin_R",
+          "worldPoint": [
+            0.10499999672174454,
+            0.36500000953674316,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_thigh_R",
+            "trouser_shin_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.01799999363720417
+          ]
+        },
+        {
+          "joint": "joint__foot_R",
+          "worldPoint": [
+            0.11499999463558197,
+            0.14000001549720764,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_shin_R",
+            "boot_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.019999995827674866
+          ]
+        }
+      ],
+      "tolerance": 2e-05,
+      "sourceSnapshot": "assets/v3/iterations/worker-base/P01.3/bent-arm.blend",
+      "sourceSnapshotSha256": "c9f21117e8e4addd3185625c8570f7337634e35ee376e952342f15d51c49ef68",
+      "sourceInputMathutilsExtrinsicXYZ": {
+        "joint__pelvis": [
+          0,
+          0,
+          0
+        ],
+        "joint__torso": [
+          0,
+          0,
+          0
+        ],
+        "joint__head": [
+          0,
+          0,
+          0
+        ],
+        "joint__upper_arm_L": [
+          -0.65,
+          0,
+          -0.1
+        ],
+        "joint__forearm_L": [
+          -0.95,
+          0,
+          0
+        ],
+        "joint__hand_L": [
+          0.15,
+          0,
+          0
+        ],
+        "joint__thigh_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__upper_arm_R": [
+          -0.65,
+          0,
+          0.1
+        ],
+        "joint__forearm_R": [
+          -0.95,
+          0,
+          0
+        ],
+        "joint__hand_R": [
+          0.15,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          0,
+          0,
+          0
+        ]
+      },
+      "jointQuaternionsXYZW": {
+        "joint__pelvis": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__torso": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__head": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__upper_arm_L": [
+          -0.3189096748828888,
+          0.015958787873387337,
+          -0.0473627969622612,
+          0.9464664459228516
+        ],
+        "joint__forearm_L": [
+          -0.45733851194381714,
+          0.0,
+          0.0,
+          0.8892927169799805
+        ],
+        "joint__hand_L": [
+          0.07492969930171967,
+          0.0,
+          0.0,
+          0.9971888065338135
+        ],
+        "joint__thigh_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__shin_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__foot_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__upper_arm_R": [
+          -0.3189096748828888,
+          -0.015958787873387337,
+          0.0473627969622612,
+          0.9464664459228516
+        ],
+        "joint__forearm_R": [
+          -0.45733851194381714,
+          0.0,
+          0.0,
+          0.8892927169799805
+        ],
+        "joint__hand_R": [
+          0.07492969930171967,
+          0.0,
+          0.0,
+          0.9971888065338135
+        ],
+        "joint__thigh_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__shin_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__foot_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    },
+    {
+      "id": "bent-knee",
+      "jointEulerXYZ": {
+        "joint__pelvis": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__torso": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__head": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__forearm_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_L": [
+          -0.4499999761675014,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_L": [
+          0.900000041775593,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_L": [
+          -0.4499999761675014,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__forearm_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_R": [
+          -0.4499999761675014,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_R": [
+          0.900000041775593,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_R": [
+          -0.4499999761675014,
+          0.0,
+          -0.0
+        ]
+      },
+      "pelvisShift": [
+        0,
+        -0.053995922207832336,
+        0
+      ],
+      "expectedHandAnchors": {
+        "L": [
+          -0.3070000112056732,
+          0.6110041737556458,
+          0.07500000298023224
+        ],
+        "R": [
+          0.3070000112056732,
+          0.6110041737556458,
+          0.07500000298023224
+        ]
+      },
+      "expectedSoleAnchors": {
+        "L": [
+          -0.11499999463558197,
+          1.4454126784357868e-08,
+          0.0021747895516455173
+        ],
+        "R": [
+          0.11499999463558197,
+          1.4454126784357868e-08,
+          0.0021747895516455173
+        ]
+      },
+      "expectedAnchors": {
+        "anchor_floor_origin": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "anchor_neck_base": [
+          0.0,
+          1.0960041284561157,
+          0.004999999888241291
+        ],
+        "anchor_seat_contact": [
+          0.0,
+          0.4960041046142578,
+          -0.03500000014901161
+        ],
+        "anchor_hand_grip_L": [
+          -0.3070000112056732,
+          0.6110041737556458,
+          0.07500000298023224
+        ],
+        "anchor_foot_floor_L": [
+          -0.11499999463558197,
+          1.4454126784357868e-08,
+          0.0021747895516455173
+        ],
+        "anchor_hand_grip_R": [
+          0.3070000112056732,
+          0.6110041737556458,
+          0.07500000298023224
+        ],
+        "anchor_foot_floor_R": [
+          0.11499999463558197,
+          1.4454126784357868e-08,
+          0.0021747895516455173
+        ]
+      },
+      "expectedJointWorld": {
+        "joint__pelvis": [
+          0.0,
+          0.5660040974617004,
+          -0.004999999888241291
+        ],
+        "joint__torso": [
+          0.0,
+          0.6210041046142578,
+          -0.004999999888241291
+        ],
+        "joint__head": [
+          0.0,
+          1.1410040855407715,
+          0.004999999888241291
+        ],
+        "joint__upper_arm_L": [
+          -0.2150000035762787,
+          1.05100417137146,
+          -0.0
+        ],
+        "joint__forearm_L": [
+          -0.26500001549720764,
+          0.8510041832923889,
+          0.009999999776482582
+        ],
+        "joint__hand_L": [
+          -0.30000001192092896,
+          0.6610041856765747,
+          0.02499999850988388
+        ],
+        "joint__thigh_L": [
+          -0.0949999988079071,
+          0.5410041213035583,
+          -0.004999999888241291
+        ],
+        "joint__shin_L": [
+          -0.10499999672174454,
+          0.33825093507766724,
+          0.10404656082391739
+        ],
+        "joint__foot_L": [
+          -0.11499999463558197,
+          0.14000001549720764,
+          -0.0028251977637410164
+        ],
+        "joint__upper_arm_R": [
+          0.2150000035762787,
+          1.05100417137146,
+          -0.0
+        ],
+        "joint__forearm_R": [
+          0.26500001549720764,
+          0.8510041832923889,
+          0.009999999776482582
+        ],
+        "joint__hand_R": [
+          0.30000001192092896,
+          0.6610041856765747,
+          0.02499999850988388
+        ],
+        "joint__thigh_R": [
+          0.0949999988079071,
+          0.5410041213035583,
+          -0.004999999888241291
+        ],
+        "joint__shin_R": [
+          0.10499999672174454,
+          0.33825093507766724,
+          0.10404656082391739
+        ],
+        "joint__foot_R": [
+          0.11499999463558197,
+          0.14000001549720764,
+          -0.0028251977637410164
+        ]
+      },
+      "jointWitnesses": [
+        {
+          "joint": "joint__torso",
+          "worldPoint": [
+            0.0,
+            0.6210041046142578,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "shirt_core"
+          ],
+          "sourceSurfaceMargins": [
+            0.014999985694885254,
+            0.0350000262260437
+          ]
+        },
+        {
+          "joint": "joint__head",
+          "worldPoint": [
+            0.0,
+            1.1410040855407715,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "short_neck",
+            "cuboid_head"
+          ],
+          "sourceSurfaceMargins": [
+            0.020000100135803223,
+            0.019999980926513672
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_L",
+          "worldPoint": [
+            -0.2150000035762787,
+            1.05100417137146,
+            -0.0
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.017999932169914246
+          ]
+        },
+        {
+          "joint": "joint__forearm_L",
+          "worldPoint": [
+            -0.26500001549720764,
+            0.8510041832923889,
+            0.009999999776482582
+          ],
+          "sourceParts": [
+            "upper_sleeve_L",
+            "fore_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000051379203796,
+            0.018000012263655663
+          ]
+        },
+        {
+          "joint": "joint__hand_L",
+          "worldPoint": [
+            -0.30000001192092896,
+            0.6610041856765747,
+            0.02499999850988388
+          ],
+          "sourceParts": [
+            "fore_sleeve_L",
+            "mitten_L_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999954521656036,
+            0.020000040531158447
+          ]
+        },
+        {
+          "joint": "joint__thigh_L",
+          "worldPoint": [
+            -0.0949999988079071,
+            0.5410041213035583,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999941483139992
+          ]
+        },
+        {
+          "joint": "joint__shin_L",
+          "worldPoint": [
+            -0.10499999672174454,
+            0.33825093507766724,
+            0.10404656082391739
+          ],
+          "sourceParts": [
+            "trouser_thigh_L",
+            "trouser_shin_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000030890107155,
+            0.018000006675720215
+          ]
+        },
+        {
+          "joint": "joint__foot_L",
+          "worldPoint": [
+            -0.11499999463558197,
+            0.14000001549720764,
+            -0.0028251977637410164
+          ],
+          "sourceParts": [
+            "trouser_shin_L",
+            "boot_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000029027462006,
+            0.019999995827674866
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_R",
+          "worldPoint": [
+            0.2150000035762787,
+            1.05100417137146,
+            -0.0
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.018000051379203796
+          ]
+        },
+        {
+          "joint": "joint__forearm_R",
+          "worldPoint": [
+            0.26500001549720764,
+            0.8510041832923889,
+            0.009999999776482582
+          ],
+          "sourceParts": [
+            "upper_sleeve_R",
+            "fore_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999986186623573,
+            0.018000012263655663
+          ]
+        },
+        {
+          "joint": "joint__hand_R",
+          "worldPoint": [
+            0.30000001192092896,
+            0.6610041856765747,
+            0.02499999850988388
+          ],
+          "sourceParts": [
+            "fore_sleeve_R",
+            "mitten_R_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999952659010887,
+            0.020000040531158447
+          ]
+        },
+        {
+          "joint": "joint__thigh_R",
+          "worldPoint": [
+            0.0949999988079071,
+            0.5410041213035583,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999934032559395
+          ]
+        },
+        {
+          "joint": "joint__shin_R",
+          "worldPoint": [
+            0.10499999672174454,
+            0.33825093507766724,
+            0.10404656082391739
+          ],
+          "sourceParts": [
+            "trouser_thigh_R",
+            "trouser_shin_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000030890107155,
+            0.018000006675720215
+          ]
+        },
+        {
+          "joint": "joint__foot_R",
+          "worldPoint": [
+            0.11499999463558197,
+            0.14000001549720764,
+            -0.0028251977637410164
+          ],
+          "sourceParts": [
+            "trouser_shin_R",
+            "boot_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000030890107155,
+            0.019999995827674866
+          ]
+        }
+      ],
+      "tolerance": 2e-05,
+      "sourceSnapshot": "assets/v3/iterations/worker-base/P01.3/bent-knee.blend",
+      "sourceSnapshotSha256": "569d81cc10a632270804cb28f5cfd5afd5598590d65fb8052d87a8baf6ed8984",
+      "sourceInputMathutilsExtrinsicXYZ": {
+        "joint__pelvis": [
+          0,
+          0,
+          0
+        ],
+        "joint__torso": [
+          0,
+          0,
+          0
+        ],
+        "joint__head": [
+          0,
+          0,
+          0
+        ],
+        "joint__upper_arm_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__forearm_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__hand_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__thigh_L": [
+          -0.45,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.9,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          -0.45,
+          0,
+          0
+        ],
+        "joint__upper_arm_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__forearm_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__hand_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          -0.45,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0.9,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          -0.45,
+          0,
+          0
+        ]
+      },
+      "jointQuaternionsXYZW": {
+        "joint__pelvis": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__torso": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__head": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__upper_arm_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__forearm_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__hand_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__thigh_L": [
+          -0.22310635447502136,
+          0.0,
+          0.0,
+          0.9747940897941589
+        ],
+        "joint__shin_L": [
+          0.4349655508995056,
+          0.0,
+          0.0,
+          0.9004470705986023
+        ],
+        "joint__foot_L": [
+          -0.22310635447502136,
+          0.0,
+          0.0,
+          0.9747940897941589
+        ],
+        "joint__upper_arm_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__forearm_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__hand_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__thigh_R": [
+          -0.22310635447502136,
+          0.0,
+          0.0,
+          0.9747940897941589
+        ],
+        "joint__shin_R": [
+          0.4349655508995056,
+          0.0,
+          0.0,
+          0.9004470705986023
+        ],
+        "joint__foot_R": [
+          -0.22310635447502136,
+          0.0,
+          0.0,
+          0.9747940897941589
+        ]
+      }
+    },
+    {
+      "id": "waist-bend",
+      "jointEulerXYZ": {
+        "joint__pelvis": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__torso": [
+          0.4499999761675014,
+          0.0,
+          -0.0
+        ],
+        "joint__head": [
+          -0.1499999949998593,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_L": [
+          -0.25000001918958387,
+          0.0,
+          -0.0
+        ],
+        "joint__forearm_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_L": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__upper_arm_R": [
+          -0.25000001918958387,
+          0.0,
+          -0.0
+        ],
+        "joint__forearm_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__hand_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__thigh_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__shin_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        "joint__foot_R": [
+          -0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      "pelvisShift": [
+        0,
+        0,
+        0
+      ],
+      "expectedHandAnchors": {
+        "L": [
+          -0.3070000112056732,
+          0.6138878464698792,
+          0.17262794077396393
+        ],
+        "R": [
+          0.3070000112056732,
+          0.6138878464698792,
+          0.17262794077396393
+        ]
+      },
+      "expectedSoleAnchors": {
+        "L": [
+          -0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ],
+        "R": [
+          0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ]
+      },
+      "expectedAnchors": {
+        "anchor_floor_origin": [
+          0.0,
+          0.0,
+          -0.0
+        ],
+        "anchor_neck_base": [
+          0.0,
+          1.098362684249878,
+          0.21061314642429352
+        ],
+        "anchor_seat_contact": [
+          0.0,
+          0.550000011920929,
+          -0.03500000014901161
+        ],
+        "anchor_hand_grip_L": [
+          -0.3070000112056732,
+          0.6138878464698792,
+          0.17262794077396393
+        ],
+        "anchor_foot_floor_L": [
+          -0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ],
+        "anchor_hand_grip_R": [
+          0.3070000112056732,
+          0.6138878464698792,
+          0.17262794077396393
+        ],
+        "anchor_foot_floor_R": [
+          0.11499999463558197,
+          1.4901161193847656e-08,
+          -0.0
+        ]
+      },
+      "expectedJointWorld": {
+        "joint__pelvis": [
+          0.0,
+          0.6200000047683716,
+          -0.004999999888241291
+        ],
+        "joint__torso": [
+          0.0,
+          0.675000011920929,
+          -0.004999999888241291
+        ],
+        "joint__head": [
+          0.0,
+          1.1388827562332153,
+          0.2301865816116333
+        ],
+        "joint__upper_arm_L": [
+          -0.2150000035762787,
+          1.0600173473358154,
+          0.1865374594926834
+        ],
+        "joint__forearm_L": [
+          -0.26500001549720764,
+          0.8620173335075378,
+          0.15660426020622253
+        ],
+        "joint__hand_L": [
+          -0.30000001192092896,
+          0.6728246212005615,
+          0.13355807960033417
+        ],
+        "joint__thigh_L": [
+          -0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "joint__shin_L": [
+          -0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "joint__foot_L": [
+          -0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ],
+        "joint__upper_arm_R": [
+          0.2150000035762787,
+          1.0600173473358154,
+          0.1865374594926834
+        ],
+        "joint__forearm_R": [
+          0.26500001549720764,
+          0.8620173335075378,
+          0.15660426020622253
+        ],
+        "joint__hand_R": [
+          0.30000001192092896,
+          0.6728246212005615,
+          0.13355807960033417
+        ],
+        "joint__thigh_R": [
+          0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "joint__shin_R": [
+          0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "joint__foot_R": [
+          0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ]
+      },
+      "jointWitnesses": [
+        {
+          "joint": "joint__torso",
+          "worldPoint": [
+            0.0,
+            0.675000011920929,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "shirt_core"
+          ],
+          "sourceSurfaceMargins": [
+            0.014999985694885254,
+            0.035000018775463104
+          ]
+        },
+        {
+          "joint": "joint__head",
+          "worldPoint": [
+            0.0,
+            1.1388827562332153,
+            0.2301865816116333
+          ],
+          "sourceParts": [
+            "short_neck",
+            "cuboid_head"
+          ],
+          "sourceSurfaceMargins": [
+            0.02000001259148121,
+            0.019999898970127106
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_L",
+          "worldPoint": [
+            -0.2150000035762787,
+            1.0600173473358154,
+            0.1865374594926834
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.01800006441771984
+          ]
+        },
+        {
+          "joint": "joint__forearm_L",
+          "worldPoint": [
+            -0.26500001549720764,
+            0.8620173335075378,
+            0.15660426020622253
+          ],
+          "sourceParts": [
+            "upper_sleeve_L",
+            "fore_sleeve_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000004813075066,
+            0.01800001971423626
+          ]
+        },
+        {
+          "joint": "joint__hand_L",
+          "worldPoint": [
+            -0.30000001192092896,
+            0.6728246212005615,
+            0.13355807960033417
+          ],
+          "sourceParts": [
+            "fore_sleeve_L",
+            "mitten_L_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999960109591484,
+            0.020000074058771133
+          ]
+        },
+        {
+          "joint": "joint__thigh_L",
+          "worldPoint": [
+            -0.0949999988079071,
+            0.5950000286102295,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999961972236633
+          ]
+        },
+        {
+          "joint": "joint__shin_L",
+          "worldPoint": [
+            -0.10499999672174454,
+            0.36500000953674316,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_thigh_L",
+            "trouser_shin_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.01799999177455902
+          ]
+        },
+        {
+          "joint": "joint__foot_L",
+          "worldPoint": [
+            -0.11499999463558197,
+            0.14000001549720764,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_shin_L",
+            "boot_L"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.019999995827674866
+          ]
+        },
+        {
+          "joint": "joint__upper_arm_R",
+          "worldPoint": [
+            0.2150000035762787,
+            1.0600173473358154,
+            0.1865374594926834
+          ],
+          "sourceParts": [
+            "connected_shoulder_band",
+            "upper_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.015000000596046448,
+            0.01799994334578514
+          ]
+        },
+        {
+          "joint": "joint__forearm_R",
+          "worldPoint": [
+            0.26500001549720764,
+            0.8620173335075378,
+            0.15660426020622253
+          ],
+          "sourceParts": [
+            "upper_sleeve_R",
+            "fore_sleeve_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.018000002950429916,
+            0.01800001971423626
+          ]
+        },
+        {
+          "joint": "joint__hand_R",
+          "worldPoint": [
+            0.30000001192092896,
+            0.6728246212005615,
+            0.13355807960033417
+          ],
+          "sourceParts": [
+            "fore_sleeve_R",
+            "mitten_R_spine"
+          ],
+          "sourceSurfaceMargins": [
+            0.017999960109591484,
+            0.02000001259148121
+          ]
+        },
+        {
+          "joint": "joint__thigh_R",
+          "worldPoint": [
+            0.0949999988079071,
+            0.5950000286102295,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "pelvis_cloth",
+            "trouser_thigh_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.04500001668930054,
+            0.017999961972236633
+          ]
+        },
+        {
+          "joint": "joint__shin_R",
+          "worldPoint": [
+            0.10499999672174454,
+            0.36500000953674316,
+            0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_thigh_R",
+            "trouser_shin_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.01799999363720417
+          ]
+        },
+        {
+          "joint": "joint__foot_R",
+          "worldPoint": [
+            0.11499999463558197,
+            0.14000001549720764,
+            -0.004999999888241291
+          ],
+          "sourceParts": [
+            "trouser_shin_R",
+            "boot_R"
+          ],
+          "sourceSurfaceMargins": [
+            0.01800002157688141,
+            0.019999995827674866
+          ]
+        }
+      ],
+      "tolerance": 2e-05,
+      "sourceSnapshot": "assets/v3/iterations/worker-base/P01.3/waist-bend.blend",
+      "sourceSnapshotSha256": "034b282c89384f1bd9e1fb52068825347c0aa37a1b7688c9871f69b81bbd6d2e",
+      "sourceInputMathutilsExtrinsicXYZ": {
+        "joint__pelvis": [
+          0,
+          0,
+          0
+        ],
+        "joint__torso": [
+          0.45,
+          0,
+          0
+        ],
+        "joint__head": [
+          -0.15,
+          0,
+          0
+        ],
+        "joint__upper_arm_L": [
+          -0.25,
+          0,
+          0
+        ],
+        "joint__forearm_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__hand_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__thigh_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          0,
+          0,
+          0
+        ],
+        "joint__upper_arm_R": [
+          -0.25,
+          0,
+          0
+        ],
+        "joint__forearm_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__hand_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          0,
+          0,
+          0
+        ]
+      },
+      "jointQuaternionsXYZW": {
+        "joint__pelvis": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__torso": [
+          0.22310635447502136,
+          0.0,
+          0.0,
+          0.9747940897941589
+        ],
+        "joint__head": [
+          -0.07492969930171967,
+          0.0,
+          0.0,
+          0.9971888065338135
+        ],
+        "joint__upper_arm_L": [
+          -0.12467475235462189,
+          0.0,
+          0.0,
+          0.9921976327896118
+        ],
+        "joint__forearm_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__hand_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__thigh_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__shin_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__foot_L": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__upper_arm_R": [
+          -0.12467475235462189,
+          0.0,
+          0.0,
+          0.9921976327896118
+        ],
+        "joint__forearm_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__hand_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__thigh_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__shin_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "joint__foot_R": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    }
+  ],
+  "reset": "Neutral bind, all15quaternions identity and pelvisShift zero; repeat after every non-neutral pose.",
+  "scope": "Base4sampled FK and reset only; no gait/cart/equipment/driver workflow acceptance."
+}

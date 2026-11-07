@@ -1,0 +1,337 @@
+{
+  "task_id": "P01.6",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T10:39:01.456792+00:00",
+  "result": "Accepted editable worker source exported with joint-safe parent/material batching and independently decoded actual GLB. Root browser/Khronos review pending.",
+  "glb": {
+    "path": "frontend/public/models/v3/worker-base.glb",
+    "sha256": "c8546473c76f126844b427417db86e65be090fa04ad56c0deb9cb2bda92e73b7",
+    "bytes": 181828
+  },
+  "stats": {
+    "path": "assets/v3/blender/worker-base.stats.json",
+    "sha256": "65d8cfeca6215b7d6e7a0c405fd9339fb7a063c134812991150eaa2a7e6019fc"
+  },
+  "source": {
+    "path": "assets/v3/blender/worker-base.blend",
+    "serialization_sha256": "baa1c944421a7b3621f37adc48bd03dc6e05060a652bfa257b3ec81ff8a55400",
+    "accepted_P01_4_snapshot_sha256": "a18d1689d0f1e2c0000c94460439737ff39f524f99075552982bb78f5b0254cc",
+    "geometry_and_editability_check": {
+      "status": "verified",
+      "method": "Reopened both accepted P01.4 snapshot and finish-saved canonical blend; all evaluated world vertices, mesh names/parents/materials and modifier types exactly equal.",
+      "mesh_objects": 56,
+      "editable_modifiers": 110,
+      "geometry_sha256": "3fe2c274501d73a82afd0ed68be7802d66efce0d35f7c43cd34598e395967f22",
+      "qa_gauges": 0
+    }
+  },
+  "binary_decode": {
+    "status": "verified_numerically",
+    "method": "Independent CPython stdlib decode of actual GLB BIN float POSITION/NORMAL/index bytes and recursively composed glTF node TRS; no Blender/authoring xyz/helper bounds used.",
+    "bounds_runtime": {
+      "min": [
+        -0.3730235179704461,
+        1.4901161193847656e-08,
+        -0.15999999921768904
+      ],
+      "max": [
+        0.3730235178076827,
+        1.699999839067459,
+        0.21999999601393938
+      ]
+    },
+    "dimensions_m": [
+      0.7460470357781288,
+      1.699999824166298,
+      0.3799999952316284
+    ],
+    "nodes": 46,
+    "runtime_meshes": 23,
+    "triangles": 2848,
+    "finite_positions": 5773,
+    "finite_unit_normals": 5773,
+    "anchors": {
+      "anchor_floor_origin": [
+        0,
+        0,
+        0
+      ],
+      "anchor_neck_base": [
+        0.0,
+        1.149999976158142,
+        0.004999999888241291
+      ],
+      "anchor_seat_contact": [
+        0.0,
+        0.550000011920929,
+        -0.03500000108033419
+      ],
+      "anchor_hand_grip_L": [
+        -0.3070000112056732,
+        0.6650000214576721,
+        0.07500000298023224
+      ],
+      "anchor_foot_floor_L": [
+        -0.11499999463558197,
+        1.4901161193847656e-08,
+        0.0
+      ],
+      "anchor_hand_grip_R": [
+        0.3070000112056732,
+        0.6650000214576721,
+        0.07500000298023224
+      ],
+      "anchor_foot_floor_R": [
+        0.11499999463558197,
+        1.4901161193847656e-08,
+        0.0
+      ]
+    },
+    "pivots": {
+      "joint__pelvis": {
+        "position_runtime": [
+          0.0,
+          0.6200000047683716,
+          -0.004999999888241291
+        ],
+        "parent": "worker_base_root"
+      },
+      "joint__torso": {
+        "position_runtime": [
+          0.0,
+          0.675000011920929,
+          -0.004999999888241291
+        ],
+        "parent": "joint__pelvis"
+      },
+      "joint__head": {
+        "position_runtime": [
+          0.0,
+          1.1949999332427979,
+          0.004999999888241291
+        ],
+        "parent": "joint__torso"
+      },
+      "joint__upper_arm_L": {
+        "position_runtime": [
+          -0.2150000035762787,
+          1.1050000190734863,
+          0.0
+        ],
+        "parent": "joint__torso"
+      },
+      "joint__forearm_L": {
+        "position_runtime": [
+          -0.26500001549720764,
+          0.9050000309944153,
+          0.009999999776482582
+        ],
+        "parent": "joint__upper_arm_L"
+      },
+      "joint__hand_L": {
+        "position_runtime": [
+          -0.30000001192092896,
+          0.7150000333786011,
+          0.02499999850988388
+        ],
+        "parent": "joint__forearm_L"
+      },
+      "joint__thigh_L": {
+        "position_runtime": [
+          -0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "parent": "joint__pelvis"
+      },
+      "joint__shin_L": {
+        "position_runtime": [
+          -0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "parent": "joint__thigh_L"
+      },
+      "joint__foot_L": {
+        "position_runtime": [
+          -0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ],
+        "parent": "joint__shin_L"
+      },
+      "joint__upper_arm_R": {
+        "position_runtime": [
+          0.2150000035762787,
+          1.1050000190734863,
+          0.0
+        ],
+        "parent": "joint__torso"
+      },
+      "joint__forearm_R": {
+        "position_runtime": [
+          0.26500001549720764,
+          0.9050000309944153,
+          0.009999999776482582
+        ],
+        "parent": "joint__upper_arm_R"
+      },
+      "joint__hand_R": {
+        "position_runtime": [
+          0.30000001192092896,
+          0.7150000333786011,
+          0.02499999850988388
+        ],
+        "parent": "joint__forearm_R"
+      },
+      "joint__thigh_R": {
+        "position_runtime": [
+          0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "parent": "joint__pelvis"
+      },
+      "joint__shin_R": {
+        "position_runtime": [
+          0.10499999672174454,
+          0.36500000953674316,
+          0.004999999888241291
+        ],
+        "parent": "joint__thigh_R"
+      },
+      "joint__foot_R": {
+        "position_runtime": [
+          0.11499999463558197,
+          0.14000001549720764,
+          -0.004999999888241291
+        ],
+        "parent": "joint__shin_R"
+      }
+    },
+    "root_identity": true,
+    "all_joint_bind_rotations_identity": true,
+    "same_parent_batching_verified_source_parts": 56,
+    "materials": [
+      "V3_Worker_BootsShared",
+      "V3_Worker_TrousersShared",
+      "V3_Worker_SkinWarm",
+      "V3_Worker_HairDark",
+      "V3_Worker_BadgeInk",
+      "V3_Worker_RoleHeadwear",
+      "V3_Worker_ShirtShared",
+      "V3_Worker_BadgeBase",
+      "V3_Worker_RoleVest",
+      "V3_Worker_Reflective"
+    ],
+    "textures": 0,
+    "qa_gauges": 0,
+    "metric_tolerance_m": 2e-06,
+    "source_geometry_matches_P01_4_bounds": true,
+    "khronos": "pending root",
+    "browser_four_views": "pending root"
+  },
+  "browser_expectations": {
+    "root": "worker_base_root",
+    "nodes": 46,
+    "mesh_nodes": 23,
+    "triangles": 2848,
+    "joints": 15,
+    "anchors": 7,
+    "units": "m",
+    "up_axis": "Y",
+    "forward_axis": "+Z",
+    "root_rotation_identity": true,
+    "material_names": [
+      "V3_Worker_BootsShared",
+      "V3_Worker_TrousersShared",
+      "V3_Worker_SkinWarm",
+      "V3_Worker_HairDark",
+      "V3_Worker_BadgeInk",
+      "V3_Worker_RoleHeadwear",
+      "V3_Worker_ShirtShared",
+      "V3_Worker_BadgeBase",
+      "V3_Worker_RoleVest",
+      "V3_Worker_Reflective"
+    ],
+    "role_tint_names": [
+      "V3_Worker_RoleVest",
+      "V3_Worker_RoleHeadwear"
+    ],
+    "joint_names": [
+      "joint__pelvis",
+      "joint__thigh_L",
+      "joint__shin_L",
+      "joint__foot_L",
+      "joint__thigh_R",
+      "joint__shin_R",
+      "joint__foot_R",
+      "joint__torso",
+      "joint__head",
+      "joint__upper_arm_L",
+      "joint__forearm_L",
+      "joint__hand_L",
+      "joint__upper_arm_R",
+      "joint__forearm_R",
+      "joint__hand_R"
+    ],
+    "anchor_names": [
+      "anchor_floor_origin",
+      "anchor_seat_contact",
+      "anchor_foot_floor_L",
+      "anchor_foot_floor_R",
+      "anchor_neck_base",
+      "anchor_hand_grip_L",
+      "anchor_hand_grip_R"
+    ],
+    "exact_positions_hierarchy": "assets/v3/blender/worker-base.stats.json: glb_numeric_verification.anchors/pivots",
+    "source_view_provenance": "assets/v3/previews/worker-base/provenance.json"
+  },
+  "changes": "Builder explicit --export entry point only; existing accepted source opened, no geometry rebuild. Shared helpers unchanged.",
+  "command": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_worker_base --export",
+  "verification_execution": "Independent CPython stdlib stdin decoder; separate factory-startup Blender source comparison. Neither rendered nor used localhost/live Blender.",
+  "root_checks": {
+    "khronos": "pending",
+    "actual_browser_four_views": "pending"
+  },
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "search": "v3_common.finish absent from old graph (0results complete); exact source read",
+    "coverage": "All6exact paths no_recorded_issue/not_tracked; direct source/binary fallback, no refresh."
+  },
+  "root_browser_review": {
+    "status": "PASS",
+    "views_actually_opened": [
+      "front",
+      "side",
+      "rear",
+      "quarter"
+    ],
+    "errors": 0,
+    "khronos_errors": 0,
+    "khronos_warnings": 0,
+    "image_review": "Complete friendly boxy worker, layered vest, attached face/ears/badge, dimensional hands/boots, rear and depth all visible. No lost faces or export/pivot/root-scale artefact. Compared with independent R05 and accepted source views.",
+    "capture": "assets/v3/qa-browser/worker-base/browser-capture.json",
+    "images": [
+      {
+        "path": "assets/v3/qa-browser/worker-base/front.png",
+        "sha256": "001dc6217f996611d462b311478fcf2324ffc40f9be62e42364667cb88794f38"
+      },
+      {
+        "path": "assets/v3/qa-browser/worker-base/side.png",
+        "sha256": "b53fee3a4ae89d4d6c35fae86630afa61b095c349c57a139e833a47c65bd07c4"
+      },
+      {
+        "path": "assets/v3/qa-browser/worker-base/rear.png",
+        "sha256": "20a2631949ec9b49886b0c52320b93908e06d0f6858af4af1fa2ef4ea5b7c785"
+      },
+      {
+        "path": "assets/v3/qa-browser/worker-base/quarter.png",
+        "sha256": "7d018e68368b11e76937745a9bc0768ddc9b70f4f91bd8433428269f112348b4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "qoima-worker-roles-v1",
+  "asset": "frontend/public/models/v3/worker-base.glb",
+  "asset_sha256": "c8546473c76f126844b427417db86e65be090fa04ad56c0deb9cb2bda92e73b7",
+  "authority": "R05; accepted P01 body; worker-base.dimensions.json roles",
+  "roles": {
+    "picker": {
+      "color_srgb": "#3478F6",
+      "code": "01",
+      "icon": "cart"
+    },
+    "packer": {
+      "color_srgb": "#F28C28",
+      "code": "02",
+      "icon": "carton"
+    },
+    "receiver": {
+      "color_srgb": "#9B59D0",
+      "code": "03",
+      "icon": "incoming_arrow"
+    },
+    "shipper": {
+      "color_srgb": "#2AA56A",
+      "code": "04",
+      "icon": "outgoing_arrow"
+    },
+    "forklift_driver": {
+      "color_srgb": "#F4C542",
+      "code": "05",
+      "icon": "forklift"
+    }
+  },
+  "tint_materials": [
+    "V3_Worker_RoleVest",
+    "V3_Worker_RoleHeadwear"
+  ],
+  "ownership": {
+    "cloned_per_actor": "exactly2tint materials",
+    "shared_immutable": "all body geometry and all other template materials",
+    "new_owned": "one merged dimensional icon+code geometry, replaced/disposed on role change",
+    "dispose": "only owned2materials and badge geometry; template disposed separately after all instances"
+  },
+  "badge": {
+    "base_source_part": "role_badge_base",
+    "base_runtime_center_m": [
+      -0.105,
+      1.015,
+      0.134
+    ],
+    "base_size_m": [
+      0.09,
+      0.11,
+      0.012
+    ],
+    "new_ink_local_z_m": [
+      0.0045,
+      0.011
+    ],
+    "base_front_local_z_m": 0.006,
+    "minimum_back_overlap_m": 0.0015,
+    "code_kind": "role code01..05, neveractor ID"
+  },
+  "fixture": {
+    "root": "qa_worker_roles",
+    "population": "five representative QA actors only, no canonical staffing changes",
+    "actorIds": [
+      "P01",
+      "K01",
+      "R01",
+      "S01",
+      "F01"
+    ],
+    "spacing_x_m": 1.1,
+    "instance_root_pattern": "actor__{actorId}"
+  },
+  "reset": "restore initial role only; retain actor identity, placement and current rig pose",
+  "scope": "static role visuals only; WorkerProfile/RoleAssignment clock/replay remain W15-W17"
+}

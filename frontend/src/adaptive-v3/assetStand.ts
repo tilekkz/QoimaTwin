@@ -2,8 +2,9 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import {createWorkerRolesFixture, applyWorkerRole, type WorkerRole} from './workerRoles';
 
-type View = 'front' | 'side' | 'rear' | 'quarter';
+type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
 const element = <T extends HTMLElement = HTMLElement>(id:string) => document.getElementById(id) as T;
 const host = element('canvas-host');
@@ -51,6 +52,8 @@ const ground = new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshStandar
 ground.rotation.x = -Math.PI/2;ground.receiveShadow = true;scene.add(ground);
 const loader = new GLTFLoader();
 let model:THREE.Group | undefined;
+let workerTemplate:THREE.Object3D | undefined;
+let rolesFixture:ReturnType<typeof createWorkerRolesFixture> | undefined;
 let view:View='quarter';
 let modelId='calibration';
 let phase='loading';
@@ -59,11 +62,20 @@ let points:THREE.Vector3[]=[];
 let serial=0;
 let manifest:ReferenceManifest | undefined;
 let frameId=0;
+let activeFocus:string|null=null;
 
 function disposeObject(object:THREE.Object3D){
   const geometries=new Set<THREE.BufferGeometry>();const materials=new Set<THREE.Material>();const textures=new Set<THREE.Texture>();
   object.traverse(node=>{if(node instanceof THREE.Mesh){geometries.add(node.geometry);for(const mat of Array.isArray(node.material)?node.material:[node.material]){materials.add(mat);for(const value of Object.values(mat))if(value instanceof THREE.Texture)textures.add(value);}}});
   geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());
+}
+
+function releaseModel(){
+  if(model)scene.remove(model);
+  if(rolesFixture){rolesFixture.dispose();rolesFixture=undefined;}
+  else if(model)disposeObject(model);
+  if(workerTemplate){disposeObject(workerTemplate);workerTemplate=undefined;}
+  model=undefined;
 }
 
 function setStatus(next:string,title:string,copy:string){
@@ -73,22 +85,30 @@ function setStatus(next:string,title:string,copy:string){
 
 function collectPoints(){
   points=[];if(!model)return;model.updateMatrixWorld(true);
-  model.traverse(node=>{if(node instanceof THREE.Mesh){const attribute=node.geometry.getAttribute('position');for(let i=0;i<attribute.count;i++)points.push(new THREE.Vector3().fromBufferAttribute(attribute,i).applyMatrix4(node.matrixWorld));}});
+  const collect=(node:THREE.Object3D)=>{if(node instanceof THREE.Mesh&&node.visible){const attribute=node.geometry.getAttribute('position');for(let i=0;i<attribute.count;i++)points.push(new THREE.Vector3().fromBufferAttribute(attribute,i).applyMatrix4(node.matrixWorld));}};
+  // Role solo inspection keeps the fixture's metric bounds stable while hiding neighbours.
+  if(rolesFixture)model.traverse(collect);else model.traverseVisible(collect);
   if(!points.length||points.some(p=>![p.x,p.y,p.z].every(Number.isFinite)))throw Error('В GLB нет корректной конечной геометрии.');
   bounds=new THREE.Box3().setFromPoints(points);
 }
 
-function fit(next:View=view){
+function fit(next:View=view,focus?:THREE.Object3D){
   view=next;document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
   if(!model||!points.length)return;
+  if(rolesFixture){const solo=focus?rolesFixture.instances.find(a=>a.root===focus||a.root.getObjectById(focus.id)):undefined;for(const a of rolesFixture.instances)a.root.visible=!solo||a===solo;}
   const aspect=Math.max(.1,host.clientWidth/Math.max(1,host.clientHeight));
   const usableX=Math.max(.55,(host.clientWidth-70)/host.clientWidth);const usableY=Math.max(.45,(host.clientHeight-190)/host.clientHeight);
-  const centre=bounds.getCenter(new THREE.Vector3());const radius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.03);
-  const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:new THREE.Vector3(1.2,.9,1.5)}[view].normalize();
+  activeFocus=focus?.name??null;
+  const fitPoints=focus?[] as THREE.Vector3[]:points;
+  if(focus){model.updateMatrixWorld(true);focus.traverseVisible(node=>{if(node instanceof THREE.Mesh){const p=node.geometry.getAttribute('position');for(let i=0;i<p.count;i++)fitPoints.push(new THREE.Vector3().fromBufferAttribute(p,i).applyMatrix4(node.matrixWorld));}});}
+  if(!fitPoints.length)throw Error('У выбранного узла нет геометрии.');
+  const fitBounds=focus?new THREE.Box3().setFromPoints(fitPoints):bounds;
+  const centre=fitBounds.getCenter(new THREE.Vector3());const radius=Math.max(fitBounds.getSize(new THREE.Vector3()).length()/2,.03);
+  const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
   camera=view==='quarter'?perspective:orthographic;camera.up.set(0,1,0);camera.position.copy(centre).addScaledVector(direction,radius*4);camera.lookAt(centre);
   const inverse=camera.quaternion.clone().invert();const projected=new THREE.Vector3();
   let half=.025;let distance=radius;const tan=Math.tan(THREE.MathUtils.degToRad(perspective.fov/2));
-  for(const point of points){projected.copy(point).sub(centre).applyQuaternion(inverse);half=Math.max(half,Math.abs(projected.y)/usableY,Math.abs(projected.x)/(aspect*usableX));distance=Math.max(distance,projected.z+Math.max(Math.abs(projected.y)/(tan*usableY),Math.abs(projected.x)/(tan*aspect*usableX)));}
+  for(const point of fitPoints){projected.copy(point).sub(centre).applyQuaternion(inverse);half=Math.max(half,Math.abs(projected.y)/usableY,Math.abs(projected.x)/(aspect*usableX));distance=Math.max(distance,projected.z+Math.max(Math.abs(projected.y)/(tan*usableY),Math.abs(projected.x)/(tan*aspect*usableX)));}
   if(camera instanceof THREE.OrthographicCamera){
     half*=1.08;camera.left=-half*aspect;camera.right=half*aspect;camera.top=half;camera.bottom=-half;camera.zoom=1;
   }else{
@@ -99,13 +119,19 @@ function fit(next:View=view){
 }
 
 function dimensions(){return bounds.isEmpty()?[0,0,0]:bounds.getSize(new THREE.Vector3()).toArray();}
+function rolesSnapshot(){return rolesFixture?.instances.map(instance=>{
+  const tinted:Record<string,{uuid:string;color:string}>={};
+  instance.root.traverse(node=>{if(node instanceof THREE.Mesh)for(const m of Array.isArray(node.material)?node.material:[node.material])if(/^V3_Worker_Role/.test(m.name)&&m instanceof THREE.MeshStandardMaterial)tinted[m.name]={uuid:m.uuid,color:'#'+m.color.getHexString()};});
+  return {actorId:instance.actorId,role:instance.role,disposed:instance.disposed,root:instance.root.name,tinted};
+})??[];}
 function snapshot(){
   const anchors:Record<string,number[]>={};const nodes:string[]=[];const materials=new Set<string>();let triangles=0;let metadata:Record<string,unknown>={};
   model?.updateMatrixWorld(true);
-  model?.traverse(node=>{nodes.push(node.name);if(node.userData.asset_id)metadata=node.userData;if(node.userData.kind==='anchor'||/^anchor[_:]/i.test(node.name))anchors[node.name]=node.getWorldPosition(new THREE.Vector3()).toArray();if(node instanceof THREE.Mesh){triangles+=(node.geometry.index?.count??node.geometry.getAttribute('position').count)/3;for(const m of Array.isArray(node.material)?node.material:[node.material])materials.add(m.name);}});
+  model?.traverse(node=>{nodes.push(node.name);if(node.userData.asset_id===modelId)metadata=node.userData;if(node.userData.kind==='anchor'||/^anchor[_:]/i.test(node.name))anchors[node.name]=node.getWorldPosition(new THREE.Vector3()).toArray();});
+  model?.traverseVisible(node=>{if(node instanceof THREE.Mesh){triangles+=(node.geometry.index?.count??node.geometry.getAttribute('position').count)/3;for(const m of Array.isArray(node.material)?node.material:[node.material])materials.add(m.name);}});
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
-  return {modelId,phase,view,dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,fixture:rolesFixture?'five-role-visual-QA':null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -126,7 +152,7 @@ async function loadModel(id:string){
   if(!/^[a-z0-9][a-z0-9-]{0,63}$/.test(id)){setStatus('error','Неверный идентификатор','Используйте буквы a–z, цифры и дефисы.');return;}
   modelId=id;modelInput.value=id;element('model-title').textContent=id.replaceAll('-',' ');updateReference();
   setStatus('loading','Загружаем '+id,'Читаем локальный GLB и проверяем геометрию…');
-  if(model){scene.remove(model);disposeObject(model);model=undefined;}points=[];bounds.makeEmpty();
+  releaseModel();points=[];bounds.makeEmpty();
   for(const field of ['size-x','size-y','size-z','triangles','materials'])element(field).textContent='—';element('diagnostics').textContent='Загружаем модель…';
   try{
     const gltf=await loader.loadAsync(base+'models/v3/'+id+'.glb');
@@ -135,16 +161,20 @@ async function loadModel(id:string){
     if(!tagged||tagged.userData.namespace!=='v3'||tagged.userData.units!=='m'||tagged.userData.up_axis!=='Y'){
       disposeObject(gltf.scene);throw Error('GLB не содержит согласованные asset_id / namespace v3 / metre / Y-up данные.');
     }
-    model=gltf.scene;scene.add(model);
+    if(id==='worker-base'&&new URL(location.href).searchParams.get('fixture')==='roles'){
+      workerTemplate=gltf.scene;rolesFixture=createWorkerRolesFixture(workerTemplate);model=rolesFixture.root;
+      element('model-title').textContent='Пять ролей · визуальный стенд';
+    }else model=gltf.scene;
+    scene.add(model);
     model.traverse(node=>{if(node instanceof THREE.Mesh){node.castShadow=node.userData.cast_shadow!==false;node.receiveShadow=true;}});
     collectPoints();
     const centre=bounds.getCenter(new THREE.Vector3());const radius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
     ground.position.set(centre.x,Math.min(0,bounds.min.y)-.002,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
     const shadow=key.shadow.camera;shadow.left=-radius*2;shadow.right=radius*2;shadow.top=radius*2;shadow.bottom=-radius*2;shadow.near=.01;shadow.far=radius*12;shadow.updateProjectionMatrix();key.shadow.normalBias=Math.min(.008,radius*.003);key.shadow.bias=-.003/(shadow.far-shadow.near);
-    fit(view);setStatus('ready',id.replaceAll('-',' '),'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
+    fit(view);setStatus('ready',rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
-  }catch(error){if(token!==serial)return;if(model){scene.remove(model);disposeObject(model);model=undefined;}points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
+  }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
 }
 
 document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(button=>button.addEventListener('click',()=>{fit(button.dataset.view as View);diagnostics();}));
@@ -152,11 +182,11 @@ element('reset-view').addEventListener('click',()=>{fit();diagnostics();});
 element('model-form').addEventListener('submit',event=>{event.preventDefault();void loadModel(modelInput.value.trim());});
 const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);if(model)fit();});resize.observe(host);
 function tick(){frameId=requestAnimationFrame(tick);controls.update();renderer.render(scene,camera);}tick();
-const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
-Object.assign(window,{__QOIMA_STAND_V3__:api});
+const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},focus:(name:string,next:View='quarter')=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);fit(next,n);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
+Object.assign(window,{__QOIMA_STAND_V3__:{...api,roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
 void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{manifest=value;updateReference();}).catch(()=>{element('reference-note').textContent='Каталог референсов временно недоступен.';});
 void loadModel(new URL(location.href).searchParams.get('asset')||'calibration');
-window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();controls.dispose();if(model)disposeObject(model);ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();renderer.dispose();},{once:true});
+window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();renderer.dispose();},{once:true});
 }
 void initialize().catch(error=>{
   shell.dataset.phase='error';element('status').dataset.error='true';element('status-title').textContent='Стенд не запустился';element('status-copy').textContent='Обновите страницу в браузере с поддержкой WebGL.';element('diagnostics').textContent=error instanceof Error?error.message:String(error);

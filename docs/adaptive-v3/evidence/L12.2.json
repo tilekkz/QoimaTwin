@@ -1,0 +1,278 @@
+{
+  "task_id": "L12.2",
+  "status": "VERIFY",
+  "root_review": {
+    "status": "PASS",
+    "reviewed_at": "2026-11-07T11:24:31.102735+00:00",
+    "strict_check_only_exit": 0,
+    "actual_output_sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+    "source_review": "Read full L12.2 spec and exact compiler split/walk/vehicle/filters/checks/serialization functions. Accepted 22 checks/3 negative cases rerun against exact preserved byte output.",
+    "independent_artifact_checks": [
+      "Two graph endpoint/unique ID/positive costs checked directly",
+      "Independent artifact Dijkstra yields 8.599999999988m between cart park and conveyor intake"
+    ],
+    "scope": "Geometry proposal only; no operational cargo/lift/scheduler/final art approval."
+  },
+  "checked_utc": "2026-11-07T11:18:48.085271+00:00",
+  "passed": true,
+  "output": {
+    "path": "docs/v3/contract-proposals/layout-links-v3.json",
+    "bytes": 5905710,
+    "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65"
+  },
+  "compiler": {
+    "path": "tools/visual/v3/compile_layout_v3.py",
+    "sha256": "b563ba8705dad9047e96d428218be59022e57b1cc680fbf022019f68fe8a2823"
+  },
+  "semantic_index_sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a",
+  "counts": {
+    "walk_nodes": 1633,
+    "walk_arcs": 4000,
+    "vehicle_nodes": 620,
+    "vehicle_arcs": 1316,
+    "traffic_route_bindings": 1234
+  },
+  "geometric_reachability": {
+    "human_ports": 6,
+    "local_human_services": 728,
+    "local_cart_stops": 364,
+    "active_manual_candidates": 552,
+    "active_primary_candidates": 588,
+    "vehicle_prehandle_floor_poses": 116,
+    "conditional_vehicle_cargo_approaches": 100,
+    "reserve_geometry_only_floor_links": 16,
+    "blocked_reserve_addresses": 188,
+    "source_floor_references": {
+      "manual": "v3:service:IN_E_PARCEL",
+      "vehicle": "v3:service:IN_W_BULK",
+      "meaning": "Geometric reachability references only; no port operation or C08 admission."
+    },
+    "example_distances_m": {
+      "cartpark_to_intake_pedestrian": 8.599999999988
+    }
+  },
+  "checks": [
+    {
+      "name": "unique_compiled_nodes_arcs",
+      "passed": true,
+      "actual": {
+        "nodes": 1633,
+        "arcs": 4000
+      }
+    },
+    {
+      "name": "positive_known_endpoint_arcs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "unique_compiled_nodes_arcs",
+      "passed": true,
+      "actual": {
+        "nodes": 620,
+        "arcs": 1316
+      }
+    },
+    {
+      "name": "positive_known_endpoint_arcs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all54_original_walk_edges_preserve_cost_both_modes_directions",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "walk_arc_lengths_equal_actual_endpoints",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "edge0046_three_pieces_six_arcs",
+      "passed": true,
+      "actual": 6
+    },
+    {
+      "name": "all284_original_vehicle_edges_preserve_geometry_cost_permissions",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "reverse_exits_preserve_physical_pose_and_steer",
+      "passed": true,
+      "actual": 484
+    },
+    {
+      "name": "all_six_ports_reachable_both_human_modes",
+      "passed": true,
+      "actual": 6
+    },
+    {
+      "name": "all728_local_human_floor_services_reachable",
+      "passed": true,
+      "actual": 728
+    },
+    {
+      "name": "all364_local_cart_stops_reachable_by_cart",
+      "passed": true,
+      "actual": 364
+    },
+    {
+      "name": "all552_active_manual_primary_services_and_cart_stops",
+      "passed": true,
+      "actual": 552
+    },
+    {
+      "name": "all116_prehandle_floor_poses_and_reverse_exits",
+      "passed": true,
+      "actual": 116
+    },
+    {
+      "name": "all588_active_primary_geometry_candidates",
+      "passed": true,
+      "actual": 588
+    },
+    {
+      "name": "all188_reserve_retrievals_still_blocked",
+      "passed": true,
+      "actual": 188
+    },
+    {
+      "name": "two0046_splits_connected_with_actual8_6m_bridge",
+      "passed": true,
+      "actual": 8.599999999988
+    },
+    {
+      "name": "cart_cannot_reach_pedestrian_only_handoff",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "cart_cannot_enter_worker_terminal",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "loaded_south_remains_no_path",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "reserve_STANDARD_CARTON_forklift_transport_no_path",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "unknown_node_or_unsupported_mode_never_zero_distance_success",
+      "passed": true,
+      "actual": null
+    }
+  ],
+  "robustness_cases": [
+    {
+      "case": "duplicate_same_fraction_request",
+      "passed": true,
+      "result": "COALESCED_WITHOUT_ZERO_EDGES_OR_LOST_PROVENANCE"
+    },
+    {
+      "case": "same_fraction_wrong_coordinate",
+      "passed": true,
+      "result": "INVALID_SPLIT_POSITION"
+    },
+    {
+      "case": "root_tangent_as_vehicle_yaw",
+      "passed": true,
+      "result": "VEHICLE_POSE_MISMATCH",
+      "yaw_error_deg": 26.329503457038975
+    }
+  ],
+  "sources_unchanged": true,
+  "scheduling_implemented": false,
+  "operational_admission": false,
+  "public_package_created": false,
+  "independent_checks": [
+    {
+      "name": "canonical LF bytes and semantic fingerprint preserved",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all accepted source hashes current",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all original edge identities retained",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "independent source interval partition has no gap or overlap",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "both0046splits and two modes/directions retained",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all actual vehicle endpoints independently preserve analytic yaw/root",
+      "passed": true,
+      "actual": {
+        "max_position_error_m": 4.440892098500626e-15,
+        "max_yaw_error_rad": 0
+      }
+    },
+    {
+      "name": "sixteen reserve paths have empty cargo permission",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "bare-only main edges do not acquire nonlong permission",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all1234 traffic refs map to known mode-correct compiled arcs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all282 traffic cell memberships retained via original refs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "independent Dijkstra finds exact8_6m dual-split bridge",
+      "passed": true,
+      "actual": 8.599999999988
+    },
+    {
+      "name": "independent filtered searches reject forbidden destinations",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "188 reserve addresses still blocked and operational false",
+      "passed": true,
+      "actual": null
+    }
+  ],
+  "links_check_only_exit_code": 0,
+  "semantic_check_only_exit_code": 0,
+  "updated_utc": "2026-11-07T11:21:11.029522+00:00",
+  "spec": {
+    "path": "docs/adaptive-v3/specs/L12.2.md",
+    "sha256": "8fb6f3e6f95c09bdad03b02583ba118b3f3f0c884264fb35a11536a510398bc4"
+  },
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "One task-directed coverage call: new outputs missing, current compiler/index/source proposals not_tracked; no recorded parse issue is not completeness.",
+    "fallback": "Read exact current own compiler and accepted JSON sources, with byte hashes; no index refresh or whole-repository claim."
+  }
+}

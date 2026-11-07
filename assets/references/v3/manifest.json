@@ -258,6 +258,32 @@
       },
       "card": "docs/adaptive-v3/tasks/R11.md",
       "use": "picking-cart construction/tote fit/grip concept"
+    },
+    {
+      "reference_id": "R12",
+      "root_acceptance": "PASS",
+      "creator_review_status": "VERIFY",
+      "artifact": {
+        "path": "assets/references/v3/r12-long-cradle.png",
+        "bytes": 1598752,
+        "sha256": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+        "dimensions_px": [
+          1536,
+          1024
+        ]
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r12.json",
+        "bytes": 5958,
+        "sha256": "cbabcd5939c69726788222388adf8d5983e48645fa62295a83485d2388c57d7c"
+      },
+      "evidence": {
+        "path": "docs/adaptive-v3/evidence/R12.json",
+        "bytes": 7077,
+        "sha256": "0863e260518c10b5ce04449b48d61b23e483c1771e62d244702daed3bb95730d"
+      },
+      "card": "docs/adaptive-v3/tasks/R12.md",
+      "use": "Detachable long-cradle construction only; separate L05 dimension target, C08 physical/rating approval pending."
     }
   ],
   "prompts": [
@@ -315,6 +341,16 @@
       "path": "assets/references/v3/prompts/r11.txt",
       "bytes": 4536,
       "sha256": "b9e2256917df48496affb35a9c406432ff85768566975b7ae8d4afd113bba988"
+    },
+    {
+      "path": "assets/references/v3/prompts/r12.txt",
+      "bytes": 2133,
+      "sha256": "c70a0fa547fdcfbf3af455a4f411fc9fb7f1158b1170daf527bd1cf5e577c49f"
+    },
+    {
+      "path": "assets/references/v3/prompts/r12-fix-01.txt",
+      "bytes": 1318,
+      "sha256": "ffd4bad10be55de89366db8933b12c4dd72b4a394cec64219ebba7fdd65d865a"
     }
   ],
   "engineering_supplements": [
@@ -332,18 +368,23 @@
       "path": "assets/references/v3/r03-dimension-targets.json",
       "bytes": 1322,
       "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "assets/references/v3/r12-dimension-targets.json",
+      "bytes": 2895,
+      "sha256": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf"
     }
   ],
   "cross_review": [
     {
       "path": "assets/references/v3/review.md",
-      "bytes": 15427,
-      "sha256": "1292ee04ba4c42cbcf95139347eae749284e612d93c424b2e1c310a27921cde9"
+      "bytes": 18786,
+      "sha256": "cb4ca5de314227f5cf4f88c180092b6e19c99788fab8ad03d5b0a5cabd32031c"
     },
     {
       "path": "assets/references/v3/contact-sheet.html",
-      "bytes": 17433,
-      "sha256": "27f7c60d859d8b7adf68d8775478f1defd93703e6e4881a12703e95a1600f8f7"
+      "bytes": 19708,
+      "sha256": "7298650b3770e141ad7826d0c1216da57aded4fcb9d2476a8b6a4dc2761c009e"
     }
   ],
   "asset_reference_bindings": {
@@ -375,9 +416,20 @@
     "dock-module": "R07",
     "large-gate": "R07",
     "environment-shell": "R07",
-    "floor-markings": "R07"
+    "floor-markings": "R07",
+    "long-cradle": "R12"
   },
-  "dimension_policy": "Art-card magnification is illustrative. R03 exact synthetic target data must be adopted or explicitly revised by C02 with reference review. Slots/loaded routes/ports are validated by L/C cards; never shrink cargo to fit.",
-  "component_priority": "Dedicated R02/R03/R04/R05/R06/R11 governs component design; R07 architecture and R08 camera/context do not replace those designs.",
-  "model_status": "No V3 geometry accepted by this manifest. Every model still requires dimensions, four-view compare, export and browser/action checks."
+  "dimension_policy": "Art-card magnification is illustrative. R03 exact synthetic target data must be adopted or explicitly revised by C02 with reference review. Slots/loaded routes/ports are validated by L/C cards; never shrink cargo to fit. R12 cradle envelope and mount targets are in r12-dimension-targets.json; all parts fit total 0.15m height, with pocket/lock/mass/rating approval remaining C08.",
+  "component_priority": "Dedicated R02/R03/R04/R05/R06/R11 governs component design; R07 architecture and R08 camera/context do not replace those designs. R12 governs the separate long-cradle attachment; its contextual vehicle/cargo do not override R06/R03.",
+  "model_status": "No V3 geometry accepted by this manifest. Every model still requires dimensions, four-view compare, export and browser/action checks.",
+  "status_scope": "Original R10 nine-reference baseline remains reference_complete/PASS; additive R12 is VERIFY pending root actual-image review.",
+  "reference_count": 10,
+  "extensions": {
+    "R12": {
+      "status": "VERIFY",
+      "root_acceptance": "pending",
+      "registered_at_utc": "2026-11-07T11:31:18.989856+00:00",
+      "does_not_rewrite_R10_evidence": true
+    }
+  }
 }

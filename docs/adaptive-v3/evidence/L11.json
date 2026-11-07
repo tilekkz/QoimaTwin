@@ -1,0 +1,264 @@
+{
+  "task_id": "L11",
+  "status": "VERIFY",
+  "root_review": "pending",
+  "checked_at_utc": "2026-11-07T10:23:36.203638+00:00",
+  "passed": true,
+  "blocking_static_conflicts": 0,
+  "counts": {
+    "human_routes": 834,
+    "vehicle_routes": 400,
+    "human_segments_including_shared_references": 2046,
+    "vehicle_segments_including_shared_references": 768,
+    "unique_vehicle_component_sweeps": 1474,
+    "oriented_component_polygons_checked": 118834,
+    "reused_vehicle_segment_proofs": 160,
+    "unique_human_capsules": 1090,
+    "traffic_sweep_hulls": 1078
+  },
+  "source_geometry_checks": {
+    "source_components_checked": 255,
+    "max_source_bound_error_m": 6.103515630684342e-06,
+    "physical_solids": 262,
+    "by_category": {
+      "storage": 132,
+      "conveyor": 94,
+      "packing": 18,
+      "gate_frame": 18
+    },
+    "excluded_source_meshes": 3708
+  },
+  "mixed_traffic_resources": 282,
+  "mixed_traffic_implemented": false,
+  "negative_cases": [
+    {
+      "case": "rack_on_belt",
+      "passed": true,
+      "result": "PHYSICAL_SOLID_OVERLAP",
+      "injected_bounds_xz": [
+        80,
+        2.8,
+        81,
+        3.2
+      ],
+      "hits": [
+        {
+          "kind": "physical_solid_overlap",
+          "a": "INJECTED_RACK_ON_BELT",
+          "b": "V3_MAIN_047",
+          "overlap_aabb_xz": [
+            80.5,
+            2.8,
+            81,
+            3.2
+          ]
+        },
+        {
+          "kind": "physical_solid_overlap",
+          "a": "INJECTED_RACK_ON_BELT",
+          "b": "V3_MAIN_048",
+          "overlap_aabb_xz": [
+            80,
+            2.8,
+            80.5,
+            3.2
+          ]
+        }
+      ]
+    },
+    {
+      "case": "blocked_gate",
+      "passed": true,
+      "result": "PATH_CLEARANCE",
+      "injected_bounds_xz": [
+        0,
+        17.5,
+        0.25,
+        18.5
+      ],
+      "gate_id": "IN_W_BULK",
+      "hits": [
+        {
+          "kind": "blocked_gate_aperture",
+          "port_id": "IN_W_BULK",
+          "blocker_id": "INJECTED_BLOCKED_IN_W_GATE"
+        }
+      ]
+    },
+    {
+      "case": "loaded_south_shortcut",
+      "passed": true,
+      "result": [
+        "PROFILE_FORBIDDEN",
+        "PROTECTED_WIDTH_TOO_NARROW"
+      ],
+      "edge_id": "v3:vehicle:edge:0271",
+      "forced_profile": "loaded_max",
+      "required_width_m": 4.7,
+      "clear_width_m": 4
+    },
+    {
+      "case": "injected_loaded_continuation_into_packing",
+      "passed": true,
+      "result": "PHYSICAL_COLLISION",
+      "injected_front_axle_points": [
+        [
+          72,
+          6
+        ],
+        [
+          72,
+          4.8
+        ]
+      ],
+      "blocker_ids": [
+        "PK02__bridge",
+        "PK02__side",
+        "PK02__side.001",
+        "V3_SPUR02_0",
+        "V3_SPUR02_1",
+        "V3_T02"
+      ]
+    }
+  ],
+  "proposal": {
+    "path": "docs/v3/contract-proposals/layout-conflicts-v3.json",
+    "sha256": "7007d809982f5df117dbd93cdec89005b69fdadad8d352285994048f03c2e917"
+  },
+  "generator": {
+    "path": "tools/visual/v3/audit_layout_spatial.py",
+    "sha256": "3159ab2636535dc6e0169e2f5e7ba90f4899c2ccd9e340cde08e2b4233143847"
+  },
+  "source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+      "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469"
+    },
+    {
+      "path": "docs/v3/contract-proposals/large-gate-v3.json",
+      "sha256": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8"
+    },
+    {
+      "path": "docs/v3/contract-proposals/pedestrian-graph-v3.json",
+      "sha256": "baca17871f1f657596cade425793342169be785fb22e2c105063daafdba24529"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-graph-v3.json",
+      "sha256": "be17461061cc33fe07540d0bc5572f61ce74ac9852198ee5423ed549deb3f832"
+    },
+    {
+      "path": "docs/v3/contract-proposals/conveyor-v3.json",
+      "sha256": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    },
+    {
+      "path": "assets/v3/blender/layout-engineering.stats.json",
+      "sha256": "3ccc1d24bfd950018b0cd35d664fd547e1b74c2ccb81c17de13ef537a84eaeee"
+    },
+    {
+      "path": "tools/blender/v3/build_layout_engineering.py",
+      "sha256": "52fc30e52dd7b6a7a67a9aa091b0cc2ac06fce56e7b4dcb6d1182b6418bd652c"
+    },
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    }
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "Task-specific coverage call: new paths missing, accepted inputs not_tracked; no recorded parse issue is not completeness.",
+    "fallback": "Exact current accepted JSON, L10 source/stats and L09 generator read directly. No extra index refresh."
+  },
+  "composition_findings": "Root SCENE_COMPOSITION_FINDINGS.md remains open; not closed by this numerical audit.",
+  "independent_checks": [
+    {
+      "name": "capsule rejects rectangle inside AABB but beyond round cap",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "capsule detects true round-cap corner collision",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "shared polygon edge is not solid penetration",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "positive polygon area intersection detected",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "no blocking static or protected-floor findings",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "unique spatial resource IDs",
+      "passed": true,
+      "actual": 282
+    },
+    {
+      "name": "every mixed cell has both known route types",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "traffic resources not extra workers/vehicles",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "W18 actual shared corridor/junction is registered",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "clear apertures exactly six",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "read-only fingerprints unchanged",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "independent dense padded-corner displacement bound",
+      "passed": true,
+      "actual": {
+        "dense_angles": 5001,
+        "max_displacement_m": 0.014703431144520628,
+        "inflation_m": 0.014703431144518482,
+        "floating_tolerance_m": 1e-12
+      }
+    }
+  ],
+  "check_only_exit_code": 0,
+  "updated_utc": "2026-11-07T10:25:21.898294+00:00",
+  "actual_execution": {
+    "generator_exit_code": 0,
+    "check_only_exit_code": 0,
+    "runtime": "repo .venv Python stdlib, CPU only; no Blender/browser/GPU"
+  },
+  "spec": {
+    "path": "docs/adaptive-v3/specs/L11.md",
+    "sha256": "284a3ade52e3ce79abfb3fa72f8a2ef80a0337b52f5a660161ce3667e58ef998"
+  }
+}

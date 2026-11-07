@@ -1,3 +1,30 @@
+# V3 reference pack - R12 extension
+
+## R12 - additive detachable long-load cradle reference
+
+Reviewed UTC: 2026-11-07T11:31:18.989856+00:00. **PASS after root actual saved-image review.** The original nine R01-R08/R11 references remain root PASS under R10. The unchanged historical R09 review is preserved below; its old pending wording is an executor checkpoint, not the current baseline gate.
+
+Actually opened selected **r12-long-cradle.png V2**, rejected V1 and dedicated R06. Both R12 local files match their exact generated-image source bytes. Selected V2 is 1536x1024 RGB, SHA256 **375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935**. No generation, model, renderer or browser launch in this registration.
+
+| View | Actual construction observation |
+|---|---|
+| Front | One very wide shallow petrol cross-frame, exactly two charcoal rectangular open fork mouths and two distant tan upper pads. Far locking ears are largely hidden in this projection; no third pocket or tall tower. |
+| Side | The same shallow beam/pad and rear locking pin/ear profile remain connected. Laterally separated pockets/pads overlap in this orthographic axis view; one visible profile does not mean one pocket. |
+| Rear | Two open rectangular pocket exits, two rear locking-ear/pin pairs and two distant upper pads connect to the same continuous cross-frame. |
+| Three-quarter | Tangible shallow beam thickness, two open through-pocket mouths, two broad matte pads and two connected rear lock-ear/pin assemblies read as one object. |
+
+**V1 to V2 correction:** V1 numeric arrows implied metric height despite a visibly thick pocket/lock profile, with busy pad texture. V2 removes all numeric dimension arrows/labels, makes views visibly shallower and pads clean matte. Maximum height including pads/pockets/ears is controlled by the separate target JSON. No unresolved material visual contradiction was found after explicit component/dimension authority. Side occlusion is normal, not a missing second pocket.
+
+**Authority:** R12 governs **long-cradle** only. R06 governs the vehicle; grey contextual forks in R12 do not replace R06's tan fork construction. The contextual bundle/fork inset illustrates association, not fork engagement, load restraint or capacity proof. LONG remains a separate **4.20x0.52x0.65m** cargo mesh without scaling.
+
+[Exact R12 synthetic targets](r12-dimension-targets.json): cradle own bottom-centre envelope XYZ **3.20x0.15x0.85m**, X +/-1.60, Y0..0.15, Z +/-0.425; all ears/pins/pads/pockets must fit. Mount origin in forklift local XYZ **[0,0.30,1.00]** gives mounted Y **0.30..0.45** and Z **0.575..1.425**. Upper pad centres X +/-1.40; two pocket centre lines X +/-0.40, forward +Z. These are L05 targets, not image measurements. Pocket inner/vertical engagement dimensions, positive locks, mass/CoG, support/retention and rating remain **C08 pending; no operational admission**.
+
+[Contact sheet](contact-sheet.html) now contains ten current concepts plus the separate R03 scale image. Manifest adds only R12 and the **long-cradle -> R12** binding, preserving all original nine records and historical R10 evidence. Selected public PNG and target/catalogue copies match their sources. Evidence: docs/adaptive-v3/evidence/R12.json.
+
+---
+
+## Historical R09 review - unchanged accepted baseline snapshot
+
 # R09 — согласованность reference pack v3
 
 Проверено UTC: 2026-11-07T05:36:17.212265+00:00. Исполнитель: rack_crate. Статус **VERIFY**; root решает PASS после просмотра review и HTML.

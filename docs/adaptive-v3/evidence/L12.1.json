@@ -1,0 +1,197 @@
+{
+  "task_id": "L12.1",
+  "status": "VERIFY",
+  "root_review": "pending",
+  "checked_utc": "2026-11-07T11:01:49.851692+00:00",
+  "passed": true,
+  "stage": "semantic_index_only",
+  "definition_count": 5081,
+  "reference_count": 23774,
+  "counts_by_kind": {
+    "actor": 24,
+    "actor_pool": 2,
+    "attachment": 1,
+    "audit_route_ref": 1234,
+    "buffer_cell": 17,
+    "cargo_reference_target": 8,
+    "clear_floor_reservation": 2,
+    "conveyor_cell": 90,
+    "conveyor_edge": 45,
+    "conveyor_module": 87,
+    "conveyor_node": 34,
+    "conveyor_resource": 15,
+    "equipment_pair": 2,
+    "large_gate": 2,
+    "load_orientation": 1,
+    "local_path": 844,
+    "local_profile": 4,
+    "local_service": 844,
+    "manual_handoff": 3,
+    "packing_station": 6,
+    "ped_edge": 54,
+    "ped_node": 57,
+    "port": 6,
+    "service_place": 6,
+    "storage_family": 5,
+    "storage_module": 132,
+    "storage_orientation": 1,
+    "storage_slot": 776,
+    "traffic_resource": 282,
+    "transport_mode": 3,
+    "vehicle": 2,
+    "vehicle_blueprint": 1,
+    "vehicle_edge": 284,
+    "vehicle_junction": 16,
+    "vehicle_node": 104,
+    "vehicle_profile": 3,
+    "vehicle_reservation": 44,
+    "zone": 40
+  },
+  "validation": {
+    "duplicate_definitions": 0,
+    "missing_references": 0,
+    "source_pointer_mismatches": 0,
+    "actor_identities_preserved": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "K01",
+      "K02",
+      "K03",
+      "K04",
+      "K05",
+      "K06",
+      "R01",
+      "R02",
+      "S01",
+      "S02",
+      "F01",
+      "F02"
+    ],
+    "storage_modules": 132,
+    "storage_slots": 776,
+    "ports": 6,
+    "shared_service_aliases": 6
+  },
+  "negative_cases": [
+    {
+      "case": "duplicate_slot_definition_in_source",
+      "passed": true,
+      "result": "DUPLICATE_DEFINITION"
+    },
+    {
+      "case": "missing_module_reference_in_source",
+      "passed": true,
+      "result": "MISSING_REFERENCE"
+    },
+    {
+      "case": "substituted_actor_without_headcount_change",
+      "passed": true,
+      "result": "ACTOR_IDENTITY_MISMATCH"
+    },
+    {
+      "case": "same_service_id_different_graph_position",
+      "passed": true,
+      "result": "SHARED_SERVICE_POSITION_MISMATCH"
+    }
+  ],
+  "output": {
+    "path": "docs/v3/contract-proposals/layout-semantic-index-v3.json",
+    "bytes": 5128507,
+    "sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a"
+  },
+  "compiler": {
+    "path": "tools/visual/v3/compile_layout_v3.py",
+    "sha256": "cfaefdb89f25cab780de9786ef89a2e4affc48fcb5e304a5c2478be68376fc41"
+  },
+  "source_count": 15,
+  "source_hashes_verified_unchanged": true,
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "New paths missing; current accepted paths not_tracked. Exact current source/JSON fallback; no index completeness claim."
+  },
+  "next_stage_not_implemented": "L12.2 split collection/graph links and L12.3 public manifest are gated separately.",
+  "independent_checks": [
+    {
+      "name": "unique typed definitions",
+      "passed": true,
+      "actual": 5081
+    },
+    {
+      "name": "kind counts independently match",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "serialized references resolve",
+      "passed": true,
+      "actual": 23774
+    },
+    {
+      "name": "fifteen source byte hashes match",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "132 source module identities match",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "776 source address identities match",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "canonical24 actors match policy and index",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "six service places retain typed graph identities",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all three handoff split refs preserved",
+      "passed": true,
+      "actual": {
+        "v3:ped-edge:0015": 1,
+        "v3:ped-edge:0046": 2
+      }
+    },
+    {
+      "name": "all local source-edge refs preserved",
+      "passed": true,
+      "actual": 80
+    },
+    {
+      "name": "proposal semantic stage only",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "metric envelope and canonical UTF8 LF bytes",
+      "passed": true,
+      "actual": null
+    }
+  ],
+  "check_only_exit_code": 0,
+  "updated_utc": "2026-11-07T11:02:37.614214+00:00",
+  "spec": {
+    "path": "docs/adaptive-v3/specs/L12.1.md",
+    "sha256": "4ae05225bbd112d7d6380c52b8092ead080f62683313bb402b675b2d434a8d76"
+  },
+  "serialization_correction": "Canonical UTF8 LF output and strict byte comparison avoid Windows newline translation changing the advertised checksum."
+}

@@ -1,0 +1,177 @@
+{
+  "status": "PASS",
+  "method": "Actual Chrome same-origin fetch/WebCrypto SHA256/columnar decode; no new geometry or engine run",
+  "at": "2026-11-07T11:59:02.827Z",
+  "http_status": 200,
+  "content_type": "application/json",
+  "bytes": 2341205,
+  "sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+  "schema": "qoima.layout-runtime.v3-proposal",
+  "version": "qoima-144x72-v3-proposal",
+  "snapshot": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+  "operational": false,
+  "scheduled": false,
+  "actors": 24,
+  "ports": [
+    "IN_W_BULK",
+    "IN_N_STANDARD",
+    "IN_E_PARCEL",
+    "OUT_W_RETAIL",
+    "OUT_S_EXPRESS",
+    "OUT_E_B2B"
+  ],
+  "modules": 132,
+  "slots": 776,
+  "active": 588,
+  "blockedReserve": 188,
+  "walkNodes": 1633,
+  "walkArcs": 4000,
+  "vehicleNodes": 620,
+  "vehicleArcs": 1316,
+  "decodedSamples": {
+    "slot": {
+      "slot_id": "v3:slot:SMALL_W:001:L1:B1",
+      "module_index": 0,
+      "level": 1,
+      "bay": 1,
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_world": {
+        "max": [
+          14.45,
+          0.6,
+          44.59
+        ],
+        "min": [
+          14.03,
+          0.25,
+          44.17
+        ]
+      },
+      "usable_volume_m3": 0.061739999999999996,
+      "service_height_m": 0.25,
+      "bin_anchor": [
+        14.24,
+        0.25,
+        44.38
+      ],
+      "allowed_orientation_ids": [
+        "upright_xyz_in_module"
+      ],
+      "allowed_cargo_archetype_ids": [
+        "SMALL_CARTON"
+      ],
+      "clearance_each_side_m": 0.03,
+      "max_payload_kg": 15,
+      "max_handling_units": 1,
+      "stacking_allowed": false,
+      "active_pick_candidate": true,
+      "reserve_only": false,
+      "retrieval_blocked": false,
+      "retrieval_block_reason": null,
+      "manual_gross_mass_limit_kg": 15,
+      "manual_pick_allowed": true,
+      "required_handler": "manual_up_to_15kg_only",
+      "service_ref": [
+        "walk",
+        794
+      ],
+      "cart_stop_node_index": 792,
+      "worker_node_index": 794,
+      "vehicle_node_index": null
+    },
+    "module": {
+      "module_id": "v3:module:SMALL_W:001",
+      "zone_index": 20,
+      "family": "SMALL",
+      "world_pos": [
+        14,
+        0,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966,
+      "outer_bounds_world": {
+        "max": [
+          14.5,
+          1.55,
+          44.7
+        ],
+        "min": [
+          13.5,
+          0,
+          42.3
+        ]
+      },
+      "operating_bounds_world": {
+        "max": [
+          14.5,
+          1.55,
+          44.7
+        ],
+        "min": [
+          13.5,
+          0,
+          42.3
+        ]
+      },
+      "row": 0,
+      "aisle": 16
+    },
+    "curve": {
+      "arc_id": "v3:module:HEAVY_E:001:B1:vehicle:segment:001:f",
+      "from_node_index": 1,
+      "to_node_index": 2,
+      "length_m": 1.416622589667,
+      "cost_m": 1.416622589667,
+      "geometry": {
+        "end_yaw_rad": 4.71238898038469,
+        "front_axle_radius_m": 0.8082903768654762,
+        "icr_vehicle_local_x_m": 0.8082903768654762,
+        "icr_world_xz_m": [
+          121.19170962313453,
+          18.308290376865475
+        ],
+        "kind": "rear_steer_arc",
+        "rear_virtual_steer_deg": -60,
+        "start_yaw_rad": 3.141592653589793
+      },
+      "motion_direction": 1,
+      "front_axle_path_length_m": 1.2696595549639527,
+      "clear_width_m": null,
+      "clear_height_m": 8,
+      "allowed_geometry_profile_ids": [
+        "nonlong_forklift"
+      ],
+      "source_allowed_profile_ids": null,
+      "source_profile_id": "nonlong_forklift",
+      "allowed_cargo_archetype_ids": [
+        "DRUM",
+        "HEAVY_BOX",
+        "IBC",
+        "PALLET_LOAD"
+      ],
+      "cargo_transport_supported": true,
+      "equipment_pair_refs": [
+        "INBOUND_FORKLIFT_PAIR",
+        "OUTBOUND_FORKLIFT_PAIR"
+      ],
+      "source_reservation_group_ids": [],
+      "rear_virtual_steer_deg": -60,
+      "clearance_padding_m": 0.25,
+      "transition_rule_index": 0,
+      "source_ref": {
+        "segment_index": 1,
+        "source": "L09",
+        "source_id": "v3:module:HEAVY_E:001:B1:vehicle"
+      }
+    }
+  },
+  "flags": {
+    "visual": false,
+    "backend": false,
+    "stock": "not_initialized; no SKU/lot/stock or engine work events are fabricated"
+  }
+}
