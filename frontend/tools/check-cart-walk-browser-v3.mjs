@@ -2,13 +2,14 @@ import assert from 'node:assert/strict';
 import {chromium} from '@playwright/test';
 import {mkdir,writeFile} from 'node:fs/promises';
 import {execFile} from 'node:child_process';
-const out='../assets/v3/qa-browser/picker-cart-walk',base=process.env.QOIMA_STAND_BASE_URL||'http://127.0.0.1:4173',url=base+'/stand-v3.html?asset=picking-cart-tote-fixture&fixture=walk';await mkdir(out,{recursive:true});
-const started=Date.now(),server=await chromium.launchServer({channel:'chrome',headless:true,args:['--mute-audio'],timeout:30000});
+const manual=process.env.QOIMA_WALK_WORKER==='worker-manual',visible=process.env.QOIMA_VISIBLE_TESTS==='1';
+const out=manual?'../assets/v3/qa-browser/manual-cart-walk':'../assets/v3/qa-browser/picker-cart-walk',base=process.env.QOIMA_STAND_BASE_URL||'http://127.0.0.1:4173',url=base+'/stand-v3.html?asset=picking-cart-tote-fixture&fixture=walk'+(manual?'&worker=manual':'');await mkdir(out,{recursive:true});
+const started=Date.now(),server=await chromium.launchServer({channel:'chrome',headless:!visible,args:['--mute-audio'],timeout:30000});
 const errors=[],resources=[],expectedFailures=[],frames=[],checks={};let browser,failure;
 async function bounded(promise,ms){let timer;try{return await Promise.race([promise.then(()=>true,()=>false),new Promise(r=>{timer=setTimeout(()=>r(false),ms);})]);}finally{clearTimeout(timer);}}
 const ownedAlive=()=>{try{process.kill(server.process().pid,0);return true;}catch(e){return e.code!=='ESRCH';}};
 try{
- browser=await chromium.connect(server.wsEndpoint(),{timeout:15000});const context=await browser.newContext({viewport:{width:1440,height:1000},deviceScaleFactor:1}),page=await context.newPage();
+ browser=await chromium.connect(server.wsEndpoint(),{timeout:15000});const context=await browser.newContext({viewport:visible?{width:1280,height:720}:{width:1440,height:1000},deviceScaleFactor:1}),page=await context.newPage();
  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('response',r=>{if(r.status()>=400)resources.push({url:r.url(),status:r.status()});});
  const ready=()=>page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
  const settle=()=>page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});

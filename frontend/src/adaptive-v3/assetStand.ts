@@ -220,13 +220,14 @@ async function loadModel(id:string){
     if(id==='worker-base'&&new URL(location.href).searchParams.get('fixture')==='roles'){
       workerTemplate=gltf.scene;rolesFixture=createWorkerRolesFixture(workerTemplate);model=rolesFixture.root;
       element('model-title').textContent='Пять ролей · визуальный стенд';
-    }else if(id==='picker-figure'){
+    }else if(id==='picker-figure'||id==='worker-manual'){
       workerTemplate=gltf.scene;figureActor=createWorkerInstance(workerTemplate,'P01','picker');
       model=new THREE.Group();model.name='picker_figure_inspection';model.add(figureActor.root);
     }else model=gltf.scene;
     const requestedFixture=new URL(location.href).searchParams.get('fixture');
     if(id==='picking-cart-tote-fixture'&&['grip','walk'].includes(requestedFixture??'')){
-      const [workerResult,poseResult]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-base.glb'),fetch(base+'data/v3/picker-push-pose.json').then(async r=>{if(!r.ok)throw Error('Поза комплектовщика недоступна.');return validatePickerPushPose(await r.json());})]);
+      const workerAsset=new URL(location.href).searchParams.get('worker')==='manual'?'worker-manual':'worker-base';
+      const [workerResult,poseResult]=await Promise.allSettled([loader.loadAsync(base+'models/v3/'+workerAsset+'.glb'),fetch(base+'data/v3/picker-push-pose.json').then(async r=>{if(!r.ok)throw Error('Поза комплектовщика недоступна.');return validatePickerPushPose(await r.json());})]);
       if(workerResult.status==='rejected')throw workerResult.reason;
       const worker=workerResult.value;
       if(poseResult.status==='rejected'){disposeObject(worker.scene);throw poseResult.reason;}

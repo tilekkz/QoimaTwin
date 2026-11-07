@@ -7,7 +7,8 @@ import ts from 'typescript';
 import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-const root=path.resolve('..'),work=path.join(root,'work/P03-walk-qa'),out=path.join(root,'assets/v3/iterations/picking-cart/P03.4');await mkdir(work,{recursive:true});await mkdir(out,{recursive:true});
+const workerAsset=process.env.QOIMA_WALK_WORKER||'worker-base';assert(['worker-base','worker-manual'].includes(workerAsset));
+const root=path.resolve('..'),work=path.join(root,'work/P03-walk-qa'),out=path.join(root,workerAsset==='worker-base'?'assets/v3/iterations/picking-cart/P03.4':'assets/v3/iterations/worker-base/P03.5.1/gait');await mkdir(work,{recursive:true});await mkdir(out,{recursive:true});
 const sha=b=>createHash('sha256').update(b).digest('hex'),sourceHashes={};
 for(const [name,relative] of [['workerRoles','workerRoles'],['workerRolesFixture','workerRolesFixture'],['grip','motion/grip'],['cartWalk','motion/cartWalk']]){
  const source=await readFile('src/adaptive-v3/'+relative+'.ts','utf8');sourceHashes[relative]=sha(source);
@@ -22,10 +23,10 @@ const {bindPickerGrip,validatePickerPushPose}=await import(pathToFileURL(path.jo
 const {createCartWalk,validateCartWalkTimeline,cartWalkAt}=await import(pathToFileURL(path.join(work,'cartWalk.mjs')));
 const pose=validatePickerPushPose(JSON.parse(await readFile('public/data/v3/picker-push-pose.json','utf8'))),timeline=validateCartWalkTimeline(JSON.parse(await readFile('public/data/v3/picker-cart-walk.json','utf8')));
 assert.throws(()=>cartWalkAt(timeline,NaN));assert.throws(()=>validateCartWalkTimeline({...timeline,pelvis_drop_m:.03}));
-const files=['frontend/public/models/v3/worker-base.glb','frontend/public/models/v3/picking-cart-tote-fixture.glb','frontend/public/data/v3/picker-cart-walk.json'];
+const files=['frontend/public/models/v3/'+workerAsset+'.glb','frontend/public/models/v3/picking-cart-tote-fixture.glb','frontend/public/data/v3/picker-cart-walk.json'];
 const fileHashes={};for(const f of files)fileHashes[f]=sha(await readFile(path.join(root,f)));
 const loader=new GLTFLoader(),parse=async f=>{const b=await readFile(f);return (await loader.parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'')).scene;};
-const source=await parse('public/models/v3/worker-base.glb'),fixture=await parse('public/models/v3/picking-cart-tote-fixture.glb');
+const source=await parse('public/models/v3/'+workerAsset+'.glb'),fixture=await parse('public/models/v3/picking-cart-tote-fixture.glb');
 const originalSource=JSON.stringify(source.toJSON()),cart=fixture.getObjectByName('picking-cart'),tote=fixture.getObjectByName('order-tote'),actor=createWorkerInstance(source,'P01','picker');
 cart.attach(tote);const binding=bindPickerGrip(cart,actor,pose),originalBinding=JSON.stringify(binding.snapshot()),motion=createCartWalk(binding,timeline);
 const actorUuid=actor.root.uuid,toteUuid=tote.uuid,cartUuid=cart.uuid;
@@ -57,5 +58,5 @@ for(let i=0;i<100;i++){
 motion.apply(0);assert.equal(JSON.stringify(binding.snapshot()),stateBefore);
 const startVelocity=(cartWalkAt(timeline,1.0001).distance-cartWalkAt(timeline,.9999).distance)/.0002,endVelocity=(cartWalkAt(timeline,8.0001).distance-cartWalkAt(timeline,7.9999).distance)/.0002;assert(Math.abs(startVelocity)<.0001&&Math.abs(endVelocity)<.0001);
 motion.dispose();motion.dispose();assert.equal(JSON.stringify(binding.snapshot()),originalBinding);assert.throws(()=>motion.apply(1));binding.release();assert.equal(actor.disposed,false);assert.equal(JSON.stringify(source.toJSON()),originalSource);disposeWorkerInstance(actor);
-const report={task_id:'P03.4',passed:true,source_hashes:sourceHashes,input_hashes:fileHashes,actual_samples:901,native_pose_frames:nativeFrames.length,arbitrary_whole_node_seeks:100,stable_actor_cart_and_tote_uuid:true,source_meshes_unchanged:true,maximum_grip_or_axis_error:worstGrip,maximum_actual_wheel_floor_error_m:worstFloor,maximum_floor_correction_m:maxCorrection,maximum_stance_slide_m:maxStanceSlide,leg_angle_ranges_rad:ranges,all_leg_angles_inside_accepted_limits:true,initial_and_dispose_restore_binding:true,source_kind:'visual_fixture',engine_operation:false};
+const report={task_id:'P03.4',worker_asset:workerAsset,passed:true,source_hashes:sourceHashes,input_hashes:fileHashes,actual_samples:901,native_pose_frames:nativeFrames.length,arbitrary_whole_node_seeks:100,stable_actor_cart_and_tote_uuid:true,source_meshes_unchanged:true,maximum_grip_or_axis_error:worstGrip,maximum_actual_wheel_floor_error_m:worstFloor,maximum_floor_correction_m:maxCorrection,maximum_stance_slide_m:maxStanceSlide,leg_angle_ranges_rad:ranges,all_leg_angles_inside_accepted_limits:true,initial_and_dispose_restore_binding:true,source_kind:'visual_fixture',engine_operation:false};
 await writeFile(path.join(out,'actual-runtime-walk-checks.json'),JSON.stringify(report,null,2)+'\n');await writeFile(path.join(out,'runtime-native-poses.json'),JSON.stringify({input_hashes:fileHashes,frames:nativeFrames},null,2)+'\n');console.log(JSON.stringify(report));

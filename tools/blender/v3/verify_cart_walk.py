@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -15,7 +16,8 @@ from build_picker_figure import physical_body
 from build_sealed_parcel import append_source
 from build_standard_carton import collect
 
-OUT=ROOT/'assets/v3/iterations/picking-cart/P03.4';EPS=2e-6
+WORKER=os.environ.get('QOIMA_WALK_WORKER','worker-base');assert WORKER in ('worker-base','worker-manual')
+OUT=ROOT/('assets/v3/iterations/picking-cart/P03.4' if WORKER=='worker-base' else 'assets/v3/iterations/worker-base/P03.5.1/gait');EPS=2e-6
 C=Matrix(((1,0,0),(0,0,-1),(0,1,0)))
 
 def rotate(obj,angles):
@@ -31,7 +33,7 @@ def connected(a,b):
     return False
 
 if __name__=='__main__':
-    paths=['assets/v3/blender/worker-base.blend','assets/v3/blender/picking-cart.blend','assets/v3/blender/order-tote.blend']
+    paths=['assets/v3/blender/'+WORKER+'.blend','assets/v3/blender/picking-cart.blend','assets/v3/blender/order-tote.blend']
     hashes={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths}
     data=json.loads((OUT/'runtime-native-poses.json').read_text())
     for path,expected in data['input_hashes'].items():assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest()==expected,path

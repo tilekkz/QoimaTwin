@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T20:37:02.400882+00:00",
+  "updated_at": "2026-11-07T21:29:14.656560+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -2074,7 +2074,7 @@
       "title": "Pick action: real target/payload, hand reach and one visible transfer",
       "parent": "P03",
       "owner": "unassigned",
-      "status": "READY",
+      "status": "TODO",
       "depends_on": [
         "R10",
         "P02",
@@ -2086,7 +2086,12 @@
         "docs/adaptive-v3/specs/P03.5.md",
         "docs/adaptive-v3/evidence/P03.5.json"
       ],
-      "criteria": "Pick action: real target/payload, hand reach and one visible transfer; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Pick action: real target/payload, hand reach and one visible transfer; actual artifact and relevant reference/runtime evidence reviewed",
+      "children": [
+        "P03.5.1",
+        "P03.5.2",
+        "P03.5.3"
+      ]
     },
     {
       "id": "P03.6",
@@ -3176,6 +3181,56 @@
         "docs/adaptive-v3/evidence/M14.6.3.json"
       ],
       "actual": "6native HU families/18poses/72fork contacts, unchanged C08 component containment;108bore rays,8pin+10rig removal hulls,81whole rack-exit hulls;7GLBs0errors, actual browser reviewed."
+    },
+    {
+      "id": "P03.5.1",
+      "title": "Manual picker wrist roll and closing mitten controls",
+      "parent": "P03.5",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "P03.4",
+        "P01.7",
+        "P02"
+      ],
+      "outputs": [
+        "docs/adaptive-v3/specs/P03.5.1.md",
+        "docs/adaptive-v3/evidence/P03.5.1.json"
+      ],
+      "criteria": "Manual picker wrist roll and closing mitten controls; actual native contact and relevant browser/reference evidence reviewed",
+      "actual": "Unchanged50body meshes/neutral vertices0error;23pivots/7anchors,10native control connections and6C02unit-envelope contacts. GLB0/0 and29native batches match.5visible neutral views reviewed; manual/base901runtime+91native/100seeks pass,9visible manual gait frames captured with3.5/9reviewed;52/10GPUstable,UI lifecycle/PALLET regressionPASS. Actual partial-case pick remains .2/.3."
+    },
+    {
+      "id": "P03.5.2",
+      "title": "Native open partial SMALL case and primary-unit source fixture",
+      "parent": "P03.5",
+      "owner": "unassigned",
+      "status": "READY",
+      "depends_on": [
+        "P03.5.1",
+        "M06.1",
+        "M01"
+      ],
+      "outputs": [
+        "docs/adaptive-v3/specs/P03.5.2.md",
+        "docs/adaptive-v3/evidence/P03.5.2.json"
+      ],
+      "criteria": "Native open partial SMALL case and primary-unit source fixture; actual native contact and relevant browser/reference evidence reviewed"
+    },
+    {
+      "id": "P03.5.3",
+      "title": "Reach, pick primary units, withdraw and deposit without duplication",
+      "parent": "P03.5",
+      "owner": "unassigned",
+      "status": "TODO",
+      "depends_on": [
+        "P03.5.2"
+      ],
+      "outputs": [
+        "docs/adaptive-v3/specs/P03.5.3.md",
+        "docs/adaptive-v3/evidence/P03.5.3.json"
+      ],
+      "criteria": "Reach, pick primary units, withdraw and deposit without duplication; actual native contact and relevant browser/reference evidence reviewed"
     }
   ],
   "execution": {

@@ -123,7 +123,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P03.2](tasks/P03.2.md) | PASS | root | R10,P02,M07,P03.1,I09 | Picking cart with grounded wheels, clear tote tray and coherent handle |
 | [P03.3](tasks/P03.3.md) | PASS | root | R10,P02,M07,P03.2,I09 | Hands and both grip anchors stay in contact with handle |
 | [P03.4](tasks/P03.4.md) | PASS | root | R10,P02,M07,P03.3,I09 | Walk/cart absolute-clock gait with foot/wheel contacts |
-| [P03.5](tasks/P03.5.md) | READY | unassigned | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
+| [P03.5](tasks/P03.5.md) | TODO | unassigned | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
 | [P03.6](tasks/P03.6.md) | TODO | unassigned | R10,P02,M07,P03.5,I09 | Tote handoff: stable hold/deposit parent and no duplicate cargo |
 | [P09.1](tasks/P09.1.md) | PASS | people_packing | R10,R07,L12,I09 | Standard dock module: thick connected frame and clear passage |
 | [P09.2](tasks/P09.2.md) | PASS | people_packing | R10,R07,L12,P09.1,I09 | Large freight gate: accepted clear width/height and loaded-long envelope |
@@ -178,3 +178,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.6.1](tasks/M14.6.1.md) | PASS | root | R10,R06,C08,I09,M14.5 | Final vehicle with real lock bores and native pallet lift contacts |
 | [M14.6.2](tasks/M14.6.2.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M04,M10 | Actual LONG base/pins and separate upper bundle restraints |
 | [M14.6.3](tasks/M14.6.3.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M14.6.2,M08,M09,M11,M12 | All six native loaded assemblies and low/high interface gate |
+| [P03.5.1](tasks/P03.5.1.md) | PASS | root | P03.4,P01.7,P02 | Manual picker wrist roll and closing mitten controls |
+| [P03.5.2](tasks/P03.5.2.md) | READY | unassigned | P03.5.1,M06.1,M01 | Native open partial SMALL case and primary-unit source fixture |
+| [P03.5.3](tasks/P03.5.3.md) | TODO | unassigned | P03.5.2 | Reach, pick primary units, withdraw and deposit without duplication |

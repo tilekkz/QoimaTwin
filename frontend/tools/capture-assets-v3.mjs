@@ -6,17 +6,18 @@ if(assets.some(a=>!/^[a-z0-9][a-z0-9-]{0,63}$/.test(a)))throw Error('Invalid ass
 const views=(process.env.QOIMA_STAND_VIEWS||'front,side,rear,quarter').split(',');
 if(views.some(v=>!['front','side','rear','quarter','top'].includes(v)))throw Error('Invalid view');
 const base=process.env.QOIMA_STAND_BASE_URL||'http://127.0.0.1:4173';
+const visible=process.env.QOIMA_VISIBLE_TESTS==='1',viewport=visible?{width:1280,height:720}:{width:1440,height:1000};
 const variant=process.env.QOIMA_STAND_FIXTURE,focus=process.env.QOIMA_STAND_FOCUS;
 if(variant&&!['roles','pickup','driver','grip'].includes(variant))throw Error('Invalid fixture variant');
 async function bounded(promise,ms){let timer;try{return await Promise.race([promise.then(()=>true,()=>false),new Promise(r=>{timer=setTimeout(()=>r(false),ms);})]);}finally{clearTimeout(timer);}}
 const started=Date.now();
-const server=await chromium.launchServer({channel:'chrome',headless:true,args:['--mute-audio'],timeout:30000});
+const server=await chromium.launchServer({channel:'chrome',headless:!visible,args:['--mute-audio'],timeout:30000});
 const outputs=[];let browser,failure;
 const ownedAlive=()=>{try{process.kill(server.process().pid,0);return true;}catch(error){if(error.code==='ESRCH')return false;return true;}};
 async function settleExit(ms){if(!ownedAlive())return;const child=server.process();let listener;try{await bounded(new Promise(r=>{listener=()=>r();child.once('exit',listener);}),ms);}finally{if(listener)child.off('exit',listener);}}
 try{
  browser=await chromium.connect(server.wsEndpoint(),{timeout:15000});
- const context=await browser.newContext({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+ const context=await browser.newContext({viewport,deviceScaleFactor:1});
  const launchMs=Date.now()-started;
  for(const asset of assets){
   const at=Date.now(),override=process.env.QOIMA_STAND_OUTPUT;
@@ -49,7 +50,7 @@ try{
      const state=await page.evaluate(yaw=>{const api=window.__QOIMA_STAND_V3__;api.setNode('picking-cart-tote-fixture',{position:[2,0,-1],rotation:[0,yaw,0]});return api.snapshot();},yaw);verify(state);fixtureChecks.world_transform_checks.push(state.grip);
     }
    }
-   await writeFile(`${out}/browser-capture.json`,JSON.stringify({at:new Date().toISOString(),browser:browser.version(),url:page.url(),viewport:{width:1440,height:1000},errors,failedResources,frames,fixture_checks:fixtureChecks,timing_ms:{shared_browser_launch:launchMs,asset_capture:Date.now()-at}},null,2));
+   await writeFile(`${out}/browser-capture.json`,JSON.stringify({at:new Date().toISOString(),browser:browser.version(),url:page.url(),visible,viewport,errors,failedResources,frames,fixture_checks:fixtureChecks,timing_ms:{shared_browser_launch:launchMs,asset_capture:Date.now()-at}},null,2));
    if(errors.length||failedResources.length)throw Error(JSON.stringify({errors,failedResources}));
    console.log(JSON.stringify({asset,captures:frames.length,errors:0,failedResources:0,capture_ms:Date.now()-at,out}));
   }catch(error){await writeFile(`${out}/failure.json`,JSON.stringify({error:String(error),errors,failedResources},null,2));throw error;}
