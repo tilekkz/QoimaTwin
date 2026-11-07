@@ -38,9 +38,8 @@ STATE_SECTIONS = {
 
 
 @pytest.fixture(scope="module")
-def run(bundle: ContractBundle, contracts_dir: Path) -> tuple[Engine, RunOutcome]:
-    engine = Engine(fixture_inputs(bundle, load_fixture(contracts_dir)), check_invariants=True)
-    return engine, engine.run()
+def run(analytical_run: tuple[Engine, RunOutcome]) -> tuple[Engine, RunOutcome]:
+    return analytical_run
 
 
 def _tick(engine: Engine, seconds: float | Fraction) -> int:

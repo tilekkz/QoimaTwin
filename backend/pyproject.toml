@@ -22,6 +22,7 @@ dev = [
     "pre-commit==4.7.0",
     "pytest==9.2.0",
     "pytest-cov==7.1.0",
+    "pytest-xdist==3.8.0",
     "ruff==0.17.4",
 ]
 
@@ -47,12 +48,13 @@ ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "--strict-config --strict-markers"
+addopts = "--strict-config --strict-markers -m 'not slow'"
 markers = [
     "acceptance: numbered gates from 05_Acceptance_and_Demo.md",
     "integration: complete subsystem integration",
     "property: generated state-machine tests",
     "performance: controlled benchmark runs",
+    "slow: hourly simulations and other expensive checks; full CI runs include these",
 ]
 
 [tool.coverage.run]

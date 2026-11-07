@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Iterator
 from datetime import timedelta
+from typing import Any
 
 import pytest
 from numpy.random import Generator
@@ -12,6 +13,11 @@ from app.contracts.scenario import Order, OrderLine
 from app.data import history
 from app.data.catalog import SKU_IDS
 from app.data.orders import iter_orders
+
+
+@pytest.mark.slow
+def test_fresh_history_generation_matches_shared_immutable_input(synthetic_history: Any) -> None:
+    assert history.generate_history().equals(synthetic_history)
 
 
 def test_history_daily_counts_and_aggregates(monkeypatch: pytest.MonkeyPatch) -> None:

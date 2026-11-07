@@ -2,9 +2,9 @@ name: backend-ci
 
 on:
   push:
-    paths: ["backend/**", "contracts/**", ".github/workflows/backend-ci.yml"]
+    paths: ["backend/**", "contracts/**", "data/**", "tools/**", ".github/workflows/backend-ci.yml"]
   pull_request:
-    paths: ["backend/**", "contracts/**", ".github/workflows/backend-ci.yml"]
+    paths: ["backend/**", "contracts/**", "data/**", "tools/**", ".github/workflows/backend-ci.yml"]
 
 permissions:
   contents: read
@@ -16,13 +16,15 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: backend
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v6
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
         with:
+          version: "0.13.4"
           enable-cache: true
           cache-dependency-glob: backend/uv.lock
       - name: Install locked environment
@@ -36,4 +38,6 @@ jobs:
       - name: Validate contracts
         run: uv run python -m app.cli validate-contracts
       - name: Tests with coverage
-        run: uv run pytest --cov --cov-report=term-missing
+        run: uv run pytest -m "slow or not slow" -n 2 --dist loadscope --cov --cov-report=term-missing
+      - name: Optimized Python smoke
+        run: uv run python -O -m tests.probes --fixture

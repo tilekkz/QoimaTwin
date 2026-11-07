@@ -20,6 +20,7 @@ def paths(layout: Layout) -> AllPairsPaths:
 def test_G1_graph_counts_reachability_and_reserve_access(
     layout: Layout, paths: AllPairsPaths
 ) -> None:
+    # 05 section2 G1 / 01 section3:184 nodes,205 edges;288 racks * (1 pick +2 reserve).
     assert len(layout.picker_graph.nodes) == 184
     assert len(layout.picker_graph.edges) == 205
     pickfaces = [s for s in layout.slots if s.kind == "pickface"]

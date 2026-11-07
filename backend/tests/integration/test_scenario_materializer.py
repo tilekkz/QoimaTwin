@@ -13,7 +13,12 @@ from app.cli import main
 from app.contracts.config import SimulationConfig
 from app.contracts.scenario import Scenario
 from app.data.catalog import SKU_IDS
-from app.data.scenario_materializer import Profile, materialize, write_materialized
+from app.data.scenario_materializer import (
+    MaterializedScenario,
+    Profile,
+    materialize,
+    write_materialized,
+)
 from app.storage.canonical_json import canonical_bytes, parse_json, sha256_hex
 
 
@@ -67,8 +72,11 @@ def test_promotion_increases_visits(config: SimulationConfig) -> None:
     assert promotion.normalized_weights[172] == pytest.approx(5 * w / (1 - w + 5 * w))
 
 
-def test_artifacts_are_reproducible(config: SimulationConfig, tmp_path: Path) -> None:
-    first = materialize("large-normal", 3600, config)
+@pytest.mark.usefixtures("cached_materialization_history")
+def test_artifacts_are_reproducible(
+    config: SimulationConfig, tmp_path: Path, normal_materialization: MaterializedScenario
+) -> None:
+    first = normal_materialization
     second = materialize("large-normal", 3600, config)
     assert first == second
     for name, result in (("a", first), ("b", second)):
@@ -98,6 +106,7 @@ def test_config_rates_are_used(config: SimulationConfig) -> None:
     assert len(materialize("large-peak", 3600, changed).scenario.orders) == 23
 
 
+@pytest.mark.usefixtures("cached_materialization_history")
 def test_materialize_cli(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
     args = [
         "materialize",

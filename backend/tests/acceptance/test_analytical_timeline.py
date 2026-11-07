@@ -6,28 +6,24 @@ Expected numbers come from contracts/analytical_fixture.json, never from the eng
 from __future__ import annotations
 
 from fractions import Fraction
-from pathlib import Path
 from typing import Any
 
 import pytest
 
-from app.contracts.loader import ContractBundle
 from app.simulation.engine import Engine, RunOutcome, RunStatus, Termination
-from app.simulation.fixtures import fixture_inputs, load_fixture
 from app.simulation.recorder import ActorState
 
 pytestmark = pytest.mark.acceptance
 
 
 @pytest.fixture(scope="module")
-def fixture(contracts_dir: Path) -> dict[str, Any]:
-    return load_fixture(contracts_dir)
+def fixture(analytical_fixture: dict[str, Any]) -> dict[str, Any]:
+    return analytical_fixture
 
 
 @pytest.fixture(scope="module")
-def run(bundle: ContractBundle, fixture: dict[str, Any]) -> tuple[Engine, RunOutcome]:
-    engine = Engine(fixture_inputs(bundle, fixture), check_invariants=True)
-    return engine, engine.run()
+def run(analytical_run: tuple[Engine, RunOutcome]) -> tuple[Engine, RunOutcome]:
+    return analytical_run
 
 
 def _seconds(engine: Engine, kind: str) -> list[Fraction]:

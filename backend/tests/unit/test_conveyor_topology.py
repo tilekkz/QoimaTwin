@@ -14,6 +14,7 @@ def topo(layout: Layout) -> ConveyorTopology:
 
 
 def test_total_cell_count_is_179(topo: ConveyorTopology) -> None:
+    # 01 section4:112 loop +3 feed +12 branches +6 outfeed +46 outbound =179 cells.
     assert len(topo.cells) == 179
     assert sum(1 for c in topo.cells if c.startswith(("LOOP_E:", "LOOP_W:", "LOOP_TURN_"))) == 112
 

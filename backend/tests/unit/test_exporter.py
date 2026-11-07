@@ -15,15 +15,14 @@ from app.exporter.events import project_events
 from app.exporter.identity import fingerprint
 from app.exporter.run import export_run, write_run
 from app.exporter.validation import validate_run
-from app.simulation.engine import Engine
+from app.simulation.engine import Engine, RunOutcome
 from app.simulation.fixtures import fixture_inputs, load_fixture
 from app.storage.canonical_json import canonical_bytes, sha256_hex
 
 
 @pytest.fixture(scope="module")
-def exported(bundle: ContractBundle, contracts_dir: Path) -> dict[str, Any]:
-    engine = Engine(fixture_inputs(bundle, load_fixture(contracts_dir)), check_invariants=True)
-    return export_run(engine, engine.run())
+def exported(analytical_run: tuple[Engine, RunOutcome]) -> dict[str, Any]:
+    return export_run(*analytical_run)
 
 
 def test_inline_matches_v2_schema(exported: dict[str, Any], contracts_dir: Path) -> None:
@@ -43,7 +42,9 @@ def test_transfer_pairs_and_sequence(exported: dict[str, Any]) -> None:
     for event in events:
         if event["kind"].startswith("cell_"):
             pairs.setdefault(event["payload"]["transition_id"], []).append(event)
-    assert len(pairs) == 68  # 19+47 traversals plus two admissions, from the fixture.
+    # analytical_fixture.expected: to_pack_conveyor_m19 + to_shipping_conveyor_m47;
+    # each cargo also has one admission, giving19+47+2=68 physical transitions.
+    assert len(pairs) == 19 + 47 + 2
     for exited, entered in pairs.values():
         assert exited["kind"] == "cell_exited"
         assert entered["kind"] == "cell_entered"
