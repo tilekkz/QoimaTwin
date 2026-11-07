@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
+import hashlib
+import io
+from dataclasses import dataclass
 from datetime import date, timedelta
+from functools import lru_cache
 
 # The offline project environment has pandas but not the optional pandas-stubs.
 import pandas as pd  # type: ignore[import-untyped]
@@ -42,3 +46,31 @@ def generate_history() -> pd.DataFrame:
         split = "train" if offset < TRAIN_DAYS else "validation"
         rows.extend((day, sku, visits[i], units[i], split) for i, sku in enumerate(SKU_IDS))
     return pd.DataFrame(rows, columns=["date", "sku_id", "visits", "units", "split"])
+
+
+@dataclass(frozen=True, slots=True)
+class HistoryArtifact:
+    """Exact original CSV bytes: no shared mutable DataFrame is cached."""
+
+    csv_bytes: bytes
+
+    @property
+    def sha256(self) -> str:
+        return hashlib.sha256(self.csv_bytes).hexdigest()
+
+
+@lru_cache(maxsize=1)
+def history_artifact() -> HistoryArtifact:
+    """Generate the frozen default history once per process; publish by content hash."""
+    payload = generate_history().to_csv(index=False, lineterminator="\n").encode("utf-8")
+    return HistoryArtifact(payload)
+
+
+def history_by_hash(artifact_hash: str) -> pd.DataFrame:
+    """Resolve the immutable default artifact and decode a defensive copy."""
+    artifact = history_artifact()
+    if artifact_hash != artifact.sha256:
+        raise KeyError(f"unknown history artifact: {artifact_hash}")
+    frame = pd.read_csv(io.BytesIO(artifact.csv_bytes))
+    frame["date"] = pd.to_datetime(frame["date"]).dt.date
+    return frame

@@ -11,7 +11,7 @@ from app.contracts.actors import ActorRegistry
 from app.contracts.config import SimulationConfig
 from app.contracts.layout import Layout
 from app.contracts.loader import ContractBundle, load_contract_bundle
-from app.data.history import generate_history
+from app.data.history import HistoryArtifact, history_artifact, history_by_hash
 from app.data.scenario_materializer import MaterializedScenario, materialize
 from app.settings import default_contracts_dir
 from app.simulation.engine import Engine, RunOutcome
@@ -67,12 +67,13 @@ def normal_materialization(config: SimulationConfig) -> MaterializedScenario:
 @pytest.fixture(scope="session")
 def synthetic_history() -> Any:
     """Generate once per worker; each publisher receives a private copy below."""
-    return generate_history()
+    return history_by_hash(history_artifact().sha256)
 
 
 @pytest.fixture
 def cached_materialization_history(synthetic_history: Any, monkeypatch: pytest.MonkeyPatch) -> None:
     """Cache publisher inputs; generator tests always exercise the real generator."""
-    monkeypatch.setattr(
-        "app.data.scenario_materializer.generate_history", lambda: synthetic_history.copy(deep=True)
+    artifact = HistoryArtifact(
+        synthetic_history.to_csv(index=False, lineterminator="\n").encode("utf-8")
     )
+    monkeypatch.setattr("app.data.history.history_artifact", lambda: artifact)

@@ -13,8 +13,9 @@ import numpy as np
 
 from app.contracts.config import SimulationConfig
 from app.contracts.scenario import Provenance, Scenario
+from app.data import history as history_source
 from app.data.catalog import Catalog, build_catalog, multiplied_weights, promotion_weights
-from app.data.history import TEST_DAY, generate_history
+from app.data.history import TEST_DAY
 from app.data.orders import generate_orders
 from app.data.receipts import generate_receipts
 from app.data.seeds import HISTORY, MASTER_SEED, ORDERS, RECEIPTS, stream_rng
@@ -82,7 +83,7 @@ def materialize(profile: Profile, horizon_s: int, config: SimulationConfig) -> M
 
 def _artifact_payloads(result: MaterializedScenario) -> dict[str, bytes]:
     scenario = canonical_bytes(result.scenario.model_dump(mode="json"))
-    history = generate_history().to_csv(index=False, lineterminator="\n").encode("utf-8")
+    history = history_source.history_artifact().csv_bytes
     catalog = asdict(result.catalog)
     weights = {
         "original": result.catalog.normalized_weights,

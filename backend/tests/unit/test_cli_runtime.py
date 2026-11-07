@@ -4,11 +4,11 @@ import json
 from pathlib import Path
 from unittest.mock import Mock
 
-import pandas as pd  # type: ignore[import-untyped]
 import pytest
 
 from app.cli import main
 from app.contracts.loader import ContractBundle
+from app.data.history import HistoryArtifact
 from app.exporter.validation import validate_run
 from app.simulation.recorder import RecorderError
 
@@ -133,7 +133,7 @@ def test_simulate_publishes_inputs_then_validated_run(
 ) -> None:
     # History generation has separate artifact tests; keep this CLI boundary case small.
     monkeypatch.setattr(
-        "app.data.scenario_materializer.generate_history", lambda: pd.DataFrame({"visits": [1]})
+        "app.data.history.history_artifact", lambda: HistoryArtifact(b"visits\n1\n")
     )
     validator = Mock(wraps=validate_run)
     monkeypatch.setattr("app.exporter.run.validate_run", validator)
