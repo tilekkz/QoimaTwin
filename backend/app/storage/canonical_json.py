@@ -12,30 +12,37 @@ import math
 from typing import Any
 
 CANONICALIZATION_VERSION = "qoima-json-v1"
+_CONTAINERS = (dict, list, tuple)
 
 
-def _validate(obj: object) -> None:
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            if not isinstance(key, str):
-                raise TypeError("JSON object keys must be strings")
-            _validate(value)
-    elif isinstance(obj, (list, tuple)):
-        for value in obj:
-            _validate(value)
-    elif isinstance(obj, float):
-        if not math.isfinite(obj):
-            raise ValueError("non-finite JSON number")
-    elif obj is not None and not isinstance(obj, (str, int, bool)):
-        raise TypeError(f"unsupported JSON value: {type(obj).__name__}")
+def _validate_keys(obj: object) -> None:
+    """Check the one ambiguity json.dumps accepts: non-string object keys."""
+    pending = [obj]
+    while pending:
+        value = pending.pop()
+        if isinstance(value, dict):
+            for key, item in value.items():
+                if not isinstance(key, str):
+                    raise TypeError("JSON object keys must be strings")
+                if isinstance(item, _CONTAINERS):
+                    pending.append(item)
+        elif isinstance(value, (list, tuple)):
+            pending.extend(item for item in value if isinstance(item, _CONTAINERS))
 
 
 def canonical_bytes(obj: object) -> bytes:
     """Encode UTF-8; stdlib JSON uses float repr, without converting ints to floats."""
-    _validate(obj)
-    return json.dumps(
-        obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
-    ).encode("utf-8")
+    try:
+        encoded = json.dumps(
+            obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+        )
+    except ValueError as exc:
+        if str(exc).startswith("Out of range float values"):
+            raise ValueError("non-finite JSON number") from exc
+        raise
+    # Encode first: native circular-reference detection makes the key-only walk safe.
+    _validate_keys(obj)
+    return encoded.encode("utf-8")
 
 
 def sha256_hex(obj: object) -> str:
@@ -56,8 +63,18 @@ def _reject_constant(value: str) -> Any:
     raise ValueError(f"non-finite JSON number: {value}")
 
 
+def _finite_float(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number):
+        raise ValueError(f"non-finite JSON number: {value}")
+    return number
+
+
 def parse_json(text: str | bytes) -> Any:
     """Parse strict JSON, rejecting nested duplicate keys and overflowing numbers."""
-    result = json.loads(text, object_pairs_hook=_unique_object, parse_constant=_reject_constant)
-    _validate(result)
-    return result
+    return json.loads(
+        text,
+        object_pairs_hook=_unique_object,
+        parse_constant=_reject_constant,
+        parse_float=_finite_float,
+    )
