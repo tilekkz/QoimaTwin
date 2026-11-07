@@ -19,7 +19,7 @@ const host = element('canvas-host');
 const shell = element('stand');
 const modelInput = element<HTMLInputElement>('model-id');
 const base = import.meta.env.BASE_URL;
-const assetTitles:Record<string,string>={'small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
+const assetTitles:Record<string,string>={'floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
 async function initialize(){
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d8dcdb');
@@ -212,6 +212,7 @@ async function loadModel(id:string){
   const token=++serial;
   if(!/^[a-z0-9][a-z0-9-]{0,63}$/.test(id)){setStatus('error','Неверный идентификатор','Используйте буквы a–z, цифры и дефисы.');return;}
   modelId=id;modelInput.value=id;element('model-title').textContent=assetTitles[id]??id.replaceAll('-',' ');updateReference();
+  (ground.material as THREE.MeshStandardMaterial).color.set(id==='floor-markings'?'#AFB6AF':'#d5d7d3');
   setStatus('loading','Загружаем '+id,'Читаем локальный GLB и проверяем геометрию…');
   releaseModel();points=[];bounds.makeEmpty();
   for(const field of ['size-x','size-y','size-z','triangles','materials'])element(field).textContent='—';element('diagnostics').textContent='Загружаем модель…';
@@ -277,6 +278,12 @@ async function loadModel(id:string){
     scene.add(model);
     model.traverse(node=>{if(node instanceof THREE.Mesh){
       node.castShadow=node.userData.cast_shadow!==false&&node.userData.shell_component_class!=='floor_support';node.receiveShadow=true;
+      if(node.userData.surface_paint===true){
+        node.castShadow=false;node.renderOrder=2;
+        for(const material of Array.isArray(node.material)?node.material:[node.material]){
+          material.polygonOffset=true;material.polygonOffsetFactor=-1;material.polygonOffsetUnits=-2;material.depthWrite=false;
+        }
+      }
       // Closed native solids can retain their original double-sided colour
       // material while casting only their back faces. This removes the legacy
       // rack's self-shadow stripes without a millimetre-scale contact gap.

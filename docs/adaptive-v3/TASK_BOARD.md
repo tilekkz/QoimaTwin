@@ -46,8 +46,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [C08](tasks/C08.md) | PASS | root | C02,L07 | Определены ограничения движения загруженной техники |
 | [C09](tasks/C09.md) | PASS | root | C06,C07,C08 | Задан порядок «совместимость, затем стоимость» |
 | [C10](tasks/C10.md) | PASS | root | C03,C04,C09 | Подготовлено допустимое baseline-размещение |
-| [C11](tasks/C11.md) | READY | unassigned | C10 | Подготовлено адаптированное размещение |
-| [C12](tasks/C12.md) | TODO | unassigned | C11,L12 | Передано предложение контрактов v3 |
+| [C11](tasks/C11.md) | PASS | root | C10 | Подготовлено адаптированное размещение |
+| [C12](tasks/C12.md) | READY | unassigned | C11,L12 | Передано предложение контрактов v3 |
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
@@ -70,7 +70,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
 | [P07](tasks/P07.md) | PASS | root | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
-| [P09](tasks/P09.md) | TODO | unassigned | R10,R07,L12,I09 | Готов модульный environment/dock kit |
+| [P09](tasks/P09.md) | PASS | root | R10,R07,L12,I09 | Готов модульный environment/dock kit |
 | [P10](tasks/P10.md) | TODO | unassigned | R10,P03,P04,P05,P06,P07 | Подготовлен role registry и легенда |
 | [P11](tasks/P11.md) | TODO | unassigned | R10,P10,C07 | Подготовлен WorkerProfile с навыками |
 | [W01](tasks/W01.md) | TODO | unassigned | C12,P10 | Подготовлен детерминированный visual fixture v3 |
@@ -128,7 +128,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P09.1](tasks/P09.1.md) | PASS | people_packing | R10,R07,L12,I09 | Standard dock module: thick connected frame and clear passage |
 | [P09.2](tasks/P09.2.md) | PASS | people_packing | R10,R07,L12,P09.1,I09 | Large freight gate: accepted clear width/height and loaded-long envelope |
 | [P09.3](tasks/P09.3.md) | PASS | people_packing | R10,R07,L12,P09.2,I09 | 144x72x8 cutaway shell, substantial walls/columns at ordinary scale |
-| [P09.4](tasks/P09.4.md) | READY | unassigned | R10,R07,L12,P09.3,I09 | Zone/route/port markings without covering logical passage or z fighting |
+| [P09.4](tasks/P09.4.md) | PASS | root | R10,R07,L12,P09.3,I09 | Zone/route/port markings without covering logical passage or z fighting |
 | [M14.1](tasks/M14.1.md) | PASS | people_packing | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
 | [M14.2](tasks/M14.2.md) | PASS | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
 | [M14.3](tasks/M14.3.md) | PASS | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |

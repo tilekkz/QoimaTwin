@@ -1,0 +1,4445 @@
+{
+  "actual_engine_run": false,
+  "allowed_differences": [
+    "HU slot placement and the explicitly priced one-off relocation sequence"
+  ],
+  "baseline_assignment_sha256": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+  "baseline_input_sha256": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+  "cost_assumptions": {
+    "forklift_assisted": {
+      "handling_allowance_s": 40,
+      "speed_m_s": 1.8
+    },
+    "manual_cart": {
+      "handling_allowance_s": 12,
+      "speed_m_s": 1.4
+    }
+  },
+  "cost_scope": "Expected route-travel seconds proxy per planning period. Relocation charges the admitted loaded route, a separately admitted reverse route using conservative loaded envelope, and a declared handling allowance. No queues, availability, full-order duration, throughput, money or DES outcome.",
+  "fixed": [
+    "same530HU/200SKU inventory and lot/unit IDs",
+    "same physical layout, ports and graphs",
+    "same cargo dimensions/mass/orientations",
+    "same declared24person headcount; no staffing allocation/availability simulation"
+  ],
+  "materialization": "Explicit expected HU-move weights per unclocked synthetic period, not engine events/receipts or observed demand.",
+  "maximum_transfers": 8,
+  "operational_admission": false,
+  "rule": "At most8 single-HU transfers to currently free home-family slots; each HU at most once. Best positive net saving, deterministic HU/slot tie. No swaps, FLEX final occupancy, global optimum or AI claim.",
+  "scenario_id": "N2_DECLARED_PORT_MIX_SHIFT",
+  "schema_id": "qoima.adaptation-input.v3-planning",
+  "schema_version": "0.1.0",
+  "skus": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_001:01",
+        "v3:HU:initial:DEMO_001:02",
+        "v3:HU:initial:DEMO_001:03",
+        "v3:HU:initial:DEMO_001:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_001",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_001",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_002:01",
+        "v3:HU:initial:DEMO_002:02",
+        "v3:HU:initial:DEMO_002:03",
+        "v3:HU:initial:DEMO_002:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_002",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_002",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_003:01",
+        "v3:HU:initial:DEMO_003:02",
+        "v3:HU:initial:DEMO_003:03",
+        "v3:HU:initial:DEMO_003:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_003",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_003",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_004:01",
+        "v3:HU:initial:DEMO_004:02",
+        "v3:HU:initial:DEMO_004:03",
+        "v3:HU:initial:DEMO_004:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_004",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_004",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_005:01",
+        "v3:HU:initial:DEMO_005:02",
+        "v3:HU:initial:DEMO_005:03",
+        "v3:HU:initial:DEMO_005:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_005",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_005",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_006:01",
+        "v3:HU:initial:DEMO_006:02",
+        "v3:HU:initial:DEMO_006:03",
+        "v3:HU:initial:DEMO_006:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_006",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_006",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_007:01",
+        "v3:HU:initial:DEMO_007:02",
+        "v3:HU:initial:DEMO_007:03",
+        "v3:HU:initial:DEMO_007:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_007",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_007",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_008:01",
+        "v3:HU:initial:DEMO_008:02",
+        "v3:HU:initial:DEMO_008:03",
+        "v3:HU:initial:DEMO_008:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_008",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_008",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_009:01",
+        "v3:HU:initial:DEMO_009:02",
+        "v3:HU:initial:DEMO_009:03",
+        "v3:HU:initial:DEMO_009:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_009",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_009",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_010:01",
+        "v3:HU:initial:DEMO_010:02",
+        "v3:HU:initial:DEMO_010:03",
+        "v3:HU:initial:DEMO_010:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_010",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_010",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_011:01",
+        "v3:HU:initial:DEMO_011:02",
+        "v3:HU:initial:DEMO_011:03",
+        "v3:HU:initial:DEMO_011:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_011",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_011",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_012:01",
+        "v3:HU:initial:DEMO_012:02",
+        "v3:HU:initial:DEMO_012:03",
+        "v3:HU:initial:DEMO_012:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_012",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_012",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_013:01",
+        "v3:HU:initial:DEMO_013:02",
+        "v3:HU:initial:DEMO_013:03",
+        "v3:HU:initial:DEMO_013:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_013",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_013",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_014:01",
+        "v3:HU:initial:DEMO_014:02",
+        "v3:HU:initial:DEMO_014:03",
+        "v3:HU:initial:DEMO_014:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_014",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_014",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_015:01",
+        "v3:HU:initial:DEMO_015:02",
+        "v3:HU:initial:DEMO_015:03",
+        "v3:HU:initial:DEMO_015:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_015",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_015",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_016:01",
+        "v3:HU:initial:DEMO_016:02",
+        "v3:HU:initial:DEMO_016:03",
+        "v3:HU:initial:DEMO_016:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_016",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_016",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_017:01",
+        "v3:HU:initial:DEMO_017:02",
+        "v3:HU:initial:DEMO_017:03",
+        "v3:HU:initial:DEMO_017:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_017",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_017",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_018:01",
+        "v3:HU:initial:DEMO_018:02",
+        "v3:HU:initial:DEMO_018:03",
+        "v3:HU:initial:DEMO_018:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_018",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_018",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_019:01",
+        "v3:HU:initial:DEMO_019:02",
+        "v3:HU:initial:DEMO_019:03",
+        "v3:HU:initial:DEMO_019:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_019",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_019",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_020:01",
+        "v3:HU:initial:DEMO_020:02",
+        "v3:HU:initial:DEMO_020:03",
+        "v3:HU:initial:DEMO_020:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_020",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_020",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_021:01",
+        "v3:HU:initial:DEMO_021:02",
+        "v3:HU:initial:DEMO_021:03",
+        "v3:HU:initial:DEMO_021:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_021",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_021",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_022:01",
+        "v3:HU:initial:DEMO_022:02",
+        "v3:HU:initial:DEMO_022:03",
+        "v3:HU:initial:DEMO_022:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_022",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_022",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_023:01",
+        "v3:HU:initial:DEMO_023:02",
+        "v3:HU:initial:DEMO_023:03",
+        "v3:HU:initial:DEMO_023:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_023",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_023",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_024:01",
+        "v3:HU:initial:DEMO_024:02",
+        "v3:HU:initial:DEMO_024:03",
+        "v3:HU:initial:DEMO_024:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_024",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_024",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_025:01",
+        "v3:HU:initial:DEMO_025:02",
+        "v3:HU:initial:DEMO_025:03",
+        "v3:HU:initial:DEMO_025:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_025",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_025",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_026:01",
+        "v3:HU:initial:DEMO_026:02",
+        "v3:HU:initial:DEMO_026:03",
+        "v3:HU:initial:DEMO_026:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_026",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_026",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_027:01",
+        "v3:HU:initial:DEMO_027:02",
+        "v3:HU:initial:DEMO_027:03",
+        "v3:HU:initial:DEMO_027:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_027",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_027",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_028:01",
+        "v3:HU:initial:DEMO_028:02",
+        "v3:HU:initial:DEMO_028:03",
+        "v3:HU:initial:DEMO_028:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_028",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_028",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_029:01",
+        "v3:HU:initial:DEMO_029:02",
+        "v3:HU:initial:DEMO_029:03",
+        "v3:HU:initial:DEMO_029:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_029",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_029",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_030:01",
+        "v3:HU:initial:DEMO_030:02",
+        "v3:HU:initial:DEMO_030:03",
+        "v3:HU:initial:DEMO_030:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_030",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_030",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_031:01",
+        "v3:HU:initial:DEMO_031:02",
+        "v3:HU:initial:DEMO_031:03",
+        "v3:HU:initial:DEMO_031:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_031",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_031",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_032:01",
+        "v3:HU:initial:DEMO_032:02",
+        "v3:HU:initial:DEMO_032:03",
+        "v3:HU:initial:DEMO_032:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_032",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_032",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_033:01",
+        "v3:HU:initial:DEMO_033:02",
+        "v3:HU:initial:DEMO_033:03",
+        "v3:HU:initial:DEMO_033:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_033",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_033",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_034:01",
+        "v3:HU:initial:DEMO_034:02",
+        "v3:HU:initial:DEMO_034:03",
+        "v3:HU:initial:DEMO_034:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_034",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_034",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_035:01",
+        "v3:HU:initial:DEMO_035:02",
+        "v3:HU:initial:DEMO_035:03",
+        "v3:HU:initial:DEMO_035:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_035",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_035",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_036:01",
+        "v3:HU:initial:DEMO_036:02",
+        "v3:HU:initial:DEMO_036:03",
+        "v3:HU:initial:DEMO_036:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_036",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_036",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_037:01",
+        "v3:HU:initial:DEMO_037:02",
+        "v3:HU:initial:DEMO_037:03",
+        "v3:HU:initial:DEMO_037:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_037",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_037",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_038:01",
+        "v3:HU:initial:DEMO_038:02",
+        "v3:HU:initial:DEMO_038:03",
+        "v3:HU:initial:DEMO_038:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_038",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_038",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_039:01",
+        "v3:HU:initial:DEMO_039:02",
+        "v3:HU:initial:DEMO_039:03",
+        "v3:HU:initial:DEMO_039:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_039",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_039",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_040:01",
+        "v3:HU:initial:DEMO_040:02",
+        "v3:HU:initial:DEMO_040:03",
+        "v3:HU:initial:DEMO_040:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_040",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_040",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_041:01",
+        "v3:HU:initial:DEMO_041:02",
+        "v3:HU:initial:DEMO_041:03",
+        "v3:HU:initial:DEMO_041:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_041",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_041",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_042:01",
+        "v3:HU:initial:DEMO_042:02",
+        "v3:HU:initial:DEMO_042:03",
+        "v3:HU:initial:DEMO_042:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_042",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_042",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_043:01",
+        "v3:HU:initial:DEMO_043:02",
+        "v3:HU:initial:DEMO_043:03",
+        "v3:HU:initial:DEMO_043:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_043",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_043",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_044:01",
+        "v3:HU:initial:DEMO_044:02",
+        "v3:HU:initial:DEMO_044:03",
+        "v3:HU:initial:DEMO_044:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_044",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_044",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_045:01",
+        "v3:HU:initial:DEMO_045:02",
+        "v3:HU:initial:DEMO_045:03",
+        "v3:HU:initial:DEMO_045:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_045",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_045",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_046:01",
+        "v3:HU:initial:DEMO_046:02",
+        "v3:HU:initial:DEMO_046:03",
+        "v3:HU:initial:DEMO_046:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_046",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_046",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_047:01",
+        "v3:HU:initial:DEMO_047:02",
+        "v3:HU:initial:DEMO_047:03",
+        "v3:HU:initial:DEMO_047:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_047",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_047",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_048:01",
+        "v3:HU:initial:DEMO_048:02",
+        "v3:HU:initial:DEMO_048:03",
+        "v3:HU:initial:DEMO_048:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_048",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_048",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_049:01",
+        "v3:HU:initial:DEMO_049:02",
+        "v3:HU:initial:DEMO_049:03",
+        "v3:HU:initial:DEMO_049:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_049",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_049",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_050:01",
+        "v3:HU:initial:DEMO_050:02",
+        "v3:HU:initial:DEMO_050:03",
+        "v3:HU:initial:DEMO_050:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_050",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_050",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_051:01",
+        "v3:HU:initial:DEMO_051:02",
+        "v3:HU:initial:DEMO_051:03",
+        "v3:HU:initial:DEMO_051:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_051",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_051",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_052:01",
+        "v3:HU:initial:DEMO_052:02",
+        "v3:HU:initial:DEMO_052:03",
+        "v3:HU:initial:DEMO_052:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_052",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_052",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_053:01",
+        "v3:HU:initial:DEMO_053:02",
+        "v3:HU:initial:DEMO_053:03",
+        "v3:HU:initial:DEMO_053:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_053",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_053",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_054:01",
+        "v3:HU:initial:DEMO_054:02",
+        "v3:HU:initial:DEMO_054:03",
+        "v3:HU:initial:DEMO_054:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_054",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_054",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_055:01",
+        "v3:HU:initial:DEMO_055:02",
+        "v3:HU:initial:DEMO_055:03",
+        "v3:HU:initial:DEMO_055:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_055",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_055",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_056:01",
+        "v3:HU:initial:DEMO_056:02",
+        "v3:HU:initial:DEMO_056:03",
+        "v3:HU:initial:DEMO_056:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_056",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_056",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_057:01",
+        "v3:HU:initial:DEMO_057:02",
+        "v3:HU:initial:DEMO_057:03",
+        "v3:HU:initial:DEMO_057:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_057",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_057",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_058:01",
+        "v3:HU:initial:DEMO_058:02",
+        "v3:HU:initial:DEMO_058:03",
+        "v3:HU:initial:DEMO_058:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_058",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_058",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_059:01",
+        "v3:HU:initial:DEMO_059:02",
+        "v3:HU:initial:DEMO_059:03",
+        "v3:HU:initial:DEMO_059:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_059",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_059",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_060:01",
+        "v3:HU:initial:DEMO_060:02",
+        "v3:HU:initial:DEMO_060:03",
+        "v3:HU:initial:DEMO_060:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_060",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_060",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_061:01",
+        "v3:HU:initial:DEMO_061:02",
+        "v3:HU:initial:DEMO_061:03",
+        "v3:HU:initial:DEMO_061:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_061",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_061",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_062:01",
+        "v3:HU:initial:DEMO_062:02",
+        "v3:HU:initial:DEMO_062:03",
+        "v3:HU:initial:DEMO_062:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_062",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_062",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_063:01",
+        "v3:HU:initial:DEMO_063:02",
+        "v3:HU:initial:DEMO_063:03",
+        "v3:HU:initial:DEMO_063:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_063",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_063",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_064:01",
+        "v3:HU:initial:DEMO_064:02",
+        "v3:HU:initial:DEMO_064:03",
+        "v3:HU:initial:DEMO_064:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_064",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_064",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_065:01",
+        "v3:HU:initial:DEMO_065:02",
+        "v3:HU:initial:DEMO_065:03",
+        "v3:HU:initial:DEMO_065:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_065",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_065",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_066:01",
+        "v3:HU:initial:DEMO_066:02",
+        "v3:HU:initial:DEMO_066:03",
+        "v3:HU:initial:DEMO_066:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_066",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_066",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_067:01",
+        "v3:HU:initial:DEMO_067:02",
+        "v3:HU:initial:DEMO_067:03",
+        "v3:HU:initial:DEMO_067:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_067",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_067",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_068:01",
+        "v3:HU:initial:DEMO_068:02",
+        "v3:HU:initial:DEMO_068:03",
+        "v3:HU:initial:DEMO_068:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_068",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_068",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_069:01",
+        "v3:HU:initial:DEMO_069:02",
+        "v3:HU:initial:DEMO_069:03",
+        "v3:HU:initial:DEMO_069:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_069",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_069",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_070:01",
+        "v3:HU:initial:DEMO_070:02",
+        "v3:HU:initial:DEMO_070:03",
+        "v3:HU:initial:DEMO_070:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_070",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_070",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_071:01",
+        "v3:HU:initial:DEMO_071:02",
+        "v3:HU:initial:DEMO_071:03",
+        "v3:HU:initial:DEMO_071:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_071",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_071",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_072:01",
+        "v3:HU:initial:DEMO_072:02",
+        "v3:HU:initial:DEMO_072:03",
+        "v3:HU:initial:DEMO_072:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_072",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_072",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_073:01",
+        "v3:HU:initial:DEMO_073:02",
+        "v3:HU:initial:DEMO_073:03",
+        "v3:HU:initial:DEMO_073:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_073",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_073",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_074:01",
+        "v3:HU:initial:DEMO_074:02",
+        "v3:HU:initial:DEMO_074:03",
+        "v3:HU:initial:DEMO_074:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_074",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_074",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_075:01",
+        "v3:HU:initial:DEMO_075:02",
+        "v3:HU:initial:DEMO_075:03",
+        "v3:HU:initial:DEMO_075:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_075",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_075",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_076:01",
+        "v3:HU:initial:DEMO_076:02",
+        "v3:HU:initial:DEMO_076:03",
+        "v3:HU:initial:DEMO_076:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_076",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_076",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_077:01",
+        "v3:HU:initial:DEMO_077:02",
+        "v3:HU:initial:DEMO_077:03",
+        "v3:HU:initial:DEMO_077:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_077",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_077",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_078:01",
+        "v3:HU:initial:DEMO_078:02",
+        "v3:HU:initial:DEMO_078:03",
+        "v3:HU:initial:DEMO_078:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_078",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_078",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_079:01",
+        "v3:HU:initial:DEMO_079:02",
+        "v3:HU:initial:DEMO_079:03",
+        "v3:HU:initial:DEMO_079:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_079",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_079",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_080:01",
+        "v3:HU:initial:DEMO_080:02",
+        "v3:HU:initial:DEMO_080:03",
+        "v3:HU:initial:DEMO_080:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_080",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_080",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_081:01",
+        "v3:HU:initial:DEMO_081:02",
+        "v3:HU:initial:DEMO_081:03",
+        "v3:HU:initial:DEMO_081:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_081",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_081",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_082:01",
+        "v3:HU:initial:DEMO_082:02",
+        "v3:HU:initial:DEMO_082:03",
+        "v3:HU:initial:DEMO_082:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_082",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_082",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_083:01",
+        "v3:HU:initial:DEMO_083:02",
+        "v3:HU:initial:DEMO_083:03",
+        "v3:HU:initial:DEMO_083:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_083",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_083",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_084:01",
+        "v3:HU:initial:DEMO_084:02",
+        "v3:HU:initial:DEMO_084:03",
+        "v3:HU:initial:DEMO_084:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_084",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_084",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_085:01",
+        "v3:HU:initial:DEMO_085:02",
+        "v3:HU:initial:DEMO_085:03",
+        "v3:HU:initial:DEMO_085:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_085",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_085",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_086:01",
+        "v3:HU:initial:DEMO_086:02",
+        "v3:HU:initial:DEMO_086:03",
+        "v3:HU:initial:DEMO_086:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_086",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_086",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_087:01",
+        "v3:HU:initial:DEMO_087:02",
+        "v3:HU:initial:DEMO_087:03",
+        "v3:HU:initial:DEMO_087:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_087",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_087",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_088:01",
+        "v3:HU:initial:DEMO_088:02",
+        "v3:HU:initial:DEMO_088:03",
+        "v3:HU:initial:DEMO_088:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_088",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_088",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_089:01",
+        "v3:HU:initial:DEMO_089:02",
+        "v3:HU:initial:DEMO_089:03",
+        "v3:HU:initial:DEMO_089:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_089",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_089",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_090:01",
+        "v3:HU:initial:DEMO_090:02",
+        "v3:HU:initial:DEMO_090:03",
+        "v3:HU:initial:DEMO_090:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_090",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_090",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_091:01",
+        "v3:HU:initial:DEMO_091:02",
+        "v3:HU:initial:DEMO_091:03",
+        "v3:HU:initial:DEMO_091:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_091",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_091",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_092:01",
+        "v3:HU:initial:DEMO_092:02",
+        "v3:HU:initial:DEMO_092:03",
+        "v3:HU:initial:DEMO_092:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_092",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_092",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_093:01",
+        "v3:HU:initial:DEMO_093:02",
+        "v3:HU:initial:DEMO_093:03",
+        "v3:HU:initial:DEMO_093:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_093",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_093",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_094:01",
+        "v3:HU:initial:DEMO_094:02",
+        "v3:HU:initial:DEMO_094:03",
+        "v3:HU:initial:DEMO_094:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_094",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_094",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_095:01",
+        "v3:HU:initial:DEMO_095:02",
+        "v3:HU:initial:DEMO_095:03",
+        "v3:HU:initial:DEMO_095:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_095",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_095",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_096:01",
+        "v3:HU:initial:DEMO_096:02",
+        "v3:HU:initial:DEMO_096:03",
+        "v3:HU:initial:DEMO_096:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_096",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_096",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_097:01",
+        "v3:HU:initial:DEMO_097:02",
+        "v3:HU:initial:DEMO_097:03",
+        "v3:HU:initial:DEMO_097:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_097",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_097",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_098:01",
+        "v3:HU:initial:DEMO_098:02",
+        "v3:HU:initial:DEMO_098:03",
+        "v3:HU:initial:DEMO_098:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_098",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_098",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_099:01",
+        "v3:HU:initial:DEMO_099:02",
+        "v3:HU:initial:DEMO_099:03",
+        "v3:HU:initial:DEMO_099:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_099",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_099",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_100:01",
+        "v3:HU:initial:DEMO_100:02",
+        "v3:HU:initial:DEMO_100:03",
+        "v3:HU:initial:DEMO_100:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_100",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_100",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_101:01",
+        "v3:HU:initial:DEMO_101:02",
+        "v3:HU:initial:DEMO_101:03",
+        "v3:HU:initial:DEMO_101:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_101",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_101",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_102:01",
+        "v3:HU:initial:DEMO_102:02",
+        "v3:HU:initial:DEMO_102:03",
+        "v3:HU:initial:DEMO_102:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_102",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_102",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_103:01",
+        "v3:HU:initial:DEMO_103:02",
+        "v3:HU:initial:DEMO_103:03",
+        "v3:HU:initial:DEMO_103:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_103",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_103",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_104:01",
+        "v3:HU:initial:DEMO_104:02",
+        "v3:HU:initial:DEMO_104:03",
+        "v3:HU:initial:DEMO_104:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_104",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_104",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_105:01",
+        "v3:HU:initial:DEMO_105:02",
+        "v3:HU:initial:DEMO_105:03",
+        "v3:HU:initial:DEMO_105:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_105",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_105",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_106:01",
+        "v3:HU:initial:DEMO_106:02",
+        "v3:HU:initial:DEMO_106:03",
+        "v3:HU:initial:DEMO_106:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_106",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_106",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_107:01",
+        "v3:HU:initial:DEMO_107:02",
+        "v3:HU:initial:DEMO_107:03",
+        "v3:HU:initial:DEMO_107:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_107",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_107",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_108:01",
+        "v3:HU:initial:DEMO_108:02",
+        "v3:HU:initial:DEMO_108:03",
+        "v3:HU:initial:DEMO_108:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_108",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_108",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_109:01",
+        "v3:HU:initial:DEMO_109:02",
+        "v3:HU:initial:DEMO_109:03",
+        "v3:HU:initial:DEMO_109:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_109",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_109",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_110:01",
+        "v3:HU:initial:DEMO_110:02",
+        "v3:HU:initial:DEMO_110:03",
+        "v3:HU:initial:DEMO_110:04"
+      ],
+      "home_storage_type": "SMALL",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_110",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 96,
+      "sku_id": "DEMO_110",
+      "stock_handling_units": 4
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_111:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_111",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_111",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_112:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_112",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_112",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_113:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_113",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_113",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_114:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_114",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_114",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_115:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_115",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_115",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_116:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_116",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_116",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_117:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_117",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_117",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_118:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_118",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_118",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_119:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_119",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_119",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_120:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_120",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_120",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_121:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_121",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_121",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_122:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_122",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_122",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_123:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_123",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_123",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_124:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_124",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_124",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_125:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_125",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_125",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_126:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_126",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_126",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_127:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_127",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_127",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_128:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_128",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_128",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_129:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_129",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_129",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_130:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_130",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_130",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_131:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_131",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_131",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_132:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_132",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_132",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_133:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_133",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_133",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_134:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_134",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_134",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_135:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_135",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_135",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_136:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_136",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_136",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_137:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_137",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_137",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_138:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_138",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_138",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_139:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_139",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_139",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_140:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_140",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_140",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_141:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_141",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_141",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_142:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_142",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_142",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_143:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_143",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_143",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_144:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_144",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_144",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_145:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_145",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_145",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_146:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_146",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_146",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_147:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_147",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_147",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_148:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_148",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_148",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_149:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_149",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_149",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_150:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_150",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_150",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_151:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_151",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_151",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_152:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_152",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_152",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_153:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_153",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_153",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_154:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_154",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_154",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_155:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_155",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_155",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_156:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_156",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_156",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_157:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_157",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_157",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_158:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_158",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_158",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_159:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_159",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_159",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_160:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_160",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_160",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_161:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_161",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_161",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_162:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_162",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_162",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_163:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_163",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_163",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_164:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_164",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_164",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_165:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_E_PARCEL": 0.9,
+        "IN_N_STANDARD": 0.1
+      },
+      "lot_id": "v3:lot:initial:DEMO_165",
+      "outbound_port_mix": {
+        "OUT_S_EXPRESS": 0.85,
+        "OUT_W_RETAIL": 0.15
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_165",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_166:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_166",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 8,
+      "sku_id": "DEMO_166",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_167:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_167",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 8,
+      "sku_id": "DEMO_167",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_168:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_168",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 8,
+      "sku_id": "DEMO_168",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_169:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_169",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 8,
+      "sku_id": "DEMO_169",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_170:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_170",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 8,
+      "sku_id": "DEMO_170",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_171:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_171",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 8,
+      "sku_id": "DEMO_171",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_172:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_N_STANDARD": 0.5,
+        "IN_W_BULK": 0.5
+      },
+      "lot_id": "v3:lot:initial:DEMO_172",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_172",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_173:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_N_STANDARD": 0.5,
+        "IN_W_BULK": 0.5
+      },
+      "lot_id": "v3:lot:initial:DEMO_173",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_173",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_174:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_N_STANDARD": 0.5,
+        "IN_W_BULK": 0.5
+      },
+      "lot_id": "v3:lot:initial:DEMO_174",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_174",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_175:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_N_STANDARD": 0.5,
+        "IN_W_BULK": 0.5
+      },
+      "lot_id": "v3:lot:initial:DEMO_175",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_175",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_176:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_N_STANDARD": 0.5,
+        "IN_W_BULK": 0.5
+      },
+      "lot_id": "v3:lot:initial:DEMO_176",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_176",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "IBC",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_177:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_177",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_177",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "IBC",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_178:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_178",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_178",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "IBC",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_179:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_179",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_179",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_180:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_180",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_180",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_181:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_181",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_181",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_182:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_182",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_182",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_183:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_183",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_183",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_184:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_184",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_184",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_185:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_185",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_185",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_186:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_186",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_186",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_187:01"
+      ],
+      "home_storage_type": "LONG",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_187",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 1.0
+      },
+      "quantity_units": 24,
+      "sku_id": "DEMO_187",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "DRUM",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_188:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_188",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_188",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "DRUM",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_189:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_189",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_189",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "DRUM",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_190:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_190",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_190",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "DRUM",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_191:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_191",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_191",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "DRUM",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_192:01"
+      ],
+      "home_storage_type": "HEAVY",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_192",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_192",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_193:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_193",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_193",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_194:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_194",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_194",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_195:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_195",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_195",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_196:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_196",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_196",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 16,
+      "expected_outbound_HU_moves": 16,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_197:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_197",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_197",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 8,
+      "expected_outbound_HU_moves": 8,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_198:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_198",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_198",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 4,
+      "expected_outbound_HU_moves": 4,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_199:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_199",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_199",
+      "stock_handling_units": 1
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "expected_inbound_HU_moves": 2,
+      "expected_outbound_HU_moves": 2,
+      "handling_unit_ids": [
+        "v3:HU:initial:DEMO_200:01"
+      ],
+      "home_storage_type": "STANDARD",
+      "inbound_port_mix": {
+        "IN_W_BULK": 1.0
+      },
+      "lot_id": "v3:lot:initial:DEMO_200",
+      "outbound_port_mix": {
+        "OUT_E_B2B": 0.9,
+        "OUT_W_RETAIL": 0.1
+      },
+      "quantity_units": 1,
+      "sku_id": "DEMO_200",
+      "stock_handling_units": 1
+    }
+  ],
+  "source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/sku-catalog-v3.json",
+      "sha256": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+      "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-links-v3.json",
+      "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+    },
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    }
+  ],
+  "source_kind": "synthetic_planning_fixture",
+  "staffing": {
+    "allocation_changes_allowed": false,
+    "availability_simulated": false,
+    "headcount": 24
+  }
+}
