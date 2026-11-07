@@ -53,7 +53,10 @@ def build_parser() -> argparse.ArgumentParser:
         if name == "simulate":
             command.add_argument("--assignment", type=Path, default=None)
             command.add_argument(
-                "--format", dest="output_format", choices=("v2", "proposal"), default="v2"
+                "--format",
+                dest="output_format",
+                choices=("v2", "proposal", "tilek-v2"),
+                default="v2",
             )
             command.add_argument("--include-inline", action="store_true")
     return parser

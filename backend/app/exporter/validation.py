@@ -55,6 +55,11 @@ def _validator(schema_text: str) -> Any:
 def validate_run(run: dict[str, Any], contracts_dir: Path | None = None) -> None:
     path = (contracts_dir or default_contracts_dir()) / "run.schema.json"
     _validator(path.read_text(encoding="utf-8")).validate(run)
+    validate_run_semantics(run)
+
+
+def validate_run_semantics(run: dict[str, Any]) -> None:
+    """Check source event payloads, ordering, action intervals and transfer pairs."""
     previous = (-1.0, -1, -1)
     for seq, event in enumerate(run["events"]):
         key = (event["at_s"], event["phase"], event["seq"])

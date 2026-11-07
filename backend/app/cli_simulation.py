@@ -51,9 +51,15 @@ def _publish(
         proposal = import_module("app.exporter.proposal")
         exporter, writer = proposal.export_proposal, proposal.write_proposal_run
         options["include_inline"] = include_inline
+    elif output_format == "tilek-v2":
+        tilek = import_module("app.exporter.tilek")
+        exporter, writer = tilek.export_tilek_run, tilek.write_tilek_run
     elif output_format != "v2":
         raise ValueError("unsupported simulation output format")
     run = exporter(engine, outcome, validate=False)
+    identity = run.get("identity", fingerprint(inputs))
+    if output_format == "tilek-v2":
+        identity = {**identity, "wire_version": "tilek-visual-v1"}
     writer(
         run,
         out_dir,
@@ -62,7 +68,7 @@ def _publish(
         snapshot_interval_s=inputs.config.snapshot_interval_s,
         **options,
         metadata={
-            "identity": run.get("identity", fingerprint(inputs)),
+            "identity": identity,
             "ended_at_s": outcome.end_tick / engine.ctx.grid.ticks_per_second,
             "provenance": inputs.scenario.provenance.model_dump(mode="json"),
             "metrics": summary(engine, outcome),
