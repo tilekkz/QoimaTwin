@@ -1,0 +1,59 @@
+{
+  "task_id": "P03.4",
+  "status": "PASS",
+  "at": "2026-11-07T20:37:02.265639+00:00",
+  "reference_ids": [
+    "R05",
+    "R11"
+  ],
+  "duration_s": 9,
+  "travel_m": 0.84,
+  "runtime_checks": "assets\\v3\\iterations\\picking-cart\\P03.4\\actual-runtime-walk-checks.json",
+  "native_checks": "assets\\v3\\iterations\\picking-cart\\P03.4\\actual-native-walk-checks.json",
+  "browser_checks": "assets/v3/qa-browser/picker-cart-walk/browser-checks.json",
+  "actual_runtime_samples": 901,
+  "native_frames": 91,
+  "whole_node_seek_comparisons": 100,
+  "all_15_joint_angles_inside_accepted_limits": true,
+  "maximum_stance_slide_m": 4.47545209131181e-16,
+  "maximum_wheel_floor_correction_m": 0.0006395960331924272,
+  "native_floor_error_m": 2.9802322387695312e-08,
+  "native_hand_error_m": 1.4057727354849284e-07,
+  "native_joint_connections": 364,
+  "native_tote_support_contacts": 364,
+  "source_models_unchanged": true,
+  "browser_frames_reviewed": 9,
+  "browser_checks_passed": {
+    "no_autoplay": true,
+    "same_actor_and_cart_across_seeks": true,
+    "play_pause_repeat": true,
+    "live_reduced_motion": true,
+    "keyboard_seek": true,
+    "cold_reduced_motion": true,
+    "replacement_memory": [
+      {
+        "geometries": 46,
+        "textures": 10
+      },
+      {
+        "geometries": 46,
+        "textures": 10
+      },
+      {
+        "geometries": 46,
+        "textures": 10
+      }
+    ],
+    "error_cleanup_recovery": true,
+    "stale_timeline_request_does_not_resurrect_actor": true,
+    "pallet_cycle_controls_regression": true
+  },
+  "browser_lifecycle": {
+    "owned_pid": 4664,
+    "cleanup": "graceful",
+    "terminated": true,
+    "elapsed_ms": 22121
+  },
+  "build": "PASS",
+  "limits": "Straight flat-floor isolated visual fixture. 91native and901runtime samples; not a continuous collision/path/engine certificate. Existing one actor/cart/tote only; no stock or registry write. Pick and tote handoff remain P03.5/.6."
+}

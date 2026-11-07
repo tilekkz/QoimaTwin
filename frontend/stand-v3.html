@@ -22,8 +22,8 @@
     <aside class="panel">
       <div class="eyebrow">Отдельная модель</div><h1 id="model-title">Калибровка</h1>
       <form id="model-form"><input id="model-id" aria-label="Идентификатор модели V3" value="calibration" spellcheck="false" pattern="[a-z0-9][a-z0-9-]{0,63}" /><button type="submit">Открыть</button></form>
-      <section class="cycle-controls" id="cycle-controls" aria-label="Просмотр цикла подхвата паллеты" hidden>
-        <h2>Цикл подхвата · визуальная проверка</h2><div class="cycle-head"><button id="cycle-play" type="button" aria-pressed="false">Воспроизвести</button><output class="cycle-clock" id="cycle-clock">0.0 / 30 с</output></div>
+      <section class="cycle-controls" id="cycle-controls" aria-label="Просмотр рабочего действия" hidden>
+        <h2 id="cycle-title">Рабочее действие</h2><div class="cycle-head"><button id="cycle-play" type="button" aria-pressed="false">Воспроизвести</button><output class="cycle-clock" id="cycle-clock">0.0 / 30 с</output></div>
         <label for="cycle-time" class="muted">Время цикла</label><input id="cycle-time" type="range" min="0" max="30" step="0.01" value="0" />
         <p class="cycle-phase" id="cycle-phase" role="status">Подготовка</p>
         <div class="cycle-steps" aria-label="Выбор этапа"><button data-cycle-time="0">Начало</button><button data-cycle-time="8">Подхват</button><button data-cycle-time="14">Перевозка</button><button data-cycle-time="22">На опоре</button><button data-cycle-time="30">Готово</button></div>

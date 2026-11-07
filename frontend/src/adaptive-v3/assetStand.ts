@@ -10,6 +10,7 @@ import {createWorkerRolesFixture, createWorkerInstance, disposeWorkerInstance, a
 import {createPickupFixture,validatePickupTimeline} from './forkliftPickup';
 import {bindSeatedDriver,validateSeatedDriverPose} from './seatedDriver';
 import {bindPickerGrip,validatePickerPushPose} from './motion/grip';
+import {createCartWalk,validateCartWalkTimeline} from './motion/cartWalk';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
@@ -77,6 +78,8 @@ let seatedDriver:ReturnType<typeof bindSeatedDriver> | undefined;
 let driverActor:WorkerInstance|undefined;
 let figureActor:WorkerInstance|undefined;
 let pickerGrip:ReturnType<typeof bindPickerGrip>|undefined;
+let walkFixture:ReturnType<typeof createCartWalk>|undefined;
+function activeCycle(){return walkFixture??pickupFixture;}
 let pickupPlaying=false,pickupAnchorTime=0,pickupAnchorWall=0;
 let view:View='quarter';
 let modelId='calibration';
@@ -96,6 +99,7 @@ function disposeObject(object:THREE.Object3D){
 
 function releaseModel(){
   pickupPlaying=false;pickupFixture=undefined;element('cycle-controls').hidden=true;
+  if(walkFixture){walkFixture.dispose();walkFixture=undefined;}
   // The role instance owns only its tints/badge. Detach it before disposing
   // the vehicle, then release its shared worker template exactly once.
   if(seatedDriver){seatedDriver.release();seatedDriver=undefined;}
@@ -118,12 +122,13 @@ function collectPoints(){
   points=[];if(!model)return;model.updateMatrixWorld(true);
   const collect=(node:THREE.Object3D)=>{if(node instanceof THREE.Mesh&&node.visible){const attribute=node.geometry.getAttribute('position');for(let i=0;i<attribute.count;i++)points.push(new THREE.Vector3().fromBufferAttribute(attribute,i).applyMatrix4(node.matrixWorld));}};
   // Role solo inspection keeps the fixture's metric bounds stable while hiding neighbours.
-  if(pickupFixture){
+  const cycle=activeCycle();
+  if(cycle){
     // Keep framing stable across the complete action, including a high load
     // at the forward end of its reach, rather than chasing the current frame.
-    const restore=pickupFixture.snapshot().time;
-    for(const key of pickupFixture.timeline.keys){pickupFixture.apply(key.t);model.updateMatrixWorld(true);model.traverseVisible(collect);}
-    pickupFixture.apply(restore);
+    const restore=cycle.snapshot().time;
+    for(const key of cycle.timeline.keys){cycle.apply(key.t);model.updateMatrixWorld(true);model.traverseVisible(collect);}
+    cycle.apply(restore);
   }else if(rolesFixture)model.traverse(collect);else model.traverseVisible(collect);
   if(!points.length||points.some(p=>![p.x,p.y,p.z].every(Number.isFinite)))throw Error('В GLB нет корректной конечной геометрии.');
   bounds=new THREE.Box3().setFromPoints(points);
@@ -180,7 +185,8 @@ function snapshot(){
   model?.traverseVisible(node=>{if(node instanceof THREE.Mesh){triangles+=(node.geometry.index?.count??node.geometry.getAttribute('position').count)/3;for(const m of Array.isArray(node.material)?node.material:[node.material])materials.add(m.name);}});
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
-  return {modelId,phase,view,focus:activeFocus,fixture:pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:pickupFixture?{...pickupFixture.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  const cycle=activeCycle();
+  return {modelId,phase,view,focus:activeFocus,fixture:walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -219,7 +225,7 @@ async function loadModel(id:string){
       model=new THREE.Group();model.name='picker_figure_inspection';model.add(figureActor.root);
     }else model=gltf.scene;
     const requestedFixture=new URL(location.href).searchParams.get('fixture');
-    if(id==='picking-cart-tote-fixture'&&requestedFixture==='grip'){
+    if(id==='picking-cart-tote-fixture'&&['grip','walk'].includes(requestedFixture??'')){
       const [workerResult,poseResult]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-base.glb'),fetch(base+'data/v3/picker-push-pose.json').then(async r=>{if(!r.ok)throw Error('Поза комплектовщика недоступна.');return validatePickerPushPose(await r.json());})]);
       if(workerResult.status==='rejected')throw workerResult.reason;
       const worker=workerResult.value;
@@ -230,6 +236,14 @@ async function loadModel(id:string){
       const cart=model.getObjectByName('picking-cart');if(!cart)throw Error('В сборке нет тележки.');
       figureActor=createWorkerInstance(workerTemplate,'P01','picker');pickerGrip=bindPickerGrip(cart,figureActor,pose);
       element('model-title').textContent='Комплектовщик с тележкой';
+    }
+    if(id==='picking-cart-tote-fixture'&&requestedFixture==='walk'){
+      const response=await fetch(base+'data/v3/picker-cart-walk.json');if(!response.ok)throw Error('Описание движения недоступно.');
+      const timeline=validateCartWalkTimeline(await response.json());if(token!==serial)return;
+      const cart=pickerGrip!.cart,tote=model.getObjectByName('order-tote');if(!tote)throw Error('В сборке нет ящика.');
+      cart.updateWorldMatrix(true,true);cart.attach(tote);walkFixture=createCartWalk(pickerGrip!,timeline);
+      configureCycle('Ходьба с тележкой',[[0,'Начало'],[1,'Движение'],[3.5,'Шаг'],[8,'Остановка'],[9,'Готово']]);
+      element('model-title').textContent='Комплектовщик ведёт тележку';
     }
     if((id==='forklift'&&requestedFixture==='driver')||(id==='forklift-pallet-low-fixture'&&requestedFixture==='pickup')){
       const [worker,poseResponse]=await Promise.all([loader.loadAsync(base+'models/v3/worker-base.glb'),fetch(base+'data/v3/seated-driver-pose.json')]);
@@ -252,7 +266,7 @@ async function loadModel(id:string){
       const timeline=validatePickupTimeline(await response.json());
       if(token!==serial){disposeObject(gltf.scene);return;}
       pickupFixture=createPickupFixture(model,timeline);
-      element('cycle-controls').hidden=false;element('model-title').textContent='Подхват и установка паллеты';updatePickupUi();updateReference();
+      configureCycle('Подхват паллеты',[[0,'Начало'],[8,'Подхват'],[14,'Перевозка'],[22,'На опоре'],[30,'Готово']]);element('model-title').textContent='Подхват и установка паллеты';updateReference();
     }
     scene.add(model);
     model.traverse(node=>{if(node instanceof THREE.Mesh){node.castShadow=node.userData.cast_shadow!==false&&node.userData.shell_component_class!=='floor_support';node.receiveShadow=true;}});
@@ -260,30 +274,35 @@ async function loadModel(id:string){
     const centre=bounds.getCenter(new THREE.Vector3());const radius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
     ground.position.set(centre.x,Math.min(0,bounds.min.y)-.002,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
-    fit(view);setStatus('ready',pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),pickupFixture?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
+    fit(view);setStatus('ready',walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
   }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
 }
 
+function configureCycle(title:string,checkpoints:[number,string][]){
+  element('cycle-controls').hidden=false;element('cycle-title').textContent=title;
+  const cycle=activeCycle()!;element<HTMLInputElement>('cycle-time').max=String(cycle.timeline.duration_s);
+  document.querySelectorAll<HTMLButtonElement>('[data-cycle-time]').forEach((b,i)=>{b.dataset.cycleTime=String(checkpoints[i][0]);b.textContent=checkpoints[i][1];});updatePickupUi();
+}
 function updatePickupUi(){
-  if(!pickupFixture)return;
-  const action=pickupFixture.snapshot(),play=element<HTMLButtonElement>('cycle-play');
+  const cycle=activeCycle();if(!cycle)return;
+  const action=cycle.snapshot(),play=element<HTMLButtonElement>('cycle-play');
   play.textContent=pickupPlaying?'Пауза':action.complete?'Повторить':'Воспроизвести';play.setAttribute('aria-pressed',String(pickupPlaying));play.disabled=reducedMotion.matches;
   const label=element('cycle-phase');if(label.textContent!==action.label)label.textContent=action.label;
-  element('cycle-clock').textContent=action.time.toFixed(1)+' / 30 с';
+  element('cycle-clock').textContent=action.time.toFixed(1)+' / '+cycle.timeline.duration_s+' с';
   const slider=element<HTMLInputElement>('cycle-time');slider.value=String(action.time);slider.setAttribute('aria-valuetext',action.time.toFixed(1)+' с — '+action.label);
   element('cycle-motion-note').textContent=reducedMotion.matches?'Системная настройка ограничивает движение. Выберите этап или время для статичного просмотра.':'Цикл запускается вручную. Можно остановить и проверить любой момент.';
   document.querySelectorAll<HTMLButtonElement>('[data-cycle-time]').forEach(b=>b.setAttribute('aria-pressed',String(Math.abs(Number(b.dataset.cycleTime)-action.time)<.01)));
 }
-function seekPickup(time:number){if(!pickupFixture)throw Error('Цикл не загружен.');pickupPlaying=false;pickupFixture.apply(time);updatePickupUi();diagnostics();}
+function seekPickup(time:number){const cycle=activeCycle();if(!cycle)throw Error('Цикл не загружен.');pickupPlaying=false;cycle.apply(time);updatePickupUi();diagnostics();}
 function pausePickup(){
-  if(pickupPlaying&&pickupFixture)pickupFixture.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);
-  pickupPlaying=false;updatePickupUi();if(pickupFixture)diagnostics();
+  const cycle=activeCycle();if(pickupPlaying&&cycle)cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);
+  pickupPlaying=false;updatePickupUi();if(cycle)diagnostics();
 }
 function playPickup(){
-  if(!pickupFixture||reducedMotion.matches)return false;
-  if(pickupFixture.snapshot().complete)pickupFixture.apply(0);
-  pickupAnchorTime=pickupFixture.snapshot().time;pickupAnchorWall=performance.now();pickupPlaying=true;updatePickupUi();return true;
+  const cycle=activeCycle();if(!cycle||reducedMotion.matches)return false;
+  if(cycle.snapshot().complete)cycle.apply(0);
+  pickupAnchorTime=cycle.snapshot().time;pickupAnchorWall=performance.now();pickupPlaying=true;updatePickupUi();return true;
 }
 element('cycle-play').addEventListener('click',()=>pickupPlaying?pausePickup():playPickup());
 element<HTMLInputElement>('cycle-time').addEventListener('input',event=>seekPickup(Number((event.target as HTMLInputElement).value)));
@@ -295,9 +314,9 @@ document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(button=>butt
 element('reset-view').addEventListener('click',()=>{fit();diagnostics();});
 element('model-form').addEventListener('submit',event=>{event.preventDefault();void loadModel(modelInput.value.trim());});
 const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);composer.setSize(host.clientWidth,host.clientHeight);contactShade.setSize(Math.max(1,Math.round(host.clientWidth*renderer.getPixelRatio()*.65)),Math.max(1,Math.round(host.clientHeight*renderer.getPixelRatio()*.65)));if(model)fit();});resize.observe(host);
-function tick(){frameId=requestAnimationFrame(tick);if(pickupPlaying&&pickupFixture){const action=pickupFixture.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);if(action.complete)pickupPlaying=false;updatePickupUi();}controls.update();renderer.info.reset();composer.render();}tick();
+function tick(){frameId=requestAnimationFrame(tick);const cycle=activeCycle();if(pickupPlaying&&cycle){const action=cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);if(action.complete)pickupPlaying=false;updatePickupUi();}controls.update();renderer.info.reset();composer.render();}tick();
 const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},focus:(name:string,next:View='quarter')=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);fit(next,n);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
-Object.assign(window,{__QOIMA_STAND_V3__:{...api,cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>pickupFixture?{...pickupFixture.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
+Object.assign(window,{__QOIMA_STAND_V3__:{...api,cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>{const cycle=activeCycle();return cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null;}},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
 void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{manifest=value;updateReference();}).catch(()=>{element('reference-note').textContent='Каталог референсов временно недоступен.';});
 void loadModel(new URL(location.href).searchParams.get('asset')||'calibration');
 window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();reducedMotion.removeEventListener('change',onMotionChange);document.removeEventListener('visibilitychange',onVisibility);controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();contactShade.dispose();beauty.dispose();output.dispose();composer.dispose();renderer.dispose();},{once:true});

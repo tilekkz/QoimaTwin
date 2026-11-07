@@ -122,8 +122,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P03.1](tasks/P03.1.md) | PASS | root | R10,P02,M07,I09 | Picker working figure with valid rig proportions |
 | [P03.2](tasks/P03.2.md) | PASS | root | R10,P02,M07,P03.1,I09 | Picking cart with grounded wheels, clear tote tray and coherent handle |
 | [P03.3](tasks/P03.3.md) | PASS | root | R10,P02,M07,P03.2,I09 | Hands and both grip anchors stay in contact with handle |
-| [P03.4](tasks/P03.4.md) | READY | unassigned | R10,P02,M07,P03.3,I09 | Walk/cart absolute-clock gait with foot/wheel contacts |
-| [P03.5](tasks/P03.5.md) | TODO | unassigned | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
+| [P03.4](tasks/P03.4.md) | PASS | root | R10,P02,M07,P03.3,I09 | Walk/cart absolute-clock gait with foot/wheel contacts |
+| [P03.5](tasks/P03.5.md) | READY | unassigned | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
 | [P03.6](tasks/P03.6.md) | TODO | unassigned | R10,P02,M07,P03.5,I09 | Tote handoff: stable hold/deposit parent and no duplicate cargo |
 | [P09.1](tasks/P09.1.md) | PASS | people_packing | R10,R07,L12,I09 | Standard dock module: thick connected frame and clear passage |
 | [P09.2](tasks/P09.2.md) | PASS | people_packing | R10,R07,L12,P09.1,I09 | Large freight gate: accepted clear width/height and loaded-long envelope |
