@@ -3,7 +3,7 @@
 from typing import Any
 
 from app.simulation.clock import TimeGrid
-from app.simulation.context import RunInputs
+from app.simulation.context import RunInputs, SemanticJson
 from app.storage.canonical_json import CANONICALIZATION_VERSION, sha256_hex
 from app.version import ENGINE_VERSION
 
@@ -39,6 +39,14 @@ def _hash(value: Any) -> str:
     return sha256_hex(_normalize(value))
 
 
+def _semantic_hash(value: SemanticJson | None) -> str:
+    """Content hash of frozen semantic JSON (equals plan_id / forecast semantic_id); None if absent.
+
+    Declared IDs are never trusted: SemanticJson recomputed the hash at construction.
+    """
+    return value.sha256 if value is not None else _hash(None)
+
+
 def fingerprint(inputs: RunInputs, *, engine_version: str = ENGINE_VERSION) -> dict[str, Any]:
     lots = sorted(inputs.assignment.initial_lots, key=lambda lot: lot.lot_id)
     hashes = {
@@ -66,8 +74,8 @@ def fingerprint(inputs: RunInputs, *, engine_version: str = ENGINE_VERSION) -> d
                 "lots": [lot.model_dump(mode="json") for lot in lots],
             }
         ),
-        "relocation_plan": _hash(None),
-        "forecast_snapshot": _hash(None),
+        "relocation_plan": _semantic_hash(inputs.relocation_json()),
+        "forecast_snapshot": _semantic_hash(inputs.forecast_json()),
     }
     return {
         "canonicalization_version": CANONICALIZATION_VERSION,

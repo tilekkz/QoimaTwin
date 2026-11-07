@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from fractions import Fraction
 from itertools import pairwise
+from typing import Any
 
 from app.contracts.actors import ActorRegistry
 from app.contracts.assignment import Assignment
@@ -19,20 +20,117 @@ from app.navigation.shortest_paths import AllPairsPaths
 from app.simulation.clock import TimeGrid
 from app.simulation.recorder import Recorder, Vec3, Waypoint
 from app.simulation.scheduler import Phase, PhaseScheduler
+from app.storage.canonical_json import canonical_bytes, parse_json, sha256_hex
 
 
 class InputError(ValueError):
     """Run inputs are inconsistent with each other (reported as HTTP 422 by the API)."""
 
 
+FORECAST_RUNTIME_KEYS = frozenset(
+    {"semantic_id", "cpu_time_s", "validation_cpu_time_s", "final_fit_cpu_time_s"}
+)
+PLAN_SELF_ID = "plan_id"
+
+
+@dataclass(frozen=True, slots=True)
+class SemanticJson:
+    """Immutable canonical copy of a semantic JSON object (ADR 0008, 0016).
+
+    `canonical` is fixed at the boundary, so later mutation of the caller's dict cannot change
+    identity. `sha256` hashes the content without its self-declared ID field; a declared ID is
+    never trusted, only checked against that hash. `to_dict()` returns a fresh copy.
+    """
+
+    canonical: bytes
+    sha256: str
+
+    def to_dict(self) -> dict[str, Any]:
+        data: dict[str, Any] = parse_json(self.canonical)
+        return data
+
+
+def _plain(value: object) -> object:
+    if isinstance(value, Mapping):
+        return _plain_object(value)
+    if isinstance(value, (list, tuple)):
+        return [_plain(item) for item in value]
+    return value
+
+
+def _plain_object(value: Mapping[Any, object]) -> dict[Any, object]:
+    """Deep copy into plain dicts/lists, so the caller keeps no reference into the inputs."""
+    return {key: _plain(item) for key, item in value.items()}
+
+
+def semantic_json(
+    value: object, *, name: str, self_id: str | None = None, forbidden: frozenset[str] = frozenset()
+) -> SemanticJson:
+    """Validate, copy and hash a JSON object; reject runtime fields and false self-IDs."""
+    if isinstance(value, SemanticJson):
+        rebuilt = semantic_json(value.to_dict(), name=name, self_id=self_id, forbidden=forbidden)
+        if rebuilt != value:
+            raise InputError(f"{name}: SemanticJson does not match its content")
+        return value
+    if not isinstance(value, Mapping):
+        raise InputError(f"{name} must be a JSON object")
+    data = _plain_object(value)
+    rejected = sorted(forbidden & set(data))
+    if rejected:
+        raise InputError(f"{name} must hold semantics only; remove {rejected}")
+    try:
+        canonical = canonical_bytes(data)
+        content = {key: item for key, item in data.items() if key != self_id}
+        digest = sha256_hex(content)
+    except (TypeError, ValueError) as exc:
+        raise InputError(f"{name} is not canonical JSON: {exc}") from exc
+    if self_id is not None and self_id in data and data[self_id] != digest:
+        raise InputError(f"{name}: declared {self_id} does not match its content hash")
+    return SemanticJson(canonical, digest)
+
+
 @dataclass(frozen=True, slots=True)
 class RunInputs:
+    """Run inputs. Optional semantics are frozen at construction (see SemanticJson).
+
+    `forecast_snapshot` takes ForecastSnapshot.semantic_dict() (no CPU timings, no declared ID);
+    `relocation_plan` takes PlanArtifact.model_dump(mode="json"); its plan_id must match.
+    """
+
     layout: Layout
     config: SimulationConfig
     actors: ActorRegistry
     assignment: Assignment
     scenario: Scenario
     experiment_type: str = "slotting"
+    forecast_snapshot: SemanticJson | Mapping[str, Any] | None = field(default=None, kw_only=True)
+    relocation_plan: SemanticJson | Mapping[str, Any] | None = field(default=None, kw_only=True)
+
+    def __post_init__(self) -> None:
+        if self.forecast_snapshot is not None:
+            frozen = semantic_json(
+                self.forecast_snapshot, name="forecast_snapshot", forbidden=FORECAST_RUNTIME_KEYS
+            )
+            object.__setattr__(self, "forecast_snapshot", frozen)
+        if self.relocation_plan is not None:
+            frozen = semantic_json(
+                self.relocation_plan, name="relocation_plan", self_id=PLAN_SELF_ID
+            )
+            object.__setattr__(self, "relocation_plan", frozen)
+
+    def forecast_json(self) -> SemanticJson | None:
+        """The frozen forecast semantics (always a SemanticJson after construction)."""
+        return _frozen(self.forecast_snapshot)
+
+    def relocation_json(self) -> SemanticJson | None:
+        """The frozen relocation plan semantics (always a SemanticJson after construction)."""
+        return _frozen(self.relocation_plan)
+
+
+def _frozen(value: SemanticJson | Mapping[str, Any] | None) -> SemanticJson | None:
+    if value is not None and not isinstance(value, SemanticJson):
+        raise InputError("semantic input was not frozen at construction")
+    return value
 
 
 @dataclass(frozen=True, slots=True)
