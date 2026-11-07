@@ -1,3 +1,41 @@
+## R12 interface extension — C08v0.2
+
+Owncradle3.2x.15x.85 unchanged. HistoricalvehiclemountY.30 is overridden by C08v0.2 mountY.65, fork top.75, HUbottom.80 and stoppedreach+.40. See r12-c08-interface-targets-v2.json; originalimage/provenance/targets preserved, actualmodel/actions notaccepted.
+
+## M06.1_REF — root reference PASS
+
+Root opened actual saved FRONT/SIDE/REAR/QUARTER PNG. Same closed tan carton, continuous narrow buff tape folded over front/rear, plain side/rear, onefrontlabel/up-arrows and flushfoldedtop/seams are coherent. No thickdoublelip/woodenframe. ExactC02.32x.24x.24 and wall/packbudget govern geometry; rasterpapergrain is not a mesh/texture requirement. No inventory, fit, payload or model acceptance from image. Pregeometry .003shell/.0005containedtape and C02innerpacking clearance plan accepted; body geometry follows independent gates.
+
+## R13.5 — root PASS flex-bay
+
+Root opened actual saved four-view PNG. Front/rear/side/quarter show the same two rear uprights, tan upper rear tie, single continuous low tan deck and grounded connected petrol base. No front post, side rail, cargo or separate small pallet obstructs the interior. Quarter shows real depth; side correctly occludes the far rear post. The visible front/rear base feet are construction styling, not extra bins. Exact L091.6x.85x1.2 outer, .18 support/.04deck, two .10m rear-post envelopes and1.4x.6x1.0 usable override illustrative spacing/bevels. Matte colours and stepped collars retain R02 language. Model support, fit, physical load rating and actual operational admission remain separate downstream gates.
+
+Exact targets: `r13-5-flex-bay-targets.json`. No model, stock or operational rating accepted by image.
+
+## R13.4 — root PASS long-rack
+
+Root opened saved V1 and V2 four-view PNG. Three grounded rear posts/forward basefeet and exactly two sets of three cantilever arms are coherent in front/rear/side/quarter. V1 arm levels were too high and longrails stopped at outerposts; V2 lowers bottom arms close to base, leaves substantial bare post above upper arms and extends the two tan longitudinal rails beyond both outerposts. Rear ties remain connected and visible, no front upright or cargo. Side occlusion is normal. Raster spacing is illustrative: exact L09 postsX-1.6/0/+1.6, outer4.8x2.2x1.3, levels.25/1.3 and usable4.4x.65x.9 override art. Support/rating/loaded contacts remain C08/M04.
+
+Exact targets: `r13-4-long-rack-targets.json`. No model, stock or operational rating accepted by image.
+
+## R13.3 — root PASS heavy-bay
+
+Root opened actual saved selected V2. Coherent empty broad low platform: supported finite-thickness deck, three longitudinal runner rows with repeating block positions, open front/rear channels and grounded bottom runners. Side exposes the same three depth block locations; opaque top naturally hides inner blocks. V1 too-tall profile was corrected and preserved. Current exact L09 target .04deck+.10channel+.04runner=.18m, not shorthand .10deck, governs geometry. Headroom1.5m is cargo space above the platform, not an enclosing mesh. No new stock, fork engagement, support/rating or C08 admission accepted by the raster.
+
+Exact targets: `r13-3-heavy-bay-targets.json`. No model, stock or operational rating accepted by image.
+
+## R13.1 — root PASS dedicated rack-small
+
+Root opened actual selected PNG. Five empty deep open compartments across each of two supported levels, complete backed rear panels, consistent side/quarter, four grounded corner post locations, connected tan decks and top tie. R02 matte thick cuboid style preserved; L09 five-by-two overrides old three-by-two art. Exact usable space/geometry and payload remain C04/M01; no stock accepted.
+
+Exact targets: `r13-1-rack-small-targets.json`. No cargo, physical rating or model approval from the image.
+
+## R13.2 — root PASS dedicated rack-standard
+
+Root actually opened saved V1 and V2 PNGs. Six-post two-bay/three-deck empty construction, attached headers, shelf depth, grounded feet and matte R02 palette agree in four views. V1 front omitted rear diagonals; corrected V2 front now exposes the same six back braces in the mirrored opposite-view direction. Quarter is a rear-quarter construction view. Image proportions/brace placement are conceptual; exact L09 dimensions, usable bounds and no front intrusion remain geometry gates.
+
+Exact targets: `r13-2-rack-standard.targets.json`. No cargo, physical rating or model approval from the image.
+
 # V3 reference pack - R12 extension
 
 ## R12 - additive detachable long-load cradle reference

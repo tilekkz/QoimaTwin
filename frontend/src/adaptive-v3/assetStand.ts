@@ -104,6 +104,11 @@ function fit(next:View=view,focus?:THREE.Object3D){
   if(!fitPoints.length)throw Error('У выбранного узла нет геометрии.');
   const fitBounds=focus?new THREE.Box3().setFromPoints(fitPoints):bounds;
   const centre=fitBounds.getCenter(new THREE.Vector3());const radius=Math.max(fitBounds.getSize(new THREE.Vector3()).length()/2,.03);
+  // A close inspection gets its own shadow projection; keep the directional
+  // light distant enough to include world-height occluders at that location.
+  const wholeRadius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
+  key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(wholeRadius));
+  const shadow=key.shadow.camera;shadow.left=-radius*2;shadow.right=radius*2;shadow.top=radius*2;shadow.bottom=-radius*2;shadow.near=.01;shadow.far=wholeRadius*12;shadow.updateProjectionMatrix();key.shadow.normalBias=Math.min(.04,radius*.003);key.shadow.bias=-.003/(shadow.far-shadow.near);
   const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
   camera=view==='quarter'?perspective:orthographic;camera.up.set(0,1,0);camera.position.copy(centre).addScaledVector(direction,radius*4);camera.lookAt(centre);
   const inverse=camera.quaternion.clone().invert();const projected=new THREE.Vector3();
@@ -166,12 +171,11 @@ async function loadModel(id:string){
       element('model-title').textContent='Пять ролей · визуальный стенд';
     }else model=gltf.scene;
     scene.add(model);
-    model.traverse(node=>{if(node instanceof THREE.Mesh){node.castShadow=node.userData.cast_shadow!==false;node.receiveShadow=true;}});
+    model.traverse(node=>{if(node instanceof THREE.Mesh){node.castShadow=node.userData.cast_shadow!==false&&node.userData.shell_component_class!=='floor_support';node.receiveShadow=true;}});
     collectPoints();
     const centre=bounds.getCenter(new THREE.Vector3());const radius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
     ground.position.set(centre.x,Math.min(0,bounds.min.y)-.002,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
-    const shadow=key.shadow.camera;shadow.left=-radius*2;shadow.right=radius*2;shadow.top=radius*2;shadow.bottom=-radius*2;shadow.near=.01;shadow.far=radius*12;shadow.updateProjectionMatrix();key.shadow.normalBias=Math.min(.008,radius*.003);key.shadow.bias=-.003/(shadow.far-shadow.near);
     fit(view);setStatus('ready',rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
   }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}

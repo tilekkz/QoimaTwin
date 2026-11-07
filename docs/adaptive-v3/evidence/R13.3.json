@@ -1,0 +1,107 @@
+{
+  "task_id": "R13.3",
+  "owner": "rack_crate",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T12:30:33.597492+00:00",
+  "selected_artifact": {
+    "path": "assets/references/v3/r13-3-heavy-bay.png",
+    "bytes": 1508962,
+    "sha256": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+    "dimensions_px": [
+      1536,
+      1024
+    ],
+    "color_mode": "RGB"
+  },
+  "provenance": {
+    "path": "assets/references/v3/provenance/r13-3.json",
+    "bytes": 6623,
+    "sha256": "86086ed4d0cc5c799390051c64e6351dda2cf24295034e4f346ae3b0a7d4db9f"
+  },
+  "engineering_targets": {
+    "path": "assets/references/v3/r13-3-heavy-bay-targets.json",
+    "bytes": 2782,
+    "sha256": "8ded7b0aec932678c32172c9e2fb6666a3c238b3608bbeef411a72486df6ddde"
+  },
+  "prompts": [
+    {
+      "path": "assets/references/v3/prompts/r13-3.txt",
+      "bytes": 3085,
+      "sha256": "122fdeb694eb3aaeb2098b58375a9e215824eb51c5c6725b92be06528172f2aa"
+    },
+    {
+      "path": "assets/references/v3/prompts/r13-3-fix-01.txt",
+      "bytes": 1833,
+      "sha256": "9438d26681013c1472c6c466b2e6a1f74dd5a00d0c4d4908a87aacf5f980458a"
+    }
+  ],
+  "generation": {
+    "tool": "built-in imagegen",
+    "calls": 2,
+    "source_ids": [
+      "exec-d1cadf3a-bc0d-43ab-b243-4fea14a9dae0",
+      "exec-1c96509d-4f7a-4d25-9ac4-c8539bf1c0f5"
+    ],
+    "all_original_copies_byte_identical": true,
+    "prompts_saved_before_calls_and_tool_text_matched": true,
+    "no_model_render_input": true
+  },
+  "actual_view_review": {
+    "front": "Empty low rectangular petrol deck sits on three grounded charcoal runner/block front positions with two open channels. Deck, blocks and runners connect; no tall post or guide wall.",
+    "side": "Three spaced block supports lie on one continuous front-to-rear runner, exposing two gaps beneath the same thin supported deck. Other lateral rows are normally hidden in this axis view.",
+    "rear": "Same three runner/block positions and matching two open channel exits as front. The deck is complete at the back and no rear wall blocks headroom.",
+    "three_quarter": "Full empty broad top depth, grounded longitudinal runners and repeating supported block positions are coherent with the three frontage rows and three depth support positions. Interior blocks hidden by the opaque deck are not claimed directly visible; target remains3x3=9.",
+    "fix_review": "V1 actual image was too tall/stool-like. Targeted V2 visibly reduces the underside/overall vertical profile in all four panels while retaining open channels and connected top/block/runner layers. Both originals and prompts retained.",
+    "style": "R02 actually reopened before generation. Empty support-only derivative retains matte petrol/charcoal planar masses and small bevels; its separate tan strapped cargo and floor plinth are removed.",
+    "dimension_limit": "Raster magnification/proportions are illustrative, not a measured .18m envelope or fork/support proof. Exact full outer1.6x.18x1.4, .04 deck+.10 channel layer+.04 runner and headroom targets remain separate L09 authority."
+  },
+  "target_counts_and_geometry": {
+    "outer_xyz_m": [
+      1.6,
+      0.18,
+      1.4
+    ],
+    "deck_top_y_m": 0.18,
+    "deck_thickness_m": 0.04,
+    "runners": 3,
+    "blocks": 9,
+    "fork_channel_clear_target_width_height_m": [
+      0.18,
+      0.1
+    ],
+    "usable_open_headroom_xyz_m": [
+      1.4,
+      1.5,
+      1.2
+    ],
+    "operating_height_m": 1.8,
+    "stock_meshes_in_reference": 0
+  },
+  "source_discrepancy_resolution": "Parent shorthand deck.10 was superseded by actual current HEAVY construction.deck_thickness_m=.04. Root explicitly confirmed .04+.10+.04=.18; no shared source change.",
+  "correction": {
+    "observed": "V1 excessive vertical profile/tall legs",
+    "targeted_change": "Complete Y profile flattened consistently; construction/empty top retained.",
+    "actual_V2_reopened": true
+  },
+  "significant_unresolved_construction_defects": [],
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "Exact R13.3 card/L09/R02 provenance not_tracked; new PNG missing before generation. Current-source reads and actual PNG fallback used; no reindex."
+  },
+  "limits": [
+    "Empty open storage platform only, not loaded pallet/cargo or tall enclosing rack.",
+    "Usable1.4x1.5x1.2 is open headroom above Y.18; it is not a 1.5m-tall mesh/cavity.",
+    "Fork channels are conceptual construction, not fork engagement, structural support, payload rating or safety acceptance. C08/model checks remain required.",
+    "No geometry/catalogue/public/central-state edits; next model awaits root reference gate."
+  ],
+  "root_actual_image_review": "pending; no creator PASS",
+  "next": "Root reviews and registers selected reference; no next mesh task started.",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T12:33:56.640451+00:00",
+    "actual_saved_png_opened": true,
+    "review": "Root opened actual saved selected V2. Coherent empty broad low platform: supported finite-thickness deck, three longitudinal runner rows with repeating block positions, open front/rear channels and grounded bottom runners. Side exposes the same three depth block locations; opaque top naturally hides inner blocks. V1 too-tall profile was corrected and preserved. Current exact L09 target .04deck+.10channel+.04runner=.18m, not shorthand .10deck, governs geometry. Headroom1.5m is cargo space above the platform, not an enclosing mesh. No new stock, fork engagement, support/rating or C08 admission accepted by the raster."
+  }
+}

@@ -1,0 +1,489 @@
+{
+  "asset_id": "flex-bay",
+  "task_id": "M05",
+  "status": "root_accepted_pregeometry_plan",
+  "planned_at_utc": "2026-11-07T13:36:43.626398+00:00",
+  "units": "m",
+  "up_axis": "Y",
+  "front_axis": "+Z",
+  "origin": "floor centre",
+  "outer_xyz_m": [
+    1.6,
+    0.85,
+    1.2
+  ],
+  "bounds_local_xyz_m": {
+    "min": [
+      -0.8,
+      0,
+      -0.6
+    ],
+    "max": [
+      0.8,
+      0.85,
+      0.6
+    ]
+  },
+  "reference": {
+    "id": "R13.5",
+    "path": "assets/references/v3/r13-5-flex-bay.png",
+    "sha256": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66"
+  },
+  "source_contract": {
+    "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+    "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "prototype_source_slot_id": "v3:slot:FLEX_W:001:L1:B1"
+  },
+  "palette": {
+    "charcoal": "#293D46",
+    "petrol": "#2E7376",
+    "tan": "#C99A60"
+  },
+  "anchor": {
+    "anchor_id": "anchor_bin_L1_B1",
+    "local_xyz_m": [
+      0.0,
+      0.18,
+      0.05
+    ],
+    "usable_xyz_m": [
+      1.4,
+      0.6,
+      1.0
+    ],
+    "usable_bounds_module_local": {
+      "max": [
+        0.7,
+        0.78,
+        0.55
+      ],
+      "min": [
+        -0.7,
+        0.18,
+        -0.45
+      ]
+    }
+  },
+  "parts": [
+    {
+      "part_id": "groundbase",
+      "kind": "notched_extrusion",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0.06,
+          -0.6
+        ],
+        "max": [
+          0.8,
+          0.14,
+          0.6
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003,
+      "profile_xz_m": [
+        [
+          -0.8,
+          -0.5
+        ],
+        [
+          -0.7,
+          -0.5
+        ],
+        [
+          -0.7,
+          -0.6
+        ],
+        [
+          0.7,
+          -0.6
+        ],
+        [
+          0.7,
+          -0.5
+        ],
+        [
+          0.8,
+          -0.5
+        ],
+        [
+          0.8,
+          0.6
+        ],
+        [
+          -0.8,
+          0.6
+        ]
+      ],
+      "skip_concave_bevel_xz_m": [
+        [
+          -0.7,
+          -0.5
+        ],
+        [
+          0.7,
+          -0.5
+        ]
+      ]
+    },
+    {
+      "part_id": "support_deck",
+      "kind": "notched_extrusion",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0.14,
+          -0.6
+        ],
+        "max": [
+          0.8,
+          0.18,
+          0.6
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003,
+      "profile_xz_m": [
+        [
+          -0.8,
+          -0.5
+        ],
+        [
+          -0.7,
+          -0.5
+        ],
+        [
+          -0.7,
+          -0.6
+        ],
+        [
+          0.7,
+          -0.6
+        ],
+        [
+          0.7,
+          -0.5
+        ],
+        [
+          0.8,
+          -0.5
+        ],
+        [
+          0.8,
+          0.6
+        ],
+        [
+          -0.8,
+          0.6
+        ]
+      ],
+      "skip_concave_bevel_xz_m": [
+        [
+          -0.7,
+          -0.5
+        ],
+        [
+          0.7,
+          -0.5
+        ]
+      ]
+    },
+    {
+      "part_id": "front_foot_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0,
+          0.46
+        ],
+        "max": [
+          -0.6599999999999999,
+          0.06,
+          0.6
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "front_foot_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.31,
+          0,
+          0.46
+        ],
+        "max": [
+          -0.16999999999999998,
+          0.06,
+          0.6
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "front_foot_3",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.16999999999999998,
+          0,
+          0.46
+        ],
+        "max": [
+          0.31,
+          0.06,
+          0.6
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "front_foot_4",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.6599999999999999,
+          0,
+          0.46
+        ],
+        "max": [
+          0.8,
+          0.06,
+          0.6
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "rear_inner_foot_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.31,
+          0,
+          -0.6
+        ],
+        "max": [
+          -0.16999999999999998,
+          0.06,
+          -0.46
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "rear_inner_foot_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.16999999999999998,
+          0,
+          -0.6
+        ],
+        "max": [
+          0.31,
+          0.06,
+          -0.46
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "L_rear_boot",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0,
+          -0.6
+        ],
+        "max": [
+          -0.7,
+          0.24,
+          -0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "L_rear_shaft",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.79,
+          0.24,
+          -0.59
+        ],
+        "max": [
+          -0.71,
+          0.8,
+          -0.51
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "L_rear_cap",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0.8,
+          -0.6
+        ],
+        "max": [
+          -0.7,
+          0.85,
+          -0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "R_rear_boot",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.7,
+          0,
+          -0.6
+        ],
+        "max": [
+          0.8,
+          0.24,
+          -0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "R_rear_shaft",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.71,
+          0.24,
+          -0.59
+        ],
+        "max": [
+          0.79,
+          0.8,
+          -0.51
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "R_rear_cap",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.7,
+          0.8,
+          -0.6
+        ],
+        "max": [
+          0.8,
+          0.85,
+          -0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "upper_rear_tie",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.75,
+          0.77,
+          -0.575
+        ],
+        "max": [
+          0.75,
+          0.81,
+          -0.525
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    }
+  ],
+  "contact_plan": [
+    "Six low front/inner-rear feet touch ground and butt against base bottomY.06; two rear post boots serve the other two rear grounded supports. They are low construction feet, not front uprights.",
+    "One connected notched petrol baseY.06.. .14 supports one broad notched tan deckY.14.. .18 by hidden opposite-facing contact planes; no visible top overlay or duplicate geometry.",
+    "Both base and deck have exact rear-corner notches matching the two .10m post envelopes. Concave vertical notch edges excluded from bevel; no coplanar corner/outer face overlap with boots.",
+    "Rear boots continue toY.24 within source post envelopes, .08m charcoal shafts continue to.80, contained .10m petrol caps finish at.85. Rear tie ends embed inside rear post solids; no visible coincident face."
+  ],
+  "explicit_adaptations": [
+    "R13.5 illustrated foot counts become six separate low feet plus two rear boots, all within footprint; no new address/cargo.",
+    "Two rear corner notches remove material only at|X|>.70 andZ<-.50, behind usableZmin-.45; support under the full1.4x1.0 usable footprint is retained.",
+    "Usable1.4x.6x1.0 begins at supportY.18, anchor[0,.18,.05]. Tie/posts stay behind its rear boundary; front and sides remain fully open."
+  ],
+  "pregeometry_numeric_checks": {
+    "parts": 15,
+    "materials": 3,
+    "usable_AABB_intrusions": 0,
+    "outside_outer_envelope": 0,
+    "estimated_triangles": "~800; actual source budget <=1200"
+  },
+  "planned_actual_checks": [
+    "Closed positive-volume parts and actual surface-contact chain to eight ground supports.",
+    "Actual usable interior segment rays, exact support-plane rays and1anchor.",
+    "All4source views versus actually opened R13.5, refine visible join/material defects.",
+    "Source-preserving3material export; independent actualBIN positions/normals/indices/anchor/usable/support checks; root browser/Khronos."
+  ],
+  "limits": [
+    "Pre-geometry plan only; no mesh or Blender process yet.",
+    "No stock, forklift interfaces, handler availability, fit, structural rating or operation admission."
+  ],
+  "root_response": "Approved15parts/3mats, rear-corner notches outside usable,2rear posts+8ground supports,1anchor[0,.18,.05]; hidden touching base/deck interface allowed, no exposed coplanar overlap.",
+  "anchors": [
+    {
+      "anchor_id": "anchor_bin_L1_B1",
+      "local_xyz_m": [
+        0.0,
+        0.18,
+        0.05
+      ],
+      "usable_xyz_m": [
+        1.4,
+        0.6,
+        1.0
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          0.7,
+          0.78,
+          0.55
+        ],
+        "min": [
+          -0.7,
+          0.18,
+          -0.45
+        ]
+      },
+      "usable_dimensions_xyz_m": [
+        1.4,
+        0.6,
+        1.0
+      ],
+      "prototype_source_slot_id": "v3:slot:FLEX_W:001:L1:B1"
+    }
+  ]
+}

@@ -1,0 +1,493 @@
+{
+  "builder_sha256": "9b97c4023de8b299a935ea0761fafa7ba9be053efaf532fb4cfa8da7cc9aa0ac",
+  "checks": {
+    "actual_model_action_acceptance": false,
+    "compiled_arcs": 1316,
+    "exact_catalog_dimensions_and_masses": true,
+    "negative_cases": [
+      {
+        "case_id": "scale",
+        "passed": true,
+        "reason": "DIMENSION_MISMATCH"
+      },
+      {
+        "case_id": "boolean_scale",
+        "passed": true,
+        "reason": "DIMENSION_MISMATCH"
+      },
+      {
+        "case_id": "dimension",
+        "passed": true,
+        "reason": "DIMENSION_MISMATCH"
+      },
+      {
+        "case_id": "relative_yaw",
+        "passed": true,
+        "reason": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "case_id": "tilt",
+        "passed": true,
+        "reason": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "case_id": "orientation",
+        "passed": true,
+        "reason": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "case_id": "mass_changed",
+        "passed": true,
+        "reason": "MASS_MISMATCH"
+      },
+      {
+        "case_id": "centre_nan",
+        "passed": true,
+        "reason": "LOAD_CENTRE_MISMATCH"
+      },
+      {
+        "case_id": "centre_shift",
+        "passed": true,
+        "reason": "LOAD_CENTRE_MISMATCH"
+      },
+      {
+        "case_id": "missing_support",
+        "passed": true,
+        "reason": "SUPPORT_UNAVAILABLE"
+      },
+      {
+        "case_id": "missing_retention",
+        "passed": true,
+        "reason": "SUPPORT_UNAVAILABLE"
+      },
+      {
+        "case_id": "unlocked",
+        "passed": true,
+        "reason": "ATTACHMENT_UNLOCKED"
+      },
+      {
+        "case_id": "nominal_fork_not_in_pocket",
+        "passed": true,
+        "reason": "FORK_ENGAGEMENT_MISMATCH"
+      },
+      {
+        "case_id": "missing_pair",
+        "passed": true,
+        "reason": "HANDLER_UNAVAILABLE"
+      },
+      {
+        "case_id": "bare_only_edge",
+        "passed": true,
+        "reason": "PATH_CLEARANCE"
+      },
+      {
+        "case_id": "edge_cargo",
+        "passed": true,
+        "reason": "CARGO_TYPE_MISMATCH"
+      },
+      {
+        "case_id": "edge_height",
+        "passed": true,
+        "reason": "PATH_CLEARANCE"
+      },
+      {
+        "case_id": "edge_width",
+        "passed": true,
+        "reason": "PATH_CLEARANCE"
+      },
+      {
+        "case_id": "narrow_gate",
+        "passed": true,
+        "reason": "PATH_CLEARANCE"
+      },
+      {
+        "case_id": "low_gate",
+        "passed": true,
+        "reason": "PATH_CLEARANCE"
+      },
+      {
+        "case_id": "gate_forbidden_despite_width",
+        "passed": true,
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "case_id": "wrong_direction_pair",
+        "passed": true,
+        "reason": "HANDLER_UNAVAILABLE"
+      },
+      {
+        "case_id": "turn_in_aperture",
+        "passed": true,
+        "reason": "PATH_CLEARANCE"
+      },
+      {
+        "case_id": "overweight_at_actual_load_centre",
+        "passed": true,
+        "reason": "OVERWEIGHT"
+      }
+    ],
+    "operational_admission": false,
+    "passed": true,
+    "per_cargo": [
+      {
+        "allowed": 454,
+        "archetype_id": "HEAVY_BOX",
+        "rejected": 862
+      },
+      {
+        "allowed": 454,
+        "archetype_id": "PALLET_LOAD",
+        "rejected": 862
+      },
+      {
+        "allowed": 454,
+        "archetype_id": "IBC",
+        "rejected": 862
+      },
+      {
+        "allowed": 430,
+        "archetype_id": "LONG_BUNDLE",
+        "rejected": 886
+      },
+      {
+        "allowed": 454,
+        "archetype_id": "DRUM",
+        "rejected": 862
+      },
+      {
+        "allowed": 818,
+        "archetype_id": "FRAGILE_CRATE",
+        "rejected": 498
+      }
+    ],
+    "port_matrix": [
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "HEAVY_BOX",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_W_BULK",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "PALLET_LOAD",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_W_BULK",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "IBC",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_W_BULK",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "LONG_BUNDLE",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_W_BULK",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "DRUM",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_W_BULK",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "FRAGILE_CRATE",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_W_BULK",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "archetype_id": "HEAVY_BOX",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_N_STANDARD",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "PALLET_LOAD",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "IN_N_STANDARD",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "archetype_id": "IBC",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_N_STANDARD",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "LONG_BUNDLE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_N_STANDARD",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "DRUM",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_N_STANDARD",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "FRAGILE_CRATE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_N_STANDARD",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "HEAVY_BOX",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_E_PARCEL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "PALLET_LOAD",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_E_PARCEL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "IBC",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_E_PARCEL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "LONG_BUNDLE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_E_PARCEL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "DRUM",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_E_PARCEL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "FRAGILE_CRATE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "IN_E_PARCEL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "HEAVY_BOX",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_W_RETAIL",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "PALLET_LOAD",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_W_RETAIL",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "archetype_id": "IBC",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_W_RETAIL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "LONG_BUNDLE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_W_RETAIL",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "DRUM",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_W_RETAIL",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "FRAGILE_CRATE",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_W_RETAIL",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "archetype_id": "HEAVY_BOX",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_S_EXPRESS",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "PALLET_LOAD",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_S_EXPRESS",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "IBC",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_S_EXPRESS",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "LONG_BUNDLE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_S_EXPRESS",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "DRUM",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_S_EXPRESS",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "archetype_id": "FRAGILE_CRATE",
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "operational_admission": false,
+        "port_id": "OUT_S_EXPRESS",
+        "reason": "PORT_CARGO_FORBIDDEN"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "HEAVY_BOX",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_E_B2B",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "PALLET_LOAD",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_E_B2B",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "IBC",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_E_B2B",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "LONG_BUNDLE",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_E_B2B",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "DRUM",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_E_B2B",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      },
+      {
+        "actual_mesh_actions_verified": false,
+        "archetype_id": "FRAGILE_CRATE",
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "operational_admission": false,
+        "port_id": "OUT_E_B2B",
+        "reason": "DESIGN_GEOMETRY_ELIGIBLE"
+      }
+    ],
+    "profile_component_containment": true
+  },
+  "contract": {
+    "bytes": 808127,
+    "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+    "sha256": "691b597e56f18552d2552ebba907ea13eef096982589bdd3f28d10baf9873fe1"
+  },
+  "limits": "Synthetic analytical design, not M/P physical action or W engine acceptance.",
+  "owner": "root",
+  "status": "VERIFY",
+  "task_id": "C08",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T13:37:07.930222+00:00",
+    "strict_check_only": true,
+    "negative_cases": 24,
+    "actual_port_cases": 36,
+    "allowed_port_cases": 17,
+    "independent_route_examples": 16,
+    "root_routes_path": "docs/adaptive-v3/evidence/C08-root-routes.json",
+    "actual_saved_artifact_inspected": true,
+    "review": "Actual C02 HU dimensions/masses retained,6heavy profile component containment and1316arc/cargo/pair/height/width classification reviewed; independent saved-ID Dijkstra16paths and currentmembership/length sums PASS. LONG240kg/.6m centre,CoGY.6525, .07blade in .08closedpocket requires explicit.40forktop extension inside unchanged vehiclebound. Equipment capacity is frozen synthetic design, no claimed stress/stability certification. No model contacts/actions, reserve retrieval, source scheduler or operational admission accepted."
+  }
+}

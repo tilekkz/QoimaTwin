@@ -1,0 +1,1310 @@
+{
+  "admission_note": "Class counts are assortment composition, not HU stock or proof of shared capacity/slot/route/handler admission. C10 creates actual load separately.",
+  "cargo_catalog_binding": {
+    "inherited_fields": [
+      "unit",
+      "handling_unit",
+      "orientation",
+      "fragile",
+      "stacking",
+      "handling",
+      "compatibility"
+    ],
+    "parameters_are_immutable": true,
+    "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+    "schema_id": "qoima.cargo-catalog.v3-proposal",
+    "schema_version": "0.1.0",
+    "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+  },
+  "data_kind": "synthetic_identity_mapping",
+  "identity_only_import": true,
+  "identity_source": {
+    "field_selector": "/initial_lots/*/sku_id",
+    "path": "contracts/assignment.example.json",
+    "sha256": "b4c3ef62aff9ee2f7774fcaa13e4e563a626c512cfff9dab8655cff0db55f8cc",
+    "unique_identity_count": 200
+  },
+  "layout_binding": {
+    "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+    "layout_version": "qoima-144x72-v3-proposal",
+    "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+  },
+  "mapping_policy": {
+    "blocks": [
+      {
+        "archetype_id": "SMALL_CARTON",
+        "count": 110,
+        "first_sku_id": "DEMO_001",
+        "last_sku_id": "DEMO_110"
+      },
+      {
+        "archetype_id": "STANDARD_CARTON",
+        "count": 55,
+        "first_sku_id": "DEMO_111",
+        "last_sku_id": "DEMO_165"
+      },
+      {
+        "archetype_id": "HEAVY_BOX",
+        "count": 6,
+        "first_sku_id": "DEMO_166",
+        "last_sku_id": "DEMO_171"
+      },
+      {
+        "archetype_id": "PALLET_LOAD",
+        "count": 5,
+        "first_sku_id": "DEMO_172",
+        "last_sku_id": "DEMO_176"
+      },
+      {
+        "archetype_id": "IBC",
+        "count": 3,
+        "first_sku_id": "DEMO_177",
+        "last_sku_id": "DEMO_179"
+      },
+      {
+        "archetype_id": "LONG_BUNDLE",
+        "count": 8,
+        "first_sku_id": "DEMO_180",
+        "last_sku_id": "DEMO_187"
+      },
+      {
+        "archetype_id": "DRUM",
+        "count": 5,
+        "first_sku_id": "DEMO_188",
+        "last_sku_id": "DEMO_192"
+      },
+      {
+        "archetype_id": "FRAGILE_CRATE",
+        "count": 8,
+        "first_sku_id": "DEMO_193",
+        "last_sku_id": "DEMO_200"
+      }
+    ],
+    "class_mix": {
+      "DRUM": 5,
+      "FRAGILE_CRATE": 8,
+      "HEAVY_BOX": 6,
+      "IBC": 3,
+      "LONG_BUNDLE": 8,
+      "PALLET_LOAD": 5,
+      "SMALL_CARTON": 110,
+      "STANDARD_CARTON": 55
+    },
+    "fixed_before_optimization": true,
+    "method": "sorted_canonical_ids_contiguous_fixed_blocks",
+    "randomness_used": false
+  },
+  "operational_admission": false,
+  "reference_target_binding": {
+    "path": "assets/references/v3/r03-dimension-targets.json",
+    "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+  },
+  "schema_id": "qoima.sku-catalog.v3-proposal",
+  "schema_version": "0.1.0",
+  "scope": "Identity/template mapping only. No legacy quantities/lots/slot positions/assignment,stock,demand/orders/events or real historical/forecast merge.",
+  "skus": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_001"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_002"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_003"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_004"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_005"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_006"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_007"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_008"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_009"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_010"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_011"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_012"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_013"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_014"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_015"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_016"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_017"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_018"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_019"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_020"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_021"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_022"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_023"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_024"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_025"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_026"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_027"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_028"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_029"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_030"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_031"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_032"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_033"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_034"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_035"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_036"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_037"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_038"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_039"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_040"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_041"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_042"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_043"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_044"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_045"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_046"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_047"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_048"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_049"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_050"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_051"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_052"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_053"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_054"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_055"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_056"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_057"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_058"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_059"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_060"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_061"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_062"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_063"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_064"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_065"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_066"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_067"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_068"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_069"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_070"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_071"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_072"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_073"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_074"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_075"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_076"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_077"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_078"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_079"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_080"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_081"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_082"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_083"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_084"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_085"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_086"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_087"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_088"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_089"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_090"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_091"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_092"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_093"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_094"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_095"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_096"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_097"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_098"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_099"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_100"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_101"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_102"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_103"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_104"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_105"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_106"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_107"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_108"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_109"
+    },
+    {
+      "archetype_id": "SMALL_CARTON",
+      "cargo_template_pointer": "/records/0",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_110"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_111"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_112"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_113"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_114"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_115"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_116"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_117"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_118"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_119"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_120"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_121"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_122"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_123"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_124"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_125"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_126"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_127"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_128"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_129"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_130"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_131"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_132"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_133"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_134"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_135"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_136"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_137"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_138"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_139"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_140"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_141"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_142"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_143"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_144"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_145"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_146"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_147"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_148"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_149"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_150"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_151"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_152"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_153"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_154"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_155"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_156"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_157"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_158"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_159"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_160"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_161"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_162"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_163"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_164"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "cargo_template_pointer": "/records/1",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_165"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "cargo_template_pointer": "/records/2",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_166"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "cargo_template_pointer": "/records/2",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_167"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "cargo_template_pointer": "/records/2",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_168"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "cargo_template_pointer": "/records/2",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_169"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "cargo_template_pointer": "/records/2",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_170"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "cargo_template_pointer": "/records/2",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_171"
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "cargo_template_pointer": "/records/3",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_172"
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "cargo_template_pointer": "/records/3",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_173"
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "cargo_template_pointer": "/records/3",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_174"
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "cargo_template_pointer": "/records/3",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_175"
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "cargo_template_pointer": "/records/3",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_176"
+    },
+    {
+      "archetype_id": "IBC",
+      "cargo_template_pointer": "/records/4",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_177"
+    },
+    {
+      "archetype_id": "IBC",
+      "cargo_template_pointer": "/records/4",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_178"
+    },
+    {
+      "archetype_id": "IBC",
+      "cargo_template_pointer": "/records/4",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_179"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_180"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_181"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_182"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_183"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_184"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_185"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_186"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "cargo_template_pointer": "/records/5",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_187"
+    },
+    {
+      "archetype_id": "DRUM",
+      "cargo_template_pointer": "/records/6",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_188"
+    },
+    {
+      "archetype_id": "DRUM",
+      "cargo_template_pointer": "/records/6",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_189"
+    },
+    {
+      "archetype_id": "DRUM",
+      "cargo_template_pointer": "/records/6",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_190"
+    },
+    {
+      "archetype_id": "DRUM",
+      "cargo_template_pointer": "/records/6",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_191"
+    },
+    {
+      "archetype_id": "DRUM",
+      "cargo_template_pointer": "/records/6",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_192"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_193"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_194"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_195"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_196"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_197"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_198"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_199"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "cargo_template_pointer": "/records/7",
+      "model_scale_factor": 1,
+      "sku_id": "DEMO_200"
+    }
+  ],
+  "status": "proposal"
+}

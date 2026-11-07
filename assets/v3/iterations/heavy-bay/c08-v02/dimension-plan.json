@@ -1,0 +1,588 @@
+{
+  "asset_id": "heavy-bay",
+  "task_id": "M03",
+  "status": "root_approved_pregeometry_plan",
+  "planned_at_utc": "2026-11-07T13:57:16.286845+00:00",
+  "units": "m",
+  "up_axis": "Y",
+  "front_axis": "+Z",
+  "origin": "floor centre",
+  "outer_xyz_m": [
+    1.6,
+    0.18,
+    1.4
+  ],
+  "bounds_local_xyz_m": {
+    "min": [
+      -0.8,
+      0,
+      -0.7
+    ],
+    "max": [
+      0.8,
+      0.18,
+      0.7
+    ]
+  },
+  "reference": {
+    "id": "R13.3",
+    "path": "assets/references/v3/r13-3-heavy-bay.png",
+    "sha256": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08"
+  },
+  "source_contract": {
+    "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+    "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "prototype_source_slot_id": "v3:slot:HEAVY_W:001:L1:B1"
+  },
+  "C08_interface": {
+    "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+    "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "fork_width_m": 0.08,
+    "fork_height_m": 0.07,
+    "fork_y_range_at_stored_HU_m": [
+      0.11,
+      0.18
+    ],
+    "abs_halfspacing_range_m": [
+      0.24,
+      0.4
+    ],
+    "continuous_blade_x_union_each_side_abs_m": [
+      0.2,
+      0.44
+    ],
+    "new_vehicle_pose_or_HU_scale": false,
+    "schema_version": "0.2.0",
+    "historical_v0_1": {
+      "path": "docs/adaptive-v3/history/C08-v0.1/vehicle-handling-v3.json",
+      "sha256": "691b597e56f18552d2552ebba907ea13eef096982589bdd3f28d10baf9873fe1"
+    },
+    "compatibility": "Same .08W/.07H blades, fixed1.10m blade length and .24.. .40 half-spacing; local stored-HU channel proof Y.11.. .18 remains unchanged. v0.2 high-travel and stopped+.40 reach states are separate vehicle/action authority, not this empty support proof."
+  },
+  "palette": {
+    "charcoal": "#293D46",
+    "petrol": "#2E7376",
+    "tan": "#C99A60"
+  },
+  "anchors": [
+    {
+      "anchor_id": "anchor_bin_L1_B1",
+      "local_xyz_m": [
+        0.0,
+        0.18,
+        0.05
+      ],
+      "usable_dimensions_xyz_m": [
+        1.4,
+        1.5,
+        1.2
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          0.7,
+          1.68,
+          0.65
+        ],
+        "min": [
+          -0.7,
+          0.18,
+          -0.55
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:HEAVY_W:001:L1:B1"
+    }
+  ],
+  "parts": [
+    {
+      "part_id": "runner_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.755,
+          0,
+          -0.7
+        ],
+        "max": [
+          -0.515,
+          0.04,
+          0.7
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_1_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.735,
+          0.04,
+          -0.65
+        ],
+        "max": [
+          -0.535,
+          0.14,
+          -0.45000000000000007
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_1_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.735,
+          0.04,
+          -0.1
+        ],
+        "max": [
+          -0.535,
+          0.14,
+          0.1
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_1_3",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.735,
+          0.04,
+          0.45000000000000007
+        ],
+        "max": [
+          -0.535,
+          0.14,
+          0.65
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "runner_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.12,
+          0,
+          -0.7
+        ],
+        "max": [
+          0.12,
+          0.04,
+          0.7
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_2_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.1,
+          0.04,
+          -0.65
+        ],
+        "max": [
+          0.1,
+          0.14,
+          -0.45000000000000007
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_2_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.1,
+          0.04,
+          -0.1
+        ],
+        "max": [
+          0.1,
+          0.14,
+          0.1
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_2_3",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.1,
+          0.04,
+          0.45000000000000007
+        ],
+        "max": [
+          0.1,
+          0.14,
+          0.65
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "runner_3",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.515,
+          0,
+          -0.7
+        ],
+        "max": [
+          0.755,
+          0.04,
+          0.7
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_3_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.535,
+          0.04,
+          -0.65
+        ],
+        "max": [
+          0.735,
+          0.14,
+          -0.45000000000000007
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_3_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.535,
+          0.04,
+          -0.1
+        ],
+        "max": [
+          0.735,
+          0.14,
+          0.1
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "block_3_3",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.535,
+          0.04,
+          0.45000000000000007
+        ],
+        "max": [
+          0.735,
+          0.14,
+          0.65
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "top_rib_1",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0.14,
+          -0.7
+        ],
+        "max": [
+          -0.47,
+          0.18,
+          0.7
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "top_rib_2",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.17,
+          0.14,
+          -0.7
+        ],
+        "max": [
+          0.17,
+          0.18,
+          0.7
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "top_rib_3",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.47,
+          0.14,
+          -0.7
+        ],
+        "max": [
+          0.8,
+          0.18,
+          0.7
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "front_low_cross_tie",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.65,
+          0.05,
+          0.58
+        ],
+        "max": [
+          0.65,
+          0.08,
+          0.62
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "rear_low_cross_tie",
+      "kind": "box",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.65,
+          0.05,
+          -0.62
+        ],
+        "max": [
+          0.65,
+          0.08,
+          -0.58
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.002
+    }
+  ],
+  "open_top_channels": {
+    "x_bands_m": [
+      [
+        -0.47,
+        -0.17
+      ],
+      [
+        0.17,
+        0.47
+      ]
+    ],
+    "z_through_range_m": [
+      -0.7,
+      0.7
+    ],
+    "unobstructed_below_HU_y_range_m": [
+      0.08,
+      0.18
+    ],
+    "open_above_y_m": 0.18,
+    "blade_min_side_air_m": 0.03,
+    "blade_bottom_air_over_cross_ties_m": 0.03,
+    "front_and_rear_open": true,
+    "meaning": "No top plate or crossing member through bladesY.11.. .18. Cross ties top.08 retain at least.10m clear below HUbottom.18; legacy minimum pocket section is not tightened."
+  },
+  "support_patches": [
+    {
+      "patch_id": "flat_rib_1",
+      "y_m": 0.18,
+      "x_range_m": [
+        -0.795,
+        -0.475
+      ],
+      "z_range_m": [
+        -0.695,
+        0.695
+      ],
+      "kind": "conservative_inside_actual_flat_top_after_small_bevel"
+    },
+    {
+      "patch_id": "flat_rib_2",
+      "y_m": 0.18,
+      "x_range_m": [
+        -0.165,
+        0.165
+      ],
+      "z_range_m": [
+        -0.695,
+        0.695
+      ],
+      "kind": "conservative_inside_actual_flat_top_after_small_bevel"
+    },
+    {
+      "patch_id": "flat_rib_3",
+      "y_m": 0.18,
+      "x_range_m": [
+        0.475,
+        0.795
+      ],
+      "z_range_m": [
+        -0.695,
+        0.695
+      ],
+      "kind": "conservative_inside_actual_flat_top_after_small_bevel"
+    }
+  ],
+  "nominal_top_rib_footprints": {
+    "x_ranges_m": [
+      [
+        -0.8,
+        -0.47
+      ],
+      [
+        -0.17,
+        0.17
+      ],
+      [
+        0.47,
+        0.8
+      ]
+    ],
+    "z_range_m": [
+      -0.7,
+      0.7
+    ],
+    "y_m": 0.18,
+    "not_full_floor_coverage": true
+  },
+  "blade_swept_test_boxes": [
+    {
+      "half_spacing_m": 0.24,
+      "side": -1,
+      "swept_local_xyz_m": {
+        "min": [
+          -0.27999999999999997,
+          0.11,
+          -0.8
+        ],
+        "max": [
+          -0.19999999999999998,
+          0.18,
+          0.8
+        ]
+      }
+    },
+    {
+      "half_spacing_m": 0.24,
+      "side": 1,
+      "swept_local_xyz_m": {
+        "min": [
+          0.19999999999999998,
+          0.11,
+          -0.8
+        ],
+        "max": [
+          0.27999999999999997,
+          0.18,
+          0.8
+        ]
+      }
+    },
+    {
+      "half_spacing_m": 0.4,
+      "side": -1,
+      "swept_local_xyz_m": {
+        "min": [
+          -0.44,
+          0.11,
+          -0.8
+        ],
+        "max": [
+          -0.36000000000000004,
+          0.18,
+          0.8
+        ]
+      }
+    },
+    {
+      "half_spacing_m": 0.4,
+      "side": 1,
+      "swept_local_xyz_m": {
+        "min": [
+          0.36000000000000004,
+          0.11,
+          -0.8
+        ],
+        "max": [
+          0.44,
+          0.18,
+          0.8
+        ]
+      }
+    }
+  ],
+  "contact_plan": [
+    "Three longitudinal grounded petrol runnersY0.. .04, each with three closed charcoal blocksY.04.. .14, carry three actual tan ribsY.14.. .18.",
+    "Two low cross tiesY.05.. .08/Zaround\u00b1.60 join rows through hidden embedded block contacts. Their front/rear faces stay inside block depth to avoid exposed coplanar overlays.",
+    "Forks pass above cross ties with .03m bottom air and through open-top lanes with minimum .03m lateral air across the entire .24.. .40 spacing range.",
+    "Anchor[0,.18,.05] is supported on the central rib, but holes have noY.18support. Actual flat patches and channel-negative floor witnesses are reported separately."
+  ],
+  "approved_source_precedence": "C08/M03 card explicitly replaces R13.3 illustrative continuous top with three tan support ribs/open top channels. Keep independent reference PNG and old target untouched; retain low3runner/9block style, exact outer/usable/support values.",
+  "HU_base_contact_status": "Deferred actual HU mesh/support/grip/fork pairing. Narrow HU footprints can contact only central rib; do not infer universal multi-rib support or rate the load from this empty support.",
+  "pregeometry_checks": {
+    "parts": 17,
+    "materials": 3,
+    "runners": 3,
+    "blocks": 9,
+    "top_ribs": 3,
+    "low_ties": 2,
+    "nominal_blade_box_intrusions": 0,
+    "outer_violations": 0,
+    "estimated_triangles": 748
+  },
+  "planned_actual_checks": [
+    "All parts closed/positive/connected to three ground runners.",
+    "Actual usable open-headroom triangles/rays, supported patch rays only, and negative hole-floor witnesses.",
+    "Actual full-channel/blade-envelope triangle rays at endpoint/intermediate halfspacings, no pose/cargo scaling.",
+    "Actual4source images against R13.3 with the explicit C08 adaptation, source-preserving export and independent BIN geometry/normals/anchors/channels; root browser/Khronos."
+  ],
+  "limits": [
+    "Root approved pregeometry plan before source construction; inspect actual source/BIN before geometry gate.",
+    "Support patches do not certify later actual HU base contacts, mass/CoG, rating, pickup or operational admission.",
+    "No inventory, new handler, altered HU pose/size or shared source change."
+  ],
+  "root_response": "Approved 3 ribs, 3 runners, 9 blocks, two ties below .08; open lanes absX .17.. .47; actual support patches and HU-contact limitation retained."
+}

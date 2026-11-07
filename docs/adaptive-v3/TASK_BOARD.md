@@ -36,30 +36,30 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [L10](tasks/L10.md) | PASS | warehouse_props | L06,L07,L08,L09 | Собрана инженерная preview-сцена нового layout |
 | [L11](tasks/L11.md) | PASS | warehouse_props | L10 | Проверены пространственные конфликты layout |
 | [L12](tasks/L12.md) | PASS | root | L11 | Зафиксирован layout manifest и его версия |
-| [C01](tasks/C01.md) | ACTIVE | warehouse_props | R03,L12 | Описана структура CargoArchetype v3 |
-| [C02](tasks/C02.md) | TODO | unassigned | C01 | Заполнен каталог восьми архетипов |
-| [C03](tasks/C03.md) | TODO | unassigned | C02 | Подготовлено соответствие 200 SKU архетипам |
-| [C04](tasks/C04.md) | TODO | unassigned | C01,L09 | Описана структура StorageSlot v3 |
-| [C05](tasks/C05.md) | TODO | unassigned | C02,C04 | Создана матрица совместимости типов |
-| [C06](tasks/C06.md) | TODO | unassigned | C05 | Определена проверка габаритов и ориентации |
-| [C07](tasks/C07.md) | TODO | unassigned | C05 | Определена проверка массы и обработки |
-| [C08](tasks/C08.md) | TODO | unassigned | C02,L07 | Определены ограничения движения загруженной техники |
-| [C09](tasks/C09.md) | TODO | unassigned | C06,C07,C08 | Задан порядок «совместимость, затем стоимость» |
+| [C01](tasks/C01.md) | PASS | warehouse_props | R03,L12 | Описана структура CargoArchetype v3 |
+| [C02](tasks/C02.md) | PASS | warehouse_props | C01 | Заполнен каталог восьми архетипов |
+| [C03](tasks/C03.md) | PASS | warehouse_props | C02 | Подготовлено соответствие 200 SKU архетипам |
+| [C04](tasks/C04.md) | PASS | rack_crate | C01,L09 | Описана структура StorageSlot v3 |
+| [C05](tasks/C05.md) | PASS | root | C02,C04 | Создана матрица совместимости типов |
+| [C06](tasks/C06.md) | PASS | root | C05 | Определена проверка габаритов и ориентации |
+| [C07](tasks/C07.md) | PASS | root | C05 | Определена проверка массы и обработки |
+| [C08](tasks/C08.md) | PASS | root | C02,L07 | Определены ограничения движения загруженной техники |
+| [C09](tasks/C09.md) | READY | unassigned | C06,C07,C08 | Задан порядок «совместимость, затем стоимость» |
 | [C10](tasks/C10.md) | TODO | unassigned | C03,C04,C09 | Подготовлено допустимое baseline-размещение |
 | [C11](tasks/C11.md) | TODO | unassigned | C10 | Подготовлено адаптированное размещение |
 | [C12](tasks/C12.md) | TODO | unassigned | C11,L12 | Передано предложение контрактов v3 |
-| [M01](tasks/M01.md) | TODO | unassigned | R10,C04,I09 | Готова модель SMALL storage |
-| [M02](tasks/M02.md) | TODO | unassigned | R10,R02,C04,I09 | Готова модель STANDARD storage |
-| [M03](tasks/M03.md) | TODO | unassigned | R10,R02,C04,I09 | Готова модель HEAVY storage |
-| [M04](tasks/M04.md) | TODO | unassigned | R10,R02,C04,C08,I09 | Готова модель LONG storage |
-| [M05](tasks/M05.md) | TODO | unassigned | R10,R02,C04,I09 | Готова модель FLEX storage |
+| [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
+| [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
+| [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
+| [M04](tasks/M04.md) | READY | unassigned | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
+| [M05](tasks/M05.md) | PASS | rack_crate | R10,R02,C04,I09,R13.5 | Готова модель FLEX storage |
 | [M06](tasks/M06.md) | TODO | unassigned | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
 | [M07](tasks/M07.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
-| [M08](tasks/M08.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
-| [M09](tasks/M09.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель IBC |
-| [M10](tasks/M10.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
-| [M11](tasks/M11.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
-| [M12](tasks/M12.md) | TODO | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
+| [M08](tasks/M08.md) | ACTIVE | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
+| [M09](tasks/M09.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель IBC |
+| [M10](tasks/M10.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
+| [M11](tasks/M11.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
+| [M12](tasks/M12.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
 | [M13](tasks/M13.md) | PASS | root | R10,R04,L08,I09 | Готов модульный комплект conveyor |
 | [M14](tasks/M14.md) | TODO | unassigned | R10,R06,C08,I09 | Готов анимируемый forklift |
 | [P01](tasks/P01.md) | PASS | root | R10,R05,I09 | Готова единая базовая фигура человека |
@@ -111,11 +111,11 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [H06](tasks/H06.md) | TODO | unassigned | H01,H02 | Подготовлена одна проверенная команда запуска |
 | [H07](tasks/H07.md) | TODO | unassigned | H03,H04,H05,H06 | Подготовлен утренний README и resume checkpoint |
 | [H08](tasks/H08.md) | TODO | unassigned | H07,I07 | Зафиксирована собственная поставка без потери чужих правок |
-| [M06.1](tasks/M06.1.md) | TODO | unassigned | R10,R03,C02,I09 | Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim |
-| [M06.2](tasks/M06.2.md) | TODO | unassigned | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
-| [M06.3](tasks/M06.3.md) | TODO | unassigned | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
-| [M07.1](tasks/M07.1.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
-| [M07.2](tasks/M07.2.md) | TODO | unassigned | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
+| [M06.1](tasks/M06.1.md) | PASS | warehouse_props | R10,R03,C02,I09 | Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim |
+| [M06.2](tasks/M06.2.md) | ACTIVE | warehouse_props | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
+| [M06.3](tasks/M06.3.md) | READY | unassigned | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
+| [M07.1](tasks/M07.1.md) | READY | unassigned | R10,R03,R04,C02,I09 | Open tote: real cavity/handles, interior exceeds parcel and payload bounds |
+| [M07.2](tasks/M07.2.md) | READY | unassigned | R10,R03,R04,C02,I09 | Sealed parcel: paper/tape construction and verified full fit in tote |
 | [M13.1](tasks/M13.1.md) | PASS | root | R10,R04,L08,I09 | Straight belt: supported transport surface and exact connection ports |
 | [M13.2](tasks/M13.2.md) | PASS | root | R10,R04,L08,I09 | 90-degree turn: joined supported path and correct inside/outside cargo clearance |
 | [M13.3](tasks/M13.3.md) | PASS | root | R10,R04,L08,I09 | T transfer: three open connection ends and no crossing walls |
@@ -125,12 +125,12 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P03.4](tasks/P03.4.md) | TODO | unassigned | R10,P02,M07,P03.3,I09 | Walk/cart absolute-clock gait with foot/wheel contacts |
 | [P03.5](tasks/P03.5.md) | TODO | unassigned | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
 | [P03.6](tasks/P03.6.md) | TODO | unassigned | R10,P02,M07,P03.5,I09 | Tote handoff: stable hold/deposit parent and no duplicate cargo |
-| [P09.1](tasks/P09.1.md) | ACTIVE | people_packing | R10,R07,L12,I09 | Standard dock module: thick connected frame and clear passage |
-| [P09.2](tasks/P09.2.md) | TODO | unassigned | R10,R07,L12,P09.1,I09 | Large freight gate: accepted clear width/height and loaded-long envelope |
-| [P09.3](tasks/P09.3.md) | TODO | unassigned | R10,R07,L12,P09.2,I09 | 144x72x8 cutaway shell, substantial walls/columns at ordinary scale |
-| [P09.4](tasks/P09.4.md) | TODO | unassigned | R10,R07,L12,P09.3,I09 | Zone/route/port markings without covering logical passage or z fighting |
-| [M14.1](tasks/M14.1.md) | TODO | unassigned | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
-| [M14.2](tasks/M14.2.md) | TODO | unassigned | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
+| [P09.1](tasks/P09.1.md) | PASS | people_packing | R10,R07,L12,I09 | Standard dock module: thick connected frame and clear passage |
+| [P09.2](tasks/P09.2.md) | PASS | people_packing | R10,R07,L12,P09.1,I09 | Large freight gate: accepted clear width/height and loaded-long envelope |
+| [P09.3](tasks/P09.3.md) | PASS | people_packing | R10,R07,L12,P09.2,I09 | 144x72x8 cutaway shell, substantial walls/columns at ordinary scale |
+| [P09.4](tasks/P09.4.md) | READY | unassigned | R10,R07,L12,P09.3,I09 | Zone/route/port markings without covering logical passage or z fighting |
+| [M14.1](tasks/M14.1.md) | PASS | people_packing | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
+| [M14.2](tasks/M14.2.md) | ACTIVE | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
 | [M14.3](tasks/M14.3.md) | TODO | unassigned | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
 | [M14.4](tasks/M14.4.md) | TODO | unassigned | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
 | [M14.5](tasks/M14.5.md) | TODO | unassigned | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
@@ -168,4 +168,10 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [L12.1](tasks/L12.1.md) | PASS | warehouse_props | L11 | Versioned semantic index and source identity map |
 | [L12.2](tasks/L12.2.md) | PASS | warehouse_props | L12.1 | Compile local graph connections without losing shared edge splits |
 | [L12.3](tasks/L12.3.md) | PASS | warehouse_props | L12.2 | Stable manifest checksums and isolated frontend data package |
-| [H08.1](tasks/H08.1.md) | ACTIVE | rack_crate | I05 | Independent preserved V2 runnable package |
+| [H08.1](tasks/H08.1.md) | PASS | rack_crate | I05 | Independent preserved V2 runnable package |
+| [R13.1](tasks/R13.1.md) | PASS | rack_crate | R02,R10,L09 | SMALL independent four-view production reference |
+| [R13.2](tasks/R13.2.md) | PASS | root | R02,R10,L09 | STANDARD independent four-view production reference |
+| [R13.3](tasks/R13.3.md) | PASS | rack_crate | R02,R10,L09 | HEAVY independent four-view production reference |
+| [R13.4](tasks/R13.4.md) | PASS | root | R02,R10,L09 | LONG independent four-view production reference |
+| [R13.5](tasks/R13.5.md) | PASS | root | R02,R10,L09 | FLEX independent four-view production reference |
+| [R13](tasks/R13.md) | PASS | root | R02,L09 | Dedicated four-view storage construction pack |

@@ -1,0 +1,105 @@
+{
+  "reference_id": "R13.3",
+  "asset_id": "heavy-bay",
+  "status": "current_L09_synthetic_target_reminder_not_raster_measurement",
+  "units": "m",
+  "axes": [
+    "X width",
+    "Y up",
+    "Z depth; +Z fork-channel direction"
+  ],
+  "origin": "Floor centre",
+  "source": {
+    "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+    "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+    "JSON_pointer": "/module_definitions/HEAVY"
+  },
+  "module_definition": {
+    "outer": [
+      1.6,
+      0.18,
+      1.4
+    ],
+    "operating_height": 1.8,
+    "usable": [
+      1.4,
+      1.5,
+      1.2
+    ],
+    "levels": [
+      0.18
+    ],
+    "bays": [
+      0
+    ],
+    "payload": 1000,
+    "module_payload": 1000,
+    "clearance": 0.05,
+    "cargo": [
+      "HEAVY_BOX",
+      "PALLET_LOAD",
+      "IBC",
+      "DRUM"
+    ],
+    "construction": {
+      "open_top": true,
+      "base_height_m": 0.18,
+      "deck_thickness_m": 0.04,
+      "runner_count": 3,
+      "block_count": 9,
+      "fork_pocket_centres_x_m": [
+        -0.4,
+        0.4
+      ],
+      "fork_pocket_clear_height_m": 0.1,
+      "fork_pocket_clear_width_m": 0.18,
+      "posts": [],
+      "meaning": "Open reinforced ground support; no tall enclosing mesh. C08 still approves actual support and forks."
+    }
+  },
+  "geometry_bounds_local_xyz_m": {
+    "min": [
+      -0.8,
+      0,
+      -0.7
+    ],
+    "max": [
+      0.8,
+      0.18,
+      0.7
+    ]
+  },
+  "open_headroom_not_enclosed_cavity": {
+    "usable_xyz_m": [
+      1.4,
+      1.5,
+      1.2
+    ],
+    "base_y_m": 0.18,
+    "upper_clear_y_m": 1.68,
+    "operating_height_m": 1.8
+  },
+  "root_confirmed_layer_target": {
+    "bottom_runner_y_m": [
+      0,
+      0.04
+    ],
+    "middle_blocks_and_candidate_clear_channel_y_m": [
+      0.04,
+      0.14
+    ],
+    "deck_y_m": [
+      0.14,
+      0.18
+    ],
+    "total_m": 0.18,
+    "meaning": "Root confirmed .04 deck+.10 middle+.04 runner; source is authority. Actual clearance/engagement/support remains C08/model proof."
+  },
+  "cargo_or_stock_in_reference": false,
+  "precedence": "Current exact HEAVY source, including .04m deck, overrides earlier assignment shorthand and R02 illustrative loaded platform. R02 supplies support style only.",
+  "limits": [
+    "Full outer mesh height is .18m; usable1.5m is open headroom above base, not mesh height or enclosed interior.",
+    "3runners/9blocks and fork-channel targets are construction intent, not actual fork fit/engagement or support/rating acceptance.",
+    "Synthetic payload fields are copied source assumptions, not physical certification. C08 and future model measurements remain required."
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "builder": {
+    "path": "tools/visual/v3/build_sku_catalog.py",
+    "sha256": "1a59e3f4cb2b160c6461d30e2842689b9da7492c3e25d1d94b25e51ccb2f10a8"
+  },
+  "check_only_exit_code": 0,
+  "checked_utc": "2026-11-07T13:38:26.023358+00:00",
+  "graph_evidence": {
+    "coverage": "One task-specific coverage call: C03newpaths missing/current inputs metadata_changed without recorded gap.",
+    "fallback": "Exact source identity parser and current C02/R03/L12 hashes; no broad discovery/index refresh or completeness claim.",
+    "generation": "2026-11-07T13:18:32Z",
+    "project": "qoima-twin",
+    "tier": 2
+  },
+  "independent_checks": [
+    {
+      "actual": null,
+      "name": "all200 canonical identities preserved exactly once",
+      "passed": true
+    },
+    {
+      "actual": {
+        "DRUM": 5,
+        "FRAGILE_CRATE": 8,
+        "HEAVY_BOX": 6,
+        "IBC": 3,
+        "LONG_BUNDLE": 8,
+        "PALLET_LOAD": 5,
+        "SMALL_CARTON": 110,
+        "STANDARD_CARTON": 55
+      },
+      "name": "exact frozen8class counts independently counted",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "every ID follows independent numeric-boundary recipe",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "all200 immutable template refs and unit scale resolve",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "all physical parameter groups inherit C02 by reference",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "no legacy stock lot slot event/history payload keys",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "protected source and reference hashes match",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "same exact C02 layout binding retained",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "proposal identity-only with no operational admission",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "canonical UTF8 LF serialization",
+      "passed": true
+    },
+    {
+      "actual": null,
+      "name": "four read-only sources preserved",
+      "passed": true
+    }
+  ],
+  "inputs": [
+    {
+      "path": "contracts/assignment.example.json",
+      "sha256": "b4c3ef62aff9ee2f7774fcaa13e4e563a626c512cfff9dab8655cff0db55f8cc"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+    }
+  ],
+  "negative_cases": [
+    {
+      "case": "duplicate_SKU",
+      "passed": true,
+      "result": "DUPLICATE_SKU_ID"
+    },
+    {
+      "case": "missing_SKU",
+      "passed": true,
+      "result": "EXPECTED_200_SKUS"
+    },
+    {
+      "case": "foreign_SKU_identity",
+      "passed": true,
+      "result": "SKU_ID_SET_MISMATCH"
+    },
+    {
+      "case": "unknown_archetype",
+      "passed": true,
+      "result": "UNKNOWN_ARCHETYPE"
+    },
+    {
+      "case": "wrong_template_pointer",
+      "passed": true,
+      "result": "TEMPLATE_REFERENCE_MISMATCH"
+    },
+    {
+      "case": "stale_identity_source",
+      "passed": true,
+      "result": "IDENTITY_SOURCE_MISMATCH"
+    },
+    {
+      "case": "stale_C02_snapshot",
+      "passed": true,
+      "result": "TEMPLATE_SOURCE_MISMATCH"
+    },
+    {
+      "case": "stale_reference_snapshot",
+      "passed": true,
+      "result": "REFERENCE_SOURCE_MISMATCH"
+    },
+    {
+      "case": "visual_scale_override",
+      "passed": true,
+      "result": "SCALE_OVERRIDE_FORBIDDEN"
+    },
+    {
+      "case": "boolean_is_not_numeric_scale",
+      "passed": true,
+      "result": "SCALE_OVERRIDE_FORBIDDEN"
+    },
+    {
+      "case": "legacy_quantity_field_injected",
+      "passed": true,
+      "result": "ROW_FIELDS_NOT_IDENTITY_ONLY"
+    },
+    {
+      "case": "legacy_lot_rows_injected",
+      "passed": true,
+      "result": "CATALOG_FIELDS_NOT_IDENTITY_ONLY"
+    },
+    {
+      "case": "same_counts_but_changed_fixed_mapping",
+      "passed": true,
+      "result": "FIXED_CLASS_RECIPE_MISMATCH"
+    }
+  ],
+  "normal_run_exit_code": 0,
+  "output": {
+    "bytes": 34508,
+    "path": "docs/v3/contract-proposals/sku-catalog-v3.json",
+    "sha256": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a"
+  },
+  "passed": true,
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T13:41:44.040079+00:00",
+    "actual_generator_source_and_spec_read": true,
+    "strict_check_only": true,
+    "independent_exact_ids_and_fourfields": true,
+    "actual200template_pointers_resolved": true,
+    "review": "All200canonicalIDs once, exactfixedclassmix110/55/6/5/3/8/5/8 and immutable8C02references. Sourcequantity/600legacyrows notimported asstock; sourcehashunchanged.13negatives checksame-countwrongmapping aswell asforeign/missing IDs andscale/sourceoverrides. Noinventory/allocation/forecast/model/operationaladmission."
+  },
+  "source_inputs_preserved": true,
+  "spec": {
+    "path": "docs/adaptive-v3/specs/C03.md",
+    "sha256": "33c66c82b785acc409d55982ceff629fc6bc649eb825e8599cebaeae8372bc97"
+  },
+  "status": "VERIFY",
+  "summary": {
+    "class_mix": {
+      "DRUM": 5,
+      "FRAGILE_CRATE": 8,
+      "HEAVY_BOX": 6,
+      "IBC": 3,
+      "LONG_BUNDLE": 8,
+      "PALLET_LOAD": 5,
+      "SMALL_CARTON": 110,
+      "STANDARD_CARTON": 55
+    },
+    "historical_forecast_merged": false,
+    "immutable_templates": 8,
+    "operational_admission": false,
+    "quantities_lots_assignments_created": false,
+    "source_identity_only": true,
+    "unique_skus": 200
+  },
+  "task_id": "C03",
+  "updated_utc": "2026-11-07T13:39:59.848884+00:00"
+}

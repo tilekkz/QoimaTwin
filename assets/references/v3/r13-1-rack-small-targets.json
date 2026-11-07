@@ -1,0 +1,129 @@
+{
+  "reference_id": "R13.1",
+  "asset_id": "rack-small",
+  "status": "exact_current_L09_synthetic_target_reminder_not_raster_measurement",
+  "units": "m",
+  "axes": [
+    "X width",
+    "Y up",
+    "Z depth; front/service +Z"
+  ],
+  "origin": "Floor centre",
+  "source": {
+    "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+    "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+    "JSON_pointer": "/module_definitions/SMALL"
+  },
+  "module_definition": {
+    "outer": [
+      2.4,
+      1.55,
+      1.0
+    ],
+    "usable": [
+      0.42,
+      0.35,
+      0.42
+    ],
+    "levels": [
+      0.25,
+      1.0
+    ],
+    "bays": [
+      -0.88,
+      -0.44,
+      0,
+      0.44,
+      0.88
+    ],
+    "payload": 15,
+    "module_payload": 150,
+    "clearance": 0.03,
+    "cargo": [
+      "SMALL_CARTON"
+    ],
+    "construction": {
+      "posts": [
+        {
+          "min": [
+            -1.2,
+            0,
+            -0.5
+          ],
+          "max": [
+            -1.0999999999999999,
+            1.55,
+            -0.4
+          ]
+        },
+        {
+          "min": [
+            -1.2,
+            0,
+            0.4
+          ],
+          "max": [
+            -1.0999999999999999,
+            1.55,
+            0.5
+          ]
+        },
+        {
+          "min": [
+            1.0999999999999999,
+            0,
+            -0.5
+          ],
+          "max": [
+            1.2,
+            1.55,
+            -0.4
+          ]
+        },
+        {
+          "min": [
+            1.0999999999999999,
+            0,
+            0.4
+          ],
+          "max": [
+            1.2,
+            1.55,
+            0.5
+          ]
+        }
+      ],
+      "deck_thickness_m": 0.1,
+      "deck_top_y_m": [
+        0.25,
+        1.0
+      ],
+      "meaning": "Connected posts/decks/supports. LONG has three rear posts and cantilever arms. FLEX front stays open."
+    }
+  },
+  "bounds_local_xyz_m": {
+    "min": [
+      -1.2,
+      0,
+      -0.5
+    ],
+    "max": [
+      1.2,
+      1.55,
+      0.5
+    ]
+  },
+  "compartments": {
+    "per_level": 5,
+    "levels": 2,
+    "total": 10,
+    "empty_in_reference": true,
+    "separate_cargo_or_workflow_totes": false
+  },
+  "precedence": "Current L09 geometry/usable/deck/post values override R02 three-across concept. R02 controls palette/boxy construction only.",
+  "limits": [
+    "No SKU/stock claim from empty fixture compartments.",
+    "Payload numbers in copied source definition are synthetic design assumptions, not physical ratings, safety or cargo-fit proof.",
+    "Future model must measure clear usable cavity and support contacts; this reference is not geometry or runtime acceptance."
+  ]
+}

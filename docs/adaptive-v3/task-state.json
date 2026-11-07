@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T12:01:56.649592+00:00",
+  "updated_at": "2026-11-07T15:06:31.865213+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -515,13 +515,13 @@
         "L12"
       ],
       "criteria": "Namespaced proposal: размеры, масса, permitted orientations, handling mode, compatibility tags",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "warehouse_props",
       "outputs": [
         "docs/adaptive-v3/specs/C01.md",
         "docs/adaptive-v3/evidence/C01.json"
       ],
-      "actual": "Define narrow namespaced CargoArchetype schema/example and semantic validation, preserving unit/HU/lot distinctions and layout/reference binding; root review before C02/C04."
+      "actual": "Root exact schema/example/spec/semantic-validator read and19negative check-only rerun PASS; independent Decimal volume and gross/tare identity confirmed. One isolated contract, no catalogue/SKU/inventory/admission claim."
     },
     {
       "id": "C02",
@@ -530,12 +530,13 @@
         "C01"
       ],
       "criteria": "SMALL_CARTON, STANDARD_CARTON, HEAVY_BOX, PALLET_LOAD, IBC, LONG_BUNDLE, DRUM, FRAGILE_CRATE; все свойства синтетические",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "warehouse_props",
       "outputs": [
         "docs/adaptive-v3/specs/C02.md",
         "docs/adaptive-v3/evidence/C02.json"
-      ]
+      ],
+      "actual": "Root read full generator/validator/spec and reran strict13negative checks; independent Decimal identities of8fixed synthetic HU masses PASS. ExactR03dimensions/107internal prototypes distinct from inventory; cargo admission and mesh fit remain downstream."
     },
     {
       "id": "C03",
@@ -544,12 +545,13 @@
         "C02"
       ],
       "criteria": "Каждый SKU имеет archetype_id и детерминированные параметры без random visual scale",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "warehouse_props",
       "outputs": [
         "docs/adaptive-v3/specs/C03.md",
         "docs/adaptive-v3/evidence/C03.json"
-      ]
+      ],
+      "actual": "Root fullsource/spec+strict13negatives and independent200IDs/fourfields/templatepointers checked; classmix/frozenC02retained, no stockimport."
     },
     {
       "id": "C04",
@@ -559,12 +561,13 @@
         "L09"
       ],
       "criteria": "Внутренние габариты, допустимая масса, ориентации, storage type и service constraints",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/specs/C04.md",
         "docs/adaptive-v3/evidence/C04.json"
-      ]
+      ],
+      "actual": "Root exact schema/projection/transform/handler/placement source and fullspec review; reran25mutations strictcheck and independently compared776native slot records/Decimal volumes.776/132/188/588 preserved; zero supportgap, no availability/admission."
     },
     {
       "id": "C05",
@@ -574,12 +577,13 @@
         "C04"
       ],
       "criteria": "Cargo→SMALL/STANDARD/HEAVY/LONG/FLEX с конкретной причиной допуска/отказа",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/C05.md",
         "docs/adaptive-v3/evidence/C05.json"
-      ]
+      ],
+      "actual": "40familycases/10positive and independent6208slotpair projection accepted,13boundarynegatives,188blockedretained. Design only, nostock/score."
     },
     {
       "id": "C06",
@@ -588,12 +592,13 @@
         "C05"
       ],
       "criteria": "Примеры fit/reject, включая груз, который проходит только при разрешённом повороте",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/C06.md",
         "docs/adaptive-v3/evidence/C06.json"
-      ]
+      ],
+      "actual": "Sameevaluator8productionfits/8forbiddenyaws+explicit hypotheticalrotation-only fit and6negatives; independent8cornerprojection accepted, productionpermissions unchanged."
     },
     {
       "id": "C07",
@@ -602,12 +607,13 @@
         "C05"
       ],
       "criteria": "Допущение manual≤15 кг, правила forklift/иной поддержки; тяжёлый груз не становится ручным через scale",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/C07.md",
         "docs/adaptive-v3/evidence/C07.json"
-      ]
+      ],
+      "actual": "8independentDecimalmassledgers,6heavyhandlercases,10invalidmasses and15kg boundary accepted; C05/C06 savedoutputs unchanged."
     },
     {
       "id": "C08",
@@ -617,12 +623,13 @@
         "L07"
       ],
       "criteria": "Проверка loaded envelope, допустимых рёбер, высоты ворот и выбранной ориентации груза",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/C08.md",
         "docs/adaptive-v3/evidence/C08.json"
-      ]
+      ],
+      "actual": "v0.2: actualblueprintoverlaps corrected byhightravel+stoppedreach;26negatives/36ports/16paths andanalyticcylinder/rating checks PASS. Oldsources/history retained; actualM14action stillrequired."
     },
     {
       "id": "C09",
@@ -633,7 +640,7 @@
         "C08"
       ],
       "criteria": "Candidate rejection reason фиксируется до вычисления route/placement score",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/C09.md",
@@ -691,15 +698,17 @@
       "depends_on": [
         "R10",
         "C04",
-        "I09"
+        "I09",
+        "R13.1"
       ],
       "criteria": ".blend/GLB, четыре вида, реальный внутренний размер и версия референса",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M01.md",
         "docs/adaptive-v3/evidence/M01.json"
-      ]
+      ],
+      "actual": "Actualsource4/browser4+freshhealthyrefquarter reviewed; root BIN rerun and12GLB Khronos0/0. Ten usablecavities/decksupports/anchors accepted; actions later."
     },
     {
       "id": "M02",
@@ -708,15 +717,17 @@
         "R10",
         "R02",
         "C04",
-        "I09"
+        "I09",
+        "R13.2"
       ],
       "criteria": "Конструктивные опоры, уровни и bin anchors; экспорт осмотрен в браузере",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "warehouse_props",
       "outputs": [
         "docs/adaptive-v3/models/M02.md",
         "docs/adaptive-v3/evidence/M02.json"
-      ]
+      ],
+      "actual": "Root actualsource4/browser4+15GLB Khronos0/0 and savedartifacthashes accepted; sixcavities/anchors andfunctionalgroundforklanes, no upperretrieval."
     },
     {
       "id": "M03",
@@ -725,15 +736,17 @@
         "R10",
         "R02",
         "C04",
-        "I09"
+        "I09",
+        "R13.3"
       ],
       "criteria": "Напольная/усиленная опора визуально отличается и соответствует принятой допустимой массе",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M03.md",
         "docs/adaptive-v3/evidence/M03.json"
-      ]
+      ],
+      "actual": "Refinedpetrol/charcoal full4source+4browser review and17GLB Khronos0/0 accepted; C08v02current, actualchannels/supportpatches/BIN checked."
     },
     {
       "id": "M04",
@@ -743,10 +756,11 @@
         "R02",
         "C04",
         "C08",
-        "I09"
+        "I09",
+        "R13.4"
       ],
       "criteria": "Конструкция поддерживает длинномер по длине; нет висящего центра груза",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/M04.md",
@@ -760,15 +774,17 @@
         "R10",
         "R02",
         "C04",
-        "I09"
+        "I09",
+        "R13.5"
       ],
       "criteria": "Модульная конструкция с честными bounds и обозначенным назначением",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M05.md",
         "docs/adaptive-v3/evidence/M05.json"
-      ]
+      ],
+      "actual": "Root actualsource4/browser4+bundledBIN rerun and14GLB Khronos0/0 accepted; open FLEX volume/grounded parts/anchor verified."
     },
     {
       "id": "M06",
@@ -826,12 +842,13 @@
         "I09"
       ],
       "criteria": "Поддон, вилочные проёмы и груз образуют цельную конструкцию с attachment",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "ACTIVE",
+      "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/models/M08.md",
         "docs/adaptive-v3/evidence/M08.json"
-      ]
+      ],
+      "actual": "PALLET_LOAD: independent4viewref andfixed24unitpacking/contact/cap planbeforegeometry, thenone455kgHUasset."
     },
     {
       "id": "M09",
@@ -843,7 +860,7 @@
         "I09"
       ],
       "criteria": "Объёмная ёмкость, каркас и опора; визуально не обычная картонная коробка",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/M09.md",
@@ -860,7 +877,7 @@
         "I09"
       ],
       "criteria": "Правильная длина, опоры и крепления; выбранная ориентация задокументирована",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/M10.md",
@@ -877,7 +894,7 @@
         "I09"
       ],
       "criteria": "Корпус, обод и опора читаются в boxy low-poly стиле без превращения в плоский цилиндр",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/M11.md",
@@ -894,7 +911,7 @@
         "I09"
       ],
       "criteria": "Конструкция и маркировка отличаются; размер/масса не меняются ради влезания в slot",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/M12.md",
@@ -1792,8 +1809,8 @@
       "id": "M06.1",
       "title": "Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim",
       "parent": "M06",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "warehouse_props",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R03",
@@ -1806,14 +1823,15 @@
         "frontend/public/models/v3/small-carton.glb",
         "docs/adaptive-v3/evidence/M06.1.json"
       ],
-      "criteria": "Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Rootactual4source+4browser andindependentreference accepted, hollow3mm/C02packing/anchors/materialhashes checked, Khronos0/0."
     },
     {
       "id": "M06.2",
       "title": "Standard carton: different proportions and coherent folded/taped lid",
       "parent": "M06",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "warehouse_props",
+      "status": "ACTIVE",
       "depends_on": [
         "R10",
         "R03",
@@ -1826,14 +1844,15 @@
         "frontend/public/models/v3/standard-carton.glb",
         "docs/adaptive-v3/evidence/M06.2.json"
       ],
-      "criteria": "Standard carton: different proportions and coherent folded/taped lid; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Standard carton: different proportions and coherent folded/taped lid; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Standardcarton: dedicatedindependent4viewref+precise .60x.40x.30 planbeforegeometry, thenactualthinwall assetgates."
     },
     {
       "id": "M06.3",
       "title": "Heavy case: handles, grounded fork-access base and mass/handler binding",
       "parent": "M06",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "R03",
@@ -1853,7 +1872,7 @@
       "title": "Open tote: real cavity/handles, interior exceeds parcel and payload bounds",
       "parent": "M07",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "R03",
@@ -1874,7 +1893,7 @@
       "title": "Sealed parcel: paper/tape construction and verified full fit in tote",
       "parent": "M07",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "R03",
@@ -2075,7 +2094,7 @@
       "title": "Standard dock module: thick connected frame and clear passage",
       "parent": "P09",
       "owner": "people_packing",
-      "status": "ACTIVE",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R07",
@@ -2089,14 +2108,14 @@
         "docs/adaptive-v3/evidence/P09.1.json"
       ],
       "criteria": "Standard dock module: thick connected frame and clear passage; actual artifact and relevant reference/runtime evidence reviewed",
-      "actual": "Build one R07 standard4x4.5m clear dock module through dimensions/source four-view refinement and final GLB numeric checks; root browser/aperture gate remains required."
+      "actual": "Root opened4source+4actual GLB browser views vsR07; connected thickU/reveal/ground contacts and clear4x4.5 aperture accepted inside unchangedL11 wallband. Khronos0/0 and browser0errors; other gates/shell/actions remain separate."
     },
     {
       "id": "P09.2",
       "title": "Large freight gate: accepted clear width/height and loaded-long envelope",
       "parent": "P09",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "people_packing",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R07",
@@ -2110,14 +2129,15 @@
         "frontend/public/models/v3/large-gate.glb",
         "docs/adaptive-v3/evidence/P09.2.json"
       ],
-      "criteria": "Large freight gate: accepted clear width/height and loaded-long envelope; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Large freight gate: accepted clear width/height and loaded-long envelope; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Root source/browser16view matrix plus full hero/front/rear inspection and actual2GLB Khronos0/0/browser0errors PASS. Exact7/6x4.5 apertures inside unchangedwallband; L05candidate-envelope proof is separate from future actual forklift actions."
     },
     {
       "id": "P09.3",
       "title": "144x72x8 cutaway shell, substantial walls/columns at ordinary scale",
       "parent": "P09",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "people_packing",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R07",
@@ -2131,14 +2151,15 @@
         "frontend/public/models/v3/environment-shell.glb",
         "docs/adaptive-v3/evidence/P09.3.json"
       ],
-      "criteria": "144x72x8 cutaway shell, substantial walls/columns at ordinary scale; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "144x72x8 cutaway shell, substantial walls/columns at ordinary scale; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Root6source/6browserviews plus14GLB Khronos0/0 and actualGLB route/auditreruns accepted; standflooracne/focusshadowfixed. Finalwarehouse composition/runtime remainopen."
     },
     {
       "id": "P09.4",
       "title": "Zone/route/port markings without covering logical passage or z fighting",
       "parent": "P09",
       "owner": "unassigned",
-      "status": "TODO",
+      "status": "READY",
       "depends_on": [
         "R10",
         "R07",
@@ -2156,8 +2177,8 @@
       "id": "M14.1",
       "title": "Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "people_packing",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2168,14 +2189,15 @@
         "docs/adaptive-v3/specs/M14.1.md",
         "docs/adaptive-v3/evidence/M14.1.json"
       ],
-      "criteria": "Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Rootfullspec+actualCPUchecker79checks/8negatives withunchangedP01driver fit andfinalC08v02 accepted. Dimensionalplanonly; model/actions later."
     },
     {
       "id": "M14.2",
       "title": "Body/counterweight and four connected grounded wheels, front/side check",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "people_packing",
+      "status": "ACTIVE",
       "depends_on": [
         "R10",
         "R06",
@@ -2187,7 +2209,8 @@
         "docs/adaptive-v3/specs/M14.2.md",
         "docs/adaptive-v3/evidence/M14.2.json"
       ],
-      "criteria": "Body/counterweight and four connected grounded wheels, front/side check; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Body/counterweight and four connected grounded wheels, front/side check; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Independentreach-forklift4view supplement beforebody; then ONLYgroundedbody/counterweight/4wheels stagedchild, finalmodelgates later."
     },
     {
       "id": "M14.3",
@@ -2941,12 +2964,114 @@
         "I05"
       ],
       "criteria": "Exact preserved commit, runnable local viewer package and byte/manifest checks; root actual browser launch gate",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "rack_crate",
       "outputs": [
         "docs/adaptive-v3/evidence/H08.1.json"
       ],
-      "actual": "Package exact preserved V2 isolated build with local launcher, commit/file hashes and ZIP; no V3 contamination. Root browser launch check before PASS, parent H08 remains gated on final V3."
+      "actual": "Exact V2 cb5777f package/ZIP ready; root rehashed61entries and ZIP, launched actual4192server and inspected overview/worker/forklift with0browser errors. HTTP smoke PASS. Final V3/dual guide/publish remain H08."
+    },
+    {
+      "id": "R13.1",
+      "title": "SMALL independent four-view production reference",
+      "depends_on": [
+        "R02",
+        "R10",
+        "L09"
+      ],
+      "criteria": "Saved independent front/side/rear/quarter concept, actual image review, metric target reminder and provenance; root catalogue registration",
+      "status": "PASS",
+      "owner": "rack_crate",
+      "outputs": [
+        "docs/adaptive-v3/evidence/R13.1.json"
+      ],
+      "actual": "Root opened actual SMALL4view PNG;5empty bins x2levels, connected grounded frame/decks and full rear topology accepted. Registered dedicated binding/public catalogue, exactL09 target governs geometry."
+    },
+    {
+      "id": "R13.2",
+      "title": "STANDARD independent four-view production reference",
+      "depends_on": [
+        "R02",
+        "R10",
+        "L09"
+      ],
+      "criteria": "Saved independent front/side/rear/quarter concept, actual image review, metric target reminder and provenance; root catalogue registration",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/evidence/R13.2.json"
+      ],
+      "actual": "Root opened V1/V2 and fixed missing rear braces in FRONT; coherent6post/2bay/3deck4views accepted and registered with exact target/provenance/public copies. Geometry/payload not accepted by image."
+    },
+    {
+      "id": "R13.3",
+      "title": "HEAVY independent four-view production reference",
+      "depends_on": [
+        "R02",
+        "R10",
+        "L09"
+      ],
+      "criteria": "Saved independent front/side/rear/quarter concept, actual image review, metric target reminder and provenance; root catalogue registration",
+      "status": "PASS",
+      "owner": "rack_crate",
+      "outputs": [
+        "docs/adaptive-v3/evidence/R13.3.json"
+      ],
+      "actual": "Root opened selectedV2 and accepted coherent empty low platform4views after height fix; exact.04+.10+.04=.18L09 layers retained. Dedicated heavy-bay binding/public reference registered; C08 engagement/support/rating remain pending."
+    },
+    {
+      "id": "R13.4",
+      "title": "LONG independent four-view production reference",
+      "depends_on": [
+        "R02",
+        "R10",
+        "L09"
+      ],
+      "criteria": "Saved independent front/side/rear/quarter concept, actual image review, metric target reminder and provenance; root catalogue registration",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/evidence/R13.4.json"
+      ],
+      "actual": "Root openedV1/V2 and corrected high arm levels/missing longrail overhang; coherent3rearposts/2levels/6arms4views accepted and registered. ExactL09 metric target overrides raster, C08/M04 physical support pending."
+    },
+    {
+      "id": "R13.5",
+      "title": "FLEX independent four-view production reference",
+      "depends_on": [
+        "R02",
+        "R10",
+        "L09"
+      ],
+      "criteria": "Saved independent front/side/rear/quarter concept, actual image review, metric target reminder and provenance; root catalogue registration",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/evidence/R13.5.json"
+      ],
+      "actual": "Actual saved fourviews reviewed: empty singlebase and two rearposts coherent; exact L09 targets/provenance registered."
+    },
+    {
+      "id": "R13",
+      "title": "Dedicated four-view storage construction pack",
+      "depends_on": [
+        "R02",
+        "L09"
+      ],
+      "children": [
+        "R13.1",
+        "R13.2",
+        "R13.3",
+        "R13.4",
+        "R13.5"
+      ],
+      "criteria": "All five dedicated refinements accepted and registered before dependent geometry",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/evidence/R13.json"
+      ],
+      "actual": "Allfive dedicated storage four-view references accepted and bound to assets, independent of model renders; exact engineering target reminders retained."
     }
   ]
 }

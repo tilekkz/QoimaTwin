@@ -1,0 +1,529 @@
+{
+  "task_id": "P09.3",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T13:52:05.718915+00:00",
+  "result": "One ordinary-scale empty144x72x8 cutaway architectural shell, six exact apertures and checked new architecture against all actual compiled routes.",
+  "dimension_plan": "assets/v3/specs/environment-shell.dimensions.json",
+  "design_response": "Root approved before geometry: SW8m/NE2.4m cutaway,34perimeter columns, no roof/interiorcolumns, separate belowfloor visualplinth and explicit own architectural/approach-boundary exception.",
+  "glb": {
+    "path": "frontend/public/models/v3/environment-shell.glb",
+    "sha256": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "bytes": 987460
+  },
+  "source": {
+    "path": "assets/v3/blender/environment-shell.blend",
+    "editable_source_equivalence": {
+      "mesh_objects": 361,
+      "editable_modifiers": 714,
+      "all_evaluated_vertices_parents_materials_modifiers_semantics_equal_snapshot": true,
+      "geometry_sha256": "31860a0be4acb4a31e54b54d62d55d2c95fa9501838234bf9f8086340eaf8f9c"
+    }
+  },
+  "actual_source": {
+    "closed_positive_volume_meshes": 361,
+    "positive_volume_support_contacts": 318,
+    "column_feet_grounded": 34,
+    "six_apertures": [
+      {
+        "port_id": "IN_W_BULK",
+        "actual_clear_width_m": 7.0,
+        "actual_clear_height_m": 4.5,
+        "clear_depth_rays": 525
+      },
+      {
+        "port_id": "IN_N_STANDARD",
+        "actual_clear_width_m": 6.0,
+        "actual_clear_height_m": 4.5,
+        "clear_depth_rays": 525
+      },
+      {
+        "port_id": "IN_E_PARCEL",
+        "actual_clear_width_m": 4.0,
+        "actual_clear_height_m": 3.5,
+        "clear_depth_rays": 525
+      },
+      {
+        "port_id": "OUT_W_RETAIL",
+        "actual_clear_width_m": 4.0,
+        "actual_clear_height_m": 4.500000476837158,
+        "clear_depth_rays": 525
+      },
+      {
+        "port_id": "OUT_S_EXPRESS",
+        "actual_clear_width_m": 3.0,
+        "actual_clear_height_m": 3.5,
+        "clear_depth_rays": 525
+      },
+      {
+        "port_id": "OUT_E_B2B",
+        "actual_clear_width_m": 6.0,
+        "actual_clear_height_m": 4.5,
+        "clear_depth_rays": 525
+      }
+    ],
+    "operational_floor_size_m": [
+      144,
+      72
+    ],
+    "operational_floor_top_y": 0,
+    "ceiling_max_y": 8,
+    "display_plinth_actual_bounds": {
+      "min": [
+        -0.5999984741210938,
+        -0.550000011920929,
+        -0.5999984741210938
+      ],
+      "max": [
+        144.60000610351562,
+        -0.2799999713897705,
+        72.5999984741211
+      ]
+    },
+    "detailed_report": "assets/v3/iterations/environment-shell/P09.3/actual-source-checks.json"
+  },
+  "actual_glb": {
+    "method": "Actual GLTFLoader BIN geometry/TRS, two-way source/evaluated vertex-cloud matching, independently measured six apertures and triangle/open-box clipping.",
+    "glb_sha256": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "bytes": 987460,
+    "gltf_nodes": 83,
+    "gltf_meshes": 37,
+    "loaderMeshes": 39,
+    "material_primitives": 39,
+    "triangles": 16412,
+    "finite_unit_normals": 35608,
+    "all37BatchSignedVolumesPositive": true,
+    "maximumSourceGLBVertexDistanceM": 1.277212940171777e-05,
+    "matchedSourceComponents": 361,
+    "tolerance_m": 2e-05,
+    "bounds_including_display_plinth": {
+      "min": [
+        -0.5999984741210938,
+        -0.5499999970197678,
+        -0.5999984741210938
+      ],
+      "max": [
+        144.5999984741211,
+        8.000000074505806,
+        72.5999984741211
+      ]
+    },
+    "actualOperationalFloor": {
+      "min": [
+        0,
+        -0.2800000011920929,
+        0
+      ],
+      "max": [
+        144,
+        0,
+        72
+      ]
+    },
+    "actualDisplayOnlyPlinth": {
+      "min": [
+        -0.5999984741210938,
+        -0.5499999970197678,
+        -0.5999984741210938
+      ],
+      "max": [
+        144.5999984741211,
+        -0.2799999862909317,
+        72.5999984741211
+      ]
+    },
+    "ceilingY": 8.000000074505806,
+    "rootIdentity": true,
+    "anchors": {
+      "anchor_ceiling_8m": [
+        72,
+        8,
+        36
+      ],
+      "anchor_floor_NE": [
+        144,
+        0,
+        72
+      ],
+      "anchor_floor_NW": [
+        0,
+        0,
+        72
+      ],
+      "anchor_floor_SE": [
+        144,
+        0,
+        0
+      ],
+      "anchor_floor_SW": [
+        0,
+        0,
+        0
+      ],
+      "PORT__IN_E_PARCEL__clear_left": [
+        143.87500252435007,
+        0,
+        52.0000010257901
+      ],
+      "PORT__IN_E_PARCEL__clear_right": [
+        143.87500216572857,
+        0,
+        56.00000168243485
+      ],
+      "PORT__IN_E_PARCEL__clear_top": [
+        143.87500234503952,
+        3.5,
+        53.99999998320546
+      ],
+      "PORT__IN_E_PARCEL__floor": [
+        144.00000236041532,
+        0,
+        54.00000000000032
+      ],
+      "PORT__IN_E_PARCEL__wall_inside": [
+        143.75000232079407,
+        0,
+        53.999999966410606
+      ],
+      "PORT__IN_N_STANDARD__clear_left": [
+        75.00000141958354,
+        0,
+        71.87499866484794
+      ],
+      "PORT__IN_N_STANDARD__clear_right": [
+        69.00000141958348,
+        0,
+        71.87499866784395
+      ],
+      "PORT__IN_N_STANDARD__clear_top": [
+        71.99999998907204,
+        4.5,
+        71.87499865889549
+      ],
+      "PORT__IN_N_STANDARD__floor": [
+        72,
+        0,
+        72
+      ],
+      "PORT__IN_N_STANDARD__wall_inside": [
+        71.99999997814419,
+        0,
+        71.74999865889549
+      ],
+      "PORT__IN_W_BULK__clear_left": [
+        0.12500047960027316,
+        0,
+        21.50000045346114
+      ],
+      "PORT__IN_W_BULK__clear_right": [
+        0.12499954653885936,
+        0,
+        14.499999512949145
+      ],
+      "PORT__IN_W_BULK__clear_top": [
+        0.12500001679485706,
+        4.5,
+        17.999999983205143
+      ],
+      "PORT__IN_W_BULK__floor": [
+        0,
+        0,
+        18
+      ],
+      "PORT__IN_W_BULK__wall_inside": [
+        0.2500000335897141,
+        0,
+        17.999999966410286
+      ],
+      "PORT__OUT_E_B2B__clear_left": [
+        143.87500104193296,
+        0,
+        14.99999910329144
+      ],
+      "PORT__OUT_E_B2B__clear_right": [
+        143.87500049655017,
+        0,
+        20.999999909444615
+      ],
+      "PORT__OUT_E_B2B__clear_top": [
+        143.87500077296679,
+        4.5,
+        17.99999998320525
+      ],
+      "PORT__OUT_E_B2B__floor": [
+        144,
+        0,
+        18
+      ],
+      "PORT__OUT_E_B2B__wall_inside": [
+        143.75000075617194,
+        0,
+        17.999999966410392
+      ],
+      "PORT__OUT_S_EXPRESS__clear_left": [
+        46.5,
+        0,
+        0.125
+      ],
+      "PORT__OUT_S_EXPRESS__clear_right": [
+        49.5,
+        0,
+        0.125
+      ],
+      "PORT__OUT_S_EXPRESS__clear_top": [
+        48,
+        3.5,
+        0.125
+      ],
+      "PORT__OUT_S_EXPRESS__floor": [
+        48,
+        0,
+        0
+      ],
+      "PORT__OUT_S_EXPRESS__wall_inside": [
+        48,
+        0,
+        0.25
+      ],
+      "PORT__OUT_W_RETAIL__clear_left": [
+        0.12500028551257003,
+        0,
+        56.000000251922856
+      ],
+      "PORT__OUT_W_RETAIL__clear_right": [
+        0.12499974807714409,
+        0,
+        51.99999971448743
+      ],
+      "PORT__OUT_W_RETAIL__clear_top": [
+        0.12500001679485706,
+        4.5,
+        53.99999998320514
+      ],
+      "PORT__OUT_W_RETAIL__floor": [
+        0,
+        0,
+        54
+      ],
+      "PORT__OUT_W_RETAIL__wall_inside": [
+        0.2500000335897141,
+        0,
+        53.999999966410286
+      ]
+    },
+    "apertures": [
+      {
+        "port_id": "IN_W_BULK",
+        "actualClearWidthM": 7.000000940512121,
+        "actualClearHeightM": 4.5,
+        "apertureTriangleIntrusions": 0,
+        "clearDepthRays": 525
+      },
+      {
+        "port_id": "IN_N_STANDARD",
+        "actualClearWidthM": 6.000000000000046,
+        "actualClearHeightM": 4.5,
+        "apertureTriangleIntrusions": 0,
+        "clearDepthRays": 525
+      },
+      {
+        "port_id": "IN_E_PARCEL",
+        "actualClearWidthM": 4.000000537435499,
+        "actualClearHeightM": 3.5,
+        "apertureTriangleIntrusions": 0,
+        "clearDepthRays": 525
+      },
+      {
+        "port_id": "OUT_W_RETAIL",
+        "actualClearWidthM": 4.000000537435499,
+        "actualClearHeightM": 4.5,
+        "apertureTriangleIntrusions": 0,
+        "clearDepthRays": 525
+      },
+      {
+        "port_id": "OUT_S_EXPRESS",
+        "actualClearWidthM": 3,
+        "actualClearHeightM": 3.5,
+        "apertureTriangleIntrusions": 0,
+        "clearDepthRays": 525
+      },
+      {
+        "port_id": "OUT_E_B2B",
+        "actualClearWidthM": 6.000000806153246,
+        "actualClearHeightM": 4.5,
+        "apertureTriangleIntrusions": 0,
+        "clearDepthRays": 525
+      }
+    ],
+    "khronos": "pending root",
+    "actual_browser_views": "pending root"
+  },
+  "actual_GLB_route_audit": {
+    "report": "assets/v3/iterations/environment-shell/P09.3/glb-route-checks.json",
+    "counts": {
+      "walking_arcs": 4000,
+      "walking_allowed_mode_pairs_covered": 4104,
+      "vehicle_arcs": 1316,
+      "vehicle_allowed_profile_pairs_covered": 2258,
+      "continuous_component_sweeps": 2348,
+      "inflated_oriented_polygons": 167948
+    },
+    "blocking_findings": 0,
+    "clear_apertures": 6,
+    "straight_crossing_probes": 6,
+    "negative_column_cases": [
+      {
+        "case": "injected_column_on_actual_walking_arc",
+        "arc_id": "v3:module:FLEX_E:001:B1:cart:segment:000:f",
+        "detected": true
+      },
+      {
+        "case": "injected_column_on_actual_vehicle_root",
+        "arc_id": "v3:module:HEAVY_E:001:B1:vehicle:segment:000:f",
+        "detected": true
+      }
+    ],
+    "architectural_boundary_rectangle_intersections": 61,
+    "whole_approach_rectangle_empty_claim": false,
+    "coordinate_error_budget": {
+      "source_vs_plan_tolerance_m": 2e-05,
+      "actual_GLB_vs_source_max_distance_m": 1.277212940171777e-05,
+      "composed_plan_comparison_tolerance_m": 3.277212940171777e-05,
+      "maximum_measured_plan_bound_error_m": 2.1979808821015467e-05,
+      "route_collision_predicates_unchanged": true
+    }
+  },
+  "source_views": {
+    "asset_id": "environment-shell",
+    "reference_ids": [
+      "R07",
+      "R08"
+    ],
+    "resolution_px": [
+      900,
+      900
+    ],
+    "actually_opened_all_six": true,
+    "source_geometry_equivalence": {
+      "mesh_objects": 361,
+      "editable_modifiers": 714,
+      "all_evaluated_vertices_parents_materials_modifiers_semantics_equal_snapshot": true,
+      "geometry_sha256": "31860a0be4acb4a31e54b54d62d55d2c95fa9501838234bf9f8086340eaf8f9c"
+    },
+    "source_before_export_sha256": "34b1780c1582c5fe66bf263188401e384dff9cea31a2b6186b1aaf224cbc9090",
+    "source_after_finish_serialization_sha256": "9b0a1c7e744623ca88e5975b0fd8b71ad9134d50585ead1fbe231fdd0de36d68",
+    "rendered_again_after_export": false,
+    "views": {
+      "front": {
+        "path": "assets/v3/previews/environment-shell/front.png",
+        "copied_from": "assets/v3/iterations/environment-shell/P09.3/iteration-01/front.png",
+        "sha256": "6fdbffa72a8d121dbe8ca9b2696f2a910ae6438dbfda666d615dc81fee0b6bad",
+        "context_crop": false
+      },
+      "side": {
+        "path": "assets/v3/previews/environment-shell/side.png",
+        "copied_from": "assets/v3/iterations/environment-shell/P09.3/iteration-01/side.png",
+        "sha256": "29cb1fec2befb7d6f15363fa17a5c3157e3611507cc4663b46b59799e8ee8fae",
+        "context_crop": false
+      },
+      "rear": {
+        "path": "assets/v3/previews/environment-shell/rear.png",
+        "copied_from": "assets/v3/iterations/environment-shell/P09.3/iteration-01/rear.png",
+        "sha256": "b6d382a8d4c0937e32ff625e780717327752414790a601d6062dd8508c6629b5",
+        "context_crop": false
+      },
+      "three-quarter": {
+        "path": "assets/v3/previews/environment-shell/three-quarter.png",
+        "copied_from": "assets/v3/iterations/environment-shell/P09.3/iteration-01/three-quarter.png",
+        "sha256": "c80e550397442aae242563e2209516111c2c0569b92e2be549bb982979625428",
+        "context_crop": false
+      },
+      "corner-SW-close": {
+        "path": "assets/v3/previews/environment-shell/corner-SW-close.png",
+        "copied_from": "assets/v3/iterations/environment-shell/P09.3/iteration-01/corner-SW-close.png",
+        "sha256": "f2434c9b58e2b69f013cd3a0cb8207b557f16c2b49fdac6ee8bb65d81b42f053",
+        "context_crop": true
+      },
+      "port-IN_W-close": {
+        "path": "assets/v3/previews/environment-shell/port-IN_W-close.png",
+        "copied_from": "assets/v3/iterations/environment-shell/P09.3/iteration-01/port-IN_W-close.png",
+        "sha256": "8827a9bc91ac0e9e8bcf76183520025f1de7c0ade8c3e8b98b931b59632dab93",
+        "context_crop": true
+      }
+    }
+  },
+  "inspection": [
+    "Actually opened four complete source PNGs and two explicit architectural context crops, compared against actualR07/R08.",
+    "NEoverview cutaway keeps floor legible; SWwalls really8m and NEwalls2.4m. Fullsource front/rear are naturally letterboxed by144:8 aspect, so close crops document local volumes.",
+    "Corner crop shows finite wall returns, integratedpetrol/grey/cap bands, groundedfoot/shaft/caps, opaque3pane inserts without disconnected pieces.",
+    "Port crop shows layered tan/steel frame and open floor passage connected to wall above; no raised threshold or panel.",
+    "No significant geometric/art defect requiring a second source iteration observed. Empty floor/lighting/full-scene density are not accepted by this isolated shell gate."
+  ],
+  "checks_and_corrections": [
+    "Actual source361closed positive-volume meshes and318support overlap witnesses; all34feetY0.",
+    "Initial BVH parity advance10um repeated faces at worldX144 duefloat32 ULP;100um ray advancement avoids duplicatefacecounts while>=.5mm support margins remain required. No geometry change.",
+    "Actualsource-plan bounding discrepancy14.65um plusGLBsource12.77um measured budget composed explicitly; maximumGLBplan bounddelta21.98um, route collision predicates unchanged.",
+    "Root observed browser shadowacne on massivefloor and is fixing existing stand to disable castShadow only on floor_support while retaining receiveShadow. Sourcegeometry unchanged."
+  ],
+  "readonly_layout_and_accepted_asset_hashes_unchanged": true,
+  "root_checks": {
+    "khronos": "root reported current14GLB0errors/0warnings including this export",
+    "browser": "root opened sourcequarter+2crops andbrowserquarter; final port/corner views afterstandshadowfix pending"
+  },
+  "commands": {
+    "build": "blender --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_environment_shell --iteration 01",
+    "source_check": "blender --background --factory-startup --threads 2 --python assets/v3/iterations/environment-shell/P09.3/check_source.py",
+    "render": "blender --background --factory-startup --threads 2 --python assets/v3/iterations/environment-shell/P09.3/render_source.py",
+    "export": "blender --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_environment_shell --export",
+    "GLB_check": "node assets/v3/iterations/environment-shell/P09.3/verify_glb.mjs",
+    "route_check": "python assets/v3/iterations/environment-shell/P09.3/check_routes.py --glb"
+  },
+  "limits": [
+    "No racks/stock/people/vehicles/inventory, roof or internal columns.",
+    "Physical floor remains144x72 atY0; overall bbox includes separately tagged145.2x73.2 visualplinth belowfloor.",
+    "New physicalarchitecture vs actualL12 geometric candidates verified; no source scheduling/handler/cargo admission.",
+    "Root actual finalbrowser views and parentP09 gate remain required; overall scene density/lighting still open."
+  ],
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-07T13:18:32Z",
+    "evidence": "31auditfunctions search complete; swept_shapes trace both directions6callees/2callers complete. Relevantpaths no_recorded_issue/metadata_changed or missing; exact source/layout fallback. Unrelated largeWarehouse parsepartial178 not used for this boundedclaim; no refresh."
+  },
+  "artifacts": {
+    "tools/blender/v3/build_environment_shell.py": "9871db509d3e2a6c51b1a12f0b1c049239543e5647d37e5dfd8508302d066af7",
+    "assets/v3/specs/environment-shell.dimensions.json": "fa7b8635ff04178a64468998c9539e3515290deb3b493f9bc612088a4c46193e",
+    "assets/v3/blender/environment-shell.blend": "9b0a1c7e744623ca88e5975b0fd8b71ad9134d50585ead1fbe231fdd0de36d68",
+    "assets/v3/blender/environment-shell.stats.json": "377b2c655d3760e965d108f7d7b16959a70e5e98d478482ca8f37026f3f52edb",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "assets/v3/previews/environment-shell/provenance.json": "9990c8ce0c79232e4b0afbc98371c2c7468f133b7d18881dc7b45e387ca52d49",
+    "assets/v3/iterations/environment-shell/P09.3/actual-source-checks.json": "76b2a79234969f4c1aa2114dc42437b944c21439fce7045d00038943da5a8e56",
+    "assets/v3/iterations/environment-shell/P09.3/glb-route-checks.json": "4e3292477ec12ebfb94997845b9a7c39df9443e13eebea4a73b2b5da0f44ed69"
+  },
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T13:56:43.833524+00:00",
+    "actual_source_views_opened": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter",
+      "corner-SW-close",
+      "port-IN_W-close"
+    ],
+    "actual_browser_views_opened": [
+      "front",
+      "side",
+      "rear",
+      "quarter",
+      "focused_IN_W_BULK",
+      "focused_OUT_S_EXPRESS"
+    ],
+    "browser_errors": 0,
+    "failed_resources": 0,
+    "Khronos_errors": 0,
+    "Khronos_warnings": 0,
+    "independent_GLTF_and_GLB_route_rerun": true,
+    "review": "Actual6sourceviews and6browserviews show substantial wallreturns/connected34columns/plinth/floor,sixcorrectapertures andcutaway topology, allsourcegeometrypreserved. RootGLTFLoader checks987460B/16412tri/6apertures/3150depthrays, reran4000walk+1316vehiclearcs with0collisions and2injectedcolumnnegatives.61architectural-boundaryexceptions and32.77micrometre two-stagebboxbudget explicit, collisionpredicateunchanged. Root fixedstand floor_support toreceivebutnotcastselfshadow and focusesdirectionalshadowprojection toinspectionarea; floorstripesgone and closewall/gateclean. Whole-scenedensity/art/lighting/runtime remainopen; noempty-shell claimasfinishedwarehouse."
+  }
+}

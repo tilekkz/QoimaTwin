@@ -1,0 +1,1 @@
+Preserved before physical blueprint correction. M14.1 found real front tyre/fork overlap and low PALLET/IBC bounding cargo overlap. Design-only C08 v0.1 is not physical/model acceptance. Root is revising travel heights and adding stopped reach handling; original L05/L07/L09 sources stay read-only.

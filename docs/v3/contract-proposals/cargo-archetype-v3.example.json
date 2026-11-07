@@ -1,0 +1,134 @@
+{
+  "schema_id": "qoima.cargo-archetype.v3-proposal",
+  "schema_version": "0.1.0",
+  "record_type": "CargoArchetype",
+  "status": "proposal",
+  "source_kind": "synthetic_design",
+  "operational_admission": false,
+  "archetype_id": "STANDARD_CARTON",
+  "label": "C01 single synthetic example; not adopted catalogue or stock",
+  "layout_binding": {
+    "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "layout_version": "qoima-144x72-v3-proposal",
+    "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+    "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+  },
+  "reference_binding": {
+    "path": "assets/references/v3/r03-dimension-targets.json",
+    "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9",
+    "archetype_id": "STANDARD_CARTON",
+    "dimensions_role": "handling_unit_outer_target"
+  },
+  "unit": {
+    "dimensions_xyz_m": [
+      0.1,
+      0.08,
+      0.06
+    ],
+    "bounding_volume_m3": 0.00048,
+    "contents_mass_kg": 0.2,
+    "packaging_tare_mass_kg": 0.05,
+    "gross_mass_kg": 0.25,
+    "mass_scope": "contents_plus_primary_unit_packaging"
+  },
+  "handling_unit": {
+    "dimensions_xyz_m": [
+      0.6,
+      0.4,
+      0.3
+    ],
+    "bounding_volume_m3": 0.072,
+    "units_per_handling_unit": 24,
+    "packaging_type": "carton",
+    "packaging_tare_mass_kg": 0.35,
+    "contents_gross_mass_kg": 6.0,
+    "gross_mass_kg": 6.35,
+    "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments"
+  },
+  "orientation": {
+    "upright_only": true,
+    "permitted_orientations": [
+      {
+        "orientation_id": "upright_xyz",
+        "local_axes_in_destination": [
+          "+X",
+          "+Y",
+          "+Z"
+        ]
+      }
+    ],
+    "slot_orientation_mappings": [
+      {
+        "slot_orientation_id": "upright_xyz_in_module",
+        "cargo_orientation_id": "upright_xyz"
+      }
+    ]
+  },
+  "fragile": false,
+  "stacking": {
+    "stackable": false,
+    "max_stack": 1
+  },
+  "handling": {
+    "candidate_only": true,
+    "modes": [
+      {
+        "transport_tag": "manual_hand_carry",
+        "required_handler_tag": "manual_operator",
+        "required_equipment_tags": []
+      },
+      {
+        "transport_tag": "manual_cart",
+        "required_handler_tag": "manual_operator",
+        "required_equipment_tags": [
+          "manual_cart"
+        ]
+      },
+      {
+        "transport_tag": "light_conveyor",
+        "required_handler_tag": "handoff_operator",
+        "required_equipment_tags": [
+          "light_conveyor"
+        ]
+      }
+    ]
+  },
+  "compatibility": {
+    "storage_type_tags": [
+      "STANDARD",
+      "FLEX"
+    ],
+    "property_tags": [
+      "boxed",
+      "dry",
+      "upright"
+    ],
+    "candidate_only": true
+  },
+  "source_of_assumptions": [
+    {
+      "assumption_id": "C01_REFERENCE_HU",
+      "kind": "synthetic_design",
+      "fields": [
+        "handling_unit.dimensions_xyz_m"
+      ],
+      "statement": "Exact accepted R03 STANDARD_CARTON outer HU target; it does not define SKU unit dimensions. One example only; C02 catalogue adoption pending."
+    },
+    {
+      "assumption_id": "C01_SYNTHETIC_UNIT_PACK",
+      "kind": "synthetic_design",
+      "fields": [
+        "unit",
+        "handling_unit.units_per_handling_unit",
+        "handling_unit.packaging_tare_mass_kg",
+        "orientation",
+        "stacking",
+        "handling",
+        "compatibility",
+        "fragile"
+      ],
+      "statement": "Illustrative packaged unit,24units/HU and masses/tags are synthetic assumptions. Mass identities and bounding volumes are checked; actual packing fit, manual availability, storage/transport eligibility, support/rating and contacts remain C04/C08/P/W. No lot quantity or SKU mapping is instantiated."
+    }
+  ]
+}

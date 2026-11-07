@@ -14,5 +14,5 @@ try{
   frames.push({view,screenshot:`${out}/${view}.png`,state:await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot())});
  }
  await writeFile(`${out}/browser-capture.json`,JSON.stringify({at:new Date().toISOString(),browser:await browser.version(),url:page.url(),viewport:{width:1440,height:1000},errors,failedResources,frames},null,2));
- if(errors.length)throw Error(errors.join('\n'));console.log(JSON.stringify({asset,captures:4,errors:0,out}));
+ if(errors.length||failedResources.length)throw Error(JSON.stringify({errors,failedResources}));console.log(JSON.stringify({asset,captures:4,errors:0,failedResources:0,out}));
 }catch(error){await writeFile(`${out}/failure.json`,JSON.stringify({error:String(error),errors,failedResources,status:await page.locator('#status-copy').textContent().catch(()=>null)},null,2));throw error;}finally{await browser.close();}

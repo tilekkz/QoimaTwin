@@ -1,0 +1,315 @@
+{
+  "artifacts": [
+    {
+      "bytes": 29385,
+      "path": "docs/v3/contract-proposals/storage-slot-v3.schema.json",
+      "sha256": "b7cd65bf84536d3a8de23ff263f23ef8b6cb8509a11f30977fcce6fa09e8c29b"
+    },
+    {
+      "bytes": 3541951,
+      "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+      "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681"
+    },
+    {
+      "bytes": 29085,
+      "path": "tools/visual/v3/build_storage_contract.py",
+      "sha256": "8169fc3dde18711398c7cb28163aee310e1a858db8e9b65f529264f4df96bcd4"
+    }
+  ],
+  "checked_at_utc": "2026-11-07T12:48:12.208581+00:00",
+  "counts": {
+    "active_geometric_candidates": 588,
+    "explicit_reserve_region_modules": 8,
+    "explicit_reserve_region_slots": 48,
+    "modules": 132,
+    "modules_by_family": {
+      "FLEX": 8,
+      "HEAVY": 24,
+      "LONG": 12,
+      "SMALL": 48,
+      "STANDARD": 40
+    },
+    "reserve_blocked": 188,
+    "slots": 776,
+    "slots_by_type": {
+      "FLEX": 8,
+      "HEAVY": 24,
+      "LONG": 24,
+      "SMALL": 480,
+      "STANDARD": 240
+    },
+    "upper_primary_region_reserve": 140
+  },
+  "fragile_dimension_query_not_assignment": {
+    "bottom_y_m": 0.2,
+    "centre_local_xyz_m": [
+      -0.7,
+      0.675,
+      0.175
+    ],
+    "operational_admission": false,
+    "support_gap_m": 0,
+    "top_headroom_m": 0.10000000000000009,
+    "top_y_m": 1.15
+  },
+  "independent_projection_check": {
+    "HEAVY_open_headroom_distinguished_from_physical_base": 24,
+    "all_source_bindings_rehashed": true,
+    "check_only_exit_code": 0,
+    "check_only_no_writes_to_all_watched_paths": true,
+    "check_only_stdout": {
+      "counts": {
+        "active_geometric_candidates": 588,
+        "explicit_reserve_region_modules": 8,
+        "explicit_reserve_region_slots": 48,
+        "modules": 132,
+        "modules_by_family": {
+          "FLEX": 8,
+          "HEAVY": 24,
+          "LONG": 12,
+          "SMALL": 48,
+          "STANDARD": 40
+        },
+        "reserve_blocked": 188,
+        "slots": 776,
+        "slots_by_type": {
+          "FLEX": 8,
+          "HEAVY": 24,
+          "LONG": 24,
+          "SMALL": 480,
+          "STANDARD": 240
+        },
+        "upper_primary_region_reserve": 140
+      },
+      "invalid_mutations_rejected": 25,
+      "mode": "check-only",
+      "projection_sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+      "schema_sha256": "b7cd65bf84536d3a8de23ff263f23ef8b6cb8509a11f30977fcce6fa09e8c29b",
+      "task_id": "C04"
+    },
+    "conditional_options_by_transport_tag": {
+      "forklift_assisted": 100,
+      "manual_cart": 552,
+      "manual_hand_carry": 552
+    },
+    "fragile_dimension_query": {
+      "bottom_gap_m": "0",
+      "bottom_y_m": "0.2",
+      "is_inventory_or_admission": false,
+      "oversize_height_rejected": true,
+      "top_headroom_m": "0.10",
+      "top_y_m": "1.15"
+    },
+    "method": "No builder import: direct source/native field comparison; independent quarter-turn signed-permutation transforms with Decimal arithmetic; typed L12 references and per-module capacities; independent Decimal support query.",
+    "projection_and_inputs_identical_to_independent_pass": true,
+    "source_modules_compared": 132,
+    "source_slots_compared": 776,
+    "typed_access_references_resolved": 3680,
+    "zero_operational_or_availability_claims": true
+  },
+  "layout_binding": {
+    "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+    "layout_version": "qoima-144x72-v3-proposal",
+    "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+  },
+  "limits": [
+    "Source projection and compatibility prerequisites only; no inventory, resource availability, cargo admission, scheduling, model fit or new rotations.",
+    "not_granted; mass, handler, equipment, support, packing, grip and schedule checks remain separate"
+  ],
+  "negative_cases": [
+    {
+      "case": "outer_substituted_for_usable",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: usable_dimensions_xyz_m",
+      "rejected": true
+    },
+    {
+      "case": "changed_world_yaw",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: module_world_yaw_rad",
+      "rejected": true
+    },
+    {
+      "case": "changed_bottom_anchor",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: bin_anchor",
+      "rejected": true
+    },
+    {
+      "case": "missing_service_id",
+      "reason": "'service_node_id' is a required property",
+      "rejected": true
+    },
+    {
+      "case": "unknown_compiled_node",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: access",
+      "rejected": true
+    },
+    {
+      "case": "reserve_unblocked",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: active_pick_candidate",
+      "rejected": true
+    },
+    {
+      "case": "wrong_payload_limit",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: max_payload_kg",
+      "rejected": true
+    },
+    {
+      "case": "wrong_HU_capacity",
+      "reason": "1 was expected",
+      "rejected": true
+    },
+    {
+      "case": "hidden_yaw90_permission",
+      "reason": "['upright_xyz_in_module'] was expected",
+      "rejected": true
+    },
+    {
+      "case": "wrong_usable_volume",
+      "reason": "SOURCE_SLOT_FIELD_MISMATCH: usable_volume_m3",
+      "rejected": true
+    },
+    {
+      "case": "nonfinite_dimension",
+      "reason": "NONFINITE_NUMBER",
+      "rejected": true
+    },
+    {
+      "case": "negative_dimension",
+      "reason": "-0.1 is less than or equal to the minimum of 0",
+      "rejected": true
+    },
+    {
+      "case": "local_anchor_changed_to_cargo_centre",
+      "reason": "DERIVED_SLOT_PROJECTION_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "local_usable_bounds_changed",
+      "reason": "DERIVED_SLOT_PROJECTION_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "reserve_region_misclassified",
+      "reason": "DERIVED_SLOT_PROJECTION_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "standard_carton_forklift_permission",
+      "reason": "DERIVED_SLOT_PROJECTION_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "handler_availability_claim",
+      "reason": "False was expected",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_slot_id",
+      "reason": "DUPLICATE_OR_MISSING_SLOT",
+      "rejected": true
+    },
+    {
+      "case": "unknown_module_id",
+      "reason": "SOURCE_MODULE_IDS_DIFFER",
+      "rejected": true
+    },
+    {
+      "case": "changed_source_binding",
+      "reason": "[{'path': 'docs/v3/contract-proposals/cargo-archetype-v3.example.json', 'bytes': 3966, 'sha256': 'fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86'}, {'path': 'docs/v3/contract-proposals/cargo-archetype-v3.schema.json', 'bytes': 11821, 'sha256': '46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88'}, {'path': 'docs/v3/contract-proposals/layout-links-v3.json', 'bytes': 5905710, 'sha256': 'c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65'}, {'path': 'docs/v3/contract-proposals/layout-manifest-v3.json', 'bytes': 8009, 'sha256': 'f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8'}, {'path': 'docs/v3/contract-proposals/layout-semantic-index-v3.json', 'bytes': 5128507, 'sha256': '67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a'}, {'path': 'docs/v3/contract-proposals/storage-layout-v3.json', 'bytes': 2777075, 'sha256': 'dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2'}, {'path': 'frontend/public/data/adaptive-v3/layout-manifest.json', 'bytes': 2341205, 'sha256': 'eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db'}, {'path': 'assets/references/v3/r03-dimension-targets.json', 'bytes': 1322, 'sha256': '9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9'}] was expected",
+      "rejected": true
+    },
+    {
+      "case": "changed_module_capacity",
+      "reason": "MODULE_SOURCE_OR_CAPACITY_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "hovering_support_policy",
+      "reason": "{'fit_budget': 'HU outer dimensions + 2*c <= usable dimensions on every local axis', 'x_placement': 'centred, clearance at least c on each face', 'z_placement': 'front aligned, front clearance c; remaining rear clearance at least c', 'y_placement': 'HU bottom at bin_anchor.Y; entire 2*c budget above HU', 'bottom_gap_m': 0, 'vertical_top_clearance_factor': 2, 'service_height_role': 'cargo_support_plane_not_grip_target', 'physical_bounds_role': 'module collision AABB is broadphase only, never usable volume or a solid cavity', 'module_load_rule': 'sum of complete HU gross masses across module slots <= module max payload', 'admission': 'not_granted; mass, handler, equipment, support, packing, grip and schedule checks remain separate'} was expected",
+      "rejected": true
+    },
+    {
+      "case": "mutated_source_bytes",
+      "reason": "SOURCE_HASH_MISMATCH: mutated L09",
+      "rejected": true
+    },
+    {
+      "case": "oversize_HU_dimension_budget",
+      "reason": "DIMENSION_CLEARANCE_BUDGET",
+      "rejected": true
+    },
+    {
+      "case": "no_extra_vertical_allowance_at_boundary",
+      "reason": "DIMENSION_CLEARANCE_BUDGET",
+      "rejected": true
+    }
+  ],
+  "owner": "rack_crate",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T12:51:18.535780+00:00",
+    "source_review": "Read full spec and exact context binding, transforms, handler options, typed references, projection/schema/validation and supported-placement functions.",
+    "strict_check_only_exit": 0,
+    "negative_cases": 25,
+    "independent_artifact_checks": "Parsed actual776records/132modules; compared every retained native slot field against L09, recalculated all776volume products in Decimal, and confirmed .20+.95=1.15 with .10topair and0bottomgap.",
+    "scope": "Pinned contract/geometry prerequisites only. No model cavity/actual hand proof, stock, cargo admission, equipment availability or scheduling."
+  },
+  "source_bindings": [
+    {
+      "bytes": 3966,
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.example.json",
+      "sha256": "fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86"
+    },
+    {
+      "bytes": 11821,
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.schema.json",
+      "sha256": "46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88"
+    },
+    {
+      "bytes": 5905710,
+      "path": "docs/v3/contract-proposals/layout-links-v3.json",
+      "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65"
+    },
+    {
+      "bytes": 8009,
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+    },
+    {
+      "bytes": 5128507,
+      "path": "docs/v3/contract-proposals/layout-semantic-index-v3.json",
+      "sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a"
+    },
+    {
+      "bytes": 2777075,
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    },
+    {
+      "bytes": 2341205,
+      "path": "frontend/public/data/adaptive-v3/layout-manifest.json",
+      "sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+    },
+    {
+      "bytes": 1322,
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    }
+  ],
+  "spec": {
+    "bytes": 5361,
+    "path": "docs/adaptive-v3/specs/C04.md",
+    "sha256": "04db30bcc30ec7fe6687431a9b46e49ca291d0e9f79f82d1755329f9776f7ae9"
+  },
+  "status": "VERIFY",
+  "task_id": "C04",
+  "validation": {
+    "all_records_source_projection": true,
+    "module_capacity_aggregation": true,
+    "reserve_and_conditional_handlers": true,
+    "schema_2020_12": true,
+    "typed_compiled_references": true,
+    "world_local_yaw_bounds": true
+  }
+}

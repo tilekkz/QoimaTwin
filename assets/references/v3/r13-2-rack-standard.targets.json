@@ -1,0 +1,125 @@
+{
+  "reference_id": "R13.2",
+  "asset_id": "rack-standard",
+  "units": "m",
+  "up_axis": "Y",
+  "origin": "bottom floor centre; front +Z",
+  "engineering_authority": "L09 accepted module definition; reference raster does not validate payload or fit",
+  "source": {
+    "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+    "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+  },
+  "module_definition": {
+    "outer": [
+      2.8,
+      3.85,
+      1.4
+    ],
+    "usable": [
+      1.25,
+      1.05,
+      1.1
+    ],
+    "levels": [
+      0.2,
+      1.4,
+      2.6
+    ],
+    "bays": [
+      -0.7,
+      0.7
+    ],
+    "payload": 250,
+    "module_payload": 1500,
+    "clearance": 0.05,
+    "cargo": [
+      "STANDARD_CARTON",
+      "FRAGILE_CRATE"
+    ],
+    "construction": {
+      "posts": [
+        {
+          "min": [
+            -1.4,
+            0,
+            -0.685
+          ],
+          "max": [
+            -1.33,
+            3.85,
+            -0.615
+          ]
+        },
+        {
+          "min": [
+            -1.4,
+            0,
+            0.615
+          ],
+          "max": [
+            -1.33,
+            3.85,
+            0.685
+          ]
+        },
+        {
+          "min": [
+            -0.035,
+            0,
+            -0.685
+          ],
+          "max": [
+            0.035,
+            3.85,
+            -0.615
+          ]
+        },
+        {
+          "min": [
+            -0.035,
+            0,
+            0.615
+          ],
+          "max": [
+            0.035,
+            3.85,
+            0.685
+          ]
+        },
+        {
+          "min": [
+            1.33,
+            0,
+            -0.685
+          ],
+          "max": [
+            1.4,
+            3.85,
+            -0.615
+          ]
+        },
+        {
+          "min": [
+            1.33,
+            0,
+            0.615
+          ],
+          "max": [
+            1.4,
+            3.85,
+            0.685
+          ]
+        }
+      ],
+      "deck_thickness_m": 0.1,
+      "deck_top_y_m": [
+        0.2,
+        1.4,
+        2.6
+      ],
+      "meaning": "Connected posts/decks/supports. LONG has three rear posts and cantilever arms. FLEX front stays open."
+    }
+  },
+  "cargo_in_reference": false,
+  "stock_or_physical_rating_accepted": false
+}

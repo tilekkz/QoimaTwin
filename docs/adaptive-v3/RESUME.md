@@ -1,17 +1,17 @@
 # QoimaTwin v3 — resume
 
-Updated UTC: 2026-11-07T12:01:56.649592+00:00
+Updated UTC: 2026-11-07T15:06:31.865213+00:00
 Workspace: `C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin`
-Branch: `codex/twin-v3-adaptive`; current HEAD: `49535b45d3e5d4fa0ccfe918677513b7057734d4`.
+Branch: `codex/twin-v3-adaptive`; current HEAD: `5af1fbc9787f6dadbd9d923bcab475ab6472e82a`.
 Goal already active: complete visual v3 per `brief/01_START_CODEX.md`. Do not create a duplicate goal.
 
 ## Current checkpoint
 
-P09.1 ACTIVE (people_packing): Build one R07 standard4x4.5m clear dock module through dimensions/source four-view refinement and final GLB numeric checks; root browser/aperture gate remains required.
+M14.2 ACTIVE (people_packing): Independentreach-forklift4view supplement beforebody; then ONLYgroundedbody/counterweight/4wheels stagedchild, finalmodelgates later.
 
-PASS (59/163 cards, including expanded children): I01, I02, I03, I04, I05, I06, I07, I08, R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, L01, L02, L03, L04, L05, L06, L07, L08, L09, L10, L11, L12, M13, P01, P02, P08, M13.1, M13.2, M13.3, R11, I09, I09.1, I09.2, I09.3, P01.1, P01.2, P01.3, P01.4, P01.5, P01.6, P01.7, P08.1, P08.2, P08.3, P08.4, P08.5, P08.6, R12, L12.1, L12.2, L12.3.
-ACTIVE/VERIFY/FIX: C01 ACTIVE warehouse_props, P09.1 ACTIVE people_packing, H08.1 ACTIVE rack_crate.
-Next READY: none; inspect dependency state.
+PASS (83/169 cards, including expanded children): I01, I02, I03, I04, I05, I06, I07, I08, R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, L01, L02, L03, L04, L05, L06, L07, L08, L09, L10, L11, L12, C01, C02, C03, C04, C05, C06, C07, C08, M01, M02, M03, M05, M13, P01, P02, P08, M06.1, M13.1, M13.2, M13.3, P09.1, P09.2, P09.3, M14.1, R11, I09, I09.1, I09.2, I09.3, P01.1, P01.2, P01.3, P01.4, P01.5, P01.6, P01.7, P08.1, P08.2, P08.3, P08.4, P08.5, P08.6, R12, L12.1, L12.2, L12.3, H08.1, R13.1, R13.2, R13.3, R13.4, R13.5, R13.
+ACTIVE/VERIFY/FIX: M08 ACTIVE rack_crate, M06.2 ACTIVE warehouse_props, M14.2 ACTIVE people_packing.
+Next READY: C09, M04, M09, M10, M11, M12, M06.3, M07.1, M07.2, P09.4.
 Read the current card, its exact inputs and evidence before resuming. Use `python work/v3_task.py ID STATUS OWNER "review note"` for root state transitions; agents edit only their card/artifacts and request root review.
 
 ## Decisions and preservation

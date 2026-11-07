@@ -1,0 +1,380 @@
+{
+  "schema": "qoima-large-gate-family-dimensions-v1",
+  "declared_at": "2026-11-07T12:34:00.539742+00:00",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Zinward",
+  "origin": "floor aperture centre/wall outside planeZ0",
+  "reference": "assets/references/v3/r07-ports-zones.png",
+  "reference_sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+  "authority": "Accepted exact L11/L03/L04 jamb/header pieces and L05 candidate profile. R07 style adapted to these dimensions; envelopes declared/accepted before geometry.",
+  "variants": {
+    "large-gate": {
+      "asset_id": "large-gate",
+      "port_id": "IN_W_BULK",
+      "root_name": "large_gate_root",
+      "clear_width_m": 7,
+      "clear_height_m": 4.5,
+      "dimensions_m": [
+        7.5,
+        4.75,
+        0.25
+      ],
+      "bounds_runtime": {
+        "min": [
+          -3.75,
+          0,
+          0
+        ],
+        "max": [
+          3.75,
+          4.75,
+          0.25
+        ]
+      },
+      "construction": {
+        "steel_U": {
+          "outer_half_width": 3.74,
+          "outer_top": 4.75,
+          "inner_half_width": 3.57,
+          "inner_top": 4.57,
+          "z": [
+            0.025,
+            0.225
+          ],
+          "bevel_m": 0.008
+        },
+        "tan_reveal_U": {
+          "outer_half_width": 3.59,
+          "outer_top": 4.59,
+          "inner_half_width": 3.5,
+          "inner_top": 4.5,
+          "z": [
+            0.04,
+            0.21
+          ],
+          "bevel_m": 0,
+          "reason": "Keep the exact rectangular aperture corners free; primary steel and secondary boxes carry small bevels."
+        },
+        "foot_each": {
+          "centre_abs_x": 3.6325,
+          "size": [
+            0.235,
+            0.16,
+            0.24
+          ],
+          "y": [
+            0,
+            0.16
+          ],
+          "z": [
+            0.005,
+            0.245
+          ]
+        },
+        "bumper_each": {
+          "centre_abs_x": 3.64,
+          "width": 0.17,
+          "y": [
+            0.14,
+            1.1
+          ],
+          "outside_z": [
+            0.012,
+            0.06
+          ],
+          "inside_z": [
+            0.19,
+            0.238
+          ]
+        },
+        "safety_band_each": {
+          "centre_abs_x": 3.64,
+          "width": 0.11,
+          "height": 0.06,
+          "centres_y": [
+            0.34,
+            0.87
+          ],
+          "outside_z": [
+            0,
+            0.016
+          ],
+          "inside_z": [
+            0.234,
+            0.25
+          ]
+        },
+        "header_panel_each": {
+          "width": 7.32,
+          "y": [
+            4.65,
+            4.72
+          ],
+          "outside_z": [
+            0.012,
+            0.028
+          ],
+          "inside_z": [
+            0.222,
+            0.238
+          ]
+        }
+      },
+      "anchors": {
+        "anchor_aperture_floor": [
+          0,
+          0,
+          0
+        ],
+        "anchor_clear_left": [
+          -3.5,
+          0,
+          0.125
+        ],
+        "anchor_clear_right": [
+          3.5,
+          0,
+          0.125
+        ],
+        "anchor_clear_top": [
+          0,
+          4.5,
+          0.125
+        ],
+        "anchor_wall_inside": [
+          0,
+          0,
+          0.25
+        ]
+      },
+      "wall_mount": {
+        "position": [
+          0,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "forward": "+Zinward",
+        "vehicle_yaw_relative_module": 0
+      },
+      "nominal_candidate_side_margin_m": 1.15
+    },
+    "large-gate-b2b": {
+      "asset_id": "large-gate-b2b",
+      "port_id": "OUT_E_B2B",
+      "root_name": "large_gate_b2b_root",
+      "clear_width_m": 6,
+      "clear_height_m": 4.5,
+      "dimensions_m": [
+        6.5,
+        4.75,
+        0.25
+      ],
+      "bounds_runtime": {
+        "min": [
+          -3.25,
+          0,
+          0
+        ],
+        "max": [
+          3.25,
+          4.75,
+          0.25
+        ]
+      },
+      "construction": {
+        "steel_U": {
+          "outer_half_width": 3.24,
+          "outer_top": 4.75,
+          "inner_half_width": 3.07,
+          "inner_top": 4.57,
+          "z": [
+            0.025,
+            0.225
+          ],
+          "bevel_m": 0.008
+        },
+        "tan_reveal_U": {
+          "outer_half_width": 3.09,
+          "outer_top": 4.59,
+          "inner_half_width": 3.0,
+          "inner_top": 4.5,
+          "z": [
+            0.04,
+            0.21
+          ],
+          "bevel_m": 0,
+          "reason": "Keep the exact rectangular aperture corners free; primary steel and secondary boxes carry small bevels."
+        },
+        "foot_each": {
+          "centre_abs_x": 3.1325,
+          "size": [
+            0.235,
+            0.16,
+            0.24
+          ],
+          "y": [
+            0,
+            0.16
+          ],
+          "z": [
+            0.005,
+            0.245
+          ]
+        },
+        "bumper_each": {
+          "centre_abs_x": 3.14,
+          "width": 0.17,
+          "y": [
+            0.14,
+            1.1
+          ],
+          "outside_z": [
+            0.012,
+            0.06
+          ],
+          "inside_z": [
+            0.19,
+            0.238
+          ]
+        },
+        "safety_band_each": {
+          "centre_abs_x": 3.14,
+          "width": 0.11,
+          "height": 0.06,
+          "centres_y": [
+            0.34,
+            0.87
+          ],
+          "outside_z": [
+            0,
+            0.016
+          ],
+          "inside_z": [
+            0.234,
+            0.25
+          ]
+        },
+        "header_panel_each": {
+          "width": 6.32,
+          "y": [
+            4.65,
+            4.72
+          ],
+          "outside_z": [
+            0.012,
+            0.028
+          ],
+          "inside_z": [
+            0.222,
+            0.238
+          ]
+        }
+      },
+      "anchors": {
+        "anchor_aperture_floor": [
+          0,
+          0,
+          0
+        ],
+        "anchor_clear_left": [
+          -3.0,
+          0,
+          0.125
+        ],
+        "anchor_clear_right": [
+          3.0,
+          0,
+          0.125
+        ],
+        "anchor_clear_top": [
+          0,
+          4.5,
+          0.125
+        ],
+        "anchor_wall_inside": [
+          0,
+          0,
+          0.25
+        ]
+      },
+      "wall_mount": {
+        "position": [
+          144,
+          0,
+          18
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "forward": "+Zinward",
+        "vehicle_yaw_relative_module": 3.141592653589793
+      },
+      "nominal_candidate_side_margin_m": 0.6499999999999999
+    }
+  },
+  "fixed_collision_part_thickness_m": 0.25,
+  "fixed_wallband_z_m": [
+    0,
+    0.25
+  ],
+  "parameter_method": "Rebuild dimensions/coordinates; no scale of dock or asset roots. Same profiles, part thickness/depth/height, feet/bumpers/materials.",
+  "L05_candidate": {
+    "components": {
+      "vehicle_blueprint": {
+        "min": [
+          -0.6,
+          0,
+          -1.5
+        ],
+        "max": [
+          0.6,
+          2.1,
+          1.5
+        ]
+      },
+      "cradle_assumption": {
+        "min": [
+          -1.6,
+          0.3,
+          0.575
+        ],
+        "max": [
+          1.6,
+          0.45,
+          1.425
+        ]
+      },
+      "load_profile": {
+        "min": [
+          -2.1,
+          0.45,
+          0.675
+        ],
+        "max": [
+          2.1,
+          0.97,
+          1.325
+        ]
+      }
+    },
+    "horizontal_padding_each_side_m": 0.25,
+    "top_padding_m": 0.25,
+    "required_width_m": 4.7,
+    "required_height_m": 2.35,
+    "straight_root_translation_z_m": [
+      -2,
+      2
+    ],
+    "operational_admission": false,
+    "scope": "Continuous aligned candidate component-box passage only. No future forklift/support/action or turning admission."
+  },
+  "read_only_sha256": {
+    "docs/v3/contract-proposals/large-gate-v3.json": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8",
+    "docs/v3/contract-proposals/layout-conflicts-v3.json": "7007d809982f5df117dbd93cdec89005b69fdadad8d352285994048f03c2e917",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "tools/blender/v3/build_dock_module.py": "df1c8da5d7de5818e35c7b9f4b9416bee174d3f0902b3e47502c6f4b064c065d",
+    "assets/v3/blender/dock-module.blend": "e74fbb138133722434bdc2aad454807067257c5cc4a14583fcd1c01aed1a2342",
+    "frontend/public/models/v3/dock-module.glb": "964cf254728b6f70a916e5c4f0ac084e5b80ccb2cb356e47011a1652f7291b36"
+  }
+}

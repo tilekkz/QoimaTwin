@@ -1,0 +1,113 @@
+{
+  "artifact": {
+    "bytes": 47317,
+    "path": "docs/v3/contract-proposals/storage-compatibility-v3.json",
+    "sha256": "3270abb7c10d0f609bcac1121e16dff277d35220e43e9c7c167c989bdf794857"
+  },
+  "builder_sha256": "4b3fef1f4d29f0ad9954b9937a800462582b4302f3219cb02bc52626603cc646",
+  "checks": {
+    "negative_cases": [
+      {
+        "case_id": "wrong_type",
+        "passed": true,
+        "reason": "CARGO_TYPE_MISMATCH"
+      },
+      {
+        "case_id": "forbidden_yaw",
+        "passed": true,
+        "reason": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "case_id": "oversize",
+        "passed": true,
+        "reason": "DIMENSION_MISMATCH"
+      },
+      {
+        "case_id": "slot_overweight",
+        "passed": true,
+        "reason": "OVERWEIGHT"
+      },
+      {
+        "case_id": "unknown_mass",
+        "passed": true,
+        "reason": "INVALID_MASS"
+      },
+      {
+        "case_id": "full_slot",
+        "passed": true,
+        "reason": "SLOT_CAPACITY"
+      },
+      {
+        "case_id": "module_overweight",
+        "passed": true,
+        "reason": "OVERWEIGHT"
+      },
+      {
+        "case_id": "negative_occupancy",
+        "passed": true,
+        "reason": "INVALID_OCCUPANCY"
+      },
+      {
+        "case_id": "manual_to_forklift",
+        "passed": true,
+        "reason": "HANDLER_UNAVAILABLE"
+      },
+      {
+        "case_id": "handler_absent",
+        "passed": true,
+        "reason": "HANDLER_UNAVAILABLE"
+      },
+      {
+        "case_id": "reserve_access",
+        "passed": true,
+        "reason": "HEIGHT_ACCESS_UNAVAILABLE"
+      },
+      {
+        "case_id": "reflected_orientation",
+        "passed": true,
+        "reason": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "case_id": "strict_height_budget",
+        "passed": true,
+        "reason": "DIMENSION_MISMATCH"
+      }
+    ],
+    "passed": true
+  },
+  "counters": {
+    "archetypes": 8,
+    "blocked_reserve_slots": 188,
+    "families": 5,
+    "family_cases": 40,
+    "family_positive": 10,
+    "physical_slots": 776,
+    "slot_cases": 6208
+  },
+  "owner": "root",
+  "status": "VERIFY",
+  "task_id": "C05",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T13:44:10.536883+00:00",
+    "strict_check_only": true,
+    "actual40matrix_cases_inspected": true,
+    "independent6208source_pair_projection": true,
+    "accepted_counts": {
+      "SMALL_CARTON": 488,
+      "STANDARD_CARTON": 72,
+      "HEAVY_BOX": 24,
+      "PALLET_LOAD": 24,
+      "IBC": 24,
+      "LONG_BUNDLE": 12,
+      "DRUM": 24,
+      "FRAGILE_CRATE": 64
+    },
+    "review": "Independent direct saved-source type/Decimal fit/mass/reserve projection equals all8 emitted candidate sets. Exactly10/40 familypositives, reserve188blocked, no sixthtype orstockassignment. ActualC04placementhelper reused:zerohover,FRAGILEtopair.10. Strict13boundarynegatives including1e-10height excess pass. Source/scheduler/modelcontacts remain later."
+  },
+  "C07_extension_review": {
+    "strict_C05_same_output": true,
+    "strict_C06_same_output": true,
+    "change": "Exactmassledger validation beforepayload/handler; C05overweightnegative fixture now arithmeticallyconsistent. Unchangedproductionmatrix/candidatebytes."
+  }
+}

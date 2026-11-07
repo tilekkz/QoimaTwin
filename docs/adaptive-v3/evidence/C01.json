@@ -1,0 +1,214 @@
+{
+  "task_id": "C01",
+  "status": "VERIFY",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T12:20:02.940156+00:00",
+    "source_review": "Read current schema/example/spec and complete semantic validator. Unit/HU/tare/gross, signed proper rotations and explicit L09 identity mapping remain distinct; record excludes stock/lot fields.",
+    "actual_check_only_exit": 0,
+    "actual_negative_cases": 19,
+    "independent_arithmetic": "Decimal unitvolume0.00048m3;24x0.25+0.35=6.35kg; HU0.6x0.4x0.3=0.072m3.",
+    "limits": "One record contract accepted only; no full catalogue, SKU, packing/admission, source replay or model claim."
+  },
+  "checked_utc": "2026-11-07T12:13:25.475996+00:00",
+  "passed": true,
+  "schema_validator": "installed jsonschema4.26.0 Draft202012Validator; local schema/meta validation, no network/install",
+  "example_result": {
+    "archetype_id": "STANDARD_CARTON",
+    "unit_volume_m3": 0.00048,
+    "HU_volume_m3": 0.072,
+    "unit_gross_mass_kg": 0.25,
+    "units_per_HU": 24,
+    "HU_contents_gross_mass_kg": 6.0,
+    "HU_packaging_tare_kg": 0.35,
+    "HU_gross_mass_kg": 6.35,
+    "proper_orientations": 1,
+    "operational_admission": false,
+    "catalogue_created": false
+  },
+  "negative_cases": [
+    {
+      "case": "missing_physical_unit",
+      "passed": true,
+      "result": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "zero_dimension",
+      "passed": true,
+      "result": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "negative_packaging_mass",
+      "passed": true,
+      "result": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "zero_gross_mass",
+      "passed": true,
+      "result": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "nonfinite_mass",
+      "passed": true,
+      "result": "NONFINITE_NUMBER"
+    },
+    {
+      "case": "infinite_dimension",
+      "passed": true,
+      "result": "NONFINITE_NUMBER"
+    },
+    {
+      "case": "wrong_bounding_volume",
+      "passed": true,
+      "result": "VOLUME_MISMATCH"
+    },
+    {
+      "case": "wrong_unit_gross_mass",
+      "passed": true,
+      "result": "UNIT_GROSS_MASS_MISMATCH"
+    },
+    {
+      "case": "wrong_HU_gross_mass",
+      "passed": true,
+      "result": "HU_GROSS_MASS_MISMATCH"
+    },
+    {
+      "case": "wrong_units_to_HU_mass_identity",
+      "passed": true,
+      "result": "HU_CONTENTS_MASS_MISMATCH"
+    },
+    {
+      "case": "zero_units_per_HU",
+      "passed": true,
+      "result": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "upright_axis_tipped",
+      "passed": true,
+      "result": "UPRIGHT_ORIENTATION_CONFLICT"
+    },
+    {
+      "case": "reflected_axes",
+      "passed": true,
+      "result": "ORIENTATION_REFLECTION"
+    },
+    {
+      "case": "stackable_false_but_two_high",
+      "passed": true,
+      "result": "STACK_POLICY_CONFLICT"
+    },
+    {
+      "case": "wrong_layout_snapshot",
+      "passed": true,
+      "result": "LAYOUT_BINDING_MISMATCH"
+    },
+    {
+      "case": "changed_R03_HU_target",
+      "passed": true,
+      "result": "REFERENCE_TARGET_MISMATCH"
+    },
+    {
+      "case": "yaw90_hidden_under_L09_identity",
+      "passed": true,
+      "result": "SLOT_ORIENTATION_MAPPING_CONFLICT"
+    },
+    {
+      "case": "cart_mode_without_cart_requirement",
+      "passed": true,
+      "result": "HANDLING_MODE_REQUIREMENT_CONFLICT"
+    },
+    {
+      "case": "inventory_field_smuggled_into_archetype",
+      "passed": true,
+      "result": "SCHEMA_FIELD_ERROR"
+    }
+  ],
+  "input_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.schema.json",
+      "sha256": "46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.example.json",
+      "sha256": "fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    }
+  ],
+  "validator": {
+    "path": "tools/visual/v3/validate_cargo_contract.py",
+    "sha256": "6082648905e0c6cedb66aa724363eaa3852d1ef2034b10f175085b0ca36f2cd4"
+  },
+  "scope": "One record schema/example; no8catalogue,SKU,inventory,packing/admission solver or frontend change.",
+  "independent_checks": [
+    {
+      "name": "single record object not catalogue or inventory",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "physical unit is distinct from R03 outer HU",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "exact Decimal bounding volumes",
+      "passed": true,
+      "actual": {
+        "unit_m3": "0.00048",
+        "HU_m3": "0.072"
+      }
+    },
+    {
+      "name": "exact Decimal primary and outer packaging ledger",
+      "passed": true,
+      "actual": {
+        "HU_gross_kg": "6.35"
+      }
+    },
+    {
+      "name": "exact accepted L12 reference binding",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "R03 hash and reference IDs exact",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "L09 mapping identity only and stack forbidden",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "candidate-only tags and synthetic assumption provenance",
+      "passed": true,
+      "actual": null
+    }
+  ],
+  "normal_run_exit_code": 0,
+  "check_only_exit_code": 0,
+  "updated_utc": "2026-11-07T12:15:06.541663+00:00",
+  "spec": {
+    "path": "docs/adaptive-v3/specs/C01.md",
+    "sha256": "24616a79acac14b1989ac17f7205242df54131881d3d124f6db7ba4196ece668"
+  },
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "Parent CargoArchetype/StorageSlot search0complete; one task-specific coverage call newpaths missing/current inputs not_tracked.",
+    "fallback": "Exact current schema/example/validator and accepted R03/L12/L09 JSON read/hash verified; no graph completeness or index refresh claim."
+  }
+}
