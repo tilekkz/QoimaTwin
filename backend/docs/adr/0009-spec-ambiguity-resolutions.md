@@ -11,7 +11,7 @@ Source IDs refer to `../research/2026-11-07-codex-edu-spec-audit.md` (A01-A31).
 | Merge vs admission (A11) | Belt transfers are arbitrated first; external admissions use the inlet cells that remain free. |
 | Shipping scan (A16) | The parcel leaves the shipping buffer when the scan starts. The shipper owns it and the reserved pallet slot until placement. |
 | Sealed queue (A17) | A sealed pallet keeps its queue place until the forklift pickup completes. |
-| Receiving (A18) | 8 physical positions shared by waiting, in-service and processed pallets. The queue KPI excludes service. |
+| Receiving (A18) | 8 physical admission-area positions shared by waiting, in-service and processed pallets until pickup; the historical config name is receiving_queue_capacity. Waiting-only queue KPI excludes service; area occupancy is separate (ADR0013). |
 | External receipts (A19) | Receipts that cannot enter wait in an external FIFO. They are not in the ledger and are reported separately. |
 | Reserve staging (A20) | The time of the 40th putaway is measured, never hard-coded as 7200 s. |
 | Drain (A04) | Useful work: admitted receipts, transfers, services, live timers, vehicle return. Idle conveyor ticks and static stock are not useful work. The deadline is `H + max_drain_s`. |

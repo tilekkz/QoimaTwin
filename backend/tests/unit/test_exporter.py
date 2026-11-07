@@ -212,7 +212,7 @@ def test_manifest_rejects_metadata_override(exported: dict[str, Any], tmp_path: 
     assert not (tmp_path / "run.json").exists()
 
 
-def test_metrics_export_uses_horizon_utilization_and_end_cycles(
+def test_metrics_export_uses_one_coherent_horizon_window(
     bundle: ContractBundle, contracts_dir: Path
 ) -> None:
     inputs = fixture_inputs(bundle, load_fixture(contracts_dir))
@@ -222,9 +222,9 @@ def test_metrics_export_uses_horizon_utilization_and_end_cycles(
     engine = Engine(inputs, check_invariants=True)
     metrics = export_run(engine, engine.run())["metrics"]
     assert metrics["backlog_at_horizon"] == 1
-    assert metrics["dispatched_total"] == 1
-    assert metrics["mean_cycle_s"] == 469.0
-    assert metrics["p95_cycle_s"] == 469.0
+    assert metrics["dispatched_total"] == 0
+    assert metrics["mean_cycle_s"] is None
+    assert metrics["p95_cycle_s"] is None
     assert metrics["role_metrics"]["picker"]["active"] == 1 / 12
     assert metrics["queue_metrics"]["orders"] == 0
 

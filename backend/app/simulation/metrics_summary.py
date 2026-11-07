@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter, defaultdict
+from dataclasses import asdict
 from typing import TYPE_CHECKING
 
 from app.simulation.receiving import InboundState
@@ -85,4 +86,17 @@ def summary(engine: Engine, outcome: RunOutcome) -> dict[str, object]:
         "backlog_at_horizon": windows["at_horizon"]["backlog"],
         "status": outcome.status.value,
         "termination_reason": outcome.termination.value,
+        "termination_reasons": [reason.value for reason in outcome.termination_reasons],
+        "subsystems": {
+            name: {
+                **asdict(status),
+                "blocked_since_s": status.blocked_since_tick / tps
+                if status.blocked_since_tick is not None
+                else None,
+            }
+            for name, status in outcome.subsystems.items()
+        },
+        "error": {"type": outcome.error_type, "message": outcome.error_message}
+        if outcome.error_type is not None
+        else None,
     }

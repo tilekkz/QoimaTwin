@@ -64,9 +64,15 @@ class Receiving:
         self.forklift_busy = False
         self.staging_used = 0
         self.putaway_ticks: list[int] = []
+        self.arrived_total = 0
+        self.accepted_total = 0
+        self.staging_full_since_tick: int | None = None
+        self.putaway_blocked_since_tick: int | None = None
+        self.external_blocked_since_tick: int | None = None
 
     # ----- boundary -----
     def on_arrival(self, receipt: Receipt) -> None:
+        self.arrived_total += 1
         self.external.append(receipt)
         self.ctx.request_dispatch()
 
@@ -74,6 +80,7 @@ class Receiving:
         changed = False
         while self.external and len(self.area) < self.ctx.config.receiving_queue_capacity:
             receipt = self.external.popleft()
+            self.accepted_total += 1
             pallet = InboundPallet(receipt, f"IN_{receipt.receipt_id}")
             self.area.append(pallet)
             self.ctx.ledger.accept_receipt(
@@ -221,5 +228,24 @@ class Receiving:
         return end
 
     def blocked(self) -> bool:
-        """True when receipts remain outside or inside the area with no way to progress."""
-        return bool(self.external or self.area)
+        """P0 staging never empties: remaining unclaimed receipts cannot finish putaway."""
+        unclaimed = self.external or any(p.state is not InboundState.CLAIMED for p in self.area)
+        return bool(unclaimed and self.staging_used >= self.ctx.config.reserve_staging_capacity)
+
+    def observe_status(self, tick: int) -> None:
+        """Observe settled physical limits separately from waiting-only queue metrics."""
+        full = self.staging_used >= self.ctx.config.reserve_staging_capacity
+        if full and self.staging_full_since_tick is None:
+            self.staging_full_since_tick = tick
+        putaway_waits = full and any(p.state is InboundState.PROCESSED for p in self.area)
+        if putaway_waits and self.putaway_blocked_since_tick is None:
+            self.putaway_blocked_since_tick = tick
+        if not putaway_waits:
+            self.putaway_blocked_since_tick = None
+        external_waits = (
+            self.external and len(self.area) >= self.ctx.config.receiving_queue_capacity
+        )
+        if external_waits and self.external_blocked_since_tick is None:
+            self.external_blocked_since_tick = tick
+        if not external_waits:
+            self.external_blocked_since_tick = None

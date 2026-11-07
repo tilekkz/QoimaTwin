@@ -18,3 +18,4 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0010](0010-replay-snapshots-and-chunks.md) | Settled replay snapshots and half-open event chunks |
 | [0011](0011-metrics-boundaries.md) | Horizon/end observation windows and undefined statistics |
 | [0012](0012-run-export-projection.md) | Schema-valid v2 projection and proposed run bundle |
+| [0013](0013-status-and-observation-windows.md) | Ordered termination reasons, subsystem status and coherent metric windows |

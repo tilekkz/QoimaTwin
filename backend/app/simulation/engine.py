@@ -7,8 +7,6 @@ assign FIFO orders to pickers.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from enum import StrEnum
 from functools import partial
 
 from app.conveyor.topology import ConveyorTopology
@@ -24,33 +22,15 @@ from app.simulation.packing import Packing
 from app.simulation.picking import Picking
 from app.simulation.receiving import Receiving
 from app.simulation.recorder import Recorder
+from app.simulation.run_status import RunOutcome as RunOutcome
+from app.simulation.run_status import RunStatus as RunStatus
+from app.simulation.run_status import Termination as Termination
+from app.simulation.run_status import classify_outcome
 from app.simulation.scheduler import Phase, PhaseScheduler
 from app.simulation.shipping import Shipping
 from app.simulation.snapshot_state import StateCapture
 
 MAX_DISPATCH_ROUNDS = 10_000
-
-
-class RunStatus(StrEnum):
-    COMPLETE = "complete"
-    PARTIAL = "partial"
-    FAILED = "failed"
-
-
-class Termination(StrEnum):
-    DRAINED = "drained"
-    UNFULFILLED_INVENTORY = "unfulfilled_inventory"
-    MAX_DRAIN = "max_drain"
-    DEADLOCK = "deadlock"
-    ERROR = "error"
-
-
-@dataclass(frozen=True, slots=True)
-class RunOutcome:
-    status: RunStatus
-    termination: Termination
-    horizon_tick: int
-    end_tick: int
 
 
 class Engine:
@@ -79,6 +59,7 @@ class Engine:
         self.shipping = Shipping(self.ctx, self)
         self.outbound = Outbound(self.ctx, self)
         self.receiving = Receiving(self.ctx, self)
+        self.last_outcome: RunOutcome | None = None
         self.check_invariants = check_invariants
         self.checkpoints = Checkpointer(
             self.ctx.ticks(inputs.config.snapshot_interval_s), StateCapture(self), self._last_seq
@@ -96,6 +77,7 @@ class Engine:
     def _on_tick_settled(self, tick: int, next_tick: int | None) -> None:
         if self.check_invariants:
             verify_invariants(self)
+        self.receiving.observe_status(tick)
         self.metrics.queue_samples.append((tick, queues(self)))
         self.checkpoints.on_tick_settled(tick, next_tick)
 
@@ -139,17 +121,15 @@ class Engine:
         raise RuntimeError("dispatch cycle did not reach a fixed point")
 
     def run(self) -> RunOutcome:
-        if self.check_invariants:
-            verify_invariants(self)
         ctx = self.ctx
         horizon = ctx.ticks(ctx.inputs.scenario.horizon_s)
         deadline = horizon + ctx.ticks(ctx.config.max_drain_s)
-        ctx.sched.run(until=deadline + 1)
-        if ctx.sched.pending_count():
-            return RunOutcome(RunStatus.PARTIAL, Termination.MAX_DRAIN, horizon, deadline)
-        end = ctx.now
-        if self.receiving.blocked():
-            return RunOutcome(RunStatus.PARTIAL, Termination.DEADLOCK, horizon, end)
-        if self.metrics.counts()["unfulfilled_inventory_total"]:
-            return RunOutcome(RunStatus.PARTIAL, Termination.UNFULFILLED_INVENTORY, horizon, end)
-        return RunOutcome(RunStatus.COMPLETE, Termination.DRAINED, horizon, end)
+        try:
+            if self.check_invariants:
+                verify_invariants(self)
+            ctx.sched.run(until=deadline + 1)
+        except Exception as error:
+            self.last_outcome = classify_outcome(self, horizon, deadline, error)
+            raise
+        self.last_outcome = classify_outcome(self, horizon, deadline)
+        return self.last_outcome
