@@ -9,6 +9,7 @@ from typing import Any
 
 from app.cli import JsonArgumentParser
 from app.errors import AppError, InvalidInputError, error_report, require_empty_output
+from app.v3.cli_belt import simulate_conveyor
 from app.v3.cli_manual import materialize_manual, simulate_manual
 from app.v3.export import write_static_export
 from app.v3.inputs import V3Bundle, load_v3_bundle
@@ -18,12 +19,18 @@ from app.v3.settings import default_inputs
 def build_parser() -> argparse.ArgumentParser:
     parser = JsonArgumentParser(prog="qoima v3", description="V3 proposal tools")
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ("validate", "catalog", "materialize-manual", "simulate-manual"):
+    for name in (
+        "validate",
+        "catalog",
+        "materialize-manual",
+        "simulate-manual",
+        "simulate-conveyor",
+    ):
         command = commands.add_parser(name)
         command.add_argument("--inputs", type=Path, default=default_inputs())
         if name != "validate":
             command.add_argument("--out", type=Path, required=True)
-        if name.endswith("-manual"):
+        if name.endswith("-manual") or name == "simulate-conveyor":
             command.add_argument("--profile", type=Path, required=True)
     return parser
 
@@ -57,6 +64,8 @@ def main(argv: Sequence[str]) -> int:
 
 
 def _execute(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command == "simulate-conveyor":
+        return simulate_conveyor(args.inputs, args.profile, args.out)
     if args.command == "materialize-manual":
         return materialize_manual(args.inputs, args.profile, args.out)
     if args.command == "simulate-manual":

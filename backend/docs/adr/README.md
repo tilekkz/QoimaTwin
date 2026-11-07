@@ -41,5 +41,9 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0033](0033-v3-manual-wire-replay.md) | Validated manual-run export, actual motions and settled replay chunks |
 | [0034](0034-v3-manual-observation-metrics.md) | Settled business counts, cycle and time-weighted resource observations |
 | [0035](0035-v3-manual-api-publication.md) | Registered manual profiles, shared spawn admission and immutable API runs |
+| [0036](0036-v3-vehicle-evidence-prerequisites.md) | Pinned vehicle geometry, traffic and handling evidence prerequisites |
+| [0037](0037-v3-conveyor-source-primitives.md) | Exact source conveyor topology, physical admission and timing primitives |
 | [0038](0038-v3-profile-receipt-chain.md) | One received HU reused by outbound jobs and compiler admission parity |
 | [0039](0039-v3-manual-admission-and-wait-reasons.md) | Static explicit-job admission, valid slot reuse and causal waits |
+| [0040](0040-bounded-v3-conveyor-execution.md) | Finite conveyor execution with swept-cell and reversible-spur reservations |
+| [0044](0044-v3-conveyor-component-publication.md) | Frozen component profiles, actual traces and immutable CLI publication |

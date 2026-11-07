@@ -24,6 +24,9 @@ Catalog export contains the static 530-HU state and its provenance. Actual timed
 execution is available separately through the manual CLI and `/api/v3/manual-runs`; its
 registered four-job profile covers SMALL/STANDARD handling at two ports with paid return.
 See the [manual profile](docs/v3-manual-profile.md) and [manual API](docs/v3-manual-api.md).
+The separate [conveyor component](docs/v3-conveyor.md) executes source-bound physical cells,
+pivots and station-spur reservations through a reproducible CLI. Warehouse picking/packing
+integration and timed forklift operation remain separate work.
 F1/F2/F3 test port mix, geometry/mass and elapsed time versus person-seconds using independent
 hand calculations. See [inputs](docs/v3-inputs.md), [analytical fixtures](docs/v3-analytical.md),
 and [source compatibility](docs/v3-admission-source.md). Shared contracts remain proposals until
