@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T19:17:54.123435+00:00",
+  "updated_at": "2026-11-07T19:32:07.464159+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -961,8 +961,8 @@
         "I09"
       ],
       "criteria": "Колёса, мачта, каретка, вилы и driver anchor; четыре вида и проба захвата паллеты",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/M14.md",
         "docs/adaptive-v3/evidence/M14.json"
@@ -978,7 +978,8 @@
         "M14.8",
         "M14.9"
       ],
-      "kind": "parent"
+      "kind": "parent",
+      "actual": "Animatable forklift complete: current references/native geometry/11joints14anchors/6load contacts and actual PALLET trial accepted. Whole V3/source operations not claimed."
     },
     {
       "id": "P01",
@@ -1114,7 +1115,7 @@
         "I09"
       ],
       "criteria": "Водитель помещается в машине, руки у управления; он не считается дополнительным человеком",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/P07.md",
@@ -2333,8 +2334,8 @@
       "id": "M14.8",
       "title": "Pickup/load action checked at3timestamps, no floating/interpenetration",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "READY",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2346,14 +2347,15 @@
         "docs/adaptive-v3/specs/M14.8.md",
         "docs/adaptive-v3/evidence/M14.8.json"
       ],
-      "criteria": "Pickup/load action checked at3timestamps, no floating/interpenetration; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Pickup/load action checked at3timestamps, no floating/interpenetration; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Absolute-clock30s PALLET cycle:13continuous native segments,20fork/18platform contacts,100whole-node seek equality checks, one HU. Browser pause/replay/error/race/reload/reduced-motion and13frames pass; build passes."
     },
     {
       "id": "M14.9",
       "title": "Every child evidence read, final reference/render/browser/action integration verified",
       "parent": "M14",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "R06",
@@ -2365,7 +2367,8 @@
         "docs/adaptive-v3/specs/M14.9.md",
         "docs/adaptive-v3/evidence/M14.9.json"
       ],
-      "criteria": "Every child evidence read, final reference/render/browser/action integration verified; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Every child evidence read, final reference/render/browser/action integration verified; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Every child evidence read; preserved body/cab source+GLB hashes verified, current68part vehicle/6load and13segment action artifacts reviewed. Bounded asset gate PASS, driver/warehouse integration remains P07/W."
     },
     {
       "id": "W14.1",

@@ -1,0 +1,33 @@
+{
+  "schema_id":"qoima.visual-pallet-pickup.v3",
+  "source_kind":"visual_fixture",
+  "engine_operation":false,
+  "duration_s":30,
+  "asset_id":"forklift-pallet-low-fixture",
+  "HU_id":"fixture:HU:pallet:01",
+  "operator_id":"fixture:operator:driver:01",
+  "vehicle_id":"fixture:vehicle:forklift:01",
+  "reservation_scope":"One isolated fixture owns operator, vehicle and action space for the cycle. Warehouse scheduler integration is separate.",
+  "action_space_bounds_m":{"min":[-0.8,0,-2.55],"max":[0.8,2.1,2.2]},
+  "stock_support_y_m":0.18,
+  "stock_centre_z_m":1.4,
+  "fork_halfspacing_m":0.4,
+  "attached_HU_local_xyz_m":[0,0,0.6],
+  "exclusive_resources":["fixture:operator:driver:01","fixture:vehicle:forklift:01","fixture:action-space:pallet:01"],
+  "keys":[
+    {"t":0,"phase":"extend_high","label":"Выдвижение перед подхватом","root_z":-1.05,"fork_top":0.7,"reach":0,"attached":false},
+    {"t":2,"phase":"lower_extended","label":"Опускание пустых вил","root_z":-1.05,"fork_top":0.7,"reach":0.4,"attached":false},
+    {"t":4,"phase":"controlled_insert","label":"Ввод вил под паллету","root_z":-1.05,"fork_top":0.18,"reach":0.4,"attached":false},
+    {"t":8,"phase":"lift_loaded","label":"Подхват и подъём","root_z":0,"fork_top":0.18,"reach":0.4,"attached":true},
+    {"t":10,"phase":"retract_loaded","label":"Возврат каретки с грузом","root_z":0,"fork_top":0.7,"reach":0.4,"attached":true},
+    {"t":12,"phase":"travel_reverse","label":"Отъезд с грузом","root_z":0,"fork_top":0.7,"reach":0,"attached":true},
+    {"t":14,"phase":"loaded_hold","label":"Груз в транспортном положении","root_z":-1.05,"fork_top":0.7,"reach":0,"attached":true},
+    {"t":16,"phase":"travel_approach","label":"Возврат к платформе","root_z":-1.05,"fork_top":0.7,"reach":0,"attached":true},
+    {"t":18,"phase":"extend_loaded","label":"Выдвижение над платформой","root_z":0,"fork_top":0.7,"reach":0,"attached":true},
+    {"t":20,"phase":"set_down","label":"Установка на опору","root_z":0,"fork_top":0.7,"reach":0.4,"attached":true},
+    {"t":22,"phase":"controlled_withdraw","label":"Выход вил из-под паллеты","root_z":0,"fork_top":0.18,"reach":0.4,"attached":false},
+    {"t":26,"phase":"raise_empty","label":"Подъём после выхода","root_z":-1.05,"fork_top":0.18,"reach":0.4,"attached":false},
+    {"t":28,"phase":"retract_empty","label":"Возврат пустой каретки","root_z":-1.05,"fork_top":0.7,"reach":0.4,"attached":false},
+    {"t":30,"phase":"complete","label":"Паллета установлена","root_z":-1.05,"fork_top":0.7,"reach":0,"attached":false}
+  ]
+}
