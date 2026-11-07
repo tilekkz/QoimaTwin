@@ -27,6 +27,11 @@ See the [manual profile](docs/v3-manual-profile.md) and [manual API](docs/v3-man
 The separate [conveyor component](docs/v3-conveyor.md) executes source-bound physical cells,
 pivots and station-spur reservations through a reproducible CLI. Warehouse picking/packing
 integration and timed forklift operation remain separate work.
+The [unit ledger](docs/adr/0041-v3-unit-and-packaging-ledger.md) conserves individual ancestry
+and explicit packaging material. The [timed workload](docs/v3-workload.md) freezes offers
+without allocating stock or inferring hourly rates. A separate
+[local pallet mesh proof](docs/adr/0042-v3-local-pallet-mesh-proof.md) checks actual pinned
+geometry and continuous translations; it does not grant warehouse operational admission.
 F1/F2/F3 test port mix, geometry/mass and elapsed time versus person-seconds using independent
 hand calculations. See [inputs](docs/v3-inputs.md), [analytical fixtures](docs/v3-analytical.md),
 and [source compatibility](docs/v3-admission-source.md). Shared contracts remain proposals until

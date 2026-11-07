@@ -1,0 +1,1285 @@
+{
+  "schema": "qoima-forklift-dimensions-v3.1",
+  "stage": "M14.1",
+  "status": "VERIFY",
+  "geometry_created": false,
+  "asset_id": "forklift",
+  "namespace": "v3",
+  "root_name": "forklift_root",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "scale": [
+    1,
+    1,
+    1
+  ],
+  "origin": "floor centre of complete unloaded operating footprint, including forks and steered tyres",
+  "dimensions_xyz_m": [
+    1.2,
+    2.1,
+    3
+  ],
+  "bounds": {
+    "min": [
+      -0.6,
+      0,
+      -1.5
+    ],
+    "max": [
+      0.6,
+      2.1,
+      1.5
+    ]
+  },
+  "reference": {
+    "reference_id": "R06",
+    "path": "assets/references/v3/r06-forklift.png",
+    "actually_viewed": true,
+    "authority": "blocky petrol body, tan counterweight/forks, charcoal guard/tyres; numeric L05/C08 overrides image proportions"
+  },
+  "input_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/large-gate-v3.json",
+      "sha256": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    },
+    {
+      "path": "assets/v3/specs/worker-base.dimensions.json",
+      "sha256": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc"
+    },
+    {
+      "path": "assets/v3/specs/worker-rig-qa.json",
+      "sha256": "998ded83b694ca2cdae2ea32c7a9b00282b50e7723940ba43310f4b15a48caa7"
+    },
+    {
+      "path": "frontend/public/models/v3/worker-base.glb",
+      "sha256": "c8546473c76f126844b427417db86e65be090fa04ad56c0deb9cb2bda92e73b7"
+    },
+    {
+      "path": "assets/references/v3/r06-forklift.png",
+      "sha256": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6"
+    },
+    {
+      "path": "assets/references/v3/manifest.json",
+      "sha256": "028d8f94c7e4c272a1bba5bbaa17619f7fd03f6a8a4779191c0ca480bc39cb36"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.1/C08-before-physical-correction.json",
+      "sha256": "691b597e56f18552d2552ebba907ea13eef096982589bdd3f28d10baf9873fe1"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    },
+    {
+      "path": "assets/references/v3/r12-c08-interface-targets-v2.json",
+      "sha256": "1e97fbf8a770d319c63548dbe7d38cf0cf29736832f6174df324d1768ea5e6fd"
+    }
+  ],
+  "historical_blueprint": {
+    "fork_heel_z_m": 0.4,
+    "nominal_fork_top_y_m": 0.3,
+    "front_axle_z_m": 0.4,
+    "rear_axle_z_m": -1.0,
+    "contradiction": "historical .40 heel blade passes through both front tyre solids at every .24..40 half spacing"
+  },
+  "approved_root_extension": {
+    "source": "published canonical C08v0.2.0, read after root final direction2026-11-07",
+    "travel_physical_fork_heel_z_m": 0.4,
+    "handling_physical_fork_heel_z_m": 0.8,
+    "travel_direct_fork_top_y_m": 0.7,
+    "LONG_travel_fork_top_y_m": 0.75,
+    "LONG_travel_cradle_bottom_y_m": 0.65,
+    "superseded_proposal": {
+      "physical_heel_z_m": 0.75,
+      "reason": "advancing blade alone does not clear low PALLET/IBC HU boxes; never canonical"
+    },
+    "rating_moment_reference_z_m": 0.4,
+    "observed_or_certified_capacity_improvement_claimed": false,
+    "unchanged": [
+      "axles",
+      "wheelbase",
+      "Ackermann steering",
+      "tyres",
+      "track",
+      "travel operating bounds",
+      "cargo dimensions/orientation",
+      "cradle own dimensions",
+      "rating values",
+      "travel fork heel/tip/blade length"
+    ],
+    "canonical_C08_adoption": "v0.2.0 adopted; original v0.1 byte-exact snapshot retained in stage"
+  },
+  "wheels": [
+    {
+      "id": "front_L",
+      "centre": [
+        -0.35,
+        0.3,
+        0.4
+      ],
+      "radius": 0.3,
+      "width": 0.24,
+      "spin_axis": "X",
+      "steer_axis": null,
+      "max_abs_steer_deg": 0,
+      "tyre_is_continuous_circular_cylinder": true,
+      "parent": "forklift_root"
+    },
+    {
+      "id": "front_R",
+      "centre": [
+        0.35,
+        0.3,
+        0.4
+      ],
+      "radius": 0.3,
+      "width": 0.24,
+      "spin_axis": "X",
+      "steer_axis": null,
+      "max_abs_steer_deg": 0,
+      "tyre_is_continuous_circular_cylinder": true,
+      "parent": "forklift_root"
+    },
+    {
+      "id": "rear_L",
+      "centre": [
+        -0.35,
+        0.225,
+        -1.0
+      ],
+      "radius": 0.225,
+      "width": 0.2,
+      "spin_axis": "X",
+      "steer_axis": "Y",
+      "max_abs_steer_deg": 75,
+      "tyre_is_continuous_circular_cylinder": true,
+      "parent": "joint__rear_steer_L"
+    },
+    {
+      "id": "rear_R",
+      "centre": [
+        0.35,
+        0.225,
+        -1.0
+      ],
+      "radius": 0.225,
+      "width": 0.2,
+      "spin_axis": "X",
+      "steer_axis": "Y",
+      "max_abs_steer_deg": 75,
+      "tyre_is_continuous_circular_cylinder": true,
+      "parent": "joint__rear_steer_R"
+    }
+  ],
+  "steering": {
+    "model": "Synthetic low-speed rear-steer bicycle bound with Ackermann wheel-angle reconciliation",
+    "wheelbase_m": 1.4,
+    "front_axle_z_m": 0.4,
+    "rear_axle_z_m": -1.0,
+    "track_width_m": 0.7,
+    "virtual_rear_axle_centre_angle_deg": 60,
+    "required_inner_rear_wheel_angle_deg": 71.87412684189971,
+    "required_outer_rear_wheel_angle_deg": 50.39733586235933,
+    "rear_wheel_angle_limit_deg": 75,
+    "rear_tyre_radius_m": 0.225,
+    "rear_tyre_width_m": 0.2,
+    "front_tyre_radius_m": 0.3,
+    "front_tyre_width_m": 0.24,
+    "icr_local_xz_m": [
+      0.8082903768654762,
+      0.4
+    ],
+    "meaning": "ICR is lateral R=wheelbase/tan(virtual angle), on the front axle plane. This is not an in-place spin. All steered tyre extents must stay inside the stated operating bounds; actual path/model acceptance remains later."
+  },
+  "forks": {
+    "width_each_m": 0.08,
+    "thickness_m": 0.07,
+    "heel_z_m": 0.4,
+    "tip_z_m": 1.5,
+    "blade_length_m": 1.1,
+    "half_spacing_range_m": [
+      0.24,
+      0.4
+    ],
+    "nominal_direct_top_y_m": 0.7,
+    "LONG_closed_pocket_top_y_m": 0.75,
+    "max_handling_top_y_m": 1.5,
+    "min_handling_top_y_m": 0.18,
+    "handling_reach_stroke_m": 0.4,
+    "handling_heel_z_m": 0.8,
+    "handling_tip_z_m": 1.9,
+    "physical_heel_to_PALLET_CoG_m": 0.6,
+    "rating_moment_reference_z_m": 0.4,
+    "minimum_supported_depth_fraction": 0.6666666666666666,
+    "fork_tip_equals_HU_far_face": true,
+    "future_vertical_stem_bounds": {
+      "z_relative_heel": [
+        -0.025,
+        0
+      ],
+      "y_relative_top": [
+        -0.07,
+        0.3
+      ]
+    },
+    "collision_scope": "actual future rounded tips/blades/stems must fit these rectangular envelopes"
+  },
+  "blueprint_boxes": [
+    {
+      "name": "chassis_rear_spine",
+      "min": [
+        -0.08,
+        0.16,
+        -1.42
+      ],
+      "max": [
+        0.08,
+        0.52,
+        -0.69
+      ],
+      "material": "steel",
+      "purpose": "clear rear steered tyres",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "chassis_front_spine",
+      "min": [
+        -0.19,
+        0.15,
+        -0.7
+      ],
+      "max": [
+        0.19,
+        0.53,
+        -0.05
+      ],
+      "material": "petrol",
+      "purpose": "central frame behind lift crossplate",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "counterweight",
+      "min": [
+        -0.46,
+        0.5,
+        -1.5
+      ],
+      "max": [
+        0.46,
+        0.92,
+        -0.93
+      ],
+      "material": "tan",
+      "purpose": "above rear tyre swept volume",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "driver_floorboard",
+      "min": [
+        -0.3,
+        0.45,
+        -0.82
+      ],
+      "max": [
+        0.3,
+        0.53,
+        -0.02
+      ],
+      "material": "steel",
+      "purpose": "actual boot support top .53",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_pedestal",
+      "min": [
+        -0.2,
+        0.5,
+        -0.81
+      ],
+      "max": [
+        0.2,
+        0.77,
+        -0.64
+      ],
+      "material": "petrol",
+      "purpose": "seat joins floorboard and overlaps rear cushion10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_cushion_rear",
+      "min": [
+        -0.22,
+        0.76,
+        -0.81
+      ],
+      "max": [
+        0.22,
+        0.84,
+        -0.65
+      ],
+      "material": "rubber",
+      "purpose": "pelvis rear underside bears on top .84",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_cushion_nose",
+      "min": [
+        -0.22,
+        0.74,
+        -0.655
+      ],
+      "max": [
+        0.22,
+        0.775,
+        -0.53
+      ],
+      "material": "rubber",
+      "purpose": "lowered shortened nose clears folded thighs and vertical shins",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_back",
+      "min": [
+        -0.215,
+        0.83,
+        -0.85
+      ],
+      "max": [
+        0.215,
+        1.4,
+        -0.76
+      ],
+      "material": "rubber",
+      "purpose": "back cushion with clothing clearance",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "entry_step_L",
+      "min": [
+        -0.6,
+        0.3,
+        -0.68
+      ],
+      "max": [
+        -0.29,
+        0.53,
+        -0.1
+      ],
+      "material": "petrol",
+      "purpose": "connected lateral foot step",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_rear_L",
+      "min": [
+        -0.5,
+        0.53,
+        -1.05
+      ],
+      "max": [
+        -0.45,
+        2.05,
+        -0.96
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_front_L",
+      "min": [
+        -0.5,
+        0.53,
+        -0.1
+      ],
+      "max": [
+        -0.45,
+        2.05,
+        -0.04
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "mast_rail_L",
+      "min": [
+        -0.28,
+        0.08,
+        -0.02
+      ],
+      "max": [
+        -0.2,
+        2.1,
+        0.06
+      ],
+      "material": "steel",
+      "purpose": "twin connected fixed mast behind front tyres",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "entry_step_R",
+      "min": [
+        0.29,
+        0.3,
+        -0.68
+      ],
+      "max": [
+        0.6,
+        0.53,
+        -0.1
+      ],
+      "material": "petrol",
+      "purpose": "connected lateral foot step",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_rear_R",
+      "min": [
+        0.45,
+        0.53,
+        -1.05
+      ],
+      "max": [
+        0.5,
+        2.05,
+        -0.96
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_front_R",
+      "min": [
+        0.45,
+        0.53,
+        -0.1
+      ],
+      "max": [
+        0.5,
+        2.05,
+        -0.04
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "mast_rail_R",
+      "min": [
+        0.2,
+        0.08,
+        -0.02
+      ],
+      "max": [
+        0.28,
+        2.1,
+        0.06
+      ],
+      "material": "steel",
+      "purpose": "twin connected fixed mast behind front tyres",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "roof_guard",
+      "min": [
+        -0.5,
+        2.04,
+        -1.15
+      ],
+      "max": [
+        0.5,
+        2.1,
+        0.15
+      ],
+      "material": "steel",
+      "purpose": "open-sided head guard, 50mm actual helmet clearance",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "mast_top_crossmember",
+      "min": [
+        -0.28,
+        2.01,
+        -0.02
+      ],
+      "max": [
+        0.28,
+        2.1,
+        0.06
+      ],
+      "material": "steel",
+      "purpose": "connect twin rails",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "mast_foot_rear_connection",
+      "min": [
+        -0.28,
+        0.08,
+        -0.1
+      ],
+      "max": [
+        0.28,
+        0.22,
+        -0.02
+      ],
+      "material": "steel",
+      "purpose": "join central chassis behind moving crossplate",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "mast_foot_low_crossmember",
+      "min": [
+        -0.28,
+        0.08,
+        -0.025
+      ],
+      "max": [
+        0.28,
+        0.1,
+        0.06
+      ],
+      "material": "steel",
+      "purpose": "connect both mast rails below lowest carriage stop .11",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "petrol_nose",
+      "min": [
+        -0.49,
+        0.5,
+        -0.15
+      ],
+      "max": [
+        0.49,
+        0.75,
+        -0.04
+      ],
+      "material": "petrol",
+      "purpose": "chunky fixed body ends behind moving lift crossplate",
+      "parent": "forklift_root"
+    }
+  ],
+  "joint_position_space": "vehicle bind-world; derive local translation by subtracting parent bind-world position",
+  "joints": [
+    {
+      "name": "joint__wheel_front_L",
+      "parent": "forklift_root",
+      "position": [
+        -0.35,
+        0.3,
+        0.4
+      ],
+      "axis": "X",
+      "limits": null,
+      "units": "radians",
+      "position_space": "vehicle_bind_world"
+    },
+    {
+      "name": "joint__wheel_front_R",
+      "parent": "forklift_root",
+      "position": [
+        0.35,
+        0.3,
+        0.4
+      ],
+      "axis": "X",
+      "limits": null,
+      "units": "radians",
+      "position_space": "vehicle_bind_world"
+    },
+    {
+      "name": "joint__rear_steer_L",
+      "parent": "forklift_root",
+      "position": [
+        -0.35,
+        0.225,
+        -1.0
+      ],
+      "axis": "Y",
+      "limits": [
+        -75,
+        75
+      ],
+      "units": "degrees"
+    },
+    {
+      "name": "joint__wheel_rear_L",
+      "parent": "joint__rear_steer_L",
+      "position": [
+        -0.35,
+        0.225,
+        -1.0
+      ],
+      "axis": "X",
+      "limits": null,
+      "units": "radians",
+      "position_space": "vehicle_bind_world"
+    },
+    {
+      "name": "joint__rear_steer_R",
+      "parent": "forklift_root",
+      "position": [
+        0.35,
+        0.225,
+        -1.0
+      ],
+      "axis": "Y",
+      "limits": [
+        -75,
+        75
+      ],
+      "units": "degrees"
+    },
+    {
+      "name": "joint__wheel_rear_R",
+      "parent": "joint__rear_steer_R",
+      "position": [
+        0.35,
+        0.225,
+        -1.0
+      ],
+      "axis": "X",
+      "limits": null,
+      "units": "radians",
+      "position_space": "vehicle_bind_world"
+    },
+    {
+      "name": "joint__carriage",
+      "parent": "forklift_root",
+      "position": [
+        0,
+        0.7,
+        0.04
+      ],
+      "axis": "Y",
+      "translation_range_m": [
+        -0.52,
+        0.8
+      ],
+      "meaning": "fork top=.70+lift; stops .18..1.50"
+    },
+    {
+      "name": "joint__reach",
+      "parent": "joint__carriage",
+      "position": [
+        0,
+        0.7,
+        0.4
+      ],
+      "axis": "Z",
+      "translation_range_m": [
+        0,
+        0.4
+      ],
+      "meaning": "stopped handling only; travel at0. Fork heel=.40+reach; tips=1.50+reach"
+    },
+    {
+      "name": "joint__fork_L",
+      "parent": "joint__reach",
+      "position": [
+        -0.4,
+        0.7,
+        0.4
+      ],
+      "axis": "X",
+      "translation_abs_centre_range_m": [
+        0.24,
+        0.4
+      ],
+      "meaning": "no yaw/tilt or telescoping blade"
+    },
+    {
+      "name": "joint__fork_R",
+      "parent": "joint__reach",
+      "position": [
+        0.4,
+        0.7,
+        0.4
+      ],
+      "axis": "X",
+      "translation_abs_centre_range_m": [
+        0.24,
+        0.4
+      ],
+      "meaning": "no yaw/tilt or telescoping blade"
+    },
+    {
+      "name": "joint__steering_wheel",
+      "parent": "forklift_root",
+      "position": [
+        0,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "axis": "declared steering column axis",
+      "units": "radians",
+      "purpose": "visual control rotation; chassis follows L12 analytic path"
+    }
+  ],
+  "dynamic_reach_frame": {
+    "rear_plate": {
+      "x": [
+        -0.56,
+        0.56
+      ],
+      "z": [
+        0,
+        0.08
+      ],
+      "y_relative_fork_top": [
+        -0.07,
+        0.16
+      ]
+    },
+    "side_guides": {
+      "outer_x_abs": [
+        0.5,
+        0.56
+      ],
+      "outer_z_fixed": [
+        -0.02,
+        0.62
+      ],
+      "outer_y_relative_fork_top": [
+        -0.07,
+        -0.015
+      ],
+      "outer_wall_thickness_m": 0.008,
+      "inner_x_abs": [
+        0.512,
+        0.548
+      ],
+      "inner_z_retracted": [
+        -0.02,
+        0.62
+      ],
+      "inner_y_relative_fork_top": [
+        -0.0575,
+        -0.0275
+      ],
+      "inner_translation_z_range_m": [
+        0,
+        0.4
+      ],
+      "minimum_full_extension_engagement_m": 0.24,
+      "cross_section_air_each_side_x_m": 0.004,
+      "cross_section_air_each_side_y_m": 0.0045,
+      "outer_parent": "joint__carriage",
+      "inner_parent": "joint__reach",
+      "all_rail_lengths_fixed_no_scale_animation": true
+    },
+    "forward_plate": {
+      "x": [
+        -0.56,
+        0.56
+      ],
+      "z_relative_heel": [
+        -0.04,
+        0
+      ],
+      "y_relative_fork_top": [
+        -0.07,
+        0.04
+      ]
+    },
+    "fixed_connection": "rear crossplate slides between fixed twin mast rails; two outboard side guides connect rear to forward crossplate; heel stems attach forward plate",
+    "allowed_sequence": [
+      "travel: reach0/top.70 or LONG.75",
+      "stop; extend at high top",
+      "lower only at full reach.40",
+      "engage/release load",
+      "lift at full reach to high travel top",
+      "retract only at high top"
+    ],
+    "low_retracted_state_forbidden": true,
+    "travel_graph_reach_must_equal_zero": true,
+    "handling_envelope": {
+      "bare_min": [
+        -0.6,
+        0,
+        -1.5
+      ],
+      "bare_max": [
+        0.6,
+        2.1,
+        1.9
+      ],
+      "loaded_height_rule": "fork top+HU height; may exceed travel2.10 only in separately cleared stopped handling volume"
+    }
+  },
+  "driver": {
+    "asset": "frontend/public/models/v3/worker-base.glb",
+    "worker_height_m": 1.7,
+    "worker_geometry_unchanged": true,
+    "worker_scale": [
+      1,
+      1,
+      1
+    ],
+    "seat_anchor_vehicle": [
+      0,
+      0.84,
+      -0.65
+    ],
+    "seat_contact_worker_bind": [
+      0,
+      0.55,
+      -0.035
+    ],
+    "worker_root_translation": [
+      0,
+      0.29,
+      -0.615
+    ],
+    "rotation_order": "native Three.js intrinsic Euler XYZ, radians",
+    "jointEulerXYZ": {
+      "joint__pelvis": [
+        0,
+        0,
+        0
+      ],
+      "joint__torso": [
+        0,
+        0,
+        0
+      ],
+      "joint__head": [
+        0,
+        0,
+        0
+      ],
+      "joint__upper_arm_L": [
+        -0.55,
+        0,
+        0.23
+      ],
+      "joint__forearm_L": [
+        -1,
+        0,
+        0
+      ],
+      "joint__hand_L": [
+        0,
+        0,
+        0
+      ],
+      "joint__thigh_L": [
+        -1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__shin_L": [
+        1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__foot_L": [
+        0,
+        0,
+        0
+      ],
+      "joint__upper_arm_R": [
+        -0.55,
+        0,
+        -0.23
+      ],
+      "joint__forearm_R": [
+        -1,
+        0,
+        0
+      ],
+      "joint__hand_R": [
+        0,
+        0,
+        0
+      ],
+      "joint__thigh_R": [
+        -1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__shin_R": [
+        1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__foot_R": [
+        0,
+        0,
+        0
+      ]
+    },
+    "pelvisShift": [
+      0,
+      0,
+      0
+    ],
+    "expected_grips": {
+      "L": [
+        -0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "R": [
+        0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ]
+    },
+    "expected_soles": {
+      "L": [
+        -0.11499999463558197,
+        0.53000003375113,
+        -0.39499998070299625
+      ],
+      "R": [
+        0.11499999463558197,
+        0.53000003375113,
+        -0.39499998070299625
+      ]
+    },
+    "grip_bar_radius_m": 0.018,
+    "grip_bar_length_m": 0.08,
+    "grip_bar_axis": "actual posed hand local X; connected through rim to steering column",
+    "steering_column": {
+      "start": [
+        0,
+        0.53,
+        -0.02
+      ],
+      "end": [
+        0,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "radius_m": 0.035
+    },
+    "entry_clear_portal": {
+      "x_plane_abs_m": 0.45,
+      "y": [
+        0.53,
+        2.04
+      ],
+      "z": [
+        -0.96,
+        -0.1
+      ]
+    },
+    "entry_check_scope": "seated-pose lateral portal clearance only; walking/climbing sequence not yet accepted",
+    "required_pose_tolerance_m": 2e-05,
+    "minimum_helmet_roof_gap_m": 0.045
+  },
+  "anchor_position_space": "vehicle bind world, local translations derived by subtracting named parent bind world; preserve unit frames",
+  "anchor_parents": {
+    "anchor_floor_origin": "forklift_root",
+    "anchor_front_axle": "forklift_root",
+    "anchor_rear_axle": "forklift_root",
+    "anchor_driver_seat": "forklift_root",
+    "anchor_footrest_L": "forklift_root",
+    "anchor_footrest_R": "forklift_root",
+    "anchor_steering_grip_L": "joint__steering_wheel",
+    "anchor_steering_grip_R": "joint__steering_wheel",
+    "anchor_fork_top_L": "joint__fork_L",
+    "anchor_fork_top_R": "joint__fork_R",
+    "anchor_LONG_cradle": "joint__reach",
+    "anchor_LONG_load": "joint__reach"
+  },
+  "anchors": {
+    "anchor_floor_origin": [
+      0,
+      0,
+      0
+    ],
+    "anchor_front_axle": [
+      0,
+      0.3,
+      0.4
+    ],
+    "anchor_rear_axle": [
+      0,
+      0.225,
+      -1.0
+    ],
+    "anchor_driver_seat": [
+      0,
+      0.84,
+      -0.65
+    ],
+    "anchor_footrest_L": [
+      -0.115,
+      0.53,
+      -0.395
+    ],
+    "anchor_footrest_R": [
+      0.115,
+      0.53,
+      -0.395
+    ],
+    "anchor_steering_grip_L": [
+      -0.24188875983010355,
+      1.2780096372028482,
+      -0.2534595793976674
+    ],
+    "anchor_steering_grip_R": [
+      0.24188875983010355,
+      1.2780096372028482,
+      -0.2534595793976674
+    ],
+    "anchor_fork_top_L": [
+      -0.4,
+      0.7,
+      0.95
+    ],
+    "anchor_fork_top_R": [
+      0.4,
+      0.7,
+      0.95
+    ],
+    "anchor_LONG_cradle": [
+      0,
+      0.6,
+      1.0
+    ],
+    "anchor_LONG_load": [
+      0,
+      0.75,
+      1.0
+    ]
+  },
+  "anchor_pose_targets": {
+    "LONG_travel": {
+      "carriage_lift_m": 0.05,
+      "reach_m": 0,
+      "cradle_vehicle": [
+        0,
+        0.65,
+        1
+      ],
+      "HU_vehicle": [
+        0,
+        0.8,
+        1
+      ]
+    },
+    "LONG_lower_rack": {
+      "carriage_lift_m": -0.5,
+      "reach_m": 0.4,
+      "fork_top_y_m": 0.2,
+      "cradle_vehicle": [
+        0,
+        0.1,
+        1.4
+      ],
+      "HU_vehicle": [
+        0,
+        0.25,
+        1.4
+      ]
+    }
+  },
+  "long_attachment": {
+    "HU_end_distance_from_pad_centre_m": 0.7,
+    "HU_frame_end_overhang_m": 0.5,
+    "allowed_HU": "LONG_BUNDLE",
+    "attachment_id": "v3:attachment:long-cradle:01",
+    "blade_y_range_own_m": [
+      0.03,
+      0.1
+    ],
+    "declared_payload_limit_kg": 600,
+    "free_floor_gap_m": 0.01,
+    "mass_kg": 40,
+    "mount_origin_in_vehicle_m": [
+      0,
+      0.65,
+      1
+    ],
+    "own_cog_xyz_m": [
+      0,
+      0.065,
+      0
+    ],
+    "own_dimensions_xyz_m": [
+      3.2,
+      0.15,
+      0.85
+    ],
+    "pad_width_m": 0.2,
+    "pocket_centres_x_m": [
+      -0.4,
+      0.4
+    ],
+    "pocket_inner_width_m": 0.14,
+    "pocket_inner_y_range_own_m": [
+      0.02,
+      0.1
+    ],
+    "positive_lock": "Two retained rear pins/ears plus independent visible load restraint; missing lock or restraint rejects.",
+    "positive_pin_design": {
+      "actual_mesh_and_strength_approval": false,
+      "bore_radius_m": 0.01,
+      "centres_x_m": [
+        -0.4,
+        0.4
+      ],
+      "open_allowed_only_stopped": true,
+      "open_retraction_m": 0.11,
+      "own_z_m": -0.38,
+      "pin_closed_y_own_m": [
+        0.005,
+        0.15
+      ],
+      "pin_radius_m": 0.008,
+      "vehicle_extended_z_m": 1.02,
+      "vehicle_travel_z_m": 0.62
+    },
+    "support_approval": "Synthetic rigid restrained bundle with fixed symmetric CoG; no general beam stress certification.",
+    "support_pad_centres_x_m": [
+      -1.4,
+      1.4
+    ],
+    "support_span_m": 2.8,
+    "transfer_interface": "Actual M04/M14 must provide arm/pad/pocket relief and verify lower rack plane .25m before any transfer. No continuous deck through cradle pads; upper12 LONG addresses stay blocked.",
+    "separate_attachment_not_cargo": true,
+    "travel_mount_origin_in_vehicle_m": [
+      0,
+      0.65,
+      1
+    ],
+    "travel_HU_bottom_y_m": 0.8,
+    "pocket_roof_contact_z_vehicle_m": [
+      0.575,
+      1.425
+    ],
+    "pocket_engagement_m": 0.85,
+    "low_handling_pose": {
+      "reach_m": 0.4,
+      "fork_top_y_m": 0.4,
+      "cradle_bottom_y_m": 0.3,
+      "cradle_origin_z_m": 1.4
+    },
+    "rear_wheel_clearance": "travel attachment bottom.65 clears tyremax.60; low handling requires Ztranslation+.40 before lowering",
+    "positive_lock_plan": "two captive vertical pins through matching blade/roof/floor bores positively arrest fore-aft slide; independent upper bundle restraints",
+    "lock_dimensions": {
+      "pin_centres_own_xz_m": [
+        [
+          -0.4,
+          -0.38
+        ],
+        [
+          0.4,
+          -0.38
+        ]
+      ],
+      "pin_shaft_radius_m": 0.008,
+      "matching_bore_radius_m": 0.01,
+      "pin_shaft_closed_y_own_m": [
+        0.005,
+        0.145
+      ],
+      "recessed_cap_radius_m": 0.016,
+      "recessed_cap_closed_y_own_m": [
+        0.125,
+        0.15
+      ],
+      "fork_bore_centre_z_from_heel_m": 0.22,
+      "fork_bore_axis": "Y",
+      "lock_joint_names": [
+        "joint__cradle_lock_L",
+        "joint__cradle_lock_R"
+      ],
+      "open_pin_translation_y_m": 0.11,
+      "open_pin_enlarged_handling_height_own_m": 0.26,
+      "pin_ear_outer_z_own_m": [
+        -0.402,
+        -0.358
+      ],
+      "open_pin_lowest_y_own_m": 0.115,
+      "HU_rear_z_own_m": -0.325,
+      "ear_to_HU_fore_aft_gap_m": 0.033,
+      "travel_requires_both_pins_closed_and_bundle_restraints_closed": true,
+      "source_scope": "dimension declaration; actual boolean bores, captive ears, pin sweeps/contact and strength remain later M14 attachment gate"
+    },
+    "pins_clamp_actual_geometry_and_retention": "pending M14 attachment child, no stress certificate",
+    "M04_support_relief": "must consume actual M04 arm/pad channels; unresolved until paired mesh/contact proof"
+  },
+  "ratings": {
+    "capacity_rule": "min(1000,800/rating_arm_about_fixed_chassis_Z04_m)",
+    "certification": false,
+    "frozen_selection": "Replaces v0.1 600kgm before stock/optimization: extended654kg IBC at1.0m needs explicit larger declared design. Same rating in both A/B cases; not a measured improvement.",
+    "maximum_fork_top_handling_y_m": 1.5,
+    "maximum_single_fork_share_kg": 500,
+    "meaning": "Declared simulation equipment rating, not calculated structural stability or a real manufacturer's capacity plate.",
+    "moment_budget_kg_m": 800,
+    "nominal_capacity_kg": 1000,
+    "nominal_load_centre_m": 0.8,
+    "rating_reference_z_m": 0.4,
+    "reach_rule": "Reach shifts load AND fork heel forward. Physical fork load-centre is unchanged, but moment arm about fixed chassis reference increases by .40m; capacity must use that increased arm.",
+    "restricted_to_symmetrical_centre_of_gravity": true,
+    "source_kind": "synthetic_design",
+    "physical_travel_fork_heel_z_m": 0.4,
+    "one_frozen_rating_for_travel_and_stopped_reach": true,
+    "same_frozen_rating_and_timings_for_later_AB": true,
+    "no_outrigger_or_resource_increase": true,
+    "approved_revision_source": "published C08v0.2.0",
+    "historical_extended_IBC_conflict": {
+      "mass_kg": 654,
+      "extended_reference_arm_m": 1.0,
+      "old_capacity_kg": 600,
+      "old_moment_budget_kg_m": 600,
+      "new_capacity_kg": 800
+    }
+  },
+  "materials": {
+    "petrol": {
+      "name": "V3_Forklift_Petrol",
+      "color": "#2E7376"
+    },
+    "tan": {
+      "name": "V3_Forklift_Tan",
+      "color": "#C99A60"
+    },
+    "steel": {
+      "name": "V3_Forklift_Charcoal",
+      "color": "#293D46"
+    },
+    "rubber": {
+      "name": "V3_Forklift_Rubber",
+      "color": "#263238"
+    }
+  },
+  "renderer_or_runtime_used": false,
+  "staffing": "F01/F02 existing typed driver actors are seated clones of unchanged worker-base at vehicle seat; not two additional people",
+  "storage_contact_height_scope": {
+    "HEAVY_min": 0.18,
+    "STANDARD_active_levels": [
+      0.2,
+      1.4
+    ],
+    "LONG_HU_bottom": 0.25,
+    "LONG_fork_top_when_cradle_roof_at_HU_bottom": 0.2,
+    "unsupported_floor_HU_pickup_admitted": false,
+    "proof_scope": "height reach only; lanes, rack arms, clamps, HU base contacts and approach footprint require actual paired M/P proof"
+  },
+  "deferred": [
+    "extended pickup/setdown swept action and actual contact proof",
+    "actual forklift mesh silhouette/material/source/GLB gates",
+    "all body/wheel/mast actual joins and swept steer tests",
+    "cradle through-pockets/clamps/straps/rack relief actual contact/transfer",
+    "seated-driver actual paired views and controls",
+    "walking/climbing entry animation",
+    "source scheduling, business simulation, real equipment certification"
+  ]
+}

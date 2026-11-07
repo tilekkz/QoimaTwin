@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:workload-policy:v3-proposal:0.1.0",
+  "title": "Explicit synthetic whole-HU workload policy proposal",
+  "description": "C10 source periods have no clock. Counts and horizon are explicit caller inputs, not source throughput claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "schema_version", "horizon_tick", "offered_hus", "calendar"],
+  "properties": {
+    "schema_id": {"const": "qoima.workload-policy.v3-proposal"},
+    "schema_version": {"const": "0.1.0"},
+    "horizon_tick": {"type": "integer", "minimum": 1, "description": "Microseconds; arrivals lie in [0,H)."},
+    "offered_hus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inbound", "outbound"],
+      "properties": {
+        "inbound": {"type": "integer", "minimum": 0},
+        "outbound": {"type": "integer", "minimum": 0}
+      }
+    },
+    "calendar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "windows"],
+      "properties": {
+        "kind": {"enum": ["normal", "burst"]},
+        "windows": {"type": "array", "items": {"$ref": "#/$defs/window"}}
+      },
+      "if": {"properties": {"kind": {"const": "normal"}}},
+      "then": {"properties": {"windows": {"maxItems": 0}}},
+      "else": {"properties": {"windows": {"minItems": 1}}}
+    }
+  },
+  "$defs": {
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_tick", "end_tick", "weight"],
+      "properties": {
+        "start_tick": {"type": "integer", "minimum": 0},
+        "end_tick": {"type": "integer", "minimum": 1},
+        "weight": {
+          "type": "array",
+          "description": "Positive exact rational [numerator, denominator].",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

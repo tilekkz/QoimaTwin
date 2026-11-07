@@ -46,4 +46,7 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0038](0038-v3-profile-receipt-chain.md) | One received HU reused by outbound jobs and compiler admission parity |
 | [0039](0039-v3-manual-admission-and-wait-reasons.md) | Static explicit-job admission, valid slot reuse and causal waits |
 | [0040](0040-bounded-v3-conveyor-execution.md) | Finite conveyor execution with swept-cell and reversible-spur reservations |
+| [0041](0041-v3-unit-and-packaging-ledger.md) | Exact unit ancestry, transactional stock and explicit packaging material |
+| [0042](0042-v3-local-pallet-mesh-proof.md) | Actual GLB geometry, continuous local motion covers and finite support |
+| [0043](0043-v3-explicit-timed-workload.md) | Exact source quotas and explicit frozen arrival calendars |
 | [0044](0044-v3-conveyor-component-publication.md) | Frozen component profiles, actual traces and immutable CLI publication |
