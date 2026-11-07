@@ -59,8 +59,12 @@ class Ledger:
         self._reserved: dict[Holding, int] = {}
         self._order_claims: dict[str, dict[Holding, int]] = {}
         self._by_location: dict[Location, set[Holding]] = defaultdict(set)
+        self._by_sku: dict[str, set[Holding]] = defaultdict(set)
+        self._reserved_by_sku: dict[str, set[Holding]] = defaultdict(set)
         self._initial: dict[str, int] = defaultdict(int)
         self._accepted: dict[str, int] = defaultdict(int)
+        self._dirty_skus: set[str] = set()
+        self._audited = False
 
     # ----- creation -----
     def add_initial(self, sku_id: str, lot_id: str, location: Location, quantity: int) -> None:
@@ -131,6 +135,32 @@ class Ledger:
                 issues.append(f"{holding}: non-positive balance {quantity}")
         return issues
 
+    def check_dirty_conservation(self, *, full: bool = False) -> list[str]:
+        """Audit all stock initially, then changed SKUs; retain changes on any violation."""
+        issues = self.check_conservation() if full or not self._audited else self._changed_issues()
+        if not issues:
+            self._dirty_skus.clear()
+            self._audited = True
+        return issues
+
+    def _changed_issues(self) -> list[str]:
+        issues: list[str] = []
+        for sku in sorted(self._dirty_skus):
+            holdings = sorted(self._by_sku.get(sku, ()))
+            expected = self._initial.get(sku, 0) + self._accepted.get(sku, 0)
+            found = sum(self._balances.get(holding, 0) for holding in holdings)
+            if expected != found:
+                issues.append(f"{sku}: expected {expected} units, found {found}")
+            for holding in sorted(self._reserved_by_sku.get(sku, ())):
+                claim, on_hand = self.reserved(holding), self.on_hand(holding)
+                if not 0 <= claim <= on_hand:
+                    issues.append(f"{holding}: reserved {claim} exceeds on hand {on_hand}")
+            for holding in holdings:
+                quantity = self._balances.get(holding, 0)
+                if quantity <= 0:
+                    issues.append(f"{holding}: non-positive balance {quantity}")
+        return issues
+
     # ----- reservations and picks -----
     def try_reserve(self, order_id: str, lines: Iterable[ReservationLine]) -> bool:
         """Reserve all lines for an order, or nothing. Returns False on any shortage."""
@@ -145,7 +175,7 @@ class Ledger:
         if any(self.available(h) < q for h, q in wanted.items()):
             return False
         for holding, quantity in wanted.items():
-            self._reserved[holding] = self.reserved(holding) + quantity
+            self._set_reservation(holding, self.reserved(holding) + quantity)
         self._order_claims[order_id] = dict(wanted)
         return True
 
@@ -158,9 +188,7 @@ class Ledger:
         self._debit(holding, quantity)
         self._credit(Holding(holding.sku_id, holding.lot_id, destination), quantity)
         claims[holding] -= quantity
-        self._reserved[holding] -= quantity
-        if self._reserved[holding] == 0:
-            del self._reserved[holding]
+        self._set_reservation(holding, self.reserved(holding) - quantity)
         if claims[holding] == 0:
             del claims[holding]
         if not claims:
@@ -169,9 +197,7 @@ class Ledger:
     def release_order(self, order_id: str) -> None:
         """Drop an order's unpicked claims (used at run cut-off; never moves stock)."""
         for holding, quantity in self._order_claims.pop(order_id, {}).items():
-            self._reserved[holding] -= quantity
-            if self._reserved[holding] == 0:
-                del self._reserved[holding]
+            self._set_reservation(holding, self.reserved(holding) - quantity)
 
     # ----- movements -----
     def transfer_location(
@@ -188,16 +214,33 @@ class Ledger:
         return moved
 
     # ----- internals -----
+    def _set_reservation(self, holding: Holding, quantity: int) -> None:
+        self._dirty_skus.add(holding.sku_id)
+        if quantity:
+            self._reserved[holding] = quantity
+            self._reserved_by_sku[holding.sku_id].add(holding)
+        else:
+            self._reserved.pop(holding, None)
+            self._reserved_by_sku[holding.sku_id].discard(holding)
+            if not self._reserved_by_sku[holding.sku_id]:
+                del self._reserved_by_sku[holding.sku_id]
+
     def _credit(self, holding: Holding, quantity: int) -> None:
         self._balances[holding] = self._balances.get(holding, 0) + quantity
         self._by_location[holding.location].add(holding)
+        self._by_sku[holding.sku_id].add(holding)
+        self._dirty_skus.add(holding.sku_id)
 
     def _debit(self, holding: Holding, quantity: int) -> None:
         balance = self._balances.get(holding, 0)
         if balance < quantity:
             raise LedgerError(f"{holding} holds {balance}, cannot remove {quantity}")
+        self._dirty_skus.add(holding.sku_id)
         if balance == quantity:
             del self._balances[holding]
+            self._by_sku[holding.sku_id].discard(holding)
+            if not self._by_sku[holding.sku_id]:
+                del self._by_sku[holding.sku_id]
             self._by_location[holding.location].discard(holding)
             if not self._by_location[holding.location]:
                 del self._by_location[holding.location]

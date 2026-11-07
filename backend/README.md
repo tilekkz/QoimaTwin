@@ -17,6 +17,9 @@ and the decisions are in [`docs/adr/`](docs/adr/README.md).
 | Schema-valid v2 run exporter and proposed bundle/fixture for Tilek | done |
 | Horizon/end metrics, linear p95, role utilization and time-weighted queues | done |
 | PDF P0: coherent horizon scalar metrics and ordered subsystem termination reasons | done |
+| Executed picker distance, station load, belt/tote/receiving integrals and active labor | done |
+| Mean28/HGB temporal forecasts and immutable history cache | implemented; see forecast protocol |
+| Frozen ABC, greedy 0/2/8 swaps and paired comparison with relocation labor | implemented; see ADR 0016 |
 | C5-C8, K1-K6, D1-D8, T1-T6 acceptance gates | done |
 | One-hour normal/peak determinism, invariants, runtime and export-size measurements | see research report |
 
@@ -38,13 +41,15 @@ uv sync --locked
 
 ```bash
 uv run python -m app.cli validate-contracts   # JSON Schema + semantic checks of ../contracts
-uv run pytest                                 # all tests
+uv run pytest -q                              # development tests, excludes slow
+uv run pytest -q -m "slow or not slow" -n 2 --dist loadscope  # complete pre-push suite
 uv run pytest -m acceptance                   # numbered gates from 05_Acceptance_and_Demo.md
-uv run pytest --cov                           # coverage gate: 85 % statement and branch
+uv run pytest -m "slow or not slow" -n 2 --dist loadscope --cov  # coverage gate: 85 %
 uv run ruff check . && uv run ruff format --check .
 uv run mypy app tests                         # strict mode
 uv run python -m app.cli simulate --profile large-normal --horizon-s 3600 --out runs/normal
 uv run python tools/benchmark_runs.py --out D:/QoimaTwin-runs/new-benchmark-directory
+uv run python tools/benchmark_runs.py --horizon-s 28800 --out D:/QoimaTwin-runs/new-shift-directory
 ```
 
 Optional git hooks (run from the repository root):
@@ -54,6 +59,9 @@ uv run --directory backend pre-commit install -c backend/.pre-commit-config.yaml
 ```
 
 `QOIMA_CONTRACTS_DIR` overrides the contracts directory (default: `../contracts`).
+Output directories must be new or empty. Partial and failed simulations return a nonzero exit code
+with a JSON report. Positive integer-second horizons up to 168 hours are supported; horizons below
+one hour are explicitly marked as shortened runs. `--assignment PATH` selects a validated assignment.
 
 `simulate` materializes the synthetic inputs first, then runs with invariants enabled. It uses
 the supplied illustrative assignment, not a trained ABC plan. Output contains schema-valid
@@ -66,6 +74,14 @@ and duration integrals over [0,H). A fully dispatched orders flow can coexist wi
 The shared schemas remain v2.0; the transport envelope and files under
 `contracts/fixtures/proposed/` are proposals for Tilek, not an agreed v2.1 contract.
 
+Forecast validation uses the first 42 historical days for fitting and the following 14 for evaluation;
+the final forecast uses all 56 observed days. CPU measurements remain outside forecast identity.
+The planner receives historical visit estimates, never test orders. Baseline and candidate share
+exogenous inputs; the candidate pays relocation labor separately before the shift. Zero-benefit
+plans remain explicit no-ops and worse observed results remain visible. See
+[ADR 0015](docs/adr/0015-forecast-temporal-protocol.md) and
+[ADR 0016](docs/adr/0016-planning-and-comparison-protocol.md).
+
 ## Layout
 
 | Path | Content |
@@ -76,6 +92,8 @@ The shared schemas remain v2.0; the transport envelope and files under
 | `app/simulation/` | Time grid, phase scheduler on SimPy, engine and subsystems (picking, conveyor, packing, shipping, outbound, receiving) |
 | `app/inventory/` | Transactional ledger with conservation checks |
 | `app/data/`, `app/storage/` | Synthetic scenario materializer, canonical JSON and hashes |
+| `app/forecast/` | Temporal mean28/HGB forecasts, WAPE and immutable semantic snapshots |
+| `app/planning/`, `app/comparison/` | Frozen ABC, exact relocation routes and paired labor comparisons |
 | `app/cli.py` | Command-line tools |
 | `tests/acceptance/` | One test per numbered gate (G1, S1, C1, ...) |
 | `docs/adr/` | Architecture decisions |

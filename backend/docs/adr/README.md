@@ -20,3 +20,7 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0012](0012-run-export-projection.md) | Schema-valid v2 projection and proposed run bundle |
 | [0013](0013-status-and-observation-windows.md) | Ordered termination reasons, subsystem status and coherent metric windows |
 | [0014](0014-runtime-publication-and-clock.md) | Live scheduler heap, exact short horizons and safe publication |
+| [0015](0015-forecast-temporal-protocol.md) | Temporal validation, immutable mean28/HGB forecasts and cached history |
+| [0016](0016-planning-and-comparison-protocol.md) | Frozen ABC, greedy swaps, paired comparison and semantic input identity |
+| [0019](0019-canonical-json-and-benchmark-processes.md) | Canonical byte parity and isolated benchmark processes |
+| [0021](0021-changed-sku-conservation-audits.md) | Full initial audit and conservation checks for changed SKUs |

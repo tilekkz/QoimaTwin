@@ -14,7 +14,7 @@ class InvariantViolation(RuntimeError):
 
 def check_invariants(engine: Engine) -> None:
     """Check independently tracked pools; reservations never add physical stock."""
-    issues = engine.ctx.ledger.check_conservation()
+    issues = engine.ctx.ledger.check_dirty_conservation()
     issues.extend(_totes(engine))
     issues.extend(_cells(engine))
     issues.extend(_capacities(engine))
