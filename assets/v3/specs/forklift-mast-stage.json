@@ -1,13 +1,13 @@
 {
   "stage": "M14.4",
-  "status": "ACTIVE",
+  "status": "PASS",
   "asset_id": "forklift-mast-stage",
   "units": "m",
   "up_axis": "Y",
   "forward_axis": "+Z",
   "root": "forklift_root",
   "source_reference": "M14.2-REACH",
-  "geometry_created": false,
+  "geometry_created": true,
   "input_sha256": {
     "assets/v3/specs/forklift.dimensions.json": "d13741cc15e2dc4486ec880cdcbba56fe2ebf7143481d5f24be40ea31a57818b",
     "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
@@ -208,5 +208,8 @@
     "lift to travel top while extended",
     "retract high"
   ],
-  "contacts_policy": "Welded/static joints use actual interior mesh witnesses. Captured channels/guide rollers use physical tangent/clearance and overlap witnesses; no false solid penetration required. Mast/action/HU/rack workflow remains later gates."
+  "contacts_policy": "Welded/static joints use actual interior mesh witnesses. Captured channels/guide rollers use physical tangent/clearance and overlap witnesses; no false solid penetration required. Mast/action/HU/rack workflow remains later gates.",
+  "source_qa": "assets/v3/iterations/forklift/M14.4/actual-mast-checks.json",
+  "final_glb_sha256": "ef6e58f8131c4e51881a7c1d648bb6ebd79492683b19d09ba5389c48c97e7121",
+  "roof_refinement": "Open slat head guard from existing M14.2-REACH reference; unchanged bounds and underside. Existing cab/body source files unchanged."
 }

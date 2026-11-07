@@ -51,7 +51,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |
-| [M04](tasks/M04.md) | READY | root_next | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
+| [M04](tasks/M04.md) | ACTIVE | root | R10,R02,C04,C08,I09,R13.4 | Готова модель LONG storage |
 | [M05](tasks/M05.md) | PASS | rack_crate | R10,R02,C04,I09,R13.5 | Готова модель FLEX storage |
 | [M06](tasks/M06.md) | PASS | root | R10,R03,C02,I09 | Готово семейство SMALL/STANDARD/HEAVY cartons |
 | [M07](tasks/M07.md) | PASS | root | R10,R03,R04,C02,I09 | Готово семейство tote/parcel |
@@ -132,9 +132,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.1](tasks/M14.1.md) | PASS | people_packing | R10,R06,C08,I09 | Dimension/origin/forward/anchor scheme agrees with pallet, gate and driver |
 | [M14.2](tasks/M14.2.md) | PASS | people_packing | R10,R06,C08,M14.1,I09 | Body/counterweight and four connected grounded wheels, front/side check |
 | [M14.3](tasks/M14.3.md) | PASS | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
-| [M14.4](tasks/M14.4.md) | ACTIVE | root | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
-| [M14.5](tasks/M14.5.md) | TODO | unassigned | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
-| [M14.6](tasks/M14.6.md) | TODO | unassigned | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
+| [M14.4](tasks/M14.4.md) | PASS | root | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
+| [M14.5](tasks/M14.5.md) | PASS | root | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
+| [M14.6](tasks/M14.6.md) | READY | unassigned | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
 | [M14.7](tasks/M14.7.md) | TODO | unassigned | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |
 | [M14.8](tasks/M14.8.md) | TODO | unassigned | R10,R06,C08,M14.7,I09 | Pickup/load action checked at3timestamps, no floating/interpenetration |
 | [M14.9](tasks/M14.9.md) | TODO | unassigned | R10,R06,C08,M14.8,I09 | Every child evidence read, final reference/render/browser/action integration verified |

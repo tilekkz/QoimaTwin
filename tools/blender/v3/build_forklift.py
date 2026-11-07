@@ -166,7 +166,7 @@ def _wheel(data, root, mats):
     return spin
 
 
-def build_body_wheels():
+def build_body_wheels(refine_surfaces=False):
     plan=json.loads(SPEC.read_text(encoding="utf-8"))
     root=group("forklift_root")
     root["asset_id"]=ASSET_ID
@@ -184,7 +184,12 @@ def build_body_wheels():
               "entry_step_L","entry_step_R","petrol_nose"}
     for part in plan["blueprint_boxes"]:
         if part["name"] in selected:
-            _box_bounds(part["name"],part["min"],part["max"],mats[part["material"]],root,
+            hi=list(part["max"])
+            if refine_surfaces and part["name"]=="chassis_front_spine":
+                # Hidden cap is below the actual floorboard, avoiding two
+                # coincident top surfaces. Driver floor/boot contact is fixed.
+                hi[1]-=.005
+            _box_bounds(part["name"],part["min"],hi,mats[part["material"]],root,
                         .006 if "spine" in part["name"] else .010)
     # A stepped substantial counterweight stays inside the accepted envelope.
     # The two volumes overlap by20mm; no coplanar overlay, detached cap or decal.
@@ -258,10 +263,47 @@ def _steering_rim(mat,parent,axis,radius=.14,tube=.012):
     return obj
 
 
-def build_cab():
+def _slatted_roof(mat,parent):
+    """Single connected head-guard frame; open slats follow M14.2-REACH art.
+
+    This mast-stage refinement occupies the exact accepted roof box. The four
+    posts, helmet clearance, source cab and body checkpoint outputs stay fixed.
+    """
+    xs=[-.50,-.45,.45,.50]
+    zs=[-1.15,-1.07,-.90,-.84,-.65,-.59,-.40,-.34,-.15,-.09,.07,.15]
+    cells={(i,j) for i in range(3) for j in range(len(zs)-1)
+           if i in (0,2) or j in (0,2,4,6,8,10)}
+    vertices=[];index={};faces=[]
+    def vertex(x,y,z):
+        key=(x,y,z)
+        if key not in index:index[key]=len(vertices);vertices.append(xyz(key))
+        return index[key]
+    def quad(points):faces.append(tuple(vertex(*p) for p in points))
+    for i,j in sorted(cells):
+        a,b=xs[i:i+2];c,d=zs[j:j+2];lo,hi=2.04,2.10
+        quad([(a,lo,c),(a,lo,d),(b,lo,d),(b,lo,c)])
+        quad([(a,hi,c),(b,hi,c),(b,hi,d),(a,hi,d)])
+        if (i-1,j) not in cells:quad([(a,lo,c),(a,hi,c),(a,hi,d),(a,lo,d)])
+        if (i+1,j) not in cells:quad([(b,lo,c),(b,lo,d),(b,hi,d),(b,hi,c)])
+        if (i,j-1) not in cells:quad([(a,lo,c),(b,lo,c),(b,hi,c),(a,hi,c)])
+        if (i,j+1) not in cells:quad([(a,lo,d),(a,hi,d),(b,hi,d),(b,lo,d)])
+    mesh=bpy.data.meshes.new("roof_guard__editable_open_slat_frame")
+    mesh.from_pydata(vertices,[],faces);mesh.update()
+    bm=bmesh.new();bm.from_mesh(mesh);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+    if bm.calc_volume(signed=True)<0:bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+    bm.to_mesh(mesh);bm.free();mesh.update()
+    obj=bpy.data.objects.new("roof_guard",mesh);bpy.context.collection.objects.link(obj)
+    obj.parent=parent;mesh.materials.append(mat)
+    bevel=obj.modifiers.new("Head guard cast edge relief","BEVEL");bevel.width=.005;bevel.segments=2;bevel.harden_normals=True
+    obj.modifiers.new("Weighted guard faces","WEIGHTED_NORMAL").keep_sharp=True
+    obj["reference_refinement"]="M14.2-REACH open slats; identical outer roof envelope and underside height"
+    return _tag(obj,"roof_guard","cab")
+
+
+def build_cab(refine_guard=False):
     plan=json.loads(SPEC.read_text(encoding="utf-8"))
     frozen=json.loads((ROOT/"assets/v3/iterations/forklift/M14.1/actual-blueprint-checks.json").read_text(encoding="utf-8"))
-    root=build_body_wheels()
+    root=build_body_wheels(refine_surfaces=refine_guard)
     root["asset_id"]="forklift-cab-stage"
     root["stage"]="M14.3_body_and_cab_no_mast"
     root["staged_expected_dimensions_xyz_m"]=[1.2,2.1,2.2]
@@ -270,6 +312,9 @@ def build_cab():
     for part in plan["blueprint_boxes"]:
         name=part["name"]
         if not name.startswith(("seat_","guard_","roof_")):
+            continue
+        if refine_guard and name=="roof_guard":
+            _slatted_roof(mats["petrol"],root)
             continue
         mat=mats["petrol"] if name.startswith(("guard_","roof_")) else mats[part["material"]]
         bevel=.003 if name.startswith("guard_") or name=="seat_cushion_nose" else .006
@@ -330,7 +375,7 @@ def _rect_tube_z(name,x_range,y_range,z_range,wall,mat,parent):
 def build_mast():
     """M14.4 mechanics stage. Body/cab source and outputs stay untouched."""
     plan=json.loads(SPEC.read_text(encoding="utf-8"))
-    root=build_cab()
+    root=build_cab(refine_guard=True)
     root["asset_id"]="forklift-mast-stage"
     root["stage"]="M14.4_body_cab_mast_reach_forks"
     root["staged_expected_dimensions_xyz_m"]=[1.2,2.1,3.0]
@@ -367,7 +412,9 @@ def build_mast():
     for sign,side in ((-1,"L"),(1,"R")):
         xr=sorted((sign*.512,sign*.548))
         _box_bounds("reach_inner_"+side,[xr[0],-.0575,-.42],[xr[1],-.0275,.22],mats["steel"],reach,.001,"reach_inner_guide")
-    _box_bounds("carriage_forward_plate",[-.56,-.07,-.04],[.56,.04,0],mats["steel"],reach,.002,"carriage")
+    # Fork stems own their visible heel face; back this plate off1mm to avoid
+    # coincident surfaces while retaining genuine interior welded overlap.
+    _box_bounds("carriage_forward_plate",[-.56,-.07,-.04],[.56,.04,-.001],mats["steel"],reach,.002,"carriage")
     for sign,side in ((-1,"L"),(1,"R")):
         fork=pivot("joint__fork_"+side,(sign*.40,0,0),reach,"X")
         fork["translation_axis_runtime"]="X";fork["half_spacing_range_m"]=[.24,.40]
