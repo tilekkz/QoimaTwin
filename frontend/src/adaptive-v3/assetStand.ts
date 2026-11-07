@@ -19,6 +19,7 @@ const host = element('canvas-host');
 const shell = element('stand');
 const modelInput = element<HTMLInputElement>('model-id');
 const base = import.meta.env.BASE_URL;
+const assetTitles:Record<string,string>={'small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
 async function initialize(){
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d8dcdb');
@@ -150,7 +151,11 @@ function fit(next:View=view,focus?:THREE.Object3D){
   // light distant enough to include world-height occluders at that location.
   const wholeRadius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
   key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(wholeRadius));
-  const shadow=key.shadow.camera;shadow.left=-radius*2;shadow.right=radius*2;shadow.top=radius*2;shadow.bottom=-radius*2;shadow.near=.01;shadow.far=wholeRadius*12;shadow.updateProjectionMatrix();key.shadow.normalBias=Math.min(.04,radius*.003);key.shadow.bias=-.003/(shadow.far-shadow.near);
+  const shadow=key.shadow.camera;shadow.left=-radius*2;shadow.right=radius*2;shadow.top=radius*2;shadow.bottom=-radius*2;shadow.near=.01;shadow.far=wholeRadius*12;shadow.updateProjectionMatrix();
+  // Bias scales with the inspection size. A fixed3mm depth bias detached the
+  // shadow of a60mm package and erased contact under thin cardboard/tape.
+  key.shadow.normalBias=Math.min(.04,Math.max(.00001,radius*.0004));
+  key.shadow.bias=-Math.min(.003,Math.max(.000005,radius*.0002))/(shadow.far-shadow.near);
   const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
   camera=view==='quarter'?perspective:orthographic;camera.up.set(0,1,0);camera.position.copy(centre).addScaledVector(direction,radius*4);camera.lookAt(centre);
   const inverse=camera.quaternion.clone().invert();const projected=new THREE.Vector3();
@@ -186,7 +191,7 @@ function snapshot(){
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
   const cycle=activeCycle();
-  return {modelId,phase,view,focus:activeFocus,fixture:walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,fixture:walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -206,7 +211,7 @@ function updateReference(){
 async function loadModel(id:string){
   const token=++serial;
   if(!/^[a-z0-9][a-z0-9-]{0,63}$/.test(id)){setStatus('error','Неверный идентификатор','Используйте буквы a–z, цифры и дефисы.');return;}
-  modelId=id;modelInput.value=id;element('model-title').textContent=id.replaceAll('-',' ');updateReference();
+  modelId=id;modelInput.value=id;element('model-title').textContent=assetTitles[id]??id.replaceAll('-',' ');updateReference();
   setStatus('loading','Загружаем '+id,'Читаем локальный GLB и проверяем геометрию…');
   releaseModel();points=[];bounds.makeEmpty();
   for(const field of ['size-x','size-y','size-z','triangles','materials'])element(field).textContent='—';element('diagnostics').textContent='Загружаем модель…';
@@ -270,12 +275,21 @@ async function loadModel(id:string){
       configureCycle('Подхват паллеты',[[0,'Начало'],[8,'Подхват'],[14,'Перевозка'],[22,'На опоре'],[30,'Готово']]);element('model-title').textContent='Подхват и установка паллеты';updateReference();
     }
     scene.add(model);
-    model.traverse(node=>{if(node instanceof THREE.Mesh){node.castShadow=node.userData.cast_shadow!==false&&node.userData.shell_component_class!=='floor_support';node.receiveShadow=true;}});
+    model.traverse(node=>{if(node instanceof THREE.Mesh){
+      node.castShadow=node.userData.cast_shadow!==false&&node.userData.shell_component_class!=='floor_support';node.receiveShadow=true;
+      // Closed native solids can retain their original double-sided colour
+      // material while casting only their back faces. This removes the legacy
+      // rack's self-shadow stripes without a millimetre-scale contact gap.
+      for(const m of Array.isArray(node.material)?node.material:[node.material])if(m.side===THREE.DoubleSide)m.shadowSide=THREE.BackSide;
+    }});
     collectPoints();
     const centre=bounds.getCenter(new THREE.Vector3());const radius=Math.max(bounds.getSize(new THREE.Vector3()).length()/2,.1);
-    ground.position.set(centre.x,Math.min(0,bounds.min.y)-.002,centre.z);ground.scale.set(radius*5,radius*5,1);
+    // Keep only a numerical depth bias below actual support. A fixed2mm gap
+    // visibly floated a60mm package and its half-millimetre peeled tape.
+    const floorBias=Math.min(.002,Math.max(.00001,radius*.00005));
+    ground.position.set(centre.x,Math.min(0,bounds.min.y)-floorBias,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
-    fit(view);setStatus('ready',walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':id.replaceAll('-',' '),activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
+    fit(view);setStatus('ready',walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':assetTitles[id]??id.replaceAll('-',' '),activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':id==='picker-pick-source-fixture'?'Отдельный стенд источника · отбор ещё не запущен':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
   }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
 }

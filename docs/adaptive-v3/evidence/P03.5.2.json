@@ -1,0 +1,33 @@
+{
+  "task_id": "P03.5.2",
+  "status": "VERIFY",
+  "previous_technical_gate": "PASS before latest user visual review",
+  "review_hold": "User questions pictured outer-case unfolding. Diagnose and correct before accepting visually. See USER_CORRECTIONS_2026-11-08.md and user-feedback screenshot03. No post-review model changes made in this chat.",
+  "date": "2026-11-08",
+  "references": ["M06.1_REF", "R13.1", "R11"],
+  "native_checks": "assets/v3/iterations/small-carton/P03.5.2/actual-small-pick-source-checks.json",
+  "geometry": "assets/v3/specs/small-pick-source.geometry.json",
+  "primary_unit": {"size_m": [0.06, 0.04, 0.04], "mass_kg": 0.035, "closed_parts": 7, "sha256": "592867e3bc0dd4281197738e667850bc26a960373bd8eba8801fb6887fb8ad79"},
+  "partial_case": {"closed_parts": 59, "original_case_meshes_unchanged": 19, "primary_contents": 4, "pick_targets": [17, 23], "remaining_lower_units": [14, 20], "native_contents_supports": 14, "sha256": "c785f3a4a3df24a13c85083ff78030d8f9a7a42a46060e3af9b641463e585d38"},
+  "fixture": {"sha256": "52d9ee8ad5105ed4aab101249ff0312296df399f7efbb458d8ae6f8a5e41099e", "cart_world_m": [1.75, 0, -0.1], "rack_support_contacts": 2, "tote_support_contacts": 4, "employees_exported": 0},
+  "source_files_hash_guard": "Six original blend/catalog files unchanged; exact hashes in native report",
+  "khronos": "All three GLBs: 0errors/0warnings",
+  "native_GLTF_geometry": "All three: native batches, normals, hierarchy, bounds, anchors, pivots and unit scale PASS",
+  "reviewed_browser_views": {
+    "small-unit": ["front", "side", "rear", "quarter", "top"],
+    "small-case-open-partial": ["front", "side", "rear", "quarter", "top"],
+    "picker-pick-source-fixture": ["front", "side", "rear", "quarter", "top"],
+    "picker-pick-source-close": ["front", "side", "quarter", "top"]
+  },
+  "browser": "19 visible captures; no page errors or failed resources; per-batch browser lifecycle recorded and owned processes closed",
+  "fixes_retested": [
+    "Scale-aware support-plane and shadow offsets prevent tiny packets and tape floating above the floor",
+    "Original paper bevel gaps bridged by four integral 1mm crease strips",
+    "Solid placeholder dunnage replaced with real 3mm-wall hollow U supports and 5mm separators",
+    "Cart translated 400mm backwards after actual neutral worker exposed left hand/body intersections; temporary 50-part worker clearance proof passes and worker is excluded from export",
+    "Closed native meshes using original double-sided colour materials cast back-side shadows, removing rack close-up shadow acne"
+  ],
+  "build": "npm run build PASS",
+  "graph": "qoima-twin last known generation2026-11-07T15:43:42Z stale; index_status and coverage now return Transport closed. Exact new/changed source read and actual native/runtime checks used; no completeness claim.",
+  "scope": "Source geometry only. Initially prepared/open partial four-unit case is synthetic visual stock. Full C02 SMALL 940g/24 unchanged. No actual pick action, inventory write, engine run or extra employee claimed. P03.5.3 follows."
+}

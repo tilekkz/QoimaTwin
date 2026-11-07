@@ -179,5 +179,5 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.6.2](tasks/M14.6.2.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M04,M10 | Actual LONG base/pins and separate upper bundle restraints |
 | [M14.6.3](tasks/M14.6.3.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M14.6.2,M08,M09,M11,M12 | All six native loaded assemblies and low/high interface gate |
 | [P03.5.1](tasks/P03.5.1.md) | PASS | root | P03.4,P01.7,P02 | Manual picker wrist roll and closing mitten controls |
-| [P03.5.2](tasks/P03.5.2.md) | READY | unassigned | P03.5.1,M06.1,M01 | Native open partial SMALL case and primary-unit source fixture |
+| [P03.5.2](tasks/P03.5.2.md) | VERIFY | root | P03.5.1,M06.1,M01 | Native open partial SMALL case and primary-unit source fixture |
 | [P03.5.3](tasks/P03.5.3.md) | TODO | unassigned | P03.5.2 | Reach, pick primary units, withdraw and deposit without duplication |
