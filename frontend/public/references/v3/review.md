@@ -168,3 +168,12 @@ M04_TRANSFER_REF root PASS: PASS reference: consistent three-post/two-level rack
 
 
 M10_REF root PASS: PASS concept: long low bundle, real hollow rectangular profile ends, four-layer/six-depth intended grid, substantial end protection, two wraps, skids and separators. Exact24 C02 unit placements and zero-gap rack/cradle support geometry take precedence over minor perspective simplifications. No inventory or actual handling claim.
+
+
+M11_REF root PASS: PASS vessel concept: matte faceted teal drum, four raised hoops, real inset sealed lid/tan bung and grounded carrier. SIDE feet are schematic repetition: exact targets require three physical longitudinal Z runners, continuous in side view. C02 unit/HU and numeric geometry govern; no capacity/handling certification.
+
+
+M12_REF root PASS: PASS reference: warmtan thick corner frame, genuinely recessed offwhite panels, backed side grip, two front latches/fragile glyphs, rear hinges and grounded base. Canonical1.10x.95x.85 envelope includes all trim; actual inner clear box and primary unit fit must be proven by model. No operational acceptance.
+
+
+M10_METAL_REF root PASS: PASS: returns original R03 light-metal/tan material family, preserves24 hollow members,4x6 layout, bands, skids and end protection. C02 positions/quantity/mass stay unchanged. Initial tan-geometry reference and its evidence retained as historical.

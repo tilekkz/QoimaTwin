@@ -1,0 +1,152 @@
+{
+  "task_id": "M11",
+  "status": "PASS",
+  "at": "2026-11-07T18:30:24.739752+00:00",
+  "reference_id": "M11_REF",
+  "reference_before_geometry": true,
+  "actual_geometry": {
+    "outer_bounds": {
+      "min": [
+        -0.3400000035762787,
+        0.0,
+        -0.3400000035762787
+      ],
+      "max": [
+        0.3400000035762787,
+        0.949999988079071,
+        0.3400000035762787
+      ]
+    },
+    "primary_unit_bounds": {
+      "min": [
+        -0.30000001192092896,
+        0.09000000357627869,
+        -0.30000001192092896
+      ],
+      "max": [
+        0.30000001192092896,
+        0.9100000262260437,
+        0.30000001192092896
+      ]
+    },
+    "closed_positive_outward_parts": 13,
+    "primary_wall_gauge_m": 0.006,
+    "actual_closed_drum_inner_box_clear": true,
+    "actual_fork_support_rays": [
+      [
+        -0.24,
+        0,
+        -0.2
+      ],
+      [
+        -0.24,
+        0,
+        0.2
+      ],
+      [
+        0.24,
+        0,
+        -0.2
+      ],
+      [
+        0.24,
+        0,
+        0.2
+      ]
+    ],
+    "gross_mass_kg": 180,
+    "mass_components_kg": {
+      "contents": 160,
+      "primary_packaging": 12,
+      "HU_packaging": 8
+    },
+    "unit_count": 1,
+    "fill_volume_m3": 0.16,
+    "declared_usable_capacity_m3": 0.18,
+    "volume_is_not_count": true,
+    "capacity_is_design_not_mesh_certification": true,
+    "operational_admission": false,
+    "glb_sha256": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "triangles": 1888,
+    "paired_forklift": {
+      "travel_HU_bottom_xyz_m": [
+        0,
+        0.7,
+        1.16
+      ],
+      "fork_halfspacing_m": 0.24,
+      "actual_zero_gap_contacts": [
+        [
+          -0.24,
+          0.7,
+          1.01
+        ],
+        [
+          -0.24,
+          0.7,
+          1.31
+        ],
+        [
+          0.24,
+          0.7,
+          1.01
+        ],
+        [
+          0.24,
+          0.7,
+          1.31
+        ]
+      ],
+      "actual_cargo_vehicle_meshes_clear": true,
+      "full_action_accepted": false
+    },
+    "fixture_sha256": "c681eb8c93be8cf4e076645be0c3270fef215fb98e8cf81678cfadbf7d3c79dc",
+    "canonical_catalog_sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+  },
+  "Khronos": {
+    "file": "public/models/v3/drum.glb",
+    "bytes": 100596,
+    "sha256": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "checked_at": "2026-11-07T18:25:11.260Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  "visual_review": {
+    "views": [
+      "front",
+      "side",
+      "rear",
+      "quarter",
+      "top"
+    ],
+    "paired_view": "assets/v3/qa-browser/drum-forklift-fixture/quarter.png",
+    "findings": "Accepted: actual sealed thin-wall faceted vessel, four thick reinforcing hoops,22mm recessed lid, connected neck/protective cover and coherent three-runner carrier. Primary unit .60x.82x.60 remains distinct from outer .68x.95x.68. Side runner geometry follows exact targets rather than repeated schematic feet in raster."
+  },
+  "browser_capture": "assets/v3/qa-browser/drum/browser-capture.json",
+  "fixture_capture": "assets/v3/qa-browser/drum-forklift-fixture/browser-capture.json",
+  "outputs": [
+    {
+      "path": "tools/blender/v3/build_drum.py",
+      "sha256": "b501be3c6e099c1ea0c663cb68149c9a8f70b8b730bfc0b80d78fbdc117913e4"
+    },
+    {
+      "path": "assets/v3/blender/drum.blend",
+      "sha256": "26ed8d5169bba308dd2c5c184ca9d0df0a03f287d7d12aa492f680c01dc25035"
+    },
+    {
+      "path": "frontend/public/models/v3/drum.glb",
+      "sha256": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24"
+    },
+    {
+      "path": "frontend/public/models/v3/drum-forklift-fixture.glb",
+      "sha256": "c681eb8c93be8cf4e076645be0c3270fef215fb98e8cf81678cfadbf7d3c79dc"
+    }
+  ],
+  "limits": "One HU template and its actual contained primary unit; no added SKU/lot/stock. Native fork support/travel clearance is verified. Full pickup/setdown, restraint scheduling and engine integration remain separate."
+}

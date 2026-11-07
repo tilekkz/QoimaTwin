@@ -668,9 +668,87 @@
         "sha256": "bf1ee53b728fc4a1c881e189383005f7501bb3de5b4e9107b71f88ed4ce4be3e"
       },
       "evidence": {
-        "path": "docs/adaptive-v3/evidence/M10-reference.json",
+        "path": "docs/adaptive-v3/evidence/M10-reference-initial.json",
         "bytes": 994,
         "sha256": "8f313220850210e3c9649e54067d5a05bb2c808a332ba25ac9df304001d88b41"
+      },
+      "card": "docs/adaptive-v3/tasks/M10.md",
+      "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
+    },
+    {
+      "reference_id": "M11_REF",
+      "root_acceptance": "PASS",
+      "creator_review_status": "VERIFY",
+      "artifact": {
+        "path": "assets/references/v3/m11-drum.png",
+        "bytes": 1562012,
+        "sha256": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+        "dimensions_px": [
+          1536,
+          1024
+        ]
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m11-drum.json",
+        "bytes": 455,
+        "sha256": "2783f725fc33b29d0ca48a1b181b8b30b3ea80566a2d093a12498f50a176097a"
+      },
+      "evidence": {
+        "path": "docs/adaptive-v3/evidence/M11-reference.json",
+        "bytes": 961,
+        "sha256": "46e428b801d8fc373dbd0f7ee21167b756f347e6b9ae7cfdcd39993a23e15b72"
+      },
+      "card": "docs/adaptive-v3/tasks/M11.md",
+      "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
+    },
+    {
+      "reference_id": "M12_REF",
+      "root_acceptance": "PASS",
+      "creator_review_status": "VERIFY",
+      "artifact": {
+        "path": "assets/references/v3/m12-fragile-crate.png",
+        "bytes": 1700960,
+        "sha256": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+        "dimensions_px": [
+          1536,
+          1024
+        ]
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m12-fragile-crate.json",
+        "bytes": 464,
+        "sha256": "f669b9974a69efe172cfa32e7f3e47ec0023c50f24617dbcc31a050d2a6094cc"
+      },
+      "evidence": {
+        "path": "docs/adaptive-v3/evidence/M12-reference.json",
+        "bytes": 980,
+        "sha256": "1f802a491a23be293a82001228343f024b1a5d6640286665b1d381a9daf47e0a"
+      },
+      "card": "docs/adaptive-v3/tasks/M12.md",
+      "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
+    },
+    {
+      "reference_id": "M10_METAL_REF",
+      "root_acceptance": "PASS",
+      "creator_review_status": "VERIFY",
+      "artifact": {
+        "path": "assets/references/v3/m10-long-bundle-metal.png",
+        "bytes": 1512002,
+        "sha256": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+        "dimensions_px": [
+          1672,
+          941
+        ]
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m10-long-bundle-metal.json",
+        "bytes": 384,
+        "sha256": "fc647d0c640dc66424d556054bd4a4219811b92049f8f6c3089715fc3ebe919a"
+      },
+      "evidence": {
+        "path": "docs/adaptive-v3/evidence/M10-reference.json",
+        "bytes": 929,
+        "sha256": "5b41138ad255f7a4eafa99f9b99b642c2cb4e16189da5a578fcfae6bc2cf9cb9"
       },
       "card": "docs/adaptive-v3/tasks/M10.md",
       "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
@@ -861,6 +939,21 @@
       "path": "assets/references/v3/prompts/m10-long-bundle.txt",
       "bytes": 2224,
       "sha256": "b36f0eb78a5b4bdfd2e0f6604f3677de21bb584f8e1c302389609d28543e906f"
+    },
+    {
+      "path": "assets/references/v3/prompts/m11-drum.txt",
+      "bytes": 1722,
+      "sha256": "846a1c12287dc6382af492f4e295bdd1bb15092768caa1e872207678662bd90c"
+    },
+    {
+      "path": "assets/references/v3/prompts/m12-fragile-crate.txt",
+      "bytes": 1952,
+      "sha256": "a3dfb8d1b1c73fa0c638376cd1c0047a631d158fa0aea9320219c69f0b4e358c"
+    },
+    {
+      "path": "assets/references/v3/prompts/m10-long-bundle-metal.txt",
+      "bytes": 1488,
+      "sha256": "b624940b4d478e375b53a617db95ce0385ee4a2cb37c76318f06686603fca1d3"
     }
   ],
   "engineering_supplements": [
@@ -958,9 +1051,9 @@
     "heavy-box": "M06.3_REF",
     "pallet-load": "M08_REF",
     "ibc": "M09_REF",
-    "long-bundle": "M10_REF",
-    "drum": "R03",
-    "fragile-crate": "R03",
+    "long-bundle": "M10_METAL_REF",
+    "drum": "M11_REF",
+    "fragile-crate": "M12_REF",
     "pallet": "R03",
     "order-tote": "M07.1_REF",
     "sealed-parcel": "M07.2_REF",
@@ -984,13 +1077,15 @@
     "sealed-parcel-tote-fixture": "M07.2_REF",
     "forklift-mast-stage": "M14.2-REACH",
     "long-transfer-interface-fixture": "M04_TRANSFER_REF",
-    "long-rack-loaded-fixture": "M04_TRANSFER_REF"
+    "long-rack-loaded-fixture": "M04_TRANSFER_REF",
+    "drum-forklift-fixture": "M11_REF",
+    "fragile-forklift-fixture": "M12_REF"
   },
   "dimension_policy": "Art-card magnification is illustrative. R03 exact synthetic target data must be adopted or explicitly revised by C02 with reference review. Slots/loaded routes/ports are validated by L/C cards; never shrink cargo to fit. R12 cradle envelope and mount targets are in r12-dimension-targets.json; all parts fit total 0.15m height, with pocket/lock/mass/rating approval remaining C08.",
   "component_priority": "Dedicated R02/R03/R04/R05/R06/R11 governs component design; R07 architecture and R08 camera/context do not replace those designs. R12 governs the separate long-cradle attachment; its contextual vehicle/cargo do not override R06/R03. Dedicated R13.x storage view refinements override R02 sketch topology for their bound asset; R02 style and L09/C04 dimensions retain authority.",
   "model_status": "No V3 geometry accepted by this manifest. Every model still requires dimensions, four-view compare, export and browser/action checks.",
   "status_scope": "Original R10 nine-reference baseline remains reference_complete/PASS; additive R12 is VERIFY pending root actual-image review.",
-  "reference_count": 25,
+  "reference_count": 28,
   "extensions": {
     "R12": {
       "status": "VERIFY",

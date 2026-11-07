@@ -58,8 +58,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M08](tasks/M08.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель PALLET_LOAD |
 | [M09](tasks/M09.md) | PASS | rack_crate | R10,R03,C02,I09 | Готова модель IBC |
 | [M10](tasks/M10.md) | PASS | root | R10,R03,C02,I09 | Готова модель LONG_BUNDLE |
-| [M11](tasks/M11.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель DRUM |
-| [M12](tasks/M12.md) | READY | unassigned | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
+| [M11](tasks/M11.md) | PASS | root_review | R10,R03,C02,I09 | Готова модель DRUM |
+| [M12](tasks/M12.md) | PASS | root | R10,R03,C02,I09 | Готова модель FRAGILE_CRATE |
 | [M13](tasks/M13.md) | PASS | root | R10,R04,L08,I09 | Готов модульный комплект conveyor |
 | [M14](tasks/M14.md) | TODO | unassigned | R10,R06,C08,I09 | Готов анимируемый forklift |
 | [P01](tasks/P01.md) | PASS | root | R10,R05,I09 | Готова единая базовая фигура человека |
@@ -134,7 +134,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.3](tasks/M14.3.md) | PASS | people_packing | R10,R06,C08,M14.2,I09 | Cab/seat/guard and driver clearance, side/rear check |
 | [M14.4](tasks/M14.4.md) | PASS | root | R10,R06,C08,M14.3,I09 | Twin mast, carriage and two parallel forks with functional lift connection |
 | [M14.5](tasks/M14.5.md) | PASS | root | R10,R06,C08,M14.4,I09 | Matte boxy materials and all4views compared against R06 |
-| [M14.6](tasks/M14.6.md) | READY | unassigned | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
+| [M14.6](tasks/M14.6.md) | ACTIVE | root | R10,R06,C08,M14.5,I09 | Low/high lift pivots and pallet attachment/fork contact |
 | [M14.7](tasks/M14.7.md) | TODO | unassigned | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |
 | [M14.8](tasks/M14.8.md) | TODO | unassigned | R10,R06,C08,M14.7,I09 | Pickup/load action checked at3timestamps, no floating/interpenetration |
 | [M14.9](tasks/M14.9.md) | TODO | unassigned | R10,R06,C08,M14.8,I09 | Every child evidence read, final reference/render/browser/action integration verified |

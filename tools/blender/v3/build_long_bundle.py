@@ -53,13 +53,14 @@ def inputs():
 
 def build():
     record,recipe=inputs();root=group('long-bundle')
-    root['reference_id']='M10_REF';root['role']='handling_unit_template';root['archetype_id']='LONG_BUNDLE'
+    root['reference_id']='M10_METAL_REF';root['material_reference_id']='R03';root['role']='handling_unit_template';root['archetype_id']='LONG_BUNDLE'
     root['units_per_handling_unit']=24;root['gross_mass_kg']=200.;root['HU_packaging_tare_kg']=8.
     root['prototype_contents_not_stock']=True;root['operational_admission']=False
     root['contents_semantics']='24 unchanged C02 unit templates inside one HU; not24new lots or stock records; detachable cradle excluded'
     root['source_catalog_sha256']=hashlib.sha256(CATALOG.read_bytes()).hexdigest()
     root['content_envelopes_HU_min_frame_json']=json.dumps(recipe['unit_instances'])
-    tan=material('V3_LONG_profiles_tan','#C99A60');dark=material('V3_LONG_packaging_charcoal','#293D46')
+    tan=material('V3_LONG_profiles_metal','#AAB2B5',.82,.10);dark=material('V3_LONG_packaging_charcoal','#293D46')
+    restraint=material('V3_LONG_restraint_tan','#C99A60')
     wood=material('V3_LONG_dunnage','#AC7E48');inside=material('V3_LONG_profile_inner','#1C2C31')
     for unit in recipe['unit_instances']:
         lo=[unit['min_xyz_m'][i]-[2.1,0,.325][i] for i in range(3)]
@@ -75,15 +76,15 @@ def build():
         for level,y in enumerate((.178,.266,.354),1):
             block(f'layer_separator_{level}_{i}',[x-.06,y,-.26],[x+.06,y+.008,.26],wood,root,.0003)
     for side,xs in (('L',[-2.10,-2.0]),('R',[2.0,2.10])):
-        tube_x('end_protection_'+side,xs,[.04,.52],[-.325,.325],.04,[dark],root,.003)
+        tube_x('end_protection_'+side,xs,[.04,.52],[-.325,.325],.04,[restraint],root,.003)
         x0,x1=(-2.03,-1.95) if side=='L' else (1.95,2.03)
         block('end_support_'+side,[x0,.06,-.285],[x1,.098,.285],wood,root,.0005)
         block('end_top_lining_'+side,[x0,.442,-.285],[x1,.48,.285],wood,root,.0005)
         for label,z0,z1 in (('front',.26,.285),('rear',-.285,-.26)):
             block('end_side_lining_'+side+'_'+label,[x0,.098,z0],[x1,.442,z1],wood,root,.0004)
     for side,x in (('L',-1.5),('R',1.5)):
-        tube_x('retaining_band_'+side,[x-.025,x+.025],[.055,.465],[-.278,.278],.014,[dark],root,.001)
-        block('top_band_pad_'+side,[x-.03,.442,-.264],[x+.03,.451,.264],wood,root,.0003)
+        tube_x('retaining_band_'+side,[x-.05,x+.05],[.055,.465],[-.278,.278],.014,[restraint],root,.001)
+        block('top_band_pad_'+side,[x-.06,.442,-.264],[x+.06,.451,.264],wood,root,.0003)
     anchor('anchor_support_bottom',(0,0,0),root,'HU_bottom_support')
     anchor('anchor_centre_of_load',(0,.26,0),root,'declared_symmetric_load_centre')
     for i,x in enumerate((-1.6,0,1.6)):

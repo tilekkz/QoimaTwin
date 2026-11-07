@@ -13,3 +13,6 @@ V3 stand has metric contact shading for individual assets; large engineering sce
 One heavy local Blender/browser job at a time; background Blender only. Preserve accepted body/cab/tote/SMALL files and protected contracts/backend. No extra Obsidian update. Graph qoima-twin generation2026-11-07T15:43:42Z is stale for recent V3 changes: graph-first, coverage, exact-source fallback. No complete graph freshness claim.
 
 Continue READY tasks: remaining DRUM/FRAGILE, M14.6..9, cart/actions, whole V3 scene/runtime/UX and Q/H gates. V3 is not complete. Separate V2/V3 runnable packages and comparison guide remain required.
+
+
+M11/M12 reviewed: all eight C02 cargo families now have native metric models. DRUM13closedparts/four fork contacts; FRAGILE58closedparts/two real backed grips/four cushion contacts/four fork contacts. Full pickup actions remain downstream. M10 restored R03 silver/tan palette with independent M10_METAL_REF; original concept/evidence preserved. Next execution M14.6.
