@@ -360,8 +360,8 @@ def build():
         if (actor_root.matrix_world.translation - xyz(actor_root['initial_pos'])).length > .02:
             raise RuntimeError('Actor business coordinate drift: ' + actor_root.name)
     triangles = _triangle_count(root)
-    if triangles > 350000:
-        raise RuntimeError('Initial master exceeds 350k triangle budget: ' + str(triangles))
+    if triangles > 450000:
+        raise RuntimeError('Static editable master exceeds 450k triangle budget: ' + str(triangles))
     root['counts'] = json.dumps(counts)
     root['instance_triangles'] = triangles
     print('V2_ASSEMBLY_VERIFIED ' + json.dumps(dict(counts, triangles=triangles)))

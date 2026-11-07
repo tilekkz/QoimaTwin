@@ -19,7 +19,7 @@ for(const clip of clips){
  await page.goto(process.env.QOIMA_TEST_URL||'http://127.0.0.1:4180');
  await page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
  const span=await page.evaluate(clip=>{
-  const v=window.__QOIMA_VIEWER__;v.audio.setMuted(true);v.setQuality('low');
+  const v=window.__QOIMA_VIEWER__;v.audio.setMuted(true);v.setQuality('high');
   const action=v.replay.getRun().actions.find(a=>a.actor_id===clip.actor&&a.operation===clip.operation);
   if(!action)throw new Error('Action not found: '+clip.name);
   const start=Math.max(0,action.start_s-clip.pad),end=action.end_s+clip.pad;

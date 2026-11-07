@@ -1,10 +1,11 @@
 import {chromium} from '@playwright/test';
 import {mkdir,writeFile} from 'node:fs/promises';
 const url=process.env.QOIMA_TEST_URL||'http://127.0.0.1:4173';
+const quality=process.env.QOIMA_PERF_QUALITY||'low';
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({viewport:{width:1366,height:768},deviceScaleFactor:1});
 await page.goto(url);await page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
-await page.evaluate(()=>{window.__QOIMA_VIEWER__.setQuality('low');window.__QOIMA_VIEWER__.audio.setMuted(true);});
+await page.evaluate(quality=>{window.__QOIMA_VIEWER__.setQuality(quality);window.__QOIMA_VIEWER__.audio.setMuted(true);},quality);
 const device=await page.evaluate(()=>{
  const canvas=document.querySelector('canvas');const gl=canvas.getContext('webgl2')||canvas.getContext('webgl');const ext=gl?.getExtension('WEBGL_debug_renderer_info');
  return{userAgent:navigator.userAgent,cores:navigator.hardwareConcurrency,deviceMemoryGB:navigator.deviceMemory||null,renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):'unavailable',vendor:ext?gl.getParameter(ext.UNMASKED_VENDOR_WEBGL):'unavailable',viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,loadedBuildAssets:performance.getEntriesByType('resource').map(item=>new URL(item.name).pathname).filter(path=>path.endsWith('.js')).sort()};
@@ -27,8 +28,8 @@ for(const mode of ['overview','hero']){
   });
  });
  reports.push({mode,...result});console.log(JSON.stringify({mode,medianFps:result.medianFps,p95FrameMs:result.p95FrameMs,maxCalls:result.maxCalls,maxTriangles:result.maxTriangles}));
- await page.screenshot({path:`test-results/performance-${mode}.png`});
+ await page.screenshot({path:`test-results/performance-${quality}-${mode}.png`});
 }
 await mkdir('../docs/visual',{recursive:true});
-await writeFile('../docs/visual/PERFORMANCE.json',JSON.stringify({timestampUtc:new Date().toISOString(),source:'500s synthetic visual fixture repeated in one full-scale warehouse; no DES/throughput result',conditions:{device,quality:'low',headless:true,measurement:'two 60s rAF sampling windows; overview and follow P01; speed10x; mute; no simultaneous Blender renderer',framesIncludeWarmup:false},reports},null,2));
+await writeFile(`../docs/visual/${quality==='low'?'PERFORMANCE':'PERFORMANCE_HIGH'}.json`,JSON.stringify({timestampUtc:new Date().toISOString(),source:'500s synthetic visual fixture repeated in one full-scale warehouse; no DES/throughput result',conditions:{device,quality,headless:true,measurement:'two 60s rAF sampling windows; overview and follow P01; speed10x; mute; no simultaneous Blender renderer',framesIncludeWarmup:false},reports},null,2));
 await browser.close();

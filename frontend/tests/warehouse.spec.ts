@@ -20,6 +20,8 @@ async function openWarehouse(page: Page, context: BrowserContext) {
   await page.goto(baseURL);
   await expect(page.locator('main')).toHaveAttribute('data-phase', 'ready', { timeout: 45_000 });
   await page.waitForFunction(() => (window as any).__QOIMA_VIEWER__?.getPerfState().calls > 0);
+  await page.evaluate(()=> (window as any).__QOIMA_VIEWER__.setQuality('low'));
+  await renderedFrames(page);
   return { errors, models };
 }
 const state = (page: Page) => page.evaluate(() => (window as any).__QOIMA_VIEWER__.getState());
@@ -116,6 +118,10 @@ test('play/pause, seek and reset hold the blocked tote and never duplicate cargo
   expect((await state(page)).replay.time).toBe(12.34567);
   await seekThroughUI(page, 43); const blocked = await frame(page);
   expect(blocked.line.blocked).toBe(true);
+  const beltPhase=(await state(page)).belt.phases.LOOP_E;
+  await seekThroughUI(page,47.9);expect((await state(page)).belt.phases.LOOP_E).toBeCloseTo(beltPhase,6);
+  await seekThroughUI(page,48.1);expect(Math.abs((await state(page)).belt.phases.LOOP_E-beltPhase)).toBeGreaterThan(.01);
+  await seekThroughUI(page,43);
   await expect(page.locator('.timeline-label .blocked')).toContainText('Линия удерживает груз');
   await seekThroughUI(page, 45);
   expect((await frame(page)).cargo.T001.pos).toEqual(blocked.cargo.T001.pos);
@@ -280,7 +286,7 @@ test('v2 GLB calibration preserves metre axes, actual heights and three bin anch
   vector(diagnostics.positions.calibration_axis_end__Y, [0, 1, 0]);
   vector(diagnostics.positions.calibration_axis_end__Z, [0, 0, 1]);
   expect(diagnostics.sizes['standing-worker'][1]).toBeCloseTo(1.7, 4);
-  expect(diagnostics.sizes['rack-high'][1]).toBeCloseTo(5.4, 4);
+  expect(diagnostics.sizes['rack-high'][1]).toBeCloseTo(4.65, 4);
   expect(diagnostics.sizes['conveyor-high'][1]).toBeCloseTo(.95, 4);
   vector(diagnostics.positions.calibration_anchor__belt_top, [6, .9, 0]);
   for (const [index, height] of [.45, 2.25, 4.05].entries()) vector(diagnostics.positions['calibration_anchor__rack_bin_0' + (index + 1)], [4, height, 0]);

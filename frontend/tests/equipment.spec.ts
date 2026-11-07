@@ -49,6 +49,7 @@ test('all 21 exported GLBs are selected through UI and captured in four actual b
       expect(current.calls, id + ':' + view).toBeGreaterThan(0);
       expect(current.triangles, id + ':' + view).toBeGreaterThan(0);
       expect(current.replay.playing).toBe(false);
+      if(id==='sealed-parcel'&&view==='quarter')expect(await page.evaluate(()=>(window as any).__QOIMA_VIEWER__.getState().distance)).toBeLessThan(2);
       await page.screenshot({ path: `test-results/v2-runtime/${id}/${view}.png` });
       metrics.push({ assetId: id, view, ...current });
     }
@@ -130,6 +131,31 @@ function worldBounds(scene: THREE.Object3D) {
   });
   return result;
 }
+
+test('the tote clears cart walls and picked unit packs stay inside its actual cavity',async({page,request})=>{
+  const tote=await loadFinalGLB(request,'order-tote'),cart=await loadFinalGLB(request,'picking-cart'),crate=await loadFinalGLB(request,'crate');
+  const outer=worldBounds(tote);const half=outer.getSize(new THREE.Vector3()).multiplyScalar(.5);
+  // Probe the real cart wall triangles through the tote's occupied height.
+  for(const y of [.60,.70,.82])for(const z of [-.18,0,.18])for(const sign of [-1,1]){
+    const ray=new THREE.Raycaster(new THREE.Vector3(0,y,z),new THREE.Vector3(sign,0,0));
+    const hit=ray.intersectObject(cart,true)[0];if(hit)expect(hit.distance).toBeGreaterThan(half.x+.001);
+  }
+  const errors=await openWarehouse(page);
+  await page.evaluate(()=>{const v=(window as any).__QOIMA_VIEWER__;v.replay.seek(40);});await renderFrames(page);
+  const contents=await page.evaluate(()=>{
+    const v=(window as any).__QOIMA_VIEWER__;const frame=v.replay.getFrame();
+    return{tote:frame.cargo.T001,items:v.replay.getRun().events.filter((event:any)=>event.kind==='sku_picked'&&event.at_s<=40).map((event:any)=>v.inspectEntity('T001:'+event.seq))};
+  });
+  expect(contents.items).toHaveLength(2);
+  const inverse=new THREE.Matrix4().compose(new THREE.Vector3().fromArray(contents.tote.pos),new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),contents.tote.yaw),new THREE.Vector3(1,1,1)).invert();
+  for(const item of contents.items){
+    expect(item).toBeTruthy();const bounds=worldBounds(crate).applyMatrix4(new THREE.Matrix4().fromArray(item.matrixWorld).premultiply(inverse));
+    expect(bounds.min.x).toBeGreaterThan(outer.min.x+.025);expect(bounds.max.x).toBeLessThan(outer.max.x-.025);
+    expect(bounds.min.z).toBeGreaterThan(outer.min.z+.025);expect(bounds.max.z).toBeLessThan(outer.max.z-.025);
+    expect(bounds.min.y).toBeGreaterThan(.02);expect(bounds.max.y).toBeLessThan(outer.max.y-.02);
+  }
+  expect(errors).toEqual([]);
+});
 
 test('final GLB fork surfaces physically fit the empty pallet and cargo origins remain canonical', async ({ request }) => {
   const forklift = await loadFinalGLB(request, 'forklift'), pallet = await loadFinalGLB(request, 'pallet');

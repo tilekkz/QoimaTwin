@@ -50,7 +50,8 @@ export function createVisualFixture(): VisualRun {
       }
     }
     target.motions.push({ start_s: start, end_s: time, waypoints, stage });
-    target.states.push(state(time, points.at(-1)!, stage));
+    const tail=points.at(-1)!,previous=points.at(-2)!;
+    target.states.push(state(time,tail,stage,true,{kind:'world'},Math.atan2(tail[0]-previous[0],tail[2]-previous[2])));
     return time;
   };
   const order = 'VISUAL_ORDER_001', toteId = 'T001', parcelId = 'PARCEL_VISUAL_001', palletId = 'PALLET_OUT_001';
@@ -94,7 +95,7 @@ export function createVisualFixture(): VisualRun {
   motion(parcel, outPath, packedAt, outDistance / (outfedAt - packedAt), 'outfeed_handoff');
   event(outfedAt, 'parcel_outfed', parcelId, { order_id: order, parcel_id: parcelId, actor_id: 'K01', pack_id: 'PK01' }, 2);
   const shippingAt = motion(parcel, [[20, .9, 3], [20, .9, 2], [66, .9, 2]], outfedAt, 1, 'outbound_conveyor');
-  parcel.states.push(state(shippingAt, [66, .9, 2], 'shipping_buffer'));
+  parcel.states.push(state(shippingAt, [66, .9, 2], 'shipping_buffer',true,{kind:'world'},Math.PI/2));
   event(shippingAt, 'shipping_arrived', parcelId, { order_id: order, parcel_id: parcelId });
   const serviceStart: Vec3 = [65.5, 0, 4], terminal: Vec3 = [66, 0, 2.3], pickPoint: Vec3 = [66, 0, 6], placeService: Vec3 = [65.65, 0, 6];
   connector('S01', shippingAt - distance(serviceStart, terminal) / 1.2, [serviceStart, terminal]);

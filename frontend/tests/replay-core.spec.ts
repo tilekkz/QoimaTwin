@@ -3,6 +3,25 @@ import layout from '../../contracts/layout.example.json' with { type: 'json' };
 import assignment from '../../contracts/assignment.example.json' with { type: 'json' };
 import { adaptRunV2, compileVisualRun, conveyorCell, createReplayController, createSfxController, createVisualFixture, CueScheduler } from '../src/replay';
 import type { VisualEvent } from '../src/replay';
+import {sampleCargoPath} from '../src/replay/core';
+
+test('cargo turns smoothly on transfer decks without changing the timed centreline',()=>{
+  const points=[{node_id:'a',pos:[0,.9,0] as [number,number,number],at_s:0},{node_id:'b',pos:[0,.9,1] as [number,number,number],at_s:1},{node_id:'c',pos:[1,.9,1] as [number,number,number],at_s:2}];
+  expect(sampleCargoPath(points,1).pos).toEqual([0,.9,1]);
+  expect(sampleCargoPath(points,1).yaw).toBeCloseTo(Math.PI/4,8);
+  expect(Math.abs(sampleCargoPath(points,1.001).yaw-sampleCargoPath(points,.999).yaw)).toBeLessThan(.02);
+  expect(sampleCargoPath(points,.5)).toEqual({pos:[0,.9,.5],yaw:0});
+  expect(sampleCargoPath(points,1.5)).toEqual({pos:[.5,.9,1],yaw:Math.PI/2});
+});
+
+test('belt hold and completed transport retain the same cargo orientation after seeks',()=>{
+  const replay=createReplayController(createVisualFixture());
+  const held=replay.seek(42).cargo.T001;
+  for(const time of [42.001,45,47.999])expect(replay.seek(time).cargo.T001.yaw).toBe(held.yaw);
+  const parcel=replay.getRun().cargo.find(cargo=>cargo.kind==='parcel')!;
+  const end=parcel.motions.find(motion=>motion.stage==='outbound_conveyor')!.end_s;
+  expect(replay.seek(end).cargo[parcel.cargo_id].yaw).toBeCloseTo(replay.seek(end-1e-5).cargo[parcel.cargo_id].yaw,6);
+});
 
 test('all 24 employees persist; drivers represent the two vehicles', () => {
   const replay = createReplayController(createVisualFixture());

@@ -44,20 +44,24 @@ def _loft(name, rings, mat, joint, sides=12, top_heights=None, cap=True):
     return _mesh(name, vertices, faces, mat, joint)
 
 
-def _sweep(name, rings, mat, joint, sides=8, depth_ratio=.88):
+def _sweep(name, rings, mat, joint, sides=8, depth_ratio=.88, axis_start=None, axis_end=None, twists=None):
     """Smoothly tapered bent volume; each ring is (centre-point, full-width)."""
     vertices = []
     for row, (point, width) in enumerate(rings):
         previous = Vector(rings[max(0, row - 1)][0])
         following = Vector(rings[min(len(rings) - 1, row + 1)][0])
         axis = (following - previous).normalized()
+        if row == 0 and axis_start is not None:
+            axis = Vector(axis_start).normalized()
+        if row == len(rings) - 1 and axis_end is not None:
+            axis = Vector(axis_end).normalized()
         side = Vector((1, 0, 0))
         if abs(side.dot(axis)) > .94:
             side = Vector((0, 0, 1))
         side = (side - axis * side.dot(axis)).normalized()
         depth = axis.cross(side).normalized()
         for i in range(sides):
-            angle = math.tau * i / sides
+            angle = math.tau * i / sides + (twists[row] if twists else 0)
             offset = side * (math.cos(angle) * width / 2)
             offset += depth * (math.sin(angle) * width * depth_ratio / 2)
             vertices.append(tuple(Vector(point) + offset))
@@ -98,10 +102,18 @@ def _smooth(obj):
     return obj
 
 
+def _soft_sleeve(obj):
+    # End caps must not contribute opposite normals to the two sleeves sharing
+    # an elbow ring. Their side normals should continue across the cloth seam.
+    for index, face in enumerate(obj.data.polygons):
+        face.use_smooth = index not in (0, len(obj.data.polygons) - 1)
+    return obj
+
+
 def _rounded_cloth_join(name, loc, radii, mat, joint):
     """Soft cloth connection; deliberately avoids visible icosahedron diamonds."""
     pivot = Vector(joint.get("bind_pivot_runtime", [0, 0, 0]))
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=12, ring_count=8, radius=1,
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=10, ring_count=6, radius=1,
                                         location=xyz(Vector(loc) - pivot))
     obj = bpy.context.object
     obj.name = name
@@ -114,20 +126,22 @@ def _rounded_cloth_join(name, loc, radii, mat, joint):
 
 def _palette(low):
     mats = {
-        "cloth": material("Personnel_Cloth", "#3C6469", .83),
-        "vest": material("Personnel_Vest", "#D4A744", .78),
-        "skin": material("Personnel_Skin", "#CAA282", .9),
+        "cloth": material("Personnel_Cloth", "#496C6E", .86),
+        "vest": material("Personnel_Vest", "#D8A644", .85),
+        "skin": material("Personnel_Skin", "#CCA17F", .92),
         "boots": material("Personnel_Boots", "#303A3D", .9),
-        "hair": material("Personnel_Hair", "#443F37", .9),
+        "hair": material("Personnel_Hair", "#493A30", .92),
         "reflective": material("Personnel_Reflective", "#CED3C9", .76),
     }
     mats["helmet"] = mats["vest"] if low else material("Personnel_Helmet", "#D8AC4C", .7)
     mats["eye"] = mats["boots"]
+    mats["eye_white"] = mats["skin"] if low else material("Personnel_Eye_White", "#E6DED1", .9)
     return mats
 
 
-SHIRT_PROFILE = ((.865, .147, .104, -.012), (1.07, .171, .118, -.015),
-                 (1.282, .202, .108, -.015), (1.354, .143, .077, -.013))
+SHIRT_PROFILE = ((.855, .165, .111, -.012), (.965, .169, .115, -.012),
+                 (1.105, .178, .122, -.015), (1.245, .202, .117, -.015),
+                 (1.302, .200, .102, -.015), (1.360, .100, .066, -.008))
 
 
 def _profile_at(y):
@@ -262,86 +276,99 @@ def _cloth_vest(joint, offset, low, mats):
 
 
 def _head(joint, offset, low, mats):
-    sides = 8 if low else 14
-    # Head is a single volumetric tapered cheek/jaw shape, with no box overlay.
-    head_mesh = _loft("sculpted_head", [(1.435 + offset, .061, .051, .003, 0),
-                            (1.46 + offset, .080, .069, .002, 0),
-                            (1.505 + offset, .094, .082, -.003, 0),
-                            (1.566 + offset, .096, .083, -.009, 0),
-                            (1.614 + offset, .080, .070, -.015, 0),
-                            (1.638 + offset, .052, .047, -.018, 0)]
-          if not low else [(1.424 + offset, .047, .046, .002, 0),
-                           (1.49 + offset, .089, .079, -.002, 0),
-                           (1.577 + offset, .094, .080, -.012, 0),
-                           (1.63 + offset, .060, .054, -.018, 0)],
-          mats["skin"], joint, sides)
+    sides = 8 if low else 16
+    # Short, rounded jaw and cheek planes. The forehead continues under the hat;
+    # the neck meets the underside rather than supporting a trapezoid mask.
+    face_rings = [(1.412, .050, .045, .007), (1.432, .078, .062, .005),
+                  (1.469, .096, .075, .000), (1.513, .099, .082, -.006),
+                  (1.558, .094, .082, -.009), (1.600, .083, .074, -.012),
+                  (1.622, .061, .056, -.013)]
+    if low:
+        face_rings = [face_rings[i] for i in (0, 2, 4, 6)]
+    head_mesh = _loft("warm_sculpted_head",
+                     [(y + offset, w, d, z, 0) for y, w, d, z in face_rings],
+                     mats["skin"], joint, sides)
     if not low:
         _smooth(head_mesh)
-    _loft("hair_cap", [(1.588 + offset, .093, .081, -.019, 0),
-                        (1.631 + offset, .078, .071, -.020, 0),
-                        (1.647 + offset, .047, .045, -.021, 0)],
-          mats["hair"], joint, 8 if low else 12)
-    # Hair continues down the actual rear skull; it is not a floating hat band.
-    segments = 4 if low else 8
+    # A fitted hair shell, with a low rear hairline instead of a pointed nape.
+    segments = 4 if low else 10
     vertices = []
-    for row in range(2):
+    for row in range(3):
         for i in range(segments + 1):
             angle = math.pi + math.pi * i / segments
-            y = 1.479 + .065 * abs(math.cos(angle)) if row == 0 else 1.606
-            vertices.append((.096 * math.cos(angle), y + offset,
-                             -.011 + .083 * math.sin(angle)))
+            y = (1.489 + .012 * abs(math.cos(angle)), 1.565, 1.607)[row]
+            width, depth = ((.091, .078), (.097, .085), (.084, .077))[row]
+            vertices.append((width * math.cos(angle), y + offset,
+                             -.010 + depth * math.sin(angle)))
     step = segments + 1
-    faces = [(i + step, i + step + 1, i + 1, i) for i in range(segments)]
-    _mesh("hair_nape_and_rear_skull", vertices, faces, mats["hair"], joint)
+    _mesh("fitted_hair_nape", vertices,
+          [((row + 1) * step + i, (row + 1) * step + i + 1,
+            row * step + i + 1, row * step + i)
+           for row in range(2) for i in range(segments)], mats["hair"], joint)
     for s in (-1, 1):
-        if low:
-            _loft("ear", [(1.51 + offset, .012, .015, -.008, s * .094),
-                           (1.552 + offset, .014, .018, -.008, s * .094)],
-                  mats["skin"], joint, 4)
-            _box("eye", (s * .034, 1.55 + offset, .071), (.013, .014, .007),
-                 mats["eye"], joint, bevel=0)
-        else:
-            _ico("ear", (s * .096, 1.526 + offset, -.006), .025,
-                 mats["skin"], joint, scale=(.58, 1, .73))
-            _ico("eye", (s * .034, 1.55 + offset, .071), .009,
-                 mats["eye"], joint, scale=(.72, .95, .4))
-            _box("eyebrow", (s * .034, 1.574 + offset, .068), (.028, .006, .007),
-                 mats["hair"], joint, bevel=.002)
-            # Sideburns join the back hair but leave the face profile visible.
-            _loft("hair_sideburn", [(1.537 + offset, .012, .018, -.008, s * .088),
-                                    (1.602 + offset, .014, .025, -.016, s * .087)],
+        ear = _loft("small_natural_ear", [(1.482 + offset, .009, .014, -.012, s * .095),
+                                           (1.509 + offset, .015, .019, -.012, s * .096),
+                                           (1.534 + offset, .009, .014, -.012, s * .095)],
+                    mats["skin"], joint, 4 if low else 8)
+        if not low:
+            _smooth(ear)
+            eye = _loft("eye_white", [(1.521 + offset, .014, .004, .074, s * .035),
+                                       (1.535 + offset, .014, .004, .074, s * .035)],
+                        mats["eye_white"], joint, 8)
+            _smooth(eye)
+            pupil = _loft("eye_pupil", [(1.523 + offset, .005, .003, .079, s * .034),
+                                        (1.534 + offset, .005, .003, .079, s * .034)],
+                         mats["eye"], joint, 8)
+            _smooth(pupil)
+            _sweep("soft_eyebrow", [((s * .018, 1.550 + offset, .074), .005),
+                                     ((s * .036, 1.554 + offset, .071), .006),
+                                     ((s * .053, 1.550 + offset, .066), .004)],
+                   mats["hair"], joint, sides=6)
+            _loft("short_sideburn", [(1.526 + offset, .010, .017, -.011, s * .089),
+                                      (1.589 + offset, .013, .024, -.014, s * .089)],
                   mats["hair"], joint, 6)
-    _sweep("nose", [((0, 1.541 + offset, .071), .017),
-                     ((0, 1.513 + offset, .093), .025),
-                     ((0, 1.502 + offset, .080), .020)], mats["skin"], joint,
-           sides=4 if low else 6, depth_ratio=.8)
+        else:
+            _box("eye", (s * .034, 1.528 + offset, .077), (.010, .012, .005),
+                 mats["eye"], joint, bevel=0)
+    nose = _sweep("small_nose", [((0, 1.529 + offset, .073), .015),
+                                 ((0, 1.496 + offset, .094), .023),
+                                 ((0, 1.489 + offset, .079), .022)], mats["skin"], joint,
+                  sides=4 if low else 8, depth_ratio=.7)
     if not low:
-        # Restrained shallow smile, small enough to read as a face rather than mask.
-        _sweep("mouth", [((-.024, 1.476 + offset, .070), .0035),
-                          ((0, 1.471 + offset, .077), .0035),
-                          ((.024, 1.476 + offset, .070), .0035)],
-               mats["hair"], joint, sides=4, depth_ratio=.65)
-    _loft("hardhat_brim", [(1.622 + offset, .126, .132, .006, 0),
-                           (1.637 + offset, .125, .130, .006, 0)],
-          mats["helmet"], joint, 8 if low else 14)
-    _loft("hardhat_dome", [(1.633 + offset, .107, .105, -.015, 0),
-                           (1.672 + offset, .102, .100, -.017, 0),
-                           (1.693 + offset, .065, .065, -.018, 0),
-                           (1.70 + offset, .040, .043, -.018, 0)],
-          mats["helmet"], joint, 8 if low else 12)
+        _smooth(nose)
+        _sweep("quiet_smile", [((-.024, 1.470 + offset, .076), .0028),
+                                ((0, 1.463 + offset, .079), .0030),
+                                ((.024, 1.470 + offset, .076), .0028)],
+               mats["hair"], joint, sides=4, depth_ratio=.5)
+    _loft("hardhat_rolled_brim", [(1.584 + offset, .118, .130, .010, 0),
+                                  (1.590 + offset, .125, .141, .010, 0),
+                                  (1.600 + offset, .119, .135, .010, 0)],
+          mats["helmet"], joint, 8 if low else 16)
+    _loft("hardhat_full_dome", [(1.596 + offset, .108, .108, -.010, 0),
+                                (1.631 + offset, .104, .104, -.012, 0),
+                                (1.665 + offset, .083, .083, -.013, 0),
+                                (1.687 + offset, .052, .052, -.014, 0),
+                                ((1.700 if low else 1.696) + offset, .018, .020, -.014, 0)],
+          mats["helmet"], joint, 8 if low else 16)
     if not low:
-        _box("hardhat_longitudinal_rib", (0, 1.682 + offset, -.020),
-             (.019, .027, .137), mats["helmet"], joint, bevel=.006)
+        _sweep("hardhat_raised_centre_rib",
+               [((0, 1.627 + offset, -.109), .014),
+                ((0, 1.678 + offset, -.072), .016),
+                ((0, 1.696 + offset, -.014), .018),
+                ((0, 1.678 + offset, .044), .016),
+                ((0, 1.627 + offset, .086), .014)],
+               mats["helmet"], joint, sides=4, depth_ratio=.44)
 
 
 def _boot(joint, x, ground, z, low, mats):
-    sides = 6 if low else 10
-    _loft("boot_thick_sole", [(ground, .071, .126, z + .025, x),
-                             (ground + .034, .071, .126, z + .025, x)],
+    sides = 4 if low else 10
+    _loft("boot_thick_sole", [(ground, .070, .124, z + .025, x),
+                             (ground + .012, .074, .128, z + .025, x),
+                             (ground + .034, .072, .126, z + .025, x)],
           mats["boots"], joint, sides)
     _loft("boot_upper", [(ground + .03, .067, .121, z + .025, x),
                          (ground + .086, .065, .112, z + .021, x),
-                         (ground + .176, .054, .074, z - .014, x)],
+                         (ground + .176, .057, .074, z - .014, x)],
           mats["boots"], joint, sides)
     if not low:
         _box("boot_toe_cap", (x, ground + .066, z + .117), (.107, .022, .025),
@@ -369,15 +396,16 @@ def _hand(joint, centre, low, mats, grip=False):
                                    ((x + inward * .031, y - .021, z + .012), .018)],
                    mats["skin"], joint, sides=6)
     else:
-        _loft("hand_palm", [(y - .028, .029, .020, z + .003, x),
-                            (y + .055, .030, .022, z, x)],
+        _loft("hand_palm", [(y - .030, .030, .022, z + .005, x),
+                            (y + .012, .035, .025, z + .002, x),
+                            (y + .055, .028, .022, z, x)],
               mats["skin"], joint, 4 if low else 10)
         if not low:
             for i in range(4):
                 dx = (i - 1.5) * .015
                 length = .044 - .008 * abs(i - 1.5)
-                _sweep("relaxed_finger", [((x + dx, y - .02, z + .004), .014),
-                                          ((x + dx, y - .02 - length, z + .012), .011)],
+                _sweep("relaxed_finger", [((x + dx, y - .022, z + .005), .015),
+                                          ((x + dx, y - .022 - length, z + .014), .012)],
                        mats["skin"], joint, sides=6)
             inward = -1 if x > 0 else 1
             _sweep("relaxed_thumb", [((x + inward * .027, y + .01, z + .007), .022),
@@ -411,9 +439,10 @@ def _build_person(low=False, seated=False, pose="neutral"):
     torso = _joint("torso", torso_pivot, pelvis, pelvis_pivot)
     head_pivot = (0, 1.393 + offset, -.004)
     head = _joint("head", head_pivot, torso, torso_pivot)
-    _loft("joined_trouser_hips", [(.746 + offset, .13, .087, -.01, 0),
-                                 (.818 + offset, .157, .102, -.014, 0),
-                                 (.902 + offset, .143, .096, -.014, 0)],
+    _loft("joined_trouser_hips", [(.742 + offset, .142, .102, -.01, 0),
+                                 (.795 + offset, .176, .117, -.014, 0),
+                                 (.870 + offset, .160, .106, -.014, 0),
+                                 (.902 + offset, .158, .104, -.014, 0)],
           mats["cloth"], pelvis, sides)
     _torso_mesh(torso, offset, low, mats)
     _cloth_vest(torso, offset, low, mats)
@@ -421,8 +450,8 @@ def _build_person(low=False, seated=False, pose="neutral"):
           [(1.347 + offset, .075, .061, -.008, 0),
            (1.390 + offset, .058, .054, -.006, 0)],
           mats["cloth"], torso, 6 if low else 10)
-    _loft("short_natural_neck", [(1.344 + offset, .050, .051, -.006, 0),
-                                (1.444 + offset, .049, .050, -.004, 0)],
+    _loft("short_natural_neck", [(1.358 + offset, .052, .052, -.006, 0),
+                                (1.434 + offset, .051, .051, -.004, 0)],
           mats["skin"], head, 6 if low else 10)
     _head(head, offset, low, mats)
 
@@ -440,25 +469,33 @@ def _build_person(low=False, seated=False, pose="neutral"):
         thigh = _joint("thigh_" + suffix, hip, pelvis, pelvis_pivot)
         shin = _joint("shin_" + suffix, knee, thigh, hip)
         foot = _joint("foot_" + suffix, (ankle[0], ground + .055, foot_z), shin, knee)
-        middle = tuple(Vector(hip).lerp(Vector(knee), .48))
-        _sweep("tailored_thigh_" + suffix, [(hip, .183), (middle, .176), (knee, .143)],
-               mats["cloth"], thigh, limb_sides, .88)
-        calf = tuple(Vector(knee).lerp(Vector(ankle), .40))
-        _sweep("shaped_calf_" + suffix, [(knee, .145), (calf, .15), (ankle, .108)],
-               mats["cloth"], shin, limb_sides, .85)
-        if low:
-            _ico("cloth_knee_join_" + suffix, knee, .080, mats["cloth"], shin)
-        else:
-            _rounded_cloth_join("cloth_knee_join_" + suffix, knee,
-                                (.073, .070, .065), mats["cloth"], shin)
+        middle = Vector(hip).lerp(Vector(knee), .42)
+        middle.z += .007
+        upper_knee = Vector(hip).lerp(Vector(knee), .88)
+        leg_axis = Vector(ankle) - Vector(hip)
+        _sweep("full_work_trouser_thigh_" + suffix,
+               [(hip, .209), (tuple(middle), .213), (tuple(upper_knee), .177), (knee, .166)],
+               mats["cloth"], thigh, limb_sides, 1.04, axis_end=leg_axis,
+               twists=None if low else [0, .11, -.035, 0])
+        calf = Vector(knee).lerp(Vector(ankle), .37)
+        calf.z -= .013
+        lower_calf = Vector(knee).lerp(Vector(ankle), .82)
+        lower_calf.z += .004
+        _sweep("folded_work_trouser_calf_" + suffix,
+               [(knee, .166), (tuple(calf), .178), (tuple(lower_calf), .137), (ankle, .139)],
+               mats["cloth"], shin, limb_sides, 1.00, axis_start=leg_axis,
+               twists=None if low else [0, -.11, .075, 0])
+        if not low and not seated:
+            _rounded_cloth_join("hidden_cloth_knee_fill_" + suffix, knee,
+                                (.072, .069, .072), mats["cloth"], shin)
         _boot(foot, ankle[0], ground, foot_z, low, mats)
         if not low:
             p = Vector(hip).lerp(Vector(knee), .35)
-            p.x += s * .073
-            _box("attached_cargo_pocket_" + suffix, p, (.025, .112, .104),
-                 mats["cloth"], thigh, bevel=.008)
-            _box("cargo_pocket_flap_" + suffix, (p.x + s * .003, p.y + .048, p.z + .004),
-                 (.028, .027, .111), mats["cloth"], thigh, bevel=.005)
+            p.x += s * .098
+            _box("tailored_cargo_pocket_" + suffix, p, (.022, .115, .130),
+                 mats["cloth"], thigh, bevel=.006)
+            _box("soft_cargo_pocket_flap_" + suffix, (p.x + s * .003, p.y + .045, p.z),
+                 (.026, .028, .137), mats["cloth"], thigh, bevel=.004)
 
         shoulder = (s * .176, 1.303 + offset, -.010)
         if seated:
@@ -479,32 +516,30 @@ def _build_person(low=False, seated=False, pose="neutral"):
         upper = _joint("upper_arm_" + suffix, shoulder, torso, torso_pivot)
         lower = _joint("forearm_" + suffix, elbow, upper, shoulder)
         hand = _joint("hand_" + suffix, wrist, lower, elbow)
-        bicep = tuple(Vector(shoulder).lerp(Vector(elbow), .4))
-        shoulder_cap = (s * .146, 1.329 + offset, -.010)
-        shoulder_round = (s * .194, 1.284 + offset, -.009)
-        shoulder_rings = [(shoulder_cap, .126), (shoulder_round, .167),
-                          (bicep, .153), (elbow, .113)] if low else [
-                          ((s * .133, 1.311 + offset, -.010), .102),
-                          ((s * .176, 1.273 + offset, -.009), .146),
-                          (bicep, .148), (elbow, .113)]
-        arm_mesh = _sweep("sloped_shoulder_and_upper_arm_" + suffix,
-               shoulder_rings,
-               mats["cloth"], upper, limb_sides, .94)
+        bicep = tuple(Vector(shoulder).lerp(Vector(elbow), .42))
+        elbow_axis = Vector(wrist) - Vector(shoulder)
+        shoulder_rings = [((s * .112, 1.313 + offset, -.010), .060),
+                          ((s * .171, 1.275 + offset, -.010), .145),
+                          (bicep, .166), (elbow, .137)]
+        sleeve = _sweep("continuous_shoulder_and_sleeve_" + suffix,
+                        shoulder_rings, mats["cloth"], upper, limb_sides, 1.02,
+                        axis_end=elbow_axis)
         if not low:
-            _smooth(arm_mesh)
-        middle = tuple(Vector(elbow).lerp(Vector(wrist), .5))
-        _sweep("tapered_forearm_" + suffix,
-               [(elbow, .115), (middle, .109), (wrist, .079)],
-               mats["cloth"], lower, limb_sides, .91)
-        if low:
-            _ico("cloth_elbow_join_" + suffix, elbow, .065, mats["cloth"], lower)
-        else:
-            _rounded_cloth_join("cloth_elbow_join_" + suffix, elbow,
-                                (.058, .060, .055), mats["cloth"], lower)
+            _soft_sleeve(sleeve)
+        middle = Vector(elbow).lerp(Vector(wrist), .42)
+        middle.z -= .004
+        sleeve = _sweep("tapered_forearm_" + suffix,
+                        [(elbow, .137), (tuple(middle), .143), (wrist, .101)],
+                        mats["cloth"], lower, limb_sides, 1.02, axis_start=elbow_axis)
+        if not low:
+            _soft_sleeve(sleeve)
+        if not low and not seated:
+            _rounded_cloth_join("hidden_cloth_elbow_fill_" + suffix, elbow,
+                                (.059, .057, .059), mats["cloth"], lower)
         if not low:
             near = tuple(Vector(elbow).lerp(Vector(wrist), .88))
-            _sweep("sleeve_cuff_" + suffix, [(near, .092), (wrist, .089)],
-                   mats["cloth"], lower, sides=8, depth_ratio=.95)
+            _sweep("folded_sleeve_cuff_" + suffix, [(near, .108), (wrist, .106)],
+                   mats["cloth"], lower, sides=10, depth_ratio=1.02)
         _hand(hand, palm, low, mats, grip)
 
     pivots = {obj["joint_name"]: list(obj["bind_pivot_runtime"])
@@ -530,6 +565,27 @@ def build_seated_driver():
     return _build_person(low=False, seated=True)
 
 
+def _cart_tyre(joint, centre, mat):
+    """Rounded tyre shoulders; the wheel axis and visible hub stay articulated."""
+    x, y, z = centre
+    sides = 20
+    profile = ((-.024, .055), (-.021, .064), (-.014, .068),
+               (.014, .068), (.021, .064), (.024, .055))
+    vertices = [(x + dx, y + radius * math.cos(math.tau * i / sides),
+                 z + radius * math.sin(math.tau * i / sides))
+                for dx, radius in profile for i in range(sides)]
+    faces = [tuple(reversed(range(sides)))]
+    for row in range(len(profile) - 1):
+        for i in range(sides):
+            a, b = row * sides + i, row * sides + (i + 1) % sides
+            faces.append((a, b, b + sides, a + sides))
+    faces.append(tuple((len(profile) - 1) * sides + i for i in range(sides)))
+    tyre = _mesh("rounded_caster_tyre", vertices, faces, mat, joint)
+    for poly in tyre.data.polygons[1:-1]:
+        poly.use_smooth = True
+    return tyre
+
+
 def build_picking_cart():
     root = group("picking_cart_root")
     root["bind_pivot_runtime"] = [0, 0, 0]
@@ -539,13 +595,17 @@ def build_picking_cart():
     root["origin_description"] = "floor centre of cart footprint"
     root["worker_attach_offset_runtime"] = [0, 0, .62]
     root["handle_targets_runtime"] = json.dumps([[-.18, .94, -.34], [.18, .94, -.34]])
+    root["basket_floor_top_m"] = .553
+    root["basket_inner_size_runtime"] = [.610, .151, .564]
+    root["basket_panel_clear_size_runtime"] = [.624, .151, .578]
+    root["wheel_radius_m"] = .068
     root["reference"] = "assets/references/picker-cart-reference.png"
-    steel = material("Cart_Charcoal_Steel", "#35434C", .74, .15)
-    teal = material("Cart_Teal_Panel", "#3C6469", .83)
+    steel = material("Cart_Charcoal_Steel", "#35434C", .77, .15)
+    teal = material("Cart_Teal_Panel", "#496C6E", .85)
     safety = material("Cart_Safety", "#D4A744", .78)
     rubber = material("Personnel_Boots", "#303A3D", .9)
     hub = material("Cart_Hub", "#77858A", .65, .25)
-    for x in (-.232, .232):
+    for x in (-.285, .285):
         for z in (-.255, .255):
             label = ("front" if z > 0 else "rear") + ("_L" if x < 0 else "_R")
             swivel_pivot = (x, .163, z)
@@ -553,37 +613,56 @@ def build_picking_cart():
             swivel["rotation_axis_runtime"] = "Y"
             wheel = _joint("wheel_" + label, (x, .068, z), swivel, swivel_pivot)
             wheel["rotation_axis_runtime"] = "X"
-            cylinder("caster_tyre", (0, 0, 0), .068, .042, rubber, wheel,
+            _cart_tyre(wheel, (x, .068, z), rubber)
+            cylinder("recessed_caster_hub", (0, 0, 0), .031, .051, hub, wheel,
+                     axis="X", vertices=16)
+            cylinder("caster_axle", (0, 0, 0), .012, .070, steel, wheel,
                      axis="X", vertices=12)
-            cylinder("caster_hub", (0, 0, 0), .029, .046, hub, wheel,
-                     axis="X", vertices=8)
-            _box("caster_hub_spin_mark", (x + (.025 if x > 0 else -.025), .081, z),
-                 (.006, .038, .009), steel, wheel, bevel=.001)
-            for dx in (-.03, .03):
-                _box("caster_yoke", (x + dx, .112, z), (.012, .086, .027),
-                     steel, swivel, bevel=.003)
-            cylinder("caster_swivel", (x, .163, z), .024, .025, hub, root, vertices=8)
-    box("cart_lower_shelf", (0, .198, 0), (.55, .038, .65), steel, root, bevel=.007)
-    box("cart_basket_floor", (0, .538, 0), (.535, .03, .63), steel, root, bevel=.006)
-    for x in (-.252, .252):
+            _box("caster_hub_spin_spoke", (x + (.028 if x > 0 else -.028), .080, z),
+                 (.004, .039, .008), steel, wheel, bevel=.001)
+            for dx in (-.034, .034):
+                _box("folded_caster_yoke", (x + dx, .114, z), (.012, .085, .037),
+                     steel, swivel, bevel=.004)
+            _box("caster_yoke_bridge", (x, .151, z), (.080, .014, .043),
+                 steel, swivel, bevel=.003)
+            cylinder("caster_swivel_bearing", (x, .165, z), .027, .025, hub, root, vertices=12)
+            box("caster_chassis_mount", (x, .182, z), (.079, .018, .079),
+                steel, root, bevel=.004)
+    box("cart_lower_shelf", (0, .211, 0), (.69, .040, .65), steel, root, bevel=.009)
+    box("cart_lower_shelf_inlay", (0, .233, 0), (.617, .008, .575), teal, root, bevel=.003)
+    box("cart_basket_floor", (0, .538, 0), (.664, .03, .63), steel, root, bevel=.006)
+    for x in (-.323, .323):
         for z in (-.30, .30):
-            box("cart_post", (x, .483, z), (.032, .55, .032), steel, root, bevel=.004)
-            box("cart_corner_safety", (x, .594, z), (.042, .055, .042),
-                safety, root, bevel=.004)
-        box("basket_side_inset", (x, .615, 0), (.021, .12, .56), teal, root, bevel=.003)
-        box("basket_side_top", (x, .776, 0), (.032, .032, .65), steel, root, bevel=.005)
+            _sweep("continuous_cart_corner_post", [((x, .23, z), .032),
+                                                      ((x, .54, z), .032),
+                                                      ((x, .783, z), .036)],
+                   steel, root, sides=10, depth_ratio=1)
+            box("cart_corner_safety_bumper", (x, .559, z), (.049, .046, .049),
+                safety, root, bevel=.006)
+        box("solid_basket_side_panel", (x, .624, 0), (.022, .142, .568), teal, root, bevel=.004)
+        _sweep("rounded_basket_side_rim", [((x, .783, -.317), .036),
+                                           ((x, .783, .317), .036)],
+               steel, root, sides=12, depth_ratio=1)
         for z in (-.15, 0, .15):
-            box("basket_vertical_rail", (x, .708, z), (.02, .135, .02),
+            box("basket_upper_short_rail", (x, .736, z), (.017, .089, .017),
                 steel, root, bevel=.002)
-        beam("handle_stem", (x, .76, -.30), (x, .918, -.363), .033, steel, root)
-        beam("handle_curve", (x, .918, -.363), (x * .88, .94, -.34), .033, steel, root)
+        _sweep("one_piece_curved_handle_upright",
+               [((x, .772, -.30), .034), ((math.copysign(.28, x), .868, -.347), .034),
+                ((math.copysign(.25, x), .918, -.363), .034),
+                ((math.copysign(.223, x), .94, -.34), .034)],
+               steel, root, sides=12, depth_ratio=1)
     for z in (-.30, .30):
-        box("basket_end_inset", (0, .615, z), (.48, .12, .021), teal, root, bevel=.003)
-        box("basket_end_top", (0, .776, z), (.55, .032, .032), steel, root, bevel=.005)
+        box("solid_basket_end_panel", (0, .624, z), (.626, .142, .022), teal, root, bevel=.004)
+        _sweep("rounded_basket_end_rim", [((-.323, .783, z), .036),
+                                          ((.323, .783, z), .036)],
+               steel, root, sides=12, depth_ratio=1)
         for x in (-.16, 0, .16):
-            box("basket_end_rail", (x, .708, z), (.02, .135, .02), steel, root, bevel=.002)
-    cylinder("hand_contact_bar", (0, .94, -.34), .022, .48, rubber, root,
-             axis="X", vertices=10)
+            box("basket_end_upper_short_rail", (x, .736, z), (.017, .089, .017), steel, root, bevel=.002)
+    cylinder("hand_contact_bar", (0, .94, -.34), .021, .48, rubber, root,
+             axis="X", vertices=20)
+    for x in (-.246, .246):
+        cylinder("handle_closed_end_cap", (x, .94, -.34), .023, .016, steel, root,
+                 axis="X", vertices=16)
     # Cart remains empty: cargo and item counts belong to replay state.
     return root
 

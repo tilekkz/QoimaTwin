@@ -11,13 +11,15 @@ import type { ReplayState, VisualFrame } from '../replay/types';
 import { createWarehouseMotion } from './warehouseMotion';
 import { conveyorVisualPlan } from './conveyorLayout';
 import { createWarehouseLabels } from './warehouseLabels';
+import {createConveyorFlow} from './conveyorFlow';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 
 export const assetCatalog = [
   {id:'standing-worker',label:'Сотрудник',note:'Новые пропорции, лицо и цельный жилет',reference:'v2/standing-worker.png'},
   {id:'picker-worker',label:'Комплектовщик',note:'Поза работы с тележкой',reference:'v2/standing-worker.png'},
   {id:'driver',label:'Водитель',note:'Посадочная поза под сиденье погрузчика',reference:'v2/driver.png'},
   {id:'picking-cart',label:'Тележка',note:'Отдельная тара и четыре поворотные опоры',reference:'picker-cart-reference.png'},
-  {id:'rack-high',label:'Стеллаж 5,4 м',note:'Три адресуемых уровня',reference:'v2/tall-rack-reference.png'},
+  {id:'rack-high',label:'Стеллаж 4,65 м',note:'Три рабочих уровня, усиленный каркас',reference:'v2/tall-rack-reference.png'},
   {id:'conveyor-high',label:'Конвейер',note:'Лента, привод, направляющие и опоры',reference:'v2/conveyor.png'},
   {id:'conveyor-corner',label:'Поворот линии',note:'Соединение транспортных секций',reference:'v2/conveyor.png'},
   {id:'conveyor-diverter',label:'Отвод линии',note:'Узел подачи и распределения',reference:'v2/conveyor.png'},
@@ -49,26 +51,32 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
   if(layout.layout_version!=='qoima-72x48-v2'||layout.schema_version!=='2.0')throw new Error('Требуется layout qoima-72x48-v2');
   const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'low-power',preserveDrawingBuffer:true});
   renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.2;
-  const scene=new THREE.Scene();scene.background=new THREE.Color('#e6e7e0');
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+  const scene=new THREE.Scene();scene.background=new THREE.Color('#dce1dc');
+  const studio=new RoomEnvironment();const pmrem=new THREE.PMREMGenerator(renderer);
+  const environment=pmrem.fromScene(studio,.04);scene.environment=environment.texture;scene.environmentIntensity=.28;studio.dispose();pmrem.dispose();
   const camera=new THREE.PerspectiveCamera(39,1,.025,450);
   const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.12;
   controls.maxPolarAngle=Math.PI/2-.015;controls.maxDistance=240;controls.minDistance=.3;
-  scene.add(new THREE.HemisphereLight(0xfff7df,0x74828a,1.9));
-  const light=new THREE.DirectionalLight(0xffefd4,2.7);light.position.set(-15,50,-25);light.castShadow=true;scene.add(light);
-  light.shadow.mapSize.set(1024,1024);Object.assign(light.shadow.camera,{left:-12,right:12,top:12,bottom:-12,near:.1,far:150});light.shadow.bias=-.0002;light.shadow.normalBias=.025;scene.add(light.target);renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  scene.add(new THREE.HemisphereLight(0xfff8ed,0x607480,.85));
+  const light=new THREE.DirectionalLight(0xffefd9,3.2);light.position.set(-15,50,-25);light.castShadow=true;scene.add(light);
+  light.shadow.mapSize.set(1024,1024);Object.assign(light.shadow.camera,{left:-12,right:12,top:12,bottom:-12,near:.1,far:150});light.shadow.bias=-.0002;light.shadow.normalBias=.009;scene.add(light.target);renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   light.shadow.camera.updateProjectionMatrix();
-  const fill=new THREE.DirectionalLight(0xc5ddeb,.9);fill.position.set(60,30,55);scene.add(fill);
+  const fill=new THREE.DirectionalLight(0xc5ddeb,.65);fill.position.set(60,30,55);scene.add(fill);
   const resources={geometry:new Set<THREE.BufferGeometry>(),material:new Set<THREE.Material>()};
+  const shadowPolicy=(mesh:THREE.Mesh)=>{
+    const materials=Array.isArray(mesh.material)?mesh.material:[mesh.material];
+    mesh.castShadow=!materials.some(material=>material.transparent||/concrete|slab|floor|ground|marking/i.test(material.name));mesh.receiveShadow=true;
+  };
   const templates=new Map<string,THREE.Group>();const partCache=new Map<string,Part[]>();
   const replay=createReplayController(createVisualFixture());
   const audio=createSfxController();
   const preference=matchMedia('(prefers-reduced-motion: reduce)');let reducedMotion=preference.matches;replay.setReducedMotion(reducedMotion);
-  let frame=replay.getFrame();let motion:ReturnType<typeof createWarehouseMotion>|undefined;
+  let frame=replay.getFrame();let motion:ReturnType<typeof createWarehouseMotion>|undefined;let belt:ReturnType<typeof createConveyorFlow>|undefined;
   let lastTime=performance.now();let previousFollow=new THREE.Vector3();let followInitialized=false;
   const floorLabels=createWarehouseLabels();
   const materialCache=new Map<string,THREE.MeshStandardMaterial>();
-  let current=new THREE.Group();let mode:ViewId='overview';let selected='';let quality='low';
+  let current=new THREE.Group();let mode:ViewId='overview';let selected='';let quality='high';renderer.shadowMap.enabled=true;
   let disposed=false;let raf=0;let tick=0;let lastCamera=new THREE.Vector3(Infinity,0,0);
   let lods:LodGroup[]=[];let pickables:THREE.Object3D[]=[];let following='';let followingOrder='';
   const actorTransforms=new Map<string,Transform>();const logicalPositions=new Map<string,number[]>();
@@ -132,7 +140,7 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
         if(!tint){tint=material.clone();tint.color.set(roleColor[role]||'#527b74');resources.material.add(tint);materialCache.set(key,tint);}material=tint;
       }
       const mesh=new THREE.InstancedMesh(part.geometry,material,Math.max(capacity,1));
-      mesh.castShadow=true;mesh.receiveShadow=true;mesh.name=name;mesh.count=0;mesh.visible=false;mesh.userData.kind=kind;current.add(mesh);pickables.push(mesh);return mesh;
+      shadowPolicy(mesh);mesh.name=name;mesh.count=0;mesh.visible=false;mesh.userData.kind=kind;current.add(mesh);pickables.push(mesh);return mesh;
     });
     const batch:Batch={meshes,set(entries){
       for(const mesh of meshes){
@@ -160,10 +168,24 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
       makeLod(`racks:A${aisle}`,'rack-high','rack-low',layout.racks.filter(rack=>rack.rack_id.startsWith(prefix)).map(rack=>transform(rack.rack_id,rack.root,rack.rack_id.endsWith('_R')?Math.PI:0)),18,'rack');
       const ids=new Set(layout.racks.filter(rack=>rack.rack_id.startsWith(prefix)).map(rack=>rack.rack_id));
       const occupied=assignment.initial_lots.filter(lot=>ids.has(layout.slots.find(slot=>slot.slot_id===lot.slot_id)!.rack_id));
-      const values=occupied.map(lot=>{const slot=layout.slots.find(slot=>slot.slot_id===lot.slot_id)!;return transform(lot.slot_id,slot.bin_anchor,slot.rack_id.endsWith('_R')?Math.PI:0);});
+      const detail:Transform[]=[];
+      const values=occupied.map((lot,index)=>{
+        const slot=layout.slots.find(slot=>slot.slot_id===lot.slot_id)!;const yaw=slot.rack_id.endsWith('_R')?Math.PI:0;
+        const fixed=/^S_A0[12]_B01_L_01$/.test(slot.slot_id);
+        const seed=[...lot.sku_id].reduce((sum,letter)=>sum+letter.charCodeAt(0),index);
+        const pair=!fixed&&seed%3===0;const sy=fixed?1:[.62,.8,1,1.3][seed%4];
+        const value=transform(lot.slot_id,[slot.bin_anchor[0],slot.bin_anchor[1]+.225*(sy-1),slot.bin_anchor[2]+(pair?-.32:0)],yaw);
+        value.scale=new THREE.Vector3(fixed?1:[.78,.9,1][seed%3],sy,pair?.72:fixed?1:[.72,.85,1][seed%3]);
+        value.color=new THREE.Color().setRGB(1,1-(seed%4)*.025,1-(seed%5)*.035);
+        if(pair){const other={...value,id:lot.slot_id+':case2',position:value.position.clone()};other.position.z=slot.bin_anchor[2]+.32;detail.push(other);}
+        if(!fixed&&seed%5===0){const stacked={...value,id:lot.slot_id+':stack',position:value.position.clone(),scale:value.scale.clone()};stacked.scale.y=.55;stacked.position.y+=.225*(sy+.55);detail.push(stacked);}
+        return value;
+      });
       makeLod(`lots:A${aisle}`,'crate','__crate-low',values,12,'slot');
+      if(detail.length)makeLod(`lot packaging:A${aisle}`,'crate','__crate-low',detail,9,'slot-detail');
     }
     const plan=conveyorVisualPlan();
+    belt=createConveyorFlow(plan.cells);current.add(belt.mesh);belt.update(frame.time,replay.getRun(),reducedMotion);
     makeLod('conveyor:front-zone','conveyor-high','conveyor-low',plan.cells,9,'cell');
     for(const model of ['conveyor-corner','conveyor-diverter'])add('conveyor junctions:'+model,model,plan.junctions.filter(junction=>junction.model===model),'junction');
     add('docks','dock',[transform('RECEIVING_DOCK',[0,0,36],Math.PI/2),transform('SHIPPING_DOCK',[72,0,3],-Math.PI/2)]);
@@ -187,7 +209,7 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
     }
   };
   const setMode=(next:ViewId)=>{
-    motion?.dispose();motion=undefined;
+    motion?.dispose();motion=undefined;belt?.dispose();belt=undefined;
     current.traverse(object=>{if(object instanceof THREE.InstancedMesh)object.dispose();});
     scene.remove(current);current=new THREE.Group();scene.add(current);mode=next;selected='';following='';followingOrder='';followInitialized=false;selection.visible=false;
     lods=[];pickables=[];actorTransforms.clear();logicalPositions.clear();
@@ -195,12 +217,15 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
       replay.pause();audio.stop();
       add(`stand:${next}`,next,[transform(next,[0,0,0])]);
       if(next!=='environment-shell'){
-        const bounds=new THREE.Box3().setFromObject(current);const size=bounds.getSize(new THREE.Vector3());const centre=bounds.getCenter(new THREE.Vector3());
+        const bounds=new THREE.Box3().setFromObject(current,true);const size=bounds.getSize(new THREE.Vector3());const centre=bounds.getCenter(new THREE.Vector3());
+        const floorGeometry=new THREE.PlaneGeometry(Math.max(4,size.x*3),Math.max(4,size.z*3)).rotateX(-Math.PI/2);resources.geometry.add(floorGeometry);
+        const floorMaterial=new THREE.MeshStandardMaterial({color:'#c9cec6',roughness:.94});floorMaterial.name='Stand ground';resources.material.add(floorMaterial);
+        const floor=new THREE.Mesh(floorGeometry,floorMaterial);floor.position.set(centre.x,bounds.min.y-.006,centre.z);floor.receiveShadow=true;current.add(floor);
         contactShadows([{position:[centre.x,bounds.min.y+.002,centre.z],size:[Math.max(.65,size.x*1.5),Math.max(.5,size.z*1.5)]}]);
       }
     }
     current.updateMatrixWorld(true);
-    const bounds=next==='overview'?new THREE.Box3(new THREE.Vector3(0,0,0),new THREE.Vector3(72,8,48)):new THREE.Box3().setFromObject(current);
+    const bounds=next==='overview'?new THREE.Box3(new THREE.Vector3(0,0,0),new THREE.Vector3(72,8,48)):new THREE.Box3().setFromObject(templates.get(next)!,true);
     fit(bounds,next==='overview'||next==='environment-shell'?new THREE.Vector3(1.1,1.25,-1.55):new THREE.Vector3(1.15,.7,1.6));
     updateLod();onStatus(state());
   };
@@ -236,10 +261,11 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
   };
   const flow=()=>{following='';followingOrder='';fit(new THREE.Box3(new THREE.Vector3(7,0,1),new THREE.Vector3(64,3,13)));};
   const docks=(kind='receiving')=>{following='';followingOrder='';fit(kind==='receiving'?new THREE.Box3(new THREE.Vector3(0,0,14),new THREE.Vector3(7,8,46)):new THREE.Box3(new THREE.Vector3(63,0,0),new THREE.Vector3(72,6,12)));};
-  const top=()=>{following='';followingOrder='';fit(new THREE.Box3().setFromObject(current),new THREE.Vector3(.001,1,-.001));};
+  const top=()=>{following='';followingOrder='';fit(new THREE.Box3().setFromObject(current,true),new THREE.Vector3(.001,1,-.001));};
   const inspect=(view:string)=>{
     const directions:Record<string,THREE.Vector3>={front:new THREE.Vector3(0,.05,1),side:new THREE.Vector3(1,.05,0),rear:new THREE.Vector3(0,.05,-1),quarter:new THREE.Vector3(1.15,.7,1.6)};
-    fit(new THREE.Box3().setFromObject(current),directions[view]||directions.quarter);
+    if(mode==='rack-high'||mode==='rack-low'){directions.front.set(1,.05,0);directions.side.set(0,.05,1);directions.rear.set(-1,.05,0);directions.quarter.set(1.6,.8,1.1);}
+    fit(new THREE.Box3().setFromObject(mode==='overview'?current:templates.get(mode)!,true),directions[view]||directions.quarter);
   };
   const pointer=new THREE.Vector2();const ray=new THREE.Raycaster();let down=[0,0];
   const onDown=(event:PointerEvent)=>{down=[event.clientX,event.clientY];};
@@ -256,7 +282,7 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
     const id=hit.object.userData.ids[hit.instanceId] as string;
     if(hit.object.userData.kind==='rack'){
       const slot=layout.slots.filter(item=>item.rack_id===id).sort((a,b)=>Math.abs(a.bin_anchor[1]-hit.point.y)-Math.abs(b.bin_anchor[1]-hit.point.y))[0];if(slot)focusSlot(slot.slot_id);
-    }else if(hit.object.userData.kind==='slot')focusSlot(id);else if(actorTransforms.has(id))selectActor(id);
+    }else if(hit.object.userData.kind==='slot'||hit.object.userData.kind==='slot-detail')focusSlot(id.split(':')[0]);else if(actorTransforms.has(id))selectActor(id);
     else{following='';followingOrder='';selected=id;selection.visible=false;onStatus(state());}
   };
   const inspectEntity=(id:string)=>{
@@ -270,7 +296,7 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
   };
   const observer=new ResizeObserver(()=>{const rect=host.getBoundingClientRect();if(rect.width&&rect.height){renderer.setSize(rect.width,rect.height);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();}});
   const preferenceChanged=()=>{reducedMotion=preference.matches;replay.setReducedMotion(reducedMotion);if(reducedMotion)replay.pause();};preference.addEventListener('change',preferenceChanged);
-  const dispose=()=>{disposed=true;audio.dispose();floorLabels.dispose();motion?.dispose();preference.removeEventListener('change',preferenceChanged);cancelAnimationFrame(raf);observer.disconnect();controls.dispose();renderer.domElement.removeEventListener('pointerdown',onDown);renderer.domElement.removeEventListener('pointerup',onUp);resources.geometry.forEach(value=>value.dispose());resources.material.forEach(value=>value.dispose());shadowTexture.dispose();current.traverse(object=>{if(object instanceof THREE.InstancedMesh)object.dispose();});selection.geometry.dispose();(selection.material as THREE.Material).dispose();renderer.dispose();renderer.domElement.remove();};
+  const dispose=()=>{disposed=true;audio.dispose();floorLabels.dispose();motion?.dispose();belt?.dispose();environment.dispose();preference.removeEventListener('change',preferenceChanged);cancelAnimationFrame(raf);observer.disconnect();controls.dispose();renderer.domElement.removeEventListener('pointerdown',onDown);renderer.domElement.removeEventListener('pointerup',onUp);resources.geometry.forEach(value=>value.dispose());resources.material.forEach(value=>value.dispose());shadowTexture.dispose();current.traverse(object=>{if(object instanceof THREE.InstancedMesh)object.dispose();});selection.geometry.dispose();(selection.material as THREE.Material).dispose();renderer.dispose();renderer.domElement.remove();};
   try{
     const loader=new GLTFLoader();
     await Promise.all(assetCatalog.map(async asset=>{
@@ -288,6 +314,21 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
     const workRoot=new THREE.Group();if(workProp){workProp.userData.runtime_default_visible=true;workRoot.add(workProp);}templates.set('__packing-wip',workRoot);
     const proxy=new THREE.Group();const material=new THREE.MeshStandardMaterial({color:'#b99561',roughness:.8});
     const geometry=new THREE.BoxGeometry(.55,.45,.65);resources.geometry.add(geometry);resources.material.add(material);proxy.add(new THREE.Mesh(geometry,material));templates.set('__crate-low',proxy);
+    // Distant carts retain the frame, basket, handle and four wheels. Close carts
+    // always use the authored rounded model and its wheel pivots.
+    const cartProxy=new THREE.Group();
+    const cartSteel=new THREE.MeshStandardMaterial({color:'#34484d',roughness:.76,metalness:.12});
+    const cartPanel=new THREE.MeshStandardMaterial({color:'#3a6268',roughness:.8});
+    const cartRubber=new THREE.MeshStandardMaterial({color:'#253033',roughness:.95});
+    for(const mat of [cartSteel,cartPanel,cartRubber])resources.material.add(mat);
+    const cartBox=(size:number[],position:number[],mat:THREE.Material)=>{const geometry=new THREE.BoxGeometry(...size as [number,number,number]);resources.geometry.add(geometry);const mesh=new THREE.Mesh(geometry,mat);mesh.position.fromArray(position);cartProxy.add(mesh);};
+    cartBox([.65,.035,.64],[0,.185,0],cartSteel);cartBox([.624,.028,.578],[0,.539,0],cartPanel);
+    for(const x of [-.325,.325]){cartBox([.025,.66,.028],[x,.49,.28],cartSteel);cartBox([.025,.66,.028],[x,.49,-.28],cartSteel);cartBox([.023,.16,.58],[x,.647,0],cartPanel);cartBox([.026,.026,.64],[x,.817,0],cartSteel);}
+    for(const z of [-.3,.3]){cartBox([.65,.16,.023],[0,.647,z],cartPanel);cartBox([.65,.026,.026],[0,.817,z],cartSteel);}
+    cartBox([.64,.03,.03],[0,.94,-.34],cartSteel);for(const x of [-.3,.3])cartBox([.025,.13,.025],[x,.88,-.32],cartSteel);
+    const wheelGeo=new THREE.CylinderGeometry(.068,.068,.035,8).rotateZ(Math.PI/2);resources.geometry.add(wheelGeo);
+    for(const x of [-.28,.28])for(const z of [-.27,.27]){const wheel=new THREE.Mesh(wheelGeo,cartRubber);wheel.position.set(x,.068,z);cartProxy.add(wheel);cartBox([.028,.08,.035],[x,.13,z],cartSteel);}
+    templates.set('__cart-low',cartProxy);
     host.appendChild(renderer.domElement);renderer.setSize(host.clientWidth,host.clientHeight);camera.aspect=host.clientWidth/host.clientHeight;camera.updateProjectionMatrix();observer.observe(host);
     renderer.domElement.addEventListener('pointerdown',onDown);renderer.domElement.addEventListener('pointerup',onUp);setMode('overview');
     const refresh=()=>{
@@ -297,10 +338,12 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
         for(const [id,value]of motion.positions)actorTransforms.set(id,value);
         for(const actor of Object.values(frame.actors))logicalPositions.set(actor.id,[...actor.pos]);
       }
+      belt?.update(frame.time,replay.getRun(),reducedMotion);
     };
     const animate=()=>{
       if(disposed)return;const now=performance.now();const dt=Math.max(0,(now-lastTime)/1000);lastTime=now;
       frame=replay.advance(dt);audio.update(frame,replay.getState());
+      belt?.update(frame.time,replay.getRun(),reducedMotion);
       if(mode==='overview'&&motion){
         motion.update(frame,replay.getRun(),reducedMotion);actorTransforms.clear();
         for(const [id,value]of motion.positions)actorTransforms.set(id,value);
@@ -319,9 +362,18 @@ export async function mountWarehouse(host:HTMLElement,onStatus:(value:SceneStatu
       }
       controls.update();if(tick%4===0)updateLod();
       camera.position.y=Math.max(.15,camera.position.y);controls.target.y=Math.max(.02,controls.target.y);
-      if(quality==='high'&&light.target.position.distanceToSquared(controls.target)>9){light.target.position.copy(controls.target);light.position.copy(controls.target).add(new THREE.Vector3(-15,40,-25));}
+      if(quality==='high'){
+        light.target.position.copy(controls.target);light.position.copy(controls.target).add(new THREE.Vector3(-15,40,-25));
+        const radius=THREE.MathUtils.clamp(camera.position.distanceTo(controls.target)*.32,3,42);
+        light.shadow.bias=-.0002*Math.max(1,radius/3);light.shadow.normalBias=.009+radius*.0005;
+        if(Math.abs(light.shadow.camera.right-radius)>.15){Object.assign(light.shadow.camera,{left:-radius,right:radius,top:radius,bottom:-radius});light.shadow.camera.updateProjectionMatrix();}
+      }
       renderer.render(scene,camera);if(++tick%12===0)onStatus(state());raf=requestAnimationFrame(animate);
     };animate();
-    return{dispose,setMode,audio,inspectEntity,inspectRig:(id:string)=>motion?.inspectRig(id),getPerfState:()=>({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory,pixelRatio:renderer.getPixelRatio(),quality,replay:replay.getState()}),loadRun:(input:unknown)=>{const run=adaptRunV2(input);replay.setRun(run);audio.stop();following='';followingOrder='';followInitialized=false;selected='';selection.visible=false;refresh();onStatus(state());},loadVisualDemo:()=>{replay.setRun(createVisualFixture());audio.stop();following='';followingOrder='';followInitialized=false;selected='';selection.visible=false;refresh();onStatus(state());},replay:{play:()=>replay.play(),pause:()=>{replay.pause();audio.stop();},seek:(time:number)=>{const before=actorTransforms.get(following)?.position.clone();replay.seek(time);audio.update(replay.getFrame(),{...replay.getState(),discontinuity:true});followInitialized=false;refresh();restoreFollowingAfterSeek(before);onStatus(state());},reset:()=>{const before=actorTransforms.get(following)?.position.clone();replay.reset();audio.update(replay.getFrame(),{...replay.getState(),discontinuity:true});followInitialized=false;refresh();restoreFollowingAfterSeek(before);onStatus(state());},setSpeed:(speed:number)=>replay.setSpeed(speed),getState:replay.getState,getFrame:replay.getFrame,getRun:replay.getRun},setReducedMotion:(value:boolean)=>{reducedMotion=value;replay.setReducedMotion(value);refresh();},overview:()=>setMode('overview'),top,focusSlot,flow,docks,selectActor,followOrder,inspect,setQuality:(value:string)=>{quality=value;renderer.setPixelRatio(value==='low'?1:Math.min(devicePixelRatio,1.25));renderer.shadowMap.enabled=value==='high';current.traverse(object=>{if(object instanceof THREE.Mesh){object.castShadow=true;object.receiveShadow=true;}});light.target.position.copy(controls.target);light.position.copy(controls.target).add(new THREE.Vector3(-15,40,-25));lastCamera.set(Infinity,0,0);updateLod();},getState:()=>({...state(),counts:counts(),motion:motion?.getState(),following,followingOrder,distance:camera.position.distanceTo(controls.target),layoutVersion:layout.layout_version,logicalActorPositions:Object.fromEntries(logicalPositions),slotRegistry:Object.fromEntries(layout.slots.map(slot=>[slot.slot_id,{rackId:slot.rack_id,anchor:slot.bin_anchor,level:slot.level}])),renderedRegistry:Object.fromEntries(['actor','rack','slot','cell','vehicle','pack','tote'].map(kind=>[kind,[...new Set([...pickables.filter(object=>object.visible&&object.userData.kind===kind).flatMap(object=>object.userData.ids||[]),...(motion?.visibleEntityIds(kind)||[]),...(kind==='tote'?Object.values(frame.cargo).filter(cargo=>cargo.visible&&cargo.kind==='tote').map(cargo=>cargo.id):[])])]])),conveyorJunctions:conveyorVisualPlan().junctions.map(junction=>({id:junction.id,position:junction.position.toArray(),model:junction.model,rotation:junction.rotation})),memory:renderer.info.memory,instancedMeshes:current.children.filter(object=>object instanceof THREE.InstancedMesh).length})};
+    return{dispose,setMode,audio,inspectEntity,inspectRig:(id:string)=>motion?.inspectRig(id),getPerfState:()=>({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory,pixelRatio:renderer.getPixelRatio(),quality,replay:replay.getState()}),loadRun:(input:unknown)=>{const run=adaptRunV2(input);replay.setRun(run);audio.stop();following='';followingOrder='';followInitialized=false;selected='';selection.visible=false;refresh();onStatus(state());},loadVisualDemo:()=>{replay.setRun(createVisualFixture());audio.stop();following='';followingOrder='';followInitialized=false;selected='';selection.visible=false;refresh();onStatus(state());},replay:{play:()=>replay.play(),pause:()=>{replay.pause();audio.stop();},seek:(time:number)=>{const before=actorTransforms.get(following)?.position.clone();replay.seek(time);audio.update(replay.getFrame(),{...replay.getState(),discontinuity:true});followInitialized=false;refresh();restoreFollowingAfterSeek(before);onStatus(state());},reset:()=>{const before=actorTransforms.get(following)?.position.clone();replay.reset();audio.update(replay.getFrame(),{...replay.getState(),discontinuity:true});followInitialized=false;refresh();restoreFollowingAfterSeek(before);onStatus(state());},setSpeed:(speed:number)=>replay.setSpeed(speed),getState:replay.getState,getFrame:replay.getFrame,getRun:replay.getRun},setReducedMotion:(value:boolean)=>{reducedMotion=value;replay.setReducedMotion(value);refresh();},overview:()=>setMode('overview'),top,focusSlot,flow,docks,selectActor,followOrder,inspect,setQuality:(value:string)=>{quality=value;renderer.setPixelRatio(value==='low'?1:Math.min(devicePixelRatio,1.25));renderer.shadowMap.enabled=value==='high';current.traverse(object=>{if(object instanceof THREE.Mesh)shadowPolicy(object);});light.target.position.copy(controls.target);light.position.copy(controls.target).add(new THREE.Vector3(-15,40,-25));lastCamera.set(Infinity,0,0);updateLod();},getState:()=>({...state(),counts:counts(),motion:motion?.getState(),belt:belt?.getState(),following,followingOrder,distance:camera.position.distanceTo(controls.target),layoutVersion:layout.layout_version,logicalActorPositions:Object.fromEntries(logicalPositions),slotRegistry:Object.fromEntries(layout.slots.map(slot=>[slot.slot_id,{rackId:slot.rack_id,anchor:slot.bin_anchor,level:slot.level}])),renderedRegistry:Object.fromEntries(['actor','rack','slot','cell','vehicle','pack','tote'].map(kind=>[kind,[...new Set([...pickables.filter(object=>object.visible&&object.userData.kind===kind).flatMap(object=>object.userData.ids||[]),...(motion?.visibleEntityIds(kind)||[]),...(kind==='tote'?Object.values(frame.cargo).filter(cargo=>cargo.visible&&cargo.kind==='tote').map(cargo=>cargo.id):[])])]])),conveyorJunctions:conveyorVisualPlan().junctions.map(junction=>({id:junction.id,position:junction.position.toArray(),model:junction.model,rotation:junction.rotation})),memory:renderer.info.memory,instancedMeshes:current.children.filter(object=>object instanceof THREE.InstancedMesh).length})};
   }catch(error){dispose();throw error;}
 }
+
+
+
+

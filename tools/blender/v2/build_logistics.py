@@ -16,7 +16,7 @@ ASSET_IDS = ("conveyor-high", "conveyor-low", "conveyor-corner",
              "conveyor-diverter", "order-tote", "tote-low", "sealed-parcel")
 
 
-def _mesh(name, vertices, faces, mat, parent, bevel=0):
+def _mesh(name, vertices, faces, mat, parent, bevel=0, upward=False):
     data = bpy.data.meshes.new(name + "_mesh")
     data.from_pydata([tuple(xyz(v)) for v in vertices], [], faces)
     data.materials.append(mat)
@@ -24,6 +24,11 @@ def _mesh(name, vertices, faces, mat, parent, bevel=0):
     bm = bmesh.new()
     bm.from_mesh(data)
     bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+    if upward:
+        # Recalc cannot infer an outside for disconnected single-sided strips.
+        for face in bm.faces:
+            if face.normal.z < 0:
+                face.normal_flip()
     bm.to_mesh(data)
     bm.free()
     obj = bpy.data.objects.new(name, data)
@@ -50,15 +55,16 @@ def _materials():
     return {
         "steel": material("v2_conveyor_charcoal_steel", "#34434A", .72, .25),
         "metal": material("v2_conveyor_metal_fasteners", "#7A8587", .63, .40),
-        "yellow": material("v2_conveyor_safety_yellow", "#E8B52E", .73),
-        "belt": material("v2_conveyor_teal_belt", "#376E6C", .85),
-        "teal": material("v2_order_tote_teal", "#397F7B", .78),
-        "rim": material("v2_order_tote_rim", "#4C928A", .76),
+        "yellow": material("v2_conveyor_safety_yellow", "#CBA548", .8),
+        "belt": material("v2_conveyor_rubber_belt_surface", "#2D4A4D", .88),
+        "tread": material("v2_conveyor_belt_tread_bands", "#486766", .87),
+        "teal": material("v2_order_tote_teal", "#3C7977", .82),
+        "rim": material("v2_order_tote_moulded_rim", "#568C86", .8),
         "label": material("v2_blank_cargo_label", "#E3DCCB", .86),
-        "card": material("v2_parcel_cardboard", "#BC915C", .88),
-        "flap": material("v2_parcel_flap", "#C79D69", .88),
-        "tape": material("v2_parcel_ochre_tape", "#B88737", .75),
-        "fold": material("v2_parcel_fold_seam", "#866343", .92),
+        "card": material("v2_parcel_cardboard", "#B99566", .92),
+        "flap": material("v2_parcel_folded_flap", "#C3A477", .92),
+        "tape": material("v2_parcel_kraft_tape", "#C3A16E", .84),
+        "fold": material("v2_parcel_fold_seam", "#9C7D56", .95),
     }
 
 
@@ -99,12 +105,13 @@ def _ports(root, branch=False, corner=False):
         _port(root, "branch", (.5, .9, 0), (1, 0, 0))
     root["belt_surface_y"] = .9
     root["cell_length_m"] = 1.0
+    root["port_clear_width_m"] = .632
 
 
 def _legs(root, mats, low=False, positions=None):
     positions = positions or [(-.265, -.37), (.265, -.37), (-.265, .37), (.265, .37)]
     for i, (x, z) in enumerate(positions):
-        box("leg_%d" % i, (x, .425, z), (.042, .85, .042),
+        box("leg_%d" % i, (x, .425, z), (.05, .85, .05),
             mats["steel"], root, bevel=0 if low else .004)
         if not low:
             box("bolted_foot_%d" % i, (x, .014, z), (.09, .028, .09),
@@ -128,6 +135,86 @@ def _motor(root, mats, loc=(0, .725, -.18)):
                   mats["steel"], root, axis="X", vertices=8)
 
 
+def _treads(root, mats, axis='Z', center=(0, 0), length=.88, width=.606, count=9, low=False):
+    for index in range(count):
+        along = -length*.5 + (index+.5)*length/count
+        half = .006 if not low else .008
+        if axis == 'Z':
+            x, z = center[0], center[1]+along
+            points = [(x-width/2,.9,z-half),(x+width/2,.9,z-half),
+                      (x+width/2,.9,z+half),(x-width/2,.9,z+half)]
+        else:
+            x, z = center[0]+along, center[1]
+            points = [(x-half,.9,z-width/2),(x+half,.9,z-width/2),
+                      (x+half,.9,z+width/2),(x-half,.9,z+width/2)]
+        obj = _mesh('belt_tread_band_%s_%02d' % (axis,index), points,
+                    [(3,2,1,0)], mats['tread'], root, upward=True)
+        obj['visual_flow_surface'] = True
+
+
+def _end_rollers(root, mats, low=False):
+    for end in (-1,1):
+        _raw_cylinder('belt_end_idler_%d' % end, (0,.856,end*.456),
+                      .044,.62,mats['belt'],root,axis='X',vertices=8 if low else 12)
+        if not low:
+            for side in (-1,1):
+                box('idler_tension_carrier_%d_%d' % (end,side),
+                    (side*.319,.825,end*.435),(.04,.095,.11),mats['metal'],root,.003)
+                box('idler_tension_slot_%d_%d' % (end,side),
+                    (side*.339,.833,end*.435),(.002,.016,.058),mats['steel'],root,0)
+                _raw_cylinder('idler_axle_%d_%d' % (end,side),
+                              (side*.337,.856,end*.456),.015,.006,
+                              mats['metal'],root,axis='X',vertices=8)
+
+
+def _flow_metadata(root, mats):
+    root['belt_materials_json'] = json.dumps([mats['belt'].name,mats['tread'].name])
+    root['belt_visual_top_y'] = .9
+    root['tread_bands_are_visual_only'] = True
+
+
+def _guide_segment(root, mats, name, start, end):
+    dx,dz = end[0]-start[0],end[1]-start[1]
+    length = math.hypot(dx,dz)
+    for suffix, y, height, width, mat in (
+        ('channel',.833,.115,.04,mats['steel']),
+        ('guard',.925,.05,.024,mats['yellow'])):
+        obj = box(name+'_'+suffix,((start[0]+end[0])/2,y,(start[1]+end[1])/2),
+                  (length,height,width),mat,root,.003)
+        obj.rotation_euler.z = math.atan2(-dz,dx)
+
+
+def _transfer_platform(root, mats, branch=False):
+    # A real wide central deck accommodates the 0.721m diagonal of a turning
+    # .60x.40 tote. Its open arms still meet the exact canonical +/-0.5m ports.
+    w,n = .43,.31
+    outline=[(-w,-w),(-n,-w),(-n,-.5),(n,-.5),(n,-w),
+             (w,-w),(w,-n),(.5,-n),(.5,n),(w,n)]
+    if branch:
+        outline += [(w,w),(n,w),(n,.5),(-n,.5),(-n,w),(-w,w)]
+    else:
+        outline += [(w,w),(-w,w)]
+    vertices=[(x,y,z) for y in (.805,.892) for x,z in outline]
+    count=len(outline)
+    faces=[tuple(range(count-1,-1,-1)),tuple(range(count,count*2))]
+    faces += [(i,(i+1)%count,(i+1)%count+count,i+count) for i in range(count)]
+    _mesh('wide_open_transfer_platform',vertices,faces,mats['steel'],root,.003)
+    for end in (-1,1) if branch else (-1,):
+        box('short_in_out_belt_%d' % end,(0,.866,end*.4),(.62,.067,.2),mats['belt'],root,.002)
+        _treads(root,mats,center=(0,end*.4),length=.18,width=.606,count=3)
+    box('short_branch_belt',(.4,.866,0),(.2,.067,.62),mats['belt'],root,.002)
+    _treads(root,mats,axis='X',center=(.4,0),length=.18,width=.606,count=3)
+    # Flush roller crowns at Y=.9; the supporting plate is only 8mm below.
+    for row,z in enumerate((-.24,-.08,.08,.24)):
+        for col,x in enumerate((-.24,-.08,.08,.24)):
+            _raw_cylinder('central_transfer_roller_%s_%s' % (row,col),
+                          (x,.872,z),.028,.13,mats['metal'],root,axis='X',vertices=12)
+    root['central_clearance_m'] = [.78,.78]
+    root['central_platform_m'] = [.86,.86]
+    root['nominal_size_m'] = [1,.95,1]
+    _flow_metadata(root,mats)
+
+
 def conveyor(low=False):
     mats = _materials()
     asset_id = "conveyor-low" if low else "conveyor-high"
@@ -135,32 +222,38 @@ def conveyor(low=False):
     root["lod"] = "low" if low else "high"
     root["nominal_size_m"] = [.68, .95, 1.0]
     _ports(root)
+    _flow_metadata(root,mats)
     if low:
-        # Eight boxes = 96 triangles. Belt top and guide silhouette stay canonical.
-        box("belt_and_deck_proxy", (0, .858, 0), (.58, .084, 1), mats["belt"], root, bevel=0)
+        box("belt_and_deck_proxy", (0, .858, 0), (.62, .083, .912), mats["belt"], root, bevel=0)
         for side in (-1, 1):
-            box("yellow_side_guide_%d" % side, (side*.315, .915, 0),
-                (.05, .07, 1), mats["yellow"], root, bevel=0)
+            box("yellow_side_guide_%d" % side, (side*.328, .925, 0),
+                (.024, .05, 1), mats["yellow"], root, bevel=0)
+            box('steel_side_channel_%d' % side,(side*.319,.833,0),
+                (.042,.115,1),mats['steel'],root,0)
         _legs(root, mats, low=True)
         box("underframe_cross_proxy", (0, .275, -.37), (.56, .035, .035),
             mats["steel"], root, bevel=0)
+        _end_rollers(root,mats,low=True)
+        _treads(root,mats,count=5,low=True)
         return root
-    box("continuous_teal_belt", (0, .866, 0), (.575, .068, 1),
-        mats["belt"], root, bevel=.008)
+    belt=box("continuous_rubber_belt", (0, .866, 0), (.62, .067, .912),
+             mats["belt"], root, bevel=.004)
+    belt['visual_flow_surface'] = True
     for side in (-1, 1):
-        box("lower_channel_%d" % side, (side*.306, .8365, 0), (.068, .121, 1),
-            mats["steel"], root, bevel=.006)
-        box("yellow_side_guard_%d" % side, (side*.315, .923, 0), (.05, .054, 1),
-            mats["yellow"], root, bevel=.006)
-        for z in (-.41, .41):
+        box("lower_channel_%d" % side, (side*.319, .833, 0), (.042, .115, 1),
+            mats["steel"], root, bevel=.004)
+        box("yellow_side_guard_%d" % side, (side*.328, .925, 0), (.024, .05, 1),
+            mats["yellow"], root, bevel=.003)
+        for z in (-.30, .30):
             _raw_cylinder("rail_fastener_%d_%.2f" % (side,z),
                           (side*.339, .839, z), .012, .002,
                           mats["metal"], root, axis="X", vertices=6)
-    for z in (-.46, .46):
-        _raw_cylinder("dimensional_end_roller_%.2f" % z, (0, .862, z),
-                      .036, .583, mats["belt"], root, axis="X", vertices=10)
+    _end_rollers(root,mats)
+    _treads(root,mats)
     _legs(root, mats)
     _motor(root, mats)
+    box('photoelectric_sensor',( .331,.864,.18),(.016,.035,.045),mats['metal'],root,.002)
+    box('sensor_dark_lens',( .321,.864,.18),(.003,.019,.024),mats['steel'],root,0)
     return root
 
 
@@ -171,37 +264,17 @@ def corner():
     root["path_runtime"] = [0,.9,-.5, 0,.9,0, .5,.9,0]
     root["path_rule"] = "Two orthogonal half-metre legs; no route smoothing or timing change."
     _ports(root, corner=True)
-    # Three shared, non-overlapping deck cells form an L. The central face is
-    # the steel transfer plate; its top is exactly coplanar with adjacent belts.
-    width = .2875
-    grid = [(x,z) for z in (-.5,-width,width) for x in (-width,width,.5)]
-    vertices = [(x,y,z) for y in (.834,.9) for x,z in grid]
-    faces = []
-    for cell in ((0,1,4,3),(3,4,7,6),(4,5,8,7)):
-        faces += [tuple(reversed(cell)),tuple(i+9 for i in cell)]
-    boundary = [0,1,4,5,8,7,6,3]
-    for i,j in zip(boundary,boundary[1:]+boundary[:1]):
-        faces.append((i,j,j+9,i+9))
-    deck = _mesh("continuous_orthogonal_L_transfer_deck", vertices, faces,
-                 mats["belt"], root)
-    deck.data.materials.append(mats["metal"])
-    deck.data.polygons[3].material_index = 1
-    for name,axis,position,length in (
-        ("outer_inlet","Z",(-.315,0,-.08),.84),
-        ("outer_outlet","X",(.08,0,.315),.84),
-        ("inner_inlet","Z",(.315,0,-.395),.21),
-        ("inner_outlet","X",(.395,0,-.315),.21)):
-        x,_,z = position
-        guide_size = (.05,.054,length) if axis == "Z" else (length,.054,.05)
-        frame_size = (.068,.121,length) if axis == "Z" else (length,.121,.068)
-        frame_x = math.copysign(.306,x) if axis == "Z" else x
-        frame_z = math.copysign(.306,z) if axis == "X" else z
-        box(name+"_steel_channel",(frame_x,.8365,frame_z),frame_size,
-            mats["steel"],root,bevel=.005)
-        box(name+"_yellow_guard",(x,.923,z),guide_size,
-            mats["yellow"],root,bevel=.005)
-    _legs(root,mats,positions=[(-.24,-.39),(.24,-.39),(-.24,.235),(.39,.235)])
-    _motor(root,mats,(.08,.725,-.10))
+    _transfer_platform(root,mats)
+    for name,a,b in (
+        ('outer_left',(-.447,-.36),(-.447,.447)),
+        ('outer_back',(-.447,.447),(.36,.447)),
+        ('inlet_left_transition',(-.328,-.482),(-.447,-.36)),
+        ('outlet_back_transition',(.36,.447),(.482,.328)),
+        ('inlet_right_cap',(.328,-.482),(.395,-.447)),
+        ('outlet_front_cap',(.447,-.395),(.482,-.328))):
+        _guide_segment(root,mats,name,a,b)
+    _legs(root,mats,positions=[(-.33,-.33),(.33,-.33),(-.33,.33),(.33,.33)])
+    _motor(root,mats,(-.07,.725,.10))
     return root
 
 
@@ -210,29 +283,17 @@ def diverter():
     root = _root("conveyor-diverter", "conveyor_diverter", "conveyor")
     root["family_variant"] = "three_way_T"
     _ports(root, branch=True)
-    outline = [(-.2875,-.5), (.2875,-.5), (.2875,-.2875),
-               (.5,-.2875), (.5,.2875), (.2875,.2875),
-               (.2875,.5), (-.2875,.5)]
-    vertices = [(x,y,z) for y in (.834,.9) for x,z in outline]
-    faces = [tuple(range(7,-1,-1)), tuple(range(8,16))]
-    faces += [(i,(i+1)%8,(i+1)%8+8,i+8) for i in range(8)]
-    _mesh("single_continuous_T_belt", vertices, faces, mats["belt"], root, .004)
-    box("left_continuous_channel", (-.306, .8365, 0), (.068, .121, 1),
-        mats["steel"], root, bevel=.006)
-    box("left_continuous_yellow_guide", (-.315, .923, 0), (.05, .054, 1),
-        mats["yellow"], root, bevel=.006)
-    for side in (-1, 1):
-        box("right_split_channel_%d" % side, (.306, .8365, side*.414),
-            (.068, .121, .172), mats["steel"], root, bevel=.005)
-        box("right_split_yellow_guide_%d" % side, (.315, .923, side*.414),
-            (.05, .054, .172), mats["yellow"], root, bevel=.005)
-        box("branch_edge_channel_%d" % side, (.407, .8365, side*.306),
-            (.186, .121, .068), mats["steel"], root, bevel=.005)
-        box("branch_yellow_guide_%d" % side, (.407, .923, side*.315),
-            (.186, .054, .05), mats["yellow"], root, bevel=.005)
-    _legs(root, mats)
+    _transfer_platform(root,mats,branch=True)
+    _guide_segment(root,mats,'closed_left',(-.447,-.36),(-.447,.36))
+    for side in (-1,1):
+        _guide_segment(root,mats,'left_port_transition_'+str(side),
+                       (-.328,side*.482),(-.447,side*.36))
+        _guide_segment(root,mats,'right_port_cap_'+str(side),
+                       (.328,side*.482),(.395,side*.447))
+        _guide_segment(root,mats,'branch_cap_'+str(side),
+                       (.447,side*.395),(.482,side*.328))
+    _legs(root,mats,positions=[(-.33,-.33),(.33,-.33),(-.33,.33),(.33,.33)])
     _motor(root, mats)
-    # The union deck has one top face: no coplanar belt/transfer-plate overlap.
     return root
 
 
@@ -241,108 +302,121 @@ def _box_faces():
             (1,5,6,2), (2,6,7,3), (3,7,4,0)]
 
 
-def _front_wall(root, name, side, mats):
-    vertices = []
-    for inner in (False, True):
-        for y, half_x, half_z in ((.025, .228, .178), (.278, .253, .203)):
-            z = side*(half_z-(.018 if inner else 0))
-            vertices += [(-half_x, y, z), (half_x, y, z)]
-    return _mesh(name, vertices,
-                 [(0,1,3,2), (4,6,7,5), (0,4,5,1),
-                  (2,3,7,6), (0,2,6,4), (1,5,7,3)],
-                 mats["teal"], root, .002)
+def _rounded_loop(half_x, half_z, radius, segments=3):
+    result=[]
+    for cx,cz,start in ((half_x-radius,half_z-radius,0),
+                        (-half_x+radius,half_z-radius,90),
+                        (-half_x+radius,-half_z+radius,180),
+                        (half_x-radius,-half_z+radius,270)):
+        for index in range(segments+1):
+            angle=math.radians(start+90*index/segments)
+            result.append((cx+radius*math.cos(angle),cz+radius*math.sin(angle)))
+    return result
 
 
-def _end_wall(root, side, mats):
-    # One welded wall mesh with a real hand opening. Shared coplanar grid edges
-    # create no artificial seams between the lower panel and handle jambs.
-    vertices = []
-    for inner in (False, True):
-        for y in (.025, .205, .25, .278):
-            amount = (y-.025)/.253
-            half_x = .228+.025*amount
-            half_z = .178+.025*amount
-            x = side*(half_x-(.018 if inner else 0))
-            vertices += [(x,y,z) for z in (-half_z,-.075,.075,half_z)]
-    faces = []
-    for row in range(3):
-        for col in range(3):
-            if row == 1 and col == 1:
-                continue
-            i = row*4+col
-            faces += [(i,i+1,i+5,i+4), (i+16,i+20,i+21,i+17)]
-    for loop in ([0,1,2,3,7,11,15,14,13,12,8,4], [5,6,10,9]):
-        for i,j in zip(loop,loop[1:]+loop[:1]):
-            faces.append((i,i+16,j+16,j))
-    return _mesh("unified_handhold_end_%d" % side, vertices, faces,
-                 mats["teal"], root, .002)
+def _tote_shell(root,mats,low=False):
+    segments=1 if low else 3
+    shapes=((0 if low else .012,.27,.17,.018),
+            (.30 if low else .278,.30 if low else .291,.20 if low else .191,.028),
+            (.035,.251,.151,.014),
+            (.30 if low else .278,.276 if low else .273,.176 if low else .173,.017))
+    loops=[[(x,y,z) for x,z in _rounded_loop(hx,hz,r,segments)] for y,hx,hz,r in shapes]
+    count=len(loops[0]);vertices=sum(loops,[])
+    faces=[tuple(range(count-1,-1,-1)),tuple(range(2*count,3*count))]
+    for index in range(count):
+        nxt=(index+1)%count
+        faces += [(index,nxt,nxt+count,index+count),
+                  (index+2*count,index+3*count,nxt+3*count,nxt+2*count),
+                  (index+count,nxt+count,nxt+3*count,index+3*count)]
+    body=_mesh('rounded_tapered_hollow_tote',vertices,faces,mats['teal'],root)
+    if low:
+        body.data.materials.append(mats['rim'])
+        for index in range(count):body.data.polygons[4+3*index].material_index=1
+        return body
+    # Rounded apertures are actual through-holes in the 18mm side walls.
+    hole=_rounded_loop(.085,.0225,.015,3)
+    for side in (-1,1):
+        cutter_vertices=[(side*x,.238+y,z) for x in (.245,.325) for z,y in hole]
+        n=len(hole)
+        cutter_faces=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]
+        cutter_faces += [(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+        cutter=_mesh('temporary_rounded_handhold_cutter',cutter_vertices,cutter_faces,mats['teal'],root)
+        bpy.ops.object.select_all(action='DESELECT')
+        body.select_set(True)
+        bpy.context.view_layer.objects.active=body
+        modifier=body.modifiers.new('Real rounded hand opening','BOOLEAN')
+        modifier.operation='DIFFERENCE';modifier.solver='EXACT';modifier.object=cutter
+        bpy.ops.object.modifier_apply(modifier=modifier.name)
+        bpy.data.objects.remove(cutter,do_unlink=True)
+    bevel=body.modifiers.new('Soft moulded wall edges','BEVEL')
+    bevel.width=.0015;bevel.segments=2;bevel.harden_normals=True
+    body.modifiers.new('Moulded wall normals','WEIGHTED_NORMAL')
+    return body
 
 
-def _tote_rim(root, mat):
-    def loop(half_x, half_z, chamfer):
-        return [(-half_x+chamfer,-half_z), (half_x-chamfer,-half_z),
-                (half_x,-half_z+chamfer), (half_x,half_z-chamfer),
-                (half_x-chamfer,half_z), (-half_x+chamfer,half_z),
-                (-half_x,half_z-chamfer), (-half_x,-half_z+chamfer)]
-    vertices = []
-    for y, shape in ((.272,loop(.26,.21,.009)), (.30,loop(.26,.21,.009)),
-                     (.272,loop(.234,.184,.007)), (.30,loop(.234,.184,.007))):
-        vertices += [(x,y,z) for x,z in shape]
-    faces = []
-    for i in range(8):
-        j = (i+1)%8
-        faces += [(i,j,j+8,i+8), (i+16,i+24,j+24,j+16),
-                  (i+8,j+8,j+24,i+24), (i,j,j+16,i+16)]
-    return _mesh("continuous_thick_chamfered_rim", vertices, faces, mat, root)
+def _rounded_tote_rim(root,mats):
+    vertices=[]
+    for y,hx,hz,r in ((.274,.30,.20,.028),(.30,.30,.20,.028),
+                       (.274,.276,.176,.017),(.30,.276,.176,.017)):
+        vertices += [(x,y,z) for x,z in _rounded_loop(hx,hz,r)]
+    n=16;faces=[]
+    for i in range(n):
+        j=(i+1)%n
+        faces += [(i,j,j+n,i+n),(i+2*n,i+3*n,j+3*n,j+2*n),
+                  (i+n,j+n,j+3*n,i+3*n),(i,j,j+2*n,i+2*n)]
+    _mesh('continuous_rounded_double_wall_rim',vertices,faces,mats['rim'],root,.001)
+
+
+def _handhold_bezel(root,mats,side):
+    outer=_rounded_loop(.096,.033,.022)
+    inner=_rounded_loop(.0855,.023,.0155)
+    vertices=[]
+    for offset,shape in ((.001,outer),(.007,outer),(.001,inner),(.007,inner)):
+        for z,dy in shape:
+            y=.238+dy
+            x=side*(.27+.021*(y-.012)/.266+offset)
+            vertices.append((x,y,z))
+    n=16;faces=[]
+    for i in range(n):
+        j=(i+1)%n
+        faces += [(i,j,j+n,i+n),(i+2*n,i+3*n,j+3*n,j+2*n),
+                  (i+n,j+n,j+3*n,i+3*n),(i,j,j+2*n,i+2*n)]
+    _mesh('thick_rounded_handhold_surround_'+str(side),vertices,faces,mats['rim'],root)
 
 
 def tote(low=False):
-    mats = _materials()
-    asset_id = "tote-low" if low else "order-tote"
-    root = _root(asset_id, "order_tote", "order-tote")
-    root["lod"] = "low" if low else "high"
-    root["size_m"] = [.52, .30, .42]
-    root["cargo_kind"] = "tote"
-    root["hollow"] = True
-    root["origin"] = "bottom_centre"
-    _cargo_node(root, "anchor_cargo", (0,0,0))
-    _cargo_node(root, "anchor_contents", (0,.033,0), "contents_attachment")
-    _cargo_node(root, "anchor_grip_left", (-.25,.26,0), "hand_contact")
-    _cargo_node(root, "anchor_grip_right", (.25,.26,0), "hand_contact")
-    if low:
-        vertices = []
-        for y, half_x, half_z in ((0,.228,.178), (.30,.26,.21),
-                                  (.025,.210,.160), (.30,.242,.192)):
-            vertices += [(-half_x,y,-half_z), (half_x,y,-half_z),
-                         (half_x,y,half_z), (-half_x,y,half_z)]
-        faces = [(0,3,2,1), (8,9,10,11)]
-        for i in range(4):
-            j = (i+1)%4
-            faces += [(i,j,j+4,i+4), (i+8,i+12,j+12,j+8),
-                      (i+4,j+4,j+12,i+12)]
-        _mesh("hollow_tapered_tote_proxy", vertices, faces, mats["teal"], root)
-        return root
-    box("tote_floor", (0, .021, 0), (.456, .024, .356),
-        mats["teal"], root, bevel=.004)
-    _tote_rim(root, mats["rim"])
-    for side in (-1, 1):
-        _front_wall(root, "long_thick_wall_%d" % side, side, mats)
-        _end_wall(root, side, mats)
-        for i, y in enumerate((.095,.207)):
-            z = side*(.178+.025*(y-.025)/.253+.004)
-            box("front_reinforcement_%d_%d" % (side,i), (0,y,z),
-                (.426,.012,.012), mats["rim"], root, bevel=.003)
+    mats=_materials()
+    asset_id='tote-low' if low else 'order-tote'
+    root=_root(asset_id,'order_tote','order-tote')
+    root['lod']='low' if low else 'high'
+    root['size_m']=[.60,.30,.40]
+    root['interior_minimum_m']=[.502,.265,.302]
+    root['recommended_contents_envelope_m']=[.48,.22,.28]
+    root['cargo_kind']='tote';root['hollow']=True;root['origin']='bottom_centre'
+    root['handhold_shape']='rounded_real_aperture' if not low else 'omitted_at_distance'
+    _cargo_node(root,'anchor_cargo',(0,0,0))
+    _cargo_node(root,'anchor_contents',(0,.035,0),'contents_attachment')
+    _cargo_node(root,'anchor_grip_left',(-.292,.263,0),'hand_contact')
+    _cargo_node(root,'anchor_grip_right',(.292,.263,0),'hand_contact')
+    _tote_shell(root,mats,low)
+    if low:return root
+    _rounded_tote_rim(root,mats)
+    for side in (-1,1):
+        _handhold_bezel(root,mats,side)
+        for index,y in enumerate((.094,.183)):
+            z=side*(.17+.021*(y-.012)/.266+.004)
+            box('moulded_long_wall_rib_%s_%s'%(side,index),(0,y,z),
+                (.475,.015,.014),mats['rim'],root,.003)
     for sx in (-1,1):
         for sz in (-1,1):
-            beam("moulded_corner_rib_%d_%d" % (sx,sz),
-                 (sx*.228,.035,sz*.178), (sx*.251,.277,sz*.201),
-                 .012, mats["rim"], root)
-            box("moulded_foot_%d_%d" % (sx,sz), (sx*.18,.005,sz*.13),
-                (.05,.010,.04), mats["teal"], root, bevel=0)
-    label_z = .178+.025*(.151-.025)/.253+.001
-    label = box("blank_recessed_tote_label", (0,.151,label_z), (.12,.052,.003),
-                mats["label"], root, bevel=.003)
-    label.rotation_euler.x = math.atan(.025/.253)
+            beam('rounded_corner_reinforcement_%s_%s'%(sx,sz),
+                 (sx*.253,.035,sz*.153),(sx*.277,.266,sz*.177),.013,mats['rim'],root)
+            box('moulded_bottom_foot_%s_%s'%(sx,sz),(sx*.21,.006,sz*.12),
+                (.08,.012,.045),mats['teal'],root,.002)
+    label_z=.17+.021*(.145-.012)/.266+.0015
+    frame=box('recessed_label_surround',(0,.145,label_z),(.142,.066,.002),mats['rim'],root,.0004)
+    label=box('blank_recessed_tote_label',(0,.145,label_z+.0013),(.122,.048,.001),mats['label'],root,.0002)
+    frame.rotation_euler.x=label.rotation_euler.x=math.atan(.021/.266)
     return root
 
 
@@ -356,22 +430,21 @@ def parcel():
     _cargo_node(root, "anchor_cargo", (0,0,0))
     _cargo_node(root, "anchor_grip_left", (-.20,.04,0), "hand_contact")
     _cargo_node(root, "anchor_grip_right", (.20,.04,0), "hand_contact")
-    box("closed_corrugated_body", (0,.159,0), (.50,.318,.378),
-        mats["card"], root, bevel=.007)
+    box("closed_corrugated_body", (0,.159,0), (.50,.318,.377),
+        mats["card"], root, bevel=.0025)
     for side in (-1,1):
-        box("top_flap_%d" % side, (side*.125,.31825,0), (.248,.0005,.376),
+        box("flush_folded_top_flap_%d" % side, (side*.124,.3186,0), (.246,.0008,.376),
             mats["flap"], root, bevel=0)
-        box("front_rear_tape_wrap_%d" % side, (0,.16,side*.1895),
-            (.052,.32,.001), mats["tape"], root, bevel=0)
-        box("top_end_sealing_strip_%d" % side, (side*.231,.319,0),
-            (.020,.002,.376), mats["tape"], root, bevel=0)
+        box("front_rear_kraft_tape_%d" % side, (0,.159,side*.1895),
+            (.048,.318,.001), mats["tape"], root, bevel=0)
         for z in (-.17,.17):
             box("folded_corner_vertical_%d_%.2f" % (side,z),
-                (side*.246,.159,z), (.003,.288,.003), mats["fold"], root, bevel=0)
-    box("centre_top_sealing_tape", (0,.319,0), (.052,.002,.38),
+                (side*.247,.159,z), (.0012,.288,.0012), mats["fold"], root, bevel=0)
+    box("centre_top_sealing_tape", (0,.3196,0), (.048,.0008,.379),
         mats["tape"], root, bevel=0)
-    box("blank_shipping_label", (.123,.214,.1895), (.12,.065,.001),
+    box("blank_shipping_label", (.13,.214,.1895), (.115,.065,.001),
         mats["label"], root, bevel=.0002)
+    box('flat_top_shipping_label',(.13,.3196,-.037),(.13,.0008,.105),mats['label'],root,0)
     # Small crease marks meet the body's bevels, representing folded carton corners.
     for sx in (-1,1):
         for sz in (-1,1):
@@ -379,7 +452,7 @@ def parcel():
                 y0, y1 = ((.008,.024) if not top else (.294,.310))
                 beam("diagonal_fold_%d_%d_%d" % (sx,sz,top),
                      (sx*.246,y0,sz*.180), (sx*.232,y1,sz*.187),
-                     .002, mats["fold"], root)
+                     .0012, mats["fold"], root)
     return root
 
 

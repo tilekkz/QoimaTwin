@@ -7,7 +7,7 @@ const browser=await chromium.launch({channel:'chrome',headless:true,args:['--mut
 const context=await browser.newContext({viewport:{width:1366,height:768},deviceScaleFactor:1,recordVideo:{dir:directory,size:{width:1366,height:768}}});
 const began=Date.now();const page=await context.newPage();const video=page.video();
 await page.goto(url);await page.waitForFunction(()=>document.querySelector('main')?.dataset.phase==='ready');
-await page.evaluate(()=>{const v=window.__QOIMA_VIEWER__;v.audio.setMuted(true);v.setQuality('low');v.replay.reset();v.overview();});
+await page.evaluate(()=>{const v=window.__QOIMA_VIEWER__;v.audio.setMuted(true);v.setQuality('high');v.replay.reset();v.overview();});
 await page.waitForTimeout(1000);
 const readyOffset=(Date.now()-began)/1000;const storyBegan=Date.now();const chapters=[];
 const run=await page.evaluate(()=>window.__QOIMA_VIEWER__.replay.getRun());

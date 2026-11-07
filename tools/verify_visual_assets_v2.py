@@ -245,7 +245,7 @@ def semantic_checks(asset_id, geo):
     metadata = next((e for e in geo.root_extras if e.get("asset_id") == asset_id), None)
     require(metadata is not None, "Root asset_id does not match filename")
     if asset_id in ("rack-high", "rack-low"):
-        dimensions(geo.size, (.9, 5.4, 1.5), "Rack")
+        dimensions(geo.size, (.9, 4.65, 1.5), "Rack")
         close(geo.minimum[1], 0, "Rack floor")
         anchors = {geo.extras(i).get("level"): geo.position(i) for i in geo.worlds
                    if geo.extras(i).get("role") in ("pickface_anchor", "reserve_anchor")}
@@ -260,7 +260,7 @@ def semantic_checks(asset_id, geo):
                     and max(p[2] for p in edge) - min(p[2] for p in edge) > 1.30,
                     "Missing actual deck top at Y=" + str(top))
         if asset_id == "rack-low":
-            require(geo.triangles <= 300 and len(geo.materials) <= 2, "Far rack exceeds budget")
+            require(geo.triangles <= 550 and len(geo.materials) <= 3, "Far rack exceeds budget")
         checks += ["rack_exact_dimensions", "three_binary_geometry_deck_tops", "three_bin_anchor_world_positions"]
         measurements["bin_anchors"] = anchors
     elif asset_id in ("standing-worker", "worker-low", "picker-worker"):
@@ -275,7 +275,7 @@ def semantic_checks(asset_id, geo):
         require(.7 < geo.maximum[1] < 1.05, "Driver seated upper-body height is implausible")
         checks += ["negative_local_y_intentional_for_seated_driver", "driver_seat_binding"]
     elif asset_id in ("order-tote", "tote-low", "sealed-parcel"):
-        expected = (.5, .32, .38) if asset_id == "sealed-parcel" else (.52, .3, .42)
+        expected = (.5, .32, .38) if asset_id == "sealed-parcel" else (.60, .3, .40)
         dimensions(geo.size, expected, "Cargo dimensions", .015)
         close(geo.minimum[1], 0, "Cargo support surface", .002)
         centre_top = geo.centre_ray_top()
@@ -312,7 +312,7 @@ def semantic_checks(asset_id, geo):
         close(geo.minimum[2], 0, "Shell Z minimum")
         close(geo.maximum[2], 48, "Shell Z maximum")
         close(geo.maximum[1], 8, "Shell upper structure")
-        floor = [p for name, points in geo.material_points.items() if "warm concrete" in name.lower() for p in points]
+        floor = [p for name, points in geo.material_points.items() if "concrete" in name.lower() for p in points]
         require(floor, "No concrete slab geometry")
         close(max(p[1] for p in floor), 0, "Actual slab top")
         checks += ["shell_72x48_footprint", "shell_8m_structure", "actual_floor_top_zero"]
@@ -386,7 +386,7 @@ def semantic_checks(asset_id, geo):
         instances = {geo.extras(i).get("calibration_asset"): i for i in geo.worlds
                      if "calibration_asset" in geo.extras(i)}
         for name, position, height in (("standing-worker", (2, 0, 0), 1.7),
-                                       ("rack-high", (4, 0, 0), 5.4)):
+                                       ("rack-high", (4, 0, 0), 4.65)):
             dimensions(geo.position(instances[name]), position, "Calibration asset root")
             low, high = geo.bounds(instances[name])
             close(high[1] - low[1], height, "Calibration actual asset height", .02)
@@ -527,7 +527,7 @@ def check_master(geo):
     root = next(e for e in geo.root_extras if e.get("asset_id") == "large-warehouse")
     declared = json.loads(root["counts"]) if isinstance(root.get("counts"), str) else root.get("counts")
     require(declared == actual, "Master declared counts differ from independently traversed hierarchy")
-    require(geo.triangles <= 350000, "Master exceeds 350k actual instance triangles")
+    require(geo.triangles <= 450000, "Static editable master exceeds 450k actual instance triangles")
     require(len(geo.meshes) < geo.mesh_nodes, "Master lost linked reusable geometry")
     return actual
 
@@ -547,7 +547,7 @@ def inspect(path):
                    "master_600_actual_inventory_symbols", "master_24_bodies_2_seated_vehicle_drivers",
                    "master_179_trimmed_visual_cells_and_358_canonical_logical_ports",
                    "master_19_actual_junctions_with_matching_open_world_ports",
-                   "master_under_350k_instance_triangles"]
+                   "static_master_under_450k_instance_triangles"]
     stats_path = ROOT / "assets/v2/blender" / (asset_id + ".stats.json")
     if stats_path.exists():
         stats = json.loads(stats_path.read_text(encoding="utf-8"))

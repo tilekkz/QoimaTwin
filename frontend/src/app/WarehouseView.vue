@@ -8,7 +8,7 @@ const Calibration = defineAsyncComponent(() => import('./App.vue'));
 const CalibrationV2 = defineAsyncComponent(() => import('./CalibrationV2.vue'));
 const host=ref<HTMLDivElement>();
 const phase=ref('loading'); const error=ref(''); const mode=ref<ViewId>('overview');
-const quality=ref('low');
+const quality=ref('high');
 const gallery=ref(false); const status=ref<SceneStatus>();
 const catalog=ref<{id:AssetId;label:string;note:string;reference:string}[]>([]);
 const runInput=ref<HTMLInputElement>();const integrationError=ref('');

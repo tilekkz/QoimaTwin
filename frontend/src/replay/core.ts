@@ -23,6 +23,19 @@ export function samplePath(points: Waypoint[], time: number): { pos: Vec3; yaw: 
   }
   return { pos: lerp(a.pos, b.pos, t), yaw: Math.atan2(dx, dz) };
 }
+/** Cargo keeps its centreline/timing while turning gradually on transfer decks. */
+export function sampleCargoPath(points:Waypoint[],time:number):{pos:Vec3;yaw:number}{
+  const result=samplePath(points,time);
+  const index=Math.max(0,Math.min(points.length-2,upperBound(points,time,p=>p.at_s)-1));
+  const a=points[index],b=points[index+1];if(!b)return result;
+  const heading=(i:number)=>Math.atan2(points[i+1].pos[0]-points[i].pos[0],points[i+1].pos[2]-points[i].pos[2]);
+  const moving=(i:number)=>i>=0&&i<points.length-1&&Math.hypot(points[i+1].pos[0]-points[i].pos[0],points[i+1].pos[2]-points[i].pos[2])>1e-7;
+  if(!moving(index))return result;
+  const window=Math.min(.24,(b.at_s-a.at_s)*.45);
+  if(moving(index-1)&&time<a.at_s+window){result.yaw=easeYaw(heading(index-1),heading(index),.5+.5*(time-a.at_s)/window);}
+  else if(moving(index+1)&&time>b.at_s-window){result.yaw=easeYaw(heading(index),heading(index+1),.5*(time-(b.at_s-window))/window);}
+  return result;
+}
 const labels: Record<string, string> = { pick: 'Отбор', pack: 'Упаковка', scan: 'Сканирование', handoff: 'Сдача tote', receiving: 'Приёмка', loading: 'Погрузка', unloading: 'Разгрузка', putaway: 'Резервная площадка', walk: 'Переход', drive: 'Перевозка', tote_wait: 'Ожидание линии', idle: 'Ожидание', blocked: 'Линия заблокирована' };
 const pulseKinds = new Set(['sku_picked', 'tote_inducted', 'pack_started', 'order_packed', 'parcel_scanned', 'pallet_sealed', 'order_dispatched', 'receipt_accepted', 'pallet_putaway']);
 
@@ -143,7 +156,7 @@ export function compileVisualRun(input: VisualRun) {
         let pos = copy(state.pos), yaw = state.yaw, stage = state.stage;
         const attachment = { ...state.attachment };
         const motion = track.motions[upperBound(track.motions, t, m => m.start_s) - 1];
-        if (motion && t >= motion.start_s && t < motion.end_s) { ({ pos, yaw } = samplePath(motion.waypoints, t)); stage = motion.stage; }
+          if (motion && t >= motion.start_s && t < motion.end_s) { ({ pos, yaw } = sampleCargoPath(motion.waypoints, t)); stage = motion.stage; }
         else if ((attachment.kind === 'actor' || attachment.kind === 'vehicle') && attachment.id) {
           const owner = actorFrames[attachment.id] || Object.values(actorFrames).find(a => a.vehicleId === attachment.id);
           if (owner) { const p = attachment.offset ?? [0, 0, 0]; const anchorYaw = attachment.anchor === 'cart' ? owner.cartYaw : owner.yaw; const s = Math.sin(anchorYaw), c = Math.cos(anchorYaw); const height = track.kind === 'pallet' && attachment.kind === 'vehicle' && run.fitting ? Math.max(0, owner.pose.lift - run.fitting.forkContactLift) : p[1]; pos = [owner.pos[0] + p[0] * c + p[2] * s, owner.pos[1] + height, owner.pos[2] - p[0] * s + p[2] * c]; yaw = anchorYaw; }

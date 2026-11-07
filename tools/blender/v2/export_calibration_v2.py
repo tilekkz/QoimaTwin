@@ -12,7 +12,8 @@ def build():
     root = group('calibration_root__V2')
     root['role'] = 'metric_axis_and_anchor_calibration'
     root['expected_worker_height_m'] = 1.7
-    root['expected_rack_height_m'] = 5.4
+    root['expected_rack_height_m'] = 4.65
+    root['logical_rack_envelope_height_m'] = 5.4
     root['expected_conveyor_top_m'] = .9
     root['ruler_interval_m'] = .1
     neutral = material('V2 calibration | neutral slab', '#D1D2C4', .95)
@@ -48,7 +49,7 @@ def build():
     prototypes = {}
     for asset_id, name, position in (
         ('standing-worker', 'calibration_worker__1_7m', (2, 0, 0)),
-        ('rack-high', 'calibration_rack__5_4m', (4, 0, 0)),
+        ('rack-high', 'calibration_rack__4_65m', (4, 0, 0)),
         ('conveyor-high', 'calibration_conveyor__0_9m', (6, 0, 0)),
     ):
         prototype = _load(asset_id, 'v2')

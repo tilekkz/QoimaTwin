@@ -47,16 +47,22 @@ def model_crop(pic):
     assert pic.size == (1366, 768), f'Unexpected capture size: {pic.size}'
     points = []
     pixels = pic.load()
-    for y in range(110, 540):
+    for y in range(110, 555):
         for x in range(90, 1276):
             if y < 193 and (x < 470 or x > 1000):
+                continue
+            # Bottom hint labels sit at the sides; large carton fronts reach
+            # y=555 in the actual canvas and must retain their lower edge.
+            if y >= 548 and (x < 450 or x > 1080):
                 continue
             r, g, b = pixels[x, y]
             if min(r, g, b) < 185 or max(r, g, b) - min(r, g, b) > 35:
                 points.append((x, y))
     assert points, 'No model pixels in observed viewport'
     box = (max(0, min(p[0] for p in points) - 18), max(0, min(p[1] for p in points) - 18),
-           min(pic.width, max(p[0] for p in points) + 19), min(550, max(p[1] for p in points) + 19))
+           # Hint text begins at y=558. The model's last row can be y=555;
+           # retain it plus a clear row without copying any UI into the sheet.
+           min(pic.width, max(p[0] for p in points) + 19), min(557, max(p[1] for p in points) + 19))
     return pic.crop(box), box
 
 

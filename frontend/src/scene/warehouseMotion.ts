@@ -24,6 +24,7 @@ export function createWarehouseMotion(options:Options){
   batches.set('drivers',batch('seated drivers','driver',2,[],'actor'));
   batches.set('fleet',batch('forklifts','forklift',2,[],'vehicle'));
   batches.set('carts',batch('picking carts','picking-cart',12,[],'cart'));
+  batches.set('carts:far',batch('distant picking carts','__cart-low',12,[],'cart'));
   batches.set('totes',batch('empty tote pool','tote-low',96,[],'tote'));
   for(const [kind,id]of [['tote','order-tote'],['parcel','sealed-parcel'],['pallet','pallet'],['lot','crate']]){
     batches.set(kind,batch('cargo:'+kind,id,128,[],'cargo'));
@@ -85,7 +86,7 @@ export function createWarehouseMotion(options:Options){
       const parked=actor.role==='picker'&&actor.state==='IDLE'&&(firstActionByActor.get(actor.id)??Infinity)>frame.time;
       if(parked){
         const parsed=Number(actor.id.slice(1))-1;const index=Number.isFinite(parsed)?parsed:Object.values(frame.actors).filter(value=>value.role==='picker').findIndex(value=>value.id===actor.id);
-        pos.x+=(index%2-.5)*1.3;pos.z+=Math.floor(index%4/2)*.75;yaw=Math.PI;
+        pos.x+=(index%2-.5)*1.56;pos.z+=Math.floor(index%4/2)*.75;yaw=Math.PI;
       }
       if(actor.role==='packer')pos.z+=.85;
       // R02's canonical initial point is also FI_PICK. A standing offset keeps
@@ -128,7 +129,7 @@ export function createWarehouseMotion(options:Options){
         if(heroIds.has(actor.id)&&actor.state==='TRAVEL'){
           const rig=rigFor('CART_'+actor.id,'picking-cart');rig.group.userData.kind='cart';rig.group.visible=true;rig.group.position.copy(cartEntry.position);rig.group.rotation.y=cartYaw;
           const rotations:Record<string,number[]>={};for(const side of ['L','R'])for(const end of ['front','rear'])rotations[`wheel_${end}_${side}`]=[actor.pose.wheelAngle,0,0];rig.pose(rotations);
-        }else put('carts',cartEntry);
+        }else put(camera.position.distanceTo(cartEntry.position)>16?'carts:far':'carts',cartEntry);
       }
     }
     for(let i=0;i<96;i++){
@@ -147,7 +148,8 @@ export function createWarehouseMotion(options:Options){
       }
       if(cargo.kind==='tote'&&cargo.orderIds.length){
         const picked=cargo.orderIds.flatMap(orderId=>{const list=pickedByOrder.get(orderId)||[];return list.slice(0,Math.min(4,upperBound(list,frame.time,event=>event.at_s)));}).slice(0,4);
-        picked.slice(0,4).forEach((event,index)=>put('contents',{id:cargo.id+':'+event.seq,position:offset(cargo.pos,cargo.yaw,[(index%2-.5)*.2,.1,Math.floor(index/2)*.2-.1]),rotation:cargo.yaw,scale:new THREE.Vector3(.3,.3,.3)}));
+        // Unit packs fit the tote interior; a stock case is never crammed into it.
+        picked.slice(0,4).forEach((event,index)=>put('contents',{id:cargo.id+':'+event.seq,position:offset(cargo.pos,cargo.yaw,[(index%2-.5)*.24,.10,Math.floor(index/2)*.18-.09]),rotation:cargo.yaw,scale:new THREE.Vector3(.32,.267,.185)}));
       }
     }
     for(const [key,value]of batches)value.set(entries.get(key)||[]);
@@ -174,7 +176,7 @@ export function createWarehouseMotion(options:Options){
     if(rig?.group.visible)result=rig.worldBounds();
     else{
       const entry=positions.get(id);const model=modelIds.get(id);if(!entry||!model)return undefined;
-      let bounds=modelBounds.get(model);if(!bounds){bounds=new THREE.Box3().setFromObject(templates.get(model)!);modelBounds.set(model,bounds);}
+      let bounds=modelBounds.get(model);if(!bounds){bounds=new THREE.Box3().setFromObject(templates.get(model)!,true);modelBounds.set(model,bounds);}
       result=bounds.clone().applyMatrix4(new THREE.Matrix4().compose(entry.position,new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),entry.rotation||0),new THREE.Vector3(1,1,1)));
     }
     for(const cargo of Object.values(latest?.cargo||{})){
@@ -184,10 +186,11 @@ export function createWarehouseMotion(options:Options){
     const cart=positions.has('CART_'+id)?boundsFor('CART_'+id,visited):undefined;if(cart)result.union(cart);
     const cargo=latest?.cargo[id];
     if(cargo?.kind==='pallet'&&!cargo.orderIds.length){
-      const crateBounds=new THREE.Box3().setFromObject(templates.get('crate')!);
+      const crateBounds=new THREE.Box3().setFromObject(templates.get('crate')!,true);
       for(let index=0;index<4;index++)result.union(crateBounds.clone().applyMatrix4(new THREE.Matrix4().compose(offset(cargo.pos,cargo.yaw,[(index%2-.5)*.6,.14+.225+.45*Math.floor(index/2),0]),new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),cargo.yaw),new THREE.Vector3(1,1,1))));
     }
     return result;
   };
   return{update,positions,rigs,boundsFor,visibleEntityIds:(kind:string)=>[...rigs].filter(([,rig])=>rig.group.visible&&rig.group.userData.kind===kind).map(([id])=>id),inspectRig:(id:string)=>{const rig=rigs.get(id);return rig?.group.visible?rig.inspect():undefined;},getState:()=>({actors:Object.keys(latest?.actors||{}),cargo:Object.values(latest?.cargo||{}).filter(cargo=>cargo.visible).map(cargo=>cargo.id),heroIds:[...rigs].filter(([,rig])=>rig.group.visible).map(([id])=>id)}),dispose(){rigs.forEach(rig=>rig.dispose());owned.forEach(geometry=>geometry.dispose());materials.forEach(material=>material.dispose());if(route){route.geometry.dispose();(route.material as THREE.Material).dispose();} }};
 }
+

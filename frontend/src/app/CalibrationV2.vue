@@ -28,7 +28,7 @@ onMounted(async()=>{
     for(const [axis,target]of Object.entries({X:[1,0,0],Y:[0,1,0],Z:[0,0,1]})){
       const actual=positions['calibration_axis_end__'+axis];if(!actual||actual.some((value,index)=>Math.abs(value-target[index])>.02))throw new Error('Calibration axis mismatch: '+axis);
     }
-    if(!sizes['standing-worker']||!sizes['rack-high']||!sizes['conveyor-high']||Math.abs(sizes['standing-worker'][1]-1.7)>.02||Math.abs(sizes['rack-high'][1]-5.4)>.02)throw new Error('Calibration model dimensions mismatch');
+    if(!sizes['standing-worker']||!sizes['rack-high']||!sizes['conveyor-high']||Math.abs(sizes['standing-worker'][1]-1.7)>.02||Math.abs(sizes['rack-high'][1]-4.65)>.02)throw new Error('Calibration model dimensions mismatch');
     const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(1);renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.ACESFilmicToneMapping;host.value!.appendChild(renderer.domElement);
     const scene=new THREE.Scene();scene.background=new THREE.Color('#e6e7e0');scene.add(gltf.scene,new THREE.HemisphereLight(0xfff4db,0x7a8b89,2));
