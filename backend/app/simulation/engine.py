@@ -16,7 +16,7 @@ from app.simulation.context import GraphGeometry, RunInputs, SimContext, build_l
 from app.simulation.conveyor_driver import ConveyorDriver
 from app.simulation.invariants import check_invariants as verify_invariants
 from app.simulation.metrics import Metrics
-from app.simulation.metrics_summary import queues
+from app.simulation.observations import MetricObserver
 from app.simulation.outbound import Outbound
 from app.simulation.packing import Packing
 from app.simulation.picking import Picking
@@ -60,6 +60,7 @@ class Engine:
         self.outbound = Outbound(self.ctx, self)
         self.receiving = Receiving(self.ctx, self)
         self.last_outcome: RunOutcome | None = None
+        self.observer = MetricObserver(self)
         self.check_invariants = check_invariants
         self.checkpoints = Checkpointer(
             self.ctx.ticks(inputs.config.snapshot_interval_s), StateCapture(self), self._last_seq
@@ -78,7 +79,7 @@ class Engine:
         if self.check_invariants:
             verify_invariants(self)
         self.receiving.observe_status(tick)
-        self.metrics.queue_samples.append((tick, queues(self)))
+        self.observer.observe(tick, next_tick)
         self.checkpoints.on_tick_settled(tick, next_tick)
 
     def _schedule_arrivals(self) -> None:

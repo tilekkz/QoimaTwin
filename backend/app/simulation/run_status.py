@@ -55,7 +55,8 @@ def classify_outcome(
     rejected = counts["unfulfilled_inventory_total"]
     unresolved = counts["arrived_total"] - counts["dispatched_total"] - rejected
     pending = bool(engine.ctx.sched.pending_count())
-    deadlock = engine.receiving.blocked() or (unresolved > 0 and not pending)
+    inbound_left = engine.receiving.arrived_total - len(engine.receiving.putaway_ticks)
+    deadlock = engine.receiving.blocked() or (unresolved + inbound_left > 0 and not pending)
     reasons = tuple(
         reason
         for reason, applies in (
@@ -87,7 +88,11 @@ def _subsystems(engine: Engine, unresolved: int, pending: bool) -> dict[str, Sub
         orders = "incomplete" if pending else "blocked"
     remaining = receiving.arrived_total - len(receiving.putaway_ticks)
     inbound: SubsystemState = (
-        "blocked" if receiving.blocked() else "incomplete" if remaining else "complete"
+        "blocked"
+        if receiving.blocked() or (remaining and not pending)
+        else "incomplete"
+        if remaining
+        else "complete"
     )
     starts = [receiving.putaway_blocked_since_tick, receiving.external_blocked_since_tick]
     blocked_since = min((tick for tick in starts if tick is not None), default=None)

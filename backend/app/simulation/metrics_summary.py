@@ -2,38 +2,32 @@
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import Counter
 from dataclasses import asdict
 from typing import TYPE_CHECKING
 
-from app.simulation.receiving import InboundState
+from app.simulation.labor_metrics import (
+    actor_ticks,
+    blocking_summary,
+    labor_by_role,
+    picker_summary,
+    station_summary,
+)
+from app.simulation.labor_metrics import open_blocks as open_blocks
+from app.simulation.observations import inventory_balances
+from app.simulation.observations import queues as queues
+from app.simulation.resource_metrics import resource_summary
 
 if TYPE_CHECKING:
     from app.simulation.engine import Engine, RunOutcome
 
 
-def queues(engine: Engine) -> dict[str, int]:
-    result = {
-        "orders": len(engine.picking.queue),
-        "shipping": len(engine.shipping.buffer),
-        "outbound": len(engine.outbound.tasks),
-        "receiving_external": len(engine.receiving.external),
-        "receiving": sum(p.state is InboundState.WAITING for p in engine.receiving.area),
-        "putaway": sum(p.state is InboundState.PROCESSED for p in engine.receiving.area),
-    }
-    result.update({f"pack:{s.pack_id}": len(s.waiting) for s in engine.packing.stations.values()})
-    return result
-
-
 def utilization(engine: Engine, cutoff: int) -> dict[str, dict[str, float | None]]:
     actors = {a.actor_id: a.role for a in engine.ctx.inputs.actors.actors}
     counts = Counter(actors.values())
-    totals: dict[str, Counter[str]] = defaultdict(Counter)
-    for action in engine.ctx.recorder.actions:
-        duration = max(0, min(action.end_tick, cutoff) - max(0, action.start_tick))
-        totals[actors[action.actor_id]][action.state.value] += duration
-    for actor, start in open_blocks(engine):
-        totals[actors[actor]]["BLOCKED"] += max(0, cutoff - start)
+    totals = {role: Counter[str]() for role in counts}
+    for actor_id, states in actor_ticks(engine, cutoff).items():
+        totals[actors[actor_id]].update(states)
     result: dict[str, dict[str, float | None]] = {}
     for role, count in counts.items():
         states = totals[role]
@@ -43,18 +37,6 @@ def utilization(engine: Engine, cutoff: int) -> dict[str, dict[str, float | None
             "blocked": states["BLOCKED"] / (count * cutoff) if cutoff else None,
             "wait_resource": states["WAIT_RESOURCE"] / (count * cutoff) if cutoff else None,
         }
-    return result
-
-
-def open_blocks(engine: Engine) -> list[tuple[str, int]]:
-    result = [
-        (s.packer_id, s.blocked_since)
-        for s in engine.packing.stations.values()
-        if s.blocked_parcel is not None
-    ]
-    for job in engine.picking.jobs.values():
-        start = engine.ctx.recorder.last_end(job.picker.actor_id)
-        result.append((job.picker.actor_id, start))
     return result
 
 
@@ -77,9 +59,9 @@ def summary(engine: Engine, outcome: RunOutcome) -> dict[str, object]:
         ("at_horizon", outcome.horizon_tick, False),
         ("at_end", outcome.end_tick, True),
     ]:
-        window = engine.metrics.order_summary(cutoff, tps, inclusive=inclusive)
-        window["utilization_by_role"] = utilization(engine, cutoff)
-        window["queue_mean"] = queue_means(engine, cutoff)
+        window = _window(engine, cutoff, inclusive=inclusive)
+        inventory = inventory_balances(engine) if inclusive else engine.observer.horizon_inventory
+        window["inventory_balance"] = {sku: dict(buckets) for sku, buckets in inventory.items()}
         windows[name] = window
     return {
         **windows,
@@ -96,7 +78,51 @@ def summary(engine: Engine, outcome: RunOutcome) -> dict[str, object]:
             }
             for name, status in outcome.subsystems.items()
         },
+        "receiving_limits": {
+            "staging_reservations_full_since_s": _seconds(
+                engine.receiving.staging_full_since_tick, tps
+            ),
+            "staging_physical_full_since_s": _seconds(
+                engine.receiving.staging_physical_full_since_tick, tps
+            ),
+            "putaway_blocked_since_s": _seconds(engine.receiving.putaway_blocked_since_tick, tps),
+            "external_blocked_since_s": _seconds(engine.receiving.external_blocked_since_tick, tps),
+        },
         "error": {"type": outcome.error_type, "message": outcome.error_message}
         if outcome.error_type is not None
         else None,
     }
+
+
+def _seconds(tick: int | None, tps: int) -> float | None:
+    return tick / tps if tick is not None else None
+
+
+def _window(engine: Engine, cutoff: int, *, inclusive: bool) -> dict[str, object]:
+    window = engine.metrics.order_summary(
+        cutoff, engine.ctx.grid.ticks_per_second, inclusive=inclusive
+    )
+    resources = resource_summary(engine, cutoff)
+    counts = Counter(
+        event.kind
+        for event in engine.ctx.recorder.events
+        if (event.at_tick <= cutoff if inclusive else event.at_tick < cutoff)
+    )
+    resources["receiving_metrics"].update(
+        {
+            "accepted_total": counts["receipt_accepted"],
+            "processed_total": counts["receipt_processed"],
+            "putaway_total": counts["pallet_putaway"],
+        }
+    )
+    queue_mean = queue_means(engine, cutoff)
+    window.update(resources)
+    window["utilization_by_role"] = utilization(engine, cutoff)
+    window["queue_mean"] = queue_mean
+    window["picker_metrics"] = picker_summary(engine, cutoff)
+    window["station_metrics"] = station_summary(engine, cutoff, queue_mean, inclusive=inclusive)
+    labor = labor_by_role(engine, cutoff)
+    window["labor_by_role"] = labor
+    window["total_active_labor_s"] = sum(role["active_s"] for role in labor.values())
+    window["blocking"] = blocking_summary(engine, cutoff)
+    return window

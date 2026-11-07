@@ -10,8 +10,8 @@ error, deadlock, max_drain, unfulfilled_inventory, drained. Every applicable rea
 
 In P0, reserve staging never empties. An unclaimed receipt with no reservable staging position
 is a known receiving deadlock even if other scheduled work still exists at the drain deadline.
-Orders left unresolved with no future scheduled work are also a deadlock. Arrival accounting
-is necessary for COMPLETE: dispatched + rejected must equal arrived; any rejection still makes
+Orders or arrived receipts left unresolved with no future scheduled work are also a deadlock.
+Arrival accounting is necessary for COMPLETE: dispatched + rejected must equal arrived; any rejection still makes
 the overall result partial. Backlog continues to include rejected orders (GLOSSARY and 05):
 dispatched + backlog = arrived. The disjoint equation is dispatched + pending + rejected = arrived.
 
@@ -35,5 +35,35 @@ silently create eight waiting plus two service positions. Track staging-full, pu
 external-admission-blocked times independently; none is hard-coded from a nominal receipt rate.
 
 Checks use the analytical fixture and small explicit receipt streams. A one-place staging example
-fills its reservation at180, first blocks putaway at360, and blocks external admission at450 seconds.
-These times follow arrivals90/270/450, receive90 and pickup3+15 seconds; they are hand oracles.
+fills its reservation at 180, first blocks putaway at 360, and blocks external admission at 450 seconds.
+These times follow arrivals 90/270/450, receive 90 and pickup 3+15 seconds; they are hand oracles.
+
+## Complete KPI observation
+
+The settled observer processes new domain events once: admitted means order_assigned, and picked
+means all requested units have completed sku_picked. admitted_wip excludes dispatched orders;
+pending_total excludes rejected orders. Their counts follow the same strict-H/inclusive-end rule.
+Physical inventory for the horizon is captured once from the settled state immediately before H;
+the end inventory is read once when projecting metrics. No per-tick ledger history is retained.
+This KPI convention differs deliberately from replay snapshots, whose state includes tick H.
+
+Resource integrals use piecewise-constant state after settled timestamps, clipped to [0,cutoff).
+An initial sample covers time before the first event. Consecutive equal resource states coalesce.
+Conveyor occupancy reports mean/max occupied cells and occupancy ratio. A capacity jam means that
+an occupied cargo could not advance in a hypothetical legal one-hop tick under the settled buffer,
+occupancy and merge state. The pure planner runs read-only; its proposed cursor changes are never
+committed. Jam duration is time with at least one such cargo; blocked_cargo_seconds sums their
+exposure. Ordinary waiting until the next integer tick is not labelled a capacity jam.
+
+Tote availability is free-pool mean/min, mean allocated, availability ratio and time with no free
+tote. Per-post load includes started/packed totals, active service, blocked output, waiting mean,
+and reserved-WIP mean/max. Receiving reports physical area mean/max separately from waiting-only
+queues and accepted/processed/putaway event counts. The existing staging_full_since_tick field
+tracks exhausted reservations; staging_physical_full_since_tick tracks actual stored pallets.
+The summary spells out both names. In the one-place example these are 180 and 224 seconds.
+
+Picker distance integrates executed waypoint segments, clipping an edge at the cutoff. It does
+not use the old distance_m accumulator, which is increased when a whole route is planned. Labor
+per role includes travel, service, their active sum, blocked and WAIT_RESOURCE separately; every
+roster actor remains in utilization denominators. Per-window total_active_labor_s and blocking
+induction/output totals allow comparison without merging idle or blocked time into active labor.

@@ -1,4 +1,4 @@
-"""Schema-v2 KPIs: coherent horizon counts/cycles, utilization and waiting queues."""
+"""Coherent schema-v2 horizon KPIs; full horizon/end windows live in the manifest."""
 
 from typing import Any, cast
 
@@ -17,9 +17,6 @@ def project_metrics(engine: Engine, outcome: RunOutcome) -> dict[str, Any]:
         "p95_cycle_s": horizon["cycle"]["p95_s"],
         "role_metrics": horizon["utilization_by_role"],
         "queue_metrics": horizon["queue_mean"],
-        "conveyor_metrics": {},
-        "inventory_balance": {
-            sku: {str(kind): qty for kind, qty in engine.ctx.ledger.buckets(sku).items()}
-            for sku in engine.ctx.ledger.skus()
-        },
+        "conveyor_metrics": horizon["conveyor_metrics"],
+        "inventory_balance": horizon["inventory_balance"],
     }

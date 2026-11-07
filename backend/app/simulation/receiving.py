@@ -67,6 +67,7 @@ class Receiving:
         self.arrived_total = 0
         self.accepted_total = 0
         self.staging_full_since_tick: int | None = None
+        self.staging_physical_full_since_tick: int | None = None
         self.putaway_blocked_since_tick: int | None = None
         self.external_blocked_since_tick: int | None = None
 
@@ -237,6 +238,11 @@ class Receiving:
         full = self.staging_used >= self.ctx.config.reserve_staging_capacity
         if full and self.staging_full_since_tick is None:
             self.staging_full_since_tick = tick
+        if (
+            len(self.putaway_ticks) >= self.ctx.config.reserve_staging_capacity
+            and self.staging_physical_full_since_tick is None
+        ):
+            self.staging_physical_full_since_tick = tick
         putaway_waits = full and any(p.state is InboundState.PROCESSED for p in self.area)
         if putaway_waits and self.putaway_blocked_since_tick is None:
             self.putaway_blocked_since_tick = tick

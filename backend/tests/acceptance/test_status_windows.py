@@ -6,6 +6,7 @@ from typing import Any, cast
 import pytest
 
 from app.contracts.loader import ContractBundle
+from app.contracts.scenario import Receipt
 from app.exporter.metrics import project_metrics
 from app.simulation.engine import Engine, RunStatus, Termination
 from app.simulation.metrics_summary import summary
@@ -107,3 +108,15 @@ def test_failure_retains_error_outcome_and_raises_original_exception(
     assert engine.last_outcome is not None
     assert engine.last_outcome.status is RunStatus.FAILED
     assert engine.last_outcome.termination_reasons[0] is Termination.ERROR
+
+
+def test_pending_receipt_without_future_work_is_not_complete(
+    bundle: ContractBundle, contracts_dir: Path
+) -> None:
+    engine = Engine(run_inputs(bundle, contracts_dir, scenario([])), check_invariants=True)
+    engine.receiving.external.append(Receipt.from_data(receipt(0)))
+    engine.receiving.arrived_total = 1
+    outcome = engine.run()
+    assert outcome.status is RunStatus.PARTIAL
+    assert outcome.termination is Termination.DEADLOCK
+    assert outcome.subsystems["receiving"].pending_total == 1

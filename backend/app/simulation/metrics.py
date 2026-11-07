@@ -10,6 +10,8 @@ from fractions import Fraction
 @dataclass(slots=True)
 class OrderRecord:
     arrival: int
+    admitted: int | None = None
+    picked: int | None = None
     packed: int | None = None
     dispatched: int | None = None
     rejected: int | None = None
@@ -59,10 +61,14 @@ class Metrics:
         makespan = max((r.dispatched or 0 for r in done), default=0) / tps
         return {
             "arrived_total": len(records),
+            "admitted_total": sum(seen(r.admitted) for r in records),
+            "admitted_wip": sum(seen(r.admitted) and not seen(r.dispatched) for r in records),
+            "picked_total": sum(seen(r.picked) for r in records),
             "packed_total": sum(seen(r.packed) for r in records),
             "dispatched_total": len(done),
             "unfulfilled_inventory_total": rejected,
             "backlog": len(backlog),
+            "pending_total": len(backlog) - rejected,
             "completion_rate": len(done) / len(records) if records else None,
             "cycle": distribution(cycles),
             "packed_cycle": distribution(
