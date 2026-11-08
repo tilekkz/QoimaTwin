@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
           staffV3: fileURLToPath(new URL('./staff-v3.html', import.meta.url)),
           skillsV3: fileURLToPath(new URL('./skills-v3.html', import.meta.url)),
           warehouseV3: fileURLToPath(new URL('./warehouse-v3.html', import.meta.url)),
+          twinV3: fileURLToPath(new URL('./twin-v3.html', import.meta.url)),
         },
       },
     },

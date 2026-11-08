@@ -1,0 +1,316 @@
+{
+  "status": "completed_with_findings",
+  "generatedAtUtc": "2026-11-08T15:31:37.755Z",
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 1,
+    "informational": 0,
+    "total": 3
+  },
+  "findings": [
+    {
+      "id": "W0544-A2-002",
+      "severity": "medium",
+      "title": "Initial seek failure reports activation success and retains the acquired run",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 20
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 26
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 29
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 30
+        }
+      ],
+      "repro": {
+        "mode": "EXECUTED_WHITE_BOX_COMPONENT_ONLY",
+        "probe": "C03_FAILED_INITIAL_APPLY_OWNERSHIP",
+        "steps": [
+          "Have the isolated scene stub successfully return a run, then throw CHANGED_NATIVE_BINDING from its first apply(0).",
+          "Await preview.activate(); inspect return value, phase, error and dispose counters."
+        ]
+      },
+      "observed": "activate() returns true while snapshot.phase is error. The acquired run has zero dispose calls and its source reader remains undisposed until explicit stop. seek() catches the exception and returns false, so activate() does not enter its cleanup catch.",
+      "expected": "A failed first frame must make activation fail and release the newly acquired controller/reader; activation success must match a ready initialized preview.",
+      "why_it_matters": "The UI/controller join treats failed initialization as successful and retains ownership that can block subsequent native/legacy actions until manual close. This probe establishes wrapper behavior under a controller refusal, not that current accepted assets actually trigger that refusal.",
+      "confidence": "high for component control flow; actual accepted-scene trigger not executed"
+    },
+    {
+      "id": "W0544-A2-001",
+      "severity": "medium",
+      "title": "Stop erases the saved failure contrary to required error retention",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 20
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 23
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 33
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 35
+        }
+      ],
+      "repro": {
+        "mode": "EXECUTED_WHITE_BOX_COMPONENT_ONLY",
+        "probe": "C02_ERROR_PERSISTENCE",
+        "steps": [
+          "Trigger a controller apply refusal in the isolated component.",
+          "Invoke reset: the existing error remains.",
+          "Invoke stop: inspect snapshot.error and status."
+        ]
+      },
+      "observed": "CHANGED_NATIVE_BINDING survives reset but stop changes error to null, phase to idle and replaces the failure status with a restoration message. Legacy selector capture handlers also call this stop path.",
+      "expected": "Stop/reset should restore or pause the preview while retaining the last error for diagnosis, as specified in this audit brief.",
+      "why_it_matters": "Closing or switching away removes the evidence of the refusal, so callers/UI cannot distinguish a failed preview from a cleanly stopped preview.",
+      "confidence": "high"
+    },
+    {
+      "id": "W0544-A2-003",
+      "severity": "low",
+      "title": "Public stop resurrects a disposed component and permits detached reactivation",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 23
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 24
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "line": 35
+        }
+      ],
+      "repro": {
+        "mode": "EXECUTED_WHITE_BOX_COMPONENT_ONLY",
+        "probe": "C04_DISPOSE_STOP_REACTIVATE",
+        "steps": [
+          "Retain the returned component API.",
+          "Call dispose(), then stop(), then await activate() while the supplied scene remains live."
+        ]
+      },
+      "observed": "dispose sets phase disposed and removes the panel; stop unconditionally changes phase back to idle. activate then succeeds, acquires another run and reports ready on a removed panel whose general event controller is already aborted.",
+      "expected": "Disposed must be terminal; stop should preserve disposed and activation must remain refused after disposal.",
+      "why_it_matters": "A retained controller reference can reacquire scene ownership without a usable panel/close button. Current warehousePage clears its component reference on teardown, which narrows production reachability; this is a component API lifecycle defect.",
+      "confidence": "high for component API; low production reachability in current page ownership"
+    }
+  ],
+  "scope": "Independent Verify audit of W05.4.4 preview/controller/overlay logic and UI joins; receiver/shipper kinematics excluded.",
+  "limitations": [
+    "Exact source fallback only. No source graph, reindex, freshness/completeness claim, or reliance on the old 2026-11-08T05:55:56Z graph.",
+    "Host reports receiver-v3.json and shipper-v3.json public catalogue/bootstrap data stale during arm/registry reconciliation; semantic staleness is recorded as supplied, not independently proven. W05.2 remains pending fresh data.",
+    "Historical W05.4.3 14 positive / 70 negative CPU cases are not rerun or represented as a current pass after Scene/root-data changes.",
+    "WHITE_BOX / COMPONENT_ONLY probes stub DOM, source reader, catalogue, policy compiler and scene/native controller. No actual public bootstrap, private plan issuance, physical admission, live 530-HU scene or accepted proof regeneration.",
+    "No browser, server, renderer, screenshots, Blender, PowerPoint, COM, asset generation, Git, authentication inspection, configuration changes or source fixes. Rendered appearance is uncertified.",
+    "Only primary candidate/wrapper hashes have before-and-after coverage. Material dependencies were read directly; their initial hashes were not captured, so concurrent changes in those dependencies cannot be excluded.",
+    "The 30-second outer timer aborts but does not race awaited dependencies. C11 demonstrates indefinite loading with an intentionally noncooperative prepare stub. Source warehouseSupportKit.ts:82 awaits loader.parseAsync before checking abort. An actual accepted asset stall was not established, so this is a conditional limitation rather than a counted defect."
+  ],
+  "checks_and_probes": [
+    {
+      "kind": "executed",
+      "name": "Exact current source reads",
+      "detail": "All five frozen candidates plus read-only native wrapper; only material imports for source reader, plan sampling, stock state, support loading and legacy page/controller joins."
+    },
+    {
+      "kind": "executed",
+      "name": "CPU component probes",
+      "command": "node work/v3/account2-pallet-preview-audit/20261108T152113Z/component-probes.cjs",
+      "counts": {
+        "cases": 11,
+        "passed": 11,
+        "harnessFailures": 0
+      },
+      "interpretation": "11 successful assertions: 3 defect reproductions, 7 bounded no-additional-issue cases, 1 conditional limitation. PASS means the asserted observation reproduced, not product acceptance."
+    },
+    {
+      "kind": "source_inferred",
+      "name": "Native ownership and overlay ordering",
+      "anchors": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseCargoActionOverlay.ts",
+          "line": 15
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseCargoActionOverlay.ts",
+          "line": 20
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseCargoActionOverlay.ts",
+          "line": 28
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+          "line": 132
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+          "line": 134
+        }
+      ],
+      "detail": "WeakMap-issued exact plan/native binding; native.apply occurs before overlay.sync reads native.snapshot; native.dispose restores before overlay.clear. No additional issue found in normal synchronous path; no real native failure injection performed."
+    },
+    {
+      "kind": "source_inferred",
+      "name": "Holder mutual exclusion at both boundaries",
+      "anchors": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+          "line": 45
+        }
+      ],
+      "detail": "ensureCargoHolders rejects palletTransfer at entry and after await; the latter disposes the newly loaded kit. Existing holderScene shortcut is also behind the entry guard. Both are executable checks, not comments."
+    },
+    {
+      "kind": "source_inferred",
+      "name": "Same HU/native resource identity and unchanged stock ledger",
+      "anchors": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+          "line": 128
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseCargoActionOverlay.ts",
+          "line": 29
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferScene.ts",
+          "line": 54
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferScene.ts",
+          "line": 93
+        }
+      ],
+      "detail": "Scene supplies existing actor/vehicle and selected HU parts; native updates existing mesh/index matrices; overlay replaces only the matching HU row and retains cargo identity; preview does not call cargoState.apply. Initial quantity/mass/count preservation is supported structurally, not measured in a live 530-HU scene."
+    },
+    {
+      "kind": "executed_component_and_source_inferred",
+      "name": "Controls/races/semantics",
+      "detail": "Default paused, finite-time refusal/clamping, stop/dispose pending prepare, latest request, cooperative policy deadline, capture-before-legacy ordering and nonfinite-speed pause checked by C01/C05-C10. Source plan sample rejects nonfinite time at warehousePalletTransferPlan.ts:119. UI and snapshots retain engine_operation:false/completed_jobs:0; terminal UI explicitly says no order completion."
+    },
+    {
+      "kind": "source_inferred",
+      "name": "Page and CSS bounds",
+      "detail": "Page teardown disposes pallet before holder/route/scene (warehousePage.ts:37,50); debug legacy activation stops pallet (53). Source CSS includes full-width pallet seek and stage grid (warehouse.css:10), disabled styles (8), and responsive inspector rules (3-4). No additional meaningful CSS defect established without rendered evidence."
+    },
+    {
+      "kind": "executed",
+      "name": "Harness correction",
+      "detail": "First invocation failed because the harness repository-root calculation was one parent too high. Corrected only the audit-local harness and reran successfully; this was not a project defect."
+    }
+  ],
+  "source_hashes": {
+    "algorithm": "SHA256",
+    "before": {
+      "capturedAtUtc": "2026-11-08T15:22:02.4095861Z",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseCargoActionOverlay.ts",
+          "sha256": "CA25D7F6FB877F7F8A7138B676B2F07C46BAC07CABDECB8F7883A925C7EA4577",
+          "bytes": 2628,
+          "lastWriteTimeUtc": "2026-11-08T14:55:05.3797604Z"
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+          "sha256": "B0A27A32E5C5A7F947920121242B83EC82883BE500A6A725808C510BEA370B53",
+          "bytes": 10220,
+          "lastWriteTimeUtc": "2026-11-08T15:18:17.8219069Z"
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+          "sha256": "7FE5A403DAC2D50C115EEAFC33BF140215E693BC294FA2323FBE434ACB76243A",
+          "bytes": 33025,
+          "lastWriteTimeUtc": "2026-11-08T15:11:38.6153631Z"
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePage.ts",
+          "sha256": "DC9DE7F6760C2F53CF456CA7FD0054EF35863C680B71EFECC45F7DC2492B110F",
+          "bytes": 14949,
+          "lastWriteTimeUtc": "2026-11-08T15:14:16.5130793Z"
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouse.css",
+          "sha256": "EC3C67301A8E1C705436977027428706FC765C0726A51178AC277403EB85EC8E",
+          "bytes": 5741,
+          "lastWriteTimeUtc": "2026-11-08T15:14:16.5141977Z"
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehousePalletTransferScene.ts",
+          "sha256": "3A89648F74B0890BCBB2B629EF6E9C79CB8A12AA597AA9D386C8DAFFD41837A7",
+          "bytes": 18678,
+          "lastWriteTimeUtc": "2026-11-08T13:23:28.1366071Z"
+        }
+      ]
+    },
+    "after": [
+      {
+        "path": "frontend/src/adaptive-v3/warehouseCargoActionOverlay.ts",
+        "sha256": "CA25D7F6FB877F7F8A7138B676B2F07C46BAC07CABDECB8F7883A925C7EA4577",
+        "bytes": 2628,
+        "lastWriteTimeUtc": "2026-11-08T14:55:05.380Z",
+        "changedSinceInitial": false
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+        "sha256": "B0A27A32E5C5A7F947920121242B83EC82883BE500A6A725808C510BEA370B53",
+        "bytes": 10220,
+        "lastWriteTimeUtc": "2026-11-08T15:18:17.822Z",
+        "changedSinceInitial": false
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+        "sha256": "7FE5A403DAC2D50C115EEAFC33BF140215E693BC294FA2323FBE434ACB76243A",
+        "bytes": 33025,
+        "lastWriteTimeUtc": "2026-11-08T15:11:38.615Z",
+        "changedSinceInitial": false
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehousePage.ts",
+        "sha256": "DC9DE7F6760C2F53CF456CA7FD0054EF35863C680B71EFECC45F7DC2492B110F",
+        "bytes": 14949,
+        "lastWriteTimeUtc": "2026-11-08T15:14:16.513Z",
+        "changedSinceInitial": false
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehouse.css",
+        "sha256": "EC3C67301A8E1C705436977027428706FC765C0726A51178AC277403EB85EC8E",
+        "bytes": 5741,
+        "lastWriteTimeUtc": "2026-11-08T15:14:16.514Z",
+        "changedSinceInitial": false
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehousePalletTransferScene.ts",
+        "sha256": "3A89648F74B0890BCBB2B629EF6E9C79CB8A12AA597AA9D386C8DAFFD41837A7",
+        "bytes": 18678,
+        "lastWriteTimeUtc": "2026-11-08T13:23:28.137Z",
+        "changedSinceInitial": false
+      }
+    ],
+    "componentProbeSourceSha256": "b0a27a32e5c5a7f947920121242b83ec82883be500a6a725808c510bea370b53"
+  },
+  "concurrent_staleness": {
+    "primarySourceChanges": [],
+    "primaryStable": true,
+    "dependencyBeforeCoverage": false,
+    "publicCatalogueStatus": "HOST_REPORTED_STALE_NOT_REGENERATED"
+  },
+  "project_acceptance": "NOT_GRANTED"
+}

@@ -7,6 +7,7 @@ const occupied=new WeakSet<THREE.Object3D>(),assigned=new WeakSet<WorkerInstance
 const triple=(v:unknown):v is Triple=>Array.isArray(v)&&v.length===3&&v.every(x=>typeof x==='number'&&Number.isFinite(x));
 const smooth=(x:number)=>{const u=THREE.MathUtils.clamp(x,0,1);return u*u*u*(10+u*(-15+6*u));};
 const wrap=(a:number)=>Math.atan2(Math.sin(a),Math.cos(a));
+export const SHIPPER_CONTACT_TANGENT_TWIST_RAD=Math.PI/2;
 function limits(name:string):[number,number][]{
   if(name==='joint__head')return [[-.25,.25],[-.6,.6],[-.12,.12]];
   if(/^joint__upper_arm_[LR]$/.test(name))return [[-2.2,.7],[-.55,.55],[-.7,.7]];
@@ -21,7 +22,7 @@ export function solveShipperArmPose(root:THREE.Object3D,cell:THREE.Object3D,seed
   root.updateWorldMatrix(true,true);cell.updateWorldMatrix(true,false);
   const frame=root.getObjectByName('joint__torso')!,upper=root.getObjectByName('joint__upper_arm_'+side)!,fore=root.getObjectByName('joint__forearm_'+side)!,hand=root.getObjectByName('joint__hand_'+side)!;
   const shoulder=frame.worldToLocal(upper.getWorldPosition(new THREE.Vector3())),elbow=upper.worldToLocal(fore.getWorldPosition(new THREE.Vector3())),wrist=fore.worldToLocal(hand.getWorldPosition(new THREE.Vector3())),axis=elbow.clone().normalize();
-  const desired=frame.getWorldQuaternion(new THREE.Quaternion()).invert().multiply(cell.getWorldQuaternion(new THREE.Quaternion())).multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(Math.PI/2,0,0,'XYZ')));
+  const desired=frame.getWorldQuaternion(new THREE.Quaternion()).invert().multiply(cell.getWorldQuaternion(new THREE.Quaternion())).multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(Math.PI/2,0,0,'XYZ')).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),SHIPPER_CONTACT_TANGENT_TWIST_RAD)));
   const sUpper=seed['joint__upper_arm_'+side],sLift=seed['joint__shoulder_lift_'+side],sFore=seed['joint__forearm_'+side];
   const offset=new THREE.Vector3(...contact).applyQuaternion(desired),goal=frame.worldToLocal(cell.localToWorld(new THREE.Vector3(...target))),yaw=sUpper[1],twist=seed['joint__elbow_swivel_'+side][0],roll=seed['joint__palm_roll_'+side][1];
   const v=[sUpper[0]+sLift[0],sUpper[2],sFore[0]],q1=new THREE.Quaternion(),q2=new THREE.Quaternion(),q12=new THREE.Quaternion();
@@ -82,6 +83,12 @@ export function createShipperAction(workcell:THREE.Object3D,actor:WorkerInstance
     assertLive();workcell.updateWorldMatrix(true,true);const inverse=workcell.matrixWorld.clone().invert(),point=new THREE.Vector3(...data.contact.local_m).applyMatrix4(nodes.get('joint__hand_R')!.matrixWorld).applyMatrix4(inverse),goal=new THREE.Vector3(...data.contact.workcell_m).add(new THREE.Vector3(0,-gait.drop,-gait.distance));
     return {time,label,mode,complete:(mode==='place'||mode==='scan')&&time===duration(),actorId:actor.actorId,role:actor.role,actor_uuid:worker.uuid,package_uuid:parcel!.uuid,package_id:data.package_id,contents_HU_ref:data.contents_HU_ref,pallet_uuid:pallet!.uuid,pallet_HU_ref:data.pallet_HU_ref,warehouse_headcount_delta:0,source_kind:'visual_fixture' as const,engine_operation:false as const,inventory_mutated:false,scanning:beam.visible,scan_complete:(mode==='place'&&time>=2.2)||(mode==='scan'&&time>=1.8),placed:mode==='place'&&time>=11.4,displacement_m:parcelDistance,body_distance_m:gait.distance,parcel_root_workcell_m:parcel!.position.toArray(),body_root_workcell_m:worker.position.toArray(),contact:{active:mode==='place'&&time>=5.4&&time<=13.4,surface:data.contact.surface,point_workcell_m:point.toArray(),target_workcell_m:goal.toArray(),error_m:point.distanceTo(goal)},actualFeet:legs.map(l=>({side:l.side,world:l.anchor.getWorldPosition(new THREE.Vector3()).toArray(),target:gait.feet[l.side],joint_angles:[l.thigh.rotation.x,l.shin.rotation.x,l.foot.rotation.x]})),palms_worker_local:(['L','R'] as const).map(side=>({side,direction:new THREE.Vector3(0,0,1).transformDirection(nodes.get('joint__hand_'+side)!.matrixWorld).transformDirection(worker.matrixWorld.clone().invert()).toArray()}))};
   }
+  function prepareShipperArm(neutral:Pose,goal:Pose,progress:number):Pose{
+    const names=Object.keys(goal).filter(name=>name.endsWith('_R')),base=Object.fromEntries(names.map(name=>[name,neutral[name]??rest.get(nodes.get(name)!)!.angles])) as Pose;
+    const first:Pose={...base,joint__upper_arm_R:[0,0,.7]},second:Pose={...first,joint__upper_arm_R:[-.5,0,.7],joint__forearm_R:[-1,0,0]};
+    const stages=[{at:0,joints:base},{at:.25,joints:first},{at:.55,joints:second},{at:1,joints:goal}],u=THREE.MathUtils.clamp(progress,0,1);let i=0;while(i+1<stages.length-1&&stages[i+1].at<=u)i++;
+    const a=stages[i],b=stages[i+1],v=smooth((u-a.at)/(b.at-a.at));return Object.fromEntries(names.map(name=>{const from=a.joints[name]??base[name],to=b.joints[name]??base[name];return [name,from.map((x,j)=>x+(to[j]-x)*v) as Triple];}));
+  }
   function apply(seconds:number){
     assertLive();if(!Number.isFinite(seconds))throw Error('Время должно быть конечным числом.');time=mode==='idle'||mode==='blocked'?0:THREE.MathUtils.clamp(seconds,0,duration());
     for(const[n,b]of rest){n.position.copy(b.position);n.quaternion.copy(b.quaternion);}const forward=shipperPlacementAt(mode==='place'?time-5.4:0),back=shipperPlacementAt(mode==='place'?time-17:0);parcelDistance=forward.distance;gait=mode==='place'&&time>=17?{distance:forward.distance-back.distance,drop:back.drop,feet:{L:{...back.feet.L,travel:forward.distance-back.feet.L.travel},R:{...back.feet.R,travel:forward.distance-back.feet.R.travel}}}:forward;
@@ -91,9 +98,10 @@ export function createShipperAction(workcell:THREE.Object3D,actor:WorkerInstance
       const service=time<5.4?time/2:time<=11.4?2.7:time<17?(time-6)/2:time<=23?5.5:(time-12)/2,legacy=[0,.7,1.1,1.5,2.1,2.7,3.7,4.3,4.9,5.5,6.1,6.7,7.1,7.5];let i=0;while(i+1<legacy.length&&legacy[i+1]<=service)i++;
       const a=data.keys[i],b=data.keys[Math.min(i+1,data.keys.length-1)],u=legacy[i]===legacy[Math.min(i+1,legacy.length-1)]?0:smooth((service-legacy[i])/(legacy[Math.min(i+1,legacy.length-1)]-legacy[i]));label=time>=5.4&&time<11.4?'Укладка на выход':time>=17&&time<23?'Отход от ленты':a.label;
       for(const name of new Set([...Object.keys(a.joints),...Object.keys(b.joints)])){const base=rest.get(nodes.get(name)!)!.angles,from=a.joints[name]??base,to=b.joints[name]??base;pose[name]=from.map((x,j)=>x+(to[j]-x)*u) as Triple;}
+      if(i===2||i===9){const raw=(service-legacy[i])/(legacy[i+1]-legacy[i]);Object.assign(pose,prepareShipperArm(data.keys[2].joints,data.keys[3].joints,i===2?raw:1-raw));}
       const mapped=(x:number,z:number):Triple=>[x-.69,1.17-gait.drop,z+1.15-gait.distance];
-      if(service>=2.1&&service<=4.3){const gap=service<2.7?.04*(1-smooth((service-2.1)/.6)):service<=3.7?0:.04*smooth((service-3.7)/.6);Object.assign(pose,solveShipperArmPose(worker,workcell,data.keys[5].joints,mapped(0,.24+gap),data.contact.local_m));}
-      if((service>=1.5&&service<2.1)||(service>4.9&&service<=5.5)){const u=service<2.1?smooth((service-1.5)/.6):1-smooth((service-4.9)/.6);Object.assign(pose,solveShipperArmPose(worker,workcell,data.keys[5].joints,mapped(-.08*(1-u),.38-.10*u),data.contact.local_m));}
+      if(service>=2.1&&service<=4.3){const gap=service<2.7?.01*(1-smooth((service-2.1)/.6)):service<=3.7?0:.01*smooth((service-3.7)/.6);Object.assign(pose,solveShipperArmPose(worker,workcell,data.keys[5].joints,mapped(0,.24+gap),data.contact.local_m));}
+      if((service>=1.5&&service<2.1)||(service>4.9&&service<=5.5)){const u=service<2.1?smooth((service-1.5)/.6):1-smooth((service-4.9)/.6);Object.assign(pose,solveShipperArmPose(worker,workcell,data.keys[5].joints,mapped(0,.26-.01*u),data.contact.local_m));}
       if(service<=1.1)pose.joint__head=[.1,-.15*smooth(service/.7),0];
       else if(service<1.5){const u=smooth((service-1.1)/.4),to=pose.joint__head??[0,0,0];pose.joint__head=to.map((x,j)=>[.1,-.15,0][j]+(x-[.1,-.15,0][j])*u) as Triple;}
     }else if(mode==='scan'){label=time<.5?'Проверка посылки':time<1.8?'Сканирование этикетки':'Этикетка проверена';pose.joint__head=[.1,-.15*smooth(time/.5),0];}

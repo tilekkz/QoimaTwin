@@ -14,25 +14,97 @@
   "preparation": {
     "duration_s": 2.4,
     "return_duration_s": 2.4,
-    "abduction_z_rad": 0.7,
+    "abduction_z_rad": 0.15,
     "windows": {
       "upper": [
-        0.45,
-        0.95
+        0,
+        1
       ],
       "fold": [
-        0.35,
-        0.75
+        0,
+        1
       ],
       "swivel": [
-        0.2,
-        0.6
+        0,
+        1
       ],
       "hand": [
-        0.4,
-        0.95
+        0,
+        1
       ]
-    }
+    },
+    "waypoints": [
+      {
+        "at": 0.25,
+        "joints": {
+          "joint__upper_arm_R": [
+            0,
+            0,
+            0.7
+          ],
+          "joint__shoulder_lift_R": [
+            0,
+            0,
+            0
+          ],
+          "joint__forearm_R": [
+            0,
+            0,
+            0
+          ],
+          "joint__elbow_swivel_R": [
+            0,
+            0,
+            0
+          ],
+          "joint__palm_roll_R": [
+            0,
+            -1.5707963267948966,
+            0
+          ],
+          "joint__hand_R": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "at": 0.55,
+        "joints": {
+          "joint__upper_arm_R": [
+            -0.5,
+            0,
+            0.7
+          ],
+          "joint__shoulder_lift_R": [
+            0,
+            0,
+            0
+          ],
+          "joint__forearm_R": [
+            -1,
+            0,
+            0
+          ],
+          "joint__elbow_swivel_R": [
+            0,
+            0,
+            0
+          ],
+          "joint__palm_roll_R": [
+            0,
+            -1.5707963267948966,
+            0
+          ],
+          "joint__hand_R": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    ]
   },
   "contact": {
     "local_m": [
@@ -45,7 +117,8 @@
       1.175,
       -0.343
     ],
-    "surface": "screen_footer"
+    "surface": "screen_footer",
+    "tangent_twist_rad": 0.5235987755982988
   },
   "keys": [
     {
@@ -96,34 +169,34 @@
       "label": "Подвод к терминалу",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          0.6502025168265831
+          -1.6559809722372316,
+          -0.2,
+          0.6511165029585684
         ],
         "joint__shoulder_lift_R": [
-          -0.6090200180750771,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -1.596725577746975,
+          -1.0754455957483962,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.2957001990203505,
-          -0.26783922179348585,
-          0.3715189203850455
+          0.04497645447603824,
+          -0.07087568704467172,
+          -0.12769663620368116
         ],
         "joint__head": [
           0.15,
@@ -137,34 +210,34 @@
       "label": "Подтверждение приёмки",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          0.06494470343476176
+          -1.6651992018205206,
+          -0.2,
+          0.5949556707827071
         ],
         "joint__shoulder_lift_R": [
-          -0.23335427522808327,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -1.2574985392054117,
+          -0.9806319709526785,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.3306886864338594,
-          0.44327871414821274,
-          0.2831910948862158
+          0.02723719323979951,
+          -0.06632794250533994,
+          -0.09321000772007464
         ],
         "joint__head": [
           0.15,
@@ -178,34 +251,34 @@
       "label": "Нажатие подтверждения",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          -0.010743701528531028
+          -1.6747874286274549,
+          -0.2,
+          0.5347526416815979
         ],
         "joint__shoulder_lift_R": [
-          -0.02309319501718754,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -0.8915155461784974,
+          -0.8764425872345984,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.14847376069505633,
-          0.6283944240012491,
-          0.39987135629831366
+          0.0067057919764949864,
+          -0.06133675874221789,
+          -0.05404778121112119
         ],
         "joint__head": [
           0.15,
@@ -219,34 +292,34 @@
       "label": "Паллета принята",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          -0.010743701528531028
+          -1.6747874286274549,
+          -0.2,
+          0.5347526416815979
         ],
         "joint__shoulder_lift_R": [
-          -0.02309319501718754,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -0.8915155461784974,
+          -0.8764425872345984,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.14847376069505633,
-          0.6283944240012491,
-          0.39987135629831366
+          0.0067057919764949864,
+          -0.06133675874221789,
+          -0.05404778121112119
         ],
         "joint__head": [
           0.15,
@@ -260,34 +333,34 @@
       "label": "Возврат руки",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          0.06494470343476176
+          -1.6651992018205206,
+          -0.2,
+          0.5949556707827071
         ],
         "joint__shoulder_lift_R": [
-          -0.23335427522808327,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -1.2574985392054117,
+          -0.9806319709526785,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.3306886864338594,
-          0.44327871414821274,
-          0.2831910948862158
+          0.02723719323979951,
+          -0.06632794250533994,
+          -0.09321000772007464
         ],
         "joint__head": [
           0.15,
@@ -301,34 +374,34 @@
       "label": "Возврат руки",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          0.06494470343476176
+          -1.6651992018205206,
+          -0.2,
+          0.5949556707827071
         ],
         "joint__shoulder_lift_R": [
-          -0.23335427522808327,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -1.2574985392054117,
+          -0.9806319709526785,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.3306886864338594,
-          0.44327871414821274,
-          0.2831910948862158
+          0.02723719323979951,
+          -0.06632794250533994,
+          -0.09321000772007464
         ],
         "joint__head": [
           0.15,
@@ -342,34 +415,34 @@
       "label": "Возврат в ожидание",
       "joints": {
         "joint__upper_arm_R": [
-          -2.2,
-          -0.21486831357168926,
-          0.6502025168265831
+          -1.6559809722372316,
+          -0.2,
+          0.6511165029585684
         ],
         "joint__shoulder_lift_R": [
-          -0.6090200180750771,
+          0,
           0,
           0
         ],
         "joint__forearm_R": [
-          -1.596725577746975,
+          -1.0754455957483962,
           0,
           0
         ],
         "joint__elbow_swivel_R": [
-          -3.12205954496169,
+          1.5,
           0,
           0
         ],
         "joint__palm_roll_R": [
           0,
-          -0.7679448708775016,
+          -0.9817477042468103,
           0
         ],
         "joint__hand_R": [
-          0.2957001990203505,
-          -0.26783922179348585,
-          0.3715189203850455
+          0.04497645447603824,
+          -0.07087568704467172,
+          -0.12769663620368116
         ],
         "joint__head": [
           0.15,
@@ -428,14 +501,30 @@
       }
     }
   ],
-  "scope": "Visual scanning cue and actual terminal confirmation of one already floor-supported pallet. 17.8s explanatory clock includes ordered lateral preparation and its reverse within the original rig limits. No human pallet lift, barcode decoding, stock creation or backend receipt. R-arm path rigidly rotated from accepted P04 with a different actual pad witness.",
+  "scope": "Visual scanning cue and actual terminal confirmation of one already floor-supported pallet. Original17.8s clock and ordered preparation retained. P05.4 uses the low elbow branch and a2cm-to1cm free approach; the terminal contact point and opposed pad/screen normals, body, rig, HU and numeric limits are unchanged. No human pallet lift, stock creation or backend receipt.",
   "provenance": {
     "P04_timeline_sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b",
-    "native_endpoint_input_hashes": {
-      "assets/v3/blender/worker-manual.blend": "cbaf236121536ff75b918ece4de89601556977ac7091f79bc4d12b0ba48a0423",
-      "assets/v3/blender/receiver-workcell-fixture.blend": "9dfa64a4468b11568d80703decdd5f83acd9e218a655a1fb1618103f97faf614",
-      "tools/blender/v3/probe_receiver.py": "49f3f079a656e828bb5451172a245b7c41469507de3de1e39245224f8cfa54d5",
-      "tools/blender/v3/native_clearance.py": "1d50e485ec5848d07896ecc31f4cf37a6ecd390bbe2b75e5df3f202df8e358d8"
-    }
+    "arm_solution_input_hashes": {
+      "frontend/src/adaptive-v3/motion/receiver.ts": "311baa6be7203be9c69544d6aabb8c5adaca0ec4a50bd590bad66942a5a1c51e",
+      "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+      "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+      "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+      "frontend/public/models/v3/receiver-workcell-fixture.glb": "5eb51073d5c456f71ccc64c4bc231eadbf6761c6da89a96c4c87900dac1de54b",
+      "assets/v3/specs/receiver-workcell.dimensions.json": "f8368b59c2d25035d530b3f037fd5a914f829ec4781cfb00cbf60dd55d413162",
+      "assets/v3/iterations/receiver/P05.2/native-contact-search.json": "119fd54dd10aa8314fbd379dcd7a78eb892ee76507e4042fc5a3d0814d9bd9fd",
+      "frontend/tools/solve-receiver-v3.mjs": "8be15361c7602abe9e7feab5d8747a0674bae1e8ff8dc41863abf5ff56cc3954"
+    },
+    "natural_elbow_branch": {
+      "shoulder_yaw_rad": -0.2,
+      "elbow_swivel_rad": 1.5,
+      "palm_roll_rad": -0.9817477042468103,
+      "tangent_twist_rad": 0.5235987755982988,
+      "free_approach_gap_m": [
+        0.02,
+        0.01
+      ],
+      "contact_lead_gap_m": 0.01
+    },
+    "historical_contact_evidence_is_current_acceptance": false
   }
 }

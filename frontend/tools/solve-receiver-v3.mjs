@@ -1,60 +1,45 @@
-/** P05.2 bounded receiver reach; native admission required. */
-import{readFile,writeFile,mkdir}from'node:fs/promises';
-import{pathToFileURL}from'node:url';
-import path from'node:path';
-import ts from'typescript';
-import*as T from'three';
-import{GLTFLoader}from'three/examples/jsm/loaders/GLTFLoader.js';
-const b=await readFile('public/models/v3/worker-manual.glb');
-const root=(await new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'')).scene.getObjectByName('worker_base_root');
-const side='R';
-const frame=root.getObjectByName('joint__torso'),upper=root.getObjectByName('joint__upper_arm_'+side),fore=root.getObjectByName('joint__forearm_'+side),hand=root.getObjectByName('joint__hand_'+side);
-root.updateWorldMatrix(true,true);
-const elbow=upper.worldToLocal(fore.getWorldPosition(new T.Vector3())),wrist=fore.worldToLocal(hand.getWorldPosition(new T.Vector3())),axis=elbow.clone().normalize(),l1=elbow.length(),l2=wrist.length();
-const iface=JSON.parse(await readFile('../assets/v3/iterations/packer/P04.1/hand-interface.json','utf8')),contact=new T.Vector3(...iface.R.lower_pad_contact_local_m);
-const workcellPlan=JSON.parse(await readFile('../assets/v3/specs/receiver-workcell.dimensions.json','utf8'));
-contact.z-=.005; // Another actual point on the same measured lower-pad end face.
-const target=[-.7,1.175,-.343];
-const sha=await import('node:crypto');for(const [p,h]of Object.entries(iface.source_hashes))if(sha.createHash('sha256').update(await readFile('../'+p)).digest('hex')!==h)throw Error('Stale measured hand interface');
-const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x)),result=[];
-const cache=path.resolve('../work/P05-candidates');await mkdir(cache,{recursive:true});let code=ts.transpileModule(await readFile('src/adaptive-v3/motion/receiver.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;code=code.replaceAll("from 'three'",`from '${pathToFileURL(path.resolve('node_modules/three/build/three.module.js')).href}'`);await writeFile(path.join(cache,'receiver.mjs'),code);const{solveReceiverArmPose}=await import(pathToFileURL(path.join(cache,'receiver.mjs')));
-for(const x of [-1,-.95,-1.05])for(const z of [-.803,-.75,-.85])for(const lean of [0,.15]){
- root.position.set(x,0,z);root.rotation.set(0,0,0);frame.rotation.set(lean,0,0);root.updateWorldMatrix(true,true);
- const shoulder=frame.worldToLocal(upper.getWorldPosition(new T.Vector3()));
- const desired=frame.getWorldQuaternion(new T.Quaternion()).invert().multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),Math.PI)).multiply(new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),Math.PI/2));
- const goal=frame.worldToLocal(new T.Vector3(...target)),wGoal=goal.clone().sub(contact.clone().applyQuaternion(desired)),delta=wGoal.clone().sub(shoulder),d=delta.length(),candidates=[];
- if(d<l1+l2&&d>Math.abs(l1-l2)){
-  const dir=delta.clone().normalize(),along=(d*d+l1*l1-l2*l2)/(2*d),height=Math.sqrt(l1*l1-along*along),centre=shoulder.clone().addScaledVector(dir,along);
-  const v=new T.Vector3(0,1,0).cross(dir).normalize(),w=dir.clone().cross(v);
-  for(let pole=0;pole<360;pole+=10){
-   const E=centre.clone().addScaledVector(v,height*Math.cos(T.MathUtils.degToRad(pole))).addScaledVector(w,height*Math.sin(T.MathUtils.degToRad(pole))),u=E.clone().sub(shoulder).normalize();
-   const align=new T.Quaternion().setFromUnitVectors(axis,u);
-   for(let spin=-180;spin<180;spin+=10){
-    const q1=new T.Quaternion().setFromAxisAngle(u,T.MathUtils.degToRad(spin)).multiply(align),angles=new T.Euler().setFromQuaternion(q1,'XYZ'),a=[angles.x,angles.y,angles.z];
-    if(a[0]<-3||a[0]>.7||Math.abs(a[1])>.55||Math.abs(a[2])>.7)continue;
-    const r=wGoal.clone().sub(E).applyQuaternion(q1.clone().invert()),A=axis.y*wrist.y+axis.z*wrist.z,B=-axis.y*wrist.z+axis.z*wrist.y,C=axis.x*wrist.x;
-    const value=(r.dot(axis)-C)/Math.hypot(A,B);if(Math.abs(value)>1+1e-8)continue;
-    for(const beta of [Math.atan2(B,A)+Math.acos(T.MathUtils.clamp(value,-1,1)),Math.atan2(B,A)-Math.acos(T.MathUtils.clamp(value,-1,1))].map(wrap)){
-     if(beta< -2.2||beta>.15)continue;
-     const bend=new T.Quaternion().setFromAxisAngle(new T.Vector3(1,0,0),beta),p=wrist.clone().applyQuaternion(bend),pp=p.clone().addScaledVector(axis,-p.dot(axis)),rr=r.clone().addScaledVector(axis,-r.dot(axis));
-     const twist=Math.atan2(axis.dot(pp.clone().cross(rr)),pp.dot(rr)),q2=new T.Quaternion().setFromAxisAngle(axis,twist).multiply(bend),q12=q1.clone().multiply(q2);
-     const actual=shoulder.clone().add(elbow.clone().applyQuaternion(q1)).add(wrist.clone().applyQuaternion(q12)).add(contact.clone().applyQuaternion(desired));if(actual.distanceTo(goal)>1e-7)throw Error('Analytic IK position mismatch');
-     let best;
-     for(let roll=-Math.PI;roll<=Math.PI+.001;roll+=Math.PI/90){
-      const h=new T.Euler().setFromQuaternion(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),roll).invert().multiply(q12.clone().invert()).multiply(desired),'XYZ');
-      const angles=[h.x,h.y,h.z];if(angles.some((v,j)=>Math.abs(v)>[.6,.65,.4][j]-.0001))continue;
-      const score=Math.max(...angles.map((v,j)=>Math.abs(v)/[.6,.65,.4][j]));if(!best||score<best.score)best={score,roll,angles};
-     }
-     if(!best)continue;
-     const lift=Math.min(0,Math.max(-.8,a[0]+2.2));
-     candidates.push({pose:{['joint__shoulder_lift_'+side]:[lift,0,0],['joint__upper_arm_'+side]:[a[0]-lift,a[1],a[2]],['joint__forearm_'+side]:[beta,0,0],['joint__elbow_swivel_'+side]:[twist,0,0],['joint__palm_roll_'+side]:[0,best.roll,0],['joint__hand_'+side]:best.angles},twist,solution:[a[0],a[2],beta],yaw:a[1],axis:axis.toArray(),error:actual.distanceTo(goal),score:best.score,contact_local:contact.toArray(),elbow_frame:E.toArray(),pole_deg:pole,spin_deg:spin});
-    }
-   }
+/** P05.4 deterministic native-rig arm solution; no model or historical evidence writes. */
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdtemp,rm} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {tmpdir} from 'node:os';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+import path from 'node:path';
+import ts from 'typescript';
+import * as T from 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+const frontend=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),repo=path.dirname(frontend),sha=b=>createHash('sha256').update(b).digest('hex');
+export async function solveReceiverArmPath(){
+ const inputs={},cache=await mkdtemp(path.join(tmpdir(),'qoima-receiver-solve-')),three=pathToFileURL(path.join(frontend,'node_modules/three/build/three.module.js')).href;
+ const source=async p=>{const b=await readFile(path.join(repo,p));inputs[p]=sha(b);return b;};
+ let actor,disposeWorkerInstance;
+ try{
+  for(const [folder,name]of [['motion/','receiver'],['','workerRoles'],['','workerRolesFixture']]){
+   let code=ts.transpileModule((await source('frontend/src/adaptive-v3/'+folder+name+'.ts')).toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+   code=code.replaceAll("from 'three'",`from '${three}'`).replaceAll("from 'three/examples/jsm/utils/BufferGeometryUtils.js'",`from '${pathToFileURL(path.join(frontend,'node_modules/three/examples/jsm/utils/BufferGeometryUtils.js')).href}'`).replaceAll("from './workerRoles'","from './workerRoles.mjs'").replaceAll("from './workerRolesFixture'","from './workerRolesFixture.mjs'");
+   await writeFile(path.join(cache,name+'.mjs'),code);
   }
- }
- candidates.sort((a,b)=>b.elbow_frame[1]-a.elbow_frame[1]||a.score-b.score);
- const raw_count=candidates.length; const valid=candidates.filter(c=>{try{for(const gap of [.03,.06,.09])solveReceiverArmPose(root,new T.Group(),c.pose,[target[0],target[1],target[2]-gap],c.contact_local,'R');return true;}catch{return false;}});candidates.splice(0,candidates.length,...valid);
- result.push({root:root.position.toArray(),root_euler:[0,0,0],lean,head:[0,.25,0],target,reach_distance_m:d,reach_bounds_m:[Math.abs(l1-l2),l1+l2],raw_count,contact_kind:'actual lower pad end on existing terminal footer',sides:{R:candidates}});
+  const Roles=await import(pathToFileURL(path.join(cache,'workerRoles.mjs'))),{solveReceiverArmPose,receiverArmTarget}=await import(pathToFileURL(path.join(cache,'receiver.mjs')));disposeWorkerInstance=Roles.disposeWorkerInstance;
+  const loader=new GLTFLoader(),load=async(id,name)=>{const b=await source('frontend/public/models/v3/'+id+'.glb');return (await loader.parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'')).scene.getObjectByName(name);};
+  const template=await load('worker-manual','worker_base_root'),cell=await load('receiver-workcell-fixture','receiver_workcell_root');actor=Roles.createWorkerInstance(template,'R01','receiver');
+  const root=actor.root,world=new T.Group();world.add(cell,root);
+  const plan=JSON.parse(await source('assets/v3/specs/receiver-workcell.dimensions.json')),historical=JSON.parse(await source('assets/v3/iterations/receiver/P05.2/native-contact-search.json'));
+  const contact={local_m:historical.admitted.candidate.contact_local,workcell_m:plan.confirmation_candidate_xyz_m,surface:'screen_footer',tangent_twist_rad:Math.PI/6};
+  assert(contact.local_m.every((x,i)=>Math.abs(x-[.015,-.13,.03475][i])<2e-6));assert.deepEqual(contact.workcell_m,[-.7,1.175,-.343]);
+  root.position.fromArray(plan.receiver_candidate_root);root.rotation.y=plan.receiver_candidate_yaw_rad;world.updateMatrixWorld(true);
+  // The seed selects the low elbow branch; resulting joints are solved and limit-checked.
+  const seed={joint__upper_arm_R:[-1.67,-.2,.54],joint__shoulder_lift_R:[0,0,0],joint__forearm_R:[-1,0,0],joint__elbow_swivel_R:[1.5,0,0],joint__palm_roll_R:[0,-5*Math.PI/16,0]};
+  const restPose=Object.fromEntries([...Object.keys(seed),'joint__hand_R'].map(n=>{const node=root.getObjectByName(n),e=new T.Euler().setFromQuaternion(node.quaternion,'XYZ');return [n,node.userData.custom_axis_runtime?[0,0,0]:[e.x,e.y,e.z]];}));const A=structuredClone(restPose),B=structuredClone(restPose);A.joint__upper_arm_R=[0,0,.7];B.joint__upper_arm_R=[-.5,0,.7];B.joint__forearm_R=[-1,0,0];
+  const poses={},checks=[];
+  for(const [name,service]of [['approach',1.5],['lead',2.1],['contact',2.7]]){
+   const target=receiverArmTarget(service),pose=solveReceiverArmPose(root,cell,seed,target,contact.local_m,'R',contact.tangent_twist_rad);poses[name]=pose;
+   for(const [n,a]of Object.entries(pose)){const node=root.getObjectByName(n);if(node.userData.custom_axis_runtime)node.quaternion.setFromAxisAngle(new T.Vector3(...node.userData.custom_axis_runtime).normalize(),a[0]);else node.rotation.set(...a,'XYZ');}
+   world.updateMatrixWorld(true);const hand=root.getObjectByName('joint__hand_R'),point=cell.worldToLocal(hand.localToWorld(new T.Vector3(...contact.local_m))),error=point.distanceTo(new T.Vector3(...target));assert(error<2e-6);
+   checks.push({name,target_m:target,actual_contact_m:point.toArray(),error_m:error});
+  }
+  await source('frontend/tools/solve-receiver-v3.mjs');
+  return {source_kind:'visual_fixture',engine_operation:false,accepted_action:false,body_root_m:plan.receiver_candidate_root,body_yaw_rad:plan.receiver_candidate_yaw_rad,contact,seed,poses,preparation_waypoints:[{at:.25,joints:A},{at:.55,joints:B}],checks,input_hashes:inputs,scope:'Three native-rig endpoint solutions within original limits; dense runtime and sampled native clearance are separate gates. Historical contact evidence supplies only the measured pad coordinate, not current arm admission.'};
+ }finally{if(actor)disposeWorkerInstance(actor);await rm(cache,{recursive:true,force:true});}
 }
-const previous=JSON.parse(await readFile('public/data/v3/packer-seam-end.json','utf8')),seed=Object.fromEntries(Object.entries(previous.keys[5].joints).filter(([n])=>n.endsWith('_R')));root.position.set(-1,0,-.803);root.rotation.set(0,0,0);frame.rotation.set(0,0,0);root.updateWorldMatrix(true,true);const pose=solveReceiverArmPose(root,new T.Group(),seed,target,contact.toArray());result.unshift({root:root.position.toArray(),root_euler:[0,0,0],lean:0,head:[.15,0,0],target,raw_count:1,scope:'Rigid180deg rotation of accepted P04 approach; witness5mm inside the same actual pad face, not moved geometry; new native admission required',sides:{R:[{pose,axis:axis.toArray(),contact_local:contact.toArray(),source:'P04-compatible-rigid-orientation'}]}});
-const output='../assets/v3/iterations/receiver/P05.2';await mkdir(output,{recursive:true});await writeFile(output+'/contact-candidates.json',JSON.stringify({source_kind:'visual_pose_candidates',engine_operation:false,surface:'screen_footer',scope:'Bounded18service poses; endpoint and short Cartesian approach reach only, no native/contact/action acceptance',bodies:result})+'\n');console.log(JSON.stringify({bodies:result.length,candidates:result.reduce((n,r)=>n+r.sides.R.length,0),raw_candidates:result.reduce((n,r)=>n+r.raw_count,0),bodies_summary:result.map(r=>[r.root,r.lean,r.reach_distance_m,r.reach_bounds_m,r.raw_count,r.sides.R.length])}));
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))console.log(JSON.stringify(await solveReceiverArmPath(),null,2));

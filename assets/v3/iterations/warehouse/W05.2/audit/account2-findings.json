@@ -1,0 +1,447 @@
+{
+  "audit": "QoimaTwin W05.2 SECOND ACCOUNT independent bounded Verify",
+  "status": "complete_with_findings_and_stale_shared_dependencies",
+  "generated_at": "2026-11-08T14:32:10.703Z",
+  "repository": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin",
+  "write_scope": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\account2-gait-audit\\20261108T142147Z",
+  "counts": {
+    "critical": 0,
+    "high": 2,
+    "medium": 1,
+    "low": 0
+  },
+  "findings": [
+    {
+      "id": "W052-A2-001",
+      "severity": "high",
+      "title": "Repeated request accessors bypass seated-driver and declared-C01 refusals",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 56
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 57
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 58
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 60
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 61
+        },
+        {
+          "path": "docs/adaptive-v3/specs/W05.2.md",
+          "line": 9
+        },
+        {
+          "path": "docs/adaptive-v3/specs/W05.2.md",
+          "line": 23
+        }
+      ],
+      "repro": {
+        "command": "node work/v3/account2-gait-audit/20261108T142147Z/probe.mjs",
+        "cases": [
+          "accessor_identity_seated_driver_bypass",
+          "accessor_identity_C01_refusal_bypass"
+        ],
+        "steps": [
+          "Supply exactly the four allowed own properties, with actor_id as an accessor. Validation accepts the accessor and rereads it at each lookup/guard.",
+          "For source-rest F01, return P02 on actor_id reads 3 and 4 (registry lookup), F01 otherwise.",
+          "For P01 with catalogue.counts.carts=1, return P02 on actor_id read 5 (C01 guard), P01 otherwise."
+        ],
+        "execution": "executed_white_box_post_issuance",
+        "setup": "Executed with a deliberately disclosed white-box catalogue fixture because public registration currently rejects stale receiver-v3.json. Only the private catalogue map is seeded in an audit-only transpiled copy; walk/gait/router, authentic bundle/policy, source GLB bytes and registered WorkerInstance code are unchanged. This is a post-issuance reproduction, not successful current public bootstrap."
+      },
+      "observed": "Ordinary F01 query returns SEATED_DRIVER, but accessor query issues an F01 plan/route and apply succeeds. Ordinary P01 cart-aware query returns FIXED_EQUIPMENT_STATE_REQUIRED, but accessor query issues a P01 plan/route and terminal apply succeeds. Both preserve actual worker identity while borrowing another identity at a refusal guard.",
+      "expected": "Use one validated, stable request identity throughout admission, registry/profile resolution, routing and plan issuance; reject accessor-based request mutation or refuse F01/P01 as ordinary queries do.",
+      "why_it_matters": "This defeats two explicit source-authority refusals without changing catalogue, policy, plan or worker brands. The P01 guard is the protection against the accepted blocked cart exit. The F01 control deliberately stands at source rest without an admitted dismount; ordinary admission correctly refuses that state.",
+      "confidence": "high"
+    },
+    {
+      "id": "W052-A2-002",
+      "severity": "high",
+      "title": "Effective manual matrices bypass native body transform validation",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 26
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 27
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 28
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 35
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 37
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 66
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 82
+        },
+        {
+          "path": "docs/adaptive-v3/specs/W05.2.md",
+          "line": 13
+        }
+      ],
+      "repro": {
+        "command": "node work/v3/account2-gait-audit/20261108T142147Z/probe.mjs",
+        "cases": [
+          "manual_native_mesh_matrix_edit",
+          "manual_torso_joint_matrix_edit"
+        ],
+        "steps": [
+          "On source-rest P02, set shirt mesh worker-base__batch_06.matrixAutoUpdate=false and add 2 to matrix.elements[12], leaving position/quaternion/scale and vertex/index buffers unchanged.",
+          "Compile and apply its actual W03 source-neighbour route.",
+          "Repeat with joint__torso.matrixAutoUpdate=false and a 1m X translation in its manual local matrix."
+        ],
+        "execution": "executed_white_box_post_issuance",
+        "setup": "Executed with a deliberately disclosed white-box catalogue fixture because public registration currently rejects stale receiver-v3.json. Only the private catalogue map is seeded in an audit-only transpiled copy; walk/gait/router, authentic bundle/policy, source GLB bytes and registered WorkerInstance code are unchanged. This is a post-issuance reproduction, not successful current public bootstrap."
+      },
+      "observed": "Both modified bodies return WALK_COMPILED and apply succeeds. Shirt effective local translation is [2,0.4300000071525574,0] while its checked position stays [0,0.4300000071525574,0]. Torso effective translation is [1,0.05500000715255737,0] while its checked position stays [0,0.05500000715255737,0]. Dispose leaves the manual matrices intact.",
+      "expected": "Validate effective local/world transforms and matrix update state against the source pose, or reject unsupported manual matrices before issuing/binding/applying a plan. External body edits must invalidate motion.",
+      "why_it_matters": "The actual source-native body can differ by metres from the immutable calibration used for bounds/clearance while native sole checks still pass. Checking only TRS properties and buffers does not bind the actual transformed body to the proof.",
+      "confidence": "high"
+    },
+    {
+      "id": "W052-A2-003",
+      "severity": "medium",
+      "title": "Ancestor motion is not invalidated and terminal release accepts the wrong world frame",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 35
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 37
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 78
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+          "line": 87
+        },
+        {
+          "path": "docs/adaptive-v3/specs/W05.2.md",
+          "line": 13
+        }
+      ],
+      "repro": {
+        "command": "node work/v3/account2-gait-audit/20261108T142147Z/probe.mjs",
+        "cases": [
+          "ancestor_translation_before_terminal_release",
+          "ancestor_translation_before_apply"
+        ],
+        "steps": [
+          "Apply P02 to terminal source node [16,0,42.62].",
+          "Translate its existing Scene ancestor +10m in X without changing the actor local TRS or parent identity; update world matrices.",
+          "Call releaseAtEnd(). Separately translate the ancestor +5m in Z before a nonzero apply."
+        ],
+        "execution": "executed_white_box_post_issuance",
+        "setup": "Executed with a deliberately disclosed white-box catalogue fixture because public registration currently rejects stale receiver-v3.json. Only the private catalogue map is seeded in an audit-only transpiled copy; walk/gait/router, authentic bundle/policy, source GLB bytes and registered WorkerInstance code are unchanged. This is a post-issuance reproduction, not successful current public bootstrap."
+      },
+      "observed": "releaseAtEnd succeeds with released=true, at_s at duration and pose.stage=route_end, while actual root is [26,0,42.62] and the plan root remains [16,0,42.62]. Nonzero apply after the separate ancestor edit also succeeds instead of invalidating.",
+      "expected": "Detect changes to the actor effective world frame/ancestor frame, and refuse terminal release unless the current actual terminal root/joints/soles still match the issued endpoint.",
+      "why_it_matters": "The released action frame can be 10m away from its admitted source node despite reporting terminal success. Local parent identity and TRS checks cannot detect ancestor edits.",
+      "confidence": "high"
+    }
+  ],
+  "scope": {
+    "targets": [
+      "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+      "frontend/src/adaptive-v3/warehouseWorkerGait.ts",
+      "frontend/tools/check-warehouse-worker-walk-v3.mjs",
+      "docs/adaptive-v3/specs/W05.2.md",
+      "docs/adaptive-v3/evidence/W05.2-checks.json"
+    ],
+    "graph": {
+      "available": false,
+      "method": "exact_source_fallback",
+      "supplied_project": "qoima-twin",
+      "supplied_last_known_generation": "2026-11-08T05:55:56Z",
+      "independently_confirmed": false
+    }
+  },
+  "limitations": [
+    "Executed with a deliberately disclosed white-box catalogue fixture because public registration currently rejects stale receiver-v3.json. Only the private catalogue map is seeded in an audit-only transpiled copy; walk/gait/router, authentic bundle/policy, source GLB bytes and registered WorkerInstance code are unchanged. This is a post-issuance reproduction, not successful current public bootstrap.",
+    "No graph/index tools were available. Exact sources were used; supplied last-known project/generation was not independently verified and no graph completeness is claimed.",
+    "The full checker/generator was prohibited and was not run. The 22-route/14646-pose/3678-body-time totals are independently parsed historical report counts, not a newly executed full native sweep.",
+    "Native tests are bounded CPU probes: both source worker GLBs were parsed, native topology inspected, and a few exact checker helper controls executed. No renderer, browser, screenshots, server, Blender, PowerPoint, continuous collision/stability proof or operational workflow admission.",
+    "Driver bypass probe uses a real factory-registered F01 placed in source rest without an admitted dismount; it does not claim the untouched seated geometry itself walks.",
+    "Cart bypass probe declares counts.carts=1 in the isolated private catalogue fixture; it does not newly materialize or collision-test C01. The accepted historical cart witness remains historical.",
+    "Only listed exact paths and material dependencies were audited within the deadline. Other concurrent work was preserved."
+  ],
+  "sources_read": [
+    "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts",
+    "frontend/tools/check-warehouse-worker-walk-v3.mjs",
+    "docs/adaptive-v3/specs/W05.2.md",
+    "docs/adaptive-v3/evidence/W05.2-checks.json",
+    "frontend/src/adaptive-v3/warehouseRouting.ts",
+    "frontend/src/adaptive-v3/warehouseActionTimeline.ts",
+    "frontend/src/adaptive-v3/warehouseActionSources.ts",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts",
+    "frontend/src/adaptive-v3/workerRegistry.ts",
+    "frontend/src/adaptive-v3/workerProfiles.ts",
+    "frontend/src/adaptive-v3/workerRoles.ts",
+    "frontend/src/adaptive-v3/warehouseScene.ts",
+    "frontend/src/adaptive-v3/warehouseTypes.ts",
+    "frontend/public/data/v3/warehouse-fixture-v3.json",
+    "frontend/public/data/adaptive-v3/layout-manifest.json",
+    "frontend/public/data/v3/worker-registry-v3.json",
+    "frontend/public/data/v3/worker-profiles-v3.json",
+    "frontend/public/data/v3/route-policy-v3.json",
+    "frontend/public/models/v3/worker-base.glb",
+    "frontend/public/models/v3/worker-manual.glb",
+    "frontend/public/models/v3/environment-markings-fixture.glb"
+  ],
+  "hashed_inputs": [
+    "docs/adaptive-v3/evidence/W05.2-checks.json",
+    "frontend/tools/check-warehouse-worker-walk-v3.mjs",
+    "docs/adaptive-v3/specs/W05.2.md",
+    "frontend/src/adaptive-v3/warehouseScene.ts",
+    "frontend/src/adaptive-v3/motion/grip.ts",
+    "frontend/src/adaptive-v3/motion/cartWalk.ts",
+    "frontend/public/data/v3/picker-push-pose.json",
+    "frontend/public/data/v3/picker-cart-walk.json",
+    "assets/v3/specs/worker-base.dimensions.json",
+    "frontend/src/adaptive-v3/workerRegistry.ts",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json",
+    "frontend/src/adaptive-v3/workerProfiles.ts",
+    "frontend/src/adaptive-v3/workerRoles.ts",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts",
+    "frontend/src/adaptive-v3/warehouseCargo.ts",
+    "frontend/src/adaptive-v3/warehouseActionTimeline.ts",
+    "frontend/src/adaptive-v3/warehouseRouting.ts",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts",
+    "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+    "frontend/src/adaptive-v3/seatedDriver.ts",
+    "frontend/public/data/v3/warehouse-fixture-v3.json",
+    "frontend/public/data/adaptive-v3/layout-manifest.json",
+    "frontend/public/data/v3/worker-registry-v3.json",
+    "frontend/public/data/v3/worker-profiles-v3.json",
+    "contracts/actors.example.json",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json",
+    "docs/adaptive-v3/evidence/P03.json",
+    "frontend/public/models/v3/worker-manual.glb",
+    "docs/adaptive-v3/evidence/P03.5.3.3.json",
+    "frontend/public/models/v3/small-pick-v3.json",
+    "frontend/public/models/v3/worker-small-pick.glb",
+    "docs/adaptive-v3/evidence/P04.json",
+    "frontend/public/data/v3/packer-seam-end.json",
+    "docs/adaptive-v3/evidence/P05.json",
+    "frontend/public/data/v3/receiver-v3.json",
+    "docs/adaptive-v3/evidence/P06.json",
+    "frontend/public/data/v3/shipper-v3.json",
+    "docs/adaptive-v3/evidence/P07.json",
+    "frontend/public/data/v3/seated-driver-pose.json",
+    "frontend/public/models/v3/worker-base.glb",
+    "frontend/public/data/v3/pallet-pickup-cycle.json",
+    "frontend/tools/build-worker-registry-v3.mjs",
+    "frontend/public/data/v3/route-policy-v3.json",
+    "frontend/public/models/v3/forklift.glb",
+    "frontend/public/models/v3/rack-small.glb",
+    "frontend/public/models/v3/rack-standard.glb",
+    "frontend/public/models/v3/heavy-bay.glb",
+    "frontend/public/models/v3/long-rack.glb",
+    "frontend/public/models/v3/flex-bay.glb",
+    "frontend/public/models/v3/small-carton.glb",
+    "frontend/public/models/v3/standard-carton.glb",
+    "frontend/public/models/v3/heavy-box.glb",
+    "frontend/public/models/v3/pallet-load.glb",
+    "frontend/public/models/v3/ibc.glb",
+    "frontend/public/models/v3/long-bundle.glb",
+    "frontend/public/models/v3/drum.glb",
+    "frontend/public/models/v3/fragile-crate.glb",
+    "frontend/public/models/v3/packing-station.glb",
+    "frontend/public/models/v3/conveyor-diverter.glb",
+    "frontend/public/models/v3/conveyor-straight.glb",
+    "frontend/public/models/v3/conveyor-turn.glb",
+    "frontend/public/models/v3/environment-markings-fixture.glb",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb",
+    "frontend/public/models/v3/long-cradle.glb",
+    "frontend/public/models/v3/long-restraint-rig.glb",
+    "frontend/public/data/v3/warehouse-carry-pose.json",
+    "frontend/public/data/v3/warehouse-vehicle-support.json",
+    "frontend/src/adaptive-v3/warehouseActionSources.ts",
+    "frontend/src/adaptive-v3/warehouseActionSourceManifest.json",
+    "frontend/src/adaptive-v3/warehouseTypes.ts",
+    "frontend/src/adaptive-v3/warehouseAssetBindings.json"
+  ],
+  "checks_run": [
+    {
+      "command": "node tools/check-warehouse-worker-walk-v3.mjs --check-only",
+      "cwd": "frontend",
+      "sequence": "initial",
+      "exit_code": 0,
+      "observed": "passed=true; sources=68",
+      "log": "check-only.txt"
+    },
+    {
+      "command": "node tools/check-warehouse-worker-walk-v3.mjs --check-only",
+      "cwd": "frontend",
+      "sequence": "after concurrent shared changes",
+      "exit_code": 1,
+      "observed": "Stale frontend/public/data/v3/receiver-v3.json"
+    },
+    {
+      "command": "node tools/check-warehouse-worker-walk-v3.mjs --check-only",
+      "cwd": "frontend",
+      "sequence": "final",
+      "exit_code": 1,
+      "log": "check-only-final.txt"
+    },
+    {
+      "command": "node work/v3/account2-gait-audit/20261108T142147Z/probe.mjs",
+      "exit_code": 0,
+      "execution": "white_box_post_issuance_plus_real_native_geometry",
+      "output": "probe-results.json"
+    }
+  ],
+  "source_hashes": {
+    "docs/adaptive-v3/evidence/W05.2-checks.json": "a93de76977b068e077866e6f60a05c9e7603a4f666822d9a27c2385e3d2e78ff",
+    "frontend/tools/check-warehouse-worker-walk-v3.mjs": "7ce04f03f13c162cb5ba0cbd5bc2f247704e12cef0a6759c56eab79f5a5e7207",
+    "docs/adaptive-v3/specs/W05.2.md": "af500c9caf89923b95016a6e1ed29a28368c44a8e84a333680351504c07c424e",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "5825a468e7ec1e075496f69c3d295d5ad1f8082069e33cc74c921754f1f4c100",
+    "frontend/src/adaptive-v3/motion/grip.ts": "a12155452fae779d09e223a512bf3b2c017c61b0ec206031abdd64e807d5e763",
+    "frontend/src/adaptive-v3/motion/cartWalk.ts": "455f3a16b869d5f7246d9461b921bf80958af1985fdd03ee2ca5674e0b49fd04",
+    "frontend/public/data/v3/picker-push-pose.json": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062",
+    "frontend/public/data/v3/picker-cart-walk.json": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2",
+    "assets/v3/specs/worker-base.dimensions.json": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "16bfec506475495c160a7a674b3674fef32ad765e394f7abfe300c68bab43033",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseActionTimeline.ts": "bcf943b08b9917666bca033b4a734ba968d8b40c6d3da5ec221a96196d6014fb",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "a26fab1ada5502c213a13e722b4cf3b8a4d5ec80261b40df8b38ac1bae18e708",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "5b8713d3ef47c88f031eac045e2e2f0d8c46075547dfdf9ea7d1d9b87eab270b",
+    "frontend/src/adaptive-v3/warehouseWorkerWalk.ts": "0f943aa655a45bb9ed2bddf885796270423b19f283c13ab68dfd8d3a75f1119e",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "contracts/actors.example.json": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/adaptive-v3/evidence/P03.json": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "docs/adaptive-v3/evidence/P03.5.3.3.json": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a",
+    "frontend/public/models/v3/small-pick-v3.json": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "docs/adaptive-v3/evidence/P04.json": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1",
+    "frontend/public/data/v3/packer-seam-end.json": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b",
+    "docs/adaptive-v3/evidence/P05.json": "b1dd59032d48b317f201dfbce44f4abc51e2dbda7fa8306d86f29d708ee9e0c5",
+    "frontend/public/data/v3/receiver-v3.json": "e2066521caeb27284b8391c4bceb9d6974c3b7d859d8a52e7afdf9ce9e43d5af",
+    "docs/adaptive-v3/evidence/P06.json": "5e27aec469006fd8c10acc5d0e1a5d4c198ab0997ad9a6fb0afde1d3485ac18d",
+    "frontend/public/data/v3/shipper-v3.json": "2d93639506329c71c1c8c472fdbeb7b796df86e5d8b80c6a1601fe7d3fbf6f2e",
+    "docs/adaptive-v3/evidence/P07.json": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/data/v3/pallet-pickup-cycle.json": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59",
+    "frontend/tools/build-worker-registry-v3.mjs": "9ee5fffb2d75dec83da957be6968b44f7daaef4b542556110d1ac76ec3121f4a",
+    "frontend/public/data/v3/route-policy-v3.json": "24ad87f197d14b1c681814b43b2c8841ca145c6b92515af744f3cb4473d35337",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+    "frontend/public/data/v3/warehouse-carry-pose.json": "f9fa159807a6faa806e01e74680cadc7b87ca230739c22bf9e7201dacfe302ce",
+    "frontend/public/data/v3/warehouse-vehicle-support.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/src/adaptive-v3/warehouseActionSources.ts": "537a4f9c4939b7b3c6761974f6ef146f7e06524f649d35c91a819f9ba2e1ef16",
+    "frontend/src/adaptive-v3/warehouseActionSourceManifest.json": "fde9a8248005d671c770f9d3fac60b49fa21b3167b4337ff8c7cfa97a4756b9f",
+    "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
+    "frontend/src/adaptive-v3/warehouseAssetBindings.json": "3a416f8034246595c3f0f80e427fe1e3e3120ed206a7ab32c971bc5f78d30b2c"
+  },
+  "source_changes_after_probe_snapshot": [],
+  "observed_staleness": [
+    {
+      "path": "frontend/public/data/v3/receiver-v3.json",
+      "expected": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959",
+      "actual": "e2066521caeb27284b8391c4bceb9d6974c3b7d859d8a52e7afdf9ce9e43d5af"
+    },
+    {
+      "path": "frontend/public/data/v3/shipper-v3.json",
+      "expected": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b",
+      "actual": "2d93639506329c71c1c8c472fdbeb7b796df86e5d8b80c6a1601fe7d3fbf6f2e"
+    }
+  ],
+  "public_bootstrap": {
+    "reason": "SOURCE_HASH_MISMATCH",
+    "message": "Источник изменился после проверки: frontend/public/data/v3/receiver-v3.json"
+  },
+  "bounded_no_additional_issue_conclusions": [
+    "Catalogue issuance source review verifies a plain deeply immutable bundle, reconstructs canonical source bytes, compares the full bundle and retains exact bundle identity in a private WeakMap. GLB reader bytes are copied and SHA-256 checked before native calibration. No additional bypass was found there in this bounded review; public registration currently fails closed on shared staleness.",
+    "Issued walk plans/routes/phases use private WeakMap identity and deep freezing. A spread-cloned plan was rejected with UNISSUED_PLAN. Nonfinite times were rejected without matrix mutation; P02 random-order repeated sampling and exact apply(0)/dispose restoration passed for supported normal matrices.",
+    "Route code uses admitted canonical W03 pedestrian arcs, checks source start position, reconstructs endpoints/edge lengths, and takes the source 1.2m/s profile. Retreat uses only the first original edge, checks its unmerged length, and subtracts the escape from the remaining segment. Stance target position and yaw are held fixed. These broader route/turn/limit conclusions are source inspection, not a new 22-route execution.",
+    "Native pelvis closure is restricted by exact source part names and direct pelvis parents; it requires closed oriented pelvis geometry and point depth >2um. Exact witness helper testing covered two points and still returned a later uncovered witness. In-limit native hip flexion -1.2rad returned outside-closure thigh/torso witnesses. Foot/foot is not in the adjacency or inherited exemptions.",
+    "Both native bodies have closed oriented mesh topology (worker-base 23 meshes, worker-manual 29); pelvis_cloth is closed with signed volume 0.011180570698448335m^3. A disconnected two-box mesh returned full-mesh winding 4pi at both component centres. Winding/depth is still a finite centroid-probe witness method and can miss contacts between probes.",
+    "Exactly 61 actual environment meshes declare both surface_paint=true and collision_enabled=false. Other environment solids, including floor, remain included by the checker. Four actual P01 inherited forearm/torso source mesh pairs were reproduced. Non-leg relative transforms are assigned source rest throughout sample/apply and checked densely in the checker; no inappropriate current whole-pair articulation waiver was found.",
+    "Accepted report explicitly sets body_native_no_witness_certificate=false and distinguishes visual fixture motion from job/resource/workflow admission. Its 14646 pose samples and 3678 body times sum correctly for 22 nonseated routes; that historical evidence is now stale in shared legacy inputs."
+  ],
+  "artifacts": [
+    "audit.md",
+    "findings.json",
+    "probe.mjs",
+    "probe-results.json",
+    "probe-console.txt",
+    "native-metadata.json",
+    "native-checker-functions.mjs",
+    "input-hashes-start.json",
+    "input-hashes-final.json",
+    "check-only.txt",
+    "check-only-final.txt"
+  ],
+  "compliance": {
+    "source_or_accepted_asset_edits": false,
+    "config_auth_profile_model_or_approval_edits": false,
+    "git_run": false,
+    "external_messages": false,
+    "heavy_or_visual_processes": false,
+    "accepted_evidence_regenerated": false,
+    "project_acceptance_marked": false
+  }
+}

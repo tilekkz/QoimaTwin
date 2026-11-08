@@ -2,7 +2,7 @@ import assert from'node:assert/strict';
 import{mkdir,readFile,writeFile}from'node:fs/promises';
 import{createHash}from'node:crypto';
 import{chromium}from'@playwright/test';
-const preview=process.env.QOIMA_RECEIVER_CAPTURE_ONLY==='1',out='../assets/v3/iterations/receiver/'+(preview?'P05.2/browser-preview':'P05.3/browser'),url='http://127.0.0.1:4173/stand-v3.html?asset=receiver-workcell-fixture&fixture=receiver';
+const preview=process.env.QOIMA_RECEIVER_CAPTURE_ONLY==='1',out='../assets/v3/iterations/receiver/'+(preview?'P05.2/browser-preview':'P05.3/browser'),url=(process.env.QOIMA_QA_ORIGIN??'http://127.0.0.1:4173')+'/stand-v3.html?asset=receiver-workcell-fixture&fixture=receiver';
 await mkdir(out,{recursive:true});
 if(process.env.QOIMA_VISIBLE_TESTS==='1')throw Error('Receiver QA is bounded, muted and headless only.');
 const files=['stand-v3.html','src/adaptive-v3/assetStand.ts','src/adaptive-v3/motion/receiver.ts','src/adaptive-v3/workerRoles.ts','src/adaptive-v3/workerRolesFixture.ts','public/data/v3/receiver-v3.json','public/models/v3/worker-manual.glb','public/models/v3/receiver-workcell-fixture.glb','tools/check-receiver-browser-v3.mjs'];

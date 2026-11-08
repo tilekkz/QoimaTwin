@@ -4,7 +4,7 @@ import type {WorkerInstance} from '../workerRoles';
 type Triple=[number,number,number];
 type Pose=Record<string,Triple>;
 export type ReceiverMode='receive'|'scan'|'idle'|'blocked';
-export type ReceiverTimeline={schema_id:string;source_kind:'visual_fixture';engine_operation:false;duration_s:number;units:string;scope:string;body_root_m:Triple;body_yaw_rad:number;HU_ref:string;preparation:{duration_s:number;return_duration_s:number;abduction_z_rad:number;windows:Record<'upper'|'fold'|'swivel'|'hand',[number,number]>};contact:{local_m:Triple;workcell_m:Triple;surface:string};keys:{t:number;label:string;joints:Pose}[]};
+export type ReceiverTimeline={schema_id:string;source_kind:'visual_fixture';engine_operation:false;duration_s:number;units:string;scope:string;body_root_m:Triple;body_yaw_rad:number;HU_ref:string;preparation:{duration_s:number;return_duration_s:number;abduction_z_rad:number;windows:Record<'upper'|'fold'|'swivel'|'hand',[number,number]>;waypoints?:{at:number;joints:Pose}[]};contact:{local_m:Triple;workcell_m:Triple;surface:string;tangent_twist_rad?:number};keys:{t:number;label:string;joints:Pose}[]};
 const occupied=new WeakSet<THREE.Object3D>(),assigned=new WeakSet<WorkerInstance>();
 const triple=(v:unknown):v is Triple=>Array.isArray(v)&&v.length===3&&v.every(Number.isFinite);
 const smooth=(u:number)=>{u=THREE.MathUtils.clamp(u,0,1);return u*u*u*(10+u*(-15+6*u));};
@@ -22,10 +22,11 @@ function limits(name:string):[number,number][]{
 export function validateReceiverTimeline(value:unknown):ReceiverTimeline{
   const d=value as ReceiverTimeline;
   if(!d?.preparation||d.preparation.duration_s!==2.4||d.preparation.return_duration_s!==2.4||!Number.isFinite(d.preparation.abduction_z_rad)||d.preparation.abduction_z_rad<.15||d.preparation.abduction_z_rad>.7||!d.preparation.windows||Object.keys(d.preparation.windows).sort().join(',')!=='fold,hand,swivel,upper'||Object.values(d.preparation.windows).some(w=>!Array.isArray(w)||w.length!==2||!w.every(Number.isFinite)||w[0]<0||w[1]>1||w[1]-w[0]<.399999))throw Error('Некорректная подготовка руки приёмщика.');
+  if(d.preparation.waypoints!==undefined){if(!Array.isArray(d.preparation.waypoints))throw Error('Некорректные промежуточные позы.');let previous=0;for(const p of d.preparation.waypoints){if(!Number.isFinite(p.at)||p.at<=previous||p.at>=1||!p.joints||typeof p.joints!=='object')throw Error('Некорректная промежуточная поза.');for(const [name,a]of Object.entries(p.joints)){const range=limits(name);if(!name.endsWith('_R')||!triple(a)||a.some((x,j)=>x<range[j][0]-1e-7||x>range[j][1]+1e-7))throw Error('Промежуточная поза вне пределов '+name);}previous=p.at;}}
   const times=[0,.7,1.1,1.5,2.1,2.7,3.7,4.3,4.9,5.5,6.1,6.7,7.1,7.5].map(t=>t<=1.1?2*t:t<=5.5?2*t+1.6:t<=6.1?12.6+(t-5.5)/.6*2.4:2*t+2.8);
   if(d.schema_id!=='qoima.visual-receiver.v3'||d.source_kind!=='visual_fixture'||d.engine_operation!==false||d.units!=='m'||d.duration_s!==17.8||!triple(d.body_root_m)||d.body_root_m.join(',')!=='-1,0,-0.803'||d.body_yaw_rad!==0||d.HU_ref!=='v3:fixture:HU:RECEIVE01'||typeof d.scope!=='string'||!Array.isArray(d.keys)||d.keys.length!==times.length)throw Error('Некорректное описание приёмки.');
   const c=d.contact;
-  if(!c||c.surface!=='screen_footer'||!triple(c.local_m)||!triple(c.workcell_m)||c.local_m.some((x,j)=>Math.abs(x-[.015,-.13,.03475][j])>2e-6)||c.workcell_m.some((x,j)=>Math.abs(x-[-.7,1.175,-.343][j])>2e-6))throw Error('Нет измеренного контакта с терминалом.');
+  if(!c||(c.tangent_twist_rad!==undefined&&(!Number.isFinite(c.tangent_twist_rad)||Math.abs(c.tangent_twist_rad)>Math.PI))||c.surface!=='screen_footer'||!triple(c.local_m)||!triple(c.workcell_m)||c.local_m.some((x,j)=>Math.abs(x-[.015,-.13,.03475][j])>2e-6)||c.workcell_m.some((x,j)=>Math.abs(x-[-.7,1.175,-.343][j])>2e-6))throw Error('Нет измеренного контакта с терминалом.');
   for(const [i,k]of d.keys.entries()){
     if(k.t!==times[i]||typeof k.label!=='string'||!k.joints||Array.isArray(k.joints)||typeof k.joints!=='object')throw Error('Некорректный этап приёмки.');
     for(const [name,a]of Object.entries(k.joints)){const range=limits(name);if(!triple(a)||a.some((x,j)=>x<range[j][0]-1e-7||x>range[j][1]+1e-7))throw Error('Превышены пределы '+name);}
@@ -33,12 +34,20 @@ export function validateReceiverTimeline(value:unknown):ReceiverTimeline{
   return structuredClone(d);
 }
 
+/** Free approach stays within2cm of the unchanged terminal contact plane. */
+export function receiverArmTarget(serviceTime:number):Triple|null{
+  const mapped=(z:number):Triple=>[-.7,1.175,-z-.103];
+  if(serviceTime>=2.1&&serviceTime<=4.3){const gap=serviceTime<2.7?.01*(1-smooth((serviceTime-2.1)/.6)):serviceTime<=3.7?0:.01*smooth((serviceTime-3.7)/.6);return mapped(.24+gap);}
+  if((serviceTime>=1.5&&serviceTime<2.1)||(serviceTime>4.9&&serviceTime<=5.5)){const u=serviceTime<2.1?smooth((serviceTime-1.5)/.6):1-smooth((serviceTime-4.9)/.6);return mapped(.26-.01*u);}
+  return null;
+}
+
 /** Absolute Cartesian approach to the rear-facing existing receiving terminal. */
-export function solveReceiverArmPose(root:THREE.Object3D,cell:THREE.Object3D,seed:Record<string,Triple>,target:Triple,contact:Triple,side:'L'|'R'='R'):Record<string,Triple>{
+export function solveReceiverArmPose(root:THREE.Object3D,cell:THREE.Object3D,seed:Record<string,Triple>,target:Triple,contact:Triple,side:'L'|'R'='R',tangentTwist=0):Record<string,Triple>{
   root.updateWorldMatrix(true,true);cell.updateWorldMatrix(true,false);
   const frame=root.getObjectByName('joint__torso')!,upper=root.getObjectByName('joint__upper_arm_'+side)!,fore=root.getObjectByName('joint__forearm_'+side)!,hand=root.getObjectByName('joint__hand_'+side)!;
   const shoulder=frame.worldToLocal(upper.getWorldPosition(new THREE.Vector3())),elbow=upper.worldToLocal(fore.getWorldPosition(new THREE.Vector3())),wrist=fore.worldToLocal(hand.getWorldPosition(new THREE.Vector3())),axis=elbow.clone().normalize();
-  const desired=frame.getWorldQuaternion(new THREE.Quaternion()).invert().multiply(cell.getWorldQuaternion(new THREE.Quaternion())).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),Math.PI)).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),Math.PI/2));
+  const desired=frame.getWorldQuaternion(new THREE.Quaternion()).invert().multiply(cell.getWorldQuaternion(new THREE.Quaternion())).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),Math.PI)).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),Math.PI/2)).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),tangentTwist));
   const sUpper=seed['joint__upper_arm_'+side],sLift=seed['joint__shoulder_lift_'+side],sFore=seed['joint__forearm_'+side];
   const offset=new THREE.Vector3(...contact).applyQuaternion(desired),goal=frame.worldToLocal(cell.localToWorld(new THREE.Vector3(...target))),yaw=sUpper[1],twist=seed['joint__elbow_swivel_'+side][0],roll=seed['joint__palm_roll_'+side][1];
   const v=[sUpper[0]+sLift[0],sUpper[2],sFore[0]],q1=new THREE.Quaternion(),q2=new THREE.Quaternion(),q12=new THREE.Quaternion();
@@ -91,13 +100,18 @@ export function createReceiverAction(workcell:THREE.Object3D,actor:WorkerInstanc
       let i=0;while(i+1<data.keys.length&&data.keys[i+1].t<=time)i++;
       const a=data.keys[i],b=data.keys[Math.min(i+1,data.keys.length-1)],u=b.t===a.t?0:smooth((time-a.t)/(b.t-a.t));labelText=a.label;
       for(const name of new Set([...Object.keys(a.joints),...Object.keys(b.joints)])){const base=rest.get(nodes.get(name)!)!.angles,from=a.joints[name]??base,to=b.joints[name]??base;pose[name]=from.map((x,j)=>x+(to[j]-x)*u) as Triple;}
-      // Same Cartesian service path as the accepted P04 arm, rigidly rotated.
+      // Natural elbow branch; free approach is shorter than the inherited P04 path.
       const legacy=[0,.7,1.1,1.5,2.1,2.7,3.7,4.3,4.9,5.5,6.1,6.7,7.1,7.5],raw=b.t===a.t?0:(time-a.t)/(b.t-a.t),serviceTime=legacy[i]+(legacy[Math.min(i+1,legacy.length-1)]-legacy[i])*raw;
       const forward=time>=data.keys[2].t&&time<=data.keys[3].t,backward=time>=data.keys[9].t&&time<=data.keys[10].t;
-      if(forward||backward){const u=forward?(time-data.keys[2].t)/data.preparation.duration_s:1-(time-data.keys[9].t)/data.preparation.return_duration_s;for(const name of Object.keys(data.keys[3].joints).filter(n=>n.endsWith('_R'))){const family=name.startsWith('joint__elbow_swivel_')?'swivel':name.startsWith('joint__forearm_')?'fold':name.startsWith('joint__hand_')||name.startsWith('joint__palm_roll_')?'hand':'upper',[start,end]=data.preparation.windows[family],v=smooth((u-start)/(end-start)),from=data.keys[2].joints[name]??rest.get(nodes.get(name)!)!.angles,to=data.keys[3].joints[name];pose[name]=from.map((x,j)=>x+(to[j]-x)*v) as Triple;}const lift=u<.2?smooth(u/.2):u>.8?1-smooth((u-.8)/.2):1;pose.joint__upper_arm_R[2]+=(data.preparation.abduction_z_rad-pose.joint__upper_arm_R[2])*lift;}
-      const mapped=(x:number,z:number):Triple=>[-x-.7,1.175,-z-.103];
-      if(serviceTime>=2.1&&serviceTime<=4.3){const gap=serviceTime<2.7?.04*(1-smooth((serviceTime-2.1)/.6)):serviceTime<=3.7?0:.04*smooth((serviceTime-3.7)/.6);Object.assign(pose,solveReceiverArmPose(worker,workcell,data.keys[5].joints,mapped(0,.24+gap),data.contact.local_m));}
-      if((serviceTime>=1.5&&serviceTime<2.1)||(serviceTime>4.9&&serviceTime<=5.5)){const u=serviceTime<2.1?smooth((serviceTime-1.5)/.6):1-smooth((serviceTime-4.9)/.6);Object.assign(pose,solveReceiverArmPose(worker,workcell,data.keys[5].joints,mapped(-.08*(1-u),.38-.10*u),data.contact.local_m));}
+      if(forward||backward){
+        const u=forward?(time-data.keys[2].t)/data.preparation.duration_s:1-(time-data.keys[9].t)/data.preparation.return_duration_s;
+        if(data.preparation.waypoints?.length){
+          const stages=[{at:0,joints:data.keys[2].joints},...data.preparation.waypoints,{at:1,joints:data.keys[3].joints}];let stage=0;while(stage+1<stages.length-1&&stages[stage+1].at<=u)stage++;
+          const a=stages[stage],b=stages[stage+1],v=smooth((u-a.at)/(b.at-a.at));
+          for(const name of Object.keys(data.keys[3].joints).filter(n=>n.endsWith('_R'))){const base=rest.get(nodes.get(name)!)!.angles,from=a.joints[name]??base,to=b.joints[name]??base;pose[name]=from.map((x,j)=>x+(to[j]-x)*v) as Triple;}
+        }else{for(const name of Object.keys(data.keys[3].joints).filter(n=>n.endsWith('_R'))){const family=name.startsWith('joint__elbow_swivel_')?'swivel':name.startsWith('joint__forearm_')?'fold':name.startsWith('joint__hand_')||name.startsWith('joint__palm_roll_')?'hand':'upper',[start,end]=data.preparation.windows[family],v=smooth((u-start)/(end-start)),from=data.keys[2].joints[name]??rest.get(nodes.get(name)!)!.angles,to=data.keys[3].joints[name];pose[name]=from.map((x,j)=>x+(to[j]-x)*v) as Triple;}const lift=u<.2?smooth(u/.2):u>.8?1-smooth((u-.8)/.2):1;pose.joint__upper_arm_R[2]+=(data.preparation.abduction_z_rad-pose.joint__upper_arm_R[2])*lift;}
+      }
+      const target=receiverArmTarget(serviceTime);if(target)Object.assign(pose,solveReceiverArmPose(worker,workcell,data.keys[5].joints,target,data.contact.local_m,'R',data.contact.tangent_twist_rad??0));
       if(serviceTime<=1.1)pose.joint__head=[.1,.15*smooth(serviceTime/.7),0];
       else if(serviceTime<1.5){const u=smooth((serviceTime-1.1)/.4),target=pose.joint__head??rest.get(nodes.get('joint__head')!)!.angles;pose.joint__head=target.map((x,j)=>[.1,.15,0][j]+(x-[.1,.15,0][j])*u) as Triple;}
     }else if(mode==='scan'){labelText=time<.5?'Проверка входящей паллеты':time<1.8?'Сканирование этикетки':'Этикетка проверена';pose.joint__head=[.1,.15*smooth(time/.5),0];}

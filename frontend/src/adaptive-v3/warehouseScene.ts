@@ -13,10 +13,16 @@ import {loadWarehouseSupportKit} from './warehouseSupportKit';
 import {createWarehouseHolderScene} from './warehouseHolderScene';
 import {cargoHolderKey} from './warehouseCargoHolders';
 import type {CargoBinding} from './warehouseCargo';
+import {registerWarehouseActionCatalogue,type WarehouseActionCatalogue} from './warehouseActionTimeline';
+import type {RoutePolicy} from './warehouseRouting';
+import {isWarehousePalletTransferPlan,type WarehousePalletTransferPlan} from './warehousePalletTransferPlan';
+import {createWarehousePalletTransferScene} from './warehousePalletTransferScene';
+import {createWarehouseCargoActionOverlay} from './warehouseCargoActionOverlay';
 
 export type WarehouseView='overview'|'small-west'|'small-east'|'heavy-west'|'long-east'|'packing';
 export type WarehouseSelection={kind:'HU'|'module'|'actor';id:string};
-type Options={signal:AbortSignal;progress:(done:number,total:number)=>void;select:(selection:WarehouseSelection)=>void};
+/** renderPass: optional page-owned frame drawing (e.g. A/B viewports); default is one full-canvas render. */
+type Options={signal:AbortSignal;progress:(done:number,total:number)=>void;select:(selection:WarehouseSelection)=>void;renderPass?:(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.OrthographicCamera)=>void};
 type Placement={id:string;position:XYZ;yaw:number};
 const presets:Record<WarehouseView,{target:XYZ;span:number}>={overview:{target:[72,1.5,36],span:184},'small-west':{target:[22,0,49],span:22},'small-east':{target:[122,0,49],span:22},'heavy-west':{target:[24,0,25],span:29},'long-east':{target:[92,.7,17.65],span:36},packing:{target:[91,0,5],span:32}};
 const cargoModels:Record<string,string>={SMALL_CARTON:'small-carton',STANDARD_CARTON:'standard-carton',HEAVY_BOX:'heavy-box',PALLET_LOAD:'pallet-load',IBC:'ibc',LONG_BUNDLE:'long-bundle',DRUM:'drum',FRAGILE_CRATE:'fragile-crate'};
@@ -32,19 +38,22 @@ export async function createWarehouseScene(host:HTMLElement,bundle:WarehouseBund
  const vehicleHomes=new Map<string,{position:THREE.Vector3;quaternion:THREE.Quaternion;joints:Map<string,{node:THREE.Object3D;quaternion:THREE.Quaternion}>}>();
  const cargoState=createWarehouseCargo(bundle),cargoParts=new Map<string,CargoMeshPart[]>(),moduleParts=new Map<string,CargoSupportPart[]>(),cargoYaws:Record<string,number>={};
  const cargoGeometry=createCargoGeometryInspector(cargoParts,moduleParts);
+ const cargoOverlay=createWarehouseCargoActionOverlay(bundle,cargoState.snapshot);
+ let palletTransfer:ReturnType<typeof createWarehousePalletTransferScene>|undefined;
  let holderScene:ReturnType<typeof createWarehouseHolderScene>|undefined;
- const hasAttachedCargo=()=>cargoState.snapshot().some(b=>b.destination.kind!=='storage_slot');
- async function ensureCargoHolders(signal:AbortSignal){if(disposed)throw Error('SCENE_DISPOSED');if(holderScene)return holderScene.snapshot();const kit=await loadWarehouseSupportKit(signal);if(disposed||signal.aborted){kit.dispose();throw new DOMException('Aborted','AbortError');}try{holderScene=createWarehouseHolderScene(kit,{scene,bundle,workers,actors,vehicles,pickables,supports:moduleParts,cargoParts});cargoState.registerHolders(holderScene.catalogue,holderScene.frame);requestRender();return holderScene.snapshot();}catch(error){kit.dispose();throw error;}}
+ const hasAttachedCargo=()=>cargoOverlay.busy()||cargoState.snapshot().some(b=>b.destination.kind!=='storage_slot');
+ async function ensureCargoHolders(signal:AbortSignal){if(disposed)throw Error('SCENE_DISPOSED');if(palletTransfer)throw Error('CARGO_ACTION_BUSY');if(holderScene)return holderScene.snapshot();const kit=await loadWarehouseSupportKit(signal);if(disposed||signal.aborted){kit.dispose();throw new DOMException('Aborted','AbortError');}if(palletTransfer){kit.dispose();throw Error('CARGO_ACTION_BUSY');}try{holderScene=createWarehouseHolderScene(kit,{scene,bundle,workers,actors,vehicles,pickables,supports:moduleParts,cargoParts});cargoState.registerHolders(holderScene.catalogue,holderScene.frame);requestRender();return holderScene.snapshot();}catch(error){kit.dispose();throw error;}}
+ async function prepareActionCatalogue(readSource:(path:string)=>Promise<Uint8Array>,signal:AbortSignal){await ensureCargoHolders(signal);if(disposed||signal.aborted)throw new DOMException('Aborted','AbortError');return registerWarehouseActionCatalogue(bundle,readSource,holderScene!.catalogue);}
  let routeTrace:THREE.Line|undefined,followedActor:string|null=null;
  let view:WarehouseView|'actor'|'cargo'='overview',activeSpan=184,highlight:THREE.Box3Helper|undefined,highlightId:string|null=null;
  function clearHighlight(){if(highlight){highlight.removeFromParent();highlight.geometry.dispose();(highlight.material as THREE.Material).dispose();highlight=undefined;}highlightId=null;}
  const camera=new THREE.OrthographicCamera(-100,100,70,-70,.05,1000),key=new THREE.DirectionalLight('#fff1d8',3),raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
- function render(){frame=0;if(disposed||!renderer)return;renderer.render(scene,camera);}
+ function render(){frame=0;if(disposed||!renderer)return;if(options.renderPass)options.renderPass(renderer,scene,camera);else renderer.render(scene,camera);}
  function requestRender(){if(!frame&&!disposed)frame=requestAnimationFrame(render);}
  function flushRender(){if(frame)cancelAnimationFrame(frame);frame=0;render();}
  function clearRouteTrace(){if(routeTrace){routeTrace.removeFromParent();routeTrace.geometry.dispose();(routeTrace.material as THREE.Material).dispose();routeTrace=undefined;}}
  function setRouteTrace(points:XYZ[]|null){clearRouteTrace();if(points?.length&&!disposed){const geometry=new THREE.BufferGeometry().setFromPoints(points.map(p=>new THREE.Vector3(p[0],p[1]+.025,p[2])));routeTrace=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:'#286f76',transparent:true,opacity:.8}));routeTrace.name='visual_route_trace_not_inventory';scene.add(routeTrace);}requestRender();}
- function resetRoutePreview(){if(disposed)return;followedActor=null;clearRouteTrace();for(const [id,home]of vehicleHomes){const root=vehicles.get(id)!;root.position.copy(home.position);root.quaternion.copy(home.quaternion);for(const joint of home.joints.values())joint.node.quaternion.copy(joint.quaternion);}requestRender();}
+ function resetRoutePreview(){if(disposed||palletTransfer)return;followedActor=null;clearRouteTrace();for(const [id,home]of vehicleHomes){const root=vehicles.get(id)!;root.position.copy(home.position);root.quaternion.copy(home.quaternion);for(const joint of home.joints.values())joint.node.quaternion.copy(joint.quaternion);}requestRender();}
  function setFollowActor(id:string|null){followedActor=id&&actors.has(id)?id:null;}
  function applyVehicleRoutePose(id:string,pose:RoutePose){
   if(hasAttachedCargo())throw Error('LOADED_ROUTE_NOT_ADMITTED');
@@ -56,6 +65,9 @@ export async function createWarehouseScene(host:HTMLElement,bundle:WarehouseBund
  function resize(){if(!renderer||disposed)return;const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight),aspect=w/h;renderer.setSize(w,h,false);camera.left=-activeSpan/2;camera.right=activeSpan/2;camera.top=activeSpan/aspect/2;camera.bottom=-activeSpan/aspect/2;camera.updateProjectionMatrix();requestRender();}
  function frameTarget(target:THREE.Vector3,span:number,yaw=0,side=1){activeSpan=span;const direction=new THREE.Vector3(.9*side,1.15,1).applyAxisAngle(new THREE.Vector3(0,1,0),yaw).normalize();camera.position.copy(target).addScaledVector(direction,180);camera.lookAt(target);controls!.target.copy(target);controls!.update();key.position.copy(target).add(new THREE.Vector3(-18,28,12));key.target.position.copy(target);key.shadow.camera.left=-span/1.5;key.shadow.camera.right=span/1.5;key.shadow.camera.top=span/1.5;key.shadow.camera.bottom=-span/1.5;key.shadow.camera.updateProjectionMatrix();renderer!.shadowMap.enabled=span<60;resize();}
  function setView(next:WarehouseView){if(disposed||!presets[next])return;followedActor=null;clearHighlight();view=next;const p=presets[next];frameTarget(new THREE.Vector3(...p.target),p.span);}
+ /** Page-driven framing (e.g. animated fly-to); keeps the default viewing direction. */
+ function frameAt(target:XYZ,span:number){if(disposed||!target.every(Number.isFinite)||!(span>0))return;followedActor=null;view='cargo';camera.zoom=1;frameTarget(new THREE.Vector3(...target),span);}
+ const frameState=()=>({target:(controls?.target.toArray()??[72,1.5,36]) as XYZ,span:activeSpan/camera.zoom});
  function focusActor(id:string){const actor=actors.get(id);if(!actor||disposed)return false;scene.updateMatrixWorld(true);clearHighlight();view='actor';const position=actor.getWorldPosition(new THREE.Vector3());position.y=.9;frameTarget(position,7);return true;}
  function selectionFromHit(hit:THREE.Intersection):WarehouseSelection|null{
   let node:THREE.Object3D|null=hit.object;while(node&&!node.userData.semanticKind)node=node.parent;if(!node)return null;
@@ -86,22 +98,48 @@ export async function createWarehouseScene(host:HTMLElement,bundle:WarehouseBund
   flushRender();
  }
  function applyCargoBindings(changes:unknown){
-  if(disposed)throw Error('SCENE_DISPOSED');const admission=cargoState.evaluate(changes);if(!admission.ok)return admission;
+  if(disposed)throw Error('SCENE_DISPOSED');if(palletTransfer)throw Error('CARGO_ACTION_BUSY');const admission=cargoState.evaluate(changes);if(!admission.ok)return admission;
   const previous=cargoState.snapshot().map(b=>({handling_unit_id:b.handling_unit_id,destination:b.destination})),next=new Map(previous.map(b=>[b.handling_unit_id,b]));for(const b of changes as CargoBinding[])next.set(b.handling_unit_id,b);
   try{holderScene?.configure([...next.values()]);const result=cargoState.apply(changes);if(!result.ok){holderScene?.configure(previous);return result;}updateCargoInstances();
    for(const bound of cargoState.snapshot().filter(b=>b.destination.kind!=='storage_slot')){const proof=inspectCargo(bound.handling_unit_id);if('contacts'in proof){if(proof.contacts.some(c=>c.native_cargo_gap_m>2e-6||c.native_glove_gap_m>2e-6))throw Error('HOLDER_PHYSICAL_SUPPORT_UNAVAILABLE');}else if(!('native_contact_area_sum_m2'in proof)||proof.native_contact_area_sum_m2<=1e-8||!proof.geometric_centre_inside_support_hull||proof.maximum_contact_gap_m>2e-6)throw Error('HOLDER_PHYSICAL_SUPPORT_UNAVAILABLE');}
    return result;
   }catch(error){holderScene?.configure(previous);cargoState.apply(previous);updateCargoInstances();return {...admission,ok:false,reason:error instanceof Error&&error.message==='HOLDER_ATTACHMENT_UNAVAILABLE'?'HOLDER_ATTACHMENT_UNAVAILABLE' as const:'HOLDER_PHYSICAL_SUPPORT_UNAVAILABLE' as const};}
  }
- function resetCargoBindings(){if(disposed)throw Error('SCENE_DISPOSED');cargoState.reset();holderScene?.configure([]);updateCargoInstances();}
+ function resetCargoBindings(){if(disposed)throw Error('SCENE_DISPOSED');if(palletTransfer)throw Error('CARGO_ACTION_BUSY');cargoState.reset();holderScene?.configure([]);updateCargoInstances();}
  function inspectCargo(id:string){
-  if(disposed)throw Error('SCENE_DISPOSED');const bound=cargoState.snapshot().find(b=>b.handling_unit_id===id);if(!bound)throw Error('UNKNOWN_CARGO_INSTANCE');
+  if(disposed)throw Error('SCENE_DISPOSED');const bound=cargoOverlay.values().find(b=>b.handling_unit_id===id);if(!bound)throw Error('UNKNOWN_CARGO_INSTANCE');
+  if(palletTransfer&&cargoOverlay.frame()?.bound.handling_unit_id===id&&bound.destination.kind==='vehicle')return cargoGeometry.inspectSupported(bound,'pallet-transfer:FL02:forks');
   if(bound.destination.kind==='actor'){if(!holderScene)throw Error('PHYSICAL_HOLDER_NOT_REGISTERED');return {...cargoGeometry.inspectGeometry(bound),...holderScene.inspectActor(bound)};}
   if(bound.destination.kind!=='storage_slot')return cargoGeometry.inspectSupported(bound,cargoHolderKey(bound.destination));
   const slotId=bound.destination.slot_id,slot=bundle.layout.slots.find(s=>s.slot_id===slotId)!;
   return cargoGeometry.inspectSupported(bound,bundle.layout.modules[slot.module_index].module_id);
  }
- function dispose(){if(disposed)return;disposed=true;holderScene?.dispose();host.removeEventListener('pointerdown',down);host.removeEventListener('pointerup',up);cargoGeometry.dispose();cargoParts.clear();moduleParts.clear();if(frame)cancelAnimationFrame(frame);observer?.disconnect();controls?.dispose();clearHighlight();clearRouteTrace();for(const binding of seated)binding.release();for(const actor of workers)disposeWorkerInstance(actor);disposeObjects([scene,...templates.values()]);for(const mesh of instances)mesh.dispose();environment?.dispose();renderer?.dispose();renderer?.forceContextLoss();renderer?.domElement.remove();scene.clear();templates.clear();actors.clear();vehicles.clear();vehicleHomes.clear();pickables.length=0;}
+ function publishCargoAction(id:string){
+  const bound=cargoOverlay.values().find(row=>row.handling_unit_id===id)!;stockPositions[id]=[...bound.position];cargoYaws[id]=bound.yaw_rad;
+  if(highlight&&highlightId===id){const d=bound.cargo.dimensions_xyz_m,c=Math.abs(Math.cos(bound.yaw_rad)),s=Math.abs(Math.sin(bound.yaw_rad));highlight.box.setFromCenterAndSize(new THREE.Vector3(bound.position[0],bound.position[1]+d[1]/2,bound.position[2]),new THREE.Vector3(c*d[0]+s*d[2]+.01,d[1]+.01,s*d[0]+c*d[2]+.01));}
+ }
+ /** Display-only capability: all native instances and the stock ledger remain the same objects. */
+ function beginPalletTransfer(catalogue:WarehouseActionCatalogue,policy:RoutePolicy,plan:WarehousePalletTransferPlan){
+  if(disposed)throw Error('SCENE_DISPOSED');if(hasAttachedCargo())throw Error('CARGO_ACTION_BUSY');
+  if(!isWarehousePalletTransferPlan(plan,bundle,catalogue,policy))throw Error('INVALID_PALLET_TRANSFER_PLAN');
+  for(const [id,home]of vehicleHomes){const root=vehicles.get(id)!;if(!root.position.equals(home.position)||1-Math.abs(root.quaternion.dot(home.quaternion))>1e-12||root.scale.toArray().some(v=>v!==1)||[...home.joints.values()].some(j=>!j.node.quaternion.equals(j.quaternion)))throw Error('ACTION_REQUIRES_PARKED_VEHICLES');}
+  const actor=workers.find(w=>w.actorId==='F02')!,vehicle=vehicles.get('FL02')!,driver=seated.find(s=>s.actor===actor)!;
+  const bound=cargoState.snapshot().find(h=>h.handling_unit_id===plan.request.handling_unit_id);if(!bound)throw Error('UNKNOWN_CARGO_INSTANCE');
+  const native=createWarehousePalletTransferScene({bundle,catalogue,policy,plan,vehicle,actor,seated:driver,bound,parts:cargoParts.get(bound.handling_unit_id)!});
+  try{cargoOverlay.bind(plan,native);}catch(error){native.dispose();throw error;}
+  palletTransfer=native;moduleParts.set('pallet-transfer:FL02:forks',[...native.forkSupportParts]);let closed=false;
+  const live=()=>{if(closed||disposed||palletTransfer!==native)throw Error('CARGO_ACTION_DISPOSED');};
+  function apply(seconds:number){live();const following=followedActor==='F02',before=following?actor.root.getWorldPosition(new THREE.Vector3()):null;native.apply(seconds);const value=cargoOverlay.sync();publishCargoAction(bound!.handling_unit_id);if(before){const delta=actor.root.getWorldPosition(new THREE.Vector3()).sub(before);camera.position.add(delta);controls!.target.add(delta);key.position.add(delta);key.target.position.add(delta);controls!.update();}flushRender();return value;}
+  function reset(){live();native.reset();cargoOverlay.sync();publishCargoAction(bound!.handling_unit_id);requestRender();}
+  function close(){if(closed)return;closed=true;native.dispose();cargoOverlay.clear();palletTransfer=undefined;moduleParts.delete('pallet-transfer:FL02:forks');publishCargoAction(bound!.handling_unit_id);requestRender();}
+  return Object.freeze({apply,reset,dispose:close,snapshot:()=>native.snapshot(),duration_s:plan.duration_s});
+ }
+ /** Read-only QA evidence from the actual scene objects and Float32 instance buffers. */
+ function nativeIntegrity(){
+  const local=(node:THREE.Object3D)=>({name:node.name,uuid:node.uuid,parent_uuid:node.parent?.uuid??null,position:node.position.toArray(),quaternion:node.quaternion.toArray(),scale:node.scale.toArray()});
+  return {actors:workers.map(actor=>({actor_id:actor.actorId,...local(actor.root)})),vehicles:[...vehicles].map(([vehicle_id,root])=>{const nodes:ReturnType<typeof local>[]=[];root.traverse(node=>nodes.push(local(node)));return {vehicle_id,uuid:root.uuid,parent_uuid:root.parent?.uuid??null,nodes};}),cargo:[...cargoParts].map(([handling_unit_id,parts])=>({handling_unit_id,parts:parts.map(part=>{const matrix=new THREE.Matrix4();part.mesh.getMatrixAt(part.index,matrix);return {uuid:part.mesh.uuid,index:part.index,mesh_position:part.mesh.position.toArray(),mesh_quaternion:part.mesh.quaternion.toArray(),mesh_scale:part.mesh.scale.toArray(),instance_matrix:matrix.toArray()};})}))};
+ }
+ function dispose(){if(disposed)return;palletTransfer?.dispose();if(palletTransfer){cargoOverlay.clear();palletTransfer=undefined;}disposed=true;holderScene?.dispose();host.removeEventListener('pointerdown',down);host.removeEventListener('pointerup',up);cargoGeometry.dispose();cargoParts.clear();moduleParts.clear();if(frame)cancelAnimationFrame(frame);observer?.disconnect();controls?.dispose();clearHighlight();clearRouteTrace();for(const binding of seated)binding.release();for(const actor of workers)disposeWorkerInstance(actor);disposeObjects([scene,...templates.values()]);for(const mesh of instances)mesh.dispose();environment?.dispose();renderer?.dispose();renderer?.forceContextLoss();renderer?.domElement.remove();scene.clear();templates.clear();actors.clear();vehicles.clear();vehicleHomes.clear();pickables.length=0;}
  let downAt:[number,number]=[0,0];function down(e:PointerEvent){downAt=[e.clientX,e.clientY];}
  function up(e:PointerEvent){if(disposed||Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1])>5)return;const rect=host.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(pickables,true)[0];if(!hit)return;const selected=selectionFromHit(hit);if(selected)options.select(selected);}
  try{
@@ -131,6 +169,6 @@ export async function createWarehouseScene(host:HTMLElement,bundle:WarehouseBund
    const node=nodeById.get(nodeId)!;actor.root.position.fromArray(node.world_pos);actor.root.rotation.y=yaw;scene.add(actor.root);actorHomes[w.actor_id]={node_id:node.node_id,world_pos:[...node.world_pos]};
   }
   controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.enablePan=true;controls.minZoom=.4;controls.maxZoom=18;controls.maxPolarAngle=Math.PI*.49;controls.addEventListener('change',requestRender);observer=new ResizeObserver(resize);observer.observe(host);host.addEventListener('pointerdown',down);host.addEventListener('pointerup',up);setView('overview');scene.updateMatrixWorld(true);render();
-  return {ensureCargoHolders,hasAttachedCargo,setView,focusActor,focusCargo,applyCargoBindings,resetCargoBindings,inspectCargo,getCargoBindings:cargoState.snapshot,setRouteTrace,resetRoutePreview,setFollowActor,applyVehicleRoutePose,inspectVehicleBounds,dispose,snapshot:()=>({holders:holderScene?.snapshot()??null,disposed,view,highlight_HU:highlightId,followed_actor:followedActor,route_trace_points:routeTrace?.geometry.getAttribute('position').count??0,workers:workers.length,worker_ids:workers.map(w=>w.actorId),vehicle_ids:[...vehicles.keys()],vehicle_poses:[...vehicles].map(([id,root])=>({vehicle_id:id,position:root.position.toArray(),yaw_rad:root.rotation.y,scale:root.scale.toArray(),joints:[...vehicleHomes.get(id)!.joints].map(([name,joint])=>({name,quaternion:joint.node.quaternion.toArray()}))})),actor_homes:actorHomes,driver_contacts:seated.map(s=>s.snapshot()),modules:bundle.layout.modules.length,stock_HUs:bundle.fixture.inputs.initial_stock.length,cargo_binding_count:cargoParts.size,stock_positions:stockPositions,source_kind:'visual_fixture',engine_operation:false,actions_scheduled:0,completed_jobs:0,assets_loaded:templates.size,renderer:renderer?{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}:null})};
+  return {requestRender,frameAt,frameState,nativeIntegrity,beginPalletTransfer,prepareActionCatalogue,ensureCargoHolders,hasAttachedCargo,setView,focusActor,focusCargo,applyCargoBindings,resetCargoBindings,inspectCargo,getCargoBindings:cargoOverlay.values,setRouteTrace,resetRoutePreview,setFollowActor,applyVehicleRoutePose,inspectVehicleBounds,dispose,snapshot:()=>({holders:holderScene?.snapshot()??null,pallet_transfer:palletTransfer?.snapshot()??null,disposed,view,highlight_HU:highlightId,followed_actor:followedActor,route_trace_points:routeTrace?.geometry.getAttribute('position').count??0,workers:workers.length,worker_ids:workers.map(w=>w.actorId),vehicle_ids:[...vehicles.keys()],vehicle_poses:[...vehicles].map(([id,root])=>({vehicle_id:id,position:root.position.toArray(),yaw_rad:root.rotation.y,scale:root.scale.toArray(),joints:[...vehicleHomes.get(id)!.joints].map(([name,joint])=>({name,quaternion:joint.node.quaternion.toArray()}))})),actor_homes:actorHomes,driver_contacts:seated.map(s=>s.snapshot()),modules:bundle.layout.modules.length,stock_HUs:bundle.fixture.inputs.initial_stock.length,cargo_binding_count:cargoParts.size,stock_positions:stockPositions,source_kind:'visual_fixture',engine_operation:false,actions_scheduled:0,completed_jobs:0,assets_loaded:templates.size,renderer:renderer?{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}:null})};
  }catch(error){dispose();throw error;}
 }

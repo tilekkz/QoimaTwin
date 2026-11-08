@@ -2,7 +2,7 @@ import assert from'node:assert/strict';
 import{mkdir,readFile,writeFile}from'node:fs/promises';
 import{createHash}from'node:crypto';
 import{chromium}from'@playwright/test';
-const preview=process.env.QOIMA_SHIPPER_CAPTURE_ONLY==='1',out='../assets/v3/iterations/shipper/'+(preview?'P06.2/browser-preview':'P06.3/browser'),url='http://127.0.0.1:4173/stand-v3.html?asset=shipper-workcell-fixture&fixture=shipper';
+const preview=process.env.QOIMA_SHIPPER_CAPTURE_ONLY==='1',out='../assets/v3/iterations/shipper/'+(preview?'P06.2/browser-preview':'P06.3/browser'),url=(process.env.QOIMA_QA_ORIGIN??'http://127.0.0.1:4173')+'/stand-v3.html?asset=shipper-workcell-fixture&fixture=shipper';
 await mkdir(out,{recursive:true});
 if(process.env.QOIMA_VISIBLE_TESTS==='1')throw Error('Shipper QA is bounded, muted and headless only.');
 const files=['stand-v3.html','src/adaptive-v3/assetStand.ts','src/adaptive-v3/motion/shipper.ts','src/adaptive-v3/workerRoles.ts','src/adaptive-v3/workerRolesFixture.ts','public/data/v3/shipper-v3.json','public/models/v3/worker-manual.glb','public/models/v3/shipper-workcell-fixture.glb','tools/check-shipper-browser-v3.mjs'];

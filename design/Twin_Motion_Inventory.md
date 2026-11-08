@@ -1,0 +1,20 @@
+# Twin motion lifecycle — bounded current review
+
+Scope: the shared demo clock, fly-to camera, navigation inertia/zoom, comparison-mode transition and reaction-entry animation when the system motion preference changes. This is not acceptance of the whole Twin interface, operational workflows or atmosphere causality.
+
+| Motion | Class | Reduced behavior | Actual verification |
+|---|---|---|---|
+| Initial demo clock | Autoplay | Cold/reloaded page stays paused with visible content. Returning to no preference does not start playback. An explicit user play request under an already unchanged reduced preference remains explicit. | Cold/reload/back-preference and explicit-manual cases on development and compiled production. |
+| Running clock after a preference change | Autoplay | A false→true preference transition pauses at the next clock frame even when the native MQL event is absent. | Stable200ms and rapid55ms transitions on both origins; old event-only control still advances and fails. |
+| Fly-to camera | Vestibular | Cold reduced navigation shows the final camera position; a live change finishes the current target and clears its frame. | Live clock/fly/mode and pending-camera cases on both origins. |
+| Drag inertia and smooth zoom | Vestibular | Direct pointer/keyboard/wheel input remains useful. Residual glide stops; an active zoom reaches its requested target immediately. | Real mouse flick first produces measured residual movement with room before camera bounds, then stops exactly under reduce. Manual keyboard/wheel zoom and pending zoom checked separately. |
+| Comparison-mode fade | Non-vestibular | Reduced mode applies the final selected mode, clears the fade class and cancels the pending timer. | Rapid mode switches and live preference transition leave no pending timer or stranded transition. |
+| Reaction bubble entry | Vestibular entry scale | New reduced entries are static; live reconciliation cancels existing subtree Web Animations. | Both origins first create real `.tw-bubble` Animation objects; after reduce those objects are no longer running. CSS transitions are excluded from this oracle. |
+| Page hide/disposal | Lifecycle | Clock, fly and navigation loops stop; no canvas remains after disposal. | Actual pagehide test on both origins; all owned QA Chrome processes terminate. |
+| Mobile drawer and manual time selection | Essential interaction | Content stays visible and the timeline remains keyboard usable without movement. |390px layout, visible drawer/river, keyboard time changes, no horizontal overflow on both origins. |
+
+The reproduced cause is specific to observed browser event delivery: the actual renderer can read the new `MediaQueryList.matches` value before the app receives its change event, and the expected app event is then absent. The old handler is present and synthetic dispatch works. Passive observers that read no app state independently confirm the preference change. The fix retains its own previous preference and reconciles before clock/fly frames as well as in the event handler. Navigation also checks its preference at each animation frame. No browser prototype is patched in normal validation contexts.
+
+Current evidence: `docs/adaptive-v3/evidence/twin-motion-checks.json`; portable checker: `frontend/tools/check-twin-motion-v3.mjs`. The full gate exercises12 positive cases on each of two origins and one diagnostic served-module negative control that removes only the two new frame reconciliation calls. It preserves the event handler and renderer, so the old failure remains observable. `--check-only` launches no renderer and validates the frozen source/compiled bytes and capture hashes. Actual before-source causal traces and current screenshots are preserved under `assets/v3/iterations/twin/motion/`.
+
+Existing broader CSS effects, full focus/accessibility behavior, all comparison mechanics and the whole atmosphere/reaction design are outside this bounded review. Their existence does not certify the entire frontend. The paused warehouse pallet demonstration has separate reduced-motion and lifecycle acceptance under W05.4.4.

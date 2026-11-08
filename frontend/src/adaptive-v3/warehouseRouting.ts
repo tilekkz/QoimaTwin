@@ -10,7 +10,7 @@ const record=(v:unknown):v is V3Record=>typeof v==='object'&&v!==null&&!Array.is
 function freeze<T>(v:T):T{if(v&&typeof v==='object'){for(const item of Object.values(v))freeze(item);Object.freeze(v);}return v;}
 export async function validateRoutePolicy(text:string,bundle:WarehouseBundle):Promise<RoutePolicy>{
  const digest=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)))].map(x=>x.toString(16).padStart(2,'0')).join('');
- if(digest!=='24ad87f197d14b1c681814b43b2c8841ca145c6b92515af744f3cb4473d35337')throw Error('POLICY_HASH_MISMATCH');
+ if(digest!=='5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41')throw Error('POLICY_HASH_MISMATCH');
  const p=JSON.parse(text) as RoutePolicy;if(p.schema_id!=='qoima.visual-route-policy.v3'||p.source_kind!=='visual_fixture'||p.engine_operation!==false||p.operational_admission!==false||p.layout_content_hash!==bundle.layout.layout_content_hash||p.layout_sha256!==bundle.fixture.layout_ref.sha256)throw Error('POLICY_LAYOUT_MISMATCH');
  const admitted=freeze(p);admittedPolicies.add(admitted);return admitted;
 }

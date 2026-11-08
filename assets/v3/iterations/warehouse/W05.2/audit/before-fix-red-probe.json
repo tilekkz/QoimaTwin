@@ -1,0 +1,880 @@
+{
+  "public_bootstrap_failure": {
+    "reason": "SOURCE_HASH_MISMATCH",
+    "message": "Источник изменился после проверки: frontend/public/data/v3/receiver-v3.json"
+  },
+  "setup": "WHITE_BOX_ISSUED_FIXTURE: only an audit-copy helper seeds the catalogue private map; exact current walk/gait/router and authentic bundle/GLB remain unmodified. This does not validate public bootstrap or authority.",
+  "baseline": {
+    "actor": "P02",
+    "duration_s": 8.883142132498692,
+    "route": {
+      "ok": true,
+      "reason": "ROUTE_OK",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false,
+      "cost_evaluated": true,
+      "graph": "walk",
+      "from_node_id": "v3:module:SMALL_W:005:B1:worker:node",
+      "to_node_id": "v3:module:SMALL_W:005:B1:cart:node",
+      "arc_ids": [
+        "v3:module:SMALL_W:005:B1:worker:segment:002:r"
+      ],
+      "length_m": 1.1400000000000006,
+      "mode": "pedestrian",
+      "actor_id": "P02",
+      "vehicle_id": null,
+      "cargo_archetype_id": null,
+      "geometry_basis": "canonical_walk",
+      "resource_admission_required": true,
+      "actual_action_admission_required": true
+    },
+    "counts": {
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false,
+      "warehouse_scene_joined": false,
+      "physical_workflow_joined": false,
+      "completed_jobs": 0,
+      "disposed": false,
+      "worker_ids": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11",
+        "P12",
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K05",
+        "K06",
+        "R01",
+        "R02",
+        "S01",
+        "S02",
+        "F01",
+        "F02"
+      ],
+      "nonseated_workers": 22,
+      "seated_driver_ids": [
+        "F01",
+        "F02"
+      ],
+      "active_walkers": 0,
+      "source_geometry_assets": [
+        "worker-base",
+        "worker-manual"
+      ]
+    }
+  },
+  "tests": [
+    {
+      "case": "absolute_seek_and_zero_restore",
+      "passed": true
+    },
+    {
+      "case": "forged_plan",
+      "accepted": false,
+      "reason": "UNISSUED_PLAN"
+    },
+    {
+      "case": "nonfinite_time_NaN",
+      "accepted": false,
+      "reason": "INVALID_TIME"
+    },
+    {
+      "case": "nonfinite_time_Infinity",
+      "accepted": false,
+      "reason": "INVALID_TIME"
+    },
+    {
+      "case": "nonfinite_time_-Infinity",
+      "accepted": false,
+      "reason": "INVALID_TIME"
+    },
+    {
+      "case": "accessor_identity_seated_driver_bypass",
+      "expected": "SEATED_DRIVER or INVALID_REQUEST",
+      "ordinary_query_reason": "SEATED_DRIVER",
+      "accessor_query_ok": true,
+      "accessor_query_reason": "WALK_COMPILED",
+      "plan_actor_id": "F01",
+      "route_actor_id": "F01",
+      "apply_accepted": true,
+      "identity_reads": 29,
+      "setup_note": "F01 is a real registered instance placed at source rest without any admitted dismount; ordinary query still refuses it."
+    },
+    {
+      "case": "accessor_identity_C01_refusal_bypass",
+      "expected": "FIXED_EQUIPMENT_STATE_REQUIRED or INVALID_REQUEST",
+      "ordinary_query_reason": "FIXED_EQUIPMENT_STATE_REQUIRED",
+      "accessor_query_ok": true,
+      "accessor_query_reason": "WALK_COMPILED",
+      "plan_actor_id": "P01",
+      "route_actor_id": "P01",
+      "apply_accepted": true,
+      "identity_reads": 7,
+      "setup_note": "The isolated private catalogue fixture declares carts=1; cart registration itself is not validated by this fixture."
+    },
+    {
+      "case": "ancestor_translation_before_terminal_release",
+      "expected": "ACTOR_STATE_CHANGED",
+      "accepted": true,
+      "before_world": [
+        16,
+        0,
+        42.62
+      ],
+      "after_world": [
+        26,
+        0,
+        42.62
+      ],
+      "released": true,
+      "reported_stage": "route_end",
+      "reported_plan_root": [
+        16,
+        0,
+        42.62
+      ]
+    },
+    {
+      "case": "ancestor_translation_before_apply",
+      "expected": "ACTOR_STATE_CHANGED",
+      "accepted": true,
+      "world": [
+        17.11,
+        -0.0017241743541516748,
+        42.62
+      ]
+    },
+    {
+      "case": "manual_native_mesh_matrix_edit",
+      "expected": "ACTOR_GEOMETRY_CHANGED",
+      "mesh": "worker-base__batch_06",
+      "compile_ok": true,
+      "compile_reason": "WALK_COMPILED",
+      "apply_accepted": true,
+      "declared_position": [
+        0,
+        0.4300000071525574,
+        0
+      ],
+      "actual_matrix_translation": [
+        2,
+        0.4300000071525574,
+        0
+      ]
+    },
+    {
+      "case": "manual_torso_joint_matrix_edit",
+      "expected": "ACTOR_GEOMETRY_CHANGED",
+      "compile_ok": true,
+      "apply_accepted": true,
+      "declared_position": [
+        0,
+        0.05500000715255737,
+        0
+      ],
+      "actual_matrix_translation": [
+        1,
+        0.05500000715255737,
+        0
+      ]
+    }
+  ],
+  "native_controls": {
+    "method": "Exact checker helper extraction plus independent native topology inspection; bounded controls only, not full body rerun.",
+    "source_baseline_pairs": [
+      {
+        "parts": [
+          "worker-manual__batch_11",
+          "worker-manual__batch_06"
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__torso"
+        ],
+        "point_world_m": [
+          14.873973263276891,
+          0.9037156419402577,
+          44.180849077671084
+        ],
+        "solid_angles_rad": [
+          12.566370614359164,
+          12.56637061435919
+        ],
+        "native_surface_depths_m": [
+          0.0002499999999928738,
+          0.0008490806513137272
+        ],
+        "source_triangle": 25
+      },
+      {
+        "parts": [
+          "worker-manual__batch_11",
+          "worker-manual__batch_26"
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__torso"
+        ],
+        "point_world_m": [
+          14.868227605620378,
+          0.8309373101274318,
+          44.17007935261715
+        ],
+        "solid_angles_rad": [
+          12.566370614359172,
+          12.566370614359174
+        ],
+        "native_surface_depths_m": [
+          0.0002499999999971277,
+          0.00007934606063741967
+        ],
+        "source_triangle": 42
+      },
+      {
+        "parts": [
+          "worker-manual__batch_17",
+          "worker-manual__batch_06"
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__torso"
+        ],
+        "point_world_m": [
+          14.826122159146932,
+          0.9074933606022895,
+          44.57915092227819
+        ],
+        "solid_angles_rad": [
+          12.566370614359187,
+          12.566370614359174
+        ],
+        "native_surface_depths_m": [
+          0.0002499999999982203,
+          0.0008490807020464786
+        ],
+        "source_triangle": 13
+      },
+      {
+        "parts": [
+          "worker-manual__batch_17",
+          "worker-manual__batch_26"
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__torso"
+        ],
+        "point_world_m": [
+          14.820376501490419,
+          0.8347150287894637,
+          44.589920647332114
+        ],
+        "solid_angles_rad": [
+          12.566370614359172,
+          12.566370614359185
+        ],
+        "native_surface_depths_m": [
+          0.00024999999998989925,
+          0.00007934611137727643
+        ],
+        "source_triangle": 34
+      }
+    ],
+    "forced_in_limit_thigh_outside_closure": [
+      {
+        "parts": [
+          "worker-manual__batch_02",
+          "worker-manual__batch_06"
+        ],
+        "segments": [
+          "joint__thigh_L",
+          "joint__torso"
+        ],
+        "point_world_m": [
+          14.849722084503727,
+          0.6896352443622727,
+          44.206096007538676
+        ],
+        "solid_angles_rad": [
+          12.566370614359172,
+          12.56637061435917
+        ],
+        "native_surface_depths_m": [
+          0.00024999999999854083,
+          0.026096010518905643
+        ],
+        "source_triangle": 1
+      },
+      {
+        "parts": [
+          "worker-manual__batch_02",
+          "worker-manual__batch_26"
+        ],
+        "segments": [
+          "joint__thigh_L",
+          "joint__torso"
+        ],
+        "point_world_m": [
+          14.731176783399299,
+          0.6456767571738105,
+          44.30416666696469
+        ],
+        "solid_angles_rad": [
+          12.566370614359654,
+          12.566370614359172
+        ],
+        "native_surface_depths_m": [
+          0.008985992597964863,
+          0.00024999999999941665
+        ],
+        "source_triangle": 12
+      }
+    ],
+    "continued_after_covered_point": {
+      "covered_points": 2,
+      "uncovered_witness": {
+        "parts": [
+          "",
+          ""
+        ],
+        "segments": [
+          "$root",
+          "$root"
+        ],
+        "point_world_m": [
+          -0.49975,
+          0.16666666666666666,
+          -0.16666666666666666
+        ],
+        "solid_angles_rad": [
+          12.566370614359172,
+          12.566370614359172
+        ],
+        "native_surface_depths_m": [
+          0.00024999999999997247,
+          0.00024999999999997247
+        ],
+        "source_triangle": 2
+      }
+    },
+    "disconnected_mesh": {
+      "components": 2,
+      "whole_winding_at_both_centres": [
+        12.566370614359178,
+        12.566370614359178
+      ]
+    },
+    "source_environment": {
+      "paint_count": 61,
+      "physical_enabled": [
+        {
+          "name": "environment-markings-fixture__batch_00",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_00",
+            "shell_component_class": "column",
+            "display_only": false,
+            "source_parts_json": "[\"COLUMN__00__cap\", \"COLUMN__00__foot\", \"COLUMN__01__cap\", \"COLUMN__01__foot\", \"COLUMN__02__cap\", \"COLUMN__02__foot\", \"COLUMN__03__cap\", \"COLUMN__03__foot\", \"COLUMN__04__cap\", \"COLUMN__04__foot\", \"COLUMN__05__cap\", \"COLUMN__05__foot\", \"COLUMN__06__cap\", \"COLUMN__06__foot\", \"COLUMN__07__cap\", \"COLUMN__07__foot\", \"COLUMN__08__cap\", \"COLUMN__08__foot\", \"COLUMN__09__cap\", \"COLUMN__09__foot\", \"COLUMN__10__cap\", \"COLUMN__10__foot\", \"COLUMN__11__cap\", \"COLUMN__11__foot\", \"COLUMN__12__cap\", \"COLUMN__12__foot\", \"COLUMN__13__cap\", \"COLUMN__13__foot\", \"COLUMN__14__cap\", \"COLUMN__14__foot\", \"COLUMN__15__cap\", \"COLUMN__15__foot\", \"COLUMN__16__cap\", \"COLUMN__16__foot\", \"COLUMN__17__cap\", \"COLUMN__17__foot\", \"COLUMN__18__cap\", \"COLUMN__18__foot\", \"COLUMN__19__cap\", \"COLUMN__19__foot\", \"COLUMN__20__cap\", \"COLUMN__20__foot\", \"COLUMN__21__cap\", \"COLUMN__21__foot\", \"COLUMN__22__cap\", \"COLUMN__22__foot\", \"COLUMN__23__cap\", \"COLUMN__23__foot\", \"COLUMN__24__cap\", \"COLUMN__24__foot\", \"COLUMN__25__cap\", \"COLUMN__25__foot\", \"COLUMN__26__cap\", \"COLUMN__26__foot\", \"COLUMN__27__cap\", \"COLUMN__27__foot\", \"COLUMN__28__cap\", \"COLUMN__28__foot\", \"COLUMN__29__cap\", \"COLUMN__29__foot\", \"COLUMN__30__cap\", \"COLUMN__30__foot\", \"COLUMN__31__cap\", \"COLUMN__31__foot\", \"COLUMN__32__cap\", \"COLUMN__32__foot\", \"COLUMN__33__cap\", \"COLUMN__33__foot\"]",
+            "batch_parent": "ARCHITECTURE__COLUMNS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_01",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_01",
+            "shell_component_class": "column",
+            "display_only": false,
+            "source_parts_json": "[\"COLUMN__00__shaft\", \"COLUMN__01__shaft\", \"COLUMN__02__shaft\", \"COLUMN__03__shaft\", \"COLUMN__04__shaft\", \"COLUMN__05__shaft\", \"COLUMN__06__shaft\", \"COLUMN__07__shaft\", \"COLUMN__08__shaft\", \"COLUMN__09__shaft\", \"COLUMN__10__shaft\", \"COLUMN__11__shaft\", \"COLUMN__12__shaft\", \"COLUMN__13__shaft\", \"COLUMN__14__shaft\", \"COLUMN__15__shaft\", \"COLUMN__16__shaft\", \"COLUMN__17__shaft\", \"COLUMN__18__shaft\", \"COLUMN__19__shaft\", \"COLUMN__20__shaft\", \"COLUMN__21__shaft\", \"COLUMN__22__shaft\", \"COLUMN__23__shaft\", \"COLUMN__24__shaft\", \"COLUMN__25__shaft\", \"COLUMN__26__shaft\", \"COLUMN__27__shaft\", \"COLUMN__28__shaft\", \"COLUMN__29__shaft\", \"COLUMN__30__shaft\", \"COLUMN__31__shaft\", \"COLUMN__32__shaft\", \"COLUMN__33__shaft\"]",
+            "batch_parent": "ARCHITECTURE__COLUMNS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_02",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_02",
+            "shell_component_class": "opaque_window",
+            "display_only": false,
+            "source_parts_json": "[\"WINDOW__E_006__backing\", \"WINDOW__E_030__backing\", \"WINDOW__E_042__backing\", \"WINDOW__E_066__backing\", \"WINDOW__N_006__backing\", \"WINDOW__N_018__backing\", \"WINDOW__N_030__backing\", \"WINDOW__N_042__backing\", \"WINDOW__N_054__backing\", \"WINDOW__N_066__backing\", \"WINDOW__N_078__backing\", \"WINDOW__N_090__backing\", \"WINDOW__N_102__backing\", \"WINDOW__N_114__backing\", \"WINDOW__N_126__backing\", \"WINDOW__N_138__backing\", \"WINDOW__S_006__backing\", \"WINDOW__S_018__backing\", \"WINDOW__S_030__backing\", \"WINDOW__S_042__backing\", \"WINDOW__S_054__backing\", \"WINDOW__S_066__backing\", \"WINDOW__S_078__backing\", \"WINDOW__S_090__backing\", \"WINDOW__S_102__backing\", \"WINDOW__S_114__backing\", \"WINDOW__S_126__backing\", \"WINDOW__S_138__backing\", \"WINDOW__W_006__backing\", \"WINDOW__W_018__backing\", \"WINDOW__W_030__backing\", \"WINDOW__W_042__backing\", \"WINDOW__W_054__backing\", \"WINDOW__W_066__backing\"]",
+            "batch_parent": "ARCHITECTURE__OPAQUE_WINDOWS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_03",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_03",
+            "shell_component_class": "opaque_window",
+            "display_only": false,
+            "source_parts_json": "[\"WINDOW__E_006__pane0\", \"WINDOW__E_006__pane1\", \"WINDOW__E_006__pane2\", \"WINDOW__E_030__pane0\", \"WINDOW__E_030__pane1\", \"WINDOW__E_030__pane2\", \"WINDOW__E_042__pane0\", \"WINDOW__E_042__pane1\", \"WINDOW__E_042__pane2\", \"WINDOW__E_066__pane0\", \"WINDOW__E_066__pane1\", \"WINDOW__E_066__pane2\", \"WINDOW__N_006__pane0\", \"WINDOW__N_006__pane1\", \"WINDOW__N_006__pane2\", \"WINDOW__N_018__pane0\", \"WINDOW__N_018__pane1\", \"WINDOW__N_018__pane2\", \"WINDOW__N_030__pane0\", \"WINDOW__N_030__pane1\", \"WINDOW__N_030__pane2\", \"WINDOW__N_042__pane0\", \"WINDOW__N_042__pane1\", \"WINDOW__N_042__pane2\", \"WINDOW__N_054__pane0\", \"WINDOW__N_054__pane1\", \"WINDOW__N_054__pane2\", \"WINDOW__N_066__pane0\", \"WINDOW__N_066__pane1\", \"WINDOW__N_066__pane2\", \"WINDOW__N_078__pane0\", \"WINDOW__N_078__pane1\", \"WINDOW__N_078__pane2\", \"WINDOW__N_090__pane0\", \"WINDOW__N_090__pane1\", \"WINDOW__N_090__pane2\", \"WINDOW__N_102__pane0\", \"WINDOW__N_102__pane1\", \"WINDOW__N_102__pane2\", \"WINDOW__N_114__pane0\", \"WINDOW__N_114__pane1\", \"WINDOW__N_114__pane2\", \"WINDOW__N_126__pane0\", \"WINDOW__N_126__pane1\", \"WINDOW__N_126__pane2\", \"WINDOW__N_138__pane0\", \"WINDOW__N_138__pane1\", \"WINDOW__N_138__pane2\", \"WINDOW__S_006__pane0\", \"WINDOW__S_006__pane1\", \"WINDOW__S_006__pane2\", \"WINDOW__S_018__pane0\", \"WINDOW__S_018__pane1\", \"WINDOW__S_018__pane2\", \"WINDOW__S_030__pane0\", \"WINDOW__S_030__pane1\", \"WINDOW__S_030__pane2\", \"WINDOW__S_042__pane0\", \"WINDOW__S_042__pane1\", \"WINDOW__S_042__pane2\", \"WINDOW__S_054__pane0\", \"WINDOW__S_054__pane1\", \"WINDOW__S_054__pane2\", \"WINDOW__S_066__pane0\", \"WINDOW__S_066__pane1\", \"WINDOW__S_066__pane2\", \"WINDOW__S_078__pane0\", \"WINDOW__S_078__pane1\", \"WINDOW__S_078__pane2\", \"WINDOW__S_090__pane0\", \"WINDOW__S_090__pane1\", \"WINDOW__S_090__pane2\", \"WINDOW__S_102__pane0\", \"WINDOW__S_102__pane1\", \"WINDOW__S_102__pane2\", \"WINDOW__S_114__pane0\", \"WINDOW__S_114__pane1\", \"WINDOW__S_114__pane2\", \"WINDOW__S_126__pane0\", \"WINDOW__S_126__pane1\", \"WINDOW__S_126__pane2\", \"WINDOW__S_138__pane0\", \"WINDOW__S_138__pane1\", \"WINDOW__S_138__pane2\", \"WINDOW__W_006__pane0\", \"WINDOW__W_006__pane1\", \"WINDOW__W_006__pane2\", \"WINDOW__W_018__pane0\", \"WINDOW__W_018__pane1\", \"WINDOW__W_018__pane2\", \"WINDOW__W_030__pane0\", \"WINDOW__W_030__pane1\", \"WINDOW__W_030__pane2\", \"WINDOW__W_042__pane0\", \"WINDOW__W_042__pane1\", \"WINDOW__W_042__pane2\", \"WINDOW__W_054__pane0\", \"WINDOW__W_054__pane1\", \"WINDOW__W_054__pane2\", \"WINDOW__W_066__pane0\", \"WINDOW__W_066__pane1\", \"WINDOW__W_066__pane2\"]",
+            "batch_parent": "ARCHITECTURE__OPAQUE_WINDOWS"
+          }
+        },
+        {
+          "name": "WALL__E__05_mesh",
+          "metadata": {}
+        },
+        {
+          "name": "WALL__E__05_mesh_1",
+          "metadata": {}
+        },
+        {
+          "name": "WALL__E__05_mesh_2",
+          "metadata": {}
+        },
+        {
+          "name": "environment-markings-fixture__batch_05",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_05",
+            "shell_component_class": "display_plinth",
+            "display_only": true,
+            "source_parts_json": "[\"DISPLAY_ONLY__plinth\"]",
+            "batch_parent": "FLOOR_SUPPORTS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_06",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_06",
+            "shell_component_class": "floor_support",
+            "display_only": false,
+            "source_parts_json": "[\"FLOOR__operational_support\"]",
+            "batch_parent": "FLOOR_SUPPORTS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_07",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_07",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_E_PARCEL__bumper_L_inside\", \"IN_E_PARCEL__bumper_L_outside\", \"IN_E_PARCEL__bumper_R_inside\", \"IN_E_PARCEL__bumper_R_outside\"]",
+            "batch_parent": "GATE__IN_E_PARCEL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_08",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_08",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_E_PARCEL__foot_L\", \"IN_E_PARCEL__foot_R\", \"IN_E_PARCEL__header_cover_inside\", \"IN_E_PARCEL__header_cover_outside\"]",
+            "batch_parent": "GATE__IN_E_PARCEL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_09",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_09",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_E_PARCEL__safety_L_inside0\", \"IN_E_PARCEL__safety_L_inside1\", \"IN_E_PARCEL__safety_L_outside0\", \"IN_E_PARCEL__safety_L_outside1\", \"IN_E_PARCEL__safety_R_inside0\", \"IN_E_PARCEL__safety_R_inside1\", \"IN_E_PARCEL__safety_R_outside0\", \"IN_E_PARCEL__safety_R_outside1\"]",
+            "batch_parent": "GATE__IN_E_PARCEL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_10",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_10",
+            "part_id": "IN_E_PARCEL__structural_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_E_PARCEL__structural_U\"]",
+            "batch_parent": "GATE__IN_E_PARCEL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_11",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_11",
+            "part_id": "IN_E_PARCEL__tan_reveal_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_E_PARCEL__tan_reveal_U\"]",
+            "batch_parent": "GATE__IN_E_PARCEL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_12",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_12",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_N_STANDARD__bumper_L_inside\", \"IN_N_STANDARD__bumper_L_outside\", \"IN_N_STANDARD__bumper_R_inside\", \"IN_N_STANDARD__bumper_R_outside\"]",
+            "batch_parent": "GATE__IN_N_STANDARD"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_13",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_13",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_N_STANDARD__foot_L\", \"IN_N_STANDARD__foot_R\", \"IN_N_STANDARD__header_cover_inside\", \"IN_N_STANDARD__header_cover_outside\"]",
+            "batch_parent": "GATE__IN_N_STANDARD"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_14",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_14",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_N_STANDARD__safety_L_inside0\", \"IN_N_STANDARD__safety_L_inside1\", \"IN_N_STANDARD__safety_L_outside0\", \"IN_N_STANDARD__safety_L_outside1\", \"IN_N_STANDARD__safety_R_inside0\", \"IN_N_STANDARD__safety_R_inside1\", \"IN_N_STANDARD__safety_R_outside0\", \"IN_N_STANDARD__safety_R_outside1\"]",
+            "batch_parent": "GATE__IN_N_STANDARD"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_15",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_15",
+            "part_id": "IN_N_STANDARD__structural_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_N_STANDARD__structural_U\"]",
+            "batch_parent": "GATE__IN_N_STANDARD"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_16",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_16",
+            "part_id": "IN_N_STANDARD__tan_reveal_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_N_STANDARD__tan_reveal_U\"]",
+            "batch_parent": "GATE__IN_N_STANDARD"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_17",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_17",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_W_BULK__bumper_L_inside\", \"IN_W_BULK__bumper_L_outside\", \"IN_W_BULK__bumper_R_inside\", \"IN_W_BULK__bumper_R_outside\"]",
+            "batch_parent": "GATE__IN_W_BULK"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_18",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_18",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_W_BULK__foot_L\", \"IN_W_BULK__foot_R\", \"IN_W_BULK__header_cover_inside\", \"IN_W_BULK__header_cover_outside\"]",
+            "batch_parent": "GATE__IN_W_BULK"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_19",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_19",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_W_BULK__safety_L_inside0\", \"IN_W_BULK__safety_L_inside1\", \"IN_W_BULK__safety_L_outside0\", \"IN_W_BULK__safety_L_outside1\", \"IN_W_BULK__safety_R_inside0\", \"IN_W_BULK__safety_R_inside1\", \"IN_W_BULK__safety_R_outside0\", \"IN_W_BULK__safety_R_outside1\"]",
+            "batch_parent": "GATE__IN_W_BULK"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_20",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_20",
+            "part_id": "IN_W_BULK__structural_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_W_BULK__structural_U\"]",
+            "batch_parent": "GATE__IN_W_BULK"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_21",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_21",
+            "part_id": "IN_W_BULK__tan_reveal_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"IN_W_BULK__tan_reveal_U\"]",
+            "batch_parent": "GATE__IN_W_BULK"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_22",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_22",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_E_B2B__bumper_L_inside\", \"OUT_E_B2B__bumper_L_outside\", \"OUT_E_B2B__bumper_R_inside\", \"OUT_E_B2B__bumper_R_outside\"]",
+            "batch_parent": "GATE__OUT_E_B2B"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_23",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_23",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_E_B2B__foot_L\", \"OUT_E_B2B__foot_R\", \"OUT_E_B2B__header_cover_inside\", \"OUT_E_B2B__header_cover_outside\"]",
+            "batch_parent": "GATE__OUT_E_B2B"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_24",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_24",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_E_B2B__safety_L_inside0\", \"OUT_E_B2B__safety_L_inside1\", \"OUT_E_B2B__safety_L_outside0\", \"OUT_E_B2B__safety_L_outside1\", \"OUT_E_B2B__safety_R_inside0\", \"OUT_E_B2B__safety_R_inside1\", \"OUT_E_B2B__safety_R_outside0\", \"OUT_E_B2B__safety_R_outside1\"]",
+            "batch_parent": "GATE__OUT_E_B2B"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_25",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_25",
+            "part_id": "OUT_E_B2B__structural_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_E_B2B__structural_U\"]",
+            "batch_parent": "GATE__OUT_E_B2B"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_26",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_26",
+            "part_id": "OUT_E_B2B__tan_reveal_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_E_B2B__tan_reveal_U\"]",
+            "batch_parent": "GATE__OUT_E_B2B"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_27",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_27",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_S_EXPRESS__bumper_L_inside\", \"OUT_S_EXPRESS__bumper_L_outside\", \"OUT_S_EXPRESS__bumper_R_inside\", \"OUT_S_EXPRESS__bumper_R_outside\"]",
+            "batch_parent": "GATE__OUT_S_EXPRESS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_28",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_28",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_S_EXPRESS__foot_L\", \"OUT_S_EXPRESS__foot_R\", \"OUT_S_EXPRESS__header_cover_inside\", \"OUT_S_EXPRESS__header_cover_outside\"]",
+            "batch_parent": "GATE__OUT_S_EXPRESS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_29",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_29",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_S_EXPRESS__safety_L_inside0\", \"OUT_S_EXPRESS__safety_L_inside1\", \"OUT_S_EXPRESS__safety_L_outside0\", \"OUT_S_EXPRESS__safety_L_outside1\", \"OUT_S_EXPRESS__safety_R_inside0\", \"OUT_S_EXPRESS__safety_R_inside1\", \"OUT_S_EXPRESS__safety_R_outside0\", \"OUT_S_EXPRESS__safety_R_outside1\"]",
+            "batch_parent": "GATE__OUT_S_EXPRESS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_30",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_30",
+            "part_id": "OUT_S_EXPRESS__structural_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_S_EXPRESS__structural_U\"]",
+            "batch_parent": "GATE__OUT_S_EXPRESS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_31",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_31",
+            "part_id": "OUT_S_EXPRESS__tan_reveal_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_S_EXPRESS__tan_reveal_U\"]",
+            "batch_parent": "GATE__OUT_S_EXPRESS"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_32",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_32",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_W_RETAIL__bumper_L_inside\", \"OUT_W_RETAIL__bumper_L_outside\", \"OUT_W_RETAIL__bumper_R_inside\", \"OUT_W_RETAIL__bumper_R_outside\"]",
+            "batch_parent": "GATE__OUT_W_RETAIL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_33",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_33",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_W_RETAIL__foot_L\", \"OUT_W_RETAIL__foot_R\", \"OUT_W_RETAIL__header_cover_inside\", \"OUT_W_RETAIL__header_cover_outside\"]",
+            "batch_parent": "GATE__OUT_W_RETAIL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_34",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_34",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_W_RETAIL__safety_L_inside0\", \"OUT_W_RETAIL__safety_L_inside1\", \"OUT_W_RETAIL__safety_L_outside0\", \"OUT_W_RETAIL__safety_L_outside1\", \"OUT_W_RETAIL__safety_R_inside0\", \"OUT_W_RETAIL__safety_R_inside1\", \"OUT_W_RETAIL__safety_R_outside0\", \"OUT_W_RETAIL__safety_R_outside1\"]",
+            "batch_parent": "GATE__OUT_W_RETAIL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_35",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_35",
+            "part_id": "OUT_W_RETAIL__structural_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_W_RETAIL__structural_U\"]",
+            "batch_parent": "GATE__OUT_W_RETAIL"
+          }
+        },
+        {
+          "name": "environment-markings-fixture__batch_36",
+          "metadata": {
+            "name": "environment-markings-fixture__batch_36",
+            "part_id": "OUT_W_RETAIL__tan_reveal_U",
+            "shell_component_class": "gate_frame",
+            "display_only": false,
+            "source_parts_json": "[\"OUT_W_RETAIL__tan_reveal_U\"]",
+            "batch_parent": "GATE__OUT_W_RETAIL"
+          }
+        }
+      ]
+    },
+    "native_topology": [
+      {
+        "asset": "worker-base",
+        "meshes": 23,
+        "open_meshes": []
+      },
+      {
+        "asset": "worker-manual",
+        "meshes": 29,
+        "open_meshes": []
+      }
+    ]
+  },
+  "evidence_summary": {
+    "passed": true,
+    "native_frames": 14646,
+    "body_sample_times": 3678,
+    "actors": 22,
+    "annotation_meshes": 61,
+    "baseline_pair_counts": [
+      {
+        "actor": "P01",
+        "pairs": 4
+      },
+      {
+        "actor": "P02",
+        "pairs": 4
+      },
+      {
+        "actor": "P03",
+        "pairs": 4
+      },
+      {
+        "actor": "P04",
+        "pairs": 4
+      },
+      {
+        "actor": "P05",
+        "pairs": 4
+      },
+      {
+        "actor": "P06",
+        "pairs": 4
+      },
+      {
+        "actor": "P07",
+        "pairs": 4
+      },
+      {
+        "actor": "P08",
+        "pairs": 4
+      },
+      {
+        "actor": "P09",
+        "pairs": 4
+      },
+      {
+        "actor": "P10",
+        "pairs": 4
+      },
+      {
+        "actor": "P11",
+        "pairs": 4
+      },
+      {
+        "actor": "P12",
+        "pairs": 4
+      },
+      {
+        "actor": "K01",
+        "pairs": 4
+      },
+      {
+        "actor": "K02",
+        "pairs": 4
+      },
+      {
+        "actor": "K03",
+        "pairs": 4
+      },
+      {
+        "actor": "K04",
+        "pairs": 4
+      },
+      {
+        "actor": "K05",
+        "pairs": 4
+      },
+      {
+        "actor": "K06",
+        "pairs": 4
+      },
+      {
+        "actor": "R01",
+        "pairs": 4
+      },
+      {
+        "actor": "R02",
+        "pairs": 4
+      },
+      {
+        "actor": "S01",
+        "pairs": 4
+      },
+      {
+        "actor": "S02",
+        "pairs": 4
+      }
+    ],
+    "closure": "Only source-named trouser_thigh_L/R and torso shirt_core/connected_shoulder_band with common DIRECT native pelvis parent. Every covered positive point must be >2um inside unchanged closed native pelvis_cloth; continue all probes and reject any uncovered point. No whole-pair exemption."
+  },
+  "source_changes_during_probe": [],
+  "input_hash_count": 73
+}

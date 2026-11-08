@@ -219,9 +219,14 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W10.2](tasks/W10.2.md) | TODO | root | W10.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
 | [W11.1](tasks/W11.1.md) | PASS | account2 | W02,C07,M08,M09 | Frozen heavy-inbound input pair and independent admission/source checks |
 | [W05.1](tasks/W05.1.md) | PASS | action_timeline | W03,W04,P10,P11 | Source-bound absolute action timeline and exclusive resource intervals |
-| [W05.2](tasks/W05.2.md) | ACTIVE | action_walking | W05.1 | Grounded canonical worker walking and action-frame bindings |
-| [W05.3](tasks/W05.3.md) | TODO | unassigned | W05.2 | Light cargo pick/pack joins with complete units and support |
-| [W05.4](tasks/W05.4.md) | TODO | unassigned | W05.1 | Loaded forklift physical joins and route/resource admission |
-| [W05.4.1](tasks/W05.4.1.md) | ACTIVE | account2 | W05.1,W03,W04,M14.8,P07 | Source-bound single-pallet transfer plan and absolute phases |
+| [W05.2](tasks/W05.2.md) | PASS | action_walking | W05.1 | Grounded canonical worker walking and action-frame bindings |
+| [W05.3](tasks/W05.3.md) | READY | unassigned | W05.2 | Light cargo pick/pack joins with complete units and support |
+| [W05.4](tasks/W05.4.md) | VERIFY | root_pallet_review | W05.1 | Loaded forklift physical joins and route/resource admission |
+| [W05.4.3](tasks/W05.4.3.md) | PASS | transfer_applicator | W05.4.1,W04,P07 | Same-instance native pallet transfer applicator |
+| [W05.4.2](tasks/W05.4.2.md) | PASS | account2 | W05.4.1,W04,P07 | Native same-pallet transfer geometry gate |
+| [W05.4.1](tasks/W05.4.1.md) | PASS | pallet_plan_fix | W05.1,W03,W04,M14.8,P07 | Source-bound single-pallet transfer plan and absolute phases |
 | [W05.5](tasks/W05.5.md) | TODO | unassigned | W05.3,W05.4 | Unified scene clock integration for walk pick pack load |
 | [W05.5.1](tasks/W05.5.1.md) | PASS | root | W05.1,W04 | Browser-deployable verified action source reader |
+| [P05.4](tasks/P05.4.md) | PASS | receiver_elbow | P05.3 | Natural receiver elbow branch and complete trajectory |
+| [P06.4](tasks/P06.4.md) | PASS | shipper_elbow | P06.3 | Natural shipper elbow branch and complete trajectory |
+| [W05.4.4](tasks/W05.4.4.md) | PASS | root | W05.4.1,W05.5.1 | Reversible same-pallet demonstration in actual warehouse scene |

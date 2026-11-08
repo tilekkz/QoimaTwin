@@ -34,7 +34,7 @@ export function decodeWarehouseLayout(value:unknown):WarehouseLayout{
 }
 export const WAREHOUSE_BASE_FILES={fixture:'/data/v3/warehouse-fixture-v3.json',layout:'/data/adaptive-v3/layout-manifest.json',registry:'/data/v3/worker-registry-v3.json',profiles:'/data/v3/worker-profiles-v3.json'} as const;
 // Explicit registered visual input; additional W scenarios require their own admitted registration.
-const acceptedBase={id:'v3:fixture:warehouse-base:001',sha256:'52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91'};
+const acceptedBase={id:'v3:fixture:warehouse-base:001',sha256:'81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579'};
 export type WarehouseTexts={fixture:string;layout:string;registry:string;profiles:string};
 const sha256=async(text:string)=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)))].map(n=>n.toString(16).padStart(2,'0')).join('');
 function parse(text:string):V3Record{try{const data:unknown=JSON.parse(text);if(record(data))return data;}catch{/* Typed rejection below. */}return fail('INVALID_JSON','Файл V3 не содержит корректный JSON-объект.');}

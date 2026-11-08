@@ -7,10 +7,10 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[3]
 MANIFEST = 'frontend/src/adaptive-v3/warehouseActionSourceManifest.json'
 BASE = {
-    'frontend/public/data/v3/warehouse-fixture-v3.json': '52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91',
+    'frontend/public/data/v3/warehouse-fixture-v3.json': '81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579',
     'frontend/public/data/adaptive-v3/layout-manifest.json': 'eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db',
-    'frontend/public/data/v3/worker-registry-v3.json': 'fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30',
-    'frontend/public/data/v3/worker-profiles-v3.json': 'c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0',
+    'frontend/public/data/v3/worker-registry-v3.json': 'b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82',
+    'frontend/public/data/v3/worker-profiles-v3.json': 'f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5',
 }
 SUPPORT = 'frontend/src/adaptive-v3/warehouseSupportBindings.json'
 NONPUBLIC = {
