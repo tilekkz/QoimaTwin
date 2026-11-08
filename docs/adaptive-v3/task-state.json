@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T07:46:45.811231+00:00",
+  "updated_at": "2026-11-08T08:09:24.398002+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1459,11 +1459,16 @@
         "L07"
       ],
       "criteria": "Маршруты состоят из допустимых рёбер; forklift не проезжает racks и неподходящие ворота",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W03.md",
         "docs/adaptive-v3/evidence/W03.json"
+      ],
+      "children": [
+        "W03.1",
+        "W03.2",
+        "W03.3"
       ]
     },
     {
@@ -3692,6 +3697,41 @@
         "W02.1"
       ],
       "actual": "Actualinitialwarehousevieweraccepted:20source-boundGLBs/onepose,132modules/530HUs/24workers/2seateddrivers.20browserchecks/20reviewedcurrentimages;6views/HUoutline/cards/keyboard/mobile/offline/errors/timeout/latest/back/realcontextloss/disposepass. Chrome10404terminated18.602s. P10/P11regressions/build/C12/actionfreshnesspass. Fullworkflow/composition/performance stillW03+/Q."
+    },
+    {
+      "id": "W03.1",
+      "title": "Filtered canonical graph router and source-bound C08 policy",
+      "parent": "W03",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "W02",
+        "L06",
+        "L07"
+      ],
+      "actual": "Canonicalfilteredrouteraccepted:60human/cartportpaths,17/36C08familyportcases,1316explicitbarecomponentsubsetarcproofs;78positivechains/shortestdistances independentlymatchoriginalL12graph.31invalid/disconnected/override/nodemodecasesrejectbeforecost. Typecheck/sourcebytespass; noaction/resource/stockadmission. NextW03.2analyticposes."
+    },
+    {
+      "id": "W03.2",
+      "title": "Exact analytic vehicle and canonical pedestrian route sampling",
+      "parent": "W03",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "W03.1"
+      ],
+      "actual": "Exactanalyticposesaccepted:1316vehiclearcs/109364densecurvepositions/15792worldwheelchecks/12000humanedgesamples/38010clockframes. Maxendpoint4.44e-15m,yawstep.005544rad/10ms,steerstep.006300.300reorderedseeksexact. Stop/steer/reverse/wheel/nojobcompletionguards andtypecheckpass. NextW03.3actualscenejoin/review."
+    },
+    {
+      "id": "W03.3",
+      "title": "Connected muted route preview and reviewed scene admission states",
+      "parent": "W03",
+      "owner": "root",
+      "status": "ACTIVE",
+      "depends_on": [
+        "W03.2"
+      ],
+      "actual": "Connectoptionalpausedroutepreview toexistingtwoemptyforklifts/same seateddrivers, nohumangait orloadedcargo yet. LazySHA-boundpolicy,manualseek/play/reset/explicitfollow/routeerrorretry/lifecycle. Actualturn/reverse/bounds/seatgrip/stockconservation/UIevidence, refreshaffectedW02sourceproofs thenW03parent/push."
     }
   ],
   "execution": {
