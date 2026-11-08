@@ -85,13 +85,13 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W01](tasks/W01.md) | PASS | root | C12,P10 | Подготовлен детерминированный visual fixture v3 |
 | [W02](tasks/W02.md) | PASS | root | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | PASS | root | W02,L06,L07 | Подключены движения по реальному графу |
-| [W04](tasks/W04.md) | READY | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
+| [W04](tasks/W04.md) | TODO | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
 | [W06](tasks/W06.md) | TODO | unassigned | W05 | Реализовано восстановление pause/reset/seek |
 | [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
 | [W08](tasks/W08.md) | TODO | unassigned | W05 | Подключены управляемые SFX |
-| [W09](tasks/W09.md) | READY | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
-| [W10](tasks/W10.md) | READY | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
+| [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
+| [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
 | [W11](tasks/W11.md) | READY | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
 | [W12](tasks/W12.md) | READY | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
 | [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
@@ -209,3 +209,10 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W03.1](tasks/W03.1.md) | PASS | root | W02,L06,L07 | Filtered canonical graph router and source-bound C08 policy |
 | [W03.2](tasks/W03.2.md) | PASS | root | W03.1 | Exact analytic vehicle and canonical pedestrian route sampling |
 | [W03.3](tasks/W03.3.md) | PASS | root | W03.2 | Connected muted route preview and reviewed scene admission states |
+| [W04.1](tasks/W04.1.md) | PASS | root | W02,C06,C07,C08 | Single-parent cargo state and immutable placement admission |
+| [W04.2](tasks/W04.2.md) | PASS | root | W04.1 | Actual shared cargo instances and physical storage placement |
+| [W04.3](tasks/W04.3.md) | ACTIVE | root | W04.2,W03,P10,P11,M14,P03 | Connected actor vehicle cart and belt support anchors |
+| [W09.1](tasks/W09.1.md) | PASS | scenario_inputs | W02,C10,C11 | Frozen preregistered scenario input and paired source identity |
+| [W09.2](tasks/W09.2.md) | TODO | root | W09.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
+| [W10.1](tasks/W10.1.md) | PASS | scenario_inputs | W02,L03,L04,C11 | Frozen preregistered scenario input and paired source identity |
+| [W10.2](tasks/W10.2.md) | TODO | root | W10.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |

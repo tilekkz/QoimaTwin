@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T08:43:26.538670+00:00",
+  "updated_at": "2026-11-08T09:18:45.957215+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1486,11 +1486,16 @@
         "M12"
       ],
       "criteria": "Slot/actor/vehicle/belt связаны с одним cargo; размеры и ориентации сохранены",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W04.md",
         "docs/adaptive-v3/evidence/W04.json"
+      ],
+      "children": [
+        "W04.1",
+        "W04.2",
+        "W04.3"
       ]
     },
     {
@@ -1560,11 +1565,15 @@
         "C11"
       ],
       "criteria": "При отсутствии обоснованного улучшения адаптация сохраняет размещение; эффект не рисуется искусственно",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W09.md",
         "docs/adaptive-v3/evidence/W09.json"
+      ],
+      "children": [
+        "W09.1",
+        "W09.2"
       ]
     },
     {
@@ -1577,11 +1586,15 @@
         "C11"
       ],
       "criteria": "Изменённый mix заранее материализован; внутри пары baseline/adapt orders/receipts одинаковы",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W10.md",
         "docs/adaptive-v3/evidence/W10.json"
+      ],
+      "children": [
+        "W10.1",
+        "W10.2"
       ]
     },
     {
@@ -3733,6 +3746,133 @@
         "W03.2"
       ],
       "actual": "25actual route checks/17reviewed current images/132native mesh poses; two empty original forklifts and same drivers,505920fixed-obstacle pairs with.25m padding and.05m remaining gap. W02full20state regression refreshed. Actual WebGLloss/recovery,policyerrors/retry/races/seek/reset/dispose pass. Cargo/humanjobs remainW04/W05."
+    },
+    {
+      "id": "W04.1",
+      "title": "Single-parent cargo state and immutable placement admission",
+      "parent": "W04",
+      "depends_on": [
+        "W02",
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "criteria": "Source-bound530HU records, one holder each; atomic rejection of duplicate/unknown/incompatible/overweight/reserve/occupied placement without changes; no mutable dimensions/mass/scale or actual stock ledger.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/W04.1.md",
+        "docs/adaptive-v3/evidence/W04.1.json"
+      ],
+      "actual": "530immutable originalHUbindings;4240worldcorners,24negativecases,8allfamily freeplacements/atomic swap/absolute reset. Independent C04 Decimal/local-source proof538poses within1.4211e-14m. No dimension/mass/scale/cost override; physical carrier kinds reject pendingW04.3. W04.2native instances/storage support next."
+    },
+    {
+      "id": "W04.2",
+      "title": "Actual shared cargo instances and physical storage placement",
+      "parent": "W04",
+      "depends_on": [
+        "W04.1"
+      ],
+      "criteria": "Each accepted HU has exactly one visible physical instance per mesh part, dimensions/orientation preserved;530native placements checked against actual storage support and usable bounds; changed binding updates existing instances and picking/highlight metadata.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/W04.2.md",
+        "docs/adaptive-v3/evidence/W04.2.json"
+      ],
+      "actual": "530native HU support/bounds inspections;12browserchecks/11rootreviewed currentimages,9atomic browsernegatives/8allfamilyrebinding,14CPUcontactcalibrations. Sameinstances/UUIDs/dimensionsmass; dynamiclocalorigin correctsFloat32withoutscale/tolerancechange. Front+nativevisibilityfocusfix; W02/W03regressions current. W04.3physicalcarrierholders next."
+    },
+    {
+      "id": "W04.3",
+      "title": "Connected actor vehicle cart and belt support anchors",
+      "parent": "W04",
+      "depends_on": [
+        "W04.2",
+        "W03",
+        "P10",
+        "P11",
+        "M14",
+        "P03"
+      ],
+      "criteria": "Actual admitted holder contacts and same-HU ownership through storage/actor/vehicle/cart/belt states; source-bound support, no duplicatecargo/scale workaround. Current images and runtime error/reset/disposal/source freshness; transfers remain pose inspection untilW05physical actions/resources.",
+      "status": "ACTIVE",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/W04.3.md",
+        "docs/adaptive-v3/evidence/W04.3.json"
+      ],
+      "actual": "Own source-boundphysicalcarrier support/anchors for sameHU on actor/vehicle/cart/belt, optionalpausedposeinspector and nativecontact/reviewproof. No actualphysicaltransfers untilW05. CPUworker carrycandidate preparatoryonly. W04.1/.2accepted andregressions current; sourcegeometry/backend/contracts unchanged."
+    },
+    {
+      "id": "W09.1",
+      "title": "Frozen preregistered scenario input and paired source identity",
+      "parent": "W09",
+      "depends_on": [
+        "W02",
+        "C10",
+        "C11"
+      ],
+      "criteria": "Two variants reference identical concrete input bytes; original530HU/24workers/8upstream preserved,16explicitrequests andonlydeclaredcompatibleportchanges; independentsemantic/source negatives.",
+      "status": "PASS",
+      "owner": "scenario_inputs",
+      "outputs": [
+        "docs/adaptive-v3/specs/W09.1.md",
+        "docs/adaptive-v3/evidence/W09.1.json"
+      ],
+      "actual": "Preregisterednormal16requestvisualinputs; exactsameinputfileforbaseline/adaptive, original530HU/24workers/upstreampreserved. Independent50semantic/pairnegativesacrosstwofixtures. Inputonly: parentW09no-opdecision/runtime stillopen."
+    },
+    {
+      "id": "W09.2",
+      "title": "Connected scenario actions replay and no-op or shift acceptance",
+      "parent": "W09",
+      "depends_on": [
+        "W09.1",
+        "W05",
+        "W06"
+      ],
+      "criteria": "Run the registered scenario through the same admitted action/resource/clock implementation, inspect actual scene/replay. W09 accepts no-op whenever net improvement is unjustified; W10 preserves exact pair requests/timing and allnonplacementinputs. No fakeengine/KPIs or free relocations.",
+      "status": "TODO",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/W09.2.md",
+        "docs/adaptive-v3/evidence/W09.2.json"
+      ]
+    },
+    {
+      "id": "W10.1",
+      "title": "Frozen preregistered scenario input and paired source identity",
+      "parent": "W10",
+      "depends_on": [
+        "W02",
+        "L03",
+        "L04",
+        "C11"
+      ],
+      "criteria": "Two variants reference identical concrete input bytes; original530HU/24workers/8upstream preserved,16explicitrequests andonlydeclaredcompatibleportchanges; independentsemantic/source negatives.",
+      "status": "PASS",
+      "owner": "scenario_inputs",
+      "outputs": [
+        "docs/adaptive-v3/specs/W10.1.md",
+        "docs/adaptive-v3/evidence/W10.1.json"
+      ],
+      "actual": "Preregisteredmixshift16requestvisualinputs; only4compatibleportassignmentschangedbeforecomparison, sameallnonportfields/530HU/24workerswithinpair. Independent50semantic/pairnegatives. Inputonly: parentW10runtime/comparison stillopen."
+    },
+    {
+      "id": "W10.2",
+      "title": "Connected scenario actions replay and no-op or shift acceptance",
+      "parent": "W10",
+      "depends_on": [
+        "W10.1",
+        "W05",
+        "W06"
+      ],
+      "criteria": "Run the registered scenario through the same admitted action/resource/clock implementation, inspect actual scene/replay. W09 accepts no-op whenever net improvement is unjustified; W10 preserves exact pair requests/timing and allnonplacementinputs. No fakeengine/KPIs or free relocations.",
+      "status": "TODO",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/W10.2.md",
+        "docs/adaptive-v3/evidence/W10.2.json"
+      ]
     }
   ],
   "execution": {

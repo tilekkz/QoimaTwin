@@ -1,0 +1,5539 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "initial_HUs": 530,
+  "quantity_units": 12256,
+  "gross_mass_kg": 9403.85,
+  "maximum_initial_position_error_m": 1.4210854715202004e-14,
+  "world_corner_checks": 4240,
+  "negative_cases": [
+    {
+      "case": "missing_changes",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "unknown_HU",
+      "reason": "UNKNOWN_HU",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_HU",
+      "reason": "DUPLICATE_HU",
+      "rejected": true
+    },
+    {
+      "case": "unknown_slot",
+      "reason": "UNKNOWN_SLOT",
+      "rejected": true
+    },
+    {
+      "case": "occupied_slot",
+      "reason": "SLOT_OCCUPIED",
+      "rejected": true
+    },
+    {
+      "case": "reserved_slot",
+      "reason": "RESERVE_SLOT",
+      "rejected": true
+    },
+    {
+      "case": "forbidden_family",
+      "reason": "CARGO_CLASS_FORBIDDEN",
+      "rejected": true
+    },
+    {
+      "case": "HU_override_dimensions_xyz_m",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "HU_override_gross_mass_kg",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "HU_override_quantity_units",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "HU_override_orientation_id",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "HU_override_model_scale_factor",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "destination_override_position",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "destination_override_yaw_rad",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "destination_override_scale",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "destination_override_support_gap_m",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "unreviewed_actor",
+      "reason": "PHYSICAL_HOLDER_NOT_REGISTERED",
+      "rejected": true
+    },
+    {
+      "case": "unreviewed_vehicle",
+      "reason": "PHYSICAL_HOLDER_NOT_REGISTERED",
+      "rejected": true
+    },
+    {
+      "case": "unreviewed_cart",
+      "reason": "PHYSICAL_HOLDER_NOT_REGISTERED",
+      "rejected": true
+    },
+    {
+      "case": "unreviewed_belt",
+      "reason": "PHYSICAL_HOLDER_NOT_REGISTERED",
+      "rejected": true
+    },
+    {
+      "case": "inherited_destination_kind_constructor",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "inherited_destination_kind_hasOwnProperty",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "two_simultaneous_parents",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    },
+    {
+      "case": "invalid_request_object",
+      "reason": "INVALID_REQUEST",
+      "rejected": true
+    }
+  ],
+  "compatible_free_relocations": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+      "slot_id": "v3:slot:SMALL_W:017:L1:B1",
+      "position": [
+        26.299999999999997,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+      "slot_id": "v3:slot:STANDARD_E:016:L1:B1",
+      "position": [
+        106.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "handling_unit_id": "v3:HU:initial:DEMO_166:01",
+      "slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+      "position": [
+        118.6,
+        0.18,
+        17.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "handling_unit_id": "v3:HU:initial:DEMO_172:01",
+      "slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+      "position": [
+        118.39999999999999,
+        0.18,
+        17.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "archetype_id": "IBC",
+      "handling_unit_id": "v3:HU:initial:DEMO_177:01",
+      "slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+      "position": [
+        118.39999999999999,
+        0.18,
+        17.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "handling_unit_id": "v3:HU:initial:DEMO_180:01",
+      "slot_id": "v3:slot:LONG_W:001:L1:B1",
+      "position": [
+        38.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "archetype_id": "DRUM",
+      "handling_unit_id": "v3:HU:initial:DEMO_188:01",
+      "slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+      "position": [
+        118.55999999999999,
+        0.18,
+        17.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "handling_unit_id": "v3:HU:initial:DEMO_193:01",
+      "slot_id": "v3:slot:STANDARD_E:016:L1:B1",
+      "position": [
+        106.5,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    }
+  ],
+  "initial_placements": [
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+      "slot_id": "v3:slot:SMALL_E:019:L1:B5",
+      "position": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_001:02",
+      "slot_id": "v3:slot:SMALL_E:019:L2:B5",
+      "position": [
+        126.3,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_001:03",
+      "slot_id": "v3:slot:SMALL_E:023:L1:B1",
+      "position": [
+        129.7,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_001:04",
+      "slot_id": "v3:slot:SMALL_E:023:L2:B1",
+      "position": [
+        129.7,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_002:01",
+      "slot_id": "v3:slot:SMALL_E:010:L1:B4",
+      "position": [
+        120.3,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_002:02",
+      "slot_id": "v3:slot:SMALL_E:010:L2:B4",
+      "position": [
+        120.3,
+        1,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_002:03",
+      "slot_id": "v3:slot:SMALL_E:014:L1:B2",
+      "position": [
+        123.7,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_002:04",
+      "slot_id": "v3:slot:SMALL_E:014:L2:B2",
+      "position": [
+        123.7,
+        1,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_003:01",
+      "slot_id": "v3:slot:SMALL_E:001:L1:B3",
+      "position": [
+        114.3,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_003:02",
+      "slot_id": "v3:slot:SMALL_E:001:L2:B3",
+      "position": [
+        114.3,
+        1,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_003:03",
+      "slot_id": "v3:slot:SMALL_E:005:L1:B3",
+      "position": [
+        117.7,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_003:04",
+      "slot_id": "v3:slot:SMALL_E:005:L2:B3",
+      "position": [
+        117.7,
+        1,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_004:01",
+      "slot_id": "v3:slot:SMALL_W:011:L1:B3",
+      "position": [
+        20.299999999999997,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_004:02",
+      "slot_id": "v3:slot:SMALL_W:011:L2:B3",
+      "position": [
+        20.299999999999997,
+        1,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_004:03",
+      "slot_id": "v3:slot:SMALL_W:015:L1:B3",
+      "position": [
+        23.700000000000003,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_004:04",
+      "slot_id": "v3:slot:SMALL_W:015:L2:B3",
+      "position": [
+        23.700000000000003,
+        1,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_005:01",
+      "slot_id": "v3:slot:SMALL_E:019:L1:B4",
+      "position": [
+        126.3,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_005:02",
+      "slot_id": "v3:slot:SMALL_E:019:L2:B4",
+      "position": [
+        126.3,
+        1,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_005:03",
+      "slot_id": "v3:slot:SMALL_E:023:L1:B2",
+      "position": [
+        129.7,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_005:04",
+      "slot_id": "v3:slot:SMALL_E:023:L2:B2",
+      "position": [
+        129.7,
+        1,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_006:01",
+      "slot_id": "v3:slot:SMALL_E:010:L1:B5",
+      "position": [
+        120.3,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_006:02",
+      "slot_id": "v3:slot:SMALL_E:010:L2:B5",
+      "position": [
+        120.3,
+        1,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_006:03",
+      "slot_id": "v3:slot:SMALL_E:014:L1:B1",
+      "position": [
+        123.7,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_006:04",
+      "slot_id": "v3:slot:SMALL_E:014:L2:B1",
+      "position": [
+        123.7,
+        1,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_007:01",
+      "slot_id": "v3:slot:SMALL_E:004:L1:B1",
+      "position": [
+        114.3,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_007:02",
+      "slot_id": "v3:slot:SMALL_E:004:L2:B1",
+      "position": [
+        114.3,
+        1,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_007:03",
+      "slot_id": "v3:slot:SMALL_E:008:L1:B5",
+      "position": [
+        117.7,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_007:04",
+      "slot_id": "v3:slot:SMALL_E:008:L2:B5",
+      "position": [
+        117.7,
+        1,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_008:01",
+      "slot_id": "v3:slot:SMALL_W:010:L1:B2",
+      "position": [
+        20.299999999999997,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_008:02",
+      "slot_id": "v3:slot:SMALL_W:010:L2:B2",
+      "position": [
+        20.299999999999997,
+        1,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_008:03",
+      "slot_id": "v3:slot:SMALL_W:014:L1:B4",
+      "position": [
+        23.700000000000003,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_008:04",
+      "slot_id": "v3:slot:SMALL_W:014:L2:B4",
+      "position": [
+        23.700000000000003,
+        1,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_009:01",
+      "slot_id": "v3:slot:SMALL_E:018:L1:B1",
+      "position": [
+        126.3,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_009:02",
+      "slot_id": "v3:slot:SMALL_E:018:L2:B1",
+      "position": [
+        126.3,
+        1,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_009:03",
+      "slot_id": "v3:slot:SMALL_E:022:L1:B5",
+      "position": [
+        129.7,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_009:04",
+      "slot_id": "v3:slot:SMALL_E:022:L2:B5",
+      "position": [
+        129.7,
+        1,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_010:01",
+      "slot_id": "v3:slot:SMALL_E:012:L1:B5",
+      "position": [
+        120.3,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_010:02",
+      "slot_id": "v3:slot:SMALL_E:012:L2:B5",
+      "position": [
+        120.3,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_010:03",
+      "slot_id": "v3:slot:SMALL_E:016:L1:B1",
+      "position": [
+        123.7,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_010:04",
+      "slot_id": "v3:slot:SMALL_E:016:L2:B1",
+      "position": [
+        123.7,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_011:01",
+      "slot_id": "v3:slot:SMALL_E:001:L1:B4",
+      "position": [
+        114.3,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_011:02",
+      "slot_id": "v3:slot:SMALL_E:001:L2:B4",
+      "position": [
+        114.3,
+        1,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_011:03",
+      "slot_id": "v3:slot:SMALL_E:005:L1:B2",
+      "position": [
+        117.7,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_011:04",
+      "slot_id": "v3:slot:SMALL_E:005:L2:B2",
+      "position": [
+        117.7,
+        1,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_012:01",
+      "slot_id": "v3:slot:SMALL_W:011:L1:B2",
+      "position": [
+        20.299999999999997,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_012:02",
+      "slot_id": "v3:slot:SMALL_W:011:L2:B2",
+      "position": [
+        20.299999999999997,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_012:03",
+      "slot_id": "v3:slot:SMALL_W:015:L1:B4",
+      "position": [
+        23.700000000000003,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_012:04",
+      "slot_id": "v3:slot:SMALL_W:015:L2:B4",
+      "position": [
+        23.700000000000003,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_013:01",
+      "slot_id": "v3:slot:SMALL_E:019:L1:B3",
+      "position": [
+        126.3,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_013:02",
+      "slot_id": "v3:slot:SMALL_E:019:L2:B3",
+      "position": [
+        126.3,
+        1,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_013:03",
+      "slot_id": "v3:slot:SMALL_E:023:L1:B3",
+      "position": [
+        129.7,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_013:04",
+      "slot_id": "v3:slot:SMALL_E:023:L2:B3",
+      "position": [
+        129.7,
+        1,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_014:01",
+      "slot_id": "v3:slot:SMALL_E:012:L1:B4",
+      "position": [
+        120.3,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_014:02",
+      "slot_id": "v3:slot:SMALL_E:012:L2:B4",
+      "position": [
+        120.3,
+        1,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_014:03",
+      "slot_id": "v3:slot:SMALL_E:016:L1:B2",
+      "position": [
+        123.7,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_014:04",
+      "slot_id": "v3:slot:SMALL_E:016:L2:B2",
+      "position": [
+        123.7,
+        1,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_015:01",
+      "slot_id": "v3:slot:SMALL_E:001:L1:B5",
+      "position": [
+        114.3,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_015:02",
+      "slot_id": "v3:slot:SMALL_E:001:L2:B5",
+      "position": [
+        114.3,
+        1,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_015:03",
+      "slot_id": "v3:slot:SMALL_E:005:L1:B1",
+      "position": [
+        117.7,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_015:04",
+      "slot_id": "v3:slot:SMALL_E:005:L2:B1",
+      "position": [
+        117.7,
+        1,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_016:01",
+      "slot_id": "v3:slot:SMALL_W:010:L1:B3",
+      "position": [
+        20.299999999999997,
+        0.25,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_016:02",
+      "slot_id": "v3:slot:SMALL_W:010:L2:B3",
+      "position": [
+        20.299999999999997,
+        1,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_016:03",
+      "slot_id": "v3:slot:SMALL_W:014:L1:B3",
+      "position": [
+        23.700000000000003,
+        0.25,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_016:04",
+      "slot_id": "v3:slot:SMALL_W:014:L2:B3",
+      "position": [
+        23.700000000000003,
+        1,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_017:01",
+      "slot_id": "v3:slot:SMALL_E:018:L1:B2",
+      "position": [
+        126.3,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_017:02",
+      "slot_id": "v3:slot:SMALL_E:018:L2:B2",
+      "position": [
+        126.3,
+        1,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_017:03",
+      "slot_id": "v3:slot:SMALL_E:022:L1:B4",
+      "position": [
+        129.7,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_017:04",
+      "slot_id": "v3:slot:SMALL_E:022:L2:B4",
+      "position": [
+        129.7,
+        1,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_018:01",
+      "slot_id": "v3:slot:SMALL_E:009:L1:B1",
+      "position": [
+        120.3,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_018:02",
+      "slot_id": "v3:slot:SMALL_E:009:L2:B1",
+      "position": [
+        120.3,
+        1,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_018:03",
+      "slot_id": "v3:slot:SMALL_E:013:L1:B5",
+      "position": [
+        123.7,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_018:04",
+      "slot_id": "v3:slot:SMALL_E:013:L2:B5",
+      "position": [
+        123.7,
+        1,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_019:01",
+      "slot_id": "v3:slot:SMALL_W:003:L1:B5",
+      "position": [
+        14.3,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_019:02",
+      "slot_id": "v3:slot:SMALL_W:003:L2:B5",
+      "position": [
+        14.3,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_019:03",
+      "slot_id": "v3:slot:SMALL_W:007:L1:B1",
+      "position": [
+        17.700000000000003,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_019:04",
+      "slot_id": "v3:slot:SMALL_W:007:L2:B1",
+      "position": [
+        17.700000000000003,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_020:01",
+      "slot_id": "v3:slot:SMALL_W:011:L1:B1",
+      "position": [
+        20.299999999999997,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_020:02",
+      "slot_id": "v3:slot:SMALL_W:011:L2:B1",
+      "position": [
+        20.299999999999997,
+        1,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_020:03",
+      "slot_id": "v3:slot:SMALL_W:015:L1:B5",
+      "position": [
+        23.700000000000003,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_020:04",
+      "slot_id": "v3:slot:SMALL_W:015:L2:B5",
+      "position": [
+        23.700000000000003,
+        1,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_021:01",
+      "slot_id": "v3:slot:SMALL_E:019:L1:B2",
+      "position": [
+        126.3,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_021:02",
+      "slot_id": "v3:slot:SMALL_E:019:L2:B2",
+      "position": [
+        126.3,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_021:03",
+      "slot_id": "v3:slot:SMALL_E:023:L1:B4",
+      "position": [
+        129.7,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_021:04",
+      "slot_id": "v3:slot:SMALL_E:023:L2:B4",
+      "position": [
+        129.7,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_022:01",
+      "slot_id": "v3:slot:SMALL_E:012:L1:B3",
+      "position": [
+        120.3,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_022:02",
+      "slot_id": "v3:slot:SMALL_E:012:L2:B3",
+      "position": [
+        120.3,
+        1,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_022:03",
+      "slot_id": "v3:slot:SMALL_E:016:L1:B3",
+      "position": [
+        123.7,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_022:04",
+      "slot_id": "v3:slot:SMALL_E:016:L2:B3",
+      "position": [
+        123.7,
+        1,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_023:01",
+      "slot_id": "v3:slot:SMALL_W:003:L1:B4",
+      "position": [
+        14.3,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_023:02",
+      "slot_id": "v3:slot:SMALL_W:003:L2:B4",
+      "position": [
+        14.3,
+        1,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_023:03",
+      "slot_id": "v3:slot:SMALL_W:007:L1:B2",
+      "position": [
+        17.700000000000003,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_023:04",
+      "slot_id": "v3:slot:SMALL_W:007:L2:B2",
+      "position": [
+        17.700000000000003,
+        1,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_024:01",
+      "slot_id": "v3:slot:SMALL_W:010:L1:B4",
+      "position": [
+        20.299999999999997,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_024:02",
+      "slot_id": "v3:slot:SMALL_W:010:L2:B4",
+      "position": [
+        20.299999999999997,
+        1,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_024:03",
+      "slot_id": "v3:slot:SMALL_W:014:L1:B2",
+      "position": [
+        23.700000000000003,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_024:04",
+      "slot_id": "v3:slot:SMALL_W:014:L2:B2",
+      "position": [
+        23.700000000000003,
+        1,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_025:01",
+      "slot_id": "v3:slot:SMALL_E:018:L1:B3",
+      "position": [
+        126.3,
+        0.25,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_025:02",
+      "slot_id": "v3:slot:SMALL_E:018:L2:B3",
+      "position": [
+        126.3,
+        1,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_025:03",
+      "slot_id": "v3:slot:SMALL_E:022:L1:B3",
+      "position": [
+        129.7,
+        0.25,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_025:04",
+      "slot_id": "v3:slot:SMALL_E:022:L2:B3",
+      "position": [
+        129.7,
+        1,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_026:01",
+      "slot_id": "v3:slot:SMALL_E:009:L1:B2",
+      "position": [
+        120.3,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_026:02",
+      "slot_id": "v3:slot:SMALL_E:009:L2:B2",
+      "position": [
+        120.3,
+        1,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_026:03",
+      "slot_id": "v3:slot:SMALL_E:013:L1:B4",
+      "position": [
+        123.7,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_026:04",
+      "slot_id": "v3:slot:SMALL_E:013:L2:B4",
+      "position": [
+        123.7,
+        1,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_027:01",
+      "slot_id": "v3:slot:SMALL_W:002:L1:B1",
+      "position": [
+        14.3,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_027:02",
+      "slot_id": "v3:slot:SMALL_W:002:L2:B1",
+      "position": [
+        14.3,
+        1,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_027:03",
+      "slot_id": "v3:slot:SMALL_W:006:L1:B5",
+      "position": [
+        17.700000000000003,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_027:04",
+      "slot_id": "v3:slot:SMALL_W:006:L2:B5",
+      "position": [
+        17.700000000000003,
+        1,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_028:01",
+      "slot_id": "v3:slot:SMALL_W:010:L1:B5",
+      "position": [
+        20.299999999999997,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_028:02",
+      "slot_id": "v3:slot:SMALL_W:010:L2:B5",
+      "position": [
+        20.299999999999997,
+        1,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_028:03",
+      "slot_id": "v3:slot:SMALL_W:014:L1:B1",
+      "position": [
+        23.700000000000003,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_028:04",
+      "slot_id": "v3:slot:SMALL_W:014:L2:B1",
+      "position": [
+        23.700000000000003,
+        1,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_029:01",
+      "slot_id": "v3:slot:SMALL_E:019:L1:B1",
+      "position": [
+        126.3,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_029:02",
+      "slot_id": "v3:slot:SMALL_E:019:L2:B1",
+      "position": [
+        126.3,
+        1,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_029:03",
+      "slot_id": "v3:slot:SMALL_E:023:L1:B5",
+      "position": [
+        129.7,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_029:04",
+      "slot_id": "v3:slot:SMALL_E:023:L2:B5",
+      "position": [
+        129.7,
+        1,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_030:01",
+      "slot_id": "v3:slot:SMALL_E:012:L1:B2",
+      "position": [
+        120.3,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_030:02",
+      "slot_id": "v3:slot:SMALL_E:012:L2:B2",
+      "position": [
+        120.3,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_030:03",
+      "slot_id": "v3:slot:SMALL_E:016:L1:B4",
+      "position": [
+        123.7,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_030:04",
+      "slot_id": "v3:slot:SMALL_E:016:L2:B4",
+      "position": [
+        123.7,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_031:01",
+      "slot_id": "v3:slot:SMALL_W:003:L1:B3",
+      "position": [
+        14.3,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_031:02",
+      "slot_id": "v3:slot:SMALL_W:003:L2:B3",
+      "position": [
+        14.3,
+        1,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_031:03",
+      "slot_id": "v3:slot:SMALL_W:007:L1:B3",
+      "position": [
+        17.700000000000003,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_031:04",
+      "slot_id": "v3:slot:SMALL_W:007:L2:B3",
+      "position": [
+        17.700000000000003,
+        1,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_032:01",
+      "slot_id": "v3:slot:SMALL_W:012:L1:B5",
+      "position": [
+        20.299999999999997,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_032:02",
+      "slot_id": "v3:slot:SMALL_W:012:L2:B5",
+      "position": [
+        20.299999999999997,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_032:03",
+      "slot_id": "v3:slot:SMALL_W:016:L1:B1",
+      "position": [
+        23.700000000000003,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_032:04",
+      "slot_id": "v3:slot:SMALL_W:016:L2:B1",
+      "position": [
+        23.700000000000003,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_033:01",
+      "slot_id": "v3:slot:SMALL_E:018:L1:B4",
+      "position": [
+        126.3,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_033:02",
+      "slot_id": "v3:slot:SMALL_E:018:L2:B4",
+      "position": [
+        126.3,
+        1,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_033:03",
+      "slot_id": "v3:slot:SMALL_E:022:L1:B2",
+      "position": [
+        129.7,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_033:04",
+      "slot_id": "v3:slot:SMALL_E:022:L2:B2",
+      "position": [
+        129.7,
+        1,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_034:01",
+      "slot_id": "v3:slot:SMALL_E:009:L1:B3",
+      "position": [
+        120.3,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_034:02",
+      "slot_id": "v3:slot:SMALL_E:009:L2:B3",
+      "position": [
+        120.3,
+        1,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_034:03",
+      "slot_id": "v3:slot:SMALL_E:013:L1:B3",
+      "position": [
+        123.7,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_034:04",
+      "slot_id": "v3:slot:SMALL_E:013:L2:B3",
+      "position": [
+        123.7,
+        1,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_035:01",
+      "slot_id": "v3:slot:SMALL_W:002:L1:B2",
+      "position": [
+        14.3,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_035:02",
+      "slot_id": "v3:slot:SMALL_W:002:L2:B2",
+      "position": [
+        14.3,
+        1,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_035:03",
+      "slot_id": "v3:slot:SMALL_W:006:L1:B4",
+      "position": [
+        17.700000000000003,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_035:04",
+      "slot_id": "v3:slot:SMALL_W:006:L2:B4",
+      "position": [
+        17.700000000000003,
+        1,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_036:01",
+      "slot_id": "v3:slot:SMALL_W:012:L1:B4",
+      "position": [
+        20.299999999999997,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_036:02",
+      "slot_id": "v3:slot:SMALL_W:012:L2:B4",
+      "position": [
+        20.299999999999997,
+        1,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_036:03",
+      "slot_id": "v3:slot:SMALL_W:016:L1:B2",
+      "position": [
+        23.700000000000003,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_036:04",
+      "slot_id": "v3:slot:SMALL_W:016:L2:B2",
+      "position": [
+        23.700000000000003,
+        1,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_037:01",
+      "slot_id": "v3:slot:SMALL_E:018:L1:B5",
+      "position": [
+        126.3,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_037:02",
+      "slot_id": "v3:slot:SMALL_E:018:L2:B5",
+      "position": [
+        126.3,
+        1,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_037:03",
+      "slot_id": "v3:slot:SMALL_E:022:L1:B1",
+      "position": [
+        129.7,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_037:04",
+      "slot_id": "v3:slot:SMALL_E:022:L2:B1",
+      "position": [
+        129.7,
+        1,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_038:01",
+      "slot_id": "v3:slot:SMALL_E:012:L1:B1",
+      "position": [
+        120.3,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_038:02",
+      "slot_id": "v3:slot:SMALL_E:012:L2:B1",
+      "position": [
+        120.3,
+        1,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_038:03",
+      "slot_id": "v3:slot:SMALL_E:016:L1:B5",
+      "position": [
+        123.7,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_038:04",
+      "slot_id": "v3:slot:SMALL_E:016:L2:B5",
+      "position": [
+        123.7,
+        1,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_039:01",
+      "slot_id": "v3:slot:SMALL_W:003:L1:B2",
+      "position": [
+        14.3,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_039:02",
+      "slot_id": "v3:slot:SMALL_W:003:L2:B2",
+      "position": [
+        14.3,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_039:03",
+      "slot_id": "v3:slot:SMALL_W:007:L1:B4",
+      "position": [
+        17.700000000000003,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_039:04",
+      "slot_id": "v3:slot:SMALL_W:007:L2:B4",
+      "position": [
+        17.700000000000003,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_040:01",
+      "slot_id": "v3:slot:SMALL_W:009:L1:B1",
+      "position": [
+        20.299999999999997,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_040:02",
+      "slot_id": "v3:slot:SMALL_W:009:L2:B1",
+      "position": [
+        20.299999999999997,
+        1,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_040:03",
+      "slot_id": "v3:slot:SMALL_W:013:L1:B5",
+      "position": [
+        23.700000000000003,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_040:04",
+      "slot_id": "v3:slot:SMALL_W:013:L2:B5",
+      "position": [
+        23.700000000000003,
+        1,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_041:01",
+      "slot_id": "v3:slot:SMALL_E:020:L1:B5",
+      "position": [
+        126.3,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_041:02",
+      "slot_id": "v3:slot:SMALL_E:020:L2:B5",
+      "position": [
+        126.3,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_041:03",
+      "slot_id": "v3:slot:SMALL_E:024:L1:B1",
+      "position": [
+        129.7,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_041:04",
+      "slot_id": "v3:slot:SMALL_E:024:L2:B1",
+      "position": [
+        129.7,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_042:01",
+      "slot_id": "v3:slot:SMALL_E:009:L1:B4",
+      "position": [
+        120.3,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_042:02",
+      "slot_id": "v3:slot:SMALL_E:009:L2:B4",
+      "position": [
+        120.3,
+        1,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_042:03",
+      "slot_id": "v3:slot:SMALL_E:013:L1:B2",
+      "position": [
+        123.7,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_042:04",
+      "slot_id": "v3:slot:SMALL_E:013:L2:B2",
+      "position": [
+        123.7,
+        1,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_043:01",
+      "slot_id": "v3:slot:SMALL_W:002:L1:B3",
+      "position": [
+        14.3,
+        0.25,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_043:02",
+      "slot_id": "v3:slot:SMALL_W:002:L2:B3",
+      "position": [
+        14.3,
+        1,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_043:03",
+      "slot_id": "v3:slot:SMALL_W:006:L1:B3",
+      "position": [
+        17.700000000000003,
+        0.25,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_043:04",
+      "slot_id": "v3:slot:SMALL_W:006:L2:B3",
+      "position": [
+        17.700000000000003,
+        1,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_044:01",
+      "slot_id": "v3:slot:SMALL_W:012:L1:B3",
+      "position": [
+        20.299999999999997,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_044:02",
+      "slot_id": "v3:slot:SMALL_W:012:L2:B3",
+      "position": [
+        20.299999999999997,
+        1,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_044:03",
+      "slot_id": "v3:slot:SMALL_W:016:L1:B3",
+      "position": [
+        23.700000000000003,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_044:04",
+      "slot_id": "v3:slot:SMALL_W:016:L2:B3",
+      "position": [
+        23.700000000000003,
+        1,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_045:01",
+      "slot_id": "v3:slot:SMALL_E:020:L1:B4",
+      "position": [
+        126.3,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_045:02",
+      "slot_id": "v3:slot:SMALL_E:020:L2:B4",
+      "position": [
+        126.3,
+        1,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_045:03",
+      "slot_id": "v3:slot:SMALL_E:024:L1:B2",
+      "position": [
+        129.7,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_045:04",
+      "slot_id": "v3:slot:SMALL_E:024:L2:B2",
+      "position": [
+        129.7,
+        1,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_046:01",
+      "slot_id": "v3:slot:SMALL_E:009:L1:B5",
+      "position": [
+        120.3,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_046:02",
+      "slot_id": "v3:slot:SMALL_E:009:L2:B5",
+      "position": [
+        120.3,
+        1,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_046:03",
+      "slot_id": "v3:slot:SMALL_E:013:L1:B1",
+      "position": [
+        123.7,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_046:04",
+      "slot_id": "v3:slot:SMALL_E:013:L2:B1",
+      "position": [
+        123.7,
+        1,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_047:01",
+      "slot_id": "v3:slot:SMALL_W:003:L1:B1",
+      "position": [
+        14.3,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_047:02",
+      "slot_id": "v3:slot:SMALL_W:003:L2:B1",
+      "position": [
+        14.3,
+        1,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_047:03",
+      "slot_id": "v3:slot:SMALL_W:007:L1:B5",
+      "position": [
+        17.700000000000003,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_047:04",
+      "slot_id": "v3:slot:SMALL_W:007:L2:B5",
+      "position": [
+        17.700000000000003,
+        1,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_048:01",
+      "slot_id": "v3:slot:SMALL_W:009:L1:B2",
+      "position": [
+        20.299999999999997,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_048:02",
+      "slot_id": "v3:slot:SMALL_W:009:L2:B2",
+      "position": [
+        20.299999999999997,
+        1,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_048:03",
+      "slot_id": "v3:slot:SMALL_W:013:L1:B4",
+      "position": [
+        23.700000000000003,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_048:04",
+      "slot_id": "v3:slot:SMALL_W:013:L2:B4",
+      "position": [
+        23.700000000000003,
+        1,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_049:01",
+      "slot_id": "v3:slot:SMALL_E:017:L1:B1",
+      "position": [
+        126.3,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_049:02",
+      "slot_id": "v3:slot:SMALL_E:017:L2:B1",
+      "position": [
+        126.3,
+        1,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_049:03",
+      "slot_id": "v3:slot:SMALL_E:021:L1:B5",
+      "position": [
+        129.7,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_049:04",
+      "slot_id": "v3:slot:SMALL_E:021:L2:B5",
+      "position": [
+        129.7,
+        1,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_050:01",
+      "slot_id": "v3:slot:SMALL_E:003:L1:B5",
+      "position": [
+        114.3,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_050:02",
+      "slot_id": "v3:slot:SMALL_E:003:L2:B5",
+      "position": [
+        114.3,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_050:03",
+      "slot_id": "v3:slot:SMALL_E:007:L1:B1",
+      "position": [
+        117.7,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_050:04",
+      "slot_id": "v3:slot:SMALL_E:007:L2:B1",
+      "position": [
+        117.7,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_051:01",
+      "slot_id": "v3:slot:SMALL_W:002:L1:B4",
+      "position": [
+        14.3,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_051:02",
+      "slot_id": "v3:slot:SMALL_W:002:L2:B4",
+      "position": [
+        14.3,
+        1,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_051:03",
+      "slot_id": "v3:slot:SMALL_W:006:L1:B2",
+      "position": [
+        17.700000000000003,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_051:04",
+      "slot_id": "v3:slot:SMALL_W:006:L2:B2",
+      "position": [
+        17.700000000000003,
+        1,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_052:01",
+      "slot_id": "v3:slot:SMALL_W:012:L1:B2",
+      "position": [
+        20.299999999999997,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_052:02",
+      "slot_id": "v3:slot:SMALL_W:012:L2:B2",
+      "position": [
+        20.299999999999997,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_052:03",
+      "slot_id": "v3:slot:SMALL_W:016:L1:B4",
+      "position": [
+        23.700000000000003,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_052:04",
+      "slot_id": "v3:slot:SMALL_W:016:L2:B4",
+      "position": [
+        23.700000000000003,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_053:01",
+      "slot_id": "v3:slot:SMALL_E:020:L1:B3",
+      "position": [
+        126.3,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_053:02",
+      "slot_id": "v3:slot:SMALL_E:020:L2:B3",
+      "position": [
+        126.3,
+        1,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_053:03",
+      "slot_id": "v3:slot:SMALL_E:024:L1:B3",
+      "position": [
+        129.7,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_053:04",
+      "slot_id": "v3:slot:SMALL_E:024:L2:B3",
+      "position": [
+        129.7,
+        1,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_054:01",
+      "slot_id": "v3:slot:SMALL_E:003:L1:B4",
+      "position": [
+        114.3,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_054:02",
+      "slot_id": "v3:slot:SMALL_E:003:L2:B4",
+      "position": [
+        114.3,
+        1,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_054:03",
+      "slot_id": "v3:slot:SMALL_E:007:L1:B2",
+      "position": [
+        117.7,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_054:04",
+      "slot_id": "v3:slot:SMALL_E:007:L2:B2",
+      "position": [
+        117.7,
+        1,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_055:01",
+      "slot_id": "v3:slot:SMALL_W:002:L1:B5",
+      "position": [
+        14.3,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_055:02",
+      "slot_id": "v3:slot:SMALL_W:002:L2:B5",
+      "position": [
+        14.3,
+        1,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_055:03",
+      "slot_id": "v3:slot:SMALL_W:006:L1:B1",
+      "position": [
+        17.700000000000003,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_055:04",
+      "slot_id": "v3:slot:SMALL_W:006:L2:B1",
+      "position": [
+        17.700000000000003,
+        1,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_056:01",
+      "slot_id": "v3:slot:SMALL_W:009:L1:B3",
+      "position": [
+        20.299999999999997,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_056:02",
+      "slot_id": "v3:slot:SMALL_W:009:L2:B3",
+      "position": [
+        20.299999999999997,
+        1,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_056:03",
+      "slot_id": "v3:slot:SMALL_W:013:L1:B3",
+      "position": [
+        23.700000000000003,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_056:04",
+      "slot_id": "v3:slot:SMALL_W:013:L2:B3",
+      "position": [
+        23.700000000000003,
+        1,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_057:01",
+      "slot_id": "v3:slot:SMALL_E:017:L1:B2",
+      "position": [
+        126.3,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_057:02",
+      "slot_id": "v3:slot:SMALL_E:017:L2:B2",
+      "position": [
+        126.3,
+        1,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_057:03",
+      "slot_id": "v3:slot:SMALL_E:021:L1:B4",
+      "position": [
+        129.7,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_057:04",
+      "slot_id": "v3:slot:SMALL_E:021:L2:B4",
+      "position": [
+        129.7,
+        1,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_058:01",
+      "slot_id": "v3:slot:SMALL_E:002:L1:B1",
+      "position": [
+        114.3,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_058:02",
+      "slot_id": "v3:slot:SMALL_E:002:L2:B1",
+      "position": [
+        114.3,
+        1,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_058:03",
+      "slot_id": "v3:slot:SMALL_E:006:L1:B5",
+      "position": [
+        117.7,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_058:04",
+      "slot_id": "v3:slot:SMALL_E:006:L2:B5",
+      "position": [
+        117.7,
+        1,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_059:01",
+      "slot_id": "v3:slot:SMALL_W:004:L1:B5",
+      "position": [
+        14.3,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_059:02",
+      "slot_id": "v3:slot:SMALL_W:004:L2:B5",
+      "position": [
+        14.3,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_059:03",
+      "slot_id": "v3:slot:SMALL_W:008:L1:B1",
+      "position": [
+        17.700000000000003,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_059:04",
+      "slot_id": "v3:slot:SMALL_W:008:L2:B1",
+      "position": [
+        17.700000000000003,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_060:01",
+      "slot_id": "v3:slot:SMALL_W:012:L1:B1",
+      "position": [
+        20.299999999999997,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_060:02",
+      "slot_id": "v3:slot:SMALL_W:012:L2:B1",
+      "position": [
+        20.299999999999997,
+        1,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_060:03",
+      "slot_id": "v3:slot:SMALL_W:016:L1:B5",
+      "position": [
+        23.700000000000003,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_060:04",
+      "slot_id": "v3:slot:SMALL_W:016:L2:B5",
+      "position": [
+        23.700000000000003,
+        1,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_061:01",
+      "slot_id": "v3:slot:SMALL_E:020:L1:B2",
+      "position": [
+        126.3,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_061:02",
+      "slot_id": "v3:slot:SMALL_E:020:L2:B2",
+      "position": [
+        126.3,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_061:03",
+      "slot_id": "v3:slot:SMALL_E:024:L1:B4",
+      "position": [
+        129.7,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_061:04",
+      "slot_id": "v3:slot:SMALL_E:024:L2:B4",
+      "position": [
+        129.7,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_062:01",
+      "slot_id": "v3:slot:SMALL_E:003:L1:B3",
+      "position": [
+        114.3,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_062:02",
+      "slot_id": "v3:slot:SMALL_E:003:L2:B3",
+      "position": [
+        114.3,
+        1,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_062:03",
+      "slot_id": "v3:slot:SMALL_E:007:L1:B3",
+      "position": [
+        117.7,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_062:04",
+      "slot_id": "v3:slot:SMALL_E:007:L2:B3",
+      "position": [
+        117.7,
+        1,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_063:01",
+      "slot_id": "v3:slot:SMALL_W:004:L1:B4",
+      "position": [
+        14.3,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_063:02",
+      "slot_id": "v3:slot:SMALL_W:004:L2:B4",
+      "position": [
+        14.3,
+        1,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_063:03",
+      "slot_id": "v3:slot:SMALL_W:008:L1:B2",
+      "position": [
+        17.700000000000003,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_063:04",
+      "slot_id": "v3:slot:SMALL_W:008:L2:B2",
+      "position": [
+        17.700000000000003,
+        1,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_064:01",
+      "slot_id": "v3:slot:SMALL_W:009:L1:B4",
+      "position": [
+        20.299999999999997,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_064:02",
+      "slot_id": "v3:slot:SMALL_W:009:L2:B4",
+      "position": [
+        20.299999999999997,
+        1,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_064:03",
+      "slot_id": "v3:slot:SMALL_W:013:L1:B2",
+      "position": [
+        23.700000000000003,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_064:04",
+      "slot_id": "v3:slot:SMALL_W:013:L2:B2",
+      "position": [
+        23.700000000000003,
+        1,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_065:01",
+      "slot_id": "v3:slot:SMALL_E:017:L1:B3",
+      "position": [
+        126.3,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_065:02",
+      "slot_id": "v3:slot:SMALL_E:017:L2:B3",
+      "position": [
+        126.3,
+        1,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_065:03",
+      "slot_id": "v3:slot:SMALL_E:021:L1:B3",
+      "position": [
+        129.7,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_065:04",
+      "slot_id": "v3:slot:SMALL_E:021:L2:B3",
+      "position": [
+        129.7,
+        1,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_066:01",
+      "slot_id": "v3:slot:SMALL_E:002:L1:B2",
+      "position": [
+        114.3,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_066:02",
+      "slot_id": "v3:slot:SMALL_E:002:L2:B2",
+      "position": [
+        114.3,
+        1,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_066:03",
+      "slot_id": "v3:slot:SMALL_E:006:L1:B4",
+      "position": [
+        117.7,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_066:04",
+      "slot_id": "v3:slot:SMALL_E:006:L2:B4",
+      "position": [
+        117.7,
+        1,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_067:01",
+      "slot_id": "v3:slot:SMALL_W:001:L1:B1",
+      "position": [
+        14.3,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_067:02",
+      "slot_id": "v3:slot:SMALL_W:001:L2:B1",
+      "position": [
+        14.3,
+        1,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_067:03",
+      "slot_id": "v3:slot:SMALL_W:005:L1:B5",
+      "position": [
+        17.700000000000003,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_067:04",
+      "slot_id": "v3:slot:SMALL_W:005:L2:B5",
+      "position": [
+        17.700000000000003,
+        1,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_068:01",
+      "slot_id": "v3:slot:SMALL_W:009:L1:B5",
+      "position": [
+        20.299999999999997,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_068:02",
+      "slot_id": "v3:slot:SMALL_W:009:L2:B5",
+      "position": [
+        20.299999999999997,
+        1,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_068:03",
+      "slot_id": "v3:slot:SMALL_W:013:L1:B1",
+      "position": [
+        23.700000000000003,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_068:04",
+      "slot_id": "v3:slot:SMALL_W:013:L2:B1",
+      "position": [
+        23.700000000000003,
+        1,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_069:01",
+      "slot_id": "v3:slot:SMALL_E:020:L1:B1",
+      "position": [
+        126.3,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_069:02",
+      "slot_id": "v3:slot:SMALL_E:020:L2:B1",
+      "position": [
+        126.3,
+        1,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_069:03",
+      "slot_id": "v3:slot:SMALL_E:024:L1:B5",
+      "position": [
+        129.7,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_069:04",
+      "slot_id": "v3:slot:SMALL_E:024:L2:B5",
+      "position": [
+        129.7,
+        1,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_070:01",
+      "slot_id": "v3:slot:SMALL_E:003:L1:B2",
+      "position": [
+        114.3,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_070:02",
+      "slot_id": "v3:slot:SMALL_E:003:L2:B2",
+      "position": [
+        114.3,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_070:03",
+      "slot_id": "v3:slot:SMALL_E:007:L1:B4",
+      "position": [
+        117.7,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_070:04",
+      "slot_id": "v3:slot:SMALL_E:007:L2:B4",
+      "position": [
+        117.7,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_071:01",
+      "slot_id": "v3:slot:SMALL_W:004:L1:B3",
+      "position": [
+        14.3,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_071:02",
+      "slot_id": "v3:slot:SMALL_W:004:L2:B3",
+      "position": [
+        14.3,
+        1,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_071:03",
+      "slot_id": "v3:slot:SMALL_W:008:L1:B3",
+      "position": [
+        17.700000000000003,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_071:04",
+      "slot_id": "v3:slot:SMALL_W:008:L2:B3",
+      "position": [
+        17.700000000000003,
+        1,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_072:01",
+      "slot_id": "v3:slot:SMALL_W:019:L1:B5",
+      "position": [
+        26.299999999999997,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_072:02",
+      "slot_id": "v3:slot:SMALL_W:019:L2:B5",
+      "position": [
+        26.299999999999997,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_072:03",
+      "slot_id": "v3:slot:SMALL_W:023:L1:B1",
+      "position": [
+        29.700000000000003,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_072:04",
+      "slot_id": "v3:slot:SMALL_W:023:L2:B1",
+      "position": [
+        29.700000000000003,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_073:01",
+      "slot_id": "v3:slot:SMALL_E:017:L1:B4",
+      "position": [
+        126.3,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_073:02",
+      "slot_id": "v3:slot:SMALL_E:017:L2:B4",
+      "position": [
+        126.3,
+        1,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_073:03",
+      "slot_id": "v3:slot:SMALL_E:021:L1:B2",
+      "position": [
+        129.7,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_073:04",
+      "slot_id": "v3:slot:SMALL_E:021:L2:B2",
+      "position": [
+        129.7,
+        1,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_074:01",
+      "slot_id": "v3:slot:SMALL_E:002:L1:B3",
+      "position": [
+        114.3,
+        0.25,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_074:02",
+      "slot_id": "v3:slot:SMALL_E:002:L2:B3",
+      "position": [
+        114.3,
+        1,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_074:03",
+      "slot_id": "v3:slot:SMALL_E:006:L1:B3",
+      "position": [
+        117.7,
+        0.25,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_074:04",
+      "slot_id": "v3:slot:SMALL_E:006:L2:B3",
+      "position": [
+        117.7,
+        1,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_075:01",
+      "slot_id": "v3:slot:SMALL_W:001:L1:B2",
+      "position": [
+        14.3,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_075:02",
+      "slot_id": "v3:slot:SMALL_W:001:L2:B2",
+      "position": [
+        14.3,
+        1,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_075:03",
+      "slot_id": "v3:slot:SMALL_W:005:L1:B4",
+      "position": [
+        17.700000000000003,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_075:04",
+      "slot_id": "v3:slot:SMALL_W:005:L2:B4",
+      "position": [
+        17.700000000000003,
+        1,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_076:01",
+      "slot_id": "v3:slot:SMALL_W:019:L1:B4",
+      "position": [
+        26.299999999999997,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_076:02",
+      "slot_id": "v3:slot:SMALL_W:019:L2:B4",
+      "position": [
+        26.299999999999997,
+        1,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_076:03",
+      "slot_id": "v3:slot:SMALL_W:023:L1:B2",
+      "position": [
+        29.700000000000003,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_076:04",
+      "slot_id": "v3:slot:SMALL_W:023:L2:B2",
+      "position": [
+        29.700000000000003,
+        1,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_077:01",
+      "slot_id": "v3:slot:SMALL_E:017:L1:B5",
+      "position": [
+        126.3,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_077:02",
+      "slot_id": "v3:slot:SMALL_E:017:L2:B5",
+      "position": [
+        126.3,
+        1,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_077:03",
+      "slot_id": "v3:slot:SMALL_E:021:L1:B1",
+      "position": [
+        129.7,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_077:04",
+      "slot_id": "v3:slot:SMALL_E:021:L2:B1",
+      "position": [
+        129.7,
+        1,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_078:01",
+      "slot_id": "v3:slot:SMALL_E:003:L1:B1",
+      "position": [
+        114.3,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_078:02",
+      "slot_id": "v3:slot:SMALL_E:003:L2:B1",
+      "position": [
+        114.3,
+        1,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_078:03",
+      "slot_id": "v3:slot:SMALL_E:007:L1:B5",
+      "position": [
+        117.7,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_078:04",
+      "slot_id": "v3:slot:SMALL_E:007:L2:B5",
+      "position": [
+        117.7,
+        1,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_079:01",
+      "slot_id": "v3:slot:SMALL_W:004:L1:B2",
+      "position": [
+        14.3,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_079:02",
+      "slot_id": "v3:slot:SMALL_W:004:L2:B2",
+      "position": [
+        14.3,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_079:03",
+      "slot_id": "v3:slot:SMALL_W:008:L1:B4",
+      "position": [
+        17.700000000000003,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_079:04",
+      "slot_id": "v3:slot:SMALL_W:008:L2:B4",
+      "position": [
+        17.700000000000003,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_080:01",
+      "slot_id": "v3:slot:SMALL_W:018:L1:B1",
+      "position": [
+        26.299999999999997,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_080:02",
+      "slot_id": "v3:slot:SMALL_W:018:L2:B1",
+      "position": [
+        26.299999999999997,
+        1,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_080:03",
+      "slot_id": "v3:slot:SMALL_W:022:L1:B5",
+      "position": [
+        29.700000000000003,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_080:04",
+      "slot_id": "v3:slot:SMALL_W:022:L2:B5",
+      "position": [
+        29.700000000000003,
+        1,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_081:01",
+      "slot_id": "v3:slot:SMALL_E:011:L1:B5",
+      "position": [
+        120.3,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_081:02",
+      "slot_id": "v3:slot:SMALL_E:011:L2:B5",
+      "position": [
+        120.3,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_081:03",
+      "slot_id": "v3:slot:SMALL_E:015:L1:B1",
+      "position": [
+        123.7,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_081:04",
+      "slot_id": "v3:slot:SMALL_E:015:L2:B1",
+      "position": [
+        123.7,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_082:01",
+      "slot_id": "v3:slot:SMALL_E:002:L1:B4",
+      "position": [
+        114.3,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_082:02",
+      "slot_id": "v3:slot:SMALL_E:002:L2:B4",
+      "position": [
+        114.3,
+        1,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_082:03",
+      "slot_id": "v3:slot:SMALL_E:006:L1:B2",
+      "position": [
+        117.7,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_082:04",
+      "slot_id": "v3:slot:SMALL_E:006:L2:B2",
+      "position": [
+        117.7,
+        1,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_083:01",
+      "slot_id": "v3:slot:SMALL_W:001:L1:B3",
+      "position": [
+        14.3,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_083:02",
+      "slot_id": "v3:slot:SMALL_W:001:L2:B3",
+      "position": [
+        14.3,
+        1,
+        43.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_083:03",
+      "slot_id": "v3:slot:SMALL_W:005:L1:B3",
+      "position": [
+        17.700000000000003,
+        0.25,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_083:04",
+      "slot_id": "v3:slot:SMALL_W:005:L2:B3",
+      "position": [
+        17.700000000000003,
+        1,
+        43.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_084:01",
+      "slot_id": "v3:slot:SMALL_W:019:L1:B3",
+      "position": [
+        26.299999999999997,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_084:02",
+      "slot_id": "v3:slot:SMALL_W:019:L2:B3",
+      "position": [
+        26.299999999999997,
+        1,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_084:03",
+      "slot_id": "v3:slot:SMALL_W:023:L1:B3",
+      "position": [
+        29.700000000000003,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_084:04",
+      "slot_id": "v3:slot:SMALL_W:023:L2:B3",
+      "position": [
+        29.700000000000003,
+        1,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_085:01",
+      "slot_id": "v3:slot:SMALL_E:011:L1:B4",
+      "position": [
+        120.3,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_085:02",
+      "slot_id": "v3:slot:SMALL_E:011:L2:B4",
+      "position": [
+        120.3,
+        1,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_085:03",
+      "slot_id": "v3:slot:SMALL_E:015:L1:B2",
+      "position": [
+        123.7,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_085:04",
+      "slot_id": "v3:slot:SMALL_E:015:L2:B2",
+      "position": [
+        123.7,
+        1,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_086:01",
+      "slot_id": "v3:slot:SMALL_E:002:L1:B5",
+      "position": [
+        114.3,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_086:02",
+      "slot_id": "v3:slot:SMALL_E:002:L2:B5",
+      "position": [
+        114.3,
+        1,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_086:03",
+      "slot_id": "v3:slot:SMALL_E:006:L1:B1",
+      "position": [
+        117.7,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_086:04",
+      "slot_id": "v3:slot:SMALL_E:006:L2:B1",
+      "position": [
+        117.7,
+        1,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_087:01",
+      "slot_id": "v3:slot:SMALL_W:004:L1:B1",
+      "position": [
+        14.3,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_087:02",
+      "slot_id": "v3:slot:SMALL_W:004:L2:B1",
+      "position": [
+        14.3,
+        1,
+        54.78
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_087:03",
+      "slot_id": "v3:slot:SMALL_W:008:L1:B5",
+      "position": [
+        17.700000000000003,
+        0.25,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_087:04",
+      "slot_id": "v3:slot:SMALL_W:008:L2:B5",
+      "position": [
+        17.700000000000003,
+        1,
+        54.78
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_088:01",
+      "slot_id": "v3:slot:SMALL_W:018:L1:B2",
+      "position": [
+        26.299999999999997,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_088:02",
+      "slot_id": "v3:slot:SMALL_W:018:L2:B2",
+      "position": [
+        26.299999999999997,
+        1,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_088:03",
+      "slot_id": "v3:slot:SMALL_W:022:L1:B4",
+      "position": [
+        29.700000000000003,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_088:04",
+      "slot_id": "v3:slot:SMALL_W:022:L2:B4",
+      "position": [
+        29.700000000000003,
+        1,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_089:01",
+      "slot_id": "v3:slot:SMALL_E:010:L1:B1",
+      "position": [
+        120.3,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_089:02",
+      "slot_id": "v3:slot:SMALL_E:010:L2:B1",
+      "position": [
+        120.3,
+        1,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_089:03",
+      "slot_id": "v3:slot:SMALL_E:014:L1:B5",
+      "position": [
+        123.7,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_089:04",
+      "slot_id": "v3:slot:SMALL_E:014:L2:B5",
+      "position": [
+        123.7,
+        1,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_090:01",
+      "slot_id": "v3:slot:SMALL_E:004:L1:B5",
+      "position": [
+        114.3,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_090:02",
+      "slot_id": "v3:slot:SMALL_E:004:L2:B5",
+      "position": [
+        114.3,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_090:03",
+      "slot_id": "v3:slot:SMALL_E:008:L1:B1",
+      "position": [
+        117.7,
+        0.25,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_090:04",
+      "slot_id": "v3:slot:SMALL_E:008:L2:B1",
+      "position": [
+        117.7,
+        1,
+        53.019999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_091:01",
+      "slot_id": "v3:slot:SMALL_W:001:L1:B4",
+      "position": [
+        14.3,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_091:02",
+      "slot_id": "v3:slot:SMALL_W:001:L2:B4",
+      "position": [
+        14.3,
+        1,
+        43.06
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_091:03",
+      "slot_id": "v3:slot:SMALL_W:005:L1:B2",
+      "position": [
+        17.700000000000003,
+        0.25,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_091:04",
+      "slot_id": "v3:slot:SMALL_W:005:L2:B2",
+      "position": [
+        17.700000000000003,
+        1,
+        43.06
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_092:01",
+      "slot_id": "v3:slot:SMALL_W:019:L1:B2",
+      "position": [
+        26.299999999999997,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_092:02",
+      "slot_id": "v3:slot:SMALL_W:019:L2:B2",
+      "position": [
+        26.299999999999997,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_092:03",
+      "slot_id": "v3:slot:SMALL_W:023:L1:B4",
+      "position": [
+        29.700000000000003,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_092:04",
+      "slot_id": "v3:slot:SMALL_W:023:L2:B4",
+      "position": [
+        29.700000000000003,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_093:01",
+      "slot_id": "v3:slot:SMALL_E:011:L1:B3",
+      "position": [
+        120.3,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_093:02",
+      "slot_id": "v3:slot:SMALL_E:011:L2:B3",
+      "position": [
+        120.3,
+        1,
+        51.4
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_093:03",
+      "slot_id": "v3:slot:SMALL_E:015:L1:B3",
+      "position": [
+        123.7,
+        0.25,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_093:04",
+      "slot_id": "v3:slot:SMALL_E:015:L2:B3",
+      "position": [
+        123.7,
+        1,
+        51.4
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_094:01",
+      "slot_id": "v3:slot:SMALL_E:004:L1:B4",
+      "position": [
+        114.3,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_094:02",
+      "slot_id": "v3:slot:SMALL_E:004:L2:B4",
+      "position": [
+        114.3,
+        1,
+        53.46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_094:03",
+      "slot_id": "v3:slot:SMALL_E:008:L1:B2",
+      "position": [
+        117.7,
+        0.25,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_094:04",
+      "slot_id": "v3:slot:SMALL_E:008:L2:B2",
+      "position": [
+        117.7,
+        1,
+        53.46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_095:01",
+      "slot_id": "v3:slot:SMALL_W:001:L1:B5",
+      "position": [
+        14.3,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_095:02",
+      "slot_id": "v3:slot:SMALL_W:001:L2:B5",
+      "position": [
+        14.3,
+        1,
+        42.62
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_095:03",
+      "slot_id": "v3:slot:SMALL_W:005:L1:B1",
+      "position": [
+        17.700000000000003,
+        0.25,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_095:04",
+      "slot_id": "v3:slot:SMALL_W:005:L2:B1",
+      "position": [
+        17.700000000000003,
+        1,
+        42.62
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_096:01",
+      "slot_id": "v3:slot:SMALL_W:018:L1:B3",
+      "position": [
+        26.299999999999997,
+        0.25,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_096:02",
+      "slot_id": "v3:slot:SMALL_W:018:L2:B3",
+      "position": [
+        26.299999999999997,
+        1,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_096:03",
+      "slot_id": "v3:slot:SMALL_W:022:L1:B3",
+      "position": [
+        29.700000000000003,
+        0.25,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_096:04",
+      "slot_id": "v3:slot:SMALL_W:022:L2:B3",
+      "position": [
+        29.700000000000003,
+        1,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_097:01",
+      "slot_id": "v3:slot:SMALL_E:010:L1:B2",
+      "position": [
+        120.3,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_097:02",
+      "slot_id": "v3:slot:SMALL_E:010:L2:B2",
+      "position": [
+        120.3,
+        1,
+        46.44
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_097:03",
+      "slot_id": "v3:slot:SMALL_E:014:L1:B4",
+      "position": [
+        123.7,
+        0.25,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_097:04",
+      "slot_id": "v3:slot:SMALL_E:014:L2:B4",
+      "position": [
+        123.7,
+        1,
+        46.44
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_098:01",
+      "slot_id": "v3:slot:SMALL_E:001:L1:B1",
+      "position": [
+        114.3,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_098:02",
+      "slot_id": "v3:slot:SMALL_E:001:L2:B1",
+      "position": [
+        114.3,
+        1,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_098:03",
+      "slot_id": "v3:slot:SMALL_E:005:L1:B5",
+      "position": [
+        117.7,
+        0.25,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_098:04",
+      "slot_id": "v3:slot:SMALL_E:005:L2:B5",
+      "position": [
+        117.7,
+        1,
+        44.38
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_099:01",
+      "slot_id": "v3:slot:SMALL_W:011:L1:B5",
+      "position": [
+        20.299999999999997,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_099:02",
+      "slot_id": "v3:slot:SMALL_W:011:L2:B5",
+      "position": [
+        20.299999999999997,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_099:03",
+      "slot_id": "v3:slot:SMALL_W:015:L1:B1",
+      "position": [
+        23.700000000000003,
+        0.25,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_099:04",
+      "slot_id": "v3:slot:SMALL_W:015:L2:B1",
+      "position": [
+        23.700000000000003,
+        1,
+        50.519999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_100:01",
+      "slot_id": "v3:slot:SMALL_W:019:L1:B1",
+      "position": [
+        26.299999999999997,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_100:02",
+      "slot_id": "v3:slot:SMALL_W:019:L2:B1",
+      "position": [
+        26.299999999999997,
+        1,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_100:03",
+      "slot_id": "v3:slot:SMALL_W:023:L1:B5",
+      "position": [
+        29.700000000000003,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_100:04",
+      "slot_id": "v3:slot:SMALL_W:023:L2:B5",
+      "position": [
+        29.700000000000003,
+        1,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_101:01",
+      "slot_id": "v3:slot:SMALL_E:011:L1:B2",
+      "position": [
+        120.3,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_101:02",
+      "slot_id": "v3:slot:SMALL_E:011:L2:B2",
+      "position": [
+        120.3,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_101:03",
+      "slot_id": "v3:slot:SMALL_E:015:L1:B4",
+      "position": [
+        123.7,
+        0.25,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_101:04",
+      "slot_id": "v3:slot:SMALL_E:015:L2:B4",
+      "position": [
+        123.7,
+        1,
+        51.839999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_102:01",
+      "slot_id": "v3:slot:SMALL_E:004:L1:B3",
+      "position": [
+        114.3,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_102:02",
+      "slot_id": "v3:slot:SMALL_E:004:L2:B3",
+      "position": [
+        114.3,
+        1,
+        53.9
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_102:03",
+      "slot_id": "v3:slot:SMALL_E:008:L1:B3",
+      "position": [
+        117.7,
+        0.25,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_102:04",
+      "slot_id": "v3:slot:SMALL_E:008:L2:B3",
+      "position": [
+        117.7,
+        1,
+        53.9
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_103:01",
+      "slot_id": "v3:slot:SMALL_W:011:L1:B4",
+      "position": [
+        20.299999999999997,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_103:02",
+      "slot_id": "v3:slot:SMALL_W:011:L2:B4",
+      "position": [
+        20.299999999999997,
+        1,
+        50.96
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_103:03",
+      "slot_id": "v3:slot:SMALL_W:015:L1:B2",
+      "position": [
+        23.700000000000003,
+        0.25,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_103:04",
+      "slot_id": "v3:slot:SMALL_W:015:L2:B2",
+      "position": [
+        23.700000000000003,
+        1,
+        50.96
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_104:01",
+      "slot_id": "v3:slot:SMALL_W:018:L1:B4",
+      "position": [
+        26.299999999999997,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_104:02",
+      "slot_id": "v3:slot:SMALL_W:018:L2:B4",
+      "position": [
+        26.299999999999997,
+        1,
+        45.56
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_104:03",
+      "slot_id": "v3:slot:SMALL_W:022:L1:B2",
+      "position": [
+        29.700000000000003,
+        0.25,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_104:04",
+      "slot_id": "v3:slot:SMALL_W:022:L2:B2",
+      "position": [
+        29.700000000000003,
+        1,
+        45.56
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_105:01",
+      "slot_id": "v3:slot:SMALL_E:010:L1:B3",
+      "position": [
+        120.3,
+        0.25,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_105:02",
+      "slot_id": "v3:slot:SMALL_E:010:L2:B3",
+      "position": [
+        120.3,
+        1,
+        46
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_105:03",
+      "slot_id": "v3:slot:SMALL_E:014:L1:B3",
+      "position": [
+        123.7,
+        0.25,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_105:04",
+      "slot_id": "v3:slot:SMALL_E:014:L2:B3",
+      "position": [
+        123.7,
+        1,
+        46
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_106:01",
+      "slot_id": "v3:slot:SMALL_E:001:L1:B2",
+      "position": [
+        114.3,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_106:02",
+      "slot_id": "v3:slot:SMALL_E:001:L2:B2",
+      "position": [
+        114.3,
+        1,
+        43.94
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_106:03",
+      "slot_id": "v3:slot:SMALL_E:005:L1:B4",
+      "position": [
+        117.7,
+        0.25,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_106:04",
+      "slot_id": "v3:slot:SMALL_E:005:L2:B4",
+      "position": [
+        117.7,
+        1,
+        43.94
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_107:01",
+      "slot_id": "v3:slot:SMALL_W:010:L1:B1",
+      "position": [
+        20.299999999999997,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_107:02",
+      "slot_id": "v3:slot:SMALL_W:010:L2:B1",
+      "position": [
+        20.299999999999997,
+        1,
+        46.88
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_107:03",
+      "slot_id": "v3:slot:SMALL_W:014:L1:B5",
+      "position": [
+        23.700000000000003,
+        0.25,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_107:04",
+      "slot_id": "v3:slot:SMALL_W:014:L2:B5",
+      "position": [
+        23.700000000000003,
+        1,
+        46.88
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_108:01",
+      "slot_id": "v3:slot:SMALL_W:018:L1:B5",
+      "position": [
+        26.299999999999997,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_108:02",
+      "slot_id": "v3:slot:SMALL_W:018:L2:B5",
+      "position": [
+        26.299999999999997,
+        1,
+        45.12
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_108:03",
+      "slot_id": "v3:slot:SMALL_W:022:L1:B1",
+      "position": [
+        29.700000000000003,
+        0.25,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_108:04",
+      "slot_id": "v3:slot:SMALL_W:022:L2:B1",
+      "position": [
+        29.700000000000003,
+        1,
+        45.12
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_109:01",
+      "slot_id": "v3:slot:SMALL_E:011:L1:B1",
+      "position": [
+        120.3,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_109:02",
+      "slot_id": "v3:slot:SMALL_E:011:L2:B1",
+      "position": [
+        120.3,
+        1,
+        52.28
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_109:03",
+      "slot_id": "v3:slot:SMALL_E:015:L1:B5",
+      "position": [
+        123.7,
+        0.25,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_109:04",
+      "slot_id": "v3:slot:SMALL_E:015:L2:B5",
+      "position": [
+        123.7,
+        1,
+        52.28
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_110:01",
+      "slot_id": "v3:slot:SMALL_E:004:L1:B2",
+      "position": [
+        114.3,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_110:02",
+      "slot_id": "v3:slot:SMALL_E:004:L2:B2",
+      "position": [
+        114.3,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_110:03",
+      "slot_id": "v3:slot:SMALL_E:008:L1:B4",
+      "position": [
+        117.7,
+        0.25,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_110:04",
+      "slot_id": "v3:slot:SMALL_E:008:L2:B4",
+      "position": [
+        117.7,
+        1,
+        54.339999999999996
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+      "slot_id": "v3:slot:STANDARD_E:007:L1:B2",
+      "position": [
+        102.1,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_112:01",
+      "slot_id": "v3:slot:STANDARD_E:008:L1:B1",
+      "position": [
+        106.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_113:01",
+      "slot_id": "v3:slot:STANDARD_W:004:L1:B1",
+      "position": [
+        47.900000000000006,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_114:01",
+      "slot_id": "v3:slot:STANDARD_W:002:L1:B2",
+      "position": [
+        40.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_115:01",
+      "slot_id": "v3:slot:STANDARD_E:002:L1:B2",
+      "position": [
+        80.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_116:01",
+      "slot_id": "v3:slot:STANDARD_E:011:L1:B1",
+      "position": [
+        84.9,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_117:01",
+      "slot_id": "v3:slot:STANDARD_W:005:L1:B2",
+      "position": [
+        56.099999999999994,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_118:01",
+      "slot_id": "v3:slot:STANDARD_W:007:L1:B1",
+      "position": [
+        63.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_119:01",
+      "slot_id": "v3:slot:STANDARD_E:007:L1:B1",
+      "position": [
+        103.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_120:01",
+      "slot_id": "v3:slot:STANDARD_E:014:L1:B2",
+      "position": [
+        99.1,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_121:01",
+      "slot_id": "v3:slot:STANDARD_W:004:L1:B2",
+      "position": [
+        46.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_122:01",
+      "slot_id": "v3:slot:STANDARD_E:003:L1:B1",
+      "position": [
+        84.9,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_123:01",
+      "slot_id": "v3:slot:STANDARD_W:011:L1:B2",
+      "position": [
+        43.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_124:01",
+      "slot_id": "v3:slot:STANDARD_W:009:L1:B1",
+      "position": [
+        38.900000000000006,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_125:01",
+      "slot_id": "v3:slot:STANDARD_W:005:L1:B1",
+      "position": [
+        57.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_126:01",
+      "slot_id": "v3:slot:STANDARD_E:006:L1:B2",
+      "position": [
+        99.1,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_127:01",
+      "slot_id": "v3:slot:STANDARD_W:014:L1:B1",
+      "position": [
+        60.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_128:01",
+      "slot_id": "v3:slot:STANDARD_W:016:L1:B2",
+      "position": [
+        65.1,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_129:01",
+      "slot_id": "v3:slot:STANDARD_W:003:L1:B1",
+      "position": [
+        44.900000000000006,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_130:01",
+      "slot_id": "v3:slot:STANDARD_W:012:L1:B1",
+      "position": [
+        47.900000000000006,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_131:01",
+      "slot_id": "v3:slot:STANDARD_E:012:L1:B1",
+      "position": [
+        87.9,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_132:01",
+      "slot_id": "v3:slot:STANDARD_E:011:L1:B2",
+      "position": [
+        83.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_133:01",
+      "slot_id": "v3:slot:STANDARD_W:006:L1:B2",
+      "position": [
+        59.099999999999994,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_134:01",
+      "slot_id": "v3:slot:STANDARD_W:013:L1:B2",
+      "position": [
+        56.099999999999994,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_135:01",
+      "slot_id": "v3:slot:STANDARD_E:013:L1:B2",
+      "position": [
+        96.1,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_136:01",
+      "slot_id": "v3:slot:STANDARD_E:014:L1:B1",
+      "position": [
+        100.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_137:01",
+      "slot_id": "v3:slot:STANDARD_W:003:L1:B2",
+      "position": [
+        43.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_138:01",
+      "slot_id": "v3:slot:STANDARD_W:008:L1:B2",
+      "position": [
+        65.1,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_139:01",
+      "slot_id": "v3:slot:STANDARD_E:001:L1:B1",
+      "position": [
+        78.9,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_140:01",
+      "slot_id": "v3:slot:STANDARD_W:009:L1:B2",
+      "position": [
+        37.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_141:01",
+      "slot_id": "v3:slot:STANDARD_W:006:L1:B1",
+      "position": [
+        60.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_142:01",
+      "slot_id": "v3:slot:STANDARD_E:003:L1:B2",
+      "position": [
+        83.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_143:01",
+      "slot_id": "v3:slot:STANDARD_E:008:L1:B2",
+      "position": [
+        105.1,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_144:01",
+      "slot_id": "v3:slot:STANDARD_W:016:L1:B1",
+      "position": [
+        66.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_145:01",
+      "slot_id": "v3:slot:STANDARD_E:004:L1:B1",
+      "position": [
+        87.9,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_146:01",
+      "slot_id": "v3:slot:STANDARD_E:006:L1:B1",
+      "position": [
+        100.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_147:01",
+      "slot_id": "v3:slot:STANDARD_W:010:L1:B1",
+      "position": [
+        41.900000000000006,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_148:01",
+      "slot_id": "v3:slot:STANDARD_E:010:L1:B1",
+      "position": [
+        81.9,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_149:01",
+      "slot_id": "v3:slot:STANDARD_E:005:L1:B2",
+      "position": [
+        96.1,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_150:01",
+      "slot_id": "v3:slot:STANDARD_W:012:L1:B2",
+      "position": [
+        46.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_151:01",
+      "slot_id": "v3:slot:STANDARD_W:015:L1:B2",
+      "position": [
+        62.099999999999994,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_152:01",
+      "slot_id": "v3:slot:STANDARD_E:015:L1:B2",
+      "position": [
+        102.1,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_153:01",
+      "slot_id": "v3:slot:STANDARD_W:002:L1:B1",
+      "position": [
+        41.900000000000006,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_154:01",
+      "slot_id": "v3:slot:STANDARD_W:013:L1:B1",
+      "position": [
+        57.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_155:01",
+      "slot_id": "v3:slot:STANDARD_E:012:L1:B2",
+      "position": [
+        86.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_156:01",
+      "slot_id": "v3:slot:STANDARD_E:010:L1:B2",
+      "position": [
+        80.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_157:01",
+      "slot_id": "v3:slot:STANDARD_W:007:L1:B2",
+      "position": [
+        62.099999999999994,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_158:01",
+      "slot_id": "v3:slot:STANDARD_W:008:L1:B1",
+      "position": [
+        66.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_159:01",
+      "slot_id": "v3:slot:STANDARD_E:013:L1:B1",
+      "position": [
+        97.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_160:01",
+      "slot_id": "v3:slot:STANDARD_E:015:L1:B1",
+      "position": [
+        103.5,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_161:01",
+      "slot_id": "v3:slot:STANDARD_E:004:L1:B2",
+      "position": [
+        86.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_162:01",
+      "slot_id": "v3:slot:STANDARD_E:002:L1:B1",
+      "position": [
+        81.9,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_163:01",
+      "slot_id": "v3:slot:STANDARD_E:001:L1:B2",
+      "position": [
+        77.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_164:01",
+      "slot_id": "v3:slot:STANDARD_E:009:L1:B1",
+      "position": [
+        78.9,
+        0.2,
+        52.55
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_165:01",
+      "slot_id": "v3:slot:STANDARD_E:005:L1:B1",
+      "position": [
+        97.5,
+        0.2,
+        44.25
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_166:01",
+      "slot_id": "v3:slot:HEAVY_W:011:L1:B1",
+      "position": [
+        25.4,
+        0.18,
+        29.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_167:01",
+      "slot_id": "v3:slot:HEAVY_W:009:L1:B1",
+      "position": [
+        25.4,
+        0.18,
+        21.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_168:01",
+      "slot_id": "v3:slot:HEAVY_W:007:L1:B1",
+      "position": [
+        25.4,
+        0.18,
+        17.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_169:01",
+      "slot_id": "v3:slot:HEAVY_W:006:L1:B1",
+      "position": [
+        18.6,
+        0.18,
+        31.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_170:01",
+      "slot_id": "v3:slot:HEAVY_W:004:L1:B1",
+      "position": [
+        18.6,
+        0.18,
+        27.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_171:01",
+      "slot_id": "v3:slot:HEAVY_W:002:L1:B1",
+      "position": [
+        18.6,
+        0.18,
+        19.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_172:01",
+      "slot_id": "v3:slot:HEAVY_E:011:L1:B1",
+      "position": [
+        125.60000000000001,
+        0.18,
+        29.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_173:01",
+      "slot_id": "v3:slot:HEAVY_W:012:L1:B1",
+      "position": [
+        25.599999999999998,
+        0.18,
+        31.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_174:01",
+      "slot_id": "v3:slot:HEAVY_W:010:L1:B1",
+      "position": [
+        25.599999999999998,
+        0.18,
+        27.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_175:01",
+      "slot_id": "v3:slot:HEAVY_W:008:L1:B1",
+      "position": [
+        25.599999999999998,
+        0.18,
+        19.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_176:01",
+      "slot_id": "v3:slot:HEAVY_E:004:L1:B1",
+      "position": [
+        118.39999999999999,
+        0.18,
+        27.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_177:01",
+      "slot_id": "v3:slot:HEAVY_E:006:L1:B1",
+      "position": [
+        118.39999999999999,
+        0.18,
+        31.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_178:01",
+      "slot_id": "v3:slot:HEAVY_E:012:L1:B1",
+      "position": [
+        125.60000000000001,
+        0.18,
+        31.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_179:01",
+      "slot_id": "v3:slot:HEAVY_E:005:L1:B1",
+      "position": [
+        118.39999999999999,
+        0.18,
+        29.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_180:01",
+      "slot_id": "v3:slot:LONG_W:002:L1:B1",
+      "position": [
+        43.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_181:01",
+      "slot_id": "v3:slot:LONG_E:003:L1:B1",
+      "position": [
+        88.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_182:01",
+      "slot_id": "v3:slot:LONG_W:003:L1:B1",
+      "position": [
+        48.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_183:01",
+      "slot_id": "v3:slot:LONG_E:002:L1:B1",
+      "position": [
+        83.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_184:01",
+      "slot_id": "v3:slot:LONG_W:005:L1:B1",
+      "position": [
+        60.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_185:01",
+      "slot_id": "v3:slot:LONG_E:004:L1:B1",
+      "position": [
+        95.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_186:01",
+      "slot_id": "v3:slot:LONG_W:004:L1:B1",
+      "position": [
+        55.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_187:01",
+      "slot_id": "v3:slot:LONG_E:005:L1:B1",
+      "position": [
+        100.5,
+        0.25,
+        17.874999999999996
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_188:01",
+      "slot_id": "v3:slot:HEAVY_E:010:L1:B1",
+      "position": [
+        125.44000000000001,
+        0.18,
+        27.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_189:01",
+      "slot_id": "v3:slot:HEAVY_W:005:L1:B1",
+      "position": [
+        18.560000000000002,
+        0.18,
+        29.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_190:01",
+      "slot_id": "v3:slot:HEAVY_W:003:L1:B1",
+      "position": [
+        18.560000000000002,
+        0.18,
+        21.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_191:01",
+      "slot_id": "v3:slot:HEAVY_W:001:L1:B1",
+      "position": [
+        18.560000000000002,
+        0.18,
+        17.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_192:01",
+      "slot_id": "v3:slot:HEAVY_E:003:L1:B1",
+      "position": [
+        118.55999999999999,
+        0.18,
+        21.5
+      ],
+      "yaw_rad": 1.5707963267948966
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_193:01",
+      "slot_id": "v3:slot:STANDARD_W:001:L1:B2",
+      "position": [
+        37.5,
+        0.2,
+        44.525
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_194:01",
+      "slot_id": "v3:slot:STANDARD_W:011:L1:B1",
+      "position": [
+        44.900000000000006,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_195:01",
+      "slot_id": "v3:slot:STANDARD_W:010:L1:B2",
+      "position": [
+        40.5,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_196:01",
+      "slot_id": "v3:slot:STANDARD_E:016:L1:B2",
+      "position": [
+        105.1,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_197:01",
+      "slot_id": "v3:slot:STANDARD_W:001:L1:B1",
+      "position": [
+        38.900000000000006,
+        0.2,
+        44.525
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_198:01",
+      "slot_id": "v3:slot:STANDARD_W:014:L1:B2",
+      "position": [
+        59.099999999999994,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_199:01",
+      "slot_id": "v3:slot:STANDARD_W:015:L1:B1",
+      "position": [
+        63.5,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    },
+    {
+      "handling_unit_id": "v3:HU:initial:DEMO_200:01",
+      "slot_id": "v3:slot:STANDARD_E:009:L1:B2",
+      "position": [
+        77.5,
+        0.2,
+        52.824999999999996
+      ],
+      "yaw_rad": 3.141592653589793
+    }
+  ],
+  "atomic_swap": true,
+  "absolute_reset": true,
+  "input_hashes": {
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "16bfec506475495c160a7a674b3674fef32ad765e394f7abfe300c68bab43033",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "39639d78dcb6631ee693b76dcf3be3bc90be9d19f2e4ffd40e07c6b31a007100",
+    "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
+    "frontend/tools/check-warehouse-cargo-v3.mjs": "0ec698ee4df26aec94af1b2f5c5bcc105abca213bd951c56caf03906336db749",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0"
+  },
+  "scope": "Immutable identities/single-parent storage binding and placement admission only. Actual shared mesh/support and physical actor/vehicle/cart/belt holders remain W04.2/W04.3; no transfer/action/resource or engine completion."
+}

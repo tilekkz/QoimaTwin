@@ -1,0 +1,351 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "visible": false,
+  "browser_launched": false,
+  "geometry_calibrations": 14,
+  "tests": [
+    {
+      "case": "supported_top_positive",
+      "passed": true,
+      "scope": "Native closed box rests on upward support top.",
+      "observation": {
+        "native_contact_area_sum_m2": 0.25,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": true,
+        "hull_points": 4,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "underside_penetration_negative",
+      "passed": true,
+      "scope": "Cargo bottom coincides with support underside and penetrates the box: never a load-bearing contact.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "vertical_gap_negative",
+      "passed": true,
+      "scope": "A10mm gap is larger than the explicit contact tolerance.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 8.673617379884035e-18,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            8.673617379884035e-18,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "adjacent_gap_negative",
+      "passed": true,
+      "scope": "Coplanar upward deck separated laterally from the cargo footprint.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "sparse_one_sided_contacts_negative",
+      "passed": true,
+      "scope": "Two genuine contact islands exist, but their contact hull excludes the footprint centre.",
+      "observation": {
+        "native_contact_area_sum_m2": 0.0078125,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 4,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "shared_translated_rotated_top_positive",
+      "passed": true,
+      "scope": "Nonidentity mesh world transforms preserve real contact and cargo-local dimensions.",
+      "observation": {
+        "native_contact_area_sum_m2": 0.2499999999990905,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": true,
+        "hull_points": 4,
+        "bounds_cargo_local": {
+          "min": [
+            -0.2499999999999929,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.2500000000000071,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "float_instance_transforms_top_positive",
+      "passed": true,
+      "scope": "World translation/yaw encoded in actual Float32 instance matrices, as in the warehouse.",
+      "observation": {
+        "native_contact_area_sum_m2": 0.24999999326939815,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": true,
+        "hull_points": 4,
+        "bounds_cargo_local": {
+          "min": [
+            -0.24999999857765953,
+            -1.1102230246251565e-16,
+            -0.24999999857766042
+          ],
+          "max": [
+            0.24999999857765953,
+            0.2499999999999999,
+            0.24999999857765687
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "nonindexed_top_positive",
+      "passed": true,
+      "scope": "Native nonindexed triangle buffers use the same geometry rule.",
+      "observation": {
+        "native_contact_area_sum_m2": 0.25,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": true,
+        "hull_points": 4,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 36
+      }
+    },
+    {
+      "case": "edge_only_zero_overlap_negative",
+      "passed": true,
+      "scope": "Exact binary-representable contact at an edge has zero supporting area.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "point_only_zero_overlap_negative",
+      "passed": true,
+      "scope": "One shared corner cannot create a contact polygon.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "degenerate_support_triangle_negative",
+      "passed": true,
+      "scope": "Collinear horizontal native vertices contribute no supporting area.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "inside_out_cargo_negative",
+      "passed": true,
+      "scope": "A reversed cargo mesh with upward-facing bottom cannot provide a valid downward contact face.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "inside_out_support_negative",
+      "passed": true,
+      "scope": "A reversed support mesh exposes its nominal top as a downward face.",
+      "observation": {
+        "native_contact_area_sum_m2": 0,
+        "maximum_contact_gap_m": 0,
+        "actual_bottom_gap_m": 0,
+        "centre_inside_support_hull": false,
+        "hull_points": 0,
+        "bounds_cargo_local": {
+          "min": [
+            -0.25,
+            0,
+            -0.25
+          ],
+          "max": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "vertices": 24
+      }
+    },
+    {
+      "case": "unknown_instance_and_support_rejected",
+      "passed": true,
+      "scope": "Missing registered native instances are explicit inspection errors.",
+      "observation": {
+        "explicit_rejections": 2
+      }
+    }
+  ],
+  "source_unchanged_during_check": true,
+  "input_hashes": {
+    "frontend/src/adaptive-v3/warehouseCargoGeometry.ts": "70f4a4bc80708d114336ca67149712fba2410390c6480a5c98b4032948165962",
+    "frontend/tools/check-warehouse-cargo-geometry-v3.mjs": "a47664f8d48770a649b82ddd72d870593fddeb9b580d3dd73e9158ab70371785",
+    "frontend/package-lock.json": "957df69d2e01a197e08968480ac5eeb3afaa135bddb087af0e1e3360514129a9"
+  },
+  "three_revision": "169",
+  "scope": "CPU calibration of actual native horizontal triangle contact/intersection and geometric footprint-centre support proxy. Synthetic geometry only; no strength, mass-centre stability, continuous collision, actual warehouse acceptance or engine certification."
+}
