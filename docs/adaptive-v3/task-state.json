@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T04:53:16.701520+00:00",
+  "updated_at": "2026-11-08T05:58:29.179427+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1087,15 +1087,22 @@
         "R10",
         "P02",
         "M08",
-        "I09"
+        "I09",
+        "P08"
       ],
       "criteria": "Scan/receive/idle clips и рабочее место согласованы с входящим грузом",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/P05.md",
         "docs/adaptive-v3/evidence/P05.json"
-      ]
+      ],
+      "children": [
+        "P05.1",
+        "P05.2",
+        "P05.3"
+      ],
+      "actual": "All three children PASS: supported source workcell, current real contact/scan paths and17reviewed current UI images.2034runtime/410native/41contacts; same R01/HU/24contents, original meshes/limits, source-bound checks/build/C12/shared regressions pass. No actual engine operation; next P06."
     },
     {
       "id": "P06",
@@ -3415,6 +3422,59 @@
         "docs/adaptive-v3/evidence/P03.5.3.3.1.json"
       ],
       "actual": "Accepted separate X-thumb press derivative,15native contact-connected slide/press states,50raw meshes and neutral world geometry unchanged. Original manual/base/P04 files preserved. Three additive GLBs Khronos0/0; seven prepared tool poses pass calibrated triangle/closed-solid clearance,12package/14bar/6button contacts and7C-mouth gauges. Native/runtime134559vertices max25.14nm; bounded muted headless views/build/C12 pass. Continuous operation remains parent.3."
+    },
+    {
+      "id": "P05.1",
+      "title": "Receiving workcell and real scan target",
+      "parent": "P05",
+      "depends_on": [
+        "R10",
+        "P02",
+        "M08",
+        "P08",
+        "I09"
+      ],
+      "criteria": "Unchanged accepted station/scanner and one floor-supported pallet; actual unobstructed lens-to-label ray, metric bounds and reviewed four views.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/P05.1.md",
+        "docs/adaptive-v3/evidence/P05.1.json"
+      ],
+      "actual": "Rear-service source published: entire original monitor/base/stem yawPI, full real base/table support and no cross-device penetration; actual footer[-.7,1.175,-.343]. Original P08/scanner/M08 unchanged;2.19x1.4x2.2m,9648tri/18batches/20anchors, true574.466mm scan ray. Khronos0/0/source bounds<60nm; five current views reviewed; ownedPID26644terminated. GLB5eb51073. Human full current action pending."
+    },
+    {
+      "id": "P05.2",
+      "title": "Connected receive confirmation and inward idle poses",
+      "parent": "P05",
+      "depends_on": [
+        "P05.1",
+        "P01.7"
+      ],
+      "criteria": "One existing purple R01, real supported hand/screen confirmation, no pallet lifting; native clearance/contact and unchanged original body/limits.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/P05.2.md",
+        "docs/adaptive-v3/evidence/P05.2.json"
+      ],
+      "actual": "Current rear-service R01 runtime2034/100seeks/3world transforms and default native410frames/41opposed contacts/820C-mouth gauges/3280connections pass2um; both boots supported, same original455kgHU matrix/24contents preserved.17.8s ordered action and2.5s scan/idle/blocked; seven actual headless previews reviewed incl useful hand/footer macro, purple factory/inward rest. PreviewPID16636closed. Full browser QA remains P05.3."
+    },
+    {
+      "id": "P05.3",
+      "title": "Clocked scan/receive/idle runtime and reviewed headless kit",
+      "parent": "P05",
+      "depends_on": [
+        "P05.2"
+      ],
+      "criteria": "Absolute seek, same actor/HU, distinct scan/receive/idle/blocked states, current native/runtime hashes, browser lifecycle/reduced-motion/error and actual reviewed views.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "docs/adaptive-v3/specs/P05.3.md",
+        "docs/adaptive-v3/evidence/P05.3.json"
+      ],
+      "actual": "Current source-bound2034runtime/410native/41contacts and17reviewed muted-headless images pass; modes/keyboard/mobile/RM/error/loading/stale/resource recovery checked. Shared P03/P04/walk regressions, build/C12 pass. Scope is prepared visual kit only; manual assistive-device review remains final Q."
     }
   ],
   "execution": {

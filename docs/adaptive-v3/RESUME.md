@@ -1,17 +1,17 @@
 # QoimaTwin v3 — resume
 
-Updated UTC: 2026-11-08T04:53:16.701520+00:00
+Updated UTC: 2026-11-08T05:58:29.179427+00:00
 Workspace: `C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin`
-Branch: `codex/twin-v3-adaptive`; HEAD observed at this state update: `005e168cacd9339186d1673fb6d6075a47beeabe`.
+Branch: `codex/twin-v3-adaptive`; HEAD observed at this state update: `bc052bdb377600e1928d8071ee41690290ee4321`.
 Objective: complete visual v3 per the current user request and `brief/01_START_CODEX.md`. This checkpoint does not assert a live goal record.
 
 ## Current checkpoint
 
-P03 PASS (root): All six children PASS: original worker/cart, overhand grip, grounded9s walk, corrected four-wall prepared-tool36s pick and stable original-ID tote handoff. Shared stand P04/walk regression passes; evidence hashes/entry points in P03.json. Separately runnable kit only; warehouse joining/acquisition/stow/registry remain W work, no actual engine or full visual-completion claim.
+P05 PASS (root): All three children PASS: supported source workcell, current real contact/scan paths and17reviewed current UI images.2034runtime/410native/41contacts; same R01/HU/24contents, original meshes/limits, source-bound checks/build/C12/shared regressions pass. No actual engine operation; next P06.
 
-PASS (136/186 cards, including expanded children): I01, I02, I03, I04, I05, I06, I07, I08, R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, L01, L02, L03, L04, L05, L06, L07, L08, L09, L10, L11, L12, C01, C02, C03, C04, C05, C06, C07, C08, C09, C10, C11, C12, M01, M02, M03, M04, M05, M06, M07, M08, M09, M10, M11, M12, M13, M14, P01, P02, P03, P04, P07, P08, P09, M06.1, M06.2, M06.3, M07.1, M07.2, M13.1, M13.2, M13.3, P03.1, P03.2, P03.3, P03.4, P03.5, P03.6, P09.1, P09.2, P09.3, P09.4, M14.1, M14.2, M14.3, M14.4, M14.5, M14.6, M14.7, M14.8, M14.9, R11, I09, I09.1, I09.2, I09.3, P01.1, P01.2, P01.3, P01.4, P01.5, P01.6, P01.7, P08.1, P08.2, P08.3, P08.4, P08.5, P08.6, R12, L12.1, L12.2, L12.3, H08.1, R13.1, R13.2, R13.3, R13.4, R13.5, R13, M14.6.1, M14.6.2, M14.6.3, P03.5.1, P03.5.2, P03.5.3, FIX01.1, FIX01.2, FIX01.3, P03.5.1.1, P04.1, P04.2, P04.3, P03.5.3.1, P03.5.3.2, P03.5.3.3, P03.5.3.3.1.
+PASS (140/189 cards, including expanded children): I01, I02, I03, I04, I05, I06, I07, I08, R01, R02, R03, R04, R05, R06, R07, R08, R09, R10, L01, L02, L03, L04, L05, L06, L07, L08, L09, L10, L11, L12, C01, C02, C03, C04, C05, C06, C07, C08, C09, C10, C11, C12, M01, M02, M03, M04, M05, M06, M07, M08, M09, M10, M11, M12, M13, M14, P01, P02, P03, P04, P05, P07, P08, P09, M06.1, M06.2, M06.3, M07.1, M07.2, M13.1, M13.2, M13.3, P03.1, P03.2, P03.3, P03.4, P03.5, P03.6, P09.1, P09.2, P09.3, P09.4, M14.1, M14.2, M14.3, M14.4, M14.5, M14.6, M14.7, M14.8, M14.9, R11, I09, I09.1, I09.2, I09.3, P01.1, P01.2, P01.3, P01.4, P01.5, P01.6, P01.7, P08.1, P08.2, P08.3, P08.4, P08.5, P08.6, R12, L12.1, L12.2, L12.3, H08.1, R13.1, R13.2, R13.3, R13.4, R13.5, R13, M14.6.1, M14.6.2, M14.6.3, P03.5.1, P03.5.2, P03.5.3, FIX01.1, FIX01.2, FIX01.3, P03.5.1.1, P04.1, P04.2, P04.3, P03.5.3.1, P03.5.3.2, P03.5.3.3, P03.5.3.3.1, P05.1, P05.2, P05.3.
 ACTIVE/VERIFY/FIX: none.
-Next READY: P05, P06.
+Next READY: P06.
 Read the current card, its exact inputs and evidence before resuming. Use `python tools/visual/v3/update_task_state.py ID STATUS OWNER "review note"` for root state transitions; agents edit only their card/artifacts and request root review.
 
 ## Decisions and preservation

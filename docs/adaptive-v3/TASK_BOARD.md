@@ -66,7 +66,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P02](tasks/P02.md) | PASS | people_packing | R10,P01,R05,I09 | Готовы визуальные варианты ролей |
 | [P03](tasks/P03.md) | PASS | root | R10,P02,M07,I09 | Готов комплект picker/cart |
 | [P04](tasks/P04.md) | PASS | root | R10,P02,M07,P08,I09 | Готов комплект packer |
-| [P05](tasks/P05.md) | READY | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
+| [P05](tasks/P05.md) | PASS | root | R10,P02,M08,I09,P08 | Готов комплект receiver |
 | [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
 | [P07](tasks/P07.md) | PASS | root | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
@@ -192,3 +192,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P03.5.3.2](tasks/P03.5.3.2.md) | PASS | root | P03.5.3.1 | Native compact gripper, linked jaw travel and browser views |
 | [P03.5.3.3](tasks/P03.5.3.3.md) | PASS | root | P03.5.3.2 | Clocked tool-assisted extract, withdraw, carry and tote deposit |
 | [P03.5.3.3.1](tasks/P03.5.3.3.1.md) | PASS | root | P03.5.3.2,P03.5.1 | Raw-body-preserving picker thumb-press derivative |
+| [P05.1](tasks/P05.1.md) | PASS | root | R10,P02,M08,P08,I09 | Receiving workcell and real scan target |
+| [P05.2](tasks/P05.2.md) | PASS | root | P05.1,P01.7 | Connected receive confirmation and inward idle poses |
+| [P05.3](tasks/P05.3.md) | PASS | root | P05.2 | Clocked scan/receive/idle runtime and reviewed headless kit |
