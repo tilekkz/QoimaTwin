@@ -190,4 +190,5 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P04.3](tasks/P04.3.md) | PASS | root | P04.2 | Packer runtime, seek and reference review |
 | [P03.5.3.1](tasks/P03.5.3.1.md) | PASS | root | P03.5.2 | Independent compact manual gripper reference and metric plan |
 | [P03.5.3.2](tasks/P03.5.3.2.md) | PASS | root | P03.5.3.1 | Native compact gripper, linked jaw travel and browser views |
-| [P03.5.3.3](tasks/P03.5.3.3.md) | READY | root | P03.5.3.2 | Clocked tool-assisted extract, withdraw, carry and tote deposit |
+| [P03.5.3.3](tasks/P03.5.3.3.md) | ACTIVE | root | P03.5.3.2 | Clocked tool-assisted extract, withdraw, carry and tote deposit |
+| [P03.5.3.3.1](tasks/P03.5.3.3.1.md) | PASS | root | P03.5.3.2,P03.5.1 | Raw-body-preserving picker thumb-press derivative |

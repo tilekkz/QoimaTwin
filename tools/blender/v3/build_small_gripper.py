@@ -7,8 +7,9 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from v3_common import ROOT,reset,group,pivot,anchor,material,finish,xyz,runtime_xyz,cylinder
 from build_long_rack import block
 from build_standard_carton import collect,empty_box
-from build_picking_cart import connected
+from native_clearance import connected_parts as connected
 from build_small_pick_source import rotate
+from small_gripper_drive import add_drive,set_drive
 EPS=2e-6
 OUT=ROOT/'assets/v3/iterations/small-package-gripper/P03.5.3.2'
 Y_CARRIER=.1238;LINK=.05
@@ -94,6 +95,7 @@ def build():
  anchor('anchor_package_pair_centre',(0,.018,0),root,'pair_centre_below_bridge')
  anchor('anchor_tool_tip_origin',(0,0,0),root,'four_finger_tip_plane')
  root['reference_targets_sha256']=hashlib.sha256((ROOT/'assets/references/v3/p03-small-gripper.targets.json').read_bytes()).hexdigest()
+ add_drive(root,steel,rubber,teal,orange)
  return root
 
 def opening(root,u):
@@ -104,20 +106,26 @@ def opening(root,u):
   nodes['joint__link_'+end].location=xyz((0,plunger_y(u),0));rotate(nodes['joint__link_'+end],(-math.atan2(sign*(.036+.007*u),plunger_y(u)-Y_CARRIER),0,0))
  nodes['joint__plunger'].location=xyz((0,plunger_y(u),0));nodes['joint__squeeze_lever'].rotation_mode='QUATERNION';rotate(nodes['joint__squeeze_lever'],(.18*u,0,0))
  nodes['continuous_compression_spring'].data.shape_keys.key_blocks['jaw_open'].value=(plunger_y(0)-plunger_y(u))/(plunger_y(0)-plunger_y(1))
+ set_drive(root,u)
  bpy.context.view_layer.update()
 
 def verify(root):
+ from native_clearance import penetration as penetrates
  results=[]
  for u in [0,.25,.5,.75,1]:
   opening(root,u);parts,_=collect(root)
   lo=[min(p['low'][i] for p in parts) for i in range(3)];hi=[max(p['high'][i] for p in parts) for i in range(3)]
-  assert all(abs(a-b)<.0002 for a,b in zip([hi[i]-lo[i] for i in range(3)],[.2,.168,.31])),(u,lo,hi)
+  dimensions=[hi[i]-lo[i] for i in range(3)]
+  assert .2-EPS<=dimensions[0]<=.22+EPS and abs(dimensions[1]-.168)<.0002 and .31-EPS<=dimensions[2]<=.316+EPS,(u,lo,hi)
   bore_parts=[p for p in parts if not p['name'].startswith('captured_square_rail_')]
   for end,sign in [('front',1),('rear',-1)]:
    for x in[-.05,.05]:empty_box(bore_parts,[x-.0031,.1161,sign*(.036+.007*u)-.0059],[x+.0031,.1219,sign*(.036+.007*u)+.0059],'actual hollow sleeve bore excluding captured rail')
   empty_box([p for p in parts if p['name']!='plunger_stem'],[-.0035,.129,-.0035],[.0035,.138,.0035],'actual open central plunger bore')
+  named={p['name']:p for p in parts};sheath=named['real_hollow_mechanical_sheath']
+  cable_hits=[hit for p in parts if p is not sheath and (hit:=penetrates(sheath,p))];assert not cable_hits,(u,'mechanical sheath/tool penetration',cable_hits)
+  assert not penetrates(named['actual_thumb_tab'],named['rubber_Tbar']),(u,'button support leaves actual grip pocket')
   links=connected(parts)
-  results.append(dict(opening=u,closed_parts=len(parts),dimensions_xyz_m=[hi[i]-lo[i] for i in range(3)],connected_pairs=len(links),gap_m=.04+.014*u,plunger_y_m=plunger_y(u)))
+  results.append(dict(opening=u,closed_parts=len(parts),dimensions_xyz_m=[hi[i]-lo[i] for i in range(3)],connected_pairs=len(links),gap_m=.04+.014*u,plunger_y_m=plunger_y(u),actual_sheath_clear_of_other_tool_solids=True,actual_button_support_fits_real_grip_pocket=True))
  opening(root,0)
  return results
 

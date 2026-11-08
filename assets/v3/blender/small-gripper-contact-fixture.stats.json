@@ -5,15 +5,15 @@
   "units": "m",
   "up_axis": "Y",
   "forward_axis": "+Z",
-  "generated_at": "2026-11-08T01:49:22.918800+00:00",
+  "generated_at": "2026-11-08T02:56:48.516901+00:00",
   "blender_version": "5.0.1",
   "source": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\blender\\small-gripper-contact-fixture.blend",
   "glb": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\public\\models\\v3\\small-gripper-contact-fixture.glb",
-  "glb_bytes": 1201196,
-  "sha256": "59283267c3e12928bfe4125c91ff3c379ab04afad7d15e62c146b53f0c001921",
-  "source_meshes": 346,
-  "runtime_meshes": 97,
-  "triangles": 19652,
+  "glb_bytes": 1366184,
+  "sha256": "682078fe38174e8943d2341994c6f25870ff8894b979ee062cee04d6faacfb15",
+  "source_meshes": 367,
+  "runtime_meshes": 101,
+  "triangles": 23024,
   "bounds_runtime": {
     "min": [
       -1.2000000476837158,
@@ -535,12 +535,12 @@
     "joint__squeeze_lever": {
       "position_runtime": [
         0.9449999928474426,
-        1.249500036239624,
+        1.2475000619888306,
         0.550000011920929
       ],
       "local_runtime": [
         0.0,
-        0.125,
+        0.12300000339746475,
         0.23000000417232513
       ],
       "parent": "small-package-gripper",
@@ -909,6 +909,20 @@
       ],
       "parent": "joint__hand_R",
       "axis": "Z"
+    },
+    "joint__thumb_press_R": {
+      "position_runtime": [
+        0.9060000777244568,
+        1.3203336000442505,
+        0.6174384951591492
+      ],
+      "local_runtime": [
+        -0.03200000151991844,
+        -0.006000000052154064,
+        -0.014999999664723873
+      ],
+      "parent": "joint__finger_thumb_R",
+      "axis": "X"
     },
     "joint__finger_upper_R": {
       "position_runtime": [
@@ -4990,6 +5004,91 @@
       "vertices": 24
     },
     {
+      "name": "actual_cable_terminal_washer",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.9309999942779541,
+          1.2695000171661377,
+          0.31599998474121094
+        ],
+        "max": [
+          0.9390000104904175,
+          1.270300030708313,
+          0.3240000009536743
+        ]
+      },
+      "vertices": 64
+    },
+    {
+      "name": "cable_standoff_0",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8320000171661377,
+          1.2484999895095825,
+          0.4779999852180481
+        ],
+        "max": [
+          0.8639999628067017,
+          1.2525962591171265,
+          0.4819999933242798
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "cable_standoff_1",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8320000171661377,
+          1.2484999895095825,
+          0.4179999828338623
+        ],
+        "max": [
+          0.8639999628067017,
+          1.2525962591171265,
+          0.421999990940094
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "captured_cable_ferrule",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.9309999942779541,
+          1.2634999752044678,
+          0.31599998474121094
+        ],
+        "max": [
+          0.9390000104904175,
+          1.2695000171661377,
+          0.3240000009536743
+        ]
+      },
+      "vertices": 64
+    },
+    {
+      "name": "captured_continuous_inner_wire",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8344999551773071,
+          1.1470670700073242,
+          0.3045171797275543
+        ],
+        "max": [
+          0.9354709386825562,
+          1.2695000171661377,
+          0.5339999794960022
+        ]
+      },
+      "vertices": 246
+    },
+    {
       "name": "captured_square_rail_L",
       "parent": "small-package-gripper",
       "bounds_runtime": {
@@ -5055,7 +5154,7 @@
           0.3269999921321869
         ]
       },
-      "vertices": 8
+      "vertices": 58
     },
     {
       "name": "crosshead_R",
@@ -5073,6 +5172,40 @@
         ]
       },
       "vertices": 8
+    },
+    {
+      "name": "exposed_front_pull_wire",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.934499979019165,
+          1.270300030708313,
+          0.31949999928474426
+        ],
+        "max": [
+          0.9354999661445618,
+          1.280998706817627,
+          0.320499986410141
+        ]
+      },
+      "vertices": 16
+    },
+    {
+      "name": "exposed_rear_pull_wire",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8345000147819519,
+          1.1470000743865967,
+          0.5339999794960022
+        ],
+        "max": [
+          0.8355000019073486,
+          1.1480000019073486,
+          0.550000011920929
+        ]
+      },
+      "vertices": 16
     },
     {
       "name": "fixed_rail_end_front",
@@ -5114,33 +5247,33 @@
       "bounds_runtime": {
         "min": [
           0.8640000224113464,
-          1.246596336364746,
+          1.2435001134872437,
           0.25999999046325684
         ],
         "max": [
-          0.8759999871253967,
+          0.8799999952316284,
           1.252596378326416,
-          0.550000011920929
+          0.5540000200271606
         ]
       },
-      "vertices": 8
+      "vertices": 140
     },
     {
       "name": "fixed_side_arm_R",
       "parent": "small-package-gripper",
       "bounds_runtime": {
         "min": [
-          1.0139999389648438,
-          1.246596336364746,
+          1.0099999904632568,
+          1.2435001134872437,
           0.25999999046325684
         ],
         "max": [
           1.0260000228881836,
           1.252596378326416,
-          0.550000011920929
+          0.5540000200271606
         ]
       },
-      "vertices": 8
+      "vertices": 140
     },
     {
       "name": "finger_pad_front_L",
@@ -5653,6 +5786,23 @@
       "vertices": 8
     },
     {
+      "name": "cable_cap_eye",
+      "parent": "joint__plunger",
+      "bounds_runtime": {
+        "min": [
+          0.9340000152587891,
+          1.2809988260269165,
+          0.3179999887943268
+        ],
+        "max": [
+          0.9390000104904175,
+          1.2849987745285034,
+          0.32199999690055847
+        ]
+      },
+      "vertices": 8
+    },
+    {
       "name": "plunger_cap",
       "parent": "joint__plunger",
       "bounds_runtime": {
@@ -5704,55 +5854,106 @@
       "vertices": 64
     },
     {
+      "name": "actual_lever_axle",
+      "parent": "joint__squeeze_lever",
+      "bounds_runtime": {
+        "min": [
+          0.8330000042915344,
+          1.245500087738037,
+          0.5480000376701355
+        ],
+        "max": [
+          1.0260000228881836,
+          1.249500036239624,
+          0.5519999861717224
+        ]
+      },
+      "vertices": 128
+    },
+    {
+      "name": "lever_pull_horn",
+      "parent": "joint__squeeze_lever",
+      "bounds_runtime": {
+        "min": [
+          0.8330000042915344,
+          1.1475001573562622,
+          0.5480000376701355
+        ],
+        "max": [
+          0.8369999527931213,
+          1.2475000619888306,
+          0.5519999861717224
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "lever_thrust_cap_-1",
+      "parent": "joint__squeeze_lever",
+      "bounds_runtime": {
+        "min": [
+          0.8610000014305115,
+          1.2440000772476196,
+          0.546500027179718
+        ],
+        "max": [
+          0.8640000224113464,
+          1.2510000467300415,
+          0.5534999966621399
+        ]
+      },
+      "vertices": 64
+    },
+    {
+      "name": "lever_thrust_cap_1",
+      "parent": "joint__squeeze_lever",
+      "bounds_runtime": {
+        "min": [
+          1.0260000228881836,
+          1.2440000772476196,
+          0.546500027179718
+        ],
+        "max": [
+          1.0290000438690186,
+          1.2510000467300415,
+          0.5534999966621399
+        ]
+      },
+      "vertices": 64
+    },
+    {
       "name": "squeeze_paddle",
       "parent": "joint__squeeze_lever",
       "bounds_runtime": {
         "min": [
           0.8799999952316284,
-          1.245500087738037,
+          1.2435001134872437,
           0.5429999828338623
         ],
         "max": [
           1.0099999904632568,
-          1.249500036239624,
+          1.2475000619888306,
           0.5570000410079956
         ]
       },
       "vertices": 24
     },
     {
-      "name": "lever_bearing_L",
-      "parent": "small-package-gripper",
+      "name": "actual_thumb_tab",
+      "parent": "thumb_tab_frame",
       "bounds_runtime": {
         "min": [
-          0.8700000047683716,
-          1.245500087738037,
-          0.5460000038146973
+          0.8960000276565552,
+          1.24713933467865,
+          0.5497526526451111
         ],
         "max": [
-          0.8799999952316284,
-          1.253499984741211,
-          0.5540000200271606
+          0.8999999761581421,
+          1.266469955444336,
+          0.5733211636543274
         ]
       },
-      "vertices": 64
-    },
-    {
-      "name": "lever_bearing_R",
-      "parent": "small-package-gripper",
-      "bounds_runtime": {
-        "min": [
-          1.0099999904632568,
-          1.245500087738037,
-          0.5460000038146973
-        ],
-        "max": [
-          1.0199999809265137,
-          1.253499984741211,
-          0.5540000200271606
-        ]
-      },
-      "vertices": 64
+      "vertices": 34
     },
     {
       "name": "real_annular_spring_seat",
@@ -5770,6 +5971,142 @@
         ]
       },
       "vertices": 64
+    },
+    {
+      "name": "real_cable_clip_0_bottom",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8334999680519104,
+          1.252596378326416,
+          0.4779999852180481
+        ],
+        "max": [
+          0.8364999890327454,
+          1.253000020980835,
+          0.4819999933242798
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_0_L",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8319999575614929,
+          1.252596378326416,
+          0.4779999852180481
+        ],
+        "max": [
+          0.8334999680519104,
+          1.2564001083374023,
+          0.4819999933242798
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_0_R",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8364999890327454,
+          1.252596378326416,
+          0.4779999852180481
+        ],
+        "max": [
+          0.8379999995231628,
+          1.2564001083374023,
+          0.4819999933242798
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_0_top",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8334999680519104,
+          1.25600004196167,
+          0.4779999852180481
+        ],
+        "max": [
+          0.8364999890327454,
+          1.2564001083374023,
+          0.4819999933242798
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_1_bottom",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8334999680519104,
+          1.252596378326416,
+          0.4179999828338623
+        ],
+        "max": [
+          0.8364999890327454,
+          1.253000020980835,
+          0.421999990940094
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_1_L",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8319999575614929,
+          1.252596378326416,
+          0.4179999828338623
+        ],
+        "max": [
+          0.8334999680519104,
+          1.2564001083374023,
+          0.421999990940094
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_1_R",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8364999890327454,
+          1.252596378326416,
+          0.4179999828338623
+        ],
+        "max": [
+          0.8379999995231628,
+          1.2564001083374023,
+          0.421999990940094
+        ]
+      },
+      "vertices": 8
+    },
+    {
+      "name": "real_cable_clip_1_top",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8334999680519104,
+          1.25600004196167,
+          0.4179999828338623
+        ],
+        "max": [
+          0.8364999890327454,
+          1.2564001083374023,
+          0.421999990940094
+        ]
+      },
+      "vertices": 8
     },
     {
       "name": "real_centre_guide_B",
@@ -5840,6 +6177,23 @@
       "vertices": 8
     },
     {
+      "name": "real_hollow_mechanical_sheath",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8334999680519104,
+          1.1460000276565552,
+          0.3035515546798706
+        ],
+        "max": [
+          0.9364128112792969,
+          1.2695000171661377,
+          0.5339999794960022
+        ]
+      },
+      "vertices": 656
+    },
+    {
       "name": "rubber_Tbar",
       "parent": "small-package-gripper",
       "bounds_runtime": {
@@ -5854,7 +6208,24 @@
           0.5699036717414856
         ]
       },
-      "vertices": 64
+      "vertices": 98
+    },
+    {
+      "name": "wire_through_terminal_washer",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.9345229864120483,
+          1.2695001363754272,
+          0.3195229470729828
+        ],
+        "max": [
+          0.9354770183563232,
+          1.270300030708313,
+          0.32047703862190247
+        ]
+      },
+      "vertices": 48
     },
     {
       "name": "boot_L",
@@ -6402,17 +6773,17 @@
     },
     {
       "name": "mitten_R_thumb",
-      "parent": "joint__finger_thumb_R",
+      "parent": "joint__thumb_press_R",
       "bounds_runtime": {
         "min": [
           0.8910000920295715,
           1.2356808185577393,
-          0.5679636001586914
+          0.5679634809494019
         ],
         "max": [
           0.921000063419342,
           1.33107590675354,
-          0.6362988948822021
+          0.6362987756729126
         ]
       },
       "vertices": 24
@@ -7611,7 +7982,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_53",
+      "name": "small-gripper-contact-fixture__batch_55",
       "parent": "joint__jaw_front",
       "bounds_runtime": {
         "min": [
@@ -7627,7 +7998,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_54",
+      "name": "small-gripper-contact-fixture__batch_56",
       "parent": "joint__jaw_front",
       "bounds_runtime": {
         "min": [
@@ -7643,7 +8014,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_55",
+      "name": "small-gripper-contact-fixture__batch_57",
       "parent": "joint__jaw_front",
       "bounds_runtime": {
         "min": [
@@ -7659,7 +8030,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_56",
+      "name": "small-gripper-contact-fixture__batch_58",
       "parent": "joint__jaw_front",
       "bounds_runtime": {
         "min": [
@@ -7675,7 +8046,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_57",
+      "name": "small-gripper-contact-fixture__batch_59",
       "parent": "joint__jaw_rear",
       "bounds_runtime": {
         "min": [
@@ -7691,7 +8062,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_58",
+      "name": "small-gripper-contact-fixture__batch_60",
       "parent": "joint__jaw_rear",
       "bounds_runtime": {
         "min": [
@@ -7707,7 +8078,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_59",
+      "name": "small-gripper-contact-fixture__batch_61",
       "parent": "joint__jaw_rear",
       "bounds_runtime": {
         "min": [
@@ -7723,7 +8094,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_60",
+      "name": "small-gripper-contact-fixture__batch_62",
       "parent": "joint__jaw_rear",
       "bounds_runtime": {
         "min": [
@@ -7739,7 +8110,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_61",
+      "name": "small-gripper-contact-fixture__batch_63",
       "parent": "joint__link_front",
       "bounds_runtime": {
         "min": [
@@ -7755,7 +8126,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_62",
+      "name": "small-gripper-contact-fixture__batch_64",
       "parent": "joint__link_rear",
       "bounds_runtime": {
         "min": [
@@ -7771,7 +8142,23 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_63",
+      "name": "small-gripper-contact-fixture__batch_65",
+      "parent": "joint__plunger",
+      "bounds_runtime": {
+        "min": [
+          0.9340000152587891,
+          1.25299870967865,
+          0.31700000166893005
+        ],
+        "max": [
+          0.9480000138282776,
+          1.2849987745285034,
+          0.3229999840259552
+        ]
+      }
+    },
+    {
+      "name": "small-gripper-contact-fixture__batch_66",
       "parent": "joint__plunger",
       "bounds_runtime": {
         "min": [
@@ -7787,7 +8174,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_64",
+      "name": "small-gripper-contact-fixture__batch_67",
       "parent": "joint__plunger",
       "bounds_runtime": {
         "min": [
@@ -7803,34 +8190,50 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_65",
-      "parent": "joint__plunger",
+      "name": "small-gripper-contact-fixture__batch_68",
+      "parent": "joint__squeeze_lever",
       "bounds_runtime": {
         "min": [
-          0.9419999718666077,
-          1.25299870967865,
-          0.31700000166893005
+          0.8330000042915344,
+          1.1475001573562622,
+          0.5480000376701355
         ],
         "max": [
-          0.9480000138282776,
-          1.2809988260269165,
-          0.3229999840259552
+          1.0260000228881836,
+          1.249500036239624,
+          0.5519999861717224
         ]
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_66",
+      "name": "small-gripper-contact-fixture__batch_69",
       "parent": "joint__squeeze_lever",
       "bounds_runtime": {
         "min": [
-          0.8799999952316284,
-          1.245500087738037,
+          0.8610000014305115,
+          1.2435001134872437,
           0.5429999828338623
         ],
         "max": [
-          1.0099999904632568,
-          1.249500036239624,
+          1.0290000438690186,
+          1.2510000467300415,
           0.5570000410079956
+        ]
+      }
+    },
+    {
+      "name": "small-gripper-contact-fixture__batch_70",
+      "parent": "thumb_tab_frame",
+      "bounds_runtime": {
+        "min": [
+          0.8960000276565552,
+          1.24713933467865,
+          0.5497526526451111
+        ],
+        "max": [
+          0.8999999761581421,
+          1.266469955444336,
+          0.5733211636543274
         ]
       }
     },
@@ -7839,19 +8242,35 @@
       "parent": "small-package-gripper",
       "bounds_runtime": {
         "min": [
-          0.8640000224113464,
-          1.2404999732971191,
+          0.8344999551773071,
+          1.1470670700073242,
           0.25999999046325684
         ],
         "max": [
           1.0260000228881836,
-          1.2645000219345093,
-          0.550000011920929
+          1.2703001499176025,
+          0.5540000200271606
         ]
       }
     },
     {
       "name": "small-gripper-contact-fixture__batch_51",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8319999575614929,
+          1.2374999523162842,
+          0.25999999046325684
+        ],
+        "max": [
+          1.0260000228881836,
+          1.2695000171661377,
+          0.4819999933242798
+        ]
+      }
+    },
+    {
+      "name": "small-gripper-contact-fixture__batch_52",
       "parent": "small-package-gripper",
       "bounds_runtime": {
         "min": [
@@ -7867,29 +8286,45 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_52",
+      "name": "small-gripper-contact-fixture__batch_53",
       "parent": "small-package-gripper",
       "bounds_runtime": {
         "min": [
-          0.8640000224113464,
-          1.2374999523162842,
-          0.25999999046325684
+          0.934499979019165,
+          1.270300030708313,
+          0.31949999928474426
         ],
         "max": [
-          1.0260000228881836,
-          1.2634999752044678,
-          0.5540000200271606
+          0.9354999661445618,
+          1.280998706817627,
+          0.320499986410141
         ]
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_67",
+      "name": "small-gripper-contact-fixture__batch_54",
       "parent": "small-package-gripper",
       "bounds_runtime": {
         "min": [
-          0.8449999690055847,
-          1.252596378326416,
-          0.5300962924957275
+          0.8345000147819519,
+          1.1470000743865967,
+          0.5339999794960022
+        ],
+        "max": [
+          0.8355000019073486,
+          1.1480000019073486,
+          0.550000011920929
+        ]
+      }
+    },
+    {
+      "name": "small-gripper-contact-fixture__batch_71",
+      "parent": "small-package-gripper",
+      "bounds_runtime": {
+        "min": [
+          0.8334999680519104,
+          1.1460000276565552,
+          0.3035515546798706
         ],
         "max": [
           1.0449999570846558,
@@ -7899,7 +8334,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_68",
+      "name": "small-gripper-contact-fixture__batch_72",
       "parent": "joint__foot_L",
       "bounds_runtime": {
         "min": [
@@ -7915,7 +8350,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_69",
+      "name": "small-gripper-contact-fixture__batch_73",
       "parent": "joint__shin_L",
       "bounds_runtime": {
         "min": [
@@ -7931,7 +8366,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_70",
+      "name": "small-gripper-contact-fixture__batch_74",
       "parent": "joint__thigh_L",
       "bounds_runtime": {
         "min": [
@@ -7947,7 +8382,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_71",
+      "name": "small-gripper-contact-fixture__batch_75",
       "parent": "joint__foot_R",
       "bounds_runtime": {
         "min": [
@@ -7963,7 +8398,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_72",
+      "name": "small-gripper-contact-fixture__batch_76",
       "parent": "joint__shin_R",
       "bounds_runtime": {
         "min": [
@@ -7979,7 +8414,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_73",
+      "name": "small-gripper-contact-fixture__batch_77",
       "parent": "joint__thigh_R",
       "bounds_runtime": {
         "min": [
@@ -7995,7 +8430,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_75",
+      "name": "small-gripper-contact-fixture__batch_79",
       "parent": "joint__head",
       "bounds_runtime": {
         "min": [
@@ -8011,7 +8446,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_76",
+      "name": "small-gripper-contact-fixture__batch_80",
       "parent": "joint__head",
       "bounds_runtime": {
         "min": [
@@ -8027,7 +8462,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_77",
+      "name": "small-gripper-contact-fixture__batch_81",
       "parent": "joint__head",
       "bounds_runtime": {
         "min": [
@@ -8043,7 +8478,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_78",
+      "name": "small-gripper-contact-fixture__batch_82",
       "parent": "joint__head",
       "bounds_runtime": {
         "min": [
@@ -8059,7 +8494,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_80",
+      "name": "small-gripper-contact-fixture__batch_84",
       "parent": "joint__finger_lower_L",
       "bounds_runtime": {
         "min": [
@@ -8075,7 +8510,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_81",
+      "name": "small-gripper-contact-fixture__batch_85",
       "parent": "joint__finger_thumb_L",
       "bounds_runtime": {
         "min": [
@@ -8091,7 +8526,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_82",
+      "name": "small-gripper-contact-fixture__batch_86",
       "parent": "joint__finger_upper_L",
       "bounds_runtime": {
         "min": [
@@ -8107,7 +8542,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_83",
+      "name": "small-gripper-contact-fixture__batch_87",
       "parent": "joint__hand_L",
       "bounds_runtime": {
         "min": [
@@ -8123,7 +8558,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_79",
+      "name": "small-gripper-contact-fixture__batch_83",
       "parent": "joint__forearm_L",
       "bounds_runtime": {
         "min": [
@@ -8139,7 +8574,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_84",
+      "name": "small-gripper-contact-fixture__batch_88",
       "parent": "joint__upper_arm_L",
       "bounds_runtime": {
         "min": [
@@ -8155,7 +8590,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_86",
+      "name": "small-gripper-contact-fixture__batch_90",
       "parent": "joint__finger_lower_R",
       "bounds_runtime": {
         "min": [
@@ -8171,23 +8606,23 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_87",
-      "parent": "joint__finger_thumb_R",
+      "name": "small-gripper-contact-fixture__batch_91",
+      "parent": "joint__thumb_press_R",
       "bounds_runtime": {
         "min": [
           0.8910000920295715,
           1.2356808185577393,
-          0.5679636001586914
+          0.5679634809494019
         ],
         "max": [
           0.921000063419342,
           1.33107590675354,
-          0.6362988948822021
+          0.6362987756729126
         ]
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_88",
+      "name": "small-gripper-contact-fixture__batch_92",
       "parent": "joint__finger_upper_R",
       "bounds_runtime": {
         "min": [
@@ -8203,7 +8638,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_89",
+      "name": "small-gripper-contact-fixture__batch_93",
       "parent": "joint__hand_R",
       "bounds_runtime": {
         "min": [
@@ -8219,7 +8654,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_85",
+      "name": "small-gripper-contact-fixture__batch_89",
       "parent": "joint__forearm_R",
       "bounds_runtime": {
         "min": [
@@ -8235,7 +8670,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_90",
+      "name": "small-gripper-contact-fixture__batch_94",
       "parent": "joint__upper_arm_R",
       "bounds_runtime": {
         "min": [
@@ -8251,7 +8686,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_74",
+      "name": "small-gripper-contact-fixture__batch_78",
       "parent": "joint__torso",
       "bounds_runtime": {
         "min": [
@@ -8267,7 +8702,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_91",
+      "name": "small-gripper-contact-fixture__batch_95",
       "parent": "joint__torso",
       "bounds_runtime": {
         "min": [
@@ -8283,7 +8718,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_92",
+      "name": "small-gripper-contact-fixture__batch_96",
       "parent": "joint__torso",
       "bounds_runtime": {
         "min": [
@@ -8299,7 +8734,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_93",
+      "name": "small-gripper-contact-fixture__batch_97",
       "parent": "joint__torso",
       "bounds_runtime": {
         "min": [
@@ -8315,7 +8750,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_94",
+      "name": "small-gripper-contact-fixture__batch_98",
       "parent": "joint__torso",
       "bounds_runtime": {
         "min": [
@@ -8331,7 +8766,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_95",
+      "name": "small-gripper-contact-fixture__batch_99",
       "parent": "joint__torso",
       "bounds_runtime": {
         "min": [
@@ -8347,7 +8782,7 @@
       }
     },
     {
-      "name": "small-gripper-contact-fixture__batch_96",
+      "name": "small-gripper-contact-fixture__batch_100",
       "parent": "joint__pelvis",
       "bounds_runtime": {
         "min": [
@@ -8394,11 +8829,18 @@
   "glb_header": {
     "magic": "glTF",
     "version": 2,
-    "declared_bytes": 1201196
+    "declared_bytes": 1366184
   },
   "morph_targets_preserved": {
-    "small-gripper-contact-fixture__batch_51": [
+    "small-gripper-contact-fixture__batch_52": [
       "jaw_open"
+    ],
+    "small-gripper-contact-fixture__batch_53": [
+      "plunger_down"
+    ],
+    "small-gripper-contact-fixture__batch_54": [
+      "pull_y",
+      "pull_z"
     ]
   }
 }

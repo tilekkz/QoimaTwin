@@ -1,5 +1,5 @@
 {
-  "at": "2026-11-08T01:42:46.660Z",
+  "at": "2026-11-08T02:57:06.366Z",
   "browser": "156.0.8078.81",
   "url": "http://127.0.0.1:4173/stand-v3.html?asset=calibration",
   "visible": false,
@@ -23,6 +23,10 @@
           "jaw_gap_m": 0.04,
           "plunger_y_m": 0.15849870314579495,
           "spring_compression": 0,
+          "manual_drive": true,
+          "lever_angle_rad": 0,
+          "manual_thumb_retraction_m": -0.005,
+          "manual_thumb_press_rad": 1.3620587026252905e-7,
           "source_kind": "synthetic_design",
           "engine_operation": false,
           "stock_instances": 0,
@@ -34,26 +38,26 @@
         "action": null,
         "roles": [],
         "dimensions_m": [
-          0.20000000298023224,
+          0.2130000051110983,
           0.16790369153022766,
-          0.30990369617938995
+          0.3133211453837672
         ],
         "bounds_m": {
           "min": [
-            -0.10000000149011612,
+            -0.11300000362098217,
             0,
-            -0.06000000238418579
+            -0.059999994933605194
           ],
           "max": [
             0.10000000149011612,
             0.16790369153022766,
-            0.24990369379520416
+            0.253321150450162
           ]
         },
         "screen_bounds_px": {
-          "min_x": 129.99910948578741,
-          "min_y": 130.5114983304341,
-          "max_x": 960.0008905142126,
+          "min_x": 102.79529146563766,
+          "min_y": 130.16105744952694,
+          "max_x": 987.2047085343625,
           "max_y": 807.5925925925926
         },
         "canvas": {
@@ -106,31 +110,36 @@
           "joint__jaw_front",
           "anchor_pad_front_L",
           "anchor_pad_front_R",
-          "small-package-gripper__batch_03",
-          "small-package-gripper__batch_04",
           "small-package-gripper__batch_05",
           "small-package-gripper__batch_06",
+          "small-package-gripper__batch_07",
+          "small-package-gripper__batch_08",
           "joint__jaw_rear",
           "anchor_pad_rear_L",
           "anchor_pad_rear_R",
-          "small-package-gripper__batch_07",
-          "small-package-gripper__batch_08",
           "small-package-gripper__batch_09",
           "small-package-gripper__batch_10",
-          "joint__link_front",
           "small-package-gripper__batch_11",
-          "joint__link_rear",
           "small-package-gripper__batch_12",
-          "joint__plunger",
+          "joint__link_front",
           "small-package-gripper__batch_13",
+          "joint__link_rear",
           "small-package-gripper__batch_14",
+          "joint__plunger",
           "small-package-gripper__batch_15",
-          "joint__squeeze_lever",
           "small-package-gripper__batch_16",
+          "small-package-gripper__batch_17",
+          "joint__squeeze_lever",
+          "small-package-gripper__batch_18",
+          "small-package-gripper__batch_19",
+          "thumb_tab_frame",
+          "small-package-gripper__batch_20",
           "small-package-gripper__batch_00",
           "small-package-gripper__batch_01",
           "small-package-gripper__batch_02",
-          "small-package-gripper__batch_17"
+          "small-package-gripper__batch_03",
+          "small-package-gripper__batch_04",
+          "small-package-gripper__batch_21"
         ],
         "materials": [
           "V3_GRIPPER_rubber",
@@ -138,7 +147,7 @@
           "V3_GRIPPER_lever",
           "V3_GRIPPER_petrol"
         ],
-        "triangles": 3208,
+        "triangles": 6580,
         "metadata": {
           "name": "small-package-gripper",
           "layout_version": "qoima-144x72-v3",
@@ -166,33 +175,43 @@
           ],
           "mechanism_drive": "Single absolute normalized opening. Opposed Z slides7mm each;50mm pin links; plunger from actual fixed link length; coil morph follows plunger.",
           "reference_targets_sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+          "manual_drive_version": "v3_radial_button_Bowden",
+          "rear_horn_radius_m": 0.1,
+          "lever_axis_y_m": 0.123,
+          "maximum_lever_angle_rad": 0.09193405407619765,
+          "extended_drive_envelope_max_xyz_m": [
+            0.22,
+            0.168,
+            0.316
+          ],
+          "force_transmission_scope": "Synthetic cable/spring kinematics only; no certified capacity or engine equipment admission.",
           "asset_id": "small-package-gripper"
         },
         "camera": {
           "type": "OrthographicCamera",
           "position": [
-            0,
-            0.10420828738688098,
-            0.9052095105761954
+            -0.006500001065433028,
+            0.10466558077638549,
+            0.9252099782091439
           ],
           "target": [
-            0,
-            0.08395184576511383,
-            0.09495184570550919
+            -0.006500001065433028,
+            0.08395184576511386,
+            0.09666057775827841
           ]
         },
         "presentation": {
           "contact_shading": true,
-          "radius_m": 0.024315324925198636,
+          "radius_m": 0.024864248450838913,
           "camera_inertia": true,
-          "ground_y_m": -0.000010131385385499433
+          "ground_y_m": -0.000010360103521182882
         },
         "renderer": {
-          "calls": 79,
-          "triangles": 12841,
+          "calls": 95,
+          "triangles": 26329,
           "memory": {
-            "geometries": 20,
-            "textures": 11
+            "geometries": 24,
+            "textures": 13
           }
         }
       }
@@ -210,6 +229,10 @@
           "jaw_gap_m": 0.04,
           "plunger_y_m": 0.15849870314579495,
           "spring_compression": 0,
+          "manual_drive": true,
+          "lever_angle_rad": 0,
+          "manual_thumb_retraction_m": -0.005,
+          "manual_thumb_press_rad": 1.3620587026252905e-7,
           "source_kind": "synthetic_design",
           "engine_operation": false,
           "stock_instances": 0,
@@ -221,27 +244,27 @@
         "action": null,
         "roles": [],
         "dimensions_m": [
-          0.20000000298023224,
+          0.2130000051110983,
           0.16790369153022766,
-          0.30990369617938995
+          0.3133211453837672
         ],
         "bounds_m": {
           "min": [
-            -0.10000000149011612,
+            -0.11300000362098217,
             0,
-            -0.06000000238418579
+            -0.059999994933605194
           ],
           "max": [
             0.10000000149011612,
             0.16790369153022766,
-            0.24990369379520416
+            0.253321150450162
           ]
         },
         "screen_bounds_px": {
-          "min_x": 72.77777777777717,
-          "min_y": 201.61668725266196,
-          "max_x": 1017.2222222222222,
-          "max_y": 724.0038395277892
+          "min_x": 72.77777777777742,
+          "min_y": 204.97912677481693,
+          "max_x": 1017.222222222222,
+          "max_y": 721.6685098944887
         },
         "canvas": {
           "width": 1090,
@@ -293,31 +316,36 @@
           "joint__jaw_front",
           "anchor_pad_front_L",
           "anchor_pad_front_R",
-          "small-package-gripper__batch_03",
-          "small-package-gripper__batch_04",
           "small-package-gripper__batch_05",
           "small-package-gripper__batch_06",
+          "small-package-gripper__batch_07",
+          "small-package-gripper__batch_08",
           "joint__jaw_rear",
           "anchor_pad_rear_L",
           "anchor_pad_rear_R",
-          "small-package-gripper__batch_07",
-          "small-package-gripper__batch_08",
           "small-package-gripper__batch_09",
           "small-package-gripper__batch_10",
-          "joint__link_front",
           "small-package-gripper__batch_11",
-          "joint__link_rear",
           "small-package-gripper__batch_12",
-          "joint__plunger",
+          "joint__link_front",
           "small-package-gripper__batch_13",
+          "joint__link_rear",
           "small-package-gripper__batch_14",
+          "joint__plunger",
           "small-package-gripper__batch_15",
-          "joint__squeeze_lever",
           "small-package-gripper__batch_16",
+          "small-package-gripper__batch_17",
+          "joint__squeeze_lever",
+          "small-package-gripper__batch_18",
+          "small-package-gripper__batch_19",
+          "thumb_tab_frame",
+          "small-package-gripper__batch_20",
           "small-package-gripper__batch_00",
           "small-package-gripper__batch_01",
           "small-package-gripper__batch_02",
-          "small-package-gripper__batch_17"
+          "small-package-gripper__batch_03",
+          "small-package-gripper__batch_04",
+          "small-package-gripper__batch_21"
         ],
         "materials": [
           "V3_GRIPPER_rubber",
@@ -325,7 +353,7 @@
           "V3_GRIPPER_lever",
           "V3_GRIPPER_petrol"
         ],
-        "triangles": 3208,
+        "triangles": 6580,
         "metadata": {
           "name": "small-package-gripper",
           "layout_version": "qoima-144x72-v3",
@@ -353,33 +381,43 @@
           ],
           "mechanism_drive": "Single absolute normalized opening. Opposed Z slides7mm each;50mm pin links; plunger from actual fixed link length; coil morph follows plunger.",
           "reference_targets_sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+          "manual_drive_version": "v3_radial_button_Bowden",
+          "rear_horn_radius_m": 0.1,
+          "lever_axis_y_m": 0.123,
+          "maximum_lever_angle_rad": 0.09193405407619765,
+          "extended_drive_envelope_max_xyz_m": [
+            0.22,
+            0.168,
+            0.316
+          ],
+          "force_transmission_scope": "Synthetic cable/spring kinematics only; no certified capacity or engine equipment admission.",
           "asset_id": "small-package-gripper"
         },
         "camera": {
           "type": "OrthographicCamera",
           "position": [
-            0.8102576648706862,
-            0.10420828738688098,
-            0.09495184570550924
+            0.8220493993854324,
+            0.10466558077638549,
+            0.09666057775827847
           ],
           "target": [
-            0,
-            0.08395184576511383,
-            0.09495184570550919
+            -0.006500001065433028,
+            0.08395184576511386,
+            0.09666057775827841
           ]
         },
         "presentation": {
           "contact_shading": true,
-          "radius_m": 0.024315324925198636,
+          "radius_m": 0.024864248450838913,
           "camera_inertia": true,
-          "ground_y_m": -0.000010131385385499433
+          "ground_y_m": -0.000010360103521182882
         },
         "renderer": {
-          "calls": 79,
-          "triangles": 12841,
+          "calls": 95,
+          "triangles": 26329,
           "memory": {
-            "geometries": 20,
-            "textures": 11
+            "geometries": 24,
+            "textures": 13
           }
         }
       }
@@ -397,6 +435,10 @@
           "jaw_gap_m": 0.04,
           "plunger_y_m": 0.15849870314579495,
           "spring_compression": 0,
+          "manual_drive": true,
+          "lever_angle_rad": 0,
+          "manual_thumb_retraction_m": -0.005,
+          "manual_thumb_press_rad": 1.3620587026252905e-7,
           "source_kind": "synthetic_design",
           "engine_operation": false,
           "stock_instances": 0,
@@ -408,27 +450,27 @@
         "action": null,
         "roles": [],
         "dimensions_m": [
-          0.20000000298023224,
+          0.2130000051110983,
           0.16790369153022766,
-          0.30990369617938995
+          0.3133211453837672
         ],
         "bounds_m": {
           "min": [
-            -0.10000000149011612,
+            -0.11300000362098217,
             0,
-            -0.06000000238418579
+            -0.059999994933605194
           ],
           "max": [
             0.10000000149011612,
             0.16790369153022766,
-            0.24990369379520416
+            0.253321150450162
           ]
         },
         "screen_bounds_px": {
-          "min_x": 152.79219580696326,
-          "min_y": 122.40740740740735,
-          "max_x": 937.2078041930365,
-          "max_y": 807.3909969134774
+          "min_x": 127.25710036803,
+          "min_y": 122.54080935977144,
+          "max_x": 962.74289963197,
+          "max_y": 807.5925925925926
         },
         "canvas": {
           "width": 1090,
@@ -480,31 +522,36 @@
           "joint__jaw_front",
           "anchor_pad_front_L",
           "anchor_pad_front_R",
-          "small-package-gripper__batch_03",
-          "small-package-gripper__batch_04",
           "small-package-gripper__batch_05",
           "small-package-gripper__batch_06",
+          "small-package-gripper__batch_07",
+          "small-package-gripper__batch_08",
           "joint__jaw_rear",
           "anchor_pad_rear_L",
           "anchor_pad_rear_R",
-          "small-package-gripper__batch_07",
-          "small-package-gripper__batch_08",
           "small-package-gripper__batch_09",
           "small-package-gripper__batch_10",
-          "joint__link_front",
           "small-package-gripper__batch_11",
-          "joint__link_rear",
           "small-package-gripper__batch_12",
-          "joint__plunger",
+          "joint__link_front",
           "small-package-gripper__batch_13",
+          "joint__link_rear",
           "small-package-gripper__batch_14",
+          "joint__plunger",
           "small-package-gripper__batch_15",
-          "joint__squeeze_lever",
           "small-package-gripper__batch_16",
+          "small-package-gripper__batch_17",
+          "joint__squeeze_lever",
+          "small-package-gripper__batch_18",
+          "small-package-gripper__batch_19",
+          "thumb_tab_frame",
+          "small-package-gripper__batch_20",
           "small-package-gripper__batch_00",
           "small-package-gripper__batch_01",
           "small-package-gripper__batch_02",
-          "small-package-gripper__batch_17"
+          "small-package-gripper__batch_03",
+          "small-package-gripper__batch_04",
+          "small-package-gripper__batch_21"
         ],
         "materials": [
           "V3_GRIPPER_rubber",
@@ -512,7 +559,7 @@
           "V3_GRIPPER_lever",
           "V3_GRIPPER_petrol"
         ],
-        "triangles": 3208,
+        "triangles": 6580,
         "metadata": {
           "name": "small-package-gripper",
           "layout_version": "qoima-144x72-v3",
@@ -540,33 +587,43 @@
           ],
           "mechanism_drive": "Single absolute normalized opening. Opposed Z slides7mm each;50mm pin links; plunger from actual fixed link length; coil morph follows plunger.",
           "reference_targets_sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+          "manual_drive_version": "v3_radial_button_Bowden",
+          "rear_horn_radius_m": 0.1,
+          "lever_axis_y_m": 0.123,
+          "maximum_lever_angle_rad": 0.09193405407619765,
+          "extended_drive_envelope_max_xyz_m": [
+            0.22,
+            0.168,
+            0.316
+          ],
+          "force_transmission_scope": "Synthetic cable/spring kinematics only; no certified capacity or engine equipment admission.",
           "asset_id": "small-package-gripper"
         },
         "camera": {
           "type": "OrthographicCamera",
           "position": [
-            9.922794557684946e-17,
-            0.10420828738688098,
-            -0.715305819165177
+            -0.0065000010654329265,
+            0.10466558077638549,
+            -0.731888822692587
           ],
           "target": [
-            0,
-            0.08395184576511383,
-            0.09495184570550919
+            -0.006500001065433028,
+            0.08395184576511386,
+            0.09666057775827841
           ]
         },
         "presentation": {
           "contact_shading": true,
-          "radius_m": 0.024315324925198636,
+          "radius_m": 0.024864248450838913,
           "camera_inertia": true,
-          "ground_y_m": -0.000010131385385499433
+          "ground_y_m": -0.000010360103521182882
         },
         "renderer": {
-          "calls": 79,
-          "triangles": 12841,
+          "calls": 95,
+          "triangles": 26329,
           "memory": {
-            "geometries": 20,
-            "textures": 11
+            "geometries": 24,
+            "textures": 13
           }
         }
       }
@@ -584,6 +641,10 @@
           "jaw_gap_m": 0.04,
           "plunger_y_m": 0.15849870314579495,
           "spring_compression": 0,
+          "manual_drive": true,
+          "lever_angle_rad": 0,
+          "manual_thumb_retraction_m": -0.005,
+          "manual_thumb_press_rad": 1.3620587026252905e-7,
           "source_kind": "synthetic_design",
           "engine_operation": false,
           "stock_instances": 0,
@@ -595,27 +656,27 @@
         "action": null,
         "roles": [],
         "dimensions_m": [
-          0.20000000298023224,
+          0.2130000051110983,
           0.16790369153022766,
-          0.30990369617938995
+          0.3133211453837672
         ],
         "bounds_m": {
           "min": [
-            -0.10000000149011612,
+            -0.11300000362098217,
             0,
-            -0.06000000238418579
+            -0.059999994933605194
           ],
           "max": [
             0.10000000149011612,
             0.16790369153022766,
-            0.24990369379520416
+            0.253321150450162
           ]
         },
         "screen_bounds_px": {
-          "min_x": 77.81881896535853,
-          "min_y": 233.04751335977573,
-          "max_x": 899.047643002371,
-          "max_y": 616.6945788654172
+          "min_x": 78.15766000690931,
+          "min_y": 228.84530427711306,
+          "max_x": 923.4251147978102,
+          "max_y": 645.4501404352745
         },
         "canvas": {
           "width": 1090,
@@ -667,31 +728,36 @@
           "joint__jaw_front",
           "anchor_pad_front_L",
           "anchor_pad_front_R",
-          "small-package-gripper__batch_03",
-          "small-package-gripper__batch_04",
           "small-package-gripper__batch_05",
           "small-package-gripper__batch_06",
+          "small-package-gripper__batch_07",
+          "small-package-gripper__batch_08",
           "joint__jaw_rear",
           "anchor_pad_rear_L",
           "anchor_pad_rear_R",
-          "small-package-gripper__batch_07",
-          "small-package-gripper__batch_08",
           "small-package-gripper__batch_09",
           "small-package-gripper__batch_10",
-          "joint__link_front",
           "small-package-gripper__batch_11",
-          "joint__link_rear",
           "small-package-gripper__batch_12",
-          "joint__plunger",
+          "joint__link_front",
           "small-package-gripper__batch_13",
+          "joint__link_rear",
           "small-package-gripper__batch_14",
+          "joint__plunger",
           "small-package-gripper__batch_15",
-          "joint__squeeze_lever",
           "small-package-gripper__batch_16",
+          "small-package-gripper__batch_17",
+          "joint__squeeze_lever",
+          "small-package-gripper__batch_18",
+          "small-package-gripper__batch_19",
+          "thumb_tab_frame",
+          "small-package-gripper__batch_20",
           "small-package-gripper__batch_00",
           "small-package-gripper__batch_01",
           "small-package-gripper__batch_02",
-          "small-package-gripper__batch_17"
+          "small-package-gripper__batch_03",
+          "small-package-gripper__batch_04",
+          "small-package-gripper__batch_21"
         ],
         "materials": [
           "V3_GRIPPER_rubber",
@@ -699,7 +765,7 @@
           "V3_GRIPPER_lever",
           "V3_GRIPPER_petrol"
         ],
-        "triangles": 3208,
+        "triangles": 6580,
         "metadata": {
           "name": "small-package-gripper",
           "layout_version": "qoima-144x72-v3",
@@ -727,33 +793,43 @@
           ],
           "mechanism_drive": "Single absolute normalized opening. Opposed Z slides7mm each;50mm pin links; plunger from actual fixed link length; coil morph follows plunger.",
           "reference_targets_sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+          "manual_drive_version": "v3_radial_button_Bowden",
+          "rear_horn_radius_m": 0.1,
+          "lever_axis_y_m": 0.123,
+          "maximum_lever_angle_rad": 0.09193405407619765,
+          "extended_drive_envelope_max_xyz_m": [
+            0.22,
+            0.168,
+            0.316
+          ],
+          "force_transmission_scope": "Synthetic cable/spring kinematics only; no certified capacity or engine equipment admission.",
           "asset_id": "small-package-gripper"
         },
         "camera": {
           "type": "PerspectiveCamera",
           "position": [
-            0.38922062454038214,
-            0.37586731417040065,
-            0.5814776263809865
+            0.37229524887596577,
+            0.3680482832211629,
+            0.5701546401850268
           ],
           "target": [
-            0,
-            0.08395184576511383,
-            0.09495184570550919
+            -0.006500001065433028,
+            0.08395184576511386,
+            0.09666057775827841
           ]
         },
         "presentation": {
           "contact_shading": true,
-          "radius_m": 0.024315324925198636,
+          "radius_m": 0.024864248450838913,
           "camera_inertia": true,
-          "ground_y_m": -0.000010131385385499433
+          "ground_y_m": -0.000010360103521182882
         },
         "renderer": {
-          "calls": 79,
-          "triangles": 12841,
+          "calls": 95,
+          "triangles": 26329,
           "memory": {
-            "geometries": 20,
-            "textures": 11
+            "geometries": 24,
+            "textures": 13
           }
         }
       }
@@ -771,6 +847,10 @@
           "jaw_gap_m": 0.054,
           "plunger_y_m": 0.14931470164434615,
           "spring_compression": 1,
+          "manual_drive": true,
+          "lever_angle_rad": -0.09193405407619765,
+          "manual_thumb_retraction_m": -0.005,
+          "manual_thumb_press_rad": 0.02645644138877002,
           "source_kind": "synthetic_design",
           "engine_operation": false,
           "stock_instances": 0,
@@ -782,27 +862,27 @@
         "action": null,
         "roles": [],
         "dimensions_m": [
-          0.20000000298023224,
+          0.2130000051110983,
           0.16790369153022766,
-          0.30990369617938995
+          0.3115162672565094
         ],
         "bounds_m": {
           "min": [
-            -0.10000000149011612,
+            -0.11300000362098217,
             0,
-            -0.06000000238418579
+            -0.059999994933605194
           ],
           "max": [
             0.10000000149011612,
             0.16790369153022766,
-            0.24990369379520416
+            0.2515162723229042
           ]
         },
         "screen_bounds_px": {
-          "min_x": 77.81881896535853,
-          "min_y": 243.243710699703,
-          "max_x": 899.047643002371,
-          "max_y": 622.845006940462
+          "min_x": 78.1804726118462,
+          "min_y": 240.40465918297278,
+          "max_x": 921.0921069980221,
+          "max_y": 653.697351801683
         },
         "canvas": {
           "width": 1090,
@@ -854,31 +934,36 @@
           "joint__jaw_front",
           "anchor_pad_front_L",
           "anchor_pad_front_R",
-          "small-package-gripper__batch_03",
-          "small-package-gripper__batch_04",
           "small-package-gripper__batch_05",
           "small-package-gripper__batch_06",
+          "small-package-gripper__batch_07",
+          "small-package-gripper__batch_08",
           "joint__jaw_rear",
           "anchor_pad_rear_L",
           "anchor_pad_rear_R",
-          "small-package-gripper__batch_07",
-          "small-package-gripper__batch_08",
           "small-package-gripper__batch_09",
           "small-package-gripper__batch_10",
-          "joint__link_front",
           "small-package-gripper__batch_11",
-          "joint__link_rear",
           "small-package-gripper__batch_12",
-          "joint__plunger",
+          "joint__link_front",
           "small-package-gripper__batch_13",
+          "joint__link_rear",
           "small-package-gripper__batch_14",
+          "joint__plunger",
           "small-package-gripper__batch_15",
-          "joint__squeeze_lever",
           "small-package-gripper__batch_16",
+          "small-package-gripper__batch_17",
+          "joint__squeeze_lever",
+          "small-package-gripper__batch_18",
+          "small-package-gripper__batch_19",
+          "thumb_tab_frame",
+          "small-package-gripper__batch_20",
           "small-package-gripper__batch_00",
           "small-package-gripper__batch_01",
           "small-package-gripper__batch_02",
-          "small-package-gripper__batch_17"
+          "small-package-gripper__batch_03",
+          "small-package-gripper__batch_04",
+          "small-package-gripper__batch_21"
         ],
         "materials": [
           "V3_GRIPPER_rubber",
@@ -886,7 +971,7 @@
           "V3_GRIPPER_lever",
           "V3_GRIPPER_petrol"
         ],
-        "triangles": 3208,
+        "triangles": 6580,
         "metadata": {
           "name": "small-package-gripper",
           "layout_version": "qoima-144x72-v3",
@@ -914,33 +999,43 @@
           ],
           "mechanism_drive": "Single absolute normalized opening. Opposed Z slides7mm each;50mm pin links; plunger from actual fixed link length; coil morph follows plunger.",
           "reference_targets_sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+          "manual_drive_version": "v3_radial_button_Bowden",
+          "rear_horn_radius_m": 0.1,
+          "lever_axis_y_m": 0.123,
+          "maximum_lever_angle_rad": 0.09193405407619765,
+          "extended_drive_envelope_max_xyz_m": [
+            0.22,
+            0.168,
+            0.316
+          ],
+          "force_transmission_scope": "Synthetic cable/spring kinematics only; no certified capacity or engine equipment admission.",
           "asset_id": "small-package-gripper"
         },
         "camera": {
           "type": "PerspectiveCamera",
           "position": [
-            0.38922062454038214,
-            0.37586731417040065,
-            0.5814776263809865
+            0.3737802460583565,
+            0.3691620311079559,
+            0.5711084475993864
           ],
           "target": [
-            0,
+            -0.006500001065433025,
             0.08395184576511383,
-            0.09495184570550919
+            0.0957581386946495
           ]
         },
         "presentation": {
           "contact_shading": true,
-          "radius_m": 0.024315324925198636,
+          "radius_m": 0.02478247226690761,
           "camera_inertia": true,
-          "ground_y_m": -0.000010131385385499433
+          "ground_y_m": -0.000010360103521182882
         },
         "renderer": {
-          "calls": 79,
-          "triangles": 12841,
+          "calls": 95,
+          "triangles": 26329,
           "memory": {
-            "geometries": 20,
-            "textures": 11
+            "geometries": 24,
+            "textures": 13
           }
         }
       }
@@ -958,6 +1053,10 @@
           "jaw_gap_m": 0.054,
           "plunger_y_m": 0.14931470164434615,
           "spring_compression": 1,
+          "manual_drive": true,
+          "lever_angle_rad": -0.09193405407619765,
+          "manual_thumb_retraction_m": -0.005,
+          "manual_thumb_press_rad": 0.02645644138877002,
           "source_kind": "synthetic_design",
           "engine_operation": false,
           "stock_instances": 0,
@@ -969,27 +1068,27 @@
         "action": null,
         "roles": [],
         "dimensions_m": [
-          0.20000000298023224,
+          0.2130000051110983,
           0.16790369153022766,
-          0.30990369617938995
+          0.3115162672565094
         ],
         "bounds_m": {
           "min": [
-            -0.10000000149011612,
+            -0.11300000362098217,
             0,
-            -0.06000000238418579
+            -0.059999994933605194
           ],
           "max": [
             0.10000000149011612,
             0.16790369153022766,
-            0.24990369379520416
+            0.2515162723229042
           ]
         },
         "screen_bounds_px": {
-          "min_x": 323.9101193609785,
-          "min_y": 122.40740740750935,
-          "max_x": 766.0898806390214,
-          "max_y": 807.5691221868915
+          "min_x": 310.7581195223669,
+          "min_y": 122.40740740740043,
+          "max_x": 779.2418804776331,
+          "max_y": 807.5697529419531
         },
         "canvas": {
           "width": 1090,
@@ -1041,31 +1140,36 @@
           "joint__jaw_front",
           "anchor_pad_front_L",
           "anchor_pad_front_R",
-          "small-package-gripper__batch_03",
-          "small-package-gripper__batch_04",
           "small-package-gripper__batch_05",
           "small-package-gripper__batch_06",
+          "small-package-gripper__batch_07",
+          "small-package-gripper__batch_08",
           "joint__jaw_rear",
           "anchor_pad_rear_L",
           "anchor_pad_rear_R",
-          "small-package-gripper__batch_07",
-          "small-package-gripper__batch_08",
           "small-package-gripper__batch_09",
           "small-package-gripper__batch_10",
-          "joint__link_front",
           "small-package-gripper__batch_11",
-          "joint__link_rear",
           "small-package-gripper__batch_12",
-          "joint__plunger",
+          "joint__link_front",
           "small-package-gripper__batch_13",
+          "joint__link_rear",
           "small-package-gripper__batch_14",
+          "joint__plunger",
           "small-package-gripper__batch_15",
-          "joint__squeeze_lever",
           "small-package-gripper__batch_16",
+          "small-package-gripper__batch_17",
+          "joint__squeeze_lever",
+          "small-package-gripper__batch_18",
+          "small-package-gripper__batch_19",
+          "thumb_tab_frame",
+          "small-package-gripper__batch_20",
           "small-package-gripper__batch_00",
           "small-package-gripper__batch_01",
           "small-package-gripper__batch_02",
-          "small-package-gripper__batch_17"
+          "small-package-gripper__batch_03",
+          "small-package-gripper__batch_04",
+          "small-package-gripper__batch_21"
         ],
         "materials": [
           "V3_GRIPPER_rubber",
@@ -1073,7 +1177,7 @@
           "V3_GRIPPER_lever",
           "V3_GRIPPER_petrol"
         ],
-        "triangles": 3208,
+        "triangles": 6580,
         "metadata": {
           "name": "small-package-gripper",
           "layout_version": "qoima-144x72-v3",
@@ -1101,33 +1205,43 @@
           ],
           "mechanism_drive": "Single absolute normalized opening. Opposed Z slides7mm each;50mm pin links; plunger from actual fixed link length; coil morph follows plunger.",
           "reference_targets_sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+          "manual_drive_version": "v3_radial_button_Bowden",
+          "rear_horn_radius_m": 0.1,
+          "lever_axis_y_m": 0.123,
+          "maximum_lever_angle_rad": 0.09193405407619765,
+          "extended_drive_envelope_max_xyz_m": [
+            0.22,
+            0.168,
+            0.316
+          ],
+          "force_transmission_scope": "Synthetic cable/spring kinematics only; no certified capacity or engine equipment admission.",
           "asset_id": "small-package-gripper"
         },
         "camera": {
           "type": "OrthographicCamera",
           "position": [
-            0,
-            0.8944626725525142,
-            0.09503289678734572
+            -0.006500001065433025,
+            0.9100342505316222,
+            0.0958407469351849
           ],
           "target": [
-            0,
+            -0.006500001065433025,
             0.08395184576511383,
-            0.09495184570550919
+            0.0957581386946495
           ]
         },
         "presentation": {
           "contact_shading": true,
-          "radius_m": 0.024315324925198636,
+          "radius_m": 0.02478247226690761,
           "camera_inertia": true,
-          "ground_y_m": -0.000010131385385499433
+          "ground_y_m": -0.000010360103521182882
         },
         "renderer": {
-          "calls": 79,
-          "triangles": 12841,
+          "calls": 95,
+          "triangles": 26329,
           "memory": {
-            "geometries": 20,
-            "textures": 11
+            "geometries": 24,
+            "textures": 13
           }
         }
       }
@@ -1142,6 +1256,10 @@
         "jaw_gap_m": 0.0505,
         "plunger_y_m": 0.1520566363886433,
         "spring_compression": 0.7014444364077459,
+        "manual_drive": true,
+        "lever_angle_rad": -0.06445568158210846,
+        "manual_thumb_retraction_m": -0.005,
+        "manual_thumb_press_rad": 0.01831793799028844,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -1152,6 +1270,10 @@
         "jaw_gap_m": 0.0414,
         "plunger_y_m": 0.1577574734042449,
         "spring_compression": 0.08070880012738706,
+        "manual_drive": true,
+        "lever_angle_rad": -0.0074123630377556544,
+        "manual_thumb_retraction_m": -0.005,
+        "manual_thumb_press_rad": 0.002048590412348973,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -1162,6 +1284,10 @@
         "jaw_gap_m": 0.054,
         "plunger_y_m": 0.14931470164434615,
         "spring_compression": 1,
+        "manual_drive": true,
+        "lever_angle_rad": -0.09193405407619765,
+        "manual_thumb_retraction_m": -0.005,
+        "manual_thumb_press_rad": 0.02645644138877002,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -1172,6 +1298,10 @@
         "jaw_gap_m": 0.04,
         "plunger_y_m": 0.15849870314579495,
         "spring_compression": 0,
+        "manual_drive": true,
+        "lever_angle_rad": 0,
+        "manual_thumb_retraction_m": -0.005,
+        "manual_thumb_press_rad": 1.3620587026252905e-7,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -1182,6 +1312,10 @@
         "jaw_gap_m": 0.0456,
         "plunger_y_m": 0.15533664535108324,
         "spring_compression": 0.3443006617772098,
+        "manual_drive": true,
+        "lever_angle_rad": -0.0316251969336696,
+        "manual_thumb_retraction_m": -0.005,
+        "manual_thumb_press_rad": 0.008847139486585434,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -1192,6 +1326,10 @@
         "jaw_gap_m": 0.0505,
         "plunger_y_m": 0.1520566363886433,
         "spring_compression": 0.7014444364077459,
+        "manual_drive": true,
+        "lever_angle_rad": -0.06445568158210846,
+        "manual_thumb_retraction_m": -0.005,
+        "manual_thumb_press_rad": 0.01831793799028844,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -1200,23 +1338,23 @@
     ],
     "replacements": [
       {
-        "geometries": 20,
-        "textures": 11
+        "geometries": 24,
+        "textures": 13
       },
       {
-        "geometries": 20,
-        "textures": 11
+        "geometries": 24,
+        "textures": 13
       },
       {
-        "geometries": 20,
-        "textures": 11
+        "geometries": 24,
+        "textures": 13
       }
     ],
     "reduced_motion_manual_only": true,
     "controls_released": true
   },
   "timing_ms": {
-    "shared_browser_launch": 237,
-    "asset_capture": 4766
+    "shared_browser_launch": 251,
+    "asset_capture": 4413
   }
 }

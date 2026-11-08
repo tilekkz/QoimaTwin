@@ -8,6 +8,8 @@
     "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
   },
   "original_source_files_unchanged": true,
+  "worker_derivative": "assets/v3/blender/worker-small-pick.blend",
+  "worker_derivative_sha256": "1bb90d350a1690e11944142e8f5df1cfa18abe54861a007a79bc4be3830a2e80",
   "states": [
     {
       "label": "open_pick",
@@ -20,28 +22,205 @@
           "a": "rubber_Tbar",
           "b": "mitten_R_upper_pad",
           "point": [
-            0.9450001120567322,
-            1.2648833990097046,
+            0.9449999928474426,
+            1.2648831605911255,
             0.5683886408805847
           ],
-          "gap_m": 2.384185791015625e-07,
-          "normal_dot": -1.0000000298023224
+          "gap_m": 4.172325134277344e-07,
+          "normal_dot": -0.9999999552965164
         },
         {
           "a": "rubber_Tbar",
           "b": "mitten_R_lower_pad",
           "point": [
-            0.9450001120567322,
+            0.9449999928474426,
             1.2801169157028198,
-            0.531611442565918
+            0.5316113829612732
           ],
-          "gap_m": 5.960464477539063e-08,
+          "gap_m": 1.3328003749250113e-07,
           "normal_dot": -1.0000000298023224
         }
       ],
+      "actual_thumb_trigger_contact": {
+        "a": "actual_thumb_tab",
+        "b": "mitten_R_thumb",
+        "point": [
+          0.8980000019073486,
+          1.2624191045761108,
+          0.5697388052940369
+        ],
+        "gap_m": 5.960464477539063e-08,
+        "normal_dot": -0.9930003136396408
+      },
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0.02645413569789809,
+      "exposed_cable_length_sum_m": 0.026698674349410364,
       "body_links": {
         "elbow": true,
-        "wrist": true
+        "wrist": true,
+        "thumb": true
+      },
+      "maximum_boot_floor_error_m": 1.4901161193847656e-08,
+      "own_forearm_cuff_clear_of_central_hand_opening": true,
+      "hand_closing_travel_m": 0.0025963054665560613,
+      "grip_error_m": 1.9354537723836865e-07
+    },
+    {
+      "label": "quarter_pick",
+      "raised": false,
+      "opening": 0.75,
+      "collisions": [],
+      "actual_package_contacts": [],
+      "actual_hand_bar_contacts": [
+        {
+          "a": "rubber_Tbar",
+          "b": "mitten_R_upper_pad",
+          "point": [
+            0.9449999928474426,
+            1.2648831605911255,
+            0.5683886408805847
+          ],
+          "gap_m": 4.172325134277344e-07,
+          "normal_dot": -0.9999999552965164
+        },
+        {
+          "a": "rubber_Tbar",
+          "b": "mitten_R_lower_pad",
+          "point": [
+            0.9449999928474426,
+            1.2801169157028198,
+            0.5316113829612732
+          ],
+          "gap_m": 1.3328003749250113e-07,
+          "normal_dot": -1.0000000298023224
+        }
+      ],
+      "actual_thumb_trigger_contact": {
+        "a": "actual_thumb_tab",
+        "b": "mitten_R_thumb",
+        "point": [
+          0.8980000019073486,
+          1.2618712186813354,
+          0.5701411962509155
+        ],
+        "gap_m": 1.1920928955078125e-07,
+        "normal_dot": -0.9965765625238419
+      },
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0.018316529903174235,
+      "exposed_cable_length_sum_m": 0.02669865631487572,
+      "body_links": {
+        "elbow": true,
+        "wrist": true,
+        "thumb": true
+      },
+      "maximum_boot_floor_error_m": 1.4901161193847656e-08,
+      "own_forearm_cuff_clear_of_central_hand_opening": true,
+      "hand_closing_travel_m": 0.0025963054665560613,
+      "grip_error_m": 1.9354537723836865e-07
+    },
+    {
+      "label": "half_pick",
+      "raised": false,
+      "opening": 0.5,
+      "collisions": [],
+      "actual_package_contacts": [],
+      "actual_hand_bar_contacts": [
+        {
+          "a": "rubber_Tbar",
+          "b": "mitten_R_upper_pad",
+          "point": [
+            0.9449999928474426,
+            1.2648831605911255,
+            0.5683886408805847
+          ],
+          "gap_m": 4.172325134277344e-07,
+          "normal_dot": -0.9999999552965164
+        },
+        {
+          "a": "rubber_Tbar",
+          "b": "mitten_R_lower_pad",
+          "point": [
+            0.9449999928474426,
+            1.2801169157028198,
+            0.5316113829612732
+          ],
+          "gap_m": 1.3328003749250113e-07,
+          "normal_dot": -1.0000000298023224
+        }
+      ],
+      "actual_thumb_trigger_contact": {
+        "a": "actual_thumb_tab",
+        "b": "mitten_R_thumb",
+        "point": [
+          0.8980000019073486,
+          1.2613834142684937,
+          0.570480465888977
+        ],
+        "gap_m": 1.1920928955078125e-07,
+        "normal_dot": -0.9986588209867477
+      },
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0.011361768355685054,
+      "exposed_cable_length_sum_m": 0.02669887514767333,
+      "body_links": {
+        "elbow": true,
+        "wrist": true,
+        "thumb": true
+      },
+      "maximum_boot_floor_error_m": 1.4901161193847656e-08,
+      "own_forearm_cuff_clear_of_central_hand_opening": true,
+      "hand_closing_travel_m": 0.0025963054665560613,
+      "grip_error_m": 1.9354537723836865e-07
+    },
+    {
+      "label": "near_closed_pick",
+      "raised": false,
+      "opening": 0.25,
+      "collisions": [],
+      "actual_package_contacts": [],
+      "actual_hand_bar_contacts": [
+        {
+          "a": "rubber_Tbar",
+          "b": "mitten_R_upper_pad",
+          "point": [
+            0.9449999928474426,
+            1.2648831605911255,
+            0.5683886408805847
+          ],
+          "gap_m": 4.172325134277344e-07,
+          "normal_dot": -0.9999999552965164
+        },
+        {
+          "a": "rubber_Tbar",
+          "b": "mitten_R_lower_pad",
+          "point": [
+            0.9449999928474426,
+            1.2801169157028198,
+            0.5316113829612732
+          ],
+          "gap_m": 1.3328003749250113e-07,
+          "normal_dot": -1.0000000298023224
+        }
+      ],
+      "actual_thumb_trigger_contact": {
+        "a": "actual_thumb_tab",
+        "b": "mitten_R_thumb",
+        "point": [
+          0.8980000019073486,
+          1.2609436511993408,
+          0.5707717537879944
+        ],
+        "gap_m": 5.960464477539063e-08,
+        "normal_dot": -0.9997013211250305
+      },
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0.005315688196483847,
+      "exposed_cable_length_sum_m": 0.026698598623655513,
+      "body_links": {
+        "elbow": true,
+        "wrist": true,
+        "thumb": true
       },
       "maximum_boot_floor_error_m": 1.4901161193847656e-08,
       "own_forearm_cuff_clear_of_central_hand_opening": true,
@@ -104,28 +283,43 @@
           "a": "rubber_Tbar",
           "b": "mitten_R_upper_pad",
           "point": [
-            0.9450001120567322,
-            1.2648833990097046,
+            0.9449999928474426,
+            1.2648831605911255,
             0.5683886408805847
           ],
-          "gap_m": 2.384185791015625e-07,
-          "normal_dot": -1.0000000298023224
+          "gap_m": 4.172325134277344e-07,
+          "normal_dot": -0.9999999552965164
         },
         {
           "a": "rubber_Tbar",
           "b": "mitten_R_lower_pad",
           "point": [
-            0.9450001120567322,
+            0.9449999928474426,
             1.2801169157028198,
-            0.531611442565918
+            0.5316113829612732
           ],
-          "gap_m": 5.960464477539063e-08,
+          "gap_m": 1.3328003749250113e-07,
           "normal_dot": -1.0000000298023224
         }
       ],
+      "actual_thumb_trigger_contact": {
+        "a": "actual_thumb_tab",
+        "b": "mitten_R_thumb",
+        "point": [
+          0.8980000019073486,
+          1.2633156776428223,
+          0.5721731185913086
+        ],
+        "gap_m": 5.960464477539063e-08,
+        "normal_dot": -0.9999999105930328
+      },
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0.0,
+      "exposed_cable_length_sum_m": 0.026698708761156927,
       "body_links": {
         "elbow": true,
-        "wrist": true
+        "wrist": true,
+        "thumb": true
       },
       "maximum_boot_floor_error_m": 1.4901161193847656e-08,
       "own_forearm_cuff_clear_of_central_hand_opening": true,
@@ -188,28 +382,33 @@
           "a": "rubber_Tbar",
           "b": "mitten_R_upper_pad",
           "point": [
-            0.9450001120567322,
+            0.9449999928474426,
             1.3984259366989136,
-            0.5640738606452942
+            0.5640740394592285
           ],
-          "gap_m": 5.960464477539063e-08,
-          "normal_dot": -1.0000000596046448
+          "gap_m": 1.1995203374325102e-06,
+          "normal_dot": -1.0
         },
         {
           "a": "rubber_Tbar",
           "b": "mitten_R_lower_pad",
           "point": [
-            0.9450001120567322,
-            1.4265739917755127,
-            0.5359258055686951
+            0.9449999928474426,
+            1.4265741109848022,
+            0.5359259843826294
           ],
-          "gap_m": 2.384185791015625e-07,
+          "gap_m": 1.1920928955078125e-07,
           "normal_dot": -1.0000000894069672
         }
       ],
+      "actual_thumb_trigger_contact": null,
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0,
+      "exposed_cable_length_sum_m": 0.026698589746462022,
       "body_links": {
         "elbow": true,
-        "wrist": true
+        "wrist": true,
+        "thumb": true
       },
       "maximum_boot_floor_error_m": 1.4901161193847656e-08,
       "own_forearm_cuff_clear_of_central_hand_opening": true,
@@ -272,28 +471,43 @@
           "a": "rubber_Tbar",
           "b": "mitten_R_upper_pad",
           "point": [
-            0.9450001120567322,
-            1.2648833990097046,
+            0.9449999928474426,
+            1.2648831605911255,
             0.5683886408805847
           ],
-          "gap_m": 2.384185791015625e-07,
-          "normal_dot": -1.0000000298023224
+          "gap_m": 4.172325134277344e-07,
+          "normal_dot": -0.9999999552965164
         },
         {
           "a": "rubber_Tbar",
           "b": "mitten_R_lower_pad",
           "point": [
-            0.9450001120567322,
+            0.9449999928474426,
             1.2801169157028198,
-            0.531611442565918
+            0.5316113829612732
           ],
-          "gap_m": 5.960464477539063e-08,
+          "gap_m": 1.3328003749250113e-07,
           "normal_dot": -1.0000000298023224
         }
       ],
+      "actual_thumb_trigger_contact": {
+        "a": "actual_thumb_tab",
+        "b": "mitten_R_thumb",
+        "point": [
+          0.8980000019073486,
+          1.2633156776428223,
+          0.5721731185913086
+        ],
+        "gap_m": 5.960464477539063e-08,
+        "normal_dot": -0.9999999105930328
+      },
+      "manual_thumb_translation_m": -0.005,
+      "manual_thumb_press_rad": 0.0,
+      "exposed_cable_length_sum_m": 0.026698708761156927,
       "body_links": {
         "elbow": true,
-        "wrist": true
+        "wrist": true,
+        "thumb": true
       },
       "maximum_boot_floor_error_m": 1.4901161193847656e-08,
       "own_forearm_cuff_clear_of_central_hand_opening": true,
@@ -309,6 +523,6 @@
     "primary_unit__17",
     "primary_unit__23"
   ],
-  "scope": "Native prepared pose geometry/contact only. Tool starts held at the external bar; no acquisition, transition path, carry, release, actual engine admission or clip completion asserted.",
-  "contact_fixture_glb_sha256": "59283267c3e12928bfe4125c91ff3c379ab04afad7d15e62c146b53f0c001921"
+  "scope": "Native prepared pose geometry/contact including actual thumb-driven cable refinement and separate raw-body-preserving thumb derivative. Tool starts held at the external bar; no acquisition, transition path, carry, release, actual engine admission or clip completion asserted.",
+  "contact_fixture_glb_sha256": "682078fe38174e8943d2341994c6f25870ff8894b979ee062cee04d6faacfb15"
 }

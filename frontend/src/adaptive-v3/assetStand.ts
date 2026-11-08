@@ -21,7 +21,7 @@ const host = element('canvas-host');
 const shell = element('stand');
 const modelInput = element<HTMLInputElement>('model-id');
 const base = import.meta.env.BASE_URL;
-const assetTitles:Record<string,string>={'small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
+const assetTitles:Record<string,string>={'worker-small-pick':'Комплектовщик · ручной захват','small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
 async function initialize(){
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d8dcdb');
@@ -234,7 +234,7 @@ async function loadModel(id:string){
     if(id==='worker-base'&&new URL(location.href).searchParams.get('fixture')==='roles'){
       workerTemplate=gltf.scene;rolesFixture=createWorkerRolesFixture(workerTemplate);model=rolesFixture.root;
       element('model-title').textContent='Пять ролей · визуальный стенд';
-    }else if(id==='picker-figure'||id==='worker-manual'){
+    }else if(id==='picker-figure'||id==='worker-manual'||id==='worker-small-pick'){
       workerTemplate=gltf.scene;figureActor=createWorkerInstance(workerTemplate,'P01','picker');
       model=new THREE.Group();model.name='picker_figure_inspection';model.add(figureActor.root);
     }else model=gltf.scene;
