@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T06:24:45.583077+00:00",
+  "updated_at": "2026-11-08T06:49:37.218864+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1269,12 +1269,75 @@
         "P07"
       ],
       "criteria": "Все actor_id и clips связаны с ролями; legend читается по цвету, badge и подписи",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/P10.md",
         "docs/adaptive-v3/evidence/P10.json"
-      ]
+      ],
+      "kind": "parent",
+      "children": [
+        "P10.1",
+        "P10.2",
+        "P10.3"
+      ],
+      "actual": "All3children reviewed: same24canonicalIDs/5rolelegend/2vehiclepairs,16acceptedclips/74links.21sourcefiles and23negativecases checked;12actualcurrentUIimages reviewed andfullstate/mobile/keyboard/recovery QA passes. NoextraPK01person/V2positions/backendmutation. NextP11skills, thenWscene/replay."
+    },
+    {
+      "id": "P10.1",
+      "title": "Canonical24 actor registry and accepted role/clip bindings",
+      "parent": "P10",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "R10",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07"
+      ],
+      "outputs": [
+        "docs/adaptive-v3/specs/P10.1.md",
+        "docs/adaptive-v3/evidence/P10.1.json"
+      ],
+      "criteria": "Same24canonical IDs/roles, all accepted clips explicitly bound; readable color+badge+label legend and actual source-hashed state/browser evidence.",
+      "ownership": "frontend/public/data/v3/worker-registry-v3.json; frontend/src/adaptive-v3/workerRegistry.ts; frontend/tools/build-worker-registry-v3.mjs and check-worker-registry-v3.mjs; own spec/evidence.",
+      "actual": "Actual generated24canonicalworkers/5roles/2vehiclepairs and16acceptedclipbindings reviewed;74worker-cliplinks,21current sourcefiles and23negative mutations checked. Nestedregistryimmutable; PK01 onlyscopedQAalias->K01, noV2positions. Runtime/typecheckpass; legend/UI P10.2/.3."
+    },
+    {
+      "id": "P10.2",
+      "title": "Readable role legend and local staff catalogue",
+      "parent": "P10",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "P10.1"
+      ],
+      "outputs": [
+        "docs/adaptive-v3/specs/P10.2.md",
+        "docs/adaptive-v3/evidence/P10.2.json"
+      ],
+      "criteria": "Same24canonical IDs/roles, all accepted clips explicitly bound; readable color+badge+label legend and actual source-hashed state/browser evidence.",
+      "ownership": "frontend/staff-v3.html; frontend/src/adaptive-v3/staffRegistryPage.ts and staffRegistry.css; scoped frontend/vite.config.ts entry; own state matrix/spec/evidence.",
+      "actual": "Separate staff-v3 catalogue implemented; currentdesktop/360pxroles+IDsearch/filter/keyboard/cliplinks andURLrestore preview passes. Legendusescolor+icon+code+text. Mobileselectfullwidth, currentmobileviewsreviewed; Chrome27336terminated. Fullstate/error/asyncgate P10.3."
+    },
+    {
+      "id": "P10.3",
+      "title": "Reviewed staff catalogue states and current-source checks",
+      "parent": "P10",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "P10.2"
+      ],
+      "outputs": [
+        "docs/adaptive-v3/specs/P10.3.md",
+        "docs/adaptive-v3/evidence/P10.3.json"
+      ],
+      "criteria": "Same24canonical IDs/roles, all accepted clips explicitly bound; readable color+badge+label legend and actual source-hashed state/browser evidence.",
+      "ownership": "frontend/tools/check-staff-browser-v3.mjs; own browser images/review/evidence; parent model/evidence aggregation. Existing accepted stand/controllers/source models remain unchanged.",
+      "actual": "Current24IDregistry/16clips/74links/23negativecases and12reviewedactualUIimages pass. Fullkeyboard/mobile/empty/loading/404/invalid/stale/offline/timeout/latest-response/repeatedback checks pass; Chrome22700terminated. Build/C12/P03/P05/P06freshness pass; existingstand/controllers unchanged. Manualassistive-device review remainsfinalQ."
     },
     {
       "id": "P11",
@@ -1285,7 +1348,7 @@
         "C07"
       ],
       "criteria": "Eligible roles, разрешённая техника, cross-trained workers и неизменные actor_id; не каждый сотрудник может водить forklift",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/models/P11.md",
@@ -1300,7 +1363,7 @@
         "P10"
       ],
       "criteria": "Materialized IDs/timestamps/cargo/ports; явная маркировка synthetic visual fixture",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W01.md",

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23293d46'/%3E%3Ctext x='16' y='24' text-anchor='middle' fill='%23f6f5ef' font-size='25' font-family='serif'%3EQ%3C/text%3E%3C/svg%3E"/><title>Люди склада · QoimaTwin V3</title></head>
+<body>
+  <header class="site-header"><a class="brand" href="stand-v3.html"><span class="brand-mark" aria-hidden="true">Q</span><span><strong>QoimaTwin</strong><small>Люди склада / V3</small></span></a><a href="stand-v3.html?asset=picker-figure&amp;fixture=roles">Роли в 3D <span aria-hidden="true">↗</span></a></header>
+  <main id="staff-catalogue" data-phase="initial">
+    <section class="intro"><div><p class="eyebrow">Персонал склада</p><h1>Одна команда.<br/>Пять ролей.</h1><p class="intro-copy">Цвет, знак и подпись помогают различать роли. ID работника сохраняется при смене задания.</p></div><div class="source-summary"><span class="source-tag">visual fixture</span><strong id="staff-total">24 работника</strong><p>12 комплектовщиков · 6 упаковщиков<br/>2 приёмщика · 2 отгрузчика · 2 водителя</p><small>Каталог доступен только для просмотра.</small></div></section>
+    <div class="load-strip"><p id="load-status" role="status" aria-live="polite">Подготовка каталога…</p><div class="load-actions"><button id="retry-load" hidden>Повторить загрузку</button><button id="refresh-registry" disabled>Обновить</button><a id="package-help" href="stand-v3.html" hidden>Открыть каталог моделей</a></div></div>
+    <div id="catalogue-content" hidden>
+      <section aria-labelledby="roles-title"><div class="section-heading"><h2 id="roles-title">Легенда ролей</h2><span>Цвет и знак на жилете</span></div><div class="role-legend" id="role-legend"></div></section>
+      <section class="members-section" aria-labelledby="members-title"><div class="section-heading"><h2 id="members-title">Работники</h2><p id="result-count" role="status" aria-live="polite"></p></div>
+        <form id="staff-filters" class="filters" role="search"><div><label for="worker-query">ID работника</label><input id="worker-query" type="search" placeholder="Например, P01" autocomplete="off" maxlength="64"/></div><div><label for="role-filter">Роль</label><select id="role-filter"><option value="all">Все роли</option></select></div><button id="clear-filters" type="button">Сбросить фильтры</button></form>
+        <div id="empty-results" class="empty-results" hidden><h3>Работник не найден</h3><p id="empty-query"></p><button id="empty-clear">Показать всех работников</button></div>
+        <ul class="worker-list" id="worker-list" aria-label="Работники склада"></ul>
+      </section>
+      <aside class="catalogue-note"><strong>Клипы показывают подготовленные действия.</strong><p>Откройте клип роли, чтобы рассмотреть контакт с грузом и опорами. Его длительность — время визуального показа, а не результат расчёта производительности.</p></aside>
+    </div>
+    <noscript><p class="empty-results">Для загрузки каталога включите JavaScript. <a href="stand-v3.html">Перейти к моделям</a></p></noscript>
+  </main>
+  <footer>QoimaTwin V3 · 24 исходных ID · 2 машины · 6 упаковочных постов</footer>
+  <script type="module" src="/src/adaptive-v3/staffRegistryPage.ts"></script>
+</body>
+</html>

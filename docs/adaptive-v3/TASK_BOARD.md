@@ -74,9 +74,12 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P07](tasks/P07.md) | PASS | root | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
 | [P09](tasks/P09.md) | PASS | root | R10,R07,L12,I09 | Готов модульный environment/dock kit |
-| [P10](tasks/P10.md) | READY | unassigned | R10,P03,P04,P05,P06,P07 | Подготовлен role registry и легенда |
-| [P11](tasks/P11.md) | TODO | unassigned | R10,P10,C07 | Подготовлен WorkerProfile с навыками |
-| [W01](tasks/W01.md) | TODO | unassigned | C12,P10 | Подготовлен детерминированный visual fixture v3 |
+| [P10](tasks/P10.md) | PASS | root | R10,P03,P04,P05,P06,P07 | Подготовлен role registry и легенда |
+| [P10.1](tasks/P10.1.md) | PASS | root | R10,P03,P04,P05,P06,P07 | Canonical24 actor registry and accepted role/clip bindings |
+| [P10.2](tasks/P10.2.md) | PASS | root | P10.1 | Readable role legend and local staff catalogue |
+| [P10.3](tasks/P10.3.md) | PASS | root | P10.2 | Reviewed staff catalogue states and current-source checks |
+| [P11](tasks/P11.md) | READY | unassigned | R10,P10,C07 | Подготовлен WorkerProfile с навыками |
+| [W01](tasks/W01.md) | READY | unassigned | C12,P10 | Подготовлен детерминированный visual fixture v3 |
 | [W02](tasks/W02.md) | TODO | unassigned | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | TODO | unassigned | W02,L06,L07 | Подключены движения по реальному графу |
 | [W04](tasks/W04.md) | TODO | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
