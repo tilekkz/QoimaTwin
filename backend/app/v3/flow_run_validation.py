@@ -16,6 +16,11 @@ def run_identity(input_hash: str) -> str:
 
 def validate_flow_run(value: dict[str, Any]) -> None:
     validate_schema(value)
+    _validate_flow_semantics(value)
+
+
+def _validate_flow_semantics(value: dict[str, Any]) -> None:
+    """Check a run whose exact metadata, catalog and chunk shapes are already validated."""
     if value["engine_version"] != LIGHT_FLOW_ENGINE_VERSION or value["run_id"] != run_identity(
         value["input_hash"]
     ):

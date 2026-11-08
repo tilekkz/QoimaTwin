@@ -135,9 +135,13 @@ def schema() -> Json:
 
 @cache
 def validator(kind: str = "run") -> Draft202012Validator:
+    if kind not in {"run", "metadata", "catalog", "events", "checkpoints"}:
+        raise ValueError("Unknown connected flow schema part")
     value = schema()
     if kind in {"events", "checkpoints"}:
         value = {"$defs": state_defs(), **obj({"items": value["properties"][kind]})}
+    elif kind == "catalog":
+        value = {"$defs": state_defs(), **value["properties"]["catalog"]}
     elif kind == "metadata":
         value = {
             "$defs": state_defs(),

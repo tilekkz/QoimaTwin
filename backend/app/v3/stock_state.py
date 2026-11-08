@@ -3,6 +3,7 @@
 from collections import Counter, defaultdict
 from fractions import Fraction
 
+from .stock_mass import _MassPass
 from .stock_models import (
     Container,
     ContainerContents,
@@ -25,9 +26,10 @@ def contents_view(
         for key, value in sorted(locations.items())
         if value.container_id == container.container_id
     )
-    gross = container.recipe.tare_kg + sum(
-        (u.token.recipe.gross_mass_kg for u in units), Fraction(0)
-    )
+    scope = _MassPass()
+    for unit in units:
+        scope.add(unit.token.recipe, container.container_id)
+    gross = container.recipe.tare_kg + scope.totals(container.container_id).gross
     return ContainerContents(container, units, gross)
 
 
@@ -40,10 +42,12 @@ def check_state(
 ) -> None:
     require(locations.keys() == tokens.keys(), "unit conservation violation")
     grouped: dict[str, list[PlacedUnit]] = defaultdict(list)
+    scope = _MassPass()
     for key, location in locations.items():
         require(key == location.unit_id, "unit location identity mismatch")
         require(location.container_id in containers, "unknown physical container")
         grouped[location.container_id].append(PlacedUnit(tokens[key], location.position))
+        scope.add(tokens[key].recipe, location.container_id)
     validate_owners(containers, owners, whole_shipments)
     actual_shipped = {
         c.container_id
@@ -55,9 +59,7 @@ def check_state(
         require(key == container.container_id, "container identity mismatch")
         require(container.recipe.kind == "package" or container.sealed_for is None, "invalid seal")
         units = tuple(grouped[key])
-        gross = container.recipe.tare_kg + sum(
-            (u.token.recipe.gross_mass_kg for u in units), Fraction(0)
-        )
+        gross = container.recipe.tare_kg + scope.totals(key).gross
         view = ContainerContents(container, units, gross)
         validate_contents(view)
         if key in whole_shipments:
@@ -75,7 +77,8 @@ def balances(
     total: Counter[str] = Counter()
     onsite: Counter[str] = Counter()
     shipped: Counter[str] = Counter()
-    net, primary, tare = Fraction(0), Fraction(0), Fraction(0)
+    tare = Fraction(0)
+    scope = _MassPass()
     mass = {"onsite": Fraction(0), "shipped": Fraction(0), "disposal": Fraction(0)}
     for container in containers.values():
         kind = owners[container.owner_id].kind
@@ -87,15 +90,16 @@ def balances(
         is_shipped = owners[container.owner_id].kind == "shipped"
         total[token.sku_id] += 1
         (shipped if is_shipped else onsite)[token.sku_id] += 1
-        mass["shipped" if is_shipped else "onsite"] += token.recipe.gross_mass_kg
-        net += token.recipe.contents_mass_kg
-        primary += token.recipe.primary_tare_kg
+        scope.add(token.recipe, "shipped" if is_shipped else "onsite")
+    onsite_totals, shipped_totals = scope.totals("onsite"), scope.totals("shipped")
+    mass["onsite"] += onsite_totals.gross
+    mass["shipped"] += shipped_totals.gross
     return StockBalance(
         tuple(sorted(total.items())),
         tuple(sorted(onsite.items())),
         tuple(sorted(shipped.items())),
-        net,
-        primary,
+        onsite_totals.net + shipped_totals.net,
+        onsite_totals.primary + shipped_totals.primary,
         tare,
         mass["onsite"],
         mass["shipped"],

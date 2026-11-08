@@ -7,6 +7,7 @@ from typing import Any
 from app.storage.canonical_json import canonical_bytes, parse_json
 from app.v3.flow_run import validate_flow_run
 from app.v3.flow_run_schema import MAX_CHUNK_BYTES, validate_schema
+from app.v3.flow_run_validation import _validate_flow_semantics
 from app.v3.flow_transport_inputs import validate_input_binding
 from app.v3.flow_transport_schema import validate_manifest
 from app.v3.run_publication import chunks, publish
@@ -91,13 +92,14 @@ def read_flow_run(root: Path) -> dict[str, Any]:
     ):
         raise ValueError("Flow manifest/metadata identity differs")
     run["catalog"] = _object(_load(root, manifest["catalog"]))
+    validate_schema(run["catalog"], "catalog")
     for key, target in (("event_chunks", "events"), ("checkpoint_chunks", "checkpoints")):
         run[target] = [
             row
             for descriptor in manifest[key]
             for row in _items(root, descriptor, manifest["max_chunk_bytes"], target)
         ]
-    validate_flow_run(run)
+    _validate_flow_semantics(run)
     validate_input_binding(run, _load(root, manifest["inputs"]))
     return run
 
