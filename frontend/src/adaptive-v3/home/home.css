@@ -54,6 +54,12 @@
 .hm .hm-go{padding:11px 20px;border-radius:999px;background:var(--accent-soft);color:var(--accent);text-decoration:none;font:650 14px var(--ui);transition:background-color .2s}
 .hm-go:hover{background:rgba(14,128,118,.2)}
 .hm-soon{padding:5px 11px;border-radius:999px;background:var(--faint);font:600 11.5px var(--ui);white-space:nowrap}
+.hm-st{font:600 11.5px var(--ui);white-space:nowrap;color:var(--muted,#5d6b67)}
+.hm-st::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:#8A9692;vertical-align:1px}
+.hm-st[data-status="frozen"]::before{background:#2FA36B}.hm-st[data-status="candidate"]::before{background:#E5A00D}
+.hm .hm-go-soft{padding:8px 16px;font-size:13px}
+.hm-demos li:has(.hm-st){grid-template-columns:56px minmax(0,1fr) auto auto}
+@media (max-width:600px){.hm-demos li:has(.hm-st){grid-template-columns:1fr}.hm-st{justify-self:start}}
 
 .hm-numbers{margin:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .hm-numbers div{display:flex;flex-direction:column;gap:4px;padding:20px;border-radius:20px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8)}

@@ -9,12 +9,16 @@ import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
 import {ATMO_ZONES,activePulses,sampleAtmosphere,type AtmoState,type Variant} from './twinScenario';
 import {reactionsAt,visibleReactions,type Bubble,type Effects,type WorkerSpot} from './twinScenario';
 
-export type Mode='side'|'swipe'|'overlay'|'diff';
+export type Mode='side'|'swipe';
 export type Pose={position:XYZ;yaw:number;dims:XYZ};
 export type Move={id:string;sku:string;archetype:string;from_slot:string;to_slot:string;port_id:string;before_m:number;after_m:number;move_m:number;a:Pose;b:Pose};
 export type Pick={variant:Variant;kind:'HU'|'module'|'actor';id:string};
 type Rect={x:number;y:number;w:number;h:number};
-type Pass={variant:Variant;vp:Rect;sc:Rect;gray:boolean;zoom?:number};
+/** One render pass; `round` lists which window corners this pass owns (tl, tr, bl, br) on the region rectangle. */
+type Pass={variant:Variant;vp:Rect;sc:Rect;zoom:number;round:string[];shift:THREE.Vector3};
+/** «Рядом»: B stands next to A in the same space, long walls parallel, with an aisle between them. */
+export const SIDE_GAP_M=12,SIDE_SHIFT:XYZ=[0,0,72+SIDE_GAP_M];
+const NO_SHIFT=new THREE.Vector3(),B_SHIFT=new THREE.Vector3(...SIDE_SHIFT);
 
 export const STATE_RU:Record<AtmoState,string>={control:'Контроль',danger:'Опасность',sos:'SOS',nodata:'Нет данных'};
 export const STATE_COLOR:Record<AtmoState,string>={control:'#2FA36B',danger:'#E5A00D',sos:'#E5484D',nodata:'#8A9692'};
@@ -37,15 +41,13 @@ const BUDGET_MAX=6;
 const BUBBLE_MIN_PX_PER_M=3.5;
 const ACCENT='#0E8076',GHOST='#5E6E6A',GAP='#E9EFEC';
 export const VARIANT_TITLE:Record<Variant,string>={A:'Как сейчас',B:'После перестройки'};
-/** Half-width views keep the full horizontal span by default; slightly tighter framing fills them better. */
-const SIDE_ZOOM=.72;
 /** Soft sky behind the warehouse instead of a flat fill. */
 function skyTexture(){const c=document.createElement('canvas');c.width=2;c.height=256;const g=c.getContext('2d')!,gr=g.createLinearGradient(0,0,0,256);gr.addColorStop(0,'#F5F8F6');gr.addColorStop(1,'#D5E0DB');g.fillStyle=gr;g.fillRect(0,0,2,256);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
 
 export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,reducedMotion:()=>boolean){
  let ctx:{renderer:THREE.WebGLRenderer;scene:THREE.Scene;camera:THREE.OrthographicCamera}|null=null,ready=false,disposed=false;
  let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[];
- let effects:Effects='full',budget=BUDGET_MAX,selectedActor:string|null=null,onBubble:(id:string)=>void=()=>{};
+ let effects:Effects='full',budget=BUDGET_MAX,selectedActor:string|null=null,onBubble:(id:string,v:Variant)=>void=()=>{},onLabel:(v:Variant)=>void=()=>{};
  const spots:WorkerSpot[]=[],heads=new Map<string,THREE.Vector3>();
  const overlay=new THREE.Scene(),owned:(THREE.BufferGeometry|THREE.Material)[]=[];
  const own=<T extends THREE.BufferGeometry|THREE.Material>(x:T)=>{owned.push(x);return x;};
@@ -66,8 +68,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  const AX={x:new THREE.Vector3(1,0,0),y:new THREE.Vector3(0,1,0),z:new THREE.Vector3(0,0,-1)};
  const OVERSCAN=.15;
  /** Where the current view (half-size hw×hh) lies inside a cached image: uv scale/offset and the depth shift. */
- function mapping(c:Cache,hw:number,hh:number,camera:THREE.OrthographicCamera){
-  const d=camera.position.clone().sub(c.pos),q=camera.quaternion,kx=hw/c.hw,ky=hh/c.hh;
+ function mapping(c:Cache,hw:number,hh:number,camera:THREE.OrthographicCamera,shift=NO_SHIFT){
+  const d=camera.position.clone().sub(shift).sub(c.pos),q=camera.quaternion,kx=hw/c.hw,ky=hh/c.hh;
   return {kx,ky,ox:(1-kx+d.dot(AX.x.clone().applyQuaternion(q))/c.hw)/2,oy:(1-ky+d.dot(AX.y.clone().applyQuaternion(q))/c.hh)/2,dz:-d.dot(AX.z.clone().applyQuaternion(q))/(camera.far-camera.near)};
  }
  function markRendered(){renderedThisFrame=true;if(!frameReset)frameReset=requestAnimationFrame(()=>{frameReset=0;renderedThisFrame=false;});}
@@ -82,7 +84,6 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  const totals={draws:0,scene_renders:0,reprojected:0};
  let stats={passes:0,rendered:0,reprojected:0,calls:0,triangles:0,cpu_ms:0,scene_ms:0,dom_ms:0};
  const hu:{mesh:THREE.InstancedMesh;pos:Partial<Record<Variant,THREE.Vector3>>;arr:Partial<Record<Variant,Float32Array>>}[]=[];
- const gray=own(new THREE.MeshLambertMaterial({color:'#cdd3cf'}));
 
  // Zone state floors.
  const zoneRows=bundle.layout.data.zones as V3Record[],zones=new Map<string,{fill:THREE.Mesh;edge:THREE.LineLoop;center:THREE.Vector3;min:[number,number];max:[number,number]}>();
@@ -93,6 +94,23 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   const pts=[[b.min[0],b.min[1]],[b.max[0],b.min[1]],[b.max[0],b.max[1]],[b.min[0],b.max[1]]].map(([x,zz])=>new THREE.Vector3(x,.06,zz));
   const edge=new THREE.LineLoop(own(new THREE.BufferGeometry().setFromPoints(pts)),own(new THREE.LineBasicMaterial({transparent:true})));
   overlay.add(fill,edge);zones.set(z.id,{fill,edge,center:new THREE.Vector3(cx,1.2,cz),min:b.min,max:b.max});
+ }
+ // Highlight: the zone pointed at on the plan or in the state list, outlined on the floor of its own copy.
+ const hlFill=own(new THREE.MeshBasicMaterial({color:'#0E8076',transparent:true,opacity:.2,depthWrite:false})),hlEdge=own(new THREE.MeshBasicMaterial({color:'#0E8076',transparent:true,opacity:.95,depthWrite:false,depthTest:false}));
+ const hl=new THREE.Group();hl.visible=false;overlay.add(hl);let hlVariant:Variant|null=null,hlKey='';
+ type Rect2={min:[number,number];max:[number,number]};
+ /** One zone (plan hover) or several (a scenario's focus); null clears. */
+ function highlightZone(r:Rect2|Rect2[]|null,v:Variant|null=null){
+  const list=r?[r].flat():[],key=list.length?`${v}:${JSON.stringify(list)}`:'';if(key===hlKey)return;hlKey=key;
+  for(const c of [...hl.children]){(c as THREE.Mesh).geometry.dispose();hl.remove(c);}
+  hlVariant=list.length?v:null;
+  for(const q of list){
+   const [x0,z0]=q.min,[x1,z1]=q.max,w=x1-x0,d=z1-z0,b=Math.min(.8,w/4,d/4);
+   const plane=(cx:number,cz:number,pw:number,pd:number,m:THREE.Material)=>{const p=new THREE.Mesh(new THREE.PlaneGeometry(pw,pd),m);p.rotation.x=-Math.PI/2;p.position.set(cx,.09,cz);p.renderOrder=6;hl.add(p);};
+   plane((x0+x1)/2,(z0+z1)/2,w,d,hlFill);
+   plane((x0+x1)/2,z0+b/2,w,b,hlEdge);plane((x0+x1)/2,z1-b/2,w,b,hlEdge);plane(x0+b/2,(z0+z1)/2,b,d-2*b,hlEdge);plane(x1-b/2,(z0+z1)/2,b,d-2*b,hlEdge);
+  }
+  draw();
  }
  // Wave pulses: a head and a short fading tail.
  const pulseGeo=own(new THREE.SphereGeometry(1,16,10)),pulses:THREE.Mesh[]=[];
@@ -110,13 +128,15 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  for(const v of ['A','B'] as Variant[]){
   const el=document.createElement('div');el.className='tw-layer';el.dataset.variant=v;layer.append(el);layers[v]=el;
   corners[v]=['tl','tr','bl','br'].map(c=>{const d=document.createElement('span');d.className='tw-cm';d.dataset.c=c;el.append(d);return d;});
-  const label=document.createElement('span');label.className='tw-vlabel glass';label.innerHTML=`<b>${v}</b><span>${VARIANT_TITLE[v]}</span>`;el.append(label);labels[v]=label;
+  const label=document.createElement('button');label.type='button';label.className='tw-vlabel glass';label.addEventListener('click',()=>onLabel(v));label.innerHTML=`<b>${v}</b><span>${VARIANT_TITLE[v]}</span>`;el.append(label);labels[v]=label;
   const ring=document.createElement('span');ring.className='tw-ring';ring.hidden=true;el.append(ring);rings[v]=ring;
   badges[v]=new Map();for(const z of ATMO_ZONES){if(!zones.has(z.id))continue;const b=document.createElement('span');b.className='tw-badge';b.hidden=true;el.append(b);badges[v].set(z.id,b);}
   pins[v]=[];
-  bubbles[v]=Array.from({length:BUDGET_MAX},()=>{const b=document.createElement('button');b.type='button';b.className='tw-bubble';b.hidden=true;b.addEventListener('click',()=>{if(b.dataset.actor)onBubble(b.dataset.actor);});el.append(b);return b;});
+  bubbles[v]=Array.from({length:BUDGET_MAX},()=>{const b=document.createElement('button');b.type='button';b.className='tw-bubble';b.hidden=true;b.addEventListener('click',()=>{if(b.dataset.actor)onBubble(b.dataset.actor,v);});el.append(b);return b;});
  }
- const labelW:Partial<Record<Variant,number>>={};
+ const labelW:Partial<Record<Variant,number>>={},labelH:Partial<Record<Variant,number>>={};
+ /** Pixels on the right reserved for open panels on desktop; the window narrows instead of being covered. */
+ let inset=0;
  /** Canvas CSS size, refreshed by a ResizeObserver: reading clientWidth in every draw forces a layout. */
  let size:[number,number]|null=null,sizeObs:ResizeObserver|null=null;
  function canvasSize(el:HTMLCanvasElement):[number,number]{
@@ -145,33 +165,39 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  let applied:Variant|null=null;
  function apply(variant:Variant){if(applied===variant)return;applied=variant;for(const h of hu){const pos=h.pos[variant],arr=h.arr[variant];if(!pos||!arr)continue;const moved=!h.mesh.position.equals(pos);h.mesh.position.copy(pos);(h.mesh.instanceMatrix.array as Float32Array).set(arr);h.mesh.instanceMatrix.needsUpdate=true;if(moved)h.mesh.updateWorldMatrix(true,false);}}
 
- function overlayFor(variant:Variant,isGray:boolean){
+ function overlayFor(variant:Variant){
   const sample=sampleAtmosphere(variant,t),still=reducedMotion();
   for(const [id,z]of zones){
    const s=sample[id].state,col=STATE_COLOR[s],fm=z.fill.material as THREE.MeshBasicMaterial,em=z.edge.material as THREE.LineBasicMaterial;
-   z.fill.visible=z.edge.visible=!isGray;fm.color.set(col);em.color.set(col);
+   fm.color.set(col);em.color.set(col);
    fm.opacity=({control:.07,danger:.24,sos:.32,nodata:.1} as const)[s]+(s==='sos'&&!still&&effects==='full'?.08*Math.sin(t*1.7):0);em.opacity=s==='control'?.45:.95;
   }
   let k=0;
-  if(!isGray&&effects!=='off')for(const p of activePulses(variant,t)){
+  if(effects!=='off')for(const p of activePulses(variant,t)){
    const a=zones.get(p.from)?.center,b=zones.get(p.to)?.center;if(!a||!b)continue;
    for(let i=0;i<4&&k<pulses.length;i++,k++){const q=Math.max(0,p.progress-i*.05),m=pulses[k];m.visible=true;m.position.copy(a).lerp(b,q);m.scale.setScalar(1.3-i*.25);const mat=m.material as THREE.MeshBasicMaterial;mat.color.set(STATE_COLOR[p.state]);mat.opacity=(1-i/4)*(p.state==='control'?.6:.95);}
   }
   for(;k<pulses.length;k++)pulses[k].visible=false;
   wasGroup.visible=true;newGroup.visible=arcGroup.visible=variant==='B';
+  // In «Шторка» both copies stand in one place, so the outline shows on both halves.
+  hl.visible=!!hlVariant&&(mode==='swipe'||hlVariant===variant);
   const m=moves.find(m=>m.id===selected);selBox.visible=!!m;if(m)place(selBox,variant==='A'?m.a:m.b,1.35);
  }
  function domFor(pass:Pass,W:number,H:number){
   const {variant:v,vp,sc}=pass,sample=sampleAtmosphere(v,t);
   const el=layers[v];el.hidden=false;el.style.clipPath=`inset(${sc.y}px ${Math.max(0,W-sc.x-sc.w)}px ${Math.max(0,H-sc.y-sc.h)}px ${sc.x}px)`;
   // Reading layout every frame forces a synchronous reflow; the label text never changes, so measure once.
-  const lw=labelW[v]||(labelW[v]=labels[v].offsetWidth),narrow=W<720;
-  labels[v].style.left=(mode==='swipe'?(v==='A'?sc.x+sc.w-lw-34:sc.x+34):sc.x+sc.w/2-lw/2)+'px';
-  labels[v].style.top=sc.y+(narrow&&sc.y<60?62:14)+'px';
-  const side=mode==='side',r=22;
-  corners[v].forEach((c,i)=>{c.hidden=!side;if(!side)return;c.style.left=(i%2?sc.x+sc.w-r:sc.x)+'px';c.style.top=(i<2?sc.y:sc.y+sc.h-r)+'px';});
+  const lw=labelW[v]||(labelW[v]=labels[v].offsetWidth),lh=labelH[v]||(labelH[v]=labels[v].offsetHeight),narrow=W<720;
+  // Desktop stacks the labels as captions at the bottom-left of each half; the top-left belongs to the brand menu.
+  // Swipe keeps them either side of the blade; phones put them at the top, under the brand button for A.
+  if(mode==='side'){
+   // In the shared space each label sits beside its own warehouse, by the short west wall.
+   const q=project(new THREE.Vector3(-4,2,36),vp);labels[v].style.left=Math.max(sc.x+8,q.x-lw-6)+'px';labels[v].style.top=q.y-lh/2+'px';
+  }else{labels[v].style.left=(v==='A'?sc.x+sc.w-lw-34:sc.x+34)+'px';labels[v].style.top=sc.y+(sc.y<60||narrow?62:12)+'px';}
+  const R=region(W,H),r=22;
+  corners[v].forEach(c=>{const k=c.dataset.c!;c.hidden=!pass.round.includes(k);if(c.hidden)return;c.style.left=(k[1]==='r'?R.x+R.w-r:R.x)+'px';c.style.top=(k[0]==='b'?R.y+R.h-r:R.y)+'px';});
   for(const [id,b]of badges[v]){
-   const s=sample[id].state,z=zones.get(id)!;b.hidden=s==='control'||pass.gray;if(b.hidden)continue;
+   const s=sample[id].state,z=zones.get(id)!;b.hidden=s==='control';if(b.hidden)continue;
    const q=project(z.center.clone().setY(6),vp);b.hidden=!inside(q,sc);if(b.hidden)continue;
    if(b.dataset.state!==s){b.dataset.state=s;b.innerHTML=`<span class="tw-badge-in glass"><i></i>${ATMO_ZONES.find(a=>a.id===id)!.label}<small>${STATE_RU[s]}</small></span>`;}
    b.style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-100%)`;
@@ -181,7 +207,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   // Far away the zone badge is the aggregated sign; bubbles appear once people are big enough to read.
   const cam=ctx!.camera,pxPerM=vp.w*cam.zoom/(cam.right-cam.left);
   // The budget is spent only on workers inside this pass, so a close-up is not starved by people off screen.
-  const onScreen=pass.gray||pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,spots).map(r=>({r,q:project(heads.get(r.actor_id)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
+  const onScreen=pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,spots).map(r=>({r,q:project(heads.get(r.actor_id)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
   const shown=visibleReactions(onScreen.map(x=>x.r),budget,selectedActor),at=new Map(onScreen.map(x=>[x.r.actor_id,x.q]));
   bubbles[v].forEach((b,i)=>{
    const r=shown[i],q=r&&at.get(r.actor_id);
@@ -194,14 +220,16 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   const m=moves.find(m=>m.id===selected);rings[v].hidden=!m;
   if(m){const p=v==='A'?m.a:m.b,q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1]/2,p.position[2]),vp);rings[v].hidden=!inside(q,sc);rings[v].style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-50%)`;}
  }
+ /** The window both warehouses live in: the whole screen minus a margin, and minus the right panels on desktop. */
+ function region(W:number,H:number):Rect{const narrow=W<720,m=narrow?8:14;return {x:m,y:m,w:Math.max(240,W-2*m-(narrow?0:inset)),h:H-2*m};}
+ /** Zoom for a view so the overview framing (a 16:9 window across the warehouse) still fits it: the full width,
+  *  and enough height for short wide views. Tall phone views keep the slightly closer framing they had before. */
+ const fit=(r:Rect)=>{const a=r.w/r.h;return Math.max(a<1.4?.82:1,.86*a*9/16);};
  function passes(W:number,H:number):Pass[]{
-  const full={x:0,y:0,w:W,h:H};
-  if(mode==='side'){
-   const m=W<720?8:14,g=W<720?8:14,wide=W>=H*1.05,card=(r:Rect)=>({vp:r,sc:r,gray:false});
-   if(wide){const w=(W-2*m-g)/2,h=H-2*m,zoom=SIDE_ZOOM;return [{variant:'A',...card({x:m,y:m,w,h}),zoom},{variant:'B',...card({x:m+w+g,y:m,w,h}),zoom}];}
-   const w=W-2*m,h=(H-2*m-g)/2,zoom=w/h<1.4?.82:1;return [{variant:'A',...card({x:m,y:m,w,h}),zoom},{variant:'B',...card({x:m,y:m+h+g,w,h}),zoom}];}
-  if(mode==='swipe'){const x=Math.round(W*split);return [{variant:'A',vp:full,sc:{x:0,y:0,w:x,h:H},gray:false},{variant:'B',vp:full,sc:{x,y:0,w:W-x,h:H},gray:false}];}
-  return [{variant:'B',vp:full,sc:full,gray:mode==='diff'}];
+  const R=region(W,H);
+  if(mode==='swipe'){const x=Math.round(R.x+R.w*split),zoom=fit(R);return [{variant:'A',vp:R,sc:{x:R.x,y:R.y,w:x-R.x,h:R.h},zoom,round:['tl','bl'],shift:NO_SHIFT},{variant:'B',vp:R,sc:{x,y:R.y,w:R.x+R.w-x,h:R.h},zoom,round:['tr','br'],shift:NO_SHIFT}];}
+  // Side: one view, one camera; B is drawn shifted beside A and merged by depth, so it is one 3D scene.
+  return [{variant:'A',vp:R,sc:R,zoom:1,round:['tl','tr','bl','br'],shift:NO_SHIFT},{variant:'B',vp:R,sc:R,zoom:1,round:[],shift:B_SHIFT}];
  }
  function setCamera(camera:THREE.OrthographicCamera,span:number,vp:Rect){const half=span/2,aspect=vp.w/vp.h;camera.left=-half;camera.right=half;camera.top=half/aspect;camera.bottom=-half/aspect;camera.updateProjectionMatrix();}
  function draw(){
@@ -210,15 +238,15 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);renderer.setClearColor(GAP);renderer.clear();renderer.setScissorTest(true);
   for(const v of ['A','B'] as Variant[])layers[v].hidden=!list.some(p=>p.variant===v);
   const t0=performance.now(),pr=renderer.getPixelRatio(),view=`${version}|${camera.position.toArray()}|${camera.quaternion.toArray()}|${camera.zoom}|${span}`;
-  let calls=0,tris=0,tScene=0,tDom=0,rendered=0,reprojected=0;
+  let calls=0,tris=0,tScene=0,tDom=0,rendered=0,reprojected=0,shifted=NO_SHIFT;
   // Plan: passes without a usable image must render; of the merely stale ones only the oldest renders this frame.
   // Each cached image is rendered with a whole-pixel margin around the view, so pans and gentle zoom-outs are
   // still covered by the reprojected image; when they are not, that pass re-renders immediately.
   const plan=list.map((p,i)=>{
    const wpx=Math.round(p.vp.w*pr),hpx=Math.round(p.vp.h*pr),px=Math.round(wpx*OVERSCAN),py=Math.round(hpx*OVERSCAN);
-   const c=cacheFor(i,wpx+2*px,hpx+2*py),base=`${p.variant}|${p.gray}|${p.vp.w}x${p.vp.h}`,key=`${view}|${base}|${p.zoom}`;
+   const c=cacheFor(i,wpx+2*px,hpx+2*py),base=`${p.variant}|${p.vp.x},${p.vp.y},${p.vp.w}x${p.vp.h}`,key=`${view}|${base}|${p.zoom}`;
    const hw=span*(p.zoom??1)/2/camera.zoom,hh=hw*p.vp.h/p.vp.w,os:[number,number]=[(wpx+2*px)/wpx,(hpx+2*py)/hpx];
-   const m=c.base===base&&c.quat.angleTo(camera.quaternion)<1e-6?mapping(c,hw,hh,camera):null;
+   const m=c.base===base&&c.quat.angleTo(camera.quaternion)<1e-6?mapping(c,hw,hh,camera,p.shift):null;
    const usable=!!m&&m.ox>-.002&&m.oy>-.002&&m.ox+m.kx<1.002&&m.oy+m.ky<1.002;
    return {p,c,base,key,hw,hh,os,stale:c.key!==key,usable};
   });
@@ -228,15 +256,17 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   try{
    for(const x of plan){
     const {p,c,base,key,hw,hh,os}=x;
-    overlayFor(p.variant,p.gray);
+    // Drawing B beside A = drawing B's scene from a camera moved the other way; the scene's own matrices stay untouched.
+    camera.position.sub(p.shift);camera.updateMatrixWorld();shifted=p.shift;
+    overlayFor(p.variant);
     let k=performance.now();
     if(renderNow.has(x)){
      // Render the padded frustum into the cache.
      camera.left=-hw*os[0]*camera.zoom;camera.right=hw*os[0]*camera.zoom;camera.top=hh*os[1]*camera.zoom;camera.bottom=-hh*os[1]*camera.zoom;camera.updateProjectionMatrix();
-     apply(p.variant);renderer.setRenderTarget(c.rt);scene.overrideMaterial=p.gray?gray:null;
+     apply(p.variant);renderer.setRenderTarget(c.rt);
      // The first scene render of this draw already updated world matrices; later passes only swap instance data.
      if(rendered)scene.matrixWorldAutoUpdate=false;
-     try{renderer.render(scene,camera);}finally{scene.matrixWorldAutoUpdate=true;scene.overrideMaterial=null;renderer.setRenderTarget(null);}
+     try{renderer.render(scene,camera);}finally{scene.matrixWorldAutoUpdate=true;renderer.setRenderTarget(null);}
      calls+=renderer.info.render.calls;tris+=renderer.info.render.triangles;rendered++;markRendered();
      Object.assign(c,{key,base,hw:hw*os[0],hh:hh*os[1],at:performance.now()});c.pos.copy(camera.position);c.quat.copy(camera.quaternion);
     }
@@ -247,12 +277,15 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     if(c.key!==key)reprojected++;
     renderer.setViewport(p.vp.x,H-p.vp.y-p.vp.h,p.vp.w,p.vp.h);renderer.setScissor(p.sc.x,H-p.sc.y-p.sc.h,p.sc.w,p.sc.h);
     u.tColor.value=c.rt.texture;u.tDepth.value=c.rt.depthTexture;
+    // A pass that shares the view with an earlier one is merged by depth instead of painted over it.
+    const at=plan.indexOf(x),merge=at>0&&plan[at-1].p.vp===p.vp;blitMat.depthFunc=merge?THREE.LessEqualDepth:THREE.AlwaysDepth;
     renderer.autoClear=false;renderer.render(blitScene,camera);renderer.render(overlay,camera);renderer.autoClear=true;
     tScene+=performance.now()-k;k=performance.now();domFor(p,W,H);tDom+=performance.now()-k;
+    camera.position.add(shifted);camera.updateMatrixWorld();shifted=NO_SHIFT;
    }
    // Something is still shown from an older camera: finish it on the next frame even if nothing else asks.
    if(reprojected&&!pending)pending=requestAnimationFrame(()=>{pending=0;draw();});
-  }finally{scene.overrideMaterial=null;scene.matrixWorldAutoUpdate=true;renderer.autoClear=true;renderer.setRenderTarget(null);[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A');renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);}
+  }finally{if(shifted!==NO_SHIFT){camera.position.add(shifted);camera.updateMatrixWorld();}blitMat.depthFunc=THREE.AlwaysDepth;scene.matrixWorldAutoUpdate=true;renderer.autoClear=true;renderer.setRenderTarget(null);[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A');renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);}
   totals.draws++;totals.scene_renders+=rendered;totals.reprojected+=reprojected;
   stats={passes:list.length,rendered,reprojected,calls,triangles:tris,cpu_ms:+(performance.now()-t0).toFixed(2),scene_ms:+tScene.toFixed(2),dom_ms:+tDom.toFixed(2)};
  }
@@ -270,17 +303,24 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  }
  /** Screen point → semantic object, using the pass under the pointer and that pass's cargo state. */
  function pick(x:number,y:number):Pick|null{
-  if(!ctx||!ready)return null;const {renderer,scene,camera}=ctx,[W,H]=canvasSize(renderer.domElement),p=passes(W,H).find(p=>inside({x,y},p.sc));if(!p)return null;
+  if(!ctx||!ready)return null;const {renderer,scene,camera}=ctx,[W,H]=canvasSize(renderer.domElement),list=passes(W,H).filter(p=>inside({x,y},p.sc));if(!list.length)return null;
   const base=[camera.left,camera.right,camera.top,camera.bottom] as const,targets:THREE.Object3D[]=[];
   scene.traverse(o=>{if(o.userData.semanticKind&&['HU','module','actor'].includes(o.userData.semanticKind))targets.push(o);});
+  // In «Рядом» both copies are under the pointer; the nearest hit wins, as it would in one real scene.
+  let best:(Pick&{d:number})|null=null;
   try{
-   apply(p.variant);for(const h of hu)h.mesh.computeBoundingSphere();setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);
-   const ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,-(y-p.vp.y)/p.vp.h*2+1),camera);
-   for(const hit of ray.intersectObjects(targets,true)){
-    let n:THREE.Object3D|null=hit.object;while(n&&!n.userData.semanticKind)n=n.parent;if(!n)continue;
-    const id=hit.instanceId===undefined?n.userData.semanticId:n.userData.semanticIds?.[hit.instanceId];if(typeof id==='string')return {variant:p.variant,kind:n.userData.semanticKind,id};
+   for(const p of list){
+    apply(p.variant);for(const h of hu)h.mesh.computeBoundingSphere();setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();
+    try{
+     const ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,-(y-p.vp.y)/p.vp.h*2+1),camera);
+     for(const hit of ray.intersectObjects(targets,true)){
+      let n:THREE.Object3D|null=hit.object;while(n&&!n.userData.semanticKind)n=n.parent;if(!n)continue;
+      const id=hit.instanceId===undefined?n.userData.semanticId:n.userData.semanticIds?.[hit.instanceId];
+      if(typeof id==='string'){if(!best||hit.distance<best.d)best={variant:p.variant,kind:n.userData.semanticKind,id,d:hit.distance};break;}
+     }
+    }finally{camera.position.add(p.shift);camera.updateMatrixWorld();}
    }
-   return null;
+   return best&&{variant:best.variant,kind:best.kind,id:best.id};
   }finally{[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A');for(const h of hu)h.mesh.computeBoundingSphere();}
  }
  return {
@@ -293,21 +333,27 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     heads.set(id,new THREE.Vector3(p.x,top+.55,p.z));
     const zone=[...zones].find(([,z])=>p.x>=z.min[0]&&p.x<=z.max[0]&&p.z>=z.min[1]&&p.z<=z.max[1])?.[0]??null;spots.push({actor_id:id,zone_id:zone});});
    // Close-ups switch shadows on; compile those shader variants now (behind the loading screen), not mid-zoom.
-   if(ctx){const r=ctx.renderer,was=r.shadowMap.enabled;try{r.shadowMap.enabled=true;r.compile(ctx.scene,ctx.camera);ctx.scene.overrideMaterial=gray;r.compile(ctx.scene,ctx.camera);}finally{ctx.scene.overrideMaterial=null;r.shadowMap.enabled=was;}}
+   if(ctx){const r=ctx.renderer,was=r.shadowMap.enabled;try{r.shadowMap.enabled=true;r.compile(ctx.scene,ctx.camera);}finally{r.shadowMap.enabled=was;}}
    ready=true;draw();},
   workers:()=>spots as readonly WorkerSpot[],
   /** Camera framing for a zone floor, for 'take me there' from the state list. */
-  zoneFocus(id:string){const z=zones.get(id);if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1];return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
+  zoneFocus(id:string,v:Variant='A'){const z=zones.get(id);if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1],o=mode==='side'&&v==='B'?SIDE_SHIFT[2]:0;return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
   stats:()=>({...stats,totals:{...totals},pixelRatio:ctx?.renderer.getPixelRatio()??0,shadows:ctx?.renderer.shadowMap.enabled??false}),
   actorPosition:(id:string)=>heads.get(id)?.toArray() as XYZ|undefined,
   setEffects(next:Effects,nextBudget:number){effects=next;budget=Math.min(BUDGET_MAX,nextBudget);draw();},
   setSelectedActor(id:string|null){selectedActor=id;draw();},
-  onBubble(fn:(id:string)=>void){onBubble=fn;},
+  onBubble(fn:(id:string,v:Variant)=>void){onBubble=fn;},
+  onLabel(fn:(v:Variant)=>void){onLabel=fn;},
+  /** Where a variant's copy of the warehouse stands in the shared space (only «Рядом» shifts B). */
+  offsetOf:(v:Variant):XYZ=>mode==='side'&&v==='B'?[...SIDE_SHIFT]:[0,0,0],
   setMoves,draw,pick,ground,
   setMode(next:Mode){mode=next;draw();},
+  setInset(px:number){if(px===inset)return;inset=px;draw();},
+  region:()=>ctx?region(...canvasSize(ctx.renderer.domElement)):null,
   setSplit(next:number){split=Math.min(.92,Math.max(.08,next));draw();},
   setTime(next:number){t=next;draw();},
   setSelected(id:string|null){selected=id;draw();},
+  highlightZone,
   dispose(){disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }

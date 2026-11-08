@@ -79,4 +79,56 @@ for(const v of ['A','B'])for(let t=0;t<=S.DEMO_DURATION_S;t+=2){
 }
 assert.equal(S.zoneHistory('A','STANDARD_E',100).find(e=>e.from)?.from,'Упаковка и линия','wave names its source zone');
 assert.deepEqual(S.recoveredZones('A',100),[]);assert.ok(S.recoveredZones('B',120).includes('PACKING_LIGHT_LINE'));
+// Search: forgiving about case, separators and v3 prefixes; exact IDs first; empty or unknown queries find nothing.
+const Q=await import('../src/adaptive-v3/twin/twinSearch.ts');
+const idx=Q.buildIndex([
+ ...['P01','P02','K03','K04'].map(id=>({kind:'actor',id,title:id,sub:id[0]==='K'?'Упаковщик':'Комплектовщик',keys:[id,id[0]==='K'?'Упаковщик':'Комплектовщик']})),
+ ...Array.from({length:9},(_,i)=>({kind:'HU',id:`v3:HU:initial:DEMO_00${i+1}:01`,title:`DEMO_00${i+1}`,sub:'SMALL_CARTON',keys:[`v3:HU:initial:DEMO_00${i+1}:01`,`DEMO_00${i+1}`,'SMALL_CARTON']})),
+ {kind:'port',id:'OUT_S_EXPRESS',title:'OUT_S_EXPRESS',sub:'выход',keys:['OUT_S_EXPRESS','выход','ворота']},
+ {kind:'zone',id:'PACKING_LIGHT_LINE',title:'Упаковка и линия',sub:'участок',keys:['PACKING_LIGHT_LINE','Упаковка и линия']},
+ {kind:'slot',id:'v3:slot:SMALL_E:019:L1:B5',title:'SMALL_E:019:L1:B5',sub:'занята',keys:['v3:slot:SMALL_E:019:L1:B5']},
+]);
+assert.equal(Q.search(idx,'p01')[0].id,'P01','exact worker id first');
+assert.deepEqual(Q.search(idx,'упаков').filter(h=>h.kind==='actor').map(h=>h.id),['K03','K04'],'role words find workers');
+assert.equal(Q.search(idx,'demo 003')[0].id,'v3:HU:initial:DEMO_003:01','separators do not matter');
+assert.equal(Q.search(idx,'small_e 019').find(h=>h.kind==='slot')?.id,'v3:slot:SMALL_E:019:L1:B5');
+assert.equal(Q.search(idx,'out s')[0].id,'OUT_S_EXPRESS');
+assert.ok(Q.search(idx,'demo').filter(h=>h.kind==='HU').length<=5,'at most five per kind');
+assert.deepEqual(Q.search(idx,'   '),[]);assert.deepEqual(Q.search(idx,'zzzz'),[]);
+assert.equal(Q.shortId('v3:HU:initial:DEMO_001:01'),'DEMO_001:01');
+
+// Scenario cards N0–N4: every count, time and hash shown in the UI must come from the fixture it names.
+{
+ const {readFileSync}=await import('node:fs');const C=await import('../src/adaptive-v3/twin/twinScenarios.ts');
+ const read=p=>JSON.parse(readFileSync(new URL('../../'+p,import.meta.url),'utf8')),card=id=>C.SCENARIOS.find(c=>c.id===id);
+ assert.deepEqual(C.SCENARIOS.map(c=>c.id),['N0','N1','N2','N3','N4']);
+ const base=JSON.parse(readFileSync(new URL('../public/data/v3/warehouse-fixture-v3.json',import.meta.url),'utf8'));
+ const zoneIds=new Set(JSON.parse(readFileSync(new URL('../public/data/adaptive-v3/layout-manifest.json',import.meta.url),'utf8')).data.zones.map(z=>z.zone_id));
+ for(const c of C.SCENARIOS){
+  for(const z of c.focus)assert.ok(zoneIds.has(z),`${c.id}: focus zone ${z} exists`);
+  for(const w of [...c.changes,c.idea,c.same])assert.ok(!/выигрыш \d|быстрее на|экономи[яи] \d|\d+\s*%/.test(w),`${c.id}: no outcome claims`);
+  if(!c.source)continue;const f=read(c.source.path);
+  assert.equal(f.frozen_payload_sha256??f.inputs_sha256,c.source.sha256,`${c.id}: payload hash`);
+  assert.equal(f.engine_operation,false,`${c.id}: not an engine run`);assert.equal(f.comparison_policy.decision_state,'not_evaluated',`${c.id}: no decision`);
+  assert.ok(f.scenario_id.includes(`:${c.id}_`),`${c.id}: scenario id ${f.scenario_id}`);
+  if(c.ports){
+   for(const dir of ['inbound','outbound'])for(const p of c.ports[dir]){
+    assert.equal(f.control.normal_port_counts[dir][p.port_id]??0,p.before,`${c.id} ${p.port_id} before`);
+    assert.equal(f.control.scenario_port_counts[dir][p.port_id]??0,p.after,`${c.id} ${p.port_id} after`);
+   }
+   const n=c.ports.inbound.length+c.ports.outbound.length;assert.equal(n,base.inputs.ports.length,`${c.id}: all gates listed`);
+  }
+ }
+ const n1=read(card('N1').source.path).control.declared_port_changes;
+ assert.equal(n1.length,4);assert.equal(n1.filter(d=>d.direction==='outbound'&&d.from_port_id==='OUT_W_RETAIL').length,3);
+ assert.equal(n1.filter(d=>d.direction==='inbound'&&d.from_port_id==='IN_N_STANDARD'&&d.to_port_id==='IN_E_PARCEL').length,1);
+ const n2=read(card('N2').source.path).preregistration;
+ assert.deepEqual([n2.added_HUs,n2.port_id,n2.first_release_s,n2.last_release_s,n2.interval_s,n2.deadline_offset_s],[12,'IN_W_BULK',90,750,60,600]);
+ assert.deepEqual(n2.repeating_archetypes,['PALLET_LOAD','IBC','HEAVY_BOX']);
+ const w12=read(card('N3').source.path),n3=w12.preregistration,gate=base.inputs.ports.find(p=>p.port_id==='IN_W_BULK');
+ assert.deepEqual([n3.additional_receipts,n3.archetype_id,n3.deadline_offset_seconds],[4,'LONG_BUNDLE',900]);assert.deepEqual(n3.release_seconds,[180,360,540,720]);
+ assert.deepEqual([gate.clear_width_m,gate.clear_height_m,w12.long_requirements[0].attachment_mass_kg],[7,4.5,40]);
+ const reg=JSON.parse(readFileSync(new URL('../public/data/v3/worker-registry-v3.json',import.meta.url),'utf8'));
+ for(const id of ['K05','K06','P11','P12'])assert.ok(JSON.stringify(reg).includes(`"actor_id": "${id}"`)||JSON.stringify(reg).includes(`"actor_id":"${id}"`),`N4 names real worker ${id}`);
+}
 console.log('twin scenario v3: OK');
