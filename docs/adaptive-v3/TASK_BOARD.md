@@ -82,8 +82,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P11.1](tasks/P11.1.md) | PASS | root | R10,P10,C07 | Same24 immutable visual skill profiles |
 | [P11.2](tasks/P11.2.md) | PASS | root | P11.1 | Explicit role/equipment/manual-mass capability gate |
 | [P11.3](tasks/P11.3.md) | PASS | root | P11.2 | Reviewed skill profile inspector and complete local states |
-| [W01](tasks/W01.md) | READY | unassigned | C12,P10 | Подготовлен детерминированный visual fixture v3 |
-| [W02](tasks/W02.md) | TODO | unassigned | W01 | Создан изолированный adapter v3 |
+| [W01](tasks/W01.md) | PASS | root | C12,P10 | Подготовлен детерминированный visual fixture v3 |
+| [W02](tasks/W02.md) | READY | unassigned | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | TODO | unassigned | W02,L06,L07 | Подключены движения по реальному графу |
 | [W04](tasks/W04.md) | TODO | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
