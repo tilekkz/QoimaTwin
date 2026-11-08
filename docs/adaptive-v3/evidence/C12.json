@@ -1,0 +1,33 @@
+{
+  "task_id": "C12",
+  "passed": true,
+  "reviewer": "root",
+  "source_kind": "contract_proposal_handoff",
+  "engine_operation": false,
+  "backend_integration_complete": false,
+  "artifact": "docs/v3/contract-proposals/handoff/manifest.json",
+  "manifest_sha256": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+  "source_checkpoint_commit": "c661a726eede7bd1a38999a311228cb5c279463e",
+  "validator": "docs/adaptive-v3/evidence/C12-validator.json",
+  "schemas_checked": 8,
+  "new_schemas": 6,
+  "examples_checked": 7,
+  "referenced_files_checked": 70,
+  "negative_cases_rejected": 23,
+  "original_proposals_unchanged": 33,
+  "canonical_contracts_unchanged": 21,
+  "deterministic_package_files": 15,
+  "additional_checks": {
+    "cargo_check_only_negative_cases": 19,
+    "storage_check_only_negative_cases": 25
+  },
+  "review": [
+    "Opened schema generator, offline validator, manifest, example projections and migration README.",
+    "Existing root proposal inputs and contracts remain read-only. Publication means Git files, not recipient acknowledgement or engine adoption."
+  ],
+  "limitations": [
+    "Worker profiles are examples; P11/P12 registry/transitions remain open.",
+    "Actual V3 engine mode unsupported; geometry/visual/analytical profiles are distinct.",
+    "Full visual v3 remains incomplete, including P03.5.3 pick access and scene density."
+  ]
+}

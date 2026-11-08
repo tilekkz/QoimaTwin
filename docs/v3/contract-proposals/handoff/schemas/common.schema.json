@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:proposal:handoff:common:v3:0.1.0",
+  "title": "Qoima v3 isolated proposal: common",
+  "$comment": "Proposal only. Offline semantic validation and exact referenced hashes are required; no canonical backend adoption.",
+  "$defs": {
+    "hash64": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9:_.-]*$"
+    },
+    "role": {
+      "enum": [
+        "picker",
+        "packer",
+        "receiver",
+        "shipper",
+        "forklift_driver"
+      ]
+    },
+    "archetype": {
+      "enum": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON",
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "LONG_BUNDLE",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ]
+    },
+    "xyz": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_.-]+$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ]
+    }
+  }
+}

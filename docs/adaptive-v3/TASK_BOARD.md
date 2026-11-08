@@ -47,7 +47,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [C09](tasks/C09.md) | PASS | root | C06,C07,C08 | Задан порядок «совместимость, затем стоимость» |
 | [C10](tasks/C10.md) | PASS | root | C03,C04,C09 | Подготовлено допустимое baseline-размещение |
 | [C11](tasks/C11.md) | PASS | root | C10 | Подготовлено адаптированное размещение |
-| [C12](tasks/C12.md) | READY | unassigned | C11,L12 | Передано предложение контрактов v3 |
+| [C12](tasks/C12.md) | PASS | root | C11,L12 | Передано предложение контрактов v3 |
 | [M01](tasks/M01.md) | PASS | rack_crate | R10,C04,I09,R13.1 | Готова модель SMALL storage |
 | [M02](tasks/M02.md) | PASS | warehouse_props | R10,R02,C04,I09,R13.2 | Готова модель STANDARD storage |
 | [M03](tasks/M03.md) | PASS | rack_crate | R10,R02,C04,I09,R13.3 | Готова модель HEAVY storage |

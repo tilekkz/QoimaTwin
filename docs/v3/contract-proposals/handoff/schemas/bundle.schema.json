@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:proposal:handoff:bundle:v3:0.1.0",
+  "title": "Qoima v3 isolated proposal: bundle",
+  "$comment": "Proposal only. Offline semantic validation and exact referenced hashes are required; no canonical backend adoption.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": {
+      "const": "qoima.contract-handoff.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "proposal"
+    },
+    "source_kind": {
+      "const": "contract_proposal_handoff"
+    },
+    "engine_operation": {
+      "const": false
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "source_checkpoint_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "backend_integration_complete": {
+      "const": false
+    },
+    "actual_v3_run_supported": {
+      "const": false
+    },
+    "worker_registry_materialized": {
+      "const": false
+    },
+    "layout_content_hash": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+    },
+    "source_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_.-]+$"
+          },
+          "sha256": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "enum": [
+              "proposal_json",
+              "schema",
+              "example",
+              "documentation",
+              "visual_fixture",
+              "geometry_projection",
+              "canonical_v2_contract"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "kind"
+        ]
+      },
+      "minItems": 1
+    },
+    "handoff_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_.-]+$"
+          },
+          "sha256": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "enum": [
+              "proposal_json",
+              "schema",
+              "example",
+              "documentation",
+              "visual_fixture",
+              "geometry_projection",
+              "canonical_v2_contract"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "kind"
+        ]
+      },
+      "minItems": 1
+    },
+    "extra_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_.-]+$"
+          },
+          "sha256": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "enum": [
+              "proposal_json",
+              "schema",
+              "example",
+              "documentation",
+              "visual_fixture",
+              "geometry_projection",
+              "canonical_v2_contract"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "kind"
+        ]
+      },
+      "minItems": 1
+    },
+    "canonical_contracts_snapshot": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_.-]+$"
+          },
+          "sha256": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "kind": {
+            "enum": [
+              "proposal_json",
+              "schema",
+              "example",
+              "documentation",
+              "visual_fixture",
+              "geometry_projection",
+              "canonical_v2_contract"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "sha256",
+          "bytes",
+          "kind"
+        ]
+      },
+      "minItems": 1
+    },
+    "inventory_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actors": {
+          "const": 24
+        },
+        "ports": {
+          "const": 6
+        },
+        "handling_units": {
+          "const": 530
+        },
+        "skus": {
+          "const": 200
+        },
+        "quantity_units": {
+          "const": 12256
+        },
+        "gross_mass_kg": {
+          "const": 9403.85
+        }
+      },
+      "required": [
+        "actors",
+        "ports",
+        "handling_units",
+        "skus",
+        "quantity_units",
+        "gross_mass_kg"
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "status",
+    "source_kind",
+    "engine_operation",
+    "operational_admission",
+    "source_checkpoint_commit",
+    "backend_integration_complete",
+    "actual_v3_run_supported",
+    "worker_registry_materialized",
+    "layout_content_hash",
+    "source_artifacts",
+    "handoff_artifacts",
+    "extra_inputs",
+    "canonical_contracts_snapshot",
+    "inventory_facts",
+    "scope"
+  ]
+}
