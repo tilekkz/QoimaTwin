@@ -38,6 +38,10 @@ function verifyNative(item,kind){
  }
  return boundsError;
 }
+function verifyActorHeading(pose,yaw,position){
+ assert(pose&&Array.isArray(pose.quaternion)&&pose.quaternion.length===4,'Actual native actor pose is exposed');assert.deepEqual(pose.position,position,'Actor floor position is preserved');
+ const [x,y,z,w]=pose.quaternion,forward=[2*(x*z+w*y),2*(y*z-w*x),1-2*(x*x+y*y)];assert(Math.hypot(forward[0]-Math.sin(yaw),forward[1],forward[2]-Math.cos(yaw))<1e-10,'Actual actor outward/rest heading');
+}
 try{
  server=await chromium.launchServer({channel:'chrome',headless:true,args:['--mute-audio'],timeout:30000});browser=await chromium.connect(server.wsEndpoint());
  const context=await browser.newContext({viewport:{width:1440,height:1100},hasTouch:true,reducedMotion:'reduce'}),page=await context.newPage();page.setDefaultTimeout(15000);
@@ -58,18 +62,20 @@ try{
  verifyConservation(original);assert.equal(originalScene.workers,24);assert.equal(originalScene.stock_HUs,530);assert.equal(originalScene.modules,132);assert.equal(originalScene.cargo_binding_count,530);assert.equal(originalScene.actions_scheduled,0);assert.equal(originalScene.completed_jobs,0);
  for(const [,archetype]of cases)if(!representatives.has(archetype)){const row=original.find(row=>row.cargo.archetype_id===archetype);representatives.set(archetype,await inspect(row.handling_unit_id));}
  assert(!requests.some(path=>/worker-manual\.glb|picking-cart-tote-fixture\.glb|long-cradle\.glb/.test(path)),'Support assets must remain lazy before first holder intent');checks.optional_support_kit_is_lazy_and_base_viewer_usable=true;
+ let actorRestQuaternion;
  for(const [demo,archetype,kind]of cases){
   assert.equal(await activate(demo),true,demo);await settle();const s=await snapshot(),rows=await cargoState(),attached=rows.filter(row=>row.destination.kind!=='storage_slot');verifyConservation(rows);
   assert.equal(s.phase,'ready');assert.equal(s.scene.workers,24);assert.deepEqual(s.scene.worker_ids,originalScene.worker_ids);assert.equal(s.scene.stock_HUs,530);assert.equal(s.scene.actions_scheduled,0);assert.equal(s.scene.completed_jobs,0);assert.equal(attached.length,1,demo);const held=attached[0];assert.equal(held.destination.kind,kind);assert.equal(held.cargo.archetype_id,archetype);
   const native=await inspect(held.handling_unit_id),before=representatives.get(archetype);verifyNative(native,kind);assert.deepEqual(native.mesh_instances,before.mesh_instances,'Same native GPU UUID/index for '+demo);assert.deepEqual(native.dimensions_xyz_m,before.dimensions_xyz_m);assert.equal(native.gross_mass_kg,before.gross_mass_kg);assert.equal(native.quantity_units,before.quantity_units);
+  if(kind==='actor'){verifyActorHeading(s.scene.holders.actor_pose,Math.PI/2,originalScene.actor_homes.P01.world_pos);assert(Math.abs(native.yaw_rad-Math.PI/2)<1e-10,'Same HU uses the actual outward actor frame');}
   assert((await page.locator('#warehouse-selection').innerText()).includes(held.handling_unit_id),'Current HU card');await capture(demo);
   observations.push({demo,kind,handling_unit_id:held.handling_unit_id,destination:held.destination,native,holder:s.holder,scene:s.scene?{...s.scene,stock_positions:undefined}:null});
   if(kind==='vehicle'){
    const beforeRoute=JSON.stringify(await cargoState()),vehiclePose=s.scene.vehicle_poses;const routeResult=await page.evaluate(()=>window.__QOIMA_WAREHOUSE_V3__.activateRoute('F01-heavy'));assert.equal(routeResult,false,'Empty route must reject attached cargo');assert.equal(JSON.stringify(await cargoState()),beforeRoute);assert.deepEqual((await snapshot()).scene.vehicle_poses,vehiclePose);checks.empty_vehicle_routes_refuse_attached_cargo=true;
   }
-  await reset();await reset();assert.equal(JSON.stringify(await cargoState()),originalText,'Absolute original restoration '+demo);assert.equal((await snapshot()).scene.workers,24);const restored=await inspect(held.handling_unit_id);assert.deepEqual(restored.mesh_instances,before.mesh_instances);assert.deepEqual(restored.bounds_world,before.bounds_world);
+  await reset();await reset();assert.equal(JSON.stringify(await cargoState()),originalText,'Absolute original restoration '+demo);const resetScene=(await snapshot()).scene;assert.equal(resetScene.workers,24);verifyActorHeading(resetScene.holders.actor_pose,3*Math.PI/2,originalScene.actor_homes.P01.world_pos);if(!actorRestQuaternion)actorRestQuaternion=resetScene.holders.actor_pose.quaternion;else assert.deepEqual(resetScene.holders.actor_pose.quaternion,actorRestQuaternion,'Exact restored actor quaternion');const restored=await inspect(held.handling_unit_id);assert.deepEqual(restored.mesh_instances,before.mesh_instances);assert.deepEqual(restored.bounds_world,before.bounds_world);
  }
- checks.all10_carrier_poses_same_HUs_24_workers_and_metadata=true;checks.all_six_vehicle_families_have_native_support=true;checks.cart_and_two_belt_classes_have_native_support=true;checks.repeated_reset_restores_exact_storage_instance_bounds=true;
+ checks.all10_carrier_poses_same_HUs_24_workers_and_metadata=true;checks.all_six_vehicle_families_have_native_support=true;checks.cart_and_two_belt_classes_have_native_support=true;checks.outward_actor_heading_and_exact_original_rest_quaternion=true;checks.repeated_reset_restores_exact_storage_instance_bounds=true;
  if(!smoke){
  // Malformed raw binding input must remain atomic after the optional holder catalogue is registered.
  const small=original.find(row=>row.cargo.archetype_id==='SMALL_CARTON');

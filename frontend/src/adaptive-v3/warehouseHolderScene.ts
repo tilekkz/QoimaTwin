@@ -29,7 +29,7 @@ export function createWarehouseHolderScene(kit:WarehouseSupportKit,o:Options){
  function restoreSupports(){for(const [key,value]of supportBefore){if(value)supports.set(key,value);else supports.delete(key);}}
  try{
  manual.root.position.copy(oldRoot.position);manual.root.quaternion.copy(oldRoot.quaternion);manual.root.userData.semanticKind='actor';manual.root.userData.semanticId='P01';
- const carry=applyCarryPose(manual.root,kit.carryPose);carry.restore();
+ const carry=applyCarryPose(manual.root,kit.carryPose),actorRestQuaternion=manual.root.quaternion.clone();carry.restore();
  cart.name='equipment__C01';cart.position.set(16,0,44.38);cart.rotation.y=Math.PI/2;
  const belt=(bundle.layout.data.conveyor as V3Record).cells as V3Record[],cell=belt.find(c=>c.cell_id===beltDestination.cell_id);if(!cell)throw Error('NATIVE_BELT_CELL_MISSING');
  beltFrame.position.fromArray(cell.position as XYZ);const flow=cell.flow as XYZ;beltFrame.rotation.y=Math.atan2(flow[0],flow[2]);
@@ -53,7 +53,9 @@ export function createWarehouseHolderScene(kit:WarehouseSupportKit,o:Options){
  function configure(bindings:CargoBinding[]){
   if(disposed)throw Error('HOLDERS_DISPOSED');
   const long=bindings.filter(b=>b.destination.kind==='vehicle'&&bundle.fixture.inputs.initial_stock.find(h=>h.handling_unit_id===b.handling_unit_id)?.archetype_id==='LONG_BUNDLE');if(long.length>1)throw Error('HOLDER_ATTACHMENT_UNAVAILABLE');
-  const held=bindings.some(b=>b.destination.kind==='actor'&&b.destination.actor_id==='P01');carry.restore();if(held)applyCarryPose(manual.root,kit.carryPose);carryActive=held;
+  const held=bindings.some(b=>b.destination.kind==='actor'&&b.destination.actor_id==='P01');carry.restore();manual.root.quaternion.copy(actorRestQuaternion);
+  // Static inspection turns outward at the same source worker node; no pickup, walk or elapsed action is implied.
+  if(held){manual.root.rotation.set(0,Math.PI/2,0);applyCarryPose(manual.root,kit.carryPose);}carryActive=held;
   kit.cradle.removeFromParent();kit.restraint.removeFromParent();
   for(const [id,vehicle]of vehicles){
    for(const home of vehicleRest.get(id)!){home.node.position.copy(home.position);home.node.quaternion.copy(home.quaternion);}
@@ -69,7 +71,7 @@ export function createWarehouseHolderScene(kit:WarehouseSupportKit,o:Options){
  configure([]);
  // A replacement in the existing registry, never transplanting children through workerRoles' private ownership.
  oldRoot.removeFromParent();scene.add(manual.root,cart,beltFrame);workers[index]=manual;actors.set('P01',manual.root);pickables[pickableIndex]=manual.root;disposeWorkerInstance(original);
- return {catalogue,frame,configure,inspectActor,dispose,snapshot:()=>({ready:!disposed,carry_active:carryActive,worker_id:'P01',worker_replacement_count:1,equipment:{cart_ids:['C01'],cart_totes:1,long_cradle_count:1,source_kind:'visual_fixture'},vehicle_profiles:{...profiles},source_refs:refs,source_kind:'visual_fixture',engine_operation:false,operational_admission:false})};
+ return {catalogue,frame,configure,inspectActor,dispose,snapshot:()=>({ready:!disposed,carry_active:carryActive,worker_id:'P01',worker_replacement_count:1,actor_pose:{position:manual.root.position.toArray(),quaternion:manual.root.quaternion.toArray(),yaw_rad:manual.root.rotation.y},actor_rest_quaternion:actorRestQuaternion.toArray(),equipment:{cart_ids:['C01'],cart_totes:1,long_cradle_count:1,source_kind:'visual_fixture'},vehicle_profiles:{...profiles},source_refs:refs,source_kind:'visual_fixture',engine_operation:false,operational_admission:false})};
  }catch(error){
   restoreVehicles();restoreSupports();cart.removeFromParent();beltFrame.removeFromParent();kit.cradle.removeFromParent();kit.restraint.removeFromParent();disposeWorkerInstance(manual);
   if(!original.disposed){workers[index]=original;actors.set('P01',oldRoot);pickables[pickableIndex]=oldRoot;if(oldRoot.parent!==oldParent)oldParent.add(oldRoot);}

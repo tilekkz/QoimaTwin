@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T10:33:38.213058+00:00",
+  "updated_at": "2026-11-08T11:33:20.721915+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1486,8 +1486,8 @@
         "M12"
       ],
       "criteria": "Slot/actor/vehicle/belt связаны с одним cargo; размеры и ориентации сохранены",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/W04.md",
         "docs/adaptive-v3/evidence/W04.json"
@@ -1496,7 +1496,8 @@
         "W04.1",
         "W04.2",
         "W04.3"
-      ]
+      ],
+      "actual": "All3children PASS: immutable same530HU oneowner/native storage support/staticcarrier contacts and lazy lifecycle. Fresh20+25+12+20browserchecks, native530HU/132routeposes/28carrierstatics, rootreviewedcurrentframes. W05physicalactions/time/resources still required."
     },
     {
       "id": "W05",
@@ -1512,6 +1513,13 @@
       "outputs": [
         "docs/adaptive-v3/specs/W05.md",
         "docs/adaptive-v3/evidence/W05.json"
+      ],
+      "children": [
+        "W05.1",
+        "W05.2",
+        "W05.3",
+        "W05.4",
+        "W05.5"
       ]
     },
     {
@@ -1607,11 +1615,14 @@
         "M09"
       ],
       "criteria": "Тяжёлый груз идёт допустимым handling mode; очередь/отказ объяснимы, оба исходных размещения допустимы",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W11.md",
         "docs/adaptive-v3/evidence/W11.json"
+      ],
+      "children": [
+        "W11.1"
       ]
     },
     {
@@ -1624,12 +1635,38 @@
         "P09"
       ],
       "criteria": "LONG использует совместимый gate/path; не уменьшается и не разворачивается в запрещённую ориентацию",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W12.md",
         "docs/adaptive-v3/evidence/W12.json"
+      ],
+      "children": [
+        "W12.1"
       ]
+    },
+    {
+      "id": "W12.1",
+      "title": "Frozen long-freight / large-gate scenario inputs",
+      "parent": "W12",
+      "depends_on": [
+        "W02",
+        "C08",
+        "M10",
+        "P09"
+      ],
+      "criteria": "Source-bound immutable inputs; LONG dimensions/orientation and compatible gate/path/carrier; identical A/B bytes; independent negative checks; input-only.",
+      "status": "ACTIVE",
+      "owner": "account2",
+      "outputs": [
+        "tools/visual/v3/build_long_freight_scenario.py",
+        "tools/visual/v3/verify_long_freight_scenario.py",
+        "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json",
+        "docs/adaptive-v3/specs/W12.1.md",
+        "docs/adaptive-v3/evidence/W12.1.json",
+        "docs/adaptive-v3/evidence/W12.1-checks.json"
+      ],
+      "actual": "Preregister source-bound LONG/large-gate input-only flow, original dimensions/orientation and equal A/B bytes. Actual loaded path/actions remain W12 parent work."
     },
     {
       "id": "W13",
@@ -1767,12 +1804,12 @@
         "P09"
       ],
       "criteria": "Четыре вида каждого семейства; существенные расхождения исправлены, evidence сохранён",
-      "status": "ACTIVE",
+      "status": "VERIFY",
       "owner": "account2",
       "outputs": [
         "docs/adaptive-v3/evidence/Q01.json"
       ],
-      "actual": "Independent reference/render matrix: exact V3 asset/reference/four-view/native-runtime evidence paths, SHA freshness and disclosed missing review. Account2 owns only new matrix builder/report; no geometry or central-state edits."
+      "actual": "Second account produced reproducible matrix/builder; independentcheck-only passes. Documentary inventory only; root current-source selection and visual review remain open."
     },
     {
       "id": "Q02",
@@ -1797,7 +1834,7 @@
         "W04"
       ],
       "criteria": "Положительные и отрицательные примеры габаритов/массы; сначала compatibility, затем cost",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/evidence/Q03.json"
@@ -3796,13 +3833,13 @@
         "P03"
       ],
       "criteria": "Actual admitted holder contacts and same-HU ownership through storage/actor/vehicle/cart/belt states; source-bound support, no duplicatecargo/scale workaround. Current images and runtime error/reset/disposal/source freshness; transfers remain pose inspection untilW05physical actions/resources.",
-      "status": "FIX",
+      "status": "PASS",
       "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/W04.3.md",
         "docs/adaptive-v3/evidence/W04.3.json"
       ],
-      "actual": "Scene/UI integrated10static holder poses; smoke8checks10images/current build+CPU passes. Foreign-scene CPU QA confirmed P01 carry intersects SMALL_W:001 rack and DEMO_067:02 stock; fix actor preview placement and native clearance before PASS. Full error/lifecycle and default regressions pending after fix. Q01 independently ACTIVE account2; standard elevated Windows sandbox selection now permits actual file work."
+      "actual": "Connected sameHU staticactor/vehicle/cart/belt nativeholders; fixed P01rack/stockpenetration via outwardheading/exactreset.20fullbrowserchecks14rootreviewedimages28stationarynativechecks,24workers530HU unchanged; all3defaultregressions fresh. Scope staticcontacts only; physicaljoins/resources/actions W05."
     },
     {
       "id": "W09.1",
@@ -3874,6 +3911,109 @@
         "docs/adaptive-v3/specs/W10.2.md",
         "docs/adaptive-v3/evidence/W10.2.json"
       ]
+    },
+    {
+      "id": "W11.1",
+      "title": "Frozen heavy-inbound input pair and independent admission/source checks",
+      "parent": "W11",
+      "depends_on": [
+        "W02",
+        "C07",
+        "M08",
+        "M09"
+      ],
+      "criteria": "Preregistered heavy receipts/materialized HU identities and same-input A/B bytes; immutable530initialHU/24workers/2vehicles; actual cargo/port/handler constraints and independent semantic negatives. Input-only, no runtime/throughput claims.",
+      "status": "VERIFY",
+      "owner": "account2",
+      "outputs": [
+        "docs/adaptive-v3/specs/W11.1.md",
+        "docs/adaptive-v3/evidence/W11.1.json"
+      ],
+      "actual": "Second-account production completed; independent source and check-only review in progress. Parent W11 runtime remains open."
+    },
+    {
+      "id": "W05.1",
+      "title": "Source-bound absolute action timeline and exclusive resource intervals",
+      "parent": "W05",
+      "depends_on": [
+        "W03",
+        "W04",
+        "P10",
+        "P11"
+      ],
+      "criteria": "Source-bound absolute action timeline and exclusive resource intervals; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
+      "status": "ACTIVE",
+      "owner": "action_timeline",
+      "outputs": [
+        "docs/adaptive-v3/specs/W05.1.md",
+        "docs/adaptive-v3/evidence/W05.1.json"
+      ],
+      "actual": "Implement only typed source-bound absolute action intervals/resource calendar and deterministic clock foundation; physicalscenejoins remain laterchildren. Exactnewfiles assigned in card beforeexecution."
+    },
+    {
+      "id": "W05.2",
+      "title": "Grounded canonical worker walking and action-frame bindings",
+      "parent": "W05",
+      "depends_on": [
+        "W05.1"
+      ],
+      "criteria": "Grounded canonical worker walking and action-frame bindings; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
+      "status": "TODO",
+      "owner": "unassigned",
+      "outputs": [
+        "docs/adaptive-v3/specs/W05.2.md",
+        "docs/adaptive-v3/evidence/W05.2.json"
+      ],
+      "actual": "Declared before implementation; root must approve actual bounded evidence."
+    },
+    {
+      "id": "W05.3",
+      "title": "Light cargo pick/pack joins with complete units and support",
+      "parent": "W05",
+      "depends_on": [
+        "W05.2"
+      ],
+      "criteria": "Light cargo pick/pack joins with complete units and support; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
+      "status": "TODO",
+      "owner": "unassigned",
+      "outputs": [
+        "docs/adaptive-v3/specs/W05.3.md",
+        "docs/adaptive-v3/evidence/W05.3.json"
+      ],
+      "actual": "Declared before implementation; root must approve actual bounded evidence."
+    },
+    {
+      "id": "W05.4",
+      "title": "Loaded forklift physical joins and route/resource admission",
+      "parent": "W05",
+      "depends_on": [
+        "W05.1"
+      ],
+      "criteria": "Loaded forklift physical joins and route/resource admission; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
+      "status": "TODO",
+      "owner": "unassigned",
+      "outputs": [
+        "docs/adaptive-v3/specs/W05.4.md",
+        "docs/adaptive-v3/evidence/W05.4.json"
+      ],
+      "actual": "Declared before implementation; root must approve actual bounded evidence."
+    },
+    {
+      "id": "W05.5",
+      "title": "Unified scene clock integration for walk pick pack load",
+      "parent": "W05",
+      "depends_on": [
+        "W05.3",
+        "W05.4"
+      ],
+      "criteria": "Unified scene clock integration for walk pick pack load; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
+      "status": "TODO",
+      "owner": "unassigned",
+      "outputs": [
+        "docs/adaptive-v3/specs/W05.5.md",
+        "docs/adaptive-v3/evidence/W05.5.json"
+      ],
+      "actual": "Declared before implementation; root must approve actual bounded evidence."
     }
   ],
   "execution": {

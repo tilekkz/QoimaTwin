@@ -85,24 +85,25 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W01](tasks/W01.md) | PASS | root | C12,P10 | Подготовлен детерминированный visual fixture v3 |
 | [W02](tasks/W02.md) | PASS | root | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | PASS | root | W02,L06,L07 | Подключены движения по реальному графу |
-| [W04](tasks/W04.md) | TODO | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
+| [W04](tasks/W04.md) | PASS | root | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
 | [W06](tasks/W06.md) | TODO | unassigned | W05 | Реализовано восстановление pause/reset/seek |
 | [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
 | [W08](tasks/W08.md) | TODO | unassigned | W05 | Подключены управляемые SFX |
 | [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
 | [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
-| [W11](tasks/W11.md) | READY | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
-| [W12](tasks/W12.md) | READY | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
+| [W11](tasks/W11.md) | TODO | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
+| [W12](tasks/W12.md) | TODO | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
+| [W12.1](tasks/W12.1.md) | ACTIVE | account2 | W02,C08,M10,P09 | Frozen long-freight / large-gate scenario inputs |
 | [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
 | [W14](tasks/W14.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Готов экран slotting baseline/adapt сравнения |
 | [W15](tasks/W15.md) | TODO | unassigned | W06,P11 | Реализовано безопасное RoleAssignment event |
 | [W16](tasks/W16.md) | TODO | unassigned | W15,L06,L07 | Реализован переход к новому рабочему месту |
 | [W17](tasks/W17.md) | TODO | unassigned | W16,W06 | Проверено восстановление роли при seek/reset |
 | [W18](tasks/W18.md) | TODO | unassigned | W17,W14 | Готов отдельный N4 STAFFING comparison |
-| [Q01](tasks/Q01.md) | ACTIVE | account2 | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
+| [Q01](tasks/Q01.md) | VERIFY | account2 | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
 | [Q02](tasks/Q02.md) | TODO | unassigned | Q01,P09,P10 | Выполнена браузерная проверка финальных GLB |
-| [Q03](tasks/Q03.md) | TODO | unassigned | C12,W04 | Проверена совместимость всех SKU/slots |
+| [Q03](tasks/Q03.md) | READY | unassigned | C12,W04 | Проверена совместимость всех SKU/slots |
 | [Q04](tasks/Q04.md) | TODO | unassigned | Q03,W11,W12 | Проверены ориентации и handling |
 | [Q05](tasks/Q05.md) | TODO | unassigned | W03,W12,W13 | Проверены clearance и графовые маршруты |
 | [Q06](tasks/Q06.md) | TODO | unassigned | W05,Q02 | Проверены контакты и захваты в clips |
@@ -211,8 +212,14 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W03.3](tasks/W03.3.md) | PASS | root | W03.2 | Connected muted route preview and reviewed scene admission states |
 | [W04.1](tasks/W04.1.md) | PASS | root | W02,C06,C07,C08 | Single-parent cargo state and immutable placement admission |
 | [W04.2](tasks/W04.2.md) | PASS | root | W04.1 | Actual shared cargo instances and physical storage placement |
-| [W04.3](tasks/W04.3.md) | FIX | root | W04.2,W03,P10,P11,M14,P03 | Connected actor vehicle cart and belt support anchors |
+| [W04.3](tasks/W04.3.md) | PASS | root | W04.2,W03,P10,P11,M14,P03 | Connected actor vehicle cart and belt support anchors |
 | [W09.1](tasks/W09.1.md) | PASS | scenario_inputs | W02,C10,C11 | Frozen preregistered scenario input and paired source identity |
 | [W09.2](tasks/W09.2.md) | TODO | root | W09.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
 | [W10.1](tasks/W10.1.md) | PASS | scenario_inputs | W02,L03,L04,C11 | Frozen preregistered scenario input and paired source identity |
 | [W10.2](tasks/W10.2.md) | TODO | root | W10.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
+| [W11.1](tasks/W11.1.md) | VERIFY | account2 | W02,C07,M08,M09 | Frozen heavy-inbound input pair and independent admission/source checks |
+| [W05.1](tasks/W05.1.md) | ACTIVE | action_timeline | W03,W04,P10,P11 | Source-bound absolute action timeline and exclusive resource intervals |
+| [W05.2](tasks/W05.2.md) | TODO | unassigned | W05.1 | Grounded canonical worker walking and action-frame bindings |
+| [W05.3](tasks/W05.3.md) | TODO | unassigned | W05.2 | Light cargo pick/pack joins with complete units and support |
+| [W05.4](tasks/W05.4.md) | TODO | unassigned | W05.1 | Loaded forklift physical joins and route/resource admission |
+| [W05.5](tasks/W05.5.md) | TODO | unassigned | W05.3,W05.4 | Unified scene clock integration for walk pick pack load |

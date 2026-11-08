@@ -1,34 +1,12 @@
 {
   "task_id": "W04.3",
-  "status": "FIX",
-  "complete": false,
-  "updated_utc": "2026-11-08T10:47:57.630931+00:00",
+  "status": "PASS",
+  "complete": true,
   "source_kind": "visual_fixture",
   "engine_operation": false,
-  "carrier_scene_registered": true,
-  "carrier_UI_implemented": true,
-  "actual_actions_implemented": false,
-  "smoke_historical": {
-    "passed": true,
-    "poses": 10,
-    "checks": 8,
-    "owned_pid_terminated": true,
-    "not_current_full_regression": true
-  },
-  "current_types_passed": true,
-  "static_scene_clearance_passed": false,
-  "defect": "P01 carry facing3pi/2 at originalworker node intersects SMALL_W:001 and DEMO_067:02 stock. Same-node yawpi/2 candidate is measured but not implemented/visual accepted.",
-  "remaining": [
-    "fix actual scene carry clearance",
-    "current full holder lifecycle gate",
-    "W02/W03/W04.2 source-bound regressions and reviewed frames",
-    "W05 onward"
-  ],
-  "artifacts": {
-    "docs/adaptive-v3/evidence/W04.3-scene-clearance-checks.json": "2fa7ef0b51d9190bc0eafb96cf5f3b5da756f57e38db1301e41574269b51dc37",
-    "docs/adaptive-v3/evidence/W04.3-support-kit-checks.json": "dcf86080d5e8359a08c9f08d2574dd6a6bacf796b263762b6bf7288073eaac93",
-    "docs/adaptive-v3/evidence/W04.3-geometry-carrier-checks.json": "3c8df3862824f11ab9b67a6b9d629edb7788d66d051203e9d8cb97e776b3bc01",
-    "docs/adaptive-v3/evidence/W04.3-browser-preview-checks.json": "c28f4505984d911c27034cd811c937c2b085303b3409465c0cd9f49c2de86b67"
-  },
-  "next_action": "Implement and native/browser review outward same-source-node P01carry orientation; rerun lifecycle+affected regressions. Claude frontend/atmosphere brief is versioned under docs/adaptive-v3/design."
+  "updated_utc": "2026-11-08T11:26:40.680413+00:00",
+  "evidence": "docs/adaptive-v3/evidence/W04.3.json",
+  "evidence_sha256": "4f64b509262cc28ca4fdfbdaab18f3074bfc1addf7af010b789423132af1fbf1",
+  "physical_actions_complete": false,
+  "next_action": "Close parentW04sharedbinding gate then W05absoluteactionclock/resource/physicaljoins. Useratmosphere/ClaudeUIbrief remains separate newscope."
 }
