@@ -15,6 +15,7 @@ import {createPackerAction,validatePackerTimeline,type PackerMode} from './motio
 import {bindSmallGripper} from './motion/smallGripper';
 import {createSmallPickMotion,validateSmallPickTimeline} from './motion/smallPick';
 import {createReceiverAction,validateReceiverTimeline,type ReceiverMode} from './motion/receiver';
+import {createShipperAction,validateShipperTimeline,type ShipperMode} from './motion/shipper';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
@@ -23,7 +24,7 @@ const host = element('canvas-host');
 const shell = element('stand');
 const modelInput = element<HTMLInputElement>('model-id');
 const base = import.meta.env.BASE_URL;
-const assetTitles:Record<string,string>={'receiver-workcell-fixture':'Пост приёмки · паллета','worker-small-pick':'Комплектовщик · ручной захват','small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
+const assetTitles:Record<string,string>={'shipper-workcell-fixture':'Отгрузочный пост · посылка','receiver-workcell-fixture':'Пост приёмки · паллета','worker-small-pick':'Комплектовщик · ручной захват','small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
 async function initialize(){
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d8dcdb');
@@ -88,7 +89,8 @@ let packerAction:ReturnType<typeof createPackerAction>|undefined;
 let gripperTool:ReturnType<typeof bindSmallGripper>|undefined;
 let smallPickMotion:ReturnType<typeof createSmallPickMotion>|undefined;
 let receiverAction:ReturnType<typeof createReceiverAction>|undefined;
-function activeCycle(){return receiverAction??smallPickMotion??packerAction??walkFixture??pickupFixture;}
+let shipperAction:ReturnType<typeof createShipperAction>|undefined;
+function activeCycle(){return shipperAction??receiverAction??smallPickMotion??packerAction??walkFixture??pickupFixture;}
 let pickupPlaying=false,pickupAnchorTime=0,pickupAnchorWall=0;
 let view:View='quarter';
 let modelId='calibration';
@@ -110,8 +112,10 @@ function releaseModel(){
   pickupPlaying=false;pickupFixture=undefined;element('cycle-controls').hidden=true;
   element('packer-modes').hidden=true;
   element('receiver-modes').hidden=true;
+  element('shipper-modes').hidden=true;
   element('gripper-controls').hidden=true;
   if(smallPickMotion){smallPickMotion.dispose();smallPickMotion=undefined;}
+  if(shipperAction){shipperAction.dispose();shipperAction=undefined;}
   if(receiverAction){receiverAction.dispose();receiverAction=undefined;}
   if(gripperTool){gripperTool.dispose();gripperTool=undefined;}
   if(packerAction){packerAction.dispose();packerAction=undefined;}
@@ -173,7 +177,7 @@ function fit(next:View=view,focus?:THREE.Object3D){
   key.shadow.bias=-Math.min(.003,Math.max(.000005,radius*.0002))/(shadow.far-shadow.near);
   // Look down the working-arm side from the aisle; the opposite diagonal
   // hides the tool behind the worker or the back of the rack.
-  const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:smallPickMotion?new THREE.Vector3(-1.2,2.1,1.5):modelId==='receiver-workcell-fixture'?new THREE.Vector3(1.5,1.2,-1.2):new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
+  const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:smallPickMotion?new THREE.Vector3(-1.2,2.1,1.5):modelId==='shipper-workcell-fixture'?new THREE.Vector3(-1.5,1.2,1.2):modelId==='receiver-workcell-fixture'?new THREE.Vector3(1.5,1.2,-1.2):new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
   camera=view==='quarter'?perspective:orthographic;camera.up.set(0,1,0);camera.position.copy(centre).addScaledVector(direction,radius*4);camera.lookAt(centre);
   const inverse=camera.quaternion.clone().invert();const projected=new THREE.Vector3();
   let half=.025;let distance=radius;const tan=Math.tan(THREE.MathUtils.degToRad(perspective.fov/2));
@@ -208,7 +212,7 @@ function snapshot(){
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
   const cycle=activeCycle();
-  return {modelId,phase,view,focus:activeFocus,gripper:gripperTool?.snapshot()??null,fixture:receiverAction?'receiver-visual-QA':smallPickMotion?'small-pick-visual-QA':packerAction?'packer-seam-end-visual-QA':walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,gripper:gripperTool?.snapshot()??null,fixture:shipperAction?'shipper-visual-QA':receiverAction?'receiver-visual-QA':smallPickMotion?'small-pick-visual-QA':packerAction?'packer-seam-end-visual-QA':walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -249,6 +253,16 @@ async function loadModel(id:string){
     }else model=gltf.scene;
     if(id==='small-package-gripper'){gripperTool=bindSmallGripper(tagged);element('gripper-controls').hidden=false;element<HTMLInputElement>('gripper-opening').value='0';element('gripper-gap').textContent='40 мм';}
     const requestedFixture=new URL(location.href).searchParams.get('fixture');
+    if(id==='shipper-workcell-fixture'&&requestedFixture==='shipper'){
+      const [wr,tr]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-manual.glb'),fetch(base+'data/v3/shipper-v3.json').then(async r=>{if(!r.ok)throw Error('Описание отгрузки недоступно.');return validateShipperTimeline(await r.json());})]);
+      if(token!==serial){if(wr.status==='fulfilled')disposeObject(wr.value.scene);return;}
+      if(wr.status==='rejected'||tr.status==='rejected'){if(wr.status==='fulfilled')disposeObject(wr.value.scene);throw wr.status==='rejected'?wr.reason:(tr as PromiseRejectedResult).reason;}
+      workerTemplate=wr.value.scene;figureActor=createWorkerInstance(workerTemplate,'S01','shipper');
+      const cell=model.getObjectByName('shipper_workcell_root');if(!cell)throw Error('Нет поста отгрузки.');
+      shipperAction=createShipperAction(cell,figureActor,tr.value);
+      const mode=new URL(location.href).searchParams.get('mode');if(mode==='scan'||mode==='idle'||mode==='blocked')shipperAction.setMode(mode);
+      element('shipper-modes').hidden=false;configureShipperCycle();element('model-title').textContent='Отгрузчик · посылка';
+    }
     if(id==='receiver-workcell-fixture'&&requestedFixture==='receiver'){
       const [wr,tr]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-manual.glb'),fetch(base+'data/v3/receiver-v3.json').then(async r=>{if(!r.ok)throw Error('Описание приёмки недоступно.');return validateReceiverTimeline(await r.json());})]);
       if(token!==serial){if(wr.status==='fulfilled')disposeObject(wr.value.scene);return;}
@@ -348,7 +362,7 @@ async function loadModel(id:string){
     const floorBias=Math.min(.002,Math.max(.00001,radius*.00005));
     ground.position.set(centre.x,Math.min(0,bounds.min.y)-floorBias,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
-    fit(view);setStatus('ready',receiverAction?'Приёмщик · паллета':smallPickMotion?'Отбор SMALL · проверка':packerAction?'Упаковщик · прижим края ленты':walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':assetTitles[id]??id.replaceAll('-',' '),receiverAction?'Визуальный стенд · сканирование и подтверждение установленной паллеты':smallPickMotion?'Визуальный стенд · подготовленный источник и один работник':packerAction?'Визуальный стенд · финальная проверка уже закрытой посылки':activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':id==='picker-pick-source-fixture'?'Отдельный стенд источника · отбор ещё не запущен':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
+    fit(view);setStatus('ready',shipperAction?'Отгрузчик · посылка':receiverAction?'Приёмщик · паллета':smallPickMotion?'Отбор SMALL · проверка':packerAction?'Упаковщик · прижим края ленты':walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':assetTitles[id]??id.replaceAll('-',' '),shipperAction?'Визуальный стенд · сканирование и укладка посылки на выход':receiverAction?'Визуальный стенд · сканирование и подтверждение установленной паллеты':smallPickMotion?'Визуальный стенд · подготовленный источник и один работник':packerAction?'Визуальный стенд · финальная проверка уже закрытой посылки':activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':id==='picker-pick-source-fixture'?'Отдельный стенд источника · отбор ещё не запущен':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
   }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
 }
@@ -358,6 +372,10 @@ function configureCycle(title:string,checkpoints:[number,string][]){
   const cycle=activeCycle()!;element<HTMLInputElement>('cycle-time').max=String(cycle.timeline.duration_s);
   document.querySelectorAll<HTMLButtonElement>('[data-cycle-time]').forEach((b,i)=>{b.dataset.cycleTime=String(checkpoints[i][0]);b.textContent=checkpoints[i][1];});updatePickupUi();
 }
+function configureShipperCycle(){
+  if(!shipperAction)return;
+  configureCycle(shipperAction.snapshot().mode==='scan'?'Сканирование посылки':'Укладка на выход',shipperAction.snapshot().mode==='scan'?[[0,'Начало'],[.5,'Луч'],[1.2,'Этикетка'],[1.8,'Проверено'],[2.5,'Готово']]:[[0,'Начало'],[1.8,'Скан'],[7.9,'Укладка'],[11.5,'Уложено'],[27,'Готово']]);
+}
 function configureReceiverCycle(){
   if(!receiverAction)return;
   configureCycle(receiverAction.snapshot().mode==='scan'?'Сканирование паллеты':'Приёмка паллеты',receiverAction.snapshot().mode==='scan'?[[0,'Начало'],[.5,'Луч'],[1.2,'Этикетка'],[1.8,'Проверено'],[2.5,'Готово']]:[[0,'Начало'],[1.8,'Скан'],[7.8,'Контакт'],[9.2,'Принято'],[17.8,'Готово']]);
@@ -365,15 +383,16 @@ function configureReceiverCycle(){
 function updatePickupUi(){
   const cycle=activeCycle();if(!cycle)return;
   const action=cycle.snapshot(),play=element<HTMLButtonElement>('cycle-play');
-  const stationary=Boolean(packerAction&&packerAction.snapshot().mode!=='pack')||Boolean(receiverAction&&['idle','blocked'].includes(receiverAction.snapshot().mode));
+  const stationary=Boolean(shipperAction&&['idle','blocked'].includes(shipperAction.snapshot().mode))||Boolean(packerAction&&packerAction.snapshot().mode!=='pack')||Boolean(receiverAction&&['idle','blocked'].includes(receiverAction.snapshot().mode));
   play.textContent=pickupPlaying?'Пауза':action.complete?'Повторить':'Воспроизвести';play.setAttribute('aria-pressed',String(pickupPlaying));play.disabled=reducedMotion.matches||stationary;
   const label=element('cycle-phase');if(label.textContent!==action.label)label.textContent=action.label;
   element('cycle-clock').textContent=stationary?'Вне операции':action.time.toFixed(1)+' / '+cycle.timeline.duration_s+' с';
   const slider=element<HTMLInputElement>('cycle-time');slider.value=String(action.time);slider.disabled=stationary;slider.setAttribute('aria-valuetext',action.time.toFixed(1)+' с — '+action.label);
-  element('cycle-motion-note').textContent=stationary?(receiverAction?'Работа не выполняется. Выберите «Приёмка» или «Сканирование».':'Работа не выполняется. Выберите «Упаковка», чтобы проверить действие.'):reducedMotion.matches?'Системная настройка ограничивает движение. Выберите этап или время для статичного просмотра.':'Цикл запускается вручную. Можно остановить и проверить любой момент.';
+  element('cycle-motion-note').textContent=stationary?(shipperAction?'Работа не выполняется. Выберите «Укладка» или «Сканирование».':receiverAction?'Работа не выполняется. Выберите «Приёмка» или «Сканирование».':'Работа не выполняется. Выберите «Упаковка», чтобы проверить действие.'):reducedMotion.matches?'Системная настройка ограничивает движение. Выберите этап или время для статичного просмотра.':'Цикл запускается вручную. Можно остановить и проверить любой момент.';
   document.querySelectorAll<HTMLButtonElement>('[data-cycle-time]').forEach(b=>{b.disabled=stationary;b.setAttribute('aria-pressed',String(Math.abs(Number(b.dataset.cycleTime)-action.time)<.01));});
   document.querySelectorAll<HTMLButtonElement>('[data-packer-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.packerMode===packerAction?.snapshot().mode)));
   document.querySelectorAll<HTMLButtonElement>('[data-receiver-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.receiverMode===receiverAction?.snapshot().mode)));
+  document.querySelectorAll<HTMLButtonElement>('[data-shipper-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.shipperMode===shipperAction?.snapshot().mode)));
 }
 function seekPickup(time:number){const cycle=activeCycle();if(!cycle)throw Error('Цикл не загружен.');pickupPlaying=false;cycle.apply(time);updatePickupUi();diagnostics();}
 function pausePickup(){
@@ -381,7 +400,7 @@ function pausePickup(){
   pickupPlaying=false;updatePickupUi();if(cycle)diagnostics();
 }
 function playPickup(){
-  const cycle=activeCycle();if(!cycle||reducedMotion.matches||(packerAction&&packerAction.snapshot().mode!=='pack')||(receiverAction&&['idle','blocked'].includes(receiverAction.snapshot().mode)))return false;
+  const cycle=activeCycle();if(!cycle||reducedMotion.matches||(shipperAction&&['idle','blocked'].includes(shipperAction.snapshot().mode))||(packerAction&&packerAction.snapshot().mode!=='pack')||(receiverAction&&['idle','blocked'].includes(receiverAction.snapshot().mode)))return false;
   if(cycle.snapshot().complete)cycle.apply(0);
   pickupAnchorTime=cycle.snapshot().time;pickupAnchorWall=performance.now();pickupPlaying=true;updatePickupUi();return true;
 }
@@ -392,6 +411,8 @@ function setPackerMode(mode:PackerMode){if(!packerAction)throw Error('Упако
 document.querySelectorAll<HTMLButtonElement>('[data-packer-mode]').forEach(b=>b.addEventListener('click',()=>setPackerMode(b.dataset.packerMode as PackerMode)));
 function setReceiverMode(mode:ReceiverMode){if(!receiverAction)throw Error('Приёмщик не загружен.');pickupPlaying=false;receiverAction.setMode(mode);const url=new URL(location.href);url.searchParams.set('mode',mode);history.replaceState(null,'',url);configureReceiverCycle();collectPoints();fit(view);diagnostics();}
 document.querySelectorAll<HTMLButtonElement>('[data-receiver-mode]').forEach(b=>b.addEventListener('click',()=>setReceiverMode(b.dataset.receiverMode as ReceiverMode)));
+function setShipperMode(mode:ShipperMode){if(!shipperAction)throw Error('Отгрузчик не загружен.');pickupPlaying=false;shipperAction.setMode(mode);const url=new URL(location.href);url.searchParams.set('mode',mode);history.replaceState(null,'',url);configureShipperCycle();collectPoints();fit(view);diagnostics();}
+document.querySelectorAll<HTMLButtonElement>('[data-shipper-mode]').forEach(b=>b.addEventListener('click',()=>setShipperMode(b.dataset.shipperMode as ShipperMode)));
 element<HTMLInputElement>('cycle-time').addEventListener('input',event=>seekPickup(Number((event.target as HTMLInputElement).value)));
 document.querySelectorAll<HTMLButtonElement>('[data-cycle-time]').forEach(b=>b.addEventListener('click',()=>seekPickup(Number(b.dataset.cycleTime))));
 const onMotionChange=()=>{pausePickup();controls.enableDamping=!reducedMotion.matches;updatePickupUi();};reducedMotion.addEventListener('change',onMotionChange);
@@ -403,7 +424,7 @@ element('model-form').addEventListener('submit',event=>{event.preventDefault();v
 const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);composer.setSize(host.clientWidth,host.clientHeight);contactShade.setSize(Math.max(1,Math.round(host.clientWidth*renderer.getPixelRatio()*.65)),Math.max(1,Math.round(host.clientHeight*renderer.getPixelRatio()*.65)));if(model)fit();});resize.observe(host);
 function tick(){frameId=requestAnimationFrame(tick);const cycle=activeCycle();if(pickupPlaying&&cycle){const action=cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);if(action.complete)pickupPlaying=false;updatePickupUi();}controls.update();renderer.info.reset();composer.render();}tick();
 const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},focus:(name:string,next:View='quarter')=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);fit(next,n);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
-Object.assign(window,{__QOIMA_STAND_V3__:{...api,gripper:{setOpening:setGripperOpening,snapshot:()=>gripperTool?.snapshot()??null},cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>{const cycle=activeCycle();return cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null;}},packer:{setMode:setPackerMode,snapshot:()=>packerAction?.snapshot()??null},receiver:{setMode:setReceiverMode,snapshot:()=>receiverAction?.snapshot()??null},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
+Object.assign(window,{__QOIMA_STAND_V3__:{...api,gripper:{setOpening:setGripperOpening,snapshot:()=>gripperTool?.snapshot()??null},cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>{const cycle=activeCycle();return cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null;}},packer:{setMode:setPackerMode,snapshot:()=>packerAction?.snapshot()??null},receiver:{setMode:setReceiverMode,snapshot:()=>receiverAction?.snapshot()??null},shipper:{setMode:setShipperMode,snapshot:()=>shipperAction?.snapshot()??null},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
 void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{manifest=value;updateReference();}).catch(()=>{element('reference-note').textContent='Каталог референсов временно недоступен.';});
 void loadModel(new URL(location.href).searchParams.get('asset')||'calibration');
 window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();reducedMotion.removeEventListener('change',onMotionChange);document.removeEventListener('visibilitychange',onVisibility);controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();contactShade.dispose();beauty.dispose();output.dispose();composer.dispose();renderer.dispose();},{once:true});

@@ -67,11 +67,14 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P03](tasks/P03.md) | PASS | root | R10,P02,M07,I09 | Готов комплект picker/cart |
 | [P04](tasks/P04.md) | PASS | root | R10,P02,M07,P08,I09 | Готов комплект packer |
 | [P05](tasks/P05.md) | PASS | root | R10,P02,M08,I09,P08 | Готов комплект receiver |
-| [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
+| [P06](tasks/P06.md) | PASS | root | R10,P02,M07,M08,I09,P08,M05 | Готов комплект shipper |
+| [P06.1](tasks/P06.1.md) | PASS | root | R10,P02,M07,M08,I09,P08,M05 | Supported source shipper workcell and actual scan target |
+| [P06.2](tasks/P06.2.md) | PASS | root | P06.1 | Connected supported parcel placement and grounded shipper motion |
+| [P06.3](tasks/P06.3.md) | PASS | root | P06.2 | Clocked scan/place/idle and reviewed headless shipper kit |
 | [P07](tasks/P07.md) | PASS | root | R10,P02,M14,I09 | Готов комплект driver |
 | [P08](tasks/P08.md) | PASS | root | R10,R04,I09 | Готов финальный packing station |
 | [P09](tasks/P09.md) | PASS | root | R10,R07,L12,I09 | Готов модульный environment/dock kit |
-| [P10](tasks/P10.md) | TODO | unassigned | R10,P03,P04,P05,P06,P07 | Подготовлен role registry и легенда |
+| [P10](tasks/P10.md) | READY | unassigned | R10,P03,P04,P05,P06,P07 | Подготовлен role registry и легенда |
 | [P11](tasks/P11.md) | TODO | unassigned | R10,P10,C07 | Подготовлен WorkerProfile с навыками |
 | [W01](tasks/W01.md) | TODO | unassigned | C12,P10 | Подготовлен детерминированный visual fixture v3 |
 | [W02](tasks/W02.md) | TODO | unassigned | W01 | Создан изолированный adapter v3 |
@@ -91,7 +94,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W16](tasks/W16.md) | TODO | unassigned | W15,L06,L07 | Реализован переход к новому рабочему месту |
 | [W17](tasks/W17.md) | TODO | unassigned | W16,W06 | Проверено восстановление роли при seek/reset |
 | [W18](tasks/W18.md) | TODO | unassigned | W17,W14 | Готов отдельный N4 STAFFING comparison |
-| [Q01](tasks/Q01.md) | TODO | unassigned | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
+| [Q01](tasks/Q01.md) | READY | unassigned | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
 | [Q02](tasks/Q02.md) | TODO | unassigned | Q01,P09,P10 | Выполнена браузерная проверка финальных GLB |
 | [Q03](tasks/Q03.md) | TODO | unassigned | C12,W04 | Проверена совместимость всех SKU/slots |
 | [Q04](tasks/Q04.md) | TODO | unassigned | Q03,W11,W12 | Проверены ориентации и handling |
