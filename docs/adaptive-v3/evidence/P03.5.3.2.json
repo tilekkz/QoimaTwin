@@ -4,16 +4,16 @@
   "reviewer": "root",
   "source_kind": "synthetic_tool_and_prepared_visual_QA",
   "engine_operation": false,
-  "tool_glb_sha256": "dae332b4291ab8bf84cc0db90998b3beb883954ee10c126d6f828246bf03f07c",
-  "contact_fixture_glb_sha256": "682078fe38174e8943d2341994c6f25870ff8894b979ee062cee04d6faacfb15",
+  "tool_glb_sha256": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
+  "contact_fixture_glb_sha256": "29b6e6f829c97c2086881a7a47cab2a4d8caa10749149665b315c5641a9fcde2",
   "actual_dimensions_xyz_m": [
-    0.21300000697374344,
+    0.19700000435113907,
     0.16790369153022766,
-    0.31332113593816757
+    0.31314723938703537
   ],
   "tool_closed_parts": 72,
   "tool_runtime_batches": 22,
-  "tool_triangles": 6580,
+  "tool_triangles": 6706,
   "tool_anchors": 7,
   "tool_pivots": 6,
   "native_prepared_poses": 7,
@@ -27,10 +27,10 @@
     "passed": true,
     "source_kind": "synthetic_design",
     "engine_operation": false,
-    "glb_sha256": "dae332b4291ab8bf84cc0db90998b3beb883954ee10c126d6f828246bf03f07c",
+    "glb_sha256": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
     "native_states_compared": 9,
-    "vertex_comparisons": 134559,
-    "maximum_runtime_native_vertex_error_m": 2.513856557948909e-08,
+    "vertex_comparisons": 136854,
+    "maximum_runtime_native_vertex_error_m": 2.523450554892079e-08,
     "morph_target_retained": true,
     "arbitrary_seeks": 100,
     "invalid_openings_rejected": 5,
@@ -39,7 +39,7 @@
     "rebind_after_dispose": true,
     "scaled_tool_rejected": true,
     "actual_native_thumb_button_frames": 6,
-    "maximum_native_runtime_thumb_angle_difference_rad": 2.305690871930166e-06,
+    "maximum_native_runtime_thumb_angle_difference_rad": 2.128834004237745e-06,
     "scope": "Tool controller/native geometry at9openings and101absolute seek states, plus actual native thumb/button press comparison; no complete pick clip or engine operation."
   },
   "headless_tool": {
@@ -54,7 +54,8 @@
         "manual_drive": true,
         "lever_angle_rad": -0.06445568158210846,
         "manual_thumb_retraction_m": -0.005,
-        "manual_thumb_press_rad": 0.01831793799028844,
+        "manual_thumb_press_rad": 0.02064454278387587,
+        "manual_hand_angle_rad": 1.9634954084936207,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -68,7 +69,8 @@
         "manual_drive": true,
         "lever_angle_rad": -0.0074123630377556544,
         "manual_thumb_retraction_m": -0.005,
-        "manual_thumb_press_rad": 0.002048590412348973,
+        "manual_thumb_press_rad": 0.0024434490343372773,
+        "manual_hand_angle_rad": 1.9634954084936207,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -82,7 +84,8 @@
         "manual_drive": true,
         "lever_angle_rad": -0.09193405407619765,
         "manual_thumb_retraction_m": -0.005,
-        "manual_thumb_press_rad": 0.02645644138877002,
+        "manual_thumb_press_rad": 0.029039556458773756,
+        "manual_hand_angle_rad": 1.9634954084936207,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -96,7 +99,8 @@
         "manual_drive": true,
         "lever_angle_rad": 0,
         "manual_thumb_retraction_m": -0.005,
-        "manual_thumb_press_rad": 1.3620587026252905e-07,
+        "manual_thumb_press_rad": 1.365219208082635e-07,
+        "manual_hand_angle_rad": 1.9634954084936207,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -110,7 +114,8 @@
         "manual_drive": true,
         "lever_angle_rad": -0.0316251969336696,
         "manual_thumb_retraction_m": -0.005,
-        "manual_thumb_press_rad": 0.008847139486585434,
+        "manual_thumb_press_rad": 0.010289453180882329,
+        "manual_hand_angle_rad": 1.9634954084936207,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -124,7 +129,8 @@
         "manual_drive": true,
         "lever_angle_rad": -0.06445568158210846,
         "manual_thumb_retraction_m": -0.005,
-        "manual_thumb_press_rad": 0.01831793799028844,
+        "manual_thumb_press_rad": 0.02064454278387587,
+        "manual_hand_angle_rad": 1.9634954084936207,
         "source_kind": "synthetic_design",
         "engine_operation": false,
         "stock_instances": 0,
@@ -153,14 +159,228 @@
   "explicitly_reviewed_current_views": [
     "small-package-gripper/quarter",
     "small-package-gripper/open-quarter",
-    "small-package-gripper/open-top",
-    "small-gripper-contact-fixture/quarter",
-    "contact-macro/top",
-    "contact-orbit/top",
-    "worker-small-pick/quarter"
+    "contact-orbit/top"
   ],
-  "clearance_calibration": "assets/v3/iterations/small-package-gripper/P03.5.3.2/clearance-calibration.json",
+  "clearance_calibration": {
+    "passed": true,
+    "vectorized_scalar_angle_comparisons": 192,
+    "maximum_solid_angle_difference_rad": 3.375077994860476e-14,
+    "cases": [
+      {
+        "case": "touching",
+        "expected_penetration": false,
+        "result": null
+      },
+      {
+        "case": "ten_mm_overlap",
+        "expected_penetration": true,
+        "result": {
+          "kind": "sample_inside_closed_solid",
+          "a": "A",
+          "b": "ten_mm_overlap",
+          "point": [
+            1.0,
+            0.6666666865348816,
+            0.3333333432674408
+          ]
+        }
+      },
+      {
+        "case": "half_um_contact_budget",
+        "expected_penetration": false,
+        "result": null
+      },
+      {
+        "case": "ten_um_penetration",
+        "expected_penetration": true,
+        "result": {
+          "kind": "sample_inside_closed_solid",
+          "a": "A",
+          "b": "ten_um_penetration",
+          "point": [
+            1.0,
+            0.6666666865348816,
+            0.3333333432674408
+          ]
+        }
+      },
+      {
+        "case": "identical",
+        "expected_penetration": true,
+        "result": {
+          "kind": "coincident_face_shared_interior",
+          "a": "A",
+          "b": "identical",
+          "point": [
+            6e-06,
+            0.6666666666666666,
+            0.6666666666666666
+          ]
+        }
+      },
+      {
+        "case": "contained",
+        "expected_penetration": true,
+        "result": {
+          "kind": "sample_inside_closed_solid",
+          "a": "contained",
+          "b": "A",
+          "point": [
+            0.20000001788139343,
+            0.20000001788139343,
+            0.4000000059604645
+          ]
+        }
+      },
+      {
+        "case": "outside",
+        "expected_penetration": false,
+        "result": null
+      },
+      {
+        "case": "crossing_thin_slabs_without_contained_vertices",
+        "expected_penetration": true,
+        "result": {
+          "kind": "transverse_surface_shared_interior",
+          "a": "cross_horizontal",
+          "b": "cross_vertical",
+          "triangles": [
+            9,
+            5
+          ],
+          "point": [
+            0.009997499776482581,
+            -0.009997499776482581,
+            0.005049999886006117
+          ]
+        }
+      },
+      {
+        "case": "overlapping_AABBs_but_separate_solids",
+        "expected_penetration": false,
+        "result": null
+      },
+      {
+        "case": "rod_inside_real_bore_without_metal_contact",
+        "expected_penetration": false,
+        "result": null
+      },
+      {
+        "case": "actual_faceted_bar_tangent_pad_0",
+        "expected_penetration": false,
+        "result": null
+      },
+      {
+        "case": "actual_faceted_bar_tangent_pad_1e-05",
+        "expected_penetration": true,
+        "result": {
+          "kind": "transverse_surface_shared_interior",
+          "a": "rubber_Tbar",
+          "b": "tangent_pad.001",
+          "triangles": [
+            83,
+            5
+          ],
+          "point": [
+            0.03999749910593033,
+            0.1342742779527907,
+            0.2444188146616216
+          ]
+        }
+      }
+    ],
+    "method": "Transverse native triangle segments and closed-mesh solid angle,2um gate. Nearest-edge signed normal alone is never an inside test.",
+    "scope": "Analytical calibration fixtures only, not an engine run."
+  },
   "original_manual_base_case_cart_units_unchanged": true,
   "canonical_contracts_unchanged": 21,
-  "scope": "Tool template and seven prepared poses only. Actual cable/button kinematics and raw-body-preserving thumb derivative accepted. No continuous transition/carry/release, tool acquisition/stow, certified equipment or engine operation."
+  "scope": "Accepted engineered tool refinement and seven prepared native contact poses only. Continuous36s pick candidate remains unaccepted: first native rejection32.2s cuff/forearm versus handle. No full action or engine/certified capacity admission.",
+  "saved_native_recheck": {
+    "passed": true,
+    "source_kind": "synthetic_tool_geometry_QA",
+    "engine_operation": false,
+    "input_sha256": {
+      "assets/v3/blender/small-package-gripper.blend": "c81e8974e145a3afd4617b5998ccfb8e70d25d4625228ba64aca51927bc4dc16",
+      "frontend/public/models/v3/small-package-gripper.glb": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49"
+    },
+    "checker_sha256": {
+      "tools/blender/v3/recheck_small_gripper.py": "7eb48829d45df92c61ad46a76669bd005617636a5b00df79d536f967de9cd13c",
+      "tools/blender/v3/build_small_gripper.py": "bef47580f9bc0204d470664cd1612a1dd68336cc2d2e0e2e42f39f5ad653a72c",
+      "tools/blender/v3/native_clearance.py": "1d50e485ec5848d07896ecc31f4cf37a6ecd390bbe2b75e5df3f202df8e358d8"
+    },
+    "states": [
+      {
+        "opening": 0,
+        "closed_parts": 72,
+        "dimensions_xyz_m": [
+          0.19700001180171967,
+          0.16790369153022766,
+          0.31314724683761597
+        ],
+        "connected_pairs": 120,
+        "gap_m": 0.04,
+        "plunger_y_m": 0.15849870314579495,
+        "actual_sheath_clear_of_other_tool_solids": true,
+        "actual_button_support_fits_real_grip_pocket": true
+      },
+      {
+        "opening": 0.25,
+        "closed_parts": 72,
+        "dimensions_xyz_m": [
+          0.19700001180171967,
+          0.16790369153022766,
+          0.31278616189956665
+        ],
+        "connected_pairs": 120,
+        "gap_m": 0.043500000000000004,
+        "plunger_y_m": 0.1565862394915916,
+        "actual_sheath_clear_of_other_tool_solids": true,
+        "actual_button_support_fits_real_grip_pocket": true
+      },
+      {
+        "opening": 0.5,
+        "closed_parts": 72,
+        "dimensions_xyz_m": [
+          0.19700001180171967,
+          0.16790369153022766,
+          0.3123738765716553
+        ],
+        "connected_pairs": 120,
+        "gap_m": 0.047,
+        "plunger_y_m": 0.15445534211193868,
+        "actual_sheath_clear_of_other_tool_solids": true,
+        "actual_button_support_fits_real_grip_pocket": true
+      },
+      {
+        "opening": 0.75,
+        "closed_parts": 72,
+        "dimensions_xyz_m": [
+          0.19700001180171967,
+          0.16790369153022766,
+          0.31189730763435364
+        ],
+        "connected_pairs": 120,
+        "gap_m": 0.0505,
+        "plunger_y_m": 0.1520566363886433,
+        "actual_sheath_clear_of_other_tool_solids": true,
+        "actual_button_support_fits_real_grip_pocket": true
+      },
+      {
+        "opening": 1,
+        "closed_parts": 72,
+        "dimensions_xyz_m": [
+          0.19700001180171967,
+          0.16790369153022766,
+          0.311336487531662
+        ],
+        "connected_pairs": 120,
+        "gap_m": 0.054,
+        "plunger_y_m": 0.14931470164434615,
+        "actual_sheath_clear_of_other_tool_solids": true,
+        "actual_button_support_fits_real_grip_pocket": true
+      }
+    ],
+    "source_files_unchanged": true,
+    "scope": "Saved native mechanism and physical connections at five openings. No action or certified equipment admission."
+  }
 }

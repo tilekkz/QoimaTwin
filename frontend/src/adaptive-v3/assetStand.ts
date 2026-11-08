@@ -13,6 +13,7 @@ import {bindPickerGrip,validatePickerPushPose} from './motion/grip';
 import {createCartWalk,validateCartWalkTimeline} from './motion/cartWalk';
 import {createPackerAction,validatePackerTimeline,type PackerMode} from './motion/packer';
 import {bindSmallGripper} from './motion/smallGripper';
+import {createSmallPickMotion,validateSmallPickTimeline} from './motion/smallPick';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
@@ -84,7 +85,8 @@ let pickerGrip:ReturnType<typeof bindPickerGrip>|undefined;
 let walkFixture:ReturnType<typeof createCartWalk>|undefined;
 let packerAction:ReturnType<typeof createPackerAction>|undefined;
 let gripperTool:ReturnType<typeof bindSmallGripper>|undefined;
-function activeCycle(){return packerAction??walkFixture??pickupFixture;}
+let smallPickMotion:ReturnType<typeof createSmallPickMotion>|undefined;
+function activeCycle(){return smallPickMotion??packerAction??walkFixture??pickupFixture;}
 let pickupPlaying=false,pickupAnchorTime=0,pickupAnchorWall=0;
 let view:View='quarter';
 let modelId='calibration';
@@ -106,6 +108,7 @@ function releaseModel(){
   pickupPlaying=false;pickupFixture=undefined;element('cycle-controls').hidden=true;
   element('packer-modes').hidden=true;
   element('gripper-controls').hidden=true;
+  if(smallPickMotion){smallPickMotion.dispose();smallPickMotion=undefined;}
   if(gripperTool){gripperTool.dispose();gripperTool=undefined;}
   if(packerAction){packerAction.dispose();packerAction=undefined;}
   if(walkFixture){walkFixture.dispose();walkFixture=undefined;}
@@ -199,7 +202,7 @@ function snapshot(){
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
   const cycle=activeCycle();
-  return {modelId,phase,view,focus:activeFocus,gripper:gripperTool?.snapshot()??null,fixture:packerAction?'packer-seam-end-visual-QA':walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,gripper:gripperTool?.snapshot()??null,fixture:smallPickMotion?'small-pick-visual-QA':packerAction?'packer-seam-end-visual-QA':walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -208,7 +211,7 @@ function diagnostics(){
 }
 
 function updateReference(){
-  const referenceAsset=pickupFixture||seatedDriver?'forklift':modelId;
+  const referenceAsset=smallPickMotion?'small-package-gripper':pickupFixture||seatedDriver?'forklift':modelId;
   const id=manifest?.asset_reference_bindings[referenceAsset];const entry=manifest?.references.find(r=>r.reference_id===id);
   const link=element<HTMLAnchorElement>('reference-link');const img=element<HTMLImageElement>('reference');
   link.hidden=!entry;
@@ -252,6 +255,17 @@ async function loadModel(id:string){
       element('packer-modes').hidden=false;
       configureCycle('Прижим края ленты',[[0,'Начало'],[2.1,'Подвод'],[3.2,'Прижим'],[4.9,'Проверка'],[7.5,'Готово']]);
       element('model-title').textContent='Упаковщик · прижим края ленты';
+    }
+    if(id==='picker-pick-source-fixture'&&requestedFixture==='pick'){
+      const [wr,gr,tr]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-small-pick.glb'),loader.loadAsync(base+'models/v3/small-package-gripper.glb'),fetch(base+'models/v3/small-pick-v3.json').then(async r=>{if(!r.ok)throw Error('Описание отбора недоступно.');return validateSmallPickTimeline(await r.json());})]);
+      const releaseFetched=()=>{if(wr.status==='fulfilled')disposeObject(wr.value.scene);if(gr.status==='fulfilled')disposeObject(gr.value.scene);};
+      if(token!==serial){releaseFetched();return;}
+      if(wr.status==='rejected'||gr.status==='rejected'||tr.status==='rejected'){releaseFetched();throw wr.status==='rejected'?wr.reason:gr.status==='rejected'?gr.reason:(tr as PromiseRejectedResult).reason;}
+      workerTemplate=wr.value.scene;model.add(gr.value.scene);figureActor=createWorkerInstance(workerTemplate,'P01','picker');
+      const cell=model.getObjectByName('picker_pick_source_fixture_root'),tool=gr.value.scene.getObjectByName('small-package-gripper');if(!cell||!tool)throw Error('Не найден источник или ручной инструмент.');
+      smallPickMotion=createSmallPickMotion(cell,figureActor,tool,tr.value);updateReference();
+      configureCycle('Отбор двух упаковок',[[0,'Начало'],[3.5,'Захват'],[14.4,'Отход'],[33.2,'Лоток'],[36,'Готово']]);
+      element('model-title').textContent='Отбор SMALL · проверка';
     }
     if(id==='picking-cart-tote-fixture'&&['grip','walk'].includes(requestedFixture??'')){
       const workerAsset=new URL(location.href).searchParams.get('worker')==='manual'?'worker-manual':'worker-base';
@@ -318,7 +332,7 @@ async function loadModel(id:string){
     const floorBias=Math.min(.002,Math.max(.00001,radius*.00005));
     ground.position.set(centre.x,Math.min(0,bounds.min.y)-floorBias,centre.z);ground.scale.set(radius*5,radius*5,1);
     key.target.position.copy(centre);key.position.copy(centre).add(new THREE.Vector3(-1.8,3,2.4).multiplyScalar(radius));fill.position.copy(centre).add(new THREE.Vector3(2,1,-1).multiplyScalar(radius));
-    fit(view);setStatus('ready',packerAction?'Упаковщик · прижим края ленты':walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':assetTitles[id]??id.replaceAll('-',' '),packerAction?'Визуальный стенд · финальная проверка уже закрытой посылки':activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':id==='picker-pick-source-fixture'?'Отдельный стенд источника · отбор ещё не запущен':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
+    fit(view);setStatus('ready',smallPickMotion?'Отбор SMALL · проверка':packerAction?'Упаковщик · прижим края ленты':walkFixture?'Комплектовщик ведёт тележку':pickupFixture?'Подхват и установка паллеты':seatedDriver?'Водитель в погрузчике':rolesFixture?'Пять ролей · визуальный стенд':assetTitles[id]??id.replaceAll('-',' '),smallPickMotion?'Визуальный стенд · подготовленный источник и один работник':packerAction?'Визуальный стенд · финальная проверка уже закрытой посылки':activeCycle()?'Выберите этап или запустите цикл справа':seatedDriver?'Масштаб 1:1 · посадка и органы управления':rolesFixture?'Пять образцов ролей · масштаб 1:1 · это стенд моделей':id==='picker-pick-source-fixture'?'Отдельный стенд источника · отбор ещё не запущен':'Масштаб 1:1 в метрах · вращайте и приближайте');diagnostics();
     const url=new URL(location.href);url.searchParams.set('asset',id);history.replaceState(null,'',url);
   }catch(error){if(token!==serial)return;releaseModel();points=[];bounds.makeEmpty();const detail=error instanceof Error?error.message:String(error);setStatus('error','Модель не открылась',detail.includes('404')?'Файл модели не найден. Проверьте имя или экспорт и нажмите «Открыть».':'Не удалось проверить модель. Подробности — в данных проверки; повторите экспорт или загрузку.');element('diagnostics').textContent=detail;}
 }

@@ -11,13 +11,15 @@ const sideProbe=process.env.QOIMA_PICK_SIDE==='1',gripperProbe=process.env.QOIMA
 const fixedHandle=process.env.QOIMA_PICK_FIXED_HANDLE==='1';
 const fineBodies=process.env.QOIMA_PICK_FINE_BODIES==='1';
 const directory=fineBodies?(raised?'tool-fine-raised-reach':'tool-fine-pick-reach'):gripperProbe?(raised?(fixedHandle?'gripper-raised-fixed-reach-probe':'gripper-raised-reach-probe'):'gripper-reach-probe'):sideProbe?'side-pole-probe':'pole-probe';
-const bodies=JSON.parse(await readFile('../assets/v3/iterations/worker-base/P03.5.3/'+(fineBodies?'tool-fine-bodies/bodies.json':sideProbe?'side-pole-probe/bodies.json':'reach-probe/pick-clear-bodies.json'),'utf8')).clear;
+const query=process.env.QOIMA_PICK_QUERY?JSON.parse(await readFile(process.env.QOIMA_PICK_QUERY,'utf8')):null;
+if(query&&(!/^[a-z0-9-]+$/.test(query.directory)||!Array.isArray(query.bodies)||query.target.length!==3||!query.target.every(Number.isFinite)||!Number.isFinite(query.angle)))throw Error('Invalid bounded reach query');
+const bodies=query?.bodies??JSON.parse(await readFile('../assets/v3/iterations/worker-base/P03.5.3/'+(fineBodies?'tool-fine-bodies/bodies.json':sideProbe?'side-pole-probe/bodies.json':'reach-probe/pick-clear-bodies.json'),'utf8')).clear;
 const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x)),result=[];
 for(const[bi,body]of bodies.entries()){
  root.position.fromArray(body.root);root.rotation.set(0,Math.PI,0);frame.rotation.set(body.torso_x,0,0);root.updateWorldMatrix(true,true);
  const shoulder=frame.worldToLocal(upper.getWorldPosition(new T.Vector3()));
- const desired=frame.getWorldQuaternion(new T.Quaternion()).invert().multiply(new T.Quaternion().setFromEuler(new T.Euler(gripperProbe?(raised&&!fixedHandle?Math.PI*3/4:Math.PI*5/8):Math.PI/2,0,0,'XYZ')));
- const contact=grip.position.clone(),target=gripperProbe?[.945,raised?1.4125:1.2725,.55]:[.945,1.14,.32],goal=frame.worldToLocal(new T.Vector3(...target)),wGoal=goal.clone().sub(contact.clone().applyQuaternion(desired)),delta=wGoal.clone().sub(shoulder),d=delta.length(),candidates=[];
+ const desired=frame.getWorldQuaternion(new T.Quaternion()).invert().multiply(new T.Quaternion().setFromEuler(new T.Euler(query?query.angle:gripperProbe?(raised&&!fixedHandle?Math.PI*3/4:Math.PI*5/8):Math.PI/2,0,0,'XYZ')));
+ const contact=grip.position.clone(),target=query?.target??(gripperProbe?[.945,raised?1.4125:1.2725,.55]:[.945,1.14,.32]),goal=frame.worldToLocal(new T.Vector3(...target)),wGoal=goal.clone().sub(contact.clone().applyQuaternion(desired)),delta=wGoal.clone().sub(shoulder),d=delta.length(),candidates=[];
  if(d<l1+l2&&d>Math.abs(l1-l2)){
   const dir=delta.clone().normalize(),along=(d*d+l1*l1-l2*l2)/(2*d),height=Math.sqrt(l1*l1-along*along),centre=shoulder.clone().addScaledVector(dir,along);
   const v=new T.Vector3(0,1,0).cross(dir).normalize(),w=dir.clone().cross(v);
@@ -51,6 +53,6 @@ for(const[bi,body]of bodies.entries()){
  result.push(...candidates);
 }
 result.sort((a,b)=>b.elbow_world[1]-a.elbow_world[1]||a.score-b.score);
-const out='../assets/v3/iterations/worker-base/P03.5.3/'+directory;await mkdir(out,{recursive:true});
-await writeFile(out+'/candidates.json',JSON.stringify({source_kind:'visual_reach_candidates',engine_operation:false,target:gripperProbe?[.945,raised?1.4125:1.2725,.55]:[.945,1.14,.32],scope:`${bodies.length}body-clear configurations; elbow pole5deg, shoulder spin5deg, palm roll2deg. Same existing rig/limits/primary packages/four fixed walls. ${gripperProbe?'Elevated external handle arm reach only; no tool geometry, contact or action acceptance in this probe.':'Direct two-package top grip; no action acceptance.'}`,candidates:result},null,fixedHandle||fineBodies?0:2)+'\n');
+const out='../assets/v3/iterations/worker-base/P03.5.3/'+(query?.directory??directory);await mkdir(out,{recursive:true});
+await writeFile(out+'/candidates.json',JSON.stringify({source_kind:'visual_reach_candidates',engine_operation:false,target:query?.target??(gripperProbe?[.945,raised?1.4125:1.2725,.55]:[.945,1.14,.32]),scope:`${bodies.length}body-clear configurations; elbow pole5deg, shoulder spin5deg, palm roll2deg. Same existing rig/limits/primary packages/four fixed walls. ${gripperProbe?'Elevated external handle arm reach only; no tool geometry, contact or action acceptance in this probe.':'Direct two-package top grip; no action acceptance.'}`,candidates:result},null,query||fixedHandle||fineBodies?0:2)+'\n');
 console.log(JSON.stringify({bodies:bodies.length,candidates:result.length,max_elbow_y:result[0]?.elbow_world[1],first:result[0]}));

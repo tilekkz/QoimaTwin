@@ -80,8 +80,14 @@ def add_drive(root,steel,rubber,teal,orange):
  grip=Vector((.007,-.05,.05));thumb=Vector((-.040,-.026,.050));theta=math.pi*5/8
  delta=thumb-grip;point=Vector((delta.x,.148+delta.y*math.cos(theta)-delta.z*math.sin(theta),.23+delta.y*math.sin(theta)+delta.z*math.cos(theta)))
  normal=Vector((0,math.cos(theta),math.sin(theta)));centre=point-normal*.0005
- tab=group('thumb_tab_frame',lever,tuple(centre-Vector((0,PIVOT_Y,.23))));rotate(tab,(theta,0,0));plate=block('actual_thumb_tab',[-.002,-.0005,-.003],[.002,.0005,.003],orange,tab,0)
- base=Vector((-.047,0,0));end=point-normal*.001-Vector((0,PIVOT_Y,.23))
+ tab=group('thumb_tab_frame',lever,tuple(centre-Vector((0,PIVOT_Y,.23))));rotate(tab,(theta,0,0))
+ profile=[]
+ for i in range(17):
+  z=-.003+.006*i/16;profile.append((.0005+math.sqrt(.024**2-z*z)-.024,z))
+ profile += [(y-.001,z) for y,z in reversed(profile)]
+ n=len(profile);verts=[(x,y,z) for x in[-.002,.002] for y,z in profile];faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+ plate=mesh_obj('actual_thumb_tab',verts,faces,orange,tab)
+ base=Vector((-.050,0,0));end=point-normal*.001-Vector((0,PIVOT_Y,.23));end.x=-.04925
  support=beam('QA_thumb_button_stem',base,end,.0012,orange,lever);boolean(plate,support,'UNION')
  cut=block('QA_actual_button_pocket',[-.051,.118,.218],[-.043,.158,.260],steel,None,0);boolean(nodes['rubber_Tbar'],cut,'DIFFERENCE')
  eye=nodes['joint__plunger'];block('cable_cap_eye',[-.011,-.002,-.002],[-.006,.002,.002],steel,eye,0)

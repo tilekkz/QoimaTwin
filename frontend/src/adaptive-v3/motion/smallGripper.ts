@@ -23,11 +23,11 @@ export function bindSmallGripper(root:THREE.Object3D){
   const saved=[...nodes.values()].map(n=>({node:n,position:n.position.clone(),quaternion:n.quaternion.clone()}));
   const savedMorph=spring.morphTargetInfluences![morphIndex];let released=false,opening=0;
   function assertLive(){if(released)throw Error('Управление захватом освобождено.');}
-  let thumbPress=0;
-  function snapshot(){assertLive();return {opening,jaw_gap_m:.04+.014*opening,plunger_y_m:capY(opening),spring_compression:spring.morphTargetInfluences![morphIndex],manual_drive:drive,lever_angle_rad:drive?-leverAngle(opening):.18*opening,manual_thumb_retraction_m:-.005,manual_thumb_press_rad:thumbPress,source_kind:'synthetic_design' as const,engine_operation:false as const,stock_instances:0,certified_handling_admission:false};}
-  function apply(value:number){
-    assertLive();if(!Number.isFinite(value)||value<0||value>1)throw Error('Раскрытие захвата должно быть от 0 до 1.');
-    opening=value;
+  let thumbPress=0,handAngle=Math.PI*5/8;
+  function snapshot(){assertLive();return {opening,jaw_gap_m:.04+.014*opening,plunger_y_m:capY(opening),spring_compression:spring.morphTargetInfluences![morphIndex],manual_drive:drive,lever_angle_rad:drive?-leverAngle(opening):.18*opening,manual_thumb_retraction_m:-.005,manual_thumb_press_rad:thumbPress,manual_hand_angle_rad:handAngle,source_kind:'synthetic_design' as const,engine_operation:false as const,stock_instances:0,certified_handling_admission:false};}
+  function apply(value:number,contactAngle:number=Math.PI*5/8){
+    assertLive();if(!Number.isFinite(contactAngle)||contactAngle<Math.PI*5/8-1e-12||contactAngle>Math.PI*.75+1e-12)throw Error('Угол ручного хвата вне диапазона.');if(!Number.isFinite(value)||value<0||value>1)throw Error('Раскрытие захвата должно быть от 0 до 1.');
+    opening=value;handAngle=contactAngle;
     for(const[end,sign]of[['front',1],['rear',-1]]as const){
       nodes.get('joint__jaw_'+end)!.position.set(0,0,sign*.007*value);
       const link=nodes.get('joint__link_'+end)!;link.position.set(0,capY(value),0);link.rotation.set(-Math.atan2(sign*(.036+.007*value),capY(value)-carrierY),0,0,'XYZ');
@@ -38,7 +38,7 @@ export function bindSmallGripper(root:THREE.Object3D){
     root.updateWorldMatrix(true,true);
     if(drive){
       const tab=root.getObjectByName('thumb_tab_frame');if(!tab)throw Error('Нет кнопки под большой палец.');
-      const inverse=root.matrixWorld.clone().invert(),q=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),-Math.PI*5/8),points:THREE.Vector3[]=[];
+      const inverse=root.matrixWorld.clone().invert(),q=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1,0,0),-handAngle),points:THREE.Vector3[]=[];
       tab.traverse(n=>{if(n instanceof THREE.Mesh)for(let i=0;i<n.geometry.getAttribute('position').count;i++)points.push(n.getVertexPosition(i,new THREE.Vector3()).applyMatrix4(n.matrixWorld).applyMatrix4(inverse).sub(new THREE.Vector3(0,.148,.23)).applyQuaternion(q).add(new THREE.Vector3(.007,-.05,.05)));});
       const gap=(a:number)=>Math.max(...points.map(p=>(p.y+.006)*Math.cos(a)+(p.z+.020)*Math.sin(a)+.020));
       if(gap(0)>2e-6||gap(.06)<-2e-6)throw Error('Кнопка вне хода большого пальца.');
@@ -46,6 +46,7 @@ export function bindSmallGripper(root:THREE.Object3D){
     }
     return snapshot();
   }
-  leased.add(root);apply(0);
-  return {apply,snapshot,dispose(){if(released)return;for(const s of saved){s.node.position.copy(s.position);s.node.quaternion.copy(s.quaternion);}spring.morphTargetInfluences![morphIndex]=savedMorph;for(const w of wires)w.mesh.morphTargetInfluences![w.index]=w.saved;leased.delete(root);released=true;}};
+  function dispose(){if(released)return;for(const s of saved){s.node.position.copy(s.position);s.node.quaternion.copy(s.quaternion);}spring.morphTargetInfluences![morphIndex]=savedMorph;for(const w of wires)w.mesh.morphTargetInfluences![w.index]=w.saved;leased.delete(root);released=true;}
+  leased.add(root);try{apply(0);}catch(error){dispose();throw error;}
+  return {apply,snapshot,dispose};
 }

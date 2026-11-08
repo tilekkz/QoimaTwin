@@ -23,7 +23,7 @@ def mesh_object(name,verts,faces,mat,parent):
  obj=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(obj);obj.parent=parent;mesh.materials.append(mat);return obj
 
 def bar(mat,root):
- n=32;r=.02;verts=[(x,.148+r*math.cos((i+.5)*math.tau/n),.23+r*math.sin((i+.5)*math.tau/n)) for x in [-.1,.1] for i in range(n)]
+ n=32;r=.02;verts=[(x,.148+r*math.cos((i+.5)*math.tau/n),.23+r*math.sin((i+.5)*math.tau/n)) for x in [-.08,.08] for i in range(n)]
  faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
  return mesh_object('rubber_Tbar',verts,faces,mat,root)
 
@@ -116,7 +116,7 @@ def verify(root):
   opening(root,u);parts,_=collect(root)
   lo=[min(p['low'][i] for p in parts) for i in range(3)];hi=[max(p['high'][i] for p in parts) for i in range(3)]
   dimensions=[hi[i]-lo[i] for i in range(3)]
-  assert .2-EPS<=dimensions[0]<=.22+EPS and abs(dimensions[1]-.168)<.0002 and .31-EPS<=dimensions[2]<=.316+EPS,(u,lo,hi)
+  assert .19-EPS<=dimensions[0]<=.22+EPS and abs(dimensions[1]-.168)<.0002 and .31-EPS<=dimensions[2]<=.316+EPS,(u,lo,hi)
   bore_parts=[p for p in parts if not p['name'].startswith('captured_square_rail_')]
   for end,sign in [('front',1),('rear',-1)]:
    for x in[-.05,.05]:empty_box(bore_parts,[x-.0031,.1161,sign*(.036+.007*u)-.0059],[x+.0031,.1219,sign*(.036+.007*u)+.0059],'actual hollow sleeve bore excluding captured rail')

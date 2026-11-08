@@ -4,6 +4,7 @@ A nearest triangle normal alone cannot classify a point beside a distant edge.
 Use the closed mesh's solid angle for containment; contacts retain the2um gate.
 """
 import math
+import numpy as np
 from v3_common import runtime_xyz,xyz
 
 def sub(a,b):return tuple(x-y for x,y in zip(a,b))
@@ -24,19 +25,15 @@ def contains(part,point,epsilon=2e-6):
  if not within(part,point,epsilon):return False
  hit,_,index,distance=part['bvh'].find_nearest(xyz(point))
  if hit is None or distance<=epsilon:return False
- # A closest point strictly inside a triangle has an unambiguous oriented
- # local half-space in a closed outward mesh. Edges/corners use full winding.
- verts,normal=faces(part)[index];h=runtime_xyz(hit);u,v,w=sub(verts[1],verts[0]),sub(verts[2],verts[0]),sub(h,verts[0])
- uu,uv,vv,wu,wv=dot(u,u),dot(u,v),dot(v,v),dot(w,u),dot(w,v);den=uu*vv-uv*uv
- if den>1e-25:
-  b=(vv*wu-uv*wv)/den;c=(uu*wv-uv*wu)/den
-  if min(b,c,1-b-c)>1e-5:return dot(normal,sub(point,verts[0]))<0
- total=0.
- for verts,_ in faces(part):
-  a,b,c=[sub(v,point) for v in verts];la,lb,lc=map(length,[a,b,c])
-  numerator=dot(a,cross(b,c));denominator=la*lb*lc+dot(a,b)*lc+dot(b,c)*la+dot(c,a)*lb
-  total+=2*math.atan2(numerator,denominator)
- return abs(total)>2*math.pi
+ return abs(solid_angle(part,point))>2*math.pi
+
+def solid_angle(part,point):
+ if '_clearance_array' not in part:part['_clearance_array']=np.asarray([v for v,_ in faces(part)],dtype=np.float64)
+ vertices=part['_clearance_array']-np.asarray(point,dtype=np.float64);a,b,c=vertices[:,0],vertices[:,1],vertices[:,2]
+ la,lb,lc=[np.linalg.norm(v,axis=1) for v in [a,b,c]]
+ numerator=np.einsum('ij,ij->i',a,np.cross(b,c));denominator=la*lb*lc+np.einsum('ij,ij->i',a,b)*lc+np.einsum('ij,ij->i',b,c)*la+np.einsum('ij,ij->i',c,a)*lb
+ return float(np.sum(2*np.arctan2(numerator,denominator)))
+
 def plane_segment(verts,distances,axis):
  points=[]
  for i in range(3):
@@ -54,7 +51,17 @@ def penetration(a,b,epsilon=2e-6):
    axis=cross(na,nb);size=length(axis)
    if size>1e-12:
     axis=tuple(x/size for x in axis);sa,sb=plane_segment(va,da,axis),plane_segment(vb,db,axis)
-    if sa and sb and min(sa[1],sb[1])-max(sa[0],sb[0])>epsilon:return dict(kind='transverse_surface_crossing',a=a['name'],b=b['name'],triangles=[ia,ib])
+    if sa and sb and min(sa[1],sb[1])-max(sa[0],sb[0])>epsilon:
+     # Segment length is not penetration depth: a long tangency can cross
+     # triangles by nanometres. Require a true >epsilon interior witness.
+     mid=(min(sa[1],sb[1])+max(sa[0],sb[0]))/2;d1=dot(na,va[0]);d2=dot(nb,vb[0]);c1=cross(nb,axis);c2=cross(axis,na)
+     point=tuple((d1*c1[i]+d2*c2[i])/size+mid*axis[i] for i in range(3));inward=tuple(-na[i]-nb[i] for i in range(3));n=length(inward)
+     if n>1e-12:
+      inward=tuple(x/n for x in inward);factor=-dot(inward,na)
+      if factor>1e-12:
+       for depth in[1.25,2,4]:
+        witness=tuple(point[i]+inward[i]*epsilon*depth/factor for i in range(3))
+        if contains(a,witness,epsilon) and contains(b,witness,epsilon):return dict(kind='transverse_surface_shared_interior',a=a['name'],b=b['name'],triangles=[ia,ib],point=witness)
   if dot(na,nb)>.999999 and max(map(abs,da))<=epsilon:
    p=tuple(sum(v[i] for v in va)/3-na[i]*epsilon*3 for i in range(3))
    if contains(a,p,epsilon) and contains(b,p,epsilon):return dict(kind='cooriented_surface_shared_interior',a=a['name'],b=b['name'],point=p)
