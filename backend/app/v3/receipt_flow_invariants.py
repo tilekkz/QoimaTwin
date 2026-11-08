@@ -19,14 +19,17 @@ def check_receipt_world(
     orders: Mapping[str, OrderState],
     pick_claims: Mapping[str, str],
     tick: int,
+    *,
+    whole_owners: Mapping[str, str] | None = None,
+    whole_claims: frozenset[str] = frozenset(),
 ) -> None:
     expected = Counter(u.sku_id for u in profile.flow.stock.units)
     containers = {c.container_id: c for c in ledger.snapshot().containers}
-    _baseline_owners(profile, containers)
-    _pending_picks(states, orders, pick_claims, ledger)
+    _baseline_owners(profile, containers, whole_owners)
+    _pending_picks(states, orders, pick_claims, ledger, whole_claims)
     resources: dict[str, str] = {}
     for key, state in states.items():
-        _custody(state, containers)
+        _custody(state, containers, whole_owners)
         if state.credited_tick is not None:
             expected[state.offer.definition.sku_id] += state.offer.definition.quantity_units
         if state.admitted_tick is not None and state.returned_tick is None:
@@ -47,7 +50,11 @@ def check_receipt_world(
         raise RuntimeError("Initial plus credited receipts must equal registered stock")
 
 
-def _custody(state: ReceiptState, containers: Mapping[str, Container]) -> None:
+def _custody(
+    state: ReceiptState,
+    containers: Mapping[str, Container],
+    whole_owners: Mapping[str, str] | None = None,
+) -> None:
     hu = state.offer.definition.hu_id
     if (hu in containers) != (state.credited_tick is not None):
         raise RuntimeError("Receipt stock exists before credit or vanished afterwards")
@@ -55,7 +62,7 @@ def _custody(state: ReceiptState, containers: Mapping[str, Container]) -> None:
         return
     expected: str | None
     if state.placed_tick is not None:
-        expected = state.offer.slot_owner_id
+        expected = (whole_owners or {}).get(hu, state.offer.slot_owner_id)
     elif state.status == "buffered":
         expected = state.buffer_owner_id
     else:
@@ -109,9 +116,14 @@ def _reserved_places(
             raise RuntimeError("Receipt reserved place is occupied by another physical HU")
 
 
-def _baseline_owners(profile: ReceiptFlowProfile, containers: Mapping[str, Container]) -> None:
+def _baseline_owners(
+    profile: ReceiptFlowProfile,
+    containers: Mapping[str, Container],
+    whole_owners: Mapping[str, str] | None = None,
+) -> None:
     for initial in profile.flow.stock.containers:
-        if containers[initial.container_id].owner_id != initial.owner_id:
+        expected = (whole_owners or {}).get(initial.container_id, initial.owner_id)
+        if containers[initial.container_id].owner_id != expected:
             raise RuntimeError("Receipt unit-only flow cannot move a baseline whole wrapper")
 
 
@@ -141,13 +153,18 @@ def _pending_picks(
     orders: Mapping[str, OrderState],
     pick_claims: Mapping[str, str],
     ledger: StockLedger,
+    whole_claims: frozenset[str] = frozenset(),
 ) -> None:
     claims = {c.claim_id: c for c in ledger.claims}
-    expected = {
-        "receipt:" + key
-        for key, state in states.items()
-        if state.credited_tick is not None and state.placed_tick is None
-    } | set(pick_claims.values())
+    expected = (
+        {
+            "receipt:" + key
+            for key, state in states.items()
+            if state.credited_tick is not None and state.placed_tick is None
+        }
+        | set(pick_claims.values())
+        | whole_claims
+    )
     if set(claims) != expected:
         raise RuntimeError("Receipt flow inventory claims disagree with actual pending jobs")
     for job_id, claim_id in pick_claims.items():

@@ -5,8 +5,8 @@ from fractions import Fraction
 
 from app.v3.belt_plan import valid_tick
 from app.v3.conveyor_models import ConveyorSource
-from app.v3.light_flow_inputs import handoff_inputs
-from app.v3.light_flow_validate import _orders, validate
+from app.v3.light_flow_inputs import _handoff_inputs
+from app.v3.light_flow_validate import _orders, _validate
 from app.v3.receipt_flow_models import ReceiptFlowProfile, ReceiptOffer, ReceiptPlace, ReceiptPort
 from app.v3.receipt_flow_plan import receipt_plan, wrapper_recipe
 from app.v3.stock_claims import identity
@@ -17,9 +17,18 @@ from app.v3.stock_validation import exact, require, vector
 
 
 def validate_receipt_flow(profile: ReceiptFlowProfile, conveyor: ConveyorSource) -> StockLedger:
+    return _validate_receipts(profile, conveyor, "workstation", frozenset({"SMALL_CARTON"}))
+
+
+def _validate_receipts(
+    profile: ReceiptFlowProfile,
+    conveyor: ConveyorSource,
+    actor_kind: str,
+    archetypes: frozenset[str],
+) -> StockLedger:
     require(type(profile) is ReceiptFlowProfile, "typed receipt-flow profile required")
-    live = validate(replace(profile.flow, orders=()), conveyor)
-    handoff_inputs(profile.flow, conveyor)
+    live = _validate(replace(profile.flow, orders=()), conveyor, actor_kind)
+    _handoff_inputs(profile.flow, conveyor, actor_kind)
     for duration in (profile.pickup_tick, profile.place_tick):
         require(valid_tick(duration) and duration > 0, "positive receipt handling duration")
     owners = {o.owner_id: o for o in profile.flow.stock.owners + profile.flow.owners}
@@ -34,7 +43,7 @@ def validate_receipt_flow(profile: ReceiptFlowProfile, conveyor: ConveyorSource)
         validate_receipt(offer.definition)
         require(offer.definition.receipt_id not in seen, "duplicate job/receipt identity")
         seen.add(offer.definition.receipt_id)
-        _offer(profile, offer, owners)
+        _offer(profile, offer, owners, archetypes)
         port = next(p for p in profile.ports if p.port_id == offer.port_id)
         key = offer.definition.receipt_id
         prospective.receive_hu(
@@ -115,7 +124,12 @@ def _windows(port: ReceiptPort) -> None:
         previous = end
 
 
-def _offer(profile: ReceiptFlowProfile, offer: ReceiptOffer, owners: dict[str, StockOwner]) -> None:
+def _offer(
+    profile: ReceiptFlowProfile,
+    offer: ReceiptOffer,
+    owners: dict[str, StockOwner],
+    archetypes: frozenset[str],
+) -> None:
     require(valid_tick(offer.arrival_tick), "nonnegative integer receipt arrival")
     ports, places = {p.port_id: p for p in profile.ports}, {p.owner_id: p for p in profile.places}
     require(offer.port_id in ports, "unknown receipt port")
@@ -124,7 +138,12 @@ def _offer(profile: ReceiptFlowProfile, offer: ReceiptOffer, owners: dict[str, S
         "known target slot",
     )
     cargo = wrapper_recipe(profile, offer)
-    require(cargo.allowed_archetypes == ("SMALL_CARTON",), "only SMALL receipt execution supported")
+    require(
+        len(cargo.allowed_archetypes) == 1 and cargo.allowed_archetypes[0] in archetypes,
+        "only SMALL receipt execution supported"
+        if archetypes == frozenset({"SMALL_CARTON"})
+        else "only SMALL/STANDARD receipt execution supported",
+    )
     port, slot = ports[offer.port_id], places[offer.slot_owner_id]
     actors = {a.actor_id: a for a in profile.flow.actors}
     for place in (slot, *(places[key] for key in port.buffer_ids)):

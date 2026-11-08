@@ -8,6 +8,10 @@ from app.v3.light_flow_models import FlowProfile
 
 
 def handoff_inputs(profile: FlowProfile, conveyor: ConveyorSource) -> None:
+    _handoff_inputs(profile, conveyor, "workstation")
+
+
+def _handoff_inputs(profile: FlowProfile, conveyor: ConveyorSource, actor_kind: str) -> None:
     _route_ends(profile, conveyor)
     margin = profile.path_clearance_m
     if type(margin) is not Fraction or margin < 0:
@@ -24,7 +28,7 @@ def handoff_inputs(profile: FlowProfile, conveyor: ConveyorSource) -> None:
     picker = next(a for a in profile.actors if a.actor_id == profile.picker_id)
     if picker.home != profile.cart.home:
         raise ValueError("Bounded picker must initially share the declared cart home")
-    _owners(profile)
+    _owners(profile, actor_kind)
 
 
 def _route_ends(profile: FlowProfile, source: ConveyorSource) -> None:
@@ -38,14 +42,14 @@ def _route_ends(profile: FlowProfile, source: ConveyorSource) -> None:
         raise ValueError("Connected workflow must use actual source intake and output endpoints")
 
 
-def _owners(profile: FlowProfile) -> None:
+def _owners(profile: FlowProfile, actor_kind: str = "workstation") -> None:
     owners = {o.owner_id: o for o in profile.owners}
     required = (
         (profile.carrier_pool_owner, "material"),
         (profile.package_pool_owner, "material"),
         (profile.cart.owner_id, "workstation"),
-        ("actor:" + profile.picker_id, "workstation"),
-        ("actor:" + profile.shipper_id, "workstation"),
+        ("actor:" + profile.picker_id, actor_kind),
+        ("actor:" + profile.shipper_id, actor_kind),
         (profile.station.bench_owner, "workstation"),
         (profile.station.empty_owner, "workstation"),
         (profile.shipped_owner, "shipped"),

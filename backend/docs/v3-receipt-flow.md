@@ -46,8 +46,27 @@ captured watermarks. Recomputing hashes does not make a semantically invalid
 history valid. Counts and exposure metrics distinguish `at_horizon` from
 `at_end`; this profile does not infer hourly workload from unclocked weights.
 
-This is a bounded SMALL backend component. Receipt HTTP registration, an
-adopted frontend adapter, continuous hand contact, all cargo classes and ports,
+The local API exposes the same example at `GET /api/v3/receipt-profiles`. Submit
+its `profile`, `layout_version` and `source_revision` to
+`POST /api/v3/receipt-runs`. The request accepts no profile path or quantity/clock
+overrides. Receipt jobs share the existing single calculation slot with the V2,
+manual and light workflows. Repeated submissions reuse the same verified result.
+
+The returned public run ID supports these reads:
+
+- `GET /api/v3/receipt-runs/{run_id}`: actual complete or partial status.
+- `GET /api/v3/receipt-runs/{run_id}/manifest`: native manifest and stored files.
+- `GET /api/v3/receipt-runs/{run_id}/files/{sha256}`: exact CLI bytes with an ETag.
+- `GET /api/v3/receipt-runs/{run_id}/checkpoint?tick=T`: an exact captured tick.
+- `GET /api/v3/receipt-runs/{run_id}/events?start_tick=A&end_tick=B`: an observed
+  half-open window of at most 60 seconds; tick values are integer microseconds.
+
+The public ID includes the frozen server registration. Its native ID remains
+the one in the CLI manifest. Reads rehash stored files and validate native
+receipt history; warming the cache does not permit later byte tampering.
+
+This is a bounded SMALL backend component. An adopted frontend adapter,
+continuous hand contact, all cargo classes and ports,
 dynamic role allocation and complete warehouse operation remain unsupported.
 The synthetic carrier and material recipes are not resized or approved visual
 assets. These limits remain explicit in exported capabilities.

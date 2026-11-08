@@ -7,13 +7,17 @@ from app.v3.belt_models import BeltJob
 from app.v3.belt_plan import compile_job, valid_tick
 from app.v3.conveyor_models import ConveyorPayload, ConveyorSource
 from app.v3.execution_types import ACTOR_IDS
-from app.v3.light_flow_inputs import handoff_inputs
+from app.v3.light_flow_inputs import _handoff_inputs
 from app.v3.light_flow_models import FlowProfile
 from app.v3.light_flow_plan import picker_plan, shipper_plan, travel
 from app.v3.stock_ledger import StockLedger
 
 
 def validate(profile: FlowProfile, conveyor: ConveyorSource) -> StockLedger:
+    return _validate(profile, conveyor, "workstation")
+
+
+def _validate(profile: FlowProfile, conveyor: ConveyorSource, actor_kind: str) -> StockLedger:
     if not profile.profile_id or not profile.provenance:
         raise ValueError("Explicit versioned synthetic process provenance required")
     actors = {a.actor_id: a for a in profile.actors}
@@ -42,7 +46,7 @@ def validate(profile: FlowProfile, conveyor: ConveyorSource) -> StockLedger:
     ):
         raise ValueError("Explicit exact positive cart capacity/speed/width required")
     ledger = StockLedger(profile.stock, owners=profile.owners, materials=profile.materials)
-    handoff_inputs(profile, conveyor)
+    _handoff_inputs(profile, conveyor, actor_kind)
     _orders(profile, conveyor, ledger)
     return StockLedger(profile.stock, owners=profile.owners, materials=profile.materials)
 

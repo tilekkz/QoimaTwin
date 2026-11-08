@@ -260,12 +260,15 @@ class LightFlowEngine:
             )
             if (
                 not fits
-                or "port" in self.leases
+                or self._port_resource_id() in self.leases
                 or not self._has_owner_capacity(self.profile.shipped_owner)
             ):
                 return False
-            self.leases["port"] = worker.order_id
+            self.leases[self._port_resource_id()] = worker.order_id
         return True
+
+    def _port_resource_id(self) -> str:
+        return "port"
 
     def _human_done(self, worker: HumanState) -> None:
         self._finish_operation(worker)
@@ -327,7 +330,7 @@ class LightFlowEngine:
                 order_id + ":ship", self.ledger.revision, order.package_id, p.shipped_owner
             )
             self.orders[order_id].status, self.orders[order_id].shipped_tick = "shipped", self.tick
-            del self.leases["port"]
+            del self.leases[self._port_resource_id()]
             self._emit("shipped", order_id, delta=delta)
 
     def _pick_stock(self, order: FlowOrder) -> StockDelta:
@@ -444,8 +447,11 @@ class LightFlowEngine:
         )
 
     def _relocate(self, kind: str, order_id: str, container: str, owner: str) -> None:
-        delta = self.ledger.relocate(order_id + ":" + kind, self.ledger.revision, container, owner)
+        delta = self._relocate_material(order_id + ":" + kind, container, owner)
         self._emit(kind, order_id, delta=delta)
+
+    def _relocate_material(self, transaction_id: str, container: str, owner: str) -> StockDelta:
+        return self.ledger.relocate(transaction_id, self.ledger.revision, container, owner)
 
     def _emit(
         self,

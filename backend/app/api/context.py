@@ -20,7 +20,9 @@ from app.storage.artifacts import ArtifactStore
 from app.version import ENGINE_VERSION
 
 type Json = dict[str, Any]
-type JobKind = Literal["materialize", "forecast", "plans", "compare", "manual-v3", "light-v3"]
+type JobKind = Literal[
+    "materialize", "forecast", "plans", "compare", "manual-v3", "light-v3", "receipt-v3"
+]
 
 
 @dataclass(frozen=True)

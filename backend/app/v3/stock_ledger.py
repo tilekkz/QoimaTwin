@@ -307,14 +307,54 @@ class StockLedger:
         *,
         claim_id: str | None = None,
     ) -> StockDelta:
+        return self._relocate_material(
+            transaction_id,
+            expected_revision,
+            container_id,
+            owner_id,
+            {"material", "workstation"},
+            "relocate",
+            claim_id,
+        )
+
+    def transfer_material_to_worker(
+        self,
+        transaction_id: str,
+        expected_revision: int,
+        container_id: str,
+        owner_id: str,
+        *,
+        claim_id: str | None = None,
+    ) -> StockDelta:
+        """Explicit actor custody; the legacy relocation policy stays unchanged."""
+        return self._relocate_material(
+            transaction_id,
+            expected_revision,
+            container_id,
+            owner_id,
+            {"worker"},
+            "transfer_material_to_worker",
+            claim_id,
+        )
+
+    def _relocate_material(
+        self,
+        transaction_id: str,
+        expected_revision: int,
+        container_id: str,
+        owner_id: str,
+        owner_kinds: set[str],
+        operation: str,
+        claim_id: str | None,
+    ) -> StockDelta:
         self._begin(transaction_id, expected_revision)
         container = self._movable(container_id)
         require(
             container.recipe.kind in {"carrier", "package"}, "source wrapper relocation unsupported"
         )
-        self._owner_kind(owner_id, {"material", "workstation"})
+        self._owner_kind(owner_id, owner_kinds)
         self._authorize_container(container_id, claim_id)
-        return self._reown(transaction_id, "relocate", container_id, owner_id)
+        return self._reown(transaction_id, operation, container_id, owner_id)
 
     def dispose_empty_wrapper(
         self,

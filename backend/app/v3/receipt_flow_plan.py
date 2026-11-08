@@ -33,7 +33,7 @@ def receipt_travel(
     cargo = wrapper_recipe(profile, offer)
     requirements = RouteRequirements(
         mode="pedestrian",
-        cargo="SMALL_CARTON" if loaded else None,
+        cargo=cargo.allowed_archetypes[0] if loaded else None,
         min_clear_width_m=cargo.outer[0] + 2 * margin if loaded else None,
         min_clear_height_m=cargo.outer[1] + margin if loaded else None,
     )

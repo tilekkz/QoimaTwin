@@ -25,6 +25,7 @@ def execute_job(job: Job) -> WorkResult:
     from app.api.planning_jobs import compare_job, plan_job
     from app.v3.api_light_worker import light_job
     from app.v3.api_manual_worker import manual_job
+    from app.v3.api_receipt_worker import receipt_job
 
     handlers = {
         "materialize": materialize_job,
@@ -33,6 +34,7 @@ def execute_job(job: Job) -> WorkResult:
         "compare": compare_job,
         "manual-v3": manual_job,
         "light-v3": light_job,
+        "receipt-v3": receipt_job,
     }
     try:
         return WorkResult(handlers[job.kind](job), os.getpid())

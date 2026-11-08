@@ -1,9 +1,12 @@
 # C12 engine adapter: backend-owned proposal, not adoption
 
-**Status: proposal only; no consumer is enabled by this document.** Reviewed on
-2026-11-08 against Tilek `050adaf3645831298ac5daea7aad1191c92dcb2e` and the
-backend's frozen 41-file publication/API candidate over `00cabfa` (subsequently published as `3cd634d`). No shared
-contract, frontend, source pin, reader registration or runtime was changed.
+**Status: proposal only; no consumer is enabled by this document.** The mapping was
+first reviewed on 2026-11-08 against Tilek `050adaf3645831298ac5daea7aad1191c92dcb2e`
+and the backend's frozen 41-file publication/API candidate over `00cabfa`, which was
+subsequently published as `3cd634d`. These clarifications were prepared from main
+`0d72f3b` for integration with a later receipt-capable feature candidate. Commit names
+above are historical provenance only, not a statement about the final integrated tree.
+No shared contract, frontend, source pin, reader registration or runtime was changed.
 
 C12 `qoima.source-labelled-input.v3-proposal/0.1.0` accepts only its named
 geometry, visual and analytical profiles, and requires `engine_operation=false`.
@@ -30,7 +33,7 @@ positive C12 actual-run example. Keep native artifacts unchanged behind it.
 | `producer.code_inventory_ref`, `producer.git_commit` | Hash-bound build inventory, and commit when it actually covers that build. The observed candidate is base `00cabfa` **plus** a frozen 41-file inventory; do not describe that execution as clean `00cabfa`. Producer/build attestation is not presently a native run field. |
 | `native_run_id`, `input_hash` | Copy verified native values. Current native ID is SHA256 of canonical JSON `{"engine_version": ENGINE_VERSION, "input_hash": INPUT_HASH}`. Input hash is SHA256 of the exact canonical frozen input bytes. |
 | `public_api_run_id`, `input_bundle_id` | Optional API binding, kept separate from native identity. Public ID hashes canonical `{domain, native_run_id, inputs: bundle_id, engine, compiler, export}`, with domain `qoima-v3-light-api-1`. Offline CLI has no invented API ID. |
-| `payload_ref`, `payload_schema_id` | Native manifest `{path, bytes, sha256}` and `qoima.connected-small-manifest.v3-proposal/0.1.0`. The manifest references exact inputs, catalog, metadata, event and checkpoint parts. API transport URLs are obtained from its inventory, not inserted into C12's repository-relative path field. |
+| `payload_ref`, `payload_schema_id` | Native manifest `{path, bytes, sha256}` and `qoima.connected-small-manifest.v3-proposal/0.1.0`. The manifest references exact inputs, catalog, metadata, event and checkpoint parts. **Path root:** unlike C12's repository-relative artifact paths, which must resolve inside the Tilek repository, this `path` resolves only inside the verified native artifact root identified by `native_run_id`/`input_hash`, optionally reached through the separately verified `public_api_run_id` transport. It never resolves against a repository checkout. API transport URLs are obtained from that run's inventory, not inserted into the path field. No adopted frontend loader exists for this binding. |
 | `source_revision`, `source_artifacts` | Frozen source revision and verified raw input inventory; current engine source is `22296bcf2c6bac5ade4cefc7c05c2b97831ec6ec`. C12 publication commit `050adaf` is a separate provenance dimension and does not repin the engine. |
 | `layout_version`, `layout_content_hash`, `layout_ref` | `qoima-144x72-v3-proposal`; semantic hash `407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71`; exact source `docs/v3/contract-proposals/layout-manifest-v3.json`, 8009 bytes, raw SHA256 `f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8`. Semantic layout hash is **not** raw artifact hash. |
 | `frame_of_reference`, `units` | `warehouse_world`; metres, kg, right-handed Y-up, scale 1. Explicit local placement/asset frames must remain typed. No V2 72x48 coordinate or home-position reuse. |
@@ -54,13 +57,17 @@ The observed run uses SKU `DEMO_001`, original HU
 Unit catalog entries retain `origin_hu`, `ordinal`, SKU/lot and recipe. Current
 `stock.locations` identifies the unit's container; that container's owner is its
 custody. Carrying is not a second copy in stock.
-C12 bundle `inventory_facts` (530 HUs, 200 SKUs, 12,256 units, 9403.85kg) describes
-the source baseline, not a constant for every runtime checkpoint. Explicit
-material inventory and actual receipt credits change the registered run totals.
+C12 `bundle.schema.json` declares `inventory_facts` as JSON Schema **constants**:
+actors 24, ports 6, handling units 530, SKUs 200, quantity units 12,256 and gross mass
+9403.85kg. They describe the frozen source baseline, not runtime checkpoint totals.
+Explicit material inventory and actual receipt credits change the registered run
+totals. A receipt run registers 12,280 units and 9405.04kg, so it can never validate as
+the existing C12 bundle; this is one reason it needs its own native namespace and a
+separately accepted adapter profile.
 
 | Native reference | C12 adapter interpretation / remaining work |
 | --- | --- |
-| `catalog.actors[].actor_id`; checkpoint `workers[].actor_id` | Preserve all 24 existing identities: P01-P12, K01-K06, R01-R02, S01-S02, F01-F02. Idle workers stay present. Native actor records provide explicit profile home/speed/mass, not C12 skill-level or cross-training facts. |
+| `catalog.actors[].actor_id`; checkpoint `workers[].actor_id` | Preserve all 24 existing identities: P01-P12, K01-K06, R01-R02, S01-S02, F01-F02. Idle workers stay present. Native actor records provide explicit profile home/speed/mass, not C12 skill-level or cross-training facts. The native runtime speed (V3 pedestrian 1.3m/s profile choice, ADR0032) is authoritative; the C12 example `walk_speed_m_s: 1.2` never overrides it. |
 | C12 P01/F01 WorkerProfile examples | Examples only: P01's packer skill 0.8 and F01's FL01 permission do not create role assignments, employees or vehicle jobs. Baseline fixed roles may be resolved from the pinned roster; current role may only equal that fixed role in this profile. Never infer dynamic roles from an operation name. N4/P11/P12 transitions are unsupported. |
 | `catalog.owners`; container `owner_id` | Resolve `slot`, actor, cart, belt, bench, pool, shipped/disposed owners by their typed definitions. Distinguish material-pool inventory from geometry-only fixtures. |
 | `operation.source_node/target_node/route` | Preserve directed graph ID, node IDs, arc IDs, length/cost and carrying/cart IDs. Native catalog currently contains node IDs and arcs, **not a complete node-position table**. Join verified frozen `source.documents[layout-links-v3.json]`; new synthetic nodes require explicit compiler connector provenance and positions. Unknown spatial bindings must fail or remain explicitly unavailable. |
@@ -96,9 +103,15 @@ include paid output pickup and must not be renamed human WAIT_RESOURCE.
 The current light publication contains stock deltas and physical leases, but
 does **not** publish the shared receipt inventory/claim-generation schema. It
 cannot claim replay of future receipt creation or whole-HU/unit claims.
-Receipt publication is implemented under separate [ADR0055](../../adr/0055-connected-receipt-publication.md) and proposed
-`qoima.connected-receipt-small-run.v3-proposal/0.1.0`; no existing API/C12 support
-is asserted. Its required boundary is:
+Native receipt publication is a separate backend namespace,
+`qoima.connected-receipt-small-run.v3-proposal/0.1.0` with manifest schema
+`qoima.connected-receipt-small-manifest.v3-proposal`, described in
+[ADR0055](../../adr/0055-connected-receipt-publication.md). Registered receipt HTTP
+transport is implemented in the receipt feature candidate (ADR0060), with an actual
+source HTTP proof, also in its own native namespace.
+Neither is C12 support: this adapter proposal still has **no accepted
+receipt-capable frontend profile**, and the `connected-small-captured-v1` profile
+above does not accept receipt runs. A receipt adapter profile must satisfy:
 
 - Declared receipt descriptors and future token recipes are immutable plans,
   absent from initial registered inventory, balances and claims.
@@ -140,7 +153,9 @@ Currently true: actual bounded component execution, internal inventory,
 captured-checkpoint retrieval. Currently false: accepted C12 adapter, full V3,
 arbitrary seek, interpolation, hand-contact proof, general loaded admission,
 N4 dynamic roles/staffing, all-class/all-port workflow. Receipt shared inventory
-has a real native proof and separate CLI publication; receipt API integration remains unsupported.
+has a real native proof and its own native publication namespace. Its registered
+HTTP transport belongs to that native namespace too. A C12 receipt adapter profile
+and any frontend agreement remain unsupported.
 Do not fill absent capabilities with a visual fixture or claim that C11's
 unclocked periods are workload hours or DES performance.
 
@@ -156,6 +171,7 @@ Observed CLI/real HTTP evidence, rehashed in this review:
 | Native manifest | 3514 bytes; SHA256 `ae38c49a1ab42182b486c4a738629d33bef0a587d400e890fc5759c62d382717` |
 | Raw files | 17; 46,127,485 bytes; CLI and stored HTTP files identical |
 | Receipt proof only | Input `259d9488c52c6c3309b5b1f1352af1521a5ea43a3b731f878ff86272229b77c7`; engine `qoima-receipt-flow-v3-proposal-1`; canonical native outcome SHA256 `ed0f380ccff79bcaa3bc6818b0cf635a9b1d35993107455aa27e3c2d34083e0d` |
+| Native receipt publication | Native run ID `2126f9494fb757a6df1a12cae3b0001c00cdfab9b167040ce4e473e8a382b7f3`; manifest 5895 bytes, SHA256 `b10f5437118e60d0dc2f968b2351b9b0e669b46ff58402178befedd4e395a0b8`; 28 files, 71,959,075 bytes. Native evidence only, not C12 receipt support. |
 
 Receipt source observation (not a new test oracle): new HU `RECEIVED-SMALL-1`
 is credited at tick 10,000,000, seq10; its whole-HU claim is acquired at seq11.

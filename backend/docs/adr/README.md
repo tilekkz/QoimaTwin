@@ -61,3 +61,7 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0053](0053-v3-shared-receipt-flow.md) | Inbound service, staging, putaway and paid return on the connected clock |
 | [0054](0054-c11-planning-import.md) | Source-bound C11 planning proxy with explicit non-operational limits |
 | [0055](0055-connected-receipt-publication.md) | Creation and claim journal, exact receipt inputs and immutable captured export |
+| [0056](0056-v3-shared-manual-whole-flow.md) | Intact SMALL/STANDARD work on the shared inventory clock |
+| [0058](0058-connected-whole-publication.md) | Native whole-HU publication and strict captured-state reads |
+| [0060](0060-registered-receipt-api.md) | Registered receipt HTTP runs with one owned API worker |
+| [0061](0061-public-whole-profile-cli.md) | Explicit whole-HU profiles and bound CLI request receipts |

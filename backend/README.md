@@ -39,7 +39,12 @@ shares the existing calculation worker and serves verified raw files and capture
 The [connected receipt CLI](docs/v3-receipt-flow.md) adds actual inbound credit, finite
 staging, paid putaway and return before unit picking on that same ledger and clock.
 Its separately versioned export records creation, custody and claims; declared future
-receipts are absent from initial stock. Receipt HTTP registration is not yet provided.
+receipts are absent from initial stock. Its registered HTTP workflow shares the existing
+worker and serves verified files, exact captured ticks and bounded event windows.
+The [connected whole-HU CLI](docs/proposals/adaptive-v3/whole-flow-profile.md) adds
+intact SMALL/STANDARD shipping and STANDARD receipt to that inventory and clock.
+It freezes explicit public choices and their compiled input identity before execution,
+pays return travel and publishes a separate native whole-HU bundle.
 The [C12 adapter proposal](docs/proposals/adaptive-v3/c12-engine-adapter.md) maps native
 evidence to a future frontend agreement; it does not adopt or modify shared contracts.
 The [explicit SMALL profile](docs/adr/0048-v3-explicit-connected-small-profile.md)
@@ -55,6 +60,10 @@ F1/F2/F3 test port mix, geometry/mass and elapsed time versus person-seconds usi
 hand calculations. See [inputs](docs/v3-inputs.md), [analytical fixtures](docs/v3-analytical.md),
 and [source compatibility](docs/v3-admission-source.md). Shared contracts remain proposals until
 agreed with Tilek; `frontend/` is unchanged by this backend work.
+
+The [C11 planning adapter](docs/adr/0054-c11-planning-import.md) reproduces the pinned
+source planning proposal with explicit proxy costs and a valid no-op baseline. Its
+1/2/4/8 periods are unclocked sensitivity cases, not operational hourly comparisons.
 
 ## Status
 

@@ -20,6 +20,7 @@ from app.v3.receipt_flow_state import ReceiptState
 from app.v3.receipt_flow_validate import validate_receipt_flow
 from app.v3.stock_claims import StockClaim
 from app.v3.stock_commands import ReceiveHUCommand, TransferHUCommand
+from app.v3.stock_ledger import StockLedger
 from app.v3.stock_models import StockDelta
 
 
@@ -38,6 +39,15 @@ class ReceiptFlowEngine(LightFlowEngine):
         on_tick_settled: Callable[[FlowSnapshot, int], None] | None = None,
     ) -> None:
         ledger = validate_receipt_flow(profile, conveyor)
+        self._initialize_receipts(profile, conveyor, ledger, on_tick_settled)
+
+    def _initialize_receipts(
+        self,
+        profile: ReceiptFlowProfile,
+        conveyor: ConveyorSource,
+        ledger: StockLedger,
+        on_tick_settled: Callable[[FlowSnapshot, int], None] | None,
+    ) -> None:
         self.receipt_profile = profile
         self.receipts = {
             o.definition.receipt_id: ReceiptState(o)

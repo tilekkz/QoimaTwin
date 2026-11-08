@@ -261,6 +261,12 @@ Renaming `schema_version` is not an adapter. Shared2.0 remains the default until
 
 ## V3 manual execution
 
+The [connected receipt API](v3-receipt-flow.md) registers one explicit source profile
+at `/api/v3/receipt-profiles` and executes it through `/api/v3/receipt-runs` on the
+same owned calculation worker. Its separate native/public identities, immutable
+files and exact captured-state reads preserve the connected receipt journal.
+It does not expose arbitrary seek or adopt the proposed V3 frontend contract.
+
 The separate [V3 manual API guide](v3-manual-api.md) documents registered frozen
 profiles, actual manual simulation, immutable files and bounded seek under
 `/api/v3/manual-runs`. It shares this API's calculation worker. Its proposal

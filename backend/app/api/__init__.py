@@ -30,6 +30,7 @@ def create_app(
     v3_inputs: Path | None = None,
 ) -> FastAPI:
     from app.v3.api_light import attach_light_routes
+    from app.v3.api_receipt import attach_receipt_routes
 
     store = ArtifactStore(store_root or repository_root() / "backend" / "artifacts" / "api")
     context = ApiContext.create(store, contracts_dir or default_contracts_dir())
@@ -58,4 +59,5 @@ def create_app(
     attach_v3_routes(app, v3_inputs)
     attach_manual_routes(app, context, v3_inputs)
     attach_light_routes(app, context, v3_inputs)
+    attach_receipt_routes(app, context, v3_inputs)
     return app

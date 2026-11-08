@@ -17,6 +17,7 @@ from app.v3.cli_workload import materialize_workload_file
 from app.v3.export import write_static_export
 from app.v3.inputs import V3Bundle, load_v3_bundle
 from app.v3.settings import default_inputs
+from app.v3.whole_cli import simulate_whole_file
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -30,6 +31,7 @@ def build_parser() -> argparse.ArgumentParser:
         "simulate-conveyor",
         "simulate-light",
         "simulate-receipt",
+        "simulate-whole",
         "materialize-workload",
     ):
         command = commands.add_parser(name)
@@ -40,6 +42,7 @@ def build_parser() -> argparse.ArgumentParser:
             "simulate-conveyor",
             "simulate-light",
             "simulate-receipt",
+            "simulate-whole",
         }:
             command.add_argument("--profile", type=Path, required=True)
         if name == "materialize-workload":
@@ -76,6 +79,8 @@ def main(argv: Sequence[str]) -> int:
 
 
 def _execute(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command == "simulate-whole":
+        return simulate_whole_file(args.inputs, args.profile, args.out)
     if args.command == "simulate-receipt":
         return simulate_receipt_file(args.inputs, args.profile, args.out)
     if args.command == "simulate-light":

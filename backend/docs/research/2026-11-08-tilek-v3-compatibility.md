@@ -131,3 +131,53 @@ explicit geometry binding, tool custody and paid acquisition/actuation/stow.
 Current hand-contact and frontend capability limits remain unchanged; no logical
 pick duration is silently replaced by a visual clip. No frontend or shared
 contract files were modified by these audits.
+
+## Follow-up: collision correction and continuous-pick candidate
+
+Revisions `0be40646d121782d2f7d8e7f64c864c4f16cff98` and
+`005e168cacd9339186d1673fb6d6075a47beeabe` preserve all 75 protected paths and
+all 21 pinned backend source/mesh bindings. The first audit verified 60 small
+text blobs among 86 changed paths; the second verified 53 among 73 changed
+paths. Each left four large diagnostic JSON files and binary geometry outside
+independent re-evaluation. No upstream code was executed.
+
+Upstream corrected its nearest-normal collision method: earlier 176/3961/421
+reach rejection counts are provisional, not a global impossibility proof.
+The latest classifier always uses closed-solid winding for containment and
+requires an interior witness for transverse contacts. Its reported twelve
+calibration cases were not independently rerun in this compatibility audit.
+The backend's bounded pallet checker uses separate triangle/box, winding and
+finite-support predicates; matching source hashes do not imply equivalence.
+
+The latest tool refinement and prepared contact poses are accepted upstream.
+The complete pick remains `ACTIVE` with `passed=false` and
+`engine_operation=false`. Its 36-second visual candidate has a reported native
+prefix through 32.1 seconds and a first rejection at 32.2 seconds, when the
+cuff/forearm contacts the handle during deposit. Release, support and later
+action review remain open. These visual times do not replace warehouse service
+durations, and preserved package identities alone do not prove a complete
+physical operation.
+
+C12 and all current source pins remain unchanged. No tool adoption, expanded
+operational admission or frontend integration follows from these revisions.
+The actual-engine adapter still requires a separately agreed contract.
+
+## Follow-up: SMALL pick samples and receiver visual fixture
+
+Revision `ea7d5dadd60dbb5b65db9e626bfcf57a39268853` adds two commits after
+`005e168`. All 75 protected paths and all 21 pinned source/mesh bindings remain
+unchanged. The exact Git audit found 173 changed paths and verified 106 small
+text blobs; five larger JSON files and 62 binary/other paths were not decoded.
+No upstream code was executed. No backend or canonical contract change is needed.
+
+P03 remains a prepared-tool 36-second SMALL-pick visual fixture. Its reported
+sampled contacts do not establish continuous collision certification; tool
+acquisition/stow and warehouse scheduling remain future work. The new P05 R01
+receiver uses a floor-supported local fixture HU, a 17.8-second receive clip
+and a 2.5-second scan. Its `visual_received` flag does not credit inventory:
+the runtime explicitly reports `inventory_mutated:false` and no headcount delta.
+
+Both additions retain `engine_operation:false` and incomplete backend integration.
+These visual clocks, local identifiers and coordinates do not replace source-bound
+DES operations or authoritative HU ancestry. Existing C12 unsupported-operation
+limits, backend source pins and the requirement for an agreed adapter remain.
