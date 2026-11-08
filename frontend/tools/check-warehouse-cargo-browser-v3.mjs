@@ -7,7 +7,7 @@ import {chromium} from '@playwright/test';
 if(process.env.QOIMA_VISIBLE_TESTS==='1')throw Error('Muted headless localhost only.');
 const out='../assets/v3/iterations/warehouse/W04.2/browser',url='http://127.0.0.1:4173/warehouse-v3.html';
 await mkdir(out,{recursive:true});
-const names=['warehouseAdapter.ts','warehouseTypes.ts','warehouseRouting.ts','warehouseRoutePose.ts','warehouseRoutePreview.ts','warehousePage.ts','warehouseScene.ts','warehouseCargo.ts','warehouseCargoGeometry.ts','warehouse.css','warehouseAssetBindings.json','workerRegistry.ts','workerProfiles.ts','workerRoles.ts','seatedDriver.ts'];
+const names=['warehouseAdapter.ts','warehouseTypes.ts','warehouseRouting.ts','warehouseRoutePose.ts','warehouseRoutePreview.ts','warehousePage.ts','warehouseScene.ts','warehouseCargo.ts','warehouseCargoHolders.ts','warehouseCargoGeometry.ts','warehouse.css','warehouseAssetBindings.json','workerRegistry.ts','workerProfiles.ts','workerRoles.ts','seatedDriver.ts'];
 const files=['frontend/warehouse-v3.html','frontend/vite.config.ts',...names.map(p=>'frontend/src/adaptive-v3/'+p),'frontend/src/adaptive-v3/staffRegistry.css','frontend/public/data/v3/warehouse-fixture-v3.json','frontend/public/data/v3/route-policy-v3.json','frontend/public/data/adaptive-v3/layout-manifest.json','frontend/public/data/v3/worker-registry-v3.json','frontend/public/data/v3/worker-profiles-v3.json','frontend/tools/check-warehouse-cargo-browser-v3.mjs','docs/adaptive-v3/evidence/W04.1-checks.json'];
 const bindings=JSON.parse(await readFile('src/adaptive-v3/warehouseAssetBindings.json','utf8'));
 for(const [id,binding]of Object.entries(bindings))files.push(id==='seated-driver-pose'?'frontend/public/'+binding.path:'frontend/public/models/v3/'+id+'.glb');

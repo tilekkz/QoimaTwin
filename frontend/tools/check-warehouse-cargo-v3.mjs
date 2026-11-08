@@ -8,9 +8,9 @@ import ts from 'typescript';
 const cache=path.resolve('../work/v3/warehouse-cargo-check'),input_hashes={};
 const sha=b=>createHash('sha256').update(b).digest('hex');
 await mkdir(cache,{recursive:true});
-for(const name of ['workerRegistry','workerProfiles','warehouseAdapter','warehouseCargo']){
+for(const name of ['workerRegistry','workerProfiles','warehouseAdapter','warehouseCargoHolders','warehouseCargo']){
  const p='src/adaptive-v3/'+name+'.ts',bytes=await readFile(p);input_hashes['frontend/'+p]=sha(bytes);
- const code=ts.transpileModule(bytes.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText.replace(/from '\.\/(workerRegistry|workerProfiles|warehouseAdapter)'/g,"from './$1.mjs'");
+ const code=ts.transpileModule(bytes.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText.replace(/from '\.\/(workerRegistry|workerProfiles|warehouseAdapter|warehouseCargoHolders)'/g,"from './$1.mjs'");
  await writeFile(path.join(cache,name+'.mjs'),code);
 }
 for(const p of ['src/adaptive-v3/warehouseTypes.ts','tools/check-warehouse-cargo-v3.mjs'])input_hashes['frontend/'+p]=sha(await readFile(p));
