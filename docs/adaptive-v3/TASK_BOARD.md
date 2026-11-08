@@ -93,8 +93,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
 | [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
 | [W11](tasks/W11.md) | READY | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
-| [W12](tasks/W12.md) | TODO | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
-| [W12.1](tasks/W12.1.md) | ACTIVE | account2 | W02,C08,M10,P09 | Frozen long-freight / large-gate scenario inputs |
+| [W12](tasks/W12.md) | READY | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
+| [W12.1](tasks/W12.1.md) | PASS | account2 | W02,C08,M10,P09 | Frozen long-freight / large-gate scenario inputs |
 | [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
 | [W14](tasks/W14.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Готов экран slotting baseline/adapt сравнения |
 | [W15](tasks/W15.md) | TODO | unassigned | W06,P11 | Реализовано безопасное RoleAssignment event |
@@ -221,5 +221,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05.1](tasks/W05.1.md) | PASS | action_timeline | W03,W04,P10,P11 | Source-bound absolute action timeline and exclusive resource intervals |
 | [W05.2](tasks/W05.2.md) | ACTIVE | action_walking | W05.1 | Grounded canonical worker walking and action-frame bindings |
 | [W05.3](tasks/W05.3.md) | TODO | unassigned | W05.2 | Light cargo pick/pack joins with complete units and support |
-| [W05.4](tasks/W05.4.md) | READY | unassigned | W05.1 | Loaded forklift physical joins and route/resource admission |
+| [W05.4](tasks/W05.4.md) | TODO | unassigned | W05.1 | Loaded forklift physical joins and route/resource admission |
+| [W05.4.1](tasks/W05.4.1.md) | ACTIVE | account2 | W05.1,W03,W04,M14.8,P07 | Source-bound single-pallet transfer plan and absolute phases |
 | [W05.5](tasks/W05.5.md) | TODO | unassigned | W05.3,W05.4 | Unified scene clock integration for walk pick pack load |
+| [W05.5.1](tasks/W05.5.1.md) | PASS | root | W05.1,W04 | Browser-deployable verified action source reader |

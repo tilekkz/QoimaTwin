@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T11:57:18.477964+00:00",
+  "updated_at": "2026-11-08T12:21:34.537265+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1635,7 +1635,7 @@
         "P09"
       ],
       "criteria": "LONG использует совместимый gate/path; не уменьшается и не разворачивается в запрещённую ориентацию",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W12.md",
@@ -1656,7 +1656,7 @@
         "P09"
       ],
       "criteria": "Source-bound immutable inputs; LONG dimensions/orientation and compatible gate/path/carrier; identical A/B bytes; independent negative checks; input-only.",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "account2",
       "outputs": [
         "tools/visual/v3/build_long_freight_scenario.py",
@@ -1666,7 +1666,12 @@
         "docs/adaptive-v3/evidence/W12.1.json",
         "docs/adaptive-v3/evidence/W12.1-checks.json"
       ],
-      "actual": "Preregister source-bound LONG/large-gate input-only flow, original dimensions/orientation and equal A/B bytes. Actual loaded path/actions remain W12 parent work."
+      "actual": "Root accepted frozen LONG/large-gate input integrity:10positive242negative and14extraindependenthostmutations; original530HU24workers2vehicles,4externalHU96units800kg, exact A/Bbytes. CLI strictfix hit timebound; separately host-verified sources/report/bytes. Loadednative gatecrossing/actions/resources and parentW12 remain open.",
+      "evidence": [
+        "docs/adaptive-v3/evidence/W12.1-root-review.json",
+        "docs/adaptive-v3/evidence/W12.1-host-review-checks.json",
+        "docs/adaptive-v3/evidence/W12.1-checks.json"
+      ]
     },
     {
       "id": "W13",
@@ -4005,13 +4010,38 @@
         "W05.1"
       ],
       "criteria": "Loaded forklift physical joins and route/resource admission; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
-      "status": "READY",
+      "status": "TODO",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W05.4.md",
         "docs/adaptive-v3/evidence/W05.4.json"
       ],
-      "actual": "Declared before implementation; root must approve actual bounded evidence."
+      "actual": "Declared before implementation; root must approve actual bounded evidence.",
+      "children": [
+        "W05.4.1"
+      ]
+    },
+    {
+      "id": "W05.4.1",
+      "title": "Source-bound single-pallet transfer plan and absolute phases",
+      "parent": "W05.4",
+      "depends_on": [
+        "W05.1",
+        "W03",
+        "W04",
+        "M14.8",
+        "P07"
+      ],
+      "criteria": "Same originalPALLET, actualemptyapproach+controlledpickup+loadedroute+supportedsetdown/withdrawal reference poses; immutable source-bound admission, continuity/conservation/resource negatives; no native/scene/operation acceptance.",
+      "status": "ACTIVE",
+      "owner": "account2",
+      "outputs": [
+        "frontend/src/adaptive-v3/warehousePalletTransferPlan.ts",
+        "frontend/tools/check-warehouse-pallet-transfer-plan-v3.mjs",
+        "docs/adaptive-v3/specs/W05.4.1.md",
+        "docs/adaptive-v3/evidence/W05.4.1-checks.json"
+      ],
+      "actual": "Produce only immutable source-bound PALLET relocation reference plan and absolute phases for originalF02/FL02/sameHU, exactapproach/routes/connector/yawconservation; independentCPU negatives. Physical/native/scene/resourceexecution remains parentW05.4."
     },
     {
       "id": "W05.5",
@@ -4028,7 +4058,36 @@
         "docs/adaptive-v3/specs/W05.5.md",
         "docs/adaptive-v3/evidence/W05.5.json"
       ],
-      "actual": "Declared before implementation; root must approve actual bounded evidence."
+      "actual": "Declared before implementation; root must approve actual bounded evidence.",
+      "children": [
+        "W05.5.1"
+      ]
+    },
+    {
+      "id": "W05.5.1",
+      "title": "Browser-deployable verified action source reader",
+      "parent": "W05.5",
+      "depends_on": [
+        "W05.1",
+        "W04"
+      ],
+      "criteria": "Only exact accepted source bytes; production-relative URLs, allowlisted manifest, digest/size checks, cancellation/cache/retry/disposal and actual action catalogue registration. No dev filesystem URLs or engine operations.",
+      "status": "PASS",
+      "owner": "root",
+      "outputs": [
+        "tools/visual/v3/build_action_browser_sources.py",
+        "frontend/src/adaptive-v3/warehouseActionSources.ts",
+        "frontend/src/adaptive-v3/warehouseActionSourceManifest.json",
+        "frontend/public/data/v3/action-sources/",
+        "frontend/tools/check-warehouse-action-sources-v3.mjs",
+        "docs/adaptive-v3/specs/W05.5.1.md",
+        "docs/adaptive-v3/evidence/W05.5.1-checks.json"
+      ],
+      "actual": "Root and independent lifecycle review PASS:30exact deployed sources/10proofcopies39439bytes, actual16clip/C01catalogue via30HTTPURLs,15positive27negative. Fixedlatehangingresponse lock and maskingcleanup. Package/typecheck/build pass; Scene/UIphysicaljoins and concurrentUI renderproof refresh remain open.",
+      "evidence": [
+        "docs/adaptive-v3/evidence/W05.5.1.json",
+        "docs/adaptive-v3/evidence/W05.5.1-checks.json"
+      ]
     }
   ],
   "execution": {
