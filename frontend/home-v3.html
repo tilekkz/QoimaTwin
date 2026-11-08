@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#E9EFEC"><title>QoimaTwin — цифровой двойник склада</title><meta name="description" content="Сравнение склада как сейчас и после перестройки на одинаковых данных: где начинается проблема, куда она доходит и что её снимает."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230E8076'/%3E%3Ccircle cx='20' cy='19' r='9' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M24 23l6 6' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E"></head>
+<body>
+<header></header>
+<main class="hm">
+ <section class="hm-hero">
+  <div class="hm-copy">
+   <p class="hm-kicker"><span class="hm-dot" aria-hidden="true"></span>Цифровой двойник склада · V3</p>
+   <h1>Два склада.<br>Одни данные.<br><span>Видно, что изменилось.</span></h1>
+   <p class="hm-lead">Слева склад как сейчас, справа — после перестройки. Одинаковые грузы, люди, ворота и время. Видно, где начинается проблема, по каким связям она доходит до соседей и что её снимает.</p>
+   <div class="hm-cta">
+    <a class="hm-primary" href="twin-v3.html">Открыть сравнение<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a>
+    <a class="hm-secondary" href="twin-v3.html?present=1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="11.5" rx="2.5"/><path d="M9 20h6M12 16.5V20"/></svg>Режим защиты <small>8 шагов · 3–5 мин</small></a>
+   </div>
+   <details class="hm-source">
+    <summary><span class="hm-tag">Демонстрационный сценарий</span>Откуда данные</summary>
+    <p>Склад, грузы и люди — исходный снимок модели V3. Перестройка B — демонстрационный план: каждый перенос прошёл проверку адреса по классу, габаритам и массе груза. Волны состояний — заранее записанный эпизод, он показывает механизм. Расчётный движок пока не подключён, поэтому числа эффективности здесь не показываются.</p>
+   </details>
+  </div>
+  <figure class="hm-shot">
+   <img src="/media/v3/home-twin.jpg" width="2250" height="1350" alt="Сравнение двух складов: слева у поста PK03 SOS, волна дошла до отбора; справа поток переведён на PK05, упаковка под риском" fetchpriority="high">
+   <figcaption>Кадр из сравнения · 01:36 эпизода «Перегрузка ветки упаковки»</figcaption>
+  </figure>
+ </section>
+
+ <section class="hm-section" aria-labelledby="hm-demos">
+  <div class="hm-head"><h2 id="hm-demos">Демонстрации</h2><p>Каждая открывается на сравнении. Перемотка в любую точку восстанавливает те же состояния.</p></div>
+  <ol class="hm-demos">
+   <li class="is-ready"><span class="hm-n">01</span><div><b>Перегрузка ветки упаковки</b><p>PK03 встаёт, буфер ветки заполняется, отбор на востоке ждёт. В B поток уходит на свободный PK05, и упаковка возвращается в контроль к 01:44, в A — только к 03:20. Плюс локальный отказ длинномера у экспресс-ворот.</p><span class="hm-meta">4:00 · 2 варианта · 7 глав</span></div><a class="hm-go" href="twin-v3.html" aria-label="Открыть «Перегрузка ветки упаковки»">Открыть</a></li>
+   <li><span class="hm-n">N0</span><div><b>Обычная смена</b><p>Перестройка не нужна — нулевой результат тоже честный ответ.</p></div><span class="hm-soon">в подготовке</span></li>
+   <li><span class="hm-n">N1</span><div><b>Сдвиг исходящего потока</b><p>Меняется смесь отгрузки по воротам; видно, кому становится тяжелее.</p></div><span class="hm-soon">в подготовке</span></li>
+   <li><span class="hm-n">N2</span><div><b>Тяжёлая приёмка</b><p>Паллеты и IBC на входе: погрузчики, буферы и допуски ворот.</p></div><span class="hm-soon">в подготовке</span></li>
+   <li><span class="hm-n">N3</span><div><b>Длинномер</b><p>LONG_BUNDLE идёт только через подходящие ворота и проходы.</p></div><span class="hm-soon">в подготовке</span></li>
+   <li><span class="hm-n">N4</span><div><b>Перестановка людей</b><p>Те же 24 человека, другие посты — с путём и временем перехода.</p></div><span class="hm-soon">в подготовке</span></li>
+  </ol>
+ </section>
+
+ <section class="hm-section" aria-labelledby="hm-numbers">
+  <div class="hm-head"><h2 id="hm-numbers">Склад модели</h2><p>Исходный снимок V3 — одинаковый для A и B.</p></div>
+  <dl class="hm-numbers">
+   <div><dt>площадь</dt><dd>144 × 72<small>м</small></dd></div>
+   <div><dt>грузовых единиц</dt><dd>530</dd></div>
+   <div><dt>модулей хранения</dt><dd>132</dd></div>
+   <div><dt>типов груза</dt><dd>8</dd></div>
+   <div><dt>работников в 5 ролях</dt><dd>24</dd></div>
+   <div><dt>ворот: 3 входа и 3 выхода</dt><dd>6</dd></div>
+  </dl>
+ </section>
+
+ <section class="hm-section" aria-labelledby="hm-more">
+  <div class="hm-head"><h2 id="hm-more">Внутри</h2></div>
+  <nav class="hm-links" aria-labelledby="hm-more">
+   <a href="warehouse-v3.html"><b>Склад</b><span>Исходное размещение, осмотр любой грузовой единицы, маршруты техники</span></a>
+   <a href="staff-v3.html"><b>Команда</b><span>24 работника, пять ролей, цвета и знаки, по которым их видно в 3D</span></a>
+   <a href="skills-v3.html"><b>Навыки</b><span>Кто к какому посту и технике допущен — и почему</span></a>
+   <a href="stand-v3.html"><b>Модели</b><span>Стенд 3D-моделей: груз, стеллажи, техника и действия людей вблизи</span></a>
+  </nav>
+ </section>
+ <footer class="hm-foot"><span>QoimaTwin · команда Qarqyn · 2026</span><a href="./">Предыдущая версия V2</a></footer>
+</main>
+<script type="module" src="/src/adaptive-v3/shell/shell.ts"></script>
+<link rel="stylesheet" href="/src/adaptive-v3/home/home.css">
+</body></html>

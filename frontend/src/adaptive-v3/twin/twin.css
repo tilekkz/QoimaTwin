@@ -103,7 +103,7 @@ body.tw{background:var(--bg);color:var(--ink);font:400 14px/1.45 var(--ui);-webk
 .tw-x svg{width:16px;height:16px;stroke-width:2.2}
 .tw-sheet-right{top:calc(var(--gap) + var(--safe-t) + 56px);right:var(--gap);width:360px;max-height:calc(100% - var(--dock-h) - 3*var(--gap) - 56px - var(--safe-b) - var(--safe-t));transform:translateX(28px) scale(.96);transform-origin:right center}
 .tw-sheet-left{top:calc(var(--gap) + var(--safe-t) + 56px);left:var(--gap);width:330px;max-height:calc(100% - var(--dock-h) - 3*var(--gap) - 56px - var(--safe-b));transform:translateX(-28px) scale(.96);transform-origin:left center}
-.tw-sheet-bottom{left:50%;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));width:min(940px,calc(100% - 2*var(--gap)));translate:-50% 0;transform:translateY(24px) scale(.97);transform-origin:center bottom}
+.tw-sheet-bottom{left:max(var(--gap),calc((100% - 940px)/2));right:max(var(--gap),calc((100% - 940px)/2));bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));width:auto;transform:translateY(24px) scale(.97);transform-origin:center bottom}
 .tw-sheet>:not(header){overflow-y:auto;min-height:0}
 
 /* sheet content */
@@ -186,7 +186,7 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 .tw-river{width:100%;height:150px;display:block;touch-action:none;cursor:col-resize;flex:none}
 
 /* mode picker */
-.tw-modes{position:absolute;left:50%;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));translate:-50% 0;z-index:7;display:grid;grid-template-columns:repeat(4,148px);gap:6px;padding:8px;border-radius:26px;transform:translateY(14px) scale(.92);transform-origin:center bottom}
+.tw-modes{position:absolute;left:max(var(--gap),calc((100% - 628px)/2));right:max(var(--gap),calc((100% - 628px)/2));width:auto;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));z-index:7;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:8px;border-radius:26px;transform:translateY(14px) scale(.92);transform-origin:center bottom}
 .tw-modes button{display:grid;justify-items:start;gap:2px;padding:12px;border-radius:20px;text-align:left;transition:background-color .2s,scale .25s var(--spring)}
 .tw-modes button:hover{background:rgba(255,255,255,.6)}
 .tw-modes button:active{scale:.96}
@@ -222,7 +222,7 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 .tw-menu-action:active{scale:.98}
 
 /* defence walk-through */
-.tw-present{position:absolute;z-index:7;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));left:50%;translate:-50% 0;width:min(560px,calc(100% - 2*var(--gap)));padding:14px 18px 16px;border-radius:26px;transform:translateY(14px) scale(.96);transform-origin:center bottom}
+.tw-present{position:absolute;z-index:7;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));left:max(var(--gap),calc((100% - 560px)/2));right:max(var(--gap),calc((100% - 560px)/2));width:auto;padding:14px 18px 16px;border-radius:26px;transform:translateY(14px) scale(.96);transform-origin:center bottom}
 .tw-present-top{display:flex;align-items:center;gap:12px}
 .tw-present-step{font:600 12.5px var(--ui);color:var(--accent)}
 .tw-dots{display:flex;gap:5px;flex:1}
@@ -301,7 +301,7 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
  .tw-dbtn{padding:0 13px}
  .tw-brand-name{font-size:14px}
  .tw-sheet-right,.tw-sheet-left,.tw-sheet-bottom{top:auto;left:var(--gap);right:var(--gap);width:auto;translate:none;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));max-height:58svh;transform:translateY(32px) scale(.97);transform-origin:center bottom;border-radius:26px}
- .tw-modes{grid-template-columns:1fr 1fr;width:calc(100% - 2*var(--gap))}
+ .tw-modes{grid-template-columns:1fr 1fr;width:auto}
  .tw-modes button{padding:10px}
  .tw-menu{width:min(300px,calc(100vw - 2*var(--gap)))}
  .tw-river{height:140px}

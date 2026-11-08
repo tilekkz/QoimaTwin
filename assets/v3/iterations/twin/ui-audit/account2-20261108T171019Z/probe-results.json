@@ -1,0 +1,373 @@
+{
+  "status": "completed",
+  "executed_at": "2026-11-08T17:15:33.662Z",
+  "scope": "CPU-only WHITE_BOX / COMPONENT_ONLY exact TypeScript AST extraction; no source changes, actual renderer, native scene, assets, browser or audio hardware",
+  "results": [
+    {
+      "id": "bubble-reappearance",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "product_failure_reproduced": true,
+      "initial": {
+        "hidden": false,
+        "actor": "W1",
+        "key": "W1:wait",
+        "label": "W1: Ждёт: Очередь на ветку PK03 растёт",
+        "clicks": 1
+      },
+      "hidden": {
+        "hidden": true,
+        "actor": null,
+        "key": "W1:wait"
+      },
+      "restored": {
+        "hidden": false,
+        "actor": null,
+        "key": "W1:wait",
+        "clicks": 1
+      },
+      "stub_dependencies": [
+        "one fake worker W1 in PACKING_LIGHT_LINE",
+        "plain-object DOM controls",
+        "projection/on-screen and camera scale stubs; no renderer"
+      ]
+    },
+    {
+      "id": "bubble-cause-cache",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "product_failure_reproduced": true,
+      "actual_label": "W1: Ждёт: Очередь на ветку PK03 растёт",
+      "expected_label": "W1: Ждёт: Поток ветки PK03 переведён на свободный PK05",
+      "dependency": "same private-helper context; real B events at 30 and 46 seconds"
+    },
+    {
+      "id": "four-mode-routing",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "assertions_passed": true,
+      "layouts": [
+        {
+          "W": 1200,
+          "H": 700,
+          "mode": "side",
+          "passes": [
+            {
+              "variant": "A",
+              "vp": {
+                "x": 14,
+                "y": 14,
+                "w": 579,
+                "h": 672
+              },
+              "sc": {
+                "x": 14,
+                "y": 14,
+                "w": 579,
+                "h": 672
+              },
+              "gray": false,
+              "zoom": 0.72
+            },
+            {
+              "variant": "B",
+              "vp": {
+                "x": 607,
+                "y": 14,
+                "w": 579,
+                "h": 672
+              },
+              "sc": {
+                "x": 607,
+                "y": 14,
+                "w": 579,
+                "h": 672
+              },
+              "gray": false,
+              "zoom": 0.72
+            }
+          ]
+        },
+        {
+          "W": 1200,
+          "H": 700,
+          "mode": "swipe",
+          "passes": [
+            {
+              "variant": "A",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 700
+              },
+              "sc": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 700
+              },
+              "gray": false
+            },
+            {
+              "variant": "B",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 700
+              },
+              "sc": {
+                "x": 600,
+                "y": 0,
+                "w": 600,
+                "h": 700
+              },
+              "gray": false
+            }
+          ]
+        },
+        {
+          "W": 1200,
+          "H": 700,
+          "mode": "overlay",
+          "passes": [
+            {
+              "variant": "B",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 700
+              },
+              "sc": {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 700
+              },
+              "gray": false
+            }
+          ]
+        },
+        {
+          "W": 1200,
+          "H": 700,
+          "mode": "diff",
+          "passes": [
+            {
+              "variant": "B",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 700
+              },
+              "sc": {
+                "x": 0,
+                "y": 0,
+                "w": 1200,
+                "h": 700
+              },
+              "gray": true
+            }
+          ]
+        },
+        {
+          "W": 600,
+          "H": 900,
+          "mode": "side",
+          "passes": [
+            {
+              "variant": "A",
+              "vp": {
+                "x": 8,
+                "y": 8,
+                "w": 584,
+                "h": 438
+              },
+              "sc": {
+                "x": 8,
+                "y": 8,
+                "w": 584,
+                "h": 438
+              },
+              "gray": false,
+              "zoom": 0.82
+            },
+            {
+              "variant": "B",
+              "vp": {
+                "x": 8,
+                "y": 454,
+                "w": 584,
+                "h": 438
+              },
+              "sc": {
+                "x": 8,
+                "y": 454,
+                "w": 584,
+                "h": 438
+              },
+              "gray": false,
+              "zoom": 0.82
+            }
+          ]
+        },
+        {
+          "W": 600,
+          "H": 900,
+          "mode": "swipe",
+          "passes": [
+            {
+              "variant": "A",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 900
+              },
+              "sc": {
+                "x": 0,
+                "y": 0,
+                "w": 300,
+                "h": 900
+              },
+              "gray": false
+            },
+            {
+              "variant": "B",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 900
+              },
+              "sc": {
+                "x": 300,
+                "y": 0,
+                "w": 300,
+                "h": 900
+              },
+              "gray": false
+            }
+          ]
+        },
+        {
+          "W": 600,
+          "H": 900,
+          "mode": "overlay",
+          "passes": [
+            {
+              "variant": "B",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 900
+              },
+              "sc": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 900
+              },
+              "gray": false
+            }
+          ]
+        },
+        {
+          "W": 600,
+          "H": 900,
+          "mode": "diff",
+          "passes": [
+            {
+              "variant": "B",
+              "vp": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 900
+              },
+              "sc": {
+                "x": 0,
+                "y": 0,
+                "w": 600,
+                "h": 900
+              },
+              "gray": true
+            }
+          ]
+        }
+      ],
+      "limitation": "Pure pass-layout function only; no pixels, draw loop, camera hardware or public bootstrap executed."
+    },
+    {
+      "id": "presenter-boundaries",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "restored_steps_checked": 16,
+      "product_failure_reproduced": true,
+      "afterKeyboard": {
+        "stepIndex": 7,
+        "open": "true",
+        "nextLabel": "Завершить"
+      },
+      "afterButton": {
+        "stepIndex": -1,
+        "open": "false"
+      },
+      "stub_dependencies": [
+        "UI elements",
+        "setPlaying/seek/setMode/setSheet/select/fly state-recording stubs; no camera animation"
+      ],
+      "limitation": "Real goStep/endPresent and installed keyboard/next callbacks executed; downstream helpers stubbed."
+    },
+    {
+      "id": "presenter-private-invalid-index",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "input": "NaN",
+      "observed": "TypeError",
+      "finding": false,
+      "limitation": "Private debug API boundary only; no normal UI input producing NaN was identified."
+    },
+    {
+      "id": "reload-selection-retention",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "product_failure_reproduced": true,
+      "page_selected_id": "HU1",
+      "new_twin_selected_id": null,
+      "prior_card": {
+        "open": true,
+        "content": "Previously selected HU1"
+      },
+      "old_scene_disposals": 1,
+      "stub_dependencies": [
+        "source fetch/adapter returning empty synthetic data",
+        "synthetic scene and twin objects; no renderer or admission",
+        "UI update helpers stubbed"
+      ],
+      "limitation": "Lifecycle helper does not reset or rebuild the pre-existing card; actual browser rendering not executed."
+    },
+    {
+      "id": "latest-request-late-resolution",
+      "scope": "COMPONENT_ONLY actual load/dispose helpers with deferred scene/source-reader stubs",
+      "assertions_passed": true,
+      "latest_scene_retained": true,
+      "stale_scene_disposals": 1,
+      "stale_twin_disposed": true
+    },
+    {
+      "id": "pagehide-late-resolution",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "assertions_passed": true,
+      "phase": "disposed",
+      "stale_scene_disposals": 1,
+      "limitation": "Same serial/abort/dispose/setPhase sequence as the pagehide callback; browser event delivery not executed."
+    },
+    {
+      "id": "current-load-error-ownership",
+      "scope": "WHITE_BOX COMPONENT_ONLY",
+      "assertions_passed": true,
+      "phase": "error",
+      "twin_disposed": true,
+      "limitation": "Synthetic scene rejection; no actual resource load failure."
+    }
+  ]
+}

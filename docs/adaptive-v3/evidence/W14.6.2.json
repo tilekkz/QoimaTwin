@@ -1,0 +1,286 @@
+{
+  "task_id": "W14.6.2",
+  "purpose": "Actual second-account Twin UI audit completion only",
+  "audit_completed": true,
+  "audit_clean_cli_completion": true,
+  "root_acceptance_pending": false,
+  "reviewer": "root",
+  "fix_acceptance": "ACCEPTED_BOUNDED_CURRENT_UI",
+  "browser_acceptance": "ACCEPTED_W14.6.1",
+  "audit": {
+    "packet_id": "account2-twin-ui-20261108T171019Z",
+    "requested": {
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh"
+    },
+    "actual_correlated_session_metadata": {
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "thread_id": "01a1bc23-c2a9-7e13-8c14-ac8e470215da",
+      "session_meta_id": "01a1bc23-c2a9-7e13-8c14-ac8e470215da",
+      "session_meta_id_matches_thread": true,
+      "verified_fields": [
+        "session_meta.id",
+        "turn_context.model",
+        "turn_context.effort"
+      ]
+    },
+    "execution": {
+      "elapsed_seconds": 576.89,
+      "exit_code": 0,
+      "timed_out": false,
+      "clean_cli_completion": true
+    },
+    "findings_by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 2
+    },
+    "component_only_probe_records": 9,
+    "findings": [
+      {
+        "id": "TWIN-A2-001",
+        "severity": "medium",
+        "title": "Worker bubble cache loses click targets and keeps obsolete causes",
+        "sources": [
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+            "line": 188
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+            "line": 190
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+            "line": 117
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+            "line": 58
+          }
+        ],
+        "audit_evidence": "EXECUTED_COMPONENT_ONLY",
+        "resolution_acceptance": "ROOT_ACCEPTED_W14.6.1"
+      },
+      {
+        "id": "TWIN-A2-002",
+        "severity": "medium",
+        "title": "Reload keeps the selection card but drops scene/list selection",
+        "sources": [
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 259
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 266
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 278
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 287
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 229
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+            "line": 47
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+            "line": 48
+          }
+        ],
+        "audit_evidence": "EXECUTED_COMPONENT_ONLY",
+        "resolution_acceptance": "ROOT_ACCEPTED_W14.6.1"
+      },
+      {
+        "id": "TWIN-A2-003",
+        "severity": "low",
+        "title": "Presentation clicker cannot finish at the final step",
+        "sources": [
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 175
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 105
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 116
+          }
+        ],
+        "audit_evidence": "EXECUTED_COMPONENT_ONLY",
+        "resolution_acceptance": "ROOT_ACCEPTED_W14.6.1"
+      },
+      {
+        "id": "TWIN-A2-004",
+        "severity": "low",
+        "title": "Visibility/pagehide cleanup does not silence activated cues",
+        "sources": [
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 56
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 61
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 259
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 298
+          },
+          {
+            "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+            "line": 299
+          }
+        ],
+        "audit_evidence": "SOURCE_INFERRED",
+        "resolution_acceptance": "ROOT_ACCEPTED_W14.6.1"
+      }
+    ]
+  },
+  "packet": {
+    "directory": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z",
+    "manifest": {
+      "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/manifest.json",
+      "sha256": "7c64277e150d4df3700f113b03002798155489b15e2b579d537b445b7fec0b0c"
+    },
+    "provenance": {
+      "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/provenance.json",
+      "sha256": "f719de8eb77333c19c4a2918344ec761cb2d82cb07186bb54974f0efce250749"
+    },
+    "source_epochs": {
+      "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/source-epochs.json",
+      "sha256": "65a5cca75e3953e8602416f30eebea9d08cd596f8eb018a997413096c63dbf10"
+    },
+    "readme": {
+      "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/README.md",
+      "sha256": "888d2806b1a9d5120bbf1e15bcc48767fe861a7ea38ad2917567c2356d13bb14"
+    },
+    "original_artifacts": {
+      "audit.md": {
+        "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/audit.md",
+        "sha256": "c2527ad88f57157f224111ce5321b6692aa01acc06538e2a42d4edc59fa7ed29"
+      },
+      "component-probes.cjs": {
+        "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/component-probes.cjs",
+        "sha256": "596fa79e4c8a1dddf111629641a4c3dc343ccc98a033b9ef8d0d8e56d281129f"
+      },
+      "findings.json": {
+        "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/findings.json",
+        "sha256": "9234b4c149e794062ad7753134a82d48305bf89c91261540d40a6d91eebe3223"
+      },
+      "probe-results.json": {
+        "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/probe-results.json",
+        "sha256": "f812809818d164febc2947fbff71473d8f0bb878ee568530e85a4573b8ba692d"
+      },
+      "source-hashes-after.json": {
+        "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/source-hashes-after.json",
+        "sha256": "925b798d7a7b2bc9339fc4df847b4093e1ce64bfe3b40b8af19802b97ba2a3c6"
+      },
+      "source-hashes-before.json": {
+        "path": "assets/v3/iterations/twin/ui-audit/account2-20261108T171019Z/source-hashes-before.json",
+        "sha256": "925b798d7a7b2bc9339fc4df847b4093e1ce64bfe3b40b8af19802b97ba2a3c6"
+      }
+    },
+    "audited_source_count": 7,
+    "launch_source_count": 7,
+    "all_source_copies_use_txt_extension": true
+  },
+  "source_epoch_caveat": {
+    "all_seven_unchanged_entire_job": false,
+    "host_launch_to_end_changes": [
+      "frontend/twin-v3.html",
+      "frontend/src/adaptive-v3/twin/twinPage.ts"
+    ],
+    "auditor_later_epoch_unchanged": true,
+    "auditor_epoch_matches_host_end": true,
+    "post_end_navigation_recovered_from_hash_identical_launch": true
+  },
+  "separate_current_component_fix_proofs": [
+    {
+      "report": {
+        "path": "docs/adaptive-v3/evidence/twin-bubbles-checks.json",
+        "sha256": "c1347a941102e59f4e191a5e19e0ee42636ce3fc2db63f16c2b81c3091df3858"
+      },
+      "checker": {
+        "path": "frontend/tools/check-twin-bubbles-v3.cjs",
+        "sha256": "95fea1b710c7f4051865a04fd56b87420b30967809e4374fde357dff8958614d"
+      },
+      "label": "COMPONENT_ONLY",
+      "counts": {
+        "cases": 18,
+        "passed": 18,
+        "failed": 0
+      },
+      "input_hashes": {
+        "frontend/tools/check-twin-bubbles-v3.cjs": "95fea1b710c7f4051865a04fd56b87420b30967809e4374fde357dff8958614d",
+        "frontend/src/adaptive-v3/twin/twinRender.ts": "a4b72f9ab9726d89727db098a7b77d6f9717c84f094c0228b2b44ea927a2dc17",
+        "frontend/src/adaptive-v3/twin/twinScenario.ts": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc"
+      },
+      "root_fix_acceptance": "ACCEPTED_BOUNDED_CURRENT_UI",
+      "browser_acceptance": "ACCEPTED_W14.6.1"
+    },
+    {
+      "report": {
+        "path": "docs/adaptive-v3/evidence/twin-page-lifecycle-checks.json",
+        "sha256": "f72c215bfb5512db0b41382f48ec87c2c856d09d55a4021b999f55e8575a9e1a"
+      },
+      "checker": {
+        "path": "frontend/tools/check-twin-page-lifecycle-v3.cjs",
+        "sha256": "1a3b711db36940a0a3bd3eaef705961b25eb8e762d4d207384aee3a1fae31ba6"
+      },
+      "label": "COMPONENT_ONLY",
+      "counts": {
+        "cases": 20,
+        "passed": 20,
+        "failed": 0
+      },
+      "input_hashes": {
+        "frontend/tools/check-twin-page-lifecycle-v3.cjs": "1a3b711db36940a0a3bd3eaef705961b25eb8e762d4d207384aee3a1fae31ba6",
+        "frontend/src/adaptive-v3/twin/twinPage.ts": "31c1b683c0b17277bba9d0e8155ce5486e28cc50a2c9d4868c0a49fb3d891c00",
+        "frontend/src/adaptive-v3/twin/twinScenario.ts": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc"
+      },
+      "root_fix_acceptance": "ACCEPTED_BOUNDED_CURRENT_UI",
+      "browser_acceptance": "ACCEPTED_W14.6.1"
+    }
+  ],
+  "separate_holder_old_production_CDP_reference": {
+    "path": "work/v3/twin-ui-old-prod-2026-11-08T17-30-18.387Z",
+    "scope": "Separate holder evidence; not an executed result of this auditor and not revalidated or copied by this packaging step.",
+    "auditor_audio_finding_remains": "SOURCE_INFERRED"
+  },
+  "root_browser_review": {
+    "status": "ACCEPTED_BOUNDED",
+    "actual_checks": 30,
+    "evidence": {
+      "path": "docs/adaptive-v3/evidence/W14.6.1.json",
+      "sha256": "df2fff4ef7e728e8733100e00dd9206817117176f660ecf23623ee3da508798d"
+    }
+  },
+  "scope_limits": [
+    "COMPONENT_ONLY / WHITE_BOX source and stub probes only.",
+    "No public bootstrap, real browser/WebGL/audio hardware, native 530-HU/physics/backend or operational acceptance.",
+    "Audit completion does not approve the later fixes or browser results.",
+    "No auth/config/raw transcripts or host environment logs are included in the sanitized provenance."
+  ],
+  "root_audit_acceptance": {
+    "accepted": true,
+    "at_utc": "2026-11-08T17:56:20.221473+00:00",
+    "scope": "Audit completion only: 23 packet entries rehashed by root, actual requested/correlated gpt-6.1-sol/xhigh metadata and source-epoch caveat reviewed. Current 18 bubble +20 lifecycle component cases independently re-executed with exact evidence; actual browser/fix acceptance stays separate and pending."
+  }
+}

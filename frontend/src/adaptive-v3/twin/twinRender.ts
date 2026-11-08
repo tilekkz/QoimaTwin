@@ -7,7 +7,7 @@
 import * as THREE from 'three';
 import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
 import {ATMO_ZONES,activePulses,sampleAtmosphere,type AtmoState,type Variant} from './twinScenario';
-import {BUBBLE_RU,reactionsAt,visibleReactions,type Bubble,type Effects,type WorkerSpot} from './twinScenario';
+import {reactionsAt,visibleReactions,type Bubble,type Effects,type WorkerSpot} from './twinScenario';
 
 export type Mode='side'|'swipe'|'overlay'|'diff';
 export type Pose={position:XYZ;yaw:number;dims:XYZ};
@@ -187,7 +187,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    const r=shown[i],q=r&&at.get(r.actor_id);
    if(!r||!q){b.hidden=true;delete b.dataset.actor;return;}
    const key=`${r.actor_id}:${r.bubble}`;
-   if(b.dataset.key!==key){b.dataset.key=key;b.dataset.actor=r.actor_id;b.dataset.b=r.bubble;b.innerHTML=`<span class="tw-bubble-in">${BUBBLE_ICON[r.bubble]}</span>`;b.setAttribute('aria-label',`${r.actor_id}: ${r.text}`);b.title=`${r.actor_id} · ${BUBBLE_RU[r.bubble]}`;if(effects!=='off'&&!reducedMotion())b.animate([{opacity:0,scale:.4},{opacity:1,scale:1}],{duration:400,easing:'cubic-bezier(.16,1,.3,1)'});}
+   if(b.dataset.key!==key){b.dataset.key=key;b.dataset.b=r.bubble;b.innerHTML=`<span class="tw-bubble-in">${BUBBLE_ICON[r.bubble]}</span>`;if(effects!=='off'&&!reducedMotion())b.animate([{opacity:0,scale:.4},{opacity:1,scale:1}],{duration:400,easing:'cubic-bezier(.16,1,.3,1)'});}
+   b.dataset.actor=r.actor_id;b.setAttribute('aria-label',`${r.actor_id}: ${r.text}`);b.title=`${r.actor_id} · ${r.text}`;
    b.hidden=false;b.classList.toggle('is-selected',r.actor_id===selectedActor);b.style.translate=`${q.x}px ${q.y}px`;
   });
   const m=moves.find(m=>m.id===selected);rings[v].hidden=!m;

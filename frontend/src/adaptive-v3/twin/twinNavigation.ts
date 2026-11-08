@@ -83,7 +83,8 @@ export function createNavigation(o:NavOptions){
   // A tap may wobble a few pixels; only real drags pan.
   if(down&&!down.moved&&Math.hypot(p.x-down.x,p.y-down.y)<5)return;
   pointers.set(e.pointerId,p);if(down)down.moved=true;panBy(prev.x,prev.y,p.x,p.y);
-  const {target:t}=o.scene.frameState(),now=performance.now();trail.push({t:now,x:t[0],z:t[2]});while(trail.length>2&&now-trail[0].t>90)trail.shift();
+  // Event time, not handler time: on a busy main thread events arrive late, and the gesture's own timing decides the flick.
+  const {target:t}=o.scene.frameState(),now=e.timeStamp;trail.push({t:now,x:t[0],z:t[2]});while(trail.length>2&&now-trail[0].t>100)trail.shift();
  }
  function pointerup(e:PointerEvent){
   if(!pointers.delete(e.pointerId))return;e.stopPropagation();
@@ -91,7 +92,7 @@ export function createNavigation(o:NavOptions){
   if(pointers.size===1){const [q]=[...pointers.values()];down={...q,at:performance.now(),moved:true};trail=[];return;}
   if(down&&!down.moved&&performance.now()-down.at<600&&e.type==='pointerup'){const p=local(e);o.onTap(p.x,p.y);}
   else if(down?.moved&&trail.length>1&&!o.reduced()){
-   const a=trail[0],b=trail.at(-1)!,dt=(b.t-a.t)/1000;if(dt>.01&&performance.now()-b.t<60){vel=[(b.x-a.x)/dt,(b.z-a.z)/dt];kick();}
+   const a=trail[0],b=trail.at(-1)!,dt=(b.t-a.t)/1000;if(dt>.01&&e.timeStamp-b.t<80){vel=[(b.x-a.x)/dt,(b.z-a.z)/dt];kick();}
   }
   down=null;
  }

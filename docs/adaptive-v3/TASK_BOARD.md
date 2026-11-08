@@ -220,7 +220,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W11.1](tasks/W11.1.md) | PASS | account2 | W02,C07,M08,M09 | Frozen heavy-inbound input pair and independent admission/source checks |
 | [W05.1](tasks/W05.1.md) | PASS | action_timeline | W03,W04,P10,P11 | Source-bound absolute action timeline and exclusive resource intervals |
 | [W05.2](tasks/W05.2.md) | PASS | action_walking | W05.1 | Grounded canonical worker walking and action-frame bindings |
-| [W05.3](tasks/W05.3.md) | READY | unassigned | W05.2 | Light cargo pick/pack joins with complete units and support |
+| [W05.3](tasks/W05.3.md) | VERIFY | root_light_join | W05.2 | Light cargo pick/pack joins with complete units and support |
 | [W05.4](tasks/W05.4.md) | VERIFY | root_pallet_review | W05.1 | Loaded forklift physical joins and route/resource admission |
 | [W05.4.3](tasks/W05.4.3.md) | PASS | transfer_applicator | W05.4.1,W04,P07 | Same-instance native pallet transfer applicator |
 | [W05.4.2](tasks/W05.4.2.md) | PASS | account2 | W05.4.1,W04,P07 | Native same-pallet transfer geometry gate |
@@ -230,3 +230,9 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P05.4](tasks/P05.4.md) | PASS | receiver_elbow | P05.3 | Natural receiver elbow branch and complete trajectory |
 | [P06.4](tasks/P06.4.md) | PASS | shipper_elbow | P06.3 | Natural shipper elbow branch and complete trajectory |
 | [W05.4.4](tasks/W05.4.4.md) | PASS | root | W05.4.1,W05.5.1 | Reversible same-pallet demonstration in actual warehouse scene |
+| [W14.6.1](tasks/W14.6.1.md) | PASS | defense_ui | W02,W05.4.4 | Review current demonstrational Twin controls and defense walkthrough |
+| [W14.6.2](tasks/W14.6.2.md) | PASS | account2_twin_ui | W02 | Independent second-account audit of current Twin UI lifecycle and semantics |
+| [W05.3.1](tasks/W05.3.1.md) | PASS | base_carry_pose | W05.2,W04 | Native whole-HU grip calibration on the existing P02 worker-base rig |
+| [W14.6.3](tasks/W14.6.3.md) | PASS | support_shell | W02 | Preserve mobile contextual navigation and keyboard focus in the shared V3 shell |
+| [W05.3.2](tasks/W05.3.2.md) | PASS | account2_base_carry | W05.2 | Independent actual second-account review of native P02 carry calibration |
+| [W05.3.3](tasks/W05.3.3.md) | READY | loaded_walk_calibration | W05.3.1,W05.2 | Native pre-held P02/base loaded-walk calibration with one whole HU |

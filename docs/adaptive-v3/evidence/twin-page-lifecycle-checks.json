@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "label": "COMPONENT_ONLY",
+  "mode": "CURRENT_SOURCE",
+  "task": "Twin page lifecycle M002/L003/L004",
+  "public_bootstrap": false,
+  "real_audio_hardware": false,
+  "rendered_appearance": false,
+  "native_530_HU_scene": false,
+  "scope": "Exact page AST functions and installed listeners run with synthetic DOM/source/adapter/scene/navigation and recording AudioContext/gain/oscillator stubs. Real scenario presenter data. Sound assertions test source ownership and scheduling calls, not browser sound output.",
+  "input_hashes": {
+    "frontend/tools/check-twin-page-lifecycle-v3.cjs": "1a3b711db36940a0a3bd3eaef705961b25eb8e762d4d207384aee3a1fae31ba6",
+    "frontend/src/adaptive-v3/twin/twinPage.ts": "31c1b683c0b17277bba9d0e8155ce5486e28cc50a2c9d4868c0a49fb3d891c00",
+    "frontend/src/adaptive-v3/twin/twinScenario.ts": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc"
+  },
+  "compiler": {
+    "dependency": "frontend/node_modules/typescript",
+    "version": "5.9.3"
+  },
+  "historical_reference": {
+    "before_source": "work/v3/twin-ui-page-fix/before/twinPage.ts",
+    "before_sha256": "bceee567a07399887c0a33a83a666fd39cb5e47cc3c210cd0f22802ddb078edc",
+    "before_replay_path": "work/v3/twin-page-lifecycle-check/red/before-source-replay-results.json",
+    "before_replay_sha256": "774cdbfbcf9438e0b5115faa5553bf8fcdfec16985b3646eec551b045453025a",
+    "before_replay_counts": {
+      "cases": 20,
+      "passed": 3,
+      "failed": 17
+    },
+    "replay_note": "Preserved historical source replay performed after the root fix; not a claim of chronological pre-edit execution. No CLI clean-exit claim.",
+    "findings": [
+      "TWIN-A2-002",
+      "TWIN-A2-003",
+      "TWIN-A2-004"
+    ],
+    "old_production_CDP_packet": "work/v3/twin-ui-old-prod-2026-11-08T17-30-18.387Z"
+  },
+  "limitations": [
+    "Extracted component helpers and synthetic dependencies do not certify the complete application, browser event delivery, AudioContext implementation or audible output.",
+    "Fake resume promises attach a harness-only rejection sink to avoid unhandled process failures; production catch callbacks are executed unchanged.",
+    "No source mutation, public bootstrap, renderer, actual assets, backend or physical admission is performed."
+  ],
+  "counts": {
+    "cases": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "id": "C01_dispose_clears_HU_card_selection_status_and_presenter",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C02_reload_actor_selection_does_not_survive_new_scene",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C03_cleanup_is_idempotent_and_clears_owned_frames",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C04_PageDown_advances_all_steps_and_finishes",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C05_ArrowRight_finish_and_backward_boundary",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C06_final_button_matches_keyboard_exit",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C07_foreign_present_entry_link_remains_supported",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C08_sound_default_muted_and_unready_activation_denied",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C09_real_SOS_notes_schedule_two_distinct_voices",
+      "outcome": "PASS",
+      "queued_voices": 2,
+      "frequencies": [
+        440,
+        370
+      ],
+      "starts": [
+        10,
+        10.2
+      ]
+    },
+    {
+      "id": "C10_cooldown_four_voice_cap_and_ended_resource_cleanup",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C11_explicit_mute_stops_and_disconnects_queued_voices",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C12_hidden_event_cancels_two_queued_SOS_voices",
+      "outcome": "PASS",
+      "queued_before_hide": 2,
+      "remaining_after_hide": 0
+    },
+    {
+      "id": "C13_visibility_return_does_not_resume_or_replay_voices",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C14_pagehide_closes_audio_resets_preference_and_cooldowns",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C15_persisted_pageshow_does_not_resume_sound_early",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C16_current_resume_rejection_mutes_and_cleans_voices",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C17_stale_resume_rejection_cannot_mute_new_context",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C18_stale_ended_callback_cannot_remove_new_context_voices",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C19_hidden_and_unready_cues_create_no_new_voices",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C20_debug_audio_snapshot_reports_owned_voice_count_and_state",
+      "outcome": "PASS"
+    }
+  ]
+}

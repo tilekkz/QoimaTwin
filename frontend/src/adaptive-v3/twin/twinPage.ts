@@ -50,15 +50,20 @@ phone.addEventListener('change',applyEffects);
  *  only on forward playback crossings: seek, reset and presenter jumps stay silent. */
 type Cue='danger'|'sos'|'control'|'refuse';
 const CUE_NOTES:Record<Cue,[number,number,OscillatorType][]>={danger:[[660,0,'sine']],sos:[[440,0,'triangle'],[370,.2,'triangle']],control:[[523,0,'sine'],[784,.14,'sine']],refuse:[[196,0,'triangle']]};
-let audio:AudioContext|undefined,master:GainNode|undefined,soundOn=false,volume=Number(store.get('qoima.twin.volume')??.5),voices=0;const lastCue:Partial<Record<Cue,number>>={};
+let audio:AudioContext|undefined,master:GainNode|undefined,soundOn=false,volume=Number(store.get('qoima.twin.volume')??.5);const lastCue:Partial<Record<Cue,number>>={},voices=new Map<OscillatorNode,GainNode>();
 const soundBtn=$<HTMLButtonElement>('#tw-sound'),volumeIn=$<HTMLInputElement>('#tw-volume');
-function syncSound(){soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.querySelector('span')!.textContent=soundOn?'Звук включён':'Звук выключен';volumeIn.disabled=!soundOn;volumeIn.value=String(volume);if(master)master.gain.value=soundOn?volume*.35:0;}
-soundBtn.addEventListener('click',()=>{soundOn=!soundOn;if(soundOn&&!audio){audio=new AudioContext();master=audio.createGain();master.connect(audio.destination);}if(soundOn)void audio!.resume();syncSound();if(soundOn)cue('control');});
+function syncSound(){soundBtn.disabled=phase!=='ready';soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.querySelector('span')!.textContent=soundOn?'Звук включён':'Звук выключен';volumeIn.disabled=!soundOn||phase!=='ready';volumeIn.value=String(volume);if(master)master.gain.value=soundOn&&!document.hidden&&phase==='ready'?volume*.35:0;}
+function silenceAudio(close=false){
+ if(master)master.gain.value=0;
+ for(const [voice,gain]of voices){voice.onended=null;try{voice.stop();}catch{/* An already ended voice still needs disconnection. */}voice.disconnect();gain.disconnect();}voices.clear();
+ if(close){const previous=audio;audio=undefined;master=undefined;soundOn=false;for(const kind of Object.keys(lastCue) as Cue[])delete lastCue[kind];if(previous)void previous.close().catch(()=>{});syncSound();}
+}
+soundBtn.addEventListener('click',()=>{if(phase!=='ready')return;soundOn=!soundOn;if(soundOn&&!audio){audio=new AudioContext();master=audio.createGain();master.connect(audio.destination);}if(soundOn){const context=audio!;void context.resume().catch(()=>{if(audio!==context)return;soundOn=false;silenceAudio();syncSound();});}else silenceAudio();syncSound();if(soundOn)cue('control');});
 volumeIn.addEventListener('input',()=>{volume=Number(volumeIn.value);store.set('qoima.twin.volume',String(volume));syncSound();});
 function cue(kind:Cue){
- if(!soundOn||!audio||!master||voices>=4)return;const now=audio.currentTime;if(now-(lastCue[kind]??-9)<.9)return;lastCue[kind]=now;
- for(const [f,at,type] of CUE_NOTES[kind]){if(voices>=4)break;voices++;const o=audio.createOscillator(),g=audio.createGain(),t0=now+at,len=kind==='refuse'?.18:.38;
-  o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(.5,t0+.02);g.gain.exponentialRampToValueAtTime(.001,t0+len);o.connect(g).connect(master);o.start(t0);o.stop(t0+len+.02);o.onended=()=>{voices--;g.disconnect();};}
+ if(!soundOn||!audio||!master||document.hidden||phase!=='ready'||voices.size>=4)return;const now=audio.currentTime;if(now-(lastCue[kind]??-9)<.9)return;lastCue[kind]=now;
+ for(const [f,at,type] of CUE_NOTES[kind]){if(voices.size>=4)break;const o=audio.createOscillator(),g=audio.createGain(),t0=now+at,len=kind==='refuse'?.18:.38;voices.set(o,g);
+  o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(.5,t0+.02);g.gain.exponentialRampToValueAtTime(.001,t0+len);o.connect(g).connect(master);o.start(t0);o.stop(t0+len+.02);o.onended=()=>{voices.delete(o);o.disconnect();g.disconnect();};}
 }
 function cuesBetween(from:number,to:number){
  const shown:Variant[]=mode==='overlay'||mode==='diff'?['B']:['A','B'],fired=new Set<Cue>();
@@ -66,7 +71,7 @@ function cuesBetween(from:number,to:number){
  for(const k of fired)cue(k);
 }
 syncSound();
-function setPhase(next:Phase,message:string){phase=next;app.dataset.phase=next;status.textContent=message;retry.hidden=next!=='error';}
+function setPhase(next:Phase,message:string){phase=next;app.dataset.phase=next;status.textContent=message;retry.hidden=next!=='error';syncSound();}
 
 /* ---------- floating surfaces ---------- */
 const show=(el:HTMLElement,open:boolean)=>{el.dataset.open=String(open);el.toggleAttribute('inert',!open);};
@@ -110,10 +115,11 @@ function goStep(i:number){
  setPlaying(false);seek(s.t);setMode(s.mode);setSheet(s.sheet&&!phone.matches?s.sheet:null);fly(s.focus.target,s.focus.span);if(s.play)setPlaying(true);
 }
 function endPresent(){if(stepIndex<0)return;stepIndex=-1;app.dataset.presenting='false';show(present,false);}
+function nextPresent(){if(stepIndex<0)return;if(stepIndex>=PRESENTER_STEPS.length-1)endPresent();else goStep(stepIndex+1);}
 $('#tw-present-btn').addEventListener('click',()=>goStep(0));
 $('#tw-present-close').addEventListener('click',endPresent);
 pPrev.addEventListener('click',()=>goStep(stepIndex-1));
-pNext.addEventListener('click',()=>stepIndex>=PRESENTER_STEPS.length-1?endPresent():goStep(stepIndex+1));
+pNext.addEventListener('click',nextPresent);
 
 /* ---------- clock ---------- */
 const PLAY='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L6.1 2.6C5.6 2.3 5 2.6 5 3.2z"/></svg>',PAUSE='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3.2" height="11" rx="1.2"/><rect x="9.3" y="2.5" width="3.2" height="11" rx="1.2"/></svg>';
@@ -172,7 +178,7 @@ document.addEventListener('keydown',e=>{
  if(e.key==='Escape'){setPop(null);if(stepIndex>=0)endPresent();else if(sheet)setSheet(null);else select(null);return;}
  if(phase!=='ready'||e.altKey||e.ctrlKey||e.metaKey)return;const target=e.target as HTMLElement;if(target.closest('input,select,textarea,[role="slider"]'))return;
  // Presentation clickers send PageDown/PageUp; arrows work too while the walk-through is open.
- if(stepIndex>=0&&['ArrowRight','PageDown','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();goStep(stepIndex+(e.key==='ArrowRight'||e.key==='PageDown'?1:-1));return;}
+ if(stepIndex>=0&&['ArrowRight','PageDown','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();if(e.key==='ArrowRight'||e.key==='PageDown')nextPresent();else goStep(stepIndex-1);return;}
  if(e.key==='p'||e.key==='з'){if(stepIndex>=0)endPresent();else goStep(0);return;}
  if(/^[1-4]$/.test(e.key)){setMode(MODES[Number(e.key)-1]);return;}
  if(e.key==='+'||e.key==='='||e.key==='-'||e.key==='_'){e.preventDefault();nav?.zoomBy(e.key==='-'||e.key==='_'?1.35:1/1.35);return;}
@@ -256,7 +262,8 @@ let nav:ReturnType<typeof createNavigation>|undefined;
 /* ---------- loading ---------- */
 async function readLocal(path:string,signal:AbortSignal){const r=await fetch(import.meta.env.BASE_URL+path.replace(/^\//,''),{signal,cache:'no-store'});if(!r.ok)throw Error(r.status===404?'В локальном пакете не хватает данных склада V3.':'Данные склада временно недоступны. Повторите загрузку.');return r.text();}
 const pose=(b:BoundCargo):Pose=>({position:[...b.position],yaw:b.yaw_rad,dims:[...b.cargo.dimensions_xyz_m]});
-function disposeAll(){nav?.dispose();nav=undefined;cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;moves=[];nowKey='';}
+function clearSelectionState(){selectedId=null;selectedKind='HU';statusKey='';for(const button of $$<HTMLButtonElement>('.tw-moves button'))button.setAttribute('aria-pressed','false');show(sheets.find(s=>s.dataset.sheet==='sel')!,false);$('#tw-selection').replaceChildren();}
+function disposeAll(){silenceAudio();nav?.dispose();nav=undefined;cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;moves=[];nowKey='';clearSelectionState();endPresent();}
 async function load(){
  const token=++serial;controller?.abort();controller=new AbortController();const owned=controller;disposeAll();setPhase('loading','Открываем склад…');
  const timeout=setTimeout(()=>owned.abort(),45000);
@@ -276,6 +283,8 @@ async function load(){
   nav=createNavigation({host,wheelAlso:[layer],scene:sc,ground:tw.ground,reduced:()=>reduced.matches,onTap:tapAt,onInput:()=>{cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;},onMove:homeShown});
   setPhase('ready','');
   setMode(mode,false);setSplit(split);renderMoves();tw.setReady();applyEffects();seek(t);sc.setView('overview' as WarehouseView);setPlaying(playing);
+  // Start page link «Режим защиты» opens straight into the walk-through.
+  if(new URL(location.href).searchParams.get('present')==='1')goStep(0);
  }catch(error){
   if(token!==serial)return;const aborted=owned.signal.aborted;owned.abort();disposeAll();
   setPhase('error',aborted&&!(error instanceof WarehouseAdapterError)?'Загрузка заняла слишком много времени. Попробуйте ещё раз.':error instanceof Error?error.message:'Не удалось открыть склад. Попробуйте ещё раз.');
@@ -293,8 +302,8 @@ function reconcileReducedMotion(){
  twin?.setMode(mode);twin?.setTime(t);scene?.requestRender();return true;
 }
 reduced.addEventListener('change',reconcileReducedMotion);
-document.addEventListener('visibilitychange',()=>{if(document.hidden){setPlaying(false);finishCameraMotion();}});
-window.addEventListener('pagehide',()=>{serial++;controller?.abort();setPlaying(false);disposeAll();setPhase('disposed','Просмотр остановлен.');});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){silenceAudio();setPlaying(false);finishCameraMotion();}else syncSound();});
+window.addEventListener('pagehide',()=>{serial++;controller?.abort();silenceAudio(true);setPlaying(false);disposeAll();setPhase('disposed','Просмотр остановлен.');});
 window.addEventListener('pageshow',e=>{if(e.persisted)void load();});
-Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,sound:soundOn,reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers())}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),seek,setMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
+Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers())}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),seek,setMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
 syncPlay();setMode(mode,false);void load();

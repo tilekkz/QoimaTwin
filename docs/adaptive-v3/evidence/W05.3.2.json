@@ -1,0 +1,143 @@
+{
+  "task_id": "W05.3.2",
+  "purpose": "Actual second-account static native candidate audit completion only",
+  "audit_completed": true,
+  "audit_clean_cli_completion": true,
+  "root_acceptance_pending": false,
+  "reviewer": "root",
+  "fix_acceptance": "ROOT_ACCEPTED_NARROW_F01_W05.3.1",
+  "visual_acceptance": "ROOT_ACCEPTED_STATIC_CALIBRATION_ONLY",
+  "operational_admission": false,
+  "audit": {
+    "requested": {
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh"
+    },
+    "actual_correlated_session_metadata": {
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "thread_id": "01a1bc56-22fe-7c20-a2a8-f51b29682788",
+      "session_meta_id": "01a1bc56-22fe-7c20-a2a8-f51b29682788",
+      "session_meta_id_matches_thread": true,
+      "verified_fields": [
+        "session_meta.id",
+        "turn_context.model",
+        "turn_context.effort"
+      ]
+    },
+    "execution": {
+      "elapsed_seconds": 579.34,
+      "exit_code": 0,
+      "timed_out": false,
+      "clean_cli_completion": true
+    },
+    "finding_count": 1,
+    "severity_counts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1
+    },
+    "frozen_candidate_failure_demonstrated": false,
+    "unresolved_material_candidate_concerns": [],
+    "finding_summary": {
+      "id": "W05.3.2-F01",
+      "severity": "low",
+      "title": "Sparse JavaScript joint arrays bypass omitted-axis validation",
+      "evidence_kind": "executed_counterexample_against_extracted_exact_validator",
+      "frozen_dense_JSON_affected": false,
+      "full_production_apply_counterexample_executed": false,
+      "dense_index_followup": "PENDING_NOT_EXECUTED_IN_THIS_RECORD"
+    }
+  },
+  "packet": {
+    "directory": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z",
+    "manifest": {
+      "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/manifest.json",
+      "sha256": "5dbbca050d775ca398a92e368deef600b3e34ce72194712b01925160df29c53a"
+    },
+    "provenance": {
+      "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/provenance.json",
+      "sha256": "552fec10879811276664ccbf92e1259d561abbd3cd64ee918018cc90c5c1fe31"
+    },
+    "source_epochs": {
+      "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/source-epochs.json",
+      "sha256": "2a0aadeb3d6b93a65c0af6182e16596b37835dd08acf149655bc6a818a3d6c0a"
+    },
+    "readme": {
+      "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/README.md",
+      "sha256": "a681b38af99373a15a0965304e35e5366c11aa72b955e0739c19ec3ea91c56c3"
+    },
+    "original_artifacts": {
+      "audit.md": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/audit.md",
+        "sha256": "edb66c5e381409bf1cb037f6d6d367fbb4301b4c2ef522f928d7b40ee2941be7"
+      },
+      "findings.json": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/findings.json",
+        "sha256": "0ecd8ffce81179a982d339e230ec0c598f236916926d97c8800560b1c46be08e"
+      },
+      "probe-results.json": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/probe-results.json",
+        "sha256": "52f3f3ccf9e644633efa1874ed8b31728f72af1e960b96d2cd6dbf05ce5fed6d"
+      },
+      "source-hashes-before.json": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/source-hashes-before.json",
+        "sha256": "a4a3f81d739d25216247a97a7868c0b74314c8f3f52c1a7374264ba27091df8d"
+      },
+      "source-hashes-after.json": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/source-hashes-after.json",
+        "sha256": "4dbeaa1244be45bd9e0828447938061c02f549d928f6dcbb5cd9043a9424f693"
+      },
+      "probe-native.mjs": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/probe-native.mjs",
+        "sha256": "dab81229c246315e7f61ffc060b49acb4d66a8ba2466d82a56c84dec02e11dc1"
+      },
+      "native-probe-result.json": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/native-probe-result.json",
+        "sha256": "76947b64809cc443ccd64d1d0380e119b1c4feb5e29b268a81ce42401bf9412d"
+      },
+      "check-only-result.json": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/check-only-result.json",
+        "sha256": "6c85b416a35d43154844c83487de3033e1b517c0585efb06145f4ffdae13ecef"
+      },
+      "finalize-audit.mjs": {
+        "path": "assets/v3/iterations/worker-base/W05.3.2/account2-20261108T180523Z/finalize-audit.mjs",
+        "sha256": "7c9affdc3657994998040319d60dfd62aebd5fc99c6635de78008438e0c4bbeb"
+      }
+    },
+    "exact_original_file_count": 9,
+    "candidate_text_snapshot_count": 4,
+    "upstream_input_pin_count": 21,
+    "Three_libraries_or_GLBs_duplicated": false
+  },
+  "source_epochs": {
+    "captured_input_count": 21,
+    "host_start_end_equal": true,
+    "changed_inputs": [],
+    "auditor_reported_unchanged_count": 21,
+    "scope": "Audit start/end capture facts only; no continuous or future freshness claim."
+  },
+  "graph_evidence_limit": {
+    "project": "qoima-twin",
+    "supplied_generation": "2026-11-08T05:55:56Z",
+    "fresh_graph_claim": false,
+    "method": "Exact-source fallback plus21 hash pins; existing candidate coverage known stale/not tracked."
+  },
+  "scope_limits": [
+    "Audit completion does not approve the later dense-index fix or visual integration.",
+    "No additional source audit, solver/native probe, frontend edit, build, Chrome or renderer was executed by this archival step.",
+    "No runtime carry/physical join/backend workflow/operational acceptance is claimed.",
+    "Sanitized provenance excludes auth/config/raw transcripts/host environment and runner command/event logs."
+  ],
+  "root_audit_acceptance": {
+    "accepted": true,
+    "at_utc": "2026-11-08T18:26:42.901278+00:00",
+    "scope": "Independent audit completion only. Root read original findings/audit and rehashed16 immutable packet entries; actualSol/xhigh clean579.34s/exit0/no21inputdrift. No material frozen-candidate failure;1LOW in-memory sparse-axis guard issue remains for a narrow later fix. Native static pose and visual/runtime acceptance remain separate."
+  },
+  "current_resolution": {
+    "path": "docs/adaptive-v3/evidence/W05.3.1.json",
+    "sha256": "fbd2e3021041b45875d7621799f4f0638a8486766e070d0fd99f54d819a0c7b8",
+    "scope": "Later narrow guardfix and staticnative+visual calibration; original audit remains immutable at prior074epoch."
+  }
+}

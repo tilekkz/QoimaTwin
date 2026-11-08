@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "task": "Twin M001 bubble semantics",
+  "label": "COMPONENT_ONLY",
+  "public_bootstrap": false,
+  "native_admission": false,
+  "native_530_HU_scene": false,
+  "rendered_appearance": false,
+  "scope": "Exact private domFor helper and actual production bubble-pool creation/click listeners extracted from current TypeScript AST; real scenario samplers, synthetic worker spots, DOM/projection/camera stubs. Whole renderer factory and WebGL are not executed.",
+  "input_hashes": {
+    "frontend/tools/check-twin-bubbles-v3.cjs": "95fea1b710c7f4051865a04fd56b87420b30967809e4374fde357dff8958614d",
+    "frontend/src/adaptive-v3/twin/twinRender.ts": "a4b72f9ab9726d89727db098a7b77d6f9717c84f094c0228b2b44ea927a2dc17",
+    "frontend/src/adaptive-v3/twin/twinScenario.ts": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc"
+  },
+  "compiler": {
+    "dependency": "frontend/node_modules/typescript",
+    "version": "5.9.3"
+  },
+  "extracted_source": {
+    "domFor_line": 164,
+    "pool_and_click_listener_line": 117
+  },
+  "historical_reference": {
+    "audit_findings_path": "work/v3/account2-twin-ui-audit/20261108T171019Z/findings.json",
+    "audit_findings_sha256": "9234b4c149e794062ad7753134a82d48305bf89c91261540d40a6d91eebe3223",
+    "finding_id": "TWIN-A2-001",
+    "before_fix_renderer_sha256": "11b7001b50daf734ab84cb0f5599d53444a0379fdfbd62f5dc2f7ba5274cda56",
+    "before_fix_copy": "work/v3/twin-bubbles-check/red/twinRender.ts",
+    "before_fix_result_path": "work/v3/twin-bubbles-check/red/before-fix-results.json",
+    "before_fix_result_sha256": "cf7104c4937f11051375be72f09125c23dcccce6519f54f565d447b7c4b2b87c",
+    "before_fix_counts": {
+      "cases": 18,
+      "passed": 6,
+      "failed": 12
+    },
+    "note": "Historical source/audit reference only. No new CLI completion or native/browser acceptance claim."
+  },
+  "counts": {
+    "cases": 18,
+    "passed": 18,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "id": "C01_A_current_actor_semantics_and_installed_click",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C02_B_current_actor_semantics_and_installed_click",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C03_full_off_full_same_key_reappearance",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C04_full_calm_full_restores_hidden_pool_slots",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C05_full_calm_off_calm_full_repeated_cycles",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C06_phone_calm_full_budget_reappearance",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C07_scale_threshold_exact_and_reappearance",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C08_gray_pass_hide_and_reappearance",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C09_scissor_clipped_worker_reappearance",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C10_same_kind_new_cause_updates_aria_and_title",
+      "outcome": "PASS",
+      "before_text": "Ждёт: Очередь на ветку PK03 растёт",
+      "after_text": "Ждёт: Поток ветки PK03 переведён на свободный PK05"
+    },
+    {
+      "id": "C11_random_absolute_seek_restores_current_semantics",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C12_visible_pool_reuse_replaces_previous_actor",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C13_hidden_pool_reuse_replaces_previous_actor",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C14_selected_worker_reorders_pool_without_stale_identity",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C15_icon_and_reentry_animation_cache_remains_visual_only",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C16_reduced_motion_skips_animation_preserves_semantics",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C17_off_buttons_have_no_dispatchable_actor",
+      "outcome": "PASS"
+    },
+    {
+      "id": "C18_unused_pool_slots_have_no_previous_actor",
+      "outcome": "PASS"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T16:32:02.827665+00:00",
+  "updated_at": "2026-11-08T19:04:21.236424+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -2786,7 +2786,12 @@
         "docs/adaptive-v3/specs/W14.6.md",
         "docs/adaptive-v3/evidence/W14.6.json"
       ],
-      "criteria": "Two viewers share input clock/camera/time control without changing business inputs; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Two viewers share input clock/camera/time control without changing business inputs; actual artifact and relevant reference/runtime evidence reviewed",
+      "children": [
+        "W14.6.1",
+        "W14.6.2",
+        "W14.6.3"
+      ]
     },
     {
       "id": "W14.7",
@@ -3996,13 +4001,18 @@
         "W05.2"
       ],
       "criteria": "Light cargo pick/pack joins with complete units and support; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "VERIFY",
+      "owner": "root_light_join",
       "outputs": [
         "docs/adaptive-v3/specs/W05.3.md",
         "docs/adaptive-v3/evidence/W05.3.json"
       ],
-      "actual": "Declared before implementation; root must approve actual bounded evidence."
+      "actual": "Source discovery complete: prepared SMALL pick transfers2innerfixtureunits, staticcarrywholeHU24units isseparate; P04requiresunprepared1.02kgwrapper+contents. Parent nowdecomposed; first admit nativegrip onEXISTINGP02worker-base without C01teleport/rigswap. Pickup/loadedgait/setdown/packingpreparation and Scene joins remain subsequent native gates.",
+      "children": [
+        "W05.3.1",
+        "W05.3.2",
+        "W05.3.3"
+      ]
     },
     {
       "id": "W05.4",
@@ -4199,6 +4209,109 @@
         "docs/adaptive-v3/evidence/W05.4.4-checks.json"
       ],
       "actual": "Root accepted source-bound reversible same-HU/FL02/F02 production preview:18browserchecks/9reviewedimages/30HTTPsources/229freshfiles, exact native-buffer/ledger restoration, exclusive legacy previews, cancel/latest/dispose/RM/mobile and3independent lifecycle fixes. Portablecomponent10behavior+1conditionaldeadline limitation retained. No operational job/resource/continuous collision claim; W05.4 remains broader."
+    },
+    {
+      "id": "W14.6.1",
+      "parent": "W14.6",
+      "title": "Review current demonstrational Twin controls and defense walkthrough",
+      "depends_on": [
+        "W02",
+        "W05.4.4"
+      ],
+      "owner": "defense_ui",
+      "status": "PASS",
+      "outputs": [
+        "frontend/tools/check-twin-ui-v3.mjs",
+        "docs/adaptive-v3/specs/W14.6.1.md",
+        "docs/adaptive-v3/evidence/W14.6.1-checks.json"
+      ],
+      "criteria": "Actual compiled demo controls, four modes, camera/time/selection, presenter steps and mobile/error/lifecycle behavior; exact source labels and unchanged population. This bounded demo UI gate does not satisfy parent business-input/operational comparison prerequisites.",
+      "actual": "FinalCSS063b580/e91build actualUI30/30PASS, zero errors/drift, PID36244terminated159s. Rootcheck-only36inputs/16diagnosesPASS; current27imagescovered:21byteidenticalpriorreview+6changedpersonallyopened centredpresenters. Final30 includesnativebounds andall4mobilemodechoices. SeparateMQL running; no physical/engine admission."
+    },
+    {
+      "id": "W14.6.2",
+      "parent": "W14.6",
+      "title": "Independent second-account audit of current Twin UI lifecycle and semantics",
+      "depends_on": [
+        "W02"
+      ],
+      "owner": "account2_twin_ui",
+      "status": "PASS",
+      "outputs": [
+        "docs/adaptive-v3/evidence/W14.6.2.json"
+      ],
+      "criteria": "Actual Sol/xhigh session proof, frozen input hashes, bounded isolated findings and honest CPU/stub limitations. No code edits, browser/Blender or operational admission.",
+      "actual": "Root accepted bounded audit completion: actual Sol/xhigh clean576.89s/exit0;23 immutable packet entries rehashed, dual source epochs reviewed,2medium2low/9component-only probes. Separate current38component cases rerunPASS; UI browser/fix acceptance remains W14.6.1 pending, no wholeUI or physical admission."
+    },
+    {
+      "id": "W05.3.1",
+      "parent": "W05.3",
+      "title": "Native whole-HU grip calibration on the existing P02 worker-base rig",
+      "depends_on": [
+        "W05.2",
+        "W04"
+      ],
+      "owner": "base_carry_pose",
+      "status": "PASS",
+      "outputs": [
+        "frontend/tools/solve-worker-base-carry-v3.mjs",
+        "frontend/public/data/v3/worker-base-carry-pose.json",
+        "docs/adaptive-v3/specs/W05.3.1.md",
+        "docs/adaptive-v3/evidence/W05.3.1-checks.json"
+      ],
+      "criteria": "Explicit P02 and original worker-base geometry/limits, original whole SMALL_CARTON dimensions/mass24units. Derive native opposed two-hand pad contact/C-mouth/body/HU clearance and exact source-pose restoration. Calibration only; no pickup/route/packing/strength/runtime admission or rest-guard bypass.",
+      "actual": "Root fullrecomputed38casecheck-onlyPASS,5actualnativebrowserimagespersonallyviewed, exactmodel/dataHTTP/bodypins verified, rest-heldrestoreimageidentical. F01controls-onlyactualRED→denseindexfixGREEN, rootexactnumericpose/nativereportsemanticsmatcholdaudited074. StaticlocalP02/basewholeHUgrip acceptedonly; no pickup/loadedwalk/Scene/force/completecollision admission."
+    },
+    {
+      "id": "W14.6.3",
+      "parent": "W14.6",
+      "title": "Preserve mobile contextual navigation and keyboard focus in the shared V3 shell",
+      "depends_on": [
+        "W02"
+      ],
+      "owner": "support_shell",
+      "status": "PASS",
+      "outputs": [
+        "frontend/src/adaptive-v3/shell/shell.ts",
+        "frontend/src/adaptive-v3/shell/shell.css",
+        "frontend/src/adaptive-v3/home/home.css",
+        "docs/adaptive-v3/evidence/W14.6.3.json"
+      ],
+      "criteria": "Preserve current home design and all existing actor/roles/V2 deep links at mobile widths, restore menu trigger focus on Escape from its subtree without outside-pointer focus theft, normal muted copy contrast>=4.5. Source review and bounded actual desktop/mobile smoke; no complete site/warehouse/engine admission.",
+      "actual": "Root verified43pins/12manifestentries, personallyviewed8exactactualimages;9nativeproductioncasesPASS/PID39492terminated43.362s. Mobilecontext/query/V2destinations andEscape focus preserved, mutedcontrast>=4.851,320pxmenu/presenter/all4modebounds GREEN. Thinarchiveactualoriginals separatefromUI30/MQL, no newV2render/fullsite certificate."
+    },
+    {
+      "id": "W05.3.2",
+      "parent": "W05.3",
+      "title": "Independent actual second-account review of native P02 carry calibration",
+      "depends_on": [
+        "W05.2"
+      ],
+      "owner": "account2_base_carry",
+      "status": "PASS",
+      "outputs": [
+        "docs/adaptive-v3/evidence/W05.3.2.json"
+      ],
+      "criteria": "Actual requested and correlated gpt-6.1-sol/xhigh session, frozen source/calibration hashes, bounded read-only source/native checker audit and honest executed limits. Audit completion only, no runtime pickup/walk/strength admission.",
+      "actual": "Root accepted auditcompletiononly: actualSol/xhigh579.34s/exit0/no21inputdrift;16immutablepacketentries rehashed and audit/findingsread. No materialfrozencandidatefailure,1LOW sparseJSaxis guard tofixaftercurrentfrontendfreeze. Staticnativecalibration visual/runtime acceptance remains W05.3.1 separate."
+    },
+    {
+      "id": "W05.3.3",
+      "parent": "W05.3",
+      "title": "Native pre-held P02/base loaded-walk calibration with one whole HU",
+      "depends_on": [
+        "W05.3.1",
+        "W05.2"
+      ],
+      "owner": "loaded_walk_calibration",
+      "status": "READY",
+      "outputs": [
+        "frontend/src/adaptive-v3/warehouseLoadedWalkCalibration.ts",
+        "frontend/tools/check-warehouse-loaded-walk-calibration-v3.mjs",
+        "docs/adaptive-v3/evidence/W05.3.3-checks.json"
+      ],
+      "criteria": "Prescribed isolated pre-held calibration start on two exact clear canonical arcs, same P02/base and original whole DEMO067:01 identity/dimensions/mass/24units. Compose frozen8arm and6leg joints atomically from puregait, never bypass public unloadedwalk guards. Native contacts<=2um, stance/turn/foreign clearances and sameFloat32HUindex preservation with exact rollback/dispose. No sourcepickup, home departure, Scene/globallease, packing or operational admission.",
+      "actual": "One three-file nextchild declared behind W05.3.1. P02sourcepickup/homeexit still inadmitted due rack/C01; isolatedpre-held canonicalstraight+90degree loadedwalk calibration only. No implementation before staticnativeaudit and rootvisualacceptance."
     }
   ],
   "execution": {
