@@ -78,7 +78,10 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P10.1](tasks/P10.1.md) | PASS | root | R10,P03,P04,P05,P06,P07 | Canonical24 actor registry and accepted role/clip bindings |
 | [P10.2](tasks/P10.2.md) | PASS | root | P10.1 | Readable role legend and local staff catalogue |
 | [P10.3](tasks/P10.3.md) | PASS | root | P10.2 | Reviewed staff catalogue states and current-source checks |
-| [P11](tasks/P11.md) | READY | unassigned | R10,P10,C07 | Подготовлен WorkerProfile с навыками |
+| [P11](tasks/P11.md) | PASS | root | R10,P10,C07 | Подготовлен WorkerProfile с навыками |
+| [P11.1](tasks/P11.1.md) | PASS | root | R10,P10,C07 | Same24 immutable visual skill profiles |
+| [P11.2](tasks/P11.2.md) | PASS | root | P11.1 | Explicit role/equipment/manual-mass capability gate |
+| [P11.3](tasks/P11.3.md) | PASS | root | P11.2 | Reviewed skill profile inspector and complete local states |
 | [W01](tasks/W01.md) | READY | unassigned | C12,P10 | Подготовлен детерминированный visual fixture v3 |
 | [W02](tasks/W02.md) | TODO | unassigned | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | TODO | unassigned | W02,L06,L07 | Подключены движения по реальному графу |

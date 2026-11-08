@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
           main: fileURLToPath(new URL('./index.html', import.meta.url)),
           standV3: fileURLToPath(new URL('./stand-v3.html', import.meta.url)),
           staffV3: fileURLToPath(new URL('./staff-v3.html', import.meta.url)),
+          skillsV3: fileURLToPath(new URL('./skills-v3.html', import.meta.url)),
         },
       },
     },

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23293d46'/%3E%3Ctext x='16' y='24' text-anchor='middle' fill='%23f6f5ef' font-size='25' font-family='serif'%3EQ%3C/text%3E%3C/svg%3E"/><title>Навыки команды · QoimaTwin V3</title></head>
+<body>
+  <header class="site-header"><a class="brand" href="staff-v3.html"><span class="brand-mark" aria-hidden="true">Q</span><span><strong>QoimaTwin</strong><small>Профили команды / V3</small></span></a><nav class="skills-nav" aria-label="Разделы V3"><a href="staff-v3.html">Реестр работников</a><a href="stand-v3.html">Модели ↗</a></nav></header>
+  <main id="worker-skills" data-phase="initial">
+    <section class="intro"><div><p class="eyebrow">Профили сценария</p><h1>Навыки<br/>и допуски.</h1><p class="intro-copy">24 исходных ID. Два комплектовщика с дополнительным навыком упаковки. Два водителя со своими машинами.</p></div><div class="source-summary"><span class="source-tag">visual fixture</span><strong>Проектные допущения</strong><p>Синтетические навыки и скорость.<br/>Каталог доступен только для просмотра.</p><small>Допуск профиля проверяется отдельно от маршрута и груза.</small></div></section>
+    <div class="load-strip"><p id="load-status" role="status" aria-live="polite">Подготовка профилей…</p><div class="load-actions"><button id="retry-load" hidden>Повторить загрузку</button><a id="package-help" href="staff-v3.html" hidden>Открыть реестр работников</a></div></div>
+    <div id="skills-content" hidden>
+      <div class="profile-picker"><label for="worker-select">Работник</label><select id="worker-select" disabled><option value="">Выберите работника</option></select></div>
+      <div id="unknown-profile" class="empty-results" hidden><h2>Такого ID нет в реестре</h2><p id="unknown-copy"></p><button id="show-P01">Показать P01</button></div>
+      <div id="profile-panel" hidden>
+        <section class="profile-heading"><div><p class="eyebrow">ID работника</p><h2 id="profile-id"></h2><p id="baseline-role"></p></div><div class="profile-facts"><div><span>Пеший переход</span><strong id="walk-speed"></strong></div><div><span>Ручное перемещение</span><strong id="manual-limit"></strong></div></div></section>
+        <div class="skills-grid"><section class="skill-panel" aria-labelledby="role-skills-title"><h2 id="role-skills-title">Роли и коэффициенты навыка</h2><p class="panel-note">Коэффициенты заданы для visual-сценария.</p><ul id="role-skills" class="skill-rows"></ul></section><div><section class="skill-panel" aria-labelledby="vehicles-title"><h2 id="vehicles-title">Техника</h2><ul id="vehicle-permissions" class="skill-rows"></ul></section><section class="skill-panel equipment-panel" aria-labelledby="equipment-title"><h2 id="equipment-title">Оборудование профиля</h2><ul id="equipment-list" class="equipment-list"></ul><p class="panel-note">Перед заданием проверяются свободный ресурс, груз и маршрут.</p></section></div></div>
+        <details id="capability-examples" class="capability-examples"><summary>Примеры проверки допуска</summary><p class="panel-note">Результат относится к навыкам профиля. Опоры, габариты, масса груза и маршрут проходят отдельную проверку.</p><ul id="capability-results" class="skill-rows"></ul></details>
+        <aside class="catalogue-note"><strong>Исходная роль сохраняется в профиле.</strong><p>События назначения и путь к новому посту относятся к состоянию сценария. Проверка допуска в этом каталоге сохраняет ID и данные работника.</p><p>Лимит ручного перемещения 15 кг — синтетическое правило visual-сценария. Приёмщик сканирует тяжёлый груз на опоре; для перевозки 455 кг нужен погрузчик и отдельный допуск груза.</p></aside>
+      </div>
+    </div><noscript><p class="empty-results">Включите JavaScript для чтения профилей. <a href="staff-v3.html">Реестр работников</a></p></noscript>
+  </main><footer>QoimaTwin V3 · синтетические профили навыков · 24 исходных работника</footer>
+  <script type="module" src="/src/adaptive-v3/workerSkillsPage.ts"></script>
+</body>
+</html>
