@@ -1,0 +1,914 @@
+{
+  "actual_engine_run": false,
+  "artifacts": {
+    "docs/adaptive-v3/evidence/W11.1.json": {
+      "bytes": 25622,
+      "sha256": "b2e55f7dc97b6f43022992297ff5cda27292a4572251ceae12ddd499bac5042e"
+    },
+    "docs/adaptive-v3/fixtures/scenarios/W11-heavy-inbound-input-v3.json": {
+      "bytes": 614791,
+      "sha256": "44022f72105fb2252a8cd8b8b950e10f7590e5f732d86caa30178edbfcaa4393"
+    },
+    "docs/adaptive-v3/specs/W11.1.md": {
+      "bytes": 4499,
+      "sha256": "922daeb45de3d9aa82d67f33697bdcd02484d840afdf8ad50f7aa78dbe39f718"
+    },
+    "tools/visual/v3/build_heavy_inbound_scenario.py": {
+      "bytes": 13241,
+      "sha256": "b1214c0e52c3843f920da18f06b3ca472bcddb2d0c3e4b974d4e33c42522160e"
+    },
+    "tools/visual/v3/verify_heavy_inbound_scenario.py": {
+      "bytes": 35834,
+      "sha256": "5f681688668c6b8346b1a51f875dc01a7a0164056b41a6147447096f2f7eca67"
+    }
+  },
+  "engine_operation": false,
+  "execution_ready": false,
+  "input_integrity_verified": true,
+  "negative_case_count": 118,
+  "negative_cases": [
+    {
+      "case": "fabricated_engine_operation",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "fabricated_actual_engine_run",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "fabricated_execution_ready",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "fabricated_operational_admission",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "fabricated_visual_complete",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "fabricated_backend_integration_complete",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "actual_source_kind",
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "completed_event",
+      "reason": "FABRICATED_EXECUTION",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "invented_action",
+      "reason": "FABRICATED_EXECUTION",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "throughput",
+      "reason": "UNAUTHORIZED_FIELD",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "stale_hash",
+      "reason": "SOURCE_HASHES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_initial_stock",
+      "reason": "ORIGINAL_INITIAL_STOCK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_workers",
+      "reason": "ORIGINAL_WORKERS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_vehicles",
+      "reason": "ORIGINAL_VEHICLES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_ports",
+      "reason": "ORIGINAL_PORTS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_archetypes",
+      "reason": "ORIGINAL_ARCHETYPES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_skus",
+      "reason": "ORIGINAL_SKUS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "stock_mass",
+      "reason": "ORIGINAL_INITIAL_STOCK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "stock_bool_as_one_unit",
+      "reason": "ORIGINAL_INITIAL_STOCK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "frozen_catalogue_bool_dimension",
+      "reason": "ORIGINAL_ARCHETYPES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "original_upstream_request",
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "duplicate_request",
+      "reason": "REQUEST_IDENTITIES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "unknown_request_ID",
+      "reason": "ORIGINAL_REQUEST_MISSING",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "duplicate_HU",
+      "reason": "UPSTREAM_IDENTITIES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "duplicate_lot",
+      "reason": "UPSTREAM_IDENTITIES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "missing_upstream",
+      "reason": "UPSTREAM_IDENTITIES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "unknown_HU",
+      "reason": "HU_REQUEST_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "unknown_lot",
+      "reason": "HU_REQUEST_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "unknown_receipt_request",
+      "reason": "UPSTREAM_REQUEST_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "wrong_gross_mass_kg",
+      "reason": "CATALOGUE_PHYSICS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "wrong_dimensions_xyz_m",
+      "reason": "CATALOGUE_PHYSICS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "wrong_orientation_id",
+      "reason": "CATALOGUE_PHYSICS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "wrong_model_scale_factor",
+      "reason": "CATALOGUE_PHYSICS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_quantity_bool",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_quantity_float",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_quantity_string",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_quantity_zero",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_quantity_negative",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_dimension_bool",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_dimension_string",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_dimension_zero",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_dimension_negative",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_dimension_nan",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_IBC_dimension_infinite",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_dimensions_length",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_mass_bool",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_mass_string",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_mass_zero",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_mass_negative",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_mass_nan",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_mass_infinite",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_bool_scale",
+      "reason": "HU_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "materialized_float_scale",
+      "reason": "CATALOGUE_PHYSICS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "catalogue_ID",
+      "reason": "CATALOGUE_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "catalogue_pointer",
+      "reason": "CATALOGUE_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "completed_receipt",
+      "reason": "RECEIPT_STATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "invented_stock_origin",
+      "reason": "RECEIPT_STATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "rate_changed",
+      "reason": "PREREGISTERED_RATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "extra_rate",
+      "reason": "RATE_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "rate_bool_as_one_HU",
+      "reason": "PREREGISTERED_RATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "rate_integer_as_design_flag",
+      "reason": "PREREGISTERED_RATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "rate_float_HU_count",
+      "reason": "PREREGISTERED_RATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "hidden_override",
+      "reason": "COMPARISON_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "integer_as_comparison_flag",
+      "reason": "COMPARISON_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "integer_as_no_op_flag",
+      "reason": "COMPARISON_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "removed_runtime_gate",
+      "reason": "RUNTIME_GATE_REMOVED",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "loaded_profile",
+      "reason": "LOAD_PROFILE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "missing_LONG_attachment",
+      "reason": "REQUIRED_ATTACHMENT",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "manual_heavy",
+      "reason": "HANDLING_MODE",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "wrong_pair",
+      "reason": "HANDLER_PAIR",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "partial_four_unit_pallet",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "fractional_units",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "IBC_request_quantity_bool",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "IBC_request_quantity_float",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "IBC_request_quantity_string",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "IBC_request_quantity_zero",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "IBC_request_quantity_negative",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "request_bool_HU_count",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "deadline_before_release",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "request_deadline_bool",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "request_deadline_string",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "request_deadline_zero",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "request_deadline_negative",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "request_deadline_nan",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": false
+    },
+    {
+      "case": "request_deadline_infinite",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": false
+    },
+    {
+      "case": "request_boolean_release",
+      "reason": "REQUEST_TIME",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "unknown_port",
+      "reason": "UNKNOWN_PORT",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "heavy_parcel_port",
+      "reason": "PORT_CARGO_OR_DIRECTION",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "wrong_port_direction",
+      "reason": "PORT_CARGO_OR_DIRECTION",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "compatible_undeclared_port",
+      "reason": "EXTERNAL_RELEASE_OR_PORT",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_deadline",
+      "reason": "EXTERNAL_RELEASE_OR_PORT",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_release",
+      "reason": "EXTERNAL_RELEASE_OR_PORT",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "coordinated_unknown_HU",
+      "reason": "EXTERNAL_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "coordinated_unknown_lot",
+      "reason": "EXTERNAL_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "coordinated_unknown_request",
+      "reason": "EXTERNAL_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "coordinated_partial_pick",
+      "reason": "REQUEST_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "upstream_stock_collision",
+      "reason": "REQUEST_IDENTITIES",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "hidden_HU_completion",
+      "reason": "HU_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "hidden_request_override",
+      "reason": "REQUEST_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "invented_handler_admission",
+      "reason": "HANDLING_FIELDS_OR_ADMISSION",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "changed_clock",
+      "reason": "REFERENCE_OR_CLOCK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "frozen_clock_numeric_type",
+      "reason": "REFERENCE_OR_CLOCK",
+      "rejected": true,
+      "source_rechecked": true,
+      "superficial_hash_recomputed": true
+    },
+    {
+      "case": "different_path",
+      "reason": "PAIRED_CONCRETE_INPUT",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "different_hash",
+      "reason": "PAIRED_CONCRETE_INPUT",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "variant_jobs",
+      "reason": "PAIRED_CONCRETE_INPUT",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "both_wrong_ref",
+      "reason": "PAIRED_CONCRETE_INPUT",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "paired_float_byte_count",
+      "reason": "PAIRED_CONCRETE_INPUT",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "summary_float_worker_count",
+      "reason": "EVIDENCE_SUMMARY",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "isolated_overrating_load",
+      "reason": "RATING_VIOLATION",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_cargo_bool_unit_count",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_CARGO_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_cargo_bool_dimension",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_CARGO_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_cargo_bool_tare",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_CARGO_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_cargo_nonfinite_mass",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_CARGO_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_load_bool_attachment_mass",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_LOAD_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_load_bool_one_metre_arm",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_LOAD_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_load_bool_dimension",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_LOAD_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_rating_infinite_budget",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_LOAD_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    },
+    {
+      "case": "source_rating_bool_capacity",
+      "isolated_source_constraint": true,
+      "reason": "SOURCE_LOAD_NUMERIC_FIELDS",
+      "rejected": true,
+      "source_rechecked": true
+    }
+  ],
+  "paired_inputs_identical": true,
+  "positive_case_definition": "28 source-bound request/handling cases, one full semantic/source audit, one exact concrete A/B identity audit",
+  "positive_cases": 30,
+  "reproducibility": {
+    "canonical_UTF8_LF_bytes": true,
+    "repeated_semantic_audit_equal": true
+  },
+  "scope": "Integrity only; pending root review. No W11/runtime/visual/backend acceptance.",
+  "source_hashes": {
+    "assets/references/v3/r12-dimension-targets.json": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+    "docs/adaptive-v3/fixtures/warehouse-request-stream-v3.json": "149462c7c3eb29c261a9ee309732fd79d018bb953e1886b2b3603529ed1bbb15",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/baseline-input-v3.json": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/cargo-mass-cases-v3.json": "3d4e15a4941f4692d14238f4891a1ca24bdd46858e327d4e1e0682fb2b4e25ce",
+    "docs/v3/contract-proposals/handoff/manifest.json": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+    "docs/v3/contract-proposals/large-gate-v3.json": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8",
+    "docs/v3/contract-proposals/layout-links-v3.json": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "docs/v3/contract-proposals/storage-layout-v3.json": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+    "docs/v3/contract-proposals/storage-slots-v3.json": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "docs/v3/contract-proposals/vehicle-graph-v3.json": "be17461061cc33fe07540d0bc5572f61ce74ac9852198ee5423ed549deb3f832",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "tools/visual/v3/build_warehouse_fixture.py": "883b53517e2f6c19cc823e37e799fb39d4d919f079bc7034b55e05ff5b63b6af"
+  },
+  "source_kind": "visual_fixture",
+  "status": "input_only_candidate_pending_root_review",
+  "summary": {
+    "added_HUs": 12,
+    "added_mass_kg": "5236.0",
+    "added_requests": 12,
+    "added_units": 132,
+    "handling_modes": {
+      "forklift_with_compatible_load_support": 24,
+      "manual_within_worker_and_handling_unit_limits": 4
+    },
+    "initial_HUs": 530,
+    "initial_mass_kg": "9403.85",
+    "initial_units": 12256,
+    "original_requests": 16,
+    "original_upstream_HUs": 8,
+    "original_upstream_mass_kg": "1784.29",
+    "original_upstream_units": 107,
+    "port_requests": {
+      "IN_E_PARCEL": 1,
+      "IN_N_STANDARD": 2,
+      "IN_W_BULK": 17,
+      "OUT_E_B2B": 4,
+      "OUT_S_EXPRESS": 1,
+      "OUT_W_RETAIL": 3
+    },
+    "requests": 28,
+    "vehicles": 2,
+    "workers": 24
+  },
+  "task_id": "W11.1"
+}

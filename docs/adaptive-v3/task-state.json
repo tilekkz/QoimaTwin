@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T11:33:20.721915+00:00",
+  "updated_at": "2026-11-08T11:57:18.477964+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1615,7 +1615,7 @@
         "M09"
       ],
       "criteria": "Тяжёлый груз идёт допустимым handling mode; очередь/отказ объяснимы, оба исходных размещения допустимы",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W11.md",
@@ -1834,11 +1834,14 @@
         "W04"
       ],
       "criteria": "Положительные и отрицательные примеры габаритов/массы; сначала compatibility, затем cost",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
+        "tools/visual/v3/check_all_sku_slot_compatibility.py",
+        "docs/adaptive-v3/specs/Q03.md",
         "docs/adaptive-v3/evidence/Q03.json"
-      ]
+      ],
+      "actual": "Root accepted exhaustive200SKUx776slot QA:155200cases/58704eligible96496rejected,3exactdimensionboundaries30mutationnegatives13integritynegatives. Independent reviewer reprobed fixed SKU-template swap and negativepointer attacks:both rejected beforeevaluator. Original530HU12256units9403.85kg and8current root-reviewed W04images retained; no newrender/engineclaim."
     },
     {
       "id": "Q04",
@@ -3923,13 +3926,18 @@
         "M09"
       ],
       "criteria": "Preregistered heavy receipts/materialized HU identities and same-input A/B bytes; immutable530initialHU/24workers/2vehicles; actual cargo/port/handler constraints and independent semantic negatives. Input-only, no runtime/throughput claims.",
-      "status": "VERIFY",
+      "status": "PASS",
       "owner": "account2",
       "outputs": [
         "docs/adaptive-v3/specs/W11.1.md",
         "docs/adaptive-v3/evidence/W11.1.json"
       ],
-      "actual": "Second-account production completed; independent source and check-only review in progress. Parent W11 runtime remains open."
+      "actual": "Root accepted frozen heavy-inbound integrity after independent source review and bool/number fix:30positive118negative; same A/B bytes, original530HU/24workers/2vehicles plus12explicitexternalHU. Root-review source hashes saved. Parent W11 actions/resources/loadedroutes/runtime remain open.",
+      "evidence": [
+        "docs/adaptive-v3/evidence/W11.1-root-review.json",
+        "docs/adaptive-v3/evidence/W11.1.json",
+        "docs/adaptive-v3/evidence/W11.1-checks.json"
+      ]
     },
     {
       "id": "W05.1",
@@ -3942,13 +3950,17 @@
         "P11"
       ],
       "criteria": "Source-bound absolute action timeline and exclusive resource intervals; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "action_timeline",
       "outputs": [
         "docs/adaptive-v3/specs/W05.1.md",
         "docs/adaptive-v3/evidence/W05.1.json"
       ],
-      "actual": "Implement only typed source-bound absolute action intervals/resource calendar and deterministic clock foundation; physicalscenejoins remain laterchildren. Exactnewfiles assigned in card beforeexecution."
+      "actual": "Root full gate+build and independent adversarial review PASS:34positive85negative4clockchecks41sources; source-bound16clips andexclusive24actors2vehicles6postsoptional1cart530HU calendar. Fixed shallow-frozen livebundle exploit via deepvalidation/privateverifiedsnapshot. Foundation only; physicaljoins/W05parent open.",
+      "evidence": [
+        "docs/adaptive-v3/evidence/W05.1.json",
+        "docs/adaptive-v3/evidence/W05.1-checks.json"
+      ]
     },
     {
       "id": "W05.2",
@@ -3958,13 +3970,16 @@
         "W05.1"
       ],
       "criteria": "Grounded canonical worker walking and action-frame bindings; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "ACTIVE",
+      "owner": "action_walking",
       "outputs": [
+        "frontend/src/adaptive-v3/warehouseWorkerGait.ts",
+        "frontend/src/adaptive-v3/warehouseWorkerWalk.ts",
+        "frontend/tools/check-warehouse-worker-walk-v3.mjs",
         "docs/adaptive-v3/specs/W05.2.md",
-        "docs/adaptive-v3/evidence/W05.2.json"
+        "docs/adaptive-v3/evidence/W05.2-checks.json"
       ],
-      "actual": "Declared before implementation; root must approve actual bounded evidence."
+      "actual": "Implement source-bound absolute grounded human gait/walk action-frame primitives and native QA in exact new files only. Same registered IDs/source geometry; actualwarehouse renderer integration remains W05.5; no operationalcompletion."
     },
     {
       "id": "W05.3",
@@ -3990,7 +4005,7 @@
         "W05.1"
       ],
       "criteria": "Loaded forklift physical joins and route/resource admission; same24actors and immutable HU accounting, deterministic source-labelled state, no cosmetic job completion.",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W05.4.md",

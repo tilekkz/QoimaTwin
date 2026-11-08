@@ -1,0 +1,37 @@
+{
+  "task_id": "W05.1",
+  "passed": true,
+  "reviewer": "root",
+  "independent_reviewer": "holder_browser_gate",
+  "reviewed_utc": "2026-11-08T11:57:08.906234+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "physical_join": false,
+  "operational_admission": false,
+  "completed_jobs": 0,
+  "positive_cases": 34,
+  "negative_cases": 85,
+  "clock_checks": 4,
+  "accepted_clips": 16,
+  "resource_counts": {
+    "actors": 24,
+    "vehicles": 2,
+    "posts": 6,
+    "carts": 1,
+    "handling_units": 530
+  },
+  "fix": "Independent shallow-frozen bundle exploit corrected: recursively immutable data required without mutating caller, compilation against separately verified private source snapshot. Original attack/toJSON mask reject before any source read;1800s horizon enforced.",
+  "root_checks": [
+    "Actual full node check-warehouse-action-timeline-v3.mjs: exit0,34positive85negative4clockchecks",
+    "npm run build: typecheck and97module productionbuild exit0; existing largechunkwarning retained",
+    "Independent absoluteclock end-before-start,zero/backseek/rewind/dispose and sourcebinding reprobes PASS"
+  ],
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseActionTimeline.ts": "bcf943b08b9917666bca033b4a734ba968d8b40c6d3da5ec221a96196d6014fb",
+    "frontend/src/adaptive-v3/warehouseActionClock.ts": "8571f689b03d4de8ec60b1dd547c6a97a0033ab7893727e2d5c3b4e8e84e35b0",
+    "frontend/tools/check-warehouse-action-timeline-v3.mjs": "5280ddf6610f3fa1e7ef379bc51f3ba4ac4cb20adf1a1938472e7bbf828b44cc",
+    "docs/adaptive-v3/specs/W05.1.md": "7b1d1d153296b784b7c39ebe34cc656cc1930bb4cf932ef30aab39bf07812eed",
+    "docs/adaptive-v3/evidence/W05.1-checks.json": "42e2df0f96df85c6c3c62f2f69deb064755675b14aada39365f8600a3673f95e"
+  },
+  "scope": "Source-bound preparedclip intervals, exclusive finite actor/vehicle/cart/post/HU reservations and deterministic host clock only. No worker/vehicle motion, HU transfer, role assignment, engine scheduling or physical workflow join; W05 parent remains open."
+}
