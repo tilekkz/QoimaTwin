@@ -132,11 +132,13 @@ def _bounds(objects):
     return {"min": low, "max": high}
 
 
-def finish(asset_id, root, batch_runtime=True):
+def finish(asset_id, root, batch_runtime=True, preserve_shape_keys=False):
     """Export selected root hierarchy only; return actual Y-up vertex stats.
 
     batch_runtime=False preserves individual mesh names. True batches within
     each immediate parent/material group, never across any joint or anchor.
+    preserve_shape_keys=True retains modifier-free keyed meshes separately;
+    the default conversion/batching path remains unchanged for existing assets.
     preserve_articulation is recorded, and named parents survive in both modes.
     """
     if not bpy.app.background:
@@ -162,10 +164,15 @@ def finish(asset_id, root, batch_runtime=True):
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=str(source))
     bpy.ops.object.select_all(action="DESELECT")
-    for obj in meshes:
+    convertible = [obj for obj in meshes if not (preserve_shape_keys and obj.data.shape_keys)]
+    keyed = [obj for obj in meshes if preserve_shape_keys and obj.data.shape_keys]
+    if any(obj.modifiers for obj in keyed):
+        raise ValueError("Morph-preserving export requires already evaluated modifier-free keyed meshes")
+    for obj in convertible:
         obj.select_set(True)
-    bpy.context.view_layer.objects.active = meshes[0]
-    bpy.ops.object.convert(target="MESH")
+    if convertible:
+        bpy.context.view_layer.objects.active = convertible[0]
+        bpy.ops.object.convert(target="MESH")
     meshes = _meshes(root)
     bpy.context.view_layer.update()
     components = [{"name": obj.name, "parent": obj.parent.name if obj.parent else None,
@@ -174,9 +181,10 @@ def finish(asset_id, root, batch_runtime=True):
     if batch_runtime:
         batches = {}
         for obj in meshes:
-            key = (obj.parent, tuple(mat.name if mat else None for mat in obj.data.materials))
+            key = (obj.parent, tuple(mat.name if mat else None for mat in obj.data.materials),
+                   obj if preserve_shape_keys and obj.data.shape_keys else None)
             batches.setdefault(key, []).append(obj)
-        for index, ((parent, _), parts) in enumerate(batches.items()):
+        for index, ((parent, _, _), parts) in enumerate(batches.items()):
             names = [obj.name for obj in parts]
             bpy.ops.object.select_all(action="DESELECT")
             for obj in parts:
@@ -233,6 +241,9 @@ def finish(asset_id, root, batch_runtime=True):
               "preserve_articulation": bool(root.get("preserve_articulation", False)),
               "root_matrix_blender": [list(row) for row in root.matrix_world],
               "glb_header": {"magic": "glTF", "version": version, "declared_bytes": length}}
+    if preserve_shape_keys:
+        report['morph_targets_preserved'] = {obj.name: [key.name for key in obj.data.shape_keys.key_blocks][1:]
+                                            for obj in meshes if obj.data.shape_keys}
     (source.parent / (asset_id + ".stats.json")).write_text(
         json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print("V3_ASSET_EXPORTED " + json.dumps(report))

@@ -12,6 +12,7 @@ import {bindSeatedDriver,validateSeatedDriverPose} from './seatedDriver';
 import {bindPickerGrip,validatePickerPushPose} from './motion/grip';
 import {createCartWalk,validateCartWalkTimeline} from './motion/cartWalk';
 import {createPackerAction,validatePackerTimeline,type PackerMode} from './motion/packer';
+import {bindSmallGripper} from './motion/smallGripper';
 
 type View = 'front' | 'side' | 'rear' | 'quarter' | 'top';
 type ReferenceManifest = {references: {reference_id: string; artifact: {path: string}}[]; asset_reference_bindings: Record<string,string>};
@@ -20,7 +21,7 @@ const host = element('canvas-host');
 const shell = element('stand');
 const modelInput = element<HTMLInputElement>('model-id');
 const base = import.meta.env.BASE_URL;
-const assetTitles:Record<string,string>={'packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
+const assetTitles:Record<string,string>={'small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
 async function initialize(){
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d8dcdb');
@@ -82,6 +83,7 @@ let figureActor:WorkerInstance|undefined;
 let pickerGrip:ReturnType<typeof bindPickerGrip>|undefined;
 let walkFixture:ReturnType<typeof createCartWalk>|undefined;
 let packerAction:ReturnType<typeof createPackerAction>|undefined;
+let gripperTool:ReturnType<typeof bindSmallGripper>|undefined;
 function activeCycle(){return packerAction??walkFixture??pickupFixture;}
 let pickupPlaying=false,pickupAnchorTime=0,pickupAnchorWall=0;
 let view:View='quarter';
@@ -103,6 +105,8 @@ function disposeObject(object:THREE.Object3D){
 function releaseModel(){
   pickupPlaying=false;pickupFixture=undefined;element('cycle-controls').hidden=true;
   element('packer-modes').hidden=true;
+  element('gripper-controls').hidden=true;
+  if(gripperTool){gripperTool.dispose();gripperTool=undefined;}
   if(packerAction){packerAction.dispose();packerAction=undefined;}
   if(walkFixture){walkFixture.dispose();walkFixture=undefined;}
   // The role instance owns only its tints/badge. Detach it before disposing
@@ -195,7 +199,7 @@ function snapshot(){
   camera.updateMatrixWorld(true);const screen={min_x:Infinity,min_y:Infinity,max_x:-Infinity,max_y:-Infinity};const projected=new THREE.Vector3();
   for(const point of points){projected.copy(point).project(camera);const x=(projected.x+1)*host.clientWidth/2;const y=(1-projected.y)*host.clientHeight/2;screen.min_x=Math.min(screen.min_x,x);screen.max_x=Math.max(screen.max_x,x);screen.min_y=Math.min(screen.min_y,y);screen.max_y=Math.max(screen.max_y,y);}
   const cycle=activeCycle();
-  return {modelId,phase,view,focus:activeFocus,fixture:packerAction?'packer-seam-end-visual-QA':walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
+  return {modelId,phase,view,focus:activeFocus,gripper:gripperTool?.snapshot()??null,fixture:packerAction?'packer-seam-end-visual-QA':walkFixture?'picker-cart-walk-visual-QA':pickupFixture?'pallet-pickup-visual-QA':seatedDriver?'seated-driver-visual-QA':pickerGrip?'picker-grip-visual-QA':rolesFixture?'five-role-visual-QA':null,grip:pickerGrip?.snapshot()??null,driver:seatedDriver?.snapshot()??null,action:cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null,roles:rolesSnapshot(),dimensions_m:dimensions(),bounds_m:{min:bounds.isEmpty()?[]:bounds.min.toArray(),max:bounds.isEmpty()?[]:bounds.max.toArray()},screen_bounds_px:points.length?screen:null,canvas:{width:host.clientWidth,height:host.clientHeight},anchors,nodes,materials:[...materials],triangles,metadata,camera:{type:camera.type,position:camera.position.toArray(),target:controls.target.toArray()},presentation:{contact_shading:contactShade.enabled,radius_m:contactShade.gtaoMaterial.uniforms.radius.value,camera_inertia:controls.enableDamping,ground_y_m:ground.position.y},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,memory:renderer.info.memory}};
 }
 
 function diagnostics(){
@@ -234,6 +238,7 @@ async function loadModel(id:string){
       workerTemplate=gltf.scene;figureActor=createWorkerInstance(workerTemplate,'P01','picker');
       model=new THREE.Group();model.name='picker_figure_inspection';model.add(figureActor.root);
     }else model=gltf.scene;
+    if(id==='small-package-gripper'){gripperTool=bindSmallGripper(tagged);element('gripper-controls').hidden=false;element<HTMLInputElement>('gripper-opening').value='0';element('gripper-gap').textContent='40 мм';}
     const requestedFixture=new URL(location.href).searchParams.get('fixture');
     if(id==='packer-workcell-fixture'&&requestedFixture==='packer'){
       const [wr,tr]=await Promise.allSettled([loader.loadAsync(base+'models/v3/worker-manual.glb'),fetch(base+'data/v3/packer-seam-end.json').then(async r=>{if(!r.ok)throw Error('Описание упаковки недоступно.');return validatePackerTimeline(await r.json());})]);
@@ -346,6 +351,8 @@ function playPickup(){
   pickupAnchorTime=cycle.snapshot().time;pickupAnchorWall=performance.now();pickupPlaying=true;updatePickupUi();return true;
 }
 element('cycle-play').addEventListener('click',()=>pickupPlaying?pausePickup():playPickup());
+function setGripperOpening(value:number){if(!gripperTool)throw Error('Ручной захват не загружен.');const state=gripperTool.apply(value);element<HTMLInputElement>('gripper-opening').value=String(value);element('gripper-gap').textContent=(state.jaw_gap_m*1000).toFixed(1)+' мм';collectPoints();diagnostics();return state;}
+element<HTMLInputElement>('gripper-opening').addEventListener('input',event=>setGripperOpening(Number((event.target as HTMLInputElement).value)));
 function setPackerMode(mode:PackerMode){if(!packerAction)throw Error('Упаковщик не загружен.');pickupPlaying=false;packerAction.setMode(mode);const url=new URL(location.href);url.searchParams.set('mode',mode);history.replaceState(null,'',url);collectPoints();fit(view);updatePickupUi();diagnostics();}
 document.querySelectorAll<HTMLButtonElement>('[data-packer-mode]').forEach(b=>b.addEventListener('click',()=>setPackerMode(b.dataset.packerMode as PackerMode)));
 element<HTMLInputElement>('cycle-time').addEventListener('input',event=>seekPickup(Number((event.target as HTMLInputElement).value)));
@@ -359,7 +366,7 @@ element('model-form').addEventListener('submit',event=>{event.preventDefault();v
 const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);composer.setSize(host.clientWidth,host.clientHeight);contactShade.setSize(Math.max(1,Math.round(host.clientWidth*renderer.getPixelRatio()*.65)),Math.max(1,Math.round(host.clientHeight*renderer.getPixelRatio()*.65)));if(model)fit();});resize.observe(host);
 function tick(){frameId=requestAnimationFrame(tick);const cycle=activeCycle();if(pickupPlaying&&cycle){const action=cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);if(action.complete)pickupPlaying=false;updatePickupUi();}controls.update();renderer.info.reset();composer.render();}tick();
 const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},focus:(name:string,next:View='quarter')=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);fit(next,n);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
-Object.assign(window,{__QOIMA_STAND_V3__:{...api,cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>{const cycle=activeCycle();return cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null;}},packer:{setMode:setPackerMode,snapshot:()=>packerAction?.snapshot()??null},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
+Object.assign(window,{__QOIMA_STAND_V3__:{...api,gripper:{setOpening:setGripperOpening,snapshot:()=>gripperTool?.snapshot()??null},cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>{const cycle=activeCycle();return cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null;}},packer:{setMode:setPackerMode,snapshot:()=>packerAction?.snapshot()??null},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
 void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{manifest=value;updateReference();}).catch(()=>{element('reference-note').textContent='Каталог референсов временно недоступен.';});
 void loadModel(new URL(location.href).searchParams.get('asset')||'calibration');
 window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();reducedMotion.removeEventListener('change',onMotionChange);document.removeEventListener('visibilitychange',onVisibility);controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();contactShade.dispose();beauty.dispose();output.dispose();composer.dispose();renderer.dispose();},{once:true});

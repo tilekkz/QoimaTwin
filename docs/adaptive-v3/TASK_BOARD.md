@@ -188,3 +188,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P04.1](tasks/P04.1.md) | PASS | root | R10,P02,M07,P08,I09 | Metric packing workcell and contact poses |
 | [P04.2](tasks/P04.2.md) | PASS | root | P04.1 | Absolute-clock final seam press, idle and blocked actions |
 | [P04.3](tasks/P04.3.md) | PASS | root | P04.2 | Packer runtime, seek and reference review |
+| [P03.5.3.1](tasks/P03.5.3.1.md) | PASS | root | P03.5.2 | Independent compact manual gripper reference and metric plan |
+| [P03.5.3.2](tasks/P03.5.3.2.md) | PASS | root | P03.5.3.1 | Native compact gripper, linked jaw travel and browser views |
+| [P03.5.3.3](tasks/P03.5.3.3.md) | READY | root | P03.5.3.2 | Clocked tool-assisted extract, withdraw, carry and tote deposit |

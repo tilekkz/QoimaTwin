@@ -10,6 +10,8 @@ const visible=process.env.QOIMA_VISIBLE_TESTS==='1',viewport=visible?{width:1280
 const variant=process.env.QOIMA_STAND_FIXTURE,focus=process.env.QOIMA_STAND_FOCUS;
 const poseFile=process.env.QOIMA_STAND_POSE;
 const pose=poseFile?JSON.parse(await readFile(poseFile,'utf8')):null;
+const orbit=process.env.QOIMA_STAND_ORBIT?.split(',').map(Number);
+if(orbit&&(orbit.length!==2||orbit.some(v=>!Number.isFinite(v)||Math.abs(v)>300)))throw Error('Invalid bounded inspection orbit');
 if(pose&&Object.entries(pose).some(([name,angles])=>!/^joint__[a-zA-Z_]+$/.test(name)||!Array.isArray(angles)||angles.length!==3||!angles.every(Number.isFinite)))throw Error('Invalid inspection pose');
 if(variant&&!['roles','pickup','driver','grip'].includes(variant))throw Error('Invalid fixture variant');
 async function bounded(promise,ms){let timer;try{return await Promise.race([promise.then(()=>true,()=>false),new Promise(r=>{timer=setTimeout(()=>r(false),ms);})]);}finally{clearTimeout(timer);}}
@@ -27,6 +29,7 @@ try{
   const out=override?(assets.length===1?override:`${override}/${asset}`):`../assets/v3/qa-browser/${asset}`;
   await mkdir(out,{recursive:true});outputs.push(out);
   const page=await context.newPage(),errors=[],frames=[],failedResources=[];let fixtureChecks;
+  if(orbit)await page.emulateMedia({reducedMotion:'reduce'});
   page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   page.on('response',r=>{if(r.status()>=400)failedResources.push({url:r.url(),status:r.status()});});
   try{
@@ -35,6 +38,12 @@ try{
    for(const view of views){
     await page.evaluate(({view,focus})=>focus?window.__QOIMA_STAND_V3__.focus(focus,view):window.__QOIMA_STAND_V3__.view(view),{view,focus});
     await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});
+    if(orbit){
+     const canvas=await page.locator('#canvas-host canvas').boundingBox();if(!canvas)throw Error('Missing inspection canvas');
+     const x=canvas.x+canvas.width*.5,y=canvas.y+canvas.height*.65;
+     await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+orbit[0],y+orbit[1],{steps:10});await page.mouse.up();
+     await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});
+    }
     await page.screenshot({path:`${out}/${view}.png`});
     frames.push({view,screenshot:`${out}/${view}.png`,state:await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot())});
    }
@@ -53,6 +62,36 @@ try{
     for(const yaw of [-.7,.3,1.2]){
      const state=await page.evaluate(yaw=>{const api=window.__QOIMA_STAND_V3__;api.setNode('picking-cart-tote-fixture',{position:[2,0,-1],rotation:[0,yaw,0]});return api.snapshot();},yaw);verify(state);fixtureChecks.world_transform_checks.push(state.grip);
     }
+   }
+   if(asset==='small-package-gripper'){
+    const state=await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot());
+    if(state.gripper?.opening!==0||state.gripper?.engine_operation!==false||state.gripper?.stock_instances!==0)throw Error('Invalid initial tool state');
+    await page.locator('#gripper-opening').focus();await page.keyboard.press('End');
+    const open=await page.evaluate(()=>window.__QOIMA_STAND_V3__.gripper.snapshot());
+    if(open.opening!==1||Math.abs(open.jaw_gap_m-.054)>1e-12||open.spring_compression!==1)throw Error('Keyboard opening or coil compression failed');
+    for(const view of ['quarter','top']){
+     await page.evaluate(view=>window.__QOIMA_STAND_V3__.view(view),view);
+     await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});
+     await page.screenshot({path:`${out}/open-${view}.png`});frames.push({view:'open-'+view,screenshot:`${out}/open-${view}.png`,state:await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot())});
+    }
+    await page.keyboard.press('Home');
+    if((await page.evaluate(()=>window.__QOIMA_STAND_V3__.gripper.snapshot())).opening!==0)throw Error('Keyboard closing failed');
+    fixtureChecks={keyboard_open_close:true,morph_compression:true,absolute_seeks:[],replacements:[]};
+    for(const u of [.75,.1,1,0,.4,.75]){
+     const s=await page.evaluate(u=>window.__QOIMA_STAND_V3__.gripper.setOpening(u),u);
+     if(s.opening!==u||Math.abs(s.jaw_gap_m-(.04+.014*u))>1e-12)throw Error('Absolute tool seek failed');fixtureChecks.absolute_seeks.push(s);
+    }
+    await page.emulateMedia({reducedMotion:'reduce'});
+    await page.evaluate(()=>window.__QOIMA_STAND_V3__.gripper.setOpening(.5));
+    await page.evaluate(async()=>{for(let i=0;i<5;i++)await new Promise(r=>requestAnimationFrame(r));});
+    if((await page.evaluate(()=>window.__QOIMA_STAND_V3__.gripper.snapshot())).opening!==.5)throw Error('Unexpected reduced-motion tool movement');fixtureChecks.reduced_motion_manual_only=true;
+    for(let i=0;i<3;i++){
+     await page.evaluate(async asset=>{await window.__QOIMA_STAND_V3__.load(asset);for(let n=0;n<5;n++)await new Promise(r=>requestAnimationFrame(r));},asset);
+     const s=await page.evaluate(()=>window.__QOIMA_STAND_V3__.snapshot());if(s.gripper?.opening!==0)throw Error('Tool replacement not reset');fixtureChecks.replacements.push(s.renderer.memory);
+    }
+    if(new Set(fixtureChecks.replacements.map(s=>JSON.stringify(s))).size!==1)throw Error('Tool GPU resources grew on replacement');
+    await page.evaluate(async()=>window.__QOIMA_STAND_V3__.load('calibration'));
+    if(await page.locator('#gripper-controls').isVisible()||(await page.evaluate(()=>window.__QOIMA_STAND_V3__.gripper.snapshot()))!==null)throw Error('Tool controls survived another model');fixtureChecks.controls_released=true;
    }
    await writeFile(`${out}/browser-capture.json`,JSON.stringify({at:new Date().toISOString(),browser:browser.version(),url:page.url(),visible,viewport,errors,failedResources,frames,fixture_checks:fixtureChecks,timing_ms:{shared_browser_launch:launchMs,asset_capture:Date.now()-at}},null,2));
    if(errors.length||failedResources.length)throw Error(JSON.stringify({errors,failedResources}));

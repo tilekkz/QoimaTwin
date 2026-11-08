@@ -1,0 +1,83 @@
+{
+  "reference_id": "P03_SMALL_GRIPPER_REF",
+  "source_kind": "synthetic_design",
+  "engine_operation": false,
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "origin": "midpoint of four jaw finger tips atY0; package-pair centre at[0,.018,0]",
+  "nominal_handle_centre_xyz_m": [
+    0,
+    0.148,
+    0.23
+  ],
+  "handle_width_m": 0.2,
+  "handle_circumradius_m": 0.02,
+  "handle_sides": 32,
+  "frame_side_arm_x_m": [
+    -0.075,
+    0.075
+  ],
+  "frame_side_arm_width_m": 0.012,
+  "frame_side_arm_height_m": 0.006,
+  "jaw_carrier_closed_z_m": [
+    -0.036,
+    0.036
+  ],
+  "jaw_carrier_open_translation_z_m": [
+    -0.007,
+    0.007
+  ],
+  "finger_x_m": [
+    -0.0325,
+    0.0325
+  ],
+  "finger_pad_xyz_m": [
+    0.02,
+    0.036,
+    0.012
+  ],
+  "finger_pad_closed_inner_z_m": [
+    -0.02,
+    0.02
+  ],
+  "finger_tip_above_package_bottom_m": 0.002,
+  "primary_package_pair": {
+    "each_dimensions_xyz_m": [
+      0.06,
+      0.04,
+      0.04
+    ],
+    "each_mass_kg": 0.035,
+    "centres_xyz_m": [
+      [
+        -0.0325,
+        0.018,
+        0
+      ],
+      [
+        0.0325,
+        0.018,
+        0
+      ]
+    ],
+    "source_ids": [
+      "primary_unit__17",
+      "primary_unit__23"
+    ]
+  },
+  "envelope_target_xyz_m": [
+    0.2,
+    0.168,
+    0.31
+  ],
+  "synthetic_tool_mass_kg": 0.65,
+  "load_design_scope": "Two35g nonfragile C02 primary packages only; no certified capacity, ergonomics or actual engine admission asserted.",
+  "mechanism": "Rigid U frame; two opposed Z sliding carriers on real open square sleeves around captured rails; four vertical shafts/rubber pads; visible captured spring/links and squeeze lever. Jaw opening14mm total.",
+  "reference_engineering_clarifications": [
+    "V1 artwork rejected: jaws were aligned acrossX. V2 explicitly shows front/back Z jaw travel and two fingers in front view.",
+    "Exact proposed31cm total depth includes6cm forward captured-guide envelope and2cm rear grip radius;230mm remains grip-centre reach. Art-card sizes illustrate topology; these declared targets govern geometry.",
+    "No packages, human, cargo counts or acquisition animation are baked into the tool asset.",
+    "Initial clip may start with one held tool in prepared state, but preparation scope must be visible and future warehouse integration cannot teleport tool acquisition/stow."
+  ]
+}

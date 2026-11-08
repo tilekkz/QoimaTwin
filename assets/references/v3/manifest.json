@@ -778,6 +778,32 @@
       },
       "card": "docs/adaptive-v3/tasks/M14.6.2.md",
       "use": "Independent production four views; exact declared targets govern geometry. Model/action acceptance separate."
+    },
+    {
+      "reference_id": "P03_SMALL_GRIPPER_REF",
+      "root_acceptance": "PASS",
+      "creator_review_status": "VERIFY",
+      "artifact": {
+        "path": "assets/references/v3/p03-small-gripper.png",
+        "sha256": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+        "bytes": 1938037,
+        "dimensions_px": [
+          1254,
+          1254
+        ]
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/p03-small-gripper.json",
+        "sha256": "5a588247c8dacfdd73819648a9cfd18cdbc22af7957a067ddfff37d4d996f95d",
+        "bytes": 1525
+      },
+      "evidence": {
+        "path": "docs/adaptive-v3/evidence/P03.5.3.1.json",
+        "sha256": "0b23d0f2961b95dfd26acba263b63208cf86953df6867ebb85e28ae1293bb416",
+        "bytes": 1114
+      },
+      "card": "docs/adaptive-v3/tasks/P03.5.3.1.md",
+      "use": "Compact manual gripper topology/style; exact targets govern, no geometry/action admission."
     }
   ],
   "prompts": [
@@ -985,6 +1011,16 @@
       "path": "assets/references/v3/prompts/m14-long-cradle-locks.txt",
       "bytes": 2863,
       "sha256": "d14b15bf1469ff6e8c85ad2401e1c6550b7882ed6f024294d9e90e82ace68101"
+    },
+    {
+      "path": "assets/references/v3/prompts/p03-small-gripper.txt",
+      "sha256": "230c8c9af1222212fe3ff843b9674b9fcf5e7c78faf63b7a8b72140a4aa17b06",
+      "bytes": 2370
+    },
+    {
+      "path": "assets/references/v3/prompts/p03-small-gripper-v2-edit.txt",
+      "sha256": "2bce1d79e631872fc9afbc877d4504f0dcf41e47468d43648a79bbbd921691ff",
+      "bytes": 1806
     }
   ],
   "engineering_supplements": [
@@ -1057,6 +1093,11 @@
       "path": "assets/references/v3/m06-2-standard-carton.targets.json",
       "bytes": 1283,
       "sha256": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e"
+    },
+    {
+      "path": "assets/references/v3/p03-small-gripper.targets.json",
+      "sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+      "bytes": 2348
     }
   ],
   "cross_review": [
@@ -1118,18 +1159,25 @@
     "small-case-open-partial": "M06.1_REF",
     "picker-pick-source-fixture": "R13.1",
     "environment-markings-fixture": "R07",
-    "packer-workcell-fixture": "R04"
+    "packer-workcell-fixture": "R04",
+    "small-package-gripper": "P03_SMALL_GRIPPER_REF",
+    "small-gripper-contact-fixture": "P03_SMALL_GRIPPER_REF"
   },
   "dimension_policy": "Art-card magnification is illustrative. R03 exact synthetic target data must be adopted or explicitly revised by C02 with reference review. Slots/loaded routes/ports are validated by L/C cards; never shrink cargo to fit. R12 cradle envelope and mount targets are in r12-dimension-targets.json; all parts fit total 0.15m height, with pocket/lock/mass/rating approval remaining C08.",
   "component_priority": "Dedicated R02/R03/R04/R05/R06/R11 governs component design; R07 architecture and R08 camera/context do not replace those designs. R12 governs the separate long-cradle attachment; its contextual vehicle/cargo do not override R06/R03. Dedicated R13.x storage view refinements override R02 sketch topology for their bound asset; R02 style and L09/C04 dimensions retain authority.",
   "model_status": "No V3 geometry accepted by this manifest. Every model still requires dimensions, four-view compare, export and browser/action checks.",
   "status_scope": "Original R10 nine-reference baseline remains reference_complete/PASS; additive R12 is VERIFY pending root actual-image review.",
-  "reference_count": 29,
+  "reference_count": 30,
   "extensions": {
     "R12": {
       "status": "VERIFY",
       "root_acceptance": "pending",
       "registered_at_utc": "2026-11-07T11:31:18.989856+00:00",
+      "does_not_rewrite_R10_evidence": true
+    },
+    "P03_SMALL_GRIPPER_REF": {
+      "status": "PASS",
+      "root_acceptance": "PASS",
       "does_not_rewrite_R10_evidence": true
     }
   }
