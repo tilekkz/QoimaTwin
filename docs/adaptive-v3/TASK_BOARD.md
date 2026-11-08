@@ -65,7 +65,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P01](tasks/P01.md) | PASS | root | R10,R05,I09 | Готова единая базовая фигура человека |
 | [P02](tasks/P02.md) | PASS | people_packing | R10,P01,R05,I09 | Готовы визуальные варианты ролей |
 | [P03](tasks/P03.md) | TODO | unassigned | R10,P02,M07,I09 | Готов комплект picker/cart |
-| [P04](tasks/P04.md) | READY | unassigned | R10,P02,M07,P08,I09 | Готов комплект packer |
+| [P04](tasks/P04.md) | PASS | root | R10,P02,M07,P08,I09 | Готов комплект packer |
 | [P05](tasks/P05.md) | READY | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
 | [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
 | [P07](tasks/P07.md) | PASS | root | R10,P02,M14,I09 | Готов комплект driver |
@@ -185,3 +185,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [FIX01.2](tasks/FIX01.2.md) | PASS | root | FIX01.1 | Top-down cart grip and affected pose regressions |
 | [FIX01.3](tasks/FIX01.3.md) | PASS | root | FIX01.2 | Four-flap outer SMALL carton opening |
 | [P03.5.1.1](tasks/P03.5.1.1.md) | PASS | root | P03.5.1,FIX01.2 | Explicit manual overhead reach controls |
+| [P04.1](tasks/P04.1.md) | PASS | root | R10,P02,M07,P08,I09 | Metric packing workcell and contact poses |
+| [P04.2](tasks/P04.2.md) | PASS | root | P04.1 | Absolute-clock final seam press, idle and blocked actions |
+| [P04.3](tasks/P04.3.md) | PASS | root | P04.2 | Packer runtime, seek and reference review |

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-07T23:29:56.553839+00:00",
+  "updated_at": "2026-11-08T00:32:18.826098+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1064,12 +1064,19 @@
         "I09"
       ],
       "criteria": "Рабочие pack/idle/blocked позы имеют реальные точки контакта со столом и тарой",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/P04.md",
         "docs/adaptive-v3/evidence/P04.json"
-      ]
+      ],
+      "kind": "parent",
+      "children": [
+        "P04.1",
+        "P04.2",
+        "P04.3"
+      ],
+      "actual": "All3children PASS. Accepted orange role02 packing finishing kit on an existing closed/taped parcel, actual table/parcel contacts, idle/blocked and absolute-clock QA. This parent does not claim carton folding, inventory/transport, full warehouse replay or actual engine/backend integration. P03.5.3 remains FIX."
     },
     {
       "id": "P05",
@@ -3277,6 +3284,58 @@
         "FIX01.2"
       ],
       "actual": "Explicit manual reach controls:27pivots/7anchors, unchanged raw body and0neutral error,12native connection poses/36connections,901runtime/91native gait/100seeks and headless reduced-motion/resource/error regressions pass. Posed side/quarter reviewed. This accepts articulation only, not pick action clearance."
+    },
+    {
+      "id": "P04.1",
+      "title": "Metric packing workcell and contact poses",
+      "parent": "P04",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "R10",
+        "P02",
+        "M07",
+        "P08",
+        "I09"
+      ],
+      "criteria": "Assemble accepted station/two belt modules/one existing sealed parcel with real deck support. Find bounded native-clear standing/contact poses, no scale/stock changes.",
+      "outputs": [
+        "docs/adaptive-v3/specs/P04.1.md",
+        "docs/adaptive-v3/evidence/P04.1.json"
+      ],
+      "actual": "Metric accepted P08station/two frozen belt modules and one M07parcel assembled;9actual support rays. Native table-edge and front-tape contacts admitted and actual R04/R05 browser views inspected. Neutral worker1.7m, unit scale, original meshes/limits unchanged. Bare top-seam2255bounded candidates not admitted; front-tail finishing selected explicitly; SMALL picking remains separate FIX."
+    },
+    {
+      "id": "P04.2",
+      "title": "Absolute-clock final seam press, idle and blocked actions",
+      "parent": "P04",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "P04.1"
+      ],
+      "criteria": "Final packing seam-press inspection on an already closed/taped parcel. Pure absolute time; package supported throughout; distinct idle/blocked. Native/runtime contact and clearance samples. No claim of carton folding or full packing pipeline.",
+      "outputs": [
+        "docs/adaptive-v3/specs/P04.2.md",
+        "docs/adaptive-v3/evidence/P04.2.json"
+      ],
+      "actual": "Absolute7.5s final tape-tail press/inspection plus idle/blocked.751runtime samples,153native poses,122opposed film/wood contacts,306own-cuff/forearm opening gauges,100whole-node seeks and3rigid-world transform cases PASS. No sampled paired/forearm-body penetration; floor error14.9nm. Fixed colliding transitions using Cartesian approaches; no stock/cargo clones or mesh/limit relaxation."
+    },
+    {
+      "id": "P04.3",
+      "title": "Packer runtime, seek and reference review",
+      "parent": "P04",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "P04.2"
+      ],
+      "criteria": "Open actual runtime front/side/quarter/contact views. Check one actor/package identity, pause/repeat/seek, blocked/idle, reduced motion, lifecycle and replacement. All children gate parent.",
+      "outputs": [
+        "docs/adaptive-v3/specs/P04.3.md",
+        "docs/adaptive-v3/evidence/P04.3.json"
+      ],
+      "actual": "14retained actual captures reviewed including four directions, both contacts and idle/blocked; occluded parcel-only crop discarded explicitly. Headless Playwright PASS: no autoplay, pause/repeat/keyboard/seek, live+cold reduced motion, idle palms inward, stale/error/invalid-data cleanup and walk-controls regression.62geometries/10textures stable across3replacements, owned browser terminated. Build/typecheck PASS."
     }
   ],
   "execution": {
