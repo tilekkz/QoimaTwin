@@ -1,0 +1,40 @@
+{
+  "comparison_policy": {
+    "allowed_output_differences": [
+      "admitted_HU_slot_placement",
+      "explicit_relocation_sequence_and_cost"
+    ],
+    "decision_state": "not_evaluated",
+    "force_improvement": false,
+    "kind": "slotting_only",
+    "no_op_allowed": true,
+    "same_concrete_input_required": true
+  },
+  "engine_operation": false,
+  "execution_ready": false,
+  "operational_admission": false,
+  "paired_runs": [
+    {
+      "input_ref": {
+        "bytes": 618894,
+        "inputs_sha256": "807e5f8c3c18ef69de7b5865f01dad2e0ba1dcc09782214dfc67964f8670b55c",
+        "path": "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json",
+        "sha256": "0f5f422bd09ade5064159183729e877ba12d5687a78341ec716b1c67410d7ee5"
+      },
+      "variant": "baseline"
+    },
+    {
+      "input_ref": {
+        "bytes": 618894,
+        "inputs_sha256": "807e5f8c3c18ef69de7b5865f01dad2e0ba1dcc09782214dfc67964f8670b55c",
+        "path": "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json",
+        "sha256": "0f5f422bd09ade5064159183729e877ba12d5687a78341ec716b1c67410d7ee5"
+      },
+      "variant": "adaptive"
+    }
+  ],
+  "schema_id": "qoima.heavy-inbound-current-pair.v3",
+  "scope": "Identical current input bytes. Same original initial placement; no adaptive placement decision or relocation/run result.",
+  "source_kind": "visual_fixture",
+  "task_id": "W11.1.1"
+}

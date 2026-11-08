@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T19:04:21.236424+00:00",
+  "updated_at": "2026-11-08T21:54:10.235966+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1617,14 +1617,15 @@
         "M09"
       ],
       "criteria": "Тяжёлый груз идёт допустимым handling mode; очередь/отказ объяснимы, оба исходных размещения допустимы",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "TODO",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/W11.md",
         "docs/adaptive-v3/evidence/W11.json"
       ],
       "children": [
-        "W11.1"
+        "W11.1",
+        "W11.2"
       ]
     },
     {
@@ -4011,7 +4012,9 @@
       "children": [
         "W05.3.1",
         "W05.3.2",
-        "W05.3.3"
+        "W05.3.3",
+        "W05.3.4",
+        "W05.3.5"
       ]
     },
     {
@@ -4303,15 +4306,131 @@
         "W05.3.1",
         "W05.2"
       ],
-      "owner": "loaded_walk_calibration",
-      "status": "READY",
+      "owner": "root_loaded_calibration",
+      "status": "PASS",
       "outputs": [
         "frontend/src/adaptive-v3/warehouseLoadedWalkCalibration.ts",
         "frontend/tools/check-warehouse-loaded-walk-calibration-v3.mjs",
         "docs/adaptive-v3/evidence/W05.3.3-checks.json"
       ],
-      "criteria": "Prescribed isolated pre-held calibration start on two exact clear canonical arcs, same P02/base and original whole DEMO067:01 identity/dimensions/mass/24units. Compose frozen8arm and6leg joints atomically from puregait, never bypass public unloadedwalk guards. Native contacts<=2um, stance/turn/foreign clearances and sameFloat32HUindex preservation with exact rollback/dispose. No sourcepickup, home departure, Scene/globallease, packing or operational admission.",
-      "actual": "One three-file nextchild declared behind W05.3.1. P02sourcepickup/homeexit still inadmitted due rack/C01; isolatedpre-held canonicalstraight+90degree loadedwalk calibration only. No implementation before staticnativeaudit and rootvisualacceptance."
+      "criteria": "Prescribed isolated pre-held canonical2arc15.75m+90turn, same P02/base and original whole DEMO067:01 logical identity/dimensions/mass/24units. Atomic8arm+6leg puregait. Admit only a proven W05.3.4 world-preserving active render-binding handoff: original staticpartUUID/index captured/restorable, activepartUUIDs explicitlynew and1visible logicalHU. Other529entries/meshbases unchanged. Nativecontacts/stance/foreignclearances<=2um, exactrollback/reset/dispose. No sourcepickup/homeexit/Scene/globallease/packing/engine admission.",
+      "actual": "Accepted exactcurrent originalnativegate+check-only,85sourcepins current,1450contact/stance and176fullbody frames,0materialwitnesses, maxgap3.873nm/sole9.87e-12m; TypeScript passes. Browser35exacttrace/control checks and4currentcaptures personally opened. Carry-only hipredundancy removes7realhem intersections withoutgeometry/limit/epsilon/closure waiver; originalGait/f33/sourceGLBs preserved. Rootwrapper W05.3.3.json and archived currentnative trace/source/browser. Pre-held two-arc calibration only; sourcepickup/Scene/fullworkflow/finalnaturalness remain separate.",
+      "acceptance_requires": [
+        "W05.3.4"
+      ]
+    },
+    {
+      "id": "W05.3.4",
+      "parent": "W05.3",
+      "title": "World-preserving native HU render-binding handoff for precise loaded motion",
+      "depends_on": [
+        "W04.2",
+        "W05.3.1"
+      ],
+      "owner": "dynamic_cargo_binding",
+      "status": "PASS",
+      "outputs": [
+        "frontend/src/adaptive-v3/warehouseDynamicCargoBinding.ts",
+        "frontend/tools/check-warehouse-dynamic-cargo-binding-v3.mjs",
+        "docs/adaptive-v3/evidence/W05.3.4-checks.json"
+      ],
+      "criteria": "Same logical original HU/quantity/mass/source geometry/materials. Capture original4static part UUIDs/indices/world matrices/buffers; activation creates4ownedlocal InstancedMesh(count1,identityinstance), preserves all4actual native world matrices, hidesonlyoriginal4targetslots and redirectsoneactiveHU binding. CommonrigidDelta throughFloat64object matrices preservesactual captured relative geometry. Other529HUentrybytes and41sharedmeshbases unchanged. Exactreset/dispose/rollback and no duplicatevisiblepayload; same2um nativecontactgate. No Scene/globallease/sourcepickup/engineclaim.",
+      "actual": "Rootfullsourceread+independentrecomputedcheck-onlyPASS:30pins/22nativeframes/10positive16negativecontrols; oldF32max3.427um→new3.873nm, original4worldactivationexact,529otherentries/41bases/sourcegeometry/materialpreserved, source4indicesrestoredexact. Newactive4UUIDs intentional,1logicalHU. Renderingprimitiveonly/noScene/globallease/gait/sourcepickup/GPUmicrometrecertificate."
+    },
+    {
+      "id": "W05.3.5",
+      "parent": "W05.3",
+      "title": "Independent native source-grip feasibility for an upper SMALL stock unit",
+      "depends_on": [
+        "W05.3.1",
+        "W04.2"
+      ],
+      "owner": "account2_pickup_feasibility",
+      "status": "PASS",
+      "outputs": [
+        "docs/adaptive-v3/evidence/W05.3.5.json"
+      ],
+      "criteria": "Actual second-account Sol/xhigh frozen-source read-only CPU investigation: existingP02/base vs upperwholeSMALLstockDEMO095:04 atownsource, trueorientation/frame, two nativepad patches/limits/body/stance ifdemonstrated. Feasibilityreportonly, no fixtureorder/sourcepickup/Scene/occupancy/engineadmission. Explicitnativeprecision/sharedmesh issue keptseparate.",
+      "actual": "Completed independent actual Sol/xhigh investigation, clean exit579.58s,22 frozen inputs unchanged,22 archived artifacts/root wrapper W05.3.5.json. Isolated exactsource095:04 opposed contact passes; actualrack rejects all61racktested candidates across168trials. PASS is completed investigation only: source grip, pickup, withdrawal, new order, C01departure and Scene operation are NOT admitted. Separate client-local-date session header recovery verifies exact model/effort; original null metadata retained."
+    },
+    {
+      "id": "W05.3.6",
+      "title": "Native upper-stock source-grip endpoint with original torso freedom",
+      "status": "PASS",
+      "owner": "account2_source_torso_grip",
+      "depends_on": [
+        "W05.3.1",
+        "W05.3.5"
+      ],
+      "actual": "Completed actualSol/xhigh bounded endpoint investigation, clean524.02s exit,37sourcepins unchanged,22artifacts archived/rootwrapper W05.3.6.json. 103new torso/contact trials,83racktested; no fullyclearsourcegrip. Representative retains3rack+5newbodywitnesses, so no candidate integrated. PASS means completed investigation, NOT sourcegrip/pickup/order/Sceneadmission. Preserved exactnativecontrols and failedfixedtorso comparison."
+    },
+    {
+      "id": "W11.2",
+      "title": "Connected heavy-inbound actions and source-identical comparison",
+      "status": "TODO",
+      "owner": "unassigned",
+      "depends_on": [
+        "W11.1.1",
+        "W05",
+        "W06"
+      ],
+      "actual": "Not implemented."
+    },
+    {
+      "id": "W11.1.1",
+      "title": "Current-source heavy-inbound pair with explicit source-epoch compatibility",
+      "parent": "W11.1",
+      "status": "PASS",
+      "owner": "heavy_scenario_inputs",
+      "depends_on": [
+        "W11.1"
+      ],
+      "actual": "Root accepted explicitcurrent sourceepoch migration after exactcode/source review and independent bothcheck-only commands (.venv interpreter). 53currentpins,530canonical originalplacements withoccupancy/modulemass,28handlingchecks,11meaningfulnegatives, samepairedinputbytes.20registry+2profile fingerprintleaves only; original24profile/clipsemantics unchanged. All7historicalW11.1files exactHEADbytes. Root-review JSON saved; inputcompatibility only, parentW11runtime/comparison remains open."
+    },
+    {
+      "id": "W05.3.7",
+      "title": "Natural carry cadence and grounded double-support calibration",
+      "parent": "W05.3",
+      "status": "PASS",
+      "owner": "root_natural_stance",
+      "depends_on": [
+        "W05.3.3"
+      ],
+      "actual": "Accepted explicit .70m/s groundedcarry preset with unchanged sourceprofile1.2/Gait/GLBs/f33. Fullnative+check-only2135contact/stance/346bodyframes,0materialwitness; finiteDS4.0324s withrootprogress. Currentbaseline1450frames EXACTarchiveequal, independent1051FKmatchesprototype87351samples. ActualLIVEoriginalcontroller51browserchecks/arbitraryseeks,4currentthreeviewcaptures opened,7.1e-15CPU/browserreference delta. Currentwrapper+23filearchive saved; stillisolatedcalibration, no heeltoe/COM/sourcepickup/Sceneclaim."
+    },
+    {
+      "id": "W05.3.8",
+      "title": "Native manual-picker cart hand-release calibration without pose snap",
+      "parent": "W05.3",
+      "status": "FIX",
+      "owner": "account2_cart_release",
+      "depends_on": [
+        "P03.5.3.3",
+        "W04.3"
+      ],
+      "actual": "ActualSol/xhigh clean687.05s diagnostic: exactold t9 cartpose has bilateralcuff/torso material witnesses andhead/sleeve positives;44.5mm extraction also creates cuff/bar witness.101nativeframes/86309pairs. No productionrelease emitted. Source26pins unchanged; rootdiagnosis+20archiveartifacts retained. Correct armnullspace/posture first viaW05.3.9; throatwidthalone doesnotproveimpossibility."
+    },
+    {
+      "id": "W05.3.9",
+      "title": "Corrected natural original-manual cart-grip arm calibration",
+      "parent": "W05.3",
+      "status": "ACTIVE",
+      "owner": "account2_cart_natural_grip",
+      "depends_on": [
+        "W04.3"
+      ],
+      "actual": "Oldfixedhandframe searchclean729.58s/3286retainedtrials found noacceptedpose, closestclearshead/cartbutcufftorso remains; retainedhistorical. Newroot-refined physicalvariant uses SAMEstraightbar derivedcontacts±.230m insteadoldhardcoded±.195: independentlynativehand/post gap6mm/reachcaps pass. WarmstartbestnativeIK, no broadrepeat; oldanchors/model/clip stayunchanged. OriginalarmDOFs +smalloriginalTorsoX onlyifneeded, actualfullnativeclearance required."
+    },
+    {
+      "id": "W05.3.7.1",
+      "title": "Ship portable project page for natural character-motion review",
+      "parent": "W05.3.7",
+      "status": "ACTIVE",
+      "owner": "motion_review_page",
+      "depends_on": [
+        "W05.3.7"
+      ],
+      "actual": "Worker will ship separate normal frontend motion-v3.html using currentaccepted naturalcontroller. Exactnewpaths only, preserveparallelHome/Twin/Scene. Staticbundle +portable publicrawsourcepack (reusepublicassets, noFSroutes/fulltrace), responsive3view reviewcontrols; rootalone Viteentry/build/browser acceptance."
     }
   ],
   "execution": {

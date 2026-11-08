@@ -1,0 +1,840 @@
+{
+  "task_id": "W05.3.8",
+  "accepted": false,
+  "production_files_emitted": false,
+  "status": "BLOCKED_NATIVE_MATERIAL_INTERIOR",
+  "scope": "ISOLATED_NATIVE_P01_C01_TERMINAL_T9_ONLY",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "physical_release_admitted": false,
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "blocking",
+      "kind": "EXACT_TERMINAL_T9_NONADJACENT_SELF_MATERIAL_INTERIOR",
+      "conclusion": "The prescribed unchanged initial terminal pose already violates the required native self-clearance gate. Forearm/torso is not an original adjacent articulation join; a continuous release cannot remove this t=0 failure.",
+      "witnesses": [
+        {
+          "meshes": [
+            "worker-manual__batch_11",
+            "worker-manual__batch_06"
+          ],
+          "bones": [
+            "joint__forearm_L",
+            "joint__torso"
+          ],
+          "source_parts": [
+            [
+              "cuff_L",
+              "fore_sleeve_L"
+            ],
+            [
+              "connected_shoulder_band",
+              "shirt_core"
+            ]
+          ],
+          "original_same_or_arm_adjacent": false,
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-manual__batch_11#1",
+          "source_triangle": 49,
+          "point_m": [
+            16.115398265049627,
+            1.0208811936701396,
+            44.531896182816254
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359174,
+            12.566370614359172
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000022508,
+            0.039118823615207354
+          ],
+          "probes": 3,
+          "crossing_pairs": 44
+        },
+        {
+          "meshes": [
+            "worker-manual__batch_17",
+            "worker-manual__batch_06"
+          ],
+          "bones": [
+            "joint__forearm_R",
+            "joint__torso"
+          ],
+          "source_parts": [
+            [
+              "cuff_R",
+              "fore_sleeve_R"
+            ],
+            [
+              "connected_shoulder_band",
+              "shirt_core"
+            ]
+          ],
+          "original_same_or_arm_adjacent": false,
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-manual__batch_17#1",
+          "source_triangle": 45,
+          "point_m": [
+            16.11539826504956,
+            1.020881193670122,
+            44.228103817183765
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359178,
+            12.566370614359176
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00025000000000167,
+            0.039118823615224896
+          ],
+          "probes": 3,
+          "crossing_pairs": 31
+        }
+      ],
+      "independent_recheck": [
+        {
+          "meshes": [
+            "worker-manual__batch_11",
+            "worker-manual__batch_06"
+          ],
+          "point_m": [
+            16.115398265049627,
+            1.0208811936701396,
+            44.531896182816254
+          ],
+          "checks": [
+            {
+              "mesh": "worker-manual__batch_11",
+              "whole_mesh_solid_angle_rad": 12.566370614359174,
+              "depth_m": 0.0002500000000022508
+            },
+            {
+              "mesh": "worker-manual__batch_06",
+              "whole_mesh_solid_angle_rad": 12.566370614359172,
+              "depth_m": 0.039118823615207354
+            }
+          ]
+        },
+        {
+          "meshes": [
+            "worker-manual__batch_17",
+            "worker-manual__batch_06"
+          ],
+          "point_m": [
+            16.11539826504956,
+            1.020881193670122,
+            44.228103817183765
+          ],
+          "checks": [
+            {
+              "mesh": "worker-manual__batch_17",
+              "whole_mesh_solid_angle_rad": 12.566370614359178,
+              "depth_m": 0.00025000000000167
+            },
+            {
+              "mesh": "worker-manual__batch_06",
+              "whole_mesh_solid_angle_rad": 12.566370614359176,
+              "depth_m": 0.039118823615224896
+            }
+          ]
+        }
+      ],
+      "secondary_head_sleeve_witnesses": [
+        {
+          "meshes": [
+            "worker-manual__batch_07",
+            "worker-manual__batch_16"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__upper_arm_L"
+          ],
+          "source_parts": [
+            [
+              "cuboid_head",
+              "ear_L",
+              "ear_R"
+            ],
+            [
+              "upper_sleeve_L"
+            ]
+          ],
+          "original_same_or_arm_adjacent": false,
+          "found": true,
+          "method": "native edge/triangle crossing then shared whole-mesh interior",
+          "triangles": [
+            8,
+            30
+          ],
+          "point_m": [
+            16.095427323040337,
+            1.1752412046850538,
+            44.53723617534939
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359199,
+            12.56637061435934
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0000036147771804573685,
+            0.000002229962997057325
+          ],
+          "probes": 1,
+          "crossing_pairs": 1
+        },
+        {
+          "meshes": [
+            "worker-manual__batch_07",
+            "worker-manual__batch_22"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__upper_arm_R"
+          ],
+          "source_parts": [
+            [
+              "cuboid_head",
+              "ear_L",
+              "ear_R"
+            ],
+            [
+              "upper_sleeve_R"
+            ]
+          ],
+          "original_same_or_arm_adjacent": false,
+          "found": true,
+          "method": "native edge/triangle crossing then shared whole-mesh interior",
+          "triangles": [
+            22,
+            30
+          ],
+          "point_m": [
+            16.095427323040337,
+            1.1752412046850602,
+            44.222763824650606
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359283,
+            12.56637061435985
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00000361477718014335,
+            0.0000022299629968764786
+          ],
+          "probes": 7,
+          "crossing_pairs": 1
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "severity": "blocking_candidate",
+      "kind": "SEED_EXTRACTION_CUFF_NATIVE_BAR_MATERIAL_INTERIOR",
+      "conclusion": "The adapted original connected-arm, orientation-held axis extraction introduces cuff/bar interiors. This rejects the candidate; it does not establish that all other allowed manual-arm trajectories are impossible.",
+      "time_s": 0.84,
+      "withdrawal_m": 0.02720839506813453,
+      "witnesses": [
+        {
+          "kind": "body_cart",
+          "meshes": [
+            "worker-manual__batch_11",
+            "picking-cart-tote-fixture__batch_03"
+          ],
+          "bones": [
+            "joint__forearm_L",
+            ""
+          ],
+          "source_parts": [
+            [
+              "cuff_L",
+              "fore_sleeve_L"
+            ],
+            [
+              "caster_mount_plate_front_L",
+              "caster_mount_plate_front_R",
+              "caster_mount_plate_rear_L",
+              "caster_mount_plate_rear_R",
+              "deck_support_ledge_lower_L",
+              "deck_support_ledge_lower_R",
+              "deck_support_ledge_upper_L",
+              "deck_support_ledge_upper_R",
+              "frame_post_front_L",
+              "frame_post_front_R",
+              "frame_post_rear_L",
+              "frame_post_rear_R",
+              "straight_grip_bar"
+            ]
+          ],
+          "found": true,
+          "method": "native edge/triangle crossing then shared whole-mesh interior",
+          "triangles": [
+            16,
+            251
+          ],
+          "point_m": [
+            16.38045765836054,
+            0.9733177198838932,
+            44.56283719401181
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614358956,
+            12.566370614354586
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.000009982479384137035,
+            0.00004548192120769939
+          ],
+          "probes": 16,
+          "crossing_pairs": 42
+        },
+        {
+          "kind": "body_cart",
+          "meshes": [
+            "worker-manual__batch_17",
+            "picking-cart-tote-fixture__batch_03"
+          ],
+          "bones": [
+            "joint__forearm_R",
+            ""
+          ],
+          "source_parts": [
+            [
+              "cuff_R",
+              "fore_sleeve_R"
+            ],
+            [
+              "caster_mount_plate_front_L",
+              "caster_mount_plate_front_R",
+              "caster_mount_plate_rear_L",
+              "caster_mount_plate_rear_R",
+              "deck_support_ledge_lower_L",
+              "deck_support_ledge_lower_R",
+              "deck_support_ledge_upper_L",
+              "deck_support_ledge_upper_R",
+              "frame_post_front_L",
+              "frame_post_front_R",
+              "frame_post_rear_L",
+              "frame_post_rear_R",
+              "straight_grip_bar"
+            ]
+          ],
+          "found": true,
+          "method": "native edge/triangle crossing then shared whole-mesh interior",
+          "triangles": [
+            16,
+            251
+          ],
+          "point_m": [
+            16.38045765836054,
+            0.9733177198838932,
+            44.19716280598819
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359633,
+            12.566370614356224
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.000009982479390209028,
+            0.00004548192120769939
+          ],
+          "probes": 28,
+          "crossing_pairs": 10
+        }
+      ],
+      "cart_bar_original_triangle_indices_verified": true
+    },
+    {
+      "id": "F03",
+      "severity": "model_constraint",
+      "kind": "C_MOUTH_ZERO_RESERVE_AND_CLOSE_ONLY_NATIVE_PAD_CONTROLS",
+      "conclusion": "Native triangle ray intersections give about45.000026mm throat versus45.000010mm bar projection. The positive16nm total width margin does not prove an impossible mouth. Neutral pads are at their widest source setting; signed native travel can only close it. No finger opening, bar shrinking, or geometry change was introduced.",
+      "measurements": [
+        {
+          "side": "L",
+          "slices": [
+            {
+              "hand_local_z_m": 0.050000011920928955,
+              "lower": {
+                "distance_m": 0.022499980404971726,
+                "triangle": 39
+              },
+              "upper": {
+                "distance_m": 0.022500045597554388,
+                "triangle": 33
+              },
+              "actual_native_throat_m": 0.04500002600252612
+            },
+            {
+              "hand_local_z_m": 0.05,
+              "lower": {
+                "distance_m": 0.02249998040497522,
+                "triangle": 39
+              },
+              "upper": {
+                "distance_m": 0.02250004559755413,
+                "triangle": 33
+              },
+              "actual_native_throat_m": 0.04500002600252935
+            },
+            {
+              "hand_local_z_m": 0.055,
+              "lower": {
+                "distance_m": 0.02249998040497505,
+                "triangle": 39
+              },
+              "upper": {
+                "distance_m": 0.022500045597554388,
+                "triangle": 33
+              },
+              "actual_native_throat_m": 0.045000026002529434
+            }
+          ],
+          "bar_native_y_diameter_in_hand_frame_m": 0.045000009760201465,
+          "total_width_margin_m": 1.6242324651916107e-8
+        },
+        {
+          "side": "R",
+          "slices": [
+            {
+              "hand_local_z_m": 0.050000011920928955,
+              "lower": {
+                "distance_m": 0.022499980404971726,
+                "triangle": 39
+              },
+              "upper": {
+                "distance_m": 0.022500045597554388,
+                "triangle": 33
+              },
+              "actual_native_throat_m": 0.04500002600252612
+            },
+            {
+              "hand_local_z_m": 0.05,
+              "lower": {
+                "distance_m": 0.02249998040497522,
+                "triangle": 39
+              },
+              "upper": {
+                "distance_m": 0.02250004559755413,
+                "triangle": 33
+              },
+              "actual_native_throat_m": 0.04500002600252935
+            },
+            {
+              "hand_local_z_m": 0.055,
+              "lower": {
+                "distance_m": 0.02249998040497505,
+                "triangle": 39
+              },
+              "upper": {
+                "distance_m": 0.022500045597554388,
+                "triangle": 33
+              },
+              "actual_native_throat_m": 0.045000026002529434
+            }
+          ],
+          "bar_native_y_diameter_in_hand_frame_m": 0.04500000976020324,
+          "total_width_margin_m": 1.6242322875559267e-8
+        }
+      ],
+      "manual_controls_left": [
+        {
+          "name": "joint__shoulder_lift_L",
+          "parent": "joint__torso",
+          "position": [
+            -0.2150000035762787,
+            0.4300000071525574,
+            0.004999999888241291
+          ],
+          "euler": [
+            0,
+            0,
+            0
+          ],
+          "metadata": {
+            "name": "joint__shoulder_lift_L",
+            "layout_version": "qoima-144x72-v3",
+            "namespace": "v3",
+            "units": "m",
+            "up_axis": "Y",
+            "forward_axis": "+Z",
+            "pivot_id": "joint__shoulder_lift_L",
+            "role": "rigid_joint_pivot",
+            "rotation_axis_runtime": "X",
+            "bind_local_runtime": [
+              0,
+              0,
+              0
+            ],
+            "joint_mode": "manual_additional_shoulder_elevation",
+            "rotation_range_radians": [
+              -0.8,
+              0
+            ],
+            "meaning": "Additional manual reach range. Original upper-arm delta limits remain unchanged; combined X elevation minimum is -3.0rad."
+          }
+        },
+        {
+          "name": "joint__elbow_swivel_L",
+          "parent": "joint__upper_arm_L",
+          "position": [
+            -0.050000011920928955,
+            -0.19999998807907104,
+            0.009999999776482582
+          ],
+          "euler": [
+            0,
+            0,
+            0
+          ],
+          "metadata": {
+            "name": "joint__elbow_swivel_L",
+            "layout_version": "qoima-144x72-v3",
+            "namespace": "v3",
+            "units": "m",
+            "up_axis": "Y",
+            "forward_axis": "+Z",
+            "pivot_id": "joint__elbow_swivel_L",
+            "role": "rigid_joint_pivot",
+            "rotation_axis_runtime": "Y",
+            "bind_local_runtime": [
+              0,
+              0,
+              0
+            ],
+            "joint_mode": "upper_arm_axial_swivel",
+            "rotation_range_radians": [
+              -3.141592653589793,
+              3.141592653589793
+            ],
+            "custom_axis_runtime": [
+              -0.24225078523159027,
+              -0.9690031409263611,
+              0.048450153321027756
+            ],
+            "meaning": "Elbow-plane swivel about the actual upper-arm longitudinal axis. Distinct from wrist flexion and original elbow bend."
+          }
+        },
+        {
+          "name": "joint__palm_roll_L",
+          "parent": "joint__forearm_L",
+          "position": [
+            -0.034999996423721313,
+            -0.1899999976158142,
+            0.014999998733401299
+          ],
+          "euler": [
+            -3.141592653589793,
+            1.2246467991473532e-16,
+            -3.141592653589793
+          ],
+          "metadata": {
+            "name": "joint__palm_roll_L",
+            "layout_version": "qoima-144x72-v3",
+            "namespace": "v3",
+            "units": "m",
+            "up_axis": "Y",
+            "forward_axis": "+Z",
+            "pivot_id": "joint__palm_roll_L",
+            "role": "rigid_joint_pivot",
+            "rotation_axis_runtime": "Y",
+            "bind_local_runtime": [
+              0,
+              0,
+              0
+            ],
+            "joint_mode": "forearm_axial_pronation",
+            "rotation_range_radians": [
+              -3.141592653589793,
+              3.141592653589793
+            ],
+            "neutral_runtime_y_rad": 1.5707963267948966,
+            "meaning": "Axial pronation, distinct from the original wrist flexion limits."
+          }
+        },
+        {
+          "name": "joint__finger_lower_L",
+          "parent": "joint__hand_L",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "euler": [
+            0,
+            0,
+            0
+          ],
+          "metadata": {
+            "name": "joint__finger_lower_L",
+            "layout_version": "qoima-144x72-v3",
+            "namespace": "v3",
+            "units": "m",
+            "up_axis": "Y",
+            "forward_axis": "+Z",
+            "pivot_id": "joint__finger_lower_L",
+            "role": "rigid_joint_pivot",
+            "rotation_axis_runtime": "Y",
+            "bind_local_runtime": [
+              0,
+              0,
+              0
+            ],
+            "joint_mode": "rigid_finger_pad_translation",
+            "translation_axis_runtime": "Y",
+            "signed_travel_m": [
+              0,
+              0.014
+            ],
+            "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+          }
+        },
+        {
+          "name": "joint__finger_thumb_L",
+          "parent": "joint__hand_L",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "euler": [
+            0,
+            0,
+            0
+          ],
+          "metadata": {
+            "name": "joint__finger_thumb_L",
+            "layout_version": "qoima-144x72-v3",
+            "namespace": "v3",
+            "units": "m",
+            "up_axis": "Y",
+            "forward_axis": "+Z",
+            "pivot_id": "joint__finger_thumb_L",
+            "role": "rigid_joint_pivot",
+            "rotation_axis_runtime": "Z",
+            "bind_local_runtime": [
+              0,
+              0,
+              0
+            ],
+            "joint_mode": "rigid_finger_pad_translation",
+            "translation_axis_runtime": "Z",
+            "signed_travel_m": [
+              -0.005,
+              0
+            ],
+            "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+          }
+        },
+        {
+          "name": "joint__finger_upper_L",
+          "parent": "joint__hand_L",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "euler": [
+            0,
+            0,
+            0
+          ],
+          "metadata": {
+            "name": "joint__finger_upper_L",
+            "layout_version": "qoima-144x72-v3",
+            "namespace": "v3",
+            "units": "m",
+            "up_axis": "Y",
+            "forward_axis": "+Z",
+            "pivot_id": "joint__finger_upper_L",
+            "role": "rigid_joint_pivot",
+            "rotation_axis_runtime": "Y",
+            "bind_local_runtime": [
+              0,
+              0,
+              0
+            ],
+            "joint_mode": "rigid_finger_pad_translation",
+            "translation_axis_runtime": "Y",
+            "signed_travel_m": [
+              -0.014,
+              0
+            ],
+            "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+          }
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "frames": 101,
+    "interval_s": 0.015,
+    "duration_s": 1.5,
+    "terminal_join_maximum_matrix_element_delta": 1.6653345369377348e-16,
+    "maximum_ik_error_m": 8.917234590951153e-12,
+    "fixed_root_cart_wheel_matrix_delta": 0,
+    "sole_drift_m": 0,
+    "native_pair_evaluations": 86309,
+    "witness_probes": 25943,
+    "edge_triangle_pairs": 97575,
+    "closed_native_meshes": 50,
+    "closed_topology_all_pass": true,
+    "backward_repeated_seeks": [
+      0,
+      0.75,
+      1.5,
+      0.015,
+      1.2,
+      0.75,
+      0
+    ],
+    "invalid_time_exact_rollback": 5,
+    "second_arm_unreachable_ik_exact_rollback": true,
+    "reset_exact": true,
+    "dispose_exact": true,
+    "actual_source_bar_intrusion_control": {
+      "found": true,
+      "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+      "source_component": "worker-manual__batch_12#0",
+      "source_triangle": 39,
+      "point_m": [
+        16.42166860377416,
+        0.9906714819516957,
+        44.581333339481304
+      ],
+      "whole_mesh_solid_angles_rad": [
+        12.566370614359172,
+        12.566370614357341
+      ],
+      "whole_mesh_surface_depths_m": [
+        0.0002499999999989917,
+        0.0011321521963370642
+      ],
+      "probes": 4,
+      "crossing_pairs": 0
+    },
+    "accepted_input_pins_match_prior_probe": true,
+    "input_drift": [],
+    "native_soles": [
+      {
+        "side": "L",
+        "anchor_world_m": [
+          16.0425,
+          1.490116116609208e-8,
+          44.494999994635585
+        ],
+        "native_mesh_bottom_world_y_m": 1.490116116609208e-8,
+        "source_rest_leg_joints": [
+          {
+            "joint": "joint__thigh_L",
+            "euler": [
+              3.552713678800501e-15,
+              0,
+              0
+            ]
+          },
+          {
+            "joint": "joint__shin_L",
+            "euler": [
+              -7.105427357601002e-15,
+              0,
+              0
+            ]
+          },
+          {
+            "joint": "joint__foot_L",
+            "euler": [
+              3.552713678800501e-15,
+              0,
+              0
+            ]
+          }
+        ],
+        "source_geometric_knee_rest_retained": true
+      },
+      {
+        "side": "R",
+        "anchor_world_m": [
+          16.0425,
+          1.490116116609208e-8,
+          44.26500000536442
+        ],
+        "native_mesh_bottom_world_y_m": 1.490116116609208e-8,
+        "source_rest_leg_joints": [
+          {
+            "joint": "joint__thigh_R",
+            "euler": [
+              3.552713678800501e-15,
+              0,
+              0
+            ]
+          },
+          {
+            "joint": "joint__shin_R",
+            "euler": [
+              -7.105427357601002e-15,
+              0,
+              0
+            ]
+          },
+          {
+            "joint": "joint__foot_R",
+            "euler": [
+              3.552713678800501e-15,
+              0,
+              0
+            ]
+          }
+        ],
+        "source_geometric_knee_rest_retained": true
+      }
+    ],
+    "native_geometry_material_buffers_and_uuids_unchanged": true,
+    "runtime": {
+      "node": "v24.19.0",
+      "three": "169"
+    }
+  },
+  "limitations": [
+    "Scratch native GLTF fixture only; no warehouse WorkerInstance creation, actor/cart clone, role swap, or reparent during elapsed sampling. This does not deliver a runtime constructor or claim its API is admitted.",
+    "Diagnostic all-mesh outputs retain source decorative ink. Blocking F01 uses actual fore_sleeve/cuff and shirt_core, independently of that ink or generated role badges.",
+    "The original adjacent articulation and same-bone baseline joins are listed explicitly in candidate-pose-samples.json; changed nonadjacent forearm/torso and upper-arm/head pairs are checked. Source-rest knee geometry and grounded soles are retained.",
+    "101 dense absolute extraction frames include boundaries and a44.499996mm axis endpoint seed. Arm settling is not attempted after the extraction failed. This is not a continuous path or global impossibility certificate.",
+    "The raw per-frame body_self list checks changed pairs; exact t9 all-pair scan is saved separately and supplies the initial blocking witnesses. A t=0 per-frame hits count of0 does not mean self-clearance passes.",
+    "No source-acquisition/push/journey, full warehouse530HU scan, global lease, force/balance, operational admission, renderer, Blender, build, install, Git, auth/config/model change, or accepted-pose solverwriter.",
+    "Supplied Tier2 generation2026-11-08T05:55:56Z/partial coverage is retained as context. No callable code-graph MCP was exposed; exact-source fallback only, no fresh completeness/reindex or memory mutation."
+  ],
+  "next_action": "Root must decide how to resolve the exact prescribed t9 forearm/torso and sleeve/head material intersections before this strict release gate can pass. Preserve the accepted old clip until an explicit new model/action version is chosen. A new candidate may also need a different existing-manual-joint elbow configuration to clear the bar; do not reinterpret legacy release/reset as physical motion.",
+  "source_hashes": {
+    "work/v3/cart-clearance-next/report.md": "b6d29adb4a2e3cf79e1476c4c22c2fc29b36509f9613456cc88abfac19964834",
+    "work/v3/cart-clearance-next/checks.json": "b16e6b3785c8d551f5dc4f496b01e1c7afad73df5b54d7cc76ed42ca1e5cebf2",
+    "work/v3/cart-clearance-next/probe.mjs": "9c308be2176f459440af0381ca26e4ba07b3be83439ad5eaf95c9bd1a7031cb8",
+    "frontend/src/adaptive-v3/motion/cartWalk.ts": "455f3a16b869d5f7246d9461b921bf80958af1985fdd03ee2ca5674e0b49fd04",
+    "frontend/src/adaptive-v3/motion/grip.ts": "a12155452fae779d09e223a512bf3b2c017c61b0ec206031abdd64e807d5e763",
+    "frontend/public/data/v3/picker-push-pose.json": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062",
+    "frontend/public/data/v3/picker-cart-walk.json": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "docs/adaptive-v3/specs/P03.5.3.3.md": "9a72f5d82f66da75262ebd04facfedf73ef847fb5e67e5afc0f0167eea16799a",
+    "docs/adaptive-v3/evidence/P03.5.3.3.json": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a",
+    "assets/v3/specs/worker-base.dimensions.json": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+    "frontend/node_modules/three/package.json": "2dea831b9915a94b23a5c1ecc4bce0433f0cb6bca213401ff660277e85c3fe01",
+    "frontend/node_modules/three/build/three.module.js": "0a3368c165eea773490aec7b77c22de70e3eac288503409256fdbf4d12578416",
+    "frontend/node_modules/three/examples/jsm/loaders/GLTFLoader.js": "6f1719dcc6a179d30273dfb0de07a8c898a7981f7b08e600b446387f5967371f",
+    "frontend/node_modules/typescript/lib/typescript.js": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675",
+    "assets/v3/iterations/worker-base/P03.5.1/gait/runtime-native-poses.json": "bbe50e247760cc26f7d69bfd232b2cd540f79da58bd779feb19da0d18c0352c1",
+    "tools/blender/v3/build_worker_base.py": "62288b1ad72e6c3882dbdaa2c41ae530a6f6af09e3b0c52ac6526f02d35ba65e",
+    "tools/blender/v3/build_worker_manual.py": "ec9eb6fc215e66a3a34e6312611b2feacdea6813e3eb1132151118d96953d17c",
+    "tools/blender/v3/verify_manual_reach.py": "ef90f74b81604c0d55d7ebc9085bbdc261d3fe197db1f6b9ea5a28cd1f9c0f55",
+    "docs/adaptive-v3/specs/P03.5.1.md": "4ea8d63b4a64cf22e7455437fdd4d5acbe1ab39985e3f4d147837acb1d51f814",
+    "frontend/src/adaptive-v3/warehouseSupportKit.ts": "4f3929b70a751faedc8526f3c9c4ea27bc91686249e7b83a30ea79115f8c3c47",
+    "frontend/src/adaptive-v3/warehouseHolderScene.ts": "e72c4989cd84ce2aaaeb945565b4b6de7edb7ebc1bd292eba623488f4aad281c",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "frontend/tools/solve-worker-base-carry-v3.mjs": "5ba9e5ec5856ee8dccd5788223152582feda9e893614d41d2861be70baf6150d"
+  }
+}

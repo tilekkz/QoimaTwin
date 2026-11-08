@@ -1,0 +1,853 @@
+{
+  "schema_id": "qoima.visual-worker-registry.v3",
+  "namespace": "v3",
+  "layout_version": "qoima-144x72-v3",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "actor_count": 24,
+  "vehicle_count": 2,
+  "packing_station_count": 6,
+  "roles": [
+    {
+      "role": "picker",
+      "label": "Комплектовщик",
+      "color": "#3478F6",
+      "code": "01",
+      "icon": "cart",
+      "count": 12
+    },
+    {
+      "role": "packer",
+      "label": "Упаковщик",
+      "color": "#F28C28",
+      "code": "02",
+      "icon": "carton",
+      "count": 6
+    },
+    {
+      "role": "receiver",
+      "label": "Приёмщик",
+      "color": "#9B59D0",
+      "code": "03",
+      "icon": "incoming_arrow",
+      "count": 2
+    },
+    {
+      "role": "shipper",
+      "label": "Отгрузчик",
+      "color": "#2AA56A",
+      "code": "04",
+      "icon": "outgoing_arrow",
+      "count": 2
+    },
+    {
+      "role": "forklift_driver",
+      "label": "Водитель погрузчика",
+      "color": "#F4C542",
+      "code": "05",
+      "icon": "forklift",
+      "count": 2
+    }
+  ],
+  "workers": [
+    {
+      "actor_id": "P01",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P02",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P03",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P04",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P05",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P06",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P07",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P08",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P09",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P10",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P11",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "P12",
+      "baseline_role": "picker",
+      "initial_role": "picker",
+      "clip_ids": [
+        "picker_idle",
+        "picker_walk",
+        "picker_pick"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "K01",
+      "baseline_role": "packer",
+      "initial_role": "packer",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": "PK01"
+    },
+    {
+      "actor_id": "K02",
+      "baseline_role": "packer",
+      "initial_role": "packer",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": "PK02"
+    },
+    {
+      "actor_id": "K03",
+      "baseline_role": "packer",
+      "initial_role": "packer",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": "PK03"
+    },
+    {
+      "actor_id": "K04",
+      "baseline_role": "packer",
+      "initial_role": "packer",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": "PK04"
+    },
+    {
+      "actor_id": "K05",
+      "baseline_role": "packer",
+      "initial_role": "packer",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": "PK05"
+    },
+    {
+      "actor_id": "K06",
+      "baseline_role": "packer",
+      "initial_role": "packer",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": "PK06"
+    },
+    {
+      "actor_id": "R01",
+      "baseline_role": "receiver",
+      "initial_role": "receiver",
+      "clip_ids": [
+        "receiver_scan",
+        "receiver_receive",
+        "receiver_idle",
+        "receiver_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "R02",
+      "baseline_role": "receiver",
+      "initial_role": "receiver",
+      "clip_ids": [
+        "receiver_scan",
+        "receiver_receive",
+        "receiver_idle",
+        "receiver_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "S01",
+      "baseline_role": "shipper",
+      "initial_role": "shipper",
+      "clip_ids": [
+        "shipper_scan",
+        "shipper_place",
+        "shipper_idle",
+        "shipper_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "S02",
+      "baseline_role": "shipper",
+      "initial_role": "shipper",
+      "clip_ids": [
+        "shipper_scan",
+        "shipper_place",
+        "shipper_idle",
+        "shipper_blocked"
+      ],
+      "assigned_vehicle_id": null,
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "F01",
+      "baseline_role": "forklift_driver",
+      "initial_role": "forklift_driver",
+      "clip_ids": [
+        "driver_seated",
+        "driver_pickup"
+      ],
+      "assigned_vehicle_id": "FL01",
+      "legacy_station_ref": null
+    },
+    {
+      "actor_id": "F02",
+      "baseline_role": "forklift_driver",
+      "initial_role": "forklift_driver",
+      "clip_ids": [
+        "driver_seated",
+        "driver_pickup"
+      ],
+      "assigned_vehicle_id": "FL02",
+      "legacy_station_ref": null
+    }
+  ],
+  "vehicles": [
+    {
+      "vehicle_id": "FL01",
+      "driver_actor_id": "F01"
+    },
+    {
+      "vehicle_id": "FL02",
+      "driver_actor_id": "F02"
+    }
+  ],
+  "clips": [
+    {
+      "clip_id": "picker_idle",
+      "role": "picker",
+      "label": "Ожидание",
+      "asset_id": "worker-manual",
+      "fixture": null,
+      "mode": null,
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P03",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P03.json",
+        "sha256": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная поза; свободные руки.",
+      "fixture_actor_id": "P01",
+      "canonical_actor_id": "P01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "picker_walk",
+      "role": "picker",
+      "label": "Ведение тележки",
+      "asset_id": "picking-cart-tote-fixture",
+      "fixture": "walk",
+      "mode": null,
+      "duration_s": 9,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P03",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P03.json",
+        "sha256": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/picker-cart-walk.json",
+          "sha256": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2"
+        },
+        {
+          "path": "frontend/public/data/v3/picker-push-pose.json",
+          "sha256": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062"
+        }
+      ],
+      "prerequisites": "Существующая тележка и лоток; хват уже установлен.",
+      "fixture_actor_id": "P01",
+      "canonical_actor_id": "P01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "picker_pick",
+      "role": "picker",
+      "label": "Отбор SMALL в лоток",
+      "asset_id": "picker-pick-source-fixture",
+      "fixture": "pick",
+      "mode": null,
+      "duration_s": 36,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P03.5.3.3",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P03.5.3.3.json",
+        "sha256": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/models/v3/small-pick-v3.json",
+          "sha256": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-small-pick.glb",
+          "sha256": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0"
+        }
+      ],
+      "prerequisites": "Подготовленный ручной захват; исходные упаковки14/17/20/23 и лоток. Получение/укладка инструмента — отдельное действие.",
+      "fixture_actor_id": "P01",
+      "canonical_actor_id": "P01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "packer_finish",
+      "role": "packer",
+      "label": "Финальная проверка ленты",
+      "asset_id": "packer-workcell-fixture",
+      "fixture": "packer",
+      "mode": "pack",
+      "duration_s": 7.5,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P04",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P04.json",
+        "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/packer-seam-end.json",
+          "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "packer_idle",
+      "role": "packer",
+      "label": "Ожидание",
+      "asset_id": "packer-workcell-fixture",
+      "fixture": "packer",
+      "mode": "idle",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P04",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P04.json",
+        "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/packer-seam-end.json",
+          "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "packer_blocked",
+      "role": "packer",
+      "label": "Пост занят",
+      "asset_id": "packer-workcell-fixture",
+      "fixture": "packer",
+      "mode": "blocked",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P04",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P04.json",
+        "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/packer-seam-end.json",
+          "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_scan",
+      "role": "receiver",
+      "label": "Проверка этикетки",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "scan",
+      "duration_s": 2.5,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "b1dd59032d48b317f201dfbce44f4abc51e2dbda7fa8306d86f29d708ee9e0c5"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_receive",
+      "role": "receiver",
+      "label": "Подтверждение приёмки",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "receive",
+      "duration_s": 17.8,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "b1dd59032d48b317f201dfbce44f4abc51e2dbda7fa8306d86f29d708ee9e0c5"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_idle",
+      "role": "receiver",
+      "label": "Ожидание",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "idle",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "b1dd59032d48b317f201dfbce44f4abc51e2dbda7fa8306d86f29d708ee9e0c5"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_blocked",
+      "role": "receiver",
+      "label": "Пост занят",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "blocked",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "b1dd59032d48b317f201dfbce44f4abc51e2dbda7fa8306d86f29d708ee9e0c5"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_scan",
+      "role": "shipper",
+      "label": "Проверка этикетки",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "scan",
+      "duration_s": 2.5,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "5e27aec469006fd8c10acc5d0e1a5d4c198ab0997ad9a6fb0afde1d3485ac18d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_place",
+      "role": "shipper",
+      "label": "Укладка на выход",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "place",
+      "duration_s": 27,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "5e27aec469006fd8c10acc5d0e1a5d4c198ab0997ad9a6fb0afde1d3485ac18d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_idle",
+      "role": "shipper",
+      "label": "Ожидание",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "idle",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "5e27aec469006fd8c10acc5d0e1a5d4c198ab0997ad9a6fb0afde1d3485ac18d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_blocked",
+      "role": "shipper",
+      "label": "Выход занят",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "blocked",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "5e27aec469006fd8c10acc5d0e1a5d4c198ab0997ad9a6fb0afde1d3485ac18d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "driver_seated",
+      "role": "forklift_driver",
+      "label": "В кабине · ожидание",
+      "asset_id": "forklift",
+      "fixture": "driver",
+      "mode": null,
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P07",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P07.json",
+        "sha256": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/seated-driver-pose.json",
+          "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-base.glb",
+          "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+        }
+      ],
+      "prerequisites": "Посадка уже установлена; вход/выход из кабины — отдельные действия.",
+      "fixture_actor_id": "F01",
+      "canonical_actor_id": "F01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "driver_pickup",
+      "role": "forklift_driver",
+      "label": "Подхват и установка паллеты",
+      "asset_id": "forklift-pallet-low-fixture",
+      "fixture": "pickup",
+      "mode": null,
+      "duration_s": 30,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P07",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P07.json",
+        "sha256": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/pallet-pickup-cycle.json",
+          "sha256": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59"
+        },
+        {
+          "path": "frontend/public/data/v3/seated-driver-pose.json",
+          "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+        }
+      ],
+      "prerequisites": "Существующая техника, закреплённый водитель и подготовленная паллета; маршрут склада ещё не соединён с клипом.",
+      "fixture_actor_id": "F01",
+      "canonical_actor_id": "F01",
+      "warehouse_joined": false
+    }
+  ],
+  "fixture_aliases": [
+    {
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "clip_ids": [
+        "packer_finish",
+        "packer_idle",
+        "packer_blocked"
+      ],
+      "scope": "Retained isolated P04 QA actor alias; original canonical PK01 is a station, K01 is the worker. Never an extra employee."
+    }
+  ],
+  "source_hashes": {
+    "contracts/actors.example.json": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "docs/adaptive-v3/evidence/P03.json": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/data/v3/picker-cart-walk.json": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2",
+    "frontend/public/data/v3/picker-push-pose.json": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062",
+    "docs/adaptive-v3/evidence/P03.5.3.3.json": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a",
+    "frontend/public/models/v3/small-pick-v3.json": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "docs/adaptive-v3/evidence/P04.json": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1",
+    "frontend/public/data/v3/packer-seam-end.json": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b",
+    "docs/adaptive-v3/evidence/P05.json": "b1dd59032d48b317f201dfbce44f4abc51e2dbda7fa8306d86f29d708ee9e0c5",
+    "frontend/public/data/v3/receiver-v3.json": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959",
+    "docs/adaptive-v3/evidence/P06.json": "5e27aec469006fd8c10acc5d0e1a5d4c198ab0997ad9a6fb0afde1d3485ac18d",
+    "frontend/public/data/v3/shipper-v3.json": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b",
+    "docs/adaptive-v3/evidence/P07.json": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/data/v3/pallet-pickup-cycle.json": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59",
+    "frontend/tools/build-worker-registry-v3.mjs": "9ee5fffb2d75dec83da957be6968b44f7daaef4b542556110d1ac76ec3121f4a"
+  },
+  "scope": "Canonical24IDs/baseline roles and accepted prepared visual clips only. V2 coordinates are not reused; current warehouse placement/joins and P11 skill profiles remain separate. No backend staff update or actual engine run."
+}

@@ -1,0 +1,696 @@
+{
+  "task": "W05.3.5",
+  "result": "NATIVE_CONTACT_ENDPOINT_PROVED_BUT_SOURCE_RACK_CLEAR_ENDPOINT_NOT_ESTABLISHED",
+  "source_kind": "local_STOCK_CPU_feasibility",
+  "engine_operation": false,
+  "order_admission": false,
+  "source_pickup_admission": false,
+  "accepted_action": false,
+  "physical_join": false,
+  "runtime_scene_joined": false,
+  "completed_jobs": 0,
+  "root_owns_acceptance": true,
+  "canonical_root": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin",
+  "HEAD_user_declared": "f6efd1f777584deeb9d89f8eb70c4a60bab1562d",
+  "HEAD_verified": false,
+  "no_git_commands": true,
+  "stock": {
+    "handling_unit_id": "v3:HU:initial:DEMO_095:04",
+    "sku_id": "DEMO_095",
+    "slot_id": "v3:slot:SMALL_W:005:L2:B1",
+    "quantity_units": 24,
+    "gross_mass_kg": 0.94,
+    "dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "world_bottom_m": [
+      17.7,
+      1,
+      42.62
+    ],
+    "world_yaw_rad": 4.71238898038469,
+    "worker_world_m": [
+      17.14,
+      0,
+      42.62
+    ],
+    "worker_yaw_rad": 7.853981633974483,
+    "worker_local_bottom_m": [
+      0,
+      1,
+      0.56
+    ],
+    "relative_yaw_rad": -3.141592653589793
+  },
+  "executed_native_findings": {
+    "isolated_worker_HU_endpoint": true,
+    "source_rack_clear_endpoint": false,
+    "initial_reference_targets_m": [
+      [
+        -0.16,
+        1.08,
+        0.44
+      ],
+      [
+        0.16,
+        1.08,
+        0.44
+      ]
+    ],
+    "initial_joint_angles_identical_to_f33": true,
+    "actual_source_cargo_pose_rechecked": true,
+    "finite_patches": [
+      {
+        "side": "L",
+        "area_sum_m2": 0.00007808029818697184,
+        "maximum_radius_m": 0.4711990594152085,
+        "maximum_native_pad_gap_m": 4.4247355196538006e-9,
+        "maximum_native_cargo_gap_m": 2.598212464620228e-14,
+        "opposed_normal_dot": -1
+      },
+      {
+        "side": "R",
+        "area_sum_m2": 0.00007808029818697192,
+        "maximum_radius_m": 0.4711990594152085,
+        "maximum_native_pad_gap_m": 6.257460938297044e-9,
+        "maximum_native_cargo_gap_m": 0,
+        "opposed_normal_dot": -1
+      }
+    ],
+    "native_forward_check": [
+      {
+        "side": "L",
+        "analytic_vs_native_wrist_error_m": 1.1443916996305594e-16,
+        "analytic_vs_native_quaternion_component_error": 1.1102230246251565e-16,
+        "native_reference_m": [
+          -0.16000000000128717,
+          1.0800000000047452,
+          0.440000000000503
+        ],
+        "native_reference_target_error_m": 4.9422361616910836e-12
+      },
+      {
+        "side": "R",
+        "analytic_vs_native_wrist_error_m": 1.1443916996305594e-16,
+        "analytic_vs_native_quaternion_component_error": 1.1102230246251565e-16,
+        "native_reference_m": [
+          0.16000000000128717,
+          1.0800000000047452,
+          0.440000000000503
+        ],
+        "native_reference_target_error_m": 4.9422361616910836e-12
+      }
+    ],
+    "initial_C_mouth_violations": 0,
+    "initial_body_HU_envelope_interiors": 0,
+    "initial_body_HU_witnesses": 0,
+    "initial_changed_nonadjacent_self_witnesses": 0,
+    "original_join_observations": 25,
+    "unchanged_source_feet": [
+      {
+        "side": "L",
+        "sole_m": [
+          -0.11499999463558197,
+          1.4901161193847656e-8,
+          0
+        ],
+        "boot_bottom_y_m": 1.4901161193847656e-8,
+        "source_quaternion_unchanged": true
+      },
+      {
+        "side": "R",
+        "sole_m": [
+          0.11499999463558197,
+          1.4901161193847656e-8,
+          0
+        ],
+        "boot_bottom_y_m": 1.4901161193847656e-8,
+        "source_quaternion_unchanged": true
+      }
+    ],
+    "initial_active_limit_axes": {
+      "description": "flat arm vector [upperXYZ,foreXYZ,rollY,handXYZ]",
+      "L": [
+        1,
+        4,
+        9
+      ],
+      "R": [
+        1,
+        4,
+        9
+      ]
+    },
+    "initial_rack_collision_witnesses": [
+      {
+        "meshes": [
+          "worker-base__batch_12",
+          "rack-small__batch_00"
+        ],
+        "bone": "joint__hand_L",
+        "body_source_parts": [
+          "mitten_L_lower_pad",
+          "mitten_L_spine",
+          "mitten_L_thumb",
+          "mitten_L_upper_pad"
+        ],
+        "rack_source_parts": [
+          "L1_B1_low_front_lip",
+          "L1_B1_rear_panel",
+          "L1_B2_low_front_lip",
+          "L1_B2_rear_panel",
+          "L1_B3_low_front_lip",
+          "L1_B3_rear_panel",
+          "L1_B4_low_front_lip",
+          "L1_B4_rear_panel",
+          "L1_B5_low_front_lip",
+          "L1_B5_rear_panel",
+          "L1_front_support_beam",
+          "L1_petrol_floor_inlay",
+          "L1_rear_support_beam",
+          "L1_shared_divider_0",
+          "L1_shared_divider_1",
+          "L1_shared_divider_2",
+          "L1_shared_divider_3",
+          "L1_shared_divider_4",
+          "L1_shared_divider_5",
+          "L2_B1_low_front_lip",
+          "L2_B1_rear_panel",
+          "L2_B2_low_front_lip",
+          "L2_B2_rear_panel",
+          "L2_B3_low_front_lip",
+          "L2_B3_rear_panel",
+          "L2_B4_low_front_lip",
+          "L2_B4_rear_panel",
+          "L2_B5_low_front_lip",
+          "L2_B5_rear_panel",
+          "L2_front_support_beam",
+          "L2_petrol_floor_inlay",
+          "L2_rear_support_beam",
+          "L2_shared_divider_0",
+          "L2_shared_divider_1",
+          "L2_shared_divider_2",
+          "L2_shared_divider_3",
+          "L2_shared_divider_4",
+          "L2_shared_divider_5",
+          "post_00_collar",
+          "post_00_foot",
+          "post_01_collar",
+          "post_01_foot",
+          "post_10_collar",
+          "post_10_foot",
+          "post_11_collar",
+          "post_11_foot"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_12#0",
+        "source_triangle": 21,
+        "point_m": [
+          -0.19898988003859325,
+          1.0420948398662653,
+          0.39997498636869494
+        ],
+        "whole_mesh_solid_angles_rad": [
+          25.13274122871836,
+          12.566370614359203
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00024999999999996016,
+          0.00997499448982836
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      },
+      {
+        "meshes": [
+          "worker-base__batch_15",
+          "rack-small__batch_00"
+        ],
+        "bone": "joint__hand_R",
+        "body_source_parts": [
+          "mitten_R_lower_pad",
+          "mitten_R_spine",
+          "mitten_R_thumb",
+          "mitten_R_upper_pad"
+        ],
+        "rack_source_parts": [
+          "L1_B1_low_front_lip",
+          "L1_B1_rear_panel",
+          "L1_B2_low_front_lip",
+          "L1_B2_rear_panel",
+          "L1_B3_low_front_lip",
+          "L1_B3_rear_panel",
+          "L1_B4_low_front_lip",
+          "L1_B4_rear_panel",
+          "L1_B5_low_front_lip",
+          "L1_B5_rear_panel",
+          "L1_front_support_beam",
+          "L1_petrol_floor_inlay",
+          "L1_rear_support_beam",
+          "L1_shared_divider_0",
+          "L1_shared_divider_1",
+          "L1_shared_divider_2",
+          "L1_shared_divider_3",
+          "L1_shared_divider_4",
+          "L1_shared_divider_5",
+          "L2_B1_low_front_lip",
+          "L2_B1_rear_panel",
+          "L2_B2_low_front_lip",
+          "L2_B2_rear_panel",
+          "L2_B3_low_front_lip",
+          "L2_B3_rear_panel",
+          "L2_B4_low_front_lip",
+          "L2_B4_rear_panel",
+          "L2_B5_low_front_lip",
+          "L2_B5_rear_panel",
+          "L2_front_support_beam",
+          "L2_petrol_floor_inlay",
+          "L2_rear_support_beam",
+          "L2_shared_divider_0",
+          "L2_shared_divider_1",
+          "L2_shared_divider_2",
+          "L2_shared_divider_3",
+          "L2_shared_divider_4",
+          "L2_shared_divider_5",
+          "post_00_collar",
+          "post_00_foot",
+          "post_01_collar",
+          "post_01_foot",
+          "post_10_collar",
+          "post_10_foot",
+          "post_11_collar",
+          "post_11_foot"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_15#0",
+        "source_triangle": 10,
+        "point_m": [
+          0.1615101004137446,
+          1.0420948398659853,
+          0.3999749863689193
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359172,
+          12.56637061435917
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.000249999999999941,
+          0.009974994490052735
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      },
+      {
+        "meshes": [
+          "worker-base__batch_15",
+          "rack-small__batch_02"
+        ],
+        "bone": "joint__hand_R",
+        "body_source_parts": [
+          "mitten_R_lower_pad",
+          "mitten_R_spine",
+          "mitten_R_thumb",
+          "mitten_R_upper_pad"
+        ],
+        "rack_source_parts": [
+          "post_00_cap",
+          "post_00_shaft",
+          "post_01_cap",
+          "post_01_shaft",
+          "post_10_cap",
+          "post_10_shaft",
+          "post_11_cap",
+          "post_11_shaft"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_15#1",
+        "source_triangle": 46,
+        "point_m": [
+          0.2471889965226041,
+          1.0362518704127817,
+          0.43366096661744535
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359169,
+          12.566370614359403
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00025000000000004175,
+          0.016339066761155152
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      },
+      {
+        "meshes": [
+          "worker-base__batch_14",
+          "rack-small__batch_02"
+        ],
+        "bone": "joint__forearm_R",
+        "body_source_parts": [
+          "cuff_R",
+          "fore_sleeve_R"
+        ],
+        "rack_source_parts": [
+          "post_00_cap",
+          "post_00_shaft",
+          "post_01_cap",
+          "post_01_shaft",
+          "post_10_cap",
+          "post_10_shaft",
+          "post_11_cap",
+          "post_11_shaft"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_14#0",
+        "source_triangle": 6,
+        "point_m": [
+          0.291754628799311,
+          1.0545821870914234,
+          0.38245231250440276
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359176,
+          12.5663706143593
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00025000000000003974,
+          0.01245232204114649
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      }
+    ],
+    "search_counts": {
+      "target_orientation_candidates": 168,
+      "side_solves": 336,
+      "LM_iterations": 34654,
+      "converged_both_sides": 83,
+      "two_patch_candidate_pass": 69,
+      "mouth_anatomy_HU_envelope_pass": 61,
+      "rack_checked": 61,
+      "rack_clear": 0
+    },
+    "best_search_weighted_residual": 2.6729238983435764e-15,
+    "best_rejected_candidate": {
+      "selection": "minimum rack witness count, then minimum maximum rack depth among recorded contact/mouth/anatomy/HU-clear candidates",
+      "y": 1.08,
+      "z": 0.435,
+      "tangent": -1.8,
+      "solutions": {
+        "L": {
+          "angles": [
+            -0.5772015510300046,
+            0.5073317180680552,
+            -0.1418173865142875,
+            -1.267045078520129,
+            -0.021942322853603723,
+            0.02149494045826603,
+            1.2329081217464866,
+            0.46223922800709216,
+            0.05525099514526874,
+            -0.019532867346686984
+          ],
+          "iterations": 5,
+          "residual_weighted": 2.0711885990790796e-14,
+          "wrist_position_error_m": 2.003562328804617e-14,
+          "limits_rad": [
+            [
+              -2.2,
+              0.7
+            ],
+            [
+              -0.55,
+              0.55
+            ],
+            [
+              -0.7,
+              0.7
+            ],
+            [
+              -2.2,
+              0.15
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -3.141592653589793,
+              3.141592653589793
+            ],
+            [
+              -0.6,
+              0.6
+            ],
+            [
+              -0.65,
+              0.65
+            ],
+            [
+              -0.4,
+              0.4
+            ]
+          ],
+          "active_limits": []
+        },
+        "R": {
+          "angles": [
+            -0.5772025825644982,
+            -0.507329851747217,
+            0.14181556735051656,
+            -1.2670449973844276,
+            0.021942302577117292,
+            -0.021495289536241587,
+            -1.2329086844193828,
+            0.46223835165787763,
+            -0.05525254372776605,
+            0.019532567489220196
+          ],
+          "iterations": 5,
+          "residual_weighted": 2.0799352058572235e-14,
+          "wrist_position_error_m": 2.0129127252120325e-14,
+          "limits_rad": [
+            [
+              -2.2,
+              0.7
+            ],
+            [
+              -0.55,
+              0.55
+            ],
+            [
+              -0.7,
+              0.7
+            ],
+            [
+              -2.2,
+              0.15
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -3.141592653589793,
+              3.141592653589793
+            ],
+            [
+              -0.6,
+              0.6
+            ],
+            [
+              -0.65,
+              0.65
+            ],
+            [
+              -0.4,
+              0.4
+            ]
+          ],
+          "active_limits": []
+        }
+      },
+      "rack_witnesses": [
+        {
+          "meshes": [
+            "worker-base__batch_12",
+            "rack-small__batch_00"
+          ],
+          "bones": [
+            "joint__hand_L",
+            "rack-small__MODULE"
+          ],
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_12#0",
+          "source_triangle": 5,
+          "point_m": [
+            -0.16281099483629838,
+            1.0254499933780068,
+            0.3956764692763301
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359162,
+            12.566370614359151
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002499999999997533,
+            0.00567647739746352
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_15",
+            "rack-small__batch_00"
+          ],
+          "bones": [
+            "joint__hand_R",
+            "rack-small__MODULE"
+          ],
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_15#0",
+          "source_triangle": 1,
+          "point_m": [
+            0.16281099483629854,
+            1.0254499933780066,
+            0.39567646927633
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.56637061435918,
+            12.56637061435917
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00024999999999995534,
+            0.005676477397463409
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_15",
+            "rack-small__batch_02"
+          ],
+          "bones": [
+            "joint__hand_R",
+            "rack-small__MODULE"
+          ],
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_15#1",
+          "source_triangle": 46,
+          "point_m": [
+            0.24718899652102908,
+            1.0372367683995392,
+            0.4461976877149638
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359176,
+            12.56637061435969
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002499999999999393,
+            0.003802345663636686
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_14",
+            "rack-small__batch_02"
+          ],
+          "bones": [
+            "joint__forearm_R",
+            "rack-small__MODULE"
+          ],
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_14#0",
+          "source_triangle": 6,
+          "point_m": [
+            0.29535710000135645,
+            0.9910287617575855,
+            0.37218200903325055
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359172,
+            12.566370614359284
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00025000000000002863,
+            0.002182018569994282
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        }
+      ]
+    },
+    "negative_20um_shift": {
+      "detected": true,
+      "gaps": [
+        {
+          "side": "L",
+          "gap_m": 0.000019999999999992246
+        },
+        {
+          "side": "R",
+          "gap_m": 0.000019999999999992246
+        }
+      ]
+    },
+    "geometry_native_identity_preserved": true
+  },
+  "inferences": {
+    "f33_direct_source_application_invalid": "At P02 home, accepted cargo local [0,.96,.52], yaw0 would translate source 4cm horizontally and 4cm vertically and rotate pi. Reusing only arm angles while retaining actual source cargo pose is a separate native test.",
+    "yaw_preserving_withdrawal": {
+      "existing_edge": "v3:module:SMALL_W:005:B1:worker:segment:002:r",
+      "world_direction": [
+        -1,
+        0,
+        0
+      ],
+      "minimum_root_retreat_m": 0.32,
+      "rack_front_x_m": 17.5,
+      "contact_clearance_at_exact_minimum_m": 0,
+      "positive_clearance_requires_more_than_m": 0.32,
+      "formula": "17.7 - retreat + 0.12 <= 17.5",
+      "executed": false
+    }
+  },
+  "known_limits": [
+    "Bounded single-f33-seed LM family, symmetric target positions and seven tangent orientations; no global IK infeasibility proof.",
+    "Source rack included in second search; every candidate reaching that test had a native collision witness. Further original-joint branches might exist.",
+    "Original adjacent and unchanged native model joins remain observations, not a zero-selfcollision proof.",
+    "Native double-precision CPU transforms do not certify canonical shared-stock Float32 render binding at old origin72. Support dynamic binding work remains external.",
+    "No approach/grasp transition, withdrawal trace, loaded gait, force/strength/friction stability or continuous collision certificate.",
+    "No new DEMO_095 order exists in canonical fixture; DEMO_067 calibration and DEMO_001 outbound request remain separate identities.",
+    "P02 exit still passes C01 parked at [16,0,44.38]; no global approach/departure clearance claimed."
+  ],
+  "source_integrity": {
+    "frozen_inputs": 22,
+    "all_unchanged": true,
+    "additional_sources_and_helpers": 10,
+    "all_additional_unchanged": true
+  },
+  "withdrawal_tested": false,
+  "lower_stock_tested": false
+}

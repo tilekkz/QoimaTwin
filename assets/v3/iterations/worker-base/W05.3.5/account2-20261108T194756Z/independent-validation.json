@@ -1,0 +1,561 @@
+{
+  "executed": true,
+  "method": "Fresh GLTFLoader instances; analytic-vs-native FK; native finite polygon clipping within policy; native whole-mesh rack winding/depth witnesses",
+  "module_source": "frontend/public/data/adaptive-v3/layout-manifest.json",
+  "module": {
+    "module_id": "v3:module:SMALL_W:005",
+    "zone_index": 20,
+    "family": "SMALL",
+    "world_pos": [
+      18,
+      0,
+      43.5
+    ],
+    "yaw_rad": 4.71238898038469,
+    "outer_bounds_world": {
+      "max": [
+        18.5,
+        1.55,
+        44.7
+      ],
+      "min": [
+        17.5,
+        0,
+        42.3
+      ]
+    },
+    "operating_bounds_world": {
+      "max": [
+        18.5,
+        1.55,
+        44.7
+      ],
+      "min": [
+        17.5,
+        0,
+        42.3
+      ]
+    },
+    "row": 0,
+    "aisle": 16
+  },
+  "module_worker_origin_m": [
+    -0.8800000000000026,
+    0,
+    0.8599999999999995
+  ],
+  "module_relative_yaw_rad": -3.141592653589793,
+  "rack_sha256": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+  "rack_stats_sha_matches": true,
+  "fk": [
+    {
+      "side": "L",
+      "analytic_vs_native_wrist_error_m": 1.1443916996305594e-16,
+      "analytic_vs_native_quaternion_component_error": 1.1102230246251565e-16,
+      "native_reference_m": [
+        -0.16000000000128717,
+        1.0800000000047452,
+        0.440000000000503
+      ],
+      "native_reference_target_error_m": 4.9422361616910836e-12
+    },
+    {
+      "side": "R",
+      "analytic_vs_native_wrist_error_m": 1.1443916996305594e-16,
+      "analytic_vs_native_quaternion_component_error": 1.1102230246251565e-16,
+      "native_reference_m": [
+        0.16000000000128717,
+        1.0800000000047452,
+        0.440000000000503
+      ],
+      "native_reference_target_error_m": 4.9422361616910836e-12
+    }
+  ],
+  "finite_patches": [
+    {
+      "side": "L",
+      "area_sum_m2": 0.00007808029818697184,
+      "patches": [
+        {
+          "hand_mesh": "worker-base__batch_12",
+          "hand_triangle": 37,
+          "cargo_mesh": "small-carton__batch_02",
+          "cargo_triangle": 130,
+          "area_m2": 0.0000298622861661764,
+          "polygon_m": [
+            [
+              -0.15999999642372134,
+              1.1232964944815125,
+              0.4419619468513222
+            ],
+            [
+              -0.15999999642372134,
+              1.1230825087249978,
+              0.44320261138466505
+            ],
+            [
+              -0.15999999642372134,
+              1.0985684112715495,
+              0.44320261138466505
+            ],
+            [
+              -0.15999999642372134,
+              1.0932446759355394,
+              0.4422843909449381
+            ]
+          ],
+          "maximum_radius_m": 0.4711990594152085,
+          "maximum_height_m": 1.1232964944815125,
+          "maximum_native_pad_distance_m": 4.424729392220692e-9,
+          "maximum_native_cargo_distance_m": 2.598212464620228e-14,
+          "normal_dot": -1
+        },
+        {
+          "hand_mesh": "worker-base__batch_12",
+          "hand_triangle": 37,
+          "cargo_mesh": "small-carton__batch_02",
+          "cargo_triangle": 131,
+          "area_m2": 0.00004821801202079545,
+          "polygon_m": [
+            [
+              -0.15999999642372134,
+              1.1235055270240166,
+              0.4407500004768372
+            ],
+            [
+              -0.15999999642372134,
+              1.1232964944815125,
+              0.4419619468513222
+            ],
+            [
+              -0.15999999642372134,
+              1.0932446759355394,
+              0.4422843909449381
+            ],
+            [
+              -0.15999999642372134,
+              1.084348458425183,
+              0.4407500004768372
+            ]
+          ],
+          "maximum_radius_m": 0.47033549869122754,
+          "maximum_height_m": 1.1235055270240166,
+          "maximum_native_pad_distance_m": 4.4247355196538006e-9,
+          "maximum_native_cargo_distance_m": 0,
+          "normal_dot": -1
+        }
+      ],
+      "pass": true
+    },
+    {
+      "side": "R",
+      "area_sum_m2": 0.00007808029818697192,
+      "patches": [
+        {
+          "hand_mesh": "worker-base__batch_15",
+          "hand_triangle": 36,
+          "cargo_mesh": "small-carton__batch_02",
+          "cargo_triangle": 122,
+          "area_m2": 0.000010199861207361086,
+          "polygon_m": [
+            [
+              0.1599999964237213,
+              1.1232833924100458,
+              0.4420379111381363
+            ],
+            [
+              0.1599999964237213,
+              1.1235055270240166,
+              0.4407500004768372
+            ],
+            [
+              0.1599999964237213,
+              1.1144772409229136,
+              0.4407500004768372
+            ],
+            [
+              0.1599999964237213,
+              1.1159330329405275,
+              0.4419590446963842
+            ]
+          ],
+          "maximum_radius_m": 0.470103726574208,
+          "maximum_height_m": 1.1235055270240166,
+          "maximum_native_pad_distance_m": 6.2574571912943355e-9,
+          "maximum_native_cargo_distance_m": 0,
+          "normal_dot": -1
+        },
+        {
+          "hand_mesh": "worker-base__batch_15",
+          "hand_triangle": 36,
+          "cargo_mesh": "small-carton__batch_02",
+          "cargo_triangle": 123,
+          "area_m2": 0.00000780279568489724,
+          "polygon_m": [
+            [
+              0.1599999964237213,
+              1.1230825087249978,
+              0.44320261138466505
+            ],
+            [
+              0.1599999964237213,
+              1.1232833924100458,
+              0.4420379111381363
+            ],
+            [
+              0.1599999964237213,
+              1.1159330329405273,
+              0.4419590446963842
+            ],
+            [
+              0.1599999964237213,
+              1.11743039294515,
+              0.44320261138466505
+            ]
+          ],
+          "maximum_radius_m": 0.4711990594152085,
+          "maximum_height_m": 1.1232833924100458,
+          "maximum_native_pad_distance_m": 6.257460938297044e-9,
+          "maximum_native_cargo_distance_m": 0,
+          "normal_dot": -1
+        },
+        {
+          "hand_mesh": "worker-base__batch_15",
+          "hand_triangle": 37,
+          "cargo_mesh": "small-carton__batch_02",
+          "cargo_triangle": 122,
+          "area_m2": 0.00002961464799684607,
+          "polygon_m": [
+            [
+              0.1599999964237213,
+              1.1159330329405275,
+              0.4419590446963842
+            ],
+            [
+              0.1599999964237213,
+              1.1144772409229136,
+              0.4407500004768372
+            ],
+            [
+              0.1599999964237213,
+              1.084348458425183,
+              0.4407500004768372
+            ],
+            [
+              0.1599999964237213,
+              1.089728178628593,
+              0.44167787700318706
+            ]
+          ],
+          "maximum_radius_m": 0.47002956932998513,
+          "maximum_height_m": 1.1159330329405275,
+          "maximum_native_pad_distance_m": 6.2574571912943355e-9,
+          "maximum_native_cargo_distance_m": 0,
+          "normal_dot": -1
+        },
+        {
+          "hand_mesh": "worker-base__batch_15",
+          "hand_triangle": 37,
+          "cargo_mesh": "small-carton__batch_02",
+          "cargo_triangle": 123,
+          "area_m2": 0.00003046299329786753,
+          "polygon_m": [
+            [
+              0.1599999964237213,
+              1.11743039294515,
+              0.44320261138466505
+            ],
+            [
+              0.1599999964237213,
+              1.1159330329405273,
+              0.4419590446963842
+            ],
+            [
+              0.1599999964237213,
+              1.089728178628593,
+              0.44167787700318706
+            ],
+            [
+              0.1599999964237213,
+              1.0985684112715495,
+              0.44320261138466505
+            ]
+          ],
+          "maximum_radius_m": 0.4711990594152085,
+          "maximum_height_m": 1.11743039294515,
+          "maximum_native_pad_distance_m": 6.257460938297044e-9,
+          "maximum_native_cargo_distance_m": 0,
+          "normal_dot": -1
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "source_rack": {
+    "native_meshes": 3,
+    "native_triangles": 2676,
+    "body_rack_pairs": 69,
+    "probes": 7,
+    "crossing_pairs": 63,
+    "witnesses": [
+      {
+        "meshes": [
+          "worker-base__batch_12",
+          "rack-small__batch_00"
+        ],
+        "bone": "joint__hand_L",
+        "body_source_parts": [
+          "mitten_L_lower_pad",
+          "mitten_L_spine",
+          "mitten_L_thumb",
+          "mitten_L_upper_pad"
+        ],
+        "rack_source_parts": [
+          "L1_B1_low_front_lip",
+          "L1_B1_rear_panel",
+          "L1_B2_low_front_lip",
+          "L1_B2_rear_panel",
+          "L1_B3_low_front_lip",
+          "L1_B3_rear_panel",
+          "L1_B4_low_front_lip",
+          "L1_B4_rear_panel",
+          "L1_B5_low_front_lip",
+          "L1_B5_rear_panel",
+          "L1_front_support_beam",
+          "L1_petrol_floor_inlay",
+          "L1_rear_support_beam",
+          "L1_shared_divider_0",
+          "L1_shared_divider_1",
+          "L1_shared_divider_2",
+          "L1_shared_divider_3",
+          "L1_shared_divider_4",
+          "L1_shared_divider_5",
+          "L2_B1_low_front_lip",
+          "L2_B1_rear_panel",
+          "L2_B2_low_front_lip",
+          "L2_B2_rear_panel",
+          "L2_B3_low_front_lip",
+          "L2_B3_rear_panel",
+          "L2_B4_low_front_lip",
+          "L2_B4_rear_panel",
+          "L2_B5_low_front_lip",
+          "L2_B5_rear_panel",
+          "L2_front_support_beam",
+          "L2_petrol_floor_inlay",
+          "L2_rear_support_beam",
+          "L2_shared_divider_0",
+          "L2_shared_divider_1",
+          "L2_shared_divider_2",
+          "L2_shared_divider_3",
+          "L2_shared_divider_4",
+          "L2_shared_divider_5",
+          "post_00_collar",
+          "post_00_foot",
+          "post_01_collar",
+          "post_01_foot",
+          "post_10_collar",
+          "post_10_foot",
+          "post_11_collar",
+          "post_11_foot"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_12#0",
+        "source_triangle": 21,
+        "point_m": [
+          -0.19898988003859325,
+          1.0420948398662653,
+          0.39997498636869494
+        ],
+        "whole_mesh_solid_angles_rad": [
+          25.13274122871836,
+          12.566370614359203
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00024999999999996016,
+          0.00997499448982836
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      },
+      {
+        "meshes": [
+          "worker-base__batch_15",
+          "rack-small__batch_00"
+        ],
+        "bone": "joint__hand_R",
+        "body_source_parts": [
+          "mitten_R_lower_pad",
+          "mitten_R_spine",
+          "mitten_R_thumb",
+          "mitten_R_upper_pad"
+        ],
+        "rack_source_parts": [
+          "L1_B1_low_front_lip",
+          "L1_B1_rear_panel",
+          "L1_B2_low_front_lip",
+          "L1_B2_rear_panel",
+          "L1_B3_low_front_lip",
+          "L1_B3_rear_panel",
+          "L1_B4_low_front_lip",
+          "L1_B4_rear_panel",
+          "L1_B5_low_front_lip",
+          "L1_B5_rear_panel",
+          "L1_front_support_beam",
+          "L1_petrol_floor_inlay",
+          "L1_rear_support_beam",
+          "L1_shared_divider_0",
+          "L1_shared_divider_1",
+          "L1_shared_divider_2",
+          "L1_shared_divider_3",
+          "L1_shared_divider_4",
+          "L1_shared_divider_5",
+          "L2_B1_low_front_lip",
+          "L2_B1_rear_panel",
+          "L2_B2_low_front_lip",
+          "L2_B2_rear_panel",
+          "L2_B3_low_front_lip",
+          "L2_B3_rear_panel",
+          "L2_B4_low_front_lip",
+          "L2_B4_rear_panel",
+          "L2_B5_low_front_lip",
+          "L2_B5_rear_panel",
+          "L2_front_support_beam",
+          "L2_petrol_floor_inlay",
+          "L2_rear_support_beam",
+          "L2_shared_divider_0",
+          "L2_shared_divider_1",
+          "L2_shared_divider_2",
+          "L2_shared_divider_3",
+          "L2_shared_divider_4",
+          "L2_shared_divider_5",
+          "post_00_collar",
+          "post_00_foot",
+          "post_01_collar",
+          "post_01_foot",
+          "post_10_collar",
+          "post_10_foot",
+          "post_11_collar",
+          "post_11_foot"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_15#0",
+        "source_triangle": 10,
+        "point_m": [
+          0.1615101004137446,
+          1.0420948398659853,
+          0.3999749863689193
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359172,
+          12.56637061435917
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.000249999999999941,
+          0.009974994490052735
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      },
+      {
+        "meshes": [
+          "worker-base__batch_15",
+          "rack-small__batch_02"
+        ],
+        "bone": "joint__hand_R",
+        "body_source_parts": [
+          "mitten_R_lower_pad",
+          "mitten_R_spine",
+          "mitten_R_thumb",
+          "mitten_R_upper_pad"
+        ],
+        "rack_source_parts": [
+          "post_00_cap",
+          "post_00_shaft",
+          "post_01_cap",
+          "post_01_shaft",
+          "post_10_cap",
+          "post_10_shaft",
+          "post_11_cap",
+          "post_11_shaft"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_15#1",
+        "source_triangle": 46,
+        "point_m": [
+          0.2471889965226041,
+          1.0362518704127817,
+          0.43366096661744535
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359169,
+          12.566370614359403
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00025000000000004175,
+          0.016339066761155152
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      },
+      {
+        "meshes": [
+          "worker-base__batch_14",
+          "rack-small__batch_02"
+        ],
+        "bone": "joint__forearm_R",
+        "body_source_parts": [
+          "cuff_R",
+          "fore_sleeve_R"
+        ],
+        "rack_source_parts": [
+          "post_00_cap",
+          "post_00_shaft",
+          "post_01_cap",
+          "post_01_shaft",
+          "post_10_cap",
+          "post_10_shaft",
+          "post_11_cap",
+          "post_11_shaft"
+        ],
+        "found": true,
+        "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+        "source_component": "worker-base__batch_14#0",
+        "source_triangle": 6,
+        "point_m": [
+          0.291754628799311,
+          1.0545821870914234,
+          0.38245231250440276
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359176,
+          12.5663706143593
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00025000000000003974,
+          0.01245232204114649
+        ],
+        "probes": 1,
+        "crossing_pairs": 0
+      }
+    ],
+    "complete_certificate": false
+  },
+  "negative_control_cargo_shift_20um": {
+    "detected": true,
+    "gaps": [
+      {
+        "side": "L",
+        "gap_m": 0.000019999999999992246
+      },
+      {
+        "side": "R",
+        "gap_m": 0.000019999999999992246
+      }
+    ]
+  },
+  "source_pose_restored_exact": true,
+  "withdrawal_executed": false
+}

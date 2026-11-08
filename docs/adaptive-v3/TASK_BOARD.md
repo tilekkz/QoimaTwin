@@ -92,7 +92,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W08](tasks/W08.md) | TODO | unassigned | W05 | Подключены управляемые SFX |
 | [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
 | [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
-| [W11](tasks/W11.md) | READY | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
+| [W11](tasks/W11.md) | TODO | root | W02,C07,M08,M09 | Готов сценарий heavy inbound |
 | [W12](tasks/W12.md) | READY | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
 | [W12.1](tasks/W12.1.md) | PASS | account2 | W02,C08,M10,P09 | Frozen long-freight / large-gate scenario inputs |
 | [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
@@ -235,4 +235,13 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05.3.1](tasks/W05.3.1.md) | PASS | base_carry_pose | W05.2,W04 | Native whole-HU grip calibration on the existing P02 worker-base rig |
 | [W14.6.3](tasks/W14.6.3.md) | PASS | support_shell | W02 | Preserve mobile contextual navigation and keyboard focus in the shared V3 shell |
 | [W05.3.2](tasks/W05.3.2.md) | PASS | account2_base_carry | W05.2 | Independent actual second-account review of native P02 carry calibration |
-| [W05.3.3](tasks/W05.3.3.md) | READY | loaded_walk_calibration | W05.3.1,W05.2 | Native pre-held P02/base loaded-walk calibration with one whole HU |
+| [W05.3.3](tasks/W05.3.3.md) | PASS | root_loaded_calibration | W05.3.1,W05.2 | Native pre-held P02/base loaded-walk calibration with one whole HU |
+| [W05.3.4](tasks/W05.3.4.md) | PASS | dynamic_cargo_binding | W04.2,W05.3.1 | World-preserving native HU render-binding handoff for precise loaded motion |
+| [W05.3.5](tasks/W05.3.5.md) | PASS | account2_pickup_feasibility | W05.3.1,W04.2 | Independent native source-grip feasibility for an upper SMALL stock unit |
+| [W05.3.6](tasks/W05.3.6.md) | PASS | account2_source_torso_grip | W05.3.1,W05.3.5 | Native upper-stock source-grip endpoint with original torso freedom |
+| [W11.2](tasks/W11.2.md) | TODO | unassigned | W11.1.1,W05,W06 | Connected heavy-inbound actions and source-identical comparison |
+| [W11.1.1](tasks/W11.1.1.md) | PASS | heavy_scenario_inputs | W11.1 | Current-source heavy-inbound pair with explicit source-epoch compatibility |
+| [W05.3.7](tasks/W05.3.7.md) | PASS | root_natural_stance | W05.3.3 | Natural carry cadence and grounded double-support calibration |
+| [W05.3.8](tasks/W05.3.8.md) | FIX | account2_cart_release | P03.5.3.3,W04.3 | Native manual-picker cart hand-release calibration without pose snap |
+| [W05.3.9](tasks/W05.3.9.md) | ACTIVE | account2_cart_natural_grip | W04.3 | Corrected natural original-manual cart-grip arm calibration |
+| [W05.3.7.1](tasks/W05.3.7.1.md) | ACTIVE | motion_review_page | W05.3.7 | Ship portable project page for natural character-motion review |

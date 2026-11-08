@@ -1,0 +1,14 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const out=path.dirname(fileURLToPath(import.meta.url)),repo=path.resolve(out,'../../../..');
+const prior='work/v3/account2-source-grip-feasibility/20261108T194756Z/';
+let code=await readFile(path.join(repo,prior,'probe-with-rack.mjs'),'utf8');
+code=code.slice(0,code.indexOf("const rack=await load('rack-small')"));
+code=code.replace("const supplemental=[","const supplemental=['frontend/public/data/v3/warehouse-fixture-v3.json',"+['audit.md','findings.json','probe.mjs','probe-with-rack.mjs','extracted-frozen-helpers.js','search-rack.mjs','native-results-with-rack.json'].map(n=>JSON.stringify(prior+n)).join(',')+',');
+code=code.replace("const seed=side=>", "const oldSeed=side=>");
+code=code.replace('function apply(solutions){','function apply(solutions,pitch=0){');
+code=code.replace("for(const side of ['L','R']){const a=solutions[side].angles", "worker.getObjectByName('joint__torso').rotation.set(pitch,0,0,'XYZ');for(const side of ['L','R']){const a=solutions[side].angles");
+code+=await readFile(path.join(out,'solver-tail.js'),'utf8');
+await writeFile(path.join(out,'solve.mjs'),code);
+console.log('Wrote executable scratch solve.mjs');

@@ -1,0 +1,3 @@
+Native two-hand contact passed at the exact source pose. A rack-clear endpoint remains unestablished: all 61 rack-tested candidates collided across 168 trials. No withdrawal executed; all 22 frozen inputs unchanged.
+
+[Audit](work/v3/account2-source-grip-feasibility/20261108T194756Z/audit.md) · [Findings](work/v3/account2-source-grip-feasibility/20261108T194756Z/findings.json) · [Probe results](work/v3/account2-source-grip-feasibility/20261108T194756Z/probe-results.json)
