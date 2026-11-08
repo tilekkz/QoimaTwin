@@ -94,3 +94,40 @@ P03.5.3 remains FIX. Upstream evidence retains `visual_complete=false` and
 capability limits. Future adaptation requires an agreed mapping from a native
 completed parcel and actor identity to the visual action. No source repin,
 logical packing duration change or frontend modification follows from this audit.
+
+## Follow-up: C12 offline handoff
+
+Revision `050adaf3645831298ac5daea7aad1191c92dcb2e` adds 15 protected handoff
+files: six schemas, seven examples and supporting documentation. The previous
+60 protected paths and all 21 pinned source/mesh bindings remain unchanged;
+the protected union is now 75. All 25 changed small text blobs were verified
+against exact Git blob IDs before reading them.
+
+C12 separates geometry, visual and analytical input profiles. Its source-labelled
+input deliberately rejects `actual_engine_run` with `ACTUAL_V3_UNSUPPORTED`.
+This handoff is an unadopted proposal, not permission to label native backend
+output as a supported frontend run. A separately agreed adapter must preserve
+native/public identities, exact raw and semantic source hashes, captured state,
+event order and unsupported pose/operation capabilities. Worker examples are
+skill/capability declarations, not dynamic role assignments or extra stations.
+
+## Follow-up: manual gripper prepared contacts
+
+Revision `b55dd320f95f6fd2b5c1cadf8e72d66583650ec6` preserves all 75 protected
+paths and all 21 pinned source/mesh bindings. The exact tree audit found 81
+changed paths and verified 54 small text blobs. Six large diagnostic JSON
+files and binary assets were not independently re-evaluated; no upstream code
+was executed.
+
+Upstream accepts P03.5.3.1/P03.5.3.2 for a compact manual gripper reference,
+its template and prepared pickup/raised contact poses. Its own scope leaves
+continuous actuation, extraction, withdrawal, grounded carrying, release and
+tool acquisition/stow accounting to P03.5.3.3. Parent P03.5.3 remains FIX.
+This advances prepared contact evidence without accepting a complete pick
+operation or actual engine run.
+
+Existing backend source pins remain valid. Adopting the new tool later requires
+explicit geometry binding, tool custody and paid acquisition/actuation/stow.
+Current hand-contact and frontend capability limits remain unchanged; no logical
+pick duration is silently replaced by a visual clip. No frontend or shared
+contract files were modified by these audits.

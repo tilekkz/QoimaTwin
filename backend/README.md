@@ -36,6 +36,12 @@ the [connected SMALL CLI](docs/v3-light-flow.md) publishes frozen inputs, actual
 captured checkpoints and metrics with an immutable manifest.
 The [connected SMALL API](docs/v3-light-api.md) registers one explicit source profile,
 shares the existing calculation worker and serves verified raw files and captured state.
+The [connected receipt CLI](docs/v3-receipt-flow.md) adds actual inbound credit, finite
+staging, paid putaway and return before unit picking on that same ledger and clock.
+Its separately versioned export records creation, custody and claims; declared future
+receipts are absent from initial stock. Receipt HTTP registration is not yet provided.
+The [C12 adapter proposal](docs/proposals/adaptive-v3/c12-engine-adapter.md) maps native
+evidence to a future frontend agreement; it does not adopt or modify shared contracts.
 The [explicit SMALL profile](docs/adr/0048-v3-explicit-connected-small-profile.md)
 binds a strict JSON proposal to verified source geometry and freezes every material,
 worker and timing choice before execution; an [example](docs/proposals/adaptive-v3/light-flow-profile.example.json)

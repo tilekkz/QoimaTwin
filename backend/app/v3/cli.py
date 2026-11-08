@@ -12,6 +12,7 @@ from app.errors import AppError, InvalidInputError, error_report, require_empty_
 from app.v3.cli_belt import simulate_conveyor
 from app.v3.cli_lightflow import simulate_light_file
 from app.v3.cli_manual import materialize_manual, simulate_manual
+from app.v3.cli_receipt import simulate_receipt_file
 from app.v3.cli_workload import materialize_workload_file
 from app.v3.export import write_static_export
 from app.v3.inputs import V3Bundle, load_v3_bundle
@@ -28,13 +29,18 @@ def build_parser() -> argparse.ArgumentParser:
         "simulate-manual",
         "simulate-conveyor",
         "simulate-light",
+        "simulate-receipt",
         "materialize-workload",
     ):
         command = commands.add_parser(name)
         command.add_argument("--inputs", type=Path, default=default_inputs())
         if name != "validate":
             command.add_argument("--out", type=Path, required=True)
-        if name.endswith("-manual") or name in {"simulate-conveyor", "simulate-light"}:
+        if name.endswith("-manual") or name in {
+            "simulate-conveyor",
+            "simulate-light",
+            "simulate-receipt",
+        }:
             command.add_argument("--profile", type=Path, required=True)
         if name == "materialize-workload":
             command.add_argument("--policy", type=Path, required=True)
@@ -70,6 +76,8 @@ def main(argv: Sequence[str]) -> int:
 
 
 def _execute(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command == "simulate-receipt":
+        return simulate_receipt_file(args.inputs, args.profile, args.out)
     if args.command == "simulate-light":
         return simulate_light_file(args.inputs, args.profile, args.out)
     if args.command == "materialize-workload":

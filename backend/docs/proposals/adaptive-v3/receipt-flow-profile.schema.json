@@ -1,0 +1,717 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qoima.receipt-flow-profile.v3-proposal",
+  "$defs": {
+    "recipe": {
+      "type": "object",
+      "properties": {
+        "recipe_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "enum": [
+            "carrier",
+            "package"
+          ]
+        },
+        "outer": {
+          "$ref": "#/$defs/vector"
+        },
+        "inner": {
+          "$ref": "#/$defs/vector"
+        },
+        "tare_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "max_gross_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "max_units": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "allowed_archetypes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "clearance_m": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "required": [
+        "recipe_id",
+        "provenance",
+        "kind",
+        "outer",
+        "inner",
+        "tare_kg",
+        "max_gross_kg",
+        "max_units",
+        "allowed_archetypes",
+        "clearance_m"
+      ],
+      "additionalProperties": false
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "owner_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "kind": {
+          "enum": [
+            "material",
+            "workstation",
+            "shipped",
+            "disposal",
+            "buffer",
+            "worker"
+          ]
+        },
+        "capacity": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "owner_id",
+        "kind",
+        "capacity"
+      ],
+      "additionalProperties": false
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "container_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "recipe_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "owner_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sealed_for": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "container_id",
+        "recipe_id",
+        "owner_id",
+        "sealed_for"
+      ],
+      "additionalProperties": false
+    },
+    "placement": {
+      "type": "object",
+      "properties": {
+        "unit_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "position": {
+          "$ref": "#/$defs/vector"
+        }
+      },
+      "required": [
+        "unit_id",
+        "position"
+      ],
+      "additionalProperties": false
+    },
+    "cart": {
+      "type": "object",
+      "properties": {
+        "cart_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "owner_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "speed_m_s": {
+          "$ref": "#/$defs/rational"
+        },
+        "max_gross_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "width_m": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "required": [
+        "cart_id",
+        "home",
+        "owner_id",
+        "speed_m_s",
+        "max_gross_kg",
+        "width_m"
+      ],
+      "additionalProperties": false
+    },
+    "rational": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "integer"
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "additionalProperties": false
+    },
+    "vector": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/rational"
+      }
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "home": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "speed_m_s": {
+          "$ref": "#/$defs/rational"
+        },
+        "max_gross_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "available_tick": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "actor_id",
+        "home",
+        "speed_m_s",
+        "max_gross_kg",
+        "available_tick"
+      ],
+      "additionalProperties": false
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "arrival_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_hu": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "carrier_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "package_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "carrier_placements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/placement"
+          }
+        },
+        "package_placements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/placement"
+          }
+        }
+      },
+      "required": [
+        "order_id",
+        "arrival_tick",
+        "source_hu",
+        "carrier_id",
+        "package_id",
+        "carrier_placements",
+        "package_placements"
+      ],
+      "additionalProperties": false
+    },
+    "receipt_port": {
+      "type": "object",
+      "properties": {
+        "port_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "buffer_owner_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "receiver_ids": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "R01",
+              "R02"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "port_id",
+        "buffer_owner_ids",
+        "receiver_ids"
+      ],
+      "additionalProperties": false
+    },
+    "receipt_buffer": {
+      "type": "object",
+      "properties": {
+        "owner_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "port_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "zone_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "bounds_xz": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rational"
+          },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "path_xz": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/rational"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 2
+        },
+        "height_m": {
+          "$ref": "#/$defs/rational"
+        },
+        "max_gross_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "clearance_m": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "required": [
+        "owner_id",
+        "port_id",
+        "zone_id",
+        "bounds_xz",
+        "path_xz",
+        "height_m",
+        "max_gross_kg",
+        "clearance_m"
+      ],
+      "additionalProperties": false
+    },
+    "receipt": {
+      "type": "object",
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "hu_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sku_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "lot_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "quantity_units": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "arrival_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "port_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "slot_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "hu_id",
+        "sku_id",
+        "lot_id",
+        "quantity_units",
+        "arrival_tick",
+        "port_id",
+        "slot_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "qoima.receipt-flow-profile.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "const": "22296bcf2c6bac5ade4cefc7c05c2b97831ec6ec"
+        },
+        "layout_content_hash": {
+          "const": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71"
+        }
+      },
+      "required": [
+        "revision",
+        "layout_content_hash"
+      ],
+      "additionalProperties": false
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "provenance": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "horizon_tick": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "end_tick": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "actors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/actor"
+      }
+    },
+    "roles": {
+      "type": "object",
+      "properties": {
+        "picker_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "packer_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "shipper_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "picker_id",
+        "packer_id",
+        "shipper_id"
+      ],
+      "additionalProperties": false
+    },
+    "cart": {
+      "$ref": "#/$defs/cart"
+    },
+    "station": {
+      "type": "object",
+      "properties": {
+        "station_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "bench_owner": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "empty_owner": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "station_id",
+        "bench_owner",
+        "empty_owner"
+      ],
+      "additionalProperties": false
+    },
+    "port_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "owners": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/owner"
+      }
+    },
+    "recipes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recipe"
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/material"
+      }
+    },
+    "pool_owners": {
+      "type": "object",
+      "properties": {
+        "carrier": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "package": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "shipped": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "carrier",
+        "package",
+        "shipped"
+      ],
+      "additionalProperties": false
+    },
+    "times": {
+      "type": "object",
+      "properties": {
+        "attach": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pick_per_unit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "park": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "detach": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "deposit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pack": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "clear": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pickup": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "attach",
+        "pick_per_unit",
+        "park",
+        "detach",
+        "deposit",
+        "pack",
+        "clear",
+        "pickup"
+      ],
+      "additionalProperties": false
+    },
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/order"
+      }
+    },
+    "path_clearance_m": {
+      "$ref": "#/$defs/rational"
+    },
+    "receipt_ports": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/receipt_port"
+      }
+    },
+    "receipt_buffers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/receipt_buffer"
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/receipt"
+      }
+    },
+    "receipt_times": {
+      "type": "object",
+      "properties": {
+        "pickup": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "place": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "pickup",
+        "place"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "source",
+    "profile_id",
+    "provenance",
+    "horizon_tick",
+    "end_tick",
+    "actors",
+    "roles",
+    "cart",
+    "station",
+    "port_id",
+    "owners",
+    "recipes",
+    "materials",
+    "pool_owners",
+    "times",
+    "orders",
+    "path_clearance_m",
+    "receipt_ports",
+    "receipt_buffers",
+    "receipts",
+    "receipt_times"
+  ],
+  "additionalProperties": false
+}

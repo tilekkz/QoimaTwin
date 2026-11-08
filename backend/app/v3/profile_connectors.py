@@ -2,14 +2,22 @@
 
 from fractions import Fraction
 from itertools import pairwise
-from typing import Any
+from typing import Any, Protocol
 
 from app.v3.execution_types import PlaceSpec
 from app.v3.input_models import V3Bundle
 from app.v3.materialize import number
 from app.v3.profile_build import dimensions, document
 from app.v3.profile_geometry import rectangle, validate_buffer_separation, validate_connector
-from app.v3.profile_models import BufferChoice, ManualProposal
+from app.v3.profile_models import BufferChoice
+
+
+class ConnectorProposal(Protocol):
+    @property
+    def proposal_id(self) -> str: ...
+
+    @property
+    def buffers(self) -> tuple[BufferChoice, ...]: ...
 
 
 def _source_cell(choice: BufferChoice, source_ports: Any) -> None:
@@ -69,7 +77,7 @@ def _json_number(value: Fraction) -> float:
 
 
 def add_connectors(
-    bundle: V3Bundle, proposal: ManualProposal, links: Any
+    bundle: V3Bundle, proposal: ConnectorProposal, links: Any
 ) -> tuple[tuple[str, PlaceSpec], ...]:
     zones = document(bundle, "layout-v3.zones.json")
     modules = document(bundle, "storage-slots-v3.json")

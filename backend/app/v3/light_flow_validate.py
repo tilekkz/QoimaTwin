@@ -137,7 +137,7 @@ def _material_capacity(
     conveyor: ConveyorSource,
 ) -> None:
     carrier = ledger.contents(carrier_id).container
-    tokens = {unit.unit_id: unit for unit in profile.stock.units}
+    tokens = {unit.token.unit_id: unit.token for unit in ledger.contents(carrier_id).units}
     if any(identity not in tokens for identity in units):
         raise ValueError("Unknown original unit")
     gross = carrier.recipe.tare_kg + sum(

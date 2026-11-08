@@ -36,6 +36,7 @@ def check_state(
     locations: dict[str, UnitLocation],
     tokens: dict[str, UnitToken],
     owners: dict[str, StockOwner],
+    whole_shipments: frozenset[str] = frozenset(),
 ) -> None:
     require(locations.keys() == tokens.keys(), "unit conservation violation")
     grouped: dict[str, list[PlacedUnit]] = defaultdict(list)
@@ -43,7 +44,13 @@ def check_state(
         require(key == location.unit_id, "unit location identity mismatch")
         require(location.container_id in containers, "unknown physical container")
         grouped[location.container_id].append(PlacedUnit(tokens[key], location.position))
-    validate_owners(containers, owners)
+    validate_owners(containers, owners, whole_shipments)
+    actual_shipped = {
+        c.container_id
+        for c in containers.values()
+        if c.recipe.kind == "source_wrapper" and owners[c.owner_id].kind == "shipped"
+    }
+    require(actual_shipped == whole_shipments, "whole shipment admission mismatch")
     for key, container in containers.items():
         require(key == container.container_id, "container identity mismatch")
         require(container.recipe.kind == "package" or container.sealed_for is None, "invalid seal")
@@ -53,6 +60,8 @@ def check_state(
         )
         view = ContainerContents(container, units, gross)
         validate_contents(view)
+        if key in whole_shipments:
+            require(len(units) == container.recipe.max_units, "whole shipment must remain intact")
         if owners[container.owner_id].kind == "disposal":
             require(not view.units, "units cannot be disposed")
 

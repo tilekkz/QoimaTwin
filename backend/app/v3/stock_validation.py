@@ -33,7 +33,20 @@ def vector(value: Vec3, *, positive: bool = True) -> None:
 
 def validate_owner(owner: StockOwner) -> None:
     require(bool(owner.owner_id.strip()), "empty owner id")
-    require(owner.kind in {"slot", "workstation", "material", "shipped", "disposal"}, "owner kind")
+    require(
+        owner.kind
+        in {
+            "slot",
+            "workstation",
+            "material",
+            "shipped",
+            "disposal",
+            "buffer",
+            "worker",
+            "vehicle",
+        },
+        "owner kind",
+    )
     require(type(owner.capacity) is int and owner.capacity > 0, "owner capacity")
 
 
@@ -141,7 +154,11 @@ def validate_contents(contents: ContainerContents) -> None:
             )
 
 
-def validate_owners(containers: dict[str, Container], owners: dict[str, StockOwner]) -> None:
+def validate_owners(
+    containers: dict[str, Container],
+    owners: dict[str, StockOwner],
+    whole_shipments: frozenset[str] = frozenset(),
+) -> None:
     counts = Counter(c.owner_id for c in containers.values())
     for owner_id, count in counts.items():
         require(owner_id in owners, "unknown owner")
@@ -154,6 +171,10 @@ def validate_owners(containers: dict[str, Container], owners: dict[str, StockOwn
             )
         if kind == "shipped":
             require(
-                container.recipe.kind == "package" and bool(container.sealed_for),
+                (container.recipe.kind == "package" and bool(container.sealed_for))
+                or (
+                    container.recipe.kind == "source_wrapper"
+                    and container.container_id in whole_shipments
+                ),
                 "unsealed shipment",
             )

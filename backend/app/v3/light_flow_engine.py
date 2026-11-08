@@ -12,6 +12,7 @@ from app.v3.light_flow_models import (
     FlowCartView,
     FlowEvent,
     FlowOperation,
+    FlowOrder,
     FlowOrderView,
     FlowOutcome,
     FlowProfile,
@@ -20,6 +21,7 @@ from app.v3.light_flow_models import (
 from app.v3.light_flow_plan import picker_plan, shipper_plan, travel
 from app.v3.light_flow_state import HumanState, HumanStep, OrderState
 from app.v3.light_flow_validate import validate
+from app.v3.stock_ledger import StockLedger
 from app.v3.stock_models import StockDelta
 
 
@@ -31,8 +33,17 @@ class LightFlowEngine:
         *,
         on_tick_settled: Callable[[FlowSnapshot, int], None] | None = None,
     ) -> None:
+        self._initialize(profile, conveyor, validate(profile, conveyor), on_tick_settled)
+
+    def _initialize(
+        self,
+        profile: FlowProfile,
+        conveyor: ConveyorSource,
+        ledger: StockLedger,
+        on_tick_settled: Callable[[FlowSnapshot, int], None] | None,
+    ) -> None:
         self.profile = profile
-        self.ledger = validate(profile, conveyor)
+        self.ledger = ledger
         self.workers = {a.actor_id: HumanState(a, a.home) for a in profile.actors}
         self.orders = {
             o.order_id: OrderState(o) for o in sorted(profile.orders, key=lambda o: o.order_id)
@@ -112,14 +123,11 @@ class LightFlowEngine:
     def _settle(self) -> None:
         while self.pending and self.pending[0][0] == self.tick:
             _, kind, key = heapq.heappop(self.pending)
-            if kind == "human":
-                self._human_done(self.workers[key])
-            elif kind == "arrival":
-                self.orders[key].status = "waiting"
-                self._emit("order_arrived", key)
+            self._calendar_event(kind, key)
         self.belt.finish_due(self.tick)
         for _ in range(100):
             previous = len(self.events), len(self.pending), len(self.belt.pending)
+            self._dispatch_external()
             self._dispatch_orders()
             self._dispatch_shipment()
             for worker in sorted(self.workers.values(), key=lambda w: w.spec.actor_id):
@@ -130,6 +138,22 @@ class LightFlowEngine:
         else:
             raise RuntimeError("Zero-time dispatch failed to settle")
         self._check()
+
+    def _calendar_event(self, kind: str, key: str) -> None:
+        if kind == "human":
+            self._human_done(self.workers[key])
+        elif kind == "arrival":
+            self.orders[key].status = "waiting"
+            self._emit("order_arrived", key)
+
+    def _dispatch_external(self) -> None:
+        """Additional native work shares this calendar; legacy profiles have none."""
+
+    def _order_ready(self, order: OrderState) -> bool:
+        return True
+
+    def _order_admitting(self, order: OrderState) -> None:
+        """Native variants may reserve the exact contents before paid picking."""
 
     def _dispatch_orders(self) -> None:
         worker = self.workers[self.profile.picker_id]
@@ -145,8 +169,9 @@ class LightFlowEngine:
             (o for o in self.orders.values() if o.status == "waiting"),
             key=lambda o: (o.spec.arrival_tick, o.spec.order_id),
         )
-        if waiting:
+        if waiting and self._order_ready(waiting[0]):
             order = waiting[0]
+            self._order_admitting(order)
             order.status, order.admitted_tick = "picking", self.tick
             self.leases["cart"] = order.spec.order_id
             self._assign(
@@ -281,13 +306,7 @@ class LightFlowEngine:
                 p.cart.owner_id,
             )
         elif kind == "pick":
-            delta = self.ledger.pick(
-                order_id + ":pick",
-                len(self.ledger.history),
-                order.source_hu,
-                order.carrier_id,
-                order.carrier_placements,
-            )
+            delta = self._pick_stock(order)
             self._emit("picked", order_id, delta=delta)
         elif kind in {"detach", "source_detach"}:
             self._relocate(
@@ -305,11 +324,20 @@ class LightFlowEngine:
             self.belt.collect(order_id)
         elif kind == "shipping_service":
             delta = self.ledger.ship(
-                order_id + ":ship", len(self.ledger.history), order.package_id, p.shipped_owner
+                order_id + ":ship", self.ledger.revision, order.package_id, p.shipped_owner
             )
             self.orders[order_id].status, self.orders[order_id].shipped_tick = "shipped", self.tick
             del self.leases["port"]
             self._emit("shipped", order_id, delta=delta)
+
+    def _pick_stock(self, order: FlowOrder) -> StockDelta:
+        return self.ledger.pick(
+            order.order_id + ":pick",
+            self.ledger.revision,
+            order.source_hu,
+            order.carrier_id,
+            order.carrier_placements,
+        )
 
     def station_ready(self, state: RunningCarrier, stage: str) -> bool:
         worker, order = self.workers[self.profile.packer_id], self.orders[state.job.job_id]
@@ -350,7 +378,7 @@ class LightFlowEngine:
         if stage == "pack":
             delta = self.ledger.pack(
                 order.order_id + ":pack",
-                len(self.ledger.history),
+                self.ledger.revision,
                 order.carrier_id,
                 order.package_id,
                 order.package_placements,
@@ -416,9 +444,7 @@ class LightFlowEngine:
         )
 
     def _relocate(self, kind: str, order_id: str, container: str, owner: str) -> None:
-        delta = self.ledger.relocate(
-            order_id + ":" + kind, len(self.ledger.history), container, owner
-        )
+        delta = self.ledger.relocate(order_id + ":" + kind, self.ledger.revision, container, owner)
         self._emit(kind, order_id, delta=delta)
 
     def _emit(

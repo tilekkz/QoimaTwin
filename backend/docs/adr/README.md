@@ -55,4 +55,8 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0047](0047-v3-connected-flow-observation-metrics.md) | Connected-flow business cycles, paid labor and time-weighted populations |
 | [0048](0048-v3-explicit-connected-small-profile.md) | Strict explicit SMALL profiles, verified source authority and frozen inputs |
 | [0049](0049-connected-flow-publication.md) | Frozen connected-flow inputs, actual checkpoint publication and validated artifact reads |
+| [0050](0050-v3-single-inventory-authority.md) | Append-only receipt stock, shared unit/HU claims and transactional custody |
 | [0051](0051-connected-light-api.md) | Registered connected SMALL runs, shared API worker and verified captured-state reads |
+| [0052](0052-source-bound-receipt-profile.md) | Explicit receipt compiler, source-bound putaway and conservative manual permissions |
+| [0053](0053-v3-shared-receipt-flow.md) | Inbound service, staging, putaway and paid return on the connected clock |
+| [0055](0055-connected-receipt-publication.md) | Creation and claim journal, exact receipt inputs and immutable captured export |
