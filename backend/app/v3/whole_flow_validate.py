@@ -5,8 +5,9 @@ from fractions import Fraction
 
 from app.v3.belt_plan import valid_tick
 from app.v3.conveyor_models import ConveyorSource
+from app.v3.light_flow_validate import _orders as _unit_orders
 from app.v3.receipt_flow_models import ReceiptPlace, ReceiptPort
-from app.v3.receipt_flow_validate import _places, _validate_receipts, _windows
+from app.v3.receipt_flow_validate import UnitValidator, _places, _validate_receipts, _windows
 from app.v3.stock_claims import identity
 from app.v3.stock_ledger import StockLedger
 from app.v3.stock_models import Container, StockOwner
@@ -21,8 +22,25 @@ from app.v3.whole_flow_plan import whole_plan
 
 
 def validate_whole_flow(profile: WholeFlowProfile, conveyor: ConveyorSource) -> StockLedger:
+    return _validate_whole_flow(profile, conveyor)
+
+
+def _validate_whole_flow(
+    profile: WholeFlowProfile,
+    conveyor: ConveyorSource,
+    *,
+    unit_validator: UnitValidator = _unit_orders,
+    picker_home_at_cart: bool = True,
+) -> StockLedger:
     require(type(profile) is WholeFlowProfile, "typed whole-flow profile required")
-    live = _validate_receipts(profile.receipts, conveyor, "worker", MANUAL_WHOLE_CLASSES)
+    live = _validate_receipts(
+        profile.receipts,
+        conveyor,
+        "worker",
+        MANUAL_WHOLE_CLASSES,
+        unit_validator=unit_validator,
+        picker_home_at_cart=picker_home_at_cart,
+    )
     for value in (profile.pickup_tick, profile.place_tick):
         require(valid_tick(value) and value > 0, "positive whole handling duration")
     flow = profile.receipts.flow

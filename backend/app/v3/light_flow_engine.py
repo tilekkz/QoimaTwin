@@ -9,6 +9,7 @@ from app.v3.belt_state import RunningCarrier
 from app.v3.conveyor_models import ConveyorPayload, ConveyorSource
 from app.v3.light_flow_belt import FlowBelt
 from app.v3.light_flow_models import (
+    FlowCart,
     FlowCartView,
     FlowEvent,
     FlowOperation,
@@ -19,7 +20,7 @@ from app.v3.light_flow_models import (
     FlowSnapshot,
 )
 from app.v3.light_flow_plan import picker_plan, shipper_plan, travel
-from app.v3.light_flow_state import HumanState, HumanStep, OrderState
+from app.v3.light_flow_state import CartState, HumanState, HumanStep, OrderState
 from app.v3.light_flow_validate import validate
 from app.v3.stock_ledger import StockLedger
 from app.v3.stock_models import StockDelta
@@ -53,11 +54,41 @@ class LightFlowEngine:
         self.pending: list[tuple[int, str, str]] = []
         self.leases: dict[str, str] = {}
         self.tick, self.horizon, self.end_cap = 0, 0, 0
-        self.cart_node: str | None = profile.cart.home
-        self.cart_operation: FlowOperation | None = None
+        self.carts = {c.cart_id: CartState(c, c.home) for c in self._cart_specs()}
         self.checkpoints: list[FlowSnapshot] = []
         self.on_tick_settled = on_tick_settled
         self.used = False
+
+    def _cart_specs(self) -> tuple[FlowCart, ...]:
+        return (self.profile.cart,)
+
+    def _flow_for_order(self, order_id: str) -> FlowProfile:
+        return self.profile
+
+    def _cart_resource(self, cart_id: str) -> str:
+        return "cart"
+
+    def _cart_view(self, cart_id: str) -> FlowCartView:
+        cart = self.carts[cart_id]
+        return FlowCartView(
+            cart_id, cart.node, cart.operation, self.leases.get(self._cart_resource(cart_id))
+        )
+
+    @property
+    def cart_node(self) -> str | None:
+        return self.carts[self.profile.cart.cart_id].node
+
+    @cart_node.setter
+    def cart_node(self, value: str | None) -> None:
+        self.carts[self.profile.cart.cart_id].node = value
+
+    @property
+    def cart_operation(self) -> FlowOperation | None:
+        return self.carts[self.profile.cart.cart_id].operation
+
+    @cart_operation.setter
+    def cart_operation(self, value: FlowOperation | None) -> None:
+        self.carts[self.profile.cart.cart_id].operation = value
 
     def run(self, horizon_tick: int, end_tick: int) -> FlowOutcome:
         if self.used or type(horizon_tick) is not int or type(end_tick) is not int:
@@ -83,7 +114,7 @@ class LightFlowEngine:
             self._settled_observation()
             if next_tick == horizon_tick:
                 at_horizon = self._observe(horizon_tick)
-            if self._complete():
+            if self._complete() and self._may_stop():
                 break
         complete = self._complete()
         at_end = self._observe(self.tick if complete else end_tick)
@@ -121,23 +152,35 @@ class LightFlowEngine:
             self.on_tick_settled(value, value.last_seq)
 
     def _settle(self) -> None:
-        while self.pending and self.pending[0][0] == self.tick:
-            _, kind, key = heapq.heappop(self.pending)
-            self._calendar_event(kind, key)
-        self.belt.finish_due(self.tick)
+        self._finish_due()
         for _ in range(100):
             previous = len(self.events), len(self.pending), len(self.belt.pending)
-            self._dispatch_external()
-            self._dispatch_orders()
-            self._dispatch_shipment()
-            for worker in sorted(self.workers.values(), key=lambda w: w.spec.actor_id):
-                self._start_step(worker)
-            self.belt.dispatch(self.tick)
+            self._dispatch_round()
             if previous == (len(self.events), len(self.pending), len(self.belt.pending)):
                 break
         else:
             raise RuntimeError("Zero-time dispatch failed to settle")
         self._check()
+
+    def _finish_due(self) -> None:
+        while self.pending and self.pending[0][0] == self.tick:
+            _, kind, key = heapq.heappop(self.pending)
+            self._calendar_event(kind, key)
+        self.belt.finish_due(self.tick)
+
+    def _dispatch_round(self) -> None:
+        self._dispatch_external()
+        self._dispatch_orders()
+        self._dispatch_shipment()
+        for worker in sorted(self.workers.values(), key=lambda w: w.spec.actor_id):
+            self._start_step(worker)
+        self.belt.dispatch(self.tick)
+
+    def _worker_eligible(self, worker: HumanState, role: str) -> bool:
+        return worker.spec.available_tick <= self.tick
+
+    def _may_stop(self) -> bool:
+        return True
 
     def _calendar_event(self, kind: str, key: str) -> None:
         if kind == "human":
@@ -160,7 +203,7 @@ class LightFlowEngine:
         if (
             self.tick >= self.horizon
             or worker.order_id is not None
-            or self.tick < worker.spec.available_tick
+            or not self._worker_eligible(worker, "pick")
         ):
             return
         if "cart" in self.leases:
@@ -181,7 +224,7 @@ class LightFlowEngine:
 
     def _dispatch_shipment(self) -> None:
         worker = self.workers[self.profile.shipper_id]
-        if worker.order_id is not None or self.tick < worker.spec.available_tick:
+        if worker.order_id is not None or not self._worker_eligible(worker, "ship"):
             return
         waiting = sorted(o for o in self.belt.at_output if self.orders[o].status == "output")
         if waiting:
@@ -210,6 +253,7 @@ class LightFlowEngine:
             if worker.node != step.target:
                 raise RuntimeError("Zero-duration spatial jump")
             worker.steps.pop(0)
+            self._zero_step_done(worker, step)
             self._task_finished(worker)
             self._start_step(worker)
             return
@@ -217,6 +261,9 @@ class LightFlowEngine:
             return
         self._start_operation(worker, step)
         heapq.heappush(self.pending, (self.tick + step.duration, "human", worker.spec.actor_id))
+
+    def _zero_step_done(self, worker: HumanState, step: HumanStep) -> None:
+        """Zero-length movement has no legacy stock effect; variants can record progress."""
 
     def _start_operation(self, worker: HumanState, step: HumanStep) -> None:
         if worker.node is None or worker.order_id is None:
@@ -238,11 +285,12 @@ class LightFlowEngine:
             step.cart_id,
         )
         if step.cart_id is not None:
-            if worker.node != self.cart_node:
+            cart = self.carts[step.cart_id]
+            if worker.node != cart.node:
                 raise RuntimeError("Paid cart operation starts away from the physical cart")
-            self.cart_operation = worker.operation
+            cart.operation = worker.operation
             if step.route is not None:
-                self.cart_node = None
+                cart.node = None
         if step.route is not None:
             worker.node = None
         self._emit("operation_started", worker.order_id, worker=worker)
@@ -254,20 +302,21 @@ class LightFlowEngine:
                 self._belt_job(worker.order_id, self.tick + step.duration)
             )
         if step.kind == "shipping_service":
+            profile = self._flow_for_order(worker.order_id)
             fits = any(
                 start <= self.tick < end and self.tick + step.duration <= end
-                for start, end in self.profile.port.windows
+                for start, end in profile.port.windows
             )
             if (
                 not fits
-                or self._port_resource_id() in self.leases
-                or not self._has_owner_capacity(self.profile.shipped_owner)
+                or self._port_resource_id(worker.order_id) in self.leases
+                or not self._has_owner_capacity(profile.shipped_owner)
             ):
                 return False
-            self.leases[self._port_resource_id()] = worker.order_id
+            self.leases[self._port_resource_id(worker.order_id)] = worker.order_id
         return True
 
-    def _port_resource_id(self) -> str:
+    def _port_resource_id(self, order_id: str | None = None) -> str:
         return "port"
 
     def _human_done(self, worker: HumanState) -> None:
@@ -275,8 +324,12 @@ class LightFlowEngine:
         step = worker.steps.pop(0)
         assert worker.order_id is not None
         self._human_effect(worker.order_id, step.kind)
+        self._human_step_done(worker, step)
         worker.waiting_since = self.tick
         self._task_finished(worker)
+
+    def _human_step_done(self, worker: HumanState, step: HumanStep) -> None:
+        """Record variant progress before the actual completing actor is released."""
 
     def _finish_operation(self, worker: HumanState) -> None:
         operation = worker.operation
@@ -286,7 +339,8 @@ class LightFlowEngine:
         worker.closed_paid += self.tick - operation.start_tick
         worker.node, worker.operation = operation.target_node, None
         if operation.cart_id is not None:
-            self.cart_node, self.cart_operation = operation.target_node, None
+            cart = self.carts[operation.cart_id]
+            cart.node, cart.operation = operation.target_node, None
 
     def _task_finished(self, worker: HumanState) -> None:
         if worker.steps:
@@ -295,12 +349,13 @@ class LightFlowEngine:
             worker.task = "station"
             return
         if worker.task == "picker":
-            del self.leases["cart"]
+            profile = self._flow_for_order(str(worker.order_id))
+            del self.leases[self._cart_resource(profile.cart.cart_id)]
         worker.stop_waiting(self.tick)
         worker.order_id, worker.task = None, "idle"
 
     def _human_effect(self, order_id: str, kind: str) -> None:
-        order, p = self.orders[order_id].spec, self.profile
+        order, p = self.orders[order_id].spec, self._flow_for_order(order_id)
         if kind in {"attach", "source_attach"}:
             self._relocate(
                 "carrier_attached" if kind == "attach" else "carrier_reattached",
@@ -330,7 +385,7 @@ class LightFlowEngine:
                 order_id + ":ship", self.ledger.revision, order.package_id, p.shipped_owner
             )
             self.orders[order_id].status, self.orders[order_id].shipped_tick = "shipped", self.tick
-            del self.leases[self._port_resource_id()]
+            del self.leases[self._port_resource_id(order_id)]
             self._emit("shipped", order_id, delta=delta)
 
     def _pick_stock(self, order: FlowOrder) -> StockDelta:
@@ -344,7 +399,7 @@ class LightFlowEngine:
 
     def station_ready(self, state: RunningCarrier, stage: str) -> bool:
         worker, order = self.workers[self.profile.packer_id], self.orders[state.job.job_id]
-        if worker.order_id is None and self.tick >= worker.spec.available_tick:
+        if worker.order_id is None and self._worker_eligible(worker, "pack"):
             step = travel(
                 self.profile,
                 worker.spec,
@@ -424,14 +479,15 @@ class LightFlowEngine:
 
     def _belt_job(self, order_id: str, arrival: int) -> BeltJob:
         order = self.orders[order_id].spec
+        profile = self._flow_for_order(order_id)
         return BeltJob(
             order_id,
             order.carrier_id,
             self._payload(order.carrier_id, order_id, "order_tote"),
             arrival,
-            self.profile.belt_route,
-            self.profile.station.station_id,
-            self.profile.times.pack,
+            profile.belt_route,
+            profile.station.station_id,
+            profile.times.pack,
         )
 
     def _payload(self, identity: str, order_id: str, kind: str) -> ConveyorPayload:
@@ -513,10 +569,5 @@ class LightFlowEngine:
             tuple(sorted(self.leases.items())) + tuple(sorted(self.belt.external.items())),
             self.belt._observe(tick),
             len(self.events) - 1,
-            FlowCartView(
-                self.profile.cart.cart_id,
-                self.cart_node,
-                self.cart_operation,
-                self.leases.get("cart"),
-            ),
+            self._cart_view(self.profile.cart.cart_id),
         )

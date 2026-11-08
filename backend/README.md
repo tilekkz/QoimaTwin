@@ -45,6 +45,10 @@ The [connected whole-HU CLI](docs/proposals/adaptive-v3/whole-flow-profile.md) a
 intact SMALL/STANDARD shipping and STANDARD receipt to that inventory and clock.
 It freezes explicit public choices and their compiled input identity before execution,
 pays return travel and publishes a separate native whole-HU bundle.
+The [registered whole-HU API](docs/proposals/adaptive-v3/whole-api.md) selects that
+explicit profile through the same owned worker. It verifies the public request,
+native input identity and nested publication before serving captured state or files;
+shipment alone does not complete a run while paid return remains open.
 The [C12 adapter proposal](docs/proposals/adaptive-v3/c12-engine-adapter.md) maps native
 evidence to a future frontend agreement; it does not adopt or modify shared contracts.
 The [explicit SMALL profile](docs/adr/0048-v3-explicit-connected-small-profile.md)
@@ -65,7 +69,27 @@ The [C11 planning adapter](docs/adr/0054-c11-planning-import.md) reproduces the 
 source planning proposal with explicit proxy costs and a valid no-op baseline. Its
 1/2/4/8 periods are unclocked sensitivity cases, not operational hourly comparisons.
 
-## Status
+The native [staff coordinator](docs/adr/0059-v3-shared-staff-coordinator.md) uses the
+[source-bound roster](docs/adr/0057-v3-staff-registry-prerequisite.md) for declared
+picker-to-packer help on the same worker states, inventory and event clock. Role
+transfers and return travel consume paid time; real packing reserves its worker,
+station and replacement footprint before admission. Hand fixtures specify the
+declared return deadline and shared cargo conservation. This bounded native
+stage also supports explicit concurrent unit resources in its new native namespace:
+six stations, twelve picker bindings, actual carts and per-order assignments.
+The [source coordinator CLI](docs/v3-coordinator-cli.md) freezes explicit profile
+choices and finite offered calendars. Its [N0/N4 comparison](docs/v3-coordinator-pairs.md)
+preserves common inputs and reports actual helper work, paid return and partial results.
+The [registered coordinator API](docs/v3-coordinator-api.md) uses the shared worker
+and serves immutable native files, exact captured checkpoints and a separate
+[settled-state replay reader](docs/v3-coordinator-replay-api.md).
+Observed KPI policy and arbitrary integer-tick replay are described in
+[ADR0071](docs/adr/0071-coordinator-observed-kpis.md) and
+[ADR0072](docs/adr/0072-coordinator-arbitrary-settled-seek.md).
+This composition awaits final verification; authored tests are not passing evidence.
+See the [current V3 delivery scope](docs/v3-delivery-status.md) for its limits.
+
+## V2 status and historical evidence
 
 | Gate | State |
 |---|---|
@@ -86,6 +110,9 @@ source planning proposal with explicit proxy costs and a valid no-op baseline. I
 | Optional Mercury explanations from stored comparison facts | implemented; backend-only configuration and immutable cache |
 | Contract 2.1 proposal, atomic transfers, business replay and full/delta checkpoints | implemented as opt-in; shared contract agreement pending |
 | One-hour normal/peak determinism, invariants, runtime and export-size measurements | historical A-E report; final V2 measurements paused after the V3 scope change |
+
+These rows describe V2. They do not establish V3 acceptance, current performance,
+or execution of the newly assembled coordinator tests.
 
 The fixture times now come from the engine and match `contracts/analytical_fixture.json`.
 The materializer offers 240/600 orders per hour; measured dispatch and backlog are reported

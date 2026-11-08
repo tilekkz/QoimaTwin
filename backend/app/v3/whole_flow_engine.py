@@ -11,6 +11,7 @@ from app.v3.light_flow_state import HumanState, HumanStep
 from app.v3.receipt_flow_engine import ReceiptFlowEngine
 from app.v3.receipt_flow_invariants import check_receipt_world
 from app.v3.stock_claims import StockClaim
+from app.v3.stock_ledger import StockLedger
 from app.v3.stock_models import StockDelta
 from app.v3.whole_flow_invariants import check_whole_world, shipped_resource
 from app.v3.whole_flow_models import (
@@ -38,7 +39,7 @@ class WholeFlowEngine(ReceiptFlowEngine):
         *,
         on_tick_settled: Callable[[FlowSnapshot, int], None] | None = None,
     ) -> None:
-        ledger = validate_whole_flow(profile, conveyor)
+        ledger = self._validated_ledger(profile, conveyor)
         self.whole_profile = profile
         self.whole_orders = {
             o.job_id: WholeState(o) for o in sorted(profile.orders, key=lambda o: o.job_id)
@@ -51,6 +52,9 @@ class WholeFlowEngine(ReceiptFlowEngine):
         self.whole_wakes: set[tuple[int, str]] = set()
         self.parcel_ready: dict[str, int] = {}
         self._initialize_receipts(profile.receipts, conveyor, ledger, on_tick_settled)
+
+    def _validated_ledger(self, profile: WholeFlowProfile, conveyor: ConveyorSource) -> StockLedger:
+        return validate_whole_flow(profile, conveyor)
 
     def run(self, horizon_tick: int, end_tick: int) -> WholeFlowOutcome:
         if type(horizon_tick) is not int or any(
@@ -78,8 +82,9 @@ class WholeFlowEngine(ReceiptFlowEngine):
         else:
             super()._calendar_event(kind, key)
 
-    def _port_resource_id(self) -> str:
-        return "port:" + self.profile.port.port_id
+    def _port_resource_id(self, order_id: str | None = None) -> str:
+        profile = self._flow_for_order(order_id) if order_id is not None else self.profile
+        return "port:" + profile.port.port_id
 
     def _relocate_material(self, transaction_id: str, container: str, owner: str) -> StockDelta:
         if self.owner_specs[owner].kind == "worker":
@@ -137,16 +142,17 @@ class WholeFlowEngine(ReceiptFlowEngine):
         for _, _, key, whole in sorted(candidates):
             if whole:
                 self._dispatch_whole(self.whole_orders[key])
-            elif self.workers[self.profile.shipper_id].order_id is None:
+            elif self.workers[self._flow_for_order(key).shipper_id].order_id is None:
                 self._assign_parcel(key)
 
     def _assign_parcel(self, key: str) -> None:
-        worker = self.workers[self.profile.shipper_id]
-        if worker.spec.available_tick > self.tick:
+        profile = self._flow_for_order(key)
+        worker = self.workers[profile.shipper_id]
+        if not self._worker_eligible(worker, "ship"):
             return
         order = self.orders[key]
         order.status = "collecting"
-        self._assign(worker, order, "shipper", shipper_plan(self.profile, worker.spec, order.spec))
+        self._assign(worker, order, "shipper", shipper_plan(profile, worker.spec, order.spec))
 
     def _dispatch_whole(self, state: WholeState) -> None:
         port = self.whole_ports[state.spec.port_id]
@@ -157,7 +163,7 @@ class WholeFlowEngine(ReceiptFlowEngine):
         workers = [
             self.workers[k]
             for k in sorted(port.shipper_ids)
-            if self.workers[k].order_id is None and self.workers[k].spec.available_tick <= self.tick
+            if self.workers[k].order_id is None and self._worker_eligible(self.workers[k], "ship")
         ]
         if not workers:
             self._whole_wait(state, "shipper_busy")
@@ -381,6 +387,11 @@ class WholeFlowEngine(ReceiptFlowEngine):
                 s.offer.definition.hu_id for s in self.receipts.values() if s.placed_tick is None
             ),
         )
+        additional_owners, additional_claims = self._additional_whole_ownership()
+        if owners.keys() & additional_owners.keys() or claims & additional_claims:
+            raise RuntimeError("Additional whole ownership overlaps existing physical work")
+        owners.update(additional_owners)
+        claims |= additional_claims
         check_receipt_world(
             self.receipt_profile,
             self.receipts,
@@ -393,6 +404,10 @@ class WholeFlowEngine(ReceiptFlowEngine):
             whole_owners=owners,
             whole_claims=claims,
         )
+
+    def _additional_whole_ownership(self) -> tuple[dict[str, str], frozenset[str]]:
+        """Native subclasses must validate their actual custody before returning authority."""
+        return {}, frozenset()
 
     def _observe(self, tick: int) -> WholeFlowSnapshot:
         base = super()._observe(tick)

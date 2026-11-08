@@ -1,11 +1,13 @@
 """Prospective receipt validation never inserts future units into the live seed."""
 
+from collections.abc import Callable
 from dataclasses import replace
 from fractions import Fraction
 
 from app.v3.belt_plan import valid_tick
 from app.v3.conveyor_models import ConveyorSource
 from app.v3.light_flow_inputs import _handoff_inputs
+from app.v3.light_flow_models import FlowProfile
 from app.v3.light_flow_validate import _orders, _validate
 from app.v3.receipt_flow_models import ReceiptFlowProfile, ReceiptOffer, ReceiptPlace, ReceiptPort
 from app.v3.receipt_flow_plan import receipt_plan, wrapper_recipe
@@ -14,6 +16,8 @@ from app.v3.stock_ledger import StockLedger
 from app.v3.stock_models import StockOwner
 from app.v3.stock_receipts import validate_receipt
 from app.v3.stock_validation import exact, require, vector
+
+UnitValidator = Callable[[FlowProfile, ConveyorSource, StockLedger], None]
 
 
 def validate_receipt_flow(profile: ReceiptFlowProfile, conveyor: ConveyorSource) -> StockLedger:
@@ -25,10 +29,18 @@ def _validate_receipts(
     conveyor: ConveyorSource,
     actor_kind: str,
     archetypes: frozenset[str],
+    *,
+    unit_validator: UnitValidator = _orders,
+    picker_home_at_cart: bool = True,
 ) -> StockLedger:
     require(type(profile) is ReceiptFlowProfile, "typed receipt-flow profile required")
-    live = _validate(replace(profile.flow, orders=()), conveyor, actor_kind)
-    _handoff_inputs(profile.flow, conveyor, actor_kind)
+    live = _validate(
+        replace(profile.flow, orders=()),
+        conveyor,
+        actor_kind,
+        picker_home_at_cart=picker_home_at_cart,
+    )
+    _handoff_inputs(profile.flow, conveyor, actor_kind, picker_home_at_cart=picker_home_at_cart)
     for duration in (profile.pickup_tick, profile.place_tick):
         require(valid_tick(duration) and duration > 0, "positive receipt handling duration")
     owners = {o.owner_id: o for o in profile.flow.stock.owners + profile.flow.owners}
@@ -59,7 +71,7 @@ def _validate_receipts(
             offer.slot_owner_id,
         )
     _order_sources(profile)
-    _orders(profile.flow, conveyor, prospective)
+    unit_validator(profile.flow, conveyor, prospective)
     return live
 
 

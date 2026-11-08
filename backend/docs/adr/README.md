@@ -62,6 +62,19 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0054](0054-c11-planning-import.md) | Source-bound C11 planning proxy with explicit non-operational limits |
 | [0055](0055-connected-receipt-publication.md) | Creation and claim journal, exact receipt inputs and immutable captured export |
 | [0056](0056-v3-shared-manual-whole-flow.md) | Intact SMALL/STANDARD work on the shared inventory clock |
+| [0057](0057-v3-staff-registry-prerequisite.md) | Source-bound staff roster, skills and role availability |
 | [0058](0058-connected-whole-publication.md) | Native whole-HU publication and strict captured-state reads |
+| [0059](0059-v3-shared-staff-coordinator.md) | Paid role transitions and real helper packing on the shared clock |
 | [0060](0060-registered-receipt-api.md) | Registered receipt HTTP runs with one owned API worker |
 | [0061](0061-public-whole-profile-cli.md) | Explicit whole-HU profiles and bound CLI request receipts |
+| [0062](0062-registered-whole-api.md) | Registered whole-HU HTTP runs, bound requests and immutable nested publication |
+| [0063](0063-v3-concurrent-unit-resource-coordinator.md) | Concurrent unit carts, stations, workers and immutable per-order allocation |
+| [0064](0064-v3-source-bound-coordinator-profile.md) | Exact source-bound coordinator choices and full immutable physical inputs |
+| [0065](0065-coordinator-native-publication.md) | Native coordinator publication, strict captured-state replay and bounded metrics |
+| [0066](0066-v3-shared-local-pallet-cycle.md) | Local PALLET work on the shared clock and inventory, with explicit analytical scope |
+| [0067](0067-v3-paired-coordinator-comparison.md) | Independent bounded N0/N4 runs with full physical input comparison |
+| [0068](0068-v3-explicit-coordinator-offered-calendars.md) | Explicit clocks for an unchanged finite job population |
+| [0069](0069-v3-registered-coordinator-api.md) | Registered source coordinator runs and immutable native HTTP reads |
+| [0070](0070-v3-source-pallet-receipt-prerequisites.md) | Source receipt proof obligations and a preconditioned local loaded setdown |
+| [0071](0071-coordinator-observed-kpis.md) | Observed travel, station, queue, material, inventory and belt KPIs |
+| [0072](0072-coordinator-arbitrary-settled-seek.md) | Validated arbitrary settled-state replay from immutable events |

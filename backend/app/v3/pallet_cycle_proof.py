@@ -1,9 +1,11 @@
 """A cached recomputation is reusable only after every raw source is revalidated."""
 
+from copy import deepcopy
 from dataclasses import asdict
 from pathlib import Path
 
 from app.storage.canonical_json import canonical_bytes
+from app.v3.flow_profile_sources import _same_types
 from app.v3.mesh_proof_fixture import (
     METHOD_VERSION,
     LocalGeometryProof,
@@ -19,8 +21,8 @@ def certified_geometry(proof_root: Path) -> LocalGeometryProof:
     fixture = load_fixture(proof_root)
     key = METHOD_VERSION, fixture.hashes
     if key not in _PROVEN:
-        _PROVEN[key] = verify_repository_pallet_fixture(proof_root)
-    return _PROVEN[key]
+        _PROVEN[key] = deepcopy(verify_repository_pallet_fixture(proof_root))
+    return deepcopy(_PROVEN[key])
 
 
 def validate_proof(proof_root: Path, supplied: LocalGeometryProof) -> LocalGeometryProof:
@@ -29,6 +31,8 @@ def validate_proof(proof_root: Path, supplied: LocalGeometryProof) -> LocalGeome
     if supplied.operational_admission is not False or supplied.same_hu is not True:
         raise ValueError("proof scope cannot grant warehouse admission or clone a HU")
     current = certified_geometry(proof_root)
-    if canonical_bytes(asdict(supplied)) != canonical_bytes(asdict(current)):
+    if not _same_types(supplied, current) or (
+        canonical_bytes(asdict(supplied)) != canonical_bytes(asdict(current))
+    ):
         raise ValueError("proof differs from independently verified source-bound evidence")
-    return current
+    return supplied

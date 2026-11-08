@@ -21,7 +21,15 @@ from app.version import ENGINE_VERSION
 
 type Json = dict[str, Any]
 type JobKind = Literal[
-    "materialize", "forecast", "plans", "compare", "manual-v3", "light-v3", "receipt-v3"
+    "materialize",
+    "forecast",
+    "plans",
+    "compare",
+    "manual-v3",
+    "light-v3",
+    "receipt-v3",
+    "whole-v3",
+    "coordinator-v3",
 ]
 
 

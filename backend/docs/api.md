@@ -251,13 +251,16 @@ Errors use the same JSON envelope shape as the CLI:
 | 500 | Unexpected backend failure (`execution_error`) or artifact integrity failure |
 | 429/502/503/504 | Optional explanation rate limit/provider failure/unavailable/timeout |
 
-## Current frontend boundary
+## Historical V2 frontend boundary
 
 At inspected Tilek frontend commit `10496fd4ccd748676c036c371dd1a29881f046d1`, the entry point
 loads one inline Run2.0 JSON file. Visual seek is implemented, but there is no API/manifest/chunk
 loader or proposal full/delta business-state decoder. This API does not change that frontend.
 It needs an agreed loader and handlers before streamed proposal runs can be replayed there.
 Renaming `schema_version` is not an adapter. Shared2.0 remains the default until that agreement.
+This paragraph describes the inspected V2 commit only. The newer V3 source geometry
+and visual prototype have a separate native-engine integration boundary described in
+[the V3 delivery scope](v3-delivery-status.md).
 
 ## V3 manual execution
 
@@ -266,6 +269,25 @@ at `/api/v3/receipt-profiles` and executes it through `/api/v3/receipt-runs` on 
 same owned calculation worker. Its separate native/public identities, immutable
 files and exact captured-state reads preserve the connected receipt journal.
 It does not expose arbitrary seek or adopt the proposed V3 frontend contract.
+
+The [registered whole-HU API](proposals/adaptive-v3/whole-api.md) adds
+`/api/v3/whole-profiles` and `/api/v3/whole-runs` for the explicit STANDARD
+receipt/whole-HU profile. It uses that same worker slot and preserves separate
+public/native identities, bound request evidence and the native `run/` inventory.
+Readers expose verified files, exact captured ticks and observed half-open event
+windows; terminal status includes paid return and shared resource release.
+Caller clocks, paths and physical overrides are rejected. This backend proposal
+does not enable a V3 frontend adapter or general heavy handling.
+
+The [registered coordinator API](v3-coordinator-api.md) adds source-bound multi-resource
+execution through `/api/v3/coordinator-profiles` and `/api/v3/coordinator-runs` on
+the same worker. It preserves native namespace3 identity, actual staffing, horizon/end
+metrics and paid resource return. Captured checkpoints remain exact-only; the separate
+[`/replay?tick=T` reader](v3-coordinator-replay-api.md) reconstructs settled state through
+any observed integer tick after full evidence validation, without another simulation.
+The ordinary registered profile contains two unit orders. Mixed receipt/shipment N4
+experiments remain separate explicit CLI profiles; arbitrary profile submission is rejected.
+The assembled implementation and prewritten tests await final verification.
 
 The separate [V3 manual API guide](v3-manual-api.md) documents registered frozen
 profiles, actual manual simulation, immutable files and bounded seek under

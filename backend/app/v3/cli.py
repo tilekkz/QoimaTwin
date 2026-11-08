@@ -10,6 +10,9 @@ from typing import Any
 from app.cli import JsonArgumentParser
 from app.errors import AppError, InvalidInputError, error_report, require_empty_output
 from app.v3.cli_belt import simulate_conveyor
+from app.v3.cli_coordinator import simulate_coordinator_file
+from app.v3.cli_coordinator_calendar import materialize_coordinator_calendar_file
+from app.v3.cli_coordinator_pair import compare_coordinator_files
 from app.v3.cli_lightflow import simulate_light_file
 from app.v3.cli_manual import materialize_manual, simulate_manual
 from app.v3.cli_receipt import simulate_receipt_file
@@ -32,7 +35,10 @@ def build_parser() -> argparse.ArgumentParser:
         "simulate-light",
         "simulate-receipt",
         "simulate-whole",
+        "simulate-coordinator",
+        "materialize-coordinator-calendar",
         "materialize-workload",
+        "compare-coordinator",
     ):
         command = commands.add_parser(name)
         command.add_argument("--inputs", type=Path, default=default_inputs())
@@ -43,11 +49,23 @@ def build_parser() -> argparse.ArgumentParser:
             "simulate-light",
             "simulate-receipt",
             "simulate-whole",
+            "simulate-coordinator",
+            "materialize-coordinator-calendar",
         }:
             command.add_argument("--profile", type=Path, required=True)
         if name == "materialize-workload":
             command.add_argument("--policy", type=Path, required=True)
+        if name == "materialize-coordinator-calendar":
+            command.add_argument("--calendar", type=Path, required=True)
+        if name == "compare-coordinator":
+            _pair_arguments(command)
     return parser
+
+
+def _pair_arguments(command: argparse.ArgumentParser) -> None:
+    command.add_argument("--baseline", type=Path, required=True)
+    command.add_argument("--candidate", type=Path, required=True)
+    command.add_argument("--scenario", choices=("N0", "N4"), required=True)
 
 
 def _summary(bundle: V3Bundle) -> dict[str, Any]:
@@ -79,6 +97,20 @@ def main(argv: Sequence[str]) -> int:
 
 
 def _execute(args: argparse.Namespace) -> dict[str, Any]:
+    if args.command == "compare-coordinator":
+        return compare_coordinator_files(
+            args.inputs,
+            args.baseline,
+            args.candidate,
+            args.scenario,
+            args.out,
+        )
+    if args.command == "simulate-coordinator":
+        return simulate_coordinator_file(args.inputs, args.profile, args.out)
+    if args.command == "materialize-coordinator-calendar":
+        return materialize_coordinator_calendar_file(
+            args.inputs, args.profile, args.calendar, args.out
+        )
     if args.command == "simulate-whole":
         return simulate_whole_file(args.inputs, args.profile, args.out)
     if args.command == "simulate-receipt":

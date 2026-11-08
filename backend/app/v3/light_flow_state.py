@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass, field
 
-from app.v3.light_flow_models import FlowActor, FlowOperation, FlowOrder, FlowWorker
+from app.v3.light_flow_models import FlowActor, FlowCart, FlowOperation, FlowOrder, FlowWorker
 from app.v3.runtime_graph import CandidateRoute
 
 
@@ -55,3 +55,10 @@ class OrderState:
     status: str = "unreleased"
     admitted_tick: int | None = None
     shipped_tick: int | None = None
+
+
+@dataclass
+class CartState:
+    spec: FlowCart
+    node: str | None
+    operation: FlowOperation | None = None

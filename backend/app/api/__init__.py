@@ -29,9 +29,6 @@ def create_app(
     explanation_settings: MercurySettings | None = None,
     v3_inputs: Path | None = None,
 ) -> FastAPI:
-    from app.v3.api_light import attach_light_routes
-    from app.v3.api_receipt import attach_receipt_routes
-
     store = ArtifactStore(store_root or repository_root() / "backend" / "artifacts" / "api")
     context = ApiContext.create(store, contracts_dir or default_contracts_dir())
     explanations = ExplanationService(store, explanation_settings)
@@ -58,6 +55,17 @@ def create_app(
     attach_explanation_route(app, explanations)
     attach_v3_routes(app, v3_inputs)
     attach_manual_routes(app, context, v3_inputs)
-    attach_light_routes(app, context, v3_inputs)
-    attach_receipt_routes(app, context, v3_inputs)
+    _attach_flow_routes(app, context, v3_inputs)
     return app
+
+
+def _attach_flow_routes(app: FastAPI, context: ApiContext, source: Path | None) -> None:
+    from app.v3.api_coordinator import attach_coordinator_routes
+    from app.v3.api_light import attach_light_routes
+    from app.v3.api_receipt import attach_receipt_routes
+    from app.v3.api_whole import attach_whole_routes
+
+    attach_light_routes(app, context, source)
+    attach_receipt_routes(app, context, source)
+    attach_whole_routes(app, context, source)
+    attach_coordinator_routes(app, context, source)

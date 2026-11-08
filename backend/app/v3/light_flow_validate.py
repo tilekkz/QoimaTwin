@@ -17,7 +17,13 @@ def validate(profile: FlowProfile, conveyor: ConveyorSource) -> StockLedger:
     return _validate(profile, conveyor, "workstation")
 
 
-def _validate(profile: FlowProfile, conveyor: ConveyorSource, actor_kind: str) -> StockLedger:
+def _validate(
+    profile: FlowProfile,
+    conveyor: ConveyorSource,
+    actor_kind: str,
+    *,
+    picker_home_at_cart: bool = True,
+) -> StockLedger:
     if not profile.profile_id or not profile.provenance:
         raise ValueError("Explicit versioned synthetic process provenance required")
     actors = {a.actor_id: a for a in profile.actors}
@@ -46,7 +52,7 @@ def _validate(profile: FlowProfile, conveyor: ConveyorSource, actor_kind: str) -
     ):
         raise ValueError("Explicit exact positive cart capacity/speed/width required")
     ledger = StockLedger(profile.stock, owners=profile.owners, materials=profile.materials)
-    _handoff_inputs(profile, conveyor, actor_kind)
+    _handoff_inputs(profile, conveyor, actor_kind, picker_home_at_cart=picker_home_at_cart)
     _orders(profile, conveyor, ledger)
     return StockLedger(profile.stock, owners=profile.owners, materials=profile.materials)
 

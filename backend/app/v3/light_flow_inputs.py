@@ -11,7 +11,13 @@ def handoff_inputs(profile: FlowProfile, conveyor: ConveyorSource) -> None:
     _handoff_inputs(profile, conveyor, "workstation")
 
 
-def _handoff_inputs(profile: FlowProfile, conveyor: ConveyorSource, actor_kind: str) -> None:
+def _handoff_inputs(
+    profile: FlowProfile,
+    conveyor: ConveyorSource,
+    actor_kind: str,
+    *,
+    picker_home_at_cart: bool = True,
+) -> None:
     _route_ends(profile, conveyor)
     margin = profile.path_clearance_m
     if type(margin) is not Fraction or margin < 0:
@@ -26,7 +32,7 @@ def _handoff_inputs(profile: FlowProfile, conveyor: ConveyorSource, actor_kind: 
     if not profile.port.windows:
         raise ValueError("Explicit port windows required")
     picker = next(a for a in profile.actors if a.actor_id == profile.picker_id)
-    if picker.home != profile.cart.home:
+    if picker_home_at_cart and picker.home != profile.cart.home:
         raise ValueError("Bounded picker must initially share the declared cart home")
     _owners(profile, actor_kind)
 

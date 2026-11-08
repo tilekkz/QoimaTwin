@@ -112,7 +112,7 @@ class ReceiptFlowEngine(LightFlowEngine):
             self.workers[key]
             for key in sorted(port.receiver_ids)
             if self.workers[key].order_id is None
-            and self.workers[key].spec.available_tick <= self.tick
+            and self._worker_eligible(self.workers[key], "receive")
         ]
         if not workers:
             self._receipt_wait(state, "receiver_busy")
