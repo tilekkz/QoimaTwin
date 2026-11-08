@@ -64,7 +64,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14](tasks/M14.md) | PASS | root | R10,R06,C08,I09 | Готов анимируемый forklift |
 | [P01](tasks/P01.md) | PASS | root | R10,R05,I09 | Готова единая базовая фигура человека |
 | [P02](tasks/P02.md) | PASS | people_packing | R10,P01,R05,I09 | Готовы визуальные варианты ролей |
-| [P03](tasks/P03.md) | TODO | unassigned | R10,P02,M07,I09 | Готов комплект picker/cart |
+| [P03](tasks/P03.md) | PASS | root | R10,P02,M07,I09 | Готов комплект picker/cart |
 | [P04](tasks/P04.md) | PASS | root | R10,P02,M07,P08,I09 | Готов комплект packer |
 | [P05](tasks/P05.md) | READY | unassigned | R10,P02,M08,I09 | Готов комплект receiver |
 | [P06](tasks/P06.md) | READY | unassigned | R10,P02,M07,M08,I09 | Готов комплект shipper |
@@ -123,8 +123,8 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P03.2](tasks/P03.2.md) | PASS | root | R10,P02,M07,P03.1,I09 | Picking cart with grounded wheels, clear tote tray and coherent handle |
 | [P03.3](tasks/P03.3.md) | PASS | root | R10,P02,M07,P03.2,I09 | Hands and both grip anchors stay in contact with handle |
 | [P03.4](tasks/P03.4.md) | PASS | root | R10,P02,M07,P03.3,I09 | Walk/cart absolute-clock gait with foot/wheel contacts |
-| [P03.5](tasks/P03.5.md) | TODO | unassigned | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
-| [P03.6](tasks/P03.6.md) | TODO | unassigned | R10,P02,M07,P03.5,I09 | Tote handoff: stable hold/deposit parent and no duplicate cargo |
+| [P03.5](tasks/P03.5.md) | PASS | root | R10,P02,M07,P03.4,I09 | Pick action: real target/payload, hand reach and one visible transfer |
+| [P03.6](tasks/P03.6.md) | PASS | root | R10,P02,M07,P03.5,I09 | Tote handoff: stable hold/deposit parent and no duplicate cargo |
 | [P09.1](tasks/P09.1.md) | PASS | people_packing | R10,R07,L12,I09 | Standard dock module: thick connected frame and clear passage |
 | [P09.2](tasks/P09.2.md) | PASS | people_packing | R10,R07,L12,P09.1,I09 | Large freight gate: accepted clear width/height and loaded-long envelope |
 | [P09.3](tasks/P09.3.md) | PASS | people_packing | R10,R07,L12,P09.2,I09 | 144x72x8 cutaway shell, substantial walls/columns at ordinary scale |
@@ -180,7 +180,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.6.3](tasks/M14.6.3.md) | PASS | root | R10,R06,C08,I09,M14.6.1,M14.6.2,M08,M09,M11,M12 | All six native loaded assemblies and low/high interface gate |
 | [P03.5.1](tasks/P03.5.1.md) | PASS | root | P03.4,P01.7,P02 | Manual picker wrist roll and closing mitten controls |
 | [P03.5.2](tasks/P03.5.2.md) | PASS | root | P03.5.1,M06.1,M01 | Native open partial SMALL case and primary-unit source fixture |
-| [P03.5.3](tasks/P03.5.3.md) | FIX | root | P03.5.2,FIX01.3,P03.5.1.1 | Reach, pick primary units, withdraw and deposit without duplication |
+| [P03.5.3](tasks/P03.5.3.md) | PASS | root | P03.5.2,FIX01.3,P03.5.1.1 | Reach, pick primary units, withdraw and deposit without duplication |
 | [FIX01.1](tasks/FIX01.1.md) | PASS | root | — | Inward neutral palms on both worker templates |
 | [FIX01.2](tasks/FIX01.2.md) | PASS | root | FIX01.1 | Top-down cart grip and affected pose regressions |
 | [FIX01.3](tasks/FIX01.3.md) | PASS | root | FIX01.2 | Four-flap outer SMALL carton opening |
@@ -190,5 +190,5 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P04.3](tasks/P04.3.md) | PASS | root | P04.2 | Packer runtime, seek and reference review |
 | [P03.5.3.1](tasks/P03.5.3.1.md) | PASS | root | P03.5.2 | Independent compact manual gripper reference and metric plan |
 | [P03.5.3.2](tasks/P03.5.3.2.md) | PASS | root | P03.5.3.1 | Native compact gripper, linked jaw travel and browser views |
-| [P03.5.3.3](tasks/P03.5.3.3.md) | ACTIVE | root | P03.5.3.2 | Clocked tool-assisted extract, withdraw, carry and tote deposit |
+| [P03.5.3.3](tasks/P03.5.3.3.md) | PASS | root | P03.5.3.2 | Clocked tool-assisted extract, withdraw, carry and tote deposit |
 | [P03.5.3.3.1](tasks/P03.5.3.3.1.md) | PASS | root | P03.5.3.2,P03.5.1 | Raw-body-preserving picker thumb-press derivative |

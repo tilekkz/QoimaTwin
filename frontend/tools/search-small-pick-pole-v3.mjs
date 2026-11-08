@@ -16,10 +16,10 @@ if(query&&(!/^[a-z0-9-]+$/.test(query.directory)||!Array.isArray(query.bodies)||
 const bodies=query?.bodies??JSON.parse(await readFile('../assets/v3/iterations/worker-base/P03.5.3/'+(fineBodies?'tool-fine-bodies/bodies.json':sideProbe?'side-pole-probe/bodies.json':'reach-probe/pick-clear-bodies.json'),'utf8')).clear;
 const wrap=x=>Math.atan2(Math.sin(x),Math.cos(x)),result=[];
 for(const[bi,body]of bodies.entries()){
- root.position.fromArray(body.root);root.rotation.set(0,Math.PI,0);frame.rotation.set(body.torso_x,0,0);root.updateWorldMatrix(true,true);
+ root.position.fromArray(body.root);root.rotation.set(0,Math.PI,0);frame.rotation.set(body.torso_x,body.torso_y??0,0);root.updateWorldMatrix(true,true);
  const shoulder=frame.worldToLocal(upper.getWorldPosition(new T.Vector3()));
- const desired=frame.getWorldQuaternion(new T.Quaternion()).invert().multiply(new T.Quaternion().setFromEuler(new T.Euler(query?query.angle:gripperProbe?(raised&&!fixedHandle?Math.PI*3/4:Math.PI*5/8):Math.PI/2,0,0,'XYZ')));
- const contact=grip.position.clone(),target=query?.target??(gripperProbe?[.945,raised?1.4125:1.2725,.55]:[.945,1.14,.32]),goal=frame.worldToLocal(new T.Vector3(...target)),wGoal=goal.clone().sub(contact.clone().applyQuaternion(desired)),delta=wGoal.clone().sub(shoulder),d=delta.length(),candidates=[];
+ const desired=frame.getWorldQuaternion(new T.Quaternion()).invert().multiply(new T.Quaternion().setFromEuler(new T.Euler(body.angle??(query?query.angle:gripperProbe?(raised&&!fixedHandle?Math.PI*3/4:Math.PI*5/8):Math.PI/2),0,0,'XYZ')));
+ const contact=grip.position.clone(),target=body.target??query?.target??(gripperProbe?[.945,raised?1.4125:1.2725,.55]:[.945,1.14,.32]),goal=frame.worldToLocal(new T.Vector3(...target)),wGoal=goal.clone().sub(contact.clone().applyQuaternion(desired)),delta=wGoal.clone().sub(shoulder),d=delta.length(),candidates=[];
  if(d<l1+l2&&d>Math.abs(l1-l2)){
   const dir=delta.clone().normalize(),along=(d*d+l1*l1-l2*l2)/(2*d),height=Math.sqrt(l1*l1-along*along),centre=shoulder.clone().addScaledVector(dir,along);
   const v=new T.Vector3(0,1,0).cross(dir).normalize(),w=dir.clone().cross(v);
@@ -39,12 +39,12 @@ for(const[bi,body]of bodies.entries()){
      let best;
      for(let roll=-Math.PI;roll<=Math.PI+.001;roll+=Math.PI/90){
       const h=new T.Euler().setFromQuaternion(new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),roll).invert().multiply(q12.clone().invert()).multiply(desired),'XYZ'),angles=[h.x,h.y,h.z];
-      if(angles.some((v,j)=>Math.abs(v)>[.6,.65,.4][j]-.0001))continue;
+      if(angles.some((v,j)=>Math.abs(v)>[.6,.65,.4][j]-(query?.wrist_margin_rad??.0001)))continue;
       const score=Math.max(...angles.map((v,j)=>Math.abs(v)/[.6,.65,.4][j]));if(!best||score<best.score)best={score,roll,angles};
      }
      if(!best)continue;
      const lift=Math.min(0,Math.max(-.8,a.x+2.2));
-     candidates.push({root:body.root,body_index:bi,target,pose:{joint__torso:[body.torso_x,0,0],joint__head:body.head,joint__upper_arm_L:body.idle_left_upper,joint__shoulder_lift_R:[lift,0,0],joint__upper_arm_R:[a.x-lift,a.y,a.z],joint__forearm_R:[beta,0,0],joint__elbow_swivel_R:[twist,0,0],joint__palm_roll_R:[0,best.roll,0],joint__hand_R:best.angles},twist_axis_runtime:axis.toArray(),error:actual.distanceTo(goal),score:best.score,elbow_world:frame.localToWorld(E.clone()).toArray(),pole_deg:pole,spin_deg:spin});
+     candidates.push({root:body.root,body_index:bi,motion_time_s:body.motion_time_s,target,pose:{joint__torso:[body.torso_x,body.torso_y??0,0],joint__head:body.head,joint__upper_arm_L:body.idle_left_upper,joint__shoulder_lift_R:[lift,0,0],joint__upper_arm_R:[a.x-lift,a.y,a.z],joint__forearm_R:[beta,0,0],joint__elbow_swivel_R:[twist,0,0],joint__palm_roll_R:[0,best.roll,0],joint__hand_R:best.angles},twist_axis_runtime:axis.toArray(),error:actual.distanceTo(goal),score:best.score,elbow_world:frame.localToWorld(E.clone()).toArray(),pole_deg:pole,spin_deg:spin});
     }
    }
   }

@@ -67,9 +67,11 @@ export function smallPickAt(input:SmallPickTimeline,seconds:number){
       body[0]+=Math.hypot(.75,.45)*direction.x;body[2]+=Math.hypot(.75,.45)*direction.z;tool[0]+=Math.hypot(.75,.45)*direction.x;tool[2]+=Math.hypot(.75,.45)*direction.z;
       const v=u(31.6,33);tool[0]=lerp(tool[0],1.75,v);tool[1]=lerp(1.1,.957,v);tool[2]=lerp(tool[2],.02,v);torso=.15;
       if(time>=33){opening=u(33,34);tool[1]=.957;}
-      if(time>=34.8){tool[1]=lerp(.957,1.08,u(34.8,36));tool[2]=lerp(.02,.15,u(34.8,36));}
+      if(time>=34){opening=1-u(34,34.8);}
+      if(time>=34.8){tool[0]=lerp(1.75,1.63,u(34.8,35.2));tool[1]=lerp(.957,1.08,u(35.2,36));tool[2]=lerp(.02,.15,u(35.2,36));}
     }
   }
+  if(time>=14.4)torso=time<=15.6?.15*(1-u(14.4,15.6)):time<=32.2?0:time<=33?.15*u(32.2,33):time<35.2?.15:.15*(1-u(35.2,36));
   if(gait){body[0]+=gait.root_offset[0];body[2]+=gait.root_offset[2];body[1]-=gait.drop;tool[0]+=gait.root_offset[0];tool[2]+=gait.root_offset[2];}
   const attached=time>=4&&time<=33,fall=time>33;
   const bottom=time<4?1.1225:fall?Math.max(.64,.955-.5*9.81*(time-33)**2):tool[1]-.002;

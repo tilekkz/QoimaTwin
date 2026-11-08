@@ -12,7 +12,7 @@ from build_standard_carton import collect,empty_box
 from build_picker_figure import physical_body
 from native_clearance import penetration,touching
 assert bpy.app.background
-directory=os.environ.get('QOIMA_PICK_POSE_DIRECTORY','tool-deposit-reach');assert directory in ['tool-deposit-reach','tool-predeposit-reach']
+directory=os.environ.get('QOIMA_PICK_POSE_DIRECTORY','tool-deposit-reach');assert directory in ['tool-deposit-reach','tool-predeposit-reach','tool-deposit-body-reach']
 OUT=ROOT/'assets/v3/iterations/worker-base/P03.5.3'/directory;EPS=2e-6
 data=json.loads((OUT/'positive-twist-candidates.json').read_text(encoding='utf8'))
 reset();scene=append_source('assets/v3/blender/picker-pick-source-fixture.blend','picker_pick_source_fixture_root',None)

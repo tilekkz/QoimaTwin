@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T04:07:04.797367+00:00",
+  "updated_at": "2026-11-08T04:53:16.701520+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1038,8 +1038,8 @@
         "I09"
       ],
       "criteria": "Руки касаются ручки, четыре колеса касаются пола; walk/pick/handoff clips проверены",
-      "status": "TODO",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/models/P03.md",
         "docs/adaptive-v3/evidence/P03.json"
@@ -1052,7 +1052,8 @@
         "P03.5",
         "P03.6"
       ],
-      "kind": "parent"
+      "kind": "parent",
+      "actual": "All six children PASS: original worker/cart, overhand grip, grounded9s walk, corrected four-wall prepared-tool36s pick and stable original-ID tote handoff. Shared stand P04/walk regression passes; evidence hashes/entry points in P03.json. Separately runnable kit only; warehouse joining/acquisition/stow/registry remain W work, no actual engine or full visual-completion claim."
     },
     {
       "id": "P04",
@@ -2083,8 +2084,8 @@
       "id": "P03.5",
       "title": "Pick action: real target/payload, hand reach and one visible transfer",
       "parent": "P03",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "P02",
@@ -2101,14 +2102,15 @@
         "P03.5.1",
         "P03.5.2",
         "P03.5.3"
-      ]
+      ],
+      "actual": "All manual-rig, corrected-source and reach/tool children PASS. Actual one-P01/four-original-package action passes runtime/native/browser/review gates, including real extract/grounded carry/tote release. No backend/stock mutation or complete warehouse action-chain claim."
     },
     {
       "id": "P03.6",
       "title": "Tote handoff: stable hold/deposit parent and no duplicate cargo",
       "parent": "P03",
-      "owner": "unassigned",
-      "status": "TODO",
+      "owner": "root",
+      "status": "PASS",
       "depends_on": [
         "R10",
         "P02",
@@ -2120,7 +2122,8 @@
         "docs/adaptive-v3/specs/P03.6.md",
         "docs/adaptive-v3/evidence/P03.6.json"
       ],
-      "criteria": "Tote handoff: stable hold/deposit parent and no duplicate cargo; actual artifact and relevant reference/runtime evidence reviewed"
+      "criteria": "Tote handoff: stable hold/deposit parent and no duplicate cargo; actual artifact and relevant reference/runtime evidence reviewed",
+      "actual": "Same original17/23 objects remain tool children through33s, then existing tote children;145settled native frames verify290actual floor contacts atY.64. Four UUIDs retained,100absolute seeks/restoration pass, top/release/end images reviewed. Reuses accepted P03.5.3.3; no second worker/engine ledger. Warehouse action-chain/stow remain W05."
     },
     {
       "id": "P09.1",
@@ -3234,7 +3237,7 @@
       "title": "Reach, pick primary units, withdraw and deposit without duplication",
       "parent": "P03.5",
       "owner": "root",
-      "status": "FIX",
+      "status": "PASS",
       "depends_on": [
         "P03.5.2",
         "FIX01.3",
@@ -3245,7 +3248,7 @@
         "docs/adaptive-v3/evidence/P03.5.3.json"
       ],
       "criteria": "Reach, pick primary units, withdraw and deposit without duplication; actual native contact and relevant browser/reference evidence reviewed",
-      "actual": "Analytic native search3961frontal+421side candidates rejected at fixed carton walls. External handle reach has clear native arm poses at both pickup and+14cm lift for same body5. This proves arm reach only, not a tool/action. Expand three children before reference/geometry/clip; original templates and earlier evidence preserved.",
+      "actual": "All three tool-reference/tool/action children PASS. Corrected fixed-wall source and original bodies/IDs preserved; current36s prepared-tool action reviewed with557native poses,2928contacts and17headless images. Original reach rejection totals are provisional; accepted tool process is bounded visual QA. See P03.5.3.3 evidence; acquisition/stow/scheduling remain W05.",
       "children": [
         "P03.5.3.1",
         "P03.5.3.2",
@@ -3380,7 +3383,7 @@
       "id": "P03.5.3.3",
       "title": "Clocked tool-assisted extract, withdraw, carry and tote deposit",
       "parent": "P03.5.3",
-      "status": "ACTIVE",
+      "status": "PASS",
       "owner": "root",
       "depends_on": [
         "P03.5.3.2"
@@ -3390,7 +3393,7 @@
         "docs/adaptive-v3/specs/P03.5.3.3.md",
         "docs/adaptive-v3/evidence/P03.5.3.3.json"
       ],
-      "actual": "36s candidate with actual P01 factory,3601runtime samples/89absolute guides/100seek and restore passes. Native prefix322frames through32.1s clear; first rejection32.2s cuff/forearm versus Tbar during deposit. Native-clear intermediate pose found at32.1s; next plan bounded analytical/native guides across deposit and review dense path/browser. Full action/TZ3 incomplete.",
+      "actual": "Accepted prepared-tool36s visual pick:3601runtime/557native/2928contacts/100exact seeks/17reviewed headless images, actual P01 and original14/17/20/23 conserved.45native-planned guides avoid cuff/bar and sleeve/head. Mobile360touch, loading/error/stale/RM/resource checks and P04/walk regression pass. Acquisition/stow and warehouse integration remain W05; no actual engine run.",
       "children": [
         "P03.5.3.3.1"
       ],

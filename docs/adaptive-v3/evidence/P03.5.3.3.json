@@ -1,43 +1,104 @@
 {
   "task_id": "P03.5.3.3",
-  "passed": false,
-  "status": "ACTIVE",
+  "passed": true,
+  "reviewer": "root",
   "source_kind": "visual_fixture",
   "engine_operation": false,
-  "runtime_checks": {
+  "visual_complete": false,
+  "backend_integration_complete": false,
+  "duration_s": 36,
+  "actor_id": "P01",
+  "original_package_ids": [
+    14,
+    17,
+    20,
+    23
+  ],
+  "transferred_package_ids": [
+    17,
+    23
+  ],
+  "source_packages_after": 2,
+  "tote_packages_after": 2,
+  "warehouse_headcount_delta": 0,
+  "arm_guides": 45,
+  "runtime": {
     "runtime_frames": 3601,
-    "maximum_joint_angle_change_per_10ms_rad": 0.01910421620388941,
+    "maximum_joint_angle_change_per_10ms_rad": 0.038397243543901144,
     "maximum_angle_step_witness": {
-      "time": 35.36,
+      "time": 32.63,
       "name": "joint__palm_roll_R"
     },
-    "native_frames_exported": 397,
+    "native_frames_exported": 557,
     "arbitrary_seeks": 100,
     "invalid_time_rejected": 3,
     "exclusive_binding": true,
     "disposal_restores_hierarchy_and_transforms": true,
     "source_package_objects_conserved": true
   },
-  "actual_P01_role_factory": true,
-  "native_passed_prefix_frames": 322,
-  "first_native_rejection": {
-    "time": 32.2,
-    "error": "('native penetration', [{'kind': 'transverse_surface_shared_interior', 'a': 'rubber_Tbar', 'b': 'cuff_R', 'triangles': [65, 32], 'point': (1.6367079542342295, 1.2130167481282295, 0.3669051937430367)}, {'kind': 'transverse_surface_shared_interior', 'a': 'rubber_Tbar', 'b': 'fore_sleeve_R', 'triangles': [65, 32], 'point': (1.6378182998594977, 1.2130090517997631, 0.36691671222608846)}])"
+  "native": {
+    "frames": 557,
+    "contacts": 2928,
+    "thumb_button_frames": 136,
+    "tote_support_contacts": 290,
+    "maximum_contact_gap_m": 1.8706744702428836e-06,
+    "maximum_boot_floor_error_m": 6.229430482562748e-08,
+    "spacing": "100ms whole clip;20ms final transfer;10ms gravity release",
+    "clearance_threshold_m": 2e-06
   },
-  "runtime_input_sha256": {
+  "browser_checks": {
+    "cold_reduced_motion_manual_only": true,
+    "same_actor_tool_and_four_package_objects": true,
+    "mobile_360_touch_seek_and_no_page_overflow": true,
+    "keyboard_seek": true,
+    "keyboard_view_focus_labels_and_status": true,
+    "manual_play_pause": true,
+    "live_reduced_motion_pauses": true,
+    "replacement_memory": [
+      {
+        "geometries": 103,
+        "textures": 13
+      },
+      {
+        "geometries": 103,
+        "textures": 13
+      },
+      {
+        "geometries": 103,
+        "textures": 13
+      }
+    ],
+    "missing_asset_cleanup_recovery": true,
+    "invalid_timeline_cleanup_recovery": true,
+    "loading_status_and_disabled_views": true,
+    "stale_load_does_not_resurrect_actor": true
+  },
+  "browser_lifecycle": {
+    "owned_pid": 12956,
+    "terminated": true,
+    "elapsed_ms": 36483
+  },
+  "reviewed_images": 17,
+  "input_hashes": {
     "frontend/public/models/v3/picker-pick-source-fixture.glb": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1",
     "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
     "frontend/public/models/v3/small-package-gripper.glb": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
-    "frontend/public/models/v3/small-pick-v3.json": "ef914ae4e0fbdbf7206902035416331684b98b577d9174e9a390fe7c483c2b2f",
-    "frontend/src/adaptive-v3/motion/smallPick.ts": "038c6d7c268cc61c593ead0f312743e225763ec18b4048646ebddcb3ed5b5497",
+    "frontend/public/models/v3/small-pick-v3.json": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+    "frontend/src/adaptive-v3/motion/smallPick.ts": "535aaa14075c18601fc30316188ea8501225c45a2fb6ce5de20b451006169874",
     "frontend/src/adaptive-v3/motion/smallGripper.ts": "3694582b882fcd14620f000bfc0f883d02db441efa80749824113c8fbb18701b",
     "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
     "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
     "assets/v3/blender/worker-small-pick.blend": "1bb90d350a1690e11944142e8f5df1cfa18abe54861a007a79bc4be3830a2e80",
     "assets/v3/blender/small-package-gripper.blend": "c81e8974e145a3afd4617b5998ccfb8e70d25d4625228ba64aca51927bc4dc16",
     "assets/v3/blender/picker-pick-source-fixture.blend": "2f0f95608f3d8732bda732128a32a1d8476374bbab331ecd92d108a7dc5a365d",
-    "frontend/tools/check-small-pick-v3.mjs": "086c20d7adc7e53965b73822fbcacc7070e87400a5ef38e15b83349430448ff3"
+    "frontend/tools/check-small-pick-v3.mjs": "f05f0aa19342d13e6543216699b42a38fe63bd54eb57a48d0b509e0380ff6783"
   },
-  "native_report": "assets/v3/iterations/worker-base/P03.5.3.3/native-path-checks.json",
-  "scope": "Candidate only. Package identities preserved and runtime clock/seek/disposal validated. Native prefix through32.1s passes; deposit transitions and later support/action/browser gates remain unaccepted. Acquisition/stow outside bounded prepared clip."
+  "artifacts": {
+    "assets/v3/iterations/worker-base/P03.5.3.3/runtime-native-poses.json": "ae41d31ffd646963458a709fea03341627ece72f6bfd7e32c449e43b58a6884b",
+    "assets/v3/iterations/worker-base/P03.5.3.3/native-path-checks.json": "3b4563ce2408d8833a0326e64490984fd7b2d5496e5e9ecc790fbb39541f38bc",
+    "assets/v3/iterations/worker-base/P03.5.3.3/browser/browser-checks.json": "1fbbd6a0c41ac2a51974618bf486bb81d486754b393ff2ba2696ff1a07276b0d",
+    "assets/v3/iterations/worker-base/P03.5.3.3/visual-review.json": "d05c259a6e846b2c6343760e3f07ad3635cab39c56980b5e4d1953f9a0e94f83",
+    "assets/v3/iterations/worker-base/P03.5.3.3/shared-stand-regression.json": "45d71100541fe0b30e98cd9bf60176c0c9d6c529c39e923d726d5e67b8a17137"
+  },
+  "scope": "Accepted bounded prepared-tool pick/extract/grounded transfer/release/empty-tool withdrawal. Tool acquisition/stow and a complete warehouse action scheduler remain W05 integration work. Sampled checks are not continuous collision certification;36s and gravity are visual assumptions, not engine throughput or certified handling data."
 }

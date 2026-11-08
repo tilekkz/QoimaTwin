@@ -167,7 +167,9 @@ function fit(next:View=view,focus?:THREE.Object3D){
   // shadow of a60mm package and erased contact under thin cardboard/tape.
   key.shadow.normalBias=Math.min(.04,Math.max(.00001,radius*.0004));
   key.shadow.bias=-Math.min(.003,Math.max(.000005,radius*.0002))/(shadow.far-shadow.near);
-  const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
+  // Look down the working-arm side from the aisle; the opposite diagonal
+  // hides the tool behind the worker or the back of the rack.
+  const direction={front:new THREE.Vector3(0,.025,1),side:new THREE.Vector3(1,.025,0),rear:new THREE.Vector3(0,.025,-1),quarter:smallPickMotion?new THREE.Vector3(-1.2,2.1,1.5):new THREE.Vector3(1.2,.9,1.5),top:new THREE.Vector3(0,1,.0001)}[view].normalize();
   camera=view==='quarter'?perspective:orthographic;camera.up.set(0,1,0);camera.position.copy(centre).addScaledVector(direction,radius*4);camera.lookAt(centre);
   const inverse=camera.quaternion.clone().invert();const projected=new THREE.Vector3();
   let half=.025;let distance=radius;const tan=Math.tan(THREE.MathUtils.degToRad(perspective.fov/2));
