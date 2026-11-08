@@ -29,19 +29,22 @@
     "explicit_dispose_removes_canvas": true
   },
   "browser_lifecycle": {
-    "owned_pid": 10404,
+    "owned_pid": 3228,
     "terminated": true,
-    "elapsed_ms": 18602
+    "elapsed_ms": 18793
   },
   "reviewed_images": 20,
   "input_hashes": {
-    "frontend/warehouse-v3.html": "bd3117b71f4316472d4c6d186205675413716bbe204a72cb828a571aea308daa",
+    "frontend/warehouse-v3.html": "02f83d8462643274e11a52107a1f796895696d7387dededf78a42e631d152caa",
     "frontend/vite.config.ts": "da2464f7dbfb4707cdcab34ce004c5794f6ec8d01eb5b23eebd23e2e57d142ef",
     "frontend/src/adaptive-v3/warehouseAdapter.ts": "16bfec506475495c160a7a674b3674fef32ad765e394f7abfe300c68bab43033",
     "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
-    "frontend/src/adaptive-v3/warehousePage.ts": "67683a88b54ff9ae6456424c3612d835b1a825a4741bb3c42425a48b0cb12688",
-    "frontend/src/adaptive-v3/warehouseScene.ts": "bfe483bb77a0f929116e57ed631568a5bcd4894b236834c77c239bd41a360c49",
-    "frontend/src/adaptive-v3/warehouse.css": "f7bef2c2ec6427aa7beab9dab2d1eeb472e1a186e0c2f536462dc202fb231a1d",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "a26fab1ada5502c213a13e722b4cf3b8a4d5ec80261b40df8b38ac1bae18e708",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseRoutePreview.ts": "da27ce690e2e63b528c9e270895be91f48ea4181f89060e882c00bbfe09752e7",
+    "frontend/src/adaptive-v3/warehousePage.ts": "e6bff40b33e357956c1abe61086a2551f417891d351fb3fe254a33c49308bbc6",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "1e4bf0d23010c91b6dc6517dc523b0cd8d11fb42a4453b4baa6d1b94542da497",
+    "frontend/src/adaptive-v3/warehouse.css": "44acd608f0509fa6866bd5ceca0b8891b64854ae486adca32995b61a44ec51c6",
     "frontend/src/adaptive-v3/warehouseAssetBindings.json": "3a416f8034246595c3f0f80e427fe1e3e3120ed206a7ab32c971bc5f78d30b2c",
     "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
     "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
@@ -49,10 +52,11 @@
     "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
     "frontend/src/adaptive-v3/staffRegistry.css": "af6785de3b42c10eb8fbfe3d4e40a66091978760d87b26f382c5302efda91839",
     "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/v3/route-policy-v3.json": "24ad87f197d14b1c681814b43b2c8841ca145c6b92515af744f3cb4473d35337",
     "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
     "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
     "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
-    "frontend/tools/check-warehouse-browser-v3.mjs": "7b94d06f6b17cdbf6a29d69cb8d10f1701bcaebc038b7ce6bcdbff5e6b507d4f",
+    "frontend/tools/check-warehouse-browser-v3.mjs": "f1ec88ec29c04574f2e95a7cf10f80ea894233f9a665449110b21aec5bcdc2b0",
     "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
     "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
     "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
@@ -76,8 +80,8 @@
     "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
   },
   "artifacts": {
-    "assets/v3/iterations/warehouse/W02.2/browser/browser-checks.json": "06d8a8922a637bccf57c51a1a9aac6c8f3c9c0967cecd25a93b251b07e88445e",
-    "assets/v3/iterations/warehouse/W02.2/visual-review.json": "3d58461189a45a0cbf3d91a3eae0b0569179aa909d9784ed38bf4877fd8732bb",
+    "assets/v3/iterations/warehouse/W02.2/browser/browser-checks.json": "a8b0d896021b1d232e83c02cb2b6f64b53ffb9624ce6cb7e964d3d78aaa3d836",
+    "assets/v3/iterations/warehouse/W02.2/visual-review.json": "0d7f0159636511638b3569d590c710311023129170495c74fec44b713ba72ce6",
     "tools/visual/v3/verify_warehouse_evidence.py": "d33c605e6326927e7e3126a9c5686de9b88f22f23b29c920cf9ddfb5d9b5b652"
   },
   "source_binding": {
@@ -88,5 +92,6 @@
     "initial_HUs": 530,
     "storage_modules": 132
   },
-  "scope": "Actual isolatedwarehouse-v3initialviewer andcompleteboundedstates only. Original24workers,2seateddrivers,all530stock loaded. Noactionexecution. W03routes/W04physicalcargo/W05clock,finalcomposition/performance/scenarios/Q/H remain."
+  "scope": "Actual isolatedwarehouse-v3initialviewer andcompleteboundedstates only. Original24workers,2seateddrivers,all530stock loaded. Noactionexecution. W03routes/W04physicalcargo/W05clock,finalcomposition/performance/scenarios/Q/H remain.",
+  "regression_review_utc": "2026-11-08T08:42:55.410623+00:00"
 }

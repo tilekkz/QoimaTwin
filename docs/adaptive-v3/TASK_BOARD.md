@@ -84,7 +84,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P11.3](tasks/P11.3.md) | PASS | root | P11.2 | Reviewed skill profile inspector and complete local states |
 | [W01](tasks/W01.md) | PASS | root | C12,P10 | Подготовлен детерминированный visual fixture v3 |
 | [W02](tasks/W02.md) | PASS | root | W01 | Создан изолированный adapter v3 |
-| [W03](tasks/W03.md) | TODO | unassigned | W02,L06,L07 | Подключены движения по реальному графу |
+| [W03](tasks/W03.md) | PASS | root | W02,L06,L07 | Подключены движения по реальному графу |
 | [W04](tasks/W04.md) | READY | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
 | [W06](tasks/W06.md) | TODO | unassigned | W05 | Реализовано восстановление pause/reset/seek |
@@ -208,4 +208,4 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W02.2](tasks/W02.2.md) | PASS | root | W02.1 | Connected local V3 warehouse viewer and complete load states |
 | [W03.1](tasks/W03.1.md) | PASS | root | W02,L06,L07 | Filtered canonical graph router and source-bound C08 policy |
 | [W03.2](tasks/W03.2.md) | PASS | root | W03.1 | Exact analytic vehicle and canonical pedestrian route sampling |
-| [W03.3](tasks/W03.3.md) | ACTIVE | root | W03.2 | Connected muted route preview and reviewed scene admission states |
+| [W03.3](tasks/W03.3.md) | PASS | root | W03.2 | Connected muted route preview and reviewed scene admission states |

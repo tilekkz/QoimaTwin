@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "reviewer": "root",
+  "reviewed_utc": "2026-11-08T08:42:55.410623+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "browser_report_sha256": "2becf92d5b0cb024026388541f9b3711faf88d5c93557c3c19d93d3afb95aabd",
+  "images": [
+    {
+      "file": "F01-start.png",
+      "sha256": "5015b5519e5190fab4934f3e2419aecef508e5ad3761db21204f5d8cfd4245d4",
+      "observation": "Original F01/FL01 at western initial port, seated driver, empty forks and route trace. Paused t0; geometry scale1."
+    },
+    {
+      "file": "F01-heavy-reverse.png",
+      "sha256": "28a326d417e27e5c0831d0da8bec11486638c1ee04e3edafbfeb7ef9e499cf8d",
+      "observation": "Same empty FL01 near western port during short reverse segment; same seated body and fork geometry."
+    },
+    {
+      "file": "F01-heavy-turn.png",
+      "sha256": "5580f5d3fc395f48c8dd602362d5f5843a019a362055e83d40de69c5e1cbf4fe",
+      "observation": "Actual FL01 rotated on the analytic turn, with visible asymmetric rear steering and stable body/driver seating."
+    },
+    {
+      "file": "F01-heavy-end.png",
+      "sha256": "56666b96cfe0a5c2a6fb00adc8668e9f3bb49ecabefb56f977f1653bd790bf65",
+      "observation": "FL01 at admitted HEAVY_W vehicle endpoint; nearby stock stays supported and untouched. Empty forks do not acquire a HU."
+    },
+    {
+      "file": "F02-long-reverse.png",
+      "sha256": "8e1962b87481d39f32eb570cadd4b53b9c767d44f9591e8985d2b96a15c0391e",
+      "observation": "Original F02/FL02 during reverse at its initial eastern B2B service area; no second driver or cargo added."
+    },
+    {
+      "file": "F02-long-turn.png",
+      "sha256": "b4612ff76e62d232cb2419dbcef100023a657cfedcbe9adcb6ff962b4586c088",
+      "observation": "F02 route turn shown on actual body/wheel meshes; empty fork route and same human remain coherent."
+    },
+    {
+      "file": "F02-long-end.png",
+      "sha256": "172a0ecf79ab516ddb662e638ddcffb632ec158f3de20194a725d2d540ac3c3d",
+      "observation": "Empty FL02 at LONG_E service endpoint beside the original rack, with unchanged bundle/stock. Route end is not a completed job."
+    },
+    {
+      "file": "LONG-express-rejected.png",
+      "sha256": "f8999736fc7c65a86d7d664ef1ef179623e007fa03d252a3b1da7f5c904f61a8",
+      "observation": "Incompatible LONG to express gate rejected with PORT_CARGO_FORBIDDEN, disabled playback and unchanged full overview."
+    },
+    {
+      "file": "mobile-follow-turn.png",
+      "sha256": "c6dd7693c78cf8acc44eb51ccee2d305cfb9a0c9fe418d3d5c228eeb0fd28ccb",
+      "observation": "390px actual moving-vehicle follow view and native actor/camera controls fit mobile column without horizontal overflow."
+    },
+    {
+      "file": "mobile-route-controls.png",
+      "sha256": "df63d4400a2570baeefbb8c4fe9373d48ee54b4b6703aca89e3d41816bdfaf61",
+      "observation": "Mobile route controls show paused state, time slider, follow and speed; stock summary remains530/24."
+    },
+    {
+      "file": "offline-cached-route.png",
+      "sha256": "fc547a781d06f48e9163913f07a80e820d8bae3f95bcab4255b26e99840d25d2",
+      "observation": "Cached route remains inspectable with explicit offline notice, original empty truck and route trace."
+    },
+    {
+      "file": "missing-route-policy.png",
+      "sha256": "648b2b709fee0782b8062a9bb9ba081aceba50e97f81148180ead09c3608480b",
+      "observation": "Missing optional policy shows scoped package/retry action while original warehouse overview remains available."
+    },
+    {
+      "file": "modified-route-policy.png",
+      "sha256": "c8b618d18c4a01cb4945b62d5cc93b6de713666c9b7bec4d246feeac9902032c",
+      "observation": "Changed policy SHA produces explicit integrity message; no trace/movement or partial route admission."
+    },
+    {
+      "file": "route-policy-server-error.png",
+      "sha256": "206d45940093b5bc020605131efb2c410e7393b1a9d76faef0d0834994cc8836",
+      "observation": "Server failure exposes manual retry and preserves requested route/follow intent; base stock viewer stays available."
+    },
+    {
+      "file": "route-policy-loading.png",
+      "sha256": "ce5f2e41554cc660e5e47b4ad940f796348c7e8a17175120f0adada5951baa65",
+      "observation": "Pending policy displays checking status and inactive playback while original scene remains inspectable."
+    },
+    {
+      "file": "route-policy-timeout.png",
+      "sha256": "f3a6f30dbac5d90515191072d7f28d38d89f380c1b67ec6f96cce0c6a9501028",
+      "observation": "Bounded policy timeout offers manual retry with original overview intact."
+    },
+    {
+      "file": "graphics-loss-during-play.png",
+      "sha256": "944da64016ff51be993fb59840d33287a68d12644a84bda0738d949308a01ea3",
+      "observation": "Actual graphics-context loss removes canvas and route controller, shows explicit scene retry; full gate verifies recovery paused at0 with24workers/530HUs."
+    }
+  ],
+  "review_method": "All17currentframes inspected by root on three labelled original-resolution sheets; earlier preview F01turn/F02end/refusal/mobile original images also inspected. Numeric native mesh/contact and continuous fixed-obstacle proof independently supplement images.",
+  "scope": "Two empty vehicle geometry previews only; no cargo/action/throughput or complete visual/backend certification."
+}
