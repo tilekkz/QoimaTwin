@@ -14,7 +14,7 @@ export type CargoBindingReason = 'BINDINGS_OK'|'INVALID_REQUEST'|'UNKNOWN_HU'|'D
  |'RESERVE_SLOT'|'RETRIEVAL_BLOCKED'|'CARGO_CLASS_FORBIDDEN'|'ORIENTATION_FORBIDDEN'
  |'DIMENSION_CLEARANCE_BUDGET'|'SLOT_OVERWEIGHT'|'SLOT_OCCUPIED'|'MODULE_OVERWEIGHT'
  |'PHYSICAL_HOLDER_NOT_REGISTERED'|'HOLDER_CARGO_FORBIDDEN'|'HOLDER_OVERWEIGHT'|'HOLDER_TOTAL_OVERWEIGHT'
- |'HOLDER_OCCUPIED'|'INVALID_HOLDER_FRAME'|'HOLDER_OUTSIDE_WAREHOUSE';
+ |'HOLDER_OCCUPIED'|'INVALID_HOLDER_FRAME'|'HOLDER_OUTSIDE_WAREHOUSE'|'HOLDER_PHYSICAL_SUPPORT_UNAVAILABLE'|'HOLDER_ATTACHMENT_UNAVAILABLE';
 export type CargoBindingResult = {ok:boolean; reason:CargoBindingReason; handling_unit_id:string|null;
  source_kind:'visual_fixture'; engine_operation:false; operational_admission:false; cost_evaluated:false};
 const record = (v:unknown):v is V3Record => !!v && typeof v==='object' && !Array.isArray(v);

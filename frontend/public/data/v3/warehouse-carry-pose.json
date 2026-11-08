@@ -1,0 +1,345 @@
+{
+  "search_natural_score": 2.78391067016424,
+  "hand_normal_tilt_rad": -0.7,
+  "candidate_only": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "actual_engine_run": false,
+  "units": "m",
+  "worker_asset": "worker-manual",
+  "worker_root": {
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "yaw_rad": 0,
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "cargo": {
+    "handling_unit_ref": "v3:HU:initial:DEMO_001:01",
+    "lot_ref": "v3:lot:initial:DEMO_001",
+    "sku_ref": "DEMO_001",
+    "archetype_id": "SMALL_CARTON",
+    "dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "gross_mass_kg": 0.94,
+    "quantity_units": 24,
+    "position_m": [
+      0,
+      0.85,
+      0.4
+    ],
+    "yaw_rad": 0,
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "jointEulerXYZ": {
+    "joint__shoulder_lift_L": [
+      -0.03828657513561112,
+      0,
+      0
+    ],
+    "joint__upper_arm_L": [
+      -0.7891742256334926,
+      -0.11290539496451539,
+      -0.05048461815616913
+    ],
+    "joint__elbow_swivel_L": [
+      -0.2671139730874948,
+      0,
+      0
+    ],
+    "joint__forearm_L": [
+      -0.7395475201016745,
+      0.02867222313869329,
+      0.06003628874214074
+    ],
+    "joint__palm_roll_L": [
+      0,
+      1.3490057264870154,
+      0
+    ],
+    "joint__hand_L": [
+      -0.5697639875210095,
+      -0.14081435361629696,
+      0.2391019910934541
+    ],
+    "joint__shoulder_lift_R": [
+      -0.038283710107037044,
+      0,
+      0
+    ],
+    "joint__upper_arm_R": [
+      -0.7891829091051029,
+      0.11291450549884223,
+      0.05049299369190695
+    ],
+    "joint__elbow_swivel_R": [
+      0.26714297376652435,
+      0,
+      0
+    ],
+    "joint__forearm_R": [
+      -0.7395482351992472,
+      -0.028662739720970505,
+      -0.060039363474209524
+    ],
+    "joint__palm_roll_R": [
+      0,
+      -1.3490038603643075,
+      0
+    ],
+    "joint__hand_R": [
+      -0.569757974971127,
+      0.14081844236521424,
+      -0.23909287000450455
+    ]
+  },
+  "jointTranslations": {
+    "joint__finger_thumb_L": [
+      0,
+      0,
+      -0.005
+    ],
+    "joint__finger_thumb_R": [
+      0,
+      0,
+      -0.005
+    ]
+  },
+  "joint_application": "Reset accepted asset transforms first; jointEulerXYZ are absolute XYZ rotations. For custom_axis_runtime joints use first angle about that metadata axis. Other joints/finger translations remain at accepted rest.",
+  "constraint_variables": [
+    "shoulder_lift_X",
+    "upper_arm_X",
+    "upper_arm_Y",
+    "upper_arm_Z",
+    "elbow_axial_swivel",
+    "forearm_X",
+    "forearm_Y",
+    "forearm_Z",
+    "palm_roll_Y",
+    "hand_X",
+    "hand_Y",
+    "hand_Z"
+  ],
+  "constraint_bounds_rad": [
+    [
+      -0.8,
+      0
+    ],
+    [
+      -2.2,
+      0.7
+    ],
+    [
+      -0.55,
+      0.55
+    ],
+    [
+      -0.7,
+      0.7
+    ],
+    [
+      -3.141592653589793,
+      3.141592653589793
+    ],
+    [
+      -2.2,
+      0.15
+    ],
+    [
+      -0.12,
+      0.12
+    ],
+    [
+      -0.12,
+      0.12
+    ],
+    [
+      -3.141592653589793,
+      3.141592653589793
+    ],
+    [
+      -0.6,
+      0.6
+    ],
+    [
+      -0.65,
+      0.65
+    ],
+    [
+      -0.4,
+      0.4
+    ]
+  ],
+  "all_solution_angles_within_bounds": true,
+  "native_worker_triangles_checked_against_full_HU_envelope": 2848,
+  "native_hand_triangles_scope": "All native worker triangles, including both four-piece hands, conservatively clipped against full HU outer box shrunk by2µm. Zero nonzero-area interior intersections.",
+  "joints_at_approved_limits": [],
+  "worker_native_mesh_batches": 29,
+  "physical_body_source_parts": 50,
+  "source_part_count_scope": "50 unchanged physical body parts in accepted manual source; GLB merges by material/parent into mesh batches.",
+  "solutions_summary": {
+    "L": {
+      "feasible": 35,
+      "error": 4.599846078975227e-13
+    },
+    "R": {
+      "feasible": 25,
+      "error": 4.665320768762333e-13
+    }
+  },
+  "contacts": [
+    {
+      "side": "L",
+      "hand_part_hint": "native extremal lower finger pad tip or edge",
+      "local_hand_m": [
+        -0.0149999875575304,
+        -0.1259999927133323,
+        0.060000009834766374
+      ],
+      "world_contact_m": [
+        -0.1599999999999117,
+        0.9700000000001632,
+        0.39999999999961094
+      ],
+      "target_m": [
+        -0.16,
+        0.97,
+        0.4
+      ],
+      "target_error_m": 4.310589096039617e-13,
+      "actual_cargo_surface": {
+        "part": "small-carton__batch_02",
+        "triangle": 210,
+        "point_m": [
+          -0.1600000038743019,
+          0.9700000000001632,
+          0.39999999999961094
+        ],
+        "gap_m": 3.874390197555755e-9
+      },
+      "native_surface_pair_gap_m": 3.874390142044612e-9,
+      "actual_glove_surface": {
+        "part": "worker-manual__batch_12",
+        "triangle": 29,
+        "point_m": [
+          -0.15999999999991177,
+          0.9700000000001634,
+          0.39999999999961106
+        ],
+        "gap_m": 2.5438405243138006e-16
+      },
+      "actual_hand_quaternion": [
+        -0.5751716193587657,
+        0.6851245437674752,
+        -0.17494101728120193,
+        0.4113120570615969
+      ],
+      "orientation_error_rad": 0,
+      "palm_open_direction": [
+        0.7648421872845741,
+        0.23343727454180455,
+        -0.6004360643767519
+      ]
+    },
+    {
+      "side": "R",
+      "hand_part_hint": "native extremal lower finger pad tip or edge",
+      "local_hand_m": [
+        0.014999987557530396,
+        -0.1259999927133323,
+        0.06000000983476639
+      ],
+      "world_contact_m": [
+        0.15999999999990966,
+        0.9700000000001705,
+        0.39999999999960767
+      ],
+      "target_m": [
+        0.16,
+        0.97,
+        0.4
+      ],
+      "target_error_m": 4.3724525349628486e-13,
+      "actual_cargo_surface": {
+        "part": "small-carton__batch_02",
+        "triangle": 262,
+        "point_m": [
+          0.1599999964237213,
+          0.9700000000001705,
+          0.39999999999960767
+        ],
+        "gap_m": 3.5761883454554777e-9
+      },
+      "native_surface_pair_gap_m": 3.5761884287222116e-9,
+      "actual_glove_surface": {
+        "part": "worker-manual__batch_18",
+        "triangle": 29,
+        "point_m": [
+          0.15999999999990974,
+          0.9700000000001703,
+          0.3999999999996077
+        ],
+        "gap_m": 2.435541875787129e-16
+      },
+      "actual_hand_quaternion": [
+        0.5751716193587653,
+        0.6851245437674752,
+        -0.1749410172812013,
+        -0.4113120570615978
+      ],
+      "orientation_error_rad": 0,
+      "palm_open_direction": [
+        -0.7648421872845744,
+        0.23343727454180604,
+        -0.6004360643767509
+      ]
+    }
+  ],
+  "floorAnchors": [
+    {
+      "side": "L",
+      "point_m": [
+        -0.11499999463558197,
+        1.4901161193847656e-8,
+        0
+      ]
+    },
+    {
+      "side": "R",
+      "point_m": [
+        0.11499999463558197,
+        1.4901161193847656e-8,
+        0
+      ]
+    }
+  ],
+  "conservative_outer_HU_envelope_boundary_excluded_m": 0.000002,
+  "conservative_full_outer_HU_envelope_interior_triangles": [],
+  "input_hashes": {
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "tools/blender/v3/build_worker_manual.py": "ec9eb6fc215e66a3a34e6312611b2feacdea6813e3eb1132151118d96953d17c",
+    "assets/v3/specs/worker-base.dimensions.json": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+    "work/v3/carry-candidate/search-natural.mjs": "1da1daa75bd23c3ce41f7821461f2d23bb4da30a656278e5fbfb9e73288a3767"
+  },
+  "limitations": [
+    "Naturalness search ranks approved-limit saturation, elbow elevation/spread and neutral deviations; candidate is not an ergonomics certification.",
+    "Candidate static pose only. Root must visualize and run full native joint/body self-collision and contact gates before acceptance.",
+    "Two opposed native fingertip/edge contacts at carton mid-height. Palms face mainly inward with a declared tilt; all native hand geometry stays outside the complete HU envelope. Synthetic friction point/edge clamp only, no strength or stability certification.",
+    "No motion, transfer, resource reservation, receipt, job completion, new worker, scale change or contents modification."
+  ]
+}

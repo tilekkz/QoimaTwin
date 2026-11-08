@@ -1,0 +1,1472 @@
+{
+  "schema_id": "qoima.W04.3.scene-static-clearance.v3",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "executed": true,
+  "overall_clearance_passed": false,
+  "original_P01": {
+    "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+    "world_pos": [
+      14.86,
+      0,
+      44.38
+    ],
+    "yaw_rad": 4.71238898038469
+  },
+  "source_module_count": 132,
+  "source_HU_count": 530,
+  "source_actor_count": 24,
+  "parked_cart_count": 1,
+  "source_geometry_scale": 1,
+  "method": {
+    "broadphase": "Entity/native-mesh AABBs from real runtime GLB vertex matrices and actual shared instance matrices, strict overlap deeper than4µm on each axis.",
+    "positive_test": "Both directions native triangle-centroid probes displaced250µm inward; a reported point has native closed-solid winding magnitude>2pi in BOTH actual meshes and surface distance>2µm from BOTH triangle surfaces.",
+    "coverage_limit": "An empty witness list is not a complete triangle intersection/clearance certificate. Thin or unsampled intersections may remain. Static poses only, no swept motion, strength, stability or actual engine admission."
+  },
+  "results": [
+    {
+      "case_id": "current_actor_small_body",
+      "home": {
+        "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+        "world_pos": [
+          14.86,
+          0,
+          44.38
+        ],
+        "yaw_rad": 4.71238898038469
+      },
+      "proof": {
+        "subject_kind": "actor",
+        "subject_id": "P01",
+        "bounds_world_m": {
+          "min": [
+            14.386078513272802,
+            1.4901161193847656e-8,
+            44.00634508190026
+          ],
+          "max": [
+            15.019999999217688,
+            1.699999839067459,
+            44.753655507615136
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "storage",
+            "id": "v3:module:SMALL_W:001"
+          },
+          {
+            "kind": "stock",
+            "id": "v3:HU:initial:DEMO_067:01"
+          },
+          {
+            "kind": "stock",
+            "id": "v3:HU:initial:DEMO_067:02"
+          },
+          {
+            "kind": "stock",
+            "id": "v3:HU:initial:DEMO_075:01"
+          },
+          {
+            "kind": "stock",
+            "id": "v3:HU:initial:DEMO_075:02"
+          },
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 131,
+        "probe_count": 9027,
+        "positive_penetration_witnesses": [
+          {
+            "target_kind": "storage",
+            "target_id": "v3:module:SMALL_W:001",
+            "subject_part": "worker-manual__batch_12",
+            "target_part": "rack-small__batch_00",
+            "found": true,
+            "probe_point_world_m": [
+              14.45749224344826,
+              1.0164361305640373,
+              44.158519118696184
+            ],
+            "source_part": "worker-manual__batch_12",
+            "source_triangle": 3,
+            "source_solid_angle_rad": 12.566370614359172,
+            "target_solid_angle_rad": 12.566370614359176,
+            "surface_depths_m": [
+              0.00024999999999971985,
+              0.008518978625268403
+            ],
+            "probes": 4
+          },
+          {
+            "target_kind": "storage",
+            "target_id": "v3:module:SMALL_W:001",
+            "subject_part": "worker-manual__batch_15",
+            "target_part": "rack-small__batch_00",
+            "found": true,
+            "probe_point_world_m": [
+              14.390788791892454,
+              0.9905031893943098,
+              44.154080114405296
+            ],
+            "source_part": "worker-manual__batch_15",
+            "source_triangle": 2,
+            "source_solid_angle_rad": 12.566370614359172,
+            "target_solid_angle_rad": 12.566370614359153,
+            "surface_depths_m": [
+              0.0002500000000027146,
+              0.0094967808033678
+            ],
+            "probes": 2
+          },
+          {
+            "target_kind": "storage",
+            "target_id": "v3:module:SMALL_W:001",
+            "subject_part": "worker-manual__batch_18",
+            "target_part": "rack-small__batch_00",
+            "found": true,
+            "probe_point_world_m": [
+              14.457492243448263,
+              1.0164361305640446,
+              44.60148088130382
+            ],
+            "source_part": "worker-manual__batch_18",
+            "source_triangle": 7,
+            "source_solid_angle_rad": 12.566370614359174,
+            "target_solid_angle_rad": 12.56637061435917,
+            "surface_depths_m": [
+              0.0002499999999995948,
+              0.008519267111744
+            ],
+            "probes": 7
+          },
+          {
+            "target_kind": "storage",
+            "target_id": "v3:module:SMALL_W:001",
+            "subject_part": "worker-manual__batch_21",
+            "target_part": "rack-small__batch_00",
+            "found": true,
+            "probe_point_world_m": [
+              14.390788791892458,
+              0.9905031893943169,
+              44.60591988559471
+            ],
+            "source_part": "worker-manual__batch_21",
+            "source_triangle": 6,
+            "source_solid_angle_rad": 12.56637061435917,
+            "target_solid_angle_rad": 12.56637061435918,
+            "surface_depths_m": [
+              0.00025000000000091496,
+              0.004080247919695523
+            ],
+            "probes": 4
+          }
+        ],
+        "collision_detected": true,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "current_actor_small_HU",
+      "home": {
+        "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+        "world_pos": [
+          14.86,
+          0,
+          44.38
+        ],
+        "yaw_rad": 4.71238898038469
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_001:01",
+        "bounds_world_m": {
+          "min": [
+            14.339998107898282,
+            0.8500000536441803,
+            44.21999991685152
+          ],
+          "max": [
+            14.579998105764389,
+            1.090000057592988,
+            44.539999932050705
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "storage",
+            "id": "v3:module:SMALL_W:001"
+          },
+          {
+            "kind": "stock",
+            "id": "v3:HU:initial:DEMO_067:02"
+          },
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 32,
+        "probe_count": 4122,
+        "positive_penetration_witnesses": [
+          {
+            "target_kind": "storage",
+            "target_id": "v3:module:SMALL_W:001",
+            "subject_part": "small-carton__batch_00",
+            "target_part": "rack-small__batch_01",
+            "found": true,
+            "probe_point_world_m": [
+              14.340448588132858,
+              0.9032499952763319,
+              44.490033420423664
+            ],
+            "source_part": "small-carton__batch_00",
+            "source_triangle": 190,
+            "source_solid_angle_rad": 12.566370614359172,
+            "target_solid_angle_rad": 12.566370614359172,
+            "surface_depths_m": [
+              0.00005000084638595581,
+              0.003250019118189784
+            ],
+            "probes": 191
+          },
+          {
+            "target_kind": "storage",
+            "target_id": "v3:module:SMALL_W:001",
+            "subject_part": "small-carton__batch_02",
+            "target_part": "rack-small__batch_01",
+            "found": true,
+            "probe_point_world_m": [
+              14.340842524266622,
+              0.9309167241056759,
+              44.220260035892
+            ],
+            "source_part": "small-carton__batch_02",
+            "source_triangle": 99,
+            "source_solid_angle_rad": 12.566370614364471,
+            "target_solid_angle_rad": 12.566370614359176,
+            "surface_depths_m": [
+              0.0002499999999995813,
+              0.03091674794753385
+            ],
+            "probes": 56
+          },
+          {
+            "target_kind": "stock",
+            "target_id": "v3:HU:initial:DEMO_067:02",
+            "subject_part": "small-carton__batch_02",
+            "target_part": "small-carton__batch_02",
+            "found": true,
+            "probe_point_world_m": [
+              14.340743426606728,
+              1.08674439831037,
+              44.220244255290105
+            ],
+            "source_part": "small-carton__batch_02",
+            "source_triangle": 0,
+            "source_solid_angle_rad": 12.566370614359167,
+            "target_solid_angle_rad": 12.566370614359169,
+            "surface_depths_m": [
+              0.00023947892102108362,
+              0.00024442039497074575
+            ],
+            "probes": 1
+          }
+        ],
+        "collision_detected": true,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "parked_cart_empty",
+      "pose": {
+        "position_m": [
+          16,
+          0,
+          44.38
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "cart",
+        "subject_id": "C01",
+        "bounds_world_m": {
+          "min": [
+            15.539999932050705,
+            0,
+            44.01999998569489
+          ],
+          "max": [
+            16.46000001206994,
+            1.0000000149011612,
+            44.74000001430512
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 61,
+        "probe_count": 21748,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "parked_cart_loaded_small",
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_001:01",
+        "bounds_world_m": {
+          "min": [
+            15.880000978708267,
+            0.6400000154972076,
+            44.21999981999397
+          ],
+          "max": [
+            16.120000976574374,
+            0.8800000194460154,
+            44.53999983519316
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 12,
+        "probe_count": 2388,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_HEAVY_BOX_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL01",
+        "bounds_world_m": {
+          "min": [
+            4.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            7.500000037252903,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 194,
+        "probe_count": 40132,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_HEAVY_BOX_stationary_HU",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_166:01",
+        "bounds_world_m": {
+          "min": [
+            6.900000154972076,
+            0.7000000290572643,
+            17.599999994039536
+          ],
+          "max": [
+            7.500000290106982,
+            1.3500000834465027,
+            18.400000005960464
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 25,
+        "probe_count": 8912,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_PALLET_LOAD_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL01",
+        "bounds_world_m": {
+          "min": [
+            4.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            7.500000037252903,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 194,
+        "probe_count": 40132,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_PALLET_LOAD_stationary_HU",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_172:01",
+        "bounds_world_m": {
+          "min": [
+            6.499998480081558,
+            0.7000000029802322,
+            17.40000009536743
+          ],
+          "max": [
+            7.499998509883881,
+            2.050000011920929,
+            18.600000143051147
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 28,
+        "probe_count": 30672,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_IBC_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL01",
+        "bounds_world_m": {
+          "min": [
+            4.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            7.500000037252903,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 194,
+        "probe_count": 40132,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_IBC_stationary_HU",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_177:01",
+        "bounds_world_m": {
+          "min": [
+            6.499998472630978,
+            0.7000000104308128,
+            17.399999976158142
+          ],
+          "max": [
+            7.499998509883881,
+            1.85999995470047,
+            18.60000005364418
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 26,
+        "probe_count": 13200,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_LONG_BUNDLE_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL01",
+        "bounds_world_m": {
+          "min": [
+            4.5,
+            0,
+            16.400000005960464
+          ],
+          "max": [
+            7.500000037252903,
+            2.1000000834465027,
+            19.60000005364418
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 265,
+        "probe_count": 64128,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_LONG_BUNDLE_stationary_HU",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_180:01",
+        "bounds_world_m": {
+          "min": [
+            6.675000011920929,
+            0.7999999783933163,
+            15.900000095367432
+          ],
+          "max": [
+            7.324999988079072,
+            1.3199999928474426,
+            20.09999990463257
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 26,
+        "probe_count": 14040,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_DRUM_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL01",
+        "bounds_world_m": {
+          "min": [
+            4.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            7.500000037252903,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 194,
+        "probe_count": 40132,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_DRUM_stationary_HU",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_188:01",
+        "bounds_world_m": {
+          "min": [
+            6.819999784309761,
+            0.699999988079071,
+            17.659999936897652
+          ],
+          "max": [
+            7.4999999105144575,
+            1.6499999947845936,
+            18.340000063102348
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 28,
+        "probe_count": 7592,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_FRAGILE_CRATE_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL01",
+        "bounds_world_m": {
+          "min": [
+            4.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            7.500000037252903,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 194,
+        "probe_count": 40132,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL01_FRAGILE_CRATE_stationary_HU",
+      "home": {
+        "node_id": "v3:service:IN_W_BULK",
+        "world_pos": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_193:01",
+        "bounds_world_m": {
+          "min": [
+            6.650000751018524,
+            0.700000025331974,
+            17.44999998807907
+          ],
+          "max": [
+            7.5000016782432795,
+            1.6500000357627869,
+            18.55000001192093
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 42,
+        "probe_count": 12075,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_HEAVY_BOX_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL02",
+        "bounds_world_m": {
+          "min": [
+            136.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            139.5000000372529,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 192,
+        "probe_count": 40058,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_HEAVY_BOX_stationary_HU",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_166:01",
+        "bounds_world_m": {
+          "min": [
+            138.89999836683273,
+            0.7000000290572643,
+            17.599999994039536
+          ],
+          "max": [
+            139.50000113248825,
+            1.3500000834465027,
+            18.400000005960464
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 25,
+        "probe_count": 8912,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_PALLET_LOAD_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL02",
+        "bounds_world_m": {
+          "min": [
+            136.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            139.5000000372529,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 192,
+        "probe_count": 40058,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_PALLET_LOAD_stationary_HU",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_172:01",
+        "bounds_world_m": {
+          "min": [
+            138.49999848008156,
+            0.7000000029802322,
+            17.40000009536743
+          ],
+          "max": [
+            139.49999850988388,
+            2.050000011920929,
+            18.600000143051147
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 28,
+        "probe_count": 30672,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_IBC_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL02",
+        "bounds_world_m": {
+          "min": [
+            136.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            139.5000000372529,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 192,
+        "probe_count": 40058,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_IBC_stationary_HU",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_177:01",
+        "bounds_world_m": {
+          "min": [
+            138.5000003799796,
+            0.7000000104308128,
+            17.399999976158142
+          ],
+          "max": [
+            139.5000004172325,
+            1.85999995470047,
+            18.60000005364418
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 26,
+        "probe_count": 13200,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_LONG_BUNDLE_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL02",
+        "bounds_world_m": {
+          "min": [
+            136.5,
+            0,
+            16.400000005960464
+          ],
+          "max": [
+            139.5000000372529,
+            2.1000000834465027,
+            19.60000005364418
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 263,
+        "probe_count": 64054,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_LONG_BUNDLE_stationary_HU",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_180:01",
+        "bounds_world_m": {
+          "min": [
+            138.67500001192093,
+            0.7999999783933163,
+            15.900000095367432
+          ],
+          "max": [
+            139.32499998807907,
+            1.3199999928474426,
+            20.09999990463257
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 26,
+        "probe_count": 14040,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_DRUM_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL02",
+        "bounds_world_m": {
+          "min": [
+            136.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            139.5000000372529,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 192,
+        "probe_count": 40058,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_DRUM_stationary_HU",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_188:01",
+        "bounds_world_m": {
+          "min": [
+            138.81999978430977,
+            0.699999988079071,
+            17.659999936897652
+          ],
+          "max": [
+            139.49999991051445,
+            1.6499999947845936,
+            18.340000063102348
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 28,
+        "probe_count": 7592,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_FRAGILE_CRATE_stationary_vehicle",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "vehicle",
+        "subject_id": "FL02",
+        "bounds_world_m": {
+          "min": [
+            136.5,
+            0,
+            17.399999976158142
+          ],
+          "max": [
+            139.5000000372529,
+            2.1000000834465027,
+            18.600000023841858
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 192,
+        "probe_count": 40058,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    },
+    {
+      "case_id": "FL02_FRAGILE_CRATE_stationary_HU",
+      "home": {
+        "node_id": "v3:service:OUT_E_B2B",
+        "world_pos": [
+          138,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "proof": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_193:01",
+        "bounds_world_m": {
+          "min": [
+            138.65000075101852,
+            0.700000025331974,
+            17.44999998807907
+          ],
+          "max": [
+            139.50000167824328,
+            1.6500000357627869,
+            18.55000001192093
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 42,
+        "probe_count": 12075,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      }
+    }
+  ],
+  "source_node_preview_candidates": [
+    {
+      "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+      "position_m": [
+        14.86,
+        0,
+        44.38
+      ],
+      "yaw_rad": 1.5707963267948966,
+      "body": {
+        "subject_kind": "actor",
+        "subject_id": "P01",
+        "bounds_world_m": {
+          "min": [
+            14.70000000078231,
+            1.4901161193847656e-8,
+            44.00634449238487
+          ],
+          "max": [
+            15.333921486727197,
+            1.699999839067459,
+            44.75365491809975
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 113,
+        "probe_count": 8984,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      },
+      "cargo": {
+        "subject_kind": "carried_HU",
+        "subject_id": "v3:HU:initial:DEMO_001:01",
+        "bounds_world_m": {
+          "min": [
+            15.13999930024147,
+            0.8500000536441803,
+            44.21999981999397
+          ],
+          "max": [
+            15.379999298107577,
+            1.090000057592988,
+            44.53999983519316
+          ]
+        },
+        "broadphase_entities": [
+          {
+            "kind": "environment",
+            "id": "environment-markings-fixture"
+          }
+        ],
+        "native_mesh_pairs": 16,
+        "probe_count": 2724,
+        "positive_penetration_witnesses": [],
+        "collision_detected": false,
+        "no_witness_is_clearance_certificate": false
+      },
+      "witness_free": true
+    }
+  ],
+  "recommended_source_node": {
+    "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+    "position_m": [
+      14.86,
+      0,
+      44.38
+    ],
+    "yaw_rad": 1.5707963267948966,
+    "body": {
+      "subject_kind": "actor",
+      "subject_id": "P01",
+      "bounds_world_m": {
+        "min": [
+          14.70000000078231,
+          1.4901161193847656e-8,
+          44.00634449238487
+        ],
+        "max": [
+          15.333921486727197,
+          1.699999839067459,
+          44.75365491809975
+        ]
+      },
+      "broadphase_entities": [
+        {
+          "kind": "environment",
+          "id": "environment-markings-fixture"
+        }
+      ],
+      "native_mesh_pairs": 113,
+      "probe_count": 8984,
+      "positive_penetration_witnesses": [],
+      "collision_detected": false,
+      "no_witness_is_clearance_certificate": false
+    },
+    "cargo": {
+      "subject_kind": "carried_HU",
+      "subject_id": "v3:HU:initial:DEMO_001:01",
+      "bounds_world_m": {
+        "min": [
+          15.13999930024147,
+          0.8500000536441803,
+          44.21999981999397
+        ],
+        "max": [
+          15.379999298107577,
+          1.090000057592988,
+          44.53999983519316
+        ]
+      },
+      "broadphase_entities": [
+        {
+          "kind": "environment",
+          "id": "environment-markings-fixture"
+        }
+      ],
+      "native_mesh_pairs": 16,
+      "probe_count": 2724,
+      "positive_penetration_witnesses": [],
+      "collision_detected": false,
+      "no_witness_is_clearance_certificate": false
+    },
+    "witness_free": true
+  },
+  "preserved_full_execution": {
+    "checker_path": "work/v3/holder-scene-clearance/first-full-checker.mjs",
+    "checker_sha256": "7c54dffc680419cd098a3406fef7dafc05dddfd0e546ccadfefdb773f2b16c4b",
+    "case_count": 28,
+    "full_report_sha256": "affb7d02b95ed4c992d2634cbd34342ade80927cd0b0f0f382c6448b36ef6bd8",
+    "reused_vehicle_cases": 24,
+    "source_fingerprints_reverified": true
+  },
+  "input_hashes": {
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "16bfec506475495c160a7a674b3674fef32ad765e394f7abfe300c68bab43033",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseSupportKit.ts": "4f3929b70a751faedc8526f3c9c4ea27bc91686249e7b83a30ea79115f8c3c47",
+    "frontend/src/adaptive-v3/warehouseHolderScene.ts": "0c2d3b42a3317c824aeb6b1fbee33f22a595cb8b0b232bf9ad60710e49cc30fc",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "3d7306b0a475affabe26a818ba6bf39f01631f88fa7e4c4590cb7e909b2fabe2",
+    "work/v3/check-holder-scene-clearance.mjs": "2a769e71812046ac26060fdbce77b3dae7f6e350b3cda5f418b13c13aa371edc",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/data/v3/warehouse-carry-pose.json": "f9fa159807a6faa806e01e74680cadc7b87ca230739c22bf9e7201dacfe302ce",
+    "frontend/public/data/v3/warehouse-vehicle-support.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8"
+  }
+}

@@ -1,21 +1,34 @@
 {
   "task_id": "W04.3",
-  "status": "ACTIVE",
+  "status": "FIX",
   "complete": false,
+  "updated_utc": "2026-11-08T10:47:57.630931+00:00",
   "source_kind": "visual_fixture",
   "engine_operation": false,
-  "holder_state_positive_cases": 15,
-  "holder_state_negative_cases": 68,
-  "static_carry_native_passed": true,
-  "static_carry_visual_reviewed": true,
-  "carrier_scene_registered": false,
-  "carrier_UI_implemented": false,
+  "carrier_scene_registered": true,
+  "carrier_UI_implemented": true,
   "actual_actions_implemented": false,
-  "artifacts": {
-    "docs/adaptive-v3/evidence/W04.3-holder-state-checks.json": "ef611a9777cf0204aa4ac8c074c8ac268b77d68a35ef13ea625d9033c27933e4",
-    "assets/v3/iterations/warehouse/W04.3/carry-native/native-checks.json": "9c6072885fcc7964c5ca35f4736f2c7ab587e22095f696947e1f64d554a0e26a",
-    "assets\\v3\\iterations\\warehouse\\W04.3\\carry-native\\root-static-review.json": "b89cc8a705e033b142c0504bf0c5d2cf8fa9c5ddb6d50ad20914d2dd36891af8",
-    "assets/v3/iterations/warehouse/W04.3/candidate-support-interfaces.json": "3025200da1103862524c7f18b95803f7c7a11a0539d943d695226d7eef4115b9"
+  "smoke_historical": {
+    "passed": true,
+    "poses": 10,
+    "checks": 8,
+    "owned_pid_terminated": true,
+    "not_current_full_regression": true
   },
-  "next_action": "Integrate newregisterHolders withlazySHA-bound supportassets/knownphysicalframes inexistingwarehouseScene/Page, thenactualcarrierinspection UI+native/browsergates. Preserve24IDs/530HUs andcurrentstaticpose; no restart/newmodels/backendchanges."
+  "current_types_passed": true,
+  "static_scene_clearance_passed": false,
+  "defect": "P01 carry facing3pi/2 at originalworker node intersects SMALL_W:001 and DEMO_067:02 stock. Same-node yawpi/2 candidate is measured but not implemented/visual accepted.",
+  "remaining": [
+    "fix actual scene carry clearance",
+    "current full holder lifecycle gate",
+    "W02/W03/W04.2 source-bound regressions and reviewed frames",
+    "W05 onward"
+  ],
+  "artifacts": {
+    "docs/adaptive-v3/evidence/W04.3-scene-clearance-checks.json": "2fa7ef0b51d9190bc0eafb96cf5f3b5da756f57e38db1301e41574269b51dc37",
+    "docs/adaptive-v3/evidence/W04.3-support-kit-checks.json": "dcf86080d5e8359a08c9f08d2574dd6a6bacf796b263762b6bf7288073eaac93",
+    "docs/adaptive-v3/evidence/W04.3-geometry-carrier-checks.json": "3c8df3862824f11ab9b67a6b9d629edb7788d66d051203e9d8cb97e776b3bc01",
+    "docs/adaptive-v3/evidence/W04.3-browser-preview-checks.json": "c28f4505984d911c27034cd811c937c2b085303b3409465c0cd9f49c2de86b67"
+  },
+  "next_action": "Implement and native/browser review outward same-source-node P01carry orientation; rerun lifecycle+affected regressions. Claude frontend/atmosphere brief is versioned under docs/adaptive-v3/design."
 }

@@ -1,5 +1,15 @@
 # Current execution focus
 
+## Latest steering — 2026-11-08 Claude frontend brief and atmosphere waves
+
+User requested a complete product/UX/design implementation brief for Claude, then added mandatory local atmosphere waves: Control/Danger/SOS, causally propagated workload/recovery, expressive workers, deterministic replay and honest source/operations boundaries. Read `design/QoimaTwin_Claude_Master_Prompt.md` and `design/QoimaTwin_Atmosphere_Waves_Spec.md`. This is new approved scope, not implemented atmosphere.
+
+W04.3 is FIX:10stationary holder poses passed first browser smoke; optionalSHA-bound kit/realframes/UI now connected. Native foreign-scene CPUQA found P01carry penetration into SMALL_W:001/DEMO_067:02; same-node outwardyawpi/2 is a measured candidate only, not implemented/visual accepted. Full lifecycle/default regressions need rerun after fix/latest guards. See `evidence/W04.3-scene-clearance-checks.json`.
+
+Second-account CLI now works using standard explicit elevated Windows sandbox, workspace-write/never preserved; isolated read/write probe and actualQ01source production verified. Q01matrix builder +twooutputs exist/check-onlypass; documentary matrix does not constitute rootvisualPASS. No credentials were copied/read by host, no policies disabled. Allsecondaccountjobs finished. User explicitlyopenedlocalV3for manualreview; no headless/Blender concurrency while thatrenderer is inuse.
+
+Earlier checkpoints below are historical where superseded.
+
 Continue the existing V3 branch. Preserved V2cb5777f, original body models and21canonicalcontracts remain unchanged. Correct inward rest palms, overhand cart grip and fixed-wall/four outward top-flap carton remain accepted. C11 analytical proxy, C12 offline handoff and P04 finishing kit keep their stated scopes.
 
 P03 picker/cart kit PASS:3601runtime/557native/2928contacts,17reviewed current images. Original14/20remain and17/23settle on the original tote floor. Tool acquisition/stow and joining warehouse actions remain W05. P05 receiver PASS:2034runtime/410native/41terminalcontacts,17reviewed images; one already supported455kgHU, no actual decoder or receipt. P06 shipper PASS:2954runtime/594native/161contacts/5346parcel-support rays,24reviewed images; real160mm supported light-parcel placement and grounded forward/backward steps, heavy pallet remains staged. Shared regressions and source-bound verifiers are current.

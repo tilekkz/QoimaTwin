@@ -100,7 +100,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W16](tasks/W16.md) | TODO | unassigned | W15,L06,L07 | Реализован переход к новому рабочему месту |
 | [W17](tasks/W17.md) | TODO | unassigned | W16,W06 | Проверено восстановление роли при seek/reset |
 | [W18](tasks/W18.md) | TODO | unassigned | W17,W14 | Готов отдельный N4 STAFFING comparison |
-| [Q01](tasks/Q01.md) | READY | unassigned | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
+| [Q01](tasks/Q01.md) | ACTIVE | account2 | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
 | [Q02](tasks/Q02.md) | TODO | unassigned | Q01,P09,P10 | Выполнена браузерная проверка финальных GLB |
 | [Q03](tasks/Q03.md) | TODO | unassigned | C12,W04 | Проверена совместимость всех SKU/slots |
 | [Q04](tasks/Q04.md) | TODO | unassigned | Q03,W11,W12 | Проверены ориентации и handling |
@@ -211,7 +211,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W03.3](tasks/W03.3.md) | PASS | root | W03.2 | Connected muted route preview and reviewed scene admission states |
 | [W04.1](tasks/W04.1.md) | PASS | root | W02,C06,C07,C08 | Single-parent cargo state and immutable placement admission |
 | [W04.2](tasks/W04.2.md) | PASS | root | W04.1 | Actual shared cargo instances and physical storage placement |
-| [W04.3](tasks/W04.3.md) | ACTIVE | root | W04.2,W03,P10,P11,M14,P03 | Connected actor vehicle cart and belt support anchors |
+| [W04.3](tasks/W04.3.md) | FIX | root | W04.2,W03,P10,P11,M14,P03 | Connected actor vehicle cart and belt support anchors |
 | [W09.1](tasks/W09.1.md) | PASS | scenario_inputs | W02,C10,C11 | Frozen preregistered scenario input and paired source identity |
 | [W09.2](tasks/W09.2.md) | TODO | root | W09.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
 | [W10.1](tasks/W10.1.md) | PASS | scenario_inputs | W02,L03,L04,C11 | Frozen preregistered scenario input and paired source identity |
