@@ -31,7 +31,11 @@ cart handoffs, finite belt work, packaging and outbound service on one clock wit
 unit ledger. Its explicit synthetic material and service choices do not prove hand contact
 or the complete V3 warehouse. The [local PALLET cycle](docs/adr/0046-v3-timed-local-pallet-cycle.md)
 adds paid operation timing and exclusive leases to the verified local geometry; it is not
-an inbound warehouse workflow. Both currently expose Python components.
+an inbound warehouse workflow. The PALLET cycle currently exposes a Python component;
+the [connected SMALL CLI](docs/v3-light-flow.md) publishes frozen inputs, actual events,
+captured checkpoints and metrics with an immutable manifest.
+The [connected SMALL API](docs/v3-light-api.md) registers one explicit source profile,
+shares the existing calculation worker and serves verified raw files and captured state.
 The [explicit SMALL profile](docs/adr/0048-v3-explicit-connected-small-profile.md)
 binds a strict JSON proposal to verified source geometry and freezes every material,
 worker and timing choice before execution; an [example](docs/proposals/adaptive-v3/light-flow-profile.example.json)

@@ -54,3 +54,5 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0046](0046-v3-timed-local-pallet-cycle.md) | Paid local PALLET cycle with verified directed bridges and exclusive leases |
 | [0047](0047-v3-connected-flow-observation-metrics.md) | Connected-flow business cycles, paid labor and time-weighted populations |
 | [0048](0048-v3-explicit-connected-small-profile.md) | Strict explicit SMALL profiles, verified source authority and frozen inputs |
+| [0049](0049-connected-flow-publication.md) | Frozen connected-flow inputs, actual checkpoint publication and validated artifact reads |
+| [0051](0051-connected-light-api.md) | Registered connected SMALL runs, shared API worker and verified captured-state reads |

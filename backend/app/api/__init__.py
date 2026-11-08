@@ -29,6 +29,8 @@ def create_app(
     explanation_settings: MercurySettings | None = None,
     v3_inputs: Path | None = None,
 ) -> FastAPI:
+    from app.v3.api_light import attach_light_routes
+
     store = ArtifactStore(store_root or repository_root() / "backend" / "artifacts" / "api")
     context = ApiContext.create(store, contracts_dir or default_contracts_dir())
     explanations = ExplanationService(store, explanation_settings)
@@ -55,4 +57,5 @@ def create_app(
     attach_explanation_route(app, explanations)
     attach_v3_routes(app, v3_inputs)
     attach_manual_routes(app, context, v3_inputs)
+    attach_light_routes(app, context, v3_inputs)
     return app
