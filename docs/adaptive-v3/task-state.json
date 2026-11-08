@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-08T07:20:32.514625+00:00",
+  "updated_at": "2026-11-08T07:46:45.811231+00:00",
   "source": "brief/03_MICROTASKS.md",
   "tasks": [
     {
@@ -1438,12 +1438,17 @@
         "W01"
       ],
       "criteria": "Viewer принимает согласованные v3 данные, не требует переписывания backend Армана",
-      "status": "READY",
-      "owner": "unassigned",
+      "status": "PASS",
+      "owner": "root",
       "outputs": [
         "docs/adaptive-v3/specs/W02.md",
         "docs/adaptive-v3/evidence/W02.json"
-      ]
+      ],
+      "children": [
+        "W02.1",
+        "W02.2"
+      ],
+      "actual": "Bothchildrenaccepted:registeredW01typedadapter/5316decodedarcs/28negativecases andwarehouse-v3actualinitialscene/20checks20reviewedimages.530HU/24workers/2seateddrivers/132modules,unchangedscale,fullboundedloading/recovery. Build/C12/P03/P05/P06/P10/P11/W01freshnesspass. ContinueW03realgraphmovement/W04cargo/W05clock,scenarios/roleevents/Q/H; actualV3unsupported."
     },
     {
       "id": "W03",
@@ -1454,7 +1459,7 @@
         "L07"
       ],
       "criteria": "Маршруты состоят из допустимых рёбер; forklift не проезжает racks и неподходящие ворота",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W03.md",
@@ -1475,7 +1480,7 @@
         "M12"
       ],
       "criteria": "Slot/actor/vehicle/belt связаны с одним cargo; размеры и ориентации сохранены",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W04.md",
@@ -1549,7 +1554,7 @@
         "C11"
       ],
       "criteria": "При отсутствии обоснованного улучшения адаптация сохраняет размещение; эффект не рисуется искусственно",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W09.md",
@@ -1566,7 +1571,7 @@
         "C11"
       ],
       "criteria": "Изменённый mix заранее материализован; внутри пары baseline/adapt orders/receipts одинаковы",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W10.md",
@@ -1583,7 +1588,7 @@
         "M09"
       ],
       "criteria": "Тяжёлый груз идёт допустимым handling mode; очередь/отказ объяснимы, оба исходных размещения допустимы",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W11.md",
@@ -1600,7 +1605,7 @@
         "P09"
       ],
       "criteria": "LONG использует совместимый gate/path; не уменьшается и не разворачивается в запрещённую ориентацию",
-      "status": "TODO",
+      "status": "READY",
       "owner": "unassigned",
       "outputs": [
         "docs/adaptive-v3/specs/W12.md",
@@ -3665,6 +3670,28 @@
         "docs/adaptive-v3/evidence/P05.3.json"
       ],
       "actual": "Current source-bound2034runtime/410native/41contacts and17reviewed muted-headless images pass; modes/keyboard/mobile/RM/error/loading/stale/resource recovery checked. Shared P03/P04/walk regressions, build/C12 pass. Scope is prepared visual kit only; manual assistive-device review remains final Q."
+    },
+    {
+      "id": "W02.1",
+      "title": "Typed source-bound V3 fixture/layout adapter",
+      "parent": "W02",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "W01"
+      ],
+      "actual": "Typedregisteredbaseadapteraccepted:4sourceSHA-boundfiles,530HU/24profiles/6ports/16requests;132modules/776slots/5316decodedarcs matchsource.28negativecases/namedcolumnreorder/frozenoutput pass; actualV3explicitlyunsupported. NextW02.2actualviewer/load-stateQA."
+    },
+    {
+      "id": "W02.2",
+      "title": "Connected local V3 warehouse viewer and complete load states",
+      "parent": "W02",
+      "owner": "root",
+      "status": "PASS",
+      "depends_on": [
+        "W02.1"
+      ],
+      "actual": "Actualinitialwarehousevieweraccepted:20source-boundGLBs/onepose,132modules/530HUs/24workers/2seateddrivers.20browserchecks/20reviewedcurrentimages;6views/HUoutline/cards/keyboard/mobile/offline/errors/timeout/latest/back/realcontextloss/disposepass. Chrome10404terminated18.602s. P10/P11regressions/build/C12/actionfreshnesspass. Fullworkflow/composition/performance stillW03+/Q."
     }
   ],
   "execution": {

@@ -83,17 +83,17 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P11.2](tasks/P11.2.md) | PASS | root | P11.1 | Explicit role/equipment/manual-mass capability gate |
 | [P11.3](tasks/P11.3.md) | PASS | root | P11.2 | Reviewed skill profile inspector and complete local states |
 | [W01](tasks/W01.md) | PASS | root | C12,P10 | Подготовлен детерминированный visual fixture v3 |
-| [W02](tasks/W02.md) | READY | unassigned | W01 | Создан изолированный adapter v3 |
-| [W03](tasks/W03.md) | TODO | unassigned | W02,L06,L07 | Подключены движения по реальному графу |
-| [W04](tasks/W04.md) | TODO | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
+| [W02](tasks/W02.md) | PASS | root | W01 | Создан изолированный adapter v3 |
+| [W03](tasks/W03.md) | READY | unassigned | W02,L06,L07 | Подключены движения по реальному графу |
+| [W04](tasks/W04.md) | READY | unassigned | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
 | [W06](tasks/W06.md) | TODO | unassigned | W05 | Реализовано восстановление pause/reset/seek |
 | [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
 | [W08](tasks/W08.md) | TODO | unassigned | W05 | Подключены управляемые SFX |
-| [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
-| [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
-| [W11](tasks/W11.md) | TODO | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
-| [W12](tasks/W12.md) | TODO | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
+| [W09](tasks/W09.md) | READY | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
+| [W10](tasks/W10.md) | READY | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
+| [W11](tasks/W11.md) | READY | unassigned | W02,C07,M08,M09 | Готов сценарий heavy inbound |
+| [W12](tasks/W12.md) | READY | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
 | [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
 | [W14](tasks/W14.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Готов экран slotting baseline/adapt сравнения |
 | [W15](tasks/W15.md) | TODO | unassigned | W06,P11 | Реализовано безопасное RoleAssignment event |
@@ -204,3 +204,5 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [P05.1](tasks/P05.1.md) | PASS | root | R10,P02,M08,P08,I09 | Receiving workcell and real scan target |
 | [P05.2](tasks/P05.2.md) | PASS | root | P05.1,P01.7 | Connected receive confirmation and inward idle poses |
 | [P05.3](tasks/P05.3.md) | PASS | root | P05.2 | Clocked scan/receive/idle runtime and reviewed headless kit |
+| [W02.1](tasks/W02.1.md) | PASS | root | W01 | Typed source-bound V3 fixture/layout adapter |
+| [W02.2](tasks/W02.2.md) | PASS | root | W02.1 | Connected local V3 warehouse viewer and complete load states |

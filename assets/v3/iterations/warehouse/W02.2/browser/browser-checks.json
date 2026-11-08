@@ -1,0 +1,4848 @@
+{
+  "passed": true,
+  "preview_only": false,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "visible": false,
+  "url": "http://127.0.0.1:4173/warehouse-v3.html",
+  "input_hashes": {
+    "frontend/warehouse-v3.html": "bd3117b71f4316472d4c6d186205675413716bbe204a72cb828a571aea308daa",
+    "frontend/vite.config.ts": "da2464f7dbfb4707cdcab34ce004c5794f6ec8d01eb5b23eebd23e2e57d142ef",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "16bfec506475495c160a7a674b3674fef32ad765e394f7abfe300c68bab43033",
+    "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
+    "frontend/src/adaptive-v3/warehousePage.ts": "67683a88b54ff9ae6456424c3612d835b1a825a4741bb3c42425a48b0cb12688",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "bfe483bb77a0f929116e57ed631568a5bcd4894b236834c77c239bd41a360c49",
+    "frontend/src/adaptive-v3/warehouse.css": "f7bef2c2ec6427aa7beab9dab2d1eeb472e1a186e0c2f536462dc202fb231a1d",
+    "frontend/src/adaptive-v3/warehouseAssetBindings.json": "3a416f8034246595c3f0f80e427fe1e3e3120ed206a7ab32c971bc5f78d30b2c",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/src/adaptive-v3/staffRegistry.css": "af6785de3b42c10eb8fbfe3d4e40a66091978760d87b26f382c5302efda91839",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "frontend/tools/check-warehouse-browser-v3.mjs": "7b94d06f6b17cdbf6a29d69cb8d10f1701bcaebc038b7ce6bcdbff5e6b507d4f",
+    "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+  },
+  "frames": [
+    {
+      "file": "overview.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "overview",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 784,
+            "triangles": 1132064,
+            "geometries": 254,
+            "textures": 1
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "small-west.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "small-west",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "small-west",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 193,
+            "triangles": 840292,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "small-east.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "small-east",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "small-east",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 213,
+            "triangles": 1002256,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "heavy-west.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "heavy-west",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "heavy-west",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 97,
+            "triangles": 877876,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "long-east.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "long-east",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "long-east",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 150,
+            "triangles": 1006396,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "packing.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "packing",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "packing",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 181,
+            "triangles": 1008576,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "actor-P01.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "",
+        "selected_worker": "P01",
+        "selection": {
+          "kind": "actor",
+          "id": "P01"
+        },
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "actor",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 89,
+            "triangles": 771652,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "actor-F01.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "",
+        "selected_worker": "F01",
+        "selection": {
+          "kind": "actor",
+          "id": "F01"
+        },
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "actor",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 88,
+            "triangles": 756626,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "cargo-card.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "",
+        "selected_worker": "",
+        "selection": {
+          "kind": "HU",
+          "id": "v3:HU:initial:DEMO_001:01"
+        },
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "cargo",
+          "highlight_HU": "v3:HU:initial:DEMO_001:01",
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 47,
+            "triangles": 906264,
+            "geometries": 255,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "mobile-header.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "",
+        "selected_worker": "",
+        "selection": {
+          "kind": "HU",
+          "id": "v3:HU:initial:DEMO_001:01"
+        },
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "cargo",
+          "highlight_HU": "v3:HU:initial:DEMO_001:01",
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 48,
+            "triangles": 906936,
+            "geometries": 255,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "mobile-packing.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "packing",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "packing",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 182,
+            "triangles": 1009404,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "offline-inspection.png",
+      "state": {
+        "phase": "ready",
+        "error_kind": null,
+        "view": "",
+        "selected_worker": "F02",
+        "selection": {
+          "kind": "actor",
+          "id": "F02"
+        },
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": {
+          "disposed": false,
+          "view": "actor",
+          "highlight_HU": null,
+          "workers": 24,
+          "worker_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05",
+            "P06",
+            "P07",
+            "P08",
+            "P09",
+            "P10",
+            "P11",
+            "P12",
+            "K01",
+            "K02",
+            "K03",
+            "K04",
+            "K05",
+            "K06",
+            "R01",
+            "R02",
+            "S01",
+            "S02",
+            "F01",
+            "F02"
+          ],
+          "vehicle_ids": [
+            "FL01",
+            "FL02"
+          ],
+          "actor_homes": {
+            "P01": {
+              "node_id": "v3:module:SMALL_W:001:B1:worker:node",
+              "world_pos": [
+                14.86,
+                0,
+                44.38
+              ]
+            },
+            "P02": {
+              "node_id": "v3:module:SMALL_W:005:B1:worker:node",
+              "world_pos": [
+                17.14,
+                0,
+                42.62
+              ]
+            },
+            "P03": {
+              "node_id": "v3:module:SMALL_W:009:B1:worker:node",
+              "world_pos": [
+                20.86,
+                0,
+                44.38
+              ]
+            },
+            "P04": {
+              "node_id": "v3:module:SMALL_W:013:B1:worker:node",
+              "world_pos": [
+                23.14,
+                0,
+                42.62
+              ]
+            },
+            "P05": {
+              "node_id": "v3:module:SMALL_W:017:B1:worker:node",
+              "world_pos": [
+                26.86,
+                0,
+                44.38
+              ]
+            },
+            "P06": {
+              "node_id": "v3:module:SMALL_W:021:B1:worker:node",
+              "world_pos": [
+                29.14,
+                0,
+                42.62
+              ]
+            },
+            "P07": {
+              "node_id": "v3:module:SMALL_E:001:B1:worker:node",
+              "world_pos": [
+                114.86,
+                0,
+                44.38
+              ]
+            },
+            "P08": {
+              "node_id": "v3:module:SMALL_E:005:B1:worker:node",
+              "world_pos": [
+                117.14,
+                0,
+                42.62
+              ]
+            },
+            "P09": {
+              "node_id": "v3:module:SMALL_E:009:B1:worker:node",
+              "world_pos": [
+                120.86,
+                0,
+                44.38
+              ]
+            },
+            "P10": {
+              "node_id": "v3:module:SMALL_E:013:B1:worker:node",
+              "world_pos": [
+                123.14,
+                0,
+                42.62
+              ]
+            },
+            "P11": {
+              "node_id": "v3:module:SMALL_E:017:B1:worker:node",
+              "world_pos": [
+                126.86,
+                0,
+                44.38
+              ]
+            },
+            "P12": {
+              "node_id": "v3:module:SMALL_E:021:B1:worker:node",
+              "world_pos": [
+                129.14,
+                0,
+                42.62
+              ]
+            },
+            "K01": {
+              "node_id": "v3:service:PK01",
+              "world_pos": [
+                62,
+                0,
+                6.1
+              ]
+            },
+            "K02": {
+              "node_id": "v3:service:PK02",
+              "world_pos": [
+                73,
+                0,
+                6.1
+              ]
+            },
+            "K03": {
+              "node_id": "v3:service:PK03",
+              "world_pos": [
+                84,
+                0,
+                6.1
+              ]
+            },
+            "K04": {
+              "node_id": "v3:service:PK04",
+              "world_pos": [
+                95,
+                0,
+                6.1
+              ]
+            },
+            "K05": {
+              "node_id": "v3:service:PK05",
+              "world_pos": [
+                106,
+                0,
+                6.1
+              ]
+            },
+            "K06": {
+              "node_id": "v3:service:PK06",
+              "world_pos": [
+                117,
+                0,
+                6.1
+              ]
+            },
+            "R01": {
+              "node_id": "v3:service:IN_N_STANDARD",
+              "world_pos": [
+                72,
+                0,
+                66
+              ]
+            },
+            "R02": {
+              "node_id": "v3:service:IN_E_PARCEL",
+              "world_pos": [
+                138,
+                0,
+                54
+              ]
+            },
+            "S01": {
+              "node_id": "v3:service:OUT_W_RETAIL",
+              "world_pos": [
+                6,
+                0,
+                54
+              ]
+            },
+            "S02": {
+              "node_id": "v3:service:OUT_S_EXPRESS",
+              "world_pos": [
+                48,
+                0,
+                6
+              ]
+            },
+            "F01": {
+              "node_id": "v3:service:IN_W_BULK",
+              "world_pos": [
+                6,
+                0,
+                18
+              ]
+            },
+            "F02": {
+              "node_id": "v3:service:OUT_E_B2B",
+              "world_pos": [
+                138,
+                0,
+                18
+              ]
+            }
+          },
+          "driver_contacts": [
+            {
+              "actorId": "F01",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803344
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899484
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887899573
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.3949999807029956
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070299647
+                ]
+              },
+              "seat_error_m": 4.556651396670021e-8,
+              "grip_error_m": {
+                "L": 1.1075554033555989e-8,
+                "R": 1.1075554033555989e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322697294211e-8,
+                "R": 6.961322697294211e-8
+              }
+            },
+            {
+              "actorId": "F02",
+              "role": "forklift_driver",
+              "disposed": false,
+              "assignment": "seated_existing_actor",
+              "warehouse_headcount_delta": 0,
+              "root_local": [
+                0,
+                0.29,
+                -0.615
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ],
+              "seat_local": [
+                0,
+                0.840000011920929,
+                -0.6500000010803433
+              ],
+              "hands_local": {
+                "L": [
+                  -0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ],
+                "R": [
+                  0.24188876352638644,
+                  1.278009644058547,
+                  -0.25345957887901704
+                ]
+              },
+              "feet_local": {
+                "L": [
+                  -0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ],
+                "R": [
+                  0.11499999463558197,
+                  0.5300000337511301,
+                  -0.39499998070300535
+                ]
+              },
+              "seat_error_m": 4.556651882451227e-8,
+              "grip_error_m": {
+                "L": 1.1075565748648669e-8,
+                "R": 1.1075565748648669e-8
+              },
+              "sole_error_m": {
+                "L": 6.961322314201792e-8,
+                "R": 6.961322314201792e-8
+              }
+            }
+          ],
+          "modules": 132,
+          "stock_HUs": 530,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "actions_scheduled": 0,
+          "completed_jobs": 0,
+          "assets_loaded": 20,
+          "renderer": {
+            "calls": 103,
+            "triangles": 227918,
+            "geometries": 254,
+            "textures": 2
+          }
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "missing-package.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "package",
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "modified-package.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "package",
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "retryable-server-error.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "server",
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "missing-model.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "graphics",
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "modified-model.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "graphics",
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "loading-compatible-bundle.png",
+      "state": {
+        "phase": "loading",
+        "error_kind": null,
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "data-timeout.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "timeout",
+        "view": "overview",
+        "selected_worker": "",
+        "selection": null,
+        "summary": null,
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    },
+    {
+      "file": "graphics-context-recovery.png",
+      "state": {
+        "phase": "error",
+        "error_kind": "graphics",
+        "view": "small-east",
+        "selected_worker": "",
+        "selection": null,
+        "summary": {
+          "active_slots": 588,
+          "archetypes": 8,
+          "blocked_reserve_slots": 188,
+          "free_active_slots": 58,
+          "incoming_requests": 8,
+          "initial_gross_mass_kg": 9403.85,
+          "initial_handling_units": 530,
+          "initial_quantity_units": 12256,
+          "initial_skus": 200,
+          "occupied_slots": 530,
+          "outgoing_requests": 8,
+          "ports": 6,
+          "request_quantity_is_not_initial_stock": true,
+          "vehicles": 2,
+          "workers": 24
+        },
+        "scene": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false
+      }
+    }
+  ],
+  "checks": {
+    "accepted_bundle_and_fullscale_initial_scene": true,
+    "all_six_camera_presets": true,
+    "original24_workers_and_two_seated_drivers": true,
+    "actor_focus_preserves_identity": true,
+    "actual_cargo_units_mass_slot_card": true,
+    "mobile_touch_and_no_overflow": true,
+    "keyboard_actor_focus_and_truthful_camera_label": true,
+    "URL_restores_exclusive_view_actor_or_cargo": true,
+    "explicit_input_requests_remain_unexecuted": true,
+    "loaded_scene_controls_work_offline": true,
+    "missing_modified_bundle_no_partial_scene": true,
+    "keyboard_retry_preserves_requested_ID": true,
+    "missing_modified_model_rejects_before_renderer_and_recovers": true,
+    "atomic_loading_no_partial_renderer": true,
+    "latest_load_wins_without_duplicate_renderer": true,
+    "bounded_data_timeout_and_retry": true,
+    "repeated_back_navigation_restores_scene_and_state": true,
+    "actual_graphics_context_loss_disposes_and_recovers": true,
+    "local_assets_only_no_backend_or_media": true,
+    "explicit_dispose_removes_canvas": true
+  },
+  "fatal": [],
+  "unexpected": [],
+  "expected": [
+    {
+      "url": "http://127.0.0.1:4173/data/v3/warehouse-fixture-v3.json",
+      "status": 404
+    },
+    "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    {
+      "url": "http://127.0.0.1:4173/data/v3/warehouse-fixture-v3.json",
+      "status": 503
+    },
+    "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    {
+      "url": "http://127.0.0.1:4173/models/v3/rack-small.glb",
+      "status": 404
+    },
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "lifecycle": {
+    "owned_pid": 10404,
+    "terminated": true,
+    "elapsed_ms": 18602
+  }
+}
