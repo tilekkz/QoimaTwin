@@ -25,8 +25,17 @@ execution is available separately through the manual CLI and `/api/v3/manual-run
 registered four-job profile covers SMALL/STANDARD handling at two ports with paid return.
 See the [manual profile](docs/v3-manual-profile.md) and [manual API](docs/v3-manual-api.md).
 The separate [conveyor component](docs/v3-conveyor.md) executes source-bound physical cells,
-pivots and station-spur reservations through a reproducible CLI. Warehouse picking/packing
-integration and timed forklift operation remain separate work.
+pivots and station-spur reservations through a reproducible CLI. The bounded
+[connected SMALL workflow](docs/adr/0045-connected-light-flow.md) links paid picking,
+cart handoffs, finite belt work, packaging and outbound service on one clock with a shared
+unit ledger. Its explicit synthetic material and service choices do not prove hand contact
+or the complete V3 warehouse. The [local PALLET cycle](docs/adr/0046-v3-timed-local-pallet-cycle.md)
+adds paid operation timing and exclusive leases to the verified local geometry; it is not
+an inbound warehouse workflow. Both currently expose Python components.
+The [explicit SMALL profile](docs/adr/0048-v3-explicit-connected-small-profile.md)
+binds a strict JSON proposal to verified source geometry and freezes every material,
+worker and timing choice before execution; an [example](docs/proposals/adaptive-v3/light-flow-profile.example.json)
+is provided without claiming measured hand-contact behavior.
 The [unit ledger](docs/adr/0041-v3-unit-and-packaging-ledger.md) conserves individual ancestry
 and explicit packaging material. The [timed workload](docs/v3-workload.md) freezes offers
 without allocating stock or inferring hourly rates. A separate

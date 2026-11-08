@@ -50,3 +50,7 @@ Record 0007 changes the shared contract and needs Tilek's agreement before files
 | [0042](0042-v3-local-pallet-mesh-proof.md) | Actual GLB geometry, continuous local motion covers and finite support |
 | [0043](0043-v3-explicit-timed-workload.md) | Exact source quotas and explicit frozen arrival calendars |
 | [0044](0044-v3-conveyor-component-publication.md) | Frozen component profiles, actual traces and immutable CLI publication |
+| [0045](0045-connected-light-flow.md) | One clock for SMALL picking, cart/belt handoffs, packaging and shipment |
+| [0046](0046-v3-timed-local-pallet-cycle.md) | Paid local PALLET cycle with verified directed bridges and exclusive leases |
+| [0047](0047-v3-connected-flow-observation-metrics.md) | Connected-flow business cycles, paid labor and time-weighted populations |
+| [0048](0048-v3-explicit-connected-small-profile.md) | Strict explicit SMALL profiles, verified source authority and frozen inputs |
