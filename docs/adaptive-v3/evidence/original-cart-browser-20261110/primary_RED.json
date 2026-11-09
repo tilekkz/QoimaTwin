@@ -1,0 +1,95 @@
+{
+  "passed": false,
+  "case_count": 7,
+  "cases": [
+    "home_discovery_opens_source_verified_native_P01_C01",
+    "four_actual_native_grip_push_release_captures",
+    "one_absolute_clock_play_and_pause",
+    "reverse_and_half_speed_share_native_clock",
+    "absolute_seek_determinism_invalid_time_inert_and_reset",
+    "reduced_motion_stops_clock_and_keeps_pose_inspection",
+    "each_native_model_corruption_refuses_and_retry_recovers"
+  ],
+  "errors": [],
+  "failure": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'localToWorld')\n    at http://127.0.0.1:4224/assets/originalCartV3-BdmrwnxX.js:1:7728\n    at Array.map (<anonymous>)\n    at Object.J [as snapshot] (http://127.0.0.1:4224/assets/originalCartV3-BdmrwnxX.js:1:7602)\n    at Object.Q [as snapshot] (http://127.0.0.1:4224/assets/originalCartV3-BdmrwnxX.js:1:10355)\n    at eval (eval at evaluate (:370:30), <anonymous>:1:39)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at snap (C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\tools\\check-original-cart-ui-v3.mjs:30:21)\n    at C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\tools\\check-original-cart-ui-v3.mjs:40:90\n    at async bound (C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\tools\\check-original-cart-ui-v3.mjs:16:54)\n    at async file:///C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin/frontend/tools/check-original-cart-ui-v3.mjs:33:5",
+  "input_hashes": {
+    "frontend/original-cart-v3.html": "9fbdd5ebda587f323b364c13a6e2152b846fd47aaf0b5cd745cb33be0928c1af",
+    "frontend/home-v3.html": "0c44e7f8b9818f4d81b40065859b3a89c29c2a7a898aa6fcf8311b397dc53880",
+    "frontend/src/adaptive-v3/originalCartPage.ts": "6635b2044b5e94e1b4a21e0e10384a2e49f99a1b55aaa0f0284864fe1d1789dc",
+    "frontend/src/adaptive-v3/originalCart.css": "443d062f74d34d10308dcf0ee3dfedadd4431740e27bd2f20abf5a2d5a9580af",
+    "frontend/src/adaptive-v3/warehouseOriginalCartAction.ts": "7367fe3cd4611724153cca598cc7994a7863b40688225d7d539f7de82741522b",
+    "frontend/src/adaptive-v3/warehouseForearmPronationPose.ts": "a2861ffa225de9e6863069fb96f2c288daa9ba187e23420f981ab72be79a760d",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "frontend/tools/check-original-cart-ui-v3.mjs": "fe7eae5ae7c44cfa269bf993bb5e750aefdc3d723f2754e582a67952872acfb2"
+  },
+  "source_drift": [],
+  "captures": [
+    "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\full-tz-closeout-20261109\\original-cart\\shipped-browser-1794250539578\\01-shipped-grip-front.png",
+    "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\full-tz-closeout-20261109\\original-cart\\shipped-browser-1794250539578\\02-shipped-grip-side.png",
+    "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\full-tz-closeout-20261109\\original-cart\\shipped-browser-1794250539578\\03-shipped-push-quarter.png",
+    "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\full-tz-closeout-20261109\\original-cart\\shipped-browser-1794250539578\\04-shipped-release-quarter.png"
+  ],
+  "cleanup_complete": true,
+  "forced_owned_cleanup": false,
+  "cleanup": [
+    "CDP Browser.close returned",
+    "browserContext.close: Browser closed",
+    "browser.close returned",
+    "server.close deadline 3000ms",
+    "No live owned process required fallback"
+  ],
+  "owned_processes": [
+    {
+      "ProcessId": 12204,
+      "ParentProcessId": 16608,
+      "CreationDate": "2026-11-09T18:55:39.9511510Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsUpgrades,HttpsFirstBalancedModeAutoEnable,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,AvoidCorsURLLoaderRestartOnRedirect,TcpPortRandomizationWin,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,PreconnectToSearch,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --enable-unsafe-swiftshader --edge-skip-compat-layer-relaunch --disable-stack-profiler --disable-infobars --disable-sync --do-not-de-elevate --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-proxy-server --mute-audio --user-data-dir=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o --remote-debugging-pipe --no-startup-window"
+    },
+    {
+      "ProcessId": 27832,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:39.9779520Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=crashpad-handler --user-data-dir=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o /prefetch:4 --monitor-self-annotation=ptype=crashpad-handler --user-stream-region=260,65568 --database=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\\Crashpad --metrics-dir=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=Win64 --annotation=prod=Chrome --annotation=ver=156.0.8078.81 --initial-client-data=0x12c,0x130,0x134,0xa4,0x138,0x7ffd2c218f40,0x7ffd2c218f50,0x7ffd2c218f60"
+    },
+    {
+      "ProcessId": 3252,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:40.2160260Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\" --no-pre-read-main-dll --gpu-preferences=WAAAAAAAAADgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAAEAAAAAIAAAABAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --field-trial-handle=1860,i,14305765303857776997,9859644926803037067,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1868,i,17798147823101782007,9485193378468576898,4 --trace-process-track-uuid=3190708988185955192 --mojo-platform-channel-handle=1844 /prefetch:2"
+    },
+    {
+      "ProcessId": 39908,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:40.2375470Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=ru --service-sandbox-type=none --no-sandbox --mute-audio --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\" --no-pre-read-main-dll --field-trial-handle=1860,i,14305765303857776997,9859644926803037067,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1868,i,17798147823101782007,9485193378468576898,4 --trace-process-track-uuid=3190708989122997041 --mojo-platform-channel-handle=2212 /prefetch:11"
+    },
+    {
+      "ProcessId": 42252,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:40.2473020Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=storage.mojom.StorageService --lang=ru --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\" --no-pre-read-main-dll --field-trial-handle=1860,i,14305765303857776997,9859644926803037067,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1868,i,17798147823101782007,9485193378468576898,4 --trace-process-track-uuid=3190708990060038890 --mojo-platform-channel-handle=2448 /prefetch:13"
+    },
+    {
+      "ProcessId": 43060,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:40.3629840Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\" --no-pre-read-main-dll --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --video-capture-use-gpu-memory-buffer --lang=ru --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=49760291615 --field-trial-handle=1860,i,14305765303857776997,9859644926803037067,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1868,i,17798147823101782007,9485193378468576898,4 --trace-process-track-uuid=3190708990997080739 --mojo-platform-channel-handle=3784 /prefetch:1"
+    },
+    {
+      "ProcessId": 9240,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:40.4052830Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\" --no-pre-read-main-dll --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --video-capture-use-gpu-memory-buffer --lang=ru --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=49760333850 --field-trial-handle=1860,i,14305765303857776997,9859644926803037067,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1868,i,17798147823101782007,9485193378468576898,4 --trace-process-track-uuid=3190708992871164437 --mojo-platform-channel-handle=3920 /prefetch:1"
+    },
+    {
+      "ProcessId": 22632,
+      "ParentProcessId": 12204,
+      "CreationDate": "2026-11-09T18:55:40.4112480Z",
+      "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-M01Q4o\" --no-pre-read-main-dll --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --video-capture-use-gpu-memory-buffer --lang=ru --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=49760339674 --field-trial-handle=1860,i,14305765303857776997,9859644926803037067,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1868,i,17798147823101782007,9485193378468576898,4 --trace-process-track-uuid=3190708991934122588 --mojo-platform-channel-handle=3932 /prefetch:1"
+    }
+  ],
+  "elapsed_ms": 16402,
+  "scope": "Shipped original-cart entry: home discovery, actual native P01/C01/source SHA, one clock forward/reverse, seek/reset, reduced motion, two model-corruption refusals/retries and dispose/reload. Desktop only; no warehouse job/stock/wholetraffic admission."
+}

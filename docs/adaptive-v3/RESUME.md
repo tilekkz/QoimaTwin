@@ -1,3 +1,15 @@
+# Active autonomous full-TZ run · 2026-11-09T19:00:17.664344+00:00
+
+User requested up to10hours autonomous completion, then deep whole-repository tests/fixes/measured optimization. Current goal is ACTIVE (created2026-11-09T17:23:25Z); no recurring automation or extra memory/index update. Desktop only, original542591 body, no ideal-animation scope. Branch codex/twin-v3-adaptive, origin tilekkz/QoimaTwin. Verified workflow APIs/evidence committed and pushed as334f49b; neighboring home/twin work preserved.
+
+Accepted current bounded scope: wholeSTD111 P02→K01→S01/S02 dispatch/return; three nativeN2receipts with sameF01/FL01 and empty returns; R01/R02 receiving on realfree/conditionallyfreed L1slots; originalN1easternrequest; conservation/finite leases/reverse/reset. Separate extraN3securedLONG reachesOUTbuffer, not yet sourcepickup/gatecross. PaidC11two-candidate no-op849.35s cost vs394.03s gross at2periods. See FULL_TZ_CLOSEOUT.md and evidence/connected-workflows-20261109/receipt.json.
+
+Working next epoch: merged189module/12entry buildPASS; true two-pass commonclock/camera scenarioA/B and N4genuine pending-job binding; runtime break calendar mutation fixed with8focused/42frame checks; originalP01/C01 nativeaction151poses plus diagnosticbrowser5PASS now shipped entry under affected lifecycle retest. Actual secondCodex (gpt-6.1-sol/high) independently reviewed pending/effects and identified that calendar bug. Do not promote workingbrowserpending scopes to globalPASS.
+
+Remaining: actualsourceLONG rackpickup/upperretention/tool mount/stow/gatechain (new separate5kgforkabletool, no originalvehicle/C08 change); cartshipped-lifecycle acceptance; final selected-native4views/currentQA/performance/review/video/coldrelease. Then deep officialwhole-repotests and measuredoptimization. No globalfullTZ PASS yet. Old histories below are preserved, not current status.
+
+---
+
 # Full visual-TZ continuation · 2026-11-09
 
 Current root cardW05 ACTIVE. Read FULL_TZ_CLOSEOUT.md. New additive scenario-v3.html/warehouseScenarioExecution+Clock+Scene and warehouseStaffingScene cover common materialized requests, finite resources, realnativeapproaches andN4actualroles/24identities. ScenarioA/B currentplacement explicitlyno-op, nofakewinner. FirstN2PALLETdelegatesunchangedprovedcase. Manualwhole-HU sourceacquisition/pack/shipping remainsACTIVE; poseprobe haspositive original-body controls, notyetoperationadmission. Legacy91motion/C08/models/Heavycase remainfrozen. No mobile/ideal-animationresearch. Current codebase3f3da74 plus scoped additive changes; no goal-record claim.
@@ -33,3 +45,11 @@ Background Blender: `C:/Program Files/Blender Foundation/Blender 5.0/blender.exe
 Existing baseline viewer: `node work/night-static/server.mjs`, http://127.0.0.1:4180; final V2 production script index-DOPf_3RA.js. Fresh capture command: `node work/v3/capture-v2.mjs`.
 Reference authority: `assets/references/v3/manifest.json` and current asset bindings/review. Additional dedicated references precede their geometry where coverage is insufficient. Reference PASS is not model/action acceptance. Built-in imagegen only; save/open actual PNG and record exact prompt/provenance. No silent paid API fallback.
 Graph project qoima-twin at this repository root. Confirm current index status/generation after compaction before structural exploration; use coverage and exact-source fallback for changed/missing ranges. No extra Obsidian snapshot/sync; daily heartbeat owns that.
+
+## Checkpoint 2026-11-09 21:46 UTC
+
+Исходный SourceLONG теперь связан с общим N3: original HU180/24ед/200кг → исходный LONGстеллаж → нижняя cradle/верхняя оснастка → фактический полный проход восточных ворот. Остаётся на F02 снаружи; получатель не разгружает, downstream не выдуман. Опоздание28.727с показано. Тот же календарь исполняет STD111+R01+R02: 4завершённых visualцепочки, 24работника/2погрузчика,531onsite/11upstream/1downstream. Native9+2negativecontrols и actualbrowser8PASS, исходники не дрейфовали, собственные Chrome закрыты.
+
+A/B теперь два фактических renderpass с общими входами/часами; N4 сохраняет настоящие ожидающие заявки вместо синтетических120с. Исходная тележка grip/push/release опубликована626234d. Текущие30GLB/120видов и env4 реально просмотрены. Evidence: `evidence/source-long-operation-20261110/`, `evidence/scenario-comparison-20261110/`, `evidence/staffing-pending-20261109/`, `evidence/current-model-review-20261110/`.
+
+ПолноеТЗ ещё ACTIVE: полный SMALL outbound/receiving с одним finiteclamp, общий sixportrun, finalQA/effects/performance/story/independentreview, затем глубокая репозиторная регрессия и текущие video/coldpackage/handoff. Не заменять окончание физического процесса таймером или переносом историческогоPASS.

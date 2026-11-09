@@ -1,16 +1,18 @@
 import type {WorkerRole} from './workerRoles';
 import type {WarehouseBundle,XYZ} from './warehouseTypes';
 import type {RoutePlan,RouteQuery} from './warehouseRouting';
+import {isWarehouseStaffingPendingWork,sampleWarehouseStaffingPendingWork,type WarehouseStaffingPendingWork,type WarehouseStaffingPendingJob,type WarehouseStaffingRetainedJob} from './warehouseStaffingPendingWork';
 
 /** Explicit synthetic staffing episode. It changes no stock, skills, jobs or scene objects. */
 export const STAFFING_DURATION_S=600;
-export const STAFFING_BREAK={from_s:30,to_s:600,actor_ids:['K05','K06']} as const;
+export const STAFFING_BREAK=Object.freeze({from_s:30,to_s:STAFFING_DURATION_S,actor_ids:Object.freeze(['K05','K06'] as const)});
 export type RoleAssignmentRequest={event_id:string;actor_id:string;target_role:WorkerRole;station_id:string;at_s:number;until_s:number;handoff_s:number};
 export type AssignmentReason='ASSIGNMENT_OK'|'INVALID_REQUEST'|'UNKNOWN_WORKER'|'ROLE_NOT_ELIGIBLE'|'EQUIPMENT_NOT_ALLOWED'|'VEHICLE_ASSIGNMENT_LOCKED'|'WORKER_ON_BREAK'|'STATION_UNAVAILABLE'|'ASSIGNMENT_CONFLICT'|'HANDOFF_REQUIRED'|'NO_PATH'|'UNSUPPORTED_ROUTE_GEOMETRY'|'ASSIGNMENT_TOO_SHORT'|'RETURN_OUTSIDE_EPISODE'|'BUSY'|'CANCELLED';
 type Path={arc_ids:string[];points:XYZ[];length_m:number;duration_s:number};
-export type RoleAssignmentPlan={request:RoleAssignmentRequest;from_node_id:string;to_node_id:string;departure_s:number;arrival_s:number;return_arrival_s:number;outbound:Path;return_path:Path;retained_task:{task_id:string;remaining_work_s:number}|null};
+export type RoleAssignmentPlan={request:RoleAssignmentRequest;from_node_id:string;to_node_id:string;departure_s:number;arrival_s:number;return_arrival_s:number;outbound:Path;return_path:Path;retained_task:{task_id:string;remaining_work_s:number}|WarehouseStaffingPendingJob|null};
 export type AssignmentResult={ok:boolean;reason:AssignmentReason;cost_evaluated:boolean;plan:RoleAssignmentPlan|null;source_kind:'visual_fixture';engine_operation:false};
-export type StaffingWorker={actor_id:string;baseline_role:WorkerRole;effective_role:WorkerRole;phase:'baseline'|'break'|'handoff'|'walking'|'assigned'|'returning'|'restored';available:boolean;planned_position_m:XYZ;station_id:string|null;retained_task:{task_id:string;remaining_work_s:number;state:'retained'|'paused'}|null};
+export type StaffingWorker={actor_id:string;baseline_role:WorkerRole;effective_role:WorkerRole;phase:'baseline'|'break'|'handoff'|'walking'|'assigned'|'returning'|'restored';available:boolean;planned_position_m:XYZ;station_id:string|null;retained_task:{task_id:string;remaining_work_s:number;state:'retained'|'paused'}|WarehouseStaffingRetainedJob|null};
+export type StaffingComparisonOptions={pending_work?:WarehouseStaffingPendingWork};
 const digest=async(v:unknown)=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(v))))].map(x=>x.toString(16).padStart(2,'0')).join('');
 const overlap=(a:number,b:number,c:number,d:number)=>a<d&&c<b;
 function freeze<T>(v:T):T{if(v&&typeof v==='object'){for(const x of Object.values(v))freeze(x);Object.freeze(v);}return v;}
@@ -24,12 +26,13 @@ export function staffingHomeNodes(bundle:WarehouseBundle){
 }
 
 /** Safe RoleAssignment + absolute A/B replay. Route is the existing validated pedestrian router. */
-export async function createStaffingComparison(bundle:WarehouseBundle,route:(q:RouteQuery)=>RoutePlan){
+export async function createStaffingComparison(bundle:WarehouseBundle,route:(q:RouteQuery)=>RoutePlan,options:StaffingComparisonOptions={}){
  if(bundle.source_kind!=='visual_fixture'||bundle.engine_operation!==false||bundle.registry.workers.length!==24||new Set(bundle.registry.workers.map(w=>w.actor_id)).size!==24)throw Error('EXACT_VISUAL_STAFF_REQUIRED');
+ const pendingWork=options.pending_work;if(pendingWork!==undefined&&!isWarehouseStaffingPendingWork(pendingWork,bundle))throw Error('ISSUED_STAFFING_PENDING_WORK_REQUIRED');
  const homes=staffingHomeNodes(bundle),nodes=new Map(bundle.layout.walk.nodes.map(n=>[n.node_id,n])),arcs=new Map(bundle.layout.walk.arcs.map(a=>[a.arc_id,a]));
  const baselineAllocation=bundle.registry.workers.map(w=>({actor_id:w.actor_id,role:w.initial_role,home_node_id:homes.get(w.actor_id)}));
- const baselineHash=await digest(baselineAllocation),businessHash=await digest({inputs:bundle.fixture.inputs,profiles:bundle.profiles.profiles,common_break_calendar:STAFFING_BREAK,common_retained_tasks:[{actor_id:'P01',task_id:'fixture:retained-picker-work:P01',remaining_work_s:120},{actor_id:'P02',task_id:'fixture:retained-picker-work:P02',remaining_work_s:120}]});let allocationHash=baselineHash,plans:RoleAssignmentPlan[]=[],revision=0,pending=false;
- const pendingTask=(id:string)=>['P01','P02'].includes(id)?{task_id:'fixture:retained-picker-work:'+id,remaining_work_s:120}:null;
+ const baselineHash=await digest(baselineAllocation),businessHash=await digest({inputs:bundle.fixture.inputs,profiles:bundle.profiles.profiles,common_break_calendar:STAFFING_BREAK,common_retained_tasks:pendingWork?pendingWork.pending_jobs:[{actor_id:'P01',task_id:'fixture:retained-picker-work:P01',remaining_work_s:120},{actor_id:'P02',task_id:'fixture:retained-picker-work:P02',remaining_work_s:120}],...(pendingWork?{pending_work_source_materialized_input_sha256:pendingWork.source_materialized_input_sha256,pending_work_source_sha256:pendingWork.source_work_sha256}:{})});let allocationHash=baselineHash,plans:RoleAssignmentPlan[]=[],revision=0,pending=false;
+ const pendingTask=(id:string)=>pendingWork?pendingWork.pending_jobs.find(j=>j.assigned_actor_id===id)??null:['P01','P02'].includes(id)?{task_id:'fixture:retained-picker-work:'+id,remaining_work_s:120}:null;
  const result=(ok:boolean,reason:AssignmentReason,plan:RoleAssignmentPlan|null=null):AssignmentResult=>freeze({ok,reason,cost_evaluated:ok,plan,source_kind:'visual_fixture',engine_operation:false});
  function pathFor(actor:string,from:string,to:string,speed:number):Path|null{
   const r=route({source_kind:'visual_fixture',engine_operation:false,mode:'pedestrian',actor_id:actor,vehicle_id:null,cargo_archetype_id:null,from_node_id:from,to_node_id:to,service_port_id:null,closed_arc_ids:[]});if(!r.ok||r.length_m===null)return null;
@@ -56,17 +59,17 @@ export async function createStaffingComparison(bundle:WarehouseBundle,route:(q:R
  function point(path:Path,elapsed:number):XYZ{let d=Math.max(0,Math.min(path.length_m,elapsed/path.duration_s*path.length_m));for(let i=1;i<path.points.length;i++){const a=path.points[i-1],b=path.points[i],length=Math.hypot(...b.map((x,j)=>x-a[j]));if(d<=length)return a.map((x,j)=>x+(b[j]-x)*d/length) as XYZ;d-=length;}return[...path.points.at(-1)!];}
  function sample(variant:'A'|'B',seconds:number){
   if(!['A','B'].includes(variant)||!Number.isFinite(seconds)||seconds<0||seconds>STAFFING_DURATION_S)throw Error('INVALID_STAFFING_TIME');
-  const workers:StaffingWorker[]=bundle.registry.workers.map(w=>{const home=homes.get(w.actor_id)!,node=nodes.get(home)??bundle.layout.vehicle.nodes.find(n=>n.node_id===home)!,task=pendingTask(w.actor_id),out:StaffingWorker={actor_id:w.actor_id,baseline_role:w.baseline_role,effective_role:w.initial_role,phase:'baseline',available:true,planned_position_m:[...node.world_pos],station_id:w.baseline_role==='packer'?'PK'+w.actor_id.slice(1):null,retained_task:task?{...task,state:'retained'}:null};
-   if(STAFFING_BREAK.actor_ids.includes(w.actor_id as 'K05'|'K06')&&seconds>=30&&seconds<600){out.phase='break';out.available=false;out.station_id=null;}
+  const workers:StaffingWorker[]=bundle.registry.workers.map(w=>{const home=homes.get(w.actor_id)!,node=nodes.get(home)??bundle.layout.vehicle.nodes.find(n=>n.node_id===home)!,task=pendingTask(w.actor_id),out:StaffingWorker={actor_id:w.actor_id,baseline_role:w.baseline_role,effective_role:w.initial_role,phase:'baseline',available:true,planned_position_m:[...node.world_pos],station_id:w.baseline_role==='packer'?'PK'+w.actor_id.slice(1):null,retained_task:pendingWork?sampleWarehouseStaffingPendingWork(pendingWork,w.actor_id,seconds,false):task?{task_id:task.task_id,remaining_work_s:task.remaining_work_s!,state:'retained'}:null};
+   if(STAFFING_BREAK.actor_ids.includes(w.actor_id as 'K05'|'K06')&&seconds>=STAFFING_BREAK.from_s&&seconds<STAFFING_BREAK.to_s){out.phase='break';out.available=false;out.station_id=null;}
    const plan=variant==='B'?plans.find(p=>p.request.actor_id===w.actor_id):undefined;if(!plan||seconds<plan.request.at_s)return out;
-   if(seconds<plan.return_arrival_s&&out.retained_task)out.retained_task.state='paused';
+   if(seconds<plan.return_arrival_s&&out.retained_task)out.retained_task=pendingWork?sampleWarehouseStaffingPendingWork(pendingWork,w.actor_id,seconds,true):{...out.retained_task,state:'paused'};
    if(seconds<plan.departure_s){out.phase='handoff';out.available=false;}
    else if(seconds<plan.arrival_s){out.phase='walking';out.available=false;out.planned_position_m=point(plan.outbound,seconds-plan.departure_s);}
    else if(seconds<plan.request.until_s){out.phase='assigned';out.effective_role=plan.request.target_role;out.station_id=plan.request.station_id;out.planned_position_m=[...plan.outbound.points.at(-1)!];}
    else if(seconds<plan.return_arrival_s){out.phase='returning';out.effective_role=plan.request.target_role;out.available=false;out.planned_position_m=point(plan.return_path,seconds-plan.request.until_s);}
    else out.phase='restored';return out;});
-  return freeze({variant,time_s:seconds,source_kind:'visual_fixture' as const,engine_operation:false as const,operational_admission:false,fixture_id:'v3:staffing:role-assignment:demo:001',worker_count:24,workers,business_inputs_sha256:businessHash,allocation_sha256:variant==='A'?baselineHash:allocationHash,pending_tasks_executed:false,completed_jobs:0,calendar_kind:'synthetic_design_same_A_B',break_actor_positions_not_simulated:true,scene_binding:false,transition_costs:variant==='B'?plans.map(p=>({actor_id:p.request.actor_id,handoff_s:p.request.handoff_s,outbound_walk_s:p.outbound.duration_s,return_walk_s:p.return_path.duration_s,walk_distance_m:p.outbound.length_m+p.return_path.length_m})):[]});
+  return freeze({variant,time_s:seconds,source_kind:'visual_fixture' as const,engine_operation:false as const,operational_admission:false,fixture_id:'v3:staffing:role-assignment:demo:001',worker_count:24,workers,business_inputs_sha256:businessHash,allocation_sha256:variant==='A'?baselineHash:allocationHash,pending_work_basis:pendingWork?'issued_scenario_plan' as const:'synthetic_design_reference' as const,...(pendingWork?{pending_work_source_materialized_input_sha256:pendingWork.source_materialized_input_sha256,pending_work_source_sha256:pendingWork.source_work_sha256}:{}),pending_tasks_executed:false,completed_jobs:0,calendar_kind:'synthetic_design_same_A_B',break_actor_positions_not_simulated:true,scene_binding:false,transition_costs:variant==='B'?plans.map(p=>({actor_id:p.request.actor_id,handoff_s:p.request.handoff_s,outbound_walk_s:p.outbound.duration_s,return_walk_s:p.return_path.duration_s,walk_distance_m:p.outbound.length_m+p.return_path.length_m})):[]});
  }
  function reset(){revision++;plans=[];allocationHash=baselineHash;}
- return Object.freeze({assign,sample,reset,plans:()=>structuredClone(plans),baseline_allocation_sha256:baselineHash,business_inputs_sha256:businessHash,source_kind:'visual_fixture' as const,engine_operation:false as const});
+ return Object.freeze({assign,sample,reset,plans:()=>structuredClone(plans),baseline_allocation_sha256:baselineHash,business_inputs_sha256:businessHash,...(pendingWork?{pending_work:pendingWork}:{}),source_kind:'visual_fixture' as const,engine_operation:false as const});
 }

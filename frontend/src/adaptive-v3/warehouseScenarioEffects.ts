@@ -17,7 +17,7 @@ export function createWarehouseScenarioEffects(plan:WarehouseScenarioPlan,option
    if(e.at_s<=from||e.at_s>sample.at_s||e.kind!=='completed_visual')return [];
    const job=plan.jobs.find(j=>j.job_id===e.job_id)!;
    // Delivery into a port buffer is not a dispatched shipment.
-   if(job.native_case==='long_crossdock')return [];
+   if(job.native_case==='long_crossdock'||job.native_case==='source_long_transfer')return [];
    return [{seq,at_s:e.at_s,phase:0,kind:job.direction==='inbound'?'pallet_putaway':'order_dispatched',entity_id:e.handling_unit_id,payload:{actor_id:job.actor_id,job_id:job.job_id}}];
   });
   crossed+=events.length;

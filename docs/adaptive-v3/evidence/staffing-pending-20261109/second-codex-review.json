@@ -1,0 +1,27 @@
+{
+  "schema_id": "qoima.independent-pending-effects-review.v1",
+  "actual_model": "gpt-6.1-sol",
+  "actual_reasoning_effort": "high",
+  "thread_id": "01a1c1a1-50a6-7240-8187-236253e3f371",
+  "duration_s": 81.09,
+  "exit_code": 0,
+  "changed_sources": [],
+  "child_tools_used": false,
+  "review": "- **Mutable break calendar invalidates replay consistency and hashes** — `workerRoleAssignment.ts`: `STAFFING_BREAK` uses `as const`, which provides no runtime protection. After creating a comparison, a JavaScript caller or TypeScript cast can mutate `actor_ids`, changing workers’ break states at the same sampled time while `business_inputs_sha256` remains unchanged. Changing the time bounds also makes assignment validation disagree with sampling’s hardcoded 30–600 interval. **Small fix:** freeze both the exported calendar and its nested actor array, and use its bounds consistently in sampling.",
+  "parent_fix": "Freeze break calendar and nested actor IDs, use those exact bounds in sampling.",
+  "parent_verification": {
+    "checks": [
+      "break_calendar_and_nested_actor_ids_reject_runtime_mutation_without_replay_hash_drift",
+      "issued_exact_N0_source530HU24actors2vehicles_and_two_real_pending_picker_jobs",
+      "same_exact_jobs_HU_owner_units_mass_and_unknown_remaining_time_retained_in_both_AB",
+      "handoff_assigned_return_restored_states_preserve_actual_outstanding_work_without_execution",
+      "legacy_default_frames_and_plans_exactly_preserved_except_explicit_synthetic_basis_label",
+      "reverse_repeat_reset_preserves_same_binding_and_returns_jobs_to_original_actor_owners",
+      "forged_plan_binding_wrong_bundle_changed_N0_N1_nonfinite_controls_are_inert",
+      "source_bundle_input_stock_and_plan_unchanged_no_fake_completion_or_stock_move"
+    ],
+    "samples": 42,
+    "passed": true
+  },
+  "scope": "Narrow pending/effects source review only; not final full integrated reviewer gate."
+}

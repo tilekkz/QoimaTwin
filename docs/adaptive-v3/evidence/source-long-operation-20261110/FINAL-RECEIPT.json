@@ -1,0 +1,205 @@
+{
+  "schema_id": "qoima.long-source-operation.author-receipt.v1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "product_frozen": true,
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationScene.ts": "d0fc64c7278ed579af3c6af22ed0288919c95fa2b9d8f9c04867a31597835b32",
+    "frontend/src/adaptive-v3/warehouseLongSourceCargoBinding.ts": "8c7482f2353364b1b4176bba048f6c9b59eae5ac90333dbc0805a0ad6c9be1b4",
+    "frontend/tools/check-warehouse-long-source-operation-v3.mjs": "3bb2b28ada9c87e09845fe96a222f6140ffbc655b99ca994d4952c0baeffeeaf",
+    "frontend/public/models/v3/long-upper-handling-bridge.glb": "c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527",
+    "frontend/public/data/v3/long-source-tool-route.json": "95663c053a4fd138deec7274078879f5778d44a78426b9c6d028bc177aa089c1"
+  },
+  "API": {
+    "compile": "compileWarehouseLongSourceOperationPlan(bundle,policy,packetText,toolRouteProofText)",
+    "guard": "isWarehouseLongSourceOperationPlan",
+    "renderer": "await createWarehouseLongSourceOperationScene(scene,bundle,issuedPlan,{signal,readSource})",
+    "renderer_methods": [
+      "apply(seconds)",
+      "reset()",
+      "snapshot()",
+      "dispose()"
+    ],
+    "scheduler_option": "native_source_long_plan",
+    "mutually_exclusive_with": "native_long_crossdock_plan"
+  },
+  "identity": {
+    "request_id": "v3:request:base:outbound:06",
+    "handling_unit_id": "v3:HU:initial:DEMO_180:01",
+    "source_slot_id": "v3:slot:LONG_W:002:L1:B1",
+    "original_HU_count": 530,
+    "new_HUs": 0,
+    "actors": 24,
+    "vehicles": 2,
+    "original_worker_geometry_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "HU_mass_kg": 200,
+    "HU_units": 24,
+    "kit_mass_kg": 40,
+    "tool_mass_kg": 5,
+    "kit_quantity": 1,
+    "tool_quantity": 1,
+    "case_accounted_mass_kg": 245,
+    "kit_subpart_mass_split_claimed": false,
+    "F01_upper_tool_conservative_lifted_upper_bound_kg": 45,
+    "tool_modeled_Al_volume_mass_kg": 4.824483258239904,
+    "tool_structural_certification": false
+  },
+  "current_clock": {
+    "new_duration_s": 1359.0320227345212,
+    "capture_at_s": 730,
+    "F01_release_at_s": 1150.2363103762405,
+    "gate_crossed_at_s": 1348.7273532926079,
+    "request_deadline_s": 1320,
+    "gate_before_deadline": false
+  },
+  "current_schedule_change_proof": {
+    "path": "work/v3/full-tz-closeout-20261109/long-source-operation/prep-reorder-checks.json",
+    "moving_actor_FK_phases_exact": 110,
+    "geometry_path_model_speed_changed": false,
+    "fresh_emptyF02_source_HU_M04_prefix_x_gaps_m": {
+      "actual_empty_FL02": 1.2859733957983863,
+      "actual_original_source_HU": 0.7859734852053535,
+      "actual_source_M04_rack": 0.4859732944704902
+    },
+    "native_preposition_root": [
+      34.01658075373096,
+      0,
+      19.875
+    ],
+    "original_HU_in_source_slot_through719": true,
+    "upper_prepositioned_before720": true
+  },
+  "historical_and_bounded_evidence": [
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/bridge-native-checks.json",
+      "scope": "ExportedGLB exact U/fork contact +actual equipmentforeign static checks;2um; positive."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/bridge-movement-checks.json",
+      "scope": "15bounded localmount/keeper/release phases;566640component queries0unresolved; originalsourceattachmentinternal seats notrecertified."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/tool-route-proof.json",
+      "sha256": "95663c053a4fd138deec7274078879f5778d44a78426b9c6d028bc177aa089c1",
+      "scope": "All4fresh tool/barelegs,81segments/58sourcearcs; .25XZpadding exceptexplicitnativeexclusivehandling joins;0unresolved."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/out-gate-native-checks.json",
+      "scope": "Actualretained240kg assembly wholeHU138→146gatecross;3806component/gate pairs,24nativewheel/floor contacts,3negativecontrols."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/source-operation-checks.json",
+      "scope": "HISTORICALpre-reorder218phaseepoch:438actualnativeScene samples+10functional/identity/lifecycle checks. Sourcehashes inside remain historical, notrewritten tolookcurrent. Maxnativeframe13.41nm; same4pinrelease18.97nm."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/stow-native-finite-checks.json",
+      "scope": "45actualinitial/stow endpoint+midpoint frames;1045440cheap support/SAT queries;0unresolved. Finite scope only."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/attempt-native-source-drift.json",
+      "scope": "RAWRED overall preserved: allfunctional/nativeassertionscompleted, finalCoreepochpin changed byintegrationowner. No unchangedmatrix rerun performed solelyfordrift."
+    },
+    {
+      "path": "work/v3/full-tz-closeout-20261109/long-source-operation/current-types-checks.json",
+      "scope": "3newTSroots/imported semanticclosure0diagnostics, unchangedbefore/afterbc642/d0fc/8c748. Currente248reorder runtimecheckedseparately; finalmergedbuild ownedbyroot."
+    }
+  ],
+  "support_identity_aliases": {
+    "proposed:LONG-upper-rig-stow:IN_W:01:left-M03": "proposed:rig-stow-support:1",
+    "proposed:LONG-upper-rig-stow:IN_W:01:right-M03": "proposed:rig-stow-support:2"
+  },
+  "support_provenance": "ExactONEused/rightM03 and ONEexistingunused/leftM03 at originalpublished26.6/29.4,0,14; aliases areone-to-one, notnewcapacity. NewtoollandingfeetallowONE M03 tosupportbothclosedUcomponents. Original799packetunchanged.",
+  "retained_load_geometry_basis": {
+    "C08_load_row_component_bounds": [
+      {
+        "min": [
+          -0.6,
+          0,
+          -1.5
+        ],
+        "max": [
+          0.6,
+          2.1,
+          1.5
+        ]
+      },
+      {
+        "min": [
+          -1.6,
+          0.65,
+          0.575
+        ],
+        "max": [
+          1.6,
+          0.8,
+          1.425
+        ]
+      },
+      {
+        "min": [
+          -2.1,
+          0.8,
+          0.675
+        ],
+        "max": [
+          2.1,
+          1.32,
+          1.325
+        ]
+      }
+    ],
+    "actual_travel_HU_bottom_top_m": [
+      0.8,
+      1.32
+    ],
+    "layout_manifest_loaded_max_Y_exact_claimed": false,
+    "note": "C08LONGloadrowmatchesactualtravelheight. Olderlayoutloaded_maxmetadataYdiffers; sourcearcselection iscombinedwithsameXZgeometryandfreshnativeactualgateproof, notaclaimthatoldermanifestYisidentical."
+  },
+  "terminal": {
+    "vehicle": "FL02",
+    "actor": "F02",
+    "vehicle_root": [
+      146,
+      0,
+      18
+    ],
+    "HU_root": [
+      147,
+      0.8,
+      18
+    ],
+    "HU_location": "outside_gate_retained",
+    "custody": "F02",
+    "recipient_unloading_executed": false,
+    "order_dispatched": false,
+    "onsite_including_yard_HUs": 530,
+    "F02_lease_until_s": 1800,
+    "finite_apron": {
+      "min": [
+        144,
+        -0.1,
+        14
+      ],
+      "max": [
+        150,
+        0,
+        22
+      ]
+    },
+    "warehouse_original_dimensions_unchanged": [
+      144,
+      72
+    ]
+  },
+  "limits": [
+    "Materializedvisualengineeringfixture, notauthoritativebackend dispatch/manufacturerorstructuralcertification.",
+    "Initiallowercradlepre-mounted andtool/Upre-positioned; thosepreparationinstallationsarenotfalselyexecuted.",
+    "Controlled2mfixed-yawpre-retentionhandling isexplicitnewlocalprocedure; genericloadedroutebeginsafterupperretentionclosure.",
+    "Originalsourceattachmentpost/socket/keeperassemblyinterfaces remainexact; no broadnewadjacencywaiver ornewtoolforeignintrusion accepted.",
+    "Gatecrossing doesnottransfercustody: sameHU+kitremainretainedonF02 outside; no inventedcustomerunload/emptyreturn.",
+    "Deadline1320isstillmissedby28.7273532926079s atgate; no fastertoolspeedorfabricatedgain.",
+    "CurrentmergedCore/Page/browser/Q01evidence belongsroot/integrationowner, separatefromhistoricalauthorgeometryreceipts."
+  ]
+}
