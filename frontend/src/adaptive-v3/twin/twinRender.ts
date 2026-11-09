@@ -47,7 +47,7 @@ function skyTexture(){const c=document.createElement('canvas');c.width=2;c.heigh
 
 export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,reducedMotion:()=>boolean){
  let ctx:{renderer:THREE.WebGLRenderer;scene:THREE.Scene;camera:THREE.OrthographicCamera}|null=null,ready=false,disposed=false;
- let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[];
+ let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[],focus:Partial<Record<Variant,Pose>>|null=null;
  let effects:Effects='full',budget=BUDGET_MAX,selectedActor:string|null=null,onBubble:(id:string,v:Variant)=>void=()=>{},onLabel:(v:Variant)=>void=()=>{};
  const spots:WorkerSpot[]=[],heads=new Map<string,THREE.Vector3>();
  let layout:ReturnType<typeof createTwinLayoutVariant>|undefined;
@@ -219,7 +219,14 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   wasGroup.visible=true;newGroup.visible=arcGroup.visible=variant==='B';
   // In «Шторка» both copies stand in one place, so the outline shows on both halves.
   hl.visible=!!hlVariant&&(mode==='swipe'||hlVariant===variant);
-  const m=moves.find(m=>m.id===selected);selBox.visible=!!m;if(m)place(selBox,variant==='A'?m.a:m.b,1.35);
+  // A worker gets only the ring: a box round a person reads as a stretched frame from above.
+  const f=selectedActor?null:focusPose(variant);selBox.visible=!!f;if(f)place(selBox,f,moves.some(m=>m.id===selected)?1.35:1.15);
+ }
+ /** Where the selection stands in this copy: a moved unit, a selected worker, or any other picked object (HU, new slot). */
+ function focusPose(v:Variant):Pose|null{
+  const m=moves.find(m=>m.id===selected);if(m)return v==='A'?m.a:m.b;
+  if(selectedActor){const h=variantHead(selectedActor,v);if(h)return {position:[h.x,0,h.z],yaw:0,dims:[.9,h.y+.15,.9]};}
+  return focus?.[v]??null;
  }
  function domFor(pass:Pass,W:number,H:number){
   const {variant:v,vp,sc}=pass,sample=sampleAtmosphere(v,t);
@@ -259,8 +266,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    b.dataset.actor=r.actor_id;b.setAttribute('aria-label',`${r.actor_id}: ${r.text}`);b.title=`${r.actor_id} · ${r.text}`;
    b.hidden=false;b.classList.toggle('is-selected',r.actor_id===selectedActor);b.style.translate=`${q.x}px ${q.y}px`;
   });
-  const m=moves.find(m=>m.id===selected);rings[v].hidden=!m;
-  if(m){const p=v==='A'?m.a:m.b,q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1]/2,p.position[2]),vp);rings[v].hidden=!inside(q,sc);rings[v].style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-50%)`;}
+  const p=focusPose(v);rings[v].hidden=!p;
+  if(p){const q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1]/2,p.position[2]),vp);rings[v].hidden=!inside(q,sc);rings[v].style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-50%)`;}
  }
  /** The window both warehouses live in: the whole screen minus a margin, and minus the right panels on desktop. */
  function region(W:number,H:number):Rect{const narrow=W<720,m=narrow?8:14;return {x:m,y:m,w:Math.max(240,W-2*m-(narrow?0:inset)),h:H-2*m};}
@@ -397,6 +404,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   setSplit(next:number){split=Math.min(.92,Math.max(.08,next));draw();},
   setTime(next:number){t=next;draw();},
   setSelected(id:string|null){selected=id;draw();},
+  /** Marks a picked object that is neither a moved unit nor a worker, per copy (null clears). */
+  setFocus(f:Partial<Record<Variant,Pose>>|null){focus=f;draw();},
   highlightZone,setGateTags,
   dispose(){layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };

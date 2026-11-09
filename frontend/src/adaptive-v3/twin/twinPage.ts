@@ -78,7 +78,7 @@ async function setLayoutMode(next:LayoutMode){
   if(token!==serial||tw!==twin)return;
   const plan=next==='sections'?layoutCandidate:null;
   tw.setLayoutPlan(plan);mini?.setLayoutPlan(plan);layoutEnabled=!!plan;moves=layoutEnabled?[]:slottingMoves;tw.setMoves(moves,id=>select(id,'HU'));
-  clearSelectionState();tw.setSelected(null);tw.setSelectedActor(null);rebuildSearchIndex();miniKey='';renderMoves();drawMini();scene?.requestRender();
+  clearSelectionState();tw.setSelected(null);tw.setSelectedActor(null);tw.setFocus(null);rebuildSearchIndex();miniKey='';renderMoves();drawMini();scene?.requestRender();
   layoutMessage=layoutEnabled?'В B перестроены секции и стеллажи. Все 530 грузовых единиц сохранены; новые ячейки пустые.':'Секции исходные. В B меняется только размещение груза по принятым ячейкам.';
  }catch(error){
   if(token!==serial||tw!==twin)return;
@@ -200,7 +200,7 @@ function indexBundle(b:WarehouseBundle):SearchEntry[]{
 }
 function rebuildSearchIndex(){
  if(!bundle)return;const entries=indexBundle(bundle);
- if(layoutEnabled&&layoutCandidate)for(const s of layoutCandidate.slots.filter(s=>s.is_new&&!s.reserve_only&&!s.retrieval_blocked))entries.push({kind:'slot',id:s.slot_id,title:`Новая ячейка · ${s.family} ${s.module_id.split(':').at(-1)} · ${s.slot_id.split(':').slice(-2).join(':')}`,sub:'Только B · пустая ячейка новой секции',keys:[s.slot_id,s.module_id,s.family,'новая','пустая','B']});
+ if(layoutEnabled&&layoutCandidate)for(const s of layoutCandidate.slots.filter(s=>s.is_new&&!s.reserve_only&&!s.retrieval_blocked))entries.push({kind:'slot',id:s.slot_id,title:`Новая ячейка · ${s.family} ${s.module_id.split(':').at(-1)} · ${s.slot_id.split(':').slice(-2).join(':')}`,sub:'Только B · пустая ячейка новой секции',keys:[s.slot_id,s.module_id,s.family,'новая','пустая','ячейка','адрес','B']});
  searchIndex=buildIndex(entries);hintMap=new Map(entries.filter(e=>e.kind==='actor'||e.kind==='HU').map(e=>[e.id,e]));if(searchBox.dataset.open==='true')renderSearch();
 }
 const SEARCH_TRIES=['P01','K03','DEMO_001','OUT_S_EXPRESS','Упаковка','SMALL_E:019'];
@@ -224,7 +224,7 @@ function goSearch(h:SearchHit,copy:Variant='A'){
  if(!bundle||!twin)return;if(layoutEnabled&&h.kind==='slot'&&layoutCandidate?.slots.some(s=>s.slot_id===h.id&&s.is_new))copy='B';setSearch(false);const o=twin.offsetOf(copy);
  if(h.kind==='actor'||h.kind==='HU'){select(h.id,h.kind,copy);return;}
  if(h.kind==='slot'){const hu=bundle.fixture.inputs.initial_stock.find(x=>x.location.slot_id===h.id);if(hu){select(hu.handling_unit_id,'HU',copy);return;}
-  const planned=layoutEnabled&&copy==='B'?layoutCandidate?.slots.find(s=>s.slot_id===h.id):null;if(planned){const p=planned.bin_anchor_world;fly([p[0]+o[0],p[1],p[2]+o[2]],16);return;}
+  const planned=layoutEnabled&&copy==='B'?layoutCandidate?.slots.find(s=>s.slot_id===h.id):null;if(planned){const p=planned.bin_anchor_world;select(null);twin.setFocus({B:{position:[p[0],p[1],p[2]],yaw:0,dims:[1.2,.5,1.2]}});fly([p[0]+o[0],p[1],p[2]+o[2]],16);return;}
   const sl=bundle.layout.slots.find(x=>x.slot_id===h.id);if(sl){const m=bundle.layout.modules[sl.module_index].world_pos;fly([m[0]+o[0],0,m[2]+o[2]],16);}return;}
  if(h.kind==='port'){const p=(bundle.layout.data.ports as {port_id:string;world_pos:XYZ}[]).find(x=>x.port_id===h.id);if(p)fly([p.world_pos[0]+o[0],0,p.world_pos[2]+o[2]],34);return;}
  const z=(bundle.layout.data.zones as {zone_id:string;floor_bounds_xz_m:{min:[number,number];max:[number,number]}}[]).find(x=>x.zone_id===h.id);
@@ -479,6 +479,9 @@ const ARROW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M14 7l
 function select(id:string|null,kind='HU',copy:Variant='A'){
  const off=twin?.offsetOf(copy)??[0,0,0],offB=twin?.offsetOf('B')??[0,0,0];
  selectedId=id;selectedKind=kind;statusKey='';const moved=moves.find(m=>m.id===id);twin?.setSelected(moved?id:null);twin?.setSelectedActor(kind==='actor'?id:null);
+ // Any other picked unit is marked where it stands in each copy (in B: its place in the new layout).
+ {const a=kind==='HU'&&!moved&&id?scene?.getCargoBindings().find(b=>b.handling_unit_id===id):undefined,lb=a&&layoutEnabled?layoutCandidate?.HUs.find(h=>h.handling_unit_id===id):undefined;
+  twin?.setFocus(a?{A:pose(a),B:lb?{position:[...lb.position_world],yaw:lb.yaw_rad,dims:[...a.cargo.dimensions_xyz_m]}:pose(a)}:null);}
  for(const b of $$<HTMLButtonElement>('.tw-moves button'))b.setAttribute('aria-pressed',String(b.dataset.id===id));
  const panel=sheets.find(s=>s.dataset.sheet==='sel')!;if(!id||!bundle){show(panel,false);layoutPanels();return;}
  if(phone.matches&&sheet)setSheet(null);

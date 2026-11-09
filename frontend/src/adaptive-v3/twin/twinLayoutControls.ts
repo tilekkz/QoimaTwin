@@ -15,7 +15,9 @@ export function createLayoutControls(host:HTMLElement,choose:(mode:LayoutMode)=>
   const metrics=box.querySelector('[data-layout-metrics]')!;metrics.replaceChildren();
   if(!next.ready)return;
   const rows=[['Стеллажей · A → B',`${next.racksA} → ${next.racksB}`],['Добавлено пустых',String(next.newRacks)],['Переставлено стеллажей',String(next.changedRacks)],['Площадь стеллажей',`${next.floorAreaA.toFixed(0)} → ${next.floorAreaB.toFixed(0)} м²`],['Товары','530 грузовых единиц'],['Команда','24 человека']];
-  for(const [label,value]of rows){const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;div.append(dt,dd);metrics.append(div);}
+  // The two counts that are coloured on the floor of B carry the same colour here as their legend.
+  const mark:Record<string,string>={'Добавлено пустых':'new','Переставлено стеллажей':'moved'};
+  for(const [label,value]of rows){const div=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=label;dd.textContent=value;if(next.mode==='sections'&&mark[label])div.dataset.mark=mark[label];div.append(dt,dd);metrics.append(div);}
  }
  return {update,dispose:()=>box.remove()};
 }

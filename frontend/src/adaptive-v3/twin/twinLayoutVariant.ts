@@ -89,6 +89,18 @@ export function createTwinLayoutVariant(scene:THREE.Scene,bundle:WarehouseBundle
     const label=new THREE.Mesh(own(new THREE.PlaneGeometry(5,.625)),own(new THREE.MeshBasicMaterial({map:texture,transparent:true,depthWrite:false})));label.rotation.x=-Math.PI/2;label.position.set(cx,.045,min[1]+.5);paint.add(label);
    }
   }
+  // What B changes, on each module: new empty ones teal, moved ones blue-violet (B only; amber would vanish on wood). A tinted lid on the module
+  // top reads from above and in perspective; a rim on the floor shows the footprint. One draw per colour.
+  const markGeo=own(new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2)),marks={new:[] as THREE.Matrix4[],moved:[] as THREE.Matrix4[]};
+  for(const m of plan.modules){
+   const src=sourceModules.get(m.module_id),moved=!!src&&(Math.hypot(...m.position_world.map((x,i)=>x-src.world_pos[i]))>1e-7||Math.abs(m.yaw_rad-src.yaw_rad)>1e-8);if(!m.is_new&&!moved)continue;
+   const b=m.outer_bounds_world,w=b.max[0]-b.min[0],d=b.max[2]-b.min[2],cx=(b.min[0]+b.max[0])/2,cz=(b.min[2]+b.max[2])/2,list=marks[m.is_new?'new':'moved'],pad=.25;
+   list.push(new THREE.Matrix4().compose(new THREE.Vector3(cx,b.max[1]+.04,cz),new THREE.Quaternion(),new THREE.Vector3(w,1,d)));
+   list.push(new THREE.Matrix4().compose(new THREE.Vector3(cx,.03,cz),new THREE.Quaternion(),new THREE.Vector3(w+2*pad,1,d+2*pad)));
+  }
+  for(const [kind,list]of Object.entries(marks)){if(!list.length)continue;
+   const mesh=new THREE.InstancedMesh(markGeo,own(new THREE.MeshBasicMaterial({color:kind==='new'?'#0E8076':'#5B6FD8',transparent:true,opacity:.34,depthWrite:false})),list.length);
+   list.forEach((m,i)=>mesh.setMatrixAt(i,m));mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();mesh.name='B_mark_'+kind;created.push(mesh);paint.add(mesh);}
   scene.add(extra);extra.updateWorldMatrix(true,true);
  }catch(e){for(const mesh of created)mesh.dispose();for(const r of owned)r.dispose();throw e;}
  function apply(v:'A'|'B'){
