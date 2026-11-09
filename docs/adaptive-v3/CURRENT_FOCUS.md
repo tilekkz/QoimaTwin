@@ -1,3 +1,11 @@
+Read HEAVY_INBOUND_PUBLICATION_FREEZE.md before any heavy-inbound edit. Runtime publication is frozen to tested7e5/b4/11cc; alternate shallow100 preserved separately.
+
+# Desktop MVP checkpoint · 2026-11-09T14:36:41.086875+00:00
+
+Connected one-pallet inbound is implemented and browser-verified: `heavy-inbound-v3.html`; original F01/FL01 and PALLET455, stage → fork → free HEAVY_E001, one absolute clock and conserved inventory. Ten-entry typechecked/cold build passes; four actual PNGs reviewed. Native route/handling and browser checks pass in the bounded scopes; scoped publication is being finalized. Read `MVP_CLOSEOUT_2026-11-09.md` and `handoff/desktop-20261109/README.md`. The user's priority is a watchable working desktop foundation; no mobile or further ideal-animation research. Full N0–N3 engine integration is not claimed. Original models/C08/V2/N2N3 packet unchanged.
+
+---
+
 # Current desktop checkpoint · 2026-11-09T12:31:23.324424+00:00
 
 Read `handoff/desktop-20261109/README.md` and `tasks/W19.md` first. Structural B164 and original_hold are implemented and verified. Original A/native models/V2/N2N3packet remain unchanged. Current branch is codex/twin-v3-adaptive; N2N3 publication799ff93 remains valid. Core desktop build and cold-build resource closure pass. Full operational cycles/cart release/traffic reservations remain separate open work; no more ideal-animation polishing is required by the user. Desktop only.

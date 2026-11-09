@@ -87,7 +87,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W03](tasks/W03.md) | PASS | root | W02,L06,L07 | Подключены движения по реальному графу |
 | [W04](tasks/W04.md) | PASS | root | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
-| [W06](tasks/W06.md) | TODO | unassigned | W05 | Реализовано восстановление pause/reset/seek |
+| [W06](tasks/W06.md) | VERIFY | root_mvp | W05 | Реализовано восстановление pause/reset/seek |
 | [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
 | [W08](tasks/W08.md) | VERIFY | root | W05 | Подключены управляемые SFX |
 | [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
@@ -239,7 +239,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05.3.4](tasks/W05.3.4.md) | PASS | dynamic_cargo_binding | W04.2,W05.3.1 | World-preserving native HU render-binding handoff for precise loaded motion |
 | [W05.3.5](tasks/W05.3.5.md) | PASS | account2_pickup_feasibility | W05.3.1,W04.2 | Independent native source-grip feasibility for an upper SMALL stock unit |
 | [W05.3.6](tasks/W05.3.6.md) | PASS | account2_source_torso_grip | W05.3.1,W05.3.5 | Native upper-stock source-grip endpoint with original torso freedom |
-| [W11.2](tasks/W11.2.md) | TODO | unassigned | W11.1.1,W05,W06 | Connected heavy-inbound actions and source-identical comparison |
+| [W11.2](tasks/W11.2.md) | VERIFY | root_mvp | W11.1.1,W05,W06 | Connected heavy-inbound actions and source-identical comparison |
 | [W11.1.1](tasks/W11.1.1.md) | PASS | heavy_scenario_inputs | W11.1 | Current-source heavy-inbound pair with explicit source-epoch compatibility |
 | [W05.3.7](tasks/W05.3.7.md) | PASS | root_natural_stance | W05.3.3 | Natural carry cadence and grounded double-support calibration |
 | [W05.3.8](tasks/W05.3.8.md) | FIX | account2_cart_release | P03.5.3.3,W04.3 | Native manual-picker cart hand-release calibration without pose snap |
@@ -250,11 +250,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05.3.12](tasks/W05.3.12.md) | PASS | root | W05.3.10,W05.3.11 | Lower P02 box hold with vertical upper arms and approximately 90 degree elbows |
 | [W05.3.13](tasks/W05.3.13.md) | FIX | root | W05.3.12 | Convincing close whole-palm box grasp with restored natural arm volume |
 | [W12.2](tasks/W12.2.md) | PASS | root | W02,C08,M10,P09 | Native pre-held LONG gate calibration with driver and rolling |
+| [W19](tasks/W19.md) | PASS | root | — | Structural section and rack reconfiguration B with preserved source inventory |
 
-## User-added structural scope · 2026-11-09
-
-| ID | Status | Owner | Dependencies | Result |
-|---|---|---|---|---|
-| [W19](tasks/W19.md) | PASS | root | user clarification | Static B164: sections/racks change, stock/source A preserved, access and browser checks verified |
-
-VERIFY above records delivered local desktop artifacts; it does not close their global operational prerequisites.
+VERIFY records delivered local desktop artifacts; global all-workflow prerequisites and full operational scenarios remain open. See MVP_CLOSEOUT_2026-11-09.md.
