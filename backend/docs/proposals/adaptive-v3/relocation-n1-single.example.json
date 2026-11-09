@@ -1,0 +1,21 @@
+{
+  "schema_version": "qoima-manual-relocation-proposal-1",
+  "profile_id": "source-N1-single-113",
+  "provenance": "ADR0073 explicit bounded N1 proposal. Reuse common coordinator actor S01 home/speed/capacity; take/place1s are declared choices, not measured source facts. Existing intact24-unit STANDARD moves to initially free FLEX. No new stock, worker, cart or vehicle; no claimed savings.",
+  "jobs": [
+    {
+      "job_id": "N1-MOVE-DEMO113",
+      "arrival_tick": 0,
+      "hu_id": "v3:HU:initial:DEMO_113:01",
+      "from_slot_id": "v3:slot:STANDARD_W:004:L1:B1",
+      "to_slot_id": "v3:slot:FLEX_W:003:L1:B1",
+      "actor_id": "S01",
+      "take_ticks": 1000000,
+      "place_ticks": 1000000
+    }
+  ],
+  "permitted_actor_ids": ["S01"],
+  "route_policy": "c09-manual-small-standard-source-mode-projection-v1",
+  "min_width_m": {"numerator": 7, "denominator": 10},
+  "min_height_m": {"numerator": 9, "denominator": 5}
+}
