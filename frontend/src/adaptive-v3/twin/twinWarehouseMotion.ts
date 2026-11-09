@@ -10,6 +10,7 @@ import type { WarehouseTexts } from '../warehouseAdapter';
 export type TwinWarehouseMotion = {
     apply(variant: 'A' | 'B', at_s: number): void;
     actorPosition(variant: 'A' | 'B', at_s: number, actor_id: string): XYZ | undefined;
+    carrierFrames(variant: 'A' | 'B', at_s: number): readonly BeltFrame[];
     snapshot(): Record<string, unknown>;
     dynamicObjects(): THREE.Object3D[];
     dispose(): void;
@@ -45,14 +46,17 @@ type BeltStep = {
     yawTo: number;
     payload: 'tote' | 'parcel';
 };
-type BeltFrame = {
+export type BeltFrame = {
     id: string;
     visible: boolean;
     payload: 'tote' | 'parcel';
     phase: string;
     position: XYZ;
     yaw: number;
+    source_edge_id: string;
 };
+// Finite display episode. Negative starts explicitly place two carriers in transit at t=0.
+const BELT_STARTS = Object.freeze([-128, -64, 0, 64, 128, 192]);
 const Y = new THREE.Vector3(0, 1, 0), UNIT = new THREE.Vector3(1, 1, 1);
 const requireValue = (value: unknown, message: string): void => { if (!value)
     throw Error(message); };
@@ -190,10 +194,11 @@ function beltPosition(step: BeltStep, at: number, nodes: Map<string, XYZ>) {
     return { position, yaw: step.yawFrom + (step.yawTo - step.yawFrom) * u };
 }
 function beltFrames(plan: ReturnType<typeof compileBelt>, at: number): BeltFrame[] {
-    return [0, 64].map((start, index) => {
+    return BELT_STARTS.map((start, index) => {
         const local = at - start, step = plan.steps.find(s => local >= s.start && local < s.end);
-        const sampled = beltPosition(step ?? plan.steps.at(-1)!, step ? local : plan.duration, plan.nodes);
-        return { id: 'twin-visual-carrier-' + (index + 1), visible: !!step, payload: step?.payload ?? 'parcel', phase: step?.phase ?? (local < 0 ? 'not_arrived' : 'finished_visual'), ...sampled };
+        const held = step ?? (local < 0 ? plan.steps[0]! : plan.steps.at(-1)!);
+        const sampled = beltPosition(held, Math.max(0, Math.min(local, plan.duration)), plan.nodes);
+        return { id: 'twin-visual-carrier-' + (index + 1), visible: !!step, payload: held.payload, phase: step?.phase ?? (local < 0 ? 'not_arrived' : 'finished_visual'), source_edge_id: held.edge.edge_id, ...sampled };
     });
 }
 type ParcelPart = {
@@ -206,9 +211,12 @@ function parcelParts(scene: THREE.Scene, bundle: WarehouseBundle): ParcelPart[] 
     const admission = (bundle.layout.data.conveyor as V3Record).payload_admission as {
         maximum_footprint_m: number[];
         maximum_height_m: number;
+        tote_outer_target_m: XYZ;
     };
     const dimensions = source.cargo.dimensions_xyz_m;
     requireValue(dimensions[0] <= admission.maximum_footprint_m[0] && dimensions[2] <= admission.maximum_footprint_m[1] && dimensions[1] <= admission.maximum_height_m, 'Source parcel geometry exceeds belt envelope');
+    const tote = admission.tote_outer_target_m;
+    requireValue(dimensions[0] <= tote[0] - .024 && dimensions[1] <= tote[1] - .012 && dimensions[2] <= tote[2] - .024, 'Source parcel does not fit the tote interior');
     const inverse = pose(source.position, source.yaw_rad).invert(), result: ParcelPart[] = [];
     scene.updateMatrixWorld(true);
     scene.traverse(node => {
@@ -241,8 +249,8 @@ class BeltView {
         try {
             const material = new THREE.MeshStandardMaterial({ color: '#1d6579', roughness: .65 });
             this.owned.push(material);
-            for (let i = 0; i < 2; i++) {
-                const root = new THREE.Group(), tote = this.tote(dimensions, material), parcel = this.parcel(parts);
+            for (let i = 0; i < BELT_STARTS.length; i++) {
+                const root = new THREE.Group(), tote = this.tote(dimensions, material, parts), parcel = this.parcel(parts);
                 root.add(tote, parcel);
                 this.root.add(root);
                 this.cargo.set('twin-visual-carrier-' + (i + 1), { root, tote, parcel });
@@ -265,7 +273,7 @@ class BeltView {
         }
         return group;
     }
-    private tote(d: XYZ, material: THREE.Material) {
+    private tote(d: XYZ, material: THREE.Material, parts: ParcelPart[]) {
         const group = new THREE.Group(), thick = .012;
         const boxes: {
             size: XYZ;
@@ -278,6 +286,10 @@ class BeltView {
             mesh.castShadow = true;
             group.add(mesh);
         }
+        const goods = this.parcel(parts);
+        goods.name = 'twin_visual_tote_goods';
+        goods.position.y = thick;
+        group.add(goods);
         return group;
     }
     apply(frames: BeltFrame[]) {
@@ -333,6 +345,11 @@ class MainWarehouseMotion implements TwinWarehouseMotion {
         }
         return undefined;
     }
+    carrierFrames(variant: Variant, at: number): readonly BeltFrame[] {
+        requireValue(!this.disposed, 'Main warehouse motion is disposed');
+        checkTime(variant, at);
+        return beltFrames(this.tracks[variant], at);
+    }
     dynamicObjects() { return this.disposed ? [] : [...this.roots]; }
     snapshot() {
         return {
@@ -343,6 +360,7 @@ class MainWarehouseMotion implements TwinWarehouseMotion {
             heavy_visual_complete: this.plan.sample(this.at).completed_visual_jobs === 1,
             worker: { position: this.worker.sample(this.at).root_world, phase: this.worker.sample(this.at).stage, duration_s: this.worker.duration },
             belt: beltFrames(this.tracks[this.variant], this.at), belt_wait_basis: 'authored_visual_fixture',
+            belt_carrier_starts_s: [...BELT_STARTS], belt_initial_state_basis: 'authored_prerolled_visual_carriers', belt_end_hold_s: 240,
             belt_motion_basis: 'source_geometry_speed_and_dwell', dynamic_roots: this.roots.length,
         };
     }

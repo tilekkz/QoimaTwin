@@ -88,6 +88,121 @@ globalThis.fetch = async (url, options) => {
   return new Response(await fs.readFile(path.join(front, 'public' + name)), {status: 200});
 };
 const local = node => [node.parent?.uuid, node.position.toArray(), node.quaternion.toArray(), node.scale.toArray(), node.layers.mask];
+const carrierStarts = [-128, -64, 0, 64, 128, 192];
+function checkBeltCoverage(motion) {
+  const conveyor = bundle.layout.data.conveyor;
+  const clearance = Math.hypot(.6, .4) + conveyor.source_assumptions.payload_clearance_m;
+  // Between quarter-second samples, two source-speed carriers can close by .1375m.
+  const continuousMargin = conveyor.source_assumptions.speed_m_s * .25;
+  for (const variant of ['A', 'B']) {
+    let previous;
+    for (let tick = 0; tick <= 960; tick++) {
+      motion.apply(variant, tick / 4);
+      const frames = motion.snapshot().belt, visible = frames.filter(frame => frame.visible);
+      assert(visible.length >= 2, `${variant} has insufficient goods at ${tick / 4}s`);
+      assert(visible.some(frame => frame.phase === 'travel'), `${variant} has no moving goods at ${tick / 4}s`);
+      for (let i = 0; i < visible.length; i++) for (let j = i + 1; j < visible.length; j++) {
+        const distance = new THREE.Vector3(...visible[i].position).distanceTo(new THREE.Vector3(...visible[j].position));
+        assert(distance > clearance + continuousMargin, `Continuous carrier clearance ${variant}/${tick / 4}`);
+      }
+      for (const frame of visible) {
+        const old = previous?.find(row => row.id === frame.id && row.visible);
+        if (old) assert(new THREE.Vector3(...frame.position).distanceTo(new THREE.Vector3(...old.position)) <= .55 / 4 + 1e-8);
+      }
+      previous = frames;
+    }
+    const held = motion.snapshot(); motion.apply(variant, 240); assert.deepEqual(motion.snapshot(), held);
+  }
+}
+function localBounds(object, parent) {
+  const bounds = new THREE.Box3(), inverse = parent.matrixWorld.clone().invert();
+  object.traverse(node => {
+    if (!(node instanceof THREE.Mesh)) return;
+    node.geometry.computeBoundingBox();
+    bounds.union(node.geometry.boundingBox.clone().applyMatrix4(inverse.clone().multiply(node.matrixWorld)));
+  });
+  return bounds;
+}
+function checkToteContents(motion, scene) {
+  motion.apply('A', 0);
+  const root = scene.getObjectByName('twin_visual_belt_motion');
+  for (const carrier of root.children) {
+    const tote = carrier.children[0], goods = tote.getObjectByName('twin_visual_tote_goods');
+    assert(goods, 'Every tote contains an unscaled native SMALL_CARTON');
+    assert.deepEqual(goods.scale.toArray(), [1, 1, 1]);
+    const box = localBounds(goods, tote), dimensions = box.getSize(new THREE.Vector3());
+    assert(dimensions.distanceTo(new THREE.Vector3(.32, .24, .24)) < 1e-6);
+    assert(Math.abs(box.min.y - .012) < 1e-6);
+    assert(box.min.x >= -.288 && box.max.x <= .288 && box.min.z >= -.188 && box.max.z <= .188 && box.max.y <= .3);
+  }
+  assert.equal(root.children.length, carrierStarts.length);
+}
+function sourcePath(from, to) {
+  const edges = bundle.layout.data.conveyor.edges, queue = [[from, []]], seen = new Set([from]);
+  for (const [node, path] of queue) {
+    if (node === to) return path;
+    for (const edge of edges.filter(row => row.from_node_id === node)) if (!seen.has(edge.to_node_id)) {
+      seen.add(edge.to_node_id); queue.push([edge.to_node_id, [...path, edge]]);
+    }
+  }
+  throw Error('Disconnected source test path');
+}
+function sourceBeltSteps(variant) {
+  const station = variant === 'A' ? 'PK03' : 'PK05', steps = [];
+  let at = 0;
+  const append = (edge, duration, phase) => {steps.push({edge, start: at, end: at + duration, phase}); at += duration;};
+  const path = (from, to) => {
+    for (const edge of sourcePath(from, to)) {
+      if (edge.turn_timing === 'before_edge') append(edge, .8, 'pivot');
+      append(edge, edge.length_m / .55, 'travel');
+      if (edge.turn_timing === 'after_edge') append(edge, .8, 'pivot');
+    }
+  };
+  path('v3:conv:intake', 'v3:conv:' + station + ':WORK');
+  append(steps.at(-1).edge, variant === 'A' ? 42 : 12, 'packing_wait');
+  path('v3:conv:' + station + ':WORK', 'v3:conv:output');
+  return steps;
+}
+function checkSourceBeltEdges(motion) {
+  const source = bundle.layout.data.conveyor, nodes = new Map(source.nodes.map(node => [node.node_id, node.world_pos]));
+  for (const variant of ['A', 'B']) for (const step of sourceBeltSteps(variant)) {
+    for (const [index, start] of carrierStarts.entries()) {
+      const middle = start + (step.start + step.end) / 2;
+      if (middle < 0 || middle > 240) continue;
+      motion.apply(variant, middle);
+      const frame = motion.snapshot().belt[index];
+      assert.equal(frame.source_edge_id, step.edge.edge_id); assert.equal(frame.phase, step.phase);
+      if (step.phase === 'travel') {
+        const edge = step.edge, a = nodes.get(edge.from_node_id), b = nodes.get(edge.to_node_id);
+        const expected = edge.path_kind === 'arc'
+          ? [edge.centre[0] + edge.radius_m * Math.cos((edge.theta_start_rad + edge.theta_end_rad) / 2), edge.centre[1], edge.centre[2] + edge.radius_m * Math.sin((edge.theta_start_rad + edge.theta_end_rad) / 2)]
+          : a.map((value, axis) => (value + b[axis]) / 2);
+        assert(new THREE.Vector3(...frame.position).distanceTo(new THREE.Vector3(...expected)) < 1e-8);
+      }
+      for (const boundary of [start + step.start, start + step.end]) {
+        if (boundary <= .00001 || boundary >= 239.99999) continue;
+        motion.apply(variant, boundary - .00001); const before = motion.snapshot().belt[index];
+        motion.apply(variant, boundary + .00001); const after = motion.snapshot().belt[index];
+        if (before.visible && after.visible) assert(new THREE.Vector3(...before.position).distanceTo(new THREE.Vector3(...after.position)) <= .55 * .00002 + 1e-8);
+      }
+    }
+  }
+}
+function checkCarrierQuery(motion) {
+  motion.apply('A', 90);
+  const current = motion.snapshot(), poses = new Map();
+  for (const root of motion.dynamicObjects()) root.traverse(node => poses.set(node, local(node)));
+  const frames = motion.carrierFrames('B', 60), expected = structuredClone(frames);
+  assert.equal(frames.length, carrierStarts.length);
+  assert(frames.some(frame => frame.visible && frame.phase === 'packing_wait'));
+  frames[0].position[0] = -1000; frames[1].visible = !frames[1].visible; frames.pop();
+  assert.deepEqual(motion.carrierFrames('B', 60), expected);
+  assert.deepEqual(motion.snapshot(), current);
+  for (const [node, pose] of poses) assert.deepEqual(local(node), pose);
+  for (const time of [-1, 241, NaN, Infinity]) assert.throws(() => motion.carrierFrames('A', time));
+  assert.throws(() => motion.carrierFrames('unsupported', 10));
+  assert.deepEqual(motion.snapshot(), current);
+}
 const fixture = await sceneFixture(), before = new Map();
 fixture.vehicles.get('FL01').layers.enable(2);
 fixture.actors.get('S02').layers.enable(3);
@@ -97,6 +212,11 @@ let motion;
 try {
   motion = await createTwinWarehouseMotion(fixture.scene, bundle, texts, new AbortController().signal);
   let checks = 0;
+  const coverageFailures = [];
+  for (const check of [() => checkBeltCoverage(motion), () => checkToteContents(motion, fixture.scene), () => checkSourceBeltEdges(motion), () => checkCarrierQuery(motion)]) {
+    try {check(); checks++;} catch (error) {coverageFailures.push(error);}
+  }
+  if (coverageFailures.length) throw new AggregateError(coverageFailures, 'Normal main comparison goods coverage');
   assert.equal(motion.snapshot().source_kind, 'visual_fixture'); checks++;
   assert(motion.dynamicObjects().includes(fixture.vehicles.get('FL01')));
   assert(motion.dynamicObjects().includes(fixture.actors.get('S02'))); checks++;
@@ -133,6 +253,7 @@ try {
   for (const [node, expected] of before) assert.deepEqual(local(node), expected, node.name);
   assert(!fixture.scene.getObjectByName('twin_visual_belt_motion')); checks++;
   assert.throws(() => motion.apply('A', 0), /disposed/i); checks++;
+  assert.throws(() => motion.carrierFrames('A', 0), /disposed/i);
   const aborted = new AbortController(); aborted.abort();
   await assert.rejects(() => createTwinWarehouseMotion(fixture.scene, bundle, texts, aborted.signal)); checks++;
   const mockedFetch = globalThis.fetch, duringFetch = new AbortController();

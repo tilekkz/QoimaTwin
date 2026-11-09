@@ -32,12 +32,15 @@ their current `destination`, preserving immutable source `cargo.location`.
 
 Moving objects render on a separate layer against the cached static color and
 depth. The main time, pause, reverse seek and A/B passes sample one consistent
-episode. New focus buttons make the conveyor, loaded FL01 and walking S02 easy
-to inspect without finding them in the warehouse overview.
+episode. Focus buttons open the conveyor, loaded FL01 and walking S02 at 1× speed.
+The clock starts after motion installation finishes.
 
-- Conveyor carriers follow the source graph at 0.55 m/s with 0.8 s transfers.
-  Packing waits of 42 s in A and 12 s in B are authored visual cues. A tote is
-  replaced by the source parcel representation at the packing handover.
+- Six finite carriers start at −128, −64, 0, 64, 128 and 192 seconds. They
+  follow the source graph at 0.55 m/s with 0.8 s transfers. Initial work in
+  progress keeps goods visible throughout 0–240 seconds in both variants.
+  Packing waits of 42 s in A and 12 s in B are authored visual cues. Each tote
+  contains the native SMALL_CARTON. Packing changes its representation to the
+  parcel. Small projected box symbols keep goods legible below 16 px/m.
 - FL01 and its original F01 driver reuse the accepted heavy inbound primitive
   for the 455 kg pallet. Attachment occurs at 60.224481402050685 s. At the main
   episode's 240 s boundary this task is still attached and incomplete; the
@@ -53,8 +56,10 @@ warehouse physical workflow acceptance remains broader than this proposal.
 
 - Full frontend TypeScript check and production Vite build passed.
 - Asset validation passed without GLB errors.
-- Pure CPU checks passed: inventory scene 10, warehouse motion 24 using five
-  actual source models, dynamic renderer 8, page integration 18. The source
+- Pure CPU checks passed: inventory scene 10, warehouse motion 28 using five
+  actual source models, dynamic renderer 8, page integration 18, clock 9,
+  carrier indicators 6 and responsive control names 5. Forty move-update cycles
+  created and disposed 80 curve geometries. The source
   inventory check independently derives 579/899 and nine reserved vacancies.
 - Independent peer checks covered stock admission/cleanup, native motion,
   preserved actor homes, current-destination slot lookup and B-only selection.
@@ -65,8 +70,10 @@ warehouse physical workflow acceptance remains broader than this proposal.
 - Desktop browser checks on the actual main page covered clean reload,
   conveyor pause/reverse seek, native walking, the loaded forklift, source/fill
   toggles, legacy B destination search and selecting a filled B-only slot.
-  These are not acceptance of the separate native replay page or every mobile
-  breakpoint.
+  Follow-up browser checks passed swipe dragging and keyboard control on
+  desktop and 390 px, plus panel scrolling, source/fill controls and search
+  access at 320 px. Both narrow views use a two-row dock. Goods remain visible
+  at the paused 240-second boundary and the ordinary entry starts playback.
 
 Tilek's `626234d` update is integrated, including its original cart episode,
 home entry and scrollable comparison menu. TypeScript, the production build

@@ -60,6 +60,7 @@ let t=0,playing=!reduced.matches&&!document.hidden,speed=4,last=0,raf=0,split=.5
 let slottingMoves:Move[]=[],layoutCandidate:WarehouseLayoutPlan|null=null,layoutEnabled=false,layoutBusy=false,layoutMessage='Готовим планировку…';
 let layoutSourceTexts:WarehouseTexts|undefined,layoutAccess:WarehouseLayoutAccessResult|null=null;
 let currentInventory:TwinInventory|undefined;
+let motionReady=false;
 let slottingBindingsB:readonly BoundCargo[]=[];
 let inventoryMode:TwinInventoryMode=new URL(location.href).searchParams.get('stock')==='source'?'source530':'populated-demo-v1';
 function activeCargo(variant:Variant):readonly BoundCargo[]{
@@ -95,7 +96,7 @@ function setInventoryMode(next:TwinInventoryMode){
 }
 for(const button of $$<HTMLButtonElement>('[data-stock]'))button.addEventListener('click',()=>setInventoryMode(button.dataset.stock as TwinInventoryMode));
 for(const button of $$<HTMLButtonElement>('[data-motion-focus]'))button.addEventListener('click',()=>{
- if(phase!=='ready')return;setSheet(null);setSearch(false);
+ if(phase!=='ready'||!motionReady)return;setSheet(null);setSearch(false);setSpeed(1);
  const focus=button.dataset.motionFocus;
  if(focus==='belt'){seek(45);select(null);fly([106.5,1,3],22);}
  else{seek(focus==='forklift'?100:12);select(focus==='forklift'?'F01':'S02','actor','A');}
@@ -377,16 +378,27 @@ pNext.addEventListener('click',nextPresent);
 
 /* ---------- clock ---------- */
 const PLAY='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L6.1 2.6C5.6 2.3 5 2.6 5 3.2z"/></svg>',PAUSE='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3.2" height="11" rx="1.2"/><rect x="9.3" y="2.5" width="3.2" height="11" rx="1.2"/></svg>';
-function syncPlay(){play.innerHTML=playing?PAUSE:PLAY;play.setAttribute('aria-label',playing?'Пауза':'Воспроизвести');}
+function syncPlay(){
+ play.innerHTML=playing?PAUSE:PLAY;
+ play.setAttribute('aria-label',playing?'Пауза':'Воспроизвести');
+ play.disabled=!motionReady;
+ play.setAttribute('aria-busy',String(!motionReady));
+ for(const button of $$<HTMLButtonElement>('[data-motion-focus]'))button.disabled=!motionReady;
+}
 function seek(next:number,clockAdvance=false){
  if(!clockAdvance)silenceAudio();
  t=Math.min(DEMO_DURATION_S,Math.max(0,next));clockOut.textContent=mmss(t);progress.style.width=t/DEMO_DURATION_S*100+'%';
  river.setAttribute('aria-valuenow',String(Math.round(t)));twin?.setTime(t);if(sheet==='time')drawRiver();renderNow();renderWorkerStatus();drawMini();
 }
-function tick(now:number){raf=0;if(reconcileReducedMotion()||!playing||phase!=='ready')return;const dt=Math.min(.1,(now-last)/1000);last=now;const before=t;seek(t+dt*speed,true);cuesBetween(before,t);if(t>=DEMO_DURATION_S){playing=false;silenceAudio();syncPlay();return;}raf=requestAnimationFrame(tick);}
-function setPlaying(next:boolean){playing=next;if(!playing){silenceAudio();if(raf){cancelAnimationFrame(raf);raf=0;}}syncPlay();if(playing&&t>=DEMO_DURATION_S)seek(0);if(playing&&!raf&&phase==='ready'){last=performance.now();raf=requestAnimationFrame(tick);}}
+function tick(now:number){raf=0;if(reconcileReducedMotion()||!playing||phase!=='ready'||!motionReady)return;const dt=Math.min(.1,(now-last)/1000);last=now;const before=t;seek(t+dt*speed,true);cuesBetween(before,t);if(t>=DEMO_DURATION_S){playing=false;silenceAudio();syncPlay();return;}raf=requestAnimationFrame(tick);}
+function setPlaying(next:boolean){playing=next;if(!playing){silenceAudio();if(raf){cancelAnimationFrame(raf);raf=0;}}syncPlay();if(playing&&t>=DEMO_DURATION_S)seek(0);if(playing&&!raf&&phase==='ready'&&motionReady){last=performance.now();raf=requestAnimationFrame(tick);}}
 play.addEventListener('click',()=>setPlaying(!playing));
-for(const b of $$<HTMLButtonElement>('[data-speed]'))b.addEventListener('click',()=>{speed=Number(b.dataset.speed);for(const x of $$('[data-speed]'))x.setAttribute('aria-pressed',String(x===b));});
+function setSpeed(next:number){
+ if(![1,4,8].includes(next))return;
+ speed=next;
+ for(const button of $$<HTMLButtonElement>('[data-speed]'))button.setAttribute('aria-pressed',String(Number(button.dataset.speed)===next));
+}
+for(const b of $$<HTMLButtonElement>('[data-speed]'))b.addEventListener('click',()=>setSpeed(Number(b.dataset.speed)));
 for(const c of CHAPTERS){const b=document.createElement('button');b.type='button';b.textContent=c.label;b.title=mmss(c.at_s);b.addEventListener('click',()=>{setPlaying(false);seek(c.at_s+.01);});$('#tw-chapters').append(b);}
 
 /* ---------- time river ---------- */
@@ -589,7 +601,7 @@ host.addEventListener('pointerleave',hideHint);host.addEventListener('pointerdow
 async function readLocal(path:string,signal:AbortSignal){const r=await fetch(import.meta.env.BASE_URL+path.replace(/^\//,''),{signal,cache:'no-store'});if(!r.ok)throw Error(r.status===404?'В локальном пакете не хватает данных склада V3.':'Данные склада временно недоступны. Повторите загрузку.');return r.text();}
 const pose=(b:BoundCargo):Pose=>({position:[...b.position],yaw:b.yaw_rad,dims:[...b.cargo.dimensions_xyz_m]});
 function clearSelectionState(){selectedId=null;selectedKind='HU';statusKey='';for(const button of $$<HTMLButtonElement>('.tw-moves button'))button.setAttribute('aria-pressed','false');show(sheets.find(s=>s.dataset.sheet==='sel')!,false);$('#tw-selection').replaceChildren();}
-function disposeAll(){silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;currentInventory=undefined;slottingBindingsB=[];moves=[];slottingMoves=[];layoutCandidate=null;layoutSourceTexts=undefined;layoutAccess=null;layoutEnabled=false;layoutBusy=false;nowKey='';clearSelectionState();endPresent();}
+function disposeAll(){motionReady=false;syncPlay();silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;currentInventory=undefined;slottingBindingsB=[];moves=[];slottingMoves=[];layoutCandidate=null;layoutSourceTexts=undefined;layoutAccess=null;layoutEnabled=false;layoutBusy=false;nowKey='';clearSelectionState();endPresent();}
 async function load(){
  const token=++serial;controller?.abort();controller=new AbortController();const owned=controller;disposeAll();
  if(!webglAvailable()){showNoGl();return;}
@@ -626,14 +638,14 @@ async function load(){
     hover:(z,v)=>{if(z)tw.highlightZone(z,v);else restoreHl();}});
   zoneRects=new Map((data.layout.data.zones as Z[]).map(z=>[z.zone_id,z.floor_bounds_xz_m]));
   setPhase('ready','');
-  setMode(mode,false);setSplit(split);renderMoves();tw.setReady();applyEffects();seek(t);sc.setView('overview' as WarehouseView);{const o=overview();sc.frameAt(o.target,o.span,HOME_DIR);}readViewUrl(sc);setPlaying(playing);
+  setMode(mode,false);setSplit(split);renderMoves();tw.setReady();applyEffects();seek(t);sc.setView('overview' as WarehouseView);{const o=overview();sc.frameAt(o.target,o.span,HOME_DIR);}readViewUrl(sc);
   await setLayoutMode(new URL(location.href).searchParams.get('layout')==='cargo'?'cargo':'sections');
   if(token!==serial||twin!==tw||scene!==sc||phase!=='ready')return;
    refreshInventory();rebuildSearchIndex();
    if(!world)throw Error('Comparison scene was not created');
    const motion=await createTwinWarehouseMotion(world,data,sourceTexts,owned.signal);
    if(token!==serial||twin!==tw||scene!==sc){motion.dispose();return;}
-   tw.setMotion(motion);seek(t);
+   tw.setMotion(motion);motionReady=true;seek(t);setPlaying(playing);
   // Start page link «Режим защиты» opens straight into the walk-through.
   if(new URL(location.href).searchParams.get('present')==='1')goStep(0);
   // Start page links open a scenario card straight away.
