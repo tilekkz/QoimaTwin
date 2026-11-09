@@ -11,9 +11,10 @@ import pytest
 from app.storage.canonical_json import canonical_bytes
 from app.v3.offer_planning_cli_storage import descriptor, request_record
 from app.v3.offer_planning_cli_validation import validate_offer_plan
+from tests.v3.test_forecast_placement_fixtures import stock
 from tests.v3.test_offer_planning_cli import bundle
 
-__all__ = ["bundle"]
+__all__ = ["bundle", "stock"]
 
 
 def save_manifest(target: Path, value: dict[str, Any]) -> None:

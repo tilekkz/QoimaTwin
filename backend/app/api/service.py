@@ -8,7 +8,8 @@ from app.api.context import ApiContext, Job, JobKind, Json
 from app.api.models import VersionedRequest
 from app.api.processor import Processor
 from app.errors import AppError, InvalidInputError
-from app.storage.canonical_json import sha256_hex
+from app.storage.artifacts import ArtifactCorruption
+from app.storage.canonical_json import canonical_bytes, sha256_hex
 from app.version import ENGINE_VERSION
 
 REF_FIELDS = {
@@ -47,15 +48,31 @@ class JobService:
         )
         return await self.submit_job(job, key)
 
-    async def submit_job(self, job: Job, key: str) -> Json:
+    async def submit_job(self, job: Job, key: str, *, cached_read: Job | None = None) -> Json:
         """Share one admission slot and cancellation/drain policy across API domains."""
         cached = self.context.store.read_reference("requests", key)
+        if cached_read is not None and (
+            cached is not None or self.context.store.path("requests", key).exists()
+        ):
+            if type(cached) is not dict:
+                raise ArtifactCorruption("cached request result must be an object")
+            verified = await self.read_job(cached_read)
+            if canonical_bytes(cached) != canonical_bytes(verified):
+                raise ArtifactCorruption("cached request differs from fresh authority")
+            return verified
         if cached is not None:
             return dict(cached)
         if self.active is not None and not self.active.done():
             raise BusyError("one calculation is already running; retry after it completes")
         self.active = asyncio.create_task(self._execute(job, key))
         # A disconnected client does not cancel the child or release its admission slot.
+        return await asyncio.shield(self.active)
+
+    async def read_job(self, job: Job) -> Json:
+        """Authenticate freshly in the same owned worker, without publishing a request cache."""
+        if self.active is not None and not self.active.done():
+            raise BusyError("one calculation is already running; retry after it completes")
+        self.active = asyncio.create_task(self.processor.execute(job))
         return await asyncio.shield(self.active)
 
     def _validate(self, payload: Json) -> None:

@@ -13,7 +13,7 @@ from .stock_models import (
     UnitLocation,
     UnitToken,
 )
-from .stock_validation import require, validate_contents, validate_owners
+from .stock_validation import exact, require, validate_contents, validate_owners
 
 
 def contents_view(
@@ -31,6 +31,26 @@ def contents_view(
         scope.add(unit.token.recipe, container.container_id)
     gross = container.recipe.tare_kg + scope.totals(container.container_id).gross
     return ContainerContents(container, units, gross)
+
+
+def gross_masses(
+    containers: dict[str, Container],
+    locations: dict[str, UnitLocation],
+    tokens: dict[str, UnitToken],
+) -> dict[str, Fraction]:
+    """Project current per-container mass in one local pass, including empty tare."""
+    require(locations.keys() == tokens.keys(), "unit conservation violation")
+    scope = _MassPass()
+    for key, location in locations.items():
+        require(key == location.unit_id, "unit location identity mismatch")
+        require(location.container_id in containers, "unknown physical container")
+        scope.add(tokens[key].recipe, location.container_id)
+    result: dict[str, Fraction] = {}
+    for key, container in containers.items():
+        require(key == container.container_id, "container identity mismatch")
+        exact(container.recipe.tare_kg)
+        result[key] = container.recipe.tare_kg + scope.totals(key).gross
+    return result
 
 
 def check_state(

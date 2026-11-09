@@ -61,11 +61,17 @@ def create_app(
 
 def _attach_flow_routes(app: FastAPI, context: ApiContext, source: Path | None) -> None:
     from app.v3.api_coordinator import attach_coordinator_routes
+    from app.v3.api_forecast_relocation import attach_forecast_relocation_routes
     from app.v3.api_light import attach_light_routes
+    from app.v3.api_offer_planning import attach_offer_planning_routes
     from app.v3.api_receipt import attach_receipt_routes
+    from app.v3.api_relocation_pair import attach_relocation_pair_routes
     from app.v3.api_whole import attach_whole_routes
 
     attach_light_routes(app, context, source)
     attach_receipt_routes(app, context, source)
     attach_whole_routes(app, context, source)
     attach_coordinator_routes(app, context, source)
+    attach_offer_planning_routes(app, context)
+    attach_forecast_relocation_routes(app, context, source)
+    attach_relocation_pair_routes(app, context)

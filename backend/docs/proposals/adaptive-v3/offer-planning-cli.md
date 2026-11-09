@@ -101,9 +101,13 @@ use reduced integer pairs. Customer fields are `offer_id`, `port_id`,
 and `service_ticks`. The offer must match the newly projected stream; do not
 reuse an ID from a different history or choices. Missing downstream evidence
 remains `not_evaluable`, not an invented benefit. No receipts are admitted by
-this projection. The full explicit source example is
-`tests/v3/offer_planning_cli_example.json`; its three choice objects accompany
-the pure CSV fixture in `test_offer_planning_cli_fixtures.py`.
+this projection. The explicit source example is
+`tests/v3/offer_planning_cli_example.json`. Its saved customer ID belongs to
+the generating kernel environment. Forecast identity includes the Python patch,
+dependency versions and kernel source hashes. Bind the chosen HU's customer to
+its currently authenticated projected offer. The test writer
+`arguments(root, output, stock)` checks matching explicit history and projection
+choices, then takes that offer ID from the supplied `ForecastBoundStock`.
 
 ## Saved bundle and result
 

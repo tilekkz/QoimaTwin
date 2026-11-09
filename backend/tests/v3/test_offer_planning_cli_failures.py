@@ -8,12 +8,16 @@ import pytest
 
 from app.cli import main
 from app.v3 import offer_planning_cli_pipeline as pipeline
+from app.v3.forecast_stock_models import ForecastBoundStock
 from app.v3.offer_planning_cli_storage import put, read_regular
+from tests.v3.test_forecast_placement_fixtures import stock
 from tests.v3.test_offer_planning_cli_fixtures import arguments
+
+__all__ = ["stock"]
 
 
 def test_calculation_failure_preserves_frozen_request_and_partial_stage(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    stock: ForecastBoundStock, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     output = tmp_path / "out"
 
@@ -27,7 +31,7 @@ def test_calculation_failure_preserves_frozen_request_and_partial_stage(
         raise ValueError("Injected interruption after frozen request and first stage")
 
     monkeypatch.setattr(pipeline, "_calculate", interrupted)
-    assert main(arguments(tmp_path / "caller", output)) == 1
+    assert main(arguments(tmp_path / "caller", output, stock)) == 1
     assert (output / "history.json").read_bytes() == b"partial-stage-test-sentinel"
     assert (output / "request.json").is_file()
     assert len(list((output / "raw").iterdir())) == 4
@@ -37,9 +41,11 @@ def test_calculation_failure_preserves_frozen_request_and_partial_stage(
     assert not (output / "manifest.json").exists()
 
 
-def test_actual_future_stream_argument_is_not_accepted(tmp_path: Path) -> None:
+def test_actual_future_stream_argument_is_not_accepted(
+    tmp_path: Path, stock: ForecastBoundStock
+) -> None:
     output = tmp_path / "out"
-    args = arguments(tmp_path / "caller", output)
+    args = arguments(tmp_path / "caller", output, stock)
     assert main([*args, "--actual-test-stream", "not-accepted.csv"]) == 1
     assert not output.exists()
 

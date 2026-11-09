@@ -1,6 +1,7 @@
 """One stock authority: bounded unit moves and explicit whole-HU receipt accounting."""
 
 from dataclasses import replace
+from fractions import Fraction
 
 from .stock_claims import StockClaim, StockClaims, identity
 from .stock_commands import ReceiveHUCommand, ShipHUCommand, StockCommand, validate_command
@@ -24,7 +25,7 @@ from .stock_receipts import (
     receipt_tokens,
     validate_receipt,
 )
-from .stock_state import balances, check_state, contents_view
+from .stock_state import balances, check_state, contents_view, gross_masses
 from .stock_validation import (
     require,
     validate_container,
@@ -113,6 +114,10 @@ class StockLedger:
 
     def contents(self, container_id: str) -> ContainerContents:
         return contents_view(self._container(container_id), self._locations, self._tokens)
+
+    def gross_masses(self) -> dict[str, Fraction]:
+        """Return detached current masses; no count or recipe cache survives this call."""
+        return gross_masses(self._containers, self._locations, self._tokens)
 
     def balance(self) -> StockBalance:
         return balances(self._containers, self._locations, self._tokens, self._owners)

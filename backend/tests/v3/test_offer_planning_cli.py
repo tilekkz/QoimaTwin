@@ -8,14 +8,18 @@ import pytest
 
 from app.cli import main
 from app.v3.coordinator_engine import CoordinatorEngine
+from app.v3.forecast_stock_models import ForecastBoundStock
 from app.v3.light_flow_engine import LightFlowEngine
 from app.v3.receipt_flow_engine import ReceiptFlowEngine
 from app.v3.whole_flow_engine import WholeFlowEngine
+from tests.v3.test_forecast_placement_fixtures import stock
 from tests.v3.test_offer_planning_cli_fixtures import arguments
+
+__all__ = ["stock"]
 
 
 @pytest.fixture(scope="session")
-def bundle(tmp_path_factory: pytest.TempPathFactory) -> Path:
+def bundle(tmp_path_factory: pytest.TempPathFactory, stock: ForecastBoundStock) -> Path:
     root = tmp_path_factory.mktemp("offer-cli")
     with pytest.MonkeyPatch.context() as monkeypatch:
 
@@ -25,7 +29,7 @@ def bundle(tmp_path_factory: pytest.TempPathFactory) -> Path:
         for cls in (CoordinatorEngine, WholeFlowEngine, ReceiptFlowEngine, LightFlowEngine):
             monkeypatch.setattr(cls, "__init__", forbidden)
             monkeypatch.setattr(cls, "run", forbidden)
-        assert main(arguments(root / "caller", root / "bundle")) == 0
+        assert main(arguments(root / "caller", root / "bundle", stock)) == 0
     return root / "bundle"
 
 
@@ -56,11 +60,12 @@ def test_data_only_validate_command_reconstructs_saved_chain(bundle: Path) -> No
 
 @pytest.mark.parametrize("mutation", ["unknown", "clock_bool", "missing", "history", "fraction"])
 def test_malformed_choices_freeze_raw_failure_without_a_manifest(
+    stock: ForecastBoundStock,
     tmp_path: Path,
     mutation: str,
 ) -> None:
     output = tmp_path / "out"
-    args = arguments(tmp_path / "caller", output)
+    args = arguments(tmp_path / "caller", output, stock)
     path = tmp_path / "caller/history_choices.json"
     value: Any = json.loads(path.read_bytes())
     if mutation == "unknown":
@@ -83,10 +88,10 @@ def test_malformed_choices_freeze_raw_failure_without_a_manifest(
     assert (output / "raw/history.csv").read_bytes() == (path.parent / "history.csv").read_bytes()
 
 
-def test_nonempty_output_is_not_changed(tmp_path: Path) -> None:
+def test_nonempty_output_is_not_changed(tmp_path: Path, stock: ForecastBoundStock) -> None:
     output = tmp_path / "out"
     output.mkdir()
     marker = output / "existing.bin"
     marker.write_bytes(b"keep-exact")
-    assert main(arguments(tmp_path / "caller", output)) == 1
+    assert main(arguments(tmp_path / "caller", output, stock)) == 1
     assert list(output.iterdir()) == [marker] and marker.read_bytes() == b"keep-exact"

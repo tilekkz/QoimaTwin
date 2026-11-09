@@ -24,9 +24,16 @@ class WorkResult:
 def execute_job(job: Job) -> WorkResult:
     from app.api.planning_jobs import compare_job, plan_job
     from app.v3.api_coordinator_worker import coordinator_job
+    from app.v3.api_forecast_relocation_worker import (
+        profile_job,
+        relocation_job,
+        relocation_read_job,
+    )
     from app.v3.api_light_worker import light_job
     from app.v3.api_manual_worker import manual_job
+    from app.v3.api_offer_planning_worker import planning_job, planning_read_job
     from app.v3.api_receipt_worker import receipt_job
+    from app.v3.api_relocation_pair_worker import pair_read_job
     from app.v3.api_whole_worker import whole_job
 
     handlers = {
@@ -39,6 +46,12 @@ def execute_job(job: Job) -> WorkResult:
         "receipt-v3": receipt_job,
         "whole-v3": whole_job,
         "coordinator-v3": coordinator_job,
+        "offer-planning-v3": planning_job,
+        "offer-planning-read-v3": planning_read_job,
+        "forecast-relocation-profile-v3": profile_job,
+        "forecast-relocation-v3": relocation_job,
+        "forecast-relocation-read-v3": relocation_read_job,
+        "relocation-pair-read-v3": pair_read_job,
     }
     try:
         return WorkResult(handlers[job.kind](job), os.getpid())

@@ -77,12 +77,11 @@ class RelocationResources(ResourceJournal):
         super().check_capacity()
         places = {p.owner_id: p for p in self.extension.places}
         used: dict[str, dict[str, Fraction]] = {}
+        masses = self.inventory.ledger.gross_masses()
         for container in self.inventory.ledger.snapshot().containers:
             if container.owner_id in places:
                 module = places[container.owner_id].module_id
-                used.setdefault(module, {})[container.container_id] = (
-                    self.inventory.ledger.contents(container.container_id).gross_mass_kg
-                )
+                used.setdefault(module, {})[container.container_id] = masses[container.container_id]
         for key, plan in self.relocations.items():
             if self.leases.get("relocation:place:" + plan.target.owner_id) == key:
                 used.setdefault(plan.target.module_id, {})[plan.job.hu_id] = plan.gross_mass_kg

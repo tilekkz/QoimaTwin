@@ -30,6 +30,12 @@ type JobKind = Literal[
     "receipt-v3",
     "whole-v3",
     "coordinator-v3",
+    "offer-planning-v3",
+    "offer-planning-read-v3",
+    "forecast-relocation-profile-v3",
+    "forecast-relocation-v3",
+    "forecast-relocation-read-v3",
+    "relocation-pair-read-v3",
 ]
 
 

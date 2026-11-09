@@ -7,9 +7,10 @@ from shutil import copytree
 import pytest
 
 from app.v3.offer_planning_cli_validation import validate_offer_plan
+from tests.v3.test_forecast_placement_fixtures import stock
 from tests.v3.test_offer_planning_cli import bundle
 
-__all__ = ["bundle"]
+__all__ = ["bundle", "stock"]
 
 
 @pytest.mark.parametrize("mutation", ["extra", "missing", "modified", "manifest_alias"])
