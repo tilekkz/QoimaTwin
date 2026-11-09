@@ -1,4 +1,4 @@
-import pickupSource from '../../public/data/v3/pallet-pickup-cycle.json';
+import pickupSource from './pallet-pickup-cycle.json';
 import {isWarehouseActionCatalogue,type WarehouseActionCatalogue} from './warehouseActionTimeline';
 import {createWarehouseRouter,type RoutePolicy,type RoutePlan} from './warehouseRouting';
 import {compileVehicleRoutePreview,type VehicleRoutePreview} from './warehouseRoutePose';
