@@ -1,0 +1,4847 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "source_hashes": {
+    "frontend/tools/check-warehouse-long-scenario-v3.mjs": "6ac60797e79d0beee153453e566a4ae776d9c9b688220bd317f5265f814f5c1c",
+    "frontend/src/adaptive-v3/warehouseLongScenarioScene.ts": "1eb4c10ac6fdc8faef9a11181ea48a1885b074ff3415987c6a244939037294c0",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseLongScenarioPlan.ts": "1677934f99d575c4232d9489b725bfdf75bc144d99affd00a6052fcfa6d5499c",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/src/adaptive-v3/workerRoleAssignment.ts": "8156eed54a082d2f5625c8beb2c3ef4fbe6437b19c04911b172c441b02c08e0f",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/n3-retention.json": "6243bba567637350b7c170ef378a1a94cc0c139da583ef80cac6a625e2432f03",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/n3-relative-pi-addon.json": "1bd80aebeb5502368817cac689a45d7c45d4a911c1e80bdb5240b47b35dafd96",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+  },
+  "fixture": {
+    "schema_id": "qoima.materialized-long-crossdock.v1",
+    "case_id": "v3:visual:N3:secured-assembly-crossdock:001",
+    "request_id": "v3:request:visual:N3:crossdock:001",
+    "handling_unit_id": "v3:HU:visual:N3:crossdock:001",
+    "kit_id": "v3:attachment:visual:N3:corrected-cap-kit:001",
+    "stage_id": "v3:n2:staging:IN_W_BULK:01",
+    "buffer_id": "v3:buffer:OUT_E_B2B:01",
+    "actor_id": "F02",
+    "vehicle_id": "FL02",
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "operational_admission": false,
+    "source_preparation_executed": false,
+    "recipient_unloading_executed": false,
+    "original_N3_inputs_modified": false,
+    "original_N3_requests_executed": [],
+    "kit_source": {
+      "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+      "sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+      "selection": "Existing explicitly selected corrected-cap cradle/rig only; its vehicle and tyre meshes are not installed in the warehouse."
+    },
+    "supports": [
+      {
+        "id": "v3:visual:N3:stage:M03:L",
+        "position": [
+          14.6,
+          0,
+          14
+        ],
+        "yaw_rad": 0
+      },
+      {
+        "id": "v3:visual:N3:stage:M03:R",
+        "position": [
+          17.4,
+          0,
+          14
+        ],
+        "yaw_rad": 0
+      },
+      {
+        "id": "v3:visual:N3:out:M03:L",
+        "position": [
+          113.6,
+          0,
+          14
+        ],
+        "yaw_rad": 0
+      },
+      {
+        "id": "v3:visual:N3:out:M03:R",
+        "position": [
+          116.4,
+          0,
+          14
+        ],
+        "yaw_rad": 0
+      }
+    ],
+    "supplier_boundary": "At2s an externally prepared whole HU on its already closed upper restraint/cradle becomes visible on actual two-M03 support. Supplier preparation/rig mount is not executed.",
+    "recipient_boundary": "The whole secured kit and unchanged HU remain on actual two-M03 outbound buffer. No invisible rig removal or recipient unloading is executed."
+  },
+  "duration_s": 664.9580467105654,
+  "phases": 70,
+  "samples": 442,
+  "empty_route": {
+    "ok": true,
+    "reason": "ROUTE_OK",
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "operational_admission": false,
+    "cost_evaluated": true,
+    "graph": "vehicle",
+    "from_node_id": "v3:service:OUT_E_B2B",
+    "to_node_id": "v3:service:IN_W_BULK",
+    "arc_ids": [
+      "v3:vehicle:edge:0099:reverse",
+      "v3:vehicle:edge:0097",
+      "v3:vehicle:edge:0217",
+      "v3:vehicle:edge:0113",
+      "v3:vehicle:edge:0261",
+      "v3:vehicle:edge:0189",
+      "v3:vehicle:edge:0257",
+      "v3:vehicle:edge:0177",
+      "v3:vehicle:edge:0253",
+      "v3:vehicle:edge:0079",
+      "v3:vehicle:edge:0249",
+      "v3:vehicle:edge:0165",
+      "v3:vehicle:edge:0245",
+      "v3:vehicle:edge:0153",
+      "v3:vehicle:edge:0241",
+      "v3:vehicle:edge:0025",
+      "v3:vehicle:edge:0207",
+      "v3:vehicle:edge:0003",
+      "v3:vehicle:edge:0009:reverse"
+    ],
+    "length_m": 174.43332885120606,
+    "mode": "forklift",
+    "actor_id": "F02",
+    "vehicle_id": "FL02",
+    "cargo_archetype_id": null,
+    "geometry_basis": "bare_component_subset",
+    "resource_admission_required": true,
+    "actual_action_admission_required": true
+  },
+  "loaded_route": {
+    "ok": true,
+    "reason": "ROUTE_OK",
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "operational_admission": false,
+    "cost_evaluated": true,
+    "graph": "vehicle",
+    "from_node_id": "v3:service:IN_W_BULK",
+    "to_node_id": "v3:service:OUT_E_B2B",
+    "arc_ids": [
+      "v3:vehicle:edge:0009",
+      "v3:vehicle:edge:0003:reverse",
+      "v3:vehicle:edge:0207:reverse",
+      "v3:vehicle:edge:0025:reverse",
+      "v3:vehicle:edge:0241:reverse",
+      "v3:vehicle:edge:0153:reverse",
+      "v3:vehicle:edge:0245:reverse",
+      "v3:vehicle:edge:0165:reverse",
+      "v3:vehicle:edge:0249:reverse",
+      "v3:vehicle:edge:0079:reverse",
+      "v3:vehicle:edge:0253:reverse",
+      "v3:vehicle:edge:0177:reverse",
+      "v3:vehicle:edge:0257:reverse",
+      "v3:vehicle:edge:0189:reverse",
+      "v3:vehicle:edge:0261:reverse",
+      "v3:vehicle:edge:0113:reverse",
+      "v3:vehicle:edge:0217:reverse",
+      "v3:vehicle:edge:0097:reverse",
+      "v3:vehicle:edge:0099"
+    ],
+    "length_m": 174.4333288512061,
+    "mode": "forklift",
+    "actor_id": "F02",
+    "vehicle_id": "FL02",
+    "cargo_archetype_id": "LONG_BUNDLE",
+    "geometry_basis": "C08_immutable_load",
+    "resource_admission_required": true,
+    "actual_action_admission_required": true
+  },
+  "native_contacts": [
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.18,
+        13.8
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.18,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 988,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.18,
+        14.2
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.18,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 989,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.18,
+        13.8
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.18,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 544,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.18,
+        14.2
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.18,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 545,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.32999999999999996,
+        13.8
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.32999998547136783,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 29,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.3300000018626451,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 32,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.32999999999999996,
+        14.2
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.32999998547136783,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 27,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.3300000018626451,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 76,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.32999999999999996,
+        13.8
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.32999998547136783,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 81,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.3300000018626451,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 33,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.32999999999999996,
+        14.2
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.32999998547136783,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 79,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.3300000018626451,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 77,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.77200000166893,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1619,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.77199995175004,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.77200000166893,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1551,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.77199995175004,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.77200000166893,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1483,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.77199995175004,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.77200000166893,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1415,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.77199995175004,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.77200000166893,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1347,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.77199995175004,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.77200000166893,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1279,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.77199995175004,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.77200000166893,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1618,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.77199995175004,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.77200000166893,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1550,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.77199995175004,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.77200000166893,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1482,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.77199995175004,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.77200000166893,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1414,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.77199995175004,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.77200000166893,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1346,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.77199995175004,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 2,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.77200000166893,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1278,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.77199995175004,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.18000000000000002,
+        13.8
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.18000000000000005,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 988,
+        "distance_m": 0.004000000000000031
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.0040000077486038454
+      },
+      "gap_m": 7.748603869650594e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.18000000000000002,
+        14.200000000000001
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.18000000000000005,
+          14.200000000000001
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 989,
+        "distance_m": 0.004000000000000031
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.17999999225139618,
+          14.200000000000001
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.0040000077486038454
+      },
+      "gap_m": 7.748603869650594e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.18000000000000002,
+        13.799999999999999
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.18000000000000005,
+          13.799999999999999
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 544,
+        "distance_m": 0.004000000000000031
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.17999999225139618,
+          13.799999999999999
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.0040000077486038454
+      },
+      "gap_m": 7.748603869650594e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.18000000000000002,
+        14.2
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.18000000000000005,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 545,
+        "distance_m": 0.004000000000000031
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.0040000077486038454
+      },
+      "gap_m": 7.748603869650594e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        15.6,
+        0.28,
+        13.7625
+      ],
+      "top": {
+        "point": [
+          15.6,
+          0.28,
+          13.7625
+        ],
+        "node": "forklift__batch_05",
+        "triangle": 247,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          15.6,
+          0.28000000149011617,
+          13.7625
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 143,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        15.6,
+        0.28,
+        14.2375
+      ],
+      "top": {
+        "point": [
+          15.6,
+          0.28,
+          14.2375
+        ],
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          15.6,
+          0.28000000149011617,
+          14.2375
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 132,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        16.4,
+        0.28,
+        13.7625
+      ],
+      "top": {
+        "point": [
+          16.4,
+          0.28,
+          13.7625
+        ],
+        "node": "forklift__batch_06",
+        "triangle": 247,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          16.4,
+          0.28000000149011617,
+          13.7625
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 439,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        16.4,
+        0.28,
+        14.2375
+      ],
+      "top": {
+        "point": [
+          16.4,
+          0.28,
+          14.2375
+        ],
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          16.4,
+          0.28000000149011617,
+          14.2375
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 428,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.33,
+        13.8
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.3299999854713679,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 29,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.33000000186264516,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 32,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.33,
+        14.200000000000001
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.3299999854713679,
+          14.200000000000001
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 27,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.33000000186264516,
+          14.200000000000001
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 76,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.33,
+        13.799999999999999
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.3299999854713679,
+          13.799999999999999
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 81,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.33000000186264516,
+          13.799999999999999
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 33,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.33,
+        14.2
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.3299999854713679,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 79,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.33000000186264516,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 77,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.7720000016689301,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1619,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.7719999517500401,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.7720000016689301,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1551,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.7719999517500401,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.7720000016689301,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1483,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.7719999517500401,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.7720000016689301,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1415,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.7719999517500401,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.7720000016689301,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1347,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.7719999517500401,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        14.6,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          14.6,
+          0.7720000016689301,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1279,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          14.6,
+          0.7719999517500401,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.7720000016689301,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1618,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.7719999517500401,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.7720000016689301,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1550,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.7719999517500401,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.7720000016689301,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1482,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.7719999517500401,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.7720000016689301,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1414,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.7719999517500401,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.7720000016689301,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1346,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.7719999517500401,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 256.6713160110685,
+      "expected_world_m": [
+        17.4,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          17.4,
+          0.7720000016689301,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1278,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          17.4,
+          0.7719999517500401,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.00400004824995992
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.98099992221735,
+        0.75,
+        37.6
+      ],
+      "top": {
+        "point": [
+          83.98099992221735,
+          0.75,
+          37.6
+        ],
+        "node": "forklift__batch_05",
+        "triangle": 247,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          83.98099992221735,
+          0.7500000014901161,
+          37.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 143,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.50599992221736,
+        0.75,
+        37.6
+      ],
+      "top": {
+        "point": [
+          83.50599992221736,
+          0.75,
+          37.6
+        ],
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          83.50599992221736,
+          0.7500000014901161,
+          37.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 132,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.98099992221735,
+        0.75,
+        38.4
+      ],
+      "top": {
+        "point": [
+          83.98099992221735,
+          0.75,
+          38.4
+        ],
+        "node": "forklift__batch_06",
+        "triangle": 247,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          83.98099992221735,
+          0.7500000014901161,
+          38.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 439,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.50599992221736,
+        0.75,
+        38.4
+      ],
+      "top": {
+        "point": [
+          83.50599992221736,
+          0.75,
+          38.4
+        ],
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          83.50599992221736,
+          0.7500000014901161,
+          38.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 428,
+        "distance_m": 0.003999998509883862
+      },
+      "gap_m": 1.4901161415892261e-9,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.94349992221736,
+        0.8,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.94349992221736,
+          0.7999999854713679,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 29,
+        "distance_m": 0.003999985471367817
+      },
+      "bottom": {
+        "point": [
+          83.94349992221736,
+          0.8000000018626452,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 32,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.6391277335436882e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.54349992221735,
+        0.8,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.54349992221735,
+          0.7999999854713679,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 27,
+        "distance_m": 0.003999985471367817
+      },
+      "bottom": {
+        "point": [
+          83.54349992221735,
+          0.8000000018626452,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 76,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.6391277335436882e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.94349992221736,
+        0.8,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.94349992221736,
+          0.7999999854713679,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 81,
+        "distance_m": 0.003999985471367817
+      },
+      "bottom": {
+        "point": [
+          83.94349992221736,
+          0.8000000018626452,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 33,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.6391277335436882e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.54349992221735,
+        0.8,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.54349992221735,
+          0.7999999854713679,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 79,
+        "distance_m": 0.003999985471367817
+      },
+      "bottom": {
+        "point": [
+          83.54349992221735,
+          0.8000000018626452,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 77,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.6391277335436882e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.96849992221735,
+        1.242,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.96849992221735,
+          1.24200000166893,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1619,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.96849992221735,
+          1.24199995175004,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.87849992221736,
+        1.242,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.87849992221736,
+          1.24200000166893,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1551,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.87849992221736,
+          1.24199995175004,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.78849992221735,
+        1.242,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.78849992221735,
+          1.24200000166893,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1483,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.78849992221735,
+          1.24199995175004,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.69849992221735,
+        1.242,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.69849992221735,
+          1.24200000166893,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1415,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.69849992221735,
+          1.24199995175004,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.60849992221735,
+        1.242,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.60849992221735,
+          1.24200000166893,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1347,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.60849992221735,
+          1.24199995175004,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.51849992221736,
+        1.242,
+        36.6
+      ],
+      "top": {
+        "point": [
+          83.51849992221736,
+          1.24200000166893,
+          36.6
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1279,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.51849992221736,
+          1.24199995175004,
+          36.6
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.96849992221735,
+        1.242,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.96849992221735,
+          1.24200000166893,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1618,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.96849992221735,
+          1.24199995175004,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.87849992221736,
+        1.242,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.87849992221736,
+          1.24200000166893,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1550,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.87849992221736,
+          1.24199995175004,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.78849992221735,
+        1.242,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.78849992221735,
+          1.24200000166893,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1482,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.78849992221735,
+          1.24199995175004,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.69849992221735,
+        1.242,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.69849992221735,
+          1.24200000166893,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1414,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.69849992221735,
+          1.24199995175004,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.60849992221735,
+        1.242,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.60849992221735,
+          1.24200000166893,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1346,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.60849992221735,
+          1.24199995175004,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 419.03064620316894,
+      "expected_world_m": [
+        83.51849992221736,
+        1.242,
+        39.4
+      ],
+      "top": {
+        "point": [
+          83.51849992221736,
+          1.24200000166893,
+          39.4
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1278,
+        "distance_m": 0.004000001668930109
+      },
+      "bottom": {
+        "point": [
+          83.51849992221736,
+          1.24199995175004,
+          39.4
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889013261641e-8,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.18,
+        13.8
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.18,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 988,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.18,
+        14.2
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.18,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 989,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.18,
+        13.8
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.18,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 544,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.18,
+        14.2
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.18,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 545,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        114.6,
+        0.28,
+        13.7625
+      ],
+      "top": {
+        "point": [
+          114.6,
+          0.28,
+          13.7625
+        ],
+        "node": "forklift__batch_05",
+        "triangle": 247,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          114.6,
+          0.2800000014901161,
+          13.7625
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 143,
+        "distance_m": 0.0039999985098839175
+      },
+      "gap_m": 1.4901160860780749e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        114.6,
+        0.28,
+        14.2375
+      ],
+      "top": {
+        "point": [
+          114.6,
+          0.28,
+          14.2375
+        ],
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          114.6,
+          0.2800000014901161,
+          14.2375
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 132,
+        "distance_m": 0.0039999985098839175
+      },
+      "gap_m": 1.4901160860780749e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        115.4,
+        0.28,
+        13.7625
+      ],
+      "top": {
+        "point": [
+          115.4,
+          0.28,
+          13.7625
+        ],
+        "node": "forklift__batch_06",
+        "triangle": 247,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          115.4,
+          0.2800000014901161,
+          13.7625
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 439,
+        "distance_m": 0.0039999985098839175
+      },
+      "gap_m": 1.4901160860780749e-9,
+      "passed": true
+    },
+    {
+      "kind": "fork_to_native_cradle_pocket",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        115.4,
+        0.28,
+        14.2375
+      ],
+      "top": {
+        "point": [
+          115.4,
+          0.28,
+          14.2375
+        ],
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          115.4,
+          0.2800000014901161,
+          14.2375
+        ],
+        "node": "forklift-loaded-long-bundle__batch_32",
+        "triangle": 428,
+        "distance_m": 0.0039999985098839175
+      },
+      "gap_m": 1.4901160860780749e-9,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.32999999999999996,
+        13.8
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.32999998547136783,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 29,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.3300000018626451,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 32,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.32999999999999996,
+        14.2
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.32999998547136783,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 27,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.3300000018626451,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 76,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.32999999999999996,
+        13.8
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.32999998547136783,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 81,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.3300000018626451,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 33,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.32999999999999996,
+        14.2
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.32999998547136783,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 79,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.3300000018626451,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 77,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1619,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1551,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1483,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1415,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1347,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1279,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1618,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1550,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1482,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1414,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1346,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 581.3899763952694,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1278,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.18,
+        13.8
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.18,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 988,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.18,
+        14.2
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.18,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 989,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.18,
+        13.8
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.18,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 544,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.17999999225139618,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 126,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "two_M03_to_complete_kit",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.18,
+        14.2
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.18,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_30",
+        "triangle": 545,
+        "distance_m": 0.0040000000000000036
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.17999999225139618,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_module_heavy-bay__batch_01",
+        "triangle": 127,
+        "distance_m": 0.004000007748603818
+      },
+      "gap_m": 7.748603814139443e-9,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.32999999999999996,
+        13.8
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.32999998547136783,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 29,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.3300000018626451,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 32,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.32999999999999996,
+        14.2
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.32999998547136783,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 27,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.3300000018626451,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 76,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.32999999999999996,
+        13.8
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.32999998547136783,
+          13.8
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 81,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.3300000018626451,
+          13.8
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 33,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_cradle_to_same_whole_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.32999999999999996,
+        14.2
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.32999998547136783,
+          14.2
+        ],
+        "node": "forklift-loaded-long-bundle__batch_31",
+        "triangle": 79,
+        "distance_m": 0.003999985471367873
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.3300000018626451,
+          14.2
+        ],
+        "node": "long_borrowed__native_test_HU_long-bundle__batch_03",
+        "triangle": 77,
+        "distance_m": 0.003999998137354854
+      },
+      "gap_m": 1.639127727992573e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1619,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1551,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1483,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1415,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1347,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        113.6,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          113.6,
+          0.77200000166893,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1279,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          113.6,
+          0.77199995175004,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_43",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        13.775
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          13.775
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1618,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          13.775
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        13.865
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          13.865
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1550,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          13.865
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        13.955
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          13.955
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1482,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          13.955
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 32,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        14.045
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          14.045
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1414,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          14.045
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        14.135
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          14.135
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1346,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          14.135
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    },
+    {
+      "kind": "native_closed_upper_restraint_to_HU",
+      "at_s": 664.9580467105654,
+      "expected_world_m": [
+        116.4,
+        0.772,
+        14.225
+      ],
+      "top": {
+        "point": [
+          116.4,
+          0.77200000166893,
+          14.225
+        ],
+        "node": "long_borrowed__native_test_HU_content_profile_01__editable_hollow",
+        "triangle": 1278,
+        "distance_m": 0.004000001668929998
+      },
+      "bottom": {
+        "point": [
+          116.4,
+          0.77199995175004,
+          14.225
+        ],
+        "node": "forklift-loaded-long-bundle__batch_45",
+        "triangle": 33,
+        "distance_m": 0.004000048249960031
+      },
+      "gap_m": 4.991889002159411e-8,
+      "passed": true
+    }
+  ],
+  "handling": [
+    {
+      "phase_id": "insert_empty_into_actual_pockets",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "raise_10mm_to_actual_pocket_contact",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "close_two_positive_lower_pins",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "lift_same_secured_assembly",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603869650594e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "retract_same_secured_assembly_high",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 0.12999999672174312,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "extend_secured_assembly_high",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 0.12999999672175022,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "lower_complete_assembly_onto_two_M03",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "open_two_lower_pins_after_support_transfer",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "lower_forks_10mm_clear_of_pocket_top",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    },
+    {
+      "phase_id": "withdraw_empty_forks_2m",
+      "passed": true,
+      "pairs": 15980,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "unresolved": [],
+      "method": "Complete actual component AABBs swept between endpoints for affine controls at fixed yaw. Contacts within original2um accepted; unresolved AABB is not called penetration."
+    }
+  ],
+  "enclosures": [
+    {
+      "at_s": 576.3899763952694,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 576.2969738158233,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 576.2649763952694,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 576.1399763952694,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 574.7701578808103,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 574.0804469934549,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 573.4003393663512,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 571.8639201710863,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 571.8295430395563,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 570.2587467127614,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 569.6473933487177,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.3644165998179005e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 568.133812828261,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.3644194419888436e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 567.4308665263492,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 566.0088789437605,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417843267688e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 565.2143397039806,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417843267688e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 564.4380826169656,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417843267688e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 562.997812881612,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417843267688e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 562.8672862901707,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417843267688e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 560.7812860592435,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417843267688e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 558.564759236875,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 556.3482324145064,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 554.1317055921379,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 551.9151787697693,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 549.6986519474008,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 548.7474677757116,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 547.4821251250322,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 545.2655983026636,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 543.0490714802951,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 540.8325446579266,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 538.616017835558,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 536.3994910131895,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 534.6276492612525,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 534.1829641908209,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 533.0568529344575,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 531.9664373684523,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 531.4860566076627,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 529.7499105460838,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.3644165998179005e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 529.3611227231622,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.3644194419888436e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 527.5333837237152,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364415178732429e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 527.2361888386617,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 525.6653925118669,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 525.3168569013467,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 524.094596185072,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 523.1003300789781,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 520.8838032566097,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 520.1049591561539,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 518.667276434241,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 516.4507496118725,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 516.1153221272357,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 514.5445258004409,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 514.234222789504,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 512.9737294736459,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 512.0176959671354,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 510.8487955891454,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.3644165998179005e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 509.80116914476685,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418731446108e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 508.72386170464495,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 507.58464232239834,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 507.15306537785006,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 505.58226905105516,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 505.3681155000297,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 503.1515886776612,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 500.9350618552926,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 498.7185350329241,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 496.5020082105556,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.3644194419888436e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 494.28548138818695,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 492.06895456581844,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 489.8524277434499,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 487.6359009210813,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 485.41937409871275,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 483.20284727634424,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 480.9863204539756,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 478.7697936316071,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 476.5532668092386,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 474.33673998687,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 472.1202131645015,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 469.90368634213297,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 467.68715951976435,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418731446108e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 465.47063269739584,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 463.2541058750272,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 461.0375790526587,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 458.82105223029015,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 456.6045254079216,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 454.387998585553,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 452.1714717631845,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 449.9549449408159,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 447.7384181184474,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 445.5218912960789,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 443.30536447371026,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 441.08883765134175,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 438.87231082897324,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 436.6557840066047,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 434.4392571842361,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 432.22273036186755,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 430.006203539499,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 427.7896767171305,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 425.57314989476185,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 423.3566230723933,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 421.1400962500248,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 418.9235694276562,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 416.70704260528765,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 414.4905157829191,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 412.2739889605506,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 410.057462138182,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 409.3952832320872,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 407.84093531581345,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 405.62440849344495,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 403.4078816710764,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 401.1913548487078,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 398.9748280263393,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 396.75830120397075,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 394.5417743816022,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 392.32524755923356,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 390.10872073686505,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 387.8921939144965,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 385.6756670921279,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 383.4591402697594,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 381.24261344739085,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 379.0260866250223,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 376.8095598026538,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 374.5930329802852,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 372.37650615791665,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 370.1599793355481,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 367.9434525131796,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 365.726925690811,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 363.51039886844245,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 361.2938720460739,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 359.0773452237053,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 356.86081840133676,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 354.6442915789682,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 352.4277647565997,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 350.2112379342311,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 347.99471111186256,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417665632004e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 345.77818428949405,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 343.5616574671255,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 341.3451306447569,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 339.1286038223884,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 336.91207700001985,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 334.6955501776513,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 332.4790233552827,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 330.26249653291416,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 328.0459697105456,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 325.829442888177,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 323.6129160658085,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 321.39638924343996,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 319.1798624210714,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418731446108e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 316.9633355987029,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 314.7468087763343,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 313.20829741311917,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 312.53028195396575,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 311.6375010863243,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 310.3137551315972,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 310.0667047595294,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 308.0972283092287,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364417665632004e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 307.94177087502885,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.36441837617474e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 305.8807014868601,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 305.8168369905284,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 304.2460406637335,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 303.66417466449155,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 302.6752443369386,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 301.447647842123,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 299.2311210197544,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 298.6856073080204,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 297.01459419738586,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 294.79806737501735,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 294.69597027910226,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 293.12517395230736,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 292.5815405526488,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 291.5543776255125,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 290.3650137302802,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 289.42944374101194,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.36441837617474e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 288.14848690791166,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 287.30450985651146,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 285.93196008554315,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 285.73371352971657,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 284.1629172029217,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 283.7154332631746,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 281.498906440806,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 279.67846165954444,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 279.2823796184375,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 277.06585279606895,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 275.1940061161672,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 274.8493259737004,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 273.6232097893723,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 272.6327991513318,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 272.0524134625774,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 270.4162723289633,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418109721214e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 269.92747957807694,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418287356898e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 268.19974550659475,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 267.8025456935764,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 266.2317493667815,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 265.98321868422613,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 264.6609530399866,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418198539056e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 263.7666918618576,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 263.2911345255276,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 261.9213160110685,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 261.7963160110685,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    },
+    {
+      "at_s": 261.6713160110685,
+      "passed": true,
+      "kit_maximum_native_excess_m": 5.364418020903372e-8,
+      "vehicle_maximum_native_excess_m": 8.344650259672903e-8
+    }
+  ],
+  "maximum_native_frame_error_m": 2.929642751054232e-14,
+  "insertion_join": [
+    {
+      "side": "L",
+      "actual_fork_bore_minimum_projected_radius_m": 0.009951836175548515,
+      "actual_pin_maximum_shaft_radius_m": 0.008000013633790102,
+      "actual_closed_shaft_radial_air_m": 0.001951822541758413,
+      "pin_shaft_vertex_occurrences": 378,
+      "channel_surface_unresolved": [],
+      "channel_surface_unresolved_count": 0
+    },
+    {
+      "side": "R",
+      "actual_fork_bore_minimum_projected_radius_m": 0.009951836175548193,
+      "actual_pin_maximum_shaft_radius_m": 0.008000013633790102,
+      "actual_closed_shaft_radial_air_m": 0.0019518225417580904,
+      "pin_shaft_vertex_occurrences": 378,
+      "channel_surface_unresolved": [],
+      "channel_surface_unresolved_count": 0
+    }
+  ],
+  "checks": [
+    "actual_open_pocket_boundary_void_and_native_closed_pin_bore_radial_separation",
+    "same24_source_workers2vehicles_530stock_plus_one_materializedHU_and_one40kgkit",
+    "70phase_absolute_reverse_seek_same_native_HU_and_captured_kit_no_world_jump",
+    "original_N3_20requests_and4upstreamIDs_never_claimed_executed",
+    "reset_and_reverse_seek_exact_native_state",
+    "dispose_exact_original_vehicle_driver_parent_TRS_and_source_geometry_material_buffers"
+  ],
+  "negative_controls": [
+    "nonfinite_absolute_time_refused",
+    "duplicate_scene_owner_refused",
+    "wrong_INBOUND_pair_at_OUT_port_refused"
+  ],
+  "limits": [
+    "New standalone materialized crossdock IDs; original N3source20requests remain unchanged and unexecuted.",
+    "Supplier already-retained assembly preparation and recipient unloading are explicit unexecuted boundaries. No source rack pickup/install/stow operation is claimed.",
+    "Published C08 directed-arc/connector profile proofs are reused only after actual native travel envelope containment; no traffic or authoritative engine admission.",
+    "Focused new support/capture interfaces. Existing corrected-cap27bb kit remains exact; no new attachment/vehicle/worker geometry was created."
+  ]
+}

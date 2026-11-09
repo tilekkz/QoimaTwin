@@ -1,0 +1,5572 @@
+{
+  "source_kind": "visual_fixture",
+  "operational_admission": false,
+  "epsilon_m": 0.000002,
+  "source_hashes": {
+    "frontend/tools/check-additional-heavy-cases-v3.mjs": "4df5ab94690ea4663e91d812a2396b9c1bfd04c4c7921b76068898b90d3a2d5a",
+    "frontend/tools/native-convex-joint-v3.mjs": "c4bbfdad191c2cf8a5ef05f078fd1eaef008df7094a8e8c24d4aee14cebc0bcc",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/n2-relative-pi-endpoints.json": "3124457ec38d8fae4e0cfdc7d6ce44bf7c52d5c9838545a81c886fef11b56647",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+  },
+  "cases": [
+    {
+      "case": {
+        "case_id": "v3:visual:N2:IBC:external:02",
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "operational_admission": false,
+        "actor_id": "F01",
+        "vehicle_id": "FL01",
+        "receipt": {
+          "handling_unit_id": "v3:HU:W11:external:02",
+          "sku_id": "DEMO_177",
+          "archetype_id": "IBC",
+          "quantity_units": 1,
+          "gross_mass_kg": 654,
+          "dimensions_xyz_m": [
+            1.2,
+            1.16,
+            1
+          ],
+          "model_scale_factor": 1
+        },
+        "stage": {
+          "cell_id": "v3:n2:staging:IN_W_BULK:01",
+          "support_id": "v3:visual-heavy-inbound:support:IN_W_BULK:01",
+          "support_position": [
+            16,
+            0,
+            14.11
+          ],
+          "support_yaw_rad": 0,
+          "HU_position": [
+            16,
+            0.18,
+            14
+          ],
+          "HU_yaw_rad": 3.141592653589793,
+          "engage_position": [
+            16,
+            0,
+            12.6
+          ],
+          "prepared_position": [
+            16,
+            0,
+            11.549999999999999
+          ],
+          "vehicle_yaw_rad": 0
+        },
+        "target": {
+          "slot_id": "v3:slot:HEAVY_E:002:L1:B1",
+          "module_id": "v3:module:HEAVY_E:002",
+          "support_position": [
+            118.3,
+            0,
+            19.5
+          ],
+          "support_yaw_rad": 1.5707963267948966,
+          "HU_position": [
+            118.39999999999999,
+            0.18,
+            19.5
+          ],
+          "HU_yaw_rad": 1.5707963267948966,
+          "engage_position": [
+            119.8,
+            0,
+            19.5
+          ],
+          "prepared_position": [
+            120.85,
+            0,
+            19.5
+          ],
+          "graph_position": [
+            120.8,
+            0,
+            19.5
+          ],
+          "graph_node_id": "v3:module:HEAVY_E:002:B1:vehicle:node",
+          "vehicle_yaw_rad": 4.71238898038469
+        },
+        "fork_halfspacing_m": 0.4,
+        "travel_HU_offset_z_m": 1,
+        "reach_capture_z_m": 0.6,
+        "cargo_bounds_local_m": {
+          "min": [
+            -0.6,
+            0.7,
+            0.5
+          ],
+          "max": [
+            0.6,
+            1.8599999999999999,
+            1.5
+          ]
+        },
+        "empty_connector_index": 58,
+        "loaded_connector_index": 57,
+        "native_geometry_scope": "Original whole HU; explicit captured relative yaw pi; separate native contacts, C08 enclosure and constant-yaw handling certificates are required. No supplier handover or traffic-engine admission."
+      },
+      "native_contacts": [
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16.53,
+            0.18,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.53,
+              0.1800000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              16.53,
+              0.17999999225139618,
+              14.4
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16.53,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.53,
+              0.1800000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              16.53,
+              0.17999999225139618,
+              14
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16.53,
+            0.18,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.53,
+              0.1800000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              16.53,
+              0.17999999225139618,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16,
+            0.18,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16,
+              0.1800000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              16,
+              0.17999999225139618,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16,
+              0.1800000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              16,
+              0.17999999225139618,
+              14
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16,
+            0.18,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.999999999999998,
+              0.1800000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              16,
+              0.17999999225139618,
+              13.6
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            15.47,
+            0.18,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.47,
+              0.1800000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              15.47,
+              0.17999999225139618,
+              14.4
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            15.47,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.470000000000002,
+              0.1800000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              15.47,
+              0.17999999225139618,
+              14
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            15.47,
+            0.18,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.47,
+              0.1800000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 82,
+            "point_m": [
+              15.47,
+              0.17999999225139618,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            15.6,
+            0.18,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.1800000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.18,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            15.6,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.1800000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.18,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            15.6,
+            0.18,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.1800000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.18,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            16.4,
+            0.18,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.1800000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.18,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            16.4,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.1800000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.18,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            16.4,
+            0.18,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.1800000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.18,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            15.6,
+            0.3,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.3000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.3,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            15.6,
+            0.3,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.3000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.3,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            15.6,
+            0.3,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.3000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.3,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            16.4,
+            0.3,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.3000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.3,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            16.4,
+            0.3,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.3000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.3,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            16.4,
+            0.3,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.3000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.3,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            15.6,
+            0.5,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.5000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.5,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            15.6,
+            0.5,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.5000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.5,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            15.6,
+            0.5,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.5000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.5,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            16.4,
+            0.5,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.5000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.5,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            16.4,
+            0.5,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.5000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.5,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            16.4,
+            0.5,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.5000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.5,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            15.6,
+            0.7,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            15.6,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.7000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            15.6,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.7,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            16.4,
+            0.7,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.7,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            16.4,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            16.4,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.7,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            15.6,
+            0.7,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            15.6,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.7000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            15.6,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.7,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            16.4,
+            0.7,
+            14.4
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              14.4
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.7,
+              14.4
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            16.4,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            16.4,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.7,
+              13.6
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            15.6,
+            0.7,
+            14.2
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              14.2
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              14.2
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            15.6,
+            0.7,
+            13.799999999999999
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.7000000037252903,
+              13.799999999999999
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              13.799999999999997
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            15.6,
+            0.7,
+            13.399999999999999
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              13.399999999999999
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.7,
+              13.399999999999999
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            16.4,
+            0.7,
+            14.2
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              14.2
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.7,
+              14.2
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            16.4,
+            0.7,
+            13.799999999999999
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              13.799999999999999
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.7,
+              13.799999999999997
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            16.4,
+            0.7,
+            13.399999999999999
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              13.399999999999999
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.7,
+              13.399999999999999
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            15.6,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              14
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            15.6,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.600000000000001,
+              0.7000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.599999999999998,
+              0.7,
+              13.599999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 2.5121479338940403e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            15.6,
+            0.7,
+            13.2
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              15.599999999999998,
+              0.7000000037252903,
+              13.2
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.7252902984623376e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              15.6,
+              0.7,
+              13.2
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            16.4,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              14
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.4,
+              0.7,
+              14
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            16.4,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              13.6
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.399999999999995,
+              0.7,
+              13.599999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.972054645195637e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            16.4,
+            0.7,
+            13.2
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.4,
+              0.7000000037252903,
+              13.2
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              16.4,
+              0.7,
+              13.2
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            117.99999999999999,
+            0.18,
+            20.03
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              117.99999999999999,
+              0.1800000037252903,
+              20.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              117.99999999999999,
+              0.17999999225139618,
+              20.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            20.03
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              20.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              118.39999999999999,
+              0.17999999225139618,
+              20.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            118.8,
+            0.18,
+            20.03
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              20.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              118.8,
+              0.17999999225139618,
+              20.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            117.99999999999999,
+            0.18,
+            19.5
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              117.99999999999999,
+              0.1800000037252903,
+              19.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              117.99999999999999,
+              0.17999999225139618,
+              19.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            19.5
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              19.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              118.39999999999999,
+              0.17999999225139618,
+              19.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            118.8,
+            0.18,
+            19.5
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              19.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              118.8,
+              0.17999999225139618,
+              19.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            117.99999999999999,
+            0.18,
+            18.97
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              117.99999999999999,
+              0.1800000037252903,
+              18.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              117.99999999999999,
+              0.17999999225139618,
+              18.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            18.97
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              18.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              118.39999999999999,
+              0.17999999225139618,
+              18.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            118.8,
+            0.18,
+            18.97
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              18.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-9
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 171,
+            "point_m": [
+              118.8,
+              0.17999999225139618,
+              18.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        }
+      ],
+      "native_envelopes": [
+        {
+          "body": {
+            "passed": true,
+            "vertex_occurrences": 34290,
+            "maximum_nominal_excess_m": 8.344650259672903e-8
+          },
+          "cargo": {
+            "passed": true,
+            "vertex_occurrences": 10380,
+            "maximum_nominal_excess_m": 5.364418032005602e-8
+          },
+          "driver": {
+            "actorId": "F01",
+            "role": "forklift_driver",
+            "disposed": false,
+            "assignment": "seated_existing_actor",
+            "warehouse_headcount_delta": 0,
+            "root_local": [
+              0,
+              0.29,
+              -0.615
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "seat_local": [
+              0,
+              0.840000011920929,
+              -0.6500000010803344
+            ],
+            "hands_local": {
+              "L": [
+                -0.24188876352639,
+                1.278009644058547,
+                -0.2534595788789975
+              ],
+              "R": [
+                0.24188876352638644,
+                1.278009644058547,
+                -0.2534595788789975
+              ]
+            },
+            "feet_local": {
+              "L": [
+                -0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299647
+              ],
+              "R": [
+                0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299647
+              ]
+            },
+            "seat_error_m": 4.556651396670021e-8,
+            "grip_error_m": {
+              "L": 1.1075555653279444e-8,
+              "R": 1.1075555009812618e-8
+            },
+            "sole_error_m": {
+              "L": 6.961322697294211e-8,
+              "R": 6.961322697294211e-8
+            }
+          }
+        },
+        {
+          "body": {
+            "passed": true,
+            "vertex_occurrences": 34290,
+            "maximum_nominal_excess_m": 8.344650259672903e-8
+          },
+          "cargo": {
+            "passed": true,
+            "vertex_occurrences": 10380,
+            "maximum_nominal_excess_m": 5.364418032005602e-8
+          },
+          "driver": {
+            "actorId": "F01",
+            "role": "forklift_driver",
+            "disposed": false,
+            "assignment": "seated_existing_actor",
+            "warehouse_headcount_delta": 0,
+            "root_local": [
+              0,
+              0.29,
+              -0.615
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "seat_local": [
+              0,
+              0.840000011920929,
+              -0.6500000010803344
+            ],
+            "hands_local": {
+              "L": [
+                -0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887899484
+              ],
+              "R": [
+                0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887899573
+              ]
+            },
+            "feet_local": {
+              "L": [
+                -0.11499999463558197,
+                0.5300000337511301,
+                -0.3949999807029956
+              ],
+              "R": [
+                0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299647
+              ]
+            },
+            "seat_error_m": 4.556651396670021e-8,
+            "grip_error_m": {
+              "L": 1.1075554033555989e-8,
+              "R": 1.1075554033555989e-8
+            },
+            "sole_error_m": {
+              "L": 6.961322697294211e-8,
+              "R": 6.961322697294211e-8
+            }
+          }
+        },
+        {
+          "body": {
+            "passed": true,
+            "vertex_occurrences": 34290,
+            "maximum_nominal_excess_m": 8.344650259672903e-8
+          },
+          "cargo": {
+            "passed": true,
+            "vertex_occurrences": 10380,
+            "maximum_nominal_excess_m": 5.364418032005602e-8
+          },
+          "driver": {
+            "actorId": "F01",
+            "role": "forklift_driver",
+            "disposed": false,
+            "assignment": "seated_existing_actor",
+            "warehouse_headcount_delta": 0,
+            "root_local": [
+              0,
+              0.29,
+              -0.615
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "seat_local": [
+              0,
+              0.840000011920929,
+              -0.6500000010803291
+            ],
+            "hands_local": {
+              "L": [
+                -0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887900283
+              ],
+              "R": [
+                0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887900283
+              ]
+            },
+            "feet_local": {
+              "L": [
+                -0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299114
+              ],
+              "R": [
+                0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299114
+              ]
+            },
+            "seat_error_m": 4.556651105201355e-8,
+            "grip_error_m": {
+              "L": 1.1075557938583701e-8,
+              "R": 1.1075557938583701e-8
+            },
+            "sole_error_m": {
+              "L": 6.961322927149707e-8,
+              "R": 6.961322927149707e-8
+            }
+          }
+        }
+      ],
+      "handling": [
+        {
+          "site": "stage",
+          "phase": "extend_empty",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "lower_empty",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "insert_empty",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "lift",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "retract_loaded",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "approach_loaded",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "extend_loaded",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "setdown",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "withdraw_empty",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 16,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "raise_empty",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "retract_empty",
+          "passed": true,
+          "pair_count": 10001,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        }
+      ],
+      "timeline": {
+        "passed": true,
+        "samples": 386,
+        "duration_s": 313.26148370554097,
+        "phases": 42,
+        "route_arcs": 50,
+        "route_length_m": 157.31674809747517,
+        "attach_at_s": 60.224481402050685,
+        "release_at_s": 302.26148370554097
+      },
+      "capture_maximum_world_residual": 0,
+      "target_position_error_m": 0,
+      "target_yaw_error_rad": 0,
+      "passed": true
+    },
+    {
+      "case": {
+        "case_id": "v3:visual:N2:HEAVY_BOX:external:03",
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "operational_admission": false,
+        "actor_id": "F01",
+        "vehicle_id": "FL01",
+        "receipt": {
+          "handling_unit_id": "v3:HU:W11:external:03",
+          "sku_id": "DEMO_166",
+          "archetype_id": "HEAVY_BOX",
+          "quantity_units": 8,
+          "gross_mass_kg": 200,
+          "dimensions_xyz_m": [
+            0.8,
+            0.65,
+            0.6
+          ],
+          "model_scale_factor": 1
+        },
+        "stage": {
+          "cell_id": "v3:n2:staging:IN_W_BULK:01",
+          "support_id": "v3:visual-heavy-inbound:support:IN_W_BULK:01",
+          "support_position": [
+            16,
+            0,
+            14.11
+          ],
+          "support_yaw_rad": 0,
+          "HU_position": [
+            16,
+            0.18,
+            14
+          ],
+          "HU_yaw_rad": 3.141592653589793,
+          "engage_position": [
+            16,
+            0,
+            12.4
+          ],
+          "prepared_position": [
+            16,
+            0,
+            11.35
+          ],
+          "vehicle_yaw_rad": 0
+        },
+        "target": {
+          "slot_id": "v3:slot:HEAVY_E:007:L1:B1",
+          "module_id": "v3:module:HEAVY_E:007",
+          "support_position": [
+            125.7,
+            0,
+            17.5
+          ],
+          "support_yaw_rad": 4.71238898038469,
+          "HU_position": [
+            125.4,
+            0.18,
+            17.5
+          ],
+          "HU_yaw_rad": 4.71238898038469,
+          "engage_position": [
+            123.80000000000001,
+            0,
+            17.5
+          ],
+          "prepared_position": [
+            122.75000000000001,
+            0,
+            17.5
+          ],
+          "graph_position": [
+            123.2,
+            0,
+            17.5
+          ],
+          "graph_node_id": "v3:module:HEAVY_E:007:B1:vehicle:node",
+          "vehicle_yaw_rad": 7.853981633974483
+        },
+        "fork_halfspacing_m": 0.24,
+        "travel_HU_offset_z_m": 1.2,
+        "reach_capture_z_m": 0.7999999999999999,
+        "cargo_bounds_local_m": {
+          "min": [
+            -0.4,
+            0.7,
+            0.8999999999999999
+          ],
+          "max": [
+            0.4,
+            1.35,
+            1.5
+          ]
+        },
+        "empty_connector_index": 50,
+        "loaded_connector_index": 49,
+        "native_geometry_scope": "Original whole HU; explicit captured relative yaw pi; separate native contacts, C08 enclosure and constant-yaw handling certificates are required. No supplier handover or traffic-engine admission."
+      },
+      "native_contacts": [
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16.12,
+            0.18,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.12,
+              0.18,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              16.12,
+              0.17999999225139618,
+              14.15
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16.12,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.12,
+              0.18,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              16.12,
+              0.17999999225139618,
+              14
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16.12,
+            0.18,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16.12,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              16.12,
+              0.17999999225139618,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16,
+            0.18,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              16,
+              0.18,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              16,
+              0.17999999225139618,
+              14.15
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16,
+              0.18,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              16,
+              0.17999999225139618,
+              14
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            16,
+            0.18,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              16,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              16,
+              0.17999999225139618,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            15.88,
+            0.18,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.88,
+              0.18,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              15.880000000000003,
+              0.17999999225139618,
+              14.15
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139647e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            15.88,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.879999999999999,
+              0.18,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              15.880000000000003,
+              0.17999999225139618,
+              14
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139647e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "stage_HU_M03",
+          "point_world_m": [
+            15.88,
+            0.18,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              15.879999999999999,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              15.88,
+              0.17999999225139618,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            15.76,
+            0.18,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.18,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.18,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            15.76,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.18,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.18,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            15.76,
+            0.18,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            16.24,
+            0.18,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.18,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.18,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            16.24,
+            0.18,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.18,
+              14.000000000000002
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.18,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.18",
+          "point_world_m": [
+            16.24,
+            0.18,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.18,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            15.76,
+            0.3,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.3,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.3,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            15.76,
+            0.3,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.3,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.3,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            15.76,
+            0.3,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.3,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.3,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            16.24,
+            0.3,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.3,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.3,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            16.24,
+            0.3,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.3,
+              14.000000000000002
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.3,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.3",
+          "point_world_m": [
+            16.24,
+            0.3,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.3,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.3,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            15.76,
+            0.5,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.5,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.5,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            15.76,
+            0.5,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.5,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.5,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            15.76,
+            0.5,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.5,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.5,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            16.24,
+            0.5,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.5,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.5,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            16.24,
+            0.5,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.5,
+              14.000000000000002
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.5,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.5",
+          "point_world_m": [
+            16.24,
+            0.5,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.5,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.5,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            15.76,
+            0.7,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            15.76,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            16.24,
+            0.7,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.7,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            16.24,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              14.000000000000002
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "lift_fork_0.7",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            15.76,
+            0.7,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            15.76,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              14
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            16.24,
+            0.7,
+            14.15
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.7,
+              14.15
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              14.149999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            16.24,
+            0.7,
+            14
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              14.000000000000002
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.999999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.4",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.85
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.85
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.95
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              13.95
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.95
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.799999999999999
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              13.799999999999999
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.799999999999997
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.649999999999999
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.7,
+              13.649999999999999
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.649999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.95
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.7,
+              13.95
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.95
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.799999999999999
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              13.8
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.799999999999997
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0.2",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.649999999999999
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              13.649999999999999
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.649999999999999
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.75
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              13.75
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.75
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              15.76,
+              0.7,
+              13.6
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.599999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            15.76,
+            0.7,
+            13.45
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              15.76,
+              0.7,
+              13.45
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              15.76,
+              0.7,
+              13.45
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.75
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              16.24,
+              0.7,
+              13.75
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.75
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.6
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              13.600000000000001
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.599999999999998
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 1.7763568394002505e-15
+          },
+          "passed": true
+        },
+        {
+          "kind": "retract_fork_0",
+          "point_world_m": [
+            16.24,
+            0.7,
+            13.45
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              16.24,
+              0.7,
+              13.45
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              16.24,
+              0.7,
+              13.45
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.55000000000003,
+            0.18,
+            17.38
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              125.55000000000003,
+              0.18,
+              17.38
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              125.55000000000003,
+              0.17999999225139618,
+              17.38
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.40000000000002,
+            0.18,
+            17.38
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              125.40000000000002,
+              0.18,
+              17.38
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              125.40000000000002,
+              0.17999999225139618,
+              17.38
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.25000000000001,
+            0.18,
+            17.38
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              125.25000000000001,
+              0.18,
+              17.38
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              125.25000000000001,
+              0.17999999225139618,
+              17.38
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.55000000000003,
+            0.18,
+            17.5
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              125.55000000000003,
+              0.18,
+              17.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.55000000000003,
+              0.17999999225139618,
+              17.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.40000000000002,
+            0.18,
+            17.5
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              125.40000000000002,
+              0.18,
+              17.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.40000000000002,
+              0.17999999225139618,
+              17.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.25000000000001,
+            0.18,
+            17.5
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              125.25000000000001,
+              0.18,
+              17.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.25000000000001,
+              0.17999999225139618,
+              17.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.55000000000003,
+            0.18,
+            17.62
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              125.55000000000003,
+              0.18,
+              17.62
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.55000000000003,
+              0.17999999225139618,
+              17.62
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.40000000000002,
+            0.18,
+            17.62
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              125.40000000000002,
+              0.18,
+              17.62
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.40000000000002,
+              0.17999999225139618,
+              17.62
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        },
+        {
+          "kind": "target_HU_M03",
+          "point_world_m": [
+            125.25000000000001,
+            0.18,
+            17.62
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              125.25000000000001,
+              0.18,
+              17.62
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.25000000000001,
+              0.17999999225139618,
+              17.62
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-9
+          },
+          "passed": true
+        }
+      ],
+      "native_envelopes": [
+        {
+          "body": {
+            "passed": true,
+            "vertex_occurrences": 34290,
+            "maximum_nominal_excess_m": 8.344650259672903e-8
+          },
+          "cargo": {
+            "passed": true,
+            "vertex_occurrences": 6600,
+            "maximum_nominal_excess_m": 5.438923822431718e-8
+          },
+          "driver": {
+            "actorId": "F01",
+            "role": "forklift_driver",
+            "disposed": false,
+            "assignment": "seated_existing_actor",
+            "warehouse_headcount_delta": 0,
+            "root_local": [
+              0,
+              0.29,
+              -0.615
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "seat_local": [
+              0,
+              0.840000011920929,
+              -0.6500000010803344
+            ],
+            "hands_local": {
+              "L": [
+                -0.24188876352639,
+                1.278009644058547,
+                -0.2534595788789975
+              ],
+              "R": [
+                0.24188876352638644,
+                1.278009644058547,
+                -0.2534595788789975
+              ]
+            },
+            "feet_local": {
+              "L": [
+                -0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299647
+              ],
+              "R": [
+                0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299647
+              ]
+            },
+            "seat_error_m": 4.556651396670021e-8,
+            "grip_error_m": {
+              "L": 1.1075555653279444e-8,
+              "R": 1.1075555009812618e-8
+            },
+            "sole_error_m": {
+              "L": 6.961322697294211e-8,
+              "R": 6.961322697294211e-8
+            }
+          }
+        },
+        {
+          "body": {
+            "passed": true,
+            "vertex_occurrences": 34290,
+            "maximum_nominal_excess_m": 8.344650259672903e-8
+          },
+          "cargo": {
+            "passed": true,
+            "vertex_occurrences": 6600,
+            "maximum_nominal_excess_m": 5.438923822431718e-8
+          },
+          "driver": {
+            "actorId": "F01",
+            "role": "forklift_driver",
+            "disposed": false,
+            "assignment": "seated_existing_actor",
+            "warehouse_headcount_delta": 0,
+            "root_local": [
+              0,
+              0.29,
+              -0.615
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "seat_local": [
+              0,
+              0.840000011920929,
+              -0.6500000010803344
+            ],
+            "hands_local": {
+              "L": [
+                -0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887899484
+              ],
+              "R": [
+                0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887899573
+              ]
+            },
+            "feet_local": {
+              "L": [
+                -0.11499999463558197,
+                0.5300000337511301,
+                -0.3949999807029956
+              ],
+              "R": [
+                0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299647
+              ]
+            },
+            "seat_error_m": 4.556651396670021e-8,
+            "grip_error_m": {
+              "L": 1.1075554033555989e-8,
+              "R": 1.1075554033555989e-8
+            },
+            "sole_error_m": {
+              "L": 6.961322697294211e-8,
+              "R": 6.961322697294211e-8
+            }
+          }
+        },
+        {
+          "body": {
+            "passed": true,
+            "vertex_occurrences": 34290,
+            "maximum_nominal_excess_m": 8.344650259672903e-8
+          },
+          "cargo": {
+            "passed": true,
+            "vertex_occurrences": 6600,
+            "maximum_nominal_excess_m": 5.438923822431718e-8
+          },
+          "driver": {
+            "actorId": "F01",
+            "role": "forklift_driver",
+            "disposed": false,
+            "assignment": "seated_existing_actor",
+            "warehouse_headcount_delta": 0,
+            "root_local": [
+              0,
+              0.29,
+              -0.615
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "seat_local": [
+              0,
+              0.840000011920929,
+              -0.6500000010803291
+            ],
+            "hands_local": {
+              "L": [
+                -0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887900283
+              ],
+              "R": [
+                0.24188876352638644,
+                1.278009644058547,
+                -0.25345957887900283
+              ]
+            },
+            "feet_local": {
+              "L": [
+                -0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299114
+              ],
+              "R": [
+                0.11499999463558197,
+                0.5300000337511301,
+                -0.39499998070299114
+              ]
+            },
+            "seat_error_m": 4.556651105201355e-8,
+            "grip_error_m": {
+              "L": 1.1075557938583701e-8,
+              "R": 1.1075557938583701e-8
+            },
+            "sole_error_m": {
+              "L": 6.961322927149707e-8,
+              "R": 6.961322927149707e-8
+            }
+          }
+        }
+      ],
+      "handling": [
+        {
+          "site": "stage",
+          "phase": "extend_empty",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "lower_empty",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "insert_empty",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "lift",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "stage",
+          "phase": "retract_loaded",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "approach_loaded",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "extend_loaded",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "setdown",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "withdraw_empty",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 13,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "raise_empty",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        },
+        {
+          "site": "target",
+          "phase": "retract_empty",
+          "passed": true,
+          "pair_count": 9560,
+          "boundary_triangle_sweep_certificates": 0,
+          "unresolved": [],
+          "method": "Native closed-component swept bounds; unresolved concave pairs require every moving boundary triangle separated from the other complete bound with initial outside-winding witness. Fixed yaw, affine controls; an unresolved pair is inconclusive, not certified penetration."
+        }
+      ],
+      "timeline": {
+        "passed": true,
+        "samples": 386,
+        "duration_s": 314.42815037220765,
+        "phases": 42,
+        "route_arcs": 50,
+        "route_length_m": 159.31674809747517,
+        "attach_at_s": 59.974481402050685,
+        "release_at_s": 303.42815037220765
+      },
+      "capture_maximum_world_residual": 0,
+      "target_position_error_m": 1.4210854715202004e-14,
+      "target_yaw_error_rad": 0,
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    "unvalidated_packet_refused",
+    "reserialized_packet_hash_refused",
+    "IBC:copied_descriptor_refused",
+    "IBC:relative_identity_yaw_refused",
+    "IBC:offset_mutation_refused",
+    "HEAVY_BOX:copied_descriptor_refused",
+    "HEAVY_BOX:relative_identity_yaw_refused",
+    "HEAVY_BOX:offset_mutation_refused"
+  ],
+  "limitations": [
+    "Supplier handover is an explicit stage-first intake boundary, not an executed action.",
+    "Continuous native handling certificates cover constant-yaw affine controls only. Route eligibility is the unchanged C08 directed graph and published analytic connector proof, conditional on captured native envelope; no traffic or engine admission.",
+    "Only two additional external HUs and their initially free destinations are represented. Finite stage and F01/FL01 leases must be serialized by the caller; no assertion that all12 receipts fit."
+  ],
+  "passed": true
+}
