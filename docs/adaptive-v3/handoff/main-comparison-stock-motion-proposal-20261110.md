@@ -60,7 +60,18 @@ warehouse physical workflow acceptance remains broader than this proposal.
   preserved actor homes, current-destination slot lookup and B-only selection.
 - A real Codex Edu parent and two own native children completed a bounded
   static review of the inventory and stock scene without confirmed findings.
-- Browser checks use the actual main page, not the separate native replay page.
+- A portable five-case genuine-source regression reproduces all accepted B
+  relocation bindings and checks the real search query results.
+- Desktop browser checks on the actual main page covered clean reload,
+  conveyor pause/reverse seek, native walking, the loaded forklift, source/fill
+  toggles, legacy B destination search and selecting a filled B-only slot.
+  These are not acceptance of the separate native replay page or every mobile
+  breakpoint.
+
+Tilek's `626234d` update is integrated, including its original cart episode,
+home entry and scrollable comparison menu. TypeScript, the production build
+and all current CPU regressions passed again after that merge. The previous
+eight-pass gate also validated the unchanged model assets.
 
 The old published UI evidence refers to its own source hashes and remains
 historical. It is not re-labelled as acceptance of this changed page.
