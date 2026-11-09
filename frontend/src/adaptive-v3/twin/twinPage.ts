@@ -559,7 +559,7 @@ async function load(){
   // Aisles (CLEAR_*) are not places to go to; the plan lists the working zones only.
   mini=createMinimap($<HTMLCanvasElement>('#tw-mini'),$('#tw-mini-cap'),{size:[144,72],shiftZ:SIDE_SHIFT[2],
    zones:(data.layout.data.zones as Z[]).filter(z=>!z.zone_id.startsWith('CLEAR_')).map(z=>({id:z.zone_id,label:zoneLabel(z.zone_id),...z.floor_bounds_xz_m})),
-   modules:data.layout.modules.map(m=>({min:[m.outer_bounds_world.min[0],m.outer_bounds_world.min[2]] as [number,number],max:[m.outer_bounds_world.max[0],m.outer_bounds_world.max[2]] as [number,number]}))},
+   modules:data.layout.modules.map(m=>({id:m.module_id,min:[m.outer_bounds_world.min[0],m.outer_bounds_world.min[2]] as [number,number],max:[m.outer_bounds_world.max[0],m.outer_bounds_world.max[2]] as [number,number]}))},
    // A plan click means «take me there»: close enough to read the racks, at the current viewing angle.
    {zone:(z,v)=>{setPlan(false);const o=tw.offsetOf(v),w=z.max[0]-z.min[0],d=z.max[1]-z.min[1];fly([(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o[2]],Math.min(64,Math.max(26,Math.max(w,d)*1.05+6)));},
     point:(p,v)=>{setPlan(false);const o=tw.offsetOf(v);fly([p[0],0,p[2]+o[2]],30);},

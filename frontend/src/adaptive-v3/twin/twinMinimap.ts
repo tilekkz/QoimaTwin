@@ -9,7 +9,7 @@ import {STATE_COLOR,STATE_RU} from './twinRender';
 import type {AtmoState,Variant} from './twinScenario';
 
 type Rect2={min:[number,number];max:[number,number]};
-export type MiniData={size:[number,number];shiftZ:number;zones:(Rect2&{id:string;label:string})[];modules:Rect2[];zonesB?:(Rect2&{id:string;label:string})[];modulesB?:Rect2[]};
+export type MiniData={size:[number,number];shiftZ:number;zones:(Rect2&{id:string;label:string})[];modules:(Rect2&{id?:string})[];zonesB?:(Rect2&{id:string;label:string})[];modulesB?:Rect2[]};
 export type MiniFrame={shared:boolean;quad:[number,number][]|null;states:Record<Variant,Record<string,AtmoState>>};
 type Hit={v:Variant;p:XYZ;zone:string|null};
 
@@ -18,7 +18,9 @@ export function createMinimap(canvas:HTMLCanvasElement,caption:HTMLElement,d:Min
  const [WX,WZ]=d.size,gap=(d.shiftZ-WZ)/2,ext={x:[-PAD,WX+PAD],z:[-PAD,d.shiftZ+WZ+PAD]};
  const ctx=canvas.getContext('2d')!;let k=1,last:MiniFrame|null=null,hover:Hit|null=null,layoutPlan:TwinLayoutPlan|null=null;
  const zonesFor=(v:Variant)=>{if(v==='A')return d.zones;if(!layoutPlan)return d.zonesB??d.zones;const map=new Map(d.zones.map(z=>[z.id,z]));for(const z of layoutPlan.zones)map.set(z.zone_id,{id:z.zone_id,label:map.get(z.zone_id)?.label??z.zone_id,...z.floor_bounds_xz_m});return [...map.values()];};
- const modulesFor=(v:Variant):Rect2[]=>v==='B'&&layoutPlan?layoutPlan.modules.map(m=>({min:[m.outer_bounds_world.min[0],m.outer_bounds_world.min[2]],max:[m.outer_bounds_world.max[0],m.outer_bounds_world.max[2]]})):v==='B'?(d.modulesB??d.modules):d.modules;
+ // In B the modules that the layout adds or moves carry the same colours as in 3D (teal new, violet moved).
+ const aById=new Map(d.modules.filter(m=>m.id).map(m=>[m.id!,m]));
+ const modulesFor=(v:Variant):(Rect2&{mark?:'new'|'moved'})[]=>v==='B'&&layoutPlan?layoutPlan.modules.map(m=>{const r:Rect2={min:[m.outer_bounds_world.min[0],m.outer_bounds_world.min[2]],max:[m.outer_bounds_world.max[0],m.outer_bounds_world.max[2]]},a=aById.get(m.module_id),moved=!!a&&[0,1].some(i=>Math.abs(a.min[i]-r.min[i])>1e-6||Math.abs(a.max[i]-r.max[i])>1e-6);return {...r,mark:m.is_new?'new':moved?'moved':undefined};}):v==='B'?(d.modulesB??d.modules):d.modules;
  const toPx=(x:number,z:number):[number,number]=>[(x-ext.x[0])*k,(z-ext.z[0])*k];
  /** Pointer → which copy, the point in that copy's own coordinates, and the zone there (aisles have none). */
  function hitAt(e:PointerEvent):Hit|null{
@@ -43,7 +45,7 @@ export function createMinimap(canvas:HTMLCanvasElement,caption:HTMLElement,d:Min
     bctx.fillStyle=s?STATE_COLOR[s]+(s==='control'?'1c':'9a'):'rgba(30,50,46,.05)';bctx.beginPath();bctx.roundRect(...rectIn(z,dz,.6),2);bctx.fill();
     if(s&&s!=='control'){bctx.strokeStyle=STATE_COLOR[s];bctx.lineWidth=1;bctx.stroke();}
    }
-   bctx.fillStyle='rgba(30,50,46,.2)';for(const m of modulesFor(v))bctx.fillRect(...rectIn(m,dz));
+   for(const m of modulesFor(v)){bctx.fillStyle=m.mark==='new'?'rgba(14,128,118,.8)':m.mark==='moved'?'rgba(91,111,216,.75)':'rgba(30,50,46,.2)';bctx.fillRect(...rectIn(m,dz));}
    const [lx,ly]=toPx(2,dz+2);bctx.fillStyle='#0E5F57';bctx.font='700 10px system-ui,sans-serif';bctx.textBaseline='top';bctx.fillText(v,lx,ly);
   }
  }
