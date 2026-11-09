@@ -1,48 +1,47 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#E9EFEC"><title>QoimaTwin — цифровой двойник склада</title><meta name="description" content="Сравнение склада как сейчас и после перестройки на одинаковых данных: где начинается проблема, куда она доходит и что её снимает."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230E8076'/%3E%3Ccircle cx='20' cy='19' r='9' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M24 23l6 6' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E"></head>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#E9EFEC"><title>QoimaTwin — цифровой двойник склада</title><meta name="description" content="Две планировки склада в одном 3D-пространстве: исходная A и план B164. Секции и стеллажи меняются, исходные грузы и команда сохраняются."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230E8076'/%3E%3Ccircle cx='20' cy='19' r='9' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M24 23l6 6' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E"></head>
 <body>
 <header></header>
 <main class="hm">
  <section class="hm-hero">
   <div class="hm-copy">
    <p class="hm-kicker"><span class="hm-dot" aria-hidden="true"></span>Цифровой двойник склада · V3</p>
-   <h1>Два склада.<br>Одни данные.<br><span>Видно, что изменилось.</span></h1>
-   <p class="hm-lead">Слева склад как сейчас, справа — после перестройки. Одинаковые грузы, люди, ворота и время. Видно, где начинается проблема, по каким связям она доходит до соседей и что её снимает.</p>
+   <h1>Сравните<br>планировки.<br><span>В одном 3D.</span></h1>
+   <p class="hm-lead">A сверху — исходный склад, B снизу — план перестройки секций и стеллажей. Те же 530 грузовых единиц и 24 человека. Сравните оба варианта, найдите груз или адрес, рассмотрите план сверху.</p>
+   <p class="hm-plan">132 → 164 модуля <span aria-hidden="true">·</span> 776 → 1 096 адресов<br><span>Новые места пустые. Исходный товар сохранён.</span></p>
    <div class="hm-cta">
     <a class="hm-primary" href="twin-v3.html">Открыть сравнение<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5"/></svg></a>
-    <a class="hm-secondary" href="twin-v3.html?present=1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="11.5" rx="2.5"/><path d="M9 20h6M12 16.5V20"/></svg>Режим защиты <small>9 шагов · 3–5 мин</small></a>
+    <a class="hm-secondary" href="twin-v3.html?present=1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="11.5" rx="2.5"/><path d="M9 20h6M12 16.5V20"/></svg>Режим защиты <small>9 шагов</small></a>
    </div>
    <details class="hm-source">
-    <summary><span class="hm-tag">Демонстрационный сценарий</span>Откуда данные</summary>
-    <p>Склад, грузы и люди — исходный снимок модели V3. Перестройка B — демонстрационный план: каждый перенос прошёл проверку адреса по классу, габаритам и массе груза. Волны состояний — заранее записанный эпизод, он показывает механизм. Расчётный движок пока не подключён, поэтому числа эффективности здесь не показываются.</p>
+    <summary><span class="hm-tag">Синтетические данные</span>О модели и расчётах</summary>
+    <p>Это desktop-прототип на синтетических данных V3. В B проверены доступ и геометрия планировки. Монтаж и перенос загруженных стеллажей здесь не исполняются. Волны состояний — заранее записанный эпизод. Операционный движок V3 к просмотру ещё не подключён; показ не является расчётом эффективности.</p>
    </details>
   </div>
   <figure class="hm-shot">
-   <img src="/media/v3/home-twin.jpg" width="2250" height="1350" alt="Сравнение двух складов: слева у поста PK03 SOS, волна дошла до отбора; справа поток переведён на PK05, упаковка под риском" fetchpriority="high">
-   <figcaption>Кадр из сравнения · 01:36 эпизода «Перегрузка ветки упаковки»</figcaption>
+   <img src="/media/v3/home-twin-sections.jpg" width="1920" height="1080" alt="Кадр на паузе 00:00: в одном 3D-пространстве исходный склад A сверху, план B164 снизу; в B изменены секции и добавлены пустые стеллажи. Режим «Рядом»." fetchpriority="high">
+   <figcaption>Кадр из сравнения · 00:00, пауза · «Рядом» · секции и стеллажи</figcaption>
   </figure>
  </section>
 
  <section class="hm-section" aria-labelledby="hm-demos">
-  <div class="hm-head"><h2 id="hm-demos">Демонстрации</h2><p>Сравнение, приёмка и распределение ролей. Перемотка восстанавливает те же состояния.</p></div>
+  <div class="hm-head"><h2 id="hm-demos">Демонстрации</h2><p>Выберите, что рассмотреть. Визуальные эпизоды и условия сценариев подписаны отдельно.</p></div>
   <ol class="hm-demos">
-   <li class="is-ready"><span class="hm-n">01</span><div><b>Перегрузка ветки упаковки</b><p>PK03 встаёт, буфер ветки заполняется, отбор на востоке ждёт. В B поток уходит на свободный PK05, и упаковка возвращается в контроль к 01:44, в A — только к 03:20. Плюс локальный отказ длинномера у экспресс-ворот.</p><span class="hm-meta">4:00 · 2 варианта · 7 глав</span></div><a class="hm-go" href="twin-v3.html" aria-label="Открыть «Перегрузка ветки упаковки»">Открыть</a></li>
-   <li><span class="hm-n">N0</span><div><b>Обычная смена</b><p>Перестройка может быть не нужна — ответ «ничего не менять» тоже честный.</p></div><span class="hm-st" data-status="frozen">Входы зафиксированы</span><a class="hm-go hm-go-soft" href="scenario-v3.html?scenario=N0" aria-label="Условия сценария N0">Условия</a></li>
-   <li><span class="hm-n">N1</span><div><b>Сдвиг исходящего потока</b><p>Четыре заявки уходят на другие ворота: западная розница — на экспресс и B2B.</p></div><span class="hm-st" data-status="frozen">Входы зафиксированы</span><a class="hm-go hm-go-soft" href="scenario-v3.html?scenario=N1" aria-label="Условия сценария N1">Условия</a></li>
-   <li class="is-ready"><span class="hm-n">N2</span><div><b>Тяжёлая приёмка</b><p>Одна паллета 455 кг: зона приёмки → вилы FL01 → свободная ячейка. Связный демонстрационный процесс с перемоткой.</p></div><span class="hm-st">Один эпизод</span><a class="hm-go" href="heavy-inbound-v3.html" aria-label="Открыть тяжёлую приёмку">Открыть</a></li>
-   <li><span class="hm-n">N3</span><div><b>Длинномер</b><p>4 длинные связки — только через большие ворота и в LONG-зоны.</p></div><span class="hm-st" data-status="candidate">Входы на проверке</span><a class="hm-go hm-go-soft" href="scenario-v3.html?scenario=N3" aria-label="Условия сценария N3">Условия</a></li>
-   <li class="is-ready"><span class="hm-n">N4</span><div><b>Перестановка людей</b><p>Те же 24 человека: допуски, переход на свободный пост, возврат и сохранение незавершённой работы.</p></div><span class="hm-st">Демонстрация</span><a class="hm-go" href="scenario-v3.html?scenario=N4" aria-label="Открыть перестановку людей">Открыть</a></li>
+   <li class="is-ready"><span class="hm-n">01</span><div><b>Сравнение планировок</b><p>Один общий вид: A выше B. По умолчанию — секции и стеллажи B164; можно осмотреть объекты, найти адрес и сравнить план сверху.</p><span class="hm-meta">План конфигурации · исходный товар сохранён</span></div><a class="hm-go" href="twin-v3.html" aria-label="Открыть сравнение планировок">Открыть</a></li>
+   <li><span class="hm-n">02</span><div><b>Приёмка · от паллеты до ячейки</b><p>Одна паллета 455 кг: зона приёмки → вилы FL01 → свободная ячейка. Связный визуальный эпизод с перемоткой. Это не весь поток N2 и не исполнение заданий движка.</p><span class="hm-meta">Демонстрационный эпизод · финальная проверка к защите ещё не завершена</span></div><a class="hm-go hm-go-soft" href="heavy-inbound-v3.html" aria-label="Открыть демонстрационный эпизод приёмки">Смотреть</a></li>
+   <li><span class="hm-n">03</span><div><b>Сценарии · заявки и маршруты</b><p>Выбор N0–N4, очередь и маршруты в 3D. Неподдерживаемое действие получает причину остановки. Времена и результаты визуального примера — не показатели движка.</p><div class="hm-statuses" aria-label="Статусы исходных карточек сценариев"><span class="hm-st" data-status="frozen">N0, N1 · Входы зафиксированы</span><span class="hm-st" data-status="candidate">N2, N3, N4 · Входы на проверке</span></div></div><a class="hm-go hm-go-soft" href="scenario-v3.html" aria-label="Открыть сценарии склада">Смотреть</a></li>
+   <li><span class="hm-n">04</span><div><b>Команда · временная смена роли</b><p>Назначьте обученного P01 или P02 на свободный пост. Проверяются допуск, путь, новая роль после прибытия и возврат; незавершённая работа сохраняется.</p><span class="hm-meta">Локальный учебный сценарий · без выполнения складских заданий</span></div><a class="hm-go hm-go-soft" href="staff-v3.html#role-assignment" aria-label="Открыть распределение ролей на странице команды">Открыть</a></li>
   </ol>
  </section>
 
  <section class="hm-section" aria-labelledby="hm-numbers">
-  <div class="hm-head"><h2 id="hm-numbers">Склад модели</h2><p>Исходный снимок V3 — одинаковый для A и B.</p></div>
+  <div class="hm-head"><h2 id="hm-numbers">Склад модели</h2><p>Синтетический снимок V3. В B меняется структура хранения; исходные грузы и команда те же.</p></div>
   <dl class="hm-numbers">
-   <div><dt>площадь</dt><dd>144 × 72<small>м</small></dd></div>
+   <div><dt>размеры склада</dt><dd>144 × 72<small>м</small></dd></div>
    <div><dt>грузовых единиц</dt><dd>530</dd></div>
-   <div><dt>модулей хранения</dt><dd>132</dd></div>
-   <div><dt>типов груза</dt><dd>8</dd></div>
-   <div><dt>работников в 5 ролях</dt><dd>24</dd></div>
+   <div><dt>модулей · A → B</dt><dd>132 <small>→</small> 164</dd></div>
+   <div><dt>адресов · A → B</dt><dd>776 <small>→</small> 1 096</dd></div>
+   <div><dt>сотрудника</dt><dd>24</dd></div>
    <div><dt>ворот: 3 входа и 3 выхода</dt><dd>6</dd></div>
   </dl>
  </section>
@@ -51,9 +50,9 @@
   <div class="hm-head"><h2 id="hm-more">Внутри</h2></div>
   <nav class="hm-links" aria-labelledby="hm-more">
    <a href="native-pair-v3.html"><b>Записанная native pair</b><span>Фактический конвейер и N1-перенос, Play/Pause, seek и A/B</span></a>
-   <a href="scenario-v3.html"><b>Работа склада</b><span>Заявки N0–N4, маршруты, очередь и смена ролей в 3D</span></a>
+   <a href="scenario-v3.html"><b>Сценарии</b><span>Визуальный пример: заявки, маршруты и причины остановки</span></a>
    <a href="warehouse-v3.html"><b>Склад</b><span>Исходное размещение, осмотр любой грузовой единицы, маршруты техники</span></a>
-   <a href="staff-v3.html"><b>Команда</b><span>24 работника, пять ролей, цвета и знаки, по которым их видно в 3D</span></a>
+   <a href="staff-v3.html"><b>Команда</b><span>24 работника, пять ролей и учебная проверка назначений</span></a>
    <a href="skills-v3.html"><b>Навыки</b><span>Кто к какому посту и технике допущен — и почему</span></a>
    <a href="stand-v3.html"><b>Модели</b><span>Стенд 3D-моделей: груз, стеллажи, техника и действия людей вблизи</span></a>
   </nav>

@@ -1,14 +1,16 @@
 /* Start page: one strong statement, the real compare frame, honest demo list. Tokens come from shell.css. */
-.hm{--muted:#52625E;max-width:1320px;margin:0 auto;padding:0 28px 40px}
+.hm{--muted:#52625E;max-width:1600px;margin:0 auto;padding:0 28px 40px}
 .hm svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
 /* hero */
-.hm-hero{min-height:min(calc(100svh - 70px),780px);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);align-items:center;gap:56px;padding:12px 0 48px}
+.hm-hero{min-height:min(calc(100svh - 70px),780px);display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.55fr);align-items:center;gap:40px;padding:24px 0 48px}
 .hm-kicker{display:inline-flex;align-items:center;gap:9px;margin:0 0 22px;padding:7px 14px 7px 11px;border-radius:999px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);font:600 12.5px var(--ui);color:var(--muted);box-shadow:0 1px 2px rgba(16,32,30,.05)}
 .hm-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2)}
-.hm h1{margin:0;font:700 clamp(40px,5.1vw,70px)/1.02 var(--display);letter-spacing:-.04em}
+.hm h1{margin:0;font:700 clamp(40px,4.2vw,64px)/1.02 var(--display);letter-spacing:-.04em}
 .hm h1 span{color:var(--accent)}
 .hm-lead{margin:24px 0 0;max-width:33em;font-size:17px;line-height:1.55;color:var(--muted)}
+.hm-plan{margin:18px 0 0;font:650 15px/1.6 var(--ui);font-variant-numeric:tabular-nums;color:var(--ink)}
+.hm-plan>span{color:var(--muted);font-weight:500}
 .hm-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .hm-cta a{display:inline-flex;align-items:center;gap:10px;min-height:54px;padding:0 24px;border-radius:999px;text-decoration:none;font:650 15.5px var(--ui);transition:scale .3s var(--spring),box-shadow .3s}
 .hm-cta a:active{scale:.97}
@@ -28,12 +30,11 @@
 .hm-tag{padding:4px 11px;border-radius:999px;background:rgba(229,160,13,.16);color:#8A5D00;font:600 11.5px var(--ui)}
 .hm-source p{margin:12px 0 0;line-height:1.55}
 
-/* the real frame, slightly turned towards the text */
-.hm-shot{margin:0;perspective:2000px}
-.hm-shot img{display:block;width:100%;height:auto;aspect-ratio:2250/1350;border-radius:28px;background:#dfe7e3;box-shadow:0 2px 4px rgba(16,32,30,.06),0 40px 80px -30px rgba(16,32,30,.45);transform:rotateY(-7deg) rotateX(2deg);transform-origin:left center;transition:transform .9s var(--spring)}
-.hm-shot:hover img{transform:none}
-.hm-shot figcaption{margin:16px 0 0 6px;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.hm-shot figcaption::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-2)}
+/* Keep the complete comparison frame readable, including its controls and A/B labels. */
+.hm-shot{margin:0;min-width:0}
+.hm-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:28px;background:#dfe7e3;box-shadow:0 2px 4px rgba(16,32,30,.06),0 40px 80px -30px rgba(16,32,30,.35)}
+.hm-shot figcaption{margin:16px 0 0 6px;font-size:13px;line-height:1.5;color:var(--muted);display:flex;align-items:baseline;gap:8px}
+.hm-shot figcaption::before{content:"";flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:var(--accent-2)}
 
 /* sections */
 .hm-section{padding:56px 0 8px}
@@ -51,6 +52,7 @@
 .hm-demos li:not(.is-ready) b{color:inherit}
 .hm-demos p{margin:4px 0 0;font-size:14px;line-height:1.5;max-width:62em}
 .hm-meta{display:block;margin-top:8px;font:600 12px var(--ui);color:var(--accent)}
+.hm-statuses{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:10px}
 .hm .hm-go{padding:11px 20px;border-radius:999px;background:var(--accent-soft);color:var(--accent);text-decoration:none;font:650 14px var(--ui);transition:background-color .2s}
 .hm-go:hover{background:rgba(14,128,118,.2)}
 .hm-soon{padding:5px 11px;border-radius:999px;background:var(--faint);font:600 11.5px var(--ui);white-space:nowrap}
@@ -63,7 +65,7 @@
 
 .hm-numbers{margin:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .hm-numbers div{display:flex;flex-direction:column;gap:4px;padding:20px;border-radius:20px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8)}
-.hm-numbers dd{order:-1;margin:0;font:700 clamp(28px,3vw,40px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hm-numbers dd{order:-1;margin:0;font:700 clamp(26px,2.1vw,34px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .hm-numbers dd small{font:600 15px var(--ui);color:var(--muted);margin-left:4px;letter-spacing:0}
 .hm-numbers dt{font-size:13px;color:var(--muted)}
 
@@ -79,10 +81,17 @@
 
 /* entrance: text first, then the frame */
 .hm-copy>*{animation:hm-rise .8s var(--spring) both}
-.hm-copy>:nth-child(2){animation-delay:.06s}.hm-copy>:nth-child(3){animation-delay:.12s}.hm-copy>:nth-child(4){animation-delay:.18s}.hm-copy>:nth-child(5){animation-delay:.24s}
+.hm-copy>:nth-child(2){animation-delay:.06s}.hm-copy>:nth-child(3){animation-delay:.12s}.hm-copy>:nth-child(4){animation-delay:.18s}.hm-copy>:nth-child(5){animation-delay:.24s}.hm-copy>:nth-child(6){animation-delay:.3s}
 .hm-shot{animation:hm-in 1.1s var(--spring) .15s both}
 @keyframes hm-rise{from{opacity:0;translate:0 14px}}
 @keyframes hm-in{from{opacity:0;scale:.97}}
+
+@media (prefers-reduced-motion:reduce){
+ .hm-copy>*,.hm-shot{animation:none}
+ .hm-cta a,.hm-primary svg,.hm-source summary::after,.hm .hm-links a,.hm-links a::after{transition:none}
+ .hm-cta a:active{scale:1}
+ .hm-primary:hover svg,.hm-links a:hover,.hm-links a:hover::after{translate:none}
+}
 
 @media (max-width:1100px){.hm-numbers{grid-template-columns:repeat(3,minmax(0,1fr))}.hm-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){
