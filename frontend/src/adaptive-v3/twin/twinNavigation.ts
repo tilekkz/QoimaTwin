@@ -9,7 +9,8 @@ import type {XYZ} from '../warehouseTypes';
 type Scene={frameAt(target:XYZ,span:number,dir?:XYZ):void;frameState():{target:XYZ;span:number;dir:XYZ}};
 export type NavOptions={
  host:HTMLElement;scene:Scene;
- /** Overlay layers above the canvas (bubbles, pins, badges): wheel over them still zooms, clicks stay theirs. */
+ /** Overlay layers above the canvas (bubbles, pins, labels): wheel over them still zooms and a drag that starts on
+  *  them still moves the camera, while a plain tap stays their click. */
  wheelAlso?:HTMLElement[];
  /** World point on the horizontal plane y=planeY under a host-relative screen point, or null outside any view. */
  ground:(x:number,y:number,planeY:number)=>XYZ|null;
@@ -121,12 +122,19 @@ export function createNavigation(o:NavOptions){
   }
   down=null;
  }
+ // A press on an overlay button is the button's until it travels: past a few pixels the gesture becomes the camera's.
+ // Capturing to the host only then keeps the button's own click for taps.
+ const pending=new Map<number,PointerEvent>();
+ function overlayDown(e:PointerEvent){if(e.pointerType==='mouse'&&e.button!==0)return;pending.set(e.pointerId,e);}
+ function overlayMove(e:PointerEvent){const s=pending.get(e.pointerId);if(!s||Math.hypot(e.clientX-s.clientX,e.clientY-s.clientY)<6)return;pending.delete(e.pointerId);pointerdown(s);pointermove(e);}
+ function overlayEnd(e:PointerEvent){pending.delete(e.pointerId);}
+ const overlayListeners:[string,(e:never)=>void][]=[['wheel',wheel],['pointerdown',overlayDown],['pointermove',overlayMove],['pointerup',overlayEnd],['pointercancel',overlayEnd]];
  const opts={capture:true,passive:false} as const;
  // Right-drag pans, so the browser's context menu stays out of the way on the canvas.
  const swallow=(e:Event)=>{e.preventDefault();e.stopPropagation();};
  const listeners:[string,(e:never)=>void][]=[['wheel',wheel],['pointerdown',pointerdown],['pointermove',pointermove],['pointerup',pointerup],['pointercancel',pointerup],['contextmenu',swallow]];
  for(const [type,fn] of listeners)o.host.addEventListener(type,fn as EventListener,opts);
- for(const el of o.wheelAlso??[])el.addEventListener('wheel',wheel,opts);
+ for(const el of o.wheelAlso??[])for(const [type,fn] of overlayListeners)el.addEventListener(type,fn as EventListener,opts);
  return {
   stop,
   /** Jump to where a smooth zoom was heading (reduced motion, hidden page); glides and turns just stop. */
@@ -135,6 +143,6 @@ export function createNavigation(o:NavOptions){
   zoomBy(f:number){const {target:t,span:s}=o.scene.frameState();goal=clampS((anchor?goal:s)*f);anchor={p:t,t0:t,s0:s};vel=[0,0];o.onInput();if(o.reduced())loop(performance.now());else kick();},
   /** Keyboard turn by an angle (radians), smoothed like a short flick. */
   turnBy(yaw:number){o.onInput();stop();if(o.reduced()){const st=o.scene.frameState(),{yaw:y,elev}=angles(st.dir);set(st.target,st.span,dirOf(y+yaw,elev));return;}spin=[yaw/TAU_SPIN,0];kick();},
-  dispose(){stop();for(const [type,fn] of listeners)o.host.removeEventListener(type,fn as EventListener,opts);for(const el of o.wheelAlso??[])el.removeEventListener('wheel',wheel,opts);},
+  dispose(){stop();for(const [type,fn] of listeners)o.host.removeEventListener(type,fn as EventListener,opts);for(const el of o.wheelAlso??[])for(const [type,fn] of overlayListeners)el.removeEventListener(type,fn as EventListener,opts);pending.clear();},
  };
 }

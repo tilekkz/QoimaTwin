@@ -31,7 +31,10 @@ body.tw{background:var(--bg);color:var(--ink);font:400 14px/1.45 var(--ui);-webk
 .tw-viewport{position:absolute;inset:0;transition:filter .45s var(--out),transform .6s var(--spring)}
 .tw-viewport canvas{display:block;width:100%;height:100%;touch-action:none}
 .tw-viewport.is-switching{filter:blur(10px) saturate(.9);transform:scale(.985);transition-duration:.12s}
-.tw-layer-host{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.tw-layer-host{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+/* Drags that start on a label or pin belong to the camera, not to native page panning. */
+.tw-layer-host *{touch-action:none}
+.tw-sheet:focus{outline:none}
 .tw-layer{position:absolute;inset:0}
 
 /* rounded viewport corners in side-by-side: masks painted in the page colour */
@@ -51,6 +54,13 @@ body.tw{background:var(--bg);color:var(--ink);font:400 14px/1.45 var(--ui);-webk
 .tw-badge[data-state="sos"] .tw-badge-in i{background:var(--sos)}
 .tw-badge[data-state="sos"] .tw-badge-in i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--sos);animation:tw-ping 1.8s var(--out) infinite}
 .tw-badge-in small{color:var(--muted);font:500 12px var(--ui)}
+/* scenario gate tags */
+.tw-gate{position:absolute;left:0;top:0;z-index:4;pointer-events:none}
+.tw-gate-in{position:relative;display:grid;justify-items:center;padding:5px 10px 6px;border-radius:12px;text-align:center;animation:tw-pop .5s var(--spring) both}
+.tw-gate-in::after{content:"";position:absolute;left:50%;bottom:-7px;width:2px;height:7px;margin-left:-1px;background:rgba(14,95,87,.45);border-radius:1px}
+.tw-gate-in b{font:700 14px var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tw-gate[data-d="up"] b{color:#0E5F57}.tw-gate[data-d="down"] b{color:#9A6A00}.tw-gate[data-d="same"] b{color:var(--muted)}
+.tw-gate-in small{font:500 11px var(--ui);color:var(--muted);white-space:nowrap}
 /* position lives in `translate` so hover/selected `scale` grows the pin in place */
 .tw-pin{position:absolute;left:0;top:0;transform:translate(-50%,-115%);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:650 12px var(--display);pointer-events:auto;transition:scale .3s var(--spring),box-shadow .3s}
 .tw-pin:hover{scale:1.12}
@@ -72,6 +82,8 @@ body.tw{background:var(--bg);color:var(--ink);font:400 14px/1.45 var(--ui);-webk
 
 /* corners */
 .tw-tl,.tw-tr{position:absolute;top:calc(var(--gap) + var(--safe-t));z-index:6}
+/* The brand menu drops over everything below it (plan card, dock), never under. */
+.tw-tl{z-index:9}
 .tw-tl{left:max(var(--gap),env(safe-area-inset-left,0px))}
 .tw-tr{right:max(var(--gap),env(safe-area-inset-right,0px))}
 .tw-brand{display:flex;align-items:center;gap:9px;height:44px;padding:0 12px 0 6px;border-radius:22px;font:650 15px var(--display);letter-spacing:-.01em;transition:scale .25s var(--spring)}
@@ -236,10 +248,21 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 .tw-load{position:absolute;inset:0;display:grid;place-items:center;padding:24px;z-index:9}
 .tw-load-card{display:grid;justify-items:center;gap:14px;padding:26px 30px;border-radius:28px;text-align:center;min-width:240px}
 .tw-load-card p{margin:0;font:500 14px var(--ui);max-width:36ch}
+.tw-load-card:has(.tw-nogl:not([hidden])){max-width:min(560px,100%);padding:24px}
+.tw-nogl{display:grid;gap:14px;justify-items:center}
+.tw-nogl figure{margin:0;display:grid;gap:6px}
+.tw-nogl img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 1px 2px rgba(16,32,30,.08)}
+.tw-nogl figcaption{font-size:12px;color:var(--muted)}
+.tw-nogl p{color:var(--muted);font-size:13px!important}
+.tw-nogl nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.tw-nogl a{padding:9px 16px;border-radius:999px;background:var(--faint);color:inherit;text-decoration:none;font:600 13px var(--ui)}
+.tw-nogl a:hover{background:rgba(14,128,118,.14)}
+.tw-nogl a:focus-visible{outline:2px solid #0E8076;outline-offset:2px}
 .tw-load button{background:linear-gradient(140deg,var(--accent-2),var(--accent));color:#fff;border-radius:999px;padding:10px 20px;font:600 14px var(--ui);min-height:44px}
 .tw-spinner{width:28px;height:28px;border-radius:50%;border:3px solid var(--accent-soft);border-top-color:var(--accent);animation:tw-spin .9s linear infinite}
 @keyframes tw-spin{to{rotate:360deg}}
-.tw-app[data-phase="ready"] .tw-load{opacity:0;visibility:hidden;transition:opacity .5s var(--out),visibility 0s .5s}
+/* Once ready, the fading loading card never takes a tap, whatever its own fade timing. */
+.tw-app[data-phase="ready"] .tw-load{pointer-events:none;opacity:0;visibility:hidden;transition:opacity .5s var(--out),visibility 0s .5s}
 .tw-app[data-phase="error"] .tw-spinner{display:none}
 .tw-app:not([data-phase="ready"]) :is(.tw-dock,.tw-blade,.tw-layer-host,.tw-tr,.tw-mini){opacity:0;pointer-events:none}
 /* hover hint over 3D objects: solid (no blur), follows the mouse, never takes the pointer */
@@ -258,8 +281,16 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 .tw-mini-cap span{color:rgba(20,40,36,.95);font-weight:600}
 .tw-mini-cap i{font-style:normal;font-size:10.5px}
 .tw-mini-cap i[data-s="danger"]{color:#9A6A00}.tw-mini-cap i[data-s="sos"]{color:#B4282D}.tw-mini-cap i[data-s="control"]{color:#1F7A4F}
-.tw-app[data-sheet="time"] .tw-mini,.tw-app[data-presenting="true"] .tw-mini{opacity:0;pointer-events:none}
-@media (max-width:1099px),(max-height:680px){.tw-mini{display:none}}
+.tw-app[data-open-sheet="time"] .tw-mini,.tw-app[data-presenting="true"] .tw-mini{opacity:0;pointer-events:none}
+.tw-plan-open,.tw-mini-x{display:none}
+/* Where the corner plan does not fit it opens from the menu, as a card under the top bar. */
+@media (max-width:1099px),(max-height:680px){
+ .tw-mini{display:none}
+ .tw-plan-open{display:grid}
+ .tw-app[data-plan="open"] .tw-mini{display:block;left:50%;right:auto;translate:-50% 0;top:calc(var(--gap) + var(--safe-t) + 58px);bottom:auto;width:min(320px,calc(100% - 2*var(--gap)));z-index:7}
+ .tw-mini-x{display:grid;width:28px;height:28px;margin-left:8px}
+ .tw-mini-head{align-items:center}.tw-mini-head small{margin-left:auto}
+}
 .tw-dock,.tw-tr{transition:opacity .6s var(--out) .15s}
 
 /* Labels inside the 3D view sit over a canvas that changes every frame while the camera moves; a live backdrop blur

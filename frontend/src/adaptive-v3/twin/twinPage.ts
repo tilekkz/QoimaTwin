@@ -72,7 +72,8 @@ function silenceAudio(close=false){
 soundBtn.addEventListener('click',()=>{if(phase!=='ready')return;soundOn=!soundOn;if(soundOn&&!audio){audio=new AudioContext();master=audio.createGain();master.connect(audio.destination);}if(soundOn){const context=audio!;void context.resume().catch(()=>{if(audio!==context)return;soundOn=false;silenceAudio();syncSound();});}else silenceAudio();syncSound();if(soundOn)cue('control');});
 volumeIn.addEventListener('input',()=>{volume=Number(volumeIn.value);store.set('qoima.twin.volume',String(volume));syncSound();});
 function cue(kind:Cue){
- if(!soundOn||!audio||!master||document.hidden||phase!=='ready'||voices.size>=4)return;const now=audio.currentTime;if(now-(lastCue[kind]??-9)<.9)return;lastCue[kind]=now;
+ if(!soundOn||!audio||!master||document.hidden||phase!=='ready'||voices.size>=4)return;// The cooldown is about what people hear in real time; the audio clock lags on start-up and stops while suspended.
+ const wall=performance.now()/1000;if(wall-(lastCue[kind]??-9)<.9)return;lastCue[kind]=wall;const now=audio.currentTime;
  for(const [f,at,type] of CUE_NOTES[kind]){if(voices.size>=4)break;const o=audio.createOscillator(),g=audio.createGain(),t0=now+at,len=kind==='refuse'?.18:.38;voices.set(o,g);
   o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(.5,t0+.02);g.gain.exponentialRampToValueAtTime(.001,t0+len);o.connect(g).connect(master);o.start(t0);o.stop(t0+len+.02);o.onended=()=>{voices.delete(o);o.disconnect();g.disconnect();};}
 }
@@ -82,7 +83,13 @@ function cuesBetween(from:number,to:number){
  for(const k of fired)cue(k);
 }
 syncSound();
-function setPhase(next:Phase,message:string){phase=next;app.dataset.phase=next;status.textContent=message;retry.hidden=next!=='error';syncSound();}
+function setPhase(next:Phase,message:string){phase=next;app.dataset.phase=next;status.textContent=message;retry.hidden=next!=='error';noGl.hidden=true;syncSound();}
+/* ---------- no WebGL: say so plainly, show a still frame and pages that work without 3D ---------- */
+const noGl=$('#tw-nogl');
+function webglAvailable(){
+ try{const c=document.createElement('canvas'),gl=c.getContext('webgl2')??c.getContext('webgl');if(!gl)return false;gl.getExtension('WEBGL_lose_context')?.loseContext();return true;}catch{return false;}
+}
+function showNoGl(){setPhase('error','Этот браузер не может показать 3D-склад: доступ к видеокарте (WebGL) выключен или заблокирован.');retry.hidden=true;noGl.hidden=false;}
 
 /* ---------- floating surfaces ---------- */
 const show=(el:HTMLElement,open:boolean)=>{el.dataset.open=String(open);el.toggleAttribute('inert',!open);};
@@ -94,16 +101,32 @@ function layoutPanels(){
  const right=!phone.matches&&!!sheet&&sheet!=='time',sel=!phone.matches&&sheets.find(s=>s.dataset.sheet==='sel')?.dataset.open==='true';
  app.dataset.right=String(right);twin?.setInset((right?376:0)+(sel?(right?346:346):0));positionBlade();drawMini();
 }
+for(const s of sheets)s.tabIndex=-1;
 function setSheet(name:string|null){
- sheet=name;app.dataset.sheet=name??'';for(const s of sheets)if(s.dataset.sheet!=='sel')show(s,s.dataset.sheet===name);
+ const prev=sheet,focusWasInside=!!prev&&sheets.some(s=>s.dataset.sheet===prev&&s.contains(document.activeElement));
+ sheet=name;app.dataset.openSheet=name??'';for(const s of sheets)if(s.dataset.sheet!=='sel')show(s,s.dataset.sheet===name);
  for(const b of openers)b.setAttribute('aria-expanded',String(b.dataset.open===name));
  if(name&&phone.matches)select(null);setPop(null);if(name==='time')requestAnimationFrame(drawRiver);layoutPanels();
  if(name!=='source'&&openScn)openScenario(null);
+ if(focusWasInside&&prev!==name)openers.find(b=>b.dataset.open===prev&&!b.closest('[inert]'))?.focus({preventScroll:true});
 }
-for(const b of openers)b.addEventListener('click',()=>setSheet(sheet===b.dataset.open?null:b.dataset.open!));
+for(const b of openers)b.addEventListener('click',()=>{
+ const name=sheet===b.dataset.open?null:b.dataset.open!;setSheet(name);
+ // Keyboard and screen-reader users land in the panel they opened, not back on the dock.
+ if(name&&!phone.matches)sheets.find(s=>s.dataset.sheet===name)?.focus({preventScroll:true});
+});
 for(const b of $$('[data-close]'))b.addEventListener('click',()=>{if(b.closest<HTMLElement>('.tw-sheet')?.dataset.sheet==='sel')select(null);else setSheet(null);});
 menuBtn.addEventListener('click',()=>setPop(menu.dataset.open==='true'?null:'menu'));
-document.addEventListener('pointerdown',e=>{const tgt=e.target as HTMLElement;if(!tgt.closest('#tw-menu,#tw-menu-btn'))setPop(null);if(!tgt.closest('#tw-search,#tw-search-btn'))setSearch(false);});
+document.addEventListener('pointerdown',e=>{const tgt=e.target as HTMLElement;if(!tgt.closest('#tw-menu,#tw-menu-btn'))setPop(null);if(!tgt.closest('#tw-search,#tw-search-btn'))setSearch(false);if(!tgt.closest('#tw-mini-box,#tw-plan-open'))setPlan(false);});
+/* ---------- plan on small screens: opened from the menu, closes after a jump ---------- */
+const planBox=$('#tw-mini-box'),planOpen=()=>app.dataset.plan==='open';
+function setPlan(open:boolean){
+ if(open===planOpen())return;const hadFocus=planBox.contains(document.activeElement);app.dataset.plan=open?'open':'';
+ if(open){setPop(null);miniKey='';requestAnimationFrame(()=>{drawMini();$('#tw-mini-close').focus({preventScroll:true});});}
+ else if(hadFocus)menuBtn.focus({preventScroll:true});
+}
+$('#tw-plan-open').addEventListener('click',()=>setPlan(true));
+$('#tw-mini-close').addEventListener('click',()=>setPlan(false));
 
 /* ---------- search ---------- */
 const searchBox=$('#tw-search'),searchBtn=$<HTMLButtonElement>('#tw-search-btn'),searchIn=$<HTMLInputElement>('#tw-search-input'),searchList=$('#tw-search-list');
@@ -227,8 +250,10 @@ function goStep(i:number){
  for(const el of [pTitle,pText])el.style.animation='none';void present.offsetWidth;pTitle.textContent=s.title;pText.textContent=s.text;for(const el of [pTitle,pText])el.style.animation='';
  pPrev.disabled=stepIndex===0;pNext.textContent=stepIndex===PRESENTER_STEPS.length-1?'Завершить':'Дальше';
  setPlaying(false);seek(s.t);setMode(s.mode);setSheet(s.sheet&&!phone.matches?s.sheet:null);const f=focusFor(s.focus,s.mode);fly(f.target,f.span,HOME_DIR);if(s.play)setPlaying(true);
+ // A scenario step outlines and frames that scenario's zones; on a phone without the sheet, the outline alone.
+ if(s.scenario)openScenario(s.scenario);else if(openScn)openScenario(null);
 }
-function endPresent(){if(stepIndex<0)return;stepIndex=-1;app.dataset.presenting='false';show(present,false);}
+function endPresent(){if(stepIndex<0)return;const had=present.contains(document.activeElement)||document.activeElement===document.body;stepIndex=-1;app.dataset.presenting='false';show(present,false);if(had&&phase==='ready')menuBtn.focus({preventScroll:true});}
 function nextPresent(){if(stepIndex<0)return;if(stepIndex>=PRESENTER_STEPS.length-1)endPresent();else goStep(stepIndex+1);}
 $('#tw-present-btn').addEventListener('click',()=>goStep(0));
 $('#tw-present-close').addEventListener('click',endPresent);
@@ -286,13 +311,15 @@ function setMode(requested:Mode,animate=true){
 }
 for(const b of modeBtns)b.addEventListener('click',()=>setMode(b.dataset.mode as Mode));
 /** The blade lives inside the comparison window, which narrows when panels are open. */
-function positionBlade(){const R=twin?.region();blade.style.left=R?`${R.x+R.w*split}px`:split*100+'%';}
+/** The comparison region's size comes from a ResizeObserver, which reports after a resize's animation frame;
+ *  so the blade is also re-placed after every scene render, where the new size is known (a write only when it moved). */
+function positionBlade(){const R=twin?.region(),left=R?`${R.x+R.w*split}px`:split*100+'%';if(blade.style.left!==left)blade.style.left=left;}
 const setSplit=(f:number)=>{split=Math.min(.92,Math.max(.08,f));positionBlade();blade.setAttribute('aria-valuenow',String(Math.round(split*100)));twin?.setSplit(split);};
 blade.addEventListener('pointerdown',e=>{blade.setPointerCapture(e.pointerId);e.preventDefault();});
 blade.addEventListener('pointermove',e=>{if(!blade.hasPointerCapture(e.pointerId))return;const r=host.getBoundingClientRect(),R=twin?.region()??{x:0,w:r.width};setSplit((e.clientX-r.left-R.x)/R.w);});
 blade.addEventListener('keydown',e=>{const d=e.key==='ArrowLeft'?-.04:e.key==='ArrowRight'?.04:0;if(d){e.preventDefault();setSplit(split+d);}});
 document.addEventListener('keydown',e=>{
- if(e.key==='Escape'){setPop(null);if(stepIndex>=0)endPresent();else if(sheet)setSheet(null);else select(null);return;}
+ if(e.key==='Escape'){setPop(null);if(planOpen()){setPlan(false);return;}if(stepIndex>=0)endPresent();else if(sheet)setSheet(null);else select(null);return;}
  if(phase!=='ready'||e.altKey||e.ctrlKey||e.metaKey)return;const target=e.target as HTMLElement;if(target.closest('input,select,textarea,[role="slider"]'))return;
  // Presentation clickers send PageDown/PageUp; arrows work too while the walk-through is open.
  if(stepIndex>=0&&['ArrowRight','PageDown','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();if(e.key==='ArrowRight'||e.key==='PageDown')nextPresent();else goStep(stepIndex-1);return;}
@@ -351,6 +378,11 @@ function renderScenarios(){
 /** Opening a card outlines its zones on A and frames them; closing restores the plain view. */
 function openScenario(id:string|null){
  openScn=id;const c=SCENARIOS.find(s=>s.id===id);renderScenarios();
+ // Gate tags carry the same numbers as the card, pinned above each gate.
+ const gatePos=new Map((bundle?.fixture.inputs.ports??[]).map(p=>[p.port_id as string,p.world_pos as XYZ]));
+ const tags=!c?[]:c.ports?[...c.ports.inbound,...c.ports.outbound].map(p=>({port_id:p.port_id,value:`${p.before}${p.after!==p.before?` → ${p.after}`:''}`,d:(p.after>p.before?'up':p.after<p.before?'down':'same') as 'up'|'down'|'same'}))
+  :(c.gateNotes??[]).map(n=>({port_id:n.port_id,value:n.text,d:'up' as const}));
+ twin?.setGateTags(tags.filter(g=>gatePos.has(g.port_id)).map(g=>({pos:gatePos.get(g.port_id)!,title:PORT_RU[g.port_id]??g.port_id,value:g.value,d:g.d})));
  const rects=c?c.focus.map(z=>zoneRects.get(z)).filter((r):r is NonNullable<typeof r>=>!!r):[];pinnedHl=rects.length?rects:null;restoreHl();
  if(!rects.length||phase!=='ready')return;
  const x0=Math.min(...rects.map(r=>r.min[0])),x1=Math.max(...rects.map(r=>r.max[0])),z0=Math.min(...rects.map(r=>r.min[1])),z1=Math.max(...rects.map(r=>r.max[1]));
@@ -433,7 +465,9 @@ const pose=(b:BoundCargo):Pose=>({position:[...b.position],yaw:b.yaw_rad,dims:[.
 function clearSelectionState(){selectedId=null;selectedKind='HU';statusKey='';for(const button of $$<HTMLButtonElement>('.tw-moves button'))button.setAttribute('aria-pressed','false');show(sheets.find(s=>s.dataset.sheet==='sel')!,false);$('#tw-selection').replaceChildren();}
 function disposeAll(){silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;moves=[];nowKey='';clearSelectionState();endPresent();}
 async function load(){
- const token=++serial;controller?.abort();controller=new AbortController();const owned=controller;disposeAll();setPhase('loading','Открываем склад…');
+ const token=++serial;controller?.abort();controller=new AbortController();const owned=controller;disposeAll();
+ if(!webglAvailable()){showNoGl();return;}
+ setPhase('loading','Открываем склад…');
  const timeout=setTimeout(()=>owned.abort(),45000);
  try{
   const keys=Object.keys(WAREHOUSE_BASE_FILES) as (keyof WarehouseTexts)[],values=await Promise.all(keys.map(k=>readLocal(WAREHOUSE_BASE_FILES[k],owned.signal)));
@@ -441,7 +475,7 @@ async function load(){
   const tw=createTwinRenderer(data,layer,()=>reduced.matches);twin=tw;tw.onBubble((id,v)=>select(id,'actor',v));
   // The A/B labels stand by their warehouse: a click takes you to that one, to look at it on its own.
   tw.onLabel(v=>{const o=tw.offsetOf(v);fly([OVERVIEW.target[0],OVERVIEW.target[1],OVERVIEW.target[2]+o[2]],mode==='side'?150:OVERVIEW.span);});
-  const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{tw.renderPass(r,s,c);drawMini();}});
+  const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{tw.renderPass(r,s,c);positionBlade();drawMini();}});
   if(token!==serial){sc.dispose();return;}scene=sc;bundle=data;setPhase('loading','Проверяем перестройку…');
   // B: greedy, each move admitted by the real cargo rules; rejected candidates leave state untouched.
   const accepted:{c:ReturnType<typeof outboundCandidates>[number];slot_id:string;after_m:number;move_m:number}[]=[];
@@ -458,8 +492,8 @@ async function load(){
    zones:(data.layout.data.zones as Z[]).filter(z=>!z.zone_id.startsWith('CLEAR_')).map(z=>({id:z.zone_id,label:zoneLabel(z.zone_id),...z.floor_bounds_xz_m})),
    modules:data.layout.modules.map(m=>({min:[m.outer_bounds_world.min[0],m.outer_bounds_world.min[2]] as [number,number],max:[m.outer_bounds_world.max[0],m.outer_bounds_world.max[2]] as [number,number]}))},
    // A plan click means «take me there»: close enough to read the racks, at the current viewing angle.
-   {zone:(z,v)=>{const o=tw.offsetOf(v),w=z.max[0]-z.min[0],d=z.max[1]-z.min[1];fly([(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o[2]],Math.min(64,Math.max(26,Math.max(w,d)*1.05+6)));},
-    point:(p,v)=>{const o=tw.offsetOf(v);fly([p[0],0,p[2]+o[2]],30);},
+   {zone:(z,v)=>{setPlan(false);const o=tw.offsetOf(v),w=z.max[0]-z.min[0],d=z.max[1]-z.min[1];fly([(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o[2]],Math.min(64,Math.max(26,Math.max(w,d)*1.05+6)));},
+    point:(p,v)=>{setPlan(false);const o=tw.offsetOf(v);fly([p[0],0,p[2]+o[2]],30);},
     hover:(z,v)=>{if(z)tw.highlightZone(z,v);else restoreHl();}});
   zoneRects=new Map((data.layout.data.zones as Z[]).map(z=>[z.zone_id,z.floor_bounds_xz_m]));
   setPhase('ready','');
@@ -470,7 +504,10 @@ async function load(){
   {const id=new URL(location.href).searchParams.get('scenario');if(SCENARIOS.some(c=>c.id===id)){setSheet('source');openScenario(id);}}
  }catch(error){
   if(token!==serial)return;const aborted=owned.signal.aborted;owned.abort();disposeAll();
-  setPhase('error',aborted&&!(error instanceof WarehouseAdapterError)?'Загрузка заняла слишком много времени. Попробуйте ещё раз.':error instanceof Error?error.message:'Не удалось открыть склад. Попробуйте ещё раз.');
+  // Engine messages are English and technical: keep them in the console, show people a sentence they can act on.
+  const msg=error instanceof Error?error.message:'';if(msg&&!/[а-яё]/i.test(msg))console.error(error);
+  if(/webgl/i.test(msg)){showNoGl();return;}
+  setPhase('error',aborted&&!(error instanceof WarehouseAdapterError)?'Загрузка заняла слишком много времени. Попробуйте ещё раз.':/[а-яё]/i.test(msg)?msg:'Не удалось открыть склад. Попробуйте ещё раз.');
  }finally{clearTimeout(timeout);}
 }
 retry.addEventListener('click',()=>void load());

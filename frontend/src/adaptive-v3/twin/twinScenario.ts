@@ -68,7 +68,9 @@ export const CHAPTERS:{at_s:number;label:string}[]=[
 ];
 
 /** Defence walk-through: 3–5 minutes, each step restores the same absolute state (time, mode, camera). */
-export type PresenterStep={title:string;text:string;t:number;mode:'side'|'swipe';focus:{target:XYZ;span:number};sheet?:'now'|'diff'|'source';play?:boolean};
+export type PresenterStep={title:string;text:string;t:number;mode:'side'|'swipe';focus:{target:XYZ;span:number};sheet?:'now'|'diff'|'source';play?:boolean;
+ /** Scenario card (N0–N4) to open on this step: its zones are outlined and framed. */
+ scenario?:string};
 const OVERVIEW={target:[72,1.5,36] as XYZ,span:184};
 export const PRESENTER_STEPS:PresenterStep[]=[
  {title:'Склад 144 × 72 м',text:'530 грузовых единиц восьми типов, 132 модуля хранения, 24 работника, три входа и три выхода. Слева склад как сейчас, справа — после перестройки.',t:0,mode:'side',focus:OVERVIEW},
@@ -78,6 +80,7 @@ export const PRESENTER_STEPS:PresenterStep[]=[
  {title:'Отказ длинномера — локально',text:'Длинномер нельзя отгрузить через OUT_S_EXPRESS: там разрешены только SMALL и STANDARD. Отказ виден только у этих ворот и не окрашивает весь склад.',t:114,mode:'side',focus:{target:[30,0,8],span:48}},
  {title:'Что меняет перестройка',text:'B ставит исходящие грузы ближе к их воротам. Каждый перенос прошёл проверку адреса, цена переносов посчитана.',t:104,mode:'side',focus:OVERVIEW,sheet:'diff'},
  {title:'B возвращается раньше',text:'После перестройки поток PK03 уходит на свободный PK05, и упаковка возвращается в контроль к 01:44. Без перестройки — только к 03:20.',t:110,mode:'swipe',focus:OVERVIEW},
+ {title:'Что дальше: сценарии N0–N4',text:'Для N0 и N1 входы уже зафиксированы: обычная смена и сдвиг отгрузки с западной розницы на экспресс и B2B. Тяжёлая приёмка и длинномер на проверке, перестановка людей пока описана. Их расчёта ещё нет.',t:240,mode:'side',focus:OVERVIEW,sheet:'source',scenario:'N1'},
  {title:'Честный вывод',text:'Это демонстрационный эпизод: он показывает механизм «причина → волна → решение → восстановление». Числа эффективности появятся, когда подключим расчётный движок.',t:240,mode:'side',focus:OVERVIEW,sheet:'source'},
 ];
 

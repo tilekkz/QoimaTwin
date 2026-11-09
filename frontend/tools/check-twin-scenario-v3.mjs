@@ -36,6 +36,7 @@ assert.equal(S.DEMO_SOURCE.engine_operation,false);
 assert.equal(S.stateSegments('B','PACKING_LIGHT_LINE').at(-1).from_s,104,'presenter says B recovers at 01:44');
 assert.equal(S.stateSegments('A','PACKING_LIGHT_LINE').at(-1).from_s,200,'presenter says A recovers at 03:20');
 for(const s of S.PRESENTER_STEPS){assert.ok(s.t>=0&&s.t<=S.DEMO_DURATION_S&&s.focus.span>0&&s.title&&s.text.length>20);}
+{const C=await import('../src/adaptive-v3/twin/twinScenarios.ts');for(const s of S.PRESENTER_STEPS)if(s.scenario){assert.ok(C.SCENARIOS.some(c=>c.id===s.scenario),`presenter scenario ${s.scenario} exists`);assert.equal(s.sheet,'source','scenario step opens the scenario sheet');}}
 assert.equal(S.sampleAtmosphere('A',114).STAGE_OUT_S_EXPRESS.state,'danger','refusal step shows the refusal');
 
 // Worker reactions: presentation only, deterministic, budgeted, local to the troubled zone.
@@ -125,10 +126,15 @@ assert.equal(Q.shortId('v3:HU:initial:DEMO_001:01'),'DEMO_001:01');
  const n2=read(card('N2').source.path).preregistration;
  assert.deepEqual([n2.added_HUs,n2.port_id,n2.first_release_s,n2.last_release_s,n2.interval_s,n2.deadline_offset_s],[12,'IN_W_BULK',90,750,60,600]);
  assert.deepEqual(n2.repeating_archetypes,['PALLET_LOAD','IBC','HEAVY_BOX']);
+ assert.deepEqual(card('N2').gateNotes,[{port_id:n2.port_id,text:`+${n2.added_HUs} тяжёлых`}]);
  const w12=read(card('N3').source.path),n3=w12.preregistration,gate=base.inputs.ports.find(p=>p.port_id==='IN_W_BULK');
  assert.deepEqual([n3.additional_receipts,n3.archetype_id,n3.deadline_offset_seconds],[4,'LONG_BUNDLE',900]);assert.deepEqual(n3.release_seconds,[180,360,540,720]);
  assert.deepEqual([gate.clear_width_m,gate.clear_height_m,w12.long_requirements[0].attachment_mass_kg],[7,4.5,40]);
+ assert.deepEqual(card('N3').gateNotes,[{port_id:'IN_W_BULK',text:`+${n3.additional_receipts} длинномера`}]);
+ for(const c of C.SCENARIOS)for(const n of c.gateNotes??[])assert.ok(base.inputs.ports.some(p=>p.port_id===n.port_id),`${c.id}: gate ${n.port_id} exists`);
  const reg=JSON.parse(readFileSync(new URL('../public/data/v3/worker-registry-v3.json',import.meta.url),'utf8'));
  for(const id of ['K05','K06','P11','P12'])assert.ok(JSON.stringify(reg).includes(`"actor_id": "${id}"`)||JSON.stringify(reg).includes(`"actor_id":"${id}"`),`N4 names real worker ${id}`);
 }
+{const {readFileSync}=await import('node:fs');const home=readFileSync(new URL('../home-v3.html',import.meta.url),'utf8');
+ assert.ok(home.includes(`${S.PRESENTER_STEPS.length} шагов`),'start page states the real number of defence steps');}
 console.log('twin scenario v3: OK');

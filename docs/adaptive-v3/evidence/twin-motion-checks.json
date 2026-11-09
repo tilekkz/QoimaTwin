@@ -6,44 +6,43 @@
   "completed_jobs": 0,
   "normal_context_source_mutations": false,
   "origins": [
-    "http://127.0.0.1:4175",
+    "http://127.0.0.1:4173",
     "http://127.0.0.1:4174"
   ],
   "distinct_cases": 13,
   "cases": [
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "cold_reduce_visible_content_paused",
       "passed": true
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "explicit_play_already_reduced_preserved",
       "passed": true,
-      "advanced_t": 81.02400000000002
+      "advanced_t": 80.67040000000001
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "back_to_no_preference_does_not_autoplay",
       "passed": true
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "stable_live_reduce_clock_fly_mode_actual_bubble_WAAPI",
       "passed": true,
       "actual_reaction_animation_before": {
-        "at_s": 40,
-        "count": 2,
+        "at_s": 0,
+        "count": 1,
         "targets": [
-          "tw-bubble is-selected",
-          "tw-bubble is-selected"
+          "tw-bubble"
         ]
       },
       "after": {
         "phase": "ready",
-        "t": 81.10640000001192,
+        "t": 80.83999999999926,
         "playing": false,
-        "mode": "overlay",
+        "mode": "side",
         "sheet": null,
         "motion": {
           "reduced": true,
@@ -56,7 +55,12 @@
               1,
               25
             ],
-            "span": 22
+            "span": 22,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -66,12 +70,12 @@
       }
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "rapid_live_reduce_after_observed_no_preference",
       "passed": true,
       "after": {
         "phase": "ready",
-        "t": 81.34240000000001,
+        "t": 80.29159999999925,
         "playing": false,
         "mode": "side",
         "sheet": null,
@@ -86,7 +90,12 @@
               1.5,
               35
             ],
-            "span": 60
+            "span": 60,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -96,44 +105,59 @@
       }
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "actual_flick_inertia_live_reduce_stops",
       "passed": true,
-      "inertia_before_m": 3.352385405333538,
+      "inertia_before_m": 1.1215280168131303,
       "released_camera": {
         "target": [
-          67.28625626332439,
-          1.4999999999999996,
-          38.46435952609037
+          70.07329423499802,
+          1.5000000000000002,
+          37.00728761918326
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930595,
+          0.6497589951633527,
+          0.5650078218811767
+        ]
       },
       "sliding_camera": {
         "target": [
-          64.31537942917248,
-          1.4999999999999996,
-          40.017542948031526
+          69.07939848580955,
+          1.5000000000000007,
+          37.52689933214005
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633527,
+          0.5650078218811767
+        ]
       },
       "settled_camera": {
         "target": [
-          62.9960601474524,
-          1.4999999999999996,
-          40.707287071065814
+          68.99411966875472,
+          1.5000000000000007,
+          37.5714833564152
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633526,
+          0.5650078218811767
+        ]
       },
       "unclamped_residual_direction": true,
       "native_input": {
-        "kind": "sequential CDP native-emulated recorded-timestamp gesture; not OS input",
+        "kind": "sequential CDP native-emulated recorded-timestamp right-button pan gesture (left orbits); not OS input",
         "move_step_ms": 20,
         "release_gap_ms": 20,
         "application_velocity_injected": false,
         "events": [
           {
             "type": "pointermove",
-            "t": 11935.09999999404,
+            "t": 8715.700000000186,
             "trusted": true,
             "buttons": 0,
             "x": 604.7999877929688,
@@ -141,63 +165,63 @@
           },
           {
             "type": "pointerdown",
-            "t": 11945.09999999404,
+            "t": 8725.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 604.7999877929688,
             "y": 480
           },
           {
             "type": "pointermove",
-            "t": 11975.09999999404,
+            "t": 8755.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 610.7999877929688,
             "y": 481
           },
           {
             "type": "pointermove",
-            "t": 11995.09999999404,
+            "t": 8775.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 616.7999877929688,
             "y": 482
           },
           {
             "type": "pointermove",
-            "t": 12015.09999999404,
+            "t": 8795.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 622.7999877929688,
             "y": 483
           },
           {
             "type": "pointermove",
-            "t": 12035.09999999404,
+            "t": 8815.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 628.7999877929688,
             "y": 484
           },
           {
             "type": "pointermove",
-            "t": 12055.09999999404,
+            "t": 8835.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 634.7999877929688,
             "y": 485
           },
           {
             "type": "pointermove",
-            "t": 12075.09999999404,
+            "t": 8855.700000000186,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 640.7999877929688,
             "y": 486
           },
           {
             "type": "pointerup",
-            "t": 12095.09999999404,
+            "t": 8875.700000000186,
             "trusted": true,
             "buttons": 0,
             "x": 640.7999877929688,
@@ -207,73 +231,98 @@
       }
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "manual_keyboard_and_wheel_zoom_reduced_immediate",
       "passed": true,
       "before": {
         "target": [
-          62.9960601474524,
-          1.4999999999999996,
-          40.707287071065814
+          68.99411966875472,
+          1.5000000000000007,
+          37.5714833564152
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633526,
+          0.5650078218811767
+        ]
       },
       "keyboard": {
         "target": [
-          62.9960601474524,
-          1.4999999999999996,
-          40.707287071065814
+          68.99411966875472,
+          1.5000000000000007,
+          37.5714833564152
         ],
-        "span": 59.25925925925924
+        "span": 59.25925925925924,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633524,
+          0.5650078218811767
+        ]
       },
       "wheel": {
         "target": [
-          63.87981226175517,
-          1.4999999999999998,
-          39.68053306687844
+          68.58378458445874,
+          1.5000000000000007,
+          37.781699519727376
         ],
-        "span": 53.83490465592331
+        "span": 53.83490465592331,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633524,
+          0.5650078218811768
+        ]
       }
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "live_reduce_finishes_pending_zoom",
       "passed": true,
       "pending": {
         "target": [
-          63.59665089732233,
-          1.4999999999999998,
-          40.00951339977638
+          68.718315157577,
+          1.5000000000000007,
+          37.71277901545797
         ],
-        "span": 55.57291198375863
+        "span": 55.61330860311554,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633527,
+          0.5650078218811766
+        ]
       },
       "goal": 65.23016675519872,
       "settled": {
         "target": [
-          62.02326199730979,
-          1.4999999999999998,
-          41.837495847667185
+          69.44579973206824,
+          1.5000000000000007,
+          37.340086009251294
         ],
-        "span": 65.23016675519872
+        "span": 65.23016675519872,
+        "dir": [
+          0.5085070396930597,
+          0.6497589951633526,
+          0.5650078218811766
+        ]
       }
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "manual_mode_time_drawer_reduced",
       "passed": true
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "mobile_drawer_clock_content_no_overflow",
       "passed": true
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "reload_under_reduce_starts_paused",
       "passed": true
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "case_id": "pagehide_disposes_pending_motion",
       "passed": true
     },
@@ -286,7 +335,7 @@
       "origin": "http://127.0.0.1:4174",
       "case_id": "explicit_play_already_reduced_preserved",
       "passed": true,
-      "advanced_t": 81.49679999996432
+      "advanced_t": 80.66520000000078
     },
     {
       "origin": "http://127.0.0.1:4174",
@@ -298,18 +347,17 @@
       "case_id": "stable_live_reduce_clock_fly_mode_actual_bubble_WAAPI",
       "passed": true,
       "actual_reaction_animation_before": {
-        "at_s": 40,
-        "count": 2,
+        "at_s": 0,
+        "count": 1,
         "targets": [
-          "tw-bubble is-selected",
-          "tw-bubble is-selected"
+          "tw-bubble"
         ]
       },
       "after": {
         "phase": "ready",
-        "t": 81.34879999998807,
+        "t": 80.89040000000038,
         "playing": false,
-        "mode": "overlay",
+        "mode": "side",
         "sheet": null,
         "motion": {
           "reduced": true,
@@ -322,7 +370,12 @@
               1,
               25
             ],
-            "span": 22
+            "span": 22,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -337,7 +390,7 @@
       "passed": true,
       "after": {
         "phase": "ready",
-        "t": 80.67559999998807,
+        "t": 80.29319999999998,
         "playing": false,
         "mode": "side",
         "sheet": null,
@@ -352,7 +405,12 @@
               1.5,
               35
             ],
-            "span": 60
+            "span": 60,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -365,41 +423,56 @@
       "origin": "http://127.0.0.1:4174",
       "case_id": "actual_flick_inertia_live_reduce_stops",
       "passed": true,
-      "inertia_before_m": 2.9239992303812063,
+      "inertia_before_m": 0.881218137087768,
       "released_camera": {
         "target": [
-          68.6648025837336,
-          1.4999999999999996,
-          37.74365132754644
+          70.15571183430939,
+          1.5000000000000002,
+          36.96419944822475
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930594,
+          0.6497589951633527,
+          0.5650078218811767
+        ]
       },
       "sliding_camera": {
         "target": [
-          66.07356066900714,
-          1.4999999999999996,
-          39.0983604618755
+          69.37477819071835,
+          1.5000000000000002,
+          37.37247392629074
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930595,
+          0.6497589951633527,
+          0.5650078218811767
+        ]
       },
       "settled_camera": {
         "target": [
-          65.32462410224504,
-          1.4999999999999996,
-          39.48990677110257
+          69.191077946595,
+          1.5000000000000002,
+          37.46851297122825
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930594,
+          0.6497589951633527,
+          0.5650078218811768
+        ]
       },
       "unclamped_residual_direction": true,
       "native_input": {
-        "kind": "sequential CDP native-emulated recorded-timestamp gesture; not OS input",
+        "kind": "sequential CDP native-emulated recorded-timestamp right-button pan gesture (left orbits); not OS input",
         "move_step_ms": 20,
         "release_gap_ms": 20,
         "application_velocity_injected": false,
         "events": [
           {
             "type": "pointermove",
-            "t": 12064.70000000298,
+            "t": 4712.899999999907,
             "trusted": true,
             "buttons": 0,
             "x": 604.7999877929688,
@@ -407,63 +480,63 @@
           },
           {
             "type": "pointerdown",
-            "t": 12074.70000000298,
+            "t": 4722.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 604.7999877929688,
             "y": 480
           },
           {
             "type": "pointermove",
-            "t": 12104.70000000298,
+            "t": 4752.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 610.7999877929688,
             "y": 481
           },
           {
             "type": "pointermove",
-            "t": 12124.70000000298,
+            "t": 4772.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 616.7999877929688,
             "y": 482
           },
           {
             "type": "pointermove",
-            "t": 12144.70000000298,
+            "t": 4792.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 622.7999877929688,
             "y": 483
           },
           {
             "type": "pointermove",
-            "t": 12164.70000000298,
+            "t": 4812.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 628.7999877929688,
             "y": 484
           },
           {
             "type": "pointermove",
-            "t": 12184.70000000298,
+            "t": 4832.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 634.7999877929688,
             "y": 485
           },
           {
             "type": "pointermove",
-            "t": 12204.70000000298,
+            "t": 4852.899999999907,
             "trusted": true,
-            "buttons": 1,
+            "buttons": 2,
             "x": 640.7999877929688,
             "y": 486
           },
           {
             "type": "pointerup",
-            "t": 12224.70000000298,
+            "t": 4872.899999999907,
             "trusted": true,
             "buttons": 0,
             "x": 640.7999877929688,
@@ -478,27 +551,42 @@
       "passed": true,
       "before": {
         "target": [
-          65.32462410224504,
-          1.4999999999999996,
-          39.48990677110257
+          69.191077946595,
+          1.5000000000000002,
+          37.46851297122825
         ],
-        "span": 79.99999999999997
+        "span": 79.99999999999997,
+        "dir": [
+          0.5085070396930594,
+          0.6497589951633527,
+          0.5650078218811768
+        ]
       },
       "keyboard": {
         "target": [
-          65.32462410224504,
-          1.4999999999999996,
-          39.48990677110257
+          69.191077946595,
+          1.5000000000000002,
+          37.46851297122825
         ],
-        "span": 59.25925925925924
+        "span": 59.25925925925924,
+        "dir": [
+          0.5085070396930594,
+          0.6497589951633527,
+          0.5650078218811768
+        ]
       },
       "wheel": {
         "target": [
-          66.2083762165478,
-          1.4999999999999996,
-          38.463152766915194
+          68.78074286229902,
+          1.5000000000000002,
+          37.67872913454041
         ],
-        "span": 53.83490465592331
+        "span": 53.83490465592331,
+        "dir": [
+          0.5085070396930594,
+          0.6497589951633527,
+          0.5650078218811768
+        ]
       }
     },
     {
@@ -507,20 +595,30 @@
       "passed": true,
       "pending": {
         "target": [
-          65.92126291345456,
-          1.4999999999999998,
-          38.79672451043406
+          68.95626955222012,
+          1.5000000000000004,
+          37.58880616980683
         ],
-        "span": 55.59716846509287
+        "span": 56.155249771221996,
+        "dir": [
+          0.5085070396930595,
+          0.6497589951633524,
+          0.565007821881177
+        ]
       },
       "goal": 65.23016675519872,
       "settled": {
         "target": [
-          64.35182595210242,
-          1.4999999999999996,
-          40.62011554770393
+          69.64275800990852,
+          1.5000000000000004,
+          37.23711562406432
         ],
-        "span": 65.23016675519872
+        "span": 65.23016675519872,
+        "dir": [
+          0.5085070396930594,
+          0.6497589951633526,
+          0.565007821881177
+        ]
       }
     },
     {
@@ -587,17 +685,17 @@
     "scope": "Persistent exact historical actual source-bound causal trace and all five frozen before sources, independently SHA-checked on full and check-only runs. No old source is served in normal contexts."
   },
   "negative_control": {
-    "original_served_module_sha256": "774de0723121fad1c9235be34a9690144e595705b7967c2ce4aa42382d711ba4",
-    "modified_module_sha256": "261a4abebed2153992878f29b39bcca0ac1e754ca5c72920b8cdb8ae75f635f9",
+    "original_served_module_sha256": "d99be7e2d8fed4bac4b2fec1649d708df7876ccde55f6653d6a704d2aec4b9f8",
+    "modified_module_sha256": "d47d076d075c80226f75cb40af645a6e1d23bcb63bda4efa1f0b0f8b0a4d63e4",
     "removed_frame_calls": 2,
     "live_event_handler_preserved": true,
     "source_files_written": false,
     "expected_red_reproduced": true,
     "after": {
       "phase": "ready",
-      "t": 85.87959999997616,
+      "t": 82.7844,
       "playing": true,
-      "mode": "overlay",
+      "mode": "side",
       "sheet": null,
       "motion": {
         "reduced": true,
@@ -606,11 +704,16 @@
         "pending_mode_change": false,
         "camera": {
           "target": [
-            24.001598262841355,
-            1.0000166485712643,
-            25.00036626856781
+            52.82797613063229,
+            1.3002914180274194,
+            56.8308903109065
           ],
-          "span": 22.00155588573261
+          "span": 94.69962758143858,
+          "dir": [
+            0.508507039693059,
+            0.649758995163353,
+            0.5650078218811767
+          ]
         }
       },
       "workers": 24,
@@ -620,22 +723,27 @@
     },
     "later": {
       "phase": "ready",
-      "t": 94.01759999997672,
+      "t": 83.50680000000003,
       "playing": true,
-      "mode": "overlay",
+      "mode": "side",
       "sheet": null,
       "motion": {
         "reduced": true,
         "clock_frame": true,
-        "camera_frame": false,
+        "camera_frame": true,
         "pending_mode_change": false,
         "camera": {
           "target": [
-            24,
-            1,
-            25
+            37.78912869690125,
+            1.1436367572593882,
+            40.22549626949514
           ],
-          "span": 22.000000000000004
+          "span": 44.222659116032446,
+          "dir": [
+            0.5085070396930591,
+            0.6497589951633529,
+            0.5650078218811769
+          ]
         }
       },
       "workers": 24,
@@ -646,12 +754,12 @@
     "independent_events": [
       {
         "matches": false,
-        "at_ms": 4466.9000000059605,
+        "at_ms": 1824.8999999999069,
         "trusted": true
       },
       {
         "matches": true,
-        "at_ms": 5209.9000000059605,
+        "at_ms": 2161.399999999907,
         "trusted": true
       }
     ]
@@ -659,8 +767,8 @@
   "captures": [
     {
       "path": "assets/v3/iterations/twin/motion/browser/dev-cold-reduced.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/dev-cold-reduced.png",
-      "sha256": "5cbe4125b6b0b23482c9678a1987062ba942e248dd1e244d16a8ec7bf6267885",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/dev-cold-reduced.png",
+      "sha256": "e807be9d0fcb1a40185616d052a0e0cdcba347fd9c30ab3e57a0a478e64470f7",
       "state": {
         "phase": "ready",
         "t": 0,
@@ -676,9 +784,14 @@
             "target": [
               72,
               1.5,
-              36
+              78
             ],
-            "span": 184
+            "span": 250,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -689,13 +802,13 @@
     },
     {
       "path": "assets/v3/iterations/twin/motion/browser/dev-live-reduced.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/dev-live-reduced.png",
-      "sha256": "9ab358f5a8f8e4db0ecfd7844c48e056ec89e3184b64b9d9aca53614c128a169",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/dev-live-reduced.png",
+      "sha256": "36a1a866d314eb61455d3bd66a04f1b8733d63039289ba6f165bb54bb290ae80",
       "state": {
         "phase": "ready",
-        "t": 81.10640000001192,
+        "t": 80.83999999999926,
         "playing": false,
-        "mode": "overlay",
+        "mode": "side",
         "sheet": null,
         "motion": {
           "reduced": true,
@@ -708,7 +821,12 @@
               1,
               25
             ],
-            "span": 22
+            "span": 22,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -719,8 +837,8 @@
     },
     {
       "path": "assets/v3/iterations/twin/motion/browser/dev-mobile-reduced-drawer.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/dev-mobile-reduced-drawer.png",
-      "sha256": "16fe48eb87259a4fc1b91893f1e80589d6456c1f31c8fc484311d47bc305ba4e",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/dev-mobile-reduced-drawer.png",
+      "sha256": "7fb52c0f6bd323a24e3e0901e63ea3e4a83a3bbade36add1fbd8a5cb35879bab",
       "state": {
         "phase": "ready",
         "t": 100,
@@ -734,11 +852,16 @@
           "pending_mode_change": false,
           "camera": {
             "target": [
-              62.02326199730979,
-              1.4999999999999998,
-              41.837495847667185
+              69.44579973206824,
+              1.5000000000000007,
+              37.340086009251294
             ],
-            "span": 65.23016675519872
+            "span": 65.23016675519872,
+            "dir": [
+              0.5085070396930597,
+              0.6497589951633526,
+              0.5650078218811766
+            ]
           }
         },
         "workers": 24,
@@ -749,8 +872,8 @@
     },
     {
       "path": "assets/v3/iterations/twin/motion/browser/production-cold-reduced.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/production-cold-reduced.png",
-      "sha256": "5cbe4125b6b0b23482c9678a1987062ba942e248dd1e244d16a8ec7bf6267885",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/production-cold-reduced.png",
+      "sha256": "e807be9d0fcb1a40185616d052a0e0cdcba347fd9c30ab3e57a0a478e64470f7",
       "state": {
         "phase": "ready",
         "t": 0,
@@ -766,9 +889,14 @@
             "target": [
               72,
               1.5,
-              36
+              78
             ],
-            "span": 184
+            "span": 250,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -779,13 +907,13 @@
     },
     {
       "path": "assets/v3/iterations/twin/motion/browser/production-live-reduced.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/production-live-reduced.png",
-      "sha256": "9ab358f5a8f8e4db0ecfd7844c48e056ec89e3184b64b9d9aca53614c128a169",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/production-live-reduced.png",
+      "sha256": "36a1a866d314eb61455d3bd66a04f1b8733d63039289ba6f165bb54bb290ae80",
       "state": {
         "phase": "ready",
-        "t": 81.34879999998807,
+        "t": 80.89040000000038,
         "playing": false,
-        "mode": "overlay",
+        "mode": "side",
         "sheet": null,
         "motion": {
           "reduced": true,
@@ -798,7 +926,12 @@
               1,
               25
             ],
-            "span": 22
+            "span": 22,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -809,8 +942,8 @@
     },
     {
       "path": "assets/v3/iterations/twin/motion/browser/production-mobile-reduced-drawer.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/production-mobile-reduced-drawer.png",
-      "sha256": "4c7465c63e91fd0064899e30b8f57239ce5b8b39ad5df48e475e864aebf96b21",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/production-mobile-reduced-drawer.png",
+      "sha256": "9d53a7e148535cd5f65b86602908b82db339066609ca2babb078dc14210a4940",
       "state": {
         "phase": "ready",
         "t": 100,
@@ -824,11 +957,16 @@
           "pending_mode_change": false,
           "camera": {
             "target": [
-              64.35182595210242,
-              1.4999999999999996,
-              40.62011554770393
+              69.64275800990852,
+              1.5000000000000004,
+              37.23711562406432
             ],
-            "span": 65.23016675519872
+            "span": 65.23016675519872,
+            "dir": [
+              0.5085070396930594,
+              0.6497589951633526,
+              0.565007821881177
+            ]
           }
         },
         "workers": 24,
@@ -839,26 +977,31 @@
     },
     {
       "path": "assets/v3/iterations/twin/motion/browser/negative-event-only-RED.png",
-      "raw_path": "work/v3/twin-motion-check/2026-11-08T18-46-47.504Z/negative-event-only-RED.png",
-      "sha256": "66ea9acba1ffe8f3eb016ceb5d46766054baa6ac2a9d1f9fc8ce147433cfaec2",
+      "raw_path": "work/v3/twin-motion-check/2026-11-09T06-08-20.937Z/negative-event-only-RED.png",
+      "sha256": "fb383385cbe91d88b7a0777d73f5ab67eefb2c8a5af655b05be31bb18db51edf",
       "state": {
         "phase": "ready",
-        "t": 105.29479999997683,
+        "t": 84.75680000000003,
         "playing": true,
-        "mode": "overlay",
+        "mode": "side",
         "sheet": null,
         "motion": {
           "reduced": true,
           "clock_frame": true,
-          "camera_frame": false,
+          "camera_frame": true,
           "pending_mode_change": false,
           "camera": {
             "target": [
-              24,
-              1,
-              25
+              25.711230919114186,
+              1.017825322074106,
+              26.889484139855245
             ],
-            "span": 22.000000000000004
+            "span": 23.99123216562246,
+            "dir": [
+              0.508507039693059,
+              0.649758995163353,
+              0.5650078218811767
+            ]
           }
         },
         "workers": 24,
@@ -869,30 +1012,36 @@
     }
   ],
   "input_hashes": {
-    "frontend/dist/assets/GLTFLoader-CqyvoEi8.js": "0060e77999040b932ffa31a0f966a1791e436c84bcf405583f1eaa49c8742df4",
-    "frontend/dist/assets/RoomEnvironment-Cuz74AMN.js": "5eb604ca954397a0e13760da4ab4b1a04479c2412aad7910d81f4f1a1258e671",
+    "frontend/dist/assets/GLTFLoader-BkiHl4AZ.js": "94b858ef22b800a4b1db28531225c0b0b0aef40cf705cced603e3a46e9419115",
+    "frontend/dist/assets/OrbitControls-pgSXCwN3.js": "04fcf1064bf0779a0039f7663087922d61cdbf1f0c40471524fc0cd68c221afb",
+    "frontend/dist/assets/RoomEnvironment-C-SZWpPr.js": "57f94bc589da436ba61089c02391e5d9fab9d8aa4cae63a69499358e41fd9d66",
     "frontend/dist/assets/modulepreload-polyfill-P2Xu9kJm.js": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
-    "frontend/dist/assets/seatedDriver-TMT6lct0.js": "466e0ebc6346e1f88d9480b2ebdc0cc5ed7dd9e15c6f02b88f4e958b6127bd6b",
-    "frontend/dist/assets/twinV3-BAN_nTOk.js": "cc35c44bb9c6d6f4b5875db5d06fa06a538f4e861e4e0fc0bc8f61e8ad37a452",
-    "frontend/dist/assets/twinV3-C_O5VBeN.css": "1cfc36b29dc4e4cc2bf0a304f25bf054a1653ee697a0279e0a9ec22c4449c34d",
-    "frontend/dist/assets/warehouseScene-Bp4n02IU.js": "d54e85ba8370f978769392c4866c801b2811ac0c899c61a18472c58d3afbbc23",
+    "frontend/dist/assets/seatedDriver-gHnrNq1m.js": "15dd1987aa0996e6734b59137a473486436757cb128b7344d40bd46cc48400aa",
+    "frontend/dist/assets/twinV3-3PRiX4dv.css": "1f1711cab0a0e15009240d98056f6c3f43f0da82ccc5ada8f4245b625e8395b4",
+    "frontend/dist/assets/twinV3-CTa-c0PM.js": "1edbb4134179f3c06a4564065bf0145d6c36a5f8d460236075f926e78c74e7ad",
+    "frontend/dist/assets/warehouseRouting-6SYa35-L.js": "f2769ee642b8627d4b9b4bf1cc9ac971f83949522d2b8daf0f674ced6d6e0c84",
+    "frontend/dist/assets/warehouseScene-CzBVtjFr.js": "6333ccebf7d1ed1b3202bd27f9454f46e583a9825ccaf5e4e99c09c2f24ac6d4",
     "frontend/dist/assets/workerProfiles-CTiD5_cu.js": "2d8d7cf06b478015d25c79b971be5c8be726ddec5b472f37b1b6ba899940a92d",
     "frontend/dist/assets/workerRegistry-BC_RqmdK.js": "bcd910ba7c628533e6180b3d7e1c097c4d8426c9f13a6e2183c0699b5a160729",
-    "frontend/dist/twin-v3.html": "5bfa1134d9e424f0f3d4016c68ff273ac4ec3b50d42cd008ca9564786a469804",
+    "frontend/dist/assets/workerRoles-LtRvK0JB.js": "b43740ecbcc36195653ccd926fb8efed8f8687597ef4ce73e65232e4e6651c44",
+    "frontend/dist/twin-v3.html": "c7bcb8e06ea21574e62744f46c292d2ed262f635f11fa976b0369c6ca0f30e3e",
     "frontend/package-lock.json": "957df69d2e01a197e08968480ac5eeb3afaa135bddb087af0e1e3360514129a9",
     "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
     "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
     "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
-    "frontend/src/adaptive-v3/twin/twin.css": "063b580d7a0ce0f32ab3e24973627f1facb1e4180518c63636d8cb4800cf0c96",
-    "frontend/src/adaptive-v3/twin/twinNavigation.ts": "c342ed3961dc43e3f9290e8b19a3a0a9f7431f61282b13003e20b7e08e94ca75",
-    "frontend/src/adaptive-v3/twin/twinPage.ts": "31c1b683c0b17277bba9d0e8155ce5486e28cc50a2c9d4868c0a49fb3d891c00",
-    "frontend/src/adaptive-v3/twin/twinRender.ts": "a4b72f9ab9726d89727db098a7b77d6f9717c84f094c0228b2b44ea927a2dc17",
-    "frontend/src/adaptive-v3/twin/twinScenario.ts": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc",
+    "frontend/src/adaptive-v3/twin/twin.css": "d0729a80d70294bf6f99630f414df301d5707d456caee0bef191b513936eab42",
+    "frontend/src/adaptive-v3/twin/twinMinimap.ts": "b640716fd7bac9b078eb804b04b327ea50651e99062699ceb45a48716be222c6",
+    "frontend/src/adaptive-v3/twin/twinNavigation.ts": "13c9762e9661c323f9c2ff63ce21e088dbf24e765d03cd26efca23a60d4905a4",
+    "frontend/src/adaptive-v3/twin/twinPage.ts": "3d9fb77bffddd2cf5ce4b053b6487d763ddd3bf938106cafe32a31fd89c4e248",
+    "frontend/src/adaptive-v3/twin/twinRender.ts": "4a591cd8bf21f685af8052b265390424e1656247a7be5ff0e407be26788af805",
+    "frontend/src/adaptive-v3/twin/twinScenario.ts": "3978d5e6203bca34a08d2cb6a7335c28ae14f75f45ddea72636e5d66e6f0c91f",
+    "frontend/src/adaptive-v3/twin/twinScenarios.ts": "4e4d71334c894e6c606ebe6cbca935d273c39a15de6b69d89916a4323dabb71b",
+    "frontend/src/adaptive-v3/twin/twinSearch.ts": "e155882ae1f3d38ca05ecd62bce0cffe3253234f19be408c70e03b779392bbdd",
     "frontend/src/adaptive-v3/warehouseAssetBindings.json": "3a416f8034246595c3f0f80e427fe1e3e3120ed206a7ab32c971bc5f78d30b2c",
-    "frontend/src/adaptive-v3/warehousePage.ts": "c027e4675b5925cb0c7ca0864af4b0af53ad837bcde69f70bb92c72b7a5b1172",
-    "frontend/src/adaptive-v3/warehouseScene.ts": "54bc13bf2ac1d950447ad9102b04e180d83039c8d5e000c8299639dd9aa325a8",
-    "frontend/tools/check-twin-motion-v3.mjs": "15780996d0aa360128305060738b71b802c1960c44136a68c2695e469df14bd3",
-    "frontend/twin-v3.html": "c1ef466fcddf01e81fb90b374c5b2615dfdd801784bc2685df32e6fcd8f2a301"
+    "frontend/src/adaptive-v3/warehousePage.ts": "3584f2981e63db1cd2b91ad931763fa29abba9ccdad1cad905eadc7b0bc794a4",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "f4f0d144eb1f741e7c8c47d1c3d72ea3fc825b642ae8011df51b53c7f803db78",
+    "frontend/tools/check-twin-motion-v3.mjs": "dbd1fcfb04ff03e39cc811dfe300f92eee9e33c1a33bbac5e9e7792eb68f7180",
+    "frontend/twin-v3.html": "bb00879942fb29cdeb72e6ab6975b72357c38dc1020b14b7c5f200439f437b38"
   },
   "artifact_hashes": {
     "assets/v3/iterations/twin/motion/diagnosis/causal-before.json": "4a2ba6c21fceb4a2f4126fd30010b2a90f645bf9781a39bfc26f74d4af22f498",
@@ -901,85 +1050,70 @@
     "assets/v3/iterations/twin/motion/before/twinPage.ts.txt": "9bb99e2207456e0f5ac7e935c0902e417e7d0cd718a4fe397c2afcc7fd63c829",
     "assets/v3/iterations/twin/motion/before/twinRender.ts.txt": "11b7001b50daf734ab84cb0f5599d53444a0379fdfbd62f5dc2f7ba5274cda56",
     "assets/v3/iterations/twin/motion/before/twinScenario.ts.txt": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc",
-    "assets/v3/iterations/twin/motion/browser/dev-cold-reduced.png": "5cbe4125b6b0b23482c9678a1987062ba942e248dd1e244d16a8ec7bf6267885",
-    "assets/v3/iterations/twin/motion/browser/dev-live-reduced.png": "9ab358f5a8f8e4db0ecfd7844c48e056ec89e3184b64b9d9aca53614c128a169",
-    "assets/v3/iterations/twin/motion/browser/dev-mobile-reduced-drawer.png": "16fe48eb87259a4fc1b91893f1e80589d6456c1f31c8fc484311d47bc305ba4e",
-    "assets/v3/iterations/twin/motion/browser/production-cold-reduced.png": "5cbe4125b6b0b23482c9678a1987062ba942e248dd1e244d16a8ec7bf6267885",
-    "assets/v3/iterations/twin/motion/browser/production-live-reduced.png": "9ab358f5a8f8e4db0ecfd7844c48e056ec89e3184b64b9d9aca53614c128a169",
-    "assets/v3/iterations/twin/motion/browser/production-mobile-reduced-drawer.png": "4c7465c63e91fd0064899e30b8f57239ce5b8b39ad5df48e475e864aebf96b21",
-    "assets/v3/iterations/twin/motion/browser/negative-event-only-RED.png": "66ea9acba1ffe8f3eb016ceb5d46766054baa6ac2a9d1f9fc8ce147433cfaec2"
+    "assets/v3/iterations/twin/motion/browser/dev-cold-reduced.png": "e807be9d0fcb1a40185616d052a0e0cdcba347fd9c30ab3e57a0a478e64470f7",
+    "assets/v3/iterations/twin/motion/browser/dev-live-reduced.png": "36a1a866d314eb61455d3bd66a04f1b8733d63039289ba6f165bb54bb290ae80",
+    "assets/v3/iterations/twin/motion/browser/dev-mobile-reduced-drawer.png": "7fb52c0f6bd323a24e3e0901e63ea3e4a83a3bbade36add1fbd8a5cb35879bab",
+    "assets/v3/iterations/twin/motion/browser/production-cold-reduced.png": "e807be9d0fcb1a40185616d052a0e0cdcba347fd9c30ab3e57a0a478e64470f7",
+    "assets/v3/iterations/twin/motion/browser/production-live-reduced.png": "36a1a866d314eb61455d3bd66a04f1b8733d63039289ba6f165bb54bb290ae80",
+    "assets/v3/iterations/twin/motion/browser/production-mobile-reduced-drawer.png": "9d53a7e148535cd5f65b86602908b82db339066609ca2babb078dc14210a4940",
+    "assets/v3/iterations/twin/motion/browser/negative-event-only-RED.png": "fb383385cbe91d88b7a0777d73f5ab67eefb2c8a5af655b05be31bb18db51edf"
   },
   "served_modules": [
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/src/adaptive-v3/twin/twinPage.ts",
-      "sha256": "774de0723121fad1c9235be34a9690144e595705b7967c2ce4aa42382d711ba4",
-      "bytes": 116949,
+      "url": "http://127.0.0.1:4173/src/adaptive-v3/twin/twinPage.ts?t=1794204081835",
+      "sha256": "d99be7e2d8fed4bac4b2fec1649d708df7876ccde55f6653d6a704d2aec4b9f8",
+      "bytes": 192835,
       "frame_calls": 2
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/src/adaptive-v3/twin/twinPage.ts",
-      "sha256": "774de0723121fad1c9235be34a9690144e595705b7967c2ce4aa42382d711ba4",
-      "bytes": 116949,
+      "url": "http://127.0.0.1:4173/src/adaptive-v3/twin/twinPage.ts?t=1794204081835",
+      "sha256": "d99be7e2d8fed4bac4b2fec1649d708df7876ccde55f6653d6a704d2aec4b9f8",
+      "bytes": 192835,
       "frame_calls": 2
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
-      "url": "http://127.0.0.1:4174/assets/twinV3-BAN_nTOk.js",
-      "sha256": "cc35c44bb9c6d6f4b5875db5d06fa06a538f4e861e4e0fc0bc8f61e8ad37a452",
-      "bytes": 54631,
+      "url": "http://127.0.0.1:4174/assets/twinV3-CTa-c0PM.js",
+      "sha256": "1edbb4134179f3c06a4564065bf0145d6c36a5f8d460236075f926e78c74e7ad",
+      "bytes": 82857,
       "matches_local_dist": true
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
-      "url": "http://127.0.0.1:4174/assets/twinV3-BAN_nTOk.js",
-      "sha256": "cc35c44bb9c6d6f4b5875db5d06fa06a538f4e861e4e0fc0bc8f61e8ad37a452",
-      "bytes": 54631,
+      "url": "http://127.0.0.1:4174/assets/twinV3-CTa-c0PM.js",
+      "sha256": "1edbb4134179f3c06a4564065bf0145d6c36a5f8d460236075f926e78c74e7ad",
+      "bytes": 82857,
       "matches_local_dist": true
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": true,
-      "url": "http://127.0.0.1:4175/src/adaptive-v3/twin/twinPage.ts",
-      "sha256": "261a4abebed2153992878f29b39bcca0ac1e754ca5c72920b8cdb8ae75f635f9",
-      "bytes": 116895
+      "url": "http://127.0.0.1:4173/src/adaptive-v3/twin/twinPage.ts?t=1794204081835",
+      "sha256": "d47d076d075c80226f75cb40af645a6e1d23bcb63bda4efa1f0b0f8b0a4d63e4",
+      "bytes": 192781
     }
   ],
   "compiled_HTTP": [
     {
       "url": "http://127.0.0.1:4174/twin-v3.html",
-      "sha256": "5bfa1134d9e424f0f3d4016c68ff273ac4ec3b50d42cd008ca9564786a469804",
-      "bytes": 11596
+      "sha256": "c7bcb8e06ea21574e62744f46c292d2ed262f635f11fa976b0369c6ca0f30e3e",
+      "bytes": 14766
     },
     {
-      "url": "http://127.0.0.1:4174/assets/twinV3-BAN_nTOk.js",
-      "sha256": "cc35c44bb9c6d6f4b5875db5d06fa06a538f4e861e4e0fc0bc8f61e8ad37a452",
-      "bytes": 54631
+      "url": "http://127.0.0.1:4174/assets/twinV3-CTa-c0PM.js",
+      "sha256": "1edbb4134179f3c06a4564065bf0145d6c36a5f8d460236075f926e78c74e7ad",
+      "bytes": 82857
     },
     {
       "url": "http://127.0.0.1:4174/assets/modulepreload-polyfill-P2Xu9kJm.js",
       "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f",
       "bytes": 670
-    },
-    {
-      "url": "http://127.0.0.1:4174/assets/GLTFLoader-CqyvoEi8.js",
-      "sha256": "0060e77999040b932ffa31a0f966a1791e436c84bcf405583f1eaa49c8742df4",
-      "bytes": 617646
-    },
-    {
-      "url": "http://127.0.0.1:4174/assets/RoomEnvironment-Cuz74AMN.js",
-      "sha256": "5eb604ca954397a0e13760da4ab4b1a04479c2412aad7910d81f4f1a1258e671",
-      "bytes": 1829
-    },
-    {
-      "url": "http://127.0.0.1:4174/assets/seatedDriver-TMT6lct0.js",
-      "sha256": "466e0ebc6346e1f88d9480b2ebdc0cc5ed7dd9e15c6f02b88f4e958b6127bd6b",
-      "bytes": 10340
     },
     {
       "url": "http://127.0.0.1:4174/assets/workerRegistry-BC_RqmdK.js",
@@ -992,245 +1126,287 @@
       "bytes": 4130
     },
     {
-      "url": "http://127.0.0.1:4174/assets/warehouseScene-Bp4n02IU.js",
-      "sha256": "d54e85ba8370f978769392c4866c801b2811ac0c899c61a18472c58d3afbbc23",
-      "bytes": 106493
+      "url": "http://127.0.0.1:4174/assets/warehouseRouting-6SYa35-L.js",
+      "sha256": "f2769ee642b8627d4b9b4bf1cc9ac971f83949522d2b8daf0f674ced6d6e0c84",
+      "bytes": 33105
     },
     {
-      "url": "http://127.0.0.1:4174/assets/twinV3-C_O5VBeN.css",
-      "sha256": "1cfc36b29dc4e4cc2bf0a304f25bf054a1653ee697a0279e0a9ec22c4449c34d",
-      "bytes": 23549
+      "url": "http://127.0.0.1:4174/assets/GLTFLoader-BkiHl4AZ.js",
+      "sha256": "94b858ef22b800a4b1db28531225c0b0b0aef40cf705cced603e3a46e9419115",
+      "bytes": 597063
+    },
+    {
+      "url": "http://127.0.0.1:4174/assets/OrbitControls-pgSXCwN3.js",
+      "sha256": "04fcf1064bf0779a0039f7663087922d61cdbf1f0c40471524fc0cd68c221afb",
+      "bytes": 18852
+    },
+    {
+      "url": "http://127.0.0.1:4174/assets/RoomEnvironment-C-SZWpPr.js",
+      "sha256": "57f94bc589da436ba61089c02391e5d9fab9d8aa4cae63a69499358e41fd9d66",
+      "bytes": 1829
+    },
+    {
+      "url": "http://127.0.0.1:4174/assets/workerRoles-LtRvK0JB.js",
+      "sha256": "b43740ecbcc36195653ccd926fb8efed8f8687597ef4ce73e65232e4e6651c44",
+      "bytes": 6591
+    },
+    {
+      "url": "http://127.0.0.1:4174/assets/seatedDriver-gHnrNq1m.js",
+      "sha256": "15dd1987aa0996e6734b59137a473486436757cb128b7344d40bd46cc48400aa",
+      "bytes": 3790
+    },
+    {
+      "url": "http://127.0.0.1:4174/assets/warehouseScene-CzBVtjFr.js",
+      "sha256": "6333ccebf7d1ed1b3202bd27f9454f46e583a9825ccaf5e4e99c09c2f24ac6d4",
+      "bytes": 73576
+    },
+    {
+      "url": "http://127.0.0.1:4174/assets/twinV3-3PRiX4dv.css",
+      "sha256": "1f1711cab0a0e15009240d98056f6c3f43f0da82ccc5ada8f4245b625e8395b4",
+      "bytes": 32024
     }
   ],
   "module_body_errors": [],
   "navigations": [
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html",
-      "at_ms": 931
+      "url": "http://127.0.0.1:4173/twin-v3.html",
+      "at_ms": 3443
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 1729
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 3742
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 3087
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 5395
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=overlay",
-      "at_ms": 8946
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 8479
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 11332
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 9311
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=diff",
-      "at_ms": 15579
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 11329
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 15672
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 11331
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 17642
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 11369
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 20055
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 11842
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": false,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 23063
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 11991
+    },
+    {
+      "origin": "http://127.0.0.1:4173",
+      "negative": false,
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 12513
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html",
-      "at_ms": 24865
+      "at_ms": 13227
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 25459
+      "at_ms": 13405
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 28681
-    },
-    {
-      "origin": "http://127.0.0.1:4174",
-      "negative": false,
-      "url": "http://127.0.0.1:4174/twin-v3.html?mode=overlay",
-      "at_ms": 34104
+      "at_ms": 14041
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 35604
-    },
-    {
-      "origin": "http://127.0.0.1:4174",
-      "negative": false,
-      "url": "http://127.0.0.1:4174/twin-v3.html?mode=diff",
-      "at_ms": 39174
+      "at_ms": 16738
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 39190
+      "at_ms": 17532
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 40231
+      "at_ms": 19370
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 40922
+      "at_ms": 19373
     },
     {
       "origin": "http://127.0.0.1:4174",
       "negative": false,
       "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
-      "at_ms": 42896
+      "at_ms": 19422
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4174",
+      "negative": false,
+      "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
+      "at_ms": 19807
+    },
+    {
+      "origin": "http://127.0.0.1:4174",
+      "negative": false,
+      "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
+      "at_ms": 19895
+    },
+    {
+      "origin": "http://127.0.0.1:4174",
+      "negative": false,
+      "url": "http://127.0.0.1:4174/twin-v3.html?mode=side",
+      "at_ms": 20397
+    },
+    {
+      "origin": "http://127.0.0.1:4173",
       "negative": true,
-      "url": "http://127.0.0.1:4175/twin-v3.html",
-      "at_ms": 44774
+      "url": "http://127.0.0.1:4173/twin-v3.html",
+      "at_ms": 23690
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": true,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 46613
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 24300
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": true,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=side",
-      "at_ms": 48596
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 25096
     },
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "negative": true,
-      "url": "http://127.0.0.1:4175/twin-v3.html?mode=overlay",
-      "at_ms": 49317
+      "url": "http://127.0.0.1:4173/twin-v3.html?mode=side",
+      "at_ms": 25574
     }
   ],
   "native_inputs": [
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "requested": [
         {
           "type": "mouseMoved",
           "x": 604.8,
           "y": 480,
           "buttons": 0,
-          "timestamp": 1794163620.156
+          "timestamp": 1794204510.748
         },
         {
           "type": "mousePressed",
           "x": 604.8,
           "y": 480,
-          "button": "left",
-          "buttons": 1,
+          "button": "right",
+          "buttons": 2,
           "clickCount": 1,
-          "timestamp": 1794163620.166
+          "timestamp": 1794204510.758
         },
         {
           "type": "mouseMoved",
           "x": 610.8,
           "y": 481,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163620.1959999
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204510.7879999
         },
         {
           "type": "mouseMoved",
           "x": 616.8,
           "y": 482,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163620.2159998
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204510.8079998
         },
         {
           "type": "mouseMoved",
           "x": 622.8,
           "y": 483,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163620.2359998
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204510.8279998
         },
         {
           "type": "mouseMoved",
           "x": 628.8,
           "y": 484,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163620.2559998
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204510.8479998
         },
         {
           "type": "mouseMoved",
           "x": 634.8,
           "y": 485,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163620.2759998
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204510.8679998
         },
         {
           "type": "mouseMoved",
           "x": 640.8,
           "y": 486,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163620.2959998
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204510.8879998
         },
         {
           "type": "mouseReleased",
           "x": 640.8,
           "y": 486,
-          "button": "left",
+          "button": "right",
           "buttons": 0,
           "clickCount": 1,
-          "timestamp": 1794163620.316
+          "timestamp": 1794204510.908
         }
       ],
       "observed": [
         {
           "type": "pointermove",
-          "t": 11935.09999999404,
+          "t": 8715.700000000186,
           "trusted": true,
           "buttons": 0,
           "x": 604.7999877929688,
@@ -1238,63 +1414,63 @@
         },
         {
           "type": "pointerdown",
-          "t": 11945.09999999404,
+          "t": 8725.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 604.7999877929688,
           "y": 480
         },
         {
           "type": "pointermove",
-          "t": 11975.09999999404,
+          "t": 8755.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 610.7999877929688,
           "y": 481
         },
         {
           "type": "pointermove",
-          "t": 11995.09999999404,
+          "t": 8775.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 616.7999877929688,
           "y": 482
         },
         {
           "type": "pointermove",
-          "t": 12015.09999999404,
+          "t": 8795.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 622.7999877929688,
           "y": 483
         },
         {
           "type": "pointermove",
-          "t": 12035.09999999404,
+          "t": 8815.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 628.7999877929688,
           "y": 484
         },
         {
           "type": "pointermove",
-          "t": 12055.09999999404,
+          "t": 8835.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 634.7999877929688,
           "y": 485
         },
         {
           "type": "pointermove",
-          "t": 12075.09999999404,
+          "t": 8855.700000000186,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 640.7999877929688,
           "y": 486
         },
         {
           "type": "pointerup",
-          "t": 12095.09999999404,
+          "t": 8875.700000000186,
           "trusted": true,
           "buttons": 0,
           "x": 640.7999877929688,
@@ -1310,79 +1486,79 @@
           "x": 604.8,
           "y": 480,
           "buttons": 0,
-          "timestamp": 1794163644.147
+          "timestamp": 1794204518.923
         },
         {
           "type": "mousePressed",
           "x": 604.8,
           "y": 480,
-          "button": "left",
-          "buttons": 1,
+          "button": "right",
+          "buttons": 2,
           "clickCount": 1,
-          "timestamp": 1794163644.157
+          "timestamp": 1794204518.933
         },
         {
           "type": "mouseMoved",
           "x": 610.8,
           "y": 481,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163644.187
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204518.963
         },
         {
           "type": "mouseMoved",
           "x": 616.8,
           "y": 482,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163644.207
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204518.983
         },
         {
           "type": "mouseMoved",
           "x": 622.8,
           "y": 483,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163644.227
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204519.003
         },
         {
           "type": "mouseMoved",
           "x": 628.8,
           "y": 484,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163644.247
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204519.023
         },
         {
           "type": "mouseMoved",
           "x": 634.8,
           "y": 485,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163644.267
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204519.043
         },
         {
           "type": "mouseMoved",
           "x": 640.8,
           "y": 486,
-          "button": "left",
-          "buttons": 1,
-          "timestamp": 1794163644.287
+          "button": "right",
+          "buttons": 2,
+          "timestamp": 1794204519.063
         },
         {
           "type": "mouseReleased",
           "x": 640.8,
           "y": 486,
-          "button": "left",
+          "button": "right",
           "buttons": 0,
           "clickCount": 1,
-          "timestamp": 1794163644.3070002
+          "timestamp": 1794204519.0830002
         }
       ],
       "observed": [
         {
           "type": "pointermove",
-          "t": 12064.70000000298,
+          "t": 4712.899999999907,
           "trusted": true,
           "buttons": 0,
           "x": 604.7999877929688,
@@ -1390,63 +1566,63 @@
         },
         {
           "type": "pointerdown",
-          "t": 12074.70000000298,
+          "t": 4722.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 604.7999877929688,
           "y": 480
         },
         {
           "type": "pointermove",
-          "t": 12104.70000000298,
+          "t": 4752.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 610.7999877929688,
           "y": 481
         },
         {
           "type": "pointermove",
-          "t": 12124.70000000298,
+          "t": 4772.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 616.7999877929688,
           "y": 482
         },
         {
           "type": "pointermove",
-          "t": 12144.70000000298,
+          "t": 4792.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 622.7999877929688,
           "y": 483
         },
         {
           "type": "pointermove",
-          "t": 12164.70000000298,
+          "t": 4812.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 628.7999877929688,
           "y": 484
         },
         {
           "type": "pointermove",
-          "t": 12184.70000000298,
+          "t": 4832.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 634.7999877929688,
           "y": 485
         },
         {
           "type": "pointermove",
-          "t": 12204.70000000298,
+          "t": 4852.899999999907,
           "trusted": true,
-          "buttons": 1,
+          "buttons": 2,
           "x": 640.7999877929688,
           "y": 486
         },
         {
           "type": "pointerup",
-          "t": 12224.70000000298,
+          "t": 4872.899999999907,
           "trusted": true,
           "buttons": 0,
           "x": 640.7999877929688,
@@ -1457,7 +1633,7 @@
   ],
   "passive_MQL_events": [
     {
-      "origin": "http://127.0.0.1:4175",
+      "origin": "http://127.0.0.1:4173",
       "events": []
     },
     {
@@ -1467,9 +1643,9 @@
   ],
   "page_errors": [],
   "lifecycle": {
-    "owned_pid": 16320,
+    "owned_pid": 16952,
     "terminated": true,
-    "elapsed_ms": 64716
+    "elapsed_ms": 34931
   },
   "scope": "Actual current Twin motion lifecycle on dev and production. Normal contexts only add an independent passive MQL event witness; its callback never reads app state or another matches getter. Negative control alone modifies the served dev module by removing exactly two new frame reconciliation calls while keeping the live event listener and current renderer. Persistent capture and historical archive hashes are separate from current source/build input hashes; check-only never needs ignored scratch outputs. Production build outputs must be recreated by the normal frontend build on a new checkout. The inertia precondition uses sequential native-emulated CDP mouse inputs with declared20ms move/release timestamps and trusted passive event records; these are not OS gestures and do not inject application velocity. Actual camera glide, unclamped room, live preference change and exact stop are still required. No whole UI, visual, physical workflow, inventory or actual engine acceptance."
 }

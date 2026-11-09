@@ -112,6 +112,18 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   }
   draw();
  }
+ // Scenario gate tags: a short value above a gate (requests before → after, or what arrives), in copy A.
+ // In «Шторка» both halves stand in one place, so each half shows the tags that fall inside it.
+ type GateTag={pos:XYZ;title:string;value:string;d:'up'|'down'|'same'};
+ let gateTags:GateTag[]=[];const gateEls:Record<Variant,HTMLElement[]>={A:[],B:[]};
+ function setGateTags(list:GateTag[]|null){
+  gateTags=list??[];
+  for(const v of ['A','B'] as Variant[]){
+   const els=gateEls[v];while(els.length<gateTags.length){const e=document.createElement('div');e.className='tw-gate';layers[v].append(e);els.push(e);}
+   els.forEach((e,i)=>{const g=gateTags[i];e.hidden=!g;if(!g)return;e.dataset.d=g.d;delete e.dataset.w;e.innerHTML=`<span class="tw-gate-in glass"><b>${g.value}</b><small>${g.title}</small></span>`;});
+  }
+  draw();
+ }
  // Wave pulses: a head and a short fading tail.
  const pulseGeo=own(new THREE.SphereGeometry(1,16,10)),pulses:THREE.Mesh[]=[];
  for(let i=0;i<12;i++){const m=new THREE.Mesh(pulseGeo,own(new THREE.MeshBasicMaterial({transparent:true,depthTest:false})));m.renderOrder=20;m.visible=false;overlay.add(m);pulses.push(m);}
@@ -202,6 +214,10 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    if(b.dataset.state!==s){b.dataset.state=s;b.innerHTML=`<span class="tw-badge-in glass"><i></i>${ATMO_ZONES.find(a=>a.id===id)!.label}<small>${STATE_RU[s]}</small></span>`;}
    b.style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-100%)`;
   }
+  const gatesHere=v==='A'||mode==='swipe';
+  gateEls[v].forEach((e,i)=>{const g=gateTags[i];if(!g||!gatesHere){e.hidden=true;return;}const q=project(new THREE.Vector3(g.pos[0],5,g.pos[2]),vp);e.hidden=!inside(q,sc);if(e.hidden)return;
+   // Gates sit on the outer walls: keep the whole tag inside the view (width measured once per content).
+   const w=Number(e.dataset.w)||(e.dataset.w=String(e.offsetWidth),e.offsetWidth),x=Math.min(sc.x+sc.w-w/2-8,Math.max(sc.x+w/2+8,q.x));e.style.transform=`translate(${x}px,${q.y}px) translate(-50%,-100%)`;});
   moves.forEach((m,i)=>{const pin=pins[v][i],p=v==='A'?m.a:m.b,q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1],p.position[2]),vp);pin.hidden=!inside(q,sc);pin.style.translate=`${q.x}px ${q.y}px`;pin.classList.toggle('is-selected',m.id===selected);});
   // Thought bubbles above heads, within the effect budget; the selected worker always keeps its bubble.
   // Far away the zone badge is the aggregated sign; bubbles appear once people are big enough to read.
@@ -353,7 +369,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   setSplit(next:number){split=Math.min(.92,Math.max(.08,next));draw();},
   setTime(next:number){t=next;draw();},
   setSelected(id:string|null){selected=id;draw();},
-  highlightZone,
+  highlightZone,setGateTags,
   dispose(){disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }

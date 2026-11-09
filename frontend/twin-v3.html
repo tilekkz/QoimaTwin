@@ -3,7 +3,6 @@
 <body class="tw">
 <main id="twin" class="tw-app" data-phase="initial" data-mode="side">
  <div id="tw-viewport" class="tw-viewport"></div>
- <div id="tw-layer" class="tw-layer-host"></div>
  <div id="tw-blade" class="tw-blade" role="slider" tabindex="0" aria-label="Граница шторки между A и B" aria-valuemin="8" aria-valuemax="92" aria-valuenow="50" hidden>
   <span class="tw-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 7.5L5 12l4.5 4.5M14.5 7.5L19 12l-4.5 4.5"/></svg></span>
  </div>
@@ -24,6 +23,7 @@
    <a href="stand-v3.html"><b>Модели</b><span>Стенд принятых 3D-моделей</span></a>
    <button id="tw-present-btn" class="tw-menu-action" type="button"><b>Режим защиты</b><span>Показ по шагам · клавиша P</span></button>
    <button class="tw-menu-action" type="button" data-open="source" aria-expanded="false"><b>Сценарии N0–N4</b><span>Условия сравнения, которые уже зафиксированы</span></button>
+   <button id="tw-plan-open" class="tw-menu-action tw-plan-open" type="button" aria-controls="tw-mini-box"><b>План складов</b><span>Оба склада сверху · участок — подлететь</span></button>
    <button id="tw-share" class="tw-menu-action" type="button"><b>Ссылка на этот вид</b><span>Откроется то же место, момент и режим</span></button>
    <div class="tw-prefs">
     <p class="tw-pref-label" id="tw-fx-label">Эффекты</p>
@@ -91,7 +91,7 @@
 
 
  <div id="tw-hint" class="tw-hint" role="tooltip" hidden></div>
- <div class="glass tw-mini"><p class="tw-mini-head">План <small>рамка — что видно</small></p><canvas id="tw-mini" role="img" aria-label="План складов A и B сверху. Нажмите на участок, чтобы подлететь к нему"></canvas><p id="tw-mini-cap" class="tw-mini-cap" aria-live="polite"></p></div>
+ <div id="tw-mini-box" class="glass tw-mini" aria-label="План складов"><p class="tw-mini-head">План <small>рамка — что видно</small><button id="tw-mini-close" class="tw-x tw-mini-x" type="button" aria-label="Закрыть план"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></p><canvas id="tw-mini" role="img" aria-label="План складов A и B сверху. Нажмите на участок, чтобы подлететь к нему"></canvas><p id="tw-mini-cap" class="tw-mini-cap" aria-live="polite"></p></div>
 
  <!-- dock -->
  <nav class="glass tw-dock" aria-label="Управление">
@@ -104,7 +104,15 @@
   <button id="tw-home" class="tw-dbtn tw-home" type="button" aria-label="Показать весь склад" data-shown="false"><span class="tw-mi" data-icon="home"></span><span class="tw-dl">Весь склад</span></button>
  </nav>
 
- <div class="tw-load"><div class="glass tw-load-card"><span class="tw-spinner" aria-hidden="true"></span><p id="tw-status" role="status" aria-live="polite"></p><button id="tw-retry" type="button" hidden>Повторить</button></div></div>
+ <!-- in-scene labels, move pins and bubbles: after the controls in Tab order, under them in stacking -->
+ <div id="tw-layer" class="tw-layer-host"></div>
+
+ <div class="tw-load"><div class="glass tw-load-card"><span class="tw-spinner" aria-hidden="true"></span><p id="tw-status" role="status" aria-live="polite"></p><button id="tw-retry" type="button" hidden>Повторить</button>
+  <div id="tw-nogl" class="tw-nogl" hidden>
+   <figure><img src="/media/v3/home-twin.jpg" width="2250" height="1350" loading="lazy" alt="Кадр сравнения: слева склад как сейчас с SOS у поста PK03, справа склад после перестройки, где поток переведён на PK05"><figcaption>Так выглядит сравнение · кадр 01:36 эпизода «Перегрузка ветки упаковки»</figcaption></figure>
+   <p>Включите аппаратное ускорение в настройках браузера или откройте страницу в свежем Chrome, Edge или Firefox.</p>
+   <nav aria-label="Страницы без 3D"><a href="home-v3.html">Старт</a><a href="staff-v3.html">Команда</a><a href="skills-v3.html">Навыки</a></nav>
+  </div></div></div>
 </main>
 <noscript><p>Включите JavaScript для просмотра сравнения. <a href="staff-v3.html">Реестр работников</a></p></noscript>
 <script type="module" src="/src/adaptive-v3/twin/twinPage.ts"></script>

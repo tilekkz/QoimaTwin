@@ -12,7 +12,7 @@ export type MiniData={size:[number,number];shiftZ:number;zones:(Rect2&{id:string
 export type MiniFrame={shared:boolean;quad:[number,number][]|null;states:Record<Variant,Record<string,AtmoState>>};
 type Hit={v:Variant;p:XYZ;zone:string|null};
 
-const PAD=4,HINT='Наведите на участок · клик — подлететь';
+const PAD=4,HINT=matchMedia('(hover: hover)').matches?'Наведите на участок · клик — подлететь':'Нажмите на участок, чтобы подлететь';
 export function createMinimap(canvas:HTMLCanvasElement,caption:HTMLElement,d:MiniData,o:{zone:(z:Rect2,v:Variant)=>void;point:(p:XYZ,v:Variant)=>void;hover:(z:Rect2|null,v:Variant)=>void}){
  const [WX,WZ]=d.size,gap=(d.shiftZ-WZ)/2,ext={x:[-PAD,WX+PAD],z:[-PAD,d.shiftZ+WZ+PAD]};
  const ctx=canvas.getContext('2d')!;let k=1,last:MiniFrame|null=null,hover:Hit|null=null;

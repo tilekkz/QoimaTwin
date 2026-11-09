@@ -13,6 +13,8 @@ export type ScenarioCard={
  same:string;
  /** Requests per gate before → after, only where the fixture declares port counts. */
  ports?:{inbound:PortCount[];outbound:PortCount[]};
+ /** What arrives at a gate, for scenarios without per-gate request counts. */
+ gateNotes?:{port_id:string;text:string}[];
  /** Zones to outline and frame on the warehouse when the card is shown. */
  focus:string[];
  /** Fixture file and its payload hash (frozen_payload_sha256 or inputs_sha256). */
@@ -41,10 +43,12 @@ export const SCENARIOS:ScenarioCard[]=[
   source:{task:'W10',path:'docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json',sha256:'af7ff242c6ef0b6e299e3919442ddecf54f9a3d38a3e9ff42084b360b05c5792'}},
  {id:'N2',title:'Тяжёлая приёмка',status:'candidate',idea:'Поток паллет, IBC и тяжёлых коробов на западные ворота навала. Сравнивается, куда их можно положить и каким путём везти погрузчиком.',
   changes:['+12 поступлений через приёмку запад · навал: паллета, IBC и тяжёлый короб по очереди','По одному в минуту с 01:30 до 12:30, срок — 10 минут после поступления','Только погрузчиком с подходящей опорой; дополнительной техники нет'],same:SAME_SLOTTING,
+  gateNotes:[{port_id:'IN_W_BULK',text:'+12 тяжёлых'}],
   focus:['STAGE_IN_W_BULK','HEAVY_W','HEAVY_E','FLEX_W','FLEX_E'],
   source:{task:'W11',path:'docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json',sha256:'807e5f8c3c18ef69de7b5865f01dad2e0ba1dcc09782214dfc67964f8670b55c'}},
  {id:'N3',title:'Длинномер',status:'candidate',idea:'Длинные связки проходят только через большие ворота и встают только в LONG-зоны. Неподходящее место должно объяснимо отклоняться.',
   changes:['+4 длинномера LONG_BUNDLE через большие ворота (7 × 4,5 м) в 03:00, 06:00, 09:00 и 12:00','Срок — 15 минут после поступления','Погрузчик с люлькой-захватом 40 кг и разрешённой ориентацией груза'],same:SAME_SLOTTING,
+  gateNotes:[{port_id:'IN_W_BULK',text:'+4 длинномера'}],
   focus:['STAGE_IN_W_BULK','LONG_W','LONG_E'],
   source:{task:'W12',path:'docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json',sha256:'6a53bd347411f5e881992b803b30aaa9fc117afe3e299bdf0f9723c6792f8007'}},
  {id:'N4',title:'Перестановка людей',status:'described',idea:'Те же 24 человека и тот же поток; меняется только распределение ролей, с путём и временем перехода.',
