@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
           warehouseV3: fileURLToPath(new URL('./warehouse-v3.html', import.meta.url)),
           twinV3: fileURLToPath(new URL('./twin-v3.html', import.meta.url)),
           homeV3: fileURLToPath(new URL('./home-v3.html', import.meta.url)),
+          longMotionV3: fileURLToPath(new URL('./long-motion-v3.html', import.meta.url)),
         },
       },
     },

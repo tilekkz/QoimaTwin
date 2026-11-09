@@ -1,0 +1,1032 @@
+{
+  "schema": "qoima.long-calibration-assets.v1",
+  "kind": "analytic-native-geometry-with-exact-json-edits",
+  "status": "staged_unaccepted",
+  "sources": {
+    "source": {
+      "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+      "bytes": 1016536,
+      "sha256": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60"
+    },
+    "environment": {
+      "path": "frontend/public/models/v3/environment-shell.glb",
+      "bytes": 987460,
+      "sha256": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70"
+    }
+  },
+  "files": {
+    "tyre-json-edits.json": {
+      "bytes": 8180,
+      "sha256": "01d537cc71d713525e3e7d4642674930eb10bd09b55f94f3a96ff10949a7064f"
+    },
+    "apron-document.json": {
+      "bytes": 2760,
+      "sha256": "de9036349663c4c672c65811bfbc6f22c4fd81c94a0ee03a2f184507ce09cd2f"
+    }
+  },
+  "outputs": [
+    {
+      "name": "forklift-loaded-long-bundle.calibrated.glb",
+      "bytes": 1547892,
+      "sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+      "expectedUnusedAccessors": [
+        35,
+        36,
+        37,
+        42,
+        43,
+        54,
+        55,
+        60,
+        61
+      ]
+    },
+    {
+      "name": "optional-long-approach-floor.glb",
+      "bytes": 4084,
+      "sha256": "b3f3c7348ca40c37b63179c85fe424e50920623d063c31fcecb3662805dcb6ce",
+      "expectedUnusedAccessors": []
+    }
+  ],
+  "sourceJSON": {
+    "bytes": 68736,
+    "sha256": "3e91fb4286c7aeb8b607ae6a327b5e3c95b6db1209aee1f7cd5236ec5daf9f31"
+  },
+  "sourceBIN": {
+    "bytes": 947772,
+    "sha256": "1ac761c7fece8530b1b31ac5f54a8e76736e319797dc920d9423e592836b6036"
+  },
+  "correctedLock": {
+    "bytes": 1016536,
+    "sha256": "ffa995ce5d4ca666393e558f2661e1cddde4dc0623b8b57461a873b5caa4cf5e"
+  },
+  "correctedLockBIN": {
+    "bytes": 947772,
+    "sha256": "89858e838de48a1f6a0d25c7926e8fd31510fe94074994fbe0f14c8699da121f"
+  },
+  "appendedTyreBIN": {
+    "bytes": 528768,
+    "sha256": "d14832244645112cff5ee99d60f257542f85fffa5c3ec1e5e79bac3af6e48899"
+  },
+  "caps": [
+    {
+      "side": "L",
+      "nodeIndex": 72,
+      "expectedNode": {
+        "extras": {
+          "source_parts_json": "[\"positive_lock_pin_L\"]",
+          "batch_parent": "joint__cradle_lock_L"
+        },
+        "mesh": 31,
+        "name": "forklift-loaded-long-bundle__batch_28"
+      },
+      "meshIndex": 31,
+      "expectedMesh": {
+        "name": "positive_lock_pin_L_turned_solid",
+        "primitives": [
+          {
+            "attributes": {
+              "POSITION": 86,
+              "NORMAL": 87
+            },
+            "indices": 88,
+            "material": 12
+          }
+        ]
+      },
+      "position": {
+        "accessor": 86,
+        "expectedAccessor": {
+          "bufferView": 86,
+          "componentType": 5126,
+          "count": 762,
+          "max": [
+            -0.3840000033378601,
+            0.15000000596046448,
+            -0.36399999260902405
+          ],
+          "min": [
+            -0.41600000858306885,
+            0.004999999888241291,
+            -0.3959999978542328
+          ],
+          "type": "VEC3"
+        },
+        "bufferView": 86,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 9144,
+          "byteOffset": 786204,
+          "target": 34962
+        },
+        "sha256": "ec82282c53da21cd63bbc3498cd951b5fc48a19881293c67f05d1a90abee2529"
+      },
+      "normal": {
+        "accessor": 87,
+        "expectedAccessor": {
+          "bufferView": 87,
+          "componentType": 5126,
+          "count": 762,
+          "type": "VEC3"
+        },
+        "bufferView": 87,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 9144,
+          "byteOffset": 795348,
+          "target": 34962
+        },
+        "sha256": "7ed6fbcb517bd7afe287c7c5e88139a5f9262b20039343820d2729f37330284d"
+      },
+      "indices": {
+        "accessor": 88,
+        "expectedAccessor": {
+          "bufferView": 88,
+          "componentType": 5123,
+          "count": 1524,
+          "type": "SCALAR"
+        },
+        "bufferView": 88,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 3048,
+          "byteOffset": 804492,
+          "target": 34963
+        },
+        "sha256": "d8b8b11c8d187526cdd965b36ef923934cac41702712bdd7932c4cebe13524d1"
+      },
+      "replacementPositionViewSHA256": "e2ba493de6a88f00d5efa7ad92ec5e8db83b5948e627996f8d1a358a1831c1d0",
+      "replacementNormalViewSHA256": "566f39f3488b5aef3586b3fa56bfd058b48489d4d49be69a18250f21ddb743f0"
+    },
+    {
+      "side": "R",
+      "nodeIndex": 74,
+      "expectedNode": {
+        "extras": {
+          "source_parts_json": "[\"positive_lock_pin_R\"]",
+          "batch_parent": "joint__cradle_lock_R"
+        },
+        "mesh": 32,
+        "name": "forklift-loaded-long-bundle__batch_29"
+      },
+      "meshIndex": 32,
+      "expectedMesh": {
+        "name": "positive_lock_pin_R_turned_solid",
+        "primitives": [
+          {
+            "attributes": {
+              "POSITION": 89,
+              "NORMAL": 90
+            },
+            "indices": 91,
+            "material": 12
+          }
+        ]
+      },
+      "position": {
+        "accessor": 89,
+        "expectedAccessor": {
+          "bufferView": 89,
+          "componentType": 5126,
+          "count": 769,
+          "max": [
+            0.41600000858306885,
+            0.15000000596046448,
+            -0.36399999260902405
+          ],
+          "min": [
+            0.3840000033378601,
+            0.004999999888241291,
+            -0.3959999978542328
+          ],
+          "type": "VEC3"
+        },
+        "bufferView": 89,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 9228,
+          "byteOffset": 807540,
+          "target": 34962
+        },
+        "sha256": "a9af1284431fe794656753318a0ec51eb212eb46fe8a64a9f50df074ddd6a69d"
+      },
+      "normal": {
+        "accessor": 90,
+        "expectedAccessor": {
+          "bufferView": 90,
+          "componentType": 5126,
+          "count": 769,
+          "type": "VEC3"
+        },
+        "bufferView": 90,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 9228,
+          "byteOffset": 816768,
+          "target": 34962
+        },
+        "sha256": "73597d627bb60dcf3af242305bc17a052be939f69a2435c8a4b4733cbd5b5f64"
+      },
+      "indices": {
+        "accessor": 91,
+        "expectedAccessor": {
+          "bufferView": 91,
+          "componentType": 5123,
+          "count": 1524,
+          "type": "SCALAR"
+        },
+        "bufferView": 91,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 3048,
+          "byteOffset": 825996,
+          "target": 34963
+        },
+        "sha256": "ae03e725dc2dd29a5cbea4f23c605895fae90e5ec88998912dfae79d063e1742"
+      },
+      "replacementPositionViewSHA256": "f4250c2c2d9d32810e977bccc2f9bf703677054416b8d65361fe81ad9d4c2257",
+      "replacementNormalViewSHA256": "af2050a28bc10e856b4da74f7a933a8cd2ef6d844e6b8f820fab2da040149ec4"
+    }
+  ],
+  "wheels": [
+    {
+      "id": "front_L",
+      "segments": 240,
+      "nodeIndex": 43,
+      "expectedNode": {
+        "extras": {
+          "source_part_id": "tyre_front_L",
+          "forklift_component_class": "tyre",
+          "radius_m": 0.3,
+          "tyre_width_m": 0.24,
+          "inner_radius_m": 0.135,
+          "radial_segments": 24,
+          "continuous_cylinder_bound": true,
+          "source_parts_json": "[\"tyre_front_L\"]",
+          "batch_parent": "joint__wheel_front_L"
+        },
+        "mesh": 20,
+        "name": "forklift-loaded-long-bundle__batch_19"
+      },
+      "meshIndex": 20,
+      "expectedMesh": {
+        "name": "tyre_front_L__editable_annular_mesh",
+        "primitives": [
+          {
+            "attributes": {
+              "POSITION": 54,
+              "NORMAL": 55
+            },
+            "indices": 37,
+            "material": 3
+          }
+        ]
+      },
+      "position": {
+        "accessor": 54,
+        "expectedAccessor": {
+          "bufferView": 54,
+          "componentType": 5126,
+          "count": 480,
+          "max": [
+            0.11999999731779099,
+            0.30000001192092896,
+            0.30000001192092896
+          ],
+          "min": [
+            -0.11999999731779099,
+            -0.30000001192092896,
+            -0.30000001192092896
+          ],
+          "type": "VEC3"
+        },
+        "bufferView": 54,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 365844,
+          "target": 34962
+        },
+        "sha256": "0ae63b7bb493511ae609f520027ea512c2cb20064e993275bedfc7960bc209d7"
+      },
+      "normal": {
+        "accessor": 55,
+        "expectedAccessor": {
+          "bufferView": 55,
+          "componentType": 5126,
+          "count": 480,
+          "type": "VEC3"
+        },
+        "bufferView": 55,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 371604,
+          "target": 34962
+        },
+        "sha256": "d95a9ac5c4ef7235401932f366fea9cbd55736835aca23808cc705ad356a5e7c"
+      },
+      "indices": {
+        "accessor": 37,
+        "expectedAccessor": {
+          "bufferView": 37,
+          "componentType": 5123,
+          "count": 864,
+          "type": "SCALAR"
+        },
+        "bufferView": 37,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 1728,
+          "byteOffset": 271668,
+          "target": 34963
+        },
+        "sha256": "3fe1255c73d377828779e3f7f0f7e2a651d2adceed9b6a118e741ed932aa4805"
+      },
+      "appended": [
+        {
+          "accessor": 125,
+          "expectedAccessor": {
+            "bufferView": 125,
+            "componentType": 5126,
+            "count": 5760,
+            "type": "VEC3",
+            "min": [
+              -0.11999999731779099,
+              -0.30000001192092896,
+              -0.30000001192092896
+            ],
+            "max": [
+              0.11999999731779099,
+              0.30000001192092896,
+              0.30000001192092896
+            ]
+          },
+          "bufferView": 125,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 947772,
+            "byteLength": 69120,
+            "target": 34962
+          },
+          "sha256": "802fdc37f9a6d52c264fbb56e9211014826dba450036e3dc5a5ad89944c60b95"
+        },
+        {
+          "accessor": 126,
+          "expectedAccessor": {
+            "bufferView": 126,
+            "componentType": 5126,
+            "count": 5760,
+            "type": "VEC3",
+            "min": [
+              -1,
+              -0.999914288520813,
+              -0.999914288520813
+            ],
+            "max": [
+              1,
+              0.999914288520813,
+              0.999914288520813
+            ]
+          },
+          "bufferView": 126,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1016892,
+            "byteLength": 69120,
+            "target": 34962
+          },
+          "sha256": "9b71bbb003804558f83033b012de211beb8dae2a7341587a53ace662a06dbbf7"
+        },
+        {
+          "accessor": 127,
+          "expectedAccessor": {
+            "bufferView": 127,
+            "componentType": 5123,
+            "count": 8640,
+            "type": "SCALAR"
+          },
+          "bufferView": 127,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1086012,
+            "byteLength": 17280,
+            "target": 34963
+          },
+          "sha256": "a01660bfef40bac576650eb137b43f89d7cd0100923b07b4eb7920afd8326c38"
+        }
+      ]
+    },
+    {
+      "id": "front_R",
+      "segments": 240,
+      "nodeIndex": 47,
+      "expectedNode": {
+        "extras": {
+          "source_part_id": "tyre_front_R",
+          "forklift_component_class": "tyre",
+          "radius_m": 0.3,
+          "tyre_width_m": 0.24,
+          "inner_radius_m": 0.135,
+          "radial_segments": 24,
+          "continuous_cylinder_bound": true,
+          "source_parts_json": "[\"tyre_front_R\"]",
+          "batch_parent": "joint__wheel_front_R"
+        },
+        "mesh": 23,
+        "name": "forklift-loaded-long-bundle__batch_22"
+      },
+      "meshIndex": 23,
+      "expectedMesh": {
+        "name": "tyre_front_R__editable_annular_mesh",
+        "primitives": [
+          {
+            "attributes": {
+              "POSITION": 60,
+              "NORMAL": 61
+            },
+            "indices": 37,
+            "material": 3
+          }
+        ]
+      },
+      "position": {
+        "accessor": 60,
+        "expectedAccessor": {
+          "bufferView": 60,
+          "componentType": 5126,
+          "count": 480,
+          "max": [
+            0.11999999731779099,
+            0.30000001192092896,
+            0.30000001192092896
+          ],
+          "min": [
+            -0.11999999731779099,
+            -0.30000001192092896,
+            -0.30000001192092896
+          ],
+          "type": "VEC3"
+        },
+        "bufferView": 60,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 390804,
+          "target": 34962
+        },
+        "sha256": "0ae63b7bb493511ae609f520027ea512c2cb20064e993275bedfc7960bc209d7"
+      },
+      "normal": {
+        "accessor": 61,
+        "expectedAccessor": {
+          "bufferView": 61,
+          "componentType": 5126,
+          "count": 480,
+          "type": "VEC3"
+        },
+        "bufferView": 61,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 396564,
+          "target": 34962
+        },
+        "sha256": "d95a9ac5c4ef7235401932f366fea9cbd55736835aca23808cc705ad356a5e7c"
+      },
+      "indices": {
+        "accessor": 37,
+        "expectedAccessor": {
+          "bufferView": 37,
+          "componentType": 5123,
+          "count": 864,
+          "type": "SCALAR"
+        },
+        "bufferView": 37,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 1728,
+          "byteOffset": 271668,
+          "target": 34963
+        },
+        "sha256": "3fe1255c73d377828779e3f7f0f7e2a651d2adceed9b6a118e741ed932aa4805"
+      },
+      "appended": [
+        {
+          "accessor": 128,
+          "expectedAccessor": {
+            "bufferView": 128,
+            "componentType": 5126,
+            "count": 5760,
+            "type": "VEC3",
+            "min": [
+              -0.11999999731779099,
+              -0.30000001192092896,
+              -0.30000001192092896
+            ],
+            "max": [
+              0.11999999731779099,
+              0.30000001192092896,
+              0.30000001192092896
+            ]
+          },
+          "bufferView": 128,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1103292,
+            "byteLength": 69120,
+            "target": 34962
+          },
+          "sha256": "802fdc37f9a6d52c264fbb56e9211014826dba450036e3dc5a5ad89944c60b95"
+        },
+        {
+          "accessor": 129,
+          "expectedAccessor": {
+            "bufferView": 129,
+            "componentType": 5126,
+            "count": 5760,
+            "type": "VEC3",
+            "min": [
+              -1,
+              -0.999914288520813,
+              -0.999914288520813
+            ],
+            "max": [
+              1,
+              0.999914288520813,
+              0.999914288520813
+            ]
+          },
+          "bufferView": 129,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1172412,
+            "byteLength": 69120,
+            "target": 34962
+          },
+          "sha256": "9b71bbb003804558f83033b012de211beb8dae2a7341587a53ace662a06dbbf7"
+        },
+        {
+          "accessor": 130,
+          "expectedAccessor": {
+            "bufferView": 130,
+            "componentType": 5123,
+            "count": 8640,
+            "type": "SCALAR"
+          },
+          "bufferView": 130,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1241532,
+            "byteLength": 17280,
+            "target": 34963
+          },
+          "sha256": "a01660bfef40bac576650eb137b43f89d7cd0100923b07b4eb7920afd8326c38"
+        }
+      ]
+    },
+    {
+      "id": "rear_L",
+      "segments": 168,
+      "nodeIndex": 28,
+      "expectedNode": {
+        "extras": {
+          "source_part_id": "tyre_rear_L",
+          "forklift_component_class": "tyre",
+          "radius_m": 0.225,
+          "tyre_width_m": 0.2,
+          "inner_radius_m": 0.095,
+          "radial_segments": 24,
+          "continuous_cylinder_bound": true,
+          "source_parts_json": "[\"tyre_rear_L\"]",
+          "batch_parent": "joint__wheel_rear_L"
+        },
+        "mesh": 12,
+        "name": "forklift-loaded-long-bundle__batch_11"
+      },
+      "meshIndex": 12,
+      "expectedMesh": {
+        "name": "tyre_rear_L__editable_annular_mesh",
+        "primitives": [
+          {
+            "attributes": {
+              "POSITION": 35,
+              "NORMAL": 36
+            },
+            "indices": 37,
+            "material": 3
+          }
+        ]
+      },
+      "position": {
+        "accessor": 35,
+        "expectedAccessor": {
+          "bufferView": 35,
+          "componentType": 5126,
+          "count": 480,
+          "max": [
+            0.10000000149011612,
+            0.22499999403953552,
+            0.22499999403953552
+          ],
+          "min": [
+            -0.10000000149011612,
+            -0.22499999403953552,
+            -0.22499999403953552
+          ],
+          "type": "VEC3"
+        },
+        "bufferView": 35,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 260148,
+          "target": 34962
+        },
+        "sha256": "01cb670ef9c0266d567804e0c346be69027d098e17c0e83b8b59cdc4a728974e"
+      },
+      "normal": {
+        "accessor": 36,
+        "expectedAccessor": {
+          "bufferView": 36,
+          "componentType": 5126,
+          "count": 480,
+          "type": "VEC3"
+        },
+        "bufferView": 36,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 265908,
+          "target": 34962
+        },
+        "sha256": "d95a9ac5c4ef7235401932f366fea9cbd55736835aca23808cc705ad356a5e7c"
+      },
+      "indices": {
+        "accessor": 37,
+        "expectedAccessor": {
+          "bufferView": 37,
+          "componentType": 5123,
+          "count": 864,
+          "type": "SCALAR"
+        },
+        "bufferView": 37,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 1728,
+          "byteOffset": 271668,
+          "target": 34963
+        },
+        "sha256": "3fe1255c73d377828779e3f7f0f7e2a651d2adceed9b6a118e741ed932aa4805"
+      },
+      "appended": [
+        {
+          "accessor": 131,
+          "expectedAccessor": {
+            "bufferView": 131,
+            "componentType": 5126,
+            "count": 4032,
+            "type": "VEC3",
+            "min": [
+              -0.10000000149011612,
+              -0.22499999403953552,
+              -0.22499999403953552
+            ],
+            "max": [
+              0.10000000149011612,
+              0.22499999403953552,
+              0.22499999403953552
+            ]
+          },
+          "bufferView": 131,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1258812,
+            "byteLength": 48384,
+            "target": 34962
+          },
+          "sha256": "80c129d206c088eeb64f79ecfda51ff55f19c854e9b152488c7a8da53a6ab74b"
+        },
+        {
+          "accessor": 132,
+          "expectedAccessor": {
+            "bufferView": 132,
+            "componentType": 5126,
+            "count": 4032,
+            "type": "VEC3",
+            "min": [
+              -1,
+              -0.9998251795768738,
+              -0.9998251795768738
+            ],
+            "max": [
+              1,
+              0.9998251795768738,
+              0.9998251795768738
+            ]
+          },
+          "bufferView": 132,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1307196,
+            "byteLength": 48384,
+            "target": 34962
+          },
+          "sha256": "af42f474e69d3c7600f3f890996fc07ea0c367d793793fad0fe1f50326cee2fd"
+        },
+        {
+          "accessor": 133,
+          "expectedAccessor": {
+            "bufferView": 133,
+            "componentType": 5123,
+            "count": 6048,
+            "type": "SCALAR"
+          },
+          "bufferView": 133,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1355580,
+            "byteLength": 12096,
+            "target": 34963
+          },
+          "sha256": "c18caba8b6e25032d2914eb495b5dfd1aa662adc18c4c362f6d64229e03f6281"
+        }
+      ]
+    },
+    {
+      "id": "rear_R",
+      "segments": 168,
+      "nodeIndex": 33,
+      "expectedNode": {
+        "extras": {
+          "source_part_id": "tyre_rear_R",
+          "forklift_component_class": "tyre",
+          "radius_m": 0.225,
+          "tyre_width_m": 0.2,
+          "inner_radius_m": 0.095,
+          "radial_segments": 24,
+          "continuous_cylinder_bound": true,
+          "source_parts_json": "[\"tyre_rear_R\"]",
+          "batch_parent": "joint__wheel_rear_R"
+        },
+        "mesh": 15,
+        "name": "forklift-loaded-long-bundle__batch_14"
+      },
+      "meshIndex": 15,
+      "expectedMesh": {
+        "name": "tyre_rear_R__editable_annular_mesh",
+        "primitives": [
+          {
+            "attributes": {
+              "POSITION": 42,
+              "NORMAL": 43
+            },
+            "indices": 37,
+            "material": 3
+          }
+        ]
+      },
+      "position": {
+        "accessor": 42,
+        "expectedAccessor": {
+          "bufferView": 42,
+          "componentType": 5126,
+          "count": 480,
+          "max": [
+            0.10000000149011612,
+            0.22499999403953552,
+            0.22499999403953552
+          ],
+          "min": [
+            -0.10000000149011612,
+            -0.22499999403953552,
+            -0.22499999403953552
+          ],
+          "type": "VEC3"
+        },
+        "bufferView": 42,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 286836,
+          "target": 34962
+        },
+        "sha256": "01cb670ef9c0266d567804e0c346be69027d098e17c0e83b8b59cdc4a728974e"
+      },
+      "normal": {
+        "accessor": 43,
+        "expectedAccessor": {
+          "bufferView": 43,
+          "componentType": 5126,
+          "count": 480,
+          "type": "VEC3"
+        },
+        "bufferView": 43,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 5760,
+          "byteOffset": 292596,
+          "target": 34962
+        },
+        "sha256": "d95a9ac5c4ef7235401932f366fea9cbd55736835aca23808cc705ad356a5e7c"
+      },
+      "indices": {
+        "accessor": 37,
+        "expectedAccessor": {
+          "bufferView": 37,
+          "componentType": 5123,
+          "count": 864,
+          "type": "SCALAR"
+        },
+        "bufferView": 37,
+        "expectedBufferView": {
+          "buffer": 0,
+          "byteLength": 1728,
+          "byteOffset": 271668,
+          "target": 34963
+        },
+        "sha256": "3fe1255c73d377828779e3f7f0f7e2a651d2adceed9b6a118e741ed932aa4805"
+      },
+      "appended": [
+        {
+          "accessor": 134,
+          "expectedAccessor": {
+            "bufferView": 134,
+            "componentType": 5126,
+            "count": 4032,
+            "type": "VEC3",
+            "min": [
+              -0.10000000149011612,
+              -0.22499999403953552,
+              -0.22499999403953552
+            ],
+            "max": [
+              0.10000000149011612,
+              0.22499999403953552,
+              0.22499999403953552
+            ]
+          },
+          "bufferView": 134,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1367676,
+            "byteLength": 48384,
+            "target": 34962
+          },
+          "sha256": "80c129d206c088eeb64f79ecfda51ff55f19c854e9b152488c7a8da53a6ab74b"
+        },
+        {
+          "accessor": 135,
+          "expectedAccessor": {
+            "bufferView": 135,
+            "componentType": 5126,
+            "count": 4032,
+            "type": "VEC3",
+            "min": [
+              -1,
+              -0.9998251795768738,
+              -0.9998251795768738
+            ],
+            "max": [
+              1,
+              0.9998251795768738,
+              0.9998251795768738
+            ]
+          },
+          "bufferView": 135,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1416060,
+            "byteLength": 48384,
+            "target": 34962
+          },
+          "sha256": "af42f474e69d3c7600f3f890996fc07ea0c367d793793fad0fe1f50326cee2fd"
+        },
+        {
+          "accessor": 136,
+          "expectedAccessor": {
+            "bufferView": 136,
+            "componentType": 5123,
+            "count": 6048,
+            "type": "SCALAR"
+          },
+          "bufferView": 136,
+          "expectedBufferView": {
+            "buffer": 0,
+            "byteOffset": 1464444,
+            "byteLength": 12096,
+            "target": 34963
+          },
+          "sha256": "c18caba8b6e25032d2914eb495b5dfd1aa662adc18c4c362f6d64229e03f6281"
+        }
+      ]
+    }
+  ],
+  "apron": {
+    "pieces": [
+      {
+        "name": "APRON__IN_W_BULK",
+        "min": [
+          -4.06003999710083,
+          -0.2800000011920929,
+          14.5
+        ],
+        "max": [
+          0,
+          0,
+          21.5
+        ]
+      },
+      {
+        "name": "APRON__OUT_E_B2B",
+        "min": [
+          144,
+          -0.2800000011920929,
+          15
+        ],
+        "max": [
+          147.46005249023438,
+          0,
+          21
+        ]
+      }
+    ],
+    "expectedViews": [
+      {
+        "index": 0,
+        "expected": {
+          "buffer": 0,
+          "byteOffset": 0,
+          "byteLength": 288,
+          "target": 34962
+        },
+        "sha256": "67292445fee1d363e35121665d93eef4097c1211f93cae3763140462f3cfd858"
+      },
+      {
+        "index": 1,
+        "expected": {
+          "buffer": 0,
+          "byteOffset": 288,
+          "byteLength": 288,
+          "target": 34962
+        },
+        "sha256": "1d25335f006dfec1dd5deb082ea469d6f41b5f72d651220fa52367f3a28b3e72"
+      },
+      {
+        "index": 2,
+        "expected": {
+          "buffer": 0,
+          "byteOffset": 576,
+          "byteLength": 72,
+          "target": 34963
+        },
+        "sha256": "111344a69a3f4c9c714bfdd23c3b16f9ad6beb430821bd310f33d9f795061012"
+      },
+      {
+        "index": 3,
+        "expected": {
+          "buffer": 0,
+          "byteOffset": 648,
+          "byteLength": 288,
+          "target": 34962
+        },
+        "sha256": "7d34ada2e28cde6531e61677e5f1a14053fec32dc59b9ac9959bfa8f7c497473"
+      },
+      {
+        "index": 4,
+        "expected": {
+          "buffer": 0,
+          "byteOffset": 936,
+          "byteLength": 288,
+          "target": 34962
+        },
+        "sha256": "1d25335f006dfec1dd5deb082ea469d6f41b5f72d651220fa52367f3a28b3e72"
+      },
+      {
+        "index": 5,
+        "expected": {
+          "buffer": 0,
+          "byteOffset": 1224,
+          "byteLength": 72,
+          "target": 34963
+        },
+        "sha256": "111344a69a3f4c9c714bfdd23c3b16f9ad6beb430821bd310f33d9f795061012"
+      }
+    ]
+  },
+  "invariants": {
+    "HU_dimensions_xyz_m": [
+      4.2,
+      0.52,
+      0.65
+    ],
+    "HU_mass_kg": 200,
+    "cradle_mass_kg": 40,
+    "total_lifted_mass_kg": 240,
+    "scale": 1,
+    "spin_axis": "X",
+    "front_radius_m": 0.3,
+    "rear_radius_m": 0.225,
+    "architecture_tolerance_m": 0.00004
+  }
+}

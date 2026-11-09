@@ -1,0 +1,269 @@
+{
+  "schema_id": "qoima.n2-n3-physical-handoff.v1",
+  "schema_version": "1.0.0",
+  "source_kind": "visual_fixture",
+  "units": "m_s_kg",
+  "coordinate_system": {
+    "handedness": "right",
+    "up_axis": "+Y",
+    "scale_factor": 1
+  },
+  "engine_operation": false,
+  "operational_workflow_admitted": false,
+  "backend_adoption_recorded": false,
+  "sections": {
+    "staging": {
+      "path": "n2-staging.json",
+      "sha256": "4aa68aed3feb7dffc609eb19d4f4574900eb3ec0fd979a78552382ee30daaaaf",
+      "schema_id": "qoima.n2.staging-physical-interfaces.v1"
+    },
+    "retention": {
+      "path": "n3-retention.json",
+      "sha256": "6243bba567637350b7c170ef378a1a94cc0c139da583ef80cac6a625e2432f03",
+      "schema_id": "qoima.n3.long-retention-interfaces.v1"
+    },
+    "routes": {
+      "path": "route-terminal-interfaces.json",
+      "sha256": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+      "schema_id": "qoima.n2-n3-route-terminal-interfaces.v1"
+    }
+  },
+  "extensions": {
+    "n2_relative_pi": {
+      "path": "n2-relative-pi-endpoints.json",
+      "sha256": "3124457ec38d8fae4e0cfdc7d6ce44bf7c52d5c9838545a81c886fef11b56647",
+      "schema_id": "qoima.n2.fixed-source-HU-relative-pi-endpoints.v1"
+    },
+    "n3_relative_pi": {
+      "path": "n3-relative-pi-addon.json",
+      "sha256": "1bd80aebeb5502368817cac689a45d7c45d4a911c1e80bdb5240b47b35dafd96",
+      "schema_id": "qoima.n3.long-retention-relative-pi.v1"
+    },
+    "current_n3_input": {
+      "path": "n3-current-input.json",
+      "sha256": "2aa8b23916a8a2712d3047364c9226e28a39b44235c8fd06a2057319f38eec43",
+      "schema_id": "qoima.long-freight-current-input.v3"
+    },
+    "current_n3_migration": {
+      "path": "n3-input-migration.json",
+      "sha256": "b4ffd5e86f1a8a31bb9e1a4164e48bc5e1cbf5e0983592e649e27d032ee768a5",
+      "schema_id": "qoima.n3.current-input-migration.v1"
+    }
+  },
+  "artifacts": {
+    "README.md": {
+      "sha256": "dbba4473e5a0fea5db4ebb8318195b7b226a176483d5847c940dc1979f2c17c4",
+      "bytes": 8896
+    },
+    "bundle.schema.json": {
+      "sha256": "df62749495513256470ffe191aa95d732849d8a68605a924a5a9e9ea3fa48bb2",
+      "bytes": 2263
+    },
+    "evidence/independent-native-checks.json": {
+      "sha256": "e9d1f881faa9bb02f02b9ca135de67576619a04f1c5cfb27fb693c4cd0683a73",
+      "bytes": 2626
+    },
+    "evidence/n2-checks.json": {
+      "sha256": "b17616781c66c872ac6be12dcdbe441966caaca99f7967e01d5b27f657e4b692",
+      "bytes": 7594
+    },
+    "evidence/n3-checks.json": {
+      "sha256": "3f9b1cad136f9dd75820b537aadb2d21a5c8235e1a970ebf46176f42b3292b67",
+      "bytes": 5449
+    },
+    "evidence/n3-current-input-checks.json": {
+      "sha256": "4e1fc485ad3c2a6e71b217ec140f11646777fdc6ff2ef630c5cc7b8766a5b745",
+      "bytes": 2775
+    },
+    "evidence/n3-relative-pi-checks.json": {
+      "sha256": "f07349d0890bf19731cd45040427a371acc63bea0e5a9101c3ed8014d72aa8d9",
+      "bytes": 773
+    },
+    "evidence/retention-api-checks.json": {
+      "sha256": "dcf37094c6542a757c9343a095096e731cd0cb922ff84b7803990c682df164ff",
+      "bytes": 2644
+    },
+    "evidence/route-checks.json": {
+      "sha256": "307548995e4c0ee87d40cd41260f51af6a5d936bc1ba7ffc411a5547e6c3e5c9",
+      "bytes": 166197
+    },
+    "evidence/route-git-closure.json": {
+      "sha256": "9e58ac8bfdc345e1672424114bc0e34faad742b516e1f437d1f10dfd46bc7a8f",
+      "bytes": 1544
+    },
+    "n2-relative-pi-endpoints.json": {
+      "sha256": "3124457ec38d8fae4e0cfdc7d6ce44bf7c52d5c9838545a81c886fef11b56647",
+      "bytes": 162856
+    },
+    "n2-staging.json": {
+      "sha256": "4aa68aed3feb7dffc609eb19d4f4574900eb3ec0fd979a78552382ee30daaaaf",
+      "bytes": 234783
+    },
+    "n3-current-input.json": {
+      "sha256": "2aa8b23916a8a2712d3047364c9226e28a39b44235c8fd06a2057319f38eec43",
+      "bytes": 648866
+    },
+    "n3-current-pair.json": {
+      "sha256": "1ad5494dd8daa7cfac526cdc5efb81c77b9041131d44224d64e29ca6e4f1628e",
+      "bytes": 1265
+    },
+    "n3-historical-base.json": {
+      "sha256": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+      "bytes": 582893
+    },
+    "n3-historical-route-policy.json": {
+      "sha256": "24ad87f197d14b1c681814b43b2c8841ca145c6b92515af744f3cb4473d35337",
+      "bytes": 879656
+    },
+    "n3-input-migration.json": {
+      "sha256": "b4ffd5e86f1a8a31bb9e1a4164e48bc5e1cbf5e0983592e649e27d032ee768a5",
+      "bytes": 31955
+    },
+    "n3-relative-pi-addon.json": {
+      "sha256": "1bd80aebeb5502368817cac689a45d7c45d4a911c1e80bdb5240b47b35dafd96",
+      "bytes": 181890
+    },
+    "n3-retention.json": {
+      "sha256": "6243bba567637350b7c170ef378a1a94cc0c139da583ef80cac6a625e2432f03",
+      "bytes": 332114
+    },
+    "native-relative-pi-endpoint-evidence.json": {
+      "sha256": "10f5966a33cfa48826f8e468d2558b8707433f6dcf04479c893fad66e8a3b02a",
+      "bytes": 168744
+    },
+    "reference-vehicle-graph.json": {
+      "sha256": "dfce34e5ae7f5256033dcac9c9eab7a4a6a9ea1cc0ad80be1dadcd4f9b4084e8",
+      "bytes": 2434223
+    },
+    "relative-pi-integration.md": {
+      "sha256": "9aecb05d11e7d6a63983e8d06e045abf5fc8b1c9568ad217867093f8c088bb0d",
+      "bytes": 3472
+    },
+    "retention-api.d.ts": {
+      "sha256": "b87e22670b283aaa88b92f8991cd25c6ae8afeb45c180dd028846efa227954c2",
+      "bytes": 3678
+    },
+    "retention-prototype.mjs": {
+      "sha256": "6f517d68f2b89747194c7d5202727e2a077a48df34aee81dc52bf3da080b25bc",
+      "bytes": 6812
+    },
+    "route-integration.md": {
+      "sha256": "3e62496c7fcca866f24bc6039fdbb58a967f94c8bbace53cbeced57870884a90",
+      "bytes": 4712
+    },
+    "route-terminal-interfaces.json": {
+      "sha256": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+      "bytes": 2027756
+    },
+    "route_math.py": {
+      "sha256": "116feec7a9baf6409fc9907dfeef2edf8b5cd2916216a4239392533a3843ef49",
+      "bytes": 5044
+    },
+    "verify_route_packet.py": {
+      "sha256": "cc828478501b304ee0c1980165c5427e6e48c9bae0f78a5cb46578c7b831469f",
+      "bytes": 10400
+    }
+  },
+  "source_hashes": {
+    "assets/references/v3/r12-dimension-targets.json": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+    "assets/v3/iterations/forklift/M14.8/actual-pickup-continuous-checks.json": "11739e1e8e6a70a35b3ec7c807143917e2243e10af4c6464b3d9192b0d4558c6",
+    "assets/v3/long-calibration/recipe.json": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+    "assets/v3/specs/heavy-bay.dimensions.json": "4f289032b503005ac37d75724224601c36fdb79c4f4d42a0a7792413a5be1783",
+    "assets/v3/specs/heavy-box.dimensions.json": "c547fae0eb161a4e44c76f4a848dc5e16caf94d56f23c75faab999c8ea93a761",
+    "assets/v3/specs/ibc.dimensions.json": "96680004c7d9434709cb607aca50dfac588613cba62f71301fc63dc48521f77e",
+    "assets/v3/specs/long-cradle.geometry.json": "24ed610e4d3d2f8417df49ebee911463ae18fb23619aa4ef0f243b8b0e35a2b5",
+    "assets/v3/specs/pallet-load.dimensions.json": "2f01d227f5cf509dd9eafb8cbc11fd2d8b0029ccd2e617745161d34455133494",
+    "contracts/actors.example.json": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7",
+    "docs/adaptive-v3/evidence/M10.json": "bbc6b7797815f9b3c959bc7c9195db9303fa9e250f4ee1bf6059c5ddd069756b",
+    "docs/adaptive-v3/evidence/M14.6.3.json": "8f4fb4811aa1225e9c93965f13719e57654546a250519d1fb38e0e8d4e4571a1",
+    "docs/adaptive-v3/evidence/P03.5.3.3.json": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a",
+    "docs/adaptive-v3/evidence/P03.json": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428",
+    "docs/adaptive-v3/evidence/P04.json": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1",
+    "docs/adaptive-v3/evidence/P05.json": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97",
+    "docs/adaptive-v3/evidence/P06.json": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d",
+    "docs/adaptive-v3/evidence/P07.json": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249",
+    "docs/adaptive-v3/evidence/P09.2.json": "79d8e3d9ee09c27864e762e27fe7f18045ea819a58c6922a87deb4986f595437",
+    "docs/adaptive-v3/evidence/W12.2.json": "96b75e5bbc31579fce25c3573be8437ba417f25435eaa34d4c97743e4991ddd2",
+    "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json": "7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b",
+    "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json": "0f5f422bd09ade5064159183729e877ba12d5687a78341ec716b1c67410d7ee5",
+    "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/historical-worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/historical-worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "docs/adaptive-v3/fixtures/warehouse-request-stream-v3.json": "149462c7c3eb29c261a9ee309732fd79d018bb953e1886b2b3603529ed1bbb15",
+    "docs/adaptive-v3/specs/C07.md": "185c3f48d99b1e66db6b4211c65b3b9f9e645524a00b1f97964419c50e5780a6",
+    "docs/adaptive-v3/specs/M14.8.md": "11ef1750edddb165e071d79b240c76826e1f8f3ecc8102ac42a2def225de1b94",
+    "docs/adaptive-v3/specs/W12.2.md": "db16e81aeddbf1f94146d49cb6cf8d55b3b77426100395df54ab770855f96fff",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/baseline-input-v3.json": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/cargo-mass-cases-v3.json": "3d4e15a4941f4692d14238f4891a1ca24bdd46858e327d4e1e0682fb2b4e25ce",
+    "docs/v3/contract-proposals/conveyor-v3.json": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612",
+    "docs/v3/contract-proposals/handoff/examples/worker-F01.json": "ccaa9c3819f4d05fc891c799e6211688c71d193a0bdfa94db06dbe7e1b36d294",
+    "docs/v3/contract-proposals/handoff/examples/worker-P01.json": "2fc2f8e62920d454a3203049e468d8770173a5781dc4e5cd17a7db4e16fcf1de",
+    "docs/v3/contract-proposals/handoff/manifest.json": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+    "docs/v3/contract-proposals/large-gate-v3.json": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8",
+    "docs/v3/contract-proposals/layout-links-v3.json": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/layout-v3.zones.json": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/n3-current-input.json": "2aa8b23916a8a2712d3047364c9226e28a39b44235c8fd06a2057319f38eec43",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/n3-historical-base.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/n3-historical-route-policy.json": "24ad87f197d14b1c681814b43b2c8841ca145c6b92515af744f3cb4473d35337",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "docs/v3/contract-proposals/storage-layout-v3.json": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+    "docs/v3/contract-proposals/storage-slots-v3.json": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "docs/v3/contract-proposals/vehicle-graph-v3.json": "be17461061cc33fe07540d0bc5572f61ce74ac9852198ee5423ed549deb3f832",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/long-calibration/timeline.json": "09c84fe7a7d3cee84db18929c37d8a46631bfd579028b7b9e437c611b0db54b4",
+    "frontend/public/data/v3/packer-seam-end.json": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b",
+    "frontend/public/data/v3/pallet-pickup-cycle.json": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59",
+    "frontend/public/data/v3/picker-cart-walk.json": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2",
+    "frontend/public/data/v3/picker-push-pose.json": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062",
+    "frontend/public/data/v3/receiver-v3.json": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/data/v3/shipper-v3.json": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/v3/warehouse-vehicle-support.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "frontend/public/models/v3/forklift-loaded-long-bundle.glb": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "frontend/public/models/v3/long-rack-release-fixture.glb": "346e88692e2d7230f008d49c4a929bba9515f018c8a61e178cc64b9a58e011ca",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+    "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/small-pick-v3.json": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "frontend/src/adaptive-v3/forkliftPickup.ts": "e6d570f20ffd2130c9b171d9c04dab16268e8056ca7c74ed09cd663c91d00181",
+    "frontend/src/adaptive-v3/longCalibration/browserAPI.ts": "865b11f175a7a87fc570c1a5cf6fdba099f8c89682bc3353bc27e0b1753d6a61",
+    "frontend/src/adaptive-v3/longMotionSetup.ts": "197f7a3d08ae5a21b366661685665cb64d37e9bb345b1d97a18b28668801a875",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "frontend/src/adaptive-v3/warehouseSupportKit.ts": "4f3929b70a751faedc8526f3c9c4ea27bc91686249e7b83a30ea79115f8c3c47",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/tools/build-worker-profiles-v3.mjs": "1a0eb697b50016f6600ca4ac6efe2ba2de8769e4b83c16258e93d4697c5c6784",
+    "frontend/tools/build-worker-registry-v3.mjs": "9ee5fffb2d75dec83da957be6968b44f7daaef4b542556110d1ac76ec3121f4a",
+    "tools/blender/v3/build_long_cradle.py": "10e9a93f57f2adea4b5530014ab5e425bc014a42d15ee33b949968becde5e455",
+    "tools/blender/v3/verify_loaded_forklift.py": "2c48cb4b4573a0b10ec06a324d97927be8919993b24e46876ae37ba59600d42f",
+    "tools/visual/v3/build_long_calibration_assets.mjs": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+    "tools/visual/v3/build_route_policy.py": "7f5644b08022cf5e3f4639e8da0a920b9f72402017e653103de5da1f5c774802",
+    "tools/visual/v3/build_warehouse_fixture.py": "883b53517e2f6c19cc823e37e799fb39d4d919f079bc7034b55e05ff5b63b6af",
+    "tools/visual/v3/freeze_n2_n3_interfaces_v3.py": "b43f998daeacd9284f3198f5c72fdb0088a547118b5925be1ff4646986f75031",
+    "tools/visual/v3/n2_n3_native_geometry.py": "a3a9a2b2ca10caf836bafbee8b2931e5a1f7bf070a95ad5a376d70ae189687d7",
+    "tools/visual/v3/n2_n3_route_geometry.py": "b902b3b3a472c5dab49ad85d35b2f66639a4fd552092e99f9122b124d7de9b3e",
+    "tools/visual/v3/verify_n2_n3_interfaces_v3.py": "71daf9fc552a6709499f6a4b4ba2dbd56570d880535bf0703a7e4a8a562918ff"
+  },
+  "scope": "Physical frames, supports, retention controls and guarded terminal connections for API integration; full operational scheduling and source workflow execution remain separate."
+}

@@ -1,0 +1,1724 @@
+import type {LongTimeline} from './browserAPI';
+export default {
+  "schema_id": "qoima.long-straight-calibration.v1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "runtime_scene_joined": false,
+  "source_pickup_executed": false,
+  "calibration_fixture_ownership": "temporary root/wheel transforms, pre-held attachment parents, actual seated driver binding; dispose restores baseline",
+  "source_workflow_ownership": "NONE: no pickup, stock, jobs, resources, acquire/release/install/stow/steering/fullroute",
+  "scale": 1,
+  "crossings": [
+    {
+      "id": "IN_W_BULK",
+      "actor_id": "F01",
+      "vehicle_id": "FL01",
+      "duration_s": 10,
+      "path_length_m": 6.369999749590555,
+      "gate_travel_m": [
+        -3.0599998946981364,
+        3.3099998548924185
+      ],
+      "origin_m": [
+        0,
+        0,
+        18
+      ],
+      "inward": [
+        0.9999999999999911,
+        0,
+        -1.3435883843274957e-7
+      ],
+      "heading": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "forward_projection": 0.9999999999999911
+    },
+    {
+      "id": "OUT_E_B2B",
+      "actor_id": "F02",
+      "vehicle_id": "FL02",
+      "duration_s": 10,
+      "path_length_m": 6.369999749590555,
+      "gate_travel_m": [
+        3.3099998946981364,
+        -3.0599998548924185
+      ],
+      "origin_m": [
+        144,
+        0,
+        18
+      ],
+      "inward": [
+        -0.9999999999999911,
+        0,
+        -1.3435883843274957e-7
+      ],
+      "heading": [
+        0,
+        0.7071067811865475,
+        0,
+        0.7071067811865476
+      ],
+      "forward_projection": 0.9999999999999911
+    }
+  ],
+  "wheels": [
+    {
+      "id": "front_L",
+      "joint": "joint__wheel_front_L",
+      "parent": "forklift_root",
+      "axle_vehicle_m": [
+        -0.3499999940395355,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.3,
+      "sign": 1
+    },
+    {
+      "id": "front_R",
+      "joint": "joint__wheel_front_R",
+      "parent": "forklift_root",
+      "axle_vehicle_m": [
+        0.3499999940395355,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.3,
+      "sign": 1
+    },
+    {
+      "id": "rear_L",
+      "joint": "joint__wheel_rear_L",
+      "parent": "joint__rear_steer_L",
+      "axle_vehicle_m": [
+        -0.3499999940395355,
+        0.22499999403953552,
+        -1
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.225,
+      "sign": 1
+    },
+    {
+      "id": "rear_R",
+      "joint": "joint__wheel_rear_R",
+      "parent": "joint__rear_steer_R",
+      "axle_vehicle_m": [
+        0.3499999940395355,
+        0.22499999403953552,
+        -1
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.225,
+      "sign": 1
+    }
+  ],
+  "fixed_nonwheel_controls": [
+    {
+      "node": "joint__carriage",
+      "parent": "forklift_root",
+      "p": [
+        0,
+        0.75,
+        0.03999999910593033
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__reach",
+      "parent": "joint__carriage",
+      "p": [
+        0,
+        0,
+        0.36000001430511475
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__fork_L",
+      "parent": "joint__reach",
+      "p": [
+        -0.4000000059604645,
+        0,
+        0
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__fork_R",
+      "parent": "joint__reach",
+      "p": [
+        0.4000000059604645,
+        0,
+        0
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__rear_steer_L",
+      "parent": "forklift_root",
+      "p": [
+        -0.3499999940395355,
+        0.22499999403953552,
+        -1
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__rear_steer_R",
+      "parent": "forklift_root",
+      "p": [
+        0.3499999940395355,
+        0.22499999403953552,
+        -1
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__steering_wheel",
+      "parent": "forklift_root",
+      "p": [
+        0,
+        1.2780096530914307,
+        -0.2534595727920532
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__cradle_lock_L",
+      "parent": "long-cradle",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__cradle_lock_R",
+      "parent": "long-cradle",
+      "p": [
+        0,
+        0,
+        0
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__restraint_keeper_L_front",
+      "parent": "long-restraint-rig",
+      "p": [
+        -1.399999976158142,
+        0.12000000476837158,
+        0.2799999713897705
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__restraint_keeper_L_rear",
+      "parent": "long-restraint-rig",
+      "p": [
+        -1.399999976158142,
+        0.12000000476837158,
+        -0.2799999713897705
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__restraint_keeper_R_front",
+      "parent": "long-restraint-rig",
+      "p": [
+        1.399999976158142,
+        0.12000000476837158,
+        0.2799999713897705
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__restraint_keeper_R_rear",
+      "parent": "long-restraint-rig",
+      "p": [
+        1.399999976158142,
+        0.12000000476837158,
+        -0.2799999713897705
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__restraint_L",
+      "parent": "long-restraint-rig",
+      "p": [
+        -1.399999976158142,
+        0.6200000047683716,
+        -0.2799999713897705
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    },
+    {
+      "node": "joint__restraint_R",
+      "parent": "long-restraint-rig",
+      "p": [
+        1.399999976158142,
+        0.6200000047683716,
+        -0.2799999713897705
+      ],
+      "q": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "s": [
+        1,
+        1,
+        1
+      ],
+      "visible": true
+    }
+  ],
+  "preheld": {
+    "HU_dimensions_xyz_m": [
+      4.199999809265137,
+      0.5200000088661909,
+      0.6499999761581421
+    ],
+    "units": 24,
+    "HU_mass_kg": 200,
+    "attachment_mass_kg": 40,
+    "total_lifted_kg": 240,
+    "scale": 1,
+    "upright": true,
+    "relative_yaw_rad": 0,
+    "fork_top_y_m": 0.75,
+    "reach_local_position": [
+      0,
+      0,
+      0.36000001430511475
+    ],
+    "carriage_local_position": [
+      0,
+      0.75,
+      0.03999999910593033
+    ],
+    "rig_manual_workflow_proven": false,
+    "HU_identity_preserved": true,
+    "complete_HU_and_cradle_and_restraint_geometry_unchanged": true,
+    "original_closed_pin_transforms_exact": true,
+    "corrected_cap_geometry_bytes_unchanged": true,
+    "attachments": [
+      {
+        "node": "long-bundle",
+        "parent": "joint__reach",
+        "p": [
+          0,
+          0.050000011920928955,
+          0.5999999865889549
+        ],
+        "q": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "node": "long-cradle",
+        "parent": "joint__reach",
+        "p": [
+          0,
+          -0.10000002384185791,
+          0.5999999865889549
+        ],
+        "q": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "node": "long-restraint-rig",
+        "parent": "joint__reach",
+        "p": [
+          0,
+          -0.10000002384185791,
+          0.5999999865889549
+        ],
+        "q": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "all_20_native_load_contacts_pass": true,
+    "contacts": [
+      {
+        "expected": [
+          -0.4,
+          0.75,
+          0.7625
+        ],
+        "down": {
+          "point": [
+            -0.4,
+            0.75,
+            0.7625
+          ],
+          "distance": 0.0040000000000000036,
+          "mesh": "forklift-loaded-long-bundle__batch_05",
+          "parts": [
+            "fork_L"
+          ],
+          "normal": [
+            0,
+            0.9999999999999999,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -0.4,
+            0.7499999776482582,
+            0.7625
+          ],
+          "distance": 0.003999977648258213,
+          "mesh": "forklift-loaded-long-bundle__batch_32",
+          "parts": [
+            "real_fork_pocket_L",
+            "real_fork_pocket_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -0.4,
+          0.75,
+          1.2375
+        ],
+        "down": {
+          "point": [
+            -0.4,
+            0.75,
+            1.2375
+          ],
+          "distance": 0.0040000000000000036,
+          "mesh": "forklift-loaded-long-bundle__batch_05",
+          "parts": [
+            "fork_L"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -0.4,
+            0.7499999776482582,
+            1.2375
+          ],
+          "distance": 0.003999977648258213,
+          "mesh": "forklift-loaded-long-bundle__batch_32",
+          "parts": [
+            "real_fork_pocket_L",
+            "real_fork_pocket_R"
+          ],
+          "normal": [
+            0,
+            -0.9999999999999999,
+            0
+          ]
+        },
+        "gap_m": -2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          0.4,
+          0.75,
+          0.7625
+        ],
+        "down": {
+          "point": [
+            0.4,
+            0.75,
+            0.7625
+          ],
+          "distance": 0.0040000000000000036,
+          "mesh": "forklift-loaded-long-bundle__batch_06",
+          "parts": [
+            "fork_R"
+          ],
+          "normal": [
+            0,
+            0.9999999999999999,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            0.4,
+            0.7499999776482582,
+            0.7625
+          ],
+          "distance": 0.003999977648258213,
+          "mesh": "forklift-loaded-long-bundle__batch_32",
+          "parts": [
+            "real_fork_pocket_L",
+            "real_fork_pocket_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          0.4,
+          0.75,
+          1.2375
+        ],
+        "down": {
+          "point": [
+            0.4,
+            0.75,
+            1.2375
+          ],
+          "distance": 0.0040000000000000036,
+          "mesh": "forklift-loaded-long-bundle__batch_06",
+          "parts": [
+            "fork_R"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            0.4,
+            0.7499999776482582,
+            1.2375
+          ],
+          "distance": 0.003999977648258213,
+          "mesh": "forklift-loaded-long-bundle__batch_32",
+          "parts": [
+            "real_fork_pocket_L",
+            "real_fork_pocket_R"
+          ],
+          "normal": [
+            0,
+            -0.9999999999999999,
+            0
+          ]
+        },
+        "gap_m": -2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          0.8,
+          0.8
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            0.7999999616295099,
+            0.8
+          ],
+          "distance": 0.004000038370490122,
+          "mesh": "forklift-loaded-long-bundle__batch_31",
+          "parts": [
+            "pad_surface_L",
+            "pad_surface_R"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            0.7999999839812517,
+            0.8
+          ],
+          "distance": 0.003999983981251676,
+          "mesh": "forklift-loaded-long-bundle__batch_27",
+          "parts": [
+            "integral_skid_front",
+            "integral_skid_rear"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": 2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          0.8,
+          1.2
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            0.7999999616295099,
+            1.2
+          ],
+          "distance": 0.004000038370490122,
+          "mesh": "forklift-loaded-long-bundle__batch_31",
+          "parts": [
+            "pad_surface_L",
+            "pad_surface_R"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            0.7999999839812517,
+            1.2
+          ],
+          "distance": 0.003999983981251676,
+          "mesh": "forklift-loaded-long-bundle__batch_27",
+          "parts": [
+            "integral_skid_front",
+            "integral_skid_rear"
+          ],
+          "normal": [
+            0,
+            -0.9999999999999999,
+            0
+          ]
+        },
+        "gap_m": 2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          0.8,
+          0.8
+        ],
+        "down": {
+          "point": [
+            1.4,
+            0.7999999616295099,
+            0.8
+          ],
+          "distance": 0.004000038370490122,
+          "mesh": "forklift-loaded-long-bundle__batch_31",
+          "parts": [
+            "pad_surface_L",
+            "pad_surface_R"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            0.7999999839812517,
+            0.8
+          ],
+          "distance": 0.003999983981251676,
+          "mesh": "forklift-loaded-long-bundle__batch_27",
+          "parts": [
+            "integral_skid_front",
+            "integral_skid_rear"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": 2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          0.8,
+          1.2
+        ],
+        "down": {
+          "point": [
+            1.4,
+            0.7999999616295099,
+            1.2
+          ],
+          "distance": 0.004000038370490122,
+          "mesh": "forklift-loaded-long-bundle__batch_31",
+          "parts": [
+            "pad_surface_L",
+            "pad_surface_R"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            0.7999999839812517,
+            1.2
+          ],
+          "distance": 0.003999983981251676,
+          "mesh": "forklift-loaded-long-bundle__batch_27",
+          "parts": [
+            "integral_skid_front",
+            "integral_skid_rear"
+          ],
+          "normal": [
+            0,
+            -0.9999999999999999,
+            0
+          ]
+        },
+        "gap_m": 2.2351741790771484e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          1.242,
+          0.775
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            1.242000013589859,
+            0.775
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            1.2419999279081821,
+            0.775
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_43",
+          "parts": [
+            "soft_pressure_pad_L"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          1.242,
+          0.865
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            1.242000013589859,
+            0.865
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            1.2419999279081821,
+            0.865
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_43",
+          "parts": [
+            "soft_pressure_pad_L"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          1.242,
+          0.955
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            1.242000013589859,
+            0.955
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            1.2419999279081821,
+            0.955
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_43",
+          "parts": [
+            "soft_pressure_pad_L"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          1.242,
+          1.045
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            1.242000013589859,
+            1.045
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            1.2419999279081821,
+            1.045
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_43",
+          "parts": [
+            "soft_pressure_pad_L"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          1.242,
+          1.135
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            1.242000013589859,
+            1.135
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            1.2419999279081821,
+            1.135
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_43",
+          "parts": [
+            "soft_pressure_pad_L"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          -1.4,
+          1.242,
+          1.225
+        ],
+        "down": {
+          "point": [
+            -1.4,
+            1.242000013589859,
+            1.225
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            -1.4,
+            1.2419999279081821,
+            1.225
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_43",
+          "parts": [
+            "soft_pressure_pad_L"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          1.242,
+          0.775
+        ],
+        "down": {
+          "point": [
+            1.4,
+            1.242000013589859,
+            0.775
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            1.2419999279081821,
+            0.775
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_45",
+          "parts": [
+            "soft_pressure_pad_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          1.242,
+          0.865
+        ],
+        "down": {
+          "point": [
+            1.4,
+            1.242000013589859,
+            0.865
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            1.2419999279081821,
+            0.865
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_45",
+          "parts": [
+            "soft_pressure_pad_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          1.242,
+          0.955
+        ],
+        "down": {
+          "point": [
+            1.4,
+            1.242000013589859,
+            0.955
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            1.2419999279081821,
+            0.955
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_45",
+          "parts": [
+            "soft_pressure_pad_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          1.242,
+          1.045
+        ],
+        "down": {
+          "point": [
+            1.4,
+            1.242000013589859,
+            1.045
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            1.2419999279081821,
+            1.045
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_45",
+          "parts": [
+            "soft_pressure_pad_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          1.242,
+          1.135
+        ],
+        "down": {
+          "point": [
+            1.4,
+            1.242000013589859,
+            1.135
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            1.2419999279081821,
+            1.135
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_45",
+          "parts": [
+            "soft_pressure_pad_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      },
+      {
+        "expected": [
+          1.4,
+          1.242,
+          1.225
+        ],
+        "down": {
+          "point": [
+            1.4,
+            1.242000013589859,
+            1.225
+          ],
+          "distance": 0.003999986410140988,
+          "mesh": "content_profile_01__editable_hollow",
+          "parts": [
+            "content_profile_01",
+            "content_profile_02",
+            "content_profile_03",
+            "content_profile_04",
+            "content_profile_05",
+            "content_profile_06",
+            "content_profile_07",
+            "content_profile_08",
+            "content_profile_09",
+            "content_profile_10",
+            "content_profile_11",
+            "content_profile_12",
+            "content_profile_13",
+            "content_profile_14",
+            "content_profile_15",
+            "content_profile_16",
+            "content_profile_17",
+            "content_profile_18",
+            "content_profile_19",
+            "content_profile_20",
+            "content_profile_21",
+            "content_profile_22",
+            "content_profile_23",
+            "content_profile_24"
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ]
+        },
+        "up": {
+          "point": [
+            1.4,
+            1.2419999279081821,
+            1.225
+          ],
+          "distance": 0.003999927908182155,
+          "mesh": "forklift-loaded-long-bundle__batch_45",
+          "parts": [
+            "soft_pressure_pad_R"
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "gap_m": -8.568167686462402e-8,
+        "pass": true
+      }
+    ]
+  },
+  "driver_pose_ref": {
+    "path": "frontend/public/data/v3/seated-driver-pose.json",
+    "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+  },
+  "provenance": {
+    "wheel_study": "work/v3/account2-long-wheel-roll/20261109T011657Z/results.json",
+    "wheel_sha256": "79313169209224d010dce0bbba3c1b0476aa930f751000cef9f974aae31730b8",
+    "grounded_study": "work/v3/account2-grounded-long-gate/20261109T005322Z/results.json",
+    "grounded_sha256": "d1e24d6aa3398eed232dcd82956da14c1d9f1a9466e4de41f1a50a61cd85e8d9",
+    "original_loaded_sha256": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60",
+    "corrected_lock_sha256": "ffa995ce5d4ca666393e558f2661e1cddde4dc0623b8b57461a873b5caa4cf5e",
+    "rolling_variant_sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "apron_sha256": "b3f3c7348ca40c37b63179c85fe424e50920623d063c31fcecb3662805dcb6ce",
+    "geometry_recomputed": false
+  },
+  "limits": {
+    "architecture_tolerance_m": 0.00004,
+    "original_native_polygon_fails": true,
+    "circular_longitudinal_phase_only": true,
+    "exact_polygon_no_slip": false,
+    "exact_3D_no_slip": false,
+    "manufacturing_or_force_certificate": false,
+    "root_acceptance": false,
+    "parent_W12_closed": false
+  }
+} as const satisfies LongTimeline;

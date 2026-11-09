@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "complete_packet_verified": false,
+  "scope": "Independent original GLB triangle and frame verification only",
+  "native": {
+    "counts": {
+      "N2_HU_support": 27,
+      "N2_HU_fork": 18,
+      "N2_support_floor": 12,
+      "N3_loaded": 40,
+      "N3_stow": 10
+    },
+    "maximum_native_triangle_error_m": 5.019202752205718e-14,
+    "threshold_m": 2e-06
+  },
+  "negative_controls": [
+    {
+      "case": "N2 wrong support height",
+      "rejected": true,
+      "reason": "N2_STAGING_SUPPORT_FRAME_CHANGED"
+    },
+    {
+      "case": "N2 point off actual triangle",
+      "rejected": true,
+      "reason": "POINT_NOT_ON_NATIVE_TRIANGLE:frontend/public/models/v3/pallet-load.glb:pallet-load__batch_01:77:0.010000000000000009"
+    },
+    {
+      "case": "N2 wrong native face",
+      "rejected": true,
+      "reason": "POINT_NOT_ON_NATIVE_TRIANGLE:frontend/public/models/v3/pallet-load.glb:pallet-load__batch_01:0:0.41669172929912185"
+    },
+    {
+      "case": "N2 wrong actual fork spread",
+      "rejected": true,
+      "reason": "POINT_NOT_ON_NATIVE_TRIANGLE:frontend/public/models/v3/forklift.glb:forklift__batch_05:257:0.1481562052852129"
+    },
+    {
+      "case": "N2 excess finite capacity",
+      "rejected": true,
+      "reason": "N2_FINITE_CAPACITY_CHANGED"
+    },
+    {
+      "case": "N3 changed whole HU dimensions",
+      "rejected": true,
+      "reason": "N3_DIMENSIONS_CHANGED"
+    },
+    {
+      "case": "N3 missing attachment mass",
+      "rejected": true,
+      "reason": "N3_MASS_CHANGED"
+    },
+    {
+      "case": "N3 wrong mount height",
+      "rejected": true,
+      "reason": "N3_MOUNT_FRAME_CHANGED"
+    },
+    {
+      "case": "N3 floating stow geometry",
+      "rejected": true,
+      "reason": "POINT_NOT_ON_NATIVE_TRIANGLE:frontend/public/models/v3/long-restraint-rig.glb:21:410:0.010000000000000009"
+    },
+    {
+      "case": "N2 upside-down HU quaternion",
+      "rejected": true,
+      "reason": "UNVERIFIED_FRAME_ROTATION"
+    },
+    {
+      "case": "N2 rescaled support frame",
+      "rejected": true,
+      "reason": "UNVERIFIED_FRAME_SCALE"
+    },
+    {
+      "case": "N3 rotated stow assembly",
+      "rejected": true,
+      "reason": "UNVERIFIED_STOW_RIG_YAW"
+    },
+    {
+      "case": "N3 exchanged component masses",
+      "rejected": true,
+      "reason": "N3_COMPONENT_MASS_CHANGED"
+    },
+    {
+      "case": "Missing actual GLB source pin",
+      "rejected": true,
+      "reason": "DEREFERENCED_MODEL_NOT_PINNED:frontend/public/models/v3/pallet-load.glb"
+    }
+  ]
+}

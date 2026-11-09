@@ -1,0 +1,104 @@
+{
+  "all_input_and_policy_rows_preserved": true,
+  "all_source_deltas_fingerprint_only": true,
+  "engine_operation": false,
+  "every_changed_input_leaf_recorded": true,
+  "execution_ready": false,
+  "input_sha256": "2aa8b23916a8a2712d3047364c9226e28a39b44235c8fd06a2057319f38eec43",
+  "migration_sha256": "b4ffd5e86f1a8a31bb9e1a4164e48bc5e1cbf5e0983592e649e27d032ee768a5",
+  "negative_controls": [
+    {
+      "case": "initial HU relocated",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:inputs",
+      "rejected": true
+    },
+    {
+      "case": "partial LONG quantity with recomputed payload hash",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:inputs",
+      "rejected": true
+    },
+    {
+      "case": "LONG dimensions shrunk",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:upstream_handling_units",
+      "rejected": true
+    },
+    {
+      "case": "LONG mass shrunk",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:upstream_handling_units",
+      "rejected": true
+    },
+    {
+      "case": "LONG timing shifted",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:inputs",
+      "rejected": true
+    },
+    {
+      "case": "source worker role changed",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:inputs",
+      "rejected": true
+    },
+    {
+      "case": "extra vehicle allocated",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:inputs",
+      "rejected": true
+    },
+    {
+      "case": "stale current base reference",
+      "reason": "CURRENT_BASE_REFERENCE",
+      "rejected": true
+    },
+    {
+      "case": "native source pin removed",
+      "reason": "SOURCE_PIN_COVERAGE",
+      "rejected": true
+    },
+    {
+      "case": "execution falsely enabled",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:execution_ready",
+      "rejected": true
+    },
+    {
+      "case": "new completion event",
+      "reason": "FROZEN_PHYSICAL_INPUT_OR_POLICY:completion_events",
+      "rejected": true
+    },
+    {
+      "case": "adaptive uses different bytes",
+      "reason": "PAIRED_INPUT_OR_OVERRIDE",
+      "rejected": true
+    }
+  ],
+  "operational_admission": false,
+  "pair_sha256": "1ad5494dd8daa7cfac526cdc5efb81c77b9041131d44224d64e29ca6e4f1628e",
+  "paired_inputs_identical": true,
+  "source_pin_count": 55,
+  "status": "PASS_INPUT_SOURCE_COMPATIBILITY_ONLY",
+  "summary": {
+    "counts": {
+      "archetypes": 8,
+      "initial_stock": 530,
+      "ports": 6,
+      "requests": 20,
+      "skus": 200,
+      "vehicles": 2,
+      "workers": 24
+    },
+    "deadlines_s": [
+      1080,
+      1260,
+      1440,
+      1620
+    ],
+    "external_LONG_HUs": 4,
+    "external_LONG_mass_kg": 800,
+    "external_LONG_units": 96,
+    "release_s": [
+      180,
+      360,
+      540,
+      720
+    ],
+    "stock_mass_kg": "9403.85",
+    "stock_units": 12256
+  }
+}

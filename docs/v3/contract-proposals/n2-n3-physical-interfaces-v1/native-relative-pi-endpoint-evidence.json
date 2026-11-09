@@ -1,0 +1,5847 @@
+{
+  "schema_id": "qoima.n2.fixed-source-HU-relative-pi-endpoints.v1",
+  "schema_version": "1.0.0",
+  "source_kind": "visual_fixture",
+  "ready": true,
+  "source_hashes": {
+    "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json": "0f5f422bd09ade5064159183729e877ba12d5687a78341ec716b1c67410d7ee5",
+    "docs/v3/contract-proposals/storage-slots-v3.json": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "assets/v3/specs/heavy-bay.dimensions.json": "4f289032b503005ac37d75724224601c36fdb79c4f4d42a0a7792413a5be1783",
+    "frontend/public/data/v3/pallet-pickup-cycle.json": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59",
+    "docs/adaptive-v3/specs/M14.8.md": "11ef1750edddb165e071d79b240c76826e1f8f3ecc8102ac42a2def225de1b94",
+    "assets/v3/iterations/forklift/M14.8/actual-pickup-continuous-checks.json": "11739e1e8e6a70a35b3ec7c807143917e2243e10af4c6464b3d9192b0d4558c6",
+    "frontend/src/adaptive-v3/forkliftPickup.ts": "e6d570f20ffd2130c9b171d9c04dab16268e8056ca7c74ed09cd663c91d00181",
+    "frontend/src/adaptive-v3/warehouseSupportKit.ts": "4f3929b70a751faedc8526f3c9c4ea27bc91686249e7b83a30ea79115f8c3c47",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "assets/v3/specs/pallet-load.dimensions.json": "2f01d227f5cf509dd9eafb8cbc11fd2d8b0029ccd2e617745161d34455133494",
+    "assets/v3/specs/ibc.dimensions.json": "96680004c7d9434709cb607aca50dfac588613cba62f71301fc63dc48521f77e",
+    "assets/v3/specs/heavy-box.dimensions.json": "c547fae0eb161a4e44c76f4a848dc5e16caf94d56f23c75faab999c8ea93a761"
+  },
+  "units": {
+    "length": "m",
+    "time": "s",
+    "mass": "kg",
+    "angle": "rad"
+  },
+  "coordinate_system": {
+    "handedness": "right",
+    "up_axis": "+Y",
+    "forward_axis": "+Z",
+    "world_origin": "original144x72minimumfloorcorner",
+    "matrix_storage": "column_major"
+  },
+  "scale_factor": 1,
+  "status": "PASS_FINITE_STATIC_ENDPOINTS_ONLY",
+  "core_N2_packet_sha256": "4aa68aed3feb7dffc609eb19d4f4574900eb3ec0fd979a78552382ee30daaaaf",
+  "old_C08_relative_identity_profile_unchanged": true,
+  "operational_admission": false,
+  "source_inventory_world_poses_unchanged": true,
+  "source_resource_bindings_unchanged": [
+    {
+      "driver_actor_id": "F01",
+      "vehicle_id": "FL01"
+    },
+    {
+      "driver_actor_id": "F02",
+      "vehicle_id": "FL02"
+    }
+  ],
+  "source_payload_and_vehicle_ratings_unchanged": true,
+  "API_guard": {
+    "explicit_opt_in_required": true,
+    "profile_selection": "Choose only the corresponding proposed_profile_id and bind its endpoint proof; never replace the old C08 relative0 profile implicitly.",
+    "fixed_relative_HU_quaternion": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "quaternion_antipodes_equivalent": true,
+    "require_source_HU_world_pose_preserved_at_attach": true,
+    "maximum_world_matrix_residual": 1e-09,
+    "retain_original_source_pair_and_ratings": true,
+    "continuous_relative_pi_action_proof_required": true,
+    "missing_proof_result": "refuse_before_animation_or_state_change"
+  },
+  "epsilon_m": 2e-06,
+  "contact_point_count": 45,
+  "maximum_native_contact_gap_m": 7.748603814139443e-09,
+  "checks": [
+    {
+      "name": "PALLET_LOAD fixed source HU orientation and bounds before attachment",
+      "status": "PASS"
+    },
+    {
+      "name": "PALLET_LOAD actual native reparent preserves source world matrix and every vertex",
+      "status": "PASS"
+    },
+    {
+      "name": "PALLET_LOAD same declared loaded-profile bounds with explicit relative pi",
+      "status": "PASS"
+    },
+    {
+      "name": "IBC fixed source HU orientation and bounds before attachment",
+      "status": "PASS"
+    },
+    {
+      "name": "IBC actual native reparent preserves source world matrix and every vertex",
+      "status": "PASS"
+    },
+    {
+      "name": "IBC same declared loaded-profile bounds with explicit relative pi",
+      "status": "PASS"
+    },
+    {
+      "name": "HEAVY_BOX fixed source HU orientation and bounds before attachment",
+      "status": "PASS"
+    },
+    {
+      "name": "HEAVY_BOX actual native reparent preserves source world matrix and every vertex",
+      "status": "PASS"
+    },
+    {
+      "name": "HEAVY_BOX same declared loaded-profile bounds with explicit relative pi",
+      "status": "PASS"
+    },
+    {
+      "name": "PALLET_LOAD explicit static-selection API guard",
+      "status": "PASS"
+    },
+    {
+      "name": "IBC explicit static-selection API guard",
+      "status": "PASS"
+    },
+    {
+      "name": "HEAVY_BOX explicit static-selection API guard",
+      "status": "PASS"
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "implicit profile use",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "name": "old relative identity quaternion",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "name": "extra source pair",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "name": "invisible HU world flip",
+      "status": "REJECTED_AS_REQUIRED"
+    },
+    {
+      "name": "unknown profile proposal",
+      "status": "REJECTED_AS_REQUIRED"
+    }
+  ],
+  "rows": [
+    {
+      "archetype_id": "PALLET_LOAD",
+      "proposed_profile_id": "v3:profile-proposal:N2:PALLET_LOAD:fixed-source-HU-relative-pi:001",
+      "source_handling_unit_id": "v3:HU:initial:DEMO_172:01",
+      "source_slot_id": "v3:slot:HEAVY_E:011:L1:B1",
+      "source_module_id": "v3:module:HEAVY_E:011",
+      "source_initial_stock_ref": {
+        "path": "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json",
+        "json_pointer": "/inputs/initial_stock/501"
+      },
+      "module_world": {
+        "position_m": [
+          125.7,
+          0,
+          29.5
+        ],
+        "yaw_rad": 4.71238898038469
+      },
+      "source_HU_root_in_module": {
+        "position_m": [
+          0,
+          0.18,
+          0.09999999999999998
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "vehicle_root_in_module_at_engagement": {
+        "position_m": [
+          0,
+          0,
+          1.5
+        ],
+        "yaw_rad": 3.141592653589793
+      },
+      "vehicle_world_matrix_column_major": [
+        3.4450928483976665e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        3.4450928483976665e-16,
+        0,
+        124.2,
+        0,
+        29.5,
+        1
+      ],
+      "source_HU_world_matrix_before_attach_column_major": [
+        -2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -2.220446049250313e-16,
+        0,
+        125.60000000000001,
+        0.18,
+        29.5,
+        1
+      ],
+      "source_HU_world_matrix_after_attach_column_major": [
+        -2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -2.220446049250313e-16,
+        0,
+        125.60000000000001,
+        0.18,
+        29.5,
+        1
+      ],
+      "source_HU_world_bounds_before": {
+        "min": [
+          125.09999997019769,
+          0.18,
+          28.899999976158142
+        ],
+        "max": [
+          126.10000000000001,
+          1.5300000238418578,
+          30.100000023841858
+        ]
+      },
+      "source_HU_world_bounds_after": {
+        "min": [
+          125.09999997019769,
+          0.18,
+          28.899999976158142
+        ],
+        "max": [
+          126.10000000000001,
+          1.5300000238418578,
+          30.100000023841858
+        ]
+      },
+      "HU_root_relative_vehicle_at_low_engagement": {
+        "position_m": [
+          0,
+          0.18,
+          1.4000000000000057
+        ],
+        "quaternion": [
+          0,
+          1,
+          0,
+          -6.123233995736767e-17
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "HU_root_relative_vehicle_at_travel": {
+        "position_m": [
+          0,
+          0.7,
+          1
+        ],
+        "quaternion": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "declared_loaded_bounds_at_low_engagement_m": {
+        "min": [
+          -0.6,
+          0.18,
+          0.9
+        ],
+        "max": [
+          0.6,
+          1.53,
+          1.9
+        ]
+      },
+      "actual_native_loaded_bounds_at_low_engagement_m": {
+        "min": [
+          -0.6000000238418579,
+          0.18,
+          0.8999999701976833
+        ],
+        "max": [
+          0.6000000238418579,
+          1.5300000238418578,
+          1.9000000000000057
+        ]
+      },
+      "world_matrix_attach_maximum_residual": 0,
+      "every_native_world_vertex_maximum_delta_m": 0,
+      "negative_control_old_identity_relative_matrix_difference": 2,
+      "contacts": [
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.53,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            126,
+            0.18,
+            28.97
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 77,
+            "point_m": [
+              126,
+              0.18,
+              28.97
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              126,
+              0.17999999225139618,
+              28.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.53,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            125.60000000000001,
+            0.18,
+            28.97
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 121,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              28.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              125.60000000000001,
+              0.17999999225139618,
+              28.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.53,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            125.2,
+            0.18,
+            28.97
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 165,
+            "point_m": [
+              125.2,
+              0.18,
+              28.97
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              125.2,
+              0.17999999225139618,
+              28.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            126,
+            0.18,
+            29.5
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 76,
+            "point_m": [
+              126,
+              0.18,
+              29.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              126,
+              0.17999999225139618,
+              29.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            125.60000000000001,
+            0.18,
+            29.5
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 120,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              29.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.60000000000001,
+              0.17999999225139618,
+              29.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            125.2,
+            0.18,
+            29.5
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 164,
+            "point_m": [
+              125.2,
+              0.18,
+              29.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              125.2,
+              0.17999999225139618,
+              29.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.53,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            126,
+            0.18,
+            30.03
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 76,
+            "point_m": [
+              126,
+              0.18,
+              30.03
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              126,
+              0.17999999225139618,
+              30.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.53,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            125.60000000000001,
+            0.18,
+            30.03
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 120,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              30.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              125.60000000000001,
+              0.17999999225139618,
+              30.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.53,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            125.2,
+            0.18,
+            30.03
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 164,
+            "point_m": [
+              125.2,
+              0.18,
+              30.03
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 171,
+            "point_m": [
+              125.2,
+              0.17999999225139618,
+              30.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.4,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            126,
+            0.18,
+            29.9
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 76,
+            "point_m": [
+              126,
+              0.18,
+              29.9
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              126,
+              0.18,
+              29.9
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.4,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            125.60000000000001,
+            0.18,
+            29.9
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 120,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              29.9
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              29.9
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.4,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            125.2,
+            0.18,
+            29.9
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 164,
+            "point_m": [
+              125.2,
+              0.18,
+              29.9
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              125.2,
+              0.18,
+              29.9
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.4,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            126,
+            0.18,
+            29.1
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 77,
+            "point_m": [
+              126,
+              0.18,
+              29.1
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              126,
+              0.18,
+              29.1
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.4,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            125.60000000000001,
+            0.18,
+            29.1
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 121,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              29.1
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              125.60000000000001,
+              0.18,
+              29.1
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.4,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            125.2,
+            0.18,
+            29.1
+          ],
+          "HU_native": {
+            "node": "pallet-load__batch_01",
+            "triangle": 165,
+            "point_m": [
+              125.2,
+              0.18,
+              29.1
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_pad_1",
+              "base_pad_10",
+              "base_pad_17",
+              "base_pad_18",
+              "base_pad_2",
+              "base_pad_9",
+              "compression_board",
+              "layer_separator_11",
+              "layer_separator_12",
+              "layer_separator_13",
+              "layer_separator_14",
+              "layer_separator_15",
+              "layer_separator_16",
+              "layer_separator_19",
+              "layer_separator_20",
+              "layer_separator_21",
+              "layer_separator_22",
+              "layer_separator_23",
+              "layer_separator_24",
+              "layer_separator_3",
+              "layer_separator_4",
+              "layer_separator_5",
+              "layer_separator_6",
+              "layer_separator_7",
+              "layer_separator_8",
+              "pallet_block_1_1",
+              "pallet_block_1_2",
+              "pallet_block_1_3",
+              "pallet_block_2_1",
+              "pallet_block_2_2",
+              "pallet_block_2_3",
+              "pallet_block_3_1",
+              "pallet_block_3_2",
+              "pallet_block_3_3",
+              "pallet_bottom_1",
+              "pallet_bottom_2",
+              "pallet_bottom_3",
+              "pallet_deck_1",
+              "pallet_deck_2",
+              "pallet_deck_3",
+              "pallet_deck_4",
+              "pallet_deck_5",
+              "strap_saddle_-1_-0.2",
+              "strap_saddle_-1_0.2",
+              "strap_saddle_1_-0.2",
+              "strap_saddle_1_0.2",
+              "top_pad_15",
+              "top_pad_16",
+              "top_pad_23",
+              "top_pad_24",
+              "top_pad_7",
+              "top_pad_8"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              125.2,
+              0.18,
+              29.1
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        }
+      ],
+      "native_fork_support_vertex_bounds": [
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.894999989867209,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8749999940395341,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.894999989867209,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.894999989867209,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.23999999612569667,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 5,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 6,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 7,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 8,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.07499998658895635,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 9,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499996751547002,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 10,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499996751547002,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 11,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499996751547002,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "y",
+            "gap_m": 0.030000002421438687,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.829999969899653,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.1899999991059289,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.02999996989965581,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.18000001907347496,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499998986721181,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.07499999403953694,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499998986721181,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499998986721181,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.23999999612569667,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 5,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 6,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 7,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 8,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8749999865889535,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 9,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8949999675154672,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 10,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8949999675154672,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 11,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8949999675154672,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "y",
+            "gap_m": 0.030000002421438687,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.02999996989965581,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.1899999991059289,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.829999969899653,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.18000001907347496,
+            "side": "A_below_B"
+          }
+        }
+      ],
+      "continuous_action_admission": false
+    },
+    {
+      "archetype_id": "IBC",
+      "proposed_profile_id": "v3:profile-proposal:N2:IBC:fixed-source-HU-relative-pi:001",
+      "source_handling_unit_id": "v3:HU:initial:DEMO_177:01",
+      "source_slot_id": "v3:slot:HEAVY_E:006:L1:B1",
+      "source_module_id": "v3:module:HEAVY_E:006",
+      "source_initial_stock_ref": {
+        "path": "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json",
+        "json_pointer": "/inputs/initial_stock/506"
+      },
+      "module_world": {
+        "position_m": [
+          118.3,
+          0,
+          31.5
+        ],
+        "yaw_rad": 1.5707963267948966
+      },
+      "source_HU_root_in_module": {
+        "position_m": [
+          0,
+          0.18,
+          0.09999999999999998
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "vehicle_root_in_module_at_engagement": {
+        "position_m": [
+          0,
+          0,
+          1.5
+        ],
+        "yaw_rad": 3.141592653589793
+      },
+      "vehicle_world_matrix_column_major": [
+        -3.4450928483976665e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -3.4450928483976665e-16,
+        0,
+        119.8,
+        0,
+        31.5,
+        1
+      ],
+      "source_HU_world_matrix_before_attach_column_major": [
+        2.220446049250313e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2.220446049250313e-16,
+        0,
+        118.39999999999999,
+        0.18,
+        31.5,
+        1
+      ],
+      "source_HU_world_matrix_after_attach_column_major": [
+        2.220446049250313e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2.220446049250313e-16,
+        0,
+        118.39999999999999,
+        0.18,
+        31.500000000000004,
+        1
+      ],
+      "source_HU_world_bounds_before": {
+        "min": [
+          117.89999999254941,
+          0.1800000037252903,
+          30.89999994635582
+        ],
+        "max": [
+          118.90000002980231,
+          1.3399999479949474,
+          32.10000002384186
+        ]
+      },
+      "source_HU_world_bounds_after": {
+        "min": [
+          117.89999999254941,
+          0.1800000037252903,
+          30.899999946355823
+        ],
+        "max": [
+          118.90000002980231,
+          1.3399999479949474,
+          32.100000023841865
+        ]
+      },
+      "HU_root_relative_vehicle_at_low_engagement": {
+        "position_m": [
+          7.105427357601002e-15,
+          0.18,
+          1.4000000000000057
+        ],
+        "quaternion": [
+          0,
+          1,
+          0,
+          -6.123233995736767e-17
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "HU_root_relative_vehicle_at_travel": {
+        "position_m": [
+          0,
+          0.7,
+          1
+        ],
+        "quaternion": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "declared_loaded_bounds_at_low_engagement_m": {
+        "min": [
+          -0.6,
+          0.18,
+          0.9
+        ],
+        "max": [
+          0.6,
+          1.3399999999999999,
+          1.9
+        ]
+      },
+      "actual_native_loaded_bounds_at_low_engagement_m": {
+        "min": [
+          -0.6000000536441767,
+          0.1800000037252903,
+          0.8999999701976833
+        ],
+        "max": [
+          0.600000023841865,
+          1.3399999479949474,
+          1.9000000074505863
+        ]
+      },
+      "world_matrix_attach_maximum_residual": 3.552713678800501e-15,
+      "every_native_world_vertex_maximum_delta_m": 7.105427357601002e-15,
+      "negative_control_old_identity_relative_matrix_difference": 2,
+      "contacts": [
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.53,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            118,
+            0.18,
+            32.03
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              118,
+              0.1800000037252903,
+              32.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              118,
+              0.17999999225139618,
+              32.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.53,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            32.03
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              32.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              118.39999999999999,
+              0.17999999225139618,
+              32.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.53,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            118.8,
+            0.18,
+            32.03
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              32.03
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 83,
+            "point_m": [
+              118.8,
+              0.17999999225139618,
+              32.03
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            118,
+            0.18,
+            31.5
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              118,
+              0.1800000037252903,
+              31.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              118,
+              0.17999999225139618,
+              31.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            31.5
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              31.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              118.39999999999999,
+              0.17999999225139618,
+              31.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            118.8,
+            0.18,
+            31.5
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              31.5
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              118.8,
+              0.17999999225139618,
+              31.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.53,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            118,
+            0.18,
+            30.97
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              118,
+              0.1800000037252903,
+              30.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              118,
+              0.17999999225139618,
+              30.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.53,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            30.97
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              30.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 170,
+            "point_m": [
+              118.39999999999999,
+              0.17999999225139618,
+              30.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.53,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            118.8,
+            0.18,
+            30.97
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              30.97
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 171,
+            "point_m": [
+              118.8,
+              0.17999999225139618,
+              30.97
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.4,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            118,
+            0.18,
+            31.1
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 76,
+            "point_m": [
+              118,
+              0.1800000037252903,
+              31.1
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              118,
+              0.18,
+              31.1
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.4,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            31.1
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 120,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              31.1
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              118.39999999999999,
+              0.18,
+              31.1
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.4,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            118.8,
+            0.18,
+            31.1
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 164,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              31.1
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 257,
+            "point_m": [
+              118.8,
+              0.18,
+              31.1
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.4,
+            0.18,
+            -0.30000000000000004
+          ],
+          "point_world_m": [
+            118,
+            0.18,
+            31.9
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 77,
+            "point_m": [
+              118,
+              0.1800000037252903,
+              31.9
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              118,
+              0.18,
+              31.9
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.4,
+            0.18,
+            0.09999999999999998
+          ],
+          "point_world_m": [
+            118.39999999999999,
+            0.18,
+            31.9
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 121,
+            "point_m": [
+              118.39999999999999,
+              0.1800000037252903,
+              31.9
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              118.39999999999999,
+              0.18,
+              31.9
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.4,
+            0.18,
+            0.5
+          ],
+          "point_world_m": [
+            118.8,
+            0.18,
+            31.9
+          ],
+          "HU_native": {
+            "node": "ibc__batch_00",
+            "triangle": 165,
+            "point_m": [
+              118.8,
+              0.1800000037252903,
+              31.9
+            ],
+            "normal": [
+              0,
+              -0.9999999999999999,
+              0
+            ],
+            "gap_m": 3.725290298461914e-09,
+            "source_parts": [
+              "base_block_1_1",
+              "base_block_1_2",
+              "base_block_1_3",
+              "base_block_2_1",
+              "base_block_2_2",
+              "base_block_2_3",
+              "base_block_3_1",
+              "base_block_3_2",
+              "base_block_3_3",
+              "base_bottom_1",
+              "base_bottom_2",
+              "base_bottom_3",
+              "base_deck_1",
+              "base_deck_2",
+              "base_deck_3",
+              "base_deck_4",
+              "base_deck_5",
+              "cage_face_vertical_-0.18_-1",
+              "cage_face_vertical_-0.18_1",
+              "cage_face_vertical_0.18_-1",
+              "cage_face_vertical_0.18_1",
+              "cage_front_rail_1_0",
+              "cage_front_rail_1_1",
+              "cage_front_rail_2_0",
+              "cage_front_rail_3_0",
+              "cage_front_rail_4_0",
+              "cage_post_-1_-1",
+              "cage_post_-1_1",
+              "cage_post_1_-1",
+              "cage_post_1_1",
+              "cage_rear_rail_1",
+              "cage_rear_rail_2",
+              "cage_rear_rail_3",
+              "cage_rear_rail_4",
+              "cage_side_rail_1_-1",
+              "cage_side_rail_1_1",
+              "cage_side_rail_2_-1",
+              "cage_side_rail_2_1",
+              "cage_side_rail_3_-1",
+              "cage_side_rail_3_1",
+              "cage_side_rail_4_-1",
+              "cage_side_rail_4_1",
+              "cage_side_vertical_-1",
+              "cage_side_vertical_1"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 257,
+            "point_m": [
+              118.8,
+              0.18,
+              31.9
+            ],
+            "normal": [
+              0,
+              0.9999999999999999,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        }
+      ],
+      "native_fork_support_vertex_bounds": [
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.894999989867209,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8749999940395341,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.894999989867209,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.894999989867209,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.23999999612569667,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 5,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 6,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 7,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 8,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.07499998658895635,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 9,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499996751547002,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 10,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499996751547002,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 11,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499996751547002,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "y",
+            "gap_m": 0.030000002421438687,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.829999969899653,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.1899999991059289,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.02999996989965581,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.18000001907347496,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499998986721181,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.07499999403953694,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499998986721181,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.09499998986721181,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.23999999612569667,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 5,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 6,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 7,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25999997705221034,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 8,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8749999865889535,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 9,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8949999675154672,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 10,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8949999675154672,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 11,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.8949999675154672,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "y",
+            "gap_m": 0.030000002421438687,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.02999996989965581,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.1899999991059289,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.829999969899653,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.18000001907347496,
+            "side": "B_below_A"
+          }
+        }
+      ],
+      "continuous_action_admission": false
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "proposed_profile_id": "v3:profile-proposal:N2:HEAVY_BOX:fixed-source-HU-relative-pi:001",
+      "source_handling_unit_id": "v3:HU:initial:DEMO_166:01",
+      "source_slot_id": "v3:slot:HEAVY_W:011:L1:B1",
+      "source_module_id": "v3:module:HEAVY_W:011",
+      "source_initial_stock_ref": {
+        "path": "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json",
+        "json_pointer": "/inputs/initial_stock/495"
+      },
+      "module_world": {
+        "position_m": [
+          25.7,
+          0,
+          29.5
+        ],
+        "yaw_rad": 4.71238898038469
+      },
+      "source_HU_root_in_module": {
+        "position_m": [
+          0,
+          0.18,
+          0.3
+        ],
+        "quaternion": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "vehicle_root_in_module_at_engagement": {
+        "position_m": [
+          0,
+          0,
+          1.9000000000000001
+        ],
+        "yaw_rad": 3.141592653589793
+      },
+      "vehicle_world_matrix_column_major": [
+        3.4450928483976665e-16,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        3.4450928483976665e-16,
+        0,
+        23.8,
+        0,
+        29.5,
+        1
+      ],
+      "source_HU_world_matrix_before_attach_column_major": [
+        -2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -2.220446049250313e-16,
+        0,
+        25.4,
+        0.18,
+        29.5,
+        1
+      ],
+      "source_HU_world_matrix_after_attach_column_major": [
+        -2.220446049250313e-16,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -2.220446049250313e-16,
+        0,
+        25.4,
+        0.18,
+        29.5,
+        1
+      ],
+      "source_HU_world_bounds_before": {
+        "min": [
+          25.09999998807907,
+          0.18,
+          29.099999994039536
+        ],
+        "max": [
+          25.700000011920928,
+          0.8300000543892383,
+          29.900000005960464
+        ]
+      },
+      "source_HU_world_bounds_after": {
+        "min": [
+          25.09999998807907,
+          0.18,
+          29.099999994039536
+        ],
+        "max": [
+          25.700000011920928,
+          0.8300000543892383,
+          29.900000005960464
+        ]
+      },
+      "HU_root_relative_vehicle_at_low_engagement": {
+        "position_m": [
+          0,
+          0.18,
+          1.5999999999999979
+        ],
+        "quaternion": [
+          0,
+          1,
+          0,
+          -6.123233995736767e-17
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "HU_root_relative_vehicle_at_travel": {
+        "position_m": [
+          0,
+          0.7,
+          1.2
+        ],
+        "quaternion": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      "declared_loaded_bounds_at_low_engagement_m": {
+        "min": [
+          -0.4,
+          0.18,
+          1.2999999999999998
+        ],
+        "max": [
+          0.4,
+          0.8300000000000001,
+          1.9
+        ]
+      },
+      "actual_native_loaded_bounds_at_low_engagement_m": {
+        "min": [
+          -0.4000000059604645,
+          0.18,
+          1.299999988079069
+        ],
+        "max": [
+          0.4000000059604645,
+          0.8300000543892383,
+          1.9000000119209268
+        ]
+      },
+      "world_matrix_attach_maximum_residual": 0,
+      "every_native_world_vertex_maximum_delta_m": 0,
+      "negative_control_old_identity_relative_matrix_difference": 2,
+      "contacts": [
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.12,
+            0.18,
+            0.15
+          ],
+          "point_world_m": [
+            25.55,
+            0.18,
+            29.38
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              25.55,
+              0.18,
+              29.38
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              25.55,
+              0.17999999225139618,
+              29.38
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.12,
+            0.18,
+            0.3
+          ],
+          "point_world_m": [
+            25.4,
+            0.18,
+            29.38
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              25.4,
+              0.18,
+              29.38
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              25.4,
+              0.17999999225139618,
+              29.38
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            -0.12,
+            0.18,
+            0.44999999999999996
+          ],
+          "point_world_m": [
+            25.25,
+            0.18,
+            29.38
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              25.25,
+              0.18,
+              29.38
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 126,
+            "point_m": [
+              25.25,
+              0.17999999225139618,
+              29.38
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.15
+          ],
+          "point_world_m": [
+            25.55,
+            0.18,
+            29.5
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              25.55,
+              0.18,
+              29.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              25.55,
+              0.17999999225139618,
+              29.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.3
+          ],
+          "point_world_m": [
+            25.4,
+            0.18,
+            29.5
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              25.4,
+              0.18,
+              29.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              25.4,
+              0.17999999225139618,
+              29.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0,
+            0.18,
+            0.44999999999999996
+          ],
+          "point_world_m": [
+            25.25,
+            0.18,
+            29.5
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 121,
+            "point_m": [
+              25.25,
+              0.18,
+              29.5
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              25.25,
+              0.17999999225139618,
+              29.5
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.12,
+            0.18,
+            0.15
+          ],
+          "point_world_m": [
+            25.55,
+            0.18,
+            29.62
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              25.55,
+              0.18,
+              29.62
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              25.55,
+              0.17999999225139618,
+              29.62
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.12,
+            0.18,
+            0.3
+          ],
+          "point_world_m": [
+            25.4,
+            0.18,
+            29.62
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              25.4,
+              0.18,
+              29.62
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              25.4,
+              0.17999999225139618,
+              29.62
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_M03",
+          "point_module_local_m": [
+            0.12,
+            0.18,
+            0.44999999999999996
+          ],
+          "point_world_m": [
+            25.25,
+            0.18,
+            29.62
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 120,
+            "point_m": [
+              25.25,
+              0.18,
+              29.620000000000005
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 3.552713678800501e-15,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "support_native": {
+            "node": "heavy-bay__batch_01",
+            "triangle": 127,
+            "point_m": [
+              25.25,
+              0.17999999225139618,
+              29.62
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 7.748603814139443e-09,
+            "source_parts": [
+              "front_low_cross_tie",
+              "rear_low_cross_tie",
+              "top_rib_1",
+              "top_rib_2",
+              "top_rib_3"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.24,
+            0.18,
+            0.15
+          ],
+          "point_world_m": [
+            25.55,
+            0.18,
+            29.74
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              25.55,
+              0.18,
+              29.74
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              25.55,
+              0.18,
+              29.74
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.24,
+            0.18,
+            0.3
+          ],
+          "point_world_m": [
+            25.4,
+            0.18,
+            29.74
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 208,
+            "point_m": [
+              25.4,
+              0.18,
+              29.74
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              25.399999999999995,
+              0.18,
+              29.74
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.552713678800501e-15,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "L",
+          "point_module_local_m": [
+            0.24,
+            0.18,
+            0.44999999999999996
+          ],
+          "point_world_m": [
+            25.25,
+            0.18,
+            29.74
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 209,
+            "point_m": [
+              25.25,
+              0.18,
+              29.74
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_05",
+            "triangle": 223,
+            "point_m": [
+              25.25,
+              0.18,
+              29.74
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.24,
+            0.18,
+            0.15
+          ],
+          "point_world_m": [
+            25.55,
+            0.18,
+            29.26
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 164,
+            "point_m": [
+              25.55,
+              0.18,
+              29.26
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              25.55,
+              0.18,
+              29.26
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.24,
+            0.18,
+            0.3
+          ],
+          "point_world_m": [
+            25.4,
+            0.18,
+            29.26
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              25.4,
+              0.18,
+              29.26
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              25.399999999999995,
+              0.18,
+              29.26
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 3.552713678800501e-15,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        {
+          "kind": "HU_to_fork",
+          "side": "R",
+          "point_module_local_m": [
+            -0.24,
+            0.18,
+            0.44999999999999996
+          ],
+          "point_world_m": [
+            25.25,
+            0.18,
+            29.26
+          ],
+          "HU_native": {
+            "node": "heavy-box__batch_00",
+            "triangle": 165,
+            "point_m": [
+              25.25,
+              0.18,
+              29.26
+            ],
+            "normal": [
+              0,
+              -1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "base_edge_front",
+              "base_edge_left",
+              "base_edge_rear",
+              "base_edge_right",
+              "base_web",
+              "bearing_central",
+              "bearing_fork_left",
+              "bearing_fork_right",
+              "corner_0_0",
+              "corner_0_1",
+              "corner_1_0",
+              "corner_1_1",
+              "corner_base_0_0",
+              "corner_base_0_1",
+              "corner_base_1_0",
+              "corner_base_1_1",
+              "lid_cap_left",
+              "lid_cap_right"
+            ]
+          },
+          "fork_native": {
+            "node": "forklift__batch_06",
+            "triangle": 223,
+            "point_m": [
+              25.25,
+              0.18,
+              29.26
+            ],
+            "normal": [
+              0,
+              1,
+              0
+            ],
+            "gap_m": 0,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        }
+      ],
+      "native_fork_support_vertex_bounds": [
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.7349999898672088,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.714999994039534,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.7349999898672088,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.7349999898672088,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.07999999612569653,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 5,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.4499999865889528,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 6,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.0999999770522102,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 7,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.0999999770522102,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 8,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.2349999865889565,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 9,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.4499999865889528,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 10,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25499996751547016,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 11,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25499996751547016,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "y",
+            "gap_m": 0.030000002421438687,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.6699999698996528,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.029999999105928765,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.18999996989965595,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "L",
+          "fork_node": "forklift__batch_05",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.5800000190734842,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.4499999865889528,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.23499999403953709,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25499998986721195,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.25499998986721195,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.07999999612569653,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 5,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.4499999865889528,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 6,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.0999999770522102,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 7,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.0999999770522102,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 8,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.7149999865889534,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 9,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.734999967515467,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 10,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.734999967515467,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_00",
+          "support_component": 11,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.734999967515467,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 0,
+          "positive_separating_native_vertex_bound": {
+            "axis": "y",
+            "gap_m": 0.030000002421438687,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 1,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.18999996989965595,
+            "side": "B_below_A"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 2,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.029999999105928765,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 3,
+          "positive_separating_native_vertex_bound": {
+            "axis": "z",
+            "gap_m": 0.6699999698996528,
+            "side": "A_below_B"
+          }
+        },
+        {
+          "fork_side": "R",
+          "fork_node": "forklift__batch_06",
+          "support_node": "heavy-bay__batch_01",
+          "support_component": 4,
+          "positive_separating_native_vertex_bound": {
+            "axis": "x",
+            "gap_m": 0.5800000190734842,
+            "side": "A_below_B"
+          }
+        }
+      ],
+      "continuous_action_admission": false
+    }
+  ],
+  "limitations": [
+    "This new relative-pi variant proves the listed original-storage static engagement endpoints and attach pose preservation.",
+    "Old relative0 M14.8 continuous action evidence does not certify this new orientation. Continuous lift/retract/withdraw, driver and whole vehicle/HU/world checks remain required before runtime action admission.",
+    "A fixed relative-pi quaternion preserves the current source HU world yaw; it does not grant arbitrary HU rotation or change inventory, geometry, source pair or rating."
+  ]
+}

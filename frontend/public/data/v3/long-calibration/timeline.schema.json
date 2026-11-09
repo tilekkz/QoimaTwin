@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"qoima.long-straight-calibration.v1",
+  "description":"Work-local shape contract. API validation additionally requires the exact pinned canonical content SHA256; shape validation alone grants no model or workflow admission.",
+  "type":"object",
+  "required":["schema_id","source_kind","engine_operation","runtime_scene_joined","source_pickup_executed","scale","crossings","wheels","fixed_nonwheel_controls","preheld","driver_pose_ref","provenance","limits","calibration_fixture_ownership","source_workflow_ownership"],
+  "additionalProperties":false,
+  "properties":{
+    "schema_id":{"const":"qoima.long-straight-calibration.v1"},"source_kind":{"const":"visual_fixture"},"engine_operation":{"const":false},"runtime_scene_joined":{"const":false},"source_pickup_executed":{"const":false},"scale":{"const":1},
+    "calibration_fixture_ownership":{"type":"string"},"source_workflow_ownership":{"type":"string"},
+    "crossings":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"object","additionalProperties":false,"required":["id","actor_id","vehicle_id","duration_s","path_length_m","gate_travel_m","origin_m","inward","heading","forward_projection"],"properties":{"id":{"enum":["IN_W_BULK","OUT_E_B2B"]},"actor_id":{"enum":["F01","F02"]},"vehicle_id":{"enum":["FL01","FL02"]},"duration_s":{"const":10},"path_length_m":{"const":6.369999749590555},"gate_travel_m":{"$ref":"#/$defs/pair"},"origin_m":{"$ref":"#/$defs/vec3"},"inward":{"$ref":"#/$defs/vec3"},"heading":{"$ref":"#/$defs/quat"},"forward_projection":{"type":"number"}}}},
+    "wheels":{"type":"array","minItems":4,"maxItems":4,"items":{"type":"object","additionalProperties":false,"required":["id","joint","parent","axle_vehicle_m","axis","radius_m","sign"],"properties":{"id":{"enum":["front_L","front_R","rear_L","rear_R"]},"joint":{"enum":["joint__wheel_front_L","joint__wheel_front_R","joint__wheel_rear_L","joint__wheel_rear_R"]},"parent":{"enum":["forklift_root","joint__rear_steer_L","joint__rear_steer_R"]},"axle_vehicle_m":{"$ref":"#/$defs/vec3"},"axis":{"const":[1,0,0]},"radius_m":{"enum":[0.3,0.225]},"sign":{"const":1}}}},
+    "fixed_nonwheel_controls":{"type":"array","items":{"type":"object","required":["node","parent","p","q","s","visible"],"properties":{"node":{"type":"string"},"parent":{"type":"string"},"p":{"$ref":"#/$defs/vec3"},"q":{"$ref":"#/$defs/quat"},"s":{"const":[1,1,1]},"visible":{"type":"boolean"}}}},
+    "preheld":{"type":"object","required":["scale","units","HU_mass_kg","attachment_mass_kg","contacts","attachments"],"properties":{"scale":{"const":1},"units":{"const":24},"HU_mass_kg":{"const":200},"attachment_mass_kg":{"const":40},"contacts":{"type":"array","minItems":20,"maxItems":20},"attachments":{"type":"array","minItems":3,"maxItems":3}}},
+    "driver_pose_ref":{"type":"object","required":["path","sha256"],"properties":{"path":{"const":"frontend/public/data/v3/seated-driver-pose.json"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}}},
+    "provenance":{"type":"object"},"limits":{"type":"object","properties":{"root_acceptance":{"const":false},"parent_W12_closed":{"const":false},"manufacturing_or_force_certificate":{"const":false}}}
+  },
+  "$defs":{"vec3":{"type":"array","items":{"type":"number"},"minItems":3,"maxItems":3},"quat":{"type":"array","items":{"type":"number"},"minItems":4,"maxItems":4},"pair":{"type":"array","items":{"type":"number"},"minItems":2,"maxItems":2}}
+}

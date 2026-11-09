@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qoima.n2-n3-physical-handoff.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "schema_version", "source_kind", "units", "coordinate_system", "engine_operation", "operational_workflow_admitted", "backend_adoption_recorded", "sections", "source_hashes", "scope"],
+  "properties": {
+    "schema_id": {"const": "qoima.n2-n3-physical-handoff.v1"},
+    "schema_version": {"const": "1.0.0"},
+    "source_kind": {"const": "visual_fixture"},
+    "units": {"const": "m_s_kg"},
+    "coordinate_system": {
+      "type": "object", "additionalProperties": false,
+      "required": ["handedness", "up_axis", "scale_factor"],
+      "properties": {"handedness": {"const": "right"}, "up_axis": {"const": "+Y"}, "scale_factor": {"type": "number", "const": 1}}
+    },
+    "engine_operation": {"const": false},
+    "operational_workflow_admitted": {"const": false},
+    "backend_adoption_recorded": {"const": false},
+    "sections": {
+      "type": "object", "additionalProperties": false,
+      "required": ["staging", "retention", "routes"],
+      "properties": {"staging": {"$ref": "#/$defs/section"}, "retention": {"$ref": "#/$defs/section"}, "routes": {"$ref": "#/$defs/section"}}
+    },
+    "extensions": {"type": "object", "additionalProperties": {"$ref": "#/$defs/section"}},
+    "artifacts": {"type": "object", "additionalProperties": {"$ref": "#/$defs/artifact"}},
+    "source_hashes": {"type": "object", "minProperties": 20, "propertyNames": {"pattern": "^(?!work/)(?!/).+"}, "additionalProperties": {"$ref": "#/$defs/sha"}},
+    "scope": {"type": "string", "minLength": 20}
+  },
+  "$defs": {
+    "sha": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "section": {
+      "type": "object", "additionalProperties": false, "required": ["path", "sha256", "schema_id"],
+      "properties": {"path": {"type": "string", "pattern": "^[a-z0-9-]+\\.json$"}, "sha256": {"$ref": "#/$defs/sha"}, "schema_id": {"type": "string", "minLength": 10}}
+    },
+    "artifact": {
+      "type": "object", "additionalProperties": false, "required": ["sha256", "bytes"],
+      "properties": {"sha256": {"$ref": "#/$defs/sha"}, "bytes": {"type": "integer", "minimum": 0}}
+    }
+  }
+}

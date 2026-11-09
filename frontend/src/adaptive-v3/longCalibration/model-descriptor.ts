@@ -1,0 +1,81 @@
+import type {ModelDescriptor} from './browserAPI';
+export default {
+  "schema_id": "qoima.long-native-descriptor.v1",
+  "asset_sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+  "geometry_sha256": "7d38bedfe436232fb06c7718c3ee01bb899491d4c04aa3a765143eb04f9b6592",
+  "controls_sha256": "4d38e7e04924b2b5a50d34cf461b182005d59aa54df8e565a63e3c8230a140ea",
+  "root_node": "forklift_root",
+  "wheels": [
+    {
+      "id": "front_L",
+      "joint": "joint__wheel_front_L",
+      "parent": "forklift_root",
+      "axle_vehicle_m": [
+        -0.3499999940395355,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.3,
+      "sign": 1
+    },
+    {
+      "id": "front_R",
+      "joint": "joint__wheel_front_R",
+      "parent": "forklift_root",
+      "axle_vehicle_m": [
+        0.3499999940395355,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.3,
+      "sign": 1
+    },
+    {
+      "id": "rear_L",
+      "joint": "joint__wheel_rear_L",
+      "parent": "joint__rear_steer_L",
+      "axle_vehicle_m": [
+        -0.3499999940395355,
+        0.22499999403953552,
+        -1
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.225,
+      "sign": 1
+    },
+    {
+      "id": "rear_R",
+      "joint": "joint__wheel_rear_R",
+      "parent": "joint__rear_steer_R",
+      "axle_vehicle_m": [
+        0.3499999940395355,
+        0.22499999403953552,
+        -1
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "radius_m": 0.225,
+      "sign": 1
+    }
+  ],
+  "variant_path": "work/v3/account2-long-wheel-roll/20261109T011657Z/long-wheel-roll-profile-preserved-variant.glb",
+  "source_loaded_sha256": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60",
+  "corrected_lock_sha256": "ffa995ce5d4ca666393e558f2661e1cddde4dc0623b8b57461a873b5caa4cf5e"
+} as const satisfies ModelDescriptor;
