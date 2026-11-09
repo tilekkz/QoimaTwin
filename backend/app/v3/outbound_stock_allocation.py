@@ -36,6 +36,15 @@ def allocate_offers(
 ) -> tuple[StockAllocation, ...]:
     """Pure allocation helper; arbitrary hand sources do not establish source authority."""
     verify_pools(workload, original, incoming)
+    return _allocate_verified_offers(workload.jobs, original, incoming)
+
+
+def _allocate_verified_offers(
+    jobs: tuple[WorkloadJob, ...],
+    original: tuple[StockHU, ...],
+    incoming: tuple[StockHU, ...],
+) -> tuple[StockAllocation, ...]:
+    """Private loop for already-verified jobs/pools; provides no source authority."""
     pools: dict[str, deque[StockHU]] = defaultdict(deque)
     ordered = (
         *sorted(original, key=lambda hu: hu.hu_id),
@@ -45,6 +54,6 @@ def allocate_offers(
         pools[hu.sku_id].append(hu)
     return tuple(
         _row(job, pools[job.sku_id].popleft() if pools[job.sku_id] else None)
-        for job in workload.jobs
+        for job in jobs
         if job.direction == "outbound"
     )

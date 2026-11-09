@@ -10,7 +10,8 @@ from app.v3.admission_models import Handler, StorageState
 from app.v3.admission_source import SelectedCapability, SourceAdmissionCatalog
 from app.v3.input_models import V3Bundle
 from app.v3.outbound_placement_models import PlacementCandidate, PlacementChoices
-from app.v3.outbound_stock_models import BoundOutboundStock, StockHU
+from app.v3.outbound_stock_models import StockHU
+from app.v3.placement_inventory import PlacementInventory
 from app.v3.profile_build import document
 
 
@@ -32,7 +33,7 @@ def _ground(row: dict[str, Any]) -> bool:
 
 def physical_reasons(
     bundle: V3Bundle,
-    stock: BoundOutboundStock,
+    stock: PlacementInventory,
     choices: PlacementChoices,
     candidate: PlacementCandidate,
     hu: StockHU,
@@ -83,7 +84,7 @@ def physical_reasons(
 
 def reservation_reasons(
     bundle: V3Bundle,
-    stock: BoundOutboundStock,
+    stock: PlacementInventory,
     choices: PlacementChoices,
     candidate: PlacementCandidate,
     hu: StockHU,

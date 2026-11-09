@@ -1,18 +1,19 @@
 """Separately identified storage report after full validation of native coordinator evidence."""
 
 from app.storage.canonical_json import canonical_bytes, sha256_hex
-from app.v3.coordinator_run import validate_coordinator_run
-from app.v3.coordinator_run_inputs import load_run_inputs
-from app.v3.coordinator_run_projection import restore_outcome
+from app.v3.coordinator_run import _validate_native
 from app.v3.interface import Json
+from app.v3.native_read_context import _NativeReadContext
 from app.v3.storage_fullness import coordinator_storage_fullness
 from app.v3.storage_fullness_models import FULLNESS_VERSION
 
 
 def build_fullness_report(run: Json, *, inputs: bytes) -> Json:
-    validate_coordinator_run(run, inputs=inputs)
-    frozen = load_run_inputs(inputs)
-    outcome = restore_outcome(frozen.profile, run["outcome"])
+    return _fullness_from_context(_validate_native(run, inputs=inputs))
+
+
+def _fullness_from_context(context: _NativeReadContext) -> Json:
+    frozen, outcome, run = context.inputs, context.outcome, context.run()
     result = {
         "version": FULLNESS_VERSION,
         "source_run_id": run["run_id"],

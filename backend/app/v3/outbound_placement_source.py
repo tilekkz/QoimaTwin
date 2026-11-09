@@ -23,7 +23,7 @@ from app.v3.runtime_graph import DirectedGraph
 from app.v3.runtime_graph_source import compiled_graph
 from app.v3.runtime_time import operation_ticks
 from app.v3.whole_profile_geometry import project_whole_manual_cargo
-from app.v3.workload_models import WorkloadJob
+from app.v3.workload_models import WorkloadJob, WorkloadSource
 
 
 @dataclass(frozen=True, slots=True)
@@ -89,11 +89,25 @@ def customer_facts(
     hu: StockHU,
     offer: WorkloadJob,
 ) -> tuple[DirectedGraph, PlacementCostFacts]:
+    return customer_source_facts(
+        bundle, stock.inputs.scenario.baseline, choices, candidate, hu, offer
+    )
+
+
+def customer_source_facts(
+    bundle: V3Bundle,
+    source: WorkloadSource,
+    choices: PlacementChoices,
+    candidate: PlacementCandidate,
+    hu: StockHU,
+    offer: WorkloadJob,
+) -> tuple[DirectedGraph, PlacementCostFacts]:
+    """Source template seam for already authenticated C11 or forecast planning inputs."""
     customer = candidate.customer
     require(customer is not None, "MISSING_CUSTOMER_BINDING")
     assert customer is not None
     port = _customer_port(bundle, customer, hu, offer)
-    template = next(t for t in stock.inputs.scenario.baseline.templates if t.sku_id == hu.sku_id)
+    template = next(t for t in source.templates if t.sku_id == hu.sku_id)
     graph, place = _buffer_graph(bundle, choices, customer, hu, template.dimensions_xyz_m)
     nodes = {
         s["slot_id"]: s["service_node_id"]

@@ -11,12 +11,10 @@ from app.api.models import ArtifactId
 from app.errors import InvalidInputError
 from app.storage.artifacts import ArtifactCorruption, ArtifactStore
 from app.v3.api_coordinator_inputs import FrozenCoordinatorProfile
-from app.v3.api_coordinator_readers import verified_artifact
+from app.v3.api_coordinator_readers import _request_context
 from app.v3.api_coordinator_registry import CoordinatorRegistry
 from app.v3.api_coordinator_replay_projection import project_snapshot
-from app.v3.api_coordinator_replay_storage import native_run
-from app.v3.coordinator_run_inputs import load_run_inputs
-from app.v3.coordinator_seek import replay_coordinator
+from app.v3.coordinator_seek import _replay_context
 from app.v3.interface import Json
 
 READER_VERSION = "qoima-coordinator-settled-replay-api-0.1.0"
@@ -42,13 +40,13 @@ def replay(
     tick: int,
     frozen: FrozenCoordinatorProfile,
 ) -> Json:
-    index, summary = verified_artifact(store, identifier, frozen)
-    if type(tick) is not int or not 0 <= tick <= summary["observed_until_tick"]:
+    context = _request_context(store, identifier, frozen)
+    run = context.run()
+    if type(tick) is not int or not 0 <= tick <= run["observed_until_tick"]:
         raise InvalidInputError("replay tick must be an exact observed nonnegative integer")
     try:
-        run, inputs = native_run(store, index, summary["manifest"])
-        state = replay_coordinator(run, inputs=inputs, tick=tick)
-        compact = project_snapshot(load_run_inputs(inputs).profile, state)
+        state = _replay_context(context, tick)
+        compact = project_snapshot(context.inputs.profile, state)
     except (ValueError, TypeError, KeyError, OSError) as exc:
         raise ArtifactCorruption("coordinator settled replay validation failed") from exc
     return {

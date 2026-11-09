@@ -4,6 +4,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from app.v3.adaptation_authority import require_same_authority
+from app.v3.input_models import V3Bundle
 from app.v3.inputs import load_v3_bundle
 from app.v3.outbound_shift_models import BaselinePlacement, OutboundShiftInputs
 from app.v3.outbound_stock_models import StockHU
@@ -18,11 +19,21 @@ def _base_root() -> Path:
 def original_stock(inputs: OutboundShiftInputs) -> tuple[StockHU, ...]:
     bundle = load_v3_bundle(_base_root())
     require_same_authority(inputs.scenario.baseline, load_workload_source(bundle))
-    hus = sorted(bundle.handling_units, key=lambda hu: hu.handling_unit_id)
-    placements = tuple(
-        BaselinePlacement(hu.handling_unit_id, hu.sku_id, hu.slot_id, hu.module_id) for hu in hus
+    require_same_authority(inputs.scenario.initial_placements, _placements_from_bundle(bundle))
+    return _original_stock_from_bundle(bundle)
+
+
+def _placements_from_bundle(bundle: V3Bundle) -> tuple[BaselinePlacement, ...]:
+    """Project immutable values from a bundle already authenticated by the caller."""
+    return tuple(
+        BaselinePlacement(hu.handling_unit_id, hu.sku_id, hu.slot_id, hu.module_id)
+        for hu in sorted(bundle.handling_units, key=lambda hu: hu.handling_unit_id)
     )
-    require_same_authority(inputs.scenario.initial_placements, placements)
+
+
+def _original_stock_from_bundle(bundle: V3Bundle) -> tuple[StockHU, ...]:
+    """Pure original-seed builder; the caller must establish fresh bundle authority."""
+    hus = sorted(bundle.handling_units, key=lambda hu: hu.handling_unit_id)
     seed = source_seed(bundle)
     containers = {hu.container_id: hu for hu in seed.containers}
     tokens: dict[str, list[str]] = defaultdict(list)

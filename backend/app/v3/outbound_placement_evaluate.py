@@ -8,9 +8,11 @@ from app.v3.outbound_placement_models import (
     PlacementChoices,
     PlacementEvaluation,
 )
-from app.v3.outbound_placement_source import customer_facts
+from app.v3.outbound_placement_source import customer_source_facts
 from app.v3.outbound_stock_models import BoundOutboundStock
 from app.v3.pallet_outbound_pickup_identity import require
+from app.v3.placement_inventory import PlacementInventory
+from app.v3.workload_models import WorkloadSource
 
 
 def evaluate_candidate(
@@ -19,6 +21,19 @@ def evaluate_candidate(
     choices: PlacementChoices,
     candidate: PlacementCandidate,
 ) -> PlacementEvaluation:
+    return evaluate_source_candidate(
+        bundle, stock, stock.inputs.scenario.baseline, choices, candidate
+    )
+
+
+def evaluate_source_candidate(
+    bundle: V3Bundle,
+    stock: PlacementInventory,
+    source: WorkloadSource,
+    choices: PlacementChoices,
+    candidate: PlacementCandidate,
+) -> PlacementEvaluation:
+    """Internal reuse only: the caller authenticates its inventory and source namespace."""
     original = [h for h in stock.original_stock if h.hu_id == candidate.hu_id]
     if len(original) != 1:
         return PlacementEvaluation(
@@ -43,7 +58,7 @@ def evaluate_candidate(
             candidate, hu, None, "not_evaluable", ("NO_AFFECTED_ORIGINAL_OFFER",), None
         )
     try:
-        graph, facts = customer_facts(bundle, stock, choices, candidate, hu, offer)
+        graph, facts = customer_source_facts(bundle, source, choices, candidate, hu, offer)
         cost = price_candidate(graph, facts)
     except ValueError as error:
         return PlacementEvaluation(candidate, hu, offer, "not_evaluable", (str(error),), None)

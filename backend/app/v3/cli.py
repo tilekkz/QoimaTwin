@@ -19,6 +19,9 @@ from app.v3.cli_receipt import simulate_receipt_file
 from app.v3.cli_workload import materialize_workload_file
 from app.v3.export import write_static_export
 from app.v3.inputs import V3Bundle, load_v3_bundle
+from app.v3.offer_cli import COMMANDS as OFFER_COMMANDS
+from app.v3.offer_cli import add_commands as add_offer_commands
+from app.v3.offer_cli import main as offer_main
 from app.v3.settings import default_inputs
 from app.v3.whole_cli import simulate_whole_file
 
@@ -26,6 +29,7 @@ from app.v3.whole_cli import simulate_whole_file
 def build_parser() -> argparse.ArgumentParser:
     parser = JsonArgumentParser(prog="qoima v3", description="V3 proposal tools")
     commands = parser.add_subparsers(dest="command", required=True)
+    add_offer_commands(commands)
     for name in (
         "validate",
         "catalog",
@@ -80,6 +84,8 @@ def _summary(bundle: V3Bundle) -> dict[str, Any]:
 
 
 def main(argv: Sequence[str]) -> int:
+    if argv and argv[0] in OFFER_COMMANDS:
+        return offer_main(argv)
     try:
         args = build_parser().parse_args(argv)
         if args.command != "validate":

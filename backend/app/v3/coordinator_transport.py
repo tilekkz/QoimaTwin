@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 from typing import Any
 
 from app.storage.canonical_json import canonical_bytes, parse_json
-from app.v3.coordinator_run import validate_coordinator_run
+from app.v3.coordinator_run import _validate_native, validate_coordinator_run
 from app.v3.coordinator_run_schema import PUBLICATION_VERSION, RUN_FIELDS, TRANSPORT_VERSION
 from app.v3.coordinator_transport_files import (
     closed_inventory,
@@ -17,6 +17,7 @@ from app.v3.coordinator_transport_files import (
     require_output,
 )
 from app.v3.coordinator_transport_schema import EVENT_CHUNK_TICKS, validate_manifest
+from app.v3.native_read_context import _NativeReadContext
 
 
 def write_coordinator_run(run: dict[str, Any], out_dir: Path, *, inputs: bytes) -> dict[str, Any]:
@@ -90,6 +91,10 @@ def _snapshots(stage: Path, outcome: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def read_coordinator_run(out_dir: Path) -> dict[str, Any]:
+    return _read_coordinator_context(out_dir).run()
+
+
+def _read_coordinator_context(out_dir: Path) -> _NativeReadContext:
     path = out_dir / "manifest.json"
     if (
         out_dir.is_symlink()
@@ -123,8 +128,7 @@ def read_coordinator_run(out_dir: Path) -> dict[str, Any]:
     for key in ("engine_version", "run_id", "input_hash", "registry_common_hash"):
         if manifest[key] != run.get(key):
             raise ValueError("Coordinator catalog and manifest identity differ")
-    validate_coordinator_run(run, inputs=inputs)
-    return run
+    return _validate_native(run, inputs=inputs)
 
 
 def _read_events(root: Path, refs: list[dict[str, Any]]) -> list[dict[str, Any]]:

@@ -12,6 +12,7 @@ from app.api.service import JobService
 from app.errors import InvalidInputError
 from app.storage.artifacts import ArtifactCorruption
 from app.v3 import api_coordinator_readers as readers
+from app.v3.api_coordinator_fullness import attach_fullness_route
 from app.v3.api_coordinator_inputs import CoordinatorRequest, FrozenCoordinatorProfile
 from app.v3.api_coordinator_registry import CoordinatorRegistry
 from app.v3.api_coordinator_replay import attach_replay_route
@@ -41,6 +42,7 @@ def attach_coordinator_routes(app: FastAPI, context: ApiContext, source: Path | 
 
     attach_reads(app, context, registry)
     attach_replay_route(app, context, registry, _read_registration)
+    attach_fullness_route(app, context, registry, _read_registration)
 
 
 def attach_reads(app: FastAPI, context: ApiContext, registry: CoordinatorRegistry) -> None:

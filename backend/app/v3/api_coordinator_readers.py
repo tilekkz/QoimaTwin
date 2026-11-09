@@ -20,8 +20,9 @@ from app.v3.api_coordinator_inputs import DOMAIN, FrozenCoordinatorProfile
 from app.v3.api_coordinator_models import CoordinatorIndex
 from app.v3.api_manual_inputs import confined
 from app.v3.coordinator_run_identity import run_identity
-from app.v3.coordinator_transport import read_coordinator_run
+from app.v3.coordinator_transport import _read_coordinator_context
 from app.v3.interface import Json
+from app.v3.native_read_context import _NativeReadContext
 
 
 def profile_metadata(store: ArtifactStore, frozen: FrozenCoordinatorProfile) -> Json:
@@ -103,6 +104,16 @@ def verified_artifact(
     identifier: str,
     frozen: FrozenCoordinatorProfile,
 ) -> tuple[Json, Json]:
+    index, snapshot = _verified_evidence(store, identifier, frozen)
+    summary = parse_json(
+        _validated(str(store.root), canonical_bytes(index), canonical_bytes(snapshot)),
+    )
+    return index, dict(summary)
+
+
+def _verified_evidence(
+    store: ArtifactStore, identifier: str, frozen: FrozenCoordinatorProfile
+) -> tuple[Json, Json]:
     # Unknown public IDs remain 404 even if unrelated server registration is unavailable.
     index = run_index(store, identifier, frozen)
     snapshot = verified_registration(store, frozen)
@@ -113,33 +124,48 @@ def verified_artifact(
             file_bytes(store, index, row["sha256"])
     except ValueError as exc:
         raise ArtifactCorruption("invalid coordinator stored path or raw file") from exc
-    summary = parse_json(
-        _validated(str(store.root), canonical_bytes(index), canonical_bytes(snapshot)),
-    )
-    return index, dict(summary)
+    return index, snapshot
+
+
+def _request_context(
+    store: ArtifactStore, identifier: str, frozen: FrozenCoordinatorProfile
+) -> _NativeReadContext:
+    index, snapshot = _verified_evidence(store, identifier, frozen)
+    context, _ = _restore_context(store, index, snapshot)
+    return context
 
 
 @lru_cache(maxsize=8)
 def _validated(store_root: str, index_bytes: bytes, snapshot_bytes: bytes) -> bytes:
     store, index = ArtifactStore(Path(store_root)), parse_json(index_bytes)
+    context, native_manifest = _restore_context(store, index, parse_json(snapshot_bytes))
+    run = context.run()
+    return canonical_bytes(
+        {
+            "response": verified_response(run, index),
+            "manifest": native_manifest,
+            "captured_ticks": [row["tick"] for row in native_manifest["snapshot_chunks"]],
+            "observed_until_tick": run["observed_until_tick"],
+        }
+    )
+
+
+def _restore_context(
+    store: ArtifactStore, index: Json, snapshot: Json
+) -> tuple[_NativeReadContext, Json]:
     with tempfile.TemporaryDirectory(prefix="qoima-coordinator-read-") as temporary:
         root = Path(temporary)
         try:
             _restore(store, index, root)
-            run = read_coordinator_run(root / "run")
+            context = _read_coordinator_context(root / "run")
+            run = context.run()
             if run["run_id"] != index["native_run_id"] or run["input_hash"] != index["input_hash"]:
                 raise ValueError("coordinator native/public identity mismatch")
             native_manifest = parse_json((root / "run/manifest.json").read_bytes())
-            evidence_files(root, parse_json(snapshot_bytes), run)
-            result = {
-                "response": verified_response(run, index),
-                "manifest": native_manifest,
-                "captured_ticks": [row["tick"] for row in native_manifest["snapshot_chunks"]],
-                "observed_until_tick": run["observed_until_tick"],
-            }
+            evidence_files(root, snapshot, run)
         except (ValueError, TypeError, KeyError, OSError) as exc:
             raise ArtifactCorruption("coordinator semantic artifact validation failed") from exc
-    return canonical_bytes(result)
+    return context, native_manifest
 
 
 def _restore(store: ArtifactStore, index: Json, root: Path) -> None:

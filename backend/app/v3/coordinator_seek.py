@@ -3,23 +3,26 @@
 from typing import Any
 
 from app.v3.coordinator_models import CoordinatorOutcome, CoordinatorSnapshot
-from app.v3.coordinator_run import validate_coordinator_run
-from app.v3.coordinator_run_inputs import load_run_inputs
+from app.v3.coordinator_run import _validate_native
 from app.v3.coordinator_run_inventory import same
-from app.v3.coordinator_run_projection import restore_outcome
 from app.v3.coordinator_run_validation import Journal
 from app.v3.coordinator_seek_state import snapshot
 from app.v3.flow_profile_sources import _pinned_reference
+from app.v3.native_read_context import _NativeReadContext
 
 
 def replay_coordinator(run: dict[str, Any], *, inputs: bytes, tick: int) -> CoordinatorSnapshot:
     if type(tick) is not int or tick < 0:
         raise ValueError("Coordinator seek requires an exact nonnegative integer tick")
-    validate_coordinator_run(run, inputs=inputs)
-    if tick > run["observed_until_tick"]:
+    return _replay_context(_validate_native(run, inputs=inputs), tick)
+
+
+def _replay_context(context: _NativeReadContext, tick: int) -> CoordinatorSnapshot:
+    if type(tick) is not int or tick < 0:
+        raise ValueError("Coordinator seek requires an exact nonnegative integer tick")
+    if tick > context.outcome.at_end.tick:
         raise ValueError("Coordinator seek cannot infer unobserved future state")
-    frozen = load_run_inputs(inputs)
-    outcome = restore_outcome(frozen.profile, run["outcome"])
+    frozen, outcome = context.inputs, context.outcome
     _, source, _ = _pinned_reference()
     journal = Journal(frozen.profile, source, outcome, frozen.horizon_tick)
     return _reduce(journal, outcome, tick)

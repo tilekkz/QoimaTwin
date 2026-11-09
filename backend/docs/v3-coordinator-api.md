@@ -17,6 +17,9 @@ For the returned public run ID:
   [replay contract](v3-coordinator-replay-api.md) for response fields and scope.
 - `GET .../events?start_tick=154000000&end_tick=156000000` selects observed events from a
   half-open interval of at most60,000,000 microsecond ticks.
+- `GET .../storage-fullness` returns the separately identified storage report with
+  distinct horizon/end observations, bound native/public IDs and the exact input hash.
+  Analytical fixtures expose unavailable source capacities. See ADR0085.
 
 Partial runs remain partial when business or physical return work is unfinished. Business
 completion, resource drainage, observation end and staffing validity are separate fields.
