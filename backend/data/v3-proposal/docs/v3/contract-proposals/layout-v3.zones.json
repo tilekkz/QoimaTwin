@@ -1,0 +1,1148 @@
+{
+  "document_kind": "functional_zoning_proposal",
+  "proposal_id": "L02",
+  "proposal_version": "0.2.0",
+  "status": "proposal",
+  "layout_version": "qoima-144x72-v3-proposal",
+  "envelope_source": "docs/v3/contract-proposals/layout-v3.envelope.json",
+  "units": {
+    "length": "m",
+    "time": "s",
+    "up_axis": "Y",
+    "handedness": "right"
+  },
+  "floor_coordinate_order": [
+    "X",
+    "Z"
+  ],
+  "bounds_xyz_m": {
+    "min": [
+      0,
+      0,
+      0
+    ],
+    "max": [
+      144,
+      8,
+      72
+    ]
+  },
+  "partition_policy": "All zones have disjoint interiors and partition the floor. Shared edges are allowed. Approach overlays annotate already-counted circulation, never add area.",
+  "source_of_assumption": {
+    "L02_SYNTHETIC_ZONE_PLAN": "Synthetic zoning chosen for this proposal, not measured premises or accepted operational capacities.",
+    "brief": "docs/adaptive-v3/brief/02_DESIGN_V3.md sections 2, 3 and 5",
+    "reference_context": [
+      "R02 storage families",
+      "R07 ports/zones version 2",
+      "R08 composition version 1"
+    ],
+    "reference_policy": "Composition does not constrain exact zone rectangles; clearance reservations take precedence."
+  },
+  "scale_policy": {
+    "metres_per_world_unit": 1,
+    "entity_dimension_scale_factor": 1,
+    "global_master_scaling": false,
+    "retained_actor_count_context": 24
+  },
+  "compatibility_policy": "Candidate cargo families are zoning eligibility only. Orientation, internal dimensions, mass, handling, height, finite slots and loaded route checks are mandatory later. Reserve-only and active pick remain distinct.",
+  "required_class_pairs": [
+    "SMALL",
+    "STANDARD",
+    "HEAVY",
+    "LONG",
+    "FLEX"
+  ],
+  "zones": [
+    {
+      "zone_id": "CLEAR_W_PERIMETER",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          0,
+          0
+        ],
+        "max": [
+          12,
+          72
+        ]
+      },
+      "floor_area_m2": 864,
+      "label": "WEST CLEAR / 12 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_E_PERIMETER",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          132,
+          0
+        ],
+        "max": [
+          144,
+          72
+        ]
+      },
+      "floor_area_m2": 864,
+      "label": "EAST CLEAR / 12 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_PERIMETER",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          62
+        ],
+        "max": [
+          132,
+          72
+        ]
+      },
+      "floor_area_m2": 1200,
+      "label": "NORTH CLEAR / 10 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_TRANSFER",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          8
+        ],
+        "max": [
+          132,
+          12
+        ]
+      },
+      "floor_area_m2": 480,
+      "label": "SOUTH TRANSFER CLEAR / 4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_CENTRAL_SPINE",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          68,
+          12
+        ],
+        "max": [
+          76,
+          62
+        ]
+      },
+      "floor_area_m2": 400,
+      "label": "CENTRAL SPINE / 8 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_CROSS_W",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          34
+        ],
+        "max": [
+          68,
+          42
+        ]
+      },
+      "floor_area_m2": 448,
+      "label": "CROSS CLEAR / 8 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_CROSS_E",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          76,
+          34
+        ],
+        "max": [
+          132,
+          42
+        ]
+      },
+      "floor_area_m2": 448,
+      "label": "CROSS CLEAR / 8 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_LOCAL_W",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          32,
+          42
+        ],
+        "max": [
+          36,
+          62
+        ]
+      },
+      "floor_area_m2": 80,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_LOCAL_E",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          108,
+          42
+        ],
+        "max": [
+          112,
+          62
+        ]
+      },
+      "floor_area_m2": 80,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_CROSS_W",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          36,
+          54
+        ],
+        "max": [
+          68,
+          58
+        ]
+      },
+      "floor_area_m2": 128,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_CROSS_E",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          76,
+          54
+        ],
+        "max": [
+          108,
+          58
+        ]
+      },
+      "floor_area_m2": 128,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_LINK_W",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          50,
+          58
+        ],
+        "max": [
+          54,
+          62
+        ]
+      },
+      "floor_area_m2": 16,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_N_LINK_E",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          90,
+          58
+        ],
+        "max": [
+          94,
+          62
+        ]
+      },
+      "floor_area_m2": 16,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_LOCAL_W",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          32,
+          16
+        ],
+        "max": [
+          36,
+          34
+        ]
+      },
+      "floor_area_m2": 72,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_LOCAL_E",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          108,
+          16
+        ],
+        "max": [
+          112,
+          34
+        ]
+      },
+      "floor_area_m2": 72,
+      "label": "4 m",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_LINK_W1",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          32,
+          12
+        ],
+        "max": [
+          36,
+          16
+        ]
+      },
+      "floor_area_m2": 16,
+      "label": "",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_LINK_W2",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          48,
+          12
+        ],
+        "max": [
+          68,
+          16
+        ]
+      },
+      "floor_area_m2": 80,
+      "label": "",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_LINK_E1",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          76,
+          12
+        ],
+        "max": [
+          96,
+          16
+        ]
+      },
+      "floor_area_m2": 80,
+      "label": "",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_LINK_E2",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          108,
+          12
+        ],
+        "max": [
+          112,
+          16
+        ]
+      },
+      "floor_area_m2": 16,
+      "label": "",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "CLEAR_S_EXPRESS",
+      "kind": "circulation",
+      "floor_bounds_xz_m": {
+        "min": [
+          42,
+          0
+        ],
+        "max": [
+          54,
+          8
+        ]
+      },
+      "floor_area_m2": 96,
+      "label": "EXPRESS / CLEAR",
+      "purpose": "Protected circulation/approach floor; no racks, staging, FLEX or conveyor supports.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "keep_clear",
+      "storage_allowed": false,
+      "staging_allowed": false
+    },
+    {
+      "zone_id": "SMALL_W",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          42
+        ],
+        "max": [
+          32,
+          56
+        ]
+      },
+      "floor_area_m2": 280,
+      "label": "SMALL W",
+      "purpose": "Low bins and frequent small manual picks.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "SMALL",
+      "candidate_cargo_archetypes": [
+        "SMALL_CARTON"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "W"
+    },
+    {
+      "zone_id": "STANDARD_W",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          36,
+          42
+        ],
+        "max": [
+          68,
+          54
+        ]
+      },
+      "floor_area_m2": 384,
+      "label": "STANDARD W",
+      "purpose": "Standard carton storage; upper-level access remains a later process constraint.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "STANDARD",
+      "candidate_cargo_archetypes": [
+        "STANDARD_CARTON",
+        "FRAGILE_CRATE"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "W"
+    },
+    {
+      "zone_id": "HEAVY_W",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          16
+        ],
+        "max": [
+          32,
+          34
+        ]
+      },
+      "floor_area_m2": 360,
+      "label": "HEAVY W",
+      "purpose": "Ground or reinforced low pallet positions; loaded handler clearance required.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "HEAVY",
+      "candidate_cargo_archetypes": [
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "DRUM"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "W"
+    },
+    {
+      "zone_id": "LONG_W",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          36,
+          16
+        ],
+        "max": [
+          68,
+          34
+        ]
+      },
+      "floor_area_m2": 576,
+      "label": "LONG W",
+      "purpose": "Long-load supports and local manoeuvre envelope to be designed within this zone.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "LONG",
+      "candidate_cargo_archetypes": [
+        "LONG_BUNDLE"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "W"
+    },
+    {
+      "zone_id": "FLEX_W",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          36,
+          12
+        ],
+        "max": [
+          48,
+          16
+        ]
+      },
+      "floor_area_m2": 48,
+      "label": "FLEX W",
+      "purpose": "Finite small/standard transfer alcove; not universal storage and never circulation.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "FLEX",
+      "candidate_cargo_archetypes": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "W"
+    },
+    {
+      "zone_id": "SMALL_E",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          112,
+          42
+        ],
+        "max": [
+          132,
+          56
+        ]
+      },
+      "floor_area_m2": 280,
+      "label": "SMALL E",
+      "purpose": "Low bins and frequent small manual picks.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "SMALL",
+      "candidate_cargo_archetypes": [
+        "SMALL_CARTON"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "E"
+    },
+    {
+      "zone_id": "STANDARD_E",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          76,
+          42
+        ],
+        "max": [
+          108,
+          54
+        ]
+      },
+      "floor_area_m2": 384,
+      "label": "STANDARD E",
+      "purpose": "Standard carton storage; upper-level access remains a later process constraint.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "STANDARD",
+      "candidate_cargo_archetypes": [
+        "STANDARD_CARTON",
+        "FRAGILE_CRATE"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "E"
+    },
+    {
+      "zone_id": "HEAVY_E",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          112,
+          16
+        ],
+        "max": [
+          132,
+          34
+        ]
+      },
+      "floor_area_m2": 360,
+      "label": "HEAVY E",
+      "purpose": "Ground or reinforced low pallet positions; loaded handler clearance required.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "HEAVY",
+      "candidate_cargo_archetypes": [
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "DRUM"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "E"
+    },
+    {
+      "zone_id": "LONG_E",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          76,
+          16
+        ],
+        "max": [
+          108,
+          34
+        ]
+      },
+      "floor_area_m2": 576,
+      "label": "LONG E",
+      "purpose": "Long-load supports and local manoeuvre envelope to be designed within this zone.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "LONG",
+      "candidate_cargo_archetypes": [
+        "LONG_BUNDLE"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "E"
+    },
+    {
+      "zone_id": "FLEX_E",
+      "kind": "storage",
+      "floor_bounds_xz_m": {
+        "min": [
+          96,
+          12
+        ],
+        "max": [
+          108,
+          16
+        ]
+      },
+      "floor_area_m2": 48,
+      "label": "FLEX E",
+      "purpose": "Finite small/standard transfer alcove; not universal storage and never circulation.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "storage_type": "FLEX",
+      "candidate_cargo_archetypes": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON"
+      ],
+      "admission_status": "Candidate classes only; slot dimensions/payload/handling and route clearance remain required.",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "bank": "E"
+    },
+    {
+      "zone_id": "RESERVE_W",
+      "kind": "reserve",
+      "floor_bounds_xz_m": {
+        "min": [
+          36,
+          58
+        ],
+        "max": [
+          50,
+          62
+        ]
+      },
+      "floor_area_m2": 56,
+      "label": "RESERVE W",
+      "purpose": "Separate reserve stock footprint; not automatically floor-accessible active pick stock.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "candidate_cargo_archetypes": [
+        "STANDARD_CARTON"
+      ],
+      "active_pick_admission": false
+    },
+    {
+      "zone_id": "RESERVE_E",
+      "kind": "reserve",
+      "floor_bounds_xz_m": {
+        "min": [
+          94,
+          58
+        ],
+        "max": [
+          108,
+          62
+        ]
+      },
+      "floor_area_m2": 56,
+      "label": "RESERVE E",
+      "purpose": "Separate reserve stock footprint; not automatically floor-accessible active pick stock.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "candidate_cargo_archetypes": [
+        "STANDARD_CARTON"
+      ],
+      "active_pick_admission": false
+    },
+    {
+      "zone_id": "STAGE_IN_W_BULK",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          12
+        ],
+        "max": [
+          32,
+          16
+        ]
+      },
+      "floor_area_m2": 80,
+      "label": "W BULK IN STAGING",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "inbound"
+    },
+    {
+      "zone_id": "STAGE_OUT_E_B2B",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          112,
+          12
+        ],
+        "max": [
+          132,
+          16
+        ]
+      },
+      "floor_area_m2": 80,
+      "label": "E B2B OUT STAGING",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "outbound"
+    },
+    {
+      "zone_id": "STAGE_OUT_W_RETAIL",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          56
+        ],
+        "max": [
+          32,
+          62
+        ]
+      },
+      "floor_area_m2": 120,
+      "label": "W RETAIL OUT STAGING",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "outbound"
+    },
+    {
+      "zone_id": "STAGE_IN_E_PARCEL",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          112,
+          56
+        ],
+        "max": [
+          132,
+          62
+        ]
+      },
+      "floor_area_m2": 120,
+      "label": "E PARCEL IN STAGING",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "inbound"
+    },
+    {
+      "zone_id": "STAGE_IN_N_W",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          54,
+          58
+        ],
+        "max": [
+          68,
+          62
+        ]
+      },
+      "floor_area_m2": 56,
+      "label": "N IN STG W",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "inbound"
+    },
+    {
+      "zone_id": "STAGE_IN_N_E",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          76,
+          58
+        ],
+        "max": [
+          90,
+          62
+        ]
+      },
+      "floor_area_m2": 56,
+      "label": "N IN STG E",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "inbound"
+    },
+    {
+      "zone_id": "STAGE_OUT_S_EXPRESS",
+      "kind": "staging",
+      "floor_bounds_xz_m": {
+        "min": [
+          12,
+          0
+        ],
+        "max": [
+          42,
+          8
+        ]
+      },
+      "floor_area_m2": 240,
+      "label": "EXPRESS OUT MARSHAL",
+      "purpose": "Finite working footprint outside protected approaches; handling-unit count and service rules are not assigned.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "flow": "outbound"
+    },
+    {
+      "zone_id": "PACKING_LIGHT_LINE",
+      "kind": "packing",
+      "floor_bounds_xz_m": {
+        "min": [
+          54,
+          0
+        ],
+        "max": [
+          132,
+          8
+        ]
+      },
+      "floor_area_m2": 624,
+      "label": "PACKING + LIGHT LINE",
+      "purpose": "Reserve workspace for six ordinary-scale packing stations and a light conveyor; exact stations, routes and supports are deferred.",
+      "source_of_assumption": "L02_SYNTHETIC_ZONE_PLAN",
+      "occupancy_policy": "finite_reserved_footprint",
+      "slot_capacity": null,
+      "payload_capacity_kg": null,
+      "reserved_station_count": 6,
+      "station_anchors_defined": false,
+      "conveyor_topology_defined": false
+    }
+  ],
+  "port_approach_context": [
+    {
+      "port_id_context": "IN_W_BULK",
+      "brief_position_xz_m": [
+        0,
+        18
+      ],
+      "keep_clear_overlay_xz_m": {
+        "min": [
+          0,
+          12
+        ],
+        "max": [
+          12,
+          24
+        ]
+      },
+      "related_staging_zone_ids": [
+        "STAGE_IN_W_BULK"
+      ],
+      "status": "Brief coordinate context only; no service point, resource, gate or clearance acceptance."
+    },
+    {
+      "port_id_context": "IN_N_STANDARD",
+      "brief_position_xz_m": [
+        72,
+        72
+      ],
+      "keep_clear_overlay_xz_m": {
+        "min": [
+          64,
+          62
+        ],
+        "max": [
+          80,
+          72
+        ]
+      },
+      "related_staging_zone_ids": [
+        "STAGE_IN_N_W",
+        "STAGE_IN_N_E"
+      ],
+      "status": "Brief coordinate context only; no service point, resource, gate or clearance acceptance."
+    },
+    {
+      "port_id_context": "IN_E_PARCEL",
+      "brief_position_xz_m": [
+        144,
+        54
+      ],
+      "keep_clear_overlay_xz_m": {
+        "min": [
+          132,
+          48
+        ],
+        "max": [
+          144,
+          60
+        ]
+      },
+      "related_staging_zone_ids": [
+        "STAGE_IN_E_PARCEL"
+      ],
+      "status": "Brief coordinate context only; no service point, resource, gate or clearance acceptance."
+    },
+    {
+      "port_id_context": "OUT_W_RETAIL",
+      "brief_position_xz_m": [
+        0,
+        54
+      ],
+      "keep_clear_overlay_xz_m": {
+        "min": [
+          0,
+          48
+        ],
+        "max": [
+          12,
+          60
+        ]
+      },
+      "related_staging_zone_ids": [
+        "STAGE_OUT_W_RETAIL"
+      ],
+      "status": "Brief coordinate context only; no service point, resource, gate or clearance acceptance."
+    },
+    {
+      "port_id_context": "OUT_S_EXPRESS",
+      "brief_position_xz_m": [
+        48,
+        0
+      ],
+      "keep_clear_overlay_xz_m": {
+        "min": [
+          42,
+          0
+        ],
+        "max": [
+          54,
+          12
+        ]
+      },
+      "related_staging_zone_ids": [
+        "STAGE_OUT_S_EXPRESS"
+      ],
+      "status": "Brief coordinate context only; no service point, resource, gate or clearance acceptance."
+    },
+    {
+      "port_id_context": "OUT_E_B2B",
+      "brief_position_xz_m": [
+        144,
+        18
+      ],
+      "keep_clear_overlay_xz_m": {
+        "min": [
+          132,
+          12
+        ],
+        "max": [
+          144,
+          24
+        ]
+      },
+      "related_staging_zone_ids": [
+        "STAGE_OUT_E_B2B"
+      ],
+      "status": "Brief coordinate context only; no service point, resource, gate or clearance acceptance."
+    }
+  ],
+  "deferred": [
+    "rack and slot placement",
+    "slot counts and capacities",
+    "station/conveyor geometry and topology",
+    "port service points/resources/gate clearances",
+    "route graphs and loaded-vehicle swept paths",
+    "actor assignments",
+    "L03 and later cards"
+  ],
+  "planning_width_assumptions": {
+    "central_spine_m": 8,
+    "cross_band_m": 8,
+    "west_east_perimeter_m": 12,
+    "north_perimeter_m": 10,
+    "local_links_m": 4,
+    "status": "Synthetic provisional widths; loaded feasibility remains L05/L07/C08, not a safety certification."
+  },
+  "zone_area_revision": {
+    "superseded_draft_m2": {
+      "circulation": 6448,
+      "packing": 624,
+      "reserve": 168,
+      "staging": 760,
+      "storage": 2368
+    },
+    "current_proposal_m2": {
+      "circulation": 5584,
+      "packing": 624,
+      "reserve": 112,
+      "staging": 752,
+      "storage": 3296
+    },
+    "reason": "Root actual SVG review found the 16 m spine and 14 m cross draft too sparse. Reduced both to 8 m and expanded storage banks into released floor; six port approaches remain unchanged. These are gross footprints, not accepted capacities."
+  }
+}

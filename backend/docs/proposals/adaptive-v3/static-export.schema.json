@@ -1,0 +1,984 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:static-export:v3-proposal:0.1.0",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "raw_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "canonical_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "raw_sha256",
+              "bytes",
+              "canonical_sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "interface_version": {
+          "const": "qoima-v3-static-interface-1"
+        }
+      },
+      "required": [
+        "revision",
+        "documents",
+        "interface_version"
+      ],
+      "additionalProperties": false
+    },
+    "descriptor": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "layout_version": {
+          "const": "qoima-144x72-v3-proposal"
+        },
+        "layout_content_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bounds": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "max": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "additionalProperties": false
+        },
+        "units": {
+          "type": "object",
+          "properties": {
+            "length": {
+              "const": "m"
+            },
+            "mass": {
+              "const": "kg"
+            },
+            "up_axis": {
+              "const": "Y"
+            },
+            "angle": {
+              "const": "radian"
+            }
+          },
+          "required": [
+            "length",
+            "mass",
+            "up_axis",
+            "angle"
+          ]
+        },
+        "model_scale_factor": {
+          "const": 1
+        }
+      },
+      "required": [
+        "layout_version",
+        "layout_content_hash",
+        "bounds",
+        "units",
+        "model_scale_factor"
+      ],
+      "additionalProperties": false
+    },
+    "archetype": {
+      "type": "object",
+      "properties": {
+        "archetype_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "object",
+          "properties": {
+            "dimensions_xyz_m": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "gross_mass_kg": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "dimensions_xyz_m",
+            "gross_mass_kg"
+          ],
+          "additionalProperties": false
+        },
+        "handling_unit": {
+          "type": "object",
+          "properties": {
+            "dimensions_xyz_m": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "gross_mass_kg": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "units_per_handling_unit": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "dimensions_xyz_m",
+            "gross_mass_kg",
+            "units_per_handling_unit"
+          ],
+          "additionalProperties": false
+        },
+        "upright_only": {
+          "type": "boolean"
+        },
+        "permitted_orientation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "archetype_id",
+        "unit",
+        "handling_unit",
+        "upright_only",
+        "permitted_orientation_ids"
+      ],
+      "additionalProperties": false
+    },
+    "sku": {
+      "type": "object",
+      "properties": {
+        "sku_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archetype_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sku_id",
+        "archetype_id"
+      ],
+      "additionalProperties": false
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_status": {
+          "const": "not_defined"
+        }
+      },
+      "required": [
+        "actor_id",
+        "profile_status"
+      ],
+      "additionalProperties": false
+    },
+    "asset": {
+      "type": "object",
+      "properties": {
+        "archetype_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_scale_factor": {
+          "const": 1
+        },
+        "binding_status": {
+          "const": "not_bound"
+        }
+      },
+      "required": [
+        "archetype_id",
+        "model_scale_factor",
+        "binding_status"
+      ],
+      "additionalProperties": false
+    },
+    "resources": {
+      "type": "object",
+      "properties": {
+        "actor_pools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pool_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "actor_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "pool_id",
+              "actor_ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "equipment_pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pair_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "actor_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "vehicle_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "eligible_direction": {
+                "enum": [
+                  "inbound",
+                  "outbound"
+                ]
+              }
+            },
+            "required": [
+              "pair_id",
+              "actor_id",
+              "vehicle_id",
+              "eligible_direction"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "actor_pools",
+        "equipment_pairs"
+      ],
+      "additionalProperties": false
+    },
+    "module": {
+      "type": "object",
+      "properties": {
+        "module_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "world_pos": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "yaw_rad": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "module_id",
+        "world_pos",
+        "yaw_rad"
+      ],
+      "additionalProperties": false
+    },
+    "slot": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "module_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storage_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reserve_only": {
+          "type": "boolean"
+        },
+        "retrieval_blocked": {
+          "type": "boolean"
+        },
+        "bin_anchor": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "usable_dimensions_xyz_m": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "usable_bounds_world": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "max": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "additionalProperties": false
+        },
+        "max_payload_kg": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_handling_units": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "slot_id",
+        "module_id",
+        "storage_type",
+        "reserve_only",
+        "retrieval_blocked",
+        "bin_anchor",
+        "usable_dimensions_xyz_m",
+        "usable_bounds_world",
+        "max_payload_kg",
+        "max_handling_units"
+      ],
+      "additionalProperties": false
+    },
+    "port": {
+      "type": "object",
+      "properties": {
+        "port_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "enum": [
+            "inbound",
+            "outbound"
+          ]
+        },
+        "world_pos": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "service_node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "service_node_world_pos": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "allowed_cargo_archetype_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "buffer_hu_limit": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "port_id",
+        "direction",
+        "world_pos",
+        "service_node_id",
+        "service_node_world_pos",
+        "allowed_cargo_archetype_ids",
+        "buffer_hu_limit"
+      ],
+      "additionalProperties": false
+    },
+    "hu": {
+      "type": "object",
+      "properties": {
+        "handling_unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sku_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archetype_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity_units": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "owner": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "storage_slot"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        "pose": {
+          "type": "object",
+          "properties": {
+            "world_pos": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "yaw_rad": {
+              "type": "number"
+            },
+            "origin": {
+              "const": "floor_centre_XZ_Y0"
+            },
+            "orientation_id": {
+              "const": "upright_xyz"
+            }
+          },
+          "required": [
+            "world_pos",
+            "yaw_rad",
+            "origin",
+            "orientation_id"
+          ],
+          "additionalProperties": false
+        },
+        "dimensions_xyz_m": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "gross_mass_kg": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "model_scale_factor": {
+          "const": 1
+        }
+      },
+      "required": [
+        "handling_unit_id",
+        "lot_id",
+        "sku_id",
+        "archetype_id",
+        "quantity_units",
+        "owner",
+        "pose",
+        "dimensions_xyz_m",
+        "gross_mass_kg",
+        "model_scale_factor"
+      ],
+      "additionalProperties": false
+    },
+    "totals": {
+      "type": "object",
+      "properties": {
+        "handling_units": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "occupied_slots": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "quantity_units": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gross_mass_kg": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "handling_units",
+        "occupied_slots",
+        "quantity_units",
+        "gross_mass_kg"
+      ],
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "properties": {
+        "schema_id": {
+          "const": "qoima.catalog.v3-proposal"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "data_kind": {
+          "const": "static_geometry_proposal"
+        },
+        "contract_status": {
+          "const": "proposal"
+        },
+        "operational_admission": {
+          "const": false
+        },
+        "catalog_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "layout": {
+          "$ref": "#/$defs/layout"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "capabilities": {
+          "type": "object",
+          "properties": {
+            "static_catalog": {
+              "const": true
+            },
+            "initial_stock_projection": {
+              "const": true
+            },
+            "operational_admission": {
+              "const": false
+            },
+            "actual_engine_run": {
+              "const": false
+            },
+            "timed_materialization": {
+              "const": false
+            },
+            "comparison": {
+              "const": false
+            },
+            "operational_replay": {
+              "const": false
+            }
+          },
+          "required": [
+            "static_catalog",
+            "initial_stock_projection",
+            "operational_admission",
+            "actual_engine_run",
+            "timed_materialization",
+            "comparison",
+            "operational_replay"
+          ],
+          "additionalProperties": false
+        },
+        "counts": {
+          "type": "object",
+          "properties": {
+            "skus": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "archetypes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "slots": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "modules": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ports": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "actors": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "handling_units": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "skus",
+            "archetypes",
+            "slots",
+            "modules",
+            "ports",
+            "actors",
+            "handling_units"
+          ],
+          "additionalProperties": false
+        },
+        "resource_policy": {
+          "$ref": "#/$defs/resources"
+        },
+        "cargo_archetypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/archetype"
+          }
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sku"
+          }
+        },
+        "storage_modules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/module"
+          }
+        },
+        "storage_slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/slot"
+          }
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/port"
+          }
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/actor"
+          }
+        },
+        "asset_archetypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/asset"
+          }
+        }
+      },
+      "required": [
+        "schema_id",
+        "schema_version",
+        "data_kind",
+        "contract_status",
+        "operational_admission",
+        "catalog_id",
+        "layout",
+        "source",
+        "capabilities",
+        "counts",
+        "resource_policy",
+        "cargo_archetypes",
+        "skus",
+        "storage_modules",
+        "storage_slots",
+        "ports",
+        "actors",
+        "asset_archetypes"
+      ],
+      "additionalProperties": false
+    },
+    "initial_state": {
+      "type": "object",
+      "properties": {
+        "schema_id": {
+          "const": "qoima.initial-state.v3-proposal"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "data_kind": {
+          "const": "static_geometry_proposal"
+        },
+        "contract_status": {
+          "const": "proposal"
+        },
+        "operational_admission": {
+          "const": false
+        },
+        "state_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "layout": {
+          "$ref": "#/$defs/layout"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "handling_units": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/hu"
+          }
+        },
+        "inventory_by_sku": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "sku_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "quantity_units": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "sku_id",
+              "quantity_units"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "totals": {
+          "$ref": "#/$defs/totals"
+        }
+      },
+      "required": [
+        "schema_id",
+        "schema_version",
+        "data_kind",
+        "contract_status",
+        "operational_admission",
+        "state_id",
+        "layout",
+        "source",
+        "handling_units",
+        "inventory_by_sku",
+        "totals"
+      ],
+      "additionalProperties": false
+    },
+    "manifest": {
+      "type": "object",
+      "properties": {
+        "schema_id": {
+          "const": "qoima.static-manifest.v3-proposal"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "data_kind": {
+          "const": "static_geometry_proposal"
+        },
+        "contract_status": {
+          "const": "proposal"
+        },
+        "operational_admission": {
+          "const": false
+        },
+        "export_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "catalog": {
+          "$ref": "#/$defs/descriptor"
+        },
+        "initial_state": {
+          "$ref": "#/$defs/descriptor"
+        },
+        "source_documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/descriptor"
+          }
+        }
+      },
+      "required": [
+        "schema_id",
+        "schema_version",
+        "data_kind",
+        "contract_status",
+        "operational_admission",
+        "export_id",
+        "catalog",
+        "initial_state",
+        "source_documents"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "qoima.static-export.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "data_kind": {
+      "const": "static_geometry_proposal"
+    },
+    "contract_status": {
+      "const": "proposal"
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "export_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "catalog": {
+      "$ref": "#/$defs/catalog"
+    },
+    "initial_state": {
+      "$ref": "#/$defs/initial_state"
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "data_kind",
+    "contract_status",
+    "operational_admission",
+    "export_id",
+    "catalog",
+    "initial_state"
+  ],
+  "additionalProperties": false
+}

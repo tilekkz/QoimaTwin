@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "qoima.coordinator-calendar.v3-proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_id", "schema_version", "horizon_tick", "end_tick", "provenance", "lanes"],
+  "properties": {
+    "schema_id": {"const": "qoima.coordinator-calendar.v3-proposal"},
+    "schema_version": {"const": "0.1.0"},
+    "horizon_tick": {"type": "integer", "minimum": 1},
+    "end_tick": {"type": "integer", "minimum": 1},
+    "provenance": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "lanes": {"type": "array", "items": {"$ref": "#/$defs/lane"}}
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lane_id", "kind", "job_ids", "start_tick", "end_tick"],
+      "properties": {
+        "lane_id": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "kind": {"enum": ["unit_order", "receipt", "whole_order"]},
+        "job_ids": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "pattern": "\\S"}
+        },
+        "start_tick": {"type": "integer", "minimum": 0},
+        "end_tick": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

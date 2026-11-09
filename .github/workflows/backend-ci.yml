@@ -1,0 +1,43 @@
+name: backend-ci
+
+on:
+  push:
+    paths: ["backend/**", "contracts/**", "data/**", "tools/**", ".github/workflows/backend-ci.yml"]
+  pull_request:
+    paths: ["backend/**", "contracts/**", "data/**", "tools/**", ".github/workflows/backend-ci.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 240
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          version: "0.13.4"
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+      - name: Install locked environment
+        run: uv sync --locked
+      - name: Lint
+        run: uv run ruff check .
+      - name: Format
+        run: uv run ruff format --check .
+      - name: Type check
+        run: uv run mypy app tests
+      - name: Validate contracts
+        run: uv run python -m app.cli validate-contracts
+      - name: Tests with coverage
+        run: uv run pytest -m "slow or not slow" -n 2 --dist loadscope --cov --cov-report=term-missing
+      - name: Optimized Python smoke
+        run: uv run python -O -m tests.probes --fixture

@@ -1,0 +1,1610 @@
+{
+  "schema_id": "qoima.coordinator-profile.v3-proposal",
+  "schema_version": "0.1.0",
+  "source": {
+    "revision": "22296bcf2c6bac5ade4cefc7c05c2b97831ec6ec",
+    "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71"
+  },
+  "profile_id": "explicit-coordinator-mixed-n4-proposal",
+  "provenance": "ADR0064/0067 proposed mechanism experiment: explicit SMALL orders plus manual STANDARD receipt/whole shipment; synthetic K05/K06 break [100,1600)s, two carts and declared service/speed choices. No source hourly rate, hand-contact proof or observed N4 verdict.",
+  "horizon_tick": 1700000000,
+  "end_tick": 1800000000,
+  "actors": [
+    {
+      "actor_id": "P01",
+      "home": "v3:service:CART_PARK",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P02",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P03",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P04",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P05",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P06",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P07",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P08",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P09",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P10",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P11",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "P12",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "K01",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "K02",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "K03",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "K04",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "K05",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "K06",
+      "home": "v3:service:PK06",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "R01",
+      "home": "v3:service:IN_N_STANDARD",
+      "speed_m_s": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "max_gross_kg": {
+        "denominator": 1,
+        "numerator": 10
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "R02",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "max_gross_kg": {
+        "denominator": 1,
+        "numerator": 10
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "S01",
+      "home": "v3:service:OUT_W_RETAIL",
+      "speed_m_s": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "max_gross_kg": {
+        "denominator": 1,
+        "numerator": 10
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "S02",
+      "home": "v3:service:OUT_W_RETAIL",
+      "speed_m_s": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "max_gross_kg": {
+        "denominator": 1,
+        "numerator": 10
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "F01",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    },
+    {
+      "actor_id": "F02",
+      "home": "v3:service:PK01",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "available_tick": 0
+    }
+  ],
+  "owners": [
+    {
+      "owner_id": "carrier-pool",
+      "kind": "material",
+      "capacity": 2
+    },
+    {
+      "owner_id": "package-pool",
+      "kind": "material",
+      "capacity": 1
+    },
+    {
+      "owner_id": "cart",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P01",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:S01",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "bench",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "empties",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "shipped",
+      "kind": "shipped",
+      "capacity": 3
+    },
+    {
+      "owner_id": "belt:O1",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P02",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P03",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P04",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P05",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P06",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P07",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P08",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P09",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P10",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P11",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:P12",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:K01",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:K02",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:K03",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:K04",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:K05",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:K06",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:R01",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:R02",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:S02",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:F01",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "actor:F02",
+      "kind": "worker",
+      "capacity": 1
+    },
+    {
+      "owner_id": "cart02",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "belt:O2",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "bench01",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "empty01",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "pool01",
+      "kind": "material",
+      "capacity": 1
+    },
+    {
+      "owner_id": "bench02",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "empty02",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "pool02",
+      "kind": "material",
+      "capacity": 1
+    },
+    {
+      "owner_id": "bench03",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "empty03",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "pool03",
+      "kind": "material",
+      "capacity": 1
+    },
+    {
+      "owner_id": "bench04",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "empty04",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "pool04",
+      "kind": "material",
+      "capacity": 1
+    },
+    {
+      "owner_id": "bench05",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "empty05",
+      "kind": "workstation",
+      "capacity": 1
+    },
+    {
+      "owner_id": "pool05",
+      "kind": "material",
+      "capacity": 1
+    },
+    {
+      "capacity": 1,
+      "kind": "buffer",
+      "owner_id": "v3:buffer:OUT_W_RETAIL:01"
+    },
+    {
+      "capacity": 1,
+      "kind": "buffer",
+      "owner_id": "synthetic:buffer:IN_N_STANDARD:01"
+    }
+  ],
+  "recipes": [
+    {
+      "recipe_id": "synthetic-small-carrier-v1",
+      "provenance": "ADR0048 explicit synthetic carrier geometry and tare, not the M07 model",
+      "kind": "carrier",
+      "outer": [
+        {
+          "numerator": 32,
+          "denominator": 100
+        },
+        {
+          "numerator": 24,
+          "denominator": 100
+        },
+        {
+          "numerator": 24,
+          "denominator": 100
+        }
+      ],
+      "inner": [
+        {
+          "numerator": 30,
+          "denominator": 100
+        },
+        {
+          "numerator": 22,
+          "denominator": 100
+        },
+        {
+          "numerator": 22,
+          "denominator": 100
+        }
+      ],
+      "tare_kg": {
+        "numerator": 20,
+        "denominator": 100
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "max_units": 6,
+      "allowed_archetypes": [
+        "SMALL_CARTON"
+      ],
+      "clearance_m": {
+        "numerator": 0,
+        "denominator": 1
+      }
+    },
+    {
+      "recipe_id": "synthetic-small-parcel-v1",
+      "provenance": "ADR0048 explicit synthetic packaging geometry and tare",
+      "kind": "package",
+      "outer": [
+        {
+          "numerator": 24,
+          "denominator": 100
+        },
+        {
+          "numerator": 12,
+          "denominator": 100
+        },
+        {
+          "numerator": 12,
+          "denominator": 100
+        }
+      ],
+      "inner": [
+        {
+          "numerator": 22,
+          "denominator": 100
+        },
+        {
+          "numerator": 10,
+          "denominator": 100
+        },
+        {
+          "numerator": 10,
+          "denominator": 100
+        }
+      ],
+      "tare_kg": {
+        "numerator": 5,
+        "denominator": 100
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "max_units": 6,
+      "allowed_archetypes": [
+        "SMALL_CARTON"
+      ],
+      "clearance_m": {
+        "numerator": 0,
+        "denominator": 1
+      }
+    }
+  ],
+  "materials": [
+    {
+      "container_id": "C1",
+      "recipe_id": "synthetic-small-carrier-v1",
+      "owner_id": "carrier-pool",
+      "sealed_for": null
+    },
+    {
+      "container_id": "P1",
+      "recipe_id": "synthetic-small-parcel-v1",
+      "owner_id": "pool05",
+      "sealed_for": null
+    },
+    {
+      "container_id": "C2",
+      "recipe_id": "synthetic-small-carrier-v1",
+      "owner_id": "carrier-pool",
+      "sealed_for": null
+    },
+    {
+      "container_id": "P2",
+      "recipe_id": "synthetic-small-parcel-v1",
+      "owner_id": "package-pool",
+      "sealed_for": null
+    }
+  ],
+  "times": {
+    "attach": 1000000,
+    "pick_per_unit": 1000000,
+    "park": 1000000,
+    "detach": 1000000,
+    "deposit": 1000000,
+    "pack": 3000000,
+    "clear": 1000000,
+    "pickup": 1000000
+  },
+  "orders": [
+    {
+      "order_id": "O1",
+      "arrival_tick": 80000000,
+      "source_hu": "v3:HU:initial:DEMO_001:01",
+      "carrier_id": "C1",
+      "package_id": "P1",
+      "carrier_placements": [
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0001",
+          "position": [
+            {
+              "numerator": 0,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0002",
+          "position": [
+            {
+              "numerator": 7,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0003",
+          "position": [
+            {
+              "numerator": 14,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        }
+      ],
+      "package_placements": [
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0001",
+          "position": [
+            {
+              "numerator": 0,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0002",
+          "position": [
+            {
+              "numerator": 7,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0003",
+          "position": [
+            {
+              "numerator": 14,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order_id": "O2",
+      "arrival_tick": 98000000,
+      "source_hu": "v3:HU:initial:DEMO_001:01",
+      "carrier_id": "C2",
+      "package_id": "P2",
+      "carrier_placements": [
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0004",
+          "position": [
+            {
+              "numerator": 0,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0005",
+          "position": [
+            {
+              "numerator": 7,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0006",
+          "position": [
+            {
+              "numerator": 14,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        }
+      ],
+      "package_placements": [
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0004",
+          "position": [
+            {
+              "numerator": 0,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0005",
+          "position": [
+            {
+              "numerator": 7,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        },
+        {
+          "unit_id": "v3:HU:initial:DEMO_001:01:unit:0006",
+          "position": [
+            {
+              "numerator": 14,
+              "denominator": 100
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            },
+            {
+              "numerator": 0,
+              "denominator": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "path_clearance_m": {
+    "numerator": 2,
+    "denominator": 100
+  },
+  "parcel_ports": [
+    {
+      "port_id": "OUT_S_EXPRESS",
+      "shipped_owner": "shipped"
+    }
+  ],
+  "receipts": [
+    {
+      "hu_id": "RECEIVED-STANDARD-1",
+      "lot_id": "EXPLICIT-STANDARD-LOT-1",
+      "quantity_units": 24,
+      "receipt_id": "RECEIPT-STANDARD-1",
+      "sku_id": "DEMO_111",
+      "arrival_tick": 0,
+      "port_id": "IN_N_STANDARD",
+      "slot_id": "v3:slot:FLEX_W:001:L1:B1"
+    }
+  ],
+  "receipt_ports": [
+    {
+      "port_id": "IN_N_STANDARD",
+      "buffer_owner_ids": [
+        "synthetic:buffer:IN_N_STANDARD:01"
+      ],
+      "receiver_ids": [
+        "R01"
+      ]
+    }
+  ],
+  "receipt_buffers": [
+    {
+      "owner_id": "synthetic:buffer:IN_N_STANDARD:01",
+      "port_id": "IN_N_STANDARD",
+      "zone_id": "STAGE_IN_N_W",
+      "bounds_xz": [
+        {
+          "numerator": 297,
+          "denominator": 5
+        },
+        {
+          "numerator": 297,
+          "denominator": 5
+        },
+        {
+          "numerator": 303,
+          "denominator": 5
+        },
+        {
+          "numerator": 303,
+          "denominator": 5
+        }
+      ],
+      "path_xz": [
+        [
+          {
+            "numerator": 72,
+            "denominator": 1
+          },
+          {
+            "numerator": 66,
+            "denominator": 1
+          }
+        ],
+        [
+          {
+            "numerator": 60,
+            "denominator": 1
+          },
+          {
+            "numerator": 66,
+            "denominator": 1
+          }
+        ],
+        [
+          {
+            "numerator": 60,
+            "denominator": 1
+          },
+          {
+            "numerator": 60,
+            "denominator": 1
+          }
+        ]
+      ],
+      "height_m": {
+        "numerator": 6,
+        "denominator": 5
+      },
+      "max_gross_kg": {
+        "numerator": 15,
+        "denominator": 1
+      },
+      "clearance_m": {
+        "denominator": 50,
+        "numerator": 1
+      }
+    }
+  ],
+  "receipt_times": {
+    "pickup": 1000000,
+    "place": 1000000
+  },
+  "whole_orders": [
+    {
+      "arrival_tick": 0,
+      "hu_id": "RECEIVED-STANDARD-1",
+      "job_id": "WHOLE-1",
+      "port_id": "OUT_W_RETAIL"
+    }
+  ],
+  "whole_ports": [
+    {
+      "port_id": "OUT_W_RETAIL",
+      "buffer_owner_ids": [
+        "v3:buffer:OUT_W_RETAIL:01"
+      ],
+      "shipper_ids": [
+        "S01",
+        "S02"
+      ],
+      "shipped_owner": "shipped"
+    }
+  ],
+  "whole_buffers": [
+    {
+      "owner_id": "v3:buffer:OUT_W_RETAIL:01",
+      "port_id": "OUT_W_RETAIL",
+      "zone_id": "STAGE_OUT_W_RETAIL",
+      "bounds_xz": [
+        {
+          "numerator": 14,
+          "denominator": 1
+        },
+        {
+          "numerator": 113,
+          "denominator": 2
+        },
+        {
+          "numerator": 16,
+          "denominator": 1
+        },
+        {
+          "numerator": 117,
+          "denominator": 2
+        }
+      ],
+      "path_xz": [
+        [
+          {
+            "numerator": 6,
+            "denominator": 1
+          },
+          {
+            "numerator": 54,
+            "denominator": 1
+          }
+        ],
+        [
+          {
+            "numerator": 6,
+            "denominator": 1
+          },
+          {
+            "numerator": 115,
+            "denominator": 2
+          }
+        ],
+        [
+          {
+            "numerator": 15,
+            "denominator": 1
+          },
+          {
+            "numerator": 115,
+            "denominator": 2
+          }
+        ]
+      ],
+      "height_m": {
+        "numerator": 6,
+        "denominator": 5
+      },
+      "max_gross_kg": {
+        "numerator": 15,
+        "denominator": 1
+      },
+      "clearance_m": {
+        "denominator": 50,
+        "numerator": 1
+      }
+    }
+  ],
+  "whole_times": {
+    "pickup": 1000000,
+    "place": 1000000
+  },
+  "role_intents": [
+    {
+      "intent_id": "HELP-P11",
+      "actor_id": "P11",
+      "station_id": "PK05",
+      "request_tick": 100000000,
+      "return_tick": 1200000000,
+      "restore_by_tick": 1600000000
+    },
+    {
+      "intent_id": "HELP-P12",
+      "actor_id": "P12",
+      "station_id": "PK06",
+      "request_tick": 100000000,
+      "return_tick": 1200000000,
+      "restore_by_tick": 1600000000
+    }
+  ],
+  "carts": [
+    {
+      "cart_id": "CART01",
+      "home": "v3:service:CART_PARK",
+      "owner_id": "cart",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "width_m": {
+        "numerator": 72,
+        "denominator": 100
+      },
+      "carrier_pool_owner": "carrier-pool",
+      "release_tick": 0
+    },
+    {
+      "cart_id": "CART02",
+      "home": "v3:service:CART_PARK",
+      "owner_id": "cart02",
+      "speed_m_s": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "max_gross_kg": {
+        "numerator": 10,
+        "denominator": 1
+      },
+      "width_m": {
+        "numerator": 72,
+        "denominator": 100
+      },
+      "carrier_pool_owner": "carrier-pool",
+      "release_tick": 0
+    }
+  ],
+  "goods_stations": [
+    {
+      "station_id": "PK01",
+      "bench_owner": "bench01",
+      "empty_owner": "empty01",
+      "package_pool_owner": "pool01"
+    },
+    {
+      "station_id": "PK02",
+      "bench_owner": "bench02",
+      "empty_owner": "empty02",
+      "package_pool_owner": "pool02"
+    },
+    {
+      "station_id": "PK03",
+      "bench_owner": "bench03",
+      "empty_owner": "empty03",
+      "package_pool_owner": "pool03"
+    },
+    {
+      "station_id": "PK04",
+      "bench_owner": "bench04",
+      "empty_owner": "empty04",
+      "package_pool_owner": "pool04"
+    },
+    {
+      "station_id": "PK05",
+      "bench_owner": "bench05",
+      "empty_owner": "empty05",
+      "package_pool_owner": "pool05"
+    },
+    {
+      "station_id": "PK06",
+      "bench_owner": "bench",
+      "empty_owner": "empties",
+      "package_pool_owner": "package-pool"
+    }
+  ],
+  "picker_bindings": [
+    {
+      "actor_id": "P01",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P02",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P03",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P04",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P05",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P06",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P07",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P08",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P09",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P10",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P11",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    },
+    {
+      "actor_id": "P12",
+      "cart_ids": [
+        "CART01",
+        "CART02"
+      ]
+    }
+  ],
+  "unit_assignments": [
+    {
+      "order_id": "O1",
+      "picker_id": "P01",
+      "cart_id": "CART01",
+      "station_id": "PK05",
+      "shipper_id": "S01",
+      "port_id": "OUT_S_EXPRESS"
+    },
+    {
+      "order_id": "O2",
+      "picker_id": "P02",
+      "cart_id": "CART02",
+      "station_id": "PK06",
+      "shipper_id": "S01",
+      "port_id": "OUT_S_EXPRESS"
+    }
+  ],
+  "registry": {
+    "schema_version": "qoima-staff-registry-0.1.0",
+    "source_revision": "22296bcf2c6bac5ade4cefc7c05c2b97831ec6ec",
+    "workers": [
+      {
+        "actor_id": "P01",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P02",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P03",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P04",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P05",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P06",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P07",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P08",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P09",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P10",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P11",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick",
+          "pack"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "P12",
+        "primary_role": "pick",
+        "eligible_roles": [
+          "pick",
+          "pack"
+        ],
+        "permitted_equipment": [
+          "manual_cart"
+        ]
+      },
+      {
+        "actor_id": "K01",
+        "primary_role": "pack",
+        "eligible_roles": [
+          "pack"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "K02",
+        "primary_role": "pack",
+        "eligible_roles": [
+          "pack"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "K03",
+        "primary_role": "pack",
+        "eligible_roles": [
+          "pack"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "K04",
+        "primary_role": "pack",
+        "eligible_roles": [
+          "pack"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "K05",
+        "primary_role": "pack",
+        "eligible_roles": [
+          "pack"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "K06",
+        "primary_role": "pack",
+        "eligible_roles": [
+          "pack"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "R01",
+        "primary_role": "receive",
+        "eligible_roles": [
+          "receive"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "R02",
+        "primary_role": "receive",
+        "eligible_roles": [
+          "receive"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "S01",
+        "primary_role": "ship",
+        "eligible_roles": [
+          "ship"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "S02",
+        "primary_role": "ship",
+        "eligible_roles": [
+          "ship"
+        ],
+        "permitted_equipment": []
+      },
+      {
+        "actor_id": "F01",
+        "primary_role": "forklift",
+        "eligible_roles": [
+          "forklift"
+        ],
+        "permitted_equipment": [
+          "FL01"
+        ]
+      },
+      {
+        "actor_id": "F02",
+        "primary_role": "forklift",
+        "eligible_roles": [
+          "forklift"
+        ],
+        "permitted_equipment": [
+          "FL02"
+        ]
+      }
+    ],
+    "unavailability": [
+      {
+        "actor_id": "K05",
+        "start_tick": 100000000,
+        "end_tick": 1600000000,
+        "reason": "explicit_common_n4_break_assumption"
+      },
+      {
+        "actor_id": "K06",
+        "start_tick": 100000000,
+        "end_tick": 1600000000,
+        "reason": "explicit_common_n4_break_assumption"
+      }
+    ],
+    "station_bindings": [
+      {
+        "station_id": "PK01",
+        "primary_actor_id": "K01"
+      },
+      {
+        "station_id": "PK02",
+        "primary_actor_id": "K02"
+      },
+      {
+        "station_id": "PK03",
+        "primary_actor_id": "K03"
+      },
+      {
+        "station_id": "PK04",
+        "primary_actor_id": "K04"
+      },
+      {
+        "station_id": "PK05",
+        "primary_actor_id": "K05"
+      },
+      {
+        "station_id": "PK06",
+        "primary_actor_id": "K06"
+      }
+    ]
+  }
+}

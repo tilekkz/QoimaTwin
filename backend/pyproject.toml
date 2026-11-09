@@ -1,0 +1,66 @@
+[project]
+name = "qoimatwin-backend"
+version = "0.1.0"
+description = "QoimaTwin v2 backend: deterministic warehouse DES, planning, forecast and run export"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi==0.162.0",
+    "httpx==0.28.1",
+    "jsonschema==4.26.0",
+    "numpy==2.5.4",
+    "pandas==3.1.1",
+    "pydantic==2.14.3",
+    "scikit-learn==1.9.1",
+    "simpy==4.1.2",
+    "uvicorn==0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "hypothesis==6.170.15",
+    "mypy==2.4.1",
+    "pre-commit==4.7.0",
+    "pytest==9.2.0",
+    "pytest-cov==7.1.0",
+    "pytest-xdist==3.8.0",
+    "ruff==0.17.4",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = ["jsonschema", "jsonschema.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-config --strict-markers -m 'not slow'"
+markers = [
+    "acceptance: numbered gates from 05_Acceptance_and_Demo.md",
+    "integration: complete subsystem integration",
+    "property: generated state-machine tests",
+    "performance: controlled benchmark runs",
+    "slow: hourly simulations and other expensive checks; full CI runs include these",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["app"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true

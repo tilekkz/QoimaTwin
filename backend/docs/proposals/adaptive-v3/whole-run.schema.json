@@ -1,0 +1,2639 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "rational": {
+      "type": "object",
+      "properties": {
+        "numerator": {
+          "type": "integer"
+        },
+        "denominator": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "additionalProperties": false
+    },
+    "operation": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "order_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "planned_end_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_node": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_node": {
+          "type": "string",
+          "minLength": 1
+        },
+        "route": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "graph_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "node_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "arc_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "length_m": {
+                  "type": "object",
+                  "properties": {
+                    "numerator": {
+                      "type": "integer"
+                    },
+                    "denominator": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  },
+                  "required": [
+                    "numerator",
+                    "denominator"
+                  ],
+                  "additionalProperties": false
+                },
+                "cost_m": {
+                  "type": "object",
+                  "properties": {
+                    "numerator": {
+                      "type": "integer"
+                    },
+                    "denominator": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  },
+                  "required": [
+                    "numerator",
+                    "denominator"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "graph_id",
+                "node_ids",
+                "arc_ids",
+                "length_m",
+                "cost_m"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "carrying_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cart_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "order_id",
+        "start_tick",
+        "planned_end_tick",
+        "source_node",
+        "target_node",
+        "route",
+        "carrying_id",
+        "cart_id"
+      ],
+      "additionalProperties": false
+    },
+    "pose": {
+      "type": "object",
+      "properties": {
+        "edge_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "progress": {
+          "type": "object",
+          "properties": {
+            "numerator": {
+              "type": "integer"
+            },
+            "denominator": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator"
+          ],
+          "additionalProperties": false
+        },
+        "yaw_quarters": {
+          "type": "object",
+          "properties": {
+            "numerator": {
+              "type": "integer"
+            },
+            "denominator": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "edge_id",
+        "progress",
+        "yaw_quarters"
+      ],
+      "additionalProperties": false
+    },
+    "vector": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "numerator": {
+            "type": "integer"
+          },
+          "denominator": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "numerator",
+          "denominator"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "motion": {
+      "type": "object",
+      "properties": {
+        "phase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "planned_end_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "start": {
+          "type": "object",
+          "properties": {
+            "edge_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "progress": {
+              "type": "object",
+              "properties": {
+                "numerator": {
+                  "type": "integer"
+                },
+                "denominator": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "numerator",
+                "denominator"
+              ],
+              "additionalProperties": false
+            },
+            "yaw_quarters": {
+              "type": "object",
+              "properties": {
+                "numerator": {
+                  "type": "integer"
+                },
+                "denominator": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "numerator",
+                "denominator"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "edge_id",
+            "progress",
+            "yaw_quarters"
+          ],
+          "additionalProperties": false
+        },
+        "end": {
+          "type": "object",
+          "properties": {
+            "edge_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "progress": {
+              "type": "object",
+              "properties": {
+                "numerator": {
+                  "type": "integer"
+                },
+                "denominator": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "numerator",
+                "denominator"
+              ],
+              "additionalProperties": false
+            },
+            "yaw_quarters": {
+              "type": "object",
+              "properties": {
+                "numerator": {
+                  "type": "integer"
+                },
+                "denominator": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "numerator",
+                "denominator"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "edge_id",
+            "progress",
+            "yaw_quarters"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "phase",
+        "start_tick",
+        "planned_end_tick",
+        "start",
+        "end"
+      ],
+      "additionalProperties": false
+    },
+    "stock": {
+      "type": "object",
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "containers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "container_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "owner_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sealed_for": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "container_id",
+              "owner_id",
+              "sealed_for"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "position": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/vector"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "container_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "unit_id",
+              "position",
+              "container_id"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "revision",
+        "containers",
+        "locations"
+      ],
+      "additionalProperties": false
+    },
+    "balance": {
+      "type": "object",
+      "properties": {
+        "units_by_sku": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2
+          }
+        },
+        "onsite_units_by_sku": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2
+          }
+        },
+        "shipped_units_by_sku": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "items": false,
+            "minItems": 2
+          }
+        },
+        "contents_mass_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "primary_tare_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "container_tare_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "onsite_mass_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "shipped_mass_kg": {
+          "$ref": "#/$defs/rational"
+        },
+        "disposed_mass_kg": {
+          "$ref": "#/$defs/rational"
+        }
+      },
+      "required": [
+        "units_by_sku",
+        "onsite_units_by_sku",
+        "shipped_units_by_sku",
+        "contents_mass_kg",
+        "primary_tare_kg",
+        "container_tare_kg",
+        "onsite_mass_kg",
+        "shipped_mass_kg",
+        "disposed_mass_kg"
+      ],
+      "additionalProperties": false
+    },
+    "delta": {
+      "type": "object",
+      "properties": {
+        "transaction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "before": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "container": {
+                "type": "object",
+                "properties": {
+                  "container_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "owner_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sealed_for": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "container_id",
+                  "owner_id",
+                  "sealed_for"
+                ],
+                "additionalProperties": false
+              },
+              "gross_mass_kg": {
+                "$ref": "#/$defs/rational"
+              },
+              "units": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "unit_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "position": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/vector"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "unit_id",
+                    "position"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "container",
+              "gross_mass_kg",
+              "units"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "after": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "container": {
+                "type": "object",
+                "properties": {
+                  "container_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "owner_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sealed_for": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "container_id",
+                  "owner_id",
+                  "sealed_for"
+                ],
+                "additionalProperties": false
+              },
+              "gross_mass_kg": {
+                "$ref": "#/$defs/rational"
+              },
+              "units": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "unit_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "position": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/vector"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "unit_id",
+                    "position"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "container",
+              "gross_mass_kg",
+              "units"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "delta_type": {
+          "enum": [
+            "stock",
+            "receipt_creation"
+          ]
+        },
+        "receipt": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "receipt_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "hu_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sku_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "lot_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity_units": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "receipt_id",
+                "hu_id",
+                "sku_id",
+                "lot_id",
+                "quantity_units"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "origin_hu": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sku_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "lot_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "recipe": {
+                "type": "object",
+                "properties": {
+                  "archetype_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "dimensions": {
+                    "$ref": "#/$defs/vector"
+                  },
+                  "contents_mass_kg": {
+                    "$ref": "#/$defs/rational"
+                  },
+                  "primary_tare_kg": {
+                    "$ref": "#/$defs/rational"
+                  }
+                },
+                "required": [
+                  "archetype_id",
+                  "dimensions",
+                  "contents_mass_kg",
+                  "primary_tare_kg"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "unit_id",
+              "origin_hu",
+              "sku_id",
+              "lot_id",
+              "ordinal",
+              "recipe"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "transaction_id",
+        "revision",
+        "operation",
+        "unit_ids",
+        "before",
+        "after",
+        "delta_type",
+        "receipt",
+        "created_tokens"
+      ],
+      "additionalProperties": false
+    },
+    "worker": {
+      "type": "object",
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/operation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "waiting_since": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "queue_ticks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "paid_ticks": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "actor_id",
+        "node",
+        "order_id",
+        "operation",
+        "waiting_since",
+        "queue_ticks",
+        "paid_ticks"
+      ],
+      "additionalProperties": false
+    },
+    "cart": {
+      "type": "object",
+      "properties": {
+        "cart_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/operation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "order_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "cart_id",
+        "node",
+        "operation",
+        "order_id"
+      ],
+      "additionalProperties": false
+    },
+    "order": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "admitted_tick": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "shipped_tick": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "order_id",
+        "status",
+        "admitted_tick",
+        "shipped_tick"
+      ],
+      "additionalProperties": false
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "stock": {
+          "$ref": "#/$defs/stock"
+        },
+        "balance": {
+          "$ref": "#/$defs/balance"
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/worker"
+          }
+        },
+        "cart": {
+          "$ref": "#/$defs/cart"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/order"
+          }
+        },
+        "leases": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "belt": {
+          "type": "object",
+          "properties": {
+            "tick": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "arrived": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "carriers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hu_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "payload_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "status": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pose": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/$defs/pose"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "motion": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/$defs/motion"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "occupied_cells": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "required": [
+                  "job_id",
+                  "hu_id",
+                  "payload_id",
+                  "status",
+                  "pose",
+                  "motion",
+                  "occupied_cells"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "leases": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            },
+            "queue_ticks": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "tick",
+            "arrived",
+            "completed",
+            "carriers",
+            "leases",
+            "queue_ticks"
+          ],
+          "additionalProperties": false
+        },
+        "receipts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "receipt_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "unreleased",
+                  "waiting",
+                  "approaching",
+                  "awaiting_service",
+                  "service",
+                  "carrying",
+                  "buffered",
+                  "returning",
+                  "complete"
+                ]
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "buffer_owner_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "admitted_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "credited_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "placed_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "returned_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "wait_reason": {
+                "enum": [
+                  null,
+                  "slot_busy",
+                  "buffer_busy",
+                  "receiver_busy",
+                  "service_window",
+                  "port_busy"
+                ]
+              },
+              "paid_exposure_ticks": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "receipt_id",
+              "status",
+              "actor_id",
+              "buffer_owner_id",
+              "admitted_tick",
+              "credited_tick",
+              "placed_tick",
+              "returned_tick",
+              "wait_reason",
+              "paid_exposure_ticks"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "inventory": {
+          "type": "object",
+          "properties": {
+            "registered_receipt_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "claims": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "claim_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "job_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "container_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "unit_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1
+                  },
+                  "whole_hu": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "claim_id",
+                  "job_id",
+                  "container_id",
+                  "unit_ids",
+                  "whole_hu"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "claim_generation": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "registered_receipt_ids",
+            "claims",
+            "claim_generation"
+          ],
+          "additionalProperties": false
+        },
+        "whole_orders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "job_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "unreleased",
+                  "waiting",
+                  "approaching",
+                  "carrying",
+                  "buffered",
+                  "service",
+                  "returning",
+                  "complete"
+                ]
+              },
+              "actor_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "buffer_owner_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "admitted_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "picked_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "buffered_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "buffer_picked_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "port_reserved_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "service_started_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "shipped_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "returned_tick": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "wait_reason": {
+                "enum": [
+                  null,
+                  "buffer_busy",
+                  "shipper_busy",
+                  "port_busy",
+                  "shipped_capacity",
+                  "service_window"
+                ]
+              },
+              "paid_exposure_ticks": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "port_reservation_ticks": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "port_service_ticks": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "job_id",
+              "status",
+              "actor_id",
+              "buffer_owner_id",
+              "admitted_tick",
+              "picked_tick",
+              "buffered_tick",
+              "buffer_picked_tick",
+              "port_reserved_tick",
+              "service_started_tick",
+              "shipped_tick",
+              "returned_tick",
+              "wait_reason",
+              "paid_exposure_ticks",
+              "port_reservation_ticks",
+              "port_service_ticks"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "stock",
+        "balance",
+        "workers",
+        "cart",
+        "orders",
+        "leases",
+        "belt",
+        "receipts",
+        "inventory",
+        "whole_orders"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_id": {
+      "const": "qoima.connected-manual-whole-run.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "contract_status": {
+      "const": "proposal"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_revision": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "horizon_tick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "end_tick_limit": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "observed_until_tick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial"
+      ]
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "actual_engine_component_run": {
+          "const": true
+        },
+        "internal_inventory_integration": {
+          "const": true
+        },
+        "full_v3": {
+          "const": false
+        },
+        "frontend_adapter": {
+          "const": false
+        },
+        "hand_contact_proof": {
+          "const": false
+        },
+        "arbitrary_seek": {
+          "const": false
+        },
+        "interpolation": {
+          "const": false
+        },
+        "captured_checkpoint_retrieval": {
+          "const": true
+        },
+        "receipt_inventory_creation": {
+          "const": true
+        },
+        "inventory_claims": {
+          "const": true
+        },
+        "manual_whole_hu": {
+          "const": true
+        }
+      },
+      "required": [
+        "actual_engine_component_run",
+        "internal_inventory_integration",
+        "full_v3",
+        "frontend_adapter",
+        "hand_contact_proof",
+        "arbitrary_seek",
+        "interpolation",
+        "captured_checkpoint_retrieval",
+        "receipt_inventory_creation",
+        "inventory_claims",
+        "manual_whole_hu"
+      ],
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "properties": {
+        "graph": {
+          "type": "object",
+          "properties": {
+            "graph_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "node_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "arcs": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "required": [
+            "graph_id",
+            "node_ids",
+            "arcs"
+          ],
+          "additionalProperties": false
+        },
+        "source_revision": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_hashes": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "actors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "actor_id"
+            ]
+          }
+        },
+        "owners": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "owner_id"
+            ]
+          }
+        },
+        "container_recipes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "recipe_id"
+            ]
+          }
+        },
+        "initial_containers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "container_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "recipe_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initial_owner_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initial_sealed_for": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "container_id",
+              "recipe_id",
+              "initial_owner_id",
+              "initial_sealed_for"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "initial_units": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "origin_hu": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sku_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "lot_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ordinal": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "recipe": {
+                "type": "object",
+                "properties": {
+                  "archetype_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "dimensions": {
+                    "$ref": "#/$defs/vector"
+                  },
+                  "contents_mass_kg": {
+                    "$ref": "#/$defs/rational"
+                  },
+                  "primary_tare_kg": {
+                    "$ref": "#/$defs/rational"
+                  }
+                },
+                "required": [
+                  "archetype_id",
+                  "dimensions",
+                  "contents_mass_kg",
+                  "primary_tare_kg"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "unit_id",
+              "origin_hu",
+              "sku_id",
+              "lot_id",
+              "ordinal",
+              "recipe"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "declared_receipts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "definition": {
+                "type": "object",
+                "properties": {
+                  "receipt_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hu_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sku_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lot_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "quantity_units": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                },
+                "required": [
+                  "receipt_id",
+                  "hu_id",
+                  "sku_id",
+                  "lot_id",
+                  "quantity_units"
+                ],
+                "additionalProperties": false
+              },
+              "arrival_tick": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "port_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "slot_owner_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "container_recipe_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "units": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "unit_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "origin_hu": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sku_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "lot_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "ordinal": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "recipe": {
+                      "type": "object",
+                      "properties": {
+                        "archetype_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "dimensions": {
+                          "$ref": "#/$defs/vector"
+                        },
+                        "contents_mass_kg": {
+                          "$ref": "#/$defs/rational"
+                        },
+                        "primary_tare_kg": {
+                          "$ref": "#/$defs/rational"
+                        }
+                      },
+                      "required": [
+                        "archetype_id",
+                        "dimensions",
+                        "contents_mass_kg",
+                        "primary_tare_kg"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "unit_id",
+                    "origin_hu",
+                    "sku_id",
+                    "lot_id",
+                    "ordinal",
+                    "recipe"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "existence": {
+                "const": "declared_until_service_completion"
+              }
+            },
+            "required": [
+              "definition",
+              "arrival_tick",
+              "port_id",
+              "slot_owner_id",
+              "container_recipe_id",
+              "units",
+              "existence"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "receipt_process": {
+          "type": "object",
+          "properties": {
+            "ports": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "places": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "offers": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "pickup_tick": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "place_tick": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "route_policy": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "ports",
+            "places",
+            "offers",
+            "pickup_tick",
+            "place_tick",
+            "route_policy"
+          ],
+          "additionalProperties": false
+        },
+        "whole_process": {
+          "type": "object"
+        },
+        "workflow_profile": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "graph",
+        "source_revision",
+        "source_hashes",
+        "actors",
+        "owners",
+        "container_recipes",
+        "initial_containers",
+        "initial_units",
+        "declared_receipts",
+        "orders",
+        "receipt_process",
+        "whole_process",
+        "workflow_profile"
+      ],
+      "additionalProperties": false
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "metrics_version": {
+          "const": "qoima-whole-flow-metrics-v1"
+        },
+        "counts_boundary": {
+          "const": "settled_tick_inclusive"
+        },
+        "integral_window": {
+          "const": "[0,T)"
+        },
+        "at_horizon": {
+          "type": "object"
+        },
+        "at_end": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "metrics_version",
+        "counts_boundary",
+        "integral_window",
+        "at_horizon",
+        "at_end"
+      ],
+      "additionalProperties": false
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "order_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actor_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "operation": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/operation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "delta": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/delta"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "belt_event": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "seq": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "tick": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "kind": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "job_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "hu_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "payload_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "edge_id": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "pose": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/$defs/pose"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "planned_end_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "resources": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "required": [
+                  "seq",
+                  "tick",
+                  "kind",
+                  "job_id",
+                  "hu_id",
+                  "payload_id",
+                  "edge_id",
+                  "pose",
+                  "planned_end_tick",
+                  "resources"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "receipt": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "receipt_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "status": {
+                    "enum": [
+                      "unreleased",
+                      "waiting",
+                      "approaching",
+                      "awaiting_service",
+                      "service",
+                      "carrying",
+                      "buffered",
+                      "returning",
+                      "complete"
+                    ]
+                  },
+                  "actor_id": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "buffer_owner_id": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "admitted_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "credited_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "placed_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "returned_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "wait_reason": {
+                    "enum": [
+                      null,
+                      "slot_busy",
+                      "buffer_busy",
+                      "receiver_busy",
+                      "service_window",
+                      "port_busy"
+                    ]
+                  },
+                  "paid_exposure_ticks": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "receipt_id",
+                  "status",
+                  "actor_id",
+                  "buffer_owner_id",
+                  "admitted_tick",
+                  "credited_tick",
+                  "placed_tick",
+                  "returned_tick",
+                  "wait_reason",
+                  "paid_exposure_ticks"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "inventory_claim": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "claim_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "job_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "container_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "unit_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1
+                  },
+                  "whole_hu": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "claim_id",
+                  "job_id",
+                  "container_id",
+                  "unit_ids",
+                  "whole_hu"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "released_claim_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "resource_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "whole_order": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "job_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "status": {
+                    "enum": [
+                      "unreleased",
+                      "waiting",
+                      "approaching",
+                      "carrying",
+                      "buffered",
+                      "service",
+                      "returning",
+                      "complete"
+                    ]
+                  },
+                  "actor_id": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "buffer_owner_id": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "admitted_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "picked_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "buffered_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "buffer_picked_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "port_reserved_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "service_started_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "shipped_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "returned_tick": {
+                    "anyOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "wait_reason": {
+                    "enum": [
+                      null,
+                      "buffer_busy",
+                      "shipper_busy",
+                      "port_busy",
+                      "shipped_capacity",
+                      "service_window"
+                    ]
+                  },
+                  "paid_exposure_ticks": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "port_reservation_ticks": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "port_service_ticks": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "job_id",
+                  "status",
+                  "actor_id",
+                  "buffer_owner_id",
+                  "admitted_tick",
+                  "picked_tick",
+                  "buffered_tick",
+                  "buffer_picked_tick",
+                  "port_reserved_tick",
+                  "service_started_tick",
+                  "shipped_tick",
+                  "returned_tick",
+                  "wait_reason",
+                  "paid_exposure_ticks",
+                  "port_reservation_ticks",
+                  "port_service_ticks"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "seq",
+          "tick",
+          "kind",
+          "order_id",
+          "actor_id",
+          "operation",
+          "delta",
+          "belt_event",
+          "receipt",
+          "inventory_claim",
+          "released_claim_id",
+          "resource_id",
+          "whole_order"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "checkpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tick": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "last_seq": {
+            "type": "integer",
+            "minimum": -1
+          },
+          "state_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state": {
+            "$ref": "#/$defs/state"
+          }
+        },
+        "required": [
+          "tick",
+          "last_seq",
+          "state_hash",
+          "state"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "at_horizon": {
+      "type": "object",
+      "properties": {
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_seq": {
+          "type": "integer",
+          "minimum": -1
+        },
+        "state_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "state": {
+          "$ref": "#/$defs/state"
+        }
+      },
+      "required": [
+        "tick",
+        "last_seq",
+        "state_hash",
+        "state"
+      ],
+      "additionalProperties": false
+    },
+    "at_end": {
+      "type": "object",
+      "properties": {
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_seq": {
+          "type": "integer",
+          "minimum": -1
+        },
+        "state_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "state": {
+          "$ref": "#/$defs/state"
+        }
+      },
+      "required": [
+        "tick",
+        "last_seq",
+        "state_hash",
+        "state"
+      ],
+      "additionalProperties": false
+    },
+    "publication_version": {
+      "const": "qoima-whole-publication-0.1.0"
+    },
+    "physical_input_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "contract_status",
+    "run_id",
+    "input_hash",
+    "engine_version",
+    "source_revision",
+    "horizon_tick",
+    "end_tick_limit",
+    "observed_until_tick",
+    "status",
+    "capabilities",
+    "catalog",
+    "metrics",
+    "events",
+    "checkpoints",
+    "at_horizon",
+    "at_end",
+    "publication_version",
+    "physical_input_hash"
+  ],
+  "additionalProperties": false
+}
