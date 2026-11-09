@@ -64,3 +64,13 @@ body.qs{background:var(--bg);color:var(--ink);font-family:var(--ui);-webkit-font
 .qs :is(.source-summary,.profile-facts){padding:18px 22px}
 .qs .role-badge,.qs .skill-state{border-radius:999px}
 @media (prefers-reduced-motion:reduce){.qs *,.qs *::before,.qs *::after{transition-duration:.01ms!important;animation:none!important}}
+
+/* Shared desktop navigation stays readable on the presentation screens. */
+@media (min-width:1024px){
+ .qs-tabs a,.qs-extra{font-size:14px}
+ .qs-extra{color:#0b6b63}
+ .qs-menu span{color:#52645f}
+}
+@media (min-width:1024px) and (max-width:1199px){
+ .qs-tabs a{padding-inline:12px}
+}

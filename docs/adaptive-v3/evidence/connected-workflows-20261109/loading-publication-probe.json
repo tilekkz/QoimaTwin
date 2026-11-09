@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "source_hashes": {
+    "frontend/src/adaptive-v3/scenarioPage.ts": "64848fa86ddde3d8d1d9915683322939d0d53ba37044796fdf9c8128941147b5"
+  },
+  "cases": [
+    {
+      "stage": "planner",
+      "kind": "abort",
+      "scenario": "N0",
+      "passed": true,
+      "state_sequence": [
+        "loading",
+        "error:AbortError"
+      ],
+      "cleanup_order": [
+        "manual.dispose",
+        "native.dispose",
+        "fail",
+        "base.dispose"
+      ]
+    },
+    {
+      "stage": "planner",
+      "kind": "stale",
+      "scenario": "N0",
+      "passed": true,
+      "state_sequence": [
+        "loading",
+        "newer_load_ready"
+      ],
+      "cleanup_order": [
+        "manual.dispose",
+        "native.dispose"
+      ]
+    },
+    {
+      "stage": "base",
+      "kind": "abort",
+      "scenario": "N0",
+      "passed": true,
+      "state_sequence": [
+        "loading",
+        "error:AbortError"
+      ],
+      "cleanup_order": [
+        "base.dispose",
+        "fail"
+      ]
+    },
+    {
+      "stage": "base",
+      "kind": "stale",
+      "scenario": "N0",
+      "passed": true,
+      "state_sequence": [
+        "loading",
+        "newer_load_ready"
+      ],
+      "cleanup_order": [
+        "base.dispose"
+      ]
+    },
+    {
+      "stage": "staff",
+      "kind": "abort",
+      "scenario": "N4",
+      "passed": true,
+      "state_sequence": [
+        "loading",
+        "error:AbortError"
+      ],
+      "cleanup_order": [
+        "staff.dispose",
+        "fail",
+        "base.dispose"
+      ]
+    },
+    {
+      "stage": "staff",
+      "kind": "stale",
+      "scenario": "N4",
+      "passed": true,
+      "state_sequence": [
+        "loading",
+        "newer_load_ready"
+      ],
+      "cleanup_order": [
+        "staff.dispose"
+      ]
+    }
+  ],
+  "scope": "Actual current load() AST body with expensive imported factories and DOM stubbed. Explicit60s timer callback and stale epochs exercised; no Chrome, native-geometry, rendering or real60s-duration claim."
+}

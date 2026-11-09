@@ -1,0 +1,46 @@
+{
+  "scope": [
+    "scenarioPage.ts",
+    "warehouseScenarioEffects.ts",
+    "warehouseScenarioCosts.ts",
+    "warehouseRelocationCostPanel.ts"
+  ],
+  "source_hashes_before_fixes": {
+    "frontend/src/adaptive-v3/scenarioPage.ts": "175141198eb38c3a8d4ebd6449371ac8f8029e5b543bb9bec02e272042f63dc2",
+    "frontend/src/adaptive-v3/warehouseScenarioEffects.ts": "6561bd116310e40a58a5926fb2199ad3dbb82204645eb0085efaea02f2a2c7e1",
+    "frontend/src/adaptive-v3/warehouseScenarioCosts.ts": "06c44dc9124c730df5236fa462ae51df61ff03b8f70717bc84d7079afb80c755",
+    "frontend/src/adaptive-v3/warehouseRelocationCostPanel.ts": "506450cbed76040d0a88d3d949505177a7a86d670114050c8b2b8a00cf6f8b8b"
+  },
+  "findings": [
+    {
+      "priority": "P2",
+      "path": "frontend/src/adaptive-v3/scenarioPage.ts",
+      "lines": [
+        110,
+        132
+      ],
+      "trigger": "Current60s abort during planner/hash or N4 adapter await could publish ready because epoch checks ignored signal.aborted.",
+      "old_evidence": "probes.json abort_probe",
+      "minimal_fix": "Call signal.throwIfAborted after token check; dispose unclaimed base/staff adapter; pending native/manual before base.",
+      "resolution": "ROOT_FIXED; publication-probe.json6PASS"
+    },
+    {
+      "priority": "P2",
+      "path": "frontend/src/adaptive-v3/warehouseScenarioCosts.ts",
+      "lines": [
+        121,
+        141
+      ],
+      "trigger": "Native LONG job.route_id is null; old empty_route_s omitted its192.373971638s home-to-stage route and reported0. PALLET/IBC/HEAVY native routes were also omitted.",
+      "old_evidence": "probes.json cost_probe",
+      "resolution": "FIXED; empty_forklift_route_s with four-component absolute prefixes; scenario-costs/checks.json12PASS"
+    }
+  ],
+  "positive_review": [
+    "Effects requires issued current plan; forward-playing crossed events only; LONG buffer delivery explicitly excluded from dispatch cue; no fabricated belt motion.",
+    "Request waiting differs from person/vehicle/post reservations; active/paid labor remain null; no-op A/B comparison declares no winner or gain.",
+    "Relocation panel checks exact bytes SHA and analytical/native-refused scope before showing costs; periods are not hours; disposal aborts owned fetch.",
+    "LONG UI says outbound buffer,200kg HU+separate40kg kit and external supplier/recipient boundaries, without claiming source rack pickup."
+  ],
+  "method": "Exact-source bounded review + Node probes; no Chrome, physics rerun or full-TZ admission. Graph qoima-twin stale2026-11-08T05:55:56Z; all4 files not_tracked, direct source fallback."
+}

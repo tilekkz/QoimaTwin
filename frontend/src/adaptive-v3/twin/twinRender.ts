@@ -6,6 +6,10 @@
  */
 import * as THREE from 'three';
 import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
+import {createWarehouseCargo} from '../warehouseCargo';
+import {createTwinInventoryScene} from './twinInventoryScene';
+import type {createTwinInventory} from './twinInventory';
+import type {createTwinWarehouseMotion} from './twinWarehouseMotion';
 import {createTwinLayoutVariant,type TwinLayoutPlan} from './twinLayoutVariant';
 import {ATMO_ZONES,activePulses,sampleAtmosphere,type AtmoState,type Variant} from './twinScenario';
 import {reactionsAt,visibleReactions,type Bubble,type Effects,type WorkerSpot} from './twinScenario';
@@ -47,16 +51,18 @@ function skyTexture(){const c=document.createElement('canvas');c.width=2;c.heigh
 
 export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,reducedMotion:()=>boolean){
  let ctx:{renderer:THREE.WebGLRenderer;scene:THREE.Scene;camera:THREE.OrthographicCamera}|null=null,ready=false,disposed=false;
- let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[];
+ let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[],focus:Partial<Record<Variant,Pose>>|null=null;
  let effects:Effects='full',budget=BUDGET_MAX,selectedActor:string|null=null,onBubble:(id:string,v:Variant)=>void=()=>{},onLabel:(v:Variant)=>void=()=>{};
  const spots:WorkerSpot[]=[],heads=new Map<string,THREE.Vector3>();
  let layout:ReturnType<typeof createTwinLayoutVariant>|undefined;
+ let inventory:ReturnType<typeof createTwinInventoryScene>|undefined;
+ let motion:Awaited<ReturnType<typeof createTwinWarehouseMotion>>|undefined;
+ const motionLights=new Map<THREE.Object3D,number>();
  const zoneEdgesA=new Map<string,THREE.BufferGeometry>(),zoneEdgesB=new Map<string,THREE.BufferGeometry>();
  const overlay=new THREE.Scene(),owned:(THREE.BufferGeometry|THREE.Material)[]=[];
  const own=<T extends THREE.BufferGeometry|THREE.Material>(x:T)=>{owned.push(x);return x;};
- /** The 3D warehouse is static while the episode plays: only overlays and DOM change. Each pass keeps its scene
-  *  image (colour + depth) in a render target and re-renders it only when the scene, camera, size or variant changes.
-  *  The blit writes depth too, so zone floors and markers are still hidden behind racks exactly as before. */
+ /** Racks and stored goods retain a colour/depth cache. Moving workers, vehicles and belt cargo
+  * render on layer 1 at the current clock time against that depth on every A/B pass. */
  /*  While the camera moves, at most one pass is re-rendered per animation frame; the other is shown as its last
   *  image shifted and scaled to the new camera. With a fixed-orientation orthographic camera that reprojection is
   *  exact for colour and depth (only the edge that scrolls into view is missing for one frame). */
@@ -186,19 +192,42 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   for(const [id,z]of zones){if(!zoneEdgesA.has(id))zoneEdgesA.set(id,z.edge.geometry);z.edge.geometry=zoneEdgesA.get(id)!;const r=next?.zones.get(id)?.floor_bounds_xz_m;if(r)zoneEdgesB.set(id,new THREE.BufferGeometry().setFromPoints([[r.min[0],.06,r.min[1]],[r.max[0],.06,r.min[1]],[r.max[0],.06,r.max[1]],[r.min[0],.06,r.max[1]]].map(p=>new THREE.Vector3(...p))));}
   draw();return layout?.snapshot()??null;
  }
- const variantHead=(id:string,v:Variant)=>{const p=heads.get(id)?.clone();return p&&v==='B'&&layout?p.add(layout.actorDelta(id)):p;};
+ const variantHead=(id:string,v:Variant)=>{
+  const moving=motion?.actorPosition(v,t,id);if(moving)return new THREE.Vector3(...moving);
+  const p=heads.get(id)?.clone();return p&&v==='B'&&layout?p.add(layout.actorDelta(id)):p;
+ };
  const variantWorkers=(v:Variant='A'):readonly WorkerSpot[]=>v==='A'||!layout?spots:spots.map(s=>{const p=layout!.bounds('actor',s.actor_id)?.position;const zone=p?[...layout!.zones.values()].find(z=>p[0]>=z.floor_bounds_xz_m.min[0]&&p[0]<=z.floor_bounds_xz_m.max[0]&&p[2]>=z.floor_bounds_xz_m.min[1]&&p[2]<=z.floor_bounds_xz_m.max[1])?.zone_id:undefined;return {...s,zone_id:zone??s.zone_id};});
  // «Рядом» draws A then B every frame. Rewriting the cargo matrices on each switch, even only the few moved units,
  // updates a buffer the GPU is still drawing from and stalled an integrated GPU by ~20 ms a frame. Each variant owns
  // a fixed matrix buffer instead; switching only swaps which buffer the meshes read.
  function apply(variant:Variant){
-  if(applied===variant)return;applied=variant;
-  if(layout){layout.apply(variant);return;}
-  for(const h of hu){
-   const pos=h.pos[variant],arr=h.arr[variant];if(!pos||!arr)continue;const moved=!h.mesh.position.equals(pos);h.mesh.position.copy(pos);
-   h.mesh.instanceMatrix=h.attr[variant]??=new THREE.InstancedBufferAttribute(arr,16);
-   if(moved)h.mesh.updateWorldMatrix(true,false);
+  if(applied!==variant){
+   applied=variant;
+   if(layout)layout.apply(variant);
+   else for(const h of hu){
+    const pos=h.pos[variant],arr=h.arr[variant];if(!pos||!arr)continue;const moved=!h.mesh.position.equals(pos);h.mesh.position.copy(pos);
+    h.mesh.instanceMatrix=h.attr[variant]??=new THREE.InstancedBufferAttribute(arr,16);
+    if(moved)h.mesh.updateWorldMatrix(true,false);
+   }
   }
+  inventory?.apply(variant);motion?.apply(variant,t);
+ }
+
+ function setInventory(next:ReturnType<typeof createTwinInventory>){
+  if(!ctx)throw Error('Warehouse scene is not ready');apply('A');
+  inventory??=createTwinInventoryScene(ctx.scene,createWarehouseCargo(bundle).snapshot());
+  inventory.setInventory(next);version++;draw();
+ }
+ function setMotion(next:Awaited<ReturnType<typeof createTwinWarehouseMotion>>){
+  if(!ctx)throw Error('Warehouse scene is not ready');motion?.dispose();motion=next;
+  ctx.scene.traverse(node=>{if(node instanceof THREE.Light){if(!motionLights.has(node))motionLights.set(node,node.layers.mask);node.layers.enable(1);}});
+  version++;draw();
+ }
+ function drawMotion(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.Camera){
+  if(!motion)return;
+  const background=scene.background,mask=camera.layers.mask;
+  try{scene.background=null;camera.layers.set(1);scene.updateMatrixWorld(true);renderer.render(scene,camera);}
+  finally{scene.background=background;camera.layers.mask=mask;}
  }
 
  function overlayFor(variant:Variant){
@@ -219,7 +248,15 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   wasGroup.visible=true;newGroup.visible=arcGroup.visible=variant==='B';
   // In «Шторка» both copies stand in one place, so the outline shows on both halves.
   hl.visible=!!hlVariant&&(mode==='swipe'||hlVariant===variant);
-  const m=moves.find(m=>m.id===selected);selBox.visible=!!m;if(m)place(selBox,variant==='A'?m.a:m.b,1.35);
+  // A worker gets only the ring: a box round a person reads as a stretched frame from above.
+  const f=selectedActor?null:focusPose(variant);selBox.visible=!!f;if(f)place(selBox,f,moves.some(m=>m.id===selected)?1.35:1.15);
+ }
+ /** Where the selection stands in this copy: a moved unit, a selected worker, or any other picked object (HU, new slot). */
+ function focusPose(v:Variant):Pose|null{
+  const filled=selected&&inventory?.bounds(selected,v);if(filled)return filled;
+  const m=moves.find(m=>m.id===selected);if(m)return v==='A'?m.a:m.b;
+  if(selectedActor){const h=variantHead(selectedActor,v);if(h)return {position:[h.x,0,h.z],yaw:0,dims:[.9,h.y+.15,.9]};}
+  return focus?.[v]??null;
  }
  function domFor(pass:Pass,W:number,H:number){
   const {variant:v,vp,sc}=pass,sample=sampleAtmosphere(v,t);
@@ -259,8 +296,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    b.dataset.actor=r.actor_id;b.setAttribute('aria-label',`${r.actor_id}: ${r.text}`);b.title=`${r.actor_id} · ${r.text}`;
    b.hidden=false;b.classList.toggle('is-selected',r.actor_id===selectedActor);b.style.translate=`${q.x}px ${q.y}px`;
   });
-  const m=moves.find(m=>m.id===selected);rings[v].hidden=!m;
-  if(m){const p=v==='A'?m.a:m.b,q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1]/2,p.position[2]),vp);rings[v].hidden=!inside(q,sc);rings[v].style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-50%)`;}
+  const p=focusPose(v);rings[v].hidden=!p;
+  if(p){const q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1]/2,p.position[2]),vp);rings[v].hidden=!inside(q,sc);rings[v].style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-50%)`;}
  }
  /** The window both warehouses live in: the whole screen minus a margin, and minus the right panels on desktop. */
  function region(W:number,H:number):Rect{const narrow=W<720,m=narrow?8:14;return {x:m,y:m,w:Math.max(240,W-2*m-(narrow?0:inset)),h:H-2*m};}
@@ -321,7 +358,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     u.tColor.value=c.rt.texture;u.tDepth.value=c.rt.depthTexture;
     // A pass that shares the view with an earlier one is merged by depth instead of painted over it.
     const at=plan.indexOf(x),merge=at>0&&plan[at-1].p.vp===p.vp;blitMat.depthFunc=merge?THREE.LessEqualDepth:THREE.AlwaysDepth;
-    renderer.autoClear=false;renderer.render(blitScene,camera);renderer.render(overlay,camera);renderer.autoClear=true;
+     renderer.autoClear=false;renderer.render(blitScene,camera);apply(p.variant);drawMotion(renderer,scene,camera);renderer.render(overlay,camera);renderer.autoClear=true;
     tScene+=performance.now()-k;k=performance.now();domFor(p,W,H);tDom+=performance.now()-k;
     camera.position.add(shifted);camera.updateMatrixWorld();shifted=NO_SHIFT;
    }
@@ -351,13 +388,13 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   let best:(Pick&{d:number})|null=null;
   try{
    for(const p of list){
-    apply(p.variant);if(!layout)for(const h of hu)h.mesh.computeBoundingSphere();const targets:THREE.Object3D[]=[];scene.traverseVisible(o=>{if(o.userData.semanticKind&&['HU','module','actor'].includes(o.userData.semanticKind))targets.push(o);});setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();
+     apply(p.variant);scene.updateMatrixWorld(true);if(!layout)for(const h of hu)h.mesh.computeBoundingSphere();const targets:THREE.Object3D[]=[];scene.traverseVisible(o=>{if(o.userData.semanticKind&&['HU','module','actor','demo-stock'].includes(o.userData.semanticKind))targets.push(o);});setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();
     try{
-     const ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,-(y-p.vp.y)/p.vp.h*2+1),camera);
+      const ray=new THREE.Raycaster();ray.layers.enable(1);ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,-(y-p.vp.y)/p.vp.h*2+1),camera);
      for(const hit of ray.intersectObjects(targets,true)){
       let n:THREE.Object3D|null=hit.object;while(n&&!n.userData.semanticKind)n=n.parent;if(!n)continue;
       const id=hit.instanceId===undefined?n.userData.semanticId:n.userData.semanticIds?.[hit.instanceId];
-      if(typeof id==='string'){if(!best||hit.distance<best.d)best={variant:p.variant,kind:n.userData.semanticKind,id,d:hit.distance};break;}
+       if(typeof id==='string'){if(!best||hit.distance<best.d)best={variant:p.variant,kind:n.userData.semanticKind==='demo-stock'?'HU':n.userData.semanticKind,id,d:hit.distance};break;}
      }
     }finally{camera.position.add(p.shift);camera.updateMatrixWorld();}
    }
@@ -378,6 +415,10 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    ready=true;draw();},
   workers:variantWorkers,
   setLayoutPlan,installLayoutVariant:setLayoutPlan,
+   setInventory,setMotion,
+   inventoryBounds:(id:string,v:Variant)=>inventory?.bounds(id,v)??null,
+   inventorySnapshot:()=>inventory?.snapshot()??null,
+   motionSnapshot:()=>motion?.snapshot()??null,
   layoutSnapshot:()=>layout?.snapshot()??null,
   layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>v==='B'?layout?.bounds(kind,id)??null:null,
   /** Camera framing for a zone floor, for 'take me there' from the state list. */
@@ -397,7 +438,9 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   setSplit(next:number){split=Math.min(.92,Math.max(.08,next));draw();},
   setTime(next:number){t=next;draw();},
   setSelected(id:string|null){selected=id;draw();},
+  /** Marks a picked object that is neither a moved unit nor a worker, per copy (null clears). */
+  setFocus(f:Partial<Record<Variant,Pose>>|null){focus=f;draw();},
   highlightZone,setGateTags,
-  dispose(){layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
+   dispose(){motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }

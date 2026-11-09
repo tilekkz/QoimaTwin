@@ -43,6 +43,12 @@
  </div>
 
  <!-- floating sheets -->
+ <nav class="glass tw-motion-nav" aria-label="Показать движение в демо">
+  <span>Движение в демо</span>
+  <button type="button" data-motion-focus="belt">Конвейер</button>
+  <button type="button" data-motion-focus="forklift">Погрузчик</button>
+  <button type="button" data-motion-focus="worker">Работник</button>
+ </nav>
  <section class="glass tw-sheet tw-sheet-right" data-sheet="now" aria-labelledby="sh-now" data-open="false" inert>
   <header><h2 id="sh-now">Состояние сейчас</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
   <div id="tw-now" class="tw-now"></div>
@@ -50,6 +56,15 @@
  <section class="glass tw-sheet tw-sheet-right" data-sheet="diff" aria-labelledby="sh-diff" data-open="false" inert>
   <header><h2 id="sh-diff">Что меняет перестройка</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
   <div class="tw-sheet-body">
+  <div class="tw-stock-controls">
+   <h3 class="tw-h3">Товар на складе</h3>
+   <div class="tw-seg tw-seg-wide" role="group" aria-label="Заполнение склада">
+    <button type="button" data-stock="populated-demo-v1" aria-pressed="true">Заполненный</button>
+    <button type="button" data-stock="source530" aria-pressed="false">Исходные 530</button>
+   </div>
+   <p id="tw-stock-summary" class="tw-note" role="status">Подготавливаем товар…</p>
+   <p id="tw-stock-note" class="tw-note"></p>
+  </div>
   <dl id="tw-diff-summary" class="tw-stats"></dl>
   <ol id="tw-moves" class="tw-moves"></ol>
   </div>
@@ -63,7 +78,9 @@
   <h3 class="tw-h3">Откуда данные</h3>
   <div class="tw-prose">
    <p><b>Склад и груз.</b> Принятые модели и исходный снимок: 530 грузовых единиц, 132 модуля, 24 работника.</p>
-   <p><b>Перестройка B.</b> Демонстрационный план. Каждый перенос прошёл проверку адреса: свободен, подходит по классу груза, габаритам и массе. Расстояния — по прямой между модулями, это оценка, а не маршрут.</p>
+   <p><b>Заполнение.</b> Дополнительный товар заполняет доступные ячейки каждой планировки. Адреса приёмки и перемещений остаются свободными. Переключатель «Исходные 530» возвращает общий снимок для расчётного сравнения.</p>
+   <p><b>Движение.</b> Конвейер, погрузчик с паллетой и походка работника показаны в общем демонстрационном эпизоде. Пауза и перемотка управляют всей сценой. Это визуальная демонстрация, она не добавляет выполненные задания в расчётные результаты.</p>
+   <p><b>Перестройка B.</b> Демонстрационный план. Каждый перенос исходного груза прошёл проверку адреса по классу, габаритам и массе. Расстояния — по прямой между модулями.</p>
    <p><b>Волны состояний.</b> Заранее записанный эпизод «Перегрузка ветки упаковки». Он показывает механизм, а не результат расчётного движка: движок V3 пока не подключён.</p>
   </div>
   </div>

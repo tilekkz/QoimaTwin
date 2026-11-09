@@ -424,3 +424,11 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
  .tw *,.tw *::before,.tw *::after{animation:none!important;transition-duration:.01ms!important}
  .tw-pop,.tw-sheet{transform:none!important;filter:none!important}
 }
+.tw-motion-nav{position:absolute;z-index:5;left:50%;top:18px;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:5px 8px;border-radius:16px;white-space:nowrap}
+.tw-motion-nav span{font-size:11px;opacity:.66;margin:0 5px}
+.tw-motion-nav button{border:0;background:transparent;color:inherit;font:inherit;font-size:12px;padding:8px 10px;border-radius:11px;cursor:pointer}
+.tw-motion-nav button:hover,.tw-motion-nav button:focus-visible{background:rgba(255,255,255,.12)}
+.tw-stock-controls{padding:0 0 16px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:16px}
+.tw-stock-controls .tw-note{margin:10px 0 0}
+@media(max-width:1050px){.tw-motion-nav{top:70px}.tw-motion-nav span{display:none}}
+@media(max-width:480px){.tw-motion-nav{gap:0;padding:3px}.tw-motion-nav button{font-size:11px;padding:7px}}

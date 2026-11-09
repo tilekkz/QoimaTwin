@@ -1,0 +1,234 @@
+{
+  "schema_id": "qoima.connected-workflows-checkpoint.v1",
+  "created_utc": "2026-11-09T17:06:32.446332+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "full_TZ_closed": false,
+  "accepted_scope": [
+    "Original542 P02→K01→S01/S02 samewholeSTD111 pick/pack/carry/explicit heldHU portcell handover/return",
+    "N2 sameF01/FL01 PALLET455/IBC654/HEAVY200 nativeputaway and paidemptyreturn timeline",
+    "Postend originalactorownership/reverse/reset and downstream conservation",
+    "Sameinput schedule reservation/wait accounting with noactive-labor or KPI claim",
+    "Common completion cues/pause/seek at30x60x; defaultmute",
+    "N4 same24 realroles afterconnectedScene disposal",
+    "Explicit additional N3securedassembly crossdock toOUTbuffer withrealF02/FL02 andseparate40kgkit",
+    "Currentpaidtwo-candidate relocationreference rejects both1/2period cases, no physical relocation",
+    "Independent currentepochtimeout publication and nativeempty-route coverage fixes",
+    "R01 wholeSTD native northern receipt and R02 eastern conditional receipt into the exact slot freed after manual dispatch; N1 original eastern request preserved; commonclock finite sources/capacity and downstream conservation"
+  ],
+  "accepted_core_runtime_sha256": "765a6c5fd130d13565f6423c874a1544cd3be0bd2599eb54c949e46bc2919ef3",
+  "accepted_manual_factory_sha256": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+  "accepted_scene_sha256": "b581629369b03ccd27838588372975e158fa734358430d672e60c777104ac196",
+  "actual_browser_assertions_passed": [
+    "N0_whole_HU_pick_pack_dispatch_return_reverse_and_reset",
+    "N1_whole_HU_pick_pack_dispatch_return_reverse_and_reset",
+    "N2_three_native_receipts_empty_returns_same_F01_FL01_and_manual_dispatch_conserved",
+    "N2_multi_case_reverse_seek_and_reset_without_duplicate_HUs",
+    "N3_all20requests_present_and_unsupported_steps_do_not_complete",
+    "30x60x_play_pause_and_default_muted_shared_audio",
+    "N4_same24role_badge_reset_after_connected_scenario_disposal"
+  ],
+  "raw_browser_result_explanation": "First rawrun is RED because harness invented a forbidden-port request absent from the legal N3source. Four previous core cases passed; they were NOT rerun. Corrected remaining-only run passed N3 legal LONG route/accounting,30x60x pause andN4. Both source epochs had zero drift/page/console errors and normal owned Chrome cleanup. RawRED is preserved.",
+  "practical_manual_scope": {
+    "pad_tolerance_m": 0.001,
+    "soft_cloth_outer_proxy_tolerance_m": 0.001,
+    "full_material_or_traffic_certificate": false,
+    "original_contact_tolerances_changed": false
+  },
+  "remaining": [
+    "Integrate two-render-pass A/B and N4 genuine pending-work source binding",
+    "True sourceLONG rackpickup/upperretention/install/stow/gatecross",
+    "Required original-character cartgrip/release correctness",
+    "Current selected-source globalQA/performance/independentreview/video/coldrelease",
+    "Deep whole-repository tests/fixes/measuredoptimization"
+  ],
+  "evidence": {
+    "scenario-execution.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-plan/checks.json",
+      "sha256": "cf63dcc58e02278df8fbfdde1fecec97299b5c11d871e214773fc7274afec34e",
+      "bytes": 18337
+    },
+    "scenario-costs.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-costs/checks.json",
+      "sha256": "65cf40bbfb7b77f0ba8e3663d85d829bec00d2b7e23ba937fc5ee1858f78a7b2",
+      "bytes": 8227
+    },
+    "scenario-effects.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-effects/checks.json",
+      "sha256": "a45ee5ecaf1cf9855dc7b34254457d13f92ca1f3d6f06b9932507daaa44ee557",
+      "bytes": 3712
+    },
+    "additional-heavy-plan.json": {
+      "source": "work/v3/full-tz-closeout-20261109/additional-heavy/checks.json",
+      "sha256": "025e710c8595f27aaa35f52113be8e83d79a5fccd1c1d0190fbe0016da880e12",
+      "bytes": 139671
+    },
+    "additional-heavy-scene.json": {
+      "source": "work/v3/full-tz-closeout-20261109/additional-heavy/scene/checks.json",
+      "sha256": "11376678056a0e2af1724e1e5b26013d75ac92f4de27645f55d68cc30bed0148",
+      "bytes": 5932
+    },
+    "manual-retail-native.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/manual-final-checks.json",
+      "sha256": "65ba843654d672f4cc205f745dcf09373f798f65005d5bd6502d6e5e61c6cb22",
+      "bytes": 160223
+    },
+    "manual-express-native.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/manual-express-checks.json",
+      "sha256": "216a20802532efaa7b809c3778b350df023c6de2a42df71bd5853f221d0453b8",
+      "bytes": 158096
+    },
+    "manual-postend-native.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/postend-native/checks.json",
+      "sha256": "0ef91cd6813af84860dc58f44a0989faaf4f786bb4fcb3310b74aa3881955800",
+      "bytes": 6372
+    },
+    "browser-core-raw-RED.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-connected-browser/2026-11-09T16-58-31-498Z/checks.json",
+      "sha256": "c172a2689122361964b90fc5dc6e4df356a3ff05dbc398299119fc0a9c2c1091",
+      "bytes": 18429
+    },
+    "browser-remaining-raw.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-connected-browser/2026-11-09T17-01-21-887Z/checks.json",
+      "sha256": "5e261efc2f7a30e931221747035aaee4686a5c6577330e0e1ca29c0051a3906e",
+      "bytes": 15571
+    }
+  },
+  "supplement_evidence": {
+    "long-native-receipt.json": {
+      "source": "work/v3/full-tz-closeout-20261109/long-scenario/receipt.json",
+      "sha256": "1e3173b8e9b3d93221ded6a40f81f78810c5debd8a4be316a552996b4c12f56a",
+      "bytes": 3315
+    },
+    "long-native-raw.json": {
+      "source": "work/v3/full-tz-closeout-20261109/long-scenario/checks.json",
+      "sha256": "522a5ca01c9c8401475cde19cd2a1b8586464eda3e7255e22fc4dca47e8c1ddd",
+      "bytes": 132720
+    },
+    "long-current-execution.json": {
+      "source": "work/v3/full-tz-closeout-20261109/long-scenario/execution-checks.json",
+      "sha256": "73150350da680a2e27646574b4eadd153396d0e56f98839881db9f60455ed358",
+      "bytes": 5156
+    },
+    "long-native-pocket-void.json": {
+      "source": "work/v3/full-tz-closeout-20261109/long-scenario/pocket-void-checks.json",
+      "sha256": "73580fd3b9d554b755e56e91a41d697a39aa65a4e62995a6f533c30ec524b836",
+      "bytes": 1736
+    },
+    "long-common-scene.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/long-binding-native/checks.json",
+      "sha256": "8cd7ea65ad850f6c852e0e2be2e2e7a2b4c722ce524058a64344aded4f054285",
+      "bytes": 7562
+    },
+    "browser-long-costs.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-long-browser/2026-11-09T17-17-46-303Z/checks.json",
+      "sha256": "30e4afd5f2755d2ab274025da67859f0091ceac79eb4fa6f362b76d91e99ecf7",
+      "bytes": 17398
+    },
+    "relocation-costs.json": {
+      "source": "work/v3/full-tz-closeout-20261109/relocation-costs/checks.json",
+      "sha256": "3aab5141f99d277e0d24ca2f4518d9b5f3b145b42ccc29be0bb8617622f2bb0c",
+      "bytes": 4480
+    },
+    "relocation-trace-h1.json": {
+      "source": "work/v3/full-tz-closeout-20261109/relocation-costs/trace-h1.json",
+      "sha256": "3af85b14b61edaaaee00233cb025caf2ad162696f031e87f20cdfc80ef568015",
+      "bytes": 177352
+    },
+    "relocation-trace-h2.json": {
+      "source": "work/v3/full-tz-closeout-20261109/relocation-costs/trace-h2.json",
+      "sha256": "7b3bda4fcc660d3db6693db07e43943ab3cacd1f27c44c177c4349b601fc864d",
+      "bytes": 177361
+    },
+    "current-native-empty-costs.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-costs/checks.json",
+      "sha256": "3152cf9e0d65f8eecd68a4993ded859533ef0614f0c752cea4d00597386fb858",
+      "bytes": 12937
+    },
+    "current-native-empty-costs-receipt.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-costs/receipt-native-empty-coverage.json",
+      "sha256": "f819dbf677cebd35292693b64577e075890431e3a8c8ed9a35fc3fb0e74f3456",
+      "bytes": 1249
+    },
+    "current-scenario-effects.json": {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-effects/checks.json",
+      "sha256": "d7573775acd66d6eba364fe1ddfbafa028164dc735eb006012315c9ebc1d2a00",
+      "bytes": 4158
+    },
+    "loading-publication-probe.json": {
+      "source": "work/v3/full-tz-closeout-20261109/root-integration-review/publication-probe.json",
+      "sha256": "474836357170c96525b3a761cff40102560019c12502305d216dbd396184aad4",
+      "bytes": 2009
+    },
+    "independent-integration-review.json": {
+      "source": "work/v3/full-tz-closeout-20261109/root-integration-review/review.json",
+      "sha256": "89077f756f7ed972b79599c13c579b20965d27df8c183eaf03bebfd78a92aec2",
+      "bytes": 2652
+    }
+  },
+  "additional_browser_assertions": [
+    "N3_original20plus_explicit_crossdock_HU_and_separate40kg_kit",
+    "LONG_real_same_pair_capture_loaded_route_buffer_setdown_and_return",
+    "LONG_terminal_persists_later_vehicle_route_reverse_seek_and_reset",
+    "LONG_extension_materialized_before_equal_AB_no_op",
+    "current_paid_relocation_no_op_sourcebound_ui_horizon_switch",
+    "actual_K01_packing_frame_is_inside_native_gesture"
+  ],
+  "receiving_checkpoint": {
+    "created_utc": "2026-11-09T18:45:32.004106+00:00",
+    "evidence": {
+      "receiving-route.json": {
+        "source": "work/v3/full-tz-closeout-20261109/receiving-route/checks.json",
+        "sha256": "b6c364385f78d20d9c39acf89072cf6b3900942d60f712c39d52f7cd924d9638",
+        "bytes": 9491
+      },
+      "receiving-native-R01.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-scene/receiving-native/checks.json",
+        "sha256": "a665b7fa5df175971e4b4abfafa6170fbf09c6b977dc739ae2003fbb17d4ce94",
+        "bytes": 111179
+      },
+      "receiving-native-R02.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-scene/receiving-native-R02-conditional/checks.json",
+        "sha256": "06142fa25f184bb0dcf92c68f585709676681cb77e886187aec7195305e08588",
+        "bytes": 119088
+      },
+      "receiving-native-N1.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-scene/receiving-native-N1/checks.json",
+        "sha256": "d5d427f557d9a81f512ef7399b51ac3b15350027e5a527fc623f713da4b31be3",
+        "bytes": 112193
+      },
+      "receiving-common-scene.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-scene/receiving-binding-native/checks.json",
+        "sha256": "f82f70709ca435e2176f42a63c85299b31fda78387db98b0ac8e35d1b01fd9dd",
+        "bytes": 15592
+      },
+      "receiving-current-scheduler.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-plan/checks.json",
+        "sha256": "d88158f7560644d0f305d8cc55b6739a9d83ee8d24c0ae281874efaa68cdd0db",
+        "bytes": 22195
+      },
+      "receiving-browser-infrastructure-RED.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-receiving-browser/2026-11-09T18-12-39-569Z/checks.json",
+        "sha256": "089794df7cf97a914e5425f0c375768fdfddb136cf43f40af2adf2029548783c",
+        "bytes": 17064
+      },
+      "receiving-browser-first-raw-RED.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-receiving-browser/2026-11-09T18-13-59-285Z/checks.json",
+        "sha256": "e6fa5391b463066ee0f04b1563df28b921867edf96253ad8bc4c3bc92e3a3c4e",
+        "bytes": 20831
+      },
+      "receiving-browser-remaining.json": {
+        "source": "work/v3/full-tz-closeout-20261109/scenario-receiving-browser/2026-11-09T18-27-24-242Z/checks.json",
+        "sha256": "3cef38e8647e61b1c675c34847dc8426760aa7a24462e0ef763fce8cfd38f863",
+        "bytes": 18441
+      }
+    },
+    "actual_browser_passed_cases": 7,
+    "native_cases": 3,
+    "native_samples_per_case": 385,
+    "native_scene_checks": 14,
+    "source_request_rows_preserved": true,
+    "remaining_work_time_inferred": false,
+    "explanation": "First launch failed before page access because the PowerShell5 CIM probe exceeded 6s; owned processes were subsequently absent. First functional run passed 3 cases then failed a harness-only expectation that already caller-materialized input must appear in visual_extensions. The corrected remaining-only run passed 4 cases using preserved original source IDs. Raw REDs remain unchanged. No claim that the failed infrastructure attempt had normal cleanup. Final two functional runs had no page/console errors or source drift; all owned processes were absent, CDP shutdown succeeded, wrapper server-close timeout notes retained. These are bounded source epochs, not final A/B integration proof."
+  }
+}

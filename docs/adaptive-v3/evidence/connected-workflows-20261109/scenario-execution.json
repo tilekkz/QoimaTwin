@@ -1,0 +1,517 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "765a6c5fd130d13565f6423c874a1544cd3be0bd2599eb54c949e46bc2919ef3",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseForearmPronationPose.ts": "a2861ffa225de9e6863069fb96f2c288daa9ba187e23420f981ab72be79a760d",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/src/adaptive-v3/warehouseScenarioClock.ts": "2489467b5c7e660f09343d16d3f1288a2b7d3b8a36b71a3d4a4b49f0744040f8",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "frontend/public/data/v3/heavy-inbound-fixture.json": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+    "docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json": "8bfd657665c614e0ac0f1db00ecf83191eb70a073af05c89fe5cc3d7623ae88d",
+    "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5",
+    "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json": "0f5f422bd09ade5064159183729e877ba12d5687a78341ec716b1c67410d7ee5",
+    "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json": "7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+    "frontend/src/adaptive-v3/warehouseManualWorkflowRoute.ts": "9bcc6aeef4b54d613856de3fd884910d205b98160925fc24851d1c59c1f43186",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721"
+  },
+  "cases": [
+    {
+      "id": "N0",
+      "request_count": 16,
+      "route_count": 6,
+      "source_epoch": {
+        "kind": "semantic_rebase",
+        "changes": [
+          {
+            "path": "/base_fixture_ref/sha256",
+            "from": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+            "to": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579"
+          },
+          {
+            "path": "/registry_ref/sha256",
+            "from": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+            "to": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82"
+          },
+          {
+            "path": "/profiles_ref/sha256",
+            "from": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+            "to": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5"
+          }
+        ],
+        "physical_tables_verified": [
+          "initial_stock",
+          "workers",
+          "vehicles",
+          "ports",
+          "archetypes",
+          "skus"
+        ]
+      },
+      "materialized_input_sha256": "81e7ae0a5289f6d165b4d982f44138565d9313af0c06b24ac72130fa2eb3397c",
+      "end_counts": {
+        "requests": 16,
+        "not_released": 0,
+        "queued": 9,
+        "travelling": 0,
+        "native_join_required": 6,
+        "completed_visual": 0,
+        "refused": 1,
+        "workers": 24,
+        "vehicles": 2,
+        "baseline_handling_units": 530,
+        "total_handling_units": 538,
+        "onsite_handling_units": 530,
+        "upstream_handling_units": 8,
+        "downstream_handling_units": 0,
+        "stage_capacity": 2,
+        "stage_occupied": 0,
+        "units": 12363,
+        "gross_mass_kg": 11188.140000000001
+      },
+      "reason_counts": {
+        "NATIVE_PEDESTRIAN_TIMING_REQUIRED": 4,
+        "NATIVE_PICKUP_JOIN_REQUIRED": 2,
+        "RESOURCE_BUSY_UNTIL_HORIZON": 9,
+        "NO_COMPATIBLE_FREE_SLOT": 1
+      },
+      "samples": 26,
+      "compile_ms": 286.37289999999996
+    },
+    {
+      "id": "N1",
+      "request_count": 16,
+      "route_count": 4,
+      "source_epoch": {
+        "kind": "semantic_rebase",
+        "changes": [
+          {
+            "path": "/base_fixture_ref/sha256",
+            "from": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+            "to": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579"
+          },
+          {
+            "path": "/registry_ref/sha256",
+            "from": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+            "to": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82"
+          },
+          {
+            "path": "/profiles_ref/sha256",
+            "from": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+            "to": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5"
+          }
+        ],
+        "physical_tables_verified": [
+          "initial_stock",
+          "workers",
+          "vehicles",
+          "ports",
+          "archetypes",
+          "skus"
+        ]
+      },
+      "materialized_input_sha256": "a510828ec153a893ca5dad47d4d08da8c65aaf09a5f6088f6a05d82cdb543a37",
+      "end_counts": {
+        "requests": 16,
+        "not_released": 0,
+        "queued": 11,
+        "travelling": 0,
+        "native_join_required": 4,
+        "completed_visual": 0,
+        "refused": 1,
+        "workers": 24,
+        "vehicles": 2,
+        "baseline_handling_units": 530,
+        "total_handling_units": 538,
+        "onsite_handling_units": 530,
+        "upstream_handling_units": 8,
+        "downstream_handling_units": 0,
+        "stage_capacity": 2,
+        "stage_occupied": 0,
+        "units": 12363,
+        "gross_mass_kg": 11188.140000000001
+      },
+      "reason_counts": {
+        "NATIVE_PEDESTRIAN_TIMING_REQUIRED": 2,
+        "RESOURCE_BUSY_UNTIL_HORIZON": 11,
+        "NATIVE_PICKUP_JOIN_REQUIRED": 2,
+        "NO_COMPATIBLE_FREE_SLOT": 1
+      },
+      "samples": 20,
+      "compile_ms": 190.54550000000017
+    },
+    {
+      "id": "N2",
+      "request_count": 28,
+      "route_count": 6,
+      "source_epoch": {
+        "kind": "current",
+        "changes": [],
+        "physical_tables_verified": [
+          "initial_stock",
+          "workers",
+          "vehicles",
+          "ports",
+          "archetypes",
+          "skus"
+        ]
+      },
+      "materialized_input_sha256": "d4197e5bc041458e4720e1acba1cf02cae4802aea2d39faa81d65866ede4087e",
+      "end_counts": {
+        "requests": 28,
+        "not_released": 0,
+        "queued": 9,
+        "travelling": 0,
+        "native_join_required": 6,
+        "completed_visual": 1,
+        "refused": 12,
+        "workers": 24,
+        "vehicles": 2,
+        "baseline_handling_units": 530,
+        "total_handling_units": 550,
+        "onsite_handling_units": 531,
+        "upstream_handling_units": 19,
+        "downstream_handling_units": 0,
+        "stage_capacity": 2,
+        "stage_occupied": 0,
+        "units": 12495,
+        "gross_mass_kg": 16424.14
+      },
+      "reason_counts": {
+        "NATIVE_PEDESTRIAN_TIMING_REQUIRED": 4,
+        "PROVED_CONNECTED_PALLET455": 1,
+        "NATIVE_PICKUP_JOIN_REQUIRED": 2,
+        "RESOURCE_BUSY_UNTIL_HORIZON": 9,
+        "NO_COMPATIBLE_FREE_SLOT": 12
+      },
+      "samples": 29,
+      "compile_ms": 261.38819999999987
+    },
+    {
+      "id": "N3",
+      "request_count": 20,
+      "route_count": 6,
+      "source_epoch": {
+        "kind": "semantic_rebase",
+        "changes": [
+          {
+            "path": "/base_fixture_ref/sha256",
+            "from": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+            "to": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579"
+          },
+          {
+            "path": "/registry_ref/sha256",
+            "from": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+            "to": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82"
+          },
+          {
+            "path": "/profiles_ref/sha256",
+            "from": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+            "to": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5"
+          }
+        ],
+        "physical_tables_verified": [
+          "initial_stock",
+          "workers",
+          "vehicles",
+          "ports",
+          "archetypes",
+          "skus"
+        ]
+      },
+      "materialized_input_sha256": "48a3657fedee009a43f5047f070544c36dc5c69ac5793fb3f5bd3c96557aea4d",
+      "end_counts": {
+        "requests": 20,
+        "not_released": 0,
+        "queued": 12,
+        "travelling": 0,
+        "native_join_required": 6,
+        "completed_visual": 0,
+        "refused": 2,
+        "workers": 24,
+        "vehicles": 2,
+        "baseline_handling_units": 530,
+        "total_handling_units": 542,
+        "onsite_handling_units": 530,
+        "upstream_handling_units": 12,
+        "downstream_handling_units": 0,
+        "stage_capacity": 2,
+        "stage_occupied": 0,
+        "units": 12459,
+        "gross_mass_kg": 11988.140000000001
+      },
+      "reason_counts": {
+        "NATIVE_PEDESTRIAN_TIMING_REQUIRED": 4,
+        "NATIVE_PICKUP_JOIN_REQUIRED": 2,
+        "RESOURCE_BUSY_UNTIL_HORIZON": 12,
+        "NO_COMPATIBLE_FREE_SLOT": 2
+      },
+      "samples": 26,
+      "compile_ms": 220.3579000000002
+    }
+  ],
+  "negative_controls": [
+    "old_epoch_needs_explicit_semantic_rebase",
+    "current_base_does_not_implicitly_rebase_stale_profiles",
+    "physical_base_mass_change_rejected",
+    "forged_native_case_rejected",
+    "provided_native_motion_duration_and_pose_drive_same_clock_contract_only",
+    "post_pallet_empty_route_owns_vehicle_while_same_HU_stays_stored",
+    "upstream_mass_is_not_silently_normalized",
+    "provisional_native_slot_released_on_port_and_resource_refusals",
+    "same_proved_receipt_resolves_after_storage_and_unproved_receipt_stays_unavailable",
+    "post_pallet_terminal_already_at_graph_has_exact_body_forks_wheels_all_cargo_join_without_duplicate_stub",
+    "two_additional_native_receipts_execute_only_after_empty_returns_with_continuous_body_forks_wheels_sameHU",
+    "actual_issued_three_actor_manual_case_runs_all_four_scenarios_with_honest_completion_and_finite_leases",
+    "post_manual_actual_native_gait_owns_same_actor_while_terminal_HU_stays_downstream_and_reverse_seek_restores",
+    "forged_scenario_plan_rejected"
+  ],
+  "scope": "Pure scheduling/accounting and native-hook clock integration; no new native grip/gait proof.",
+  "post_pallet_join": {
+    "passed": true,
+    "before_s": 404.92815027220763,
+    "at_s": 404.92815037220765,
+    "terminal_pose": {
+      "position": [
+        120.8,
+        0,
+        17.5
+      ],
+      "yaw_rad": 4.71238898038469
+    },
+    "graph_route_start": [
+      120.8,
+      0,
+      17.5
+    ],
+    "physical_before": {
+      "position": [
+        120.8,
+        0,
+        17.5
+      ],
+      "yaw_rad": 4.71238898038469,
+      "fork_top_m": 0.7,
+      "extension_m": 0,
+      "virtual_steer_rad": 0,
+      "rear_steer_rad": {
+        "L": 0,
+        "R": 0
+      },
+      "wheel_angles_rad": {
+        "front_L": 524.7062421122948,
+        "front_R": 517.3758592539186,
+        "rear_L": 720.4898785325627,
+        "rear_R": 715.6875922128448
+      }
+    },
+    "physical_at": {
+      "position": [
+        120.8,
+        0,
+        17.5
+      ],
+      "yaw_rad": 4.71238898038469,
+      "fork_top_m": 0.7,
+      "extension_m": 0,
+      "virtual_steer_rad": 0,
+      "rear_steer_rad": {
+        "L": 0,
+        "R": 0
+      },
+      "wheel_angles_rad": {
+        "front_L": 524.7062421122948,
+        "front_R": 517.3758592539186,
+        "rear_L": 720.4898785325627,
+        "rear_R": 715.6875922128448
+      }
+    },
+    "same_all_cargo": true,
+    "extra_connector_added": false,
+    "source_final_phase": "terminal_stored"
+  },
+  "additional_heavy_chain": {
+    "passed": true,
+    "end_counts": {
+      "requests": 28,
+      "not_released": 0,
+      "queued": 7,
+      "travelling": 0,
+      "native_join_required": 6,
+      "completed_visual": 3,
+      "refused": 12,
+      "workers": 24,
+      "vehicles": 2,
+      "baseline_handling_units": 530,
+      "total_handling_units": 550,
+      "onsite_handling_units": 533,
+      "upstream_handling_units": 17,
+      "downstream_handling_units": 0,
+      "stage_capacity": 2,
+      "stage_occupied": 0,
+      "units": 12495,
+      "gross_mass_kg": 16424.14
+    },
+    "cases": [
+      {
+        "case_id": "v3:visual:N2:IBC:external:02",
+        "start_s": 585.0948379403139,
+        "end_s": 898.3563216458549,
+        "wheel_offset_rad": {
+          "front_L": -1.1368683772161603e-13,
+          "front_R": -1.1368683772161603e-13,
+          "rear_L": 1.1368683772161603e-13,
+          "rear_R": 0
+        }
+      },
+      {
+        "case_id": "v3:visual:N2:HEAVY_BOX:external:03",
+        "start_s": 1076.8563425472944,
+        "end_s": 1391.284492919502,
+        "wheel_offset_rad": {
+          "front_L": -3.410605131648481e-13,
+          "front_R": -1.7053025658242404e-13,
+          "rear_L": 2.2737367544323206e-13,
+          "rear_R": 0
+        }
+      }
+    ],
+    "empty_returns": [
+      {
+        "route_id": "scenario-return:v3:request:W11:external:02",
+        "from": "v3:module:HEAVY_E:001:B1:vehicle:node",
+        "to": "v3:service:IN_W_BULK",
+        "length_m": 159.31674809747517,
+        "duration_s": 180.16668756810625
+      },
+      {
+        "route_id": "scenario-return:v3:request:W11:external:03",
+        "from": "v3:module:HEAVY_E:002:B1:vehicle:node",
+        "to": "v3:service:IN_W_BULK",
+        "length_m": 157.31674809747517,
+        "duration_s": 178.5000209014396
+      }
+    ]
+  },
+  "native_manual_cases": [
+    {
+      "scenario": "N0",
+      "request_id": "v3:request:base:outbound:02",
+      "start_s": 240,
+      "native_duration_s": 946.503390912233,
+      "blocked_at_s": null,
+      "completion_at_s": 1117.2911132520646,
+      "lease_end_s": 1186.503390912233,
+      "actor_ids": [
+        "P02",
+        "K01",
+        "S01"
+      ],
+      "status": "completed_visual",
+      "end_location": {
+        "kind": "downstream",
+        "id": "OUT_W_RETAIL"
+      },
+      "completed_visual": true
+    },
+    {
+      "scenario": "N1",
+      "request_id": "v3:request:base:outbound:02",
+      "start_s": 240,
+      "native_duration_s": 833.8549542866875,
+      "blocked_at_s": null,
+      "completion_at_s": 985.3548711297682,
+      "lease_end_s": 1073.8549542866876,
+      "actor_ids": [
+        "P02",
+        "K01",
+        "S02"
+      ],
+      "status": "completed_visual",
+      "end_location": {
+        "kind": "downstream",
+        "id": "OUT_S_EXPRESS"
+      },
+      "completed_visual": true
+    },
+    {
+      "scenario": "N2",
+      "request_id": "v3:request:base:outbound:02",
+      "start_s": 240,
+      "native_duration_s": 946.503390912233,
+      "blocked_at_s": null,
+      "completion_at_s": 1117.2911132520646,
+      "lease_end_s": 1186.503390912233,
+      "actor_ids": [
+        "P02",
+        "K01",
+        "S01"
+      ],
+      "status": "completed_visual",
+      "end_location": {
+        "kind": "downstream",
+        "id": "OUT_W_RETAIL"
+      },
+      "completed_visual": true
+    },
+    {
+      "scenario": "N3",
+      "request_id": "v3:request:base:outbound:02",
+      "start_s": 240,
+      "native_duration_s": 946.503390912233,
+      "blocked_at_s": null,
+      "completion_at_s": 1117.2911132520646,
+      "lease_end_s": 1186.503390912233,
+      "actor_ids": [
+        "P02",
+        "K01",
+        "S01"
+      ],
+      "status": "completed_visual",
+      "end_location": {
+        "kind": "downstream",
+        "id": "OUT_W_RETAIL"
+      },
+      "completed_visual": true
+    }
+  ],
+  "post_manual_native_route": {
+    "passed": true,
+    "job_id": "scenario-job:targeted:post-native:P02:empty-route",
+    "actor_id": "P02",
+    "start_s": 1187.503390912233,
+    "native_route_at_s": 80.6016343307383,
+    "native_expected_position": [
+      41.90619063788751,
+      -0.0024089260965194366,
+      38
+    ],
+    "actual_DTO_position": [
+      41.90619063788751,
+      -0.0024089260965194366,
+      38
+    ],
+    "same_dispatched_HU_hidden": true,
+    "reverse_seek_restores_attached_HU": true,
+    "duplicate_dispatch_refused": true
+  }
+}
