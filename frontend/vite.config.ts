@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
           motionV3: fileURLToPath(new URL('./motion-v3.html', import.meta.url)),
           longMotionV3: fileURLToPath(new URL('./long-motion-v3.html', import.meta.url)),
           heavyInboundV3: fileURLToPath(new URL('./heavy-inbound-v3.html', import.meta.url)),
+          scenarioV3: fileURLToPath(new URL('./scenario-v3.html', import.meta.url)),
         },
       },
     },

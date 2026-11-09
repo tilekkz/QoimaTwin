@@ -1,3 +1,7 @@
+# Full visual-TZ continuation · 2026-11-09
+
+Current root cardW05 ACTIVE. Read FULL_TZ_CLOSEOUT.md. New additive scenario-v3.html/warehouseScenarioExecution+Clock+Scene and warehouseStaffingScene cover common materialized requests, finite resources, realnativeapproaches andN4actualroles/24identities. ScenarioA/B currentplacement explicitlyno-op, nofakewinner. FirstN2PALLETdelegatesunchangedprovedcase. Manualwhole-HU sourceacquisition/pack/shipping remainsACTIVE; poseprobe haspositive original-body controls, notyetoperationadmission. Legacy91motion/C08/models/Heavycase remainfrozen. No mobile/ideal-animationresearch. Current codebase3f3da74 plus scoped additive changes; no goal-record claim.
+
 Read HEAVY_INBOUND_PUBLICATION_FREEZE.md before any heavy-inbound edit. Runtime publication is frozen to tested7e5/b4/11cc; alternate shallow100 preserved separately.
 
 # Desktop MVP checkpoint · 2026-11-09T14:36:41.086875+00:00

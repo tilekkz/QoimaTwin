@@ -11,7 +11,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[3]
 OUTPUTS = Path('C:/Users/izbas/Documents/Codex/2026-11-09/qoimatwin-character-motion-naturalness/outputs')
-PAGES = ['index.html', 'home-v3.html', 'twin-v3.html', 'warehouse-v3.html', 'stand-v3.html', 'staff-v3.html', 'skills-v3.html', 'motion-v3.html', 'long-motion-v3.html', 'heavy-inbound-v3.html']
+PAGES = ['index.html', 'home-v3.html', 'twin-v3.html', 'warehouse-v3.html', 'stand-v3.html', 'staff-v3.html', 'skills-v3.html', 'motion-v3.html', 'long-motion-v3.html', 'heavy-inbound-v3.html', 'scenario-v3.html']
 
 
 def sha(path):
@@ -67,6 +67,7 @@ def package(dist=None):
 - motion-v3.html: исходный персонаж с коробкой ближе к телу; воспроизведение и перемотка.
 - long-motion-v3.html: отдельный записанный по времени пример движения длинномера.
 - heavy-inbound-v3.html: одна паллета от приёмки до ячейки, общий clock и учёт груза.
+- scenario-v3.html: общие заявки N0–N4, конечные ресурсы, маршруты и роли в 3D; незавершённые действия показаны как ожидающие.
 
 Сравнения явно обозначены как визуальные или расчётные примеры. Операционный движок,
 фактические очереди и полный цикл приёмки/отгрузки ещё не подключены к этому стенду.

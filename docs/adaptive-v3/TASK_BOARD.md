@@ -86,7 +86,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W02](tasks/W02.md) | PASS | root | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | PASS | root | W02,L06,L07 | Подключены движения по реальному графу |
 | [W04](tasks/W04.md) | PASS | root | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
-| [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
+| [W05](tasks/W05.md) | ACTIVE | root_fullworkflow | W03,W04,P10 | Подключён единый clock действий и clips |
 | [W06](tasks/W06.md) | VERIFY | root_mvp | W05 | Реализовано восстановление pause/reset/seek |
 | [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
 | [W08](tasks/W08.md) | VERIFY | root | W05 | Подключены управляемые SFX |
@@ -248,8 +248,6 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05.3.10](tasks/W05.3.10.md) | PASS | root | W05.3.7 | Lower and closer natural P02 box hold requested by user |
 | [W05.3.11](tasks/W05.3.11.md) | PASS | root | W05.3.7 | Subtle deterministic breathing with planted feet and preserved hand contact |
 | [W05.3.12](tasks/W05.3.12.md) | PASS | root | W05.3.10,W05.3.11 | Lower P02 box hold with vertical upper arms and approximately 90 degree elbows |
-| [W05.3.13](tasks/W05.3.13.md) | FIX | root | W05.3.12 | Convincing close whole-palm box grasp with restored natural arm volume |
+| [W05.3.13](tasks/W05.3.13.md) | PASS | root | W05.3.12 | Convincing close whole-palm box grasp with restored natural arm volume |
 | [W12.2](tasks/W12.2.md) | PASS | root | W02,C08,M10,P09 | Native pre-held LONG gate calibration with driver and rolling |
 | [W19](tasks/W19.md) | PASS | root | — | Structural section and rack reconfiguration B with preserved source inventory |
-
-VERIFY records delivered local desktop artifacts; global all-workflow prerequisites and full operational scenarios remain open. See MVP_CLOSEOUT_2026-11-09.md.

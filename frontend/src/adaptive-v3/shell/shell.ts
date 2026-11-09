@@ -11,6 +11,7 @@ export const SECTIONS=[
  {href:'twin-v3.html',label:'Сравнение',hint:'Склад как сейчас и после перестройки'},
  {href:'warehouse-v3.html',label:'Склад',hint:'Исходный снимок и осмотр грузов'},
  {href:'heavy-inbound-v3.html',label:'Приёмка',hint:'Паллета: зона приёмки, погрузчик и ячейка'},
+ {href:'scenario-v3.html',label:'Сценарии',hint:'N0–N4, очередь, маршруты и смена ролей в 3D'},
  {href:'staff-v3.html',label:'Команда',hint:'24 работника и их роли'},
  {href:'skills-v3.html',label:'Навыки',hint:'Допуски к постам и технике'},
  {href:'stand-v3.html',label:'Модели',hint:'Стенд принятых 3D-моделей'},
