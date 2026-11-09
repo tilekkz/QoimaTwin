@@ -1,0 +1,172 @@
+{
+  "schema_id": "qoima.worker-base-whole-HU-carry-pose.v3",
+  "task_id": "W05.3.13",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "calibration_only": true,
+  "runtime_scene_joined": false,
+  "physical_join": false,
+  "completed_jobs": 0,
+  "candidate_only": true,
+  "accepted_action": false,
+  "actor_id": "P02",
+  "worker_asset": "worker-base",
+  "worker_root": {
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "yaw_rad": 0,
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "cargo": {
+    "handling_unit_ref": "v3:HU:initial:DEMO_067:01",
+    "archetype_id": "SMALL_CARTON",
+    "quantity_units": 24,
+    "gross_mass_kg": 0.94,
+    "dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "position_m": [
+      0,
+      0.88,
+      0.42
+    ],
+    "yaw_rad": 0,
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "jointEulerXYZ": {
+    "joint__upper_arm_L": [
+      -0.16446771723684944,
+      0.5452668675698654,
+      -0.3066051320623763
+    ],
+    "joint__forearm_L": [
+      -1.3684917919204571,
+      -0.02120285799448587,
+      0.1138450687372126
+    ],
+    "joint__palm_roll_L": [
+      0,
+      0.8573828131032749,
+      0
+    ],
+    "joint__hand_L": [
+      0.5989147095742883,
+      0.24653538510392461,
+      -0.39855996095350177
+    ],
+    "joint__upper_arm_R": [
+      -0.16446771723684944,
+      -0.5452668675698654,
+      0.3066051320623763
+    ],
+    "joint__forearm_R": [
+      -1.3684917919204571,
+      0.02120285799448587,
+      -0.1138450687372126
+    ],
+    "joint__palm_roll_R": [
+      0,
+      -0.8573828131032749,
+      0
+    ],
+    "joint__hand_R": [
+      0.5989147095742883,
+      -0.24653538510392461,
+      0.39855996095350177
+    ]
+  },
+  "source_hashes": {
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+  },
+  "solved_reference_points": [
+    {
+      "side": "L",
+      "local_hand_m": [
+        -0.014999987557530394,
+        -0.10124999284744274,
+        0.060000009834766374
+      ],
+      "target_worker_m": [
+        -0.16,
+        0.98,
+        0.36614981471514146
+      ],
+      "desired_hand_quaternion": [
+        -0.5312354690472778,
+        0.46667855792410134,
+        -0.5312354690472777,
+        0.4666785579241014
+      ],
+      "contact_axis": 0,
+      "contact_plane_m": -0.16
+    },
+    {
+      "side": "R",
+      "local_hand_m": [
+        0.014999987557530394,
+        -0.10124999284744274,
+        0.060000009834766374
+      ],
+      "target_worker_m": [
+        0.16,
+        0.98,
+        0.36614981471514146
+      ],
+      "desired_hand_quaternion": [
+        -0.5312354690472778,
+        -0.46667855792410134,
+        0.5312354690472777,
+        0.4666785579241014
+      ],
+      "contact_axis": 0,
+      "contact_plane_m": 0.16
+    }
+  ],
+  "scope": "Static local P02 worker-base calibration only. No source assignment, pickup, loaded walk, packing, reservation or stock mutation.",
+  "worker_model_path": "frontend/public/models/v3/worker-base.glb",
+  "pose_only_forearm_pronation": {
+    "gain": 0.5,
+    "law": "canonical_Y_roll_bind_delta_about_native_forearm_axis",
+    "contract": "original542-half-palm-roll-canonical-v2",
+    "source_meshes": [
+      "worker-base__batch_11",
+      "worker-base__batch_14"
+    ]
+  },
+  "review": {
+    "frame_id": "refine_side17_Y0.88_Z0.42",
+    "refinement_result_sha256": "901992830f3a49cf7f01573219b5b9a38bb20b00245e93dbc7dd9ae5c99c4cfb",
+    "strict_validation_file": "work/v3/original-hold-refine-20261109/strict-validation-4.json",
+    "strict_static_pass": true,
+    "visual_review_pending": false,
+    "production_admission": false,
+    "complete_collision_certificate": false,
+    "derived_contact_geometry": {
+      "source_frame_id": "side_spin_-1.700000_Y0.9_Z0.44",
+      "source_frame_geometry_scope_pass": true,
+      "translation_m": [
+        0,
+        -0.020000000000000018,
+        -0.020000000000000018
+      ],
+      "scope": "Exact rigid translation of hand/HU relative native geometry; no actor reach, body clearance or pose acceptance is inherited."
+    },
+    "original_adjacent_scope": "Base retains its explicit original adjacent-hinge pair observations; this wrapper does not prove their spatial/depth clearance or an all-join certificate.",
+    "visual_scope": "Root inspected actual desktop front/side/quarter stills; dynamic native and visual acceptance remain pending.",
+    "normalized_from_pose_sha256": "c7780ef6c2cf3229166b7c0a230dbe5b765264f7bc7964e43591f975bfe57b45"
+  }
+}

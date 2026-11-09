@@ -6,6 +6,7 @@
  */
 import * as THREE from 'three';
 import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
+import {createTwinLayoutVariant,type TwinLayoutPlan} from './twinLayoutVariant';
 import {ATMO_ZONES,activePulses,sampleAtmosphere,type AtmoState,type Variant} from './twinScenario';
 import {reactionsAt,visibleReactions,type Bubble,type Effects,type WorkerSpot} from './twinScenario';
 
@@ -49,6 +50,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[];
  let effects:Effects='full',budget=BUDGET_MAX,selectedActor:string|null=null,onBubble:(id:string,v:Variant)=>void=()=>{},onLabel:(v:Variant)=>void=()=>{};
  const spots:WorkerSpot[]=[],heads=new Map<string,THREE.Vector3>();
+ let layout:ReturnType<typeof createTwinLayoutVariant>|undefined;
+ const zoneEdgesA=new Map<string,THREE.BufferGeometry>(),zoneEdgesB=new Map<string,THREE.BufferGeometry>();
  const overlay=new THREE.Scene(),owned:(THREE.BufferGeometry|THREE.Material)[]=[];
  const own=<T extends THREE.BufferGeometry|THREE.Material>(x:T)=>{owned.push(x);return x;};
  /** The 3D warehouse is static while the episode plays: only overlays and DOM change. Each pass keeps its scene
@@ -175,11 +178,22 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   for(const h of hu){h.pos[variant]=h.mesh.position.clone();h.arr[variant]=new Float32Array(h.mesh.instanceMatrix.array as Float32Array);h.attr={};}
  }
  let applied:Variant|null=null;
+ function setLayoutPlan(plan:TwinLayoutPlan|null){
+  if(!ctx||!ready)throw Error('WAREHOUSE_LAYOUT_RENDERER_NOT_READY');apply('A');
+  const next=plan?createTwinLayoutVariant(ctx.scene,bundle,plan):undefined;
+  layout?.dispose();layout=next;if(next)overlay.add(next.paint);applied=null;version++;
+  for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();
+  for(const [id,z]of zones){if(!zoneEdgesA.has(id))zoneEdgesA.set(id,z.edge.geometry);z.edge.geometry=zoneEdgesA.get(id)!;const r=next?.zones.get(id)?.floor_bounds_xz_m;if(r)zoneEdgesB.set(id,new THREE.BufferGeometry().setFromPoints([[r.min[0],.06,r.min[1]],[r.max[0],.06,r.min[1]],[r.max[0],.06,r.max[1]],[r.min[0],.06,r.max[1]]].map(p=>new THREE.Vector3(...p))));}
+  draw();return layout?.snapshot()??null;
+ }
+ const variantHead=(id:string,v:Variant)=>{const p=heads.get(id)?.clone();return p&&v==='B'&&layout?p.add(layout.actorDelta(id)):p;};
+ const variantWorkers=(v:Variant='A'):readonly WorkerSpot[]=>v==='A'||!layout?spots:spots.map(s=>{const p=layout!.bounds('actor',s.actor_id)?.position;const zone=p?[...layout!.zones.values()].find(z=>p[0]>=z.floor_bounds_xz_m.min[0]&&p[0]<=z.floor_bounds_xz_m.max[0]&&p[2]>=z.floor_bounds_xz_m.min[1]&&p[2]<=z.floor_bounds_xz_m.max[1])?.zone_id:undefined;return {...s,zone_id:zone??s.zone_id};});
  // «Рядом» draws A then B every frame. Rewriting the cargo matrices on each switch, even only the few moved units,
  // updates a buffer the GPU is still drawing from and stalled an integrated GPU by ~20 ms a frame. Each variant owns
  // a fixed matrix buffer instead; switching only swaps which buffer the meshes read.
  function apply(variant:Variant){
   if(applied===variant)return;applied=variant;
+  if(layout){layout.apply(variant);return;}
   for(const h of hu){
    const pos=h.pos[variant],arr=h.arr[variant];if(!pos||!arr)continue;const moved=!h.mesh.position.equals(pos);h.mesh.position.copy(pos);
    h.mesh.instanceMatrix=h.attr[variant]??=new THREE.InstancedBufferAttribute(arr,16);
@@ -189,7 +203,9 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
 
  function overlayFor(variant:Variant){
   const sample=sampleAtmosphere(variant,t),still=reducedMotion();
+  if(layout)layout.paint.visible=variant==='B';
   for(const [id,z]of zones){
+   const rect=variant==='B'?layout?.zones.get(id)?.floor_bounds_xz_m:undefined,r=rect??{min:z.min,max:z.max};z.fill.position.set((r.min[0]+r.max[0])/2,.04,(r.min[1]+r.max[1])/2);z.fill.scale.set((r.max[0]-r.min[0])/(z.max[0]-z.min[0]),(r.max[1]-r.min[1])/(z.max[1]-z.min[1]),1);z.center.set((r.min[0]+r.max[0])/2,1.2,(r.min[1]+r.max[1])/2);if(zoneEdgesA.has(id))z.edge.geometry=rect?zoneEdgesB.get(id)!:zoneEdgesA.get(id)!;
    const s=sample[id].state,col=STATE_COLOR[s],fm=z.fill.material as THREE.MeshBasicMaterial,em=z.edge.material as THREE.LineBasicMaterial;
    fm.color.set(col);em.color.set(col);
    fm.opacity=({control:.07,danger:.24,sos:.32,nodata:.1} as const)[s]+(s==='sos'&&!still&&effects==='full'?.08*Math.sin(t*1.7):0);em.opacity=s==='control'?.45:.95;
@@ -233,7 +249,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   // Far away the zone badge is the aggregated sign; bubbles appear once people are big enough to read.
   const cam=ctx!.camera,pxPerM=vp.w*cam.zoom/(cam.right-cam.left);
   // The budget is spent only on workers inside this pass, so a close-up is not starved by people off screen.
-  const onScreen=pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,spots).map(r=>({r,q:project(heads.get(r.actor_id)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
+  const onScreen=pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,variantWorkers(v)).map(r=>({r,q:project(variantHead(r.actor_id,v)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
   const shown=visibleReactions(onScreen.map(x=>x.r),budget,selectedActor),at=new Map(onScreen.map(x=>[x.r.actor_id,x.q]));
   bubbles[v].forEach((b,i)=>{
    const r=shown[i],q=r&&at.get(r.actor_id);
@@ -330,13 +346,12 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  /** Screen point → semantic object, using the pass under the pointer and that pass's cargo state. */
  function pick(x:number,y:number):Pick|null{
   if(!ctx||!ready)return null;const {renderer,scene,camera}=ctx,[W,H]=canvasSize(renderer.domElement),list=passes(W,H).filter(p=>inside({x,y},p.sc));if(!list.length)return null;
-  const base=[camera.left,camera.right,camera.top,camera.bottom] as const,targets:THREE.Object3D[]=[];
-  scene.traverse(o=>{if(o.userData.semanticKind&&['HU','module','actor'].includes(o.userData.semanticKind))targets.push(o);});
+  const base=[camera.left,camera.right,camera.top,camera.bottom] as const;
   // In «Рядом» both copies are under the pointer; the nearest hit wins, as it would in one real scene.
   let best:(Pick&{d:number})|null=null;
   try{
    for(const p of list){
-    apply(p.variant);for(const h of hu)h.mesh.computeBoundingSphere();setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();
+    apply(p.variant);if(!layout)for(const h of hu)h.mesh.computeBoundingSphere();const targets:THREE.Object3D[]=[];scene.traverseVisible(o=>{if(o.userData.semanticKind&&['HU','module','actor'].includes(o.userData.semanticKind))targets.push(o);});setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();
     try{
      const ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,-(y-p.vp.y)/p.vp.h*2+1),camera);
      for(const hit of ray.intersectObjects(targets,true)){
@@ -347,7 +362,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     }finally{camera.position.add(p.shift);camera.updateMatrixWorld();}
    }
    return best&&{variant:best.variant,kind:best.kind,id:best.id};
-  }finally{[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A');for(const h of hu)h.mesh.computeBoundingSphere();}
+  }finally{[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A');if(!layout)for(const h of hu)h.mesh.computeBoundingSphere();}
  }
  return {
   renderPass(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.OrthographicCamera){ctx={renderer,scene,camera};version++;if(scene.background!==sky)scene.background=sky;if(ready)draw();else renderer.render(scene,camera);},
@@ -361,11 +376,14 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    // Close-ups switch shadows on; compile those shader variants now (behind the loading screen), not mid-zoom.
    if(ctx){const r=ctx.renderer,was=r.shadowMap.enabled;try{r.shadowMap.enabled=true;r.compile(ctx.scene,ctx.camera);}finally{r.shadowMap.enabled=was;}}
    ready=true;draw();},
-  workers:()=>spots as readonly WorkerSpot[],
+  workers:variantWorkers,
+  setLayoutPlan,installLayoutVariant:setLayoutPlan,
+  layoutSnapshot:()=>layout?.snapshot()??null,
+  layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>v==='B'?layout?.bounds(kind,id)??null:null,
   /** Camera framing for a zone floor, for 'take me there' from the state list. */
-  zoneFocus(id:string,v:Variant='A'){const z=zones.get(id);if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1],o=mode==='side'&&v==='B'?SIDE_SHIFT[2]:0;return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
+  zoneFocus(id:string,v:Variant='A'){const source=zones.get(id),planned=v==='B'?layout?.zones.get(id)?.floor_bounds_xz_m:undefined;const z=planned??source;if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1],o=mode==='side'&&v==='B'?SIDE_SHIFT[2]:0;return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
   stats:()=>({...stats,totals:{...totals},pixelRatio:ctx?.renderer.getPixelRatio()??0,shadows:ctx?.renderer.shadowMap.enabled??false}),
-  actorPosition:(id:string)=>heads.get(id)?.toArray() as XYZ|undefined,
+  actorPosition:(id:string,v:Variant='A')=>variantHead(id,v)?.toArray() as XYZ|undefined,
   setEffects(next:Effects,nextBudget:number){effects=next;budget=Math.min(BUDGET_MAX,nextBudget);draw();},
   setSelectedActor(id:string|null){selectedActor=id;draw();},
   onBubble(fn:(id:string,v:Variant)=>void){onBubble=fn;},
@@ -380,6 +398,6 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   setTime(next:number){t=next;draw();},
   setSelected(id:string|null){selected=id;draw();},
   highlightZone,setGateTags,
-  dispose(){disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
+  dispose(){layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }

@@ -20,13 +20,13 @@ export type NavOptions={
  onInput:()=>void;
  onMove:()=>void;
 };
-export const SPAN_MIN=10,SPAN_MAX=300;
+export const SPAN_MIN=10,SPAN_MAX=600;
 /** Time constants (s): how quickly zoom reaches its goal and how long a flick keeps sliding or turning. */
 const TAU_ZOOM=.11,TAU_GLIDE=.32,TAU_SPIN=.28;
 /** Covers both warehouses when B stands beside A in «Рядом». */
 const BOUNDS={x:[-12,156],z:[-12,168]};
 /** Orbit: radians per pixel, and the elevation range (from a low oblique view to straight down). */
-const ROT=.0065,ELEV:[number,number]=[.2,1.52];
+const ROT=.0065,ELEV:[number,number]=[.2,Math.PI/2];
 type Kind='orbit'|'pan';
 
 const angles=(d:XYZ)=>({yaw:Math.atan2(d[0],d[2]),elev:Math.asin(Math.max(-1,Math.min(1,d[1]/Math.hypot(...d))))});
@@ -80,6 +80,7 @@ export function createNavigation(o:NavOptions){
   *  timing decides the flick. Pan records the target, orbit records the angles. */
  function remember(kind:Kind,ts:number){
   const st=o.scene.frameState(),g=kind==='pan'?{a:st.target[0],b:st.target[2]}:(({yaw,elev})=>({a:yaw,b:elev}))(angles(st.dir));
+  if(kind==='orbit'&&trail.length){const previous=trail.at(-1)!.a;g.a=previous+Math.atan2(Math.sin(g.a-previous),Math.cos(g.a-previous));}
   trail.push({t:ts,...g});while(trail.length>2&&ts-trail[0].t>100)trail.shift();
  }
 

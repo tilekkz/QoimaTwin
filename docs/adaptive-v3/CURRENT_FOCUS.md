@@ -1,3 +1,23 @@
+# Current desktop checkpoint · 2026-11-09T12:31:23.324424+00:00
+
+Read `handoff/desktop-20261109/README.md` and `tasks/W19.md` first. Structural B164 and original_hold are implemented and verified. Original A/native models/V2/N2N3packet remain unchanged. Current branch is codex/twin-v3-adaptive; N2N3 publication799ff93 remains valid. Core desktop build and cold-build resource closure pass. Full operational cycles/cart release/traffic reservations remain separate open work; no more ideal-animation polishing is required by the user. Desktop only.
+
+The following older checkpoints are retained as dated history.
+
+## Current continuation 2026-11-09T10:31:28.273568+00:00
+
+N2/N3 physical API handoff published: `799ff93af8b082b8f1c0a40e4112b9bf8c83df11` on origin/codex/twin-v3-adaptive, remote verified. Start `docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/README.md`;99 source pins resolve exactly at commit,107 native contact pairs,80/480 analytic joins/segments,22 root mutation controls; currentN3 migration preservesallphysicalrows. Clean Git-derived8entry frontend build/typecheck+offlinevalidator PASS. This closes the API geometry/data handoff, not sourcepickup/traffic/fulloperationalW11/W12. No direct external message to Arman.
+
+Original542 character local corrected original_hold now uses pose0aa124 atbox[0,.88,.42], sourcegeometry/materials/p/scales unchanged; 2derivedforeleafQ only. Fullnative2135PASS b347f26, publicpack91pins defaultnewhold, actualdesktopwarm16checks cleanCDP PASS; latest9entrybuild PASS. Elbow100.74/upper38fromdown is improved but not requested90/down finalcertificate. These character edits not in799ff93. TinyreadonlyPage debugfield conditional original_hold integrated2b7ee; desktopextraQA beingprepared. OriginalV2cb5777 andcontracts unchanged.
+
+Cartmanualdbf74 fixedwideendpoint withgain.5 REJECTED:6newforbiddenpairs vsold4; nativehand/barcontacts andbuffers/materials/p/scales exact. No gait/release acceptance. Next: actualnativegripframegeometry freedom +exactSAToracle12DOF, thenboundedsolver; no moreblindwidegrids. 3existingagents ownworkonlyasrun-state. DesktopONLY.
+
+# Latest user steering — original character,2026-11-09
+
+Restore exact original542591 worker-base appearance in motion review. Edit ONLY arm-joint rotations and whole-HU hold pose; no body/garment/face/material/proportion redesign. W05.3.13 isFIX after user rejects a719 appearance; old numerical proofs remain historical. Exact source fallback is not a lower/90degree/full-palm acceptance. See USER_CHARACTER_APPEARANCE_2026-11-09.md and work/v3/character-animation-current-checkpoint.json. FullvisualTZ remains open;39nonPASSleaves/11parents at this review.
+
+---
+
 # Current execution focus — 2026-11-08
 
 Canonical workspace: C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin, branch codex/twin-v3-adaptive. Starting HEAD before this iteration was a54beadcae4c0d5561a943c24b80e7968099996f; current verified Git/working-tree state is recorded in work/v3/active-checkpoint-current.json. Preserve concurrent Twin UI edits. The previous focus file is archived in work/v3/current-focus-before-natural-elbows.md.

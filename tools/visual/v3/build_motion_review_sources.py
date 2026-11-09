@@ -12,25 +12,46 @@ import os
 from pathlib import Path
 
 
-def build(check_only: bool) -> dict:
+def build(check_only: bool, report_name: str = 'docs/adaptive-v3/evidence/W05.3.7-checks.json') -> dict:
     repo = Path(__file__).resolve().parents[3]
     public = repo / "frontend/public"
     output = public / "data/v3/motion-review"
-    report_path = repo / "docs/adaptive-v3/evidence/W05.3.7-checks.json"
+    report_path = (repo / report_name).resolve(strict=True)
+    if not report_path.is_relative_to(repo):
+        raise ValueError('Report must be inside the repository')
     report_bytes = report_path.read_bytes()
     report = json.loads(report_bytes)
     pins = report["input_hashes"]
     if not (
         report.get("passed") is True
-        and report.get("task_id") == "W05.3.7"
+        and report.get("task_id") in ("W05.3.7", "W05.3.10", "W05.3.11", "W05.3.12", "W05.3.13")
         and report.get("motion_style") == "grounded_carry"
         and report.get("source_kind") == "visual_fixture"
         and report.get("engine_operation") is False
         and report.get("runtime_scene_joined") is False
-        and len(pins) == 85
+        and len(pins) >= 85
         and abs(report["route"]["duration_s"] - 28.47) < 1e-9
     ):
-        raise ValueError("The accepted 85-source grounded-carry report is required")
+        raise ValueError("An accepted grounded-carry native report is required")
+    original_hold = report.get('review_task_id') == 'W05.3.13-original-pose-only-hold'
+    if original_hold and not (
+        report['task_id'] == 'W05.3.13'
+        and report.get('carry_pose') == 'original_hold'
+        and report.get('breathing') is False
+        and report.get('worker_model_path') == 'frontend/public/models/v3/worker-base.glb'
+        and report.get('sample_scope') == 'full_source_sweep'
+        and pins.get('frontend/public/models/v3/worker-base.glb') == '542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163'
+        and 'frontend/src/adaptive-v3/warehouseForearmPronationPose.ts' in pins
+        and 'frontend/public/data/v3/worker-base-original-hold-pose.json' in pins
+        and len(report.get('frames', [])) >= 2000
+        and report.get('native_foreign_and_full_body_gate', {}).get('material_witness_count') == 0
+    ):
+        raise ValueError('Original hold requires its full native sweep and original geometry pins')
+    if not original_hold and report['task_id'] != 'W05.3.7' and (
+        report.get('carry_pose') != ({'W05.3.12': 'vertical_90', 'W05.3.13': 'close_hold'}.get(report['task_id'], 'low_close'))
+        or report.get('breathing') is not (report['task_id'] in ('W05.3.11', 'W05.3.12', 'W05.3.13'))
+    ):
+        raise ValueError('Low carry evidence must name its actual preset and breathing state')
 
     sources, copies = {}, {}
     # Validate the whole set before creating or changing any output.
@@ -61,7 +82,10 @@ def build(check_only: bool) -> dict:
         "source_pickup_executed": False,
         "motion_style": "grounded_carry",
         "duration_s": report["route"]["duration_s"],
-        "source_report": "docs/adaptive-v3/evidence/W05.3.7-checks.json",
+        "carry_pose": report.get("carry_pose", "source"),
+        "worker_model_path": report.get("worker_model_path", "frontend/public/models/v3/worker-base.glb"),
+        "breathing": report.get("breathing", False),
+        "source_report": report_path.relative_to(repo).as_posix(),
         "source_report_sha256": hashlib.sha256(report_bytes).hexdigest(),
         "source_count": len(sources),
         "sources": sources,
@@ -91,5 +115,6 @@ def build(check_only: bool) -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check-only", action="store_true", help="Compare frozen outputs without writing")
+    parser.add_argument("--report", default='docs/adaptive-v3/evidence/W05.3.7-checks.json', help='Current accepted native evidence report')
     args = parser.parse_args()
-    print(json.dumps(build(args.check_only), ensure_ascii=False))
+    print(json.dumps(build(args.check_only, args.report), ensure_ascii=False))

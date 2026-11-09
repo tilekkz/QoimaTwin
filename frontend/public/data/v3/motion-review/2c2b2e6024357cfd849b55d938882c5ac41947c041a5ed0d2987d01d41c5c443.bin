@@ -1,0 +1,1315 @@
+{
+  "schema_id": "qoima.W05.3.4.dynamic-cargo-binding-checks.v1",
+  "task_id": "W05.3.4",
+  "passed": true,
+  "source_hashes": {
+    "frontend/tools/check-warehouse-dynamic-cargo-binding-v3.mjs": "352f2c89252abe1ef8abf436e7286948516a0deb1925ceb6fa6d730de303ea73",
+    "frontend/src/adaptive-v3/warehouseCargoGeometry.ts": "7886375ea6c778a8d09b7bfe8883cba1f2c6de9d9605da918f64c735498ed05c",
+    "frontend/src/adaptive-v3/warehousePalletTransferScene.ts": "3a89648f74b0890bcbb2b629ef6e9c79cb8a12aa597aa9d386c8daffd41837a7",
+    "frontend/node_modules/three/build/three.module.js": "0a3368c165eea773490aec7b77c22de70e3eac288503409256fdbf4d12578416",
+    "frontend/node_modules/three/examples/jsm/loaders/GLTFLoader.js": "6f1719dcc6a179d30273dfb0de07a8c898a7981f7b08e600b446387f5967371f",
+    "frontend/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/warehouseDynamicCargoBinding.ts": "c2cba717660a68dae5707b59803013e89b1bbd22c15da6a8e3471a62955cf37c",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "f4f0d144eb1f741e7c8c47d1c3d72ea3fc825b642ae8011df51b53c7f803db78",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/data/v3/worker-base-carry-pose.json": "f33bdb63db8fc78af68af173926a0a59267eda9f83b484a98e71ec4f375bac7b"
+  },
+  "scope": "Bounded CPU Three.js-native world matrices/Float32 instance buffers and native GLB triangle contacts. No GPU micrometre, live viewer, workflow, gait/full-body/fixed-obstacle or stability admission.",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "physical_join": false,
+  "completed_jobs": 0,
+  "population": {
+    "source_HUs": 530,
+    "logical_dynamic_HUs": 1,
+    "unchanged_other_HUs": 529,
+    "source_instanced_meshes": 41,
+    "source_slots": 4,
+    "active_count1_meshes": 4,
+    "caller_map_redirect_and_exact_source_array_restore": true,
+    "source_mesh_origins_unchanged": true,
+    "all_source_buffers_exactly_restored": true,
+    "source_geometry_material_sourceMatrices_preserved": true,
+    "shared_geometry_disposals": 0,
+    "shared_material_disposals": 0
+  },
+  "identity_witness": {
+    "logical_HU": "v3:HU:initial:DEMO_067:01",
+    "source": [
+      {
+        "uuid": "c5ae7735-cda0-4a46-9266-8a1a7f788363",
+        "index": 264,
+        "name": "instances__small-carton__small-carton__batch_00"
+      },
+      {
+        "uuid": "0b40ca7c-58fe-4833-bb4e-a071ef1115b5",
+        "index": 264,
+        "name": "instances__small-carton__small-carton__batch_01"
+      },
+      {
+        "uuid": "81f11a04-00d0-4cb1-a99a-4ca1b2c6df49",
+        "index": 264,
+        "name": "instances__small-carton__small-carton__batch_02"
+      },
+      {
+        "uuid": "9005b920-e698-461a-ad12-0c4c80d13c96",
+        "index": 264,
+        "name": "instances__small-carton__small-carton__batch_03"
+      }
+    ],
+    "active": [
+      {
+        "uuid": "740f6a71-4a9c-449d-b84c-4cb08521f2ee",
+        "index": 0,
+        "name": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_00"
+      },
+      {
+        "uuid": "77b26e77-2640-4da7-9959-583cbc59c545",
+        "index": 0,
+        "name": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_01"
+      },
+      {
+        "uuid": "54774dd3-62ab-4527-a144-a4a530b0909a",
+        "index": 0,
+        "name": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02"
+      },
+      {
+        "uuid": "c2ca985e-f906-44b8-b70a-52baec6a8874",
+        "index": 0,
+        "name": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_03"
+      }
+    ],
+    "notice": "Actual CPU reconstruction UUIDs intentionally differ each run. Logical HU and source UUID/index ownership/restoration are verified within each run."
+  },
+  "activation": {
+    "maximum_world_matrix_error": 0,
+    "captured_all4_actual_native_world_matrices": true,
+    "source_slots_collapsed_only_while_active": true,
+    "common_rigid_delta": true,
+    "preserves_original_relative_part_quantization": true
+  },
+  "static_Float32_RED": {
+    "frames": 22,
+    "bad_frames": 5,
+    "maximum_gap_m": 0.0000034268999404759224,
+    "cases": [
+      {
+        "id": "gateway-start",
+        "gaps_m": [
+          3.8730192386537965e-9,
+          3.5775613582700316e-9
+        ]
+      },
+      {
+        "id": "before-turn",
+        "gaps_m": [
+          3.8730192386537965e-9,
+          3.5775613582700316e-9
+        ]
+      },
+      {
+        "id": "turn-0deg",
+        "gaps_m": [
+          3.8730192386537965e-9,
+          3.5775613582700316e-9
+        ]
+      },
+      {
+        "id": "turn-5deg",
+        "gaps_m": [
+          6.386537172820492e-8,
+          7.127730201811848e-8
+        ]
+      },
+      {
+        "id": "turn-10deg",
+        "gaps_m": [
+          5.405735556936465e-7,
+          5.335796637127353e-7
+        ]
+      },
+      {
+        "id": "turn-15deg",
+        "gaps_m": [
+          6.527271009228413e-7,
+          6.567468380665688e-7
+        ]
+      },
+      {
+        "id": "turn-20deg",
+        "gaps_m": [
+          6.863248589484224e-7,
+          6.864885110683186e-7
+        ]
+      },
+      {
+        "id": "turn-25deg",
+        "gaps_m": [
+          2.2559522287683756e-7,
+          2.1564708296107585e-7
+        ]
+      },
+      {
+        "id": "turn-30deg",
+        "gaps_m": [
+          3.243039356888253e-7,
+          3.283160630987077e-7
+        ]
+      },
+      {
+        "id": "turn-35deg",
+        "gaps_m": [
+          5.014954492052101e-7,
+          5.077366402162869e-7
+        ]
+      },
+      {
+        "id": "turn-40deg",
+        "gaps_m": [
+          0.0000016543312543520668,
+          0.0000016586176732331887
+        ]
+      },
+      {
+        "id": "turn-45deg",
+        "gaps_m": [
+          0.0000026930075499290266,
+          0.000002698188665375514
+        ]
+      },
+      {
+        "id": "turn-50deg",
+        "gaps_m": [
+          6.904299584546178e-7,
+          6.861435591327676e-7
+        ]
+      },
+      {
+        "id": "turn-55deg",
+        "gaps_m": [
+          0.000002521811636549663,
+          0.0000025280528366559093
+        ]
+      },
+      {
+        "id": "turn-60deg",
+        "gaps_m": [
+          5.541187104290159e-7,
+          5.581308388460699e-7
+        ]
+      },
+      {
+        "id": "turn-65deg",
+        "gaps_m": [
+          0.0000034268999404759224,
+          0.00000341695179980944
+        ]
+      },
+      {
+        "id": "turn-70deg",
+        "gaps_m": [
+          0.0000013871453138058438,
+          0.0000013869816634318874
+        ]
+      },
+      {
+        "id": "turn-75deg",
+        "gaps_m": [
+          0.0000025266646754856825,
+          0.000002522644934405451
+        ]
+      },
+      {
+        "id": "turn-80deg",
+        "gaps_m": [
+          0.0000010614358420079885,
+          0.0000010684297333719775
+        ]
+      },
+      {
+        "id": "turn-85deg",
+        "gaps_m": [
+          0.0000025806522383632063,
+          0.00000257324029680314
+        ]
+      },
+      {
+        "id": "turn-90deg",
+        "gaps_m": [
+          1.975881094296028e-7,
+          1.9729266220736008e-7
+        ]
+      },
+      {
+        "id": "end",
+        "gaps_m": [
+          1.975881094296028e-7,
+          1.9729266220736008e-7
+        ]
+      }
+    ],
+    "original_strict_probe_reference": {
+      "path": "work/v3/loaded-walk-precision/probe-results.json",
+      "sha256": "0432a7c79330ddd5b352bbf5a2c7cb13df6503ccca521f418e1dc43de5e3b49b",
+      "note": "Historical strict RED retained; not overwritten by this checker."
+    }
+  },
+  "dynamic_native": {
+    "frames": 22,
+    "threshold_m": 0.000002,
+    "maximum_gap_m": 3.873027451108778e-9,
+    "maximum_relative_part_matrix_error": 1.4210854715202004e-14,
+    "frames_measured": [
+      {
+        "id": "gateway-start",
+        "position": [
+          10.75,
+          0,
+          49
+        ],
+        "yaw": -1.5707963267948966,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873012133226439e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              10.309999999999496,
+              1.0800000000047452,
+              48.839999996125705
+            ],
+            "normal_world": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577554252842674e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              10.309999999999496,
+              1.0800000000047452,
+              49.15999999642373
+            ],
+            "normal_world": [
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "id": "before-turn",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -1.5707963267948966,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873012133226439e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.559999999999497,
+              1.0800000000047452,
+              48.839999996125705
+            ],
+            "normal_world": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577554252842674e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.559999999999497,
+              1.0800000000047452,
+              49.15999999642373
+            ],
+            "normal_world": [
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-0deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -1.5707963267948966,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873012133226439e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.559999999999497,
+              1.0800000000047452,
+              48.839999996125705
+            ],
+            "normal_world": [
+              0,
+              0,
+              -1
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577554252842674e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.559999999999497,
+              1.0800000000047452,
+              49.15999999642373
+            ],
+            "normal_world": [
+              0,
+              0,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-5deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -1.658062789394613,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.872999185333413e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.575619252016422,
+              1.0800000000047452,
+              48.80226031763676
+            ],
+            "normal_world": [
+              0.08715574274766617,
+              0,
+              -0.9961946980917448
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775539646781834e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.547729414311199,
+              1.0800000000047452,
+              49.12104262132301
+            ],
+            "normal_world": [
+              -0.08715574274766617,
+              0,
+              0.9961946980917448
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-10deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -1.7453292519943295,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873004789670934e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.594468297773607,
+              1.0800000000047452,
+              48.766025557529076
+            ],
+            "normal_world": [
+              0.173648177666954,
+              0,
+              -0.9848077530122039
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775703123096016e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.538900880868439,
+              1.0800000000047452,
+              49.08116403878647
+            ],
+            "normal_world": [
+              -0.1736481776669237,
+              0,
+              0.9848077530122092
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-15deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -1.832595714594046,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873027451108778e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.616403684651473,
+              1.0800000000047452,
+              48.731571484206206
+            ],
+            "normal_world": [
+              0.25881904510249765,
+              0,
+              -0.9659258262890745
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775703801678355e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.53358159014153,
+              1.0800000000047452,
+              49.04066774890658
+            ],
+            "normal_world": [
+              -0.25881904510252624,
+              0,
+              0.9659258262890669
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-20deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -1.9198621771937625,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873006280819698e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.6412584711109215,
+              1.0800000000047452,
+              48.69916031397014
+            ],
+            "normal_world": [
+              0.3420201433256699,
+              0,
+              -0.939692620785908
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577558301935963e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.531812025144778,
+              1.0800000000047452,
+              48.99986195290168
+            ],
+            "normal_world": [
+              -0.3420201433256699,
+              0,
+              0.939692620785908
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-25deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.007128639793479,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.8730016343615085e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.668843497219277,
+              1.0800000000047452,
+              48.66903871539672
+            ],
+            "normal_world": [
+              0.4226182617406978,
+              0,
+              -0.9063077870366508
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775513390543283e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.5336056533363,
+              1.0800000000047452,
+              48.95905720751854
+            ],
+            "normal_world": [
+              -0.42261826174069633,
+              0,
+              0.9063077870366514
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-30deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.0943951023931953,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873008370063239e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.698948824271558,
+              1.0800000000047452,
+              48.641435932038995
+            ],
+            "normal_world": [
+              0.5000000000000008,
+              0,
+              -0.8660254037844383
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775588400470484e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.538948824122546,
+              1.0800000000047452,
+              48.918564061508114
+            ],
+            "normal_world": [
+              -0.5000000000000008,
+              0,
+              0.8660254037844383
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-35deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.181661564992912,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873014981364447e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.731345332550808,
+              1.0800000000047452,
+              48.616562037745375
+            ],
+            "normal_world": [
+              0.5735764363510378,
+              0,
+              -0.8191520442889977
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775661909802945e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.547800872747534,
+              1.0800000000047452,
+              48.87869069216198
+            ],
+            "normal_world": [
+              -0.5735764363510583,
+              0,
+              0.8191520442889831
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-40deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.2689280275926285,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873010523281936e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.765786465067459,
+              1.0800000000047452,
+              48.59460633787068
+            ],
+            "normal_world": [
+              0.6427876096865437,
+              0,
+              -0.7660444431189743
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577551451887821e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.560094429776197,
+              1.0800000000047452,
+              48.83974055989705
+            ],
+            "normal_world": [
+              -0.6427876096865437,
+              0,
+              0.7660444431189743
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-45deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.356194490192345,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873008615459649e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.802010104006952,
+              1.0800000000047452,
+              48.57573592854818
+            ],
+            "normal_world": [
+              0.7071067811865513,
+              0,
+              -0.7071067811865438
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775599212502383e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.575735933816523,
+              1.0800000000047452,
+              48.802010098738606
+            ],
+            "normal_world": [
+              -0.7071067811865513,
+              0,
+              0.7071067811865438
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-50deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.443460952792061,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873007121360638e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.839740565604516,
+              1.0800000000047452,
+              48.56009442498707
+            ],
+            "normal_world": [
+              0.7660444431189781,
+              0,
+              -0.642787609686539
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775573563978696e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.594606343578146,
+              1.0800000000047452,
+              48.765786460278335
+            ],
+            "normal_world": [
+              -0.7660444431189781,
+              0,
+              0.642787609686539
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-55deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.5307274153917776,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873025313525273e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.878690698265141,
+              1.0800000000047452,
+              48.54780086847405
+            ],
+            "normal_world": [
+              0.8191520442889879,
+              0,
+              -0.5735764363510517
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577576449933015e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.616562043848538,
+              1.0800000000047452,
+              48.73134532827733
+            ],
+            "normal_world": [
+              -0.8191520442889897,
+              0,
+              0.573576436351049
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-60deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.617993877991494,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873012779071078e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.918564067960501,
+              1.0800000000047452,
+              48.538948820397266
+            ],
+            "normal_world": [
+              0.8660254037844402,
+              0,
+              -0.4999999999999975
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775642562272046e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.641435938491384,
+              1.080000000004745,
+              48.69894882054627
+            ],
+            "normal_world": [
+              -0.8660254037844402,
+              0,
+              0.4999999999999975
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-65deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.705260340591211,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873011990396111e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.959057214271052,
+              1.0800000000047452,
+              48.53360565018755
+            ],
+            "normal_world": [
+              0.9063077870366499,
+              0,
+              -0.42261826174069944
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577562875412735e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.669038722149223,
+              1.0800000000047452,
+              48.66884349407053
+            ],
+            "normal_world": [
+              -0.9063077870366499,
+              0,
+              0.42261826174069944
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-70deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.792526803190927,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.8730153112268825e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              5.9998619599029315,
+              1.0800000000047452,
+              48.531812022596526
+            ],
+            "normal_world": [
+              0.9396926207859106,
+              0,
+              -0.3420201433256625
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775649788542846e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.699160320971391,
+              1.0800000000047452,
+              48.641258468562675
+            ],
+            "normal_world": [
+              -0.9396926207859083,
+              0,
+              0.34202014332566893
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-75deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.8797932657906435,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873008223923148e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              6.040667756103294,
+              1.0800000000047452,
+              48.53358158821319
+            ],
+            "normal_world": [
+              0.9659258262890695,
+              0,
+              -0.2588190451025162
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775567602242328e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.731571491402922,
+              1.0800000000047452,
+              48.616403682723124
+            ],
+            "normal_world": [
+              -0.9659258262890695,
+              0,
+              0.2588190451025162
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-80deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -2.9670597283903604,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873017343721898e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              6.081164046123861,
+              1.0800000000047452,
+              48.538900879574655
+            ],
+            "normal_world": [
+              0.9848077530122071,
+              0,
+              -0.17364817766693502
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.577567071333998e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.7660255648664585,
+              1.080000000004745,
+              48.594468296479825
+            ],
+            "normal_world": [
+              -0.9848077530122088,
+              0,
+              0.1736481776669261
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-85deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -3.0543261909900767,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873018341267664e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              6.121042628745228,
+              1.0800000000047452,
+              48.54772941366184
+            ],
+            "normal_world": [
+              0.9961946980917453,
+              0,
+              -0.08715574274765991
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775692384849004e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.80226032505898,
+              1.0800000000047452,
+              48.57561925136706
+            ],
+            "normal_world": [
+              -0.9961946980917453,
+              0,
+              0.08715574274765991
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn-90deg",
+        "position": [
+          6,
+          0,
+          49
+        ],
+        "yaw": -3.141592653589793,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873006804155921e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              6.160000003874295,
+              1.0800000000047452,
+              48.5599999999995
+            ],
+            "normal_world": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775595819131922e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.840000003576272,
+              1.0800000000047452,
+              48.5599999999995
+            ],
+            "normal_world": [
+              -1,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "position": [
+          6,
+          0,
+          38
+        ],
+        "yaw": -3.141592653589793,
+        "contacts": [
+          {
+            "side": "L",
+            "gap_m": 3.873006804155921e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 211,
+            "point_world_m": [
+              6.160000003874295,
+              1.0800000000047452,
+              37.5599999999995
+            ],
+            "normal_world": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "side": "R",
+            "gap_m": 3.5775595819131922e-9,
+            "mesh": "dynamic__v3:HU:initial:DEMO_067:01__instances__small-carton__small-carton__batch_02",
+            "triangle": 262,
+            "point_world_m": [
+              5.840000003576272,
+              1.0800000000047452,
+              37.5599999999995
+            ],
+            "normal_world": [
+              -1,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "positive_cases": [
+    "real_Float32_static_basis_RED_is_nonvacuous",
+    "caller_redirects_same_HU_map_entry_without_new_inventory_identity",
+    "activation_preserves_all4_actual_native_world_matrices_and_has_one_visible_logical_HU",
+    "explicit_main_body_frame_and_detached_public_captures",
+    "gateway_all90degree_turn_headings_and_end_native_grip_pass_on_Float64_object_times_identity_instance",
+    "actual_after_write_failure_restores_all4_previous_owned_world_matrices",
+    "reset_identity_returns_captured_native_state",
+    "dispose_restores_original4_Float32_slices_and_releases_only4_owned_instance_allocations",
+    "failed_activation_releases_leases_and_can_reactivate",
+    "cleanup_attempts_all4_allocations_and_releases_leases_even_when_observer_throws"
+  ],
+  "negative_cases": [
+    {
+      "case": "wrong_logical_HU",
+      "reason": "INVALID_SOURCE_BINDING"
+    },
+    {
+      "case": "duplicate_source_part",
+      "reason": "DUPLICATE_SOURCE_PART"
+    },
+    {
+      "case": "out_of_range_source_index",
+      "reason": "INVALID_SOURCE_BINDING"
+    },
+    {
+      "case": "duplicate_active_owner",
+      "reason": "SOURCE_ALREADY_OWNED"
+    },
+    {
+      "case": "scale_delta",
+      "reason": "NON_RIGID_DELTA"
+    },
+    {
+      "case": "nonfinite_delta",
+      "reason": "INVALID_MATRIX"
+    },
+    {
+      "case": "perspective_delta",
+      "reason": "NON_AFFINE_MATRIX"
+    },
+    {
+      "case": "matrix_accessor_not_invoked",
+      "reason": "INVALID_MATRIX"
+    },
+    {
+      "case": "post_write_atomic_matrix_rollback",
+      "reason": "DYNAMIC_APPLY_FAILED"
+    },
+    {
+      "case": "foreign_active_flag_change_repaired",
+      "reason": "ACTIVE_BINDING_CHANGED"
+    },
+    {
+      "case": "foreign_active_source_metadata_repaired",
+      "reason": "ACTIVE_BINDING_CHANGED"
+    },
+    {
+      "case": "apply_after_dispose",
+      "reason": "DYNAMIC_BINDING_DISPOSED"
+    },
+    {
+      "case": "activation_after_partial_attach_rolls_back",
+      "reason": "DYNAMIC_ACTIVATION_FAILED"
+    },
+    {
+      "case": "foreign_source_buffer_mutation_refused_without_rewinding_it",
+      "reason": "SOURCE_BINDING_CHANGED"
+    },
+    {
+      "case": "unowned_ancestor_change_refused_without_global_lease",
+      "reason": "SOURCE_BINDING_CHANGED"
+    },
+    {
+      "case": "one_disposal_observer_cannot_leak_other_owned_parts",
+      "reason": "DYNAMIC_DISPOSAL_FAILED"
+    }
+  ],
+  "limitations": [
+    "Active native UUID/index changes are intentional render-binding changes; source UUID/index and the logical HU remain captured/restorable. No new inventory HU is created.",
+    "Caller owns active Map redirection, scene scheduling and higher-level resource admission; this helper does not claim a Scene-wide lease.",
+    "Foreign unowned state changes are refused and not silently rewound. Disposal restores owned original source slices; replacing the source buffer/attribute identity is explicitly unsupported.",
+    "CPU object/world matrices are Float64 with identity Float32 instance matrices; no GPU pixel or micrometre accuracy certificate."
+  ]
+}

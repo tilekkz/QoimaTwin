@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#f4f4ed">
+ <meta name="description" content="Демонстрация движения работника с коробкой: три ракурса, перемотка и покадровый осмотр.">
+ <title>Перенос коробки · Анимации · QoimaTwin</title>
+ <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230E8076'/%3E%3Ccircle cx='20' cy='19' r='9' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M24 23l6 6' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+ <a class="mr-skip" href="#motion-controls">К управлению</a>
+ <header class="mr-header"><a class="mr-brand" href="./home-v3.html"><span class="mr-mark" aria-hidden="true"></span>QoimaTwin</a><span class="mr-separator" aria-hidden="true">/</span><span>Анимации</span><a class="mr-back" href="./home-v3.html">← На главную</a></header>
+ <main class="mr-main" id="motion-review" data-state="loading">
+  <div class="mr-intro"><div><p class="mr-eyebrow">Движение вблизи</p><h1>Перенос коробки</h1><p class="mr-lead">Спокойный шаг, удержание груза и поворот. Один работник — с трёх сторон.</p></div><span class="mr-demo">Демонстрация</span></div>
+  <section class="mr-review" aria-label="Просмотр движения">
+   <div class="mr-camera-tabs" role="tablist" aria-label="Ракурс">
+    <button type="button" role="tab" id="camera-front" aria-selected="true" aria-controls="motion-views" tabindex="0" data-camera="0" disabled>Спереди</button>
+    <button type="button" role="tab" id="camera-side" aria-selected="false" aria-controls="motion-views" tabindex="-1" data-camera="1" disabled>Сбоку</button>
+    <button type="button" role="tab" id="camera-volume" aria-selected="false" aria-controls="motion-views" tabindex="-1" data-camera="2" disabled>Объём</button>
+   </div>
+   <div class="mr-stage">
+    <div id="motion-views" class="mr-views" role="img" aria-label="Работник с коробкой: спереди, сбоку и в объёме"></div>
+    <div class="mr-camera-labels" aria-hidden="true"><span>Спереди</span><span>Сбоку</span><span>Объём</span></div>
+    <div class="mr-state-message" id="motion-loading" role="status"><span class="mr-loading-dot" aria-hidden="true"></span><b>Готовим движение</b><span>Загружаем модель и данные демонстрации…</span></div>
+    <div class="mr-state-message mr-error" id="motion-error" role="alert" hidden><b>Не удалось открыть демонстрацию</b><span>Данные или 3D-модель недоступны. Обновите страницу, чтобы повторить загрузку.</span><a href="./motion-v3.html">Повторить загрузку</a></div>
+   </div>
+   <div class="mr-controls" id="motion-controls" tabindex="-1">
+    <div class="mr-progress-heading"><span id="motion-phase">Подготовка</span><output id="motion-time" for="motion-timeline">0,00 / 28,47 с</output></div>
+    <label class="mr-sr" for="motion-timeline">Время демонстрации, секунды</label>
+    <input id="motion-timeline" type="range" min="0" max="28.47" value="0" step="0.001" disabled>
+    <div class="mr-actions"><button class="mr-play" id="motion-play" type="button" aria-pressed="false" disabled><span class="mr-play-icon" aria-hidden="true">▶</span><span id="motion-play-label">Воспроизвести</span></button><button id="motion-reset" type="button" disabled>В начало</button><span class="mr-speed-label">Скорость просмотра</span><button id="motion-half" type="button" aria-label="Половинная скорость" aria-pressed="false" disabled>0,5×</button></div>
+    <p class="mr-reduced" id="motion-reduced" hidden>Включено уменьшение движения. Осматривайте позы ползунком времени.</p>
+    <ol class="mr-phases" aria-label="Этапы движения"><li data-phase="prepare" aria-current="step"><span>01</span>Подготовка</li><li data-phase="walk"><span>02</span>Перенос</li><li data-phase="turn"><span>03</span>Поворот</li><li data-phase="stop"><span>04</span>Остановка</li></ol>
+   </div>
+  </section>
+  <div class="mr-notes"><p><b>Один непрерывный перенос.</b> Коробка уже в руках в начале эпизода. Можно остановиться и вернуться к любой позе.</p><p>Отдельная демонстрация движения. Выполнение складских заданий здесь не моделируется.</p></div>
+ </main>
+ <script type="module" src="/src/adaptive-v3/motionReviewPage.ts"></script>
+</body>
+</html>

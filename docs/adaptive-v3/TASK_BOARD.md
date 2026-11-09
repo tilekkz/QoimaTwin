@@ -89,7 +89,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05](tasks/W05.md) | TODO | unassigned | W03,W04,P10 | Подключён единый clock действий и clips |
 | [W06](tasks/W06.md) | TODO | unassigned | W05 | Реализовано восстановление pause/reset/seek |
 | [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
-| [W08](tasks/W08.md) | TODO | unassigned | W05 | Подключены управляемые SFX |
+| [W08](tasks/W08.md) | VERIFY | root | W05 | Подключены управляемые SFX |
 | [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
 | [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
 | [W11](tasks/W11.md) | TODO | root | W02,C07,M08,M09 | Готов сценарий heavy inbound |
@@ -97,10 +97,10 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W12.1](tasks/W12.1.md) | PASS | account2 | W02,C08,M10,P09 | Frozen long-freight / large-gate scenario inputs |
 | [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
 | [W14](tasks/W14.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Готов экран slotting baseline/adapt сравнения |
-| [W15](tasks/W15.md) | TODO | unassigned | W06,P11 | Реализовано безопасное RoleAssignment event |
-| [W16](tasks/W16.md) | TODO | unassigned | W15,L06,L07 | Реализован переход к новому рабочему месту |
-| [W17](tasks/W17.md) | TODO | unassigned | W16,W06 | Проверено восстановление роли при seek/reset |
-| [W18](tasks/W18.md) | TODO | unassigned | W17,W14 | Готов отдельный N4 STAFFING comparison |
+| [W15](tasks/W15.md) | VERIFY | root | W06,P11 | Реализовано безопасное RoleAssignment event |
+| [W16](tasks/W16.md) | VERIFY | root | W15,L06,L07 | Реализован переход к новому рабочему месту |
+| [W17](tasks/W17.md) | VERIFY | root | W16,W06 | Проверено восстановление роли при seek/reset |
+| [W18](tasks/W18.md) | VERIFY | root | W17,W14 | Готов отдельный N4 STAFFING comparison |
 | [Q01](tasks/Q01.md) | VERIFY | account2 | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
 | [Q02](tasks/Q02.md) | TODO | unassigned | Q01,P09,P10 | Выполнена браузерная проверка финальных GLB |
 | [Q03](tasks/Q03.md) | PASS | root | C12,W04 | Проверена совместимость всех SKU/slots |
@@ -113,11 +113,11 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [Q10](tasks/Q10.md) | TODO | unassigned | Q02,W14 | Измерен performance большого склада |
 | [Q11](tasks/Q11.md) | TODO | unassigned | Q06,Q07,Q08,Q10 | Выполнен визуальный обзор всего сюжета |
 | [Q12](tasks/Q12.md) | TODO | unassigned | Q03,Q04,Q05,Q09,Q11 | Выполнена независимая итоговая приёмка |
-| [H01](tasks/H01.md) | TODO | unassigned | Q12 | Собран asset manifest v3 |
-| [H02](tasks/H02.md) | TODO | unassigned | H01 | Собрана animation/event map |
-| [H03](tasks/H03.md) | TODO | unassigned | Q12 | Собран индекс visual evidence |
+| [H01](tasks/H01.md) | VERIFY | root | Q12 | Собран asset manifest v3 |
+| [H02](tasks/H02.md) | VERIFY | root | H01 | Собрана animation/event map |
+| [H03](tasks/H03.md) | VERIFY | root | Q12 | Собран индекс visual evidence |
 | [H04](tasks/H04.md) | TODO | unassigned | Q11,Q12 | Подготовлен короткий обзорный MP4 |
-| [H05](tasks/H05.md) | TODO | unassigned | H01,H04 | Подготовлен credits/provenance список |
+| [H05](tasks/H05.md) | VERIFY | root | H01,H04 | Подготовлен credits/provenance список |
 | [H06](tasks/H06.md) | TODO | unassigned | H01,H02 | Подготовлена одна проверенная команда запуска |
 | [H07](tasks/H07.md) | TODO | unassigned | H03,H04,H05,H06 | Подготовлен утренний README и resume checkpoint |
 | [H08](tasks/H08.md) | TODO | unassigned | H07,I07 | Зафиксирована собственная поставка без потери чужих правок |
@@ -154,7 +154,7 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W14.4](tasks/W14.4.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.3 | Candidate passes type/dimensions/mass/handler/path before cost |
 | [W14.5](tasks/W14.5.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.4 | Charge take/place/travel/resource waits/return and valid swap buffer |
 | [W14.6](tasks/W14.6.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.5 | Two viewers share input clock/camera/time control without changing business inputs |
-| [W14.7](tasks/W14.7.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.6 | Show assumptions, gain/cost and legitimate zero/negative/no-op outcome |
+| [W14.7](tasks/W14.7.md) | VERIFY | root | W06,W09,W10,W11,W12,W13,W14.6 | Show assumptions, gain/cost and legitimate zero/negative/no-op outcome |
 | [W14.8](tasks/W14.8.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.7 | Correct visual/analytical/actual-run label and complete comparison evidence |
 | [R11](tasks/R11.md) | PASS | people_packing | R01,R04,R05 | Dedicated picking-cart four-view reference |
 | [I09](tasks/I09.md) | PASS | root | R10 | Verified V3 export and browser asset-stand pipeline |
@@ -243,5 +243,18 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W11.1.1](tasks/W11.1.1.md) | PASS | heavy_scenario_inputs | W11.1 | Current-source heavy-inbound pair with explicit source-epoch compatibility |
 | [W05.3.7](tasks/W05.3.7.md) | PASS | root_natural_stance | W05.3.3 | Natural carry cadence and grounded double-support calibration |
 | [W05.3.8](tasks/W05.3.8.md) | FIX | account2_cart_release | P03.5.3.3,W04.3 | Native manual-picker cart hand-release calibration without pose snap |
-| [W05.3.9](tasks/W05.3.9.md) | ACTIVE | account2_cart_natural_grip | W04.3 | Corrected natural original-manual cart-grip arm calibration |
-| [W05.3.7.1](tasks/W05.3.7.1.md) | ACTIVE | motion_review_page | W05.3.7 | Ship portable project page for natural character-motion review |
+| [W05.3.9](tasks/W05.3.9.md) | FIX | account2_cart_natural_grip | W04.3 | Corrected natural original-manual cart-grip arm calibration |
+| [W05.3.7.1](tasks/W05.3.7.1.md) | PASS | root | W05.3.7 | Ship portable project page for natural character-motion review |
+| [W05.3.10](tasks/W05.3.10.md) | PASS | root | W05.3.7 | Lower and closer natural P02 box hold requested by user |
+| [W05.3.11](tasks/W05.3.11.md) | PASS | root | W05.3.7 | Subtle deterministic breathing with planted feet and preserved hand contact |
+| [W05.3.12](tasks/W05.3.12.md) | PASS | root | W05.3.10,W05.3.11 | Lower P02 box hold with vertical upper arms and approximately 90 degree elbows |
+| [W05.3.13](tasks/W05.3.13.md) | FIX | root | W05.3.12 | Convincing close whole-palm box grasp with restored natural arm volume |
+| [W12.2](tasks/W12.2.md) | PASS | root | W02,C08,M10,P09 | Native pre-held LONG gate calibration with driver and rolling |
+
+## User-added structural scope · 2026-11-09
+
+| ID | Status | Owner | Dependencies | Result |
+|---|---|---|---|---|
+| [W19](tasks/W19.md) | PASS | root | user clarification | Static B164: sections/racks change, stock/source A preserved, access and browser checks verified |
+
+VERIFY above records delivered local desktop artifacts; it does not close their global operational prerequisites.

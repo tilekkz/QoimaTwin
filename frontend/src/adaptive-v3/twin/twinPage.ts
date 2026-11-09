@@ -1,11 +1,16 @@
 import './twin.css';
+import {mountPlacementComparison} from './twinPlacementComparison';
+import {createLayoutControls,type LayoutMode} from './twinLayoutControls';
+import {createDenseWarehouseLayoutPlan,type WarehouseLayoutPlan} from '../warehouseLayoutPlan';
+import {validateWarehouseLayoutPlanAccess,type WarehouseLayoutAccessResult} from '../warehouseLayoutAccess';
 import {adaptWarehouseV3,WarehouseAdapterError,WAREHOUSE_BASE_FILES,type WarehouseTexts} from '../warehouseAdapter';
 import {createWarehouseScene,type WarehouseView} from '../warehouseScene';
 import type {WarehouseBundle,XYZ} from '../warehouseTypes';
 import type {BoundCargo} from '../warehouseCargo';
 import {ATMO_ZONES,CHAPTERS,DEMO_DURATION_S,DEMO_EVENTS,PRESENTER_STEPS,outboundCandidates,sampleAtmosphere,stateSegments,type AtmoState,type Variant} from './twinScenario';
 import {bubbleBudget,reactionsAt,recoveredZones,workerStatus,zoneHistory,type Effects} from './twinScenario';
-import {createNavigation} from './twinNavigation';
+import {createNavigation,SPAN_MAX} from './twinNavigation';
+import {createTopPlanControl,fittedWarehouseSpan} from './twinPlanView';
 import {createMinimap} from './twinMinimap';
 import {NOT_RUN,PORT_RU,SCENARIOS,STATUS_RU,type PortCount,type ScenarioCard} from './twinScenarios';
 import {KIND_RU,buildIndex,search,shortId,type SearchEntry,type SearchHit,type SearchIndex,type SearchKind} from './twinSearch';
@@ -32,7 +37,7 @@ const OVERVIEW={target:[72,1.5,36] as XYZ,span:184};
 /** «Рядом» frames both warehouses standing side by side; «Шторка» frames the single one. */
 const SIDE_TARGET:XYZ=[72,1.5,36+SIDE_SHIFT[2]/2];
 /** On a phone the pair stands diagonally in a tall view, so it can be framed closer. */
-const sideOverview=()=>({target:SIDE_TARGET,span:phone.matches?178:250});
+const sideOverview=()=>{const r=twin?.region();return {target:SIDE_TARGET,span:phone.matches?178:fittedWarehouseSpan(true,r?.w??host.clientWidth,r?.h??host.clientHeight,[0,1.15,1],250)};};
 const overview=()=>mode==='side'?sideOverview():OVERVIEW;
 /** Presenter focus points are written for one warehouse; in «Рядом» they frame the same spot in both copies. */
 const focusFor=(f:{target:XYZ;span:number},m:Mode)=>m!=='side'?f:f.span>=OVERVIEW.span-1?sideOverview():{target:[f.target[0],f.target[1],f.target[2]+SIDE_SHIFT[2]/2] as XYZ,span:Math.max(f.span*1.25,120)};
@@ -49,6 +54,40 @@ let scene:Awaited<ReturnType<typeof createWarehouseScene>>|undefined,twin:Return
 const urlMode=new URL(location.href).searchParams.get('mode') as Mode;
 let mode:Mode=asMode(urlMode);
 let t=0,playing=!reduced.matches&&!document.hidden,speed=4,last=0,raf=0,split=.5,moves:Move[]=[],nowKey='',selectedId:string|null=null;
+let slottingMoves:Move[]=[],layoutCandidate:WarehouseLayoutPlan|null=null,layoutEnabled=false,layoutBusy=false,layoutMessage='Готовим планировку…';
+let layoutSourceTexts:WarehouseTexts|undefined,layoutAccess:WarehouseLayoutAccessResult|null=null;
+function layoutMetrics(){
+ const a=bundle?.layout.modules??[],b=layoutEnabled&&layoutCandidate?layoutCandidate.modules:a;
+ const area=(rows:readonly {outer_bounds_world:{min:XYZ;max:XYZ}}[])=>rows.reduce((sum,m)=>sum+(m.outer_bounds_world.max[0]-m.outer_bounds_world.min[0])*(m.outer_bounds_world.max[2]-m.outer_bounds_world.min[2]),0);
+ const originals=new Map(a.map(m=>[m.module_id,m]));
+ return {racksA:a.length,racksB:b.length,newRacks:layoutEnabled&&layoutCandidate?layoutCandidate.modules.filter(m=>m.is_new).length:0,changedRacks:layoutEnabled&&layoutCandidate?layoutCandidate.modules.filter(m=>{const old=originals.get(m.module_id);return old&&Math.hypot(...old.world_pos.map((x,i)=>x-m.world_pos[i]))>1e-7;}).length:0,floorAreaA:area(a),floorAreaB:area(b)};
+}
+function updateLayoutControls(){layoutControls.update({mode:layoutEnabled?'sections':'cargo',ready:phase==='ready',busy:layoutBusy,message:layoutMessage,...layoutMetrics()});}
+async function setLayoutMode(next:LayoutMode){
+ if(!['cargo','sections'].includes(next)||phase!=='ready'||!bundle||!twin||layoutBusy)return;
+ const token=serial,tw=twin,data=bundle;layoutBusy=true;layoutMessage=next==='sections'?'Проверяем секции, ячейки и доступность новой планировки…':'Возвращаем исходные секции…';updateLayoutControls();
+ const previous={plan:layoutEnabled?layoutCandidate:null,enabled:layoutEnabled,moves};
+ try{
+  if(next==='sections'&&!layoutCandidate){
+   if(!layoutSourceTexts)throw Error('LAYOUT_SOURCE_TEXTS_REQUIRED');
+   const candidate=await createDenseWarehouseLayoutPlan(data,layoutSourceTexts),access=await validateWarehouseLayoutPlanAccess(data,candidate);
+   if(token!==serial||tw!==twin)return;
+   if(!access.ok)throw Error('LAYOUT_ACCESS_REFUSED: '+access.reasons.join(', '));
+   layoutCandidate=candidate;layoutAccess=access;
+  }
+  if(token!==serial||tw!==twin)return;
+  const plan=next==='sections'?layoutCandidate:null;
+  tw.setLayoutPlan(plan);mini?.setLayoutPlan(plan);layoutEnabled=!!plan;moves=layoutEnabled?[]:slottingMoves;tw.setMoves(moves,id=>select(id,'HU'));
+  clearSelectionState();tw.setSelected(null);tw.setSelectedActor(null);rebuildSearchIndex();miniKey='';renderMoves();drawMini();scene?.requestRender();
+  layoutMessage=layoutEnabled?'В B перестроены секции и стеллажи. Все 530 грузовых единиц сохранены; новые ячейки пустые.':'Секции исходные. В B меняется только размещение груза по принятым ячейкам.';
+ }catch(error){
+  if(token!==serial||tw!==twin)return;
+  try{tw.setLayoutPlan(previous.plan);mini?.setLayoutPlan(previous.plan);tw.setMoves(previous.moves,id=>select(id,'HU'));layoutEnabled=previous.enabled;moves=previous.moves;rebuildSearchIndex();renderMoves();miniKey='';drawMini();}
+  catch{disposeAll();setPhase('error','Не удалось восстановить сравнение. Повторите загрузку склада.');return;}
+  layoutMessage='Не удалось принять новую планировку. Текущий вариант сохранён; повторите выбор.';console.warn('LAYOUT_PLAN_REFUSED',error);
+ }
+ finally{if(token===serial){layoutBusy=false;updateLayoutControls();}}
+}
 /* ---------- effects & sound preferences ---------- */
 const store={get:(k:string)=>{try{return localStorage.getItem(k);}catch{return null;}},set:(k:string,v:string)=>{try{localStorage.setItem(k,v);}catch{/* private mode: keep in memory only */}}};
 const EFFECTS:Effects[]=['full','calm','off'];
@@ -61,21 +100,30 @@ window.addEventListener('resize',()=>requestAnimationFrame(positionBlade));
  *  only on forward playback crossings: seek, reset and presenter jumps stay silent. */
 type Cue='danger'|'sos'|'control'|'refuse';
 const CUE_NOTES:Record<Cue,[number,number,OscillatorType][]>={danger:[[660,0,'sine']],sos:[[440,0,'triangle'],[370,.2,'triangle']],control:[[523,0,'sine'],[784,.14,'sine']],refuse:[[196,0,'triangle']]};
-let audio:AudioContext|undefined,master:GainNode|undefined,soundOn=false,volume=Number(store.get('qoima.twin.volume')??.5);const lastCue:Partial<Record<Cue,number>>={},voices=new Map<OscillatorNode,GainNode>();
+let audio:AudioContext|undefined,master:GainNode|undefined,soundOn=false,soundError=false,audioAttempt=0,volume=(()=>{const n=Number(store.get('qoima.twin.volume')??.5);return Number.isFinite(n)?Math.max(0,Math.min(1,n)):.5;})();const lastCue:Partial<Record<Cue,number>>={},voices=new Map<OscillatorNode,GainNode>();
 const soundBtn=$<HTMLButtonElement>('#tw-sound'),volumeIn=$<HTMLInputElement>('#tw-volume');
-function syncSound(){soundBtn.disabled=phase!=='ready';soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.querySelector('span')!.textContent=soundOn?'Звук включён':'Звук выключен';volumeIn.disabled=!soundOn||phase!=='ready';volumeIn.value=String(volume);if(master)master.gain.value=soundOn&&!document.hidden&&phase==='ready'?volume*.35:0;}
+function syncSound(){soundBtn.disabled=phase!=='ready';soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.querySelector('span')!.textContent=soundError?'Повторить включение звука':soundOn?'Звук включён':'Звук выключен';soundBtn.title=soundError?'Не удалось включить звук. Нажмите, чтобы попробовать ещё раз.':'';volumeIn.disabled=!soundOn||phase!=='ready';volumeIn.value=String(volume);if(master)master.gain.value=soundOn&&!document.hidden&&phase==='ready'?volume*.35:0;}
 function silenceAudio(close=false){
  if(master)master.gain.value=0;
  for(const [voice,gain]of voices){voice.onended=null;try{voice.stop();}catch{/* An already ended voice still needs disconnection. */}voice.disconnect();gain.disconnect();}voices.clear();
- if(close){const previous=audio;audio=undefined;master=undefined;soundOn=false;for(const kind of Object.keys(lastCue) as Cue[])delete lastCue[kind];if(previous)void previous.close().catch(()=>{});syncSound();}
+ if(close){audioAttempt++;const previous=audio;audio=undefined;master=undefined;soundOn=false;for(const kind of Object.keys(lastCue) as Cue[])delete lastCue[kind];if(previous)void previous.close().catch(()=>{});syncSound();}
 }
-soundBtn.addEventListener('click',()=>{if(phase!=='ready')return;soundOn=!soundOn;if(soundOn&&!audio){audio=new AudioContext();master=audio.createGain();master.connect(audio.destination);}if(soundOn){const context=audio!;void context.resume().catch(()=>{if(audio!==context)return;soundOn=false;silenceAudio();syncSound();});}else silenceAudio();syncSound();if(soundOn)cue('control');});
-volumeIn.addEventListener('input',()=>{volume=Number(volumeIn.value);store.set('qoima.twin.volume',String(volume));syncSound();});
+soundBtn.addEventListener('click',()=>{
+ if(phase!=='ready')return;const attempt=++audioAttempt;soundOn=!soundOn;soundError=false;
+ if(!soundOn){silenceAudio();syncSound();return;}
+ try{
+  if(!audio||audio.state==='closed'){audio=new AudioContext();master=audio.createGain();master.connect(audio.destination);}
+  const context=audio;void context.resume().catch(()=>{if(audio!==context||audioAttempt!==attempt)return;soundOn=false;soundError=true;silenceAudio();for(const kind of Object.keys(lastCue) as Cue[])delete lastCue[kind];syncSound();});
+  syncSound();cue('control');
+ }catch{soundOn=false;soundError=true;silenceAudio(true);syncSound();}
+});
+volumeIn.addEventListener('input',()=>{const n=Number(volumeIn.value);volume=Number.isFinite(n)?Math.max(0,Math.min(1,n)):.5;store.set('qoima.twin.volume',String(volume));syncSound();});
 function cue(kind:Cue){
  if(!soundOn||!audio||!master||document.hidden||phase!=='ready'||voices.size>=4)return;// The cooldown is about what people hear in real time; the audio clock lags on start-up and stops while suspended.
  const wall=performance.now()/1000;if(wall-(lastCue[kind]??-9)<.9)return;lastCue[kind]=wall;const now=audio.currentTime;
- for(const [f,at,type] of CUE_NOTES[kind]){if(voices.size>=4)break;const o=audio.createOscillator(),g=audio.createGain(),t0=now+at,len=kind==='refuse'?.18:.38;voices.set(o,g);
-  o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(.5,t0+.02);g.gain.exponentialRampToValueAtTime(.001,t0+len);o.connect(g).connect(master);o.start(t0);o.stop(t0+len+.02);o.onended=()=>{voices.delete(o);o.disconnect();g.disconnect();};}
+ try{for(const [f,at,type] of CUE_NOTES[kind]){if(voices.size>=4)break;const o=audio.createOscillator();let g:GainNode;try{g=audio.createGain();}catch(error){o.disconnect();throw error;}const t0=now+at,len=kind==='refuse'?.18:.38;voices.set(o,g);
+  o.type=type;o.frequency.value=f;g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(.5,t0+.02);g.gain.exponentialRampToValueAtTime(.001,t0+len);o.connect(g).connect(master);o.start(t0);o.stop(t0+len+.02);o.onended=()=>{voices.delete(o);o.disconnect();g.disconnect();};}}
+ catch{soundOn=false;soundError=true;delete lastCue[kind];silenceAudio();syncSound();}
 }
 function cuesBetween(from:number,to:number){
  const shown:Variant[]=['A','B'],fired=new Set<Cue>();
@@ -150,6 +198,11 @@ function indexBundle(b:WarehouseBundle):SearchEntry[]{
   ...b.layout.slots.map(sl=>{const h=byslot.get(sl.slot_id);return {kind:'slot' as const,id:sl.slot_id,title:shortId(sl.slot_id),sub:h?`занята · ${h.sku_id}`:'свободна',keys:[sl.slot_id]};}),
  ];
 }
+function rebuildSearchIndex(){
+ if(!bundle)return;const entries=indexBundle(bundle);
+ if(layoutEnabled&&layoutCandidate)for(const s of layoutCandidate.slots.filter(s=>s.is_new&&!s.reserve_only&&!s.retrieval_blocked))entries.push({kind:'slot',id:s.slot_id,title:`Новая ячейка · ${s.family} ${s.module_id.split(':').at(-1)} · ${s.slot_id.split(':').slice(-2).join(':')}`,sub:'Только B · пустая ячейка новой секции',keys:[s.slot_id,s.module_id,s.family,'новая','пустая','B']});
+ searchIndex=buildIndex(entries);hintMap=new Map(entries.filter(e=>e.kind==='actor'||e.kind==='HU').map(e=>[e.id,e]));if(searchBox.dataset.open==='true')renderSearch();
+}
 const SEARCH_TRIES=['P01','K03','DEMO_001','OUT_S_EXPRESS','Упаковка','SMALL_E:019'];
 function renderSearch(){
  const q=searchIn.value;searchHits=search(searchIndex,q);searchActive=Math.min(searchActive,Math.max(0,searchHits.length-1));
@@ -168,13 +221,14 @@ function setSearch(open:boolean){
 }
 /** Takes the camera to a search hit on the chosen warehouse copy and selects it where that makes sense. */
 function goSearch(h:SearchHit,copy:Variant='A'){
- if(!bundle||!twin)return;setSearch(false);const o=twin.offsetOf(copy);
+ if(!bundle||!twin)return;if(layoutEnabled&&h.kind==='slot'&&layoutCandidate?.slots.some(s=>s.slot_id===h.id&&s.is_new))copy='B';setSearch(false);const o=twin.offsetOf(copy);
  if(h.kind==='actor'||h.kind==='HU'){select(h.id,h.kind,copy);return;}
  if(h.kind==='slot'){const hu=bundle.fixture.inputs.initial_stock.find(x=>x.location.slot_id===h.id);if(hu){select(hu.handling_unit_id,'HU',copy);return;}
+  const planned=layoutEnabled&&copy==='B'?layoutCandidate?.slots.find(s=>s.slot_id===h.id):null;if(planned){const p=planned.bin_anchor_world;fly([p[0]+o[0],p[1],p[2]+o[2]],16);return;}
   const sl=bundle.layout.slots.find(x=>x.slot_id===h.id);if(sl){const m=bundle.layout.modules[sl.module_index].world_pos;fly([m[0]+o[0],0,m[2]+o[2]],16);}return;}
  if(h.kind==='port'){const p=(bundle.layout.data.ports as {port_id:string;world_pos:XYZ}[]).find(x=>x.port_id===h.id);if(p)fly([p.world_pos[0]+o[0],0,p.world_pos[2]+o[2]],34);return;}
  const z=(bundle.layout.data.zones as {zone_id:string;floor_bounds_xz_m:{min:[number,number];max:[number,number]}}[]).find(x=>x.zone_id===h.id);
- if(z){const b=z.floor_bounds_xz_m,w=b.max[0]-b.min[0],d=b.max[1]-b.min[1];fly([(b.min[0]+b.max[0])/2+o[0],0,(b.min[1]+b.max[1])/2+o[2]],Math.min(184,Math.max(24,Math.max(w,d)*1.2+8)));}
+ if(z){const b=(layoutEnabled&&copy==='B'?layoutCandidate?.zones.find(q=>q.zone_id===h.id)?.floor_bounds_xz_m:null)??z.floor_bounds_xz_m,w=b.max[0]-b.min[0],d=b.max[1]-b.min[1];fly([(b.min[0]+b.max[0])/2+o[0],0,(b.min[1]+b.max[1])/2+o[2]],Math.min(184,Math.max(24,Math.max(w,d)*1.2+8)));}
 }
 searchBtn.addEventListener('click',()=>setSearch(searchBox.dataset.open!=='true'));
 searchIn.addEventListener('input',()=>{searchActive=0;renderSearch();});
@@ -193,7 +247,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ---------- camera fly-to ---------- */
-const homeBtn=$<HTMLButtonElement>('#tw-home');let flyRaf=0,flyTarget:{target:XYZ;span:number}|null=null;
+const homeBtn=$<HTMLButtonElement>('#tw-home');let flyRaf=0,flyTarget:{target:XYZ;span:number;dir:XYZ}|null=null;
 /* ---------- minimap ---------- */
 let mini:ReturnType<typeof createMinimap>|undefined,miniKey='',zoneRects=new Map<string,{min:[number,number];max:[number,number]}>();
 /** Redrawn after every scene render, time step and layout change; skipped when nothing it shows has changed. */
@@ -204,13 +258,13 @@ function drawMini(){
  const states=Object.fromEntries((['A','B'] as Variant[]).map(v=>[v,Object.fromEntries(Object.entries(sampleAtmosphere(v,t)).map(([id,s])=>[id,s.state]))])) as Record<Variant,Record<string,AtmoState>>;
  mini.draw({shared:mode==='swipe',quad:quad.length&&quad.every(Boolean)?quad.map(p=>[p![0],p![2]] as [number,number]):null,states});
 }
-/** The default isometric direction; «Весь склад», presenter steps and key 0 return to it. */
-const HOME_DIR:XYZ=[.9,1.15,1];
+/** Axis-aligned tilted3D overview keeps floor corners square on screen; orbit remains available. */
+const HOME_DIR:XYZ=[0,1.15,1];
 const yawElev=(d:XYZ)=>[Math.atan2(d[0],d[2]),Math.asin(d[1]/Math.hypot(...d))] as const;
-const homeShown=()=>{const s=scene?.frameState();if(!s)return;const [y,e]=yawElev(s.dir),[hy,he]=yawElev(HOME_DIR);homeBtn.dataset.shown=String(Math.abs(s.span-overview().span)>1||s.target.some((v,i)=>Math.abs(v-overview().target[i])>1)||Math.abs(y-hy)>.02||Math.abs(e-he)>.02);};
+const homeShown=()=>{const s=scene?.frameState();if(!s)return;const [y,e]=yawElev(s.dir),[hy,he]=yawElev(HOME_DIR);homeBtn.dataset.shown=String(Math.abs(s.span-overview().span)>1||s.target.some((v,i)=>Math.abs(v-overview().target[i])>1)||Math.abs(y-hy)>.02||Math.abs(e-he)>.02);planView.update();};
 /** Animated move; keeps the current viewing angle unless a direction is given. */
 function fly(target:XYZ,span:number,dir?:XYZ){
- if(!scene)return;nav?.stop();cancelAnimationFrame(flyRaf);flyTarget={target:[...target],span};const sc=scene,from=sc.frameState();
+ if(!scene)return;nav?.stop();cancelAnimationFrame(flyRaf);const sc=scene,from=sc.frameState();flyTarget={target:[...target],span,dir:[...(dir??from.dir)]};
  const [y0,e0]=yawElev(from.dir),[y1r,e1]=yawElev(dir??from.dir),y1=y0+Math.atan2(Math.sin(y1r-y0),Math.cos(y1r-y0)),turn=Math.hypot(y1-y0,e1-e0);
  // Gentle start and landing; longer trips take a little longer so the speed never spikes.
  const trip=Math.hypot(target[0]-from.target[0],target[2]-from.target[2])/Math.max(span,from.span)+Math.abs(Math.log(span/from.span))+turn,start=performance.now(),dur=reduced.matches?0:Math.min(1500,850+trip*420);
@@ -219,11 +273,12 @@ function fly(target:XYZ,span:number,dir?:XYZ){
  flyRaf=requestAnimationFrame(step);homeBtn.dataset.shown=String(Math.abs(span-overview().span)>1||target.some((v,i)=>Math.abs(v-overview().target[i])>1)||(!!dir&&dir!==HOME_DIR));
 }
 homeBtn.addEventListener('click',()=>fly(overview().target,overview().span,HOME_DIR));
+const planView=createTopPlanControl({button:$<HTMLButtonElement>('#tw-plan'),side:()=>mode==='side',size:()=>twin?.region()??{w:host.clientWidth,h:host.clientHeight},frame:()=>scene?.frameState(),fly});
 
 /* ---------- link to this view: same place, moment and mode, opened paused ---------- */
 const shareBtn=$<HTMLButtonElement>('#tw-share'),SHARE_LABEL='Ссылка на этот вид';
 function viewUrl(){
- const u=new URL(location.href);u.searchParams.delete('present');u.searchParams.set('mode',mode);u.searchParams.set('t',String(Math.round(t)));
+ const u=new URL(location.href);u.searchParams.delete('present');u.searchParams.set('mode',mode);u.searchParams.set('layout',layoutEnabled?'sections':'cargo');u.searchParams.set('t',String(Math.round(t)));
  const s=scene?.frameState();if(s){const [y,e]=yawElev(s.dir);u.searchParams.set('cam',[...s.target,s.span,y*180/Math.PI,e*180/Math.PI].map(n=>+n.toFixed(1)).join(','));}
  return u.href;
 }
@@ -236,8 +291,8 @@ function readViewUrl(sc:NonNullable<typeof scene>){
  const q=new URL(location.href).searchParams,tt=Number(q.get('t')),c=q.get('cam')?.split(',').map(Number);
  if(q.has('t')&&Number.isFinite(tt)){playing=false;seek(tt);}
  if(c?.length===6&&c.every(Number.isFinite)){
-  const y=c[4]*Math.PI/180,e=Math.min(1.52,Math.max(.2,c[5]*Math.PI/180)),cl=(v:number,a:number,b:number)=>Math.min(b,Math.max(a,v));
-  sc.frameAt([cl(c[0],-12,156),c[1],cl(c[2],-12,168)],cl(c[3],10,300),[Math.cos(e)*Math.sin(y),Math.sin(e),Math.cos(e)*Math.cos(y)]);homeShown();
+  const y=c[4]*Math.PI/180,e=Math.min(Math.PI/2,Math.max(.2,c[5]*Math.PI/180)),cl=(v:number,a:number,b:number)=>Math.min(b,Math.max(a,v));
+  sc.frameAt([cl(c[0],-12,156),c[1],cl(c[2],-12,168)],cl(c[3],10,SPAN_MAX),[Math.cos(e)*Math.sin(y),Math.sin(e),Math.cos(e)*Math.cos(y)]);homeShown();
  }
 }
 
@@ -246,7 +301,7 @@ const present=$('#tw-present'),pTitle=$('#tw-present-title'),pText=$('#tw-presen
 let stepIndex=-1;
 pDots.innerHTML=PRESENTER_STEPS.map(()=>'<i></i>').join('');
 function goStep(i:number){
- if(phase!=='ready')return;stepIndex=Math.max(0,Math.min(PRESENTER_STEPS.length-1,i));const s=PRESENTER_STEPS[stepIndex];
+ if(phase!=='ready'||layoutBusy)return;if(layoutEnabled)void setLayoutMode('cargo');stepIndex=Math.max(0,Math.min(PRESENTER_STEPS.length-1,i));const s=PRESENTER_STEPS[stepIndex];
  app.dataset.presenting='true';show(present,true);setPop(null);select(null);
  pStep.textContent=`Шаг ${stepIndex+1} из ${PRESENTER_STEPS.length}`;[...pDots.children].forEach((d,k)=>d.classList.toggle('is-on',k===stepIndex));
  for(const el of [pTitle,pText])el.style.animation='none';void present.offsetWidth;pTitle.textContent=s.title;pText.textContent=s.text;for(const el of [pTitle,pText])el.style.animation='';
@@ -265,12 +320,13 @@ pNext.addEventListener('click',nextPresent);
 /* ---------- clock ---------- */
 const PLAY='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6c0 .6.6.9 1.1.6l7.4-4.8c.4-.3.4-.9 0-1.2L6.1 2.6C5.6 2.3 5 2.6 5 3.2z"/></svg>',PAUSE='<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3.2" height="11" rx="1.2"/><rect x="9.3" y="2.5" width="3.2" height="11" rx="1.2"/></svg>';
 function syncPlay(){play.innerHTML=playing?PAUSE:PLAY;play.setAttribute('aria-label',playing?'Пауза':'Воспроизвести');}
-function seek(next:number){
+function seek(next:number,clockAdvance=false){
+ if(!clockAdvance)silenceAudio();
  t=Math.min(DEMO_DURATION_S,Math.max(0,next));clockOut.textContent=mmss(t);progress.style.width=t/DEMO_DURATION_S*100+'%';
  river.setAttribute('aria-valuenow',String(Math.round(t)));twin?.setTime(t);if(sheet==='time')drawRiver();renderNow();renderWorkerStatus();drawMini();
 }
-function tick(now:number){raf=0;if(reconcileReducedMotion()||!playing||phase!=='ready')return;const dt=Math.min(.1,(now-last)/1000);last=now;const before=t;seek(t+dt*speed);cuesBetween(before,t);if(t>=DEMO_DURATION_S){playing=false;syncPlay();return;}raf=requestAnimationFrame(tick);}
-function setPlaying(next:boolean){playing=next;if(!playing&&raf){cancelAnimationFrame(raf);raf=0;}syncPlay();if(playing&&t>=DEMO_DURATION_S)seek(0);if(playing&&!raf&&phase==='ready'){last=performance.now();raf=requestAnimationFrame(tick);}}
+function tick(now:number){raf=0;if(reconcileReducedMotion()||!playing||phase!=='ready')return;const dt=Math.min(.1,(now-last)/1000);last=now;const before=t;seek(t+dt*speed,true);cuesBetween(before,t);if(t>=DEMO_DURATION_S){playing=false;silenceAudio();syncPlay();return;}raf=requestAnimationFrame(tick);}
+function setPlaying(next:boolean){playing=next;if(!playing){silenceAudio();if(raf){cancelAnimationFrame(raf);raf=0;}}syncPlay();if(playing&&t>=DEMO_DURATION_S)seek(0);if(playing&&!raf&&phase==='ready'){last=performance.now();raf=requestAnimationFrame(tick);}}
 play.addEventListener('click',()=>setPlaying(!playing));
 for(const b of $$<HTMLButtonElement>('[data-speed]'))b.addEventListener('click',()=>{speed=Number(b.dataset.speed);for(const x of $$('[data-speed]'))x.setAttribute('aria-pressed',String(x===b));});
 for(const c of CHAPTERS){const b=document.createElement('button');b.type='button';b.textContent=c.label;b.title=mmss(c.at_s);b.addEventListener('click',()=>{setPlaying(false);seek(c.at_s+.01);});$('#tw-chapters').append(b);}
@@ -360,7 +416,7 @@ function renderNow(){
  }
 }
 // Pointing at an issue row outlines its zone in the scene, so «where» is answered before the click.
-$('#tw-now').addEventListener('pointerover',e=>{const b=(e.target as HTMLElement).closest<HTMLElement>('.tw-issue,.tw-src');const k=b?.dataset.k,r=k?zoneRects.get(k.slice(2)):undefined;if(r)twin?.highlightZone(r,k![0] as Variant);else restoreHl();});
+$('#tw-now').addEventListener('pointerover',e=>{const b=(e.target as HTMLElement).closest<HTMLElement>('.tw-issue,.tw-src');const k=b?.dataset.k,r=k?((layoutEnabled&&k[0]==='B'?layoutCandidate?.zones.find(z=>z.zone_id===k.slice(2))?.floor_bounds_xz_m:undefined)??zoneRects.get(k.slice(2))):undefined;if(r)twin?.highlightZone(r,k![0] as Variant);else restoreHl();});
 $('#tw-now').addEventListener('pointerleave',()=>restoreHl());
 
 /* ---------- scenarios N0–N4: declared inputs only, shown on the warehouse ---------- */
@@ -372,7 +428,7 @@ const portRows=(list:PortCount[])=>list.map(p=>{const d=p.after-p.before;return 
 function scenarioBody(c:ScenarioCard){
  const ports=c.ports?`<div class="tw-scn-ports"><p>Заявок по воротам${c.ports.inbound.concat(c.ports.outbound).some(p=>p.after!==p.before)?' · было → стало':''}</p><ul>${portRows(c.ports.inbound)}</ul><ul>${portRows(c.ports.outbound)}</ul></div>`:'';
  const src=c.source?`<p class="tw-scn-src">${c.source.task} · <span title="${esc(c.source.path)} · sha256 ${c.source.sha256}">входы ${c.source.sha256.slice(0,8)}</span></p>`:'<p class="tw-scn-src">Входы ещё не зафиксированы — это описание кандидата.</p>';
- return `<div class="tw-scn-body"><p>${esc(c.idea)}</p>${ports}<ul class="tw-scn-changes">${c.changes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="tw-scn-same"><b>Одинаково в A и B.</b> ${esc(c.same)}</p>${src}</div>`;
+ return `<div class="tw-scn-body"><p>${esc(c.idea)}</p>${ports}<ul class="tw-scn-changes">${c.changes.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="tw-scn-same"><b>Одинаково в A и B.</b> ${esc(c.same)}</p>${c.id==='N4'?'<p><a href="staff-v3.html#role-assignment">Открыть распределение ролей и переходы работников →</a></p>':''}${src}</div>`;
 }
 function renderScenarios(){
  $('#tw-scn').innerHTML=SCENARIOS.map(c=>{const open=openScn===c.id;return `<article class="tw-scn" data-open="${open}"><button type="button" class="tw-scn-head" data-scn="${c.id}" aria-expanded="${open}"><span class="tw-scn-n">${c.id}</span><b>${esc(c.title)}</b><i data-status="${c.status}">${STATUS_RU[c.status]}</i></button>${open?scenarioBody(c):''}</article>`;}).join('');
@@ -405,6 +461,11 @@ $('#tw-now').addEventListener('click',e=>{
  document.querySelector<HTMLButtonElement>(`.tw-issue[data-k="${k}"]`)?.focus({preventScroll:true});
 });
 function renderMoves(){
+ if(layoutEnabled&&layoutCandidate){
+  const q=layoutMetrics();$('#tw-diff-summary').innerHTML=[['Стеллажей',`${q.racksA} → ${q.racksB}`],['Добавлено пустых',String(q.newRacks)],['Площадь стеллажей',`${fmt(q.floorAreaA)} → ${fmt(q.floorAreaB)} м²`],['Не меняется','530<small> ГЕ · 24 чел.</small>']].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  const list=$('#tw-moves');list.replaceChildren();const names:Record<string,string>={SMALL:'Малые короба',STANDARD:'Стандартные короба',HEAVY:'Тяжёлые грузы',LONG:'Длинномер',FLEX:'Гибкое хранение'};
+  for(const family of ['SMALL','STANDARD','HEAVY','LONG','FLEX']){const before=bundle!.layout.modules.filter(m=>m.family===family).length,after=layoutCandidate.modules.filter(m=>m.family===family).length,li=document.createElement('li');li.className='tw-empty';li.textContent=`${names[family]}: ${before} → ${after} модулей`;list.append(li);}return;
+ }
  const total=moves.reduce((s,m)=>s+m.move_m,0),gain=moves.reduce((s,m)=>s+m.before_m-m.after_m,0),outbound=bundle!.fixture.inputs.requests.filter(r=>r.direction==='outbound').length;
  $('#tw-diff-summary').innerHTML=[['Переносов',`${moves.length}<small> из ${outbound}</small>`],['Ближе к воротам',`${fmt(gain)}<small> м</small>`],['Цена переносов',`${fmt(total)}<small> м</small>`],['Не меняется','530<small> ГЕ · 24 чел.</small>']].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
  const list=$('#tw-moves');list.replaceChildren();
@@ -423,14 +484,14 @@ function select(id:string|null,kind='HU',copy:Variant='A'){
  const box=$('#tw-selection'),kv=(rows:[string,string][])=>`<dl class="tw-kv">${rows.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`;
  if(kind==='HU'){const hu=bundle.fixture.inputs.initial_stock.find(h=>h.handling_unit_id===id);if(!hu)return;
   $('#sh-sel').textContent='Груз';
-  const route=moved?`<div class="tw-route"><div><small>Было · A</small><span>${esc(hu.location.slot_id.replace('v3:slot:',''))}</span></div>${ARROW}<div><small>Стало · B</small><span>${esc(moved.to_slot.replace('v3:slot:',''))}</span></div></div>`:`<div class="tw-route"><div style="grid-column:1/-1"><small>Адрес</small><span>${esc(hu.location.slot_id.replace('v3:slot:',''))} · не переносится</span></div></div>`;
+  const route=moved?`<div class="tw-route"><div><small>Было · A</small><span>${esc(hu.location.slot_id.replace('v3:slot:',''))}</span></div>${ARROW}<div><small>Стало · B</small><span>${esc(moved.to_slot.replace('v3:slot:',''))}</span></div></div>`:`<div class="tw-route"><div style="grid-column:1/-1"><small>Адрес</small><span>${esc(hu.location.slot_id.replace('v3:slot:',''))} · ${layoutEnabled&&copy==='B'?'ячейка в новой планировке':'исходная ячейка'}</span></div></div>`;
   // A moved unit is framed from its old place in A to its new place in B, wherever B stands.
   if(moved){const a=moved.a.position,b=[moved.b.position[0]+offB[0],moved.b.position[1],moved.b.position[2]+offB[2]],d=Math.hypot(a[0]-b[0],a[2]-b[2]);fly([(a[0]+b[0])/2,0,(a[2]+b[2])/2],Math.min(184,Math.max(18,d*1.5+10)));}
-  else{const pos=scene?.getCargoBindings().find(b=>b.handling_unit_id===id)?.position;if(pos)fly([pos[0]+off[0],0,pos[2]+off[2]],16);}
+  else{const pos=layoutEnabled&&copy==='B'?layoutCandidate?.HUs.find(h=>h.handling_unit_id===id)?.position_world:scene?.getCargoBindings().find(b=>b.handling_unit_id===id)?.position;if(pos)fly([pos[0]+off[0],0,pos[2]+off[2]],16);}
   box.innerHTML=`<h3>${esc(hu.sku_id)}</h3><p class="tw-sub">${esc(hu.archetype_id)} · ${fmt(hu.gross_mass_kg,2)} кг</p>${route}`+kv([['Количество',fmt(hu.quantity_units)+' ед.'],['Габариты',hu.dimensions_xyz_m.map(x=>fmt(x,2)).join(' × ')+' м'],...(moved?[['Ворота',moved.port_id],['До ворот',`${fmt(moved.before_m)} → ${fmt(moved.after_m)} м`],['Перенос',`${fmt(moved.move_m)} м по прямой`]] as [string,string][]:[])]);}
  else{const w=bundle.registry.workers.find(w=>w.actor_id===id);if(!w)return;$('#sh-sel').textContent='Работник';
-  const spot=twin?.workers().find(s=>s.actor_id===id),head=twin?.actorPosition(id);if(head)fly([head[0]+off[0],0,head[2]+off[2]],20);
-  box.innerHTML=`<h3>${esc(w.actor_id)}</h3><p class="tw-sub">${esc(bundle.registry.roles.find(r=>r.role===w.baseline_role)?.label??w.baseline_role)}${spot?.zone_id?` · ${esc(zoneLabel(spot.zone_id))}`:''}</p><div id="tw-wstatus" class="tw-wstatus"></div>`+kv([['Техника',w.assigned_vehicle_id??'—'],['В варианте B','та же роль и место']])+`<p class="tw-note">Реакции — часть демонстрационного эпизода: они объясняют причину и не меняют груз, время или результаты.</p><a href="skills-v3.html?actor=${encodeURIComponent(id)}">Навыки и допуски →</a>`;}
+  const spot=twin?.workers(copy).find(s=>s.actor_id===id),head=twin?.actorPosition(id,copy);if(head)fly([head[0]+off[0],0,head[2]+off[2]],20);
+  box.innerHTML=`<h3>${esc(w.actor_id)}</h3><p class="tw-sub">${esc(bundle.registry.roles.find(r=>r.role===w.baseline_role)?.label??w.baseline_role)}${spot?.zone_id?` · ${esc(zoneLabel(spot.zone_id))}`:''}</p><div id="tw-wstatus" class="tw-wstatus"></div>`+kv([['Техника',w.assigned_vehicle_id??'—'],['В варианте B',layoutEnabled&&w.baseline_role==='picker'?'та же роль, место в новой секции':'та же роль и место']])+`<p class="tw-note">Реакции — часть демонстрационного эпизода: они объясняют причину и не меняют груз, время или результаты.</p><a href="skills-v3.html?actor=${encodeURIComponent(id)}">Навыки и допуски →</a>`;}
  show(panel,true);layoutPanels();renderWorkerStatus();
 }
 let selectedKind='HU',statusKey='';
@@ -465,7 +526,7 @@ host.addEventListener('pointerleave',hideHint);host.addEventListener('pointerdow
 async function readLocal(path:string,signal:AbortSignal){const r=await fetch(import.meta.env.BASE_URL+path.replace(/^\//,''),{signal,cache:'no-store'});if(!r.ok)throw Error(r.status===404?'В локальном пакете не хватает данных склада V3.':'Данные склада временно недоступны. Повторите загрузку.');return r.text();}
 const pose=(b:BoundCargo):Pose=>({position:[...b.position],yaw:b.yaw_rad,dims:[...b.cargo.dimensions_xyz_m]});
 function clearSelectionState(){selectedId=null;selectedKind='HU';statusKey='';for(const button of $$<HTMLButtonElement>('.tw-moves button'))button.setAttribute('aria-pressed','false');show(sheets.find(s=>s.dataset.sheet==='sel')!,false);$('#tw-selection').replaceChildren();}
-function disposeAll(){silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;moves=[];nowKey='';clearSelectionState();endPresent();}
+function disposeAll(){silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;moves=[];slottingMoves=[];layoutCandidate=null;layoutSourceTexts=undefined;layoutAccess=null;layoutEnabled=false;layoutBusy=false;nowKey='';clearSelectionState();endPresent();}
 async function load(){
  const token=++serial;controller?.abort();controller=new AbortController();const owned=controller;disposeAll();
  if(!webglAvailable()){showNoGl();return;}
@@ -473,18 +534,20 @@ async function load(){
  const timeout=setTimeout(()=>owned.abort(),45000);
  try{
   const keys=Object.keys(WAREHOUSE_BASE_FILES) as (keyof WarehouseTexts)[],values=await Promise.all(keys.map(k=>readLocal(WAREHOUSE_BASE_FILES[k],owned.signal)));
-  const data=await adaptWarehouseV3(Object.fromEntries(keys.map((k,i)=>[k,values[i]])) as WarehouseTexts);if(token!==serial)return;
+  const sourceTexts=Object.fromEntries(keys.map((k,i)=>[k,values[i]])) as WarehouseTexts;
+  const data=await adaptWarehouseV3(sourceTexts);if(token!==serial)return;
   const tw=createTwinRenderer(data,layer,()=>reduced.matches);twin=tw;tw.onBubble((id,v)=>select(id,'actor',v));
   // The A/B labels stand by their warehouse: a click takes you to that one, to look at it on its own.
   tw.onLabel(v=>{const o=tw.offsetOf(v);fly([OVERVIEW.target[0],OVERVIEW.target[1],OVERVIEW.target[2]+o[2]],mode==='side'?150:OVERVIEW.span);});
-  const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{tw.renderPass(r,s,c);positionBlade();drawMini();}});
-  if(token!==serial){sc.dispose();return;}scene=sc;bundle=data;setPhase('loading','Проверяем перестройку…');
+  const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{tw.renderPass(r,s,c);positionBlade();drawMini();homeShown();}});
+  if(token!==serial){sc.dispose();return;}scene=sc;bundle=data;layoutSourceTexts=sourceTexts;setPhase('loading','Проверяем перестройку…');
   // B: greedy, each move admitted by the real cargo rules; rejected candidates leave state untouched.
   const accepted:{c:ReturnType<typeof outboundCandidates>[number];slot_id:string;after_m:number;move_m:number}[]=[];
   for(const c of outboundCandidates(data))for(const cand of c.candidates){const r=sc.applyCargoBindings([{handling_unit_id:c.hu.handling_unit_id,destination:{kind:'storage_slot',slot_id:cand.slot_id}}]);if(r?.ok){accepted.push({c,...cand});break;}}
   tw.capture('B');const posesB=new Map(sc.getCargoBindings().map(b=>[b.handling_unit_id,pose(b)]));
   sc.resetCargoBindings();tw.capture('A');const posesA=new Map(sc.getCargoBindings().map(b=>[b.handling_unit_id,pose(b)]));
   moves=accepted.map(({c,slot_id,after_m,move_m})=>({id:c.hu.handling_unit_id,sku:c.hu.sku_id,archetype:c.hu.archetype_id,from_slot:c.from_slot,to_slot:slot_id,port_id:c.port_id,before_m:c.before_m,after_m,move_m,a:posesA.get(c.hu.handling_unit_id)!,b:posesB.get(c.hu.handling_unit_id)!}));
+  slottingMoves=moves;
   tw.setMoves(moves,id=>select(id,'HU'));
   {const entries=indexBundle(data);searchIndex=buildIndex(entries);hintMap=new Map(entries.filter(e=>e.kind==='actor'||e.kind==='HU').map(e=>[e.id,e]));}
   nav=createNavigation({host,wheelAlso:[layer],scene:sc,ground:tw.ground,reduced:()=>reduced.matches,onTap:tapAt,onInput:()=>{cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;hideHint();},onMove:homeShown});
@@ -499,13 +562,16 @@ async function load(){
     hover:(z,v)=>{if(z)tw.highlightZone(z,v);else restoreHl();}});
   zoneRects=new Map((data.layout.data.zones as Z[]).map(z=>[z.zone_id,z.floor_bounds_xz_m]));
   setPhase('ready','');
-  setMode(mode,false);setSplit(split);renderMoves();tw.setReady();applyEffects();seek(t);sc.setView('overview' as WarehouseView);{const o=overview();sc.frameAt(o.target,o.span);}readViewUrl(sc);setPlaying(playing);
+  setMode(mode,false);setSplit(split);renderMoves();tw.setReady();applyEffects();seek(t);sc.setView('overview' as WarehouseView);{const o=overview();sc.frameAt(o.target,o.span,HOME_DIR);}readViewUrl(sc);setPlaying(playing);
+  await setLayoutMode(new URL(location.href).searchParams.get('layout')==='cargo'?'cargo':'sections');
+  if(token!==serial||twin!==tw||scene!==sc||phase!=='ready')return;
   // Start page link «Режим защиты» opens straight into the walk-through.
   if(new URL(location.href).searchParams.get('present')==='1')goStep(0);
   // Start page links open a scenario card straight away.
   {const id=new URL(location.href).searchParams.get('scenario');if(SCENARIOS.some(c=>c.id===id)){setSheet('source');openScenario(id);}}
   // Other pages link here with ?select=<worker or cargo ID> (and copy=B): open with it selected and framed.
   {const q=new URL(location.href).searchParams,id=q.get('select'),kind=!id?null:data.registry.workers.some(w=>w.actor_id===id)?'actor':data.fixture.inputs.initial_stock.some(h=>h.handling_unit_id===id)?'HU':null;if(id&&kind)select(id,kind,q.get('copy')==='B'?'B':'A');}
+  updateLayoutControls();
  }catch(error){
   if(token!==serial)return;const aborted=owned.signal.aborted;owned.abort();disposeAll();
   // Engine messages are English and technical: keep them in the console, show people a sentence they can act on.
@@ -516,7 +582,7 @@ async function load(){
 }
 retry.addEventListener('click',()=>void load());
 host.addEventListener('webglcontextlost',e=>{e.preventDefault();if(phase!=='ready')return;disposeAll();setPhase('error','Графика браузера перезапустилась. Откройте склад заново.');},true);
-function finishCameraMotion(){nav?.finish();cancelAnimationFrame(flyRaf);flyRaf=0;if(flyTarget&&scene)scene.frameAt(flyTarget.target,flyTarget.span);flyTarget=null;}
+function finishCameraMotion(){nav?.finish();cancelAnimationFrame(flyRaf);flyRaf=0;if(flyTarget&&scene)scene.frameAt(flyTarget.target,flyTarget.span,flyTarget.dir);flyTarget=null;}
 /** Rendering can observe the new matches value before its change event is delivered.
  * Reconcile at motion boundaries too; an explicit play under an unchanged preference stays explicit. */
 function reconcileReducedMotion(){
@@ -529,5 +595,9 @@ reduced.addEventListener('change',reconcileReducedMotion);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){silenceAudio();setPlaying(false);finishCameraMotion();}else syncSound();});
 window.addEventListener('pagehide',()=>{serial++;controller?.abort();silenceAudio(true);setPlaying(false);disposeAll();setPhase('disposed','Просмотр остановлен.');});
 window.addEventListener('pageshow',e=>{if(e.persisted)void load();});
-Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers())}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),seek,setMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
+Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,layout:{mode:layoutEnabled?'sections':'cargo',busy:layoutBusy,candidate_id:layoutCandidate?.candidate_id??null,counts:layoutMetrics(),access:layoutEnabled&&layoutAccess?{ok:layoutAccess.ok,plan_sha256:layoutAccess.plan_sha256,pedestrian:layoutAccess.manual.pedestrian.ok,manual_cart:layoutAccess.manual.manual_cart.ok,vehicle:layoutAccess.vehicle.ok,required_heavy_HUs:layoutAccess.vehicle.required_service_access.length}:null,render:twin?.layoutSnapshot()??null},sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers('B'))}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>twin?.layoutBounds(kind,id,v)??null,seek,setMode,setLayoutMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
+const disposePlacementComparison=mountPlacementComparison($('[data-sheet="diff"]'));
+const layoutControls=createLayoutControls($('[data-sheet="diff"]'),setLayoutMode);
+updateLayoutControls();
+window.addEventListener('pagehide',e=>{if(!e.persisted)disposePlacementComparison();});
 syncPlay();setMode(mode,false);void load();

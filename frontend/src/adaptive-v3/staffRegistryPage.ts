@@ -1,11 +1,13 @@
 import './staffRegistry.css';
 import {validateWorkerRegistry,clipStandUrl,type WorkerRegistry,type RoleLegend} from './workerRegistry';
+import {createStaffAssignmentPanel} from './staffAssignmentPanel';
 
 type Fault={kind:'network'|'timeout'|'not_found'|'validation'|'server';message:string};
 type State={kind:'initial'|'loading';data:null;error:null}|{kind:'error';data:null;error:Fault}|{kind:'ready'|'refreshing'|'stale';data:WorkerRegistry;error:Fault|null};
 const node=<T extends HTMLElement=HTMLElement>(id:string)=>document.getElementById(id) as T;
 const main=node('staff-catalogue'),query=node<HTMLInputElement>('worker-query'),filter=node<HTMLSelectElement>('role-filter'),refresh=node<HTMLButtonElement>('refresh-registry'),retry=node<HTMLButtonElement>('retry-load');
 let state:State={kind:'initial',data:null,error:null},serial=0,controller:AbortController|undefined,disposed=false,lastSuccess:string|null=null,renderedData:WorkerRegistry|null=null;
+let assignmentPanel:ReturnType<typeof createStaffAssignmentPanel>|undefined;
 const initialParams=new URL(location.href).searchParams;query.value=(initialParams.get('q')??'').slice(0,64);let desiredRole=initialParams.get('role')??'all';
 const icons:Record<string,string>={cart:'<path d="M7 7h4l3 13h14l3-10H12M15 25h.1M27 25h.1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',carton:'<path d="m8 11 11-6 11 6-11 6Zm0 0v12l11 6V17m0 12 11-6V11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>',incoming_arrow:'<path d="M19 5v14m-6-6 6 6 6-6M8 20v7h22v-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>',outgoing_arrow:'<path d="M19 20V6m-6 6 6-6 6 6M8 20v7h22v-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"/>',forklift:'<path d="M6 24V14h10v10m-8-10V7h10v17M24 6v22h8M5 27h14m3-5h6" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="10" cy="27" r="3" fill="currentColor"/><circle cx="20" cy="27" r="3" fill="currentColor"/>'};
 function badge(role:RoleLegend){const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('role-badge');svg.setAttribute('viewBox','0 0 38 48');svg.setAttribute('aria-hidden','true');svg.innerHTML=icons[role.icon]+`<text x="19" y="43" text-anchor="middle">${role.code}</text>`;return svg;}
@@ -35,7 +37,7 @@ function render(){
   query.disabled=!data;filter.disabled=!data;node<HTMLButtonElement>('clear-filters').disabled=!data;
   const text=state.kind==='initial'?'':state.kind==='loading'?'Загружаем реестр работников…':state.kind==='refreshing'?'Обновляем каталог. Текущий список доступен.':state.kind==='ready'?`Реестр загружен · 24 исходных ID · ${new Date(lastSuccess!).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}`:state.kind==='stale'?`${fault?.message} Показан сохранённый список от ${new Date(lastSuccess!).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}.`:fault?.message??'Не удалось загрузить каталог.';
   node('load-status').textContent=text;
-  if(data){if(data!==renderedData){legend(data);filter.value=data.roles.some(r=>r.role===desiredRole)?desiredRole:'all';renderedData=data;}members();}
+  if(data){if(data!==renderedData){legend(data);filter.value=data.roles.some(r=>r.role===desiredRole)?desiredRole:'all';assignmentPanel?.dispose();assignmentPanel=createStaffAssignmentPanel(node('catalogue-content'),data);renderedData=data;}members();}
 }
 class LoadFault extends Error{constructor(readonly detail:Fault){super(detail.message);}}
 async function load(){
@@ -56,7 +58,7 @@ function remember(){const url=new URL(location.href);if(query.value)url.searchPa
 function clear(){query.value='';filter.value='all';remember();query.focus();}
 query.addEventListener('input',remember);filter.addEventListener('change',remember);node('staff-filters').addEventListener('submit',event=>{event.preventDefault();remember();});node('clear-filters').addEventListener('click',clear);node('empty-clear').addEventListener('click',clear);refresh.addEventListener('click',()=>{if(state.kind!=='initial'&&state.kind!=='loading'&&state.kind!=='refreshing')void load();});retry.addEventListener('click',()=>void load().then(()=>{if(state.data)query.focus();else if(!retry.hidden)retry.focus();else node('package-help').focus();}));
 window.addEventListener('offline',()=>{if(state.data){state={kind:'stale',data:state.data,error:{kind:'network',message:'Подключение потеряно. Поиск в загруженном каталоге доступен.'}};render();}});
-const snapshot=()=>({phase:state.kind,error_kind:state.error?.kind??null,actor_count:state.data?.workers.length??0,roles:state.data?.roles??[],worker_ids:state.data?.workers.map(w=>w.actor_id)??[],visible_ids:[...document.querySelectorAll<HTMLElement>('[data-actor-id]')].map(e=>e.dataset.actorId),query:query.value,role_filter:filter.value,clip_links:document.querySelectorAll('[data-clip-id]').length,source_kind:'visual_fixture',engine_operation:false,last_success:lastSuccess});
+const snapshot=()=>({phase:state.kind,error_kind:state.error?.kind??null,actor_count:state.data?.workers.length??0,roles:state.data?.roles??[],worker_ids:state.data?.workers.map(w=>w.actor_id)??[],visible_ids:[...document.querySelectorAll<HTMLElement>('[data-actor-id]')].map(e=>e.dataset.actorId),query:query.value,role_filter:filter.value,clip_links:document.querySelectorAll('[data-clip-id]').length,source_kind:'visual_fixture',engine_operation:false,last_success:lastSuccess,staffing:assignmentPanel?.snapshot()??null});
 Object.assign(window,{__QOIMA_STAFF_V3__:{snapshot,reload:load}});
-window.addEventListener('pagehide',()=>{disposed=true;serial++;controller?.abort();});render();void load();
+window.addEventListener('pagehide',()=>{disposed=true;serial++;controller?.abort();assignmentPanel?.dispose();assignmentPanel=undefined;renderedData=null;});render();void load();
 window.addEventListener('pageshow',event=>{if(event.persisted){disposed=false;void load();}});
