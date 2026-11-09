@@ -89,7 +89,9 @@ const noGl=$('#tw-nogl');
 function webglAvailable(){
  try{const c=document.createElement('canvas'),gl=c.getContext('webgl2')??c.getContext('webgl');if(!gl)return false;gl.getExtension('WEBGL_lose_context')?.loseContext();return true;}catch{return false;}
 }
-function showNoGl(){setPhase('error','Этот браузер не может показать 3D-склад: доступ к видеокарте (WebGL) выключен или заблокирован.');retry.hidden=true;noGl.hidden=false;}
+function showNoGl(){setPhase('error','Этот браузер не может показать 3D-склад: доступ к видеокарте (WebGL) выключен или заблокирован.');retry.hidden=true;noGl.hidden=false;
+ // The recorded episode stands in for the live comparison; it starts by itself unless motion is reduced.
+ const v=$<HTMLVideoElement>('#tw-nogl-video');if(!reduced.matches)void v.play().catch(()=>{/* autoplay refused: the controls stay */});}
 
 /* ---------- floating surfaces ---------- */
 const show=(el:HTMLElement,open:boolean)=>{el.dataset.open=String(open);el.toggleAttribute('inert',!open);};
@@ -502,6 +504,8 @@ async function load(){
   if(new URL(location.href).searchParams.get('present')==='1')goStep(0);
   // Start page links open a scenario card straight away.
   {const id=new URL(location.href).searchParams.get('scenario');if(SCENARIOS.some(c=>c.id===id)){setSheet('source');openScenario(id);}}
+  // Other pages link here with ?select=<worker or cargo ID> (and copy=B): open with it selected and framed.
+  {const q=new URL(location.href).searchParams,id=q.get('select'),kind=!id?null:data.registry.workers.some(w=>w.actor_id===id)?'actor':data.fixture.inputs.initial_stock.some(h=>h.handling_unit_id===id)?'HU':null;if(id&&kind)select(id,kind,q.get('copy')==='B'?'B':'A');}
  }catch(error){
   if(token!==serial)return;const aborted=owned.signal.aborted;owned.abort();disposeAll();
   // Engine messages are English and technical: keep them in the console, show people a sentence they can act on.

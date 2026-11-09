@@ -20,7 +20,8 @@ function members(){
   node('empty-results').hidden=workers.length!==0;node('empty-query').textContent=`По запросу «${query.value.trim()}»${selected==='all'?'':' в выбранной роли'} совпадений нет. Поиск выполняется по ID работников.`;
   for(const w of workers){
     const role=data.roles.find(r=>r.role===w.baseline_role)!,item=element('li',undefined,'worker-card'),header=element('header'),copy=element('div');item.dataset.actorId=w.actor_id;item.dataset.role=w.baseline_role;item.style.setProperty('--role-color',role.color);
-    const label=element('div',undefined,'worker-role'),dot=element('span',undefined,'role-dot');dot.setAttribute('aria-hidden','true');label.append(dot,document.createTextNode(role.label));copy.append(element('h3',w.actor_id),label);header.append(badge(role),copy);item.append(header);
+    const label=element('div',undefined,'worker-role'),dot=element('span',undefined,'role-dot');dot.setAttribute('aria-hidden','true');label.append(dot,document.createTextNode(role.label));copy.append(element('h3',w.actor_id),label);header.append(badge(role),copy);
+    const onFloor=element('a','На складе','worker-twin');onFloor.href='twin-v3.html?select='+encodeURIComponent(w.actor_id);onFloor.setAttribute('aria-label',`Показать ${w.actor_id} на складе, в сравнении A и B`);header.append(onFloor);item.append(header);
     if(w.assigned_vehicle_id)item.append(element('p','Техника: '+w.assigned_vehicle_id,'worker-vehicle'));
     const details=element('details'),summary=element('summary',`Клипы роли · ${w.clip_ids.length}`),clips=element('ul');details.open=expanded.has(w.actor_id);details.append(summary,clips);
     for(const id of w.clip_ids){const c=data.clips.find(c=>c.clip_id===id)!,li=element('li'),a=element('a',c.label);a.href=clipStandUrl(c);a.dataset.clipId=id;li.append(a,element('small',c.duration_s?`${c.duration_s} с · визуальный клип`:'Статичная поза'),element('p',c.prerequisites));clips.append(li);}
