@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => {
           twinV3: fileURLToPath(new URL('./twin-v3.html', import.meta.url)),
           homeV3: fileURLToPath(new URL('./home-v3.html', import.meta.url)),
           motionV3: fileURLToPath(new URL('./motion-v3.html', import.meta.url)),
+          originalCartV3: fileURLToPath(new URL('./original-cart-v3.html', import.meta.url)),
           longMotionV3: fileURLToPath(new URL('./long-motion-v3.html', import.meta.url)),
           heavyInboundV3: fileURLToPath(new URL('./heavy-inbound-v3.html', import.meta.url)),
           scenarioV3: fileURLToPath(new URL('./scenario-v3.html', import.meta.url)),
