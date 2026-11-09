@@ -11,6 +11,15 @@ const output=path.join(root,'docs/adaptive-v3/evidence/W05.4.1-checks.json');
 const sha=b=>createHash('sha256').update(b).digest('hex'),input_hashes={},positive=[],negative=[];
 async function source(p){const b=await readFile(path.join(root,p));input_hashes[p]=sha(b);return b;}
 const json=async p=>JSON.parse((await source(p)).toString());
+const pickupAuthority='frontend/public/data/v3/pallet-pickup-cycle.json';
+const planModule='frontend/src/adaptive-v3/warehousePalletTransferPlan.ts';
+const pickupImports=ts.preProcessFile((await source(planModule)).toString()).importedFiles.filter(ref=>ref.fileName.endsWith('/pallet-pickup-cycle.json'));
+assert.equal(pickupImports.length,1,'The synchronous pallet plan must import one pickup source');
+const pickupModule=path.relative(root,path.resolve(root,path.dirname(planModule),pickupImports[0].fileName)).replaceAll('\\','/');
+assert(pickupModule.startsWith('frontend/src/'),'Vite dev modules must import pickup JSON from src, outside public');
+const pickupBytes=await source(pickupModule);
+assert.deepEqual(pickupBytes,await source(pickupAuthority),'Bundled pickup JSON must preserve the exact authoritative public bytes');
+positive.push('synchronous_pickup_import_is_bundlable_and_exact_public_source_mirror');
 await mkdir(cache,{recursive:true});
 for(const name of ['workerRegistry','workerProfiles','warehouseAdapter','warehouseCargoHolders','warehouseCargo','warehouseActionTimeline','warehouseActionSources','warehouseRouting','warehouseRoutePose','warehousePalletTransferPlan']){
  const p='frontend/src/adaptive-v3/'+name+'.ts';let code=ts.transpileModule((await source(p)).toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
@@ -30,6 +39,7 @@ for(const row of manifest.entries){const original=await source(row.source_path),
 const reader=createWarehouseActionSourceReader({fetcher:async url=>{assert(payload.has(url));return new Response(payload.get(url));}});
 const texts={};for(const [k,p] of Object.entries({fixture:'frontend/public/data/v3/warehouse-fixture-v3.json',layout:'frontend/public/data/adaptive-v3/layout-manifest.json',registry:'frontend/public/data/v3/worker-registry-v3.json',profiles:'frontend/public/data/v3/worker-profiles-v3.json'}))texts[k]=new TextDecoder().decode(await reader.readSource(p));
 const bundle=await adaptWarehouseV3(texts),catalogue=await registerWarehouseActionCatalogue(bundle,reader.readSource);
+assert.equal(catalogue.source_hashes[pickupAuthority],sha(pickupBytes),'Bundled pickup JSON must match the authenticated catalogue source');
 const policyText=(await source('frontend/public/data/v3/route-policy-v3.json')).toString(),policy=await validateRoutePolicy(policyText,bundle),router=createWarehouseRouter(bundle,policy);
 for(const [p,h] of Object.entries(policy.source_hashes)){assert.equal(sha(await source(p)),h,'W03 source drift: '+p);}
 const c08=await json('docs/v3/contract-proposals/vehicle-handling-v3.json');assert.deepEqual(policy.loaded_arc_eligibility,c08.per_cargo_arc_eligibility);assert.deepEqual(policy.loads,c08.loads);
@@ -37,6 +47,7 @@ for(const p of ['frontend/tools/check-warehouse-pallet-transfer-plan-v3.mjs','do
 positive.push('actual_adapter_issued_catalogue_integrity_reader_and_hash_validated_W03_policy');
 const request={handling_unit_id:'v3:HU:initial:DEMO_172:01',destination_slot_id:'v3:slot:HEAVY_E:009:L1:B1',actor_id:'F02',vehicle_id:'FL02'};
 const before=JSON.stringify(bundle),result=compile(bundle,catalogue,policy,request);assert(result.ok,result.reason);const plan=result.plan;assert(isPlan(plan,bundle,catalogue,policy));
+assert.equal(plan.source_hashes[pickupAuthority],sha(pickupBytes),'Plan provenance must refer to the authoritative pickup source');
 request.actor_id='changed';assert.equal(plan.request.actor_id,'F02');request.actor_id='F02';assert(!Object.isFrozen(request));
 const near=(a,b,eps=1e-8)=>assert(Math.abs(a-b)<=eps,`${a} != ${b}`),vec=(a,b,eps=1e-8)=>a.forEach((v,i)=>near(v,b[i],eps)),angle=(a,b,eps=1e-8)=>near(Math.atan2(Math.sin(a-b),Math.cos(a-b)),0,eps);
 const stock=JSON.parse(texts.fixture).inputs.initial_stock,hu=stock.find(h=>h.handling_unit_id===request.handling_unit_id);
