@@ -462,12 +462,13 @@ $('#tw-now').addEventListener('click',e=>{
 });
 function renderMoves(){
  if(layoutEnabled&&layoutCandidate){
-  const q=layoutMetrics();$('#tw-diff-summary').innerHTML=[['Стеллажей',`${q.racksA} → ${q.racksB}`],['Добавлено пустых',String(q.newRacks)],['Площадь стеллажей',`${fmt(q.floorAreaA)} → ${fmt(q.floorAreaB)} м²`],['Не меняется','530<small> ГЕ · 24 чел.</small>']].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  // The layout block above already lists racks, area and what stays the same; here only the per-family breakdown.
+  $('#tw-diff-summary').hidden=true;
   const list=$('#tw-moves');list.replaceChildren();const names:Record<string,string>={SMALL:'Малые короба',STANDARD:'Стандартные короба',HEAVY:'Тяжёлые грузы',LONG:'Длинномер',FLEX:'Гибкое хранение'};
   for(const family of ['SMALL','STANDARD','HEAVY','LONG','FLEX']){const before=bundle!.layout.modules.filter(m=>m.family===family).length,after=layoutCandidate.modules.filter(m=>m.family===family).length,li=document.createElement('li');li.className='tw-empty';li.textContent=`${names[family]}: ${before} → ${after} модулей`;list.append(li);}return;
  }
  const total=moves.reduce((s,m)=>s+m.move_m,0),gain=moves.reduce((s,m)=>s+m.before_m-m.after_m,0),outbound=bundle!.fixture.inputs.requests.filter(r=>r.direction==='outbound').length;
- $('#tw-diff-summary').innerHTML=[['Переносов',`${moves.length}<small> из ${outbound}</small>`],['Ближе к воротам',`${fmt(gain)}<small> м</small>`],['Цена переносов',`${fmt(total)}<small> м</small>`],['Не меняется','530<small> ГЕ · 24 чел.</small>']].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+ $('#tw-diff-summary').hidden=false;$('#tw-diff-summary').innerHTML=[['Переносов',`${moves.length}<small> из ${outbound}</small>`],['Ближе к воротам',`${fmt(gain)}<small> м</small>`],['Цена переносов',`${fmt(total)}<small> м</small>`],['Не меняется','530<small> ГЕ · 24 чел.</small>']].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
  const list=$('#tw-moves');list.replaceChildren();
  moves.forEach((m,i)=>{const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.dataset.id=m.id;
   b.innerHTML=`<span class="tw-n">${i+1}</span><span><b>${esc(m.sku)}</b><small>${esc(m.archetype)} · к ${esc(m.port_id)}</small></span><span class="tw-gain">−${fmt(m.before_m-m.after_m)} м</span>`;
@@ -596,7 +597,8 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){silenceAud
 window.addEventListener('pagehide',()=>{serial++;controller?.abort();silenceAudio(true);setPlaying(false);disposeAll();setPhase('disposed','Просмотр остановлен.');});
 window.addEventListener('pageshow',e=>{if(e.persisted)void load();});
 Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,layout:{mode:layoutEnabled?'sections':'cargo',busy:layoutBusy,candidate_id:layoutCandidate?.candidate_id??null,counts:layoutMetrics(),access:layoutEnabled&&layoutAccess?{ok:layoutAccess.ok,plan_sha256:layoutAccess.plan_sha256,pedestrian:layoutAccess.manual.pedestrian.ok,manual_cart:layoutAccess.manual.manual_cart.ok,vehicle:layoutAccess.vehicle.ok,required_heavy_HUs:layoutAccess.vehicle.required_service_access.length}:null,render:twin?.layoutSnapshot()??null},sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers('B'))}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>twin?.layoutBounds(kind,id,v)??null,seek,setMode,setLayoutMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
-const disposePlacementComparison=mountPlacementComparison($('[data-sheet="diff"]'));
+// Mounted into the panel's single scrolling body, after the moves list.
+const disposePlacementComparison=mountPlacementComparison($('[data-sheet="diff"] .tw-sheet-body'));
 const layoutControls=createLayoutControls($('[data-sheet="diff"]'),setLayoutMode);
 updateLayoutControls();
 window.addEventListener('pagehide',e=>{if(!e.persisted)disposePlacementComparison();});

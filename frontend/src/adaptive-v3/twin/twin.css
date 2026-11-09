@@ -366,7 +366,9 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 .tw-wstatus p[data-b="relief"]{background:rgba(47,163,107,.14)}
 .tw-note{margin:12px 0;color:var(--muted);font-size:12px}
 /* scenarios N0–N4 */
-.tw-src-body{overscroll-behavior:contain}
+.tw-src-body,.tw-sheet-body{overscroll-behavior:contain}
+/* Dock labels stay on one line; the dock itself is sized to its buttons. */
+.tw-dl{white-space:nowrap}
 .tw-h3{margin:6px 0 8px;font:650 11px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .tw-scn-note{margin:0 0 10px;line-height:1.4}
 .tw-scn-list{display:grid;gap:6px;margin-bottom:18px}
