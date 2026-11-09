@@ -83,7 +83,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  /** Last frame cost, for the debug API and performance notes. */
  const totals={draws:0,scene_renders:0,reprojected:0};
  let stats={passes:0,rendered:0,reprojected:0,calls:0,triangles:0,cpu_ms:0,scene_ms:0,dom_ms:0};
- const hu:{mesh:THREE.InstancedMesh;pos:Partial<Record<Variant,THREE.Vector3>>;arr:Partial<Record<Variant,Float32Array>>}[]=[];
+ const hu:{mesh:THREE.InstancedMesh;pos:Partial<Record<Variant,THREE.Vector3>>;arr:Partial<Record<Variant,Float32Array>>;attr:Partial<Record<Variant,THREE.InstancedBufferAttribute>>}[]=[];
 
  // Zone state floors.
  const zoneRows=bundle.layout.data.zones as V3Record[],zones=new Map<string,{fill:THREE.Mesh;edge:THREE.LineLoop;center:THREE.Vector3;min:[number,number];max:[number,number]}>();
@@ -171,11 +171,21 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   });
  }
  function capture(variant:Variant,scene:THREE.Scene){applied=null;version++;
-  if(!hu.length)scene.traverse(o=>{if(o instanceof THREE.InstancedMesh&&o.userData.semanticKind==='HU'){o.frustumCulled=false;hu.push({mesh:o,pos:{},arr:{}});}});
-  for(const h of hu){h.pos[variant]=h.mesh.position.clone();h.arr[variant]=new Float32Array(h.mesh.instanceMatrix.array as Float32Array);}
+  if(!hu.length)scene.traverse(o=>{if(o instanceof THREE.InstancedMesh&&o.userData.semanticKind==='HU'){o.frustumCulled=false;hu.push({mesh:o,pos:{},arr:{},attr:{}});}});
+  for(const h of hu){h.pos[variant]=h.mesh.position.clone();h.arr[variant]=new Float32Array(h.mesh.instanceMatrix.array as Float32Array);h.attr={};}
  }
  let applied:Variant|null=null;
- function apply(variant:Variant){if(applied===variant)return;applied=variant;for(const h of hu){const pos=h.pos[variant],arr=h.arr[variant];if(!pos||!arr)continue;const moved=!h.mesh.position.equals(pos);h.mesh.position.copy(pos);(h.mesh.instanceMatrix.array as Float32Array).set(arr);h.mesh.instanceMatrix.needsUpdate=true;if(moved)h.mesh.updateWorldMatrix(true,false);}}
+ // «Рядом» draws A then B every frame. Rewriting the cargo matrices on each switch, even only the few moved units,
+ // updates a buffer the GPU is still drawing from and stalled an integrated GPU by ~20 ms a frame. Each variant owns
+ // a fixed matrix buffer instead; switching only swaps which buffer the meshes read.
+ function apply(variant:Variant){
+  if(applied===variant)return;applied=variant;
+  for(const h of hu){
+   const pos=h.pos[variant],arr=h.arr[variant];if(!pos||!arr)continue;const moved=!h.mesh.position.equals(pos);h.mesh.position.copy(pos);
+   h.mesh.instanceMatrix=h.attr[variant]??=new THREE.InstancedBufferAttribute(arr,16);
+   if(moved)h.mesh.updateWorldMatrix(true,false);
+  }
+ }
 
  function overlayFor(variant:Variant){
   const sample=sampleAtmosphere(variant,t),still=reducedMotion();

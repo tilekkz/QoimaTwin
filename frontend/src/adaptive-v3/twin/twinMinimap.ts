@@ -24,24 +24,33 @@ export function createMinimap(canvas:HTMLCanvasElement,caption:HTMLElement,d:Min
   const zone=d.zones.find(q=>x>=q.min[0]&&x<=q.max[0]&&z>=q.min[1]&&z<=q.max[1])?.id??null;
   return {v,p:[x,0,z],zone};
  }
+ const rectIn=(b:Rect2,dz:number,inset=0)=>{const [x0,y0]=toPx(b.min[0],b.min[1]+dz),[x1,y1]=toPx(b.max[0],b.max[1]+dz);return [x0+inset,y0+inset,x1-x0-2*inset,y1-y0-2*inset] as const;};
+ // The plan itself (footprints, zone tints, 264 module outlines) changes only with zone states or size, while the
+ // view frame moves with every camera frame: draw the plan once into a cached layer and only blit it per frame.
+ const base=document.createElement('canvas'),bctx=base.getContext('2d')!;let baseKey='';
+ function drawBase(f:MiniFrame,w:number,h:number,dpr:number){
+  const key=`${w}x${h}@${dpr}|${JSON.stringify(f.states)}`;if(key===baseKey)return;baseKey=key;
+  base.width=canvas.width;base.height=canvas.height;bctx.setTransform(dpr,0,0,dpr,0,0);bctx.clearRect(0,0,w,h);
+  for(const [v,dz] of [['A',0],['B',d.shiftZ]] as const){
+   bctx.fillStyle='rgba(255,255,255,.92)';bctx.strokeStyle='rgba(20,40,36,.3)';bctx.lineWidth=1;
+   bctx.beginPath();bctx.roundRect(...rectIn({min:[0,0],max:[WX,WZ]},dz),4);bctx.fill();bctx.stroke();
+   for(const z of d.zones){
+    // Zones outside the demo episode have no state: drawn neutral, never as «in control».
+    const s=f.states[v][z.id];
+    bctx.fillStyle=s?STATE_COLOR[s]+(s==='control'?'1c':'9a'):'rgba(30,50,46,.05)';bctx.beginPath();bctx.roundRect(...rectIn(z,dz,.6),2);bctx.fill();
+    if(s&&s!=='control'){bctx.strokeStyle=STATE_COLOR[s];bctx.lineWidth=1;bctx.stroke();}
+   }
+   bctx.fillStyle='rgba(30,50,46,.2)';for(const m of d.modules)bctx.fillRect(...rectIn(m,dz));
+   const [lx,ly]=toPx(2,dz+2);bctx.fillStyle='#0E5F57';bctx.font='700 10px system-ui,sans-serif';bctx.textBaseline='top';bctx.fillText(v,lx,ly);
+  }
+ }
  function draw(f:MiniFrame|null=last){
   if(!f)return;last=f;
   const w=canvas.clientWidth;if(!w)return;k=w/(ext.x[1]-ext.x[0]);const h=Math.round((ext.z[1]-ext.z[0])*k),dpr=devicePixelRatio||1;
-  if(canvas.height!==Math.round(h*dpr)||canvas.width!==Math.round(w*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.height=h+'px';}
-  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
-  for(const [v,dz] of [['A',0],['B',d.shiftZ]] as const){
-   const rect=(b:Rect2,inset=0)=>{const [x0,y0]=toPx(b.min[0],b.min[1]+dz),[x1,y1]=toPx(b.max[0],b.max[1]+dz);return [x0+inset,y0+inset,x1-x0-2*inset,y1-y0-2*inset] as const;};
-   ctx.fillStyle='rgba(255,255,255,.92)';ctx.strokeStyle='rgba(20,40,36,.3)';ctx.lineWidth=1;
-   ctx.beginPath();ctx.roundRect(...rect({min:[0,0],max:[WX,WZ]}),4);ctx.fill();ctx.stroke();
-   for(const z of d.zones){
-    // Zones outside the demo episode have no state: drawn neutral, never as «in control».
-    const s=f.states[v][z.id],on=hover?.v===v&&hover.zone===z.id;
-    ctx.fillStyle=s?STATE_COLOR[s]+(on?'66':s==='control'?'1c':'9a'):on?'rgba(14,95,87,.18)':'rgba(30,50,46,.05)';ctx.beginPath();ctx.roundRect(...rect(z,.6),2);ctx.fill();
-    if(on||(s&&s!=='control')){ctx.strokeStyle=on?'#0E5F57':STATE_COLOR[s];ctx.lineWidth=on?1.6:1;ctx.stroke();}
-   }
-   ctx.fillStyle='rgba(30,50,46,.2)';for(const m of d.modules)ctx.fillRect(...rect(m));
-   const [lx,ly]=toPx(2,dz+2);ctx.fillStyle='#0E5F57';ctx.font='700 10px system-ui,sans-serif';ctx.textBaseline='top';ctx.fillText(v,lx,ly);
-  }
+  if(canvas.height!==Math.round(h*dpr)||canvas.width!==Math.round(w*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);canvas.style.height=h+'px';baseKey='';}
+  drawBase(f,w,h,dpr);
+  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(base,0,0);ctx.setTransform(dpr,0,0,dpr,0,0);
+  if(hover?.zone){const z=d.zones.find(q=>q.id===hover!.zone);if(z){ctx.beginPath();ctx.roundRect(...rectIn(z,hover.v==='B'?d.shiftZ:0,.6),2);ctx.fillStyle='rgba(14,95,87,.16)';ctx.fill();ctx.strokeStyle='#0E5F57';ctx.lineWidth=1.6;ctx.stroke();}}
   if(f.quad)for(const dz of f.shared?[0,d.shiftZ]:[0]){
    // In «Шторка» each copy shows the same frame; keep it inside that copy's half of the map.
    ctx.save();if(f.shared){const [,y0]=toPx(0,dz-gap),[,y1]=toPx(0,dz+WZ+gap);ctx.beginPath();ctx.rect(0,y0,w,y1-y0);ctx.clip();}
