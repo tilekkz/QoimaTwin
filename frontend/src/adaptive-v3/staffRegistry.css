@@ -5,3 +5,50 @@
 .worker-twin{margin-left:auto;align-self:center;flex:none;padding:6px 12px;border-radius:999px;background:rgba(14,128,118,.1);color:#0e6b62;font-size:13px;font-weight:600;text-decoration:none}
 .worker-twin:hover{background:rgba(14,128,118,.18)}
 .worker-twin:focus-visible{outline:2px solid #0e8076;outline-offset:2px}
+
+/* Desktop presentation: preserve the compact layouts below 1024px. */
+@media (min-width:1024px){
+ :is(#staff-catalogue,#worker-skills)>.intro{gap:48px;padding:48px 0 32px}
+ :is(#staff-catalogue,#worker-skills)>.intro>div:first-child{min-width:0}
+ :is(#staff-catalogue,#worker-skills)>.intro h1{text-wrap:balance}
+ :is(#staff-catalogue,#worker-skills)>.intro .eyebrow{font-size:12px;color:#0b6b63}
+ :is(#staff-catalogue,#worker-skills)>.intro .intro-copy{color:#52645f}
+ :is(#staff-catalogue,#worker-skills)>.intro .source-summary{flex:0 0 400px;min-width:0;padding:24px}
+ :is(#staff-catalogue,#worker-skills)>.intro .source-summary :is(p,small){display:block;font-size:14px;line-height:1.6;color:#52645f}
+ :is(#staff-catalogue,#worker-skills)>.intro .source-tag,
+ #warehouse>.warehouse-title .source-tag{font-size:12px;color:#0b6b63}
+ :is(#staff-catalogue,#worker-skills,#warehouse)>.load-strip{margin-bottom:24px}
+ :is(#staff-catalogue,#worker-skills,#warehouse)>.load-strip p{font-size:14px;color:#52645f;line-height:1.6}
+ :is(#staff-catalogue,#worker-skills)>.load-strip .load-actions :is(button,a){font-size:14px;min-height:40px}
+ :is(#staff-catalogue,#worker-skills)>.load-strip .load-actions a{color:#0b6b63}
+ :is(#staff-catalogue,#worker-skills)>.load-strip button:disabled{color:#52645f}
+ :is(#staff-catalogue,#worker-skills)[data-phase=error]>.load-strip p,
+ #staff-catalogue[data-phase=stale]>.load-strip p{color:#8a4b30}
+ #catalogue-content>section:not(#role-assignment)>.section-heading{margin-bottom:16px}
+ #catalogue-content>section:not(#role-assignment)>.section-heading :is(span,p){font-size:12px;color:#52645f}
+ #catalogue-content>section:not(#role-assignment)>.section-heading #result-count{font-size:14px}
+ #role-legend{gap:16px}
+ #role-legend .role-card{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;min-height:100px;padding:20px 16px}
+ #role-legend .role-card strong{font-size:14px;line-height:1.4}
+ #role-legend .role-card span{font-size:12px;color:#52645f}
+ #catalogue-content>.members-section{margin-top:32px}
+ #staff-filters{gap:16px;margin:20px 0 24px}
+ #staff-filters label{font-size:12px;color:#52645f}
+ #staff-filters input::placeholder{color:#52645f;opacity:1}
+ #worker-list{gap:16px}
+ #worker-list .worker-card{display:flex;flex-direction:column;padding:24px}
+ #worker-list .worker-card header{display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:12px;margin-bottom:16px}
+ #worker-list .worker-role{font-size:14px;color:#52645f;line-height:1.5}
+ #worker-list .role-dot{flex-shrink:0}
+ #worker-list .worker-twin{font-size:14px;min-height:36px;color:#0b6b63;white-space:nowrap}
+ #worker-list .worker-card details{margin-top:auto;padding-top:12px}
+ #worker-list .worker-card summary{font-size:14px;min-height:28px;color:#0b6b63}
+ #worker-list .worker-card details :is(a,small,p),
+ #worker-list .worker-vehicle{font-size:14px;line-height:1.6}
+ #worker-list .worker-card details a{color:#0b6b63}
+ #worker-list .worker-card details :is(small,p){color:#52645f}
+ #empty-results p,#unknown-profile p{font-size:14px;color:#52645f}
+ #catalogue-content>.catalogue-note,#profile-panel>.catalogue-note{margin-top:32px;padding-top:24px;font-size:14px}
+ #catalogue-content>.catalogue-note p,#profile-panel>.catalogue-note p{color:#52645f;line-height:1.6}
+ body:has(>#staff-catalogue)>footer,body:has(>#worker-skills)>footer{font-size:12px;color:#52645f}
+}

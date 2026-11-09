@@ -10,3 +10,37 @@
 .pallet-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0}.pallet-stages button{font-size:11px;min-height:40px;padding:7px}.pallet-stages button:last-child{grid-column:1/-1}#pallet-seek{width:100%;accent-color:#286f76}
 /* Links under an inspected item: to its skills page and to the same item in the A/B comparison. */
 #warehouse-selection a{display:inline-block;margin:10px 16px 0 0;font-weight:600}
+
+@media (min-width:1024px){
+ #warehouse .warehouse-title h1{text-wrap:balance}
+ #warehouse .warehouse-title .eyebrow{font-size:12px;color:#0b6b63}
+ #warehouse .warehouse-source p{font-size:14px;line-height:1.6;color:#52645f}
+ #warehouse>.warehouse-load{min-height:56px}
+ #warehouse .warehouse-workspace{grid-template-columns:minmax(0,1fr) 344px;gap:24px}
+ #warehouse .warehouse-toolbar{gap:16px;padding:16px 20px}
+ #warehouse .warehouse-toolbar label,#warehouse .warehouse-panel>label{font-size:12px;color:#52645f;margin-bottom:6px}
+ #warehouse .warehouse-toolbar select,#warehouse .warehouse-panel select{font-size:14px;min-height:44px}
+ #warehouse .warehouse-viewport{height:max(400px,calc(100vh - 466px))}
+ #warehouse .warehouse-caption{font-size:12px;color:#52645f;line-height:1.5;padding:12px 20px}
+ #warehouse .warehouse-inspector{gap:16px;max-height:calc(100vh - 320px);padding:3px 6px 6px 3px;scrollbar-gutter:stable;background:transparent;box-shadow:none;border-radius:0}
+ #warehouse .warehouse-panel{padding:20px}
+ #warehouse .warehouse-panel .eyebrow{font-size:12px;color:#0b6b63;margin-bottom:16px}
+ #warehouse .warehouse-facts{font-size:14px;line-height:1.5;gap:10px 16px;grid-template-columns:minmax(0,1fr) auto}
+ #warehouse .warehouse-facts dt{color:#52645f}
+ #warehouse .warehouse-facts dd{text-align:right}
+ #warehouse .warehouse-footnote{font-size:14px;line-height:1.6;color:#52645f}
+ #warehouse .warehouse-selection{font-size:14px;line-height:1.6}
+ #warehouse .warehouse-selection :is(p,dt){color:#52645f}
+ #warehouse .warehouse-selection a{color:#0b6b63;min-height:28px}
+ #warehouse .warehouse-panel summary{font-size:14px;line-height:1.5;min-height:24px}
+ #warehouse .warehouse-requests :is(li,strong){font-size:14px;line-height:1.6}
+ #warehouse .warehouse-requests span{color:#52645f}
+ #warehouse .route-panel>label{font-size:12px;color:#52645f}
+ #warehouse .route-playback{flex-wrap:wrap}
+ #warehouse .route-playback button,#warehouse .route-panel #route-retry,
+ #warehouse .pallet-stages button{font-size:14px;min-height:44px}
+ #warehouse .route-options label{font-size:14px;line-height:1.5}
+ #warehouse .route-options select{width:68px}
+ #warehouse .route-panel button:disabled{color:#52645f;opacity:1}
+ #warehouse .route-panel output{font-size:14px;color:var(--ink,#293d46)}
+}
