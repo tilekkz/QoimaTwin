@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         input: {
+          nativePairV3: fileURLToPath(new URL('./native-pair-v3.html', import.meta.url)),
           main: fileURLToPath(new URL('./index.html', import.meta.url)),
           standV3: fileURLToPath(new URL('./stand-v3.html', import.meta.url)),
           staffV3: fileURLToPath(new URL('./staff-v3.html', import.meta.url)),
