@@ -46,12 +46,70 @@ export type PlaybackFrame = {
         yaw: number;
     })[];
 };
+function roundedQuotient(n: bigint, d: bigint): bigint {
+    const q = n / d, twiceRemainder = 2n * (n % d);
+    return q + (twiceRemainder > d || twiceRemainder === d && q % 2n !== 0n ? 1n : 0n);
+}
 const ratio = (value: {
     numerator: number | bigint;
     denominator: number | bigint;
-}) => Number(value.numerator) / Number(value.denominator);
+}) => {
+    let projected: number;
+    if (typeof value.numerator === 'bigint' || typeof value.denominator === 'bigint') {
+        const n = BigInt(value.numerator), d = BigInt(value.denominator);
+        need(d > 0n, 'Invalid native fraction denominator');
+        const sign = n < 0n ? -1 : 1, magnitude = n < 0n ? -n : n;
+        if (magnitude === 0n)
+            projected = 0;
+        else {
+            // Scale by the ratio's exponent, preserving significant rather than absolute bits.
+            let exponent = magnitude.toString(2).length - d.toString(2).length;
+            if (exponent >= 0 ? magnitude < (d << BigInt(exponent)) : (magnitude << BigInt(-exponent)) < d)
+                exponent--;
+            if (exponent > 1023)
+                projected = sign * Infinity;
+            else if (exponent < -1075)
+                projected = sign * 0;
+            else if (exponent < -1022)
+                projected = sign * Number(roundedQuotient(magnitude << 1074n, d)) * Number.MIN_VALUE;
+            else {
+                const shift = 52 - exponent;
+                const significand = shift >= 0 ? roundedQuotient(magnitude << BigInt(shift), d) : roundedQuotient(magnitude, d << BigInt(-shift));
+                projected = sign * (Number(significand) / 2 ** 52) * 2 ** exponent;
+            }
+        }
+    }
+    else {
+        need(value.denominator > 0, 'Invalid native fraction denominator');
+        projected = value.numerator / value.denominator;
+    }
+    need(Number.isFinite(projected), 'Nonfinite native fraction projection');
+    return projected;
+};
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-const point = (a: XYZ, b: XYZ, t: number): XYZ => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+const point = (a: XYZ, b: XYZ, t: number): XYZ => {
+    const position: XYZ = [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+    need(position.every(Number.isFinite), 'Nonfinite native geometry projection');
+    return position;
+};
+function quarters(value: BeltPose['yaw_quarters']): number {
+    if (typeof value.numerator === 'bigint' || typeof value.denominator === 'bigint') {
+        const n = BigInt(value.numerator), d = BigInt(value.denominator);
+        need(d > 0n, 'Invalid native fraction denominator');
+        // Orientation is periodic; retain the exact raw rational in ArmData.
+        return ratio({ numerator: n % (4n * d), denominator: d });
+    }
+    return ratio(value);
+}
+function interpolatedQuarters(start: BeltPose['yaw_quarters'], end: BeltPose['yaw_quarters'], elapsed: number, duration: number): number {
+    if ([start.numerator, start.denominator, end.numerator, end.denominator].some(n => typeof n === 'bigint')) {
+        const sn = BigInt(start.numerator), sd = BigInt(start.denominator), en = BigInt(end.numerator), ed = BigInt(end.denominator);
+        const ticks = BigInt(elapsed), span = BigInt(duration);
+        // Interpolate the exact phase first. Reducing the delta before this step loses rotations.
+        return quarters({ numerator: sn * ed * (span - ticks) + en * sd * ticks, denominator: sd * ed * span });
+    }
+    return lerp(ratio(start), ratio(end), elapsed / duration);
+}
 const clamp = (n: number) => Math.max(0, Math.min(1, n));
 function routePoints(operation: Operation, geometry: Geometry): XYZ[] {
     const ids = operation.route.node_ids;
@@ -80,10 +138,13 @@ function beltPose(pose: BeltPose, geometry: Geometry): {
 } {
     const edge = geometry.edges.get(pose.edge_id);
     need(edge, 'Unknown native conveyor edge ' + pose.edge_id);
-    const progress = ratio(pose.progress), yaw = ratio(pose.yaw_quarters) * Math.PI / 2;
+    const progress = ratio(pose.progress), yaw = quarters(pose.yaw_quarters) * Math.PI / 2;
+    need(Number.isFinite(yaw), 'Nonfinite native conveyor yaw');
     if (edge.centre && edge.radius !== undefined && edge.startAngle !== undefined && edge.endAngle !== undefined) {
         const theta = lerp(edge.startAngle, edge.endAngle, progress);
-        return { position: [edge.centre[0] + edge.radius * Math.cos(theta), edge.centre[1], edge.centre[2] + edge.radius * Math.sin(theta)], yaw };
+        const position: XYZ = [edge.centre[0] + edge.radius * Math.cos(theta), edge.centre[1], edge.centre[2] + edge.radius * Math.sin(theta)];
+        need(position.every(Number.isFinite), 'Nonfinite native curved geometry projection');
+        return { position, yaw };
     }
     return { position: point(edge.from, edge.to, progress), yaw };
 }
@@ -91,8 +152,8 @@ function sampledCarrier(carrier: Carrier, tick: number, geometry: Geometry) {
     let pose = carrier.pose;
     const motion = carrier.motion;
     if (motion && tick >= motion.start_tick && tick <= motion.planned_end_tick) {
-        const t = clamp((tick - motion.start_tick) / Math.max(1, motion.planned_end_tick - motion.start_tick));
-        pose = { edge_id: motion.start.edge_id, progress: { numerator: lerp(ratio(motion.start.progress), ratio(motion.end.progress), t), denominator: 1 }, yaw_quarters: { numerator: lerp(ratio(motion.start.yaw_quarters), ratio(motion.end.yaw_quarters), t), denominator: 1 } };
+        const elapsed = tick - motion.start_tick, duration = Math.max(1, motion.planned_end_tick - motion.start_tick), t = clamp(elapsed / duration);
+        pose = { edge_id: motion.start.edge_id, progress: { numerator: lerp(ratio(motion.start.progress), ratio(motion.end.progress), t), denominator: 1 }, yaw_quarters: { numerator: interpolatedQuarters(motion.start.yaw_quarters, motion.end.yaw_quarters, elapsed, duration), denominator: 1 } };
     }
     if (!pose)
         return null;
@@ -128,6 +189,25 @@ function applyEvent(event: NativeEvent, workers: Map<string, Worker>, carriers: 
     carriers.set(e.job_id, next);
 }
 function validateGeometry(data: ArmData, geometry: Geometry): void {
+    const xyz = (value: XYZ) => need(Array.isArray(value) && value.length === 3 && value.every(Number.isFinite), 'Nonfinite native geometry coordinates');
+    for (const position of geometry.nodes.values())
+        xyz(position);
+    for (const slot of geometry.slots.values()) {
+        xyz(slot.position);
+        need(Number.isFinite(slot.yaw), 'Nonfinite native geometry yaw');
+    }
+    for (const edge of geometry.edges.values()) {
+        xyz(edge.from);
+        xyz(edge.to);
+        if (edge.centre !== undefined)
+            xyz(edge.centre);
+        if (edge.radius !== undefined)
+            need(Number.isFinite(edge.radius) && edge.radius > 0, 'Invalid native geometry radius');
+        if (edge.startAngle !== undefined)
+            need(Number.isFinite(edge.startAngle), 'Nonfinite native geometry angle');
+        if (edge.endAngle !== undefined)
+            need(Number.isFinite(edge.endAngle), 'Nonfinite native geometry angle');
+    }
     const operations = [...data.events.map(e => e.operation), ...data.captures.flatMap(s => s.workers.map(w => w.operation))];
     for (const operation of operations)
         if (operation)
@@ -136,6 +216,18 @@ function validateGeometry(data: ArmData, geometry: Geometry): void {
         for (const worker of capture.workers)
             if (worker.node)
                 need(geometry.nodes.has(worker.node), 'Unknown captured actor node');
+    for (const capture of data.captures) {
+        for (const carrier of capture.carriers) {
+            if (carrier.pose)
+                beltPose(carrier.pose, geometry);
+            if (carrier.motion) {
+                beltPose(carrier.motion.start, geometry);
+                beltPose(carrier.motion.end, geometry);
+            }
+        }
+        for (const relocation of capture.relocations)
+            need(geometry.slots.has(relocation.source_owner) && geometry.slots.has(relocation.destination_owner), 'Unknown captured relocation geometry slot');
+    }
     for (const event of data.events) {
         if (event.belt_event?.pose)
             beltPose(event.belt_event.pose, geometry);
@@ -180,9 +272,9 @@ export function compilePlayback(data: ArmData, geometry: Geometry) {
                 applyEvent(event, workers, carriers, relocations, ends);
         const actors = [...workers.values()].map(w => {
             const base = w.node ? geometry.nodes.get(w.node) : undefined;
-            const pose = w.operation ? routePose(w.operation, tick, geometry) : { position: base!, yaw: 0 };
+            const pose = w.operation ? routePose(w.operation, tick, geometry) : { position: base ? [...base] as XYZ : undefined, yaw: 0 };
             need(pose.position, 'Recorded actor has no display endpoint');
-            return { actor_id: w.actor_id, ...pose, operation: w.operation?.kind ?? null };
+            return { actor_id: w.actor_id, position: pose.position, yaw: pose.yaw, operation: w.operation?.kind ?? null };
         });
         const moved = [...relocations.values()].map(r => {
             const source = geometry.slots.get(r.source_owner)!, target = geometry.slots.get(r.destination_owner)!;

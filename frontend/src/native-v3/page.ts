@@ -14,6 +14,7 @@ let controller: AbortController | undefined, scene: Awaited<ReturnType<typeof cr
 let layer: ReturnType<typeof createNativeLayer> | undefined, clock: ReturnType<typeof createPlaybackClock> | undefined;
 let models: Record<ArmName, ReturnType<typeof compilePlayback>> | undefined, arms: Record<ArmName, ArmData> | undefined;
 let frame: PlaybackFrame | undefined, phase = 'empty', serial = 0, animation = 0, previous = 0, lastInfo = 0;
+let restoreLoad = false;
 const selected = (): ArmName => armInput.value === 'candidate' ? 'candidate' : 'baseline';
 const seconds = (tick: number) => (tick / 1000000).toFixed(3);
 function stopScene() {
@@ -114,7 +115,7 @@ async function preparePlayback(signal: AbortSignal, pair: string, mode: string) 
     models = { baseline: a, candidate: b };
     const end = Math.min(a.observed, b.observed);
     clock = createPlaybackClock(end);
-    clock.setRate(4);
+    clock.setRate(Number(element<HTMLSelectElement>('native-speed').value));
     seek.max = String(end);
     seek.value = '0';
     frame = models[selected()].sample(0);
@@ -147,16 +148,19 @@ async function load() {
         const bundle = await preparePlayback(signal, pair, mode);
         need(token === serial, 'Загрузка заменена новой.');
         status.textContent = 'Загружаем исходные модели склада A…';
-        scene = await createWarehouseScene(host, bundle, { signal, progress: (done, total) => { status.textContent = 'Модели ' + done + ' / ' + total; }, select: () => undefined, renderPass(renderer, world, camera) {
+        const loadedScene = await createWarehouseScene(host, bundle, { signal, progress: (done, total) => { if (token === serial && !signal.aborted) status.textContent = 'Модели ' + done + ' / ' + total; }, select: () => undefined, renderPass(renderer, world, camera) {
+                if (token !== serial || signal.aborted)
+                    return;
                 layer ??= createNativeLayer(world, bundle);
                 if (frame)
                     layer.apply(frame);
                 renderer.render(world, camera);
             } });
         if (token !== serial || signal.aborted) {
-            stopScene();
+            loadedScene.dispose();
             return;
         }
+        scene = loadedScene;
         phase = 'ready';
         controls.disabled = false;
         scene.frameAt([92.775, .92, 4.15], 85);
@@ -206,6 +210,37 @@ document.addEventListener('visibilitychange', () => {
     if (document.hidden)
         setPlaying(false);
 });
-function dispose() { serial++; controller?.abort(); stopScene(); phase = 'disposed'; }
-window.addEventListener('pagehide', dispose);
-Object.assign(window, { __QOIMA_NATIVE_PAIR__: { snapshot: () => ({ phase, pair_id: arms?.baseline.header.pair_id ?? null, source_kind: 'verified_saved_native_pair', arm: selected(), tick: clock?.tick ?? null, playing: clock?.playing ?? false, retained_bytes: arms ? arms.baseline.retainedBytes + arms.candidate.retainedBytes : 0, physical_admission: false, full_n1_acceptance: false, presentation_interpolation: true, frame }), dispose } });
+function dispose() { serial++; controller?.abort(); stopScene(); phase = 'disposed'; restoreLoad = false; }
+host.addEventListener('webglcontextlost', event => {
+    event.preventDefault();
+    if (phase !== 'loading' && phase !== 'ready')
+        return;
+    serial++;
+    controller?.abort();
+    stopScene();
+    phase = 'error';
+    loadButton.disabled = false;
+    sourceDisabled(false);
+    element<HTMLButtonElement>('native-cancel').disabled = true;
+    status.textContent = 'Графика браузера перезапустилась. Повторите загрузку.';
+}, true);
+window.addEventListener('pagehide', () => {
+    const wasLoading = phase === 'loading' || phase === 'ready';
+    dispose();
+    restoreLoad = wasLoading;
+});
+window.addEventListener('pageshow', event => {
+    if (!event.persisted || phase !== 'disposed')
+        return;
+    phase = 'empty';
+    loadButton.disabled = false;
+    sourceDisabled(false);
+    element<HTMLButtonElement>('native-cancel').disabled = true;
+    const reload = restoreLoad;
+    restoreLoad = false;
+    if (reload)
+        void load();
+    else
+        status.textContent = 'Выберите два сохранённых ответа bundle или API. Загрузка начинается по кнопке.';
+});
+Object.assign(window, { __QOIMA_NATIVE_PAIR__: { snapshot: () => ({ phase, pair_id: arms?.baseline.header.pair_id ?? null, source_kind: 'verified_saved_native_pair', arm: selected(), tick: clock?.tick ?? null, playing: clock?.playing ?? false, rate: clock?.rate ?? null, retained_bytes: arms ? arms.baseline.retainedBytes + arms.candidate.retainedBytes : 0, physical_admission: false, full_n1_acceptance: false, presentation_interpolation: true, frame }), dispose } });

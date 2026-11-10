@@ -1,0 +1,35 @@
+{
+  "schema_id": "qoima.native-pair-exact-phase-fix.v1",
+  "created_utc": "2026-11-10T03:38:54.104067+00:00",
+  "passed": true,
+  "supersedes_current_source_epoch_of": "work/native-pair-adversarial/fix-receipt.json; earlier receipt remains truthful historical44-case epoch",
+  "raw_witness": {
+    "path": "work/native-pair-adversarial/huge-motion-before-fix.json",
+    "passed": 44,
+    "failed": 1,
+    "source_hashes": {
+      "stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+      "playback.ts": "a8c95edcbe86d08103269aff94cfa90cc88ffbce567bf19b9c8fabb6e7278608"
+    }
+  },
+  "final_proof": {
+    "path": "work/native-pair-adversarial/huge-motion-final.json",
+    "passed": 45,
+    "failed": 0,
+    "source_hashes": {
+      "stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+      "playback.ts": "3faf877f0486231b6b3e00a9e0c4f28c15f2e38f9116714827a48aca7ddb7dc9"
+    },
+    "checker_sha256": "e4bd1ecfe77ca7c0849ecf5c3dca4ed77e97fc3ebb09ba3da430eeec1cc2beba"
+  },
+  "legacy20": {
+    "command": "node tools/check-native-pair-v3.mjs",
+    "passed": 20,
+    "exit_code": 0
+  },
+  "exact_phase_formula": "(startNumerator*endDenominator*(durationTicks-elapsedTicks)+endNumerator*startDenominator*elapsedTicks)/(startDenominator*endDenominator*durationTicks), then exact modulo4 before finite double projection",
+  "regression": "0 to +(10**400+1) and negative counterpart over10ticks; allinteger ticks0..10, correct0.1quarter atfirsttick, rawBigInt preserved",
+  "runtime_api_unchanged": true,
+  "backend_http_and_browser": "NOT_RUN",
+  "final_typecheck_build": "ROOT_OWNS_CURRENT_FULL_BUILD; no duplicate full check launched"
+}

@@ -1,0 +1,165 @@
+{
+  "schema_id": "qoima.desktop-additional-bughunt.v1",
+  "created_utc": "2026-11-10T03:48:26.919Z",
+  "passed": true,
+  "base_commit": "713db76e2c5f071b57e8657d2dbf3310d9338f29",
+  "additional_groups": {
+    "native_pair": 45,
+    "twin_shift": 10,
+    "scenario_scene": 11,
+    "desktop_browser": 10,
+    "total": 76
+  },
+  "existing_native_pair_checks_passed": 20,
+  "scenario_samples": 1127,
+  "scenario_native_applications": 154,
+  "twin_actor_job_boundary_probes": 12208,
+  "source_hashes": {
+    "frontend/src/native-v3/stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+    "frontend/src/native-v3/playback.ts": "3faf877f0486231b6b3e00a9e0c4f28c15f2e38f9116714827a48aca7ddb7dc9",
+    "frontend/src/native-v3/page.ts": "b8ccd2758cc54593e8357321b57a372263c743c6c326b41a5a04f48a8317f332",
+    "frontend/src/adaptive-v3/twin/twinShift.ts": "ead38bf75225695030c88759912b61b254f5ece11bcde2083100e79f58842c57",
+    "frontend/src/adaptive-v3/twin/twinShiftRoutes.ts": "7fe52b13e9b1dc40f13e533e37b4c5e5e73b0476450d2c53b30251ea09992503",
+    "frontend/src/adaptive-v3/twin/twinShiftScene.ts": "109a318522fa0fa04336ef98f015d09004be951fa3b70c49fb7f4862cfd3a9df",
+    "frontend/src/adaptive-v3/scenarioPage.ts": "1a1147c4345bfb14755dcebf9e162ce857d534f305700510f7ffa85ba47dbeb6",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "ff832adbdb7c0b33cb499cc4c7f5a9c2fde6959a162d7b111b6926b3ce55cbc8",
+    "frontend/src/adaptive-v3/warehouseScenarioScene.ts": "f0df521e809f3b4c0e2c38fc7930cb9010964a654c434a7f7e656f590c718595",
+    "frontend/package.json": "5a094c0e5e7bb37bb700cd75206135af32510ef7205edb185ef2776a74910647",
+    "frontend/tools/check-native-pair-adversarial-v3.mjs": "e4bd1ecfe77ca7c0849ecf5c3dca4ed77e97fc3ebb09ba3da430eeec1cc2beba",
+    "frontend/tools/check-twin-shift-adversarial-v3.mjs": "af5a06d2459a86028161a7229b6495206d80314bce18517925afabed008a119c",
+    "frontend/tools/check-scenario-adversarial-v3.mjs": "2b70c934c781cb76edba9575d0f91f6763bcea9bbe807f28e56dd6bf7204bd03",
+    "frontend/tools/check-page-adversarial-browser-v3.mjs": "143deea14ae0d727917ec1c5ce91e6da67c39799536fc08a39859c5f3379bb59"
+  },
+  "original_worker_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+  "browser": {
+    "GPU": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "cleanup_complete": true,
+    "unexpected_page_errors": 0,
+    "unexpected_console_errors": 0,
+    "unexpected_HTTP_errors": 0,
+    "unexpected_request_errors": 0
+  },
+  "artifacts": [
+    {
+      "path": "native-raw.json",
+      "source": "work/native-pair-adversarial/raw-before-fix.json",
+      "sha256": "352d20dc1c7045cec319b768e92478645d0858e5848c86ef1cf05476ffdf1a1f",
+      "bytes": 9516
+    },
+    {
+      "path": "native-final.json",
+      "source": "work/native-pair-adversarial/huge-motion-final.json",
+      "sha256": "91fa77190c3feae8459f13d79431dd8e62118a4e647e06760f22bf0856c9fdb5",
+      "bytes": 4403
+    },
+    {
+      "path": "native-fix-receipt.json",
+      "source": "work/native-pair-adversarial/fix-receipt.json",
+      "sha256": "366e4e7f8941cdc1f56e222384096e36240ea7559c3a327c4342f5831b865727",
+      "bytes": 3642
+    },
+    {
+      "path": "native-huge-motion-raw.json",
+      "source": "work/native-pair-adversarial/huge-motion-before-fix.json",
+      "sha256": "84c6baef899728c32518cc54ba8aa2e201ea243a365692a0de5258ef3f694e12",
+      "bytes": 5750
+    },
+    {
+      "path": "native-huge-motion-receipt.json",
+      "source": "work/native-pair-adversarial/huge-motion-fix-receipt.json",
+      "sha256": "7cecaa5a8bc78abdcb44d5e6e091dc1817eb448349b86efca94d856c85cb0782",
+      "bytes": 1726
+    },
+    {
+      "path": "native-tiny-ratio-raw.json",
+      "source": "work/native-pair-adversarial/numeric-before-followup.json",
+      "sha256": "d8ce2091c40da226b52f21ae1183fa1ff7039fdd0dc30a3b8149bfa32a757d89",
+      "bytes": 5330
+    },
+    {
+      "path": "twin-raw.json",
+      "source": "work/v3/twin-shift-adversarial/2026-11-10T03-25-17-835Z/checks.json",
+      "sha256": "c40ef6cfb168a80bb172be10c41aec50a4139a3afc4faad806557536b6d08aeb",
+      "bytes": 67138
+    },
+    {
+      "path": "twin-final.json",
+      "source": "work/v3/twin-shift-adversarial/2026-11-10T03-34-22-608Z/checks.json",
+      "sha256": "5ee0a91ae88c8106b6abf880b1c7121859aad800985a812d100c93e3bfac6edd",
+      "bytes": 8454
+    },
+    {
+      "path": "twin-fix-receipt.json",
+      "source": "work/v3/twin-shift-adversarial/final-receipt.json",
+      "sha256": "9da3008ffbafa42c0c3d1ff355b8533ee8411abe31c13f7aba0196e44bff1066",
+      "bytes": 4905
+    },
+    {
+      "path": "scenario-index.json",
+      "source": "work/v3/scenario-adversarial-index-20261110/index.json",
+      "sha256": "e90aaf7b267f6fb2baf9afe7b91d81b7ca00f6ee1c711ee04ff97030d2b2e8cb",
+      "bytes": 2612
+    },
+    {
+      "path": "scenario-final.json",
+      "source": "work/v3/scenario-adversarial-bounded-20261110/checks.json",
+      "sha256": "357aecece9186bf73c93f983a71d5ebc31e6fee41feec50b53ea8be098bcfd5a",
+      "bytes": 60841
+    },
+    {
+      "path": "scenario-lifecycle-final.json",
+      "source": "work/v3/scenario-adversarial-lifecycle-20261110/checks.json",
+      "sha256": "5fc1beb40f5a02d2311344d77d5068256a48846f8620e6321801be6bc49bb270",
+      "bytes": 8760
+    },
+    {
+      "path": "browser-raw-confirmation.json",
+      "source": "work/page-adversarial/raw-confirmation/checks.json",
+      "sha256": "1f915f0cb29b37e374e0e306e65565a36857ce821fb89e8f5a76c03916c8201d",
+      "bytes": 14385
+    },
+    {
+      "path": "independent-codex-review.txt",
+      "source": "work/independent-review/review.txt",
+      "sha256": "a4768dba44d0c2162d1e5e61ef05fce3f91f04bc20d4c0200e58309653c9b4dd",
+      "bytes": 1358
+    },
+    {
+      "path": "browser-final.json",
+      "source": "work/page-adversarial/final-complete/checks.json",
+      "sha256": "24bc6653ed9a6d1d16c226a0d62ff3f21d6e10c3764d6e0599c75d60009e70f7",
+      "bytes": 21727
+    },
+    {
+      "path": "browser-owned-processes.json",
+      "source": "work/page-adversarial/final-complete/owned-processes.json",
+      "sha256": "68e8e958b36cb6e982f11c3f861089b83c9dd3246e232eede8f074197983a892",
+      "bytes": 20950
+    },
+    {
+      "path": "browser-harness-canvas-correction.json",
+      "source": "work/page-adversarial/final-frozen/checks.json",
+      "sha256": "508d7a58b97580dcd401c7f84e76e4c6ddce5e44921414adaa8f4e3dd3b719ee",
+      "bytes": 19690
+    },
+    {
+      "path": "twin-after-rebuild.png",
+      "source": "work/page-adversarial/final-complete/twin-after-rebuild.png",
+      "sha256": "29479ca740983bd41565b775227f90407f3c04831231c71d460c87dbad0c1b9f",
+      "bytes": 263936
+    },
+    {
+      "path": "build.json",
+      "sha256": "a13675922530394cdc30d143b28d513ea9dae868deb602d47fdb8c068257fec0",
+      "bytes": 19619
+    }
+  ],
+  "limits": [
+    "Bounded regression coverage, not an exhaustive all-repository zero-bug claim.",
+    "Synthetic hash-checked NDJSON only; no new actual backend capture or primary ADR0099.",
+    "Persisted lifecycle guard events dispatched explicitly, not native BFcache navigation.",
+    "Current staged demo crew/traffic/pace remain illustrative; operational admission=false.",
+    "Old check-twin-scenario-v3.mjs is not counted PASS; source-era import/assumption gap recorded.",
+    "Earlier verified ZIP/V2 and unrelated concurrent canonical edits unchanged."
+  ]
+}

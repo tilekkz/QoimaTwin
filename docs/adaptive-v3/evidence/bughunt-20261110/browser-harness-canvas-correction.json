@@ -1,0 +1,524 @@
+{
+  "passed": false,
+  "cases": [
+    {
+      "name": "native-invalid-id-refusal",
+      "passed": true
+    },
+    {
+      "name": "native-corrupt-file-and-retry",
+      "passed": true
+    },
+    {
+      "name": "native-terminal-reset-and-hardware",
+      "passed": true
+    },
+    {
+      "name": "native-context-loss-recovery",
+      "passed": true
+    },
+    {
+      "name": "native-persisted-page-event-recovery",
+      "passed": true
+    },
+    {
+      "name": "native-cancel-pending-api-and-file-retry",
+      "passed": true
+    },
+    {
+      "name": "native-corrupt-model-atomic-cleanup-and-retry",
+      "passed": true
+    },
+    {
+      "name": "scenario-overlapping-load-last-request-wins",
+      "passed": true
+    },
+    {
+      "name": "scenario-invalid-time-atomic-and-reload",
+      "passed": true
+    },
+    {
+      "name": "twin-layout-rebuild-retains-baseline-demand-and-scene",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n3 !== 1\n\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-page-adversarial-browser-v3.mjs:56:1288\n    at async bound (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-page-adversarial-browser-v3.mjs:32:48)\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-page-adversarial-browser-v3.mjs:33:46)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-page-adversarial-browser-v3.mjs:56:3"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [
+    {
+      "stage": "native-invalid-id-refusal",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "requestFailures": [
+    {
+      "stage": "native-cancel-pending-api-and-file-retry",
+      "url": "http://127.0.0.1:4280/api/v3/relocation-pairs/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/arms/baseline/bundle",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    },
+    {
+      "stage": "scenario-overlapping-load-last-request-wins",
+      "url": "http://127.0.0.1:4280/data/v3/warehouse-fixture-v3.json",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    },
+    {
+      "stage": "scenario-overlapping-load-last-request-wins",
+      "url": "http://127.0.0.1:4280/data/adaptive-v3/layout-manifest.json",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    },
+    {
+      "stage": "scenario-overlapping-load-last-request-wins",
+      "url": "http://127.0.0.1:4280/data/v3/worker-registry-v3.json",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    },
+    {
+      "stage": "scenario-overlapping-load-last-request-wins",
+      "url": "http://127.0.0.1:4280/data/v3/worker-profiles-v3.json",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    },
+    {
+      "stage": "scenario-overlapping-load-last-request-wins",
+      "url": "http://127.0.0.1:4280/data/v3/route-policy-v3.json",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    },
+    {
+      "stage": "scenario-overlapping-load-last-request-wins",
+      "url": "http://127.0.0.1:4280/data/v3/scenarios/N1.json",
+      "error": {
+        "errorText": "net::ERR_ABORTED"
+      }
+    }
+  ],
+  "gpu": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "cleanup": true,
+  "source_hashes": {
+    "src/native-v3/page.ts": "b8ccd2758cc54593e8357321b57a372263c743c6c326b41a5a04f48a8317f332",
+    "src/native-v3/stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+    "src/native-v3/playback.ts": "3faf877f0486231b6b3e00a9e0c4f28c15f2e38f9116714827a48aca7ddb7dc9",
+    "src/adaptive-v3/scenarioPage.ts": "1a1147c4345bfb14755dcebf9e162ce857d534f305700510f7ffa85ba47dbeb6",
+    "src/adaptive-v3/twin/twinShift.ts": "ead38bf75225695030c88759912b61b254f5ece11bcde2083100e79f58842c57",
+    "src/adaptive-v3/twin/twinShiftRoutes.ts": "7fe52b13e9b1dc40f13e533e37b4c5e5e73b0476450d2c53b30251ea09992503",
+    "src/adaptive-v3/twin/twinShiftScene.ts": "109a318522fa0fa04336ef98f015d09004be951fa3b70c49fb7f4862cfd3a9df",
+    "tools/check-page-adversarial-browser-v3.mjs": "ddae1dc65fb4cce9b1a6f87123e134f22c66d85da0c4c501c6aa1b1e9aa8903d"
+  },
+  "source_drift_during_run": [],
+  "production_assets": [
+    {
+      "path": "native-pair-v3.html",
+      "sha256": "682db593d5d195827d4017f9bd0de447ea8b3ddef2a2d25e5263fcb863c4d74c"
+    },
+    {
+      "path": "assets/nativePairV3-CFHrMDhT.js",
+      "sha256": "bb93b9a68f3848929df2c4bffb9b5d3ebfaa74966d0dc6c16d51976d77d996f1"
+    },
+    {
+      "path": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "assets/OrbitControls-B4NWrbFu.js",
+      "sha256": "87e3025dbc310c8f31e2c43ee30c5f8d1cfad154e7dd9a2e0897b06720880555"
+    },
+    {
+      "path": "assets/warehouseCargo-Y2YmS1NW.js",
+      "sha256": "4bba368ad2a553a5fe392d710ada07497d49ab49a73bcd450bace43372a482ad"
+    },
+    {
+      "path": "assets/RoomEnvironment-Bda4Obs9.js",
+      "sha256": "b5ee6ef28243f64de42d7b254744123e1f26e53929d71b08c3f77ff227a57f8e"
+    },
+    {
+      "path": "assets/workerProfiles-BCmgIyQG.js",
+      "sha256": "80672e8427c6a33f307582a5dc0f5b1ce834cd022fac0f49bd110b834ecdd01c"
+    },
+    {
+      "path": "assets/nativePairV3-VUgkbtgM.css",
+      "sha256": "3719e6dd0854c86d99a9c16c184965cd01639b0d6ce495d3f086c11c283f073f"
+    },
+    {
+      "path": "assets/workerRoles-Cj2950fJ.js",
+      "sha256": "6b0fc2ea9cfe661ac30fbdc8f6010871de1613312e643b604d9093bfd59cc15c"
+    },
+    {
+      "path": "assets/warehouseActionTimeline-BRnNCaL8.js",
+      "sha256": "65d9448cc4160e11934d48fa9ecdc16ac8d526ceeb8634d137f4623a09d598e0"
+    },
+    {
+      "path": "assets/seatedDriver-DlgVIeRk.js",
+      "sha256": "661ed4795abb9c69799d5d7df44e54f2c6be96674220687aa9ce49e1e40739ad"
+    },
+    {
+      "path": "assets/warehouseRouting-YKTcg3x8.js",
+      "sha256": "240d213a6d3c6db7f87baddc86d656fc58f0fa439e5d58191a6afc14daeb2c39"
+    },
+    {
+      "path": "assets/warehouse-u_q-x56y.css",
+      "sha256": "14b5c8635320835695bd56a0ac577f2cc1d50c1e44f50677db6e983922235bf8"
+    },
+    {
+      "path": "assets/warehouseRoutePose-C5YWNYoW.js",
+      "sha256": "5101a07d86ea7b93247e8e365b84c7476c29b427750daed754936387c05a974f"
+    },
+    {
+      "path": "assets/warehouseScene-PSkvd38M.js",
+      "sha256": "bc86f17eb8758e3f45631ce357e9b080d1e12635b3b18a81b1b7b41e35fc441d"
+    },
+    {
+      "path": "assets/GLTFLoader-Cesgu80t.js",
+      "sha256": "0d162fe6f5f688de0a53b567cc63b563d62a6e9e0bafb21435f9f3c3b5813231"
+    },
+    {
+      "path": "native-pair-v3.html",
+      "sha256": "682db593d5d195827d4017f9bd0de447ea8b3ddef2a2d25e5263fcb863c4d74c"
+    },
+    {
+      "path": "native-pair-v3.html",
+      "sha256": "682db593d5d195827d4017f9bd0de447ea8b3ddef2a2d25e5263fcb863c4d74c"
+    },
+    {
+      "path": "assets/nativePairV3-CFHrMDhT.js",
+      "sha256": "bb93b9a68f3848929df2c4bffb9b5d3ebfaa74966d0dc6c16d51976d77d996f1"
+    },
+    {
+      "path": "assets/workerProfiles-BCmgIyQG.js",
+      "sha256": "80672e8427c6a33f307582a5dc0f5b1ce834cd022fac0f49bd110b834ecdd01c"
+    },
+    {
+      "path": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "assets/warehouseCargo-Y2YmS1NW.js",
+      "sha256": "4bba368ad2a553a5fe392d710ada07497d49ab49a73bcd450bace43372a482ad"
+    },
+    {
+      "path": "assets/warehouseRoutePose-C5YWNYoW.js",
+      "sha256": "5101a07d86ea7b93247e8e365b84c7476c29b427750daed754936387c05a974f"
+    },
+    {
+      "path": "assets/RoomEnvironment-Bda4Obs9.js",
+      "sha256": "b5ee6ef28243f64de42d7b254744123e1f26e53929d71b08c3f77ff227a57f8e"
+    },
+    {
+      "path": "assets/OrbitControls-B4NWrbFu.js",
+      "sha256": "87e3025dbc310c8f31e2c43ee30c5f8d1cfad154e7dd9a2e0897b06720880555"
+    },
+    {
+      "path": "assets/workerRoles-Cj2950fJ.js",
+      "sha256": "6b0fc2ea9cfe661ac30fbdc8f6010871de1613312e643b604d9093bfd59cc15c"
+    },
+    {
+      "path": "assets/seatedDriver-DlgVIeRk.js",
+      "sha256": "661ed4795abb9c69799d5d7df44e54f2c6be96674220687aa9ce49e1e40739ad"
+    },
+    {
+      "path": "assets/warehouseRouting-YKTcg3x8.js",
+      "sha256": "240d213a6d3c6db7f87baddc86d656fc58f0fa439e5d58191a6afc14daeb2c39"
+    },
+    {
+      "path": "assets/warehouseActionTimeline-BRnNCaL8.js",
+      "sha256": "65d9448cc4160e11934d48fa9ecdc16ac8d526ceeb8634d137f4623a09d598e0"
+    },
+    {
+      "path": "assets/warehouseScene-PSkvd38M.js",
+      "sha256": "bc86f17eb8758e3f45631ce357e9b080d1e12635b3b18a81b1b7b41e35fc441d"
+    },
+    {
+      "path": "assets/GLTFLoader-Cesgu80t.js",
+      "sha256": "0d162fe6f5f688de0a53b567cc63b563d62a6e9e0bafb21435f9f3c3b5813231"
+    },
+    {
+      "path": "native-pair-v3.html",
+      "sha256": "682db593d5d195827d4017f9bd0de447ea8b3ddef2a2d25e5263fcb863c4d74c"
+    },
+    {
+      "path": "assets/nativePairV3-CFHrMDhT.js",
+      "sha256": "bb93b9a68f3848929df2c4bffb9b5d3ebfaa74966d0dc6c16d51976d77d996f1"
+    },
+    {
+      "path": "assets/RoomEnvironment-Bda4Obs9.js",
+      "sha256": "b5ee6ef28243f64de42d7b254744123e1f26e53929d71b08c3f77ff227a57f8e"
+    },
+    {
+      "path": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "assets/workerRoles-Cj2950fJ.js",
+      "sha256": "6b0fc2ea9cfe661ac30fbdc8f6010871de1613312e643b604d9093bfd59cc15c"
+    },
+    {
+      "path": "assets/OrbitControls-B4NWrbFu.js",
+      "sha256": "87e3025dbc310c8f31e2c43ee30c5f8d1cfad154e7dd9a2e0897b06720880555"
+    },
+    {
+      "path": "assets/warehouseActionTimeline-BRnNCaL8.js",
+      "sha256": "65d9448cc4160e11934d48fa9ecdc16ac8d526ceeb8634d137f4623a09d598e0"
+    },
+    {
+      "path": "assets/seatedDriver-DlgVIeRk.js",
+      "sha256": "661ed4795abb9c69799d5d7df44e54f2c6be96674220687aa9ce49e1e40739ad"
+    },
+    {
+      "path": "assets/workerProfiles-BCmgIyQG.js",
+      "sha256": "80672e8427c6a33f307582a5dc0f5b1ce834cd022fac0f49bd110b834ecdd01c"
+    },
+    {
+      "path": "assets/warehouseCargo-Y2YmS1NW.js",
+      "sha256": "4bba368ad2a553a5fe392d710ada07497d49ab49a73bcd450bace43372a482ad"
+    },
+    {
+      "path": "assets/warehouseRouting-YKTcg3x8.js",
+      "sha256": "240d213a6d3c6db7f87baddc86d656fc58f0fa439e5d58191a6afc14daeb2c39"
+    },
+    {
+      "path": "assets/warehouseRoutePose-C5YWNYoW.js",
+      "sha256": "5101a07d86ea7b93247e8e365b84c7476c29b427750daed754936387c05a974f"
+    },
+    {
+      "path": "assets/warehouseScene-PSkvd38M.js",
+      "sha256": "bc86f17eb8758e3f45631ce357e9b080d1e12635b3b18a81b1b7b41e35fc441d"
+    },
+    {
+      "path": "assets/GLTFLoader-Cesgu80t.js",
+      "sha256": "0d162fe6f5f688de0a53b567cc63b563d62a6e9e0bafb21435f9f3c3b5813231"
+    },
+    {
+      "path": "native-pair-v3.html",
+      "sha256": "682db593d5d195827d4017f9bd0de447ea8b3ddef2a2d25e5263fcb863c4d74c"
+    },
+    {
+      "path": "assets/nativePairV3-VUgkbtgM.css",
+      "sha256": "3719e6dd0854c86d99a9c16c184965cd01639b0d6ce495d3f086c11c283f073f"
+    },
+    {
+      "path": "assets/warehouse-u_q-x56y.css",
+      "sha256": "14b5c8635320835695bd56a0ac577f2cc1d50c1e44f50677db6e983922235bf8"
+    },
+    {
+      "path": "assets/workerProfiles-BCmgIyQG.js",
+      "sha256": "80672e8427c6a33f307582a5dc0f5b1ce834cd022fac0f49bd110b834ecdd01c"
+    },
+    {
+      "path": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "assets/nativePairV3-CFHrMDhT.js",
+      "sha256": "bb93b9a68f3848929df2c4bffb9b5d3ebfaa74966d0dc6c16d51976d77d996f1"
+    },
+    {
+      "path": "assets/OrbitControls-B4NWrbFu.js",
+      "sha256": "87e3025dbc310c8f31e2c43ee30c5f8d1cfad154e7dd9a2e0897b06720880555"
+    },
+    {
+      "path": "assets/workerRoles-Cj2950fJ.js",
+      "sha256": "6b0fc2ea9cfe661ac30fbdc8f6010871de1613312e643b604d9093bfd59cc15c"
+    },
+    {
+      "path": "assets/RoomEnvironment-Bda4Obs9.js",
+      "sha256": "b5ee6ef28243f64de42d7b254744123e1f26e53929d71b08c3f77ff227a57f8e"
+    },
+    {
+      "path": "assets/warehouseRouting-YKTcg3x8.js",
+      "sha256": "240d213a6d3c6db7f87baddc86d656fc58f0fa439e5d58191a6afc14daeb2c39"
+    },
+    {
+      "path": "assets/warehouseRoutePose-C5YWNYoW.js",
+      "sha256": "5101a07d86ea7b93247e8e365b84c7476c29b427750daed754936387c05a974f"
+    },
+    {
+      "path": "assets/warehouseActionTimeline-BRnNCaL8.js",
+      "sha256": "65d9448cc4160e11934d48fa9ecdc16ac8d526ceeb8634d137f4623a09d598e0"
+    },
+    {
+      "path": "assets/seatedDriver-DlgVIeRk.js",
+      "sha256": "661ed4795abb9c69799d5d7df44e54f2c6be96674220687aa9ce49e1e40739ad"
+    },
+    {
+      "path": "assets/warehouseCargo-Y2YmS1NW.js",
+      "sha256": "4bba368ad2a553a5fe392d710ada07497d49ab49a73bcd450bace43372a482ad"
+    },
+    {
+      "path": "assets/warehouseScene-PSkvd38M.js",
+      "sha256": "bc86f17eb8758e3f45631ce357e9b080d1e12635b3b18a81b1b7b41e35fc441d"
+    },
+    {
+      "path": "assets/GLTFLoader-Cesgu80t.js",
+      "sha256": "0d162fe6f5f688de0a53b567cc63b563d62a6e9e0bafb21435f9f3c3b5813231"
+    },
+    {
+      "path": "scenario-v3.html",
+      "sha256": "52c653cb47ed7bf9aed8a08264256cef73e7ad9f9a4af3ccd81dc52260a44cdb"
+    },
+    {
+      "path": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "assets/warehouseRoutePose-C5YWNYoW.js",
+      "sha256": "5101a07d86ea7b93247e8e365b84c7476c29b427750daed754936387c05a974f"
+    },
+    {
+      "path": "assets/warehouseRouting-YKTcg3x8.js",
+      "sha256": "240d213a6d3c6db7f87baddc86d656fc58f0fa439e5d58191a6afc14daeb2c39"
+    },
+    {
+      "path": "assets/workerRoles-Cj2950fJ.js",
+      "sha256": "6b0fc2ea9cfe661ac30fbdc8f6010871de1613312e643b604d9093bfd59cc15c"
+    },
+    {
+      "path": "assets/workerProfiles-BCmgIyQG.js",
+      "sha256": "80672e8427c6a33f307582a5dc0f5b1ce834cd022fac0f49bd110b834ecdd01c"
+    },
+    {
+      "path": "assets/warehouseCargo-Y2YmS1NW.js",
+      "sha256": "4bba368ad2a553a5fe392d710ada07497d49ab49a73bcd450bace43372a482ad"
+    },
+    {
+      "path": "assets/warehouseHeavyInboundPlan-CGGinubs.js",
+      "sha256": "91572e7ba6417a0c0c1a1e32106e54e5ccf34b17a977717c431f1427b5483549"
+    },
+    {
+      "path": "assets/RoomEnvironment-Bda4Obs9.js",
+      "sha256": "b5ee6ef28243f64de42d7b254744123e1f26e53929d71b08c3f77ff227a57f8e"
+    },
+    {
+      "path": "assets/OrbitControls-B4NWrbFu.js",
+      "sha256": "87e3025dbc310c8f31e2c43ee30c5f8d1cfad154e7dd9a2e0897b06720880555"
+    },
+    {
+      "path": "assets/seatedDriver-DlgVIeRk.js",
+      "sha256": "661ed4795abb9c69799d5d7df44e54f2c6be96674220687aa9ce49e1e40739ad"
+    },
+    {
+      "path": "assets/warehouseWorkerGait-Da8mZzUT.js",
+      "sha256": "5a2ec27090f5b652ba760ea6daaf1ab5363f92edc00e92867652cb9a7686d021"
+    },
+    {
+      "path": "assets/warehouseActionTimeline-BRnNCaL8.js",
+      "sha256": "65d9448cc4160e11934d48fa9ecdc16ac8d526ceeb8634d137f4623a09d598e0"
+    },
+    {
+      "path": "assets/warehouseScenarioManualTransfer-P4WZlZSa.js",
+      "sha256": "0381a1fe6c066c3f16b0850d222dbd4d8bcecc376723678c0d0b63222600dc06"
+    },
+    {
+      "path": "assets/warehouseScene-PSkvd38M.js",
+      "sha256": "bc86f17eb8758e3f45631ce357e9b080d1e12635b3b18a81b1b7b41e35fc441d"
+    },
+    {
+      "path": "assets/scenarioV3-IwVMedrF.css",
+      "sha256": "7a65e38c1e56b74ce6df09f3196ae178b188734a110dce51d19ca44f31a45a70"
+    },
+    {
+      "path": "assets/warehouseHeavyInboundBinding-Bpuiha-j.js",
+      "sha256": "201ee39dc7fb0dd202ed9e9379467e7f5d62fa62284ff5d24fd48b7a38ac0512"
+    },
+    {
+      "path": "assets/sfx-kALf91L-.js",
+      "sha256": "78aa71bdbcc02a24eed8231ce7d72a879b5b71ec82b3f135284df7d4e60b5d70"
+    },
+    {
+      "path": "assets/scenarioV3-BjennNww.js",
+      "sha256": "340e68a438e141753ed983ed34e568ac5773bb0e68f01190d8915a4b803d69d4"
+    },
+    {
+      "path": "assets/workerRoleAssignment-CZSshuRG.js",
+      "sha256": "1ad130daf01206feb774a832f7a0b8f23ccc867507ede772f8b51beacbc3acd1"
+    },
+    {
+      "path": "assets/GLTFLoader-Cesgu80t.js",
+      "sha256": "0d162fe6f5f688de0a53b567cc63b563d62a6e9e0bafb21435f9f3c3b5813231"
+    },
+    {
+      "path": "twin-v3.html",
+      "sha256": "8f3c629a127d4c51d272ce4dd028bfa8d927144277cafb722d1786b38d6378c8"
+    },
+    {
+      "path": "assets/modulepreload-polyfill-P2Xu9kJm.js",
+      "sha256": "418c206484b89b68ef5f067277831e583fc9193a62aadf4de269acaaeb12a85f"
+    },
+    {
+      "path": "assets/workerProfiles-BCmgIyQG.js",
+      "sha256": "80672e8427c6a33f307582a5dc0f5b1ce834cd022fac0f49bd110b834ecdd01c"
+    },
+    {
+      "path": "assets/warehouseCargo-Y2YmS1NW.js",
+      "sha256": "4bba368ad2a553a5fe392d710ada07497d49ab49a73bcd450bace43372a482ad"
+    },
+    {
+      "path": "assets/warehouseWorkerGait-Da8mZzUT.js",
+      "sha256": "5a2ec27090f5b652ba760ea6daaf1ab5363f92edc00e92867652cb9a7686d021"
+    },
+    {
+      "path": "assets/warehouseRoutePose-C5YWNYoW.js",
+      "sha256": "5101a07d86ea7b93247e8e365b84c7476c29b427750daed754936387c05a974f"
+    },
+    {
+      "path": "assets/workerRoles-Cj2950fJ.js",
+      "sha256": "6b0fc2ea9cfe661ac30fbdc8f6010871de1613312e643b604d9093bfd59cc15c"
+    },
+    {
+      "path": "assets/warehouseHeavyInboundPlan-CGGinubs.js",
+      "sha256": "91572e7ba6417a0c0c1a1e32106e54e5ccf34b17a977717c431f1427b5483549"
+    },
+    {
+      "path": "assets/warehouseRouting-YKTcg3x8.js",
+      "sha256": "240d213a6d3c6db7f87baddc86d656fc58f0fa439e5d58191a6afc14daeb2c39"
+    },
+    {
+      "path": "assets/seatedDriver-DlgVIeRk.js",
+      "sha256": "661ed4795abb9c69799d5d7df44e54f2c6be96674220687aa9ce49e1e40739ad"
+    },
+    {
+      "path": "assets/warehouseScenarioManualTransfer-P4WZlZSa.js",
+      "sha256": "0381a1fe6c066c3f16b0850d222dbd4d8bcecc376723678c0d0b63222600dc06"
+    },
+    {
+      "path": "assets/OrbitControls-B4NWrbFu.js",
+      "sha256": "87e3025dbc310c8f31e2c43ee30c5f8d1cfad154e7dd9a2e0897b06720880555"
+    },
+    {
+      "path": "assets/RoomEnvironment-Bda4Obs9.js",
+      "sha256": "b5ee6ef28243f64de42d7b254744123e1f26e53929d71b08c3f77ff227a57f8e"
+    },
+    {
+      "path": "assets/twinV3-ChXIfX1C.css",
+      "sha256": "fb39231fe6ce40efa34430ab3e3303955af343263785294b015035fcba5be6aa"
+    },
+    {
+      "path": "assets/warehouseActionTimeline-BRnNCaL8.js",
+      "sha256": "65d9448cc4160e11934d48fa9ecdc16ac8d526ceeb8634d137f4623a09d598e0"
+    },
+    {
+      "path": "assets/workerRoleAssignment-CZSshuRG.js",
+      "sha256": "1ad130daf01206feb774a832f7a0b8f23ccc867507ede772f8b51beacbc3acd1"
+    },
+    {
+      "path": "assets/warehouseScene-PSkvd38M.js",
+      "sha256": "bc86f17eb8758e3f45631ce357e9b080d1e12635b3b18a81b1b7b41e35fc441d"
+    },
+    {
+      "path": "assets/twinV3-BY3rKg-u.js",
+      "sha256": "064fb3563d240744170c479d67a9c2b2519c0a6ac12e1bae04de8660b724717a"
+    },
+    {
+      "path": "assets/GLTFLoader-Cesgu80t.js",
+      "sha256": "0d162fe6f5f688de0a53b567cc63b563d62a6e9e0bafb21435f9f3c3b5813231"
+    }
+  ],
+  "scope": "Actual desktop Chrome D3D11, production dist bytes. Synthetic empty native NDJSON, no backend/native-physical acceptance claim. WEBGL_lose_context is actual context loss; persisted pagehide/pageshow are explicitly dispatched lifecycle guard checks, not proof of native BFcache navigation. Current-main staged Twin demo includes48 illustrative extra crew/4 extra vehicles, not operational traffic certification."
+}

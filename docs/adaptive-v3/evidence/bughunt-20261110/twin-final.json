@@ -1,0 +1,147 @@
+{
+  "schema_id": "qoima.twin-shift-adversarial.v1",
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "browser_started": false,
+  "new_tests": true,
+  "checks": [
+    {
+      "name": "seeded_random_reverse_repeat_and_input_immutability",
+      "passed": true,
+      "observation": {
+        "observations": 846
+      }
+    },
+    {
+      "name": "all_finite_positions_counts_bounds_and_exterior_gate_frames",
+      "passed": true,
+      "observation": {
+        "frames": 974,
+        "people": 72,
+        "vehicles": 6
+      }
+    },
+    {
+      "name": "nonfinite_and_non_numeric_time_are_inert_before_frame_mutation",
+      "passed": true,
+      "observation": {
+        "controls": 17
+      }
+    },
+    {
+      "name": "finite_outside_episode_time_clamps_to_canonical_endpoints",
+      "passed": true,
+      "observation": {
+        "controls": 6
+      }
+    },
+    {
+      "name": "actual_actor_job_boundaries_have_no_position_teleport",
+      "passed": true,
+      "observation": {
+        "evaluated": 12208,
+        "maximum_delta_m": 4.2000033406708326e-7
+      }
+    },
+    {
+      "name": "smoothed_route_heading_is_continuous_at_corner_and_pi_seam",
+      "passed": true,
+      "observation": {
+        "corners": 3,
+        "max_delta_rad": 2.617993873910152e-7
+      }
+    },
+    {
+      "name": "route_input_validation_and_no_invalid_output_mutation",
+      "passed": true,
+      "observation": {
+        "controls": 7
+      }
+    },
+    {
+      "name": "B_layout_switch_preserves_source_A_jobs_and_order_release_stream",
+      "passed": true,
+      "observation": {
+        "actors": 72,
+        "modules": 196
+      }
+    },
+    {
+      "name": "actual_native_scene_absolute_seek_rejected_controls_dispose_restore",
+      "passed": true,
+      "observation": {
+        "actors": 24,
+        "source_matrices_restored": true,
+        "source_buffers_preserved": true,
+        "no_source_resources_disposed": true
+      }
+    },
+    {
+      "name": "all_incident_start_end_and_terminal_halfopen_controls",
+      "passed": true,
+      "observation": {
+        "observations": 120,
+        "incidents": 10
+      }
+    }
+  ],
+  "metrics": {
+    "replay_observations": 846,
+    "finite_frames": 974,
+    "boundary_probes": 12208
+  },
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/warehouseLayoutPlan.ts": "8c38388ed3f1179948471ee077f9342afb8548fa53b572c0742f90548b0d7618",
+    "frontend/src/adaptive-v3/workerRoleAssignment.ts": "6bc0bdc205d752ebda084e022e01b6d03d4dbc39fd08db82955b27162fa2c266",
+    "frontend/src/adaptive-v3/warehouseStaffingPendingWork.ts": "fa3e057a62dd3cf82228ad54c854567dd89858ef58283a101e54264ff8c28cdd",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "ff832adbdb7c0b33cb499cc4c7f5a9c2fde6959a162d7b111b6926b3ce55cbc8",
+    "frontend/src/adaptive-v3/warehouseWestPalletReceipt.ts": "b7040a26388b3966da1214441e1ae9652229d580bbab90645cb4ff0ce54331f6",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseSmallClampManualTransfer.ts": "8334fd798114ab36cb5ca5bff2ce84f2f51f6f6d0354a0c606a7c18e718054c3",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseForearmPronationPose.ts": "a2861ffa225de9e6863069fb96f2c288daa9ba187e23420f981ab72be79a760d",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceAction.ts": "42c0dbe010dc186d1af288ad30afa0748f53e22758b0c5e81a6e86897499f748",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0",
+    "frontend/src/adaptive-v3/warehouseSmallClampWorkflowRoute.ts": "e9a3fb71e6bab00b3a79e24e8778378f2d868e08d9a3ca00f785766039d98b3d",
+    "frontend/src/adaptive-v3/warehouseSmallManualWorkflowRoute.ts": "3d0ecffd15d02813494ddd016eeb4de7ec0dffaadfc4d3fcbe1a3e6dacb55350",
+    "frontend/src/adaptive-v3/warehouseSmallClampReceivingTransfer.ts": "77c0d17417fff5e129d2eac31827db20669090ec1f0350b0c65b9ce2c6199bcb",
+    "frontend/src/adaptive-v3/warehouseSmallClampReceivingWorkflowRoute.ts": "38da5cb2ca6c4902fbf1dffeeb9ae4f68db28afde8404fa2754aac36d20767d2",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/warehouseLongScenarioPlan.ts": "1b50889308b322d6a178403cdf6feae1b37aa12e53b9d83eccbf663138b2aea9",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+    "frontend/src/adaptive-v3/warehouseSourceLongConcurrency.ts": "bd563c5554d3492962b4124d0647f2018f00efd39ba69977c5385816ed5b4f98",
+    "frontend/src/adaptive-v3/warehouseSourceLongConcurrencyBinding.json": "dc797d8c542be5a00df9be0ec1334b6774a3e5b30148e57b4455d9af1df94674",
+    "frontend/src/adaptive-v3/warehouseManualGripPose.ts": "ffdcff592b595554faa9926208da2993541fd40dd7bf862a1d225220e46c68a4",
+    "frontend/src/adaptive-v3/warehouseReceivingManualTransfer.ts": "9b18eac8560cdb2aa5cf8c8c4e6efd4311545c046f75ca726f07cb613b256aa7",
+    "frontend/src/adaptive-v3/warehouseReceivingWorkflowRoute.ts": "f44df6ee6236a7060b933f1acbc0c0161dcc226675bc3fcaab0cd9c61888619a",
+    "frontend/src/adaptive-v3/warehouseLayoutAccess.ts": "23955242b1f01144c7d163b946c4d184d96f714a1498573a99faa38723f487d1",
+    "frontend/src/adaptive-v3/twin/twinShift.ts": "ead38bf75225695030c88759912b61b254f5ece11bcde2083100e79f58842c57",
+    "frontend/src/adaptive-v3/twin/twinShiftRoutes.ts": "7fe52b13e9b1dc40f13e533e37b4c5e5e73b0476450d2c53b30251ea09992503",
+    "frontend/src/adaptive-v3/twin/twinShiftProblems.ts": "97e554b2d0d210cb4eb9b7855915afd89b0f6bc34ff2f43af10730c2ae7f5ef2",
+    "frontend/src/adaptive-v3/twin/twinShiftScene.ts": "109a318522fa0fa04336ef98f015d09004be951fa3b70c49fb7f4862cfd3a9df",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "frontend/tools/check-twin-shift-adversarial-v3.mjs": "af5a06d2459a86028161a7229b6495206d80314bce18517925afabed008a119c",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+  },
+  "source_drift": [],
+  "limitations": [
+    "Synthetic busy-shift presentation only; 48 extra people and proxy equipment are not operational or continuous-traffic admission.",
+    "Cloned observations are used because generator frame objects intentionally reuse storage.",
+    "Native Scene test covers lifecycle/transforms/resources, not new native grip or body collision certification."
+  ]
+}

@@ -206,7 +206,10 @@ function relocation(value: unknown): Relocation | null {
     if (value === null || value === undefined)
         return null;
     const r = object(value), nullable = (v: unknown) => v === null ? null : integer(v);
-    return { actor_id: text(r.actor_id), job_id: text(r.job_id), hu_id: text(r.hu_id), source_owner: text(r.source_owner), destination_owner: text(r.destination_owner), status: text(r.status), taken_tick: nullable(r.taken_tick), placed_tick: nullable(r.placed_tick), returned_tick: nullable(r.returned_tick) };
+    const taken = nullable(r.taken_tick), placed = nullable(r.placed_tick), returned = nullable(r.returned_tick);
+    need(placed === null || taken === null || placed >= taken, 'Invalid native relocation placement interval');
+    need(returned === null || (taken === null || returned >= taken) && (placed === null || returned >= placed), 'Invalid native relocation return interval');
+    return { actor_id: text(r.actor_id), job_id: text(r.job_id), hu_id: text(r.hu_id), source_owner: text(r.source_owner), destination_owner: text(r.destination_owner), status: text(r.status), taken_tick: taken, placed_tick: placed, returned_tick: returned };
 }
 function pose(value: unknown): BeltPose | null {
     if (value === null || value === undefined)
@@ -225,16 +228,26 @@ function beltEvent(value: unknown): BeltEvent | null {
 }
 function event(value: unknown): NativeEvent {
     const e = object(value);
-    return { seq: integer(e.seq), tick: integer(e.tick), kind: text(e.kind), actor_id: e.actor_id == null ? null : text(e.actor_id), order_id: e.order_id == null ? null : text(e.order_id), operation: operation(e.operation), relocation: relocation(e.relocation), belt_event: beltEvent(e.belt_event) };
+    const projected = { seq: integer(e.seq), tick: integer(e.tick), kind: text(e.kind), actor_id: e.actor_id == null ? null : text(e.actor_id), order_id: e.order_id == null ? null : text(e.order_id), operation: operation(e.operation), relocation: relocation(e.relocation), belt_event: beltEvent(e.belt_event) };
+    need(!projected.belt_event || projected.belt_event.tick === projected.tick, 'Native belt event tick differs');
+    need(!projected.relocation || !projected.actor_id || projected.relocation.actor_id === projected.actor_id, 'Native relocation actor differs');
+    return projected;
 }
 function capture(value: unknown, outcomeKind: unknown): Capture {
     const s = object(value), belt = object(s.belt);
     const workers = rows(s.workers).map(value => { const w = object(value); return { actor_id: text(w.actor_id), node: w.node === null ? null : text(w.node), operation: operation(w.operation) }; });
     const carriers = rows(belt.carriers).map(value => {
         const c = object(value), motion = c.motion ? object(c.motion) : null;
-        return { job_id: text(c.job_id), hu_id: text(c.hu_id), payload_id: text(c.payload_id), status: text(c.status), pose: pose(c.pose), motion: motion ? { start: pose(motion.start)!, end: pose(motion.end)!, start_tick: integer(motion.start_tick), planned_end_tick: integer(motion.planned_end_tick) } : null };
+        const projected = motion ? { start: pose(motion.start), end: pose(motion.end), start_tick: integer(motion.start_tick), planned_end_tick: integer(motion.planned_end_tick) } : null;
+        if (projected)
+            need(projected.start && projected.end && projected.planned_end_tick >= projected.start_tick, 'Invalid captured native motion endpoints or interval');
+        return { job_id: text(c.job_id), hu_id: text(c.hu_id), payload_id: text(c.payload_id), status: text(c.status), pose: pose(c.pose), motion: projected ? { ...projected, start: projected.start!, end: projected.end! } : null };
     });
-    return { tick: integer(s.tick), last_seq: integer(s.last_seq, -1), workers, carriers, relocations: rows(outcomeKind === 'base_noop' && s.relocations === undefined ? [] : s.relocations).map(v => relocation(v)!) };
+    const relocations = rows(outcomeKind === 'base_noop' && s.relocations === undefined ? [] : s.relocations).map(v => { const r = relocation(v); need(r, 'Invalid captured native relocation'); return r; });
+    need(new Set(workers.map(w => w.actor_id)).size === workers.length, 'Duplicate captured native actor');
+    need(new Set(carriers.map(c => c.job_id)).size === carriers.length, 'Duplicate captured native carrier');
+    need(new Set(relocations.map(r => r.job_id)).size === relocations.length, 'Duplicate captured native relocation');
+    return { tick: integer(s.tick), last_seq: integer(s.last_seq, -1), workers, carriers, relocations };
 }
 async function member(row: Json, expected: Map<string, Descriptor>, seen: Set<string>): Promise<{
     path: string;
@@ -255,19 +268,34 @@ async function member(row: Json, expected: Map<string, Descriptor>, seen: Set<st
 }
 async function* lines(body: ReadableStream<Uint8Array>, signal?: AbortSignal): AsyncGenerator<string> {
     const reader = body.getReader(), decoder = new TextDecoder('utf-8', { fatal: true });
-    let pending = '', transferred = 0, completed = false;
+    let pending = '', transferred = 0, lineBytes = 0, completed = false;
+    const abort = () => { void reader.cancel(signal?.reason).catch(() => undefined); };
+    signal?.addEventListener('abort', abort, { once: true });
     try {
         for (;;) {
             signal?.throwIfAborted();
             const chunk = await reader.read();
+            signal?.throwIfAborted();
             if (chunk.done)
                 break;
             transferred += chunk.value.byteLength;
             need(transferred <= 192 * 1024 * 1024, 'Native transfer bytes limit exceeded');
+            let offset = 0;
+            for (;;) {
+                const newline = chunk.value.indexOf(10, offset);
+                const until = newline < 0 ? chunk.value.length : newline;
+                lineBytes += until - offset;
+                need(lineBytes <= MAX_LINE, 'Native record bytes limit exceeded');
+                if (newline < 0)
+                    break;
+                lineBytes = 0;
+                offset = newline + 1;
+            }
             pending += decoder.decode(chunk.value, { stream: true });
             let end = pending.indexOf('\n');
             while (end >= 0) {
                 need(end <= MAX_LINE, 'Native record bytes limit exceeded');
+                signal?.throwIfAborted();
                 yield pending.slice(0, end);
                 pending = pending.slice(end + 1);
                 end = pending.indexOf('\n');
@@ -280,8 +308,9 @@ async function* lines(body: ReadableStream<Uint8Array>, signal?: AbortSignal): A
         completed = true;
     }
     finally {
+        signal?.removeEventListener('abort', abort);
         if (!completed)
-            await reader.cancel().catch(() => undefined);
+            void reader.cancel().catch(() => undefined);
         reader.releaseLock();
     }
 }
@@ -321,15 +350,18 @@ export async function decodeArmStream(body: ReadableStream<Uint8Array>, pair: st
     let accepted: ReturnType<typeof header> | undefined;
     const seen = new Set<string>(), data: ArmData = { header: {}, catalog: {}, captures: [], events: [], retainedBytes: 0 };
     for await (const line of lines(body, options.signal)) {
+        options.signal?.throwIfAborted();
         need(line.length > 0, 'Empty native stream record');
         const row = object(parseNativeJSON(line));
         if (!accepted) {
             accepted = header(row, pair, arm);
             data.header = accepted.value;
             data.retainedBytes = encoder.encode(line).length;
+            need(data.retainedBytes <= budget, 'Native retained cache budget exceeded');
             continue;
         }
         const checked = await member(row, accepted.descriptors, seen);
+        options.signal?.throwIfAborted();
         let projected: unknown = null;
         if (checked.path === 'manifest.json')
             need(canonical(checked.data) === canonical(data.header.transport_manifest), 'Native transport manifest differs');
@@ -355,6 +387,7 @@ export async function decodeArmStream(body: ReadableStream<Uint8Array>, pair: st
         need(data.retainedBytes <= budget, 'Native retained cache budget exceeded');
         options.progress?.(seen.size, accepted.descriptors.size);
     }
+    options.signal?.throwIfAborted();
     need(accepted && seen.size === accepted.descriptors.size, 'Missing members in incomplete native stream');
     finish(data);
     return data;

@@ -1,0 +1,82 @@
+{
+  "schema_id": "qoima.native-pair-adversarial-fix-receipt.v1",
+  "created_utc": "2026-11-10T03:35:48.634887+00:00",
+  "passed": true,
+  "owned_product_files": [
+    "frontend/src/native-v3/stream.ts",
+    "frontend/src/native-v3/playback.ts",
+    "frontend/tools/check-native-pair-adversarial-v3.mjs"
+  ],
+  "source_hashes": {
+    "stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+    "playback.ts": "a8c95edcbe86d08103269aff94cfa90cc88ffbce567bf19b9c8fabb6e7278608"
+  },
+  "checker_sha256": "ac85ab22bfae0329508725ba2b0afbb7b1e7f62e2d0aee1d73064ea1b5cbb8d7",
+  "initial_raw": {
+    "path": "work/native-pair-adversarial/raw-before-fix.json",
+    "total": 36,
+    "passed": 24,
+    "failed": 12,
+    "source_hashes": {
+      "stream.ts": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93",
+      "playback.ts": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc"
+    },
+    "checker_source_preserved": "work/native-pair-adversarial/original-36-checker-source.mjs",
+    "checker_source_sha256": "f7814add8715169d1e82363f64663e9da358515392ba12e2c70960c51bfb950d"
+  },
+  "numeric_followup_raw": {
+    "path": "work/native-pair-adversarial/numeric-before-followup.json",
+    "total": 44,
+    "passed": 42,
+    "failed": 2
+  },
+  "final": {
+    "path": "work/native-pair-adversarial/final-numeric-checks.json",
+    "total": 44,
+    "passed": 44,
+    "failed": 0
+  },
+  "legacy_control": {
+    "command": "node tools/check-native-pair-v3.mjs",
+    "cwd": "frontend",
+    "passed": 20,
+    "exit_code": 0
+  },
+  "typecheck": {
+    "command": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit",
+    "exit_code": 0,
+    "scope": "42-case epoch before final exponent-only numeric followup; root owns final full build/typecheck"
+  },
+  "fix_groups": [
+    {
+      "area": "stream cancellation",
+      "behavior": "Abort cancels pending owned read; parser rechecks abort around async hashes and buffered records; rejection does not await a stalled underlying cancellation."
+    },
+    {
+      "area": "resource limits",
+      "behavior": "6MiB line limit counts incoming UTF8 bytes; retained header is budget checked immediately."
+    },
+    {
+      "area": "rational projection",
+      "behavior": "Raw BigInt fractions preserved; significant-bit exponent scaling, nearest-even rounding and subnormal handling provide finite double presentation; periodic yaw reduced exactly and adjacent pivot difference computed exactly."
+    },
+    {
+      "area": "geometry",
+      "behavior": "Nonfinite native XYZ/yaw and supplied invalid radii/angles rejected; missing optional curve fields remain optional; overflowed coordinates fail closed."
+    },
+    {
+      "area": "record consistency",
+      "behavior": "Duplicate actor/carrier/job rows, contradictory present timestamps, belt event tick mismatch and missing typed motion endpoints refused; nullable partial records and node=null with operation remain supported."
+    },
+    {
+      "area": "seek aliasing",
+      "behavior": "Returned idle actor positions are copies, so caller edits cannot mutate geometry/future seek."
+    }
+  ],
+  "limitations": [
+    "Synthetic NDJSON bundles only; no backend HTTP or captured native pair claimed.",
+    "Primary ADR0099 was unavailable in the supplied local contract tree; tests bind existing local types, identity guards and the legacy synthetic protocol.",
+    "No additional backend event taxonomy or status whitelist invented; transport authentication/layout/registry identities unchanged.",
+    "No browser/3D/native material collision claim; root owns current Page/browser integration."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "complete": true,
+  "scope": "new scenario adversarial property tests",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "production_changes": [],
+  "groups_passed": 11,
+  "shuffled_phase_epsilon_samples": 1127,
+  "full_native_applications": 94,
+  "generic_rebind_native_applications": 60,
+  "maximum_actor_error_m": 0,
+  "maximum_vehicle_error_m": 0,
+  "helper": {
+    "path": "frontend/tools/check-scenario-adversarial-v3.mjs",
+    "sha256": "2b70c934c781cb76edba9575d0f91f6763bcea9bbe807f28e56dd6bf7204bd03",
+    "final_reporting_only_changes": "Explicit incomplete state and timeout receipt after measured tests; same tested assertions",
+    "syntax_check_passed": true
+  },
+  "successful_runs": [
+    {
+      "sha256": "357aecece9186bf73c93f983a71d5ebc31e6fee41feec50b53ea8be098bcfd5a",
+      "runtime_exit": 0,
+      "path": "work/v3/scenario-adversarial-bounded-20261110/checks.json",
+      "groups": 7
+    },
+    {
+      "sha256": "5fc1beb40f5a02d2311344d77d5068256a48846f8620e6321801be6bc49bb270",
+      "runtime_exit": 0,
+      "path": "work/v3/scenario-adversarial-lifecycle-20261110/checks.json",
+      "groups": 4
+    }
+  ],
+  "raw_history": [
+    {
+      "path": "work/v3/scenario-adversarial-raw-20261110/checks.json",
+      "classification": "checker assumptions corrected: outbound has no tool_uuid, hidden HU matrix unspecified, disposed issuance already rejects"
+    },
+    {
+      "path": "work/v3/scenario-adversarial-corrected-20261110",
+      "classification": "dense native repetition exceeded 180s harness wall bound, no invariant failure receipt; all phase pure checks retained and native repetitions sampled in accepted run"
+    }
+  ],
+  "unchanged_sources": [
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioExecution.ts",
+      "sha256": "ff832adbdb7c0b33cb499cc4c7f5a9c2fde6959a162d7b111b6926b3ce55cbc8"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioScene.ts",
+      "sha256": "f0df521e809f3b4c0e2c38fc7930cb9010964a654c434a7f7e656f590c718595"
+    }
+  ],
+  "limitations": [
+    "Finite seeded/property/control coverage; no exhaustive collision or operational certificate",
+    "No Chrome, Page, Twin, NativePair or product edits",
+    "Full native scene used at94 shuffled controls; all1127 times checked pure scene DTOs"
+  ],
+  "reproduced_commands": [
+    "node frontend/tools/check-scenario-adversarial-v3.mjs --out work/NEW_FULL",
+    "node frontend/tools/check-scenario-adversarial-v3.mjs --lifecycle-only --out work/NEW_LIFECYCLE"
+  ]
+}

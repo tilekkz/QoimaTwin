@@ -9,6 +9,7 @@ import {SHIFT_DURATION_S,SHIFT_PROBLEMS,shiftProblemActive} from './twinShiftPro
 
 export const SHIFT_SEED=0x514f494d;
 export const SHIFT_LABEL='Насыщенная смена · демонстрация';
+export function normalizeShiftTime(t:number){if(typeof t!=='number'||!Number.isFinite(t))throw new RangeError('SHIFT_INVALID_TIME');return Math.max(0,Math.min(SHIFT_DURATION_S,t));}
 export type ShiftActor={id:string;role:WorkerRole;extra:boolean;zone:string;cart:boolean;vehicle:number|null;paths:Record<Variant,ShiftPath>;jobs:Record<Variant,ShiftJob[]>;period:number;offset:number};
 type ShiftJob={release:number;start:number;outEnd:number;serviceEnd:number;backEnd:number;end:number;due:number;index:number};
 export type ShiftWorkerFrame=ShiftPose&{id:string;role:WorkerRole;extra:boolean;cart:boolean;vehicle:number|null;zone:string};
@@ -66,12 +67,13 @@ export function createTwinShiftGenerator(bundle:WarehouseBundle,policy:RoutePoli
    paths={A:aisles.A.route(p,end),B:aisles.B.route(p,end)};zone=stage;
   }
   const speedB=vehicle!==null?1.65:d.role==='picker'?1.08:1.0,serviceB=d.role==='packer'?9:vehicle!==null?12:8;
-  const durationB=paths.B.length*2/speedB+serviceB+6,period=Math.max(d.role==='packer'?18:45,durationB+18),offset=-period*(.2+random()*.8);
+  // Demand is materialized from source A, independently of a selected B layout.
+  const referenceDuration=paths.A.length*2/speedB+serviceB+6,period=Math.max(d.role==='packer'?18:45,referenceDuration+18),offset=-period*(.2+random()*.8);
   const a:ShiftActor={...d,zone,cart:d.role==='picker',vehicle,paths,jobs:{A:[],B:[]},period,offset};
   for(const v of ['A','B'] as Variant[]){let available=-Infinity;const speed=v==='A'?(vehicle!==null?2.1:d.role==='picker'?1.75:1.4):speedB;
    for(let j=0,release=offset;release<=SHIFT_DURATION_S+period;release=offset+(++j)*period){
-    const travel=paths[v].length/speed,delay=v==='A'?Math.max(38,durationB-travel*2+48):serviceB,waitEnd=v==='A'?26:6,start=Math.max(release,available),outEnd=start+travel,serviceEnd=outEnd+delay,backEnd=serviceEnd+travel,end=backEnd+waitEnd;
-    a.jobs[v].push({release,start,outEnd,serviceEnd,backEnd,end,due:release+durationB+20,index:j});available=end;
+    const travel=paths[v].length/speed,delay=v==='A'?Math.max(38,referenceDuration-travel*2+48):serviceB,waitEnd=v==='A'?26:6,start=Math.max(release,available),outEnd=start+travel,serviceEnd=outEnd+delay,backEnd=serviceEnd+travel,end=backEnd+waitEnd;
+    a.jobs[v].push({release,start,outEnd,serviceEnd,backEnd,end,due:release+referenceDuration+20,index:j});available=end;
    }
   }actors.push(a);
  }
@@ -89,6 +91,7 @@ export function createTwinShiftGenerator(bundle:WarehouseBundle,policy:RoutePoli
  function makeFrame(){return {at:-Infinity,workers:actors.map(a=>({...freshPose(),id:a.id,role:a.role,extra:a.extra,cart:a.cart,vehicle:a.vehicle,zone:a.zone})),vehicles:fleet.map(f=>({...freshPose(),id:f.id,extra:f.extra})),belt:Array.from({length:80},(_,i)=>({...freshPose(),visible:false,kind:'tote' as ShiftCargoFrame['kind'],id:'DEMO-BELT-'+i})),staging:staging.map(s=>({...freshPose(),x:s.point[0],z:s.point[2],visible:false,kind:'pallet' as ShiftCargoFrame['kind'],id:s.id})),trucks:ports.map(p=>({...freshPose(),id:'DEMO-TRUCK-'+p.port_id,visible:true,port:p.port_id})),summary:{people:actors.length,registered:actors.filter(a=>!a.extra).length,extra_crew:actors.filter(a=>a.extra).length,vehicles:fleet.length,trucks:0,movements_done:0,tasks_waiting:0,workers_waiting:0,late_orders:0,belt_visible:0,staging_cargo:0,incoming_orders:0},activeProblems:[] as string[]};}
  frames.A=makeFrame();frames.B=makeFrame();
  function sample(v:Variant,t:number){
+  if(v!=='A'&&v!=='B')throw new RangeError('SHIFT_INVALID_VARIANT');t=normalizeShiftTime(t);
   const f=frames[v];if(f.at===t)return f;f.at=t;let done=0,queued=0,waiting=0,late=0,incoming=0;
   for(let i=0;i<actors.length;i++){
    const a=actors[i],p=f.workers[i],jobs=a.jobs[v];let actorTime=t,incidentPhase:string|null=null;
@@ -104,7 +107,7 @@ export function createTwinShiftGenerator(bundle:WarehouseBundle,policy:RoutePoli
    if(actorTime<job.start){p.phase='ready';}else if(actorTime<job.outEnd){d=(actorTime-job.start)/(job.outEnd-job.start)*a.paths[v].length;p.moving=true;p.phase='to-slot';}
    else if(actorTime<job.serviceEnd){d=a.paths[v].length;p.waiting=v==='A';p.working=!p.waiting;p.loaded=true;p.phase=p.waiting?'waiting':'handling';}
    else if(actorTime<job.backEnd){d=a.paths[v].length*(1-(actorTime-job.serviceEnd)/(job.backEnd-job.serviceEnd));returning=true;p.moving=true;p.loaded=true;p.phase='to-handoff';}
-   else if(actorTime<job.end){d=v==='A'&&a.cart?Math.min(a.paths[v].length,1.8+i%5*1.4):0;p.waiting=v==='A';p.working=!p.waiting;p.loaded=true;p.phase=p.waiting?'handoff-queue':'handoff';}
+   else if(actorTime<job.end){d=0;p.waiting=v==='A';p.working=!p.waiting;p.loaded=true;p.phase=p.waiting?'handoff-queue':'handoff';}
    sampleShiftPath(a.paths[v],d,p,v==='B');if(returning)p.yaw+=Math.PI;
    if(a.role==='packer'){p.yaw=Math.PI;p.moving=false;p.waiting=v==='A'&&shiftProblemActive('packing',v,t)&&(a.id==='K03'||a.id==='K05');p.working=!p.waiting;p.phase=p.waiting?'needs-help':'packing';}
    if(incidentPhase){p.waiting=true;p.moving=false;p.working=false;p.phase=incidentPhase;}
@@ -129,6 +132,7 @@ export function createTwinShiftGenerator(bundle:WarehouseBundle,policy:RoutePoli
  const workerSpots:WorkerSpot[]=actors.map(a=>({actor_id:a.id,zone_id:a.zone}));
  function workers(_v:Variant,_t:number):readonly WorkerSpot[]{return workerSpots;}
  function snapshot(t:number){
+  t=normalizeShiftTime(t);
   const describe=(v:Variant)=>{const f=sample(v,t);return {summary:{...f.summary},active_problems:[...f.activeProblems],workers:f.workers.map(w=>({id:w.id,extra:w.extra,role:w.role,position:[w.x,w.y,w.z],yaw:w.yaw,phase:w.phase,loaded:w.loaded,waiting:w.waiting,moving:w.moving})),vehicles:f.vehicles.map(w=>({id:w.id,position:[w.x,w.y,w.z],yaw:w.yaw,phase:w.phase,loaded:w.loaded,waiting:w.waiting})),belt:f.belt.filter(b=>b.visible).map(b=>({id:b.id,position:[b.x,b.y,b.z],phase:b.phase,kind:b.kind})),staging:f.staging.filter(p=>p.visible).map(p=>({id:p.id,position:[p.x,p.y,p.z],kind:p.kind})),trucks:f.trucks.map(p=>({id:p.id,position:[p.x,p.y,p.z],yaw:p.yaw,visible:p.visible,waiting:p.waiting})),rejected_pallet:shiftProblemActive('slot-fit',v,t)?{position:[rejectedPallet.x,0,rejectedPallet.z],kind:'oversize'}:null};};
   return {seed:SHIFT_SEED,label:SHIFT_LABEL,at_s:t,source_kind:'visual_fixture',engine_operation:false,operational_admission:false,behaviour_basis:'authored_demo_pace_waits_and_deadlines',order_stream:'same_seed_same_release_times_same_tasks',plan_sha256:plan?.plan_sha256??null,A:describe('A'),B:describe('B'),route_distances:actors.filter(a=>a.role==='picker'||a.vehicle!==null).map(a=>({actor_id:a.id,A_m:a.paths.A.length*2,B_m:a.paths.B.length*2,A_basis:a.paths.A.basis,B_basis:a.paths.B.basis})),original_stock_HUs:bundle.fixture.inputs.initial_stock.length,original_workers:bundle.registry.workers.length};
  }

@@ -104,7 +104,7 @@ export function createTwinShiftScene(scene:THREE.Scene,bundle:WarehouseBundle,po
  scene.add(root);root.updateWorldMatrix(true,true);
  const base=new THREE.Matrix4();
  function apply(v:Variant,t:number){
-  if(disposed)return;variant=v;at=t;const f=generator.sample(v,t);for(const b of batches)b.count=0;let nativeIndex=0;nativeVisibleIds.length=0;farVisibleIds.length=0;
+  if(disposed)return;const f=generator.sample(v,t);variant=v;at=t=f.at;for(const b of batches)b.count=0;let nativeIndex=0;nativeVisibleIds.length=0;farVisibleIds.length=0;
   for(let i=0;i<f.workers.length;i++){
    const p=f.workers[i];if(!inView(p))continue;const driver=p.vehicle!==null,m=workerMatrices[i],shift=p.cart?-.48:0;
    pose(p,m,Math.sin(p.yaw)*shift,driver?.4:0,Math.cos(p.yaw)*shift);
@@ -131,7 +131,7 @@ export function createTwinShiftScene(scene:THREE.Scene,bundle:WarehouseBundle,po
  }
  function actorPosition(v:Variant,t:number,id:string):XYZ|undefined{const p=generator.sample(v,t).workers.find(w=>w.id===id);if(!p)return undefined;const offset=p.cart?-.48:0;return[p.x+Math.sin(p.yaw)*offset,p.vehicle!==null?2.45:2.1,p.z+Math.cos(p.yaw)*offset];}
  function workers(v:Variant,t:number){return generator.workers(v,t);}
- function setPlan(next:WarehouseLayoutPlan|null,nextAccess:WarehouseLayoutAccessResult|null){const nextGenerator=createTwinShiftGenerator(bundle,policy,next,nextAccess);generator=nextGenerator;apply(variant,at);}
+ function setPlan(next:WarehouseLayoutPlan|null,nextAccess:WarehouseLayoutAccessResult|null){if(disposed)return;const nextGenerator=createTwinShiftGenerator(bundle,policy,next,nextAccess);generator=nextGenerator;apply(variant,at);}
  function snapshot(){return generator.snapshot(at);}
  function dispose(){if(disposed)return;disposed=true;root.removeFromParent();for(const s of saved)s.node.visible=s.visible;for(const b of batches)b.mesh.dispose();for(const o of owned)o.dispose();}
  return {apply,actorPosition,workers,setPlan,snapshot,setView,routeSummary:()=>{let A_m=0,B_m=0,count=0;for(const a of generator.actors)if(a.cart||a.vehicle!==null){A_m+=a.paths.A.length*2;B_m+=a.paths.B.length*2;count++;}return {count,A_m,B_m};},actorInfo:(id:string)=>{const a=generator.actors.find(a=>a.id===id);return a?{id:a.id,role:a.role,extra:a.extra,zone:a.zone,A_m:a.paths.A.length*2,B_m:a.paths.B.length*2,vehicle:a.vehicle===null?null:generator.fleet[a.vehicle].id}:null;},summary:(v:Variant,t:number)=>generator.sample(v,t).summary,carrierFrames:()=>[],dynamicObjects:()=>[root],setEffects:(v:Effects)=>{effects=v;},setDetail:(v:boolean)=>{detail=v;},dispose};

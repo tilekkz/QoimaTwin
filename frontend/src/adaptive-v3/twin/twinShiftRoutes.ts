@@ -5,16 +5,25 @@ import {createWarehouseRouter,type RoutePolicy} from '../warehouseRouting';
 
 export type ShiftPath={points:XYZ[];cumulative:Float64Array;length:number;basis:string};
 export function shiftPath(points:XYZ[],basis:string):ShiftPath{
+ if(!Array.isArray(points)||!points.length||points.some(p=>!Array.isArray(p)||p.length!==3||!p.every(Number.isFinite)))throw new RangeError('SHIFT_INVALID_PATH');
+ points=points.map(p=>[...p] as XYZ);if(points.length===1)points.push([...points[0]]);
  const cumulative=new Float64Array(points.length);for(let i=1;i<points.length;i++)cumulative[i]=cumulative[i-1]+Math.hypot(points[i][0]-points[i-1][0],points[i][2]-points[i-1][2]);
  return {points,cumulative,length:cumulative.at(-1)??0,basis};
 }
 export type ShiftPose={x:number;y:number;z:number;yaw:number;moving:boolean;working:boolean;waiting:boolean;loaded:boolean;phase:string;step:number};
 export function sampleShiftPath(path:ShiftPath,distance:number,out:ShiftPose,smooth:boolean){
- const d=Math.max(0,Math.min(path.length,distance));let i=1;while(i<path.points.length-1&&path.cumulative[i]<d)i++;
+ if(typeof distance!=='number'||!Number.isFinite(distance))throw new RangeError('SHIFT_INVALID_DISTANCE');
+ const d=Math.max(0,Math.min(path.length,distance));let i=1;while(i<path.points.length-1&&(path.cumulative[i]<d||path.cumulative[i]===path.cumulative[i-1]))i++;
+ while(i>1&&path.cumulative[i]===path.cumulative[i-1])i--;
  const a=path.points[Math.max(0,i-1)],b=path.points[Math.min(i,path.points.length-1)],span=path.cumulative[i]-path.cumulative[i-1],u=span>0?(d-path.cumulative[i-1])/span:0;
  out.x=a[0]+(b[0]-a[0])*u;out.y=0;out.z=a[2]+(b[2]-a[2])*u;out.yaw=Math.atan2(b[0]-a[0],b[2]-a[2]);
- // Rotate while decelerating into a corner, without cutting its safe graph edges.
- if(smooth&&i+1<path.points.length&&span*(1-u)<.6){const c=path.points[i+1],next=Math.atan2(c[0]-b[0],c[2]-b[2]),delta=Math.atan2(Math.sin(next-out.yaw),Math.cos(next-out.yaw));out.yaw+=delta*(1-span*(1-u)/.6)*.5;}
+ // Match the same half-angle on both sides of a vertex; position stays on its graph edges.
+ if(smooth&&span>0){
+  const heading=(j:number)=>Math.atan2(path.points[j][0]-path.points[j-1][0],path.points[j][2]-path.points[j-1][2]),delta=(a:number,b:number)=>Math.atan2(Math.sin(b-a),Math.cos(b-a)),current=out.yaw;
+  let previous=i-1,next=i+1;while(previous>0&&path.cumulative[previous]===path.cumulative[previous-1])previous--;while(next<path.points.length&&path.cumulative[next]===path.cumulative[next-1])next++;
+  if(previous>0){const r=Math.min(.6,span/2,(path.cumulative[previous]-path.cumulative[previous-1])/2),from=d-path.cumulative[i-1];if(r>0&&from<r){const before=heading(previous);out.yaw=before+delta(before,current)*(.5+.5*from/r);}}
+  if(next<path.points.length){const r=Math.min(.6,span/2,(path.cumulative[next]-path.cumulative[next-1])/2),remaining=path.cumulative[i]-d;if(r>0&&remaining<r)out.yaw=current+delta(current,heading(next))*.5*(1-remaining/r);}
+ }
 }
 
 type Rect={min:[number,number];max:[number,number]};
