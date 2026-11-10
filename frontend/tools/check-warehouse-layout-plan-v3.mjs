@@ -1,7 +1,17 @@
 /** Deterministic structural B plan, original stock frames and static native bounds. */
 import assert from 'node:assert/strict';import {readFile,writeFile,mkdir} from 'node:fs/promises';import path from 'node:path';import {pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';import ts from 'typescript';
 const own=path.resolve('../work/v3/warehouse-density-20261109'),cache=path.join(own,'check-cache'),sha=b=>createHash('sha256').update(b).digest('hex'),pins={};await mkdir(cache,{recursive:true});
-for(const name of ['workerRegistry','workerProfiles','warehouseAdapter','workerRoleAssignment','warehouseLayoutPlan','warehouseCargo','warehouseCargoHolders']){const p='src/adaptive-v3/'+name+'.ts',b=await readFile(p);pins['frontend/'+p]=sha(b);let code=ts.transpileModule(b.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;code=code.replace(/from '\.\/(\w+)'/g,"from './$1.mjs'");await writeFile(path.join(cache,name+'.mjs'),code);}
+const compiled=new Set();
+async function compile(name){
+ if(compiled.has(name))return;compiled.add(name);
+ const p='src/adaptive-v3/'+name+'.ts',b=await readFile(p);pins['frontend/'+p]=sha(b);
+ let code=ts.transpileModule(b.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+ for(const m of [...code.matchAll(/import\s+(\w+)\s+from\s+['"]\.\/([^'"]+\.json)['"];?/g)]){const jsonPath='src/adaptive-v3/'+m[2],jsonBytes=await readFile(jsonPath);pins['frontend/'+jsonPath]=sha(jsonBytes);code=code.replace(m[0],'const '+m[1]+'='+jsonBytes.toString()+';');}
+ for(const m of [...code.matchAll(/from ['"]\.\/([^'"]+)['"]/g)])await compile(m[1]);
+ code=code.replace(/from ['"]\.\/([^'"]+)['"]/g,(_,p)=>`from './${p}.mjs'`).replace(/from ['"](three(?:\/[^'"]+)?)['"]/g,(_,p)=>`from '${import.meta.resolve(p)}'`);
+ await mkdir(path.dirname(path.join(cache,name+'.mjs')),{recursive:true});await writeFile(path.join(cache,name+'.mjs'),code);
+}
+for(const name of ['warehouseAdapter','warehouseLayoutPlan','warehouseCargo'])await compile(name);
 const {adaptWarehouseV3}=await import(pathToFileURL(path.join(cache,'warehouseAdapter.mjs'))),{createDenseWarehouseLayoutPlan}=await import(pathToFileURL(path.join(cache,'warehouseLayoutPlan.mjs'))),{createWarehouseCargo}=await import(pathToFileURL(path.join(cache,'warehouseCargo.mjs'))),texts={};
 for(const[k,p]of Object.entries({fixture:'public/data/v3/warehouse-fixture-v3.json',layout:'public/data/adaptive-v3/layout-manifest.json',registry:'public/data/v3/worker-registry-v3.json',profiles:'public/data/v3/worker-profiles-v3.json'})){const b=await readFile(p);texts[k]=b.toString();pins['frontend/'+p]=sha(b);}
 const bundle=await adaptWarehouseV3(texts),before=JSON.stringify(bundle),plan=await createDenseWarehouseLayoutPlan(bundle,texts),again=await createDenseWarehouseLayoutPlan(bundle,texts);assert.deepEqual(plan,again);assert.equal(JSON.stringify(bundle),before);assert.equal(plan.modules.length,164);assert.equal(plan.HUs.length,530);assert.equal(plan.actor_homes.length,24);assert.equal(plan.summary.added_modules,32);assert.equal(plan.summary.moved_source_modules,48);assert.equal(plan.slots.length,1096);

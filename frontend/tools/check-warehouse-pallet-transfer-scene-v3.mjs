@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFile,writeFile,mkdir,stat} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,stat,realpath} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import path from 'node:path';
@@ -11,7 +11,10 @@ const frontend=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),r
 const sha=b=>createHash('sha256').update(b).digest('hex'),input_hashes={},positive=[],negative=[];
 async function source(p){const b=await readFile(path.join(root,p));input_hashes[p]=sha(b);return b;}
 const json=async p=>JSON.parse((await source(p)).toString()),threeURL=import.meta.resolve('three');
-assert(threeURL.startsWith(pathToFileURL(path.join(frontend,'node_modules/three')).href+'/'));
+const projectThreeRoot=await realpath(path.join(frontend,'node_modules/three'));
+assert.equal(await realpath(fileURLToPath(threeURL)),await realpath(path.join(projectThreeRoot,'build/three.module.js')),'Expected this frontend THREE dependency through its realpath');
+const threePackage=JSON.parse(await readFile(path.join(projectThreeRoot,'package.json'),'utf8')),lock=JSON.parse(await readFile(path.join(frontend,'package-lock.json'),'utf8'));
+assert.equal(threePackage.name,'three');assert.equal(threePackage.version,'0.169.0');assert.equal(lock.packages['node_modules/three'].version,threePackage.version);assert.equal(THREE.REVISION,'169');
 await mkdir(cache,{recursive:true});
 for(const name of ['workerRegistry','workerProfiles','warehouseAdapter','warehouseCargoHolders','warehouseCargo','warehouseActionTimeline','warehouseRouting','warehouseRoutePose','warehousePalletTransferPlan','warehousePalletTransferScene','warehouseCargoGeometry','workerRoles','workerRolesFixture','seatedDriver']){
  let code=ts.transpileModule((await source('frontend/src/adaptive-v3/'+name+'.ts')).toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;

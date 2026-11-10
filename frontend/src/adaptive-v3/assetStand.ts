@@ -107,7 +107,8 @@ let bounds = new THREE.Box3();
 let points:THREE.Vector3[]=[];
 let serial=0;
 let manifest:ReferenceManifest | undefined;
-let frameId=0;
+let frameId:number|null=null;
+let disposed=false;
 let activeFocus:string|null=null;
 
 function disposeObject(object:THREE.Object3D){
@@ -138,7 +139,7 @@ function releaseModel(){
   if(rolesFixture){rolesFixture.dispose();rolesFixture=undefined;}
   else if(model)disposeObject(model);
   if(workerTemplate){disposeObject(workerTemplate);workerTemplate=undefined;}
-  model=undefined;
+  model=undefined;requestRender();
 }
 
 function setStatus(next:string,title:string,copy:string){
@@ -203,7 +204,7 @@ function fit(next:View=view,focus?:THREE.Object3D){
   // radius is metric, and the large warehouse engineering preview stays cheap.
   contactShade.enabled=Math.max(...bounds.getSize(new THREE.Vector3()).toArray())<=8;
   contactShade.updateGtaoMaterial({radius:THREE.MathUtils.clamp(radius*.12,.012,.30),thickness:THREE.MathUtils.clamp(radius*.4,.02,.8)});
-  controls.object=camera;controls.target.copy(centre);controls.minDistance=radius*.15;controls.maxDistance=radius*30;controls.update();
+  controls.object=camera;controls.target.copy(centre);controls.minDistance=radius*.15;controls.maxDistance=radius*30;controls.update();requestRender();
 }
 
 function dimensions(){return bounds.isEmpty()?[0,0,0]:bounds.getSize(new THREE.Vector3()).toArray();}
@@ -225,7 +226,7 @@ function snapshot(){
 
 function diagnostics(){
   const state=snapshot();['x','y','z'].forEach((axis,i)=>element('size-'+axis).textContent=state.dimensions_m[i].toFixed(3));
-  element('triangles').textContent=state.triangles.toLocaleString('ru-RU');element('materials').textContent=String(state.materials.length);element('diagnostics').textContent=JSON.stringify(state,null,2);
+  element('triangles').textContent=state.triangles.toLocaleString('ru-RU');element('materials').textContent=String(state.materials.length);element('diagnostics').textContent=JSON.stringify(state,null,2);requestRender();
 }
 
 function updateReference(){
@@ -238,6 +239,7 @@ function updateReference(){
 }
 
 async function loadModel(id:string){
+  if(disposed)return;
   const token=++serial;
   if(!/^[a-z0-9][a-z0-9-]{0,63}$/.test(id)){setStatus('error','Неверный идентификатор','Используйте буквы a–z, цифры и дефисы.');return;}
   modelId=id;modelInput.value=id;element('model-title').textContent=assetTitles[id]??id.replaceAll('-',' ');updateReference();
@@ -406,12 +408,12 @@ function updatePickupUi(){
 function seekPickup(time:number){const cycle=activeCycle();if(!cycle)throw Error('Цикл не загружен.');pickupPlaying=false;cycle.apply(time);updatePickupUi();diagnostics();}
 function pausePickup(){
   const cycle=activeCycle();if(pickupPlaying&&cycle)cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);
-  pickupPlaying=false;updatePickupUi();if(cycle)diagnostics();
+  pickupPlaying=false;updatePickupUi();if(cycle)diagnostics();requestRender();
 }
 function playPickup(){
   const cycle=activeCycle();if(!cycle||reducedMotion.matches||(shipperAction&&['idle','blocked'].includes(shipperAction.snapshot().mode))||(packerAction&&packerAction.snapshot().mode!=='pack')||(receiverAction&&['idle','blocked'].includes(receiverAction.snapshot().mode)))return false;
   if(cycle.snapshot().complete)cycle.apply(0);
-  pickupAnchorTime=cycle.snapshot().time;pickupAnchorWall=performance.now();pickupPlaying=true;updatePickupUi();return true;
+  pickupAnchorTime=cycle.snapshot().time;pickupAnchorWall=performance.now();pickupPlaying=true;updatePickupUi();requestRender();return true;
 }
 element('cycle-play').addEventListener('click',()=>pickupPlaying?pausePickup():playPickup());
 function setGripperOpening(value:number){if(!gripperTool)throw Error('Ручной захват не загружен.');const state=gripperTool.apply(value);element<HTMLInputElement>('gripper-opening').value=String(value);element('gripper-gap').textContent=(state.jaw_gap_m*1000).toFixed(1)+' мм';collectPoints();diagnostics();return state;}
@@ -425,18 +427,41 @@ document.querySelectorAll<HTMLButtonElement>('[data-shipper-mode]').forEach(b=>b
 element<HTMLInputElement>('cycle-time').addEventListener('input',event=>seekPickup(Number((event.target as HTMLInputElement).value)));
 document.querySelectorAll<HTMLButtonElement>('[data-cycle-time]').forEach(b=>b.addEventListener('click',()=>seekPickup(Number(b.dataset.cycleTime))));
 const onMotionChange=()=>{pausePickup();controls.enableDamping=!reducedMotion.matches;updatePickupUi();};reducedMotion.addEventListener('change',onMotionChange);
-const onVisibility=()=>{if(document.hidden)pausePickup();};document.addEventListener('visibilitychange',onVisibility);
+function onVisibility(){if(disposed)return;if(document.hidden){pausePickup();cancelFrame();}else requestRender();}
+document.addEventListener('visibilitychange',onVisibility);
 
 document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(button=>button.addEventListener('click',()=>{fit(button.dataset.view as View);diagnostics();}));
 element('reset-view').addEventListener('click',()=>{fit();diagnostics();});
 element('model-form').addEventListener('submit',event=>{event.preventDefault();void loadModel(modelInput.value.trim());});
-const resize=new ResizeObserver(()=>{renderer.setSize(host.clientWidth,host.clientHeight,false);composer.setSize(host.clientWidth,host.clientHeight);contactShade.setSize(Math.max(1,Math.round(host.clientWidth*renderer.getPixelRatio()*.65)),Math.max(1,Math.round(host.clientHeight*renderer.getPixelRatio()*.65)));if(model)fit();});resize.observe(host);
-function tick(){frameId=requestAnimationFrame(tick);const cycle=activeCycle();if(pickupPlaying&&cycle){const action=cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);if(action.complete)pickupPlaying=false;updatePickupUi();}controls.update();renderer.info.reset();composer.render();}tick();
+const resize=new ResizeObserver(()=>{if(disposed)return;renderer.setSize(host.clientWidth,host.clientHeight,false);composer.setSize(host.clientWidth,host.clientHeight);contactShade.setSize(Math.max(1,Math.round(host.clientWidth*renderer.getPixelRatio()*.65)),Math.max(1,Math.round(host.clientHeight*renderer.getPixelRatio()*.65)));if(model)fit();requestRender();});resize.observe(host);
+function requestRender(){if(disposed||document.hidden||frameId!==null)return;frameId=requestAnimationFrame(tick);}
+function cancelFrame(){if(frameId!==null)cancelAnimationFrame(frameId);frameId=null;}
+function tick(){
+  frameId=null;if(disposed||document.hidden)return;
+  // Enforce the current preference even if its media event is delayed.
+  const reduce=reducedMotion.matches;if(reduce&&pickupPlaying)pausePickup();controls.enableDamping=!reduce;
+  const cycle=activeCycle();
+  if(pickupPlaying&&cycle){const action=cycle.apply(pickupAnchorTime+(performance.now()-pickupAnchorWall)/1000);if(action.complete)pickupPlaying=false;updatePickupUi();}
+  // OrbitControls emits change while damping settles and requests the next frame.
+  controls.update();renderer.info.reset();composer.render();
+  // Render the final action pose before stopping the active playback loop.
+  if(pickupPlaying&&cycle)requestRender();
+}
+controls.addEventListener('change',requestRender);requestRender();
 const api={load:loadModel,view:(next:View)=>{fit(next);diagnostics();},focus:(name:string,next:View='quarter')=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);fit(next,n);diagnostics();},snapshot,node:(name:string)=>{const n=model?.getObjectByName(name);return n?{position:n.getWorldPosition(new THREE.Vector3()).toArray(),localPosition:n.position.toArray(),rotation:n.rotation.toArray().slice(0,3)}:null;},setNode:(name:string,values:{position?:[number,number,number];rotation?:[number,number,number]})=>{const n=model?.getObjectByName(name);if(!n)throw Error('Unknown node '+name);if(values.position)n.position.fromArray(values.position);if(values.rotation)n.rotation.set(...values.rotation);collectPoints();diagnostics();}};
 Object.assign(window,{__QOIMA_STAND_V3__:{...api,gripper:{setOpening:setGripperOpening,snapshot:()=>gripperTool?.snapshot()??null},cycle:{seek:seekPickup,play:playPickup,pause:pausePickup,snapshot:()=>{const cycle=activeCycle();return cycle?{...cycle.snapshot(),playing:pickupPlaying,reduced_motion:reducedMotion.matches}:null;}},packer:{setMode:setPackerMode,snapshot:()=>packerAction?.snapshot()??null},receiver:{setMode:setReceiverMode,snapshot:()=>receiverAction?.snapshot()??null},shipper:{setMode:setShipperMode,snapshot:()=>shipperAction?.snapshot()??null},roles:rolesSnapshot,setRole:(actorId:string,role:WorkerRole)=>{const instance=rolesFixture?.instances.find(a=>a.actorId===actorId);if(!instance)throw Error('Unknown QA actor '+actorId);applyWorkerRole(instance,role);collectPoints();diagnostics();},resetRoles:()=>{if(!rolesFixture)throw Error('Role fixture is not loaded');rolesFixture.reset();collectPoints();diagnostics();}}});
-void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{manifest=value;updateReference();}).catch(()=>{element('reference-note').textContent='Каталог референсов временно недоступен.';});
+void fetch(base+'references/v3/manifest.json').then(r=>{if(!r.ok)throw Error('Reference manifest unavailable');return r.json() as Promise<ReferenceManifest>;}).then(value=>{if(disposed)return;manifest=value;updateReference();}).catch(()=>{if(disposed)return;element('reference-note').textContent='Каталог референсов временно недоступен.';});
 void loadModel(new URL(location.href).searchParams.get('asset')||'calibration');
-window.addEventListener('pagehide',()=>{cancelAnimationFrame(frameId);resize.disconnect();reducedMotion.removeEventListener('change',onMotionChange);document.removeEventListener('visibilitychange',onVisibility);controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();contactShade.dispose();beauty.dispose();output.dispose();composer.dispose();renderer.dispose();},{once:true});
+function onContextLost(event:Event){event.preventDefault();disposeStand();}
+function disposeStand(){
+  if(disposed)return;disposed=true;++serial;phase='disposed';shell.dataset.phase=phase;
+  cancelFrame();resize.disconnect();reducedMotion.removeEventListener('change',onMotionChange);document.removeEventListener('visibilitychange',onVisibility);
+  window.removeEventListener('pagehide',disposeStand);renderer.domElement.removeEventListener('webglcontextlost',onContextLost);controls.removeEventListener('change',requestRender);
+  controls.dispose();releaseModel();ground.geometry.dispose();(ground.material as THREE.Material).dispose();environment.dispose();contactShade.dispose();beauty.dispose();output.dispose();composer.dispose();renderer.dispose();
+}
+// Register only after resize and every scheduler binding is initialized.
+renderer.domElement.addEventListener('webglcontextlost',onContextLost);
+window.addEventListener('pagehide',disposeStand,{once:true});
 }
 void initialize().catch(error=>{
   shell.dataset.phase='error';element('status').dataset.error='true';element('status-title').textContent='Стенд не запустился';element('status-copy').textContent='Обновите страницу в браузере с поддержкой WebGL.';element('diagnostics').textContent=error instanceof Error?error.message:String(error);

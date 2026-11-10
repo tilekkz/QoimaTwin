@@ -15,14 +15,21 @@ const cache = path.join(output, 'compiled');
 await mkdir(path.join(cache, 'twin'), {recursive: true});
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const pins = {};
-for (const name of ['workerRegistry', 'workerProfiles', 'warehouseAdapter', 'workerRoleAssignment', 'warehouseLayoutPlan', 'warehouseCargo', 'warehouseCargoHolders', 'twin/twinInventory']) {
+const compiled = new Set();
+const resolveLocal = (name, specifier) => {const result=path.posix.normalize(path.posix.join(path.posix.dirname(name),specifier));assert(result!=='..'&&!result.startsWith('../'),'Local source import must stay in adaptive-v3');return result;};
+async function compile(name) {
+  if(compiled.has(name))return;compiled.add(name);
   const filename = path.join(frontend, 'src/adaptive-v3', name + '.ts');
   const bytes = await readFile(filename);
   pins[filename] = hash(bytes);
   let code = ts.transpileModule(bytes.toString(), {compilerOptions: {target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext}}).outputText;
-  code = code.replace(/from (['"])(\.{1,2}\/[^'"]+)\1/g, (_, quote, specifier) => `from ${quote}${specifier}.mjs${quote}`);
+  for(const m of [...code.matchAll(/import\s+(\w+)\s+from\s+(['"])(\.{1,2}\/[^'"]+\.json)\2;?/g)]){const filename=path.join(frontend,'src/adaptive-v3',resolveLocal(name,m[3])),b=await readFile(filename);pins[filename]=hash(b);code=code.replace(m[0],'const '+m[1]+'='+b.toString()+';');}
+  for(const m of [...code.matchAll(/from (['"])(\.{1,2}\/[^'"]+)\1/g)])await compile(resolveLocal(name,m[2]));
+  code = code.replace(/from (['"])(\.{1,2}\/[^'"]+)\1/g, (_, quote, specifier) => `from ${quote}${specifier}.mjs${quote}`).replace(/from ['"](three(?:\/[^'"]+)?)['"]/g,(_,p)=>`from '${import.meta.resolve(p)}'`);
+  await mkdir(path.dirname(path.join(cache,name+'.mjs')),{recursive:true});
   await writeFile(path.join(cache, name + '.mjs'), code, {flag: 'wx'});
 }
+for (const name of ['warehouseAdapter','warehouseLayoutPlan','warehouseCargo','twin/twinInventory']) await compile(name);
 const texts = {};
 for (const [name, relative] of Object.entries({fixture: 'data/v3/warehouse-fixture-v3.json', layout: 'data/adaptive-v3/layout-manifest.json', registry: 'data/v3/worker-registry-v3.json', profiles: 'data/v3/worker-profiles-v3.json'})) {
   const filename = path.join(frontend, 'public', relative);

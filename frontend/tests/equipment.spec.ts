@@ -9,7 +9,7 @@ const assetIds = [
   'packing-station', 'forklift', 'dock', 'crate', 'pallet', 'buffer-pallet',
   'environment-shell', 'rack-low', 'worker-low', 'conveyor-low', 'tote-low',
 ];
-test.use({ launchOptions: { args: ['--mute-audio'] } });
+test.use({ launchOptions: { args: ['--mute-audio','--no-proxy-server',...(process.platform==='win32'?['--use-angle=d3d11']:[])] } });
 
 async function openWarehouse(page: Page) {
   const errors: string[] = [];
