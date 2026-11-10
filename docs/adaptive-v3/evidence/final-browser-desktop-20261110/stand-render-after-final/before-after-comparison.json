@@ -1,0 +1,355 @@
+{
+  "schema_id": "qoima.stand-optimization.before-after.v1",
+  "passed": true,
+  "native_geometry_and_contact_shading_unchanged": true,
+  "models": [
+    {
+      "modelId": "calibration",
+      "triangles": 116,
+      "dimensions_m": [
+        1.050000000745058,
+        2,
+        3.050000000745058
+      ],
+      "bounds_m": {
+        "min": [
+          -0.05000000074505806,
+          0,
+          -0.05000000074505806
+        ],
+        "max": [
+          1,
+          2,
+          3
+        ]
+      },
+      "contact_shading": true,
+      "contact_radius_m": 0.22772351662047138
+    },
+    {
+      "modelId": "long-upper-handling-bridge",
+      "triangles": 1200,
+      "dimensions_m": [
+        4.902999972492456,
+        0.7000000106170774,
+        0.9920000001043081
+      ],
+      "bounds_m": {
+        "min": [
+          -2.2499999713897703,
+          0.10999998927116394,
+          -0.49600000005215406
+        ],
+        "max": [
+          2.653000001102686,
+          0.8099999998882413,
+          0.49600000005215406
+        ]
+      },
+      "contact_shading": true,
+      "contact_radius_m": 0.3
+    },
+    {
+      "modelId": "long-wheel-roll-profile-preserved-variant",
+      "triangles": 28398,
+      "dimensions_m": [
+        4.199999809265137,
+        2.1000000834465027,
+        3.000000037252903
+      ],
+      "bounds_m": {
+        "min": [
+          -2.0999999046325684,
+          0,
+          -1.5
+        ],
+        "max": [
+          2.0999999046325684,
+          2.1000000834465027,
+          1.500000037252903
+        ]
+      },
+      "contact_shading": true,
+      "contact_radius_m": 0.3
+    },
+    {
+      "modelId": "small-carton-clamp-tool",
+      "triangles": 568,
+      "dimensions_m": [
+        0.7320000001043081,
+        0.5900000013820828,
+        0.7100000058114528
+      ],
+      "bounds_m": {
+        "min": [
+          -0.36600000005215405,
+          -1.899898051382909e-10,
+          -0.6500000071525573
+        ],
+        "max": [
+          0.36600000005215405,
+          0.590000001192093,
+          0.05999999865889549
+        ]
+      },
+      "contact_shading": true,
+      "contact_radius_m": 0.07068865846887307
+    },
+    {
+      "modelId": "forklift-pallet-low-fixture",
+      "triangles": 18874,
+      "dimensions_m": [
+        1.6000001457091975,
+        2.1000000834465027,
+        4.750000113425641
+      ],
+      "bounds_m": {
+        "min": [
+          -0.8000000728546014,
+          0,
+          -2.55
+        ],
+        "max": [
+          0.8000000728545961,
+          2.1000000834465027,
+          2.2000001134256415
+        ]
+      },
+      "contact_shading": true,
+      "contact_radius_m": 0.3
+    }
+  ],
+  "unchanged_native_assets_and_pose_sources": [
+    {
+      "file": "frontend/stand-v3.html",
+      "sha256": "822ace191c0be68ad6827a953f856d9219b3c4186676bfe6f4080dd09a1403aa"
+    },
+    {
+      "file": "frontend/src/adaptive-v3/forkliftPickup.ts",
+      "sha256": "e6d570f20ffd2130c9b171d9c04dab16268e8056ca7c74ed09cd663c91d00181"
+    },
+    {
+      "file": "frontend/src/adaptive-v3/seatedDriver.ts",
+      "sha256": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360"
+    },
+    {
+      "file": "frontend/public/data/v3/pallet-pickup-cycle.json",
+      "sha256": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59"
+    },
+    {
+      "file": "frontend/public/data/v3/seated-driver-pose.json",
+      "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+    },
+    {
+      "file": "frontend/public/models/v3/calibration.glb",
+      "sha256": "b2ceecef959d4cf42cb85510f35effeb09b7300ffc03457e76e09fc637d385b5"
+    },
+    {
+      "file": "frontend/public/models/v3/forklift-pallet-low-fixture.glb",
+      "sha256": "b172dc6dd245208a49fdddebccd6ff5d64cc3771c4e0259dabdd633adbd2808a"
+    },
+    {
+      "file": "frontend/public/models/v3/worker-base.glb",
+      "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+    },
+    {
+      "file": "frontend/public/models/v3/long-upper-handling-bridge.glb",
+      "sha256": "c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527"
+    },
+    {
+      "file": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+      "sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d"
+    },
+    {
+      "file": "frontend/public/models/v3/small-carton-clamp-tool.glb",
+      "sha256": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac"
+    }
+  ],
+  "before_idle_draws": [
+    {
+      "label": "calibration-initial",
+      "wall_ms": 1079,
+      "draw_delta": 1333,
+      "RAF_executed_delta": 43,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": null
+    },
+    {
+      "label": "OrbitControls-damping-settled",
+      "wall_ms": 1070.5999999940395,
+      "draw_delta": 1271,
+      "RAF_executed_delta": 41,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": null
+    },
+    {
+      "label": "engineering-long-upper-handling-bridge",
+      "wall_ms": 1380,
+      "draw_delta": 21164,
+      "RAF_executed_delta": 52,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": null
+    },
+    {
+      "label": "engineering-long-wheel-roll-profile-preserved-variant",
+      "wall_ms": 1026.4000000059605,
+      "draw_delta": 7164,
+      "RAF_executed_delta": 36,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": null
+    },
+    {
+      "label": "engineering-small-carton-clamp-tool",
+      "wall_ms": 1060.2999999970198,
+      "draw_delta": 4830,
+      "RAF_executed_delta": 42,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": null
+    },
+    {
+      "label": "pickup-paused",
+      "wall_ms": 1024.6000000089407,
+      "draw_delta": 6467,
+      "RAF_executed_delta": 29,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": 0
+    },
+    {
+      "label": "pickup-manual-pause",
+      "wall_ms": 1104.5999999940395,
+      "draw_delta": 9366,
+      "RAF_executed_delta": 42,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": 15.30509999999404
+    },
+    {
+      "label": "pickup-natural-final-pose",
+      "wall_ms": 1013.7000000029802,
+      "draw_delta": 4906,
+      "RAF_executed_delta": 22,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": 30
+    },
+    {
+      "label": "reduced-motion-paused",
+      "wall_ms": 1027.7999999970198,
+      "draw_delta": 5129,
+      "RAF_executed_delta": 23,
+      "pending_before": 1,
+      "pending_after": 1,
+      "time_s": 15.9015
+    }
+  ],
+  "after_idle_draws": [
+    {
+      "label": "calibration-initial",
+      "wall_ms": 1010.9000000059605,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": null
+    },
+    {
+      "label": "OrbitControls-damping-settled",
+      "wall_ms": 1016.5999999940395,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": null
+    },
+    {
+      "label": "engineering-long-upper-handling-bridge",
+      "wall_ms": 1008.5999999940395,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": null
+    },
+    {
+      "label": "engineering-long-wheel-roll-profile-preserved-variant",
+      "wall_ms": 1017,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": null
+    },
+    {
+      "label": "engineering-small-carton-clamp-tool",
+      "wall_ms": 1009.4000000059605,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": null
+    },
+    {
+      "label": "pickup-paused",
+      "wall_ms": 1049.2000000029802,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": 0
+    },
+    {
+      "label": "pickup-manual-pause",
+      "wall_ms": 1016.7000000029802,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": 15.127200000002981
+    },
+    {
+      "label": "pickup-natural-final-pose",
+      "wall_ms": 1018.9000000059605,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": 30
+    },
+    {
+      "label": "reduced-motion-paused",
+      "wall_ms": 1046.0999999940395,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": 12.50320000000298
+    },
+    {
+      "label": "logical-visible-paused",
+      "wall_ms": 1044.1000000089407,
+      "draw_delta": 0,
+      "RAF_executed_delta": 0,
+      "pending_before": 0,
+      "pending_after": 0,
+      "time_s": 12.17259999999404
+    }
+  ],
+  "visibility_coverage": {
+    "native_available": false,
+    "native_verified": false,
+    "logical_guard_verified": true,
+    "native_method": null
+  },
+  "limitations": [
+    "Native hidden-tab/window transition unavailable; logical visibility guard is reported separately and does not establish native hiding."
+  ],
+  "source_before": "84fa1be0756a470f9cfdb5c3e0b3a963dcb2e5d084a9d76878a934b5ed407578",
+  "source_after": "c1ffec9f6571f4e1ea8c1c58f7793b1397b7d5e9320c042fa379ad48917290b2",
+  "scope": "Actual before/after browser observations and original native asset hashes. Native hiding unavailable; controlled logical visibility guard separately verified. No global FPS/performance inference."
+}

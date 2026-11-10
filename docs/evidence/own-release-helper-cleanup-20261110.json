@@ -1,0 +1,93 @@
+{
+  "schema_id": "qoima.own-release-helper-cleanup.v1",
+  "source_kind": "local_release_helper_cleanup",
+  "engine_operation": false,
+  "passed": true,
+  "observed_utc": "2026-11-10T02:02:58.0388188Z",
+  "scope": "Exact owned old-helper cleanup and one final-package default-port HTTP home check from OS-temp. No browser or full workflow rerun.",
+  "old_helper": {
+    "parent_confirmed_owned": true,
+    "process": {
+      "ProcessId": 14740,
+      "ParentProcessId": 18268,
+      "CreationDateUtc": "2026-11-09T14:53:56.518913Z",
+      "ExecutablePath": "C:\\Program Files\\nodejs\\node.exe",
+      "CommandLine": "\"C:\\Program Files\\nodejs\\node.exe\" C:/Users/izbas/Documents/Codex/2026-11-09/qoimatwin-character-motion-naturalness/outputs/QoimaTwin_V3_Desktop_20261109_145310Z/server.mjs"
+    },
+    "fresh_pid_absent": true,
+    "stop_method": "Stop-Process only exact attested old static helper",
+    "stopped_pid": 14740,
+    "pid_creation_command_rechecked": true
+  },
+  "default_final_package_smoke": {
+    "http": {
+      "passed": true,
+      "url": "http://127.0.0.1:4226/",
+      "http_status": 200,
+      "exact_home_bytes": true,
+      "bytes": 9849,
+      "sha256": "4ce81dc51265ab305986023ddcee16e65efe726e569917131a82a44a2bc8b5af",
+      "package_commit": "b9f23d10e381b5e179a853c473da2f0eca09e517",
+      "server_sha256": "95365c9fe2c69a38618aa6bb117b4795aec3192bfd1a42732ceb29ce1ab48e39",
+      "browser_started": false
+    },
+    "stop_method": "Ctrl+C to own foreground PTY, then normal session termination",
+    "browser_started": false,
+    "process": {
+      "ProcessId": 5960,
+      "ParentProcessId": 37684,
+      "CreationDateUtc": "2026-11-10T02:00:38.225201Z",
+      "ExecutablePath": "C:\\Program Files\\nodejs\\node.exe",
+      "CommandLine": "\"C:\\Program Files\\nodejs\\node.exe\" C:/Users/izbas/Documents/Codex/_qt-release-1110/QoimaTwin_V3_Desktop_20261110_014600Z/server.mjs",
+      "launch_cwd": "C:/Users/izbas/AppData/Local/Temp",
+      "QOIMA_PORT_removed": true,
+      "default_port": 4226
+    },
+    "owned_node_started": 5960,
+    "stop_session_exit_code": 1,
+    "fresh_pid_absent": true,
+    "owned_shell_pid": 37684,
+    "forced_fallback_used": false,
+    "QOIMA_PORT_removed_in_child_shell": true,
+    "cwd": "C:/Users/izbas/AppData/Local/Temp",
+    "startup_url": "http://127.0.0.1:4226/"
+  },
+  "final_ports": [
+    {
+      "native_netstat": [],
+      "port": 4226,
+      "free": true,
+      "GetNetTCPConnection": []
+    },
+    {
+      "native_netstat": [],
+      "port": 4270,
+      "free": true,
+      "GetNetTCPConnection": []
+    }
+  ],
+  "both_requested_ports_free": true,
+  "fresh_remaining_owned_processes": [],
+  "cold_preview4270": {
+    "reason": "No listening owner observed in final two native queries; no Vite PID assumed or stopped.",
+    "action": "none"
+  },
+  "protected": {
+    "other_chats": "Untouched",
+    "port4224": "No process/control actions",
+    "unknown_nodes": "Untouched",
+    "user_Chrome": "Untouched"
+  },
+  "filesystem_deletions": 0,
+  "junction_changes": 0,
+  "provisional_observation": {
+    "first_decision": "no_stop_identity_or_port_owner_mismatch",
+    "notes": "Initial transient empty endpoint observations were not treated as ownership. Exact old14740 process identity was rechecked and parent-confirmed before it alone was stopped.",
+    "previous_receipt_sha256": "a9d4a318e4cbcfbf97a1d2bbadd2995bb40b795fc90e62038b869f0c4d2fa36d"
+  },
+  "limitations": [
+    "Port availability is a point-in-time observation, not a reservation.",
+    "Only default root/home HTTP bytes were retested here; full392-file/13-page/workflow acceptance belongs to root package QA.",
+    "PTY exit1 follows the explicit Ctrl+C stop and is not a server startup/HTTP failure."
+  ]
+}

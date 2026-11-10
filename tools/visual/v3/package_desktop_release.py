@@ -6,14 +6,14 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import secrets
 import shutil
 import stat
 import subprocess
-import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[3]
-OUTPUTS = Path('C:/Users/izbas/Documents/Codex/2026-11-09/qoimatwin-character-motion-naturalness/outputs')
+OUTPUTS = Path('C:/Users/izbas/Documents/Codex/_qt-release-1110')
 PAGES = ['index.html', 'home-v3.html', 'twin-v3.html', 'warehouse-v3.html', 'stand-v3.html', 'staff-v3.html', 'skills-v3.html', 'motion-v3.html', 'original-cart-v3.html', 'long-motion-v3.html', 'heavy-inbound-v3.html', 'scenario-v3.html', 'native-pair-v3.html']
 HANDOFF_FILES = ['asset-manifest.json', 'animation-event-map.json', 'credits.md', 'checks.json']
 ORIGINAL_WORKER = '542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163'
@@ -133,6 +133,18 @@ def remove_created(path, parent):
         path.unlink()
 
 
+def validate_destination_paths(output, name, stage, relative_files):
+    """Check the actual reserved staging path as well as final Windows paths."""
+    if os.name != 'nt':
+        return
+    paths = [base / relative for base in [stage / name, output / name] for relative in relative_files]
+    paths += [stage / (name + '.zip'), stage / 'latest.json', output / (name + '.zip'), output / 'V3_desktop_latest.json']
+    length = lambda p: len(str(p).encode('utf-16-le')) // 2
+    for item in paths:
+        directory = next((p for p in item.parents if length(p) >= 248), None)
+        require(length(item) < 260 and directory is None, 'Windows MAX_PATH preflight: ' + str(length(item)) + ' UTF-16 units for ' + str(item) + '. Use a shorter --outputs path, for example ' + str(OUTPUTS))
+
+
 README = '''# QoimaTwin V3 · desktop
 
 Распакуйте ZIP целиком и запустите Run_V3.cmd. Требуется Node.js 22.12+.
@@ -198,6 +210,9 @@ def package(dist=None, *, source_repo=None, outputs=None, source_commit=None, ac
     require(server.count(marker) == 1, 'Audited server patch marker changed')
     server = server.replace(marker, "try {\n    if (pathname === '/') target = resolve(root, 'home-v3.html');\n    if ((await stat(target)).isDirectory())")
     server = server.replace("'.wav':'audio/wav'", "'.mp4':'video/mp4', '.webm':'video/webm', '.wav':'audio/wav'")
+    favicon_marker = "if (error.code === 'ENOENT' || error.code === 'ENOTDIR') fail(404, 'File not found.');"
+    require(server.count(favicon_marker) == 1, 'Audited missing-file handler changed')
+    server = server.replace(favicon_marker, "if (pathname === '/favicon.ico' && (error.code === 'ENOENT' || error.code === 'ENOTDIR')) { response.writeHead(204, {'Cache-Control':'no-cache', 'X-Content-Type-Options':'nosniff'}); response.end(); }\n    else " + favicon_marker)
     launcher = constants['LAUNCHER'].replace('V2', 'V3 Desktop').replace('4192', '4226').replace('preserved polished version', 'desktop viewer')
     subprocess.run(['node', '--check', '--input-type=module'], input=server, text=True, check=True, capture_output=True, timeout=30)
     handoff = source / 'docs/adaptive-v3/handoff/runtime-20261110'
@@ -255,6 +270,13 @@ def package(dist=None, *, source_repo=None, outputs=None, source_commit=None, ac
         ancestor = ancestor.parent
     require(ancestor.is_dir(), 'Output parent must be a directory')
     require(shutil.disk_usage(ancestor).free >= payload_bytes * 2 + 16 * 1024 * 1024, 'Not enough free space for payload and ZIP transaction')
+    stage_candidate = output / ('.qoima-desktop-' + secrets.token_hex(4))
+    relative_files = ['viewer/' + p for p in dist_files] + ['handoff/' + p for p in handoff_files] + ['qa/' + p for p in qa_files] + ['server.mjs', 'Run_V3.cmd', 'README.md', 'release.json', 'qa/index.json']
+    if acceptance:
+        relative_files.append('acceptance.json')
+    if video:
+        relative_files.append('QoimaTwin_V3_Overview.mp4')
+    validate_destination_paths(output, name, stage_candidate, relative_files)
     # All source, format, commit, report, input and capacity checks above are read-only.
     created_directories = []
     cursor = output
@@ -265,7 +287,8 @@ def package(dist=None, *, source_repo=None, outputs=None, source_commit=None, ac
     published = []
     try:
         output.mkdir(parents=True, exist_ok=True)
-        stage = Path(tempfile.mkdtemp(prefix='.qoima-desktop-', dir=output)).resolve(strict=True)
+        stage_candidate.mkdir()
+        stage = stage_candidate.resolve(strict=True)
         require(stage.parent == output and stage.name.startswith('.qoima-desktop-'), 'Unexpected staging path')
         staged_target = stage / name
         staged_target.mkdir()
@@ -288,7 +311,7 @@ def package(dist=None, *, source_repo=None, outputs=None, source_commit=None, ac
         for relative, expected in sources.items():
             require(sha(source / relative) == expected, 'Runtime changed during packaging: ' + relative)
         files = tree(staged_target)
-        release = dict(schema_id='qoima.desktop-release.v2', created_utc=now.isoformat(), desktop_only=True, git_source_commit=commit, source_runtime_matches_commit=True, build_public_resources_match_source=True, full_TZ_complete=bool(acceptance_data and acceptance_data.get('full_visual_TZ_complete') is True), backend_integration_complete=False, original_character_sha256=ORIGINAL_WORKER, pages=PAGES, files=files, manifest_excludes=['release.json'], source_hashes=sources, acceptance=acceptance_row, video=video_row, qa_delivery=dict(files=len(qa_files), bytes=qa_bytes, omitted_optional=omitted), local_server_provenance=dict(source=helper.relative_to(source).as_posix(), sha256=SERVER_HELPER, changes=['display label', 'loopback port4226', 'home page root', 'MP4/WebM MIME']))
+        release = dict(schema_id='qoima.desktop-release.v2', created_utc=now.isoformat(), desktop_only=True, git_source_commit=commit, source_runtime_matches_commit=True, build_public_resources_match_source=True, full_TZ_complete=bool(acceptance_data and acceptance_data.get('full_visual_TZ_complete') is True), backend_integration_complete=False, original_character_sha256=ORIGINAL_WORKER, pages=PAGES, files=files, manifest_excludes=['release.json'], source_hashes=sources, acceptance=acceptance_row, video=video_row, qa_delivery=dict(files=len(qa_files), bytes=qa_bytes, omitted_optional=omitted), local_server_provenance=dict(source=helper.relative_to(source).as_posix(), sha256=SERVER_HELPER, changes=['display label', 'loopback port4226', 'home page root', 'MP4/WebM MIME', 'missing favicon GET/HEAD204; existing icons unchanged']))
         release_path = staged_target / 'release.json'
         release_path.write_text(json.dumps(release, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
         staged_archive = stage / archive.name

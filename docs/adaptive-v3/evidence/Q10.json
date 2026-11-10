@@ -1,0 +1,70 @@
+{
+  "schema_id": "qoima.visual-root-acceptance.v1",
+  "task_id": "Q10",
+  "passed": true,
+  "reviewer": "root",
+  "reviewed_utc": "2026-11-10T01:32:26.264Z",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "runtime_source_commit": "b9f23d10e381b5e179a853c473da2f0eca09e517",
+  "runtime_branch": "codex/twin-v3-desktop-verified-20261110",
+  "criterion": "60-секундный замер с устройством, настройками, FPS/frame time; LOD сохраняет ближнюю красоту и масштаб",
+  "observed_result": "Actual>=60s hardware rAFperformance window passed with device/settings/frame-time observations; report is sourcebound.",
+  "method": "Root reviewed actual native/browser outputs and images; this record rolls up executed evidence, it is not a new test run.",
+  "evidence": [
+    {
+      "key": "performance",
+      "path": "docs/adaptive-v3/evidence/final-browser-desktop-20261110/performance-60s-PASS.json",
+      "bytes": 75657,
+      "sha256": "7042167a0241a9728b9dfc16de350835774cc59c7c5c021a4b9371adf2677982"
+    },
+    {
+      "key": "official33",
+      "path": "docs/adaptive-v3/evidence/deep-official-regression-20261110/index.json",
+      "bytes": 927,
+      "sha256": "ea8ab8c94b4118588c73bfdf045f6b533565831ef5c54e7b2694be5470f0d74a"
+    },
+    {
+      "key": "block_ui",
+      "path": "docs/adaptive-v3/evidence/final-browser-desktop-20261110/block-rebuild-six-cases/checks.json",
+      "bytes": 18531,
+      "sha256": "46da9910511e9ac0acacc4cc94ee87eb5f09b2365859c56c5db4daabec45f2d4"
+    },
+    {
+      "key": "deep45",
+      "path": "docs/adaptive-v3/evidence/deep-production-regression-20261110/aggregate-45-checks.json",
+      "bytes": 40519,
+      "sha256": "d82ef3b9fa63b8dca8604c498e4fe9df399c72a4c1bd523da9add19e8d4176b3"
+    },
+    {
+      "key": "stand_final",
+      "path": "docs/adaptive-v3/evidence/final-browser-desktop-20261110/stand-render-after-final/checks.json",
+      "bytes": 72818,
+      "sha256": "356b4eb9a88cb4f54532df28fc1848fa895b6cb662e87c3b04be6cceea1b3351"
+    }
+  ],
+  "limitations": [
+    "Accepted desktop scope uses byte-exact original542 character and practical carry; no ideal90-degree/globaljoint/force/OEM certificate.",
+    "SourceLONG is retained outside on F02; recipient unloading and operational backend KPI are not claimed.",
+    "Structural configuration demonstration and same-input operational visual A/B are explicitly separate.",
+    "Historical Python checks are reported at their declared epoch; current23/28 and historical5/5 are not falsely merged into current28/28.",
+    "Native headless tab hiding was unavailable; Stand logical visibility guard is separately identified."
+  ],
+  "measurement": {
+    "elapsed_ms": 60001,
+    "frames": 1783,
+    "FPS_mean": 29.697228258695855,
+    "frame_ms_p95": 41.69999999999709,
+    "device": "Intel UHD ANGLE D3D11",
+    "viewport": [
+      1600,
+      1000
+    ],
+    "DPR": 1,
+    "canvas": [
+      1116,
+      520
+    ],
+    "quality_or_LOD_changed": false
+  }
+}
