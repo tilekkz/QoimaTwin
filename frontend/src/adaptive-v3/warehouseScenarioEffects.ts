@@ -8,7 +8,7 @@ export function createWarehouseScenarioEffects(plan:WarehouseScenarioPlan,option
  if(!isWarehouseScenarioPlan(plan))throw Error('ISSUED_SCENARIO_PLAN_REQUIRED');
  const sound=createSfxController(options);
  let previous:WarehouseScenarioSample|undefined,disposed=false,crossed=0;
- function apply(at_s:number,state:{playing:boolean;speed:number;discontinuity?:boolean},wall_s?:number){
+ function apply(at_s:number,state:{playing:boolean;speed:number;discontinuity?:boolean;terminal?:boolean},wall_s?:number){
   if(disposed)throw Error('SCENARIO_EFFECTS_DISPOSED');
   if(!Number.isFinite(state.speed)||state.speed<=0)throw Error('INVALID_EFFECT_SPEED');
   const sample=plan.sample(at_s),jump=state.discontinuity||!previous||sample.at_s<previous.at_s;
@@ -27,7 +27,7 @@ export function createWarehouseScenarioEffects(plan:WarehouseScenarioPlan,option
    line:{blocked:true,blockedSegmentIds:[]},
    actors:Object.fromEntries(sample.actors.map(a=>{
     const before=previous?.actors.find(p=>p.actor_id===a.actor_id);
-    const moved=!jump&&!!before&&Math.hypot(...a.position.map((v,i)=>v-before.position[i]))>1e-7;
+    const moved=!state.terminal&&!jump&&!!before&&Math.hypot(...a.position.map((v,i)=>v-before.position[i]))>1e-7;
     return [a.actor_id,{id:a.actor_id,role:a.role as Role,vehicleId:a.vehicle_id??undefined,pos:[...a.position],yaw:a.yaw_rad,cartYaw:a.yaw_rad,
      state:moved?'TRAVEL':'IDLE',operation:'',phase:0,pose:{jointRotations:{},rootOffset:[0,0,0],wheelAngle:0,lift:0}}];
    })),

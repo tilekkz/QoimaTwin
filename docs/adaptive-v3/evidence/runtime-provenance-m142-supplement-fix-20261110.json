@@ -1,0 +1,262 @@
+{
+  "schema_id": "qoima.runtime-provenance-m142-supplement-fix.v1",
+  "created_utc": "2026-11-09T23:51:37.243951+00:00",
+  "passed": true,
+  "scope": "Exact bytes/hash metadata correction in source/public reference manifests only; no targetJSON, model, contract, old evidence or license change.",
+  "target": {
+    "path": "assets/references/v3/m14-2-reach-forklift.targets.json",
+    "bytes": 2987,
+    "sha256": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b",
+    "source": "Retained M14.2 pre-geometry project target record, referencing exact canonical M14.1 dimension plan and unchanged C08.",
+    "first_available_git_checkpoint": "195323c",
+    "git_checkpoint_target_bytes_identical": true,
+    "Q01_source_record": "docs/adaptive-v3/evidence/Q01-model-matrix.json already records8d34e207 current target hash"
+  },
+  "historical_delta_explanation": {
+    "old_manifest_bytes": 2808,
+    "retained_target_bytes": 2987,
+    "arithmetic_difference_bytes": 179,
+    "old_manifest_sha256": "bed5fcdd3f58e6ca56eae35938bc72582650d2323e810eb4a06a78524079708f",
+    "historical_old_target_payload_recovered": false,
+    "content_level_179_byte_diff_known": false,
+    "finding": "The only available Git target version already equals current2987B/8d34. Both manifest entries retained an earlier2808B/bed5 pin. The179B is an observed size discrepancy, not a recovered authored patch; no exact code/description addition can honestly be inferred. CRLF normalization does not recreate the old digest."
+  },
+  "semantic_and_native_consistency": {
+    "passed": true,
+    "target_path": "assets/references/v3/m14-2-reach-forklift.targets.json",
+    "target_sha256": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b",
+    "source_pins": {
+      "assets/v3/specs/forklift.dimensions.json": "d13741cc15e2dc4486ec880cdcbba56fe2ebf7143481d5f24be40ea31a57818b",
+      "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+      "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156"
+    },
+    "target_source_references_exact": true,
+    "authoritative_C08_numeric_fork_values": true,
+    "native_wheels": [
+      {
+        "id": "front_L",
+        "source_expected_m": [
+          -0.35,
+          0.3,
+          0.4
+        ],
+        "native_world_m": [
+          -0.3499999940395355,
+          0.30000001192092896,
+          0.4000000059604645
+        ],
+        "max_error_m": 1.1920928966180355e-08
+      },
+      {
+        "id": "front_R",
+        "source_expected_m": [
+          0.35,
+          0.3,
+          0.4
+        ],
+        "native_world_m": [
+          0.3499999940395355,
+          0.30000001192092896,
+          0.4000000059604645
+        ],
+        "max_error_m": 1.1920928966180355e-08
+      },
+      {
+        "id": "rear_L",
+        "source_expected_m": [
+          -0.35,
+          0.225,
+          -1
+        ],
+        "native_world_m": [
+          -0.3499999940395355,
+          0.22499999403953552,
+          -1
+        ],
+        "max_error_m": 5.960464483090178e-09
+      },
+      {
+        "id": "rear_R",
+        "source_expected_m": [
+          0.35,
+          0.225,
+          -1
+        ],
+        "native_world_m": [
+          0.3499999940395355,
+          0.22499999403953552,
+          -1
+        ],
+        "max_error_m": 5.960464483090178e-09
+      }
+    ],
+    "native_complete_bounds_m": {
+      "min": [
+        -0.6000000238418579,
+        0,
+        -1.5
+      ],
+      "max": [
+        0.6000000238418579,
+        2.1000000834465027,
+        1.500000037252903
+      ],
+      "dimensions": [
+        1.2000000476837158,
+        2.1000000834465027,
+        3.000000037252903
+      ]
+    },
+    "scope": "Read-only declared/source/native-rest geometry consistency; no dynamic handling/collision rerun or license grant."
+  },
+  "changed_manifests": [
+    {
+      "path": "assets/references/v3/manifest.json",
+      "before_sha256": "7ee8cb9bbb801793b99ebe806b1f03dac5a10d23ebd8e24bdd8195ecf7a15d33",
+      "after_sha256": "5b7d4988396b98aba422374a685a03c33b5ffa517e8261583119596ec729b291",
+      "file_bytes_before": 44350,
+      "file_bytes_after": 44350,
+      "changed_JSON_pointers": {
+        "/engineering_supplements/12/bytes": {
+          "before": 2808,
+          "after": 2987
+        },
+        "/engineering_supplements/12/sha256": {
+          "before": "bed5fcdd3f58e6ca56eae35938bc72582650d2323e810eb4a06a78524079708f",
+          "after": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b"
+        }
+      },
+      "all_other_JSON_semantics_unchanged": true,
+      "all_bytes_outside_exact_entry_region_unchanged": true
+    },
+    {
+      "path": "frontend/public/references/v3/manifest.json",
+      "before_sha256": "7ee8cb9bbb801793b99ebe806b1f03dac5a10d23ebd8e24bdd8195ecf7a15d33",
+      "after_sha256": "5b7d4988396b98aba422374a685a03c33b5ffa517e8261583119596ec729b291",
+      "file_bytes_before": 44350,
+      "file_bytes_after": 44350,
+      "changed_JSON_pointers": {
+        "/engineering_supplements/12/bytes": {
+          "before": 2808,
+          "after": 2987
+        },
+        "/engineering_supplements/12/sha256": {
+          "before": "bed5fcdd3f58e6ca56eae35938bc72582650d2323e810eb4a06a78524079708f",
+          "after": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b"
+        }
+      },
+      "all_other_JSON_semantics_unchanged": true,
+      "all_bytes_outside_exact_entry_region_unchanged": true
+    }
+  ],
+  "engineering_supplement_checks": [
+    {
+      "path": "assets/references/v3/r03-common-scale.svg",
+      "bytes": 6598,
+      "sha256": "881268373079030f988f0bc118c6ce0fbaac3238add11c1af8cc8d545cf0cc3d",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r03-common-scale.png",
+      "bytes": 35436,
+      "sha256": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "bytes": 1322,
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r12-dimension-targets.json",
+      "bytes": 2895,
+      "sha256": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r13-1-rack-small-targets.json",
+      "bytes": 2822,
+      "sha256": "0101cb2a02e812e5c938594d6f3098b91c087d9cd074f75a6358bf4719b753f2",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r13-2-rack-standard.targets.json",
+      "bytes": 2421,
+      "sha256": "a327fe63fdbc10f161d63ee8edead4a54c9af07c14ea1995d429517b6f74d822",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r13-3-heavy-bay-targets.json",
+      "bytes": 2782,
+      "sha256": "8ded7b0aec932678c32172c9e2fb6666a3c238b3608bbeef411a72486df6ddde",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r13-4-long-rack-targets.json",
+      "bytes": 1813,
+      "sha256": "a1965dac8b0c177f5e4e741f7277f8e06da8360e191263ed0344094a8e3d6bc6",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r13-5-flex-bay-targets.json",
+      "bytes": 1579,
+      "sha256": "26c79c519f0c47eb377781a4e5f066c6da94ab5c2cf848f097712671fbb4945b",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/m06-1-small-carton.targets.json",
+      "bytes": 1266,
+      "sha256": "879dff7b6b88bae74127fd06fc0d7a7a13f83a2c3a9ce2ea5785070a67ccc2cc",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/r12-c08-interface-targets-v2.json",
+      "bytes": 1194,
+      "sha256": "1e97fbf8a770d319c63548dbe7d38cf0cf29736832f6174df324d1768ea5e6fd",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/m08-pallet-load.targets.json",
+      "bytes": 13036,
+      "sha256": "06792cc6c077bd6192d517aa4c2fa8e1e1a23b5ff7d5a258b836b7abdd3fa8e8",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/m14-2-reach-forklift.targets.json",
+      "bytes": 2987,
+      "sha256": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/m06-2-standard-carton.targets.json",
+      "bytes": 1283,
+      "sha256": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e",
+      "matches": true
+    },
+    {
+      "path": "assets/references/v3/p03-small-gripper.targets.json",
+      "bytes": 2348,
+      "sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+      "matches": true
+    }
+  ],
+  "supplement_checks_passed": 15,
+  "source_public_manifest_byte_identical": true,
+  "selected_39_model_hashes_unchanged": true,
+  "target_bytes_unchanged": true,
+  "old_provenance_receipt_preserved": {
+    "path": "docs/adaptive-v3/evidence/runtime-provenance-audit-20261110.json",
+    "sha256": "57ded5f9550b6de89836d35257a7549f63b75c16298c0e5737afee4501af6904",
+    "warning_resolved_by_this_followup": true
+  },
+  "rights_disclosure_unchanged": true,
+  "public_redistribution_license_granted": false,
+  "global_gate_status_changed": false,
+  "dist_sync_required_for_current_served_build": true,
+  "limits": [
+    "This repairs inventory provenance metadata, not a dynamic action/handling/traffic or legal certification.",
+    "The unavailable bed5 target payload prevents an exact historical semantic diff. Currenttarget authority is independently confirmed via M14.1/C08/native forklift9378 source bytes, wheels and complete bounds.",
+    "Root owns final dist/public-copy synchronization and handoff regeneration; this task writes no dist files."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema_id": "qoima.actual-second-codex-native-protocol-review.v1",
+  "actual_model": "gpt-6.1-sol",
+  "actual_reasoning_effort": "high",
+  "thread_id": "01a1c27f-6a80-7821-b404-1c7af95b10dc",
+  "duration_s": 106.8,
+  "returncode": 0,
+  "changed_inputs": [],
+  "source_inputs": {
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "10e4d80b82c2c7e77174cb49e48ae661321d90e2aa3ed1be1bb1a8b3a8630889",
+    "frontend/src/adaptive-v3/warehouseScenarioScene.ts": "157aa374ac0fabc1a4001c839e0dd75576bebe7f1bd6b50fe555a9aa031f0d54",
+    "frontend/src/adaptive-v3/warehouseWestPalletReceipt.ts": "b7040a26388b3966da1214441e1ae9652229d580bbab90645cb4ff0ce54331f6",
+    "docs/adaptive-v3/specs/small-clamp-connected-workflow.md": "587c3be274ca87a6d00181d61e10267ddd3446966ce107ec2d87f62c32e55e91"
+  },
+  "review": "native-protocol-review.md",
+  "status": "FOCUSED_FIXES_VERIFIED",
+  "findings": [
+    {
+      "id": 1,
+      "function": "createWarehouseScenarioScene.bind",
+      "trigger": "Rejected rebind can dispose previous Smallcontrollers before full validation."
+    },
+    {
+      "id": 2,
+      "function": "preparePedestrianRoute/bind",
+      "trigger": "CachedrouteIDreuse can ignore changed yaw/speed/points."
+    }
+  ],
+  "six_workflow_failure_claimed": false,
+  "child_executed_tests": false,
+  "verification": {
+    "report": "../scenario-scene-lifecycle-20261110/checks.json",
+    "checks": 12,
+    "passed": true,
+    "Core": "ca20934cf145059cebb324534db6f94a4ca6d0a8af5dbf798dfe503d11e4e6de",
+    "Scene": "f0df521e809f3b4c0e2c38fc7930cb9010964a654c434a7f7e656f590c718595",
+    "extra_discovered_and_fixed": "N1 original Small+STD shareS02: reservation deadlock removed; inactive controllers restore before activeowners."
+  }
+}

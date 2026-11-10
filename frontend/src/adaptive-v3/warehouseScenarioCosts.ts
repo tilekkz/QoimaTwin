@@ -25,6 +25,7 @@ export type WarehouseScenarioCostSnapshot = Frozen<{
     native_pallet: number;
     native_additional_heavy: number;
     native_long: number;
+    native_source_long: number;
   };
   empty_forklift_route_scope: 'confirmed_route_schedule_phases';
   active_labor_s: null;
@@ -153,7 +154,8 @@ export function summarizeWarehouseScenarioCosts(
     route.mode === 'forklift' && route.native_timing_confirmed);
   // Missing cargo metadata makes this total unavailable, rather than zero.
   const nativeCasesKnown = !!plan.native_heavy_plan ||
-    !!plan.native_additional_heavy_plans?.length || !!plan.native_long_crossdock_plan;
+    !!plan.native_additional_heavy_plans?.length || !!plan.native_long_crossdock_plan ||
+    !!plan.native_source_long_plan;
   const cargoKnown = (confirmed.length > 0 || nativeCasesKnown) && confirmed.every(route =>
     'cargo_archetype_id' in route.plan &&
     (route.plan.cargo_archetype_id === null ||
@@ -161,7 +163,7 @@ export function summarizeWarehouseScenarioCosts(
   let emptyRoute: number | undefined;
   let emptyComponents: WarehouseScenarioCostSnapshot['empty_forklift_route_components_s'];
   if (cargoKnown) {
-    const components = {top_level: 0, native_pallet: 0, native_additional_heavy: 0, native_long: 0};
+    const components = {top_level: 0, native_pallet: 0, native_additional_heavy: 0, native_long: 0, native_source_long: 0};
     const routes = new Map(confirmed.map(route => [route.route_id, route]));
     for (const job of sample.jobs) {
       if (!job.route_id || job.start_s === null ||
@@ -192,6 +194,14 @@ export function summarizeWarehouseScenarioCosts(
       if (!plan.native_long_crossdock_plan) throw Error('NATIVE_LONG_COST_BINDING_REQUIRED');
       components.native_long = nativeEmptyRouteSeconds(
         plan.native_long_crossdock_plan.phases, sample.native_long_local_s);
+    }
+    if (sample.native_source_long_local_s !== null) {
+      if (!plan.native_source_long_plan) throw Error('NATIVE_SOURCE_LONG_COST_BINDING_REQUIRED');
+      // Source phases mark F01 attached while carrying either the upper/tool
+      // assembly or the empty tool; F02 attached while retaining the whole HU.
+      // Bare F01 and the empty mounted-cradle route remain empty routes.
+      components.native_source_long = nativeEmptyRouteSeconds(
+        plan.native_source_long_plan.phases, sample.native_source_long_local_s);
     }
     emptyComponents = components;
     emptyRoute = Object.values(components).reduce((total, value) => total + value, 0);

@@ -28,6 +28,11 @@ for(const speed of [30,60]){
  fx.apply(job.end_s+1,{playing:true,speed},7);assert.equal(fx.snapshot().cues,before+1);
  cases.push(speed+'x_crossing_once_repeat_pause_reset_and_forward_seek_silent');
 }
+fx.apply(job.end_s-.01,{playing:false,speed:60,discontinuity:true},20);
+const terminalBefore=fx.snapshot().cues,terminalOscillators=oscillatorCount;
+fx.apply(plan.duration_s,{playing:true,speed:60,terminal:true},21);assert.equal(fx.snapshot().cues,terminalBefore+1);assert.equal(oscillatorCount-terminalOscillators,1,'Final interval emits one completion cue and no motor loop');assert.equal(fx.snapshot().voices,1);
+fx.apply(plan.duration_s,{playing:true,speed:60,terminal:true},22);assert.equal(fx.snapshot().cues,terminalBefore+1);
+fx.apply(plan.duration_s,{playing:false,speed:60},23);assert.equal(fx.snapshot().voices,0);cases.push('natural_terminal_interval_emits_completion_once_without_continuous_motor');
 const state=fx.snapshot();assert.throws(()=>fx.apply(NaN,{playing:true,speed:60}),/INVALID_SCENARIO_TIME/);assert.throws(()=>fx.apply(0,{playing:true,speed:0}),/INVALID_EFFECT_SPEED/);assert.deepEqual(fx.snapshot(),state);cases.push('invalid_time_or_rate_inert');
 fx.setMuted(true);fx.apply(0,{playing:false,speed:60,discontinuity:true});fx.apply(job.end_s+1,{playing:true,speed:60});assert.equal(fx.snapshot().cues,state.cues);assert.equal(fx.snapshot().voices,0);cases.push('muted_crossing_does_not_schedule_audible_events');
 assert.throws(()=>createWarehouseScenarioEffects({...plan}),/ISSUED_SCENARIO_PLAN_REQUIRED/);cases.push('forged_plan_refused');fx.dispose();fx.dispose();assert.equal(closeCount,1);assert.throws(()=>fx.apply(0,{playing:false,speed:1}),/SCENARIO_EFFECTS_DISPOSED/);cases.push('idempotent_dispose_closes_owned_context_once');

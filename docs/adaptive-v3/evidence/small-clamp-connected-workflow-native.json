@@ -1,0 +1,287 @@
+{
+  "schema_id": "qoima.small-clamp.portable-connected-native.v1",
+  "passed": true,
+  "checker": "frontend/tools/check-warehouse-small-clamp-workflow-v3.mjs",
+  "checker_sha256": "007f7875e40b640c90ed6b53419a1e379c70bc7abe03388ca5c2c179d9567a60",
+  "read_inputs": "Tracked fixture/layout/registry/profile/policy files, public GLBs and current transitive TypeScript source only; no saved work data or generated runtime input.",
+  "native_fixture": {
+    "original_workers": 24,
+    "original_vehicles": 2,
+    "source_stock_HUs": 530,
+    "whole_HU_mass_kg": 0.94,
+    "whole_HU_quantity_units": 24,
+    "whole_HU_dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "tool_quantity": 1,
+    "tool_mass_bound_kg": 2.5
+  },
+  "cases": [
+    {
+      "outbound_port": "OUT_S_EXPRESS",
+      "inbound_port": "IN_E_PARCEL",
+      "original_outgoing_request": "v3:request:base:outbound:01",
+      "original_incoming_request": "v3:request:base:inbound:01",
+      "original_incoming_HU": "v3:HU:incoming:DEMO_001:01",
+      "receiving_actor": "R02",
+      "slot": "v3:slot:SMALL_E:019:L1:B5",
+      "outbound_duration_s": 1268.5324263940768,
+      "receiving_duration_s": 687.0816642786192,
+      "earliest_absolute_end_s": 2075.614090672696,
+      "receipt_phases": {
+        "tool_acquire_at_s": 135.1526206906566,
+        "receipt_at_s": 301.57268043330697,
+        "port_departure_s": 311.57268043330697,
+        "loaded_arrival_s": 378.1406417300791,
+        "stored_at_s": 386.1406417300791,
+        "tool_clear_at_s": 392.1406417300791,
+        "complete_at_s": 687.0816642786192
+      },
+      "same_one_tool": true,
+      "terminal_home_errors": [
+        {
+          "actor_id": "P01",
+          "actual_position": [
+            14.86,
+            0,
+            44.38
+          ],
+          "expected_position": [
+            14.86,
+            0,
+            44.38
+          ],
+          "position_error_m": 0,
+          "yaw_error_rad": 0
+        },
+        {
+          "actor_id": "K02",
+          "actual_position": [
+            73,
+            0,
+            6.1
+          ],
+          "expected_position": [
+            73,
+            0,
+            6.1
+          ],
+          "position_error_m": 0,
+          "yaw_error_rad": 0
+        },
+        {
+          "actor_id": "S02",
+          "actual_position": [
+            48,
+            0,
+            6
+          ],
+          "expected_position": [
+            48,
+            0,
+            6
+          ],
+          "position_error_m": 0,
+          "yaw_error_rad": 0
+        }
+      ],
+      "terminal_receiver_home_error_m": 3.2526065174565133e-19,
+      "outbound_frames": 102,
+      "receiving_frames": 46,
+      "outbound_controls": 8,
+      "maximum_active_bar_gap_m": 1.9526399608592516e-05,
+      "maximum_cargo_frame_error_m": 0,
+      "maximum_tool_frame_error_m": 0,
+      "epsilon_boundaries": 70,
+      "maximum_phase_tool_delta_m": 1.8851933902964257e-09,
+      "maximum_phase_actor_delta_m": 3.684162857619926e-09
+    },
+    {
+      "outbound_port": "OUT_W_RETAIL",
+      "inbound_port": "IN_E_PARCEL",
+      "original_outgoing_request": "v3:request:base:outbound:01",
+      "original_incoming_request": "v3:request:base:inbound:01",
+      "original_incoming_HU": "v3:HU:incoming:DEMO_001:01",
+      "receiving_actor": "R02",
+      "slot": "v3:slot:SMALL_E:019:L1:B5",
+      "outbound_duration_s": 1534.6433328791024,
+      "receiving_duration_s": 687.0816642786192,
+      "earliest_absolute_end_s": 2341.7249971577216,
+      "receipt_phases": {
+        "tool_acquire_at_s": 135.1526206906566,
+        "receipt_at_s": 301.57268043330697,
+        "port_departure_s": 311.57268043330697,
+        "loaded_arrival_s": 378.1406417300791,
+        "stored_at_s": 386.1406417300791,
+        "tool_clear_at_s": 392.1406417300791,
+        "complete_at_s": 687.0816642786192
+      },
+      "same_one_tool": true,
+      "terminal_home_errors": [
+        {
+          "actor_id": "P01",
+          "actual_position": [
+            14.86,
+            0,
+            44.38
+          ],
+          "expected_position": [
+            14.86,
+            0,
+            44.38
+          ],
+          "position_error_m": 0,
+          "yaw_error_rad": 0
+        },
+        {
+          "actor_id": "K02",
+          "actual_position": [
+            73,
+            0,
+            6.1
+          ],
+          "expected_position": [
+            73,
+            0,
+            6.1
+          ],
+          "position_error_m": 0,
+          "yaw_error_rad": 0
+        },
+        {
+          "actor_id": "S01",
+          "actual_position": [
+            6,
+            0,
+            54
+          ],
+          "expected_position": [
+            6,
+            0,
+            54
+          ],
+          "position_error_m": 0,
+          "yaw_error_rad": 0
+        }
+      ],
+      "terminal_receiver_home_error_m": 3.2526065174565133e-19,
+      "outbound_frames": 102,
+      "receiving_frames": 46,
+      "outbound_controls": 8,
+      "maximum_active_bar_gap_m": 1.7796472746370693e-05,
+      "maximum_cargo_frame_error_m": 0,
+      "maximum_tool_frame_error_m": 0,
+      "epsilon_boundaries": 70,
+      "maximum_phase_tool_delta_m": 1.8851933902964257e-09,
+      "maximum_phase_actor_delta_m": 3.684162857619926e-09
+    }
+  ],
+  "checks": [
+    "issued_factory_and_recipe_guards",
+    "opaque_one_tool_token_and_actual_one_tool_root",
+    "actual_full_outbound_dependency",
+    "whole_original_incoming_SMALL_and_freed_original_slot",
+    "all_outbound_and_receiving_phase_boundaries_and_interiors",
+    "eight_outbound_visibility_and_terminal_controls",
+    "pure_sampling",
+    "all_phase_epsilon_continuity",
+    "reverse_seek_reset_does_not_overwrite_active_outbound_tool",
+    "outbound_first_refcounted_disposal",
+    "all_original_parents_matrices_buffers_materials_restore",
+    "terminal_DTO_matches_exact_released_original_homes"
+  ],
+  "source_hashes": {
+    "frontend/tools/check-warehouse-small-clamp-workflow-v3.mjs": "007f7875e40b640c90ed6b53419a1e379c70bc7abe03388ca5c2c179d9567a60",
+    "frontend/src/adaptive-v3/warehouseSmallClampReceivingTransfer.ts": "77c0d17417fff5e129d2eac31827db20669090ec1f0350b0c65b9ce2c6199bcb",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseForearmPronationPose.ts": "a2861ffa225de9e6863069fb96f2c288daa9ba187e23420f981ab72be79a760d",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/src/adaptive-v3/warehouseSmallClampManualTransfer.ts": "8334fd798114ab36cb5ca5bff2ce84f2f51f6f6d0354a0c606a7c18e718054c3",
+    "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceAction.ts": "42c0dbe010dc186d1af288ad30afa0748f53e22758b0c5e81a6e86897499f748",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0",
+    "frontend/src/adaptive-v3/warehouseSmallClampWorkflowRoute.ts": "e9a3fb71e6bab00b3a79e24e8778378f2d868e08d9a3ca00f785766039d98b3d",
+    "frontend/src/adaptive-v3/warehouseSmallManualWorkflowRoute.ts": "3d0ecffd15d02813494ddd016eeb4de7ec0dffaadfc4d3fcbe1a3e6dacb55350",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/warehouseSmallClampReceivingWorkflowRoute.ts": "38da5cb2ca6c4902fbf1dffeeb9ae4f68db28afde8404fa2754aac36d20767d2",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/src/adaptive-v3/workerRoleAssignment.ts": "6bc0bdc205d752ebda084e022e01b6d03d4dbc39fd08db82955b27162fa2c266",
+    "frontend/src/adaptive-v3/warehouseStaffingPendingWork.ts": "fa3e057a62dd3cf82228ad54c854567dd89858ef58283a101e54264ff8c28cdd",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "17c5ce95313c40c9d699e1cb915ff5b4af5585968a3658fe12b4a979e386d752",
+    "frontend/src/adaptive-v3/warehouseWestPalletReceipt.ts": "11b51078a8ae6fc7edc020ba7061fe60a2c705d230ee46b8da43bfb432fb419f",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/warehouseLongScenarioPlan.ts": "1b50889308b322d6a178403cdf6feae1b37aa12e53b9d83eccbf663138b2aea9",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+    "frontend/src/adaptive-v3/warehouseSourceLongConcurrency.ts": "bd563c5554d3492962b4124d0647f2018f00efd39ba69977c5385816ed5b4f98",
+    "frontend/src/adaptive-v3/warehouseSourceLongConcurrencyBinding.json": "dc797d8c542be5a00df9be0ec1334b6774a3e5b30148e57b4455d9af1df94674",
+    "frontend/src/adaptive-v3/warehouseManualGripPose.ts": "ffdcff592b595554faa9926208da2993541fd40dd7bf862a1d225220e46c68a4",
+    "frontend/src/adaptive-v3/warehouseReceivingManualTransfer.ts": "9b18eac8560cdb2aa5cf8c8c4e6efd4311545c046f75ca726f07cb613b256aa7",
+    "frontend/src/adaptive-v3/warehouseReceivingWorkflowRoute.ts": "f44df6ee6236a7060b933f1acbc0c0161dcc226675bc3fcaab0cd9c61888619a",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/small-carton-clamp-tool.glb": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac"
+  },
+  "limits": {
+    "pad_tolerance_m": 0.001,
+    "force_certified": false,
+    "complete_global_collision_certificate": false,
+    "source_long_crossflow_admission_included": false
+  },
+  "scope": "Native transform/visibility/contact/ownership/lifecycle proof for both SMALL port variants. No browser or continuous wholewarehouse SAT sweep. Original deadlines and request counts are unchanged; earliest full recovery is reported without a deadline waiver.",
+  "canonical_raw_reports": [
+    {
+      "path": "docs/adaptive-v3/evidence/small-clamp-connected-workflow-express-raw.json",
+      "sha256": "7ab9e7d809da856f6e72ff1a5887ab57ac93f17233401872bfe6cc5ff3367412",
+      "status": "current_corrected_raw_native_matrices_and_frames"
+    },
+    {
+      "path": "docs/adaptive-v3/evidence/small-clamp-connected-workflow-retail-raw.json",
+      "sha256": "1d9199c4e2022516896bf1ded673a70bc7dc537610bcd2eca969ed747fc4529f",
+      "status": "current_corrected_raw_native_matrices_and_frames"
+    },
+    {
+      "path": "docs/adaptive-v3/evidence/small-clamp-outbound-native-historical-1247s.json",
+      "sha256": "b9cf4769e8c4d9630117f84d3d479f86a062d10b7199794be3eaea79ee61863a",
+      "status": "historical_superseded_before_connector_yaw_continuity_fix"
+    }
+  ],
+  "historical_pass_scope": "The archived 1247s102-frame snapshot report retains its original raw passed field. It did not test connector epsilon continuity and is superseded by the current1268/1534s reports.",
+  "canonical_tool_generator_proof": {
+    "path": "docs/adaptive-v3/evidence/small-clamp-tool-generator-native.json",
+    "sha256": "c2685e7310409c8c0f31fedbd1cea8ba9a30557695109c4598861c742b21e64e"
+  },
+  "canonical_api_contract": "docs/adaptive-v3/specs/small-clamp-connected-workflow.md"
+}

@@ -24,7 +24,15 @@ const host = element('canvas-host');
 const shell = element('stand');
 const modelInput = element<HTMLInputElement>('model-id');
 const base = import.meta.env.BASE_URL;
-const assetTitles:Record<string,string>={'shipper-workcell-fixture':'Отгрузочный пост · посылка','receiver-workcell-fixture':'Пост приёмки · паллета','worker-small-pick':'Комплектовщик · ручной захват','small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка'};
+const assetTitles:Record<string,string>={'shipper-workcell-fixture':'Отгрузочный пост · посылка','receiver-workcell-fixture':'Пост приёмки · паллета','worker-small-pick':'Комплектовщик · ручной захват','small-package-gripper':'Ручной захват SMALL','small-gripper-contact-fixture':'Захват SMALL · проверка контакта','packer-workcell-fixture':'Упаковочный пост','floor-markings':'Разметка зон склада','environment-markings-fixture':'Разметка и шесть портов','small-unit':'Первичная упаковка SMALL','small-case-open-partial':'Открытая коробка · 4 упаковки','picker-pick-source-fixture':'Источник отбора и тележка','long-upper-handling-bridge':'Съёмный инструмент длинномера','long-wheel-roll-profile-preserved-variant':'Закреплённый длинномер · проверка сборки','small-carton-clamp-tool':'Захват целого малого короба'};
+/** Exact native engineering components have author-side metre/Y-up contracts.
+ * A sidecar binds their unchanged bytes and root names; the ordinary V3 asset
+ * metadata gate below remains in force for every other model. */
+const engineeringInspection:Record<string,{sha256:string;root:string}>={
+ 'long-upper-handling-bridge':{sha256:'c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527',root:'long-upper-handling-bridge'},
+ 'long-wheel-roll-profile-preserved-variant':{sha256:'27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d',root:'forklift-loaded-long-bundle'},
+ 'small-carton-clamp-tool':{sha256:'7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac',root:'small_carton_clamp_tool_root'}
+};
 async function initialize(){
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#d8dcdb');
@@ -238,10 +246,11 @@ async function loadModel(id:string){
   releaseModel();points=[];bounds.makeEmpty();
   for(const field of ['size-x','size-y','size-z','triangles','materials'])element(field).textContent='—';element('diagnostics').textContent='Загружаем модель…';
   try{
-    const gltf=await loader.loadAsync(base+'models/v3/'+id+'.glb');
+    const inspection=engineeringInspection[id];
+    const gltf=inspection?await(async()=>{const response=await fetch(base+'models/v3/'+id+'.glb');if(!response.ok)throw Error('Компонент недоступен.');const bytes=await response.arrayBuffer(),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');if(hash!==inspection.sha256)throw Error('Версия компонента не совпадает с проверенной.');return loader.parseAsync(bytes,base+'models/v3/');})():await loader.loadAsync(base+'models/v3/'+id+'.glb');
     if(token!==serial){disposeObject(gltf.scene);return;}
-    let tagged:THREE.Object3D|undefined;gltf.scene.traverse(node=>{if(node.userData.asset_id===id)tagged=node;});
-    if(!tagged||tagged.userData.namespace!=='v3'||tagged.userData.units!=='m'||tagged.userData.up_axis!=='Y'){
+    let tagged:THREE.Object3D|undefined;if(inspection)tagged=gltf.scene.getObjectByName(inspection.root);else gltf.scene.traverse(node=>{if(node.userData.asset_id===id)tagged=node;});
+    if(!tagged||(!inspection&&(tagged.userData.namespace!=='v3'||tagged.userData.units!=='m'||tagged.userData.up_axis!=='Y'))){
       disposeObject(gltf.scene);throw Error('GLB не содержит согласованные asset_id / namespace v3 / metre / Y-up данные.');
     }
     if(id==='worker-base'&&new URL(location.href).searchParams.get('fixture')==='roles'){
