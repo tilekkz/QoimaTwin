@@ -1,0 +1,458 @@
+{
+  "hypothetical_fixture": {
+    "clearance_each_side_m": 0.05,
+    "dimensions_xyz_m": [
+      0.4,
+      0.3,
+      0.6
+    ],
+    "explicitly_permitted_yaw90": {
+      "cost_evaluated": false,
+      "design_eligible": true,
+      "details": {
+        "oriented_dimensions_xyz_m": [
+          0.6,
+          0.3,
+          0.4
+        ],
+        "placement": {
+          "bottom_y_m": 0.18,
+          "centre_local_xyz_m": [
+            0,
+            0.32999999999999996,
+            0.0
+          ],
+          "operational_admission": false,
+          "support_gap_m": 0,
+          "top_headroom_m": 0.2,
+          "top_y_m": 0.48
+        },
+        "transport_tag": "manual_hand_carry"
+      },
+      "operational_admission": false,
+      "reason": "DESIGN_COMPATIBLE"
+    },
+    "identity": {
+      "cost_evaluated": false,
+      "design_eligible": false,
+      "details": {
+        "oriented_dimensions_xyz_m": [
+          0.4,
+          0.3,
+          0.6
+        ]
+      },
+      "operational_admission": false,
+      "reason": "DIMENSION_MISMATCH"
+    },
+    "negative_cases": [
+      {
+        "actual": {
+          "cost_evaluated": false,
+          "design_eligible": false,
+          "details": {},
+          "operational_admission": false,
+          "reason": "ORIENTATION_FORBIDDEN"
+        },
+        "case_id": "unlisted_even_when_it_would_fit",
+        "expected": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "actual": {
+          "cost_evaluated": false,
+          "design_eligible": false,
+          "details": {},
+          "operational_admission": false,
+          "reason": "ORIENTATION_FORBIDDEN"
+        },
+        "case_id": "reflection_not_rotation",
+        "expected": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "actual": {
+          "cost_evaluated": false,
+          "design_eligible": false,
+          "details": {},
+          "operational_admission": false,
+          "reason": "ORIENTATION_FORBIDDEN"
+        },
+        "case_id": "proper_rotation_but_upright_forbidden",
+        "expected": "ORIENTATION_FORBIDDEN"
+      },
+      {
+        "actual": {
+          "cost_evaluated": false,
+          "design_eligible": false,
+          "details": {
+            "oriented_dimensions_xyz_m": [
+              0.6,
+              0.3,
+              0.40000000010000003
+            ]
+          },
+          "operational_admission": false,
+          "reason": "DIMENSION_MISMATCH"
+        },
+        "case_id": "tiny_excess_source_axis_0",
+        "expected": "DIMENSION_MISMATCH"
+      },
+      {
+        "actual": {
+          "cost_evaluated": false,
+          "design_eligible": false,
+          "details": {
+            "oriented_dimensions_xyz_m": [
+              0.6,
+              0.40000000010000003,
+              0.4
+            ]
+          },
+          "operational_admission": false,
+          "reason": "DIMENSION_MISMATCH"
+        },
+        "case_id": "tiny_excess_source_axis_1",
+        "expected": "DIMENSION_MISMATCH"
+      },
+      {
+        "actual": {
+          "cost_evaluated": false,
+          "design_eligible": false,
+          "details": {
+            "oriented_dimensions_xyz_m": [
+              0.6000000001,
+              0.3,
+              0.4
+            ]
+          },
+          "operational_admission": false,
+          "reason": "DIMENSION_MISMATCH"
+        },
+        "case_id": "tiny_excess_source_axis_2",
+        "expected": "DIMENSION_MISMATCH"
+      }
+    ],
+    "not_a_production_template": true,
+    "orientation_axes": [
+      "+Z",
+      "+Y",
+      "-X"
+    ],
+    "usable_xyz_m": [
+      0.7,
+      0.5,
+      0.5
+    ]
+  },
+  "operational_admission": false,
+  "production_cases": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            0.32,
+            0.24,
+            0.24
+          ],
+          "placement": {
+            "bottom_y_m": 0.25,
+            "centre_local_xyz_m": [
+              -0.88,
+              0.37,
+              0.30000000000000004
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.10999999999999999,
+            "top_y_m": 0.49
+          },
+          "transport_tag": "manual_hand_carry"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:SMALL_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            0.6,
+            0.4,
+            0.3
+          ],
+          "placement": {
+            "bottom_y_m": 0.2,
+            "centre_local_xyz_m": [
+              -0.7,
+              0.4,
+              0.44999999999999996
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.65,
+            "top_y_m": 0.6000000000000001
+          },
+          "transport_tag": "manual_hand_carry"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:STANDARD_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            0.8,
+            0.65,
+            0.6
+          ],
+          "placement": {
+            "bottom_y_m": 0.18,
+            "centre_local_xyz_m": [
+              0.0,
+              0.505,
+              0.3
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.85,
+            "top_y_m": 0.8300000000000001
+          },
+          "transport_tag": "forklift_assisted"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:HEAVY_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            1.2,
+            1.35,
+            1.0
+          ],
+          "placement": {
+            "bottom_y_m": 0.18,
+            "centre_local_xyz_m": [
+              0.0,
+              0.855,
+              0.09999999999999998
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.1499999999999999,
+            "top_y_m": 1.53
+          },
+          "transport_tag": "forklift_assisted"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:HEAVY_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "IBC",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            1.2,
+            1.16,
+            1.0
+          ],
+          "placement": {
+            "bottom_y_m": 0.18,
+            "centre_local_xyz_m": [
+              0.0,
+              0.76,
+              0.09999999999999998
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.3400000000000001,
+            "top_y_m": 1.3399999999999999
+          },
+          "transport_tag": "forklift_assisted"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:HEAVY_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            4.2,
+            0.52,
+            0.65
+          ],
+          "placement": {
+            "bottom_y_m": 0.25,
+            "centre_local_xyz_m": [
+              0.0,
+              0.51,
+              0.22499999999999992
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.13,
+            "top_y_m": 0.77
+          },
+          "transport_tag": "forklift_assisted"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:LONG_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "DRUM",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            0.68,
+            0.95,
+            0.68
+          ],
+          "placement": {
+            "bottom_y_m": 0.18,
+            "centre_local_xyz_m": [
+              0.0,
+              0.655,
+              0.25999999999999995
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.55,
+            "top_y_m": 1.13
+          },
+          "transport_tag": "forklift_assisted"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:HEAVY_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "positive": {
+        "cost_evaluated": false,
+        "design_eligible": true,
+        "details": {
+          "oriented_dimensions_xyz_m": [
+            1.1,
+            0.95,
+            0.85
+          ],
+          "placement": {
+            "bottom_y_m": 0.2,
+            "centre_local_xyz_m": [
+              -0.7,
+              0.675,
+              0.175
+            ],
+            "operational_admission": false,
+            "support_gap_m": 0,
+            "top_headroom_m": 0.10000000000000009,
+            "top_y_m": 1.15
+          },
+          "transport_tag": "forklift_assisted"
+        },
+        "operational_admission": false,
+        "reason": "DESIGN_COMPATIBLE"
+      },
+      "slot_id": "v3:slot:STANDARD_W:001:L1:B1",
+      "unlisted_rotation": {
+        "cost_evaluated": false,
+        "design_eligible": false,
+        "details": {},
+        "operational_admission": false,
+        "reason": "ORIENTATION_FORBIDDEN"
+      }
+    }
+  ],
+  "production_permissions_changed": false,
+  "source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+      "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681"
+    }
+  ],
+  "source_kind": "synthetic_design_witnesses",
+  "task_id": "C06"
+}

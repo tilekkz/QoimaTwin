@@ -1,0 +1,1498 @@
+{
+  "asset_id": "rack-small",
+  "task_id": "M01",
+  "status": "root_accepted_dimension_plan",
+  "planned_at_utc": "2026-11-07T13:06:18.160122+00:00",
+  "units": "m",
+  "origin": "floor centre",
+  "up_axis": "Y",
+  "front_axis": "+Z",
+  "outer_dimensions_xyz_m": [
+    2.4,
+    1.55,
+    1.0
+  ],
+  "bounds_local_xyz_m": {
+    "min": [
+      -1.2,
+      0,
+      -0.5
+    ],
+    "max": [
+      1.2,
+      1.55,
+      0.5
+    ]
+  },
+  "reference": {
+    "id": "R13.1",
+    "path": "assets/references/v3/r13-1-rack-small.png",
+    "sha256": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e"
+  },
+  "source_contract": {
+    "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+    "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "prototype_module_id": "v3:module:SMALL_W:001"
+  },
+  "palette": {
+    "charcoal": "#293D46",
+    "petrol": "#2E7376",
+    "tan": "#C99A60"
+  },
+  "cavity_design": {
+    "bays": 5,
+    "levels": 2,
+    "usable_xyz_m": [
+      0.42,
+      0.35,
+      0.42
+    ],
+    "support_y_m": [
+      0.25,
+      1.0
+    ],
+    "pitch_m": 0.44,
+    "shared_divider_thickness_m": 0.02,
+    "usable_z_range_m": [
+      0.03,
+      0.45
+    ],
+    "bin_wall_y_height_m": 0.35,
+    "front_lip_y_height_m": 0.08,
+    "front_lip_z_range_m": [
+      0.45,
+      0.47
+    ],
+    "rear_panel_z_range_m": [
+      0.01,
+      0.03
+    ],
+    "floor_inlay_y_range_from_support_m": [
+      -0.02,
+      0
+    ],
+    "floor_inlay_top_is_support_plane": true,
+    "double_rims": false
+  },
+  "adaptations_before_geometry": [
+    "Full rack depth1.0m retained; shallow front bins have usefulZ.03.. .45. The rear wood deck stripZ-.48.. .01 stays visibly open behind bin backs, with rear posts/ties/support beams. It creates no extra slot or deeper usable bin.",
+    "Each post has .10m envelope/feet/collar/cap within accepted corner bounds; .08m charcoal shaft gives the reference a stepped volumetric shoe/collar without exceeding footprint.",
+    "Five compartments share .02m dividers; five front lips/rear panels butt against divider ends, with no doubled walls/rims. Bin floors are inlaid .02m INTO the .10m deck; topY remains exactly .25/1.0.",
+    "Frame beam ends embed only inside post envelopes as supported joints; bin walls/lips/floors have disjoint interiors. Small bevels remove material and do not enter certified usable interiors."
+  ],
+  "parts": [
+    {
+      "part_id": "post_00_foot",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.2,
+          0,
+          -0.5
+        ],
+        "max": [
+          -1.0999999999999999,
+          0.08,
+          -0.4
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_00_shaft",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.19,
+          0.08,
+          -0.49
+        ],
+        "max": [
+          -1.1099999999999999,
+          1.43,
+          -0.41000000000000003
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_00_collar",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.2,
+          1.43,
+          -0.5
+        ],
+        "max": [
+          -1.0999999999999999,
+          1.5,
+          -0.4
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_00_cap",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.2,
+          1.5,
+          -0.5
+        ],
+        "max": [
+          -1.0999999999999999,
+          1.55,
+          -0.4
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_01_foot",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.2,
+          0,
+          0.4
+        ],
+        "max": [
+          -1.0999999999999999,
+          0.08,
+          0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_01_shaft",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.19,
+          0.08,
+          0.41000000000000003
+        ],
+        "max": [
+          -1.1099999999999999,
+          1.43,
+          0.49
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_01_collar",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.2,
+          1.43,
+          0.4
+        ],
+        "max": [
+          -1.0999999999999999,
+          1.5,
+          0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_01_cap",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.2,
+          1.5,
+          0.4
+        ],
+        "max": [
+          -1.0999999999999999,
+          1.55,
+          0.5
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_10_foot",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.0999999999999999,
+          0,
+          -0.5
+        ],
+        "max": [
+          1.2,
+          0.08,
+          -0.4
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_10_shaft",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.1099999999999999,
+          0.08,
+          -0.49
+        ],
+        "max": [
+          1.19,
+          1.43,
+          -0.41000000000000003
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_10_collar",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.0999999999999999,
+          1.43,
+          -0.5
+        ],
+        "max": [
+          1.2,
+          1.5,
+          -0.4
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_10_cap",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.0999999999999999,
+          1.5,
+          -0.5
+        ],
+        "max": [
+          1.2,
+          1.55,
+          -0.4
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_11_foot",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.0999999999999999,
+          0,
+          0.4
+        ],
+        "max": [
+          1.2,
+          0.08,
+          0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_11_shaft",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.1099999999999999,
+          0.08,
+          0.41000000000000003
+        ],
+        "max": [
+          1.19,
+          1.43,
+          0.49
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_11_collar",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.0999999999999999,
+          1.43,
+          0.4
+        ],
+        "max": [
+          1.2,
+          1.5,
+          0.5
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "post_11_cap",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.0999999999999999,
+          1.5,
+          0.4
+        ],
+        "max": [
+          1.2,
+          1.55,
+          0.5
+        ]
+      },
+      "material": "charcoal",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "upper_rear_tie",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.15,
+          1.45,
+          -0.47
+        ],
+        "max": [
+          1.15,
+          1.5,
+          -0.43
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "upper_side_tie_L",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.19,
+          1.45,
+          -0.45
+        ],
+        "max": [
+          -1.1099999999999999,
+          1.5,
+          0.45
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "upper_side_tie_R",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.1099999999999999,
+          1.45,
+          -0.45
+        ],
+        "max": [
+          1.19,
+          1.5,
+          0.45
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "L1_rear_wood_deck",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.15,
+          -0.48
+        ],
+        "max": [
+          1.11,
+          0.25,
+          0.01
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "L1_recessed_front_substrate",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.15,
+          0.01
+        ],
+        "max": [
+          1.11,
+          0.23,
+          0.48
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "L1_front_wood_edge",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.23,
+          0.47
+        ],
+        "max": [
+          1.11,
+          0.25,
+          0.48
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_petrol_floor_inlay",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.23,
+          0.01
+        ],
+        "max": [
+          1.11,
+          0.25,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_front_support_beam",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.15,
+          0.10999999999999999,
+          0.42000000000000004
+        ],
+        "max": [
+          1.15,
+          0.15,
+          0.48
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "L1_rear_support_beam",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.15,
+          0.10999999999999999,
+          -0.48
+        ],
+        "max": [
+          1.15,
+          0.15,
+          -0.42000000000000004
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "L1_shared_divider_0",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.25,
+          0.01
+        ],
+        "max": [
+          -1.09,
+          0.6,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_shared_divider_1",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.67,
+          0.25,
+          0.01
+        ],
+        "max": [
+          -0.65,
+          0.6,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_shared_divider_2",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.23,
+          0.25,
+          0.01
+        ],
+        "max": [
+          -0.21,
+          0.6,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_shared_divider_3",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.21,
+          0.25,
+          0.01
+        ],
+        "max": [
+          0.23,
+          0.6,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_shared_divider_4",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.65,
+          0.25,
+          0.01
+        ],
+        "max": [
+          0.67,
+          0.6,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_shared_divider_5",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.09,
+          0.25,
+          0.01
+        ],
+        "max": [
+          1.11,
+          0.6,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B1_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.09,
+          0.25,
+          0.01
+        ],
+        "max": [
+          -0.67,
+          0.6,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B1_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.09,
+          0.25,
+          0.45
+        ],
+        "max": [
+          -0.67,
+          0.33,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B2_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.65,
+          0.25,
+          0.01
+        ],
+        "max": [
+          -0.23,
+          0.6,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B2_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.65,
+          0.25,
+          0.45
+        ],
+        "max": [
+          -0.23,
+          0.33,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B3_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.21,
+          0.25,
+          0.01
+        ],
+        "max": [
+          0.21,
+          0.6,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B3_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.21,
+          0.25,
+          0.45
+        ],
+        "max": [
+          0.21,
+          0.33,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B4_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.23,
+          0.25,
+          0.01
+        ],
+        "max": [
+          0.65,
+          0.6,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B4_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.23,
+          0.25,
+          0.45
+        ],
+        "max": [
+          0.65,
+          0.33,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B5_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.67,
+          0.25,
+          0.01
+        ],
+        "max": [
+          1.09,
+          0.6,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L1_B5_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.67,
+          0.25,
+          0.45
+        ],
+        "max": [
+          1.09,
+          0.33,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_rear_wood_deck",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.9,
+          -0.48
+        ],
+        "max": [
+          1.11,
+          1.0,
+          0.01
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.003
+    },
+    {
+      "part_id": "L2_recessed_front_substrate",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.9,
+          0.01
+        ],
+        "max": [
+          1.11,
+          0.98,
+          0.48
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "L2_front_wood_edge",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.98,
+          0.47
+        ],
+        "max": [
+          1.11,
+          1.0,
+          0.48
+        ]
+      },
+      "material": "tan",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_petrol_floor_inlay",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          0.98,
+          0.01
+        ],
+        "max": [
+          1.11,
+          1.0,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_front_support_beam",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.15,
+          0.86,
+          0.42000000000000004
+        ],
+        "max": [
+          1.15,
+          0.9,
+          0.48
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "L2_rear_support_beam",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.15,
+          0.86,
+          -0.48
+        ],
+        "max": [
+          1.15,
+          0.9,
+          -0.42000000000000004
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.002
+    },
+    {
+      "part_id": "L2_shared_divider_0",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.11,
+          1.0,
+          0.01
+        ],
+        "max": [
+          -1.09,
+          1.35,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_shared_divider_1",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.67,
+          1.0,
+          0.01
+        ],
+        "max": [
+          -0.65,
+          1.35,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_shared_divider_2",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.23,
+          1.0,
+          0.01
+        ],
+        "max": [
+          -0.21,
+          1.35,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_shared_divider_3",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.21,
+          1.0,
+          0.01
+        ],
+        "max": [
+          0.23,
+          1.35,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_shared_divider_4",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.65,
+          1.0,
+          0.01
+        ],
+        "max": [
+          0.67,
+          1.35,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_shared_divider_5",
+      "bounds_local_xyz_m": {
+        "min": [
+          1.09,
+          1.0,
+          0.01
+        ],
+        "max": [
+          1.11,
+          1.35,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B1_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.09,
+          1.0,
+          0.01
+        ],
+        "max": [
+          -0.67,
+          1.35,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B1_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          -1.09,
+          1.0,
+          0.45
+        ],
+        "max": [
+          -0.67,
+          1.08,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B2_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.65,
+          1.0,
+          0.01
+        ],
+        "max": [
+          -0.23,
+          1.35,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B2_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.65,
+          1.0,
+          0.45
+        ],
+        "max": [
+          -0.23,
+          1.08,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B3_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.21,
+          1.0,
+          0.01
+        ],
+        "max": [
+          0.21,
+          1.35,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B3_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.21,
+          1.0,
+          0.45
+        ],
+        "max": [
+          0.21,
+          1.08,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B4_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.23,
+          1.0,
+          0.01
+        ],
+        "max": [
+          0.65,
+          1.35,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B4_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.23,
+          1.0,
+          0.45
+        ],
+        "max": [
+          0.65,
+          1.08,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B5_rear_panel",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.67,
+          1.0,
+          0.01
+        ],
+        "max": [
+          1.09,
+          1.35,
+          0.03
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    },
+    {
+      "part_id": "L2_B5_low_front_lip",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.67,
+          1.0,
+          0.45
+        ],
+        "max": [
+          1.09,
+          1.08,
+          0.47
+        ]
+      },
+      "material": "petrol",
+      "bevel_m": 0.001
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "anchor_bin_L1_B1",
+      "level": 1,
+      "bay": 1,
+      "local_xyz_m": [
+        -0.88,
+        0.25,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          -0.67,
+          0.6,
+          0.45
+        ],
+        "min": [
+          -1.09,
+          0.25,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L1:B1"
+    },
+    {
+      "anchor_id": "anchor_bin_L2_B1",
+      "level": 2,
+      "bay": 1,
+      "local_xyz_m": [
+        -0.88,
+        1.0,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          -0.67,
+          1.35,
+          0.45
+        ],
+        "min": [
+          -1.09,
+          1.0,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L2:B1"
+    },
+    {
+      "anchor_id": "anchor_bin_L1_B2",
+      "level": 1,
+      "bay": 2,
+      "local_xyz_m": [
+        -0.44,
+        0.25,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          -0.23,
+          0.6,
+          0.45
+        ],
+        "min": [
+          -0.65,
+          0.25,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L1:B2"
+    },
+    {
+      "anchor_id": "anchor_bin_L2_B2",
+      "level": 2,
+      "bay": 2,
+      "local_xyz_m": [
+        -0.44,
+        1.0,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          -0.23,
+          1.35,
+          0.45
+        ],
+        "min": [
+          -0.65,
+          1.0,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L2:B2"
+    },
+    {
+      "anchor_id": "anchor_bin_L1_B3",
+      "level": 1,
+      "bay": 3,
+      "local_xyz_m": [
+        0.0,
+        0.25,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          0.21,
+          0.6,
+          0.45
+        ],
+        "min": [
+          -0.21,
+          0.25,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L1:B3"
+    },
+    {
+      "anchor_id": "anchor_bin_L2_B3",
+      "level": 2,
+      "bay": 3,
+      "local_xyz_m": [
+        0.0,
+        1.0,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          0.21,
+          1.35,
+          0.45
+        ],
+        "min": [
+          -0.21,
+          1.0,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L2:B3"
+    },
+    {
+      "anchor_id": "anchor_bin_L1_B4",
+      "level": 1,
+      "bay": 4,
+      "local_xyz_m": [
+        0.44,
+        0.25,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          0.65,
+          0.6,
+          0.45
+        ],
+        "min": [
+          0.23,
+          0.25,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L1:B4"
+    },
+    {
+      "anchor_id": "anchor_bin_L2_B4",
+      "level": 2,
+      "bay": 4,
+      "local_xyz_m": [
+        0.44,
+        1.0,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          0.65,
+          1.35,
+          0.45
+        ],
+        "min": [
+          0.23,
+          1.0,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L2:B4"
+    },
+    {
+      "anchor_id": "anchor_bin_L1_B5",
+      "level": 1,
+      "bay": 5,
+      "local_xyz_m": [
+        0.88,
+        0.25,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          1.09,
+          0.6,
+          0.45
+        ],
+        "min": [
+          0.67,
+          0.25,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L1:B5"
+    },
+    {
+      "anchor_id": "anchor_bin_L2_B5",
+      "level": 2,
+      "bay": 5,
+      "local_xyz_m": [
+        0.88,
+        1.0,
+        0.24
+      ],
+      "usable_dimensions_xyz_m": [
+        0.42,
+        0.35,
+        0.42
+      ],
+      "usable_bounds_module_local": {
+        "max": [
+          1.09,
+          1.35,
+          0.45
+        ],
+        "min": [
+          0.67,
+          1.0,
+          0.03
+        ]
+      },
+      "prototype_source_slot_id": "v3:slot:SMALL_W:001:L2:B5"
+    }
+  ],
+  "pre_mesh_numeric_checks": {
+    "parts": 63,
+    "usable_box_solid_intrusions": 0,
+    "outer_envelope_violations": 0,
+    "estimated_bevel_triangles": 2772,
+    "materials": 3
+  },
+  "planned_actual_checks": [
+    "Source evaluated finite/closed positive-volume components and grounded support chain.",
+    "All10 anchors and .42x.35x.42 cavities; interior sample rays/points plus supported floor rays at exact planes.",
+    "Actual GLB BIN world vertices/normals/indices/anchors/materials and empty cavity/floor rays.",
+    "Actual4source neutral views versus R13.1, fixes retained; root later actualbrowser/Khronos."
+  ],
+  "limits": [
+    "No cargo, inventory, physical rating, grip or action acceptance.",
+    "Plan saved and reviewed before first geometry; actual source/BIN metrics and views are separate iteration evidence."
+  ],
+  "root_prebuild_clarification": "Explicitly split wood top outside petrol patch; lower front substrate ends .02 below support. No uncut wood top under inlay. Root accepted adaptations and authorized routine refinements.",
+  "deck_top_region_checks": [
+    {
+      "level": 1,
+      "support_y_m": 0.25,
+      "wood_top_regions_z_m": [
+        [
+          -0.48,
+          0.01
+        ],
+        [
+          0.47,
+          0.48
+        ]
+      ],
+      "petrol_top_region_z_m": [
+        0.01,
+        0.47
+      ],
+      "lower_front_wood_top_y_m": 0.23,
+      "shared_wood_petrol_top_area_m2": 0
+    },
+    {
+      "level": 2,
+      "support_y_m": 1.0,
+      "wood_top_regions_z_m": [
+        [
+          -0.48,
+          0.01
+        ],
+        [
+          0.47,
+          0.48
+        ]
+      ],
+      "petrol_top_region_z_m": [
+        0.01,
+        0.47
+      ],
+      "lower_front_wood_top_y_m": 0.98,
+      "shared_wood_petrol_top_area_m2": 0
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "task_id": "M14.2",
+  "owner": "people_packing",
+  "status": "PASS",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T15:47:43.904563+00:00",
+    "scope": "Body/wheels stage only; not complete forklift",
+    "actual_opened": [
+      "assets/references/v3/m14-2-reach-forklift.png",
+      "assets/v3/previews/forklift-body-wheels/front.png",
+      "assets/v3/previews/forklift-body-wheels/side.png",
+      "assets/v3/previews/forklift-body-wheels/rear.png",
+      "assets/v3/previews/forklift-body-wheels/three-quarter.png",
+      "assets/v3/qa-browser/forklift-body-wheels/front.png",
+      "assets/v3/qa-browser/forklift-body-wheels/side.png",
+      "assets/v3/qa-browser/forklift-body-wheels/rear.png",
+      "assets/v3/qa-browser/forklift-body-wheels/quarter.png"
+    ],
+    "browser_evidence": "assets/v3/qa-browser/forklift-body-wheels/browser-capture.json",
+    "artifact_fingerprints_verified": 14,
+    "khronos": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "root_executed": "node assets/v3/iterations/forklift/M14.2/verify_glb.mjs; 602 steer states, finite normals, exact reset",
+    "findings": "Four tyres and contained hubs contact floor; counterweight taper and body masses coherent. Open cab/mast space is expected at this bounded stage. Blueprint dimensions take priority over illustrative wheel positions. Full vehicle silhouette and load actions remain pending."
+  },
+  "recorded_at": "2026-11-07T15:44:16.193443+00:00",
+  "scope": "body/counterweight/four connected wheels only",
+  "reference": {
+    "reference_id": "M14.2-REACH",
+    "path": "assets/references/v3/m14-2-reach-forklift.png",
+    "sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+    "root_registration": "PASS",
+    "no_model_input_to_imagegen": true
+  },
+  "actual_source": {
+    "closed_positive_manifold_parts": 25,
+    "contact_witnesses": 24,
+    "all_parts_connected": true,
+    "ground_witnesses": [
+      {
+        "tyre": "tyre_front_L",
+        "actual_min_y": 0.0,
+        "actual_ray_contact": [
+          -0.3499999940395355,
+          1.3168901205062866e-06,
+          0.40000998973846436
+        ]
+      },
+      {
+        "tyre": "tyre_front_R",
+        "actual_min_y": 0.0,
+        "actual_ray_contact": [
+          0.3499999940395355,
+          1.3168901205062866e-06,
+          0.40000998973846436
+        ]
+      },
+      {
+        "tyre": "tyre_rear_L",
+        "actual_min_y": 0.0,
+        "actual_ray_contact": [
+          -0.3499999940395355,
+          1.3168901205062866e-06,
+          -0.9999899864196777
+        ]
+      },
+      {
+        "tyre": "tyre_rear_R",
+        "actual_min_y": 0.0,
+        "actual_ray_contact": [
+          0.3499999940395355,
+          1.3168901205062866e-06,
+          -0.9999899864196777
+        ]
+      }
+    ],
+    "pivots": 6,
+    "steer": [
+      {
+        "side": "L",
+        "poses": 301,
+        "angle_range_deg": [
+          -75,
+          75
+        ],
+        "actual_max_abs_x": 0.5887988805770874,
+        "min_y": 0.0,
+        "continuous_cylinder_bound_abs_x": 0.5962214450449026
+      },
+      {
+        "side": "R",
+        "poses": 301,
+        "angle_range_deg": [
+          -75,
+          75
+        ],
+        "actual_max_abs_x": 0.5887988805770874,
+        "min_y": 0.0,
+        "continuous_cylinder_bound_abs_x": 0.5962214450449026
+      }
+    ],
+    "finite_unit_face_normals_checked": 1458,
+    "source_sha256": "2c526a4fb281b49cce7c3e6e7411836a5968911965950708414975857aa670ff",
+    "actual_bounds": {
+      "min": [
+        -0.6000000238418579,
+        0.0,
+        -1.5
+      ],
+      "max": [
+        0.6000000238418579,
+        0.9200000166893005,
+        0.7000000476837158
+      ]
+    }
+  },
+  "actual_runtime": {
+    "stage": "M14.2_body_wheels_only",
+    "sha256": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9",
+    "bytes": 161664,
+    "triangles": 3148,
+    "vertexCount": 5680,
+    "nodeCount": 22,
+    "meshes": 15,
+    "pivots": [
+      {
+        "name": "joint__rear_steer_L",
+        "parent": "forklift_root",
+        "local": [
+          -0.3499999940395355,
+          0.22499999403953552,
+          -1
+        ]
+      },
+      {
+        "name": "joint__wheel_rear_L",
+        "parent": "joint__rear_steer_L",
+        "local": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "joint__rear_steer_R",
+        "parent": "forklift_root",
+        "local": [
+          0.3499999940395355,
+          0.22499999403953552,
+          -1
+        ]
+      },
+      {
+        "name": "joint__wheel_rear_R",
+        "parent": "joint__rear_steer_R",
+        "local": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "joint__wheel_front_L",
+        "parent": "forklift_root",
+        "local": [
+          -0.3499999940395355,
+          0.30000001192092896,
+          0.4000000059604645
+        ]
+      },
+      {
+        "name": "joint__wheel_front_R",
+        "parent": "forklift_root",
+        "local": [
+          0.3499999940395355,
+          0.30000001192092896,
+          0.4000000059604645
+        ]
+      }
+    ],
+    "sourceParts": [
+      "axle_front",
+      "axle_rear",
+      "chassis_rear_spine",
+      "driver_floorboard",
+      "front_axle_saddle",
+      "low_forward_spine",
+      "chassis_front_spine",
+      "entry_step_L",
+      "entry_step_R",
+      "petrol_nose",
+      "rear_drop_connection",
+      "counterweight_body",
+      "counterweight_upper_step",
+      "hub_centre_rear_L",
+      "hub_rear_L",
+      "tyre_rear_L",
+      "hub_centre_rear_R",
+      "hub_rear_R",
+      "tyre_rear_R",
+      "hub_centre_front_L",
+      "hub_front_L",
+      "tyre_front_L",
+      "hub_centre_front_R",
+      "hub_front_R",
+      "tyre_front_R"
+    ],
+    "materials": [
+      "V3_Forklift_Charcoal",
+      "V3_Forklift_Petrol",
+      "V3_Forklift_Tan",
+      "V3_Forklift_Rubber"
+    ],
+    "maxUnitNormalError": 7.922972011797924e-08,
+    "actualBounds": {
+      "min": [
+        -0.6000000238418579,
+        0,
+        -1.5
+      ],
+      "max": [
+        0.6000000238418579,
+        0.9200000166893005,
+        0.7000000178813934
+      ]
+    },
+    "steer": [
+      {
+        "side": "L",
+        "states": 301,
+        "maxAbsX": 0.588798872058503,
+        "minY": 0
+      },
+      {
+        "side": "R",
+        "states": 301,
+        "maxAbsX": 0.588798872058503,
+        "minY": 0
+      }
+    ],
+    "exactReset": true,
+    "frontSaddleMaxZVertexNormalsIncludingBevelTransitions": [
+      [
+        -0.5773168802261353,
+        -0.5774169564247131,
+        0.5773168802261353
+      ],
+      [
+        0,
+        -0.7071068286895752,
+        0.7071068286895752
+      ],
+      [
+        -0.7071068286895752,
+        0,
+        0.7071068286895752
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        -0.5773835778236389,
+        0.5773835778236389,
+        0.5772835612297058
+      ],
+      [
+        0,
+        0.7071068286895752,
+        0.7071068286895752
+      ],
+      [
+        -0.7071068286895752,
+        0,
+        0.7071068286895752
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0.5773168802261353,
+        -0.5774169564247131,
+        0.5773168802261353
+      ],
+      [
+        0,
+        -0.7071068286895752,
+        0.7071068286895752
+      ],
+      [
+        0.7071068286895752,
+        0,
+        0.7071068286895752
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0.5773835778236389,
+        0.5773835778236389,
+        0.5772835612297058
+      ],
+      [
+        0,
+        0.7071068286895752,
+        0.7071068286895752
+      ],
+      [
+        0.7071068286895752,
+        0,
+        0.7071068286895752
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "sourceVsRuntimeBoundMaxError": 2.9802322387695312e-08,
+    "browserAndKhronosAcceptance": "pending root, not executed by this checker",
+    "completeForkliftAccepted": false
+  },
+  "source_views_opened": [
+    "front",
+    "side",
+    "rear",
+    "three-quarter"
+  ],
+  "source_view_iterations": [
+    {
+      "id": 1,
+      "actual_opened": true,
+      "finding": "counterweight reads like carton/lid",
+      "selected": false
+    },
+    {
+      "id": 2,
+      "actual_opened": true,
+      "correction": "tapered cast counterweight inside unchanged numeric envelope",
+      "selected": true
+    }
+  ],
+  "execution": {
+    "Blender": "5.0.1 background factory-startup2threads; closed after each build/render/check",
+    "source_checker_exit": 0,
+    "independent_GLTFLoader_exit": 0,
+    "Workbench_final4views_exit": 0,
+    "browser": "root owns, not executed",
+    "Khronos": "root owns, not executed"
+  },
+  "complete_forklift_accepted": false,
+  "cab_mast_actions_created": false,
+  "shared_helpers_or_contracts_modified": false,
+  "artifacts": [
+    {
+      "path": "tools/blender/v3/build_forklift.py",
+      "bytes": 7124,
+      "sha256": "10437b20d6f5d7288aeb17bc3faeb50a8a0f694b1ea8fced7b6ae65243732a94"
+    },
+    {
+      "path": "assets/v3/blender/forklift-body-wheels.blend",
+      "bytes": 120209,
+      "sha256": "2c526a4fb281b49cce7c3e6e7411836a5968911965950708414975857aa670ff"
+    },
+    {
+      "path": "assets/v3/blender/forklift-body-wheels.stats.json",
+      "bytes": 18814,
+      "sha256": "f210fd97b2c90888e37ea9d7cd57031e3d78fb3858bc8e6961cd9007d831445a"
+    },
+    {
+      "path": "frontend/public/models/v3/forklift-body-wheels.glb",
+      "bytes": 161664,
+      "sha256": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9"
+    },
+    {
+      "path": "assets/v3/specs/forklift-body-wheels.json",
+      "bytes": 20633,
+      "sha256": "25136c147b43c6f1556ed6e1944ebe5ba4cd9f4618b1db28d8bcf79196d26209"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.2/actual-source-checks.json",
+      "bytes": 23937,
+      "sha256": "16d40e5fe2abcaf1bf1a4a0f6cc7dcb6baf9cbef7c55e1b16497e07f0af6bb5c"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.2/actual-glb-checks.json",
+      "bytes": 3806,
+      "sha256": "b7106ac43c4cb989e7d3d66571f8835de24b9454e3352090ecddb90fff0d17c2"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.2/check_source.py",
+      "bytes": 7105,
+      "sha256": "97c8a5dcdbbb8f51dee117b408557c2034fa46fff827e21e4af3a38dc4de5037"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.2/verify_glb.mjs",
+      "bytes": 5083,
+      "sha256": "8843501b092fc81e39b4c403a615002efa9ad024af8e3580fcff35cfcbd77734"
+    },
+    {
+      "path": "docs/adaptive-v3/specs/M14.2.md",
+      "bytes": 6005,
+      "sha256": "7b3ed56b0bbd31e32fc0ca0aa24f249f00117d69decf9b857d2013954bbf9ac7"
+    },
+    {
+      "path": "assets/v3/previews/forklift-body-wheels/front.png",
+      "bytes": 840328,
+      "sha256": "d89ba325bc074a63591b75c841f6888e2cc36bd7d59133c6823fc60c01354cda"
+    },
+    {
+      "path": "assets/v3/previews/forklift-body-wheels/side.png",
+      "bytes": 745876,
+      "sha256": "de18a65d088e294f78dbd03d1171c90c33f2c88660cb1e481d55bc5cd6a78b30"
+    },
+    {
+      "path": "assets/v3/previews/forklift-body-wheels/rear.png",
+      "bytes": 832865,
+      "sha256": "4b9dbe540809cdbb751121495aaaa5e757bdbbfbc9e6c6cf61fe203ef9cfd356"
+    },
+    {
+      "path": "assets/v3/previews/forklift-body-wheels/three-quarter.png",
+      "bytes": 915829,
+      "sha256": "67d65fb188356d6f496a94c998162d4b40c2390467440a8fd6a7a7ef5cfcf04f"
+    }
+  ],
+  "remaining": [
+    "Future separate cab/mast/reach/complete rig/action gates"
+  ],
+  "next": "M14.3 cab/seat/guard",
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "latest_coverage_generation": "2026-11-07T15:43:42Z",
+    "coverage": "relevant owned paths no recorded issue, but metadata_changed/not_tracked",
+    "fallback": "exact current builder/helper/source/spec reads, actual Blender evaluated solids and independent GLTFLoader; clean coverage is not a completeness claim",
+    "automatic_index_refresh_not_requested": true
+  }
+}

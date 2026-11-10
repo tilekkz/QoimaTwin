@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:proposal:handoff:source-labelled-input:v3:0.1.0",
+  "title": "Qoima v3 isolated proposal: source-labelled-input",
+  "$comment": "Proposal only. Offline semantic validation and exact referenced hashes are required; no canonical backend adoption.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": {
+      "const": "qoima.source-labelled-input.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "proposal"
+    },
+    "source_kind": {
+      "enum": [
+        "geometry_proposal",
+        "visual_fixture",
+        "analytical_fixture"
+      ]
+    },
+    "engine_operation": {
+      "const": false
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "layout_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "layout_content_hash": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+    },
+    "backend_integration_complete": {
+      "const": false
+    },
+    "payload_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "payload_schema_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frame_of_reference": {
+      "enum": [
+        "warehouse_world",
+        "asset_local"
+      ]
+    },
+    "metrics_scope": {
+      "enum": [
+        "none",
+        "expected_route_travel_proxy_seconds"
+      ]
+    },
+    "clock": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "none"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "absolute_visual_seconds"
+            },
+            "duration_s": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "duration_s"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "unclocked_planning_periods"
+            },
+            "horizon_periods": {
+              "enum": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "horizon_periods"
+          ]
+        }
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "status",
+    "source_kind",
+    "engine_operation",
+    "operational_admission",
+    "layout_ref",
+    "layout_content_hash",
+    "backend_integration_complete",
+    "payload_ref",
+    "payload_schema_id",
+    "frame_of_reference",
+    "metrics_scope",
+    "clock",
+    "scope"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source_kind": {
+            "const": "geometry_proposal"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "frame_of_reference": {
+            "const": "warehouse_world"
+          },
+          "payload_schema_id": {
+            "const": "qoima.layout-runtime.v3-proposal"
+          },
+          "metrics_scope": {
+            "const": "none"
+          },
+          "clock": {
+            "properties": {
+              "kind": {
+                "const": "none"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source_kind": {
+            "const": "visual_fixture"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "frame_of_reference": {
+            "const": "asset_local"
+          },
+          "payload_schema_id": {
+            "const": "qoima.visual-packer-seam-end.v3"
+          },
+          "metrics_scope": {
+            "const": "none"
+          },
+          "clock": {
+            "properties": {
+              "kind": {
+                "const": "absolute_visual_seconds"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source_kind": {
+            "const": "analytical_fixture"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "frame_of_reference": {
+            "const": "warehouse_world"
+          },
+          "payload_schema_id": {
+            "const": "qoima.adapted-assignment.v3-planning"
+          },
+          "metrics_scope": {
+            "const": "expected_route_travel_proxy_seconds"
+          },
+          "clock": {
+            "properties": {
+              "kind": {
+                "const": "unclocked_planning_periods"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

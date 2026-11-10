@@ -1,0 +1,51 @@
+{
+  "reviewed_on": "2026-11-07",
+  "reference_paths": [
+    "assets/references/v2/conveyor.png",
+    "assets/references/v2/order-tote.png",
+    "assets/references/v2/sealed-parcel.png"
+  ],
+  "initial_views_inspected": "All four views of all seven logistics assets.",
+  "refinement_views_inspected": {
+    "conveyor-diverter": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "order-tote": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "conveyor-high": [
+      "three-quarter"
+    ],
+    "conveyor-low": [
+      "three-quarter"
+    ],
+    "conveyor-corner": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ]
+  },
+  "static_geometry_status": "passed",
+  "closed_defects": [
+    "Replaced overlapping diverter decks and coplanar plate with one continuous T deck; visible triangular z-fighting is gone.",
+    "Raised steel channels into the yellow guide bases; no suspended rails remain.",
+    "Moved low conveyor brace to an actual leg pair; no floating brace remains.",
+    "Contained straight rollers and flush bolts within exact one-metre module footprint.",
+    "Replaced separate tote rim bars with one continuous chamfered ring and welded end panels; handles are real through-holes.",
+    "Replaced the curved corner with an orthogonal L transfer deck and central steel plate; the layout's unsmoothed right-angle path remains within the open guards."
+  ],
+  "lod_triangles": {
+    "conveyor_low": 96,
+    "tote_low": 28
+  },
+  "remaining_verification": [
+    "Final frozen production browser suite and screenshot evidence are recorded separately in docs/visual/BROWSER_QA.json."
+  ]
+}

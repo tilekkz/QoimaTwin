@@ -1,0 +1,1246 @@
+{
+  "schema_id": "qoima.desktop-animation-event-map.v1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "snapshot_only": true,
+  "registry_ref": {
+    "path": "frontend/public/data/v3/worker-registry-v3.json",
+    "sha256": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82"
+  },
+  "registry_clip_count": 16,
+  "registry_clips": [
+    {
+      "clip_id": "picker_idle",
+      "role": "picker",
+      "label": "Ожидание",
+      "asset_id": "worker-manual",
+      "fixture": null,
+      "mode": null,
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P03",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P03.json",
+        "sha256": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная поза; свободные руки.",
+      "fixture_actor_id": "P01",
+      "canonical_actor_id": "P01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "picker_walk",
+      "role": "picker",
+      "label": "Ведение тележки",
+      "asset_id": "picking-cart-tote-fixture",
+      "fixture": "walk",
+      "mode": null,
+      "duration_s": 9,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P03",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P03.json",
+        "sha256": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/picker-cart-walk.json",
+          "sha256": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2"
+        },
+        {
+          "path": "frontend/public/data/v3/picker-push-pose.json",
+          "sha256": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062"
+        }
+      ],
+      "prerequisites": "Существующая тележка и лоток; хват уже установлен.",
+      "fixture_actor_id": "P01",
+      "canonical_actor_id": "P01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "picker_pick",
+      "role": "picker",
+      "label": "Отбор SMALL в лоток",
+      "asset_id": "picker-pick-source-fixture",
+      "fixture": "pick",
+      "mode": null,
+      "duration_s": 36,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P03.5.3.3",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P03.5.3.3.json",
+        "sha256": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/models/v3/small-pick-v3.json",
+          "sha256": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-small-pick.glb",
+          "sha256": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0"
+        }
+      ],
+      "prerequisites": "Подготовленный ручной захват; исходные упаковки14/17/20/23 и лоток. Получение/укладка инструмента — отдельное действие.",
+      "fixture_actor_id": "P01",
+      "canonical_actor_id": "P01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "packer_finish",
+      "role": "packer",
+      "label": "Финальная проверка ленты",
+      "asset_id": "packer-workcell-fixture",
+      "fixture": "packer",
+      "mode": "pack",
+      "duration_s": 7.5,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P04",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P04.json",
+        "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/packer-seam-end.json",
+          "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "packer_idle",
+      "role": "packer",
+      "label": "Ожидание",
+      "asset_id": "packer-workcell-fixture",
+      "fixture": "packer",
+      "mode": "idle",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P04",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P04.json",
+        "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/packer-seam-end.json",
+          "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "packer_blocked",
+      "role": "packer",
+      "label": "Пост занят",
+      "asset_id": "packer-workcell-fixture",
+      "fixture": "packer",
+      "mode": "blocked",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P04",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P04.json",
+        "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/packer-seam-end.json",
+          "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+      "fixture_actor_id": "PK01",
+      "canonical_actor_id": "K01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_scan",
+      "role": "receiver",
+      "label": "Проверка этикетки",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "scan",
+      "duration_s": 2.5,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_receive",
+      "role": "receiver",
+      "label": "Подтверждение приёмки",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "receive",
+      "duration_s": 17.8,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_idle",
+      "role": "receiver",
+      "label": "Ожидание",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "idle",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "receiver_blocked",
+      "role": "receiver",
+      "label": "Пост занят",
+      "asset_id": "receiver-workcell-fixture",
+      "fixture": "receiver",
+      "mode": "blocked",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P05",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P05.json",
+        "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/receiver-v3.json",
+          "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+      "fixture_actor_id": "R01",
+      "canonical_actor_id": "R01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_scan",
+      "role": "shipper",
+      "label": "Проверка этикетки",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "scan",
+      "duration_s": 2.5,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_place",
+      "role": "shipper",
+      "label": "Укладка на выход",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "place",
+      "duration_s": 27,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_idle",
+      "role": "shipper",
+      "label": "Ожидание",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "idle",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "shipper_blocked",
+      "role": "shipper",
+      "label": "Выход занят",
+      "asset_id": "shipper-workcell-fixture",
+      "fixture": "shipper",
+      "mode": "blocked",
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P06",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P06.json",
+        "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/shipper-v3.json",
+          "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-manual.glb",
+          "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+        }
+      ],
+      "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+      "fixture_actor_id": "S01",
+      "canonical_actor_id": "S01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "driver_seated",
+      "role": "forklift_driver",
+      "label": "В кабине · ожидание",
+      "asset_id": "forklift",
+      "fixture": "driver",
+      "mode": null,
+      "duration_s": 0,
+      "clock_kind": "static_pose",
+      "accepted_task": "P07",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P07.json",
+        "sha256": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/seated-driver-pose.json",
+          "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+        },
+        {
+          "path": "frontend/public/models/v3/worker-base.glb",
+          "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+        }
+      ],
+      "prerequisites": "Посадка уже установлена; вход/выход из кабины — отдельные действия.",
+      "fixture_actor_id": "F01",
+      "canonical_actor_id": "F01",
+      "warehouse_joined": false
+    },
+    {
+      "clip_id": "driver_pickup",
+      "role": "forklift_driver",
+      "label": "Подхват и установка паллеты",
+      "asset_id": "forklift-pallet-low-fixture",
+      "fixture": "pickup",
+      "mode": null,
+      "duration_s": 30,
+      "clock_kind": "explanatory_visual_clock",
+      "accepted_task": "P07",
+      "proof": {
+        "path": "docs/adaptive-v3/evidence/P07.json",
+        "sha256": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249"
+      },
+      "sources": [
+        {
+          "path": "frontend/public/data/v3/pallet-pickup-cycle.json",
+          "sha256": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59"
+        },
+        {
+          "path": "frontend/public/data/v3/seated-driver-pose.json",
+          "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+        }
+      ],
+      "prerequisites": "Существующая техника, закреплённый водитель и подготовленная паллета; маршрут склада ещё не соединён с клипом.",
+      "fixture_actor_id": "F01",
+      "canonical_actor_id": "F01",
+      "warehouse_joined": false
+    }
+  ],
+  "preheld_episodes": [
+    {
+      "id": "original_hold",
+      "manifest_ref": {
+        "path": "frontend/public/data/v3/motion-review/manifest.json",
+        "sha256": "5026e1e8aa9c4d01fec299ffd8d013fc9e5fc172859324503dff41e5ac600611"
+      },
+      "duration_s": 28.470000000000006,
+      "carry_pose": "original_hold",
+      "worker_model_path": "frontend/public/models/v3/worker-base.glb",
+      "preheld": true,
+      "source_pickup_executed": false,
+      "operational_completion_event": null,
+      "breathing": false
+    },
+    {
+      "id": "LONG",
+      "manifest_ref": {
+        "path": "frontend/public/data/v3/long-motion/manifest.json",
+        "sha256": "39176414cccaa5a496482bb9e757451dfd594f15ba87afe4ee9673e17dd0e70c"
+      },
+      "duration_s": 10,
+      "assets": {
+        "model": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+        "worker": "frontend/public/models/v3/worker-base.glb",
+        "forklift": "frontend/public/models/v3/forklift.glb",
+        "registry": "frontend/public/data/v3/worker-registry-v3.json",
+        "profiles": "frontend/public/data/v3/worker-profiles-v3.json",
+        "pose": "frontend/public/data/v3/seated-driver-pose.json",
+        "spec": "assets/v3/specs/forklift.dimensions.json",
+        "shell": "frontend/public/models/v3/environment-shell.glb",
+        "apron": "work/v3/long-approach-floor/optional-long-approach-floor.glb"
+      },
+      "preheld": true,
+      "source_pickup_executed": false,
+      "operational_completion_event": null
+    }
+  ],
+  "Twin": {
+    "scenario_ref": {
+      "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+      "sha256": "2fa7ee7b96004f679502376b01442bc7a6dec088411bb5f86a4dbf6bd2dedacd"
+    },
+    "page_ref": {
+      "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+      "sha256": "7d22fcd5c39ced0f44fab07f9ddf89f20a74ee168ece32d15d9cd3945fb3d0ca"
+    },
+    "duration_s": 240,
+    "events": {
+      "A": [
+        {
+          "at_s": 30,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK03",
+          "cause": "Очередь на ветку PK03 растёт",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 58,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "sos",
+          "resource_id": "PK03",
+          "cause": "PK03 недоступен, буфер его ветки заполнен",
+          "sfx_cue": "sos"
+        },
+        {
+          "at_s": 72,
+          "zone_id": "STANDARD_E",
+          "state": "danger",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Обратное давление: отбор ждёт свободную ячейку ветки",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 86,
+          "zone_id": "SMALL_E",
+          "state": "danger",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Обратное давление: отбор ждёт свободную ячейку ветки",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 110,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "danger",
+          "resource_id": "OUT_S_EXPRESS",
+          "cause": "Отказ: LONG_BUNDLE не допускается в ворота OUT_S_EXPRESS, там разрешены только SMALL и STANDARD",
+          "sfx_cue": "refuse"
+        },
+        {
+          "at_s": 124,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "control",
+          "resource_id": "OUT_E_B2B",
+          "cause": "Длинномер направлен в допустимые ворота OUT_E_B2B",
+          "sfx_cue": "control"
+        },
+        {
+          "at_s": 150,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK03",
+          "cause": "PK03 снова работает, очередь уходит",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 166,
+          "zone_id": "STANDARD_E",
+          "state": "control",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка снова принимает передачи",
+          "sfx_cue": "control"
+        },
+        {
+          "at_s": 176,
+          "zone_id": "SMALL_E",
+          "state": "control",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка снова принимает передачи",
+          "sfx_cue": "control"
+        },
+        {
+          "at_s": 200,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "control",
+          "resource_id": "PK03",
+          "cause": "Очередь ниже нижнего порога и держится",
+          "sfx_cue": "control"
+        }
+      ],
+      "B": [
+        {
+          "at_s": 30,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK03",
+          "cause": "Очередь на ветку PK03 растёт",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 46,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK05",
+          "cause": "Поток ветки PK03 переведён на свободный PK05",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 60,
+          "zone_id": "STANDARD_E",
+          "state": "danger",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка почти полна, отбор ждёт",
+          "sfx_cue": "danger"
+        },
+        {
+          "at_s": 88,
+          "zone_id": "STANDARD_E",
+          "state": "control",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка разгружается",
+          "sfx_cue": "control"
+        },
+        {
+          "at_s": 104,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "control",
+          "resource_id": "PK05",
+          "cause": "Очередь ниже нижнего порога и держится",
+          "sfx_cue": "control"
+        },
+        {
+          "at_s": 110,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "danger",
+          "resource_id": "OUT_S_EXPRESS",
+          "cause": "Отказ: LONG_BUNDLE не допускается в ворота OUT_S_EXPRESS, там разрешены только SMALL и STANDARD",
+          "sfx_cue": "refuse"
+        },
+        {
+          "at_s": 124,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "control",
+          "resource_id": "OUT_E_B2B",
+          "cause": "Длинномер направлен в допустимые ворота OUT_E_B2B",
+          "sfx_cue": "control"
+        }
+      ]
+    },
+    "cue_notes": {
+      "danger": [
+        [
+          660,
+          0,
+          "sine"
+        ]
+      ],
+      "sos": [
+        [
+          440,
+          0,
+          "triangle"
+        ],
+        [
+          370,
+          0.2,
+          "triangle"
+        ]
+      ],
+      "control": [
+        [
+          523,
+          0,
+          "sine"
+        ],
+        [
+          784,
+          0.14,
+          "sine"
+        ]
+      ],
+      "refuse": [
+        [
+          196,
+          0,
+          "triangle"
+        ]
+      ]
+    },
+    "audio_policy": {
+      "user_gesture_required": true,
+      "default_muted": true,
+      "maximum_voices": 4,
+      "per_kind_wall_cooldown_s": 0.9,
+      "only_forward_playback_crossings": true,
+      "manual_seek_reset_pause_cancel_queued_voices": true,
+      "hidden_and_pagehide_cleanup": true
+    },
+    "VFX": {
+      "source": "frontend/src/adaptive-v3/twin/twinRender.ts",
+      "effects_modes": [
+        "full",
+        "calm",
+        "off"
+      ],
+      "reduced_motion": "Source suppresses animated pulse modulation and bubble entrance; semantic state remains visible."
+    },
+    "operating_events_or_engine_KPIs": false
+  },
+  "source_timeline_markers": [
+    {
+      "source_path": "frontend/public/data/v3/picker-cart-walk.json",
+      "sha256": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2",
+      "source_duration_s": 9,
+      "kind": "Source keyframe markers; not operational events",
+      "rows": [
+        {
+          "source_json_pointer": "/keys/0",
+          "t": 0,
+          "label": "Обе стопы на полу"
+        },
+        {
+          "source_json_pointer": "/keys/1",
+          "t": 0.5,
+          "label": "Подготовка к движению"
+        },
+        {
+          "source_json_pointer": "/keys/2",
+          "t": 1,
+          "label": "Начало движения"
+        },
+        {
+          "source_json_pointer": "/keys/3",
+          "t": 1.5,
+          "label": "Левый шаг"
+        },
+        {
+          "source_json_pointer": "/keys/4",
+          "t": 2,
+          "label": "Левая стопа на полу"
+        },
+        {
+          "source_json_pointer": "/keys/5",
+          "t": 2.5,
+          "label": "Правый шаг"
+        },
+        {
+          "source_json_pointer": "/keys/6",
+          "t": 3,
+          "label": "Правая стопа на полу"
+        },
+        {
+          "source_json_pointer": "/keys/7",
+          "t": 3.5,
+          "label": "Левый шаг"
+        },
+        {
+          "source_json_pointer": "/keys/8",
+          "t": 4,
+          "label": "Левая стопа на полу"
+        },
+        {
+          "source_json_pointer": "/keys/9",
+          "t": 4.5,
+          "label": "Правый шаг"
+        },
+        {
+          "source_json_pointer": "/keys/10",
+          "t": 5,
+          "label": "Правая стопа на полу"
+        },
+        {
+          "source_json_pointer": "/keys/11",
+          "t": 5.5,
+          "label": "Левый шаг"
+        },
+        {
+          "source_json_pointer": "/keys/12",
+          "t": 6,
+          "label": "Левая стопа на полу"
+        },
+        {
+          "source_json_pointer": "/keys/13",
+          "t": 6.5,
+          "label": "Правый шаг"
+        },
+        {
+          "source_json_pointer": "/keys/14",
+          "t": 7,
+          "label": "Правая стопа на полу"
+        },
+        {
+          "source_json_pointer": "/keys/15",
+          "t": 7.5,
+          "label": "Остановка и приставной шаг"
+        },
+        {
+          "source_json_pointer": "/keys/16",
+          "t": 8,
+          "label": "Тележка остановлена"
+        },
+        {
+          "source_json_pointer": "/keys/17",
+          "t": 8.5,
+          "label": "Возврат в стойку"
+        },
+        {
+          "source_json_pointer": "/keys/18",
+          "t": 9,
+          "label": "Готово"
+        }
+      ]
+    },
+    {
+      "source_path": "frontend/public/models/v3/small-pick-v3.json",
+      "sha256": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+      "source_duration_s": 36,
+      "kind": "Source keyframe markers; not operational events",
+      "rows": [
+        {
+          "source_json_pointer": "/keys/0",
+          "t": 0,
+          "label": "Подвод закрытого инструмента"
+        },
+        {
+          "source_json_pointer": "/keys/1",
+          "t": 1.2,
+          "label": "Раскрытие над упаковками"
+        },
+        {
+          "source_json_pointer": "/keys/2",
+          "t": 2,
+          "label": "Вход в коробку"
+        },
+        {
+          "source_json_pointer": "/keys/3",
+          "t": 3,
+          "label": "Закрытие губок"
+        },
+        {
+          "source_json_pointer": "/keys/4",
+          "t": 4,
+          "label": "Извлечение двух упаковок"
+        },
+        {
+          "source_json_pointer": "/keys/5",
+          "t": 5.2,
+          "label": "Подъём над стенками"
+        },
+        {
+          "source_json_pointer": "/keys/6",
+          "t": 6.4,
+          "label": "Отход от стеллажа"
+        },
+        {
+          "source_json_pointer": "/keys/7",
+          "t": 14.4,
+          "label": "Выход из коробки завершён"
+        },
+        {
+          "source_json_pointer": "/keys/8",
+          "t": 15.6,
+          "label": "Боковые шаги к лотку"
+        },
+        {
+          "source_json_pointer": "/keys/9",
+          "t": 31.6,
+          "label": "Подвод к лотку"
+        },
+        {
+          "source_json_pointer": "/keys/10",
+          "t": 33,
+          "label": "Выпуск упаковок"
+        },
+        {
+          "source_json_pointer": "/keys/11",
+          "t": 34,
+          "label": "Проверка лотка"
+        },
+        {
+          "source_json_pointer": "/keys/12",
+          "t": 34.8,
+          "label": "Отвод инструмента"
+        },
+        {
+          "source_json_pointer": "/keys/13",
+          "t": 36,
+          "label": "Перенос завершён"
+        }
+      ]
+    },
+    {
+      "source_path": "frontend/public/data/v3/packer-seam-end.json",
+      "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b",
+      "source_duration_s": 7.5,
+      "kind": "Source keyframe markers; not operational events",
+      "rows": [
+        {
+          "source_json_pointer": "/keys/0",
+          "t": 0,
+          "label": "Ожидание"
+        },
+        {
+          "source_json_pointer": "/keys/1",
+          "t": 0.7,
+          "label": "Подвод к опоре"
+        },
+        {
+          "source_json_pointer": "/keys/2",
+          "t": 1.1,
+          "label": "Кисть на кромке стола"
+        },
+        {
+          "source_json_pointer": "/keys/3",
+          "t": 1.5,
+          "label": "Подготовка кисти"
+        },
+        {
+          "source_json_pointer": "/keys/4",
+          "t": 2.1,
+          "label": "Подвод к ленте"
+        },
+        {
+          "source_json_pointer": "/keys/5",
+          "t": 2.7,
+          "label": "Прижим края ленты"
+        },
+        {
+          "source_json_pointer": "/keys/6",
+          "t": 3.7,
+          "label": "Край ленты прижат"
+        },
+        {
+          "source_json_pointer": "/keys/7",
+          "t": 4.3,
+          "label": "Освобождение посылки"
+        },
+        {
+          "source_json_pointer": "/keys/8",
+          "t": 4.9,
+          "label": "Проверка упаковки"
+        },
+        {
+          "source_json_pointer": "/keys/9",
+          "t": 5.5,
+          "label": "Возврат кисти"
+        },
+        {
+          "source_json_pointer": "/keys/10",
+          "t": 6.1,
+          "label": "Возврат руки"
+        },
+        {
+          "source_json_pointer": "/keys/11",
+          "t": 6.7,
+          "label": "Возврат от опоры"
+        },
+        {
+          "source_json_pointer": "/keys/12",
+          "t": 7.1,
+          "label": "Ожидание следующей посылки"
+        },
+        {
+          "source_json_pointer": "/keys/13",
+          "t": 7.5,
+          "label": "Проверка завершена"
+        }
+      ]
+    },
+    {
+      "source_path": "frontend/public/data/v3/receiver-v3.json",
+      "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9",
+      "source_duration_s": 17.8,
+      "kind": "Source keyframe markers; not operational events",
+      "rows": [
+        {
+          "source_json_pointer": "/keys/0",
+          "t": 0,
+          "label": "Ожидание паллеты"
+        },
+        {
+          "source_json_pointer": "/keys/1",
+          "t": 1.4,
+          "label": "Сканирование этикетки"
+        },
+        {
+          "source_json_pointer": "/keys/2",
+          "t": 2.2,
+          "label": "Этикетка проверена"
+        },
+        {
+          "source_json_pointer": "/keys/3",
+          "t": 4.6,
+          "label": "Подвод к терминалу"
+        },
+        {
+          "source_json_pointer": "/keys/4",
+          "t": 5.800000000000001,
+          "label": "Подтверждение приёмки"
+        },
+        {
+          "source_json_pointer": "/keys/5",
+          "t": 7,
+          "label": "Нажатие подтверждения"
+        },
+        {
+          "source_json_pointer": "/keys/6",
+          "t": 9,
+          "label": "Паллета принята"
+        },
+        {
+          "source_json_pointer": "/keys/7",
+          "t": 10.2,
+          "label": "Возврат руки"
+        },
+        {
+          "source_json_pointer": "/keys/8",
+          "t": 11.4,
+          "label": "Возврат руки"
+        },
+        {
+          "source_json_pointer": "/keys/9",
+          "t": 12.6,
+          "label": "Возврат в ожидание"
+        },
+        {
+          "source_json_pointer": "/keys/10",
+          "t": 14.999999999999998,
+          "label": "Проверка паллеты"
+        },
+        {
+          "source_json_pointer": "/keys/11",
+          "t": 16.2,
+          "label": "Проверка завершена"
+        },
+        {
+          "source_json_pointer": "/keys/12",
+          "t": 17,
+          "label": "Приёмка завершена"
+        },
+        {
+          "source_json_pointer": "/keys/13",
+          "t": 17.8,
+          "label": "Готово"
+        }
+      ]
+    },
+    {
+      "source_path": "frontend/public/data/v3/shipper-v3.json",
+      "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32",
+      "source_duration_s": 27,
+      "kind": "Source keyframe markers; not operational events",
+      "rows": [
+        {
+          "source_json_pointer": "/keys/0",
+          "t": 0,
+          "label": "Ожидание посылки"
+        },
+        {
+          "source_json_pointer": "/keys/1",
+          "t": 1.4,
+          "label": "Проверка этикетки"
+        },
+        {
+          "source_json_pointer": "/keys/2",
+          "t": 2.2,
+          "label": "Этикетка проверена"
+        },
+        {
+          "source_json_pointer": "/keys/3",
+          "t": 3,
+          "label": "Подвод руки"
+        },
+        {
+          "source_json_pointer": "/keys/4",
+          "t": 4.2,
+          "label": "Подвод к посылке"
+        },
+        {
+          "source_json_pointer": "/keys/5",
+          "t": 5.4,
+          "label": "Укладка на выход"
+        },
+        {
+          "source_json_pointer": "/keys/6",
+          "t": 13.4,
+          "label": "Посылка установлена"
+        },
+        {
+          "source_json_pointer": "/keys/7",
+          "t": 14.6,
+          "label": "Возврат руки"
+        },
+        {
+          "source_json_pointer": "/keys/8",
+          "t": 15.8,
+          "label": "Возврат руки"
+        },
+        {
+          "source_json_pointer": "/keys/9",
+          "t": 17,
+          "label": "Отход от ленты"
+        },
+        {
+          "source_json_pointer": "/keys/10",
+          "t": 24.2,
+          "label": "Возврат в ожидание"
+        },
+        {
+          "source_json_pointer": "/keys/11",
+          "t": 25.4,
+          "label": "Проверка завершена"
+        },
+        {
+          "source_json_pointer": "/keys/12",
+          "t": 26.2,
+          "label": "Отгрузка подготовлена"
+        },
+        {
+          "source_json_pointer": "/keys/13",
+          "t": 27,
+          "label": "Готово"
+        }
+      ]
+    },
+    {
+      "source_path": "frontend/public/data/v3/pallet-pickup-cycle.json",
+      "sha256": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59",
+      "source_duration_s": 30,
+      "kind": "Source keyframe markers; not operational events",
+      "rows": [
+        {
+          "source_json_pointer": "/keys/0",
+          "t": 0,
+          "phase": "extend_high",
+          "label": "Выдвижение перед подхватом",
+          "attached": false
+        },
+        {
+          "source_json_pointer": "/keys/1",
+          "t": 2,
+          "phase": "lower_extended",
+          "label": "Опускание пустых вил",
+          "attached": false
+        },
+        {
+          "source_json_pointer": "/keys/2",
+          "t": 4,
+          "phase": "controlled_insert",
+          "label": "Ввод вил под паллету",
+          "attached": false
+        },
+        {
+          "source_json_pointer": "/keys/3",
+          "t": 8,
+          "phase": "lift_loaded",
+          "label": "Подхват и подъём",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/4",
+          "t": 10,
+          "phase": "retract_loaded",
+          "label": "Возврат каретки с грузом",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/5",
+          "t": 12,
+          "phase": "travel_reverse",
+          "label": "Отъезд с грузом",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/6",
+          "t": 14,
+          "phase": "loaded_hold",
+          "label": "Груз в транспортном положении",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/7",
+          "t": 16,
+          "phase": "travel_approach",
+          "label": "Возврат к платформе",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/8",
+          "t": 18,
+          "phase": "extend_loaded",
+          "label": "Выдвижение над платформой",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/9",
+          "t": 20,
+          "phase": "set_down",
+          "label": "Установка на опору",
+          "attached": true
+        },
+        {
+          "source_json_pointer": "/keys/10",
+          "t": 22,
+          "phase": "controlled_withdraw",
+          "label": "Выход вил из-под паллеты",
+          "attached": false
+        },
+        {
+          "source_json_pointer": "/keys/11",
+          "t": 26,
+          "phase": "raise_empty",
+          "label": "Подъём после выхода",
+          "attached": false
+        },
+        {
+          "source_json_pointer": "/keys/12",
+          "t": 28,
+          "phase": "retract_empty",
+          "label": "Возврат пустой каретки",
+          "attached": false
+        },
+        {
+          "source_json_pointer": "/keys/13",
+          "t": 30,
+          "phase": "complete",
+          "label": "Паллета установлена",
+          "attached": false
+        }
+      ]
+    }
+  ]
+}

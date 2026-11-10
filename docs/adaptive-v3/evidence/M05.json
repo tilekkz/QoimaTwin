@@ -1,0 +1,257 @@
+{
+  "task_id": "M05",
+  "owner": "rack_crate",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T13:48:17.970211+00:00",
+  "scope": "One empty FLEX module only; root final browser/Khronos gate.",
+  "artifacts": {
+    "builder": {
+      "path": "tools/blender/v3/build_flex_bay.py",
+      "bytes": 7908,
+      "sha256": "431671f89f0e9ef57a042ec82cef17ccf95e27a28bbdade37fe04dc7a323d452"
+    },
+    "dimension_plan": {
+      "path": "assets/v3/specs/flex-bay.dimensions.json",
+      "bytes": 10513,
+      "sha256": "0b93f1612f93b705dc5b04bbcc9a7be39ef85af105b1a3535f738514474ea643"
+    },
+    "source": {
+      "path": "assets/v3/blender/flex-bay.blend",
+      "bytes": 105321,
+      "sha256": "35539fda2f2a26121e7276b87c9a7cd4099f1fda65b004b073463022c11b897c"
+    },
+    "stats": {
+      "path": "assets/v3/blender/flex-bay.stats.json",
+      "bytes": 8487,
+      "sha256": "8b9c122962e3f7b6be4368b99fd2128fea2e02438609b950c03e2c287072fa42"
+    },
+    "GLB": {
+      "path": "frontend/public/models/v3/flex-bay.glb",
+      "bytes": 47820,
+      "sha256": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a"
+    },
+    "source_inspector": {
+      "path": "assets/v3/iterations/flex-bay/inspect_source.py",
+      "bytes": 10007,
+      "sha256": "f0d7905cf93d962df2b08c955ab50191f9e99d776927fa3309826c3ebc9e5a9d"
+    },
+    "source_checks": {
+      "path": "assets/v3/iterations/flex-bay/candidate/geometry-checks.json",
+      "bytes": 3978,
+      "sha256": "a066efa150ff9ddb4c906feb91f2892cfa6b74813312ecbb21d9bc394245a739"
+    },
+    "BIN_inspector": {
+      "path": "assets/v3/iterations/flex-bay/verify_glb.py",
+      "bytes": 10299,
+      "sha256": "70cad46c027d713eece8fbe3f18bcdcc617a3258dbfa150514a7d1ed11dd9fec"
+    },
+    "BIN_checks": {
+      "path": "assets/v3/iterations/flex-bay/candidate/binary-checks.json",
+      "bytes": 2360,
+      "sha256": "25f4a810744da48b584e1c88dcb77cc35ebc411a35ba5f47360061560ff2a994"
+    },
+    "preview_provenance": {
+      "path": "assets/v3/previews/flex-bay/provenance.json",
+      "bytes": 3761,
+      "sha256": "e70e7d9985144e7a2f7da0eb675cf031eaf140efc79b72000ea8dbde8379cc8a"
+    }
+  },
+  "reference": {
+    "path": "assets/references/v3/r13-5-flex-bay.png",
+    "bytes": 1363160,
+    "sha256": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66"
+  },
+  "source_contract": {
+    "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+    "bytes": 3541951,
+    "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681"
+  },
+  "pregeometry_plan_root_response": "Approved15parts/3mats, rear-corner notches outside usable,2rear posts+8ground supports, one anchor. Hidden opposite base/deck contact allowed; exposed coplanar overlap forbidden.",
+  "dimension_plan_is_original_prebuild_checkpoint": true,
+  "summary": {
+    "source_parts": 15,
+    "runtime_meshes": 3,
+    "triangles": 740,
+    "materials": [
+      "FLEX | charcoal",
+      "FLEX | petrol",
+      "FLEX | tan"
+    ],
+    "GLB_bytes": 47820,
+    "GLB_sha256": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "actual_BIN_dimensions_xyz_m": [
+      1.6000000908970833,
+      0.8499999940395355,
+      1.2000000476837158
+    ],
+    "anchor": {
+      "anchor_bin_L1_B1": [
+        0.0,
+        0.18000000715255737,
+        0.05000000074505806
+      ]
+    },
+    "maximum_anchor_error_m": 7.152557379708213e-09,
+    "guaranteed_usable_xyz_m": [
+      1.4,
+      0.6,
+      1.0
+    ],
+    "support_y_m": 0.18,
+    "source_checks": 875,
+    "source_failures": 0,
+    "closed_positive_volume_parts": 15,
+    "actual_contact_ground_connected_parts": 15,
+    "grounded_supports": 8,
+    "source_clear_segments": 363,
+    "source_exact_floor_rays": 441,
+    "BIN_clear_segments": 363,
+    "BIN_exact_floor_rays": 441,
+    "maximum_BIN_floor_error_m": 7.152557407463789e-09,
+    "same_facing_axis_aligned_coplanar_triangle_pairs": 552,
+    "maximum_exposed_planar_overlap_area_m2": 0
+  },
+  "actual_source_view_review": {
+    "front": "One broad tan support deck, connected petrol base with four low front feet, exactly two rear charcoal uprights and contained petrol caps/boots; upper rear tie stays behind usable volume. No front upright or stock.",
+    "side": "Deck has tangible .04 thickness and depth, rear corner notch meets the rear boot without coplanar face overlay; far rear upright is normally occluded. Front/side access remains open.",
+    "rear": "Both rear posts, tie, contained lower boots and grounded back support row are complete. Rear-corner notches preserve clean material joins and full usable floor.",
+    "three_quarter": "Empty broad top, groundbase/feet and two rear posts form a connected boxy module. Matte charcoal/petrol/tan, small bevels and stepped collars follow R13.5. No floating join, painted cavity, extra bin, fence or side rail observed."
+  },
+  "views": [
+    {
+      "path": "assets/v3/previews/flex-bay/front.png",
+      "bytes": 717428,
+      "sha256": "601697a1e63faecccc7c4043461ab12a18af4c57ab68187f5a869e208aee9999",
+      "view": "front",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/flex-bay/initial/views/front.png",
+        "bytes": 717428,
+        "sha256": "601697a1e63faecccc7c4043461ab12a18af4c57ab68187f5a869e208aee9999"
+      },
+      "byte_identical": true,
+      "source_PNG_actually_opened_with_R13_5": true,
+      "capture_mtime_utc": "2026-11-07T13:41:38.392708+00:00"
+    },
+    {
+      "path": "assets/v3/previews/flex-bay/side.png",
+      "bytes": 724564,
+      "sha256": "49c1fa8b2804755687b1f1f9c13a3f2b824a2e640e6641ddcea31bfdd95bcc7c",
+      "view": "side",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/flex-bay/initial/views/side.png",
+        "bytes": 724564,
+        "sha256": "49c1fa8b2804755687b1f1f9c13a3f2b824a2e640e6641ddcea31bfdd95bcc7c"
+      },
+      "byte_identical": true,
+      "source_PNG_actually_opened_with_R13_5": true,
+      "capture_mtime_utc": "2026-11-07T13:41:38.530211+00:00"
+    },
+    {
+      "path": "assets/v3/previews/flex-bay/rear.png",
+      "bytes": 713061,
+      "sha256": "a1b654948c4e40025fda7323ee61be824e27c6e1b9e5409f4ffe2bcc20709bbe",
+      "view": "rear",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/flex-bay/initial/views/rear.png",
+        "bytes": 713061,
+        "sha256": "a1b654948c4e40025fda7323ee61be824e27c6e1b9e5409f4ffe2bcc20709bbe"
+      },
+      "byte_identical": true,
+      "source_PNG_actually_opened_with_R13_5": true,
+      "capture_mtime_utc": "2026-11-07T13:41:38.658148+00:00"
+    },
+    {
+      "path": "assets/v3/previews/flex-bay/three-quarter.png",
+      "bytes": 889758,
+      "sha256": "f6ab93f8ed491d56fe73dd1aaff31e593cb6be8401ae204a71a104e25dd8d80a",
+      "view": "three-quarter",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/flex-bay/initial/views/three-quarter.png",
+        "bytes": 889758,
+        "sha256": "f6ab93f8ed491d56fe73dd1aaff31e593cb6be8401ae204a71a104e25dd8d80a"
+      },
+      "byte_identical": true,
+      "source_PNG_actually_opened_with_R13_5": true,
+      "capture_mtime_utc": "2026-11-07T13:41:38.801454+00:00"
+    }
+  ],
+  "quality_loop": {
+    "initial_four_views_actually_opened": true,
+    "significant_material_defects_found": [],
+    "mesh_refinement_required": false,
+    "numeric_checks_completed_before_export": true,
+    "initial_source_builder_plan_and_PNGs_preserved": true,
+    "metadata_only_candidate_export_reopened_source_equivalent": true,
+    "BIN_source_triangle_multisets_match_per_material": true
+  },
+  "interpretation": [
+    "Exactly two rear post envelopes retained; six low feet plus two rear boots are eight ground supports, not front uprights.",
+    "Full .04m tan deckY.14.. .18 supports the complete C04 usable floor atY.18, zero hover. Rear notches are behind usefulZmin-.45.",
+    "PetrolbaseY.06.. .14 and deck share only a normal hidden opposite-facing contact interface. Axis-aligned same-facing plane-overlap check is0; bevel transitions additionally reviewed in all4source views.",
+    "The one usable volume is open headroom, not an enclosing solid cage or new stock/address."
+  ],
+  "commands": {
+    "source": "Blender --background --factory-startup --threads 2 --python-exit-code 1 --python tools/blender/v3/run_build.py -- build_flex_bay",
+    "source4views": "Blender background source --threads 2 --python-exit-code 1 --python tools/blender/v3/render_asset.py -- flex-bay --out <absolute initial/views>",
+    "candidate": "same runner: build_flex_bay --snapshot candidate --export",
+    "source_geometry": "Blender background source --threads 2 --python-exit-code 1 --python assets/v3/iterations/flex-bay/inspect_source.py -- --out <absolute candidate/geometry-checks.json>",
+    "independent_BIN_PowerShell": "& 'C:/Program Files/Blender Foundation/Blender 5.0/5.0/python/bin/python.exe' assets/v3/iterations/flex-bay/verify_glb.py",
+    "independent_BIN_environment": "Bundled Python with NumPy1.26.4, no bpy; system/repo.venv NumPy not required or installed.",
+    "all_exit_codes": 0
+  },
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-07T13:18:32Z",
+    "coverage": "Builder/plan missing before authoring; M05/common/C04 metadata_changed, new R13.5 inputs not_tracked; current exact-source/image fallback and authored checker reads used. No reindex."
+  },
+  "root_browser_Khronos_gate": "pending root actual checks and PASS; creator launched no browser/live Blender",
+  "limits": [
+    "No inventory, cargo, warehouse assembly, forklift admission, handler availability or physical load rating.",
+    "Usable/support geometry does not certify actual grips or operational actions.",
+    "No shared helpers/contracts/references/stand/frontend implementation changed."
+  ],
+  "model_review": {
+    "path": "docs/adaptive-v3/models/M05.md",
+    "bytes": 4367,
+    "sha256": "a2b35aeec41c624a898b88eaea0abbcd741519fb4b7069a0a306ebfd2213c9f7"
+  },
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T13:52:09.194010+00:00",
+    "actual_source_views_opened": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "actual_browser_views_opened": [
+      "front",
+      "side",
+      "rear",
+      "quarter"
+    ],
+    "browser_errors": 0,
+    "failed_resources": 0,
+    "Khronos_errors": 0,
+    "Khronos_warnings": 0,
+    "BIN_checker_reexecuted_with": "Blender5bundledPython/NumPy",
+    "review": "Actualsource4/browser4 show consistent two rearposts, broad continuous tan deck, connected low petrolbase and8groundsupports, openfront/sides and containedcollars. No floating seam/coplar clash, sourceR13.5style/metricprecedence retained. Source875checks and actualBIN363interior/441support/anchor/normals accepted; noinventory oractionclaim."
+  }
+}

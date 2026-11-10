@@ -1,0 +1,341 @@
+{
+  "task_id": "M06.2",
+  "executor": "warehouse_props",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T15:39:42.636019+00:00",
+  "asset_id": "standard-carton",
+  "namespace": "v3",
+  "reference": {
+    "reference_id": "M06.2_REF",
+    "root_reference_acceptance": "PASS",
+    "root_evidence_path": "docs/adaptive-v3/evidence/M06.2-reference.json",
+    "artifact": {
+      "path": "assets/references/v3/m06-2-standard-carton.png",
+      "bytes": 1636359,
+      "sha256": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4"
+    },
+    "provenance_path": "assets/references/v3/provenance/m06-2-standard-carton.json",
+    "actual_final_prompt_path": "assets/references/v3/prompts/m06-2-standard-carton.txt",
+    "targets_path": "assets/references/v3/m06-2-standard-carton.targets.json",
+    "before_geometry": true,
+    "model_or_render_input": false,
+    "correction_history": "Removed initial cross-tape, then root-identified wrong right-side roof projection; final horizontal side-roof projection actually inspected/accepted before geometry."
+  },
+  "root_plan_approval": "FixedHU .60x.40x.30/.004wall/.0005containedtape/twoflushmajor+underflaps/11.5mmadditionalpackingclearance; all24C02AABBs unchanged.",
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-07T13:18:32Z",
+    "coverage_calls": 1,
+    "freshness": "futurebuilder/specmissing;currentinputschanged/untracked/rasterexcluded",
+    "fallback": "exact current source and actual PNG/artifact inspection; no index refresh"
+  },
+  "source_bindings": [
+    {
+      "path": "assets/references/v3/m06-2-standard-carton.png",
+      "sha256": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4"
+    },
+    {
+      "path": "assets/references/v3/m06-2-standard-carton.targets.json",
+      "sha256": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e"
+    },
+    {
+      "path": "assets/references/v3/prompts/m06-2-standard-carton.txt",
+      "sha256": "9e50ccafb2876aa7ee07d14b6053ac6439355e193fb2208417e9cc1e4f4c33b2"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "tools/blender/v3/build_standard_carton.py",
+      "bytes": 15232,
+      "sha256": "0323731c0220be85912342b0e9f47bf97bf439a0acb7133777baf3e88003392f"
+    },
+    {
+      "path": "assets/v3/specs/standard-carton.dimensions.json",
+      "bytes": 2557,
+      "sha256": "3f68268c72113f4732e2719e9ac8fac7f81712675f43f9791786918ef6b73482"
+    },
+    {
+      "path": "assets/v3/blender/standard-carton.blend",
+      "bytes": 107183,
+      "sha256": "7631ec8aad2fde4e60bf1ac0c09f81065977692484366eee3d5123238b84d0d5"
+    },
+    {
+      "path": "assets/v3/blender/standard-carton.stats.json",
+      "bytes": 10850,
+      "sha256": "dc13450c449bd66fb812268730ca1001941f59edf67fba32deda7761275b2c70"
+    },
+    {
+      "path": "frontend/public/models/v3/standard-carton.glb",
+      "bytes": 50416,
+      "sha256": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721"
+    },
+    {
+      "path": "docs/adaptive-v3/models/M06.2.md",
+      "bytes": 5512,
+      "sha256": "2dec8532c32a521cfaf31e09c08f05960128bd10452d7ce7103d054e2cf655d7"
+    },
+    {
+      "path": "assets/v3/previews/standard-carton/front.png",
+      "bytes": 1065043,
+      "sha256": "76a6ae20cc2d1e1e5edcf6b59c27806c00a90686ad0d3ce72fe199631f8cd7b0"
+    },
+    {
+      "path": "assets/v3/previews/standard-carton/side.png",
+      "bytes": 1121654,
+      "sha256": "1135631ca4dc950913fe2bc54de7b0756a05a8753f426d7b7b9e8dab3d76ff09"
+    },
+    {
+      "path": "assets/v3/previews/standard-carton/rear.png",
+      "bytes": 1037054,
+      "sha256": "c8f14d4fcbef71a2c6a3d6a0cb8508f551903ee8e9f7927ea14c33a76beac53b"
+    },
+    {
+      "path": "assets/v3/previews/standard-carton/three-quarter.png",
+      "bytes": 1135337,
+      "sha256": "477d2617d6bb3a7375aaf32e7a847a16d859a3d648972759f69896feac9cfe11"
+    },
+    {
+      "path": "assets/v3/previews/standard-carton/four-views.png",
+      "bytes": 1882823,
+      "sha256": "d6d3d7343d0d274c079338d9aa8b5c41476f9c3fc57024164c7b09e7d5ba04f4"
+    }
+  ],
+  "actual_stats": {
+    "bounds_runtime": {
+      "min": [
+        -0.30000001192092896,
+        0.0,
+        -0.15000000596046448
+      ],
+      "max": [
+        0.30000001192092896,
+        0.4000000059604645,
+        0.14999999105930328
+      ]
+    },
+    "dimensions_m": [
+      0.6000000238418579,
+      0.4000000059604645,
+      0.29999999701976776
+    ],
+    "triangles": 796,
+    "source_meshes": 19,
+    "runtime_meshes": 4,
+    "glb_bytes": 50416,
+    "sha256": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "anchors": {
+      "anchor_hand_grip_left": [
+        -0.30000001192092896,
+        0.20000000298023224,
+        -0.0
+      ],
+      "anchor_hand_grip_right": [
+        0.30000001192092896,
+        0.20000000298023224,
+        -0.0
+      ],
+      "anchor_support_bottom": [
+        0.0,
+        0.0,
+        -0.0
+      ]
+    },
+    "root_matrix_blender": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "mesh_checks": {
+    "report": {
+      "path": "assets/v3/iterations/standard-carton/M06.2-01/mesh-checks.json",
+      "bytes": 6815,
+      "sha256": "9eba98ffb48333928a769ed8d92476bf87c6a179bcb950283a7a6b9ce3a15a77"
+    },
+    "all_scene_node_scales_one": true,
+    "positive_closed_consistently_outward_parts": 19,
+    "actual_contact_edges": 41,
+    "all_parts_joined_to_bottom": true,
+    "hollow": true,
+    "actual_solid_volume_m3": 0.004425890050981631,
+    "HU_bounding_volume_m3": 0.072,
+    "exact_packing_inner_box_clear": {
+      "min": [
+        -0.28,
+        0.02,
+        -0.13
+      ],
+      "max": [
+        0.28,
+        0.38,
+        0.13
+      ]
+    },
+    "unchanged_C02_unit_AABBs_clear": 24,
+    "actual_four_mm_thickness_rays": [
+      {
+        "part": "left",
+        "inner_hit": [
+          -0.29600000381469727,
+          0.20000000298023224,
+          -0.0
+        ],
+        "outer_hit": [
+          -0.30000001192092896,
+          0.20000000298023224,
+          -0.0
+        ],
+        "thickness_m": 0.004000008180394437
+      },
+      {
+        "part": "right",
+        "inner_hit": [
+          0.29600000381469727,
+          0.20000000298023224,
+          -0.0
+        ],
+        "outer_hit": [
+          0.30000001192092896,
+          0.20000000298023224,
+          -0.0
+        ],
+        "thickness_m": 0.004000008180394437
+      },
+      {
+        "part": "front",
+        "inner_hit": [
+          0.0,
+          0.20000000298023224,
+          0.14549997448921204
+        ],
+        "outer_hit": [
+          0.0,
+          0.20000000298023224,
+          0.14949998259544373
+        ],
+        "thickness_m": 0.004000008180394437
+      },
+      {
+        "part": "rear",
+        "inner_hit": [
+          0.0,
+          0.20000000298023224,
+          -0.14549997448921204
+        ],
+        "outer_hit": [
+          0.0,
+          0.20000000298023224,
+          -0.14949998259544373
+        ],
+        "thickness_m": 0.004000008180394437
+      },
+      {
+        "part": "bottom",
+        "inner_hit": [
+          0.0,
+          0.0040000081062316895,
+          -0.0
+        ],
+        "outer_hit": [
+          0.0,
+          9.778887033462524e-09,
+          -0.0
+        ],
+        "thickness_m": 0.003999998403334439
+      },
+      {
+        "part": "major_lid",
+        "inner_hit": [
+          0.10000000149011612,
+          0.39549997448921204,
+          -0.0
+        ],
+        "outer_hit": [
+          0.10000000149011612,
+          0.3995000123977661,
+          -0.0
+        ],
+        "thickness_m": 0.004000037966174106
+      }
+    ],
+    "actual_floor_support_points": 9
+  },
+  "saved_source_audit": {
+    "report": {
+      "path": "assets/v3/iterations/standard-carton/M06.2-01/saved-source-checks.json",
+      "bytes": 2723,
+      "sha256": "e0102dc69d90671e94bcc0d6efabf2d8a2cfd2226b5e24d017568a68b0f1d9be"
+    },
+    "source_sha256": "7631ec8aad2fde4e60bf1ac0c09f81065977692484366eee3d5123238b84d0d5",
+    "editable_meshes": 19,
+    "editable_box_bevels": 17,
+    "materials_matching_glb": 4,
+    "source_not_modified_by_audit": true,
+    "all_scene_node_scales_one": true,
+    "baked_contents_instances": 0
+  },
+  "visual_review": {
+    "reviewer": "warehouse_props",
+    "actually_opened_reference": "assets/references/v3/m06-2-standard-carton.png",
+    "actually_opened_source_views": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "resolution_px": [
+      1000,
+      1000
+    ],
+    "engine": "BLENDER_WORKBENCH",
+    "threads": 2,
+    "observations": {
+      "front": "Wide3:2 face with restrained label/arrows and central tape tail.",
+      "side": "Narrow3:4 proportion, fine real panel seams, plain face without side tail.",
+      "rear": "Plain coherent rear, matching tape tail.",
+      "three-quarter": "Flush top/two major flaps and correct single Z tape band; no oversized lid/rim/loose marking."
+    },
+    "reference_difference": "Softer raster shading versus deliberately flat matte source; metric wall thickness and singleband topology retained.",
+    "geometry_refinement_needed": false,
+    "pending": [
+      "Independent root GLB browser inspection",
+      "Khronos validation",
+      "Later actual manual carrying/contact gates"
+    ]
+  },
+  "iteration": "assets/v3/iterations/standard-carton/M06.2-01",
+  "operational_admission": false,
+  "payload_or_packaging_strength_certification": false,
+  "no_new_stock_or_baked_contents": true,
+  "GPU_released": true
+}

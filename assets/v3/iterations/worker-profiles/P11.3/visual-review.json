@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "reviewer": "root",
+  "reviewed_utc": "2026-11-08T07:44:28.798537+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "browser_report_sha256": "88707e0b561523199341ddf4add96a0da9f4da457653302a6c451f75650cdb99",
+  "images": [
+    {
+      "file": "P01-overview.png",
+      "sha256": "0962aa8ef1ff1181179115603d57b0231a2046e395bfec04e3aa65b43a36ba50",
+      "observation": "P01 clear ID, baseline picker and additional packer coefficient .8; visual assumptions shown."
+    },
+    {
+      "file": "P01-full.png",
+      "sha256": "7f968464aab1dd82d6d9eee828ed303cbc178c4af3a706382f4a1c05cb73a3d2",
+      "observation": "Complete P01 page has five role rows, no vehicle admission, profile equipment and synthetic15kg policy; no overflow."
+    },
+    {
+      "file": "P01-examples.png",
+      "sha256": "ced15e5bc25c3389e8ceb9abe21c462c6d6043b640154eed82d7d06287662701",
+      "observation": "Expanded six cases distinguish15/15.0001kg manual handling,455kg supported scan and machine capability; no cargo/route admission claim."
+    },
+    {
+      "file": "P02-profile.png",
+      "sha256": "118e64e03d3687302ccc93fd7cb9da4acbea2c1c23c70f0ad510acb979eec94a",
+      "observation": "P02 additional packer.8 declared; source identity and remaining three prohibited roles preserved."
+    },
+    {
+      "file": "P03-profile.png",
+      "sha256": "ac7aebfab660ee677b77c970f6ab675280231448271b5acf66a12dc6770a65f7",
+      "observation": "P03 baseline picker only, packing/vehicle/scan examples rejected. Opened original full resolution."
+    },
+    {
+      "file": "F01-profile.png",
+      "sha256": "b0f1e58988eab1b32a04f171f9b88967c035df10f2e2a91b1b2cd12f0a1e2e5d",
+      "observation": "F01 driving coefficient1, FL01 permitted/FL02 rejected; no manual handling qualification inferred."
+    },
+    {
+      "file": "F02-profile.png",
+      "sha256": "82a860440e579adaf1ad68e6f8479b8fcf0547f02462b96162095fd8569113ae",
+      "observation": "F02 inverse own-machine pair: FL02 only, no picker/packer permission. Opened original full resolution."
+    },
+    {
+      "file": "R01-profile.png",
+      "sha256": "509918b8669860325f671f2a48b7f8477f608935fe5aa862cfc3b139bf3cf4f9",
+      "observation": "R01 purple03 receiver, fixed scanner equipment; supported455kg observation allowed independently of manual15kg rule."
+    },
+    {
+      "file": "S01-profile.png",
+      "sha256": "4ead454d36f1b6800e54ef2299f4e27554821a232a1648daea24050acfc959b1",
+      "observation": "S01 green04 shipper, conveyor/scanner equipment;455kg scan observation distinct from forklift transport. Opened original full resolution."
+    },
+    {
+      "file": "mobile-P01.png",
+      "sha256": "623f531daf42dec11bca6375ce42a23016b9c0472e03b3b7ca25f86b32279322",
+      "observation": "360px P01 header/source assumptions/native selector readable without horizontal overflow."
+    },
+    {
+      "file": "mobile-F01.png",
+      "sha256": "9f52a4b4f64618b8d910ca78ea6173098f55aba64f69b84c59699cacf140fa12",
+      "observation": "360px F01 role/vehicle/equipment rows wrap, FL01 only, static touch controls and collapsed examples."
+    },
+    {
+      "file": "unknown-ID.png",
+      "sha256": "7a881c426a504c512c86bf2c13b12d1be4455d5267e4d59e791b0d5f1eb1d939",
+      "observation": "Unknown PK01 has no invented employee/profile; explicit reset P01, source24 count retained."
+    },
+    {
+      "file": "offline-profile.png",
+      "sha256": "b595d896e67a6fd4e1431b07ce6a3f7e55f2f8b9061f77961b07e0c3d1b8921b",
+      "observation": "Offline loaded P03 remains selectable with visible offline status and role restrictions."
+    },
+    {
+      "file": "missing-profiles.png",
+      "sha256": "9ef583b3307d1a593e9bc59b98e5c9d6113e31b61f88e44dee89b399c055d38d",
+      "observation": "404 missing profile bundle shows package action; no partial staff profile or automatic retry loop."
+    },
+    {
+      "file": "registry-hash-mismatch.png",
+      "sha256": "71139b6dc4562ae41547e8b7a3044611e6e58b2139baaa5ca0a68006c71d6709",
+      "observation": "Registry SHA mismatch rejects incompatible bundle; source message and catalogue link visible, no partial profile."
+    },
+    {
+      "file": "loading-compatible-bundle.png",
+      "sha256": "a26c3cdf9ae3a24eadb8b5e8f0137379e8ed6fad654e03fa77d899e9880bb9a1",
+      "observation": "Delayed second blocking input shows compatible-bundle loading; no incomplete profile exposed."
+    }
+  ],
+  "review_method": "Current full regression after additive warehouseV3 build entry. All16PNGs byte-identical to root-reviewed accepted images, SHA256verified; prior actual visual observations carry forward.",
+  "scope": "Readonly synthetic skills only; no current role/job/stock/pose mutation or backend operation."
+}

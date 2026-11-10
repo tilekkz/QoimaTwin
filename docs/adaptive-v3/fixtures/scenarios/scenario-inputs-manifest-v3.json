@@ -1,0 +1,90 @@
+{
+  "actions": [],
+  "actual_v3_run_supported": false,
+  "backend_integration_complete": false,
+  "base_fixture_ref": {
+    "path": "frontend/public/data/v3/warehouse-fixture-v3.json",
+    "sha256": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91"
+  },
+  "completion_events": [],
+  "engine_operation": false,
+  "execution_ready": false,
+  "execution_state": "not_scheduled",
+  "metrics_scope": "none",
+  "operational_admission": false,
+  "scenarios": [
+    {
+      "allowed_output_differences": [
+        "admitted_HU_slot_placement",
+        "explicit_relocation_sequence_and_cost"
+      ],
+      "comparison_kind": "slotting_only",
+      "execution_ready": false,
+      "input_ref": {
+        "frozen_payload_sha256": "6d5ae65a7c0638a3a3ec266c7398a31e219369b9153cbb986c5f422989ddc8c6",
+        "path": "docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json",
+        "sha256": "8bfd657665c614e0ac0f1db00ecf83191eb70a073af05c89fe5cc3d7623ae88d"
+      },
+      "paired_runs": [
+        {
+          "input_ref": {
+            "frozen_payload_sha256": "6d5ae65a7c0638a3a3ec266c7398a31e219369b9153cbb986c5f422989ddc8c6",
+            "path": "docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json",
+            "sha256": "8bfd657665c614e0ac0f1db00ecf83191eb70a073af05c89fe5cc3d7623ae88d"
+          },
+          "variant": "baseline"
+        },
+        {
+          "input_ref": {
+            "frozen_payload_sha256": "6d5ae65a7c0638a3a3ec266c7398a31e219369b9153cbb986c5f422989ddc8c6",
+            "path": "docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json",
+            "sha256": "8bfd657665c614e0ac0f1db00ecf83191eb70a073af05c89fe5cc3d7623ae88d"
+          },
+          "variant": "adaptive"
+        }
+      ],
+      "pending": "W05/W14runtime registration, admissible actions/resources, actual replay and comparison acceptance",
+      "scenario_id": "v3:scenario:N0_NORMAL:001",
+      "task_id": "W09"
+    },
+    {
+      "allowed_output_differences": [
+        "admitted_HU_slot_placement",
+        "explicit_relocation_sequence_and_cost"
+      ],
+      "comparison_kind": "slotting_only",
+      "execution_ready": false,
+      "input_ref": {
+        "frozen_payload_sha256": "af7ff242c6ef0b6e299e3919442ddecf54f9a3d38a3e9ff42084b360b05c5792",
+        "path": "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json",
+        "sha256": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5"
+      },
+      "paired_runs": [
+        {
+          "input_ref": {
+            "frozen_payload_sha256": "af7ff242c6ef0b6e299e3919442ddecf54f9a3d38a3e9ff42084b360b05c5792",
+            "path": "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json",
+            "sha256": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5"
+          },
+          "variant": "baseline"
+        },
+        {
+          "input_ref": {
+            "frozen_payload_sha256": "af7ff242c6ef0b6e299e3919442ddecf54f9a3d38a3e9ff42084b360b05c5792",
+            "path": "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json",
+            "sha256": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5"
+          },
+          "variant": "adaptive"
+        }
+      ],
+      "pending": "W05/W14runtime registration, admissible actions/resources, actual replay and comparison acceptance",
+      "scenario_id": "v3:scenario:N1_OUTBOUND_SHIFT:001",
+      "task_id": "W10"
+    }
+  ],
+  "schema_id": "qoima.warehouse-scenario-input-manifest.v3",
+  "schema_version": "0.1.0",
+  "scope": "Preregistered W09/W10 requests and paired source identity only. Does not close either parent scenario, register an executable workflow or establish a no-op/improvement result.",
+  "source_kind": "visual_fixture",
+  "visual_complete": false
+}

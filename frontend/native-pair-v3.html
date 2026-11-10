@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QoimaTwin · Записанная native pair</title></head>
+<body>
+<header class="native-header"><a href="home-v3.html">QoimaTwin / Начало</a><span>Native N1 · предложение интеграции</span></header>
+<main class="native-main">
+  <div class="native-title"><p class="native-kicker">Проверенные записи backend</p><h1>Конвейер и перенос груза</h1><p>Один clock · точные события take / place / return · исходный склад A для обоих вариантов</p></div>
+  <section class="native-source" aria-labelledby="source-title">
+    <h2 id="source-title">Открыть сохранённую пару</h2>
+    <label>Pair ID <input id="native-pair" value="58759934a0ea7229af1453c34c75db809f0b606656378c8504eea582f4cb99b7" spellcheck="false" autocomplete="off"></label>
+    <label>Источник <select id="native-source"><option value="files">Сохранённые NDJSON-файлы</option><option value="api">API · один bundle на вариант</option></select></label>
+    <div id="native-files" class="native-files"><label>A / baseline <input id="native-baseline-file" type="file" accept=".raw,.ndjson,.json"></label><label>B / candidate <input id="native-candidate-file" type="file" accept=".raw,.ndjson,.json"></label></div>
+    <div class="native-buttons"><button id="native-load">Проверить и открыть</button><button id="native-cancel" disabled>Остановить чтение</button></div>
+    <p id="native-status" role="status" aria-live="polite">Выберите два сохранённых ответа bundle или API. Загрузка начинается по кнопке.</p>
+  </section>
+  <fieldset id="native-controls" disabled><legend>Воспроизведение записи</legend>
+    <div class="native-buttons"><button id="native-play">Воспроизвести</button><button id="native-reset">Сброс</button><label>Вариант <select id="native-arm"><option value="baseline">A · baseline</option><option value="candidate">B · candidate</option></select></label><label>Скорость <select id="native-speed"><option value="1">1×</option><option value="4" selected>4×</option><option value="10">10×</option><option value="30">30×</option><option value="60">60×</option></select></label></div>
+    <label for="native-seek">Время общей наблюдаемой части <output id="native-time">0 с</output></label><input id="native-seek" type="range" min="0" max="0" value="0" step="1000">
+    <div class="native-buttons"><button id="native-overview">Весь склад</button><button id="native-relocation">К переносу · B / 80 с</button><button id="native-conveyor">К конвейеру · 220 с</button></div>
+  </fieldset>
+  <div class="native-workspace"><section id="native-viewport" aria-label="Трёхмерное воспроизведение native pair"></section><aside><h2>Наблюдаемое состояние</h2><p>Цвета конвейерных маркеров <span class="native-tote">tote</span> / <span class="native-parcel">parcel</span>. ID и траектории взяты из записи. Габариты маркеров условные.</p><pre id="native-facts">Запись ещё не открыта.</pre><details><summary>Идентичности и кэш</summary><pre id="native-identity"></pre></details></aside></div>
+  <section class="native-boundary"><h2>Граница отображения</h2><p>Источник verified_saved_native_pair. Позиции между записанными границами показаны как presentation interpolation. Custody меняется только в наблюдаемых событиях. После place груз остаётся у назначения во время return.</p><p>Положение тела и коробки при переносе — поясняющая визуализация маршрута. Контакт рук S01 с HU113 не подтверждён. Тела водителей скрыты, поскольку записанная поза высадки отсутствует. Геометрия фоновой техники остаётся исходной.</p><p>Operational admission = false · full_n1_acceptance = false. Эта страница показывает сохранённый N1 и его фактический статус.</p></section>
+</main><script type="module" src="/src/native-v3/page.ts"></script>
+</body></html>

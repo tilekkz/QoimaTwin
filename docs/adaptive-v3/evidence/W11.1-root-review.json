@@ -1,0 +1,58 @@
+{
+  "task_id": "W11.1",
+  "passed": true,
+  "reviewer": "root",
+  "independent_reviewer": "holder_browser_gate",
+  "reviewed_utc": "2026-11-08T11:49:44.639116+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "execution_ready": false,
+  "operational_admission": false,
+  "parent_runtime_accepted": false,
+  "positive_cases": 30,
+  "negative_cases": 118,
+  "summary": {
+    "added_HUs": 12,
+    "added_mass_kg": "5236.0",
+    "added_requests": 12,
+    "added_units": 132,
+    "handling_modes": {
+      "forklift_with_compatible_load_support": 24,
+      "manual_within_worker_and_handling_unit_limits": 4
+    },
+    "initial_HUs": 530,
+    "initial_mass_kg": "9403.85",
+    "initial_units": 12256,
+    "original_requests": 16,
+    "original_upstream_HUs": 8,
+    "original_upstream_mass_kg": "1784.29",
+    "original_upstream_units": 107,
+    "port_requests": {
+      "IN_E_PARCEL": 1,
+      "IN_N_STANDARD": 2,
+      "IN_W_BULK": 17,
+      "OUT_E_B2B": 4,
+      "OUT_S_EXPRESS": 1,
+      "OUT_W_RETAIL": 3
+    },
+    "requests": 28,
+    "vehicles": 2,
+    "workers": 24
+  },
+  "fix": "Independent whole-file rehash probes exposed Python bool==1 gaps. Strict primitive/finite numeric checks and canonical typed comparisons now reject these and52additional negative cases; valid input bytes unchanged.",
+  "root_checks": [
+    "build_heavy_inbound_scenario.py --check-only: exit0, allthreeoutputbytes exact",
+    "verify_heavy_inbound_scenario.py --check-only: exit0,30positive/118negative",
+    "Root read actual scenario specification; independent reviewer inspected both source files and originalstock/A-B/carrier/port relations"
+  ],
+  "actual_second_account_production": true,
+  "source_hashes": {
+    "tools/visual/v3/build_heavy_inbound_scenario.py": "b1214c0e52c3843f920da18f06b3ca472bcddb2d0c3e4b974d4e33c42522160e",
+    "tools/visual/v3/verify_heavy_inbound_scenario.py": "5f681688668c6b8346b1a51f875dc01a7a0164056b41a6147447096f2f7eca67",
+    "docs/adaptive-v3/fixtures/scenarios/W11-heavy-inbound-input-v3.json": "44022f72105fb2252a8cd8b8b950e10f7590e5f732d86caa30178edbfcaa4393",
+    "docs/adaptive-v3/specs/W11.1.md": "922daeb45de3d9aa82d67f33697bdcd02484d840afdf8ad50f7aa78dbe39f718",
+    "docs/adaptive-v3/evidence/W11.1.json": "b2e55f7dc97b6f43022992297ff5cda27292a4572251ceae12ddd499bac5042e",
+    "docs/adaptive-v3/evidence/W11.1-checks.json": "15817cb828f749ef67e884426c22c0cd5e7a5e2132ee2e5677cbc608e41ac111"
+  },
+  "scope": "Frozen equal-input heavy receipt candidate integrity only. Original530HU24workers2vehicles retained; explicit12externalHU/132units/5236kg. No queues/jobs/loadedmotion/resources/throughput/metrics or W11runtime accepted."
+}

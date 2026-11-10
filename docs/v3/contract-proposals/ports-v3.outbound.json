@@ -1,0 +1,850 @@
+{
+  "document_kind": "isolated_contract_proposal",
+  "schema_version": "qoima-ports-v3-proposal",
+  "proposal_id": "ports-v3.outbound",
+  "proposal_version": "0.1.0",
+  "status": "proposal_VERIFY",
+  "layout_version": "qoima-144x72-v3-proposal",
+  "units": {
+    "position": "metres",
+    "time": "seconds",
+    "capacity": "handling_unit",
+    "mass": "kg"
+  },
+  "coordinate_system": "right_handed_Y_up_X_east_Z_north",
+  "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput",
+  "source_label": "analytical_fixture",
+  "not_an_actual_engine_run": true,
+  "resource_policy_ref": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+  "actor_count_preserved": 24,
+  "resource_binding_semantics": [
+    "Every job binds one actual S01 or S02 from SHIPPERS_SHARED, not a per-port copy.",
+    "Bulky jobs additionally bind F02 and FL02 together from the single OUTBOUND_FORKLIFT_PAIR; F01/FL01 remain inbound only.",
+    "Reserve actual IDs exclusively across travel/wait/service; one person or vehicle cannot act at different ports simultaneously.",
+    "Per-port job limits are station limits, not workers or independent throughput rates. Travel/resource waiting must remain explicit in later source-labelled timelines.",
+    "Acquire the complete required resource set atomically; a waiting job cannot hold one actor while waiting for its other required resource."
+  ],
+  "admission_semantics": [
+    "Allowed class is necessary, not sufficient: verify complete HU gross dimensions/mass/orientation, gate, handler, usable buffer cell and loaded route.",
+    "Unknown gross mass, missing rated handling profile or unapproved route fails admission; no mesh scaling repairs an invalid load.",
+    "Buffers are finite temporary staging, never extra stock/lot/address counts. Do not place waiting cargo on protected circulation."
+  ],
+  "declared_inbound_positions_for_nonoverlap_check": [
+    {
+      "port_id": "IN_W_BULK",
+      "world_pos": [
+        0,
+        0,
+        18
+      ],
+      "service_node_world_pos": [
+        6,
+        0,
+        18
+      ]
+    },
+    {
+      "port_id": "IN_N_STANDARD",
+      "world_pos": [
+        72,
+        0,
+        72
+      ],
+      "service_node_world_pos": [
+        72,
+        0,
+        66
+      ]
+    },
+    {
+      "port_id": "IN_E_PARCEL",
+      "world_pos": [
+        144,
+        0,
+        54
+      ],
+      "service_node_world_pos": [
+        138,
+        0,
+        54
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "port_id": "OUT_W_RETAIL",
+      "direction": "outbound",
+      "world_pos": [
+        0,
+        0,
+        54
+      ],
+      "position_meaning": "gate opening floor-boundary centre; XYZ metres, Y up",
+      "outward_normal": [
+        -1,
+        0,
+        0
+      ],
+      "inward_facing": [
+        1,
+        0,
+        0
+      ],
+      "outbound_travel_direction": [
+        -1,
+        0,
+        0
+      ],
+      "service_node_id": "v3:service:OUT_W_RETAIL",
+      "service_node_world_pos": [
+        6,
+        0,
+        54
+      ],
+      "service_node_meaning": "inside floor service/queue-resource rendezvous; no cargo storage on this clear floor point",
+      "approach_keep_clear_xz_m": {
+        "min": [
+          0,
+          48
+        ],
+        "max": [
+          12,
+          60
+        ]
+      },
+      "allowed_cargo_archetype_ids": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON",
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ],
+      "clear_width_m": 4,
+      "clear_height_m": 4.5,
+      "clearance_status": "provisional_L05",
+      "clearance_notes": [
+        "Gate dimensions are synthetic clear openings, not frame outer size.",
+        "Actual loaded handler, orientation, load centre/attachment and swept route must pass L05/L07/C08; an allowed archetype alone does not approve a load."
+      ],
+      "available_equipment_refs": [
+        "OUTBOUND_FORKLIFT_PAIR"
+      ],
+      "handling_modes_by_group": [
+        {
+          "cargo_archetype_ids": [
+            "SMALL_CARTON",
+            "STANDARD_CARTON"
+          ],
+          "mode": "manual_hand_carry",
+          "max_gross_mass_kg": 15,
+          "assumption": "synthetic one-person limit; includes contents/packaging; unknown/over-limit mass rejects this mode"
+        },
+        {
+          "cargo_archetype_ids": [
+            "HEAVY_BOX",
+            "PALLET_LOAD",
+            "DRUM",
+            "FRAGILE_CRATE"
+          ],
+          "mode": "forklift_assisted",
+          "resource_ref": "OUTBOUND_FORKLIFT_PAIR",
+          "rated_payload_kg": null,
+          "acceptance": "pending C02/C08 rated load-centre and handling profile; no payload rating is invented"
+        }
+      ],
+      "resource_requirements": [
+        {
+          "cargo_archetype_ids": [
+            "SMALL_CARTON",
+            "STANDARD_CARTON"
+          ],
+          "shipper_pool_ref": "SHIPPERS_SHARED",
+          "shipper_count": 1,
+          "forklift_pair_ref": null,
+          "handling_mode": "manual_within_worker_and_handling_unit_limits"
+        },
+        {
+          "cargo_archetype_ids": [
+            "HEAVY_BOX",
+            "PALLET_LOAD",
+            "DRUM",
+            "FRAGILE_CRATE"
+          ],
+          "shipper_pool_ref": "SHIPPERS_SHARED",
+          "shipper_count": 1,
+          "forklift_pair_ref": "OUTBOUND_FORKLIFT_PAIR",
+          "handling_mode": "forklift_with_compatible_load_support",
+          "forklift_pair_count": 1
+        }
+      ],
+      "service_capacity": {
+        "max_concurrent_jobs": 1,
+        "unit": "concurrent_handling_unit_job",
+        "requires_shared_resources": true
+      },
+      "finite_buffer_capacity": {
+        "unit": "handling_unit",
+        "total": 6,
+        "allocations": [
+          {
+            "zone_id": "STAGE_OUT_W_RETAIL",
+            "max_handling_units": 6
+          }
+        ],
+        "buffer_cells": [
+          {
+            "cell_id": "v3:buffer:OUT_W_RETAIL:01",
+            "floor_bounds_xz_m": {
+              "min": [
+                14.0,
+                56.5
+              ],
+              "max": [
+                16.0,
+                58.5
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_W_RETAIL:02",
+            "floor_bounds_xz_m": {
+              "min": [
+                20.0,
+                56.5
+              ],
+              "max": [
+                22.0,
+                58.5
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_W_RETAIL:03",
+            "floor_bounds_xz_m": {
+              "min": [
+                26.0,
+                56.5
+              ],
+              "max": [
+                28.0,
+                58.5
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_W_RETAIL:04",
+            "floor_bounds_xz_m": {
+              "min": [
+                14.0,
+                59.5
+              ],
+              "max": [
+                16.0,
+                61.5
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_W_RETAIL:05",
+            "floor_bounds_xz_m": {
+              "min": [
+                20.0,
+                59.5
+              ],
+              "max": [
+                22.0,
+                61.5
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_W_RETAIL:06",
+            "floor_bounds_xz_m": {
+              "min": [
+                26.0,
+                59.5
+              ],
+              "max": [
+                28.0,
+                61.5
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          }
+        ],
+        "reservation": "one compatible complete handling unit per unoccupied floor cell; all listed cells shared across allowed archetypes",
+        "full_policy": "block new admission; no overflow into circulation/approach/other port buffers",
+        "clearance_status": "floor containment checked; actual cargo envelope/mass and access pending C/L checks"
+      },
+      "service_time_rule": {
+        "model": "deterministic_per_handling_unit",
+        "unit": "s/handling_unit",
+        "seconds_by_archetype": {
+          "SMALL_CARTON": 25,
+          "STANDARD_CARTON": 35,
+          "HEAVY_BOX": 90,
+          "PALLET_LOAD": 100,
+          "DRUM": 80,
+          "FRAGILE_CRATE": 100
+        },
+        "includes": [
+          "local service inspection",
+          "handover/loading at service",
+          "confirmation"
+        ],
+        "excludes": [
+          "queue/resource waiting",
+          "travel to port",
+          "buffer-to-service route travel",
+          "vehicle repositioning",
+          "outside carrier scheduling"
+        ],
+        "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput"
+      },
+      "open_windows": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "window_time_basis": "elapsed_run_seconds",
+      "window_interval": "[start,end)",
+      "window_admission": "service start must permit deterministic service completion before window end; closed/full/resource-busy states wait without creating resources",
+      "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput",
+      "rejected_cargo_archetype_ids": [
+        "IBC",
+        "LONG_BUNDLE"
+      ]
+    },
+    {
+      "port_id": "OUT_S_EXPRESS",
+      "direction": "outbound",
+      "world_pos": [
+        48,
+        0,
+        0
+      ],
+      "position_meaning": "gate opening floor-boundary centre; XYZ metres, Y up",
+      "outward_normal": [
+        0,
+        0,
+        -1
+      ],
+      "inward_facing": [
+        0,
+        0,
+        1
+      ],
+      "outbound_travel_direction": [
+        0,
+        0,
+        -1
+      ],
+      "service_node_id": "v3:service:OUT_S_EXPRESS",
+      "service_node_world_pos": [
+        48,
+        0,
+        6
+      ],
+      "service_node_meaning": "inside floor service/queue-resource rendezvous; no cargo storage on this clear floor point",
+      "approach_keep_clear_xz_m": {
+        "min": [
+          42,
+          0
+        ],
+        "max": [
+          54,
+          12
+        ]
+      },
+      "allowed_cargo_archetype_ids": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON"
+      ],
+      "clear_width_m": 3,
+      "clear_height_m": 3.5,
+      "clearance_status": "provisional_L05",
+      "clearance_notes": [
+        "Gate dimensions are synthetic clear openings, not frame outer size.",
+        "Actual loaded handler, orientation, load centre/attachment and swept route must pass L05/L07/C08; an allowed archetype alone does not approve a load."
+      ],
+      "available_equipment_refs": [],
+      "handling_modes_by_group": [
+        {
+          "cargo_archetype_ids": [
+            "SMALL_CARTON",
+            "STANDARD_CARTON"
+          ],
+          "mode": "manual_hand_carry",
+          "max_gross_mass_kg": 15,
+          "assumption": "synthetic one-person limit; gross handling-unit mass includes contents and packaging; unknown/over-limit mass rejects this mode"
+        }
+      ],
+      "resource_requirements": [
+        {
+          "cargo_archetype_ids": [
+            "SMALL_CARTON",
+            "STANDARD_CARTON"
+          ],
+          "shipper_pool_ref": "SHIPPERS_SHARED",
+          "shipper_count": 1,
+          "forklift_pair_ref": null,
+          "handling_mode": "manual_within_worker_and_handling_unit_limits"
+        }
+      ],
+      "service_capacity": {
+        "max_concurrent_jobs": 1,
+        "unit": "concurrent_handling_unit_job",
+        "requires_shared_resources": true
+      },
+      "finite_buffer_capacity": {
+        "unit": "handling_unit",
+        "total": 8,
+        "allocations": [
+          {
+            "zone_id": "STAGE_OUT_S_EXPRESS",
+            "max_handling_units": 8
+          }
+        ],
+        "buffer_cells": [
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:01",
+            "floor_bounds_xz_m": {
+              "min": [
+                29.4,
+                1.4
+              ],
+              "max": [
+                30.6,
+                2.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:02",
+            "floor_bounds_xz_m": {
+              "min": [
+                32.4,
+                1.4
+              ],
+              "max": [
+                33.6,
+                2.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:03",
+            "floor_bounds_xz_m": {
+              "min": [
+                35.4,
+                1.4
+              ],
+              "max": [
+                36.6,
+                2.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:04",
+            "floor_bounds_xz_m": {
+              "min": [
+                38.4,
+                1.4
+              ],
+              "max": [
+                39.6,
+                2.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:05",
+            "floor_bounds_xz_m": {
+              "min": [
+                29.4,
+                4.4
+              ],
+              "max": [
+                30.6,
+                5.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:06",
+            "floor_bounds_xz_m": {
+              "min": [
+                32.4,
+                4.4
+              ],
+              "max": [
+                33.6,
+                5.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:07",
+            "floor_bounds_xz_m": {
+              "min": [
+                35.4,
+                4.4
+              ],
+              "max": [
+                36.6,
+                5.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_S_EXPRESS:08",
+            "floor_bounds_xz_m": {
+              "min": [
+                38.4,
+                4.4
+              ],
+              "max": [
+                39.6,
+                5.6
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          }
+        ],
+        "reservation": "one compatible complete handling unit per unoccupied floor cell; all listed cells shared across allowed archetypes",
+        "full_policy": "block new admission; no overflow into circulation/approach/other port buffers",
+        "clearance_status": "floor containment checked; actual cargo envelope/mass and access pending C/L checks"
+      },
+      "service_time_rule": {
+        "model": "deterministic_per_handling_unit",
+        "unit": "s/handling_unit",
+        "seconds_by_archetype": {
+          "SMALL_CARTON": 20,
+          "STANDARD_CARTON": 30
+        },
+        "includes": [
+          "local service inspection",
+          "handover/loading at service",
+          "confirmation"
+        ],
+        "excludes": [
+          "queue/resource waiting",
+          "travel to port",
+          "buffer-to-service route travel",
+          "vehicle repositioning",
+          "outside carrier scheduling"
+        ],
+        "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput"
+      },
+      "open_windows": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "window_time_basis": "elapsed_run_seconds",
+      "window_interval": "[start,end)",
+      "window_admission": "service start must permit deterministic service completion before window end; closed/full/resource-busy states wait without creating resources",
+      "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput",
+      "rejected_cargo_archetype_ids": [
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "LONG_BUNDLE",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ]
+    },
+    {
+      "port_id": "OUT_E_B2B",
+      "direction": "outbound",
+      "world_pos": [
+        144,
+        0,
+        18
+      ],
+      "position_meaning": "gate opening floor-boundary centre; XYZ metres, Y up",
+      "outward_normal": [
+        1,
+        0,
+        0
+      ],
+      "inward_facing": [
+        -1,
+        0,
+        0
+      ],
+      "outbound_travel_direction": [
+        1,
+        0,
+        0
+      ],
+      "service_node_id": "v3:service:OUT_E_B2B",
+      "service_node_world_pos": [
+        138,
+        0,
+        18
+      ],
+      "service_node_meaning": "inside floor service/queue-resource rendezvous; no cargo storage on this clear floor point",
+      "approach_keep_clear_xz_m": {
+        "min": [
+          132,
+          12
+        ],
+        "max": [
+          144,
+          24
+        ]
+      },
+      "allowed_cargo_archetype_ids": [
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "LONG_BUNDLE",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ],
+      "clear_width_m": 6,
+      "clear_height_m": 4.5,
+      "clearance_status": "provisional_L05",
+      "clearance_notes": [
+        "Gate dimensions are synthetic clear openings, not frame outer size.",
+        "Actual loaded handler, orientation, load centre/attachment and swept route must pass L05/L07/C08; an allowed archetype alone does not approve a load."
+      ],
+      "available_equipment_refs": [
+        "OUTBOUND_FORKLIFT_PAIR"
+      ],
+      "handling_modes_by_group": [
+        {
+          "cargo_archetype_ids": [
+            "HEAVY_BOX",
+            "PALLET_LOAD",
+            "IBC",
+            "LONG_BUNDLE",
+            "DRUM",
+            "FRAGILE_CRATE"
+          ],
+          "mode": "forklift_assisted",
+          "resource_ref": "OUTBOUND_FORKLIFT_PAIR",
+          "rated_payload_kg": null,
+          "acceptance": "pending C02/C08 rated load-centre and handling profile; no payload rating is invented"
+        }
+      ],
+      "resource_requirements": [
+        {
+          "cargo_archetype_ids": [
+            "HEAVY_BOX",
+            "PALLET_LOAD",
+            "IBC",
+            "LONG_BUNDLE",
+            "DRUM",
+            "FRAGILE_CRATE"
+          ],
+          "shipper_pool_ref": "SHIPPERS_SHARED",
+          "shipper_count": 1,
+          "forklift_pair_ref": "OUTBOUND_FORKLIFT_PAIR",
+          "handling_mode": "forklift_with_compatible_load_support",
+          "forklift_pair_count": 1
+        }
+      ],
+      "service_capacity": {
+        "max_concurrent_jobs": 1,
+        "unit": "concurrent_handling_unit_job",
+        "requires_shared_resources": true
+      },
+      "finite_buffer_capacity": {
+        "unit": "handling_unit",
+        "total": 3,
+        "allocations": [
+          {
+            "zone_id": "STAGE_OUT_E_B2B",
+            "max_handling_units": 3
+          }
+        ],
+        "buffer_cells": [
+          {
+            "cell_id": "v3:buffer:OUT_E_B2B:01",
+            "floor_bounds_xz_m": {
+              "min": [
+                112.4,
+                13.0
+              ],
+              "max": [
+                117.6,
+                15.0
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_E_B2B:02",
+            "floor_bounds_xz_m": {
+              "min": [
+                119.4,
+                13.0
+              ],
+              "max": [
+                124.6,
+                15.0
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          },
+          {
+            "cell_id": "v3:buffer:OUT_E_B2B:03",
+            "floor_bounds_xz_m": {
+              "min": [
+                126.4,
+                13.0
+              ],
+              "max": [
+                131.6,
+                15.0
+              ]
+            },
+            "max_handling_units": 1,
+            "stacking_allowed": false,
+            "meaning": "temporary staging floor envelope, not a storage slot or added inventory"
+          }
+        ],
+        "reservation": "one compatible complete handling unit per unoccupied floor cell; all listed cells shared across allowed archetypes",
+        "full_policy": "block new admission; no overflow into circulation/approach/other port buffers",
+        "clearance_status": "floor containment checked; actual cargo envelope/mass and access pending C/L checks"
+      },
+      "service_time_rule": {
+        "model": "deterministic_per_handling_unit",
+        "unit": "s/handling_unit",
+        "seconds_by_archetype": {
+          "HEAVY_BOX": 100,
+          "PALLET_LOAD": 110,
+          "IBC": 150,
+          "LONG_BUNDLE": 210,
+          "DRUM": 100,
+          "FRAGILE_CRATE": 150
+        },
+        "includes": [
+          "local service inspection",
+          "handover/loading at service",
+          "confirmation"
+        ],
+        "excludes": [
+          "queue/resource waiting",
+          "travel to port",
+          "buffer-to-service route travel",
+          "vehicle repositioning",
+          "outside carrier scheduling"
+        ],
+        "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput"
+      },
+      "open_windows": [
+        [
+          0,
+          28800
+        ]
+      ],
+      "window_time_basis": "elapsed_run_seconds",
+      "window_interval": "[start,end)",
+      "window_admission": "service start must permit deterministic service completion before window end; closed/full/resource-busy states wait without creating resources",
+      "source_of_assumption": "L04_SYNTHETIC_OUTBOUND_PORT_ASSUMPTIONS; not measured warehouse data or validated DES throughput",
+      "rejected_cargo_archetype_ids": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON"
+      ],
+      "long_load_conditions": {
+        "large_gate_clear_width_m": 6,
+        "large_gate_clear_height_m": 4.5,
+        "status": "provisional_L05",
+        "staging_long_axis": "world +X; target LONG_BUNDLE4.20m fits nominal5.20m cell length, not proof of lift/turn feasibility",
+        "requires_approved_support_span_load_centre_and_attachment": true,
+        "if_unapproved": "HANDLER_UNAVAILABLE or PATH_CLEARANCE; do not shrink load or invent an extra forklift/driver"
+      }
+    }
+  ],
+  "read_only_input_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "bytes": 1756,
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "bytes": 32051,
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "contracts/actors.example.json",
+      "bytes": 4286,
+      "sha256": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7"
+    },
+    {
+      "path": "assets/references/v3/r07-ports-zones.png",
+      "bytes": 2088176,
+      "sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "bytes": 1322,
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/adaptive-v3/evidence/L02-zone-plan.svg",
+      "bytes": 19073,
+      "sha256": "a9d98256323016c9eaba194c2ad1effd48206d7bf9ca6398bbba97300ceccdf5"
+    }
+  ],
+  "deferred": [
+    "L05 gate/loaded envelope and long-load approval",
+    "L06 pedestrian graph and route travel",
+    "L07 vehicle graph/swept turns",
+    "C02/C04/C08 adopted cargo dimensions/mass/slot and handler capacity",
+    "Actual backend/adapter service scheduling and ledger integration; this proposal reports no KPI/throughput result"
+  ],
+  "zones_ref": "docs/v3/contract-proposals/layout-v3.zones.json"
+}

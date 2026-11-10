@@ -1,0 +1,65 @@
+{
+  "task_id": "W10.1",
+  "passed": true,
+  "reviewer": "root",
+  "producer": "scenario_inputs",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "execution_ready": false,
+  "visual_complete": false,
+  "backend_integration_complete": false,
+  "scenario_summary": {
+    "task_id": "W10",
+    "scenario_id": "v3:scenario:N1_OUTBOUND_SHIFT:001",
+    "initial_HUs": 530,
+    "SKUs": 200,
+    "quantity_units": 12256,
+    "gross_mass_kg": 9403.85,
+    "workers": 24,
+    "vehicles": 2,
+    "configured_ports": 6,
+    "requests": 16,
+    "upstream_HUs": 8,
+    "outbound_existing_HUs": 8,
+    "declared_port_changes": 4,
+    "port_counts": {
+      "inbound": {
+        "IN_E_PARCEL": 2,
+        "IN_N_STANDARD": 1,
+        "IN_W_BULK": 5
+      },
+      "outbound": {
+        "OUT_E_B2B": 6,
+        "OUT_S_EXPRESS": 2
+      }
+    }
+  },
+  "input_hashes": {
+    "docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json": "8bfd657665c614e0ac0f1db00ecf83191eb70a073af05c89fe5cc3d7623ae88d",
+    "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5",
+    "docs/adaptive-v3/fixtures/scenarios/scenario-inputs-manifest-v3.json": "ecfef20d4791a75511a1bcb77b6505982b4e9879b90e1d3a2ca61bfec0d267ac",
+    "docs/adaptive-v3/fixtures/warehouse-request-stream-v3.json": "149462c7c3eb29c261a9ee309732fd79d018bb953e1886b2b3603529ed1bbb15",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/baseline-input-v3.json": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/handoff/manifest.json": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "tools/visual/v3/build_warehouse_fixture.py": "883b53517e2f6c19cc823e37e799fb39d4d919f079bc7034b55e05ff5b63b6af",
+    "tools/visual/v3/build_warehouse_scenario_inputs.py": "5cfcf0a1b8bf1b94c043f907a6aacb9d97b914915f11c7d7805f4c365a96ec84",
+    "tools/visual/v3/verify_warehouse_scenario_inputs.py": "f5eaa6ec4a83d867d144768e6aaaa3c68eb48df71df8200373f3f6deebea1639"
+  },
+  "artifacts": {
+    "docs/adaptive-v3/evidence/scenario-inputs-checks.json": "95a01d33e41968f72a12acb73517a6bb4388b86104bc79f4f54b4c24e2a5bd6b",
+    "docs/adaptive-v3/specs/scenario-inputs.md": "3d7e3345c1f0dafe0e02022bf8379c426dadfa402ba8f1cf4e4922e1eab8d897"
+  },
+  "root_review": "Read actualbuilder/verifier/materializedinput declarations and20sourcebindings. Independent50semanticnegativecasespass aftergenericrehash; exactsameinput_ref forbaseline/adaptive. W10fourallowedportchanges only; allunits/time/IDs/initialstock/rolesfixed. No registeredruntime/action/metrics/decision.",
+  "scope": "Input-only child. Parent W10 stillrequiresconnectedaction/resource/replay and actualno-op/shift acceptance."
+}

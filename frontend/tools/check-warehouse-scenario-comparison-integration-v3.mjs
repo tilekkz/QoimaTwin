@@ -1,0 +1,58 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {pathToFileURL,fileURLToPath} from 'node:url';
+import crypto from 'node:crypto';
+import ts from 'typescript';
+import * as THREE from 'three';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
+const own=path.join(root,'work/v3/full-tz-closeout-20261109/scenario-comparison-integration');fs.mkdirSync(own,{recursive:true});
+const runtime=path.join(own,'runtime'),pins={},compiled=new Map(),hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const read=p=>{const b=fs.readFileSync(path.join(root,p));pins[p]=hash(b);return b;};
+function compile(p){if(compiled.has(p))return compiled.get(p);const out=path.join(runtime,p+'.mjs');compiled.set(p,out);let code=ts.transpileModule(read(p).toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+ code=code.replace(/import\s+(\w+)\s+from\s+['"]([^'"]+\.json)['"];?/g,(_,name,spec)=>'const '+name+'='+read(path.posix.normalize(path.posix.dirname(p)+'/'+spec)).toString()+';');
+ code=code.replace(/from ['"](\.[^'"]+)['"]/g,(_,spec)=>`from '${pathToFileURL(compile(path.posix.normalize(path.posix.dirname(p)+'/'+spec+'.ts'))).href}'`).replace(/from ['"](three(?:\/[^'"]+)?)['"]/g,(_,id)=>`from '${pathToFileURL(path.join(root,'frontend/node_modules',id==='three'?'three/build/three.module.js':id)).href}'`);fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,code);return out;}
+const load=name=>import(pathToFileURL(compile('frontend/src/adaptive-v3/'+name+'.ts')));
+const [{adaptWarehouseV3},{validateRoutePolicy},{compileWarehouseScenarioExecution},{createWarehouseScenarioClock},{compareWarehouseScenarioCosts},{renderWarehouseScenarioComparison}]=await Promise.all(['warehouseAdapter','warehouseRouting','warehouseScenarioExecution','warehouseScenarioClock','warehouseScenarioCosts','warehouseScenarioComparisonRender'].map(load));
+const texts=Object.fromEntries(Object.entries({fixture:'frontend/public/data/v3/warehouse-fixture-v3.json',layout:'frontend/public/data/adaptive-v3/layout-manifest.json',registry:'frontend/public/data/v3/worker-registry-v3.json',profiles:'frontend/public/data/v3/worker-profiles-v3.json'}).map(([k,p])=>[k,read(p).toString()]));
+const bundle=await adaptWarehouseV3(texts),policy=await validateRoutePolicy(read('frontend/public/data/v3/route-policy-v3.json').toString(),bundle),source=JSON.parse(read('docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json'));
+const A=await compileWarehouseScenarioExecution(bundle,policy,source,{scenario_id:'N0',variant:'A',allow_semantic_rebase:true}),B=await compileWarehouseScenarioExecution(bundle,policy,source,{scenario_id:'N0',variant:'B',allow_semantic_rebase:true});
+assert.equal(compareWarehouseScenarioCosts(A,B).result,'tie');
+const clock=createWarehouseScenarioClock(A);clock.seek(237.125);clock.setRate(30);clock.play();
+const pageSource=read('frontend/src/adaptive-v3/scenarioPage.ts').toString(),sf=ts.createSourceFile('scenarioPage.ts',pageSource,ts.ScriptTarget.Latest,true),functions=new Map();
+function visit(n){if(ts.isFunctionDeclaration(n)&&n.name)functions.set(n.name.text,n.getText(sf));ts.forEachChild(n,visit);}visit(sf);
+const body=['setVariant','setComparison','renderScenarioPass','createStaffClock'].map(n=>{assert(functions.has(n));return functions.get(n);}).join('\n');
+const harnessCode=`export function harness(deps){
+ const {document,$,displayCurrent,fail,queueMicrotask,renderWarehouseScenarioComparison}=deps;
+ let {phase,epoch,clock,native,staffNative,pairedPlans,comparison,variant,plan,root}=deps.initial;
+ let comparisonFrame=null,rowsKey='old',frameKey='old',costKey='old';
+ ${body}
+ return {setVariant,setComparison,renderScenarioPass,createStaffClock,
+ snapshot:()=>({phase,epoch,clock,native,staffNative,pairedPlans,comparison,variant,plan,comparisonFrame,rowsKey,frameKey,costKey}),
+ update:n=>{if('phase'in n)phase=n.phase;if('epoch'in n)epoch=n.epoch;if('clock'in n)clock=n.clock;if('native'in n)native=n.native;if('staffNative'in n)staffNative=n.staffNative;if('pairedPlans'in n)pairedPlans=n.pairedPlans;}};
+}`;
+const harnessPath=path.join(own,'page-functions.mjs');fs.writeFileSync(harnessPath,ts.transpileModule(harnessCode,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText);const {harness}=await import(pathToFileURL(harnessPath));
+const checks=[],displays=[],errors=[],microtasks=[],elements=new Map(),buttons=['A','B'].map(v=>({dataset:{variant:v},setAttribute(k,v){this[k]=v;}}));
+const $=id=>{if(!elements.has(id))elements.set(id,{hidden:true,setAttribute(k,v){this[k]=v;}});return elements.get(id);};
+const nativeCalls=[],staffCalls=[],fakeNative={apply:t=>nativeCalls.push(t)},fakeStaff={apply:(v,t)=>staffCalls.push([v,t])};
+const h=harness({document:{querySelectorAll:()=>buttons},$,displayCurrent:x=>displays.push(x),fail:e=>errors.push(e),queueMicrotask:fn=>microtasks.push(fn),renderWarehouseScenarioComparison,initial:{phase:'ready',epoch:7,clock,native:fakeNative,staffNative:undefined,pairedPlans:{A,B},comparison:false,variant:'A',plan:A,root:{dataset:{}}}});
+const originalClock=clock.snapshot();h.setVariant('B');assert.deepEqual(clock.snapshot(),originalClock);assert.equal(h.snapshot().plan,B);assert.equal(h.snapshot().variant,'B');assert.equal(buttons[1]['aria-pressed'],'true');assert.equal(displays.length,1);assert.deepEqual(displays[0],A.sample(originalClock.at_s));
+h.setVariant('A');assert.deepEqual(clock.snapshot(),originalClock);assert.equal(h.snapshot().plan,A);h.setVariant('C');assert.equal(h.snapshot().variant,'A');
+checks.push('real_issued_paired_noop_plan_selection_preserves_clock_time_rate_play_and_selected_metadata');
+h.setComparison(true);assert.deepEqual(clock.snapshot(),originalClock);assert.equal(h.snapshot().comparison,true);assert.equal(h.snapshot().root,undefined);assert.equal($('sc-compare')['aria-pressed'],'true');assert.equal($('sc-compare-labels').hidden,false);
+checks.push('comparison_toggle_keeps_same_live_clock_and_exposes_native_pane_labels');
+class Renderer{viewport=new THREE.Vector4(0,0,969,880);scissor=this.viewport.clone();test=false;autoClear=true;autoClearColor=true;autoClearDepth=true;autoClearStencil=true;draws=[];getViewport(o){return o.copy(this.viewport);}getScissor(o){return o.copy(this.scissor);}getScissorTest(){return this.test;}getRenderTarget(){return null;}setRenderTarget(){}setViewport(...a){this.viewport.copy(a.length===1?a[0]:new THREE.Vector4(...a));}setScissor(...a){this.scissor.copy(a.length===1?a[0]:new THREE.Vector4(...a));}setScissorTest(v){this.test=v;}clear(){}render(s,c){this.draws.push({scene:s,world:c.matrixWorld.toArray(),projection:c.projectionMatrix.toArray(),viewport:this.viewport.toArray()});}}
+const renderer=new Renderer(),scene=new THREE.Scene(),one=new THREE.Object3D();one.userData.actor_id='same-ID';scene.add(one);const camera=new THREE.OrthographicCamera(-92,92,50,-50,.1,1000);camera.position.set(72,140,180);camera.lookAt(72,0,36);camera.updateMatrixWorld(true);const controller=new AbortController();
+h.setVariant('B');h.renderScenarioPass(7,controller.signal,'N0',renderer,scene,camera);assert.equal(renderer.draws.length,2);assert(renderer.draws.every(d=>d.scene===scene));assert.deepEqual(renderer.draws.map(d=>d.viewport),[[0,440,969,440],[0,0,969,440]]);assert.equal(new Set(nativeCalls).size,1);assert.equal(nativeCalls[0],237.125);assert.equal(nativeCalls.length,3);assert.equal(scene.children.length,1);assert.deepEqual(clock.snapshot(),originalClock);assert.equal(h.snapshot().comparisonFrame.panes.length,2);
+checks.push('actual_page_render_hook_uses_two_same_scene_passes_one_timestamp_and_restores_selected_noop_state');
+const priorDraws=renderer.draws.length,priorCalls=nativeCalls.length;h.renderScenarioPass(6,controller.signal,'N0',renderer,scene,camera);assert.equal(renderer.draws.length,priorDraws);assert.equal(nativeCalls.length,priorCalls);const cancelled=new AbortController();cancelled.abort();h.renderScenarioPass(7,cancelled.signal,'N0',renderer,scene,camera);assert.equal(renderer.draws.length,priorDraws);h.update({phase:'loading'});h.renderScenarioPass(7,controller.signal,'N0',renderer,scene,camera);assert.equal(renderer.draws.length,priorDraws+1);assert.equal(nativeCalls.length,priorCalls);h.setVariant('A');assert.equal(h.snapshot().variant,'B');h.update({phase:'ready'});
+checks.push('stale_epoch_aborted_and_loading_render_callbacks_cannot_apply_current_global_native_controller');
+const staffClock=h.createStaffClock();staffClock.seek(200);staffClock.setRate(60);staffClock.play();h.update({clock:staffClock,staffNative:fakeStaff,native:undefined,pairedPlans:undefined});const staffBefore=staffClock.snapshot();h.setVariant('A');h.setVariant('B');assert.deepEqual(staffClock.snapshot(),staffBefore);h.renderScenarioPass(7,controller.signal,'N4',renderer,scene,camera);assert.deepEqual(staffCalls,[['A',200],['B',200],['B',200]]);assert.deepEqual(staffClock.snapshot(),staffBefore);
+checks.push('N4_uses_distinct_A_B_role_pose_callbacks_and_restores_selected_without_advancing_clock_or_population');
+h.update({native:{apply:()=>{throw Error('targeted native refusal');}},staffNative:undefined,clock});h.renderScenarioPass(7,controller.signal,'N0',renderer,scene,camera);assert.equal(microtasks.length,1);h.update({epoch:8});microtasks.shift()();assert.equal(errors.length,0);h.renderScenarioPass(8,controller.signal,'N0',renderer,scene,camera);microtasks.shift()();assert.equal(errors.length,1);
+checks.push('render_error_publication_is_deferred_and_guarded_against_new_epoch');
+const loadBody=functions.get('load');assert(loadBody.includes('const compileOptions='));assert(loadBody.includes("input,{...compileOptions,variant:'A'}"));assert(loadBody.includes("input,{...compileOptions,variant:'B'}"));assert(loadBody.indexOf('compareWarehouseScenarioCosts(planA,planB)')<loadBody.indexOf('pendingNative.bind(planA'));assert(loadBody.includes('createWarehouseScenarioClock(planA)'));assert(loadBody.includes('pending_work:pendingWork'));assert(loadBody.includes('STAFFING_PENDING_INPUT_HASH_MISMATCH'));assert(!functions.get('setVariant').includes('load('));
+assert(pageSource.includes('остаток времени не измерен'));const html=read('frontend/scenario-v3.html').toString(),css=read('frontend/src/adaptive-v3/scenario.css').toString();assert(html.includes('id="sc-compare"')&&html.includes('data-pane="A"')&&html.includes('data-pane="B"'));assert(css.includes('height:880px'));
+checks.push('loader_uses_same_materialized_input_factory_options_guard_before_native_bind_and_genuine_N0_pending_work');
+assert.equal(JSON.stringify(source),JSON.stringify(JSON.parse(read('docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json'))));for(const[p,v]of Object.entries(pins))assert.equal(hash(fs.readFileSync(path.join(root,p))),v,'source drift '+p);
+const report={passed:true,source_kind:'visual_fixture',engine_operation:false,checks,source_hashes:pins,scope:'Exact extracted current Page control/render functions, real issued paired N0 plans/cost guard and real Three.js camera/Scene with a no-WebGL renderer oracle. Static current-loader contract checks; no GPU/browser/native factory reproof.',browser_required:['All admitted N0–N3 native shared-object pair construction','N4 genuine pending-job display and distinct A/B native roles at same timestamp','Desktop framing/selection/reverse/reset/dispose and stale loading recovery']};fs.writeFileSync(path.join(own,'checks.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,checks:checks.length,report:path.join(own,'checks.json')}));

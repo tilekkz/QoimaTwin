@@ -1,0 +1,32 @@
+@import './staffRegistry.css';
+.skills-nav{display:flex;gap:22px;font-size:12px}.profile-picker{max-width:480px;margin:0 0 28px}.profile-picker label{display:block;font-size:12px;color:#607477;margin-bottom:7px}.profile-picker select{width:100%;padding:11px 13px;border:1px solid #bfcac9;border-radius:7px;background:#fff;color:#293d46;min-height:46px}.profile-heading{display:flex;justify-content:space-between;align-items:center;gap:30px;border-top:1px solid #cbd2cd;border-bottom:1px solid #cbd2cd;padding:24px 0;margin-bottom:28px}.profile-heading .eyebrow{margin-bottom:6px}.profile-heading h2{font-size:38px;letter-spacing:.02em;line-height:1.1;margin:0}.profile-heading p:last-child{font-size:13px;margin:9px 0 0;color:#607477;display:flex;align-items:center;gap:7px}.profile-facts{display:flex;gap:48px}.profile-facts span{display:block;color:#607477;font-size:12px}.profile-facts strong{font-size:20px;font-weight:500;display:block;margin-top:6px}.skills-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:24px}.skill-panel{border:1px solid #cbd2cd;border-radius:7px;background:#fafaf6;padding:22px}.skill-panel h2{font-size:17px;font-weight:600;margin:0}.panel-note{font-size:12px;line-height:1.6;color:#607477;margin:9px 0 14px}.skill-rows{padding:0;list-style:none;margin:16px 0 0}.skill-rows>li{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid #d9dfda;font-size:13px}.skill-name{display:flex;align-items:center;gap:9px}.skill-state{text-align:right;flex-shrink:0}.skill-state strong{display:block;font-size:12px;font-weight:600}.skill-state small{display:block;font-size:11px;color:#607477;margin-top:3px}.skill-allowed{color:#28674b}.skill-denied{color:#6a7779}.equipment-panel{margin-top:20px}.equipment-list{display:flex;flex-wrap:wrap;list-style:none;padding:0;margin:16px 0 0;gap:8px}.equipment-list li{border:1px solid #c9d4cd;border-radius:5px;padding:7px 10px;font-size:12px}.capability-examples{margin-top:24px;border:1px solid #cbd2cd;border-radius:7px;padding:18px 22px;background:#fafaf6}.capability-examples summary{cursor:pointer;font-size:14px;font-weight:600}.capability-examples .panel-note{max-width:720px;margin-top:15px}.capability-examples .skill-rows{max-width:900px}.capability-examples .skill-name{line-height:1.5}.skill-role-code{font-size:11px;color:#607477;min-width:19px}.profile-heading .role-dot{background:var(--role-color)}@media(max-width:650px){.skills-nav{font-size:10px;gap:10px;flex-direction:column;align-items:flex-end}.profile-picker{max-width:none;margin-bottom:20px}.profile-heading{display:block;padding:20px 0}.profile-facts{gap:25px;justify-content:space-between;margin-top:20px}.profile-facts strong{font-size:16px}.profile-facts span{font-size:11px}.skills-grid{grid-template-columns:1fr;gap:16px}.skill-panel{padding:17px}.skill-panel h2{font-size:16px}.skill-rows>li{font-size:12px;gap:10px;padding:12px 0}.skill-name{gap:6px}.skill-state strong{font-size:11px}.skill-state small{font-size:10px}.capability-examples{padding:16px}.capability-examples .skill-name{max-width:190px}.capability-examples .skill-state{max-width:105px}.profile-heading h2{font-size:32px}}
+
+/* Link from the profile to the same person in the A/B comparison. */
+.profile-twin{display:inline-block;margin-top:8px;color:#0e6b62;font-weight:600;text-decoration:none}
+.profile-twin:hover{text-decoration:underline}
+.profile-twin:focus-visible{outline:2px solid #0e8076;outline-offset:2px;border-radius:4px}
+
+@media (min-width:1024px){
+ #worker-skills .profile-picker{margin-bottom:24px}
+ #worker-skills .profile-picker label{font-size:12px;color:#52645f}
+ #worker-skills .profile-heading{padding:24px 0;margin-bottom:24px}
+ #worker-skills .profile-heading .eyebrow{font-size:12px;color:#0b6b63}
+ #baseline-role{display:flex;align-items:center;gap:8px;font-size:14px;line-height:1.6;color:#52645f;margin:12px 0 0}
+ #baseline-role .role-dot{flex-shrink:0}
+ #worker-skills .profile-twin{font-size:14px;color:#0b6b63;min-height:28px}
+ #worker-skills .profile-facts{padding:24px;gap:32px}
+ #worker-skills .profile-facts span{font-size:12px;color:#52645f}
+ #worker-skills .skills-grid{gap:24px}
+ #worker-skills .skills-grid>div{display:grid;grid-template-rows:auto 1fr;gap:24px}
+ #worker-skills .skill-panel{padding:24px}
+ #worker-skills .equipment-panel{margin-top:0}
+ #worker-skills .panel-note{font-size:14px;color:#52645f;line-height:1.6}
+ #worker-skills .skill-rows>li{font-size:14px;line-height:1.5}
+ #worker-skills .skill-name{min-width:0}
+ #worker-skills .skill-state strong{font-size:14px}
+ #worker-skills .skill-state small{font-size:14px;color:#52645f;line-height:1.5}
+ #worker-skills .skill-denied{color:#52645f}
+ #worker-skills .skill-role-code{font-size:12px;color:#52645f}
+ #worker-skills .equipment-list li{font-size:14px}
+ #worker-skills .capability-examples{margin-top:24px;padding:24px}
+}

@@ -1,0 +1,36 @@
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+const inputs={
+ '/models/v3/worker-base.glb':'542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163',
+ '/models/v3/small-carton.glb':'10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317',
+ '/data/v3/worker-base-carry-pose.json':'f33bdb63db8fc78af68af173926a0a59267eda9f83b484a98e71ec4f375bac7b'
+};
+const host=document.querySelector('#views'),status=document.querySelector('#state'),buttons=[...document.querySelectorAll('button')];
+const hash=async b=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(v=>v.toString(16).padStart(2,'0')).join('');
+async function verified(url){const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw Error(url+' HTTP '+response.status);const bytes=await response.arrayBuffer();if(await hash(bytes)!==inputs[url])throw Error('Frozen source hash mismatch: '+url);return bytes;}
+let renderer,observer;
+try{
+ const [bodyBytes,cargoBytes,poseBytes]=await Promise.all(Object.keys(inputs).map(verified));
+ const loader=new GLTFLoader(),[bodyGLTF,cargoGLTF]=await Promise.all([loader.parseAsync(bodyBytes,''),loader.parseAsync(cargoBytes,'')]);
+ const body=bodyGLTF.scene,cargo=cargoGLTF.scene,pose=JSON.parse(new TextDecoder().decode(poseBytes));
+ if(pose.actor_id!=='P02'||pose.worker_asset!=='worker-base'||pose.engine_operation!==false)throw Error('Wrong calibration identity');
+ const source=body.getObjectByName('worker_base_root');if(!source||source.userData.asset_id!=='worker-base')throw Error('Original base rig missing');
+ for(const side of ['L','R'])if(source.getObjectByName('joint__shoulder_lift_'+side)||source.getObjectByName('joint__elbow_swivel_'+side))throw Error('Manual rig substitution');
+ const rest=new Map();body.traverse(node=>rest.set(node,{position:node.position.clone(),quaternion:node.quaternion.clone(),scale:node.scale.clone()}));
+ const scene=new THREE.Scene();scene.background=new THREE.Color('#e7e9e4');scene.add(body,cargo);
+ scene.add(new THREE.HemisphereLight('#ffffff','#5d6b67',2.2));
+ for(const [position,intensity]of [[[2.5,4,3],2.2],[[-3,2,1],1.3],[[0,3,-3],1.8]]){const light=new THREE.DirectionalLight('#fff8ee',intensity);light.position.set(...position);scene.add(light);}
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshStandardMaterial({color:'#c9d0c9',roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-.0005;scene.add(floor);
+ const grid=new THREE.GridHelper(4,16,'#98aaa4','#b9c3bd');grid.position.y=-.0003;scene.add(grid);
+ renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.domElement.setAttribute('aria-label','Three static native mesh views: front, side and quarter');host.append(renderer.domElement);
+ const cameras=[new THREE.PerspectiveCamera(35,1,.01,100),new THREE.PerspectiveCamera(35,1,.01,100),new THREE.PerspectiveCamera(35,1,.01,100)];
+ let held=true,close=false;
+ function frame(){const target=new THREE.Vector3(0,close?1.07:.80,close?.42:.18),offsets=close?[[0,.12,1.25],[1.25,.10,.05],[1.1,.55,1.1]]:[[0,.20,3.1],[3.1,.30,.05],[2.5,1.1,2.5]];cameras.forEach((camera,i)=>{camera.position.copy(target).add(new THREE.Vector3(...offsets[i]));camera.lookAt(target);});}
+ function render(){const width=Math.max(1,host.clientWidth),height=Math.max(1,host.clientHeight);renderer.setSize(width,height,false);renderer.setScissorTest(true);for(let i=0;i<3;i++){const x=Math.floor(width*i/3),end=Math.floor(width*(i+1)/3),w=end-x,camera=cameras[i];camera.aspect=w/height;camera.updateProjectionMatrix();renderer.setViewport(x,0,w,height);renderer.setScissor(x,0,w,height);renderer.render(scene,camera);}renderer.setScissorTest(false);}
+ function apply(){for(const[node,saved]of rest){node.position.copy(saved.position);node.quaternion.copy(saved.quaternion);node.scale.copy(saved.scale);}if(held)for(const[name,angles]of Object.entries(pose.jointEulerXYZ)){const node=source.getObjectByName(name);if(!node)throw Error('Missing original joint '+name);const limits=node.userData.limits_xyz_json?JSON.parse(node.userData.limits_xyz_json):[[0,0],node.userData.rotation_range_radians,[0,0]];if(!angles.every((v,i)=>typeof v==='number'&&Number.isFinite(v)&&v>=limits[i][0]-1e-10&&v<=limits[i][1]+1e-10))throw Error('Original joint limit '+name);if(node.userData.custom_axis_runtime)node.quaternion.setFromAxisAngle(new THREE.Vector3(...node.userData.custom_axis_runtime).normalize(),angles[0]);else node.rotation.set(...angles,'XYZ');}cargo.position.fromArray(pose.cargo.position_m);cargo.rotation.set(0,pose.cargo.yaw_rad,0);cargo.scale.fromArray(pose.cargo.scale);cargo.visible=held;scene.updateMatrixWorld(true);document.querySelector('#held').setAttribute('aria-pressed',String(held));document.querySelector('#rest').setAttribute('aria-pressed',String(!held));document.querySelector('#figure').setAttribute('aria-pressed',String(!close));document.querySelector('#close').setAttribute('aria-pressed',String(close));status.textContent=held?'Static carry · no elapsed action':'Original rest · cargo hidden';frame();render();}
+ for(const[id,fn]of [['held',()=>held=true],['rest',()=>held=false],['figure',()=>close=false],['close',()=>close=true]])document.querySelector('#'+id).onclick=()=>{fn();apply();};
+ buttons.forEach(button=>button.disabled=false);document.querySelector('#hashes').textContent=Object.entries(inputs).map(([url,h])=>url+' SHA256 '+h).join(' · ');
+ observer=new ResizeObserver(render);observer.observe(host);apply();
+ window.__baseCarryPreview={source_kind:'visual_fixture',engine_operation:false,calibration_only:true,source_hashes:inputs,actor_asset:'worker-base',same_objects_across_views:true,animation_loop:false,get mode(){return held?'held':'rest';}};
+ addEventListener('pagehide',()=>{observer.disconnect();renderer.dispose();renderer.forceContextLoss();},{once:true});
+}catch(error){status.textContent='Preview unavailable';document.querySelector('#error').textContent=String(error?.stack??error);renderer?.dispose();observer?.disconnect();}

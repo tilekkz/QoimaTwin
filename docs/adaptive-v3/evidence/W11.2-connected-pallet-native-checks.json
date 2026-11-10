@@ -1,0 +1,1861 @@
+{
+  "schema_id": "qoima.W11.2.connected-pallet-native-checks.v1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "passed": true,
+  "scope": "One connected visual PALLET455 staging pickup, unchanged-profile route and free HEAVY setdown; static geometry only.",
+  "source_supplier_handover_executed": false,
+  "supplier_boundary": "Same external HU becomes visible on supported staging at receipt t=2; no physical supplier unloading is claimed.",
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route_math.py": "116feec7a9baf6409fc9907dfeef2edf8b5cd2916216a4239392533a3843ef49",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+    "docs/adaptive-v3/fixtures/layout-plans/dense-manual-b-164-v1.json": "bfac6b403f28a7ec51e80dbd4868c518e4d5ce6be6b458bd26d036e7a5662177",
+    "docs/v3/contract-proposals/storage-layout-v3.json": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+    "frontend/public/data/v3/heavy-inbound-fixture.json": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundClock.ts": "551a6bff62b23325bbe8071afe4aff8690b024afc6e628ea3502d5c5fab7134b",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundScene.ts": "12a93271adbd72bb6f6da8d5c13ceeb4cae3994d7e53fe478f419f9e5733bf02",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundBinding.ts": "cb27122e35922e595bf793a073e8ff4645ac499d4ee42a8595a05731c70c5a17",
+    "frontend/package-lock.json": "957df69d2e01a197e08968480ac5eeb3afaa135bddb087af0e1e3360514129a9",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+  },
+  "case": {
+    "handling_unit_id": "v3:HU:W11:external:01",
+    "actor_id": "F01",
+    "vehicle_id": "FL01",
+    "gross_mass_kg": 455,
+    "quantity_units": 24,
+    "stage_support_position": [
+      16,
+      0,
+      14.11
+    ],
+    "stage_HU_position": [
+      16,
+      0.18,
+      14
+    ],
+    "stage_HU_yaw_rad": 3.141592653589793,
+    "target_slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+    "target_HU_position": [
+      118.4,
+      0.18,
+      17.5
+    ],
+    "target_HU_yaw_rad": 1.5707963267948966,
+    "captured_reach_relative_z_m": 0.6,
+    "travel_vehicle_local_HU_z_m": 1,
+    "profile_id": "v3:visual-profile:PALLET455:captured-relative-pi:1"
+  },
+  "summary": {
+    "native_contact_points": 60,
+    "native_contact_failures": 0,
+    "native_travel_envelope_cases": 3,
+    "driver_contacts_passed": true,
+    "continuous_handling_intervals": 12,
+    "native_component_pair_checks": 379320,
+    "unresolved_handling_pairs": 0,
+    "continuous_route_A132_checks": 64,
+    "continuous_route_A132_interval_tests": 28772,
+    "continuous_route_B164_checks": 64,
+    "continuous_route_B164_interval_tests": 32676,
+    "continuous_route_failures": 0,
+    "stage_vehicle_M03_minimum_support_axis_gap_m": 0.01100006200373116,
+    "target_vehicle_M03_minimum_support_axis_gap_m": 0.0010000023990812679,
+    "unchanged_source_C08_padding_m": 0.25,
+    "extra_native_rounding_enclosure_margin_m": 0.000002,
+    "native_contact_tolerance_m": 0.000002,
+    "old_C08_edited": false,
+    "source_model_geometry_edited": false
+  },
+  "endpoints": {
+    "profile_id": "v3:visual-profile:PALLET455:captured-relative-pi:1",
+    "actor_id": "F01",
+    "vehicle_id": "FL01",
+    "archetype_id": "PALLET_LOAD",
+    "gross_mass_kg": 455,
+    "quantity_units": 24,
+    "dimensions_xyz_m": [
+      1.2,
+      1.35,
+      1
+    ],
+    "stage": {
+      "cell_id": "v3:n2:staging:IN_W_BULK:01",
+      "support_id": "v3:visual-heavy-inbound:support:IN_W_BULK:01",
+      "support_position": [
+        16,
+        0,
+        14.11
+      ],
+      "published_support_position": [
+        16,
+        0,
+        13.95
+      ],
+      "proposed_support_delta": [
+        0,
+        0,
+        0.16
+      ],
+      "support_placement_is_new_visual_variant": true,
+      "support_yaw_rad": 0,
+      "HU_position": [
+        16,
+        0.18,
+        14
+      ],
+      "HU_yaw_rad": 3.141592653589793,
+      "engage_position": [
+        16,
+        0,
+        12.6
+      ],
+      "prepared_position": [
+        16,
+        0,
+        11.55
+      ],
+      "vehicle_yaw_rad": 0
+    },
+    "target": {
+      "slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+      "module_id": "v3:module:HEAVY_E:001",
+      "support_position": [
+        118.3,
+        0,
+        17.5
+      ],
+      "support_yaw_rad": 1.5707963267948966,
+      "HU_position": [
+        118.39999999999999,
+        0.18,
+        17.5
+      ],
+      "HU_yaw_rad": 1.5707963267948966,
+      "engage_position": [
+        119.8,
+        0,
+        17.5
+      ],
+      "prepared_position": [
+        120.85,
+        0,
+        17.5
+      ],
+      "vehicle_yaw_rad": 4.71238898038469,
+      "graph_node_id": "v3:module:HEAVY_E:001:B1:vehicle:node",
+      "graph_position": [
+        120.8,
+        0,
+        17.5
+      ]
+    },
+    "controls": {
+      "low_fork_top_m": 0.18,
+      "travel_fork_top_m": 0.7,
+      "reach_extended_m": 0.4,
+      "reach_travel_m": 0,
+      "fork_halfspacing_m": 0.4,
+      "controlled_withdrawal_m": 1.05
+    },
+    "unchanged_C08": {
+      "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+      "component_bounds_local_m": [
+        {
+          "min": [
+            -0.6,
+            0,
+            -1.5
+          ],
+          "max": [
+            0.6,
+            2.1,
+            1.5
+          ]
+        },
+        {
+          "min": [
+            -0.6,
+            0.7,
+            0.5
+          ],
+          "max": [
+            0.6,
+            2.05,
+            1.5
+          ]
+        }
+      ],
+      "travel_capacity_kg": 1000,
+      "extended_capacity_kg": 800,
+      "maximum_single_fork_share_kg": 500
+    },
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "operational_admission": false
+  },
+  "actual_capture": {
+    "profile_id": "v3:visual-profile:PALLET455:captured-relative-pi:1",
+    "reach_relative_matrix": [
+      -1,
+      0,
+      -1.2246467991473532e-16,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1.2246467991473532e-16,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0.5999999865889549,
+      1
+    ],
+    "cargo_world_before": [
+      -1,
+      0,
+      -1.2246467991473532e-16,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1.2246467991473532e-16,
+      0,
+      -1,
+      0,
+      16,
+      0.18,
+      14,
+      1
+    ],
+    "maximum_attach_matrix_residual": 0
+  },
+  "target_capture": {
+    "actual_position": [
+      118.39999999999999,
+      0.18,
+      17.5
+    ],
+    "expected_position": [
+      118.39999999999999,
+      0.18,
+      17.5
+    ],
+    "maximum_position_error_m": 0,
+    "quaternion": [
+      0,
+      0.7071067811865474,
+      0,
+      0.7071067811865477
+    ]
+  },
+  "travel_enclosures": [
+    {
+      "passed": true,
+      "profile_id": "v3:visual-profile:PALLET455:captured-relative-pi:1",
+      "body": {
+        "vertices": 21690,
+        "maximum_nominal_bounds_excess_m": 8.344650259672903e-8,
+        "within_existing_native_tolerance": true,
+        "worst": {
+          "node": "forklift__batch_00",
+          "vertex": 2471,
+          "axis": 1,
+          "point": [
+            -0.27900001406669617,
+            2.1000000834465027,
+            0.05900001525878906
+          ]
+        }
+      },
+      "cargo": {
+        "vertices": 11336,
+        "maximum_nominal_bounds_excess_m": 2.9802322387695312e-8,
+        "within_existing_native_tolerance": true,
+        "worst": {
+          "node": "pallet-load__batch_01",
+          "vertex": 284,
+          "axis": 2,
+          "point": [
+            0.5980000495910645,
+            0.7020000040531158,
+            0.4999999701976776
+          ]
+        }
+      },
+      "driver_contacts_passed": true,
+      "gross_mass_kg": 455,
+      "travel_rating_passed": true,
+      "extended_rating_passed": true,
+      "single_fork_share_kg": 227.5,
+      "native_tolerance_m": 0.000002,
+      "old_C08_modified": false,
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false
+    },
+    {
+      "passed": true,
+      "profile_id": "v3:visual-profile:PALLET455:captured-relative-pi:1",
+      "body": {
+        "vertices": 21690,
+        "maximum_nominal_bounds_excess_m": 8.344650259672903e-8,
+        "within_existing_native_tolerance": true,
+        "worst": {
+          "node": "forklift__batch_00",
+          "vertex": 2471,
+          "axis": 1,
+          "point": [
+            -0.27900001406669617,
+            2.1000000834465027,
+            0.05900001525878995
+          ]
+        }
+      },
+      "cargo": {
+        "vertices": 11336,
+        "maximum_nominal_bounds_excess_m": 2.9802322387695312e-8,
+        "within_existing_native_tolerance": true,
+        "worst": {
+          "node": "pallet-load__batch_01",
+          "vertex": 284,
+          "axis": 2,
+          "point": [
+            0.5980000495910645,
+            0.7020000040531158,
+            0.4999999701976776
+          ]
+        }
+      },
+      "driver_contacts_passed": true,
+      "gross_mass_kg": 455,
+      "travel_rating_passed": true,
+      "extended_rating_passed": true,
+      "single_fork_share_kg": 227.5,
+      "native_tolerance_m": 0.000002,
+      "old_C08_modified": false,
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false
+    },
+    {
+      "passed": true,
+      "profile_id": "v3:visual-profile:PALLET455:captured-relative-pi:1",
+      "body": {
+        "vertices": 21690,
+        "maximum_nominal_bounds_excess_m": 8.344650259672903e-8,
+        "within_existing_native_tolerance": true,
+        "worst": {
+          "node": "forklift__batch_00",
+          "vertex": 2471,
+          "axis": 1,
+          "point": [
+            -0.27900001406669617,
+            2.1000000834465027,
+            0.05900001525878906
+          ]
+        }
+      },
+      "cargo": {
+        "vertices": 11336,
+        "maximum_nominal_bounds_excess_m": 2.9802322387695312e-8,
+        "within_existing_native_tolerance": true,
+        "worst": {
+          "node": "pallet-load__batch_01",
+          "vertex": 284,
+          "axis": 2,
+          "point": [
+            0.5980000495910645,
+            0.7020000040531158,
+            0.4999999701976776
+          ]
+        }
+      },
+      "driver_contacts_passed": true,
+      "gross_mass_kg": 455,
+      "travel_rating_passed": true,
+      "extended_rating_passed": true,
+      "single_fork_share_kg": 227.5,
+      "native_tolerance_m": 0.000002,
+      "old_C08_modified": false,
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false
+    }
+  ],
+  "continuous_handling": [
+    {
+      "site": "stage",
+      "phase": "extend_empty",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.45000000745058055,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": 0.25199995487928284
+      },
+      "triangle_sweep_certificates": 0,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "stage",
+      "phase": "lower_empty",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.029999969899654033,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": 0.04999993294477356
+      },
+      "triangle_sweep_certificates": 0,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "stage",
+      "phase": "insert_empty",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.01100006200373116,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "stage",
+      "phase": "lift",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.01100006200373116,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "stage",
+      "phase": "retract_loaded",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.10999999403953531,
+        "HU_M03": 0.5200000077486038,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "stage",
+      "phase": "depart_initial_straight",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.10999999403953531,
+        "HU_M03": 0.5200000077486038,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "target",
+      "phase": "approach_loaded",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.09999999403953552,
+        "HU_M03": 0.5200000077486038,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "target",
+      "phase": "extend_loaded",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.09999999403953552,
+        "HU_M03": 0.5200000077486038,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "target",
+      "phase": "setdown",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.0010000023990812679,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "target",
+      "phase": "withdraw_empty",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": -0.14000001270323992,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.0010000023990812679,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": -0.14000001270323992
+      },
+      "triangle_sweep_certificates": 34,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "target",
+      "phase": "raise_empty",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.02999996989965581,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": 0.049999932944771786
+      },
+      "triangle_sweep_certificates": 0,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    },
+    {
+      "site": "target",
+      "phase": "retract_empty",
+      "passed": true,
+      "pair_count": 31610,
+      "minimum_support_axis_gap_m": 7.748603814139443e-9,
+      "per_kind_minimum_aabb_support_gap_m": {
+        "vehicle_M03": 0.45000000745058055,
+        "HU_M03": 7.748603814139443e-9,
+        "vehicle_HU": 0.25199995487928106
+      },
+      "triangle_sweep_certificates": 0,
+      "unseparated_native_component_sweeps": [],
+      "failure_count": 0,
+      "method": "Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration."
+    }
+  ],
+  "negative_controls": [
+    "old_profile_not_silently_selected",
+    "capture_offset_mutation_refused"
+  ],
+  "fixed_stage_placement": {
+    "published_support_position": [
+      16,
+      0,
+      13.95
+    ],
+    "new_explicit_visual_support_position": [
+      16,
+      0,
+      14.11
+    ],
+    "reason": "Avoids actual carriage_forward_plate versus M03 rear-foot material intersection without moving HU, changing capture, editing source geometry or widening the C08 envelope.",
+    "within_original_cell": true,
+    "canonical_target_unchanged": true,
+    "old_failure": {
+      "pair": [
+        "forklift__batch_04#0 carriage_forward_plate",
+        "heavy-bay__batch_00#0 rear foot"
+      ],
+      "both_native_components_closed_convex": true,
+      "sat_projection_overlap_m": 0.025000013411045074,
+      "shared_interior_point_m": [
+        15.463823234788531,
+        0.13782322853997797,
+        13.36766665379206
+      ],
+      "nearest_euclidean_surface_distances_m": [
+        0.007666645074881018,
+        0.00025000000000106876
+      ],
+      "note": "SAT projection overlap is not Euclidean penetration depth. New support placement removes this material overlap without a tolerance waiver."
+    }
+  },
+  "limitations": [
+    "This is a bounded static geometry proof, not engine, supplier handover, traffic, queue or strength certification.",
+    "Nine actual stage support witnesses span the native load-bearing base; no claim that every point of the open M03 top supports the entire projected pallet area.",
+    "Source internal vehicle/driver construction and adjacent cosmetic joins are retained; this pass checks affected foreign HU/M03/vehicle pairs only, without hierarchy exemptions.",
+    "Concave L-fork AABB overlaps are resolved with closed-oriented boundary-triangle sweep separation and exterior winding, not by treating convex-hull overlap as penetration.",
+    "Source STAGE_IN_W_BULK is a soft reservation, not a solid wall; exclusive use of its handling corridor remains required. Other cell02 and N3 stow reservation envelopes are retained.",
+    "The actual page uses A132; the same 64 continuous checks also pass B164 independently.",
+    "Finite native contact witnesses, conservative continuous envelopes and explicit source proof scopes are kept separate."
+  ],
+  "reproduction": {
+    "instructions": "Extract audit_sources to their exact repo-relative paths only when absent or hash-identical. With frontend package-lock dependencies installed, run the commands below. No ignored source data is needed beyond these embedded audit programs; the Node command regenerates source-route.json before Python.",
+    "commands": [
+      "node work/v3/heavy-inbound-physics-20261109/check.mjs",
+      "python work/v3/heavy-inbound-physics-20261109/route-check.py --layout-a",
+      "python work/v3/heavy-inbound-physics-20261109/route-check.py"
+    ]
+  },
+  "audit_sources": [
+    {
+      "repo_path": "work/v3/heavy-inbound-physics-20261109/check.mjs",
+      "sha256": "8d4b915a9f3861bb31af6f36e66d4ffb5144afdcc68e77fff7ea67fc78c97959",
+      "encoding": "utf-8",
+      "source": "import fs from 'node:fs';\r\nimport path from 'node:path';\r\nimport crypto from 'node:crypto';\r\nimport assert from 'node:assert/strict';\r\nimport {pathToFileURL} from 'node:url';\r\nconst repo=path.resolve(import.meta.dirname,'../../..'),own=import.meta.dirname;\r\nconst read=p=>fs.readFileSync(path.join(repo,p)),sha=p=>crypto.createHash('sha256').update(read(p)).digest('hex'),source_hashes={};\r\nconst text=p=>{source_hashes[p]=sha(p);return read(p).toString('utf8');};\r\nconst {default:ts}=await import(pathToFileURL(path.join(repo,'frontend/node_modules/typescript/lib/typescript.js')));\r\nconst runtime=path.join(own,'runtime');fs.mkdirSync(runtime,{recursive:true});const done=new Set();\r\nfunction compile(name){if(done.has(name))return;done.add(name);let js=ts.transpileModule(text('frontend/src/adaptive-v3/'+name+'.ts'),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;\r\n js=js.replace(/import\\s+(\\w+)\\s+from\\s+['\"]\\.\\/([^'\"]+\\.json)['\"];?/g,(_,name,dep)=>'const '+name+'='+text('frontend/src/adaptive-v3/'+dep)+';');\r\n js=js.replace(/from ['\"]\\.\\/([^'\"]+)['\"]/g,(_,dep)=>{compile(dep);return `from './${dep}.mjs'`;}).replace(/from ['\"](three(?:\\/[^'\"]+)?)['\"]/g,(_,id)=>`from '${pathToFileURL(path.join(repo,'frontend/node_modules',id==='three'?'three/build/three.module.js':id)).href}'`);\r\n fs.writeFileSync(path.join(runtime,name+'.mjs'),js);\r\n}\r\nfor(const name of ['warehouseHeavyInboundPhysics','warehouseAdapter','warehouseRouting','warehouseRoutePose','workerRoles','seatedDriver'])compile(name);\r\nconst loadModule=async name=>import(pathToFileURL(path.join(runtime,name+'.mjs')));\r\nconst [{adaptWarehouseV3},{validateRoutePolicy,createWarehouseRouter},{compileVehicleRoutePreview,sampleVehicleArc},{createWorkerInstance,disposeWorkerInstance},{validateSeatedDriverPose,bindSeatedDriver},physics,native]=await Promise.all([loadModule('warehouseAdapter'),loadModule('warehouseRouting'),loadModule('warehouseRoutePose'),loadModule('workerRoles'),loadModule('seatedDriver'),loadModule('warehouseHeavyInboundPhysics'),import(pathToFileURL(path.join(repo,'work/v3/n2-staging-interfaces-20261109/native.mjs')))]);\r\nconst {T,load,triangles,flat,nearest}=native;\r\nconst files={fixture:'frontend/public/data/v3/warehouse-fixture-v3.json',layout:'frontend/public/data/adaptive-v3/layout-manifest.json',registry:'frontend/public/data/v3/worker-registry-v3.json',profiles:'frontend/public/data/v3/worker-profiles-v3.json'};\r\nconst bundle=await adaptWarehouseV3(Object.fromEntries(Object.entries(files).map(([k,p])=>[k,text(p)])));\r\nconst policy=await validateRoutePolicy(text('frontend/public/data/v3/route-policy-v3.json'),bundle),endpoints=physics.heavyInboundPalletEndpoints(bundle);\r\nconst world=new T.Scene(),models={};for(const id of ['forklift','worker-base','pallet-load','heavy-bay','environment-shell']){const p='frontend/public/models/v3/'+id+'.glb';source_hashes[p]=sha(p);models[id]=await load(path.join(repo,p));}\r\nconst vehicle=models.forklift,cargo=models['pallet-load'],support=models['heavy-bay'];world.add(vehicle,cargo,support);\r\nconst actor=createWorkerInstance(models['worker-base'],'F01','forklift_driver'),seated=bindSeatedDriver(vehicle,actor,validateSeatedDriverPose(JSON.parse(text('frontend/public/data/v3/seated-driver-pose.json'))));\r\nconst joints=Object.fromEntries(['joint__carriage','joint__reach','joint__fork_L','joint__fork_R'].map(n=>[n,vehicle.getObjectByName(n)]));\r\nconst rests=Object.fromEntries(Object.entries(joints).map(([n,o])=>[n,o.position.clone()]));\r\nfunction body(p,yaw,fork,reach){vehicle.position.fromArray(p);vehicle.rotation.y=yaw;joints.joint__carriage.position.copy(rests.joint__carriage);joints.joint__carriage.position.y=fork;joints.joint__reach.position.copy(rests.joint__reach);joints.joint__reach.position.z+=reach;for(const [s,sign]of[['L',-1],['R',1]])joints['joint__fork_'+s].position.x=sign*.4;world.updateMatrixWorld(true);}\r\nfunction fixedCargo(p,yaw){cargo.position.fromArray(p);cargo.rotation.y=yaw;world.updateMatrixWorld(true);}\r\nfunction contacts(p,normalRoot,supportRoot,points,kind){const a=flat(triangles(normalRoot),p,-1),b=flat(triangles(supportRoot),p,1);return points.map(point=>{const v=new T.Vector3(...point),x=nearest(v,a),y=nearest(v,b),passed=!!x&&!!y&&x.gap_m<=2e-6&&y.gap_m<=2e-6;return{kind,point_m:point,HU_native:x,support_native:y,passed};});}\r\nconst result={source_kind:'visual_fixture',engine_operation:false,operational_admission:false,profile_id:physics.HEAVY_INBOUND_PALLET_PI_PROFILE,endpoints,source_hashes,native_contacts:[],envelopes:[],controls:[],capture:null,scope:['Exact first PALLET455 geometry only; source-adjacent construction retained, no generic pair exemption added.','Fresh route proof uses explicit shallow100 body/cargo component bounds and unchanged .25m padding; original C08 bytes and sourcepacket remain unchanged; contacts remain actual native triangles.']};\r\nsupport.position.fromArray(endpoints.stage.support_position);support.rotation.y=endpoints.stage.support_yaw_rad;\r\nbody(endpoints.stage.engage_position,0,.18,.4);fixedCargo(endpoints.stage.HU_position,Math.PI);\r\nconst stagePoints=[-.53,0,.53].flatMap(x=>[-.4,0,.4].map(z=>[16+x,.18,14+z]));result.native_contacts.push(...contacts(.18,cargo,support,stagePoints,'stage_pi_HU_M03'));\r\nconst capture=physics.captureHeavyInboundPallet(joints.joint__reach.matrixWorld,cargo.matrixWorld,result.profile_id);result.capture=capture;\r\nfor(const h of [.18,.3,.5,.7]){body(endpoints.stage.engage_position,0,h,.4);const m=physics.sampleHeavyInboundPalletCapture(capture,joints.joint__reach.matrixWorld);m.decompose(cargo.position,cargo.quaternion,cargo.scale);world.updateMatrixWorld(true);const p=cargo.getWorldPosition(new T.Vector3());result.native_contacts.push(...contacts(h,cargo,vehicle,[-.4,.4].flatMap(x=>[-.4,0,.4].map(z=>[16+x,h,p.z+z])),'extended_fork_support_'+h));}\r\nfor(const reach of [.4,.2,0]){body(endpoints.stage.engage_position,0,.7,reach);const m=physics.sampleHeavyInboundPalletCapture(capture,joints.joint__reach.matrixWorld);m.decompose(cargo.position,cargo.quaternion,cargo.scale);world.updateMatrixWorld(true);const p=cargo.getWorldPosition(new T.Vector3());result.native_contacts.push(...contacts(.7,cargo,vehicle,[-.4,.4].flatMap(x=>[-.4,0,.4].map(z=>[16+x,.7,p.z+z])),'retraction_fork_support_'+reach));}\r\nfor(const [p,yaw]of[[[16,0,12.6],0],[[6,0,18],Math.PI/2],[[120.8,0,17.5],3*Math.PI/2]]){body(p,yaw,.7,0);const m=physics.sampleHeavyInboundPalletCapture(capture,joints.joint__reach.matrixWorld);m.decompose(cargo.position,cargo.quaternion,cargo.scale);world.updateMatrixWorld(true);result.envelopes.push(physics.checkHeavyInboundPalletNativeEnvelope({profile_id:result.profile_id,vehicle,cargo,fork_top_m:.7,extension_m:0,driver:seated.snapshot()}));}\r\nsupport.position.fromArray(endpoints.target.support_position);support.rotation.y=endpoints.target.support_yaw_rad;body(endpoints.target.engage_position,endpoints.target.vehicle_yaw_rad,.18,.4);const targetMatrix=physics.sampleHeavyInboundPalletCapture(capture,joints.joint__reach.matrixWorld);targetMatrix.decompose(cargo.position,cargo.quaternion,cargo.scale);world.updateMatrixWorld(true);\r\nconst targetPoints=[-.53,0,.53].flatMap(x=>[-.4,0,.4].map(z=>new T.Vector3(x,.18,.1+z).applyMatrix4(new T.Matrix4().compose(new T.Vector3(...endpoints.target.support_position),new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),endpoints.target.support_yaw_rad),new T.Vector3(1,1,1))).toArray()));result.native_contacts.push(...contacts(.18,cargo,support,targetPoints,'target_pi_HU_M03'));\r\nresult.target_capture={actual_position:cargo.position.toArray(),expected_position:endpoints.target.HU_position,maximum_position_error_m:cargo.position.distanceTo(new T.Vector3(...endpoints.target.HU_position)),quaternion:cargo.quaternion.toArray()};\r\nassert.throws(()=>physics.captureHeavyInboundPallet(joints.joint__reach.matrixWorld,cargo.matrixWorld,'old-relative0'),/EXPLICIT_PALLET_PI_PROFILE_REQUIRED/);result.controls.push('old_profile_not_silently_selected');\r\nconst shifted=cargo.matrixWorld.clone();shifted.elements[14]+=.01;assert.throws(()=>physics.captureHeavyInboundPallet(joints.joint__reach.matrixWorld,shifted,result.profile_id),/OFFSET_MISMATCH/);result.controls.push('capture_offset_mutation_refused');\r\nconst router=createWarehouseRouter(bundle,policy),request={source_kind:'visual_fixture',engine_operation:false,mode:'forklift',actor_id:'F01',vehicle_id:'FL01',cargo_archetype_id:'PALLET_LOAD',from_node_id:'v3:service:IN_W_BULK',to_node_id:endpoints.target.graph_node_id,service_port_id:null,closed_arc_ids:[]};\r\nconst route=router.route(request);assert(route.ok);const preview=compileVehicleRoutePreview(bundle,route),arcs=route.arc_ids.map(id=>bundle.layout.vehicle.arcs.find(a=>a.arc_id===id));\r\nconst routeData={source_kind:'visual_fixture',engine_operation:false,route,preview_duration_s:preview.duration_s,preview_phases:preview.phases,source_arcs:arcs.map(a=>({arc_id:a.arc_id,from_node_id:bundle.layout.vehicle.nodes[a.from_node_index].node_id,to_node_id:bundle.layout.vehicle.nodes[a.to_node_index].node_id,length_m:a.length_m,geometry:a.fields.geometry,motion_direction:a.fields.motion_direction,allowed_cargo_archetype_ids:a.fields.allowed_cargo_archetype_ids,from:sampleVehicleArc(a,0),to:sampleVehicleArc(a,1)}))};\r\nfs.writeFileSync(path.join(own,'source-route.json'),JSON.stringify(routeData,null,2)+'\\n');\r\nfs.writeFileSync(path.join(own,'endpoint-tables.json'),JSON.stringify(endpoints,null,2)+'\\n');\r\n// Affected handling only. At each interval yaw is constant and every control is\r\n// affine between endpoints; swept native component AABBs therefore enclose the\r\n// complete interval. This adds no whole-bone/whole-mesh collision exemption.\r\nconst gap=(a,b)=>Math.max(b.min.x-a.max.x,a.min.x-b.max.x,b.min.y-a.max.y,a.min.y-b.max.y,b.min.z-a.max.z,a.min.z-b.max.z);\r\nfunction componentBoxes(root,relative){const rows=triangles(root);if(relative)for(const r of rows)for(const v of[r.tri.a,r.tri.b,r.tri.c])v.applyMatrix4(relative);return native.components(rows).map(p=>({id:p.node+'#'+p.component,box:p.bounds,triangles:p.rows.map(r=>r.tri)}));}\r\nfunction union(a,b){assert.equal(a.length,b.length);return a.map((p,i)=>{assert.equal(p.id,b[i].id);return{id:p.id,box:p.box.clone().union(b[i].box),triangles:p.triangles,other_triangles:b[i].triangles};});}\r\nconst {describeNativeJointSolid,separateNativeJointSolids}=await import(pathToFileURL(path.join(repo,'frontend/tools/native-convex-joint-v3.mjs')));\r\n// Positive separation per actual boundary triangle handles the source concave\r\n// L-forks without replacing them by their intersecting convex hull. Every solid\r\n// descriptor must first pass independent closure/orientation checks.\r\nfunction triangleSweepsSeparate(a,b){\r\n const simple=(a,b)=>{try{describeNativeJointSolid(a.triangles);}catch{return false;}\r\n  const point=b.box.getCenter(new T.Vector3());let winding=0;for(const t of a.triangles){const x=t.a.clone().sub(point),y=t.b.clone().sub(point),z=t.c.clone().sub(point),lx=x.length(),ly=y.length(),lz=z.length();winding+=2*Math.atan2(x.dot(y.clone().cross(z)),lx*ly*lz+x.dot(y)*lz+y.dot(z)*lx+z.dot(x)*ly);}if(Math.abs(winding)>2*Math.PI)return false;\r\n  return a.triangles.every((t,i)=>{const box=new T.Box3().setFromPoints([t.a,t.b,t.c]);const u=a.other_triangles?.[i];if(u)box.expandByPoint(u.a).expandByPoint(u.b).expandByPoint(u.c);return gap(box,b.box)>=-2e-6;});};\r\n return simple(a,b)||simple(b,a);\r\n}\r\nconst handling=[];\r\nfor(const site of['stage','target']){\r\n const e=endpoints[site],origin=e.support_position,yaw=e.support_yaw_rad,vYaw=e.vehicle_yaw_rad,eng=e.engage_position,safe=e.prepared_position;\r\n support.position.fromArray(origin);support.rotation.y=yaw;\r\n const steps=site==='stage'?[{id:'extend_empty',a:[safe,.7,0],b:[safe,.7,.4],attached:false},{id:'lower_empty',a:[safe,.7,.4],b:[safe,.18,.4],attached:false},{id:'insert_empty',a:[safe,.18,.4],b:[eng,.18,.4],attached:false},{id:'lift',a:[eng,.18,.4],b:[eng,.7,.4],attached:true},{id:'retract_loaded',a:[eng,.7,.4],b:[eng,.7,0],attached:true},{id:'depart_initial_straight',a:[eng,.7,0],b:[[16,0,10.808290376865476],.7,0],attached:true}]:[{id:'approach_loaded',a:[safe,.7,0],b:[eng,.7,0],attached:true},{id:'extend_loaded',a:[eng,.7,0],b:[eng,.7,.4],attached:true},{id:'setdown',a:[eng,.7,.4],b:[eng,.18,.4],attached:true},{id:'withdraw_empty',a:[eng,.18,.4],b:[safe,.18,.4],attached:false},{id:'raise_empty',a:[safe,.18,.4],b:[safe,.7,.4],attached:false},{id:'retract_empty',a:[safe,.7,.4],b:[safe,.7,0],attached:false}];\r\n for(const step of steps){\r\n  const take=c=>{body(c[0],vYaw,c[1],c[2]);if(step.attached){const m=physics.sampleHeavyInboundPalletCapture(capture,joints.joint__reach.matrixWorld);m.decompose(cargo.position,cargo.quaternion,cargo.scale);}else fixedCargo(e.HU_position,e.HU_yaw_rad);world.updateMatrixWorld(true);const inverse=cargo.matrixWorld.clone().invert();return{vehicle:componentBoxes(vehicle),cargo:componentBoxes(cargo),support:componentBoxes(support),vehicleRelative:componentBoxes(vehicle,inverse),cargoRelative:componentBoxes(cargo,inverse)};};\r\n  const a=take(step.a),b=take(step.b),pairs=[['vehicle_M03',union(a.vehicle,b.vehicle),a.support],['HU_M03',union(a.cargo,b.cargo),a.support],['vehicle_HU',union(a.vehicleRelative,b.vehicleRelative),union(a.cargoRelative,b.cargoRelative)]];\r\n  const failures=[],kindGaps={};let pairCount=0,minimumGap=Infinity,triangleCertified=0;for(const[kind,left,right]of pairs)for(const x of left)for(const y of right){const d=gap(x.box,y.box);pairCount++;minimumGap=Math.min(minimumGap,d);kindGaps[kind]=Math.min(kindGaps[kind]??Infinity,d);if(d< -2e-6){if(triangleSweepsSeparate(x,y))triangleCertified++;else failures.push({kind,a:x.id,b:y.id,aabb_overlap_m:-d});}}\r\n  handling.push({site,phase:step.id,passed:failures.length===0,pair_count:pairCount,minimum_support_axis_gap_m:minimumGap,per_kind_minimum_aabb_support_gap_m:kindGaps,triangle_sweep_certificates:triangleCertified,unseparated_native_component_sweeps:failures.slice(0,8),failure_count:failures.length,method:'Native component endpoint swept AABBs; unresolved concave pairs use closed-oriented boundary-triangle swept AABBs against other solid bounds, in cargo frame for co-motion. Constant-yaw affine controls only. Closed boundary separated from the entire convex other bound plus an exterior-winding centre witness excludes containment; continuous triangle sweeps prevent a later entry. Negative result is inconclusive, not penetration.'});\r\n }\r\n}\r\nresult.handling_clearance=handling;\r\nresult.endpoint_contacts_envelopes_passed=result.native_contacts.every(c=>c.passed)&&result.envelopes.every(e=>e.passed)&&result.target_capture.maximum_position_error_m<=2e-6;\r\nresult.passed=result.native_contacts.every(c=>c.passed)&&result.envelopes.every(e=>e.passed)&&result.target_capture.maximum_position_error_m<=2e-6&&handling.every(r=>r.passed);\r\nfor(const[p,h]of Object.entries(source_hashes))assert.equal(sha(p),h,'Source drift '+p);\r\nfs.writeFileSync(path.join(own,'checks.json'),JSON.stringify(result,null,2)+'\\n');\r\nseated.release();disposeWorkerInstance(actor);for(const root of Object.values(models))root.traverse(n=>{n.geometry?.dispose();for(const m of n.material?(Array.isArray(n.material)?n.material:[n.material]):[])m.dispose();});\r\nconsole.log(JSON.stringify({passed:result.passed,native_contacts:result.native_contacts.length,handling:handling.map(r=>({site:r.site,phase:r.phase,passed:r.passed,pairs:r.pair_count,unresolved:r.failure_count,witness:r.unseparated_native_component_sweeps.slice(0,1)})),envelopes:result.envelopes.map(e=>({passed:e.passed,body:e.body.maximum_nominal_bounds_excess_m,cargo:e.cargo.maximum_nominal_bounds_excess_m,driver:e.driver_contacts_passed})),route:{arcs:arcs.length,length_m:route.length_m,duration_s:preview.duration_s},target:result.target_capture},null,2));\r\n"
+    },
+    {
+      "repo_path": "work/v3/heavy-inbound-physics-20261109/route-check.py",
+      "sha256": "ec584022c10abc2b38aabca8ead586535596b4e969dc73c84072168512994ecd",
+      "encoding": "utf-8",
+      "source": "from pathlib import Path\nimport importlib.util, hashlib, json, sys\nROOT=Path(__file__).resolve().parents[3]\nOWN=ROOT/'work/v3/heavy-inbound-physics-20261109'\nPACK=ROOT/'docs/v3/contract-proposals/n2-n3-physical-interfaces-v1'\nspec=importlib.util.spec_from_file_location('source_route_math',PACK/'route_math.py');math=importlib.util.module_from_spec(spec);spec.loader.exec_module(math)\npacket=json.loads((PACK/'route-terminal-interfaces.json').read_bytes())\ncandidate=json.loads((ROOT/'docs/adaptive-v3/fixtures/layout-plans/dense-manual-b-164-v1.json').read_bytes())\nroute=json.loads((OWN/'source-route.json').read_bytes())\nprofile=next(p for p in packet['loaded_profiles']if p['archetype_id']=='PALLET_LOAD')\ncomponents=profile['component_bounds_local_m']\ndef inflated(box):return{'min':[v-2e-6 for v in box['min']],'max':[v+2e-6 for v in box['max']]}\nuse_a='--layout-a' in sys.argv\nmodules=json.loads((ROOT/'docs/v3/contract-proposals/storage-layout-v3.json').read_bytes())['modules']if use_a else candidate['modules']\nobstacles=[{'id':m['module_id'],'bounds':m['operating_bounds_world']}for m in modules]\nfor o in candidate['fixed_obstacles']:\n    if 'FL01' in o['id'] and ('park' in o['kind'] or 'vehicle' in o['kind']):continue\n    if o['id']=='STAGE_IN_W_BULK' and o['kind']=='source_staging_reservation':continue\n    obstacles.append({'id':o['id'],'bounds':o['bounds']})\n# Both existing-template M03s remain inside their finite cells. The first is a\n# separately named new visual placement, not a mutation of the published packet.\nstage1={'id':'v3:visual-heavy-inbound:support:IN_W_BULK:01','bounds':{'min':[15.19999998,0,13.41000001],'max':[16.80000002,.18,14.80999999]}}\nstage2={'id':'v3:n2:support:IN_W_BULK:02','bounds':{'min':[21.19999998,0,13.25000001],'max':[22.80000002,.18,14.64999999]}}\nobstacles.extend([stage1,stage2])\nobstacles.extend([{'id':'other-stage-cell-02-reservation','bounds':{'min':[19.4,0,13],'max':[24.6,8,15]}},{'id':'N3-stow-station-reservation','bounds':{'min':[25.8,0,13.3],'max':[30.2,8,14.7]}}])\nchecks=[]\nfor suffix in ['empty_arrival','loaded_departure']:\n    connector=next(c for c in packet['connectors']if c['connector_id']=='v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:'+suffix)\n    boxes=components[:1]if suffix.startswith('empty')else components\n    for i,s in enumerate(connector['segments']):\n        g=s['geometry'];kind=g['kind']\n        if kind=='line':g=math.line(s['start_pose']['position_m'],s['end_pose']['position_m'],s['start_pose']['yaw_rad'])\n        else:g=dict(g,start_yaw_rad=s['start_pose']['yaw_rad'],end_yaw_rad=s['end_pose']['yaw_rad'])\n        result=math.prove_segment(g,[inflated(b)for b in boxes],[o for o in obstacles if o['id']!=stage1['id']])\n        checks.append({'kind':suffix,'index':i,'geometry':g,'own_terminal_support_checked_separately_by_native_handling':True,**result})\nfor i,a in enumerate(route['source_arcs']):\n    result=math.prove_segment(a['geometry'],[inflated(b)for b in components],obstacles)\n    checks.append({'kind':'source_loaded_arc','index':i,'arc_id':a['arc_id'],**result})\n# Target-graph to prepared is a source-heading 50mm connector, not an in-place yaw.\ng=math.line([120.8,0,17.5],[120.85,0,17.5],3*3.141592653589793/2)\nchecks.append({'kind':'target_50mm_graph_connector',**math.prove_segment(g,[inflated(b)for b in components],obstacles)})\n# The controlled target approach is permitted to enter ONLY its actual intended\n# M03. All other source modules/stock reservation envelopes remain obstacles.\ng=math.line([120.85,0,17.5],[119.8,0,17.5],3*3.141592653589793/2)\nchecks.append({'kind':'target_controlled_approach','excluded_support':'v3:module:HEAVY_E:001','own_terminal_support_checked_separately_by_native_handling':True,**math.prove_segment(g,[inflated(b)for b in components],[o for o in obstacles if o['id']!='v3:module:HEAVY_E:001'])})\npaths=['docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route_math.py','docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json','docs/adaptive-v3/fixtures/layout-plans/dense-manual-b-164-v1.json']\nif use_a:paths.append('docs/v3/contract-proposals/storage-layout-v3.json')\nresult={'passed':all(c['passed']for c in checks),'source_kind':'visual_fixture','engine_operation':False,'source_hashes':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()for p in paths},'source_safety_padding_m':.25,'native_rounding_enclosure_margin_m':2e-6,'source_C08_component_bounds_unchanged':components,'obstacle_count':len(obstacles),'checks':checks,'interval_tests':sum(c['interval_tests']for c in checks),'exclusive_own_staging_reservation_required':'STAGE_IN_W_BULK','limitations':['Static geometry only; reservations and one-clock ledger remain separate.','The own STAGE_IN_W_BULK soft reservation is not a material wall; exclusive handling-space ownership is required. Other cell02 and N3 stow allocations are retained as obstacles.','Actual intended terminal M03 is excluded only from its own approach envelope; native fixed-yaw handling clearance covers its actual triangles.','Source tyre steering and immutable vehicle structure retained; no new full-world native triangle gate or source-supplier handover claimed.']}\nresult['layout_variant']='A132'if use_a else'B164'\nresult['source_storage_module_count']=len(modules)\nresult['validated_recipe']={'stage_support_position':[16,0,14.11],'stage_support_yaw_rad':0,'stage_engage_position':[16,0,12.6],'target_engage_position':[119.8,0,17.5],'cargo_reach_relative_z_m':.6,'cargo_travel_vehicle_local_z_m':1,'helper_source_sha256_from_native_test':'11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba'}\nresult['runtime_source_observation_not_used_by_route_math']={'path':'frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts','sha256':hashlib.sha256((ROOT/'frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts').read_bytes()).hexdigest()}\n(OWN/('route-checks-A132.json'if use_a else'route-checks.json')).write_text(json.dumps(result,indent=2)+'\\n',encoding='utf-8')\nprint(json.dumps({'passed':result['passed'],'checks':len(checks),'interval_tests':result['interval_tests'],'failed':[c for c in checks if not c['passed']]}))\n"
+    },
+    {
+      "repo_path": "work/v3/n2-staging-interfaces-20261109/native.mjs",
+      "sha256": "8db5ee1ffe8aee9e54a18c7795924904cc1cb077e81381a4a0e87c9dda537975",
+      "encoding": "utf-8",
+      "source": "import * as T from '../../../frontend/node_modules/three/build/three.module.js';\nimport {GLTFLoader} from '../../../frontend/node_modules/three/examples/jsm/loaders/GLTFLoader.js';\nimport {readFile} from 'node:fs/promises';\nexport {T};\nexport async function load(file){const b=await readFile(file);return(await new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'')).scene;}\nexport function triangles(root){root.updateMatrixWorld(true);const out=[];root.traverse(n=>{if(!n.isMesh)return;const p=n.geometry.getAttribute('position'),ix=n.geometry.index;for(let i=0;i<(ix?.count??p.count);i+=3){const t=new T.Triangle(...[0,1,2].map(k=>new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+k):i+k).applyMatrix4(n.matrixWorld)));out.push({node:n.name,triangle:i/3,tri:t,normal:t.getNormal(new T.Vector3()),source_parts:JSON.parse(n.userData.source_parts_json??'[]')});}});return out;}\nexport function flat(tris,y,up,eps=2e-6){return tris.filter(t=>t.normal.y*up>.99999&&[t.tri.a,t.tri.b,t.tri.c].every(v=>Math.abs(v.y-y)<=eps));}\nexport function nearest(p,tris){let best=null;for(const r of tris){const point=r.tri.closestPointToPoint(p,new T.Vector3()),distance=point.distanceTo(p);if(!best||distance<best.gap_m)best={node:r.node,triangle:r.triangle,point_m:point.toArray(),normal:r.normal.toArray(),gap_m:distance,source_parts:r.source_parts};}return best;}\nexport function bounds(tris){return new T.Box3().setFromPoints(tris.flatMap(t=>[t.tri.a,t.tri.b,t.tri.c]));}\nexport function components(tris){const groups=new Map();for(const r of tris){const a=groups.get(r.node)??[];a.push(r);groups.set(r.node,a);}const out=[];for(const[node,rows]of groups){const parent=rows.map((_,i)=>i),owners=new Map(),find=i=>parent[i]===i?i:parent[i]=find(parent[i]);for(let i=0;i<rows.length;i++)for(const v of[rows[i].tri.a,rows[i].tri.b,rows[i].tri.c]){const k=v.toArray().map(x=>Math.round(x*1e9)).join(',');if(owners.has(k))parent[find(i)]=find(owners.get(k));else owners.set(k,i);}const parts=new Map();for(let i=0;i<rows.length;i++){const k=find(i),a=parts.get(k)??[];a.push(rows[i]);parts.set(k,a);}let index=0;for(const part of parts.values())out.push({node,component:index++,triangles:part.map(r=>r.triangle),bounds:bounds(part),rows:part});}return out;}\nexport function axisSeparation(a,b){const list=[];for(const axis of['x','y','z']){const d1=b.min[axis]-a.max[axis],d2=a.min[axis]-b.max[axis];if(d1>=0)list.push({axis,gap_m:d1,side:'A_below_B'});if(d2>=0)list.push({axis,gap_m:d2,side:'B_below_A'});}return list.sort((a,b)=>b.gap_m-a.gap_m);}\nfunction clip(poly,a,b){const side=p=>(b.x-a.x)*(p.y-a.y)-(b.y-a.y)*(p.x-a.x),out=[];for(let i=0;i<poly.length;i++){const p=poly[i],q=poly[(i+1)%poly.length],u=side(p),v=side(q);if(u>=-1e-12)out.push(p);if((u>=-1e-12)!==(v>=-1e-12))out.push(p.clone().lerp(q,u/(u-v)));}return out;}\nexport function overlapXZ(a,b){const p=t=>[t.a,t.b,t.c].map(v=>new T.Vector2(v.x,v.z)),area=v=>v.reduce((s,u,i)=>{const w=v[(i+1)%v.length];return s+u.x*w.y-w.x*u.y;},0)/2;let poly=p(a),boundary=p(b);if(area(boundary)<0)boundary.reverse();for(let i=0;i<3&&poly.length;i++)poly=clip(poly,boundary[i],boundary[(i+1)%3]);return Math.abs(area(poly));}\nexport function boxJSON(b){return{min:b.min.toArray(),max:b.max.toArray()};}\n"
+    },
+    {
+      "repo_path": "frontend/tools/native-convex-joint-v3.mjs",
+      "sha256": "c4bbfdad191c2cf8a5ef05f078fd1eaef008df7094a8e8c24d4aee14cebc0bcc",
+      "encoding": "utf-8",
+      "source": "/** Independent native-solid support separation. No hierarchy/adjacency exceptions. */\nimport assert from 'node:assert/strict';\nimport * as T from 'three';\n\nconst vertexKey=v=>v.toArray().map(x=>x.toFixed(9)).join(',');\nconst unique=points=>[...new Map(points.map(p=>[vertexKey(p),p])).values()];\nconst V=()=>new T.Vector3();\n\n/** Input triangles must describe one actual closed, outward-oriented component. */\nexport function describeNativeJointSolid(triangles,{tolerance=1e-7,requireConvex=false}={}){\n assert(triangles.length>=4,'Closed solid triangles required');\n const vertices=unique(triangles.flatMap(t=>[t.a,t.b,t.c]));\n assert(vertices.every(p=>p.toArray().every(Number.isFinite)),'Finite native vertices required');\n const origin=vertices.reduce((a,p)=>a.add(p),V()).divideScalar(vertices.length);\n const edges=new Map(),planes=[],directions=[];let signedVolume=0;\n for(const t of triangles){\n  assert(t.getArea()>1e-13,'Noncollapsed native triangles required');\n  const points=[t.a,t.b,t.c],normal=t.getNormal(V()),constant=normal.dot(t.a);\n  if(!planes.some(p=>p.normal.distanceTo(normal)<1e-7&&Math.abs(p.constant-constant)<tolerance))planes.push({normal,constant});\n  signedVolume+=t.a.clone().sub(origin).dot(t.b.clone().sub(origin).cross(t.c.clone().sub(origin)))/6;\n  for(let i=0;i<3;i++){\n   const a=vertexKey(points[i]),b=vertexKey(points[(i+1)%3]),key=[a,b].sort().join('|'),edge=edges.get(key)??{count:0,orientation:0};\n   assert(a!==b,'Distinct native triangle vertices required');edge.count++;edge.orientation+=a<b?1:-1;edges.set(key,edge);\n   const d=points[(i+1)%3].clone().sub(points[i]).normalize();\n   if(!directions.some(x=>Math.abs(x.dot(d))>1-1e-10))directions.push(d);\n  }\n }\n assert([...edges.values()].every(e=>e.count===2&&e.orientation===0),'Closed consistently oriented native component required');\n const maximumConvexityViolation=Math.max(...planes.flatMap(p=>vertices.map(v=>p.normal.dot(v)-p.constant)));\n if(requireConvex)assert(maximumConvexityViolation<=tolerance,'Actual component must be convex for complete SAT classification');\n assert(signedVolume>1e-12,'Positive native closed-solid volume required');\n return {vertices,planes,directions,signed_volume_m3:signedVolume,convex:maximumConvexityViolation<=tolerance,maximum_convexity_violation_m:maximumConvexityViolation,triangle_count:triangles.length};\n}\n\nexport function describeConvexNativeSolid(triangles,options={}){return describeNativeJointSolid(triangles,{...options,requireConvex:true});}\n\n/** All face normals plus all edge cross products: the complete convex SAT axes. */\nexport function separateNativeJointSolids(a,b,{tolerance=2e-6}={}){\n const axes=[];const add=n=>{if(n.lengthSq()<1e-18)return;const axis=n.clone().normalize();if(!axes.some(x=>Math.abs(x.dot(axis))>1-1e-10))axes.push(axis);};\n for(const p of [...a.planes,...b.planes])add(p.normal);\n for(const u of a.directions)for(const v of b.directions)add(u.clone().cross(v));\n let gap=-Infinity,axis=null,intervals=null;\n for(const n of axes){\n  const av=a.vertices.map(p=>n.dot(p)),bv=b.vertices.map(p=>n.dot(p));\n  const ai=[Math.min(...av),Math.max(...av)],bi=[Math.min(...bv),Math.max(...bv)];\n  const current=Math.max(bi[0]-ai[1],ai[0]-bi[1]);\n  if(current>gap){gap=current;axis=n.toArray();intervals=[ai,bi];}\n }\n return {separated_within_native_tolerance:gap>=-tolerance,strictly_separated:gap>0,\n  maximum_separating_projection_gap_m:gap,axis_world:axis,projection_intervals_m:intervals,\n  axes_tested:axes.length,tolerance_m:tolerance,both_components_convex:a.convex&&b.convex,\n  interpretation:'A positive separating support gap bounds every actual native triangle even for concave components; no convex-hull replacement is made. A negative result is inconclusive for concave components and is never penetration depth or Euclidean clearance. Native tolerance applies only at a coincident fitted seam; no bone-name exception.'};\n}\n\nexport function separateConvexNativeSolids(a,b,options={}){assert(a.convex&&b.convex,'Both actual native components must be convex for complete SAT classification');return separateNativeJointSolids(a,b,options);}\n"
+    }
+  ],
+  "runtime_epoch": {
+    "physics_sha256": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba",
+    "fixture_sha256": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+    "matches_frozen_tested_11cc_and_7e5_at_report_write": true
+  },
+  "contact_witnesses": [
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        15.47,
+        0.18,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 82,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        15.47,
+        0.18,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 83,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        15.47,
+        0.18,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 83,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        16,
+        0.18,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 126,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        16,
+        0.18,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 126,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        16,
+        0.18,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 127,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        16.53,
+        0.18,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 170,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        16.53,
+        0.18,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 170,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "stage_pi_HU_M03",
+      "point_m": [
+        16.53,
+        0.18,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 170,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.18",
+      "point_m": [
+        15.6,
+        0.18,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.18",
+      "point_m": [
+        15.6,
+        0.18,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.18",
+      "point_m": [
+        15.6,
+        0.18,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.18",
+      "point_m": [
+        16.4,
+        0.18,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.18",
+      "point_m": [
+        16.4,
+        0.18,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.18",
+      "point_m": [
+        16.4,
+        0.18,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.3",
+      "point_m": [
+        15.6,
+        0.3,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.3",
+      "point_m": [
+        15.6,
+        0.3,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.3",
+      "point_m": [
+        15.6,
+        0.3,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.3",
+      "point_m": [
+        16.4,
+        0.3,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.3",
+      "point_m": [
+        16.4,
+        0.3,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.3",
+      "point_m": [
+        16.4,
+        0.3,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.5",
+      "point_m": [
+        15.6,
+        0.5,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.5",
+      "point_m": [
+        15.6,
+        0.5,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.5",
+      "point_m": [
+        15.6,
+        0.5,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.5",
+      "point_m": [
+        16.4,
+        0.5,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.5",
+      "point_m": [
+        16.4,
+        0.5,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.5",
+      "point_m": [
+        16.4,
+        0.5,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.7",
+      "point_m": [
+        15.6,
+        0.7,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.7",
+      "point_m": [
+        15.6,
+        0.7,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.7",
+      "point_m": [
+        15.6,
+        0.7,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.7",
+      "point_m": [
+        16.4,
+        0.7,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.7",
+      "point_m": [
+        16.4,
+        0.7,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "extended_fork_support_0.7",
+      "point_m": [
+        16.4,
+        0.7,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.4",
+      "point_m": [
+        15.6,
+        0.7,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.4",
+      "point_m": [
+        15.6,
+        0.7,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.4",
+      "point_m": [
+        15.6,
+        0.7,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.4",
+      "point_m": [
+        16.4,
+        0.7,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.4",
+      "point_m": [
+        16.4,
+        0.7,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.4",
+      "point_m": [
+        16.4,
+        0.7,
+        14.4
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.2",
+      "point_m": [
+        15.6,
+        0.7,
+        13.399999999999999
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.2",
+      "point_m": [
+        15.6,
+        0.7,
+        13.799999999999999
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.2",
+      "point_m": [
+        15.6,
+        0.7,
+        14.2
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.2",
+      "point_m": [
+        16.4,
+        0.7,
+        13.399999999999999
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.2",
+      "point_m": [
+        16.4,
+        0.7,
+        13.799999999999999
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0.2",
+      "point_m": [
+        16.4,
+        0.7,
+        14.2
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0",
+      "point_m": [
+        15.6,
+        0.7,
+        13.2
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0",
+      "point_m": [
+        15.6,
+        0.7,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 2.5121479338940403e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0",
+      "point_m": [
+        15.6,
+        0.7,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_05",
+        "triangle": 223,
+        "gap_m": 1.7763568394002505e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0",
+      "point_m": [
+        16.4,
+        0.7,
+        13.2
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 257,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0",
+      "point_m": [
+        16.4,
+        0.7,
+        13.6
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 3.972054645195637e-15
+      },
+      "passed": true
+    },
+    {
+      "kind": "retraction_fork_support_0",
+      "point_m": [
+        16.4,
+        0.7,
+        14
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "forklift__batch_06",
+        "triangle": 223,
+        "gap_m": 0
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118,
+        0.18,
+        18.03
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 77,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 83,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118.39999999999999,
+        0.18,
+        18.03
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 121,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 83,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118.8,
+        0.18,
+        18.03
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 165,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 83,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118,
+        0.18,
+        17.5
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 126,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118.39999999999999,
+        0.18,
+        17.5
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 127,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118.8,
+        0.18,
+        17.5
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 127,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118,
+        0.18,
+        16.97
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 76,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 170,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118.39999999999999,
+        0.18,
+        16.97
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 120,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 170,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    },
+    {
+      "kind": "target_pi_HU_M03",
+      "point_m": [
+        118.8,
+        0.18,
+        16.97
+      ],
+      "HU": {
+        "node": "pallet-load__batch_01",
+        "triangle": 164,
+        "gap_m": 0
+      },
+      "support": {
+        "node": "heavy-bay__batch_01",
+        "triangle": 171,
+        "gap_m": 7.748603814139443e-9
+      },
+      "passed": true
+    }
+  ],
+  "raw_artifacts": [
+    {
+      "path": "work/v3/heavy-inbound-physics-20261109/checks.json",
+      "sha256": "5adf6502f487457d9b52256d90b56cdf4ec2592dfdc4623091583c42e72d1862",
+      "scope": "Already executed detailed bounded evidence"
+    },
+    {
+      "path": "work/v3/heavy-inbound-physics-20261109/route-checks-A132.json",
+      "sha256": "c42466ae3e4e96a478527bbf026887fdd6aaaada3795709582c295cb3b1af6a2",
+      "scope": "Already executed detailed bounded evidence"
+    },
+    {
+      "path": "work/v3/heavy-inbound-physics-20261109/route-checks.json",
+      "sha256": "1e0fb83c3b025950ec2d17f3e837bc4c11b18e3998867a05ffb5d7ac71008ad8",
+      "scope": "Already executed detailed bounded evidence"
+    },
+    {
+      "path": "work/v3/heavy-inbound-physics-20261109/source-route.json",
+      "sha256": "17ce0aaa9b8ad8bdd9a04c5edfd4422be741f9d66d3593edcadbf03e70137fad",
+      "scope": "Already executed detailed bounded evidence"
+    },
+    {
+      "path": "work/v3/heavy-inbound-physics-20261109/targeted-overlap.json",
+      "sha256": "7444c6c0a1cb578b53fd4501444e0757bce398e4d0c9bdfd39449b45b288826f",
+      "scope": "Preserved failed original-stage witness, not current-stage admission"
+    }
+  ]
+}

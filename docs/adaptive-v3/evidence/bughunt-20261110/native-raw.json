@@ -1,0 +1,175 @@
+{
+  "schema_id": "qoima.native-pair-adversarial-tests.v1",
+  "created_utc": "2026-11-10T03:22:20.647Z",
+  "passed": false,
+  "total": 36,
+  "passed_count": 24,
+  "failed_count": 12,
+  "source_hashes": {
+    "stream.ts": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93",
+    "playback.ts": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc"
+  },
+  "checker_sha256": "f7814add8715169d1e82363f64663e9da358515392ba12e2c70960c51bfb950d",
+  "contract_scope": "Available local stream/playback guards and existing synthetic test protocol; ADR0099 primary document unavailable. Authenticated hashes are recomputed for semantic negative fixtures.",
+  "browser": "NOT_RUN",
+  "actual_http": "NOT_RUN",
+  "native_backend_capture": "NOT_CLAIMED",
+  "results": [
+    {
+      "name": "UTF8/chunk-split-1",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-2",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-3",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-7",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-137",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-65536",
+      "passed": true
+    },
+    {
+      "name": "valid-no-final-newline",
+      "passed": true
+    },
+    {
+      "name": "truncated-last-record",
+      "passed": true
+    },
+    {
+      "name": "missing-member",
+      "passed": true
+    },
+    {
+      "name": "duplicate-member",
+      "passed": true
+    },
+    {
+      "name": "raw-member-corruption",
+      "passed": true
+    },
+    {
+      "name": "catalog-before-capture",
+      "passed": true
+    },
+    {
+      "name": "nonsemantic-member-order",
+      "passed": true
+    },
+    {
+      "name": "event-sequence-gap",
+      "passed": true
+    },
+    {
+      "name": "duplicate-capture-tick",
+      "passed": true
+    },
+    {
+      "name": "invalid-UTF8",
+      "passed": true
+    },
+    {
+      "name": "invalid-base64",
+      "passed": true
+    },
+    {
+      "name": "unsafe-integer-event-tick",
+      "passed": true
+    },
+    {
+      "name": "exact-BigInt-and-string-preserved",
+      "passed": true
+    },
+    {
+      "name": "retained-header-budget-immediate",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /budget/i. Input:\n\n'Error: Missing members in incomplete native stream'\n\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:88:83\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:88:1"
+    },
+    {
+      "name": "unicode-record-byte-limit",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected rejection.\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:89:120\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:89:1"
+    },
+    {
+      "name": "pre-abort-cancels-owned-reader",
+      "passed": true
+    },
+    {
+      "name": "abort-interrupts-pending-read",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /test pending-abort/. Input:\n\n'PENDING_AFTER_ABORT'\n\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:99:10\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:91:1"
+    },
+    {
+      "name": "abort-during-buffered-members",
+      "passed": true
+    },
+    {
+      "name": "header-and-body-pair-identities",
+      "passed": true
+    },
+    {
+      "name": "nonfinite-node-geometry-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:103:117\n    at check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:15)\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:103:7"
+    },
+    {
+      "name": "nonfinite-slot-geometry-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:104:128\n    at check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:15)\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:104:7"
+    },
+    {
+      "name": "negative-conveyor-radius-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected exception.\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:105:200\n    at check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:15)\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:105:7"
+    },
+    {
+      "name": "huge-valid-rational-finite-projection",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(frame.position.every(Number.isFinite))\n\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:110:3\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:106:1"
+    },
+    {
+      "name": "duplicate-captured-actor-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected rejection.\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:112:62\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:112:1"
+    },
+    {
+      "name": "reversed-relocation-times-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected rejection.\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:113:63\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:113:1"
+    },
+    {
+      "name": "belt-inner-outer-event-tick-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected rejection.\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:114:65\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:114:1"
+    },
+    {
+      "name": "captured-motion-null-end-refused",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Missing expected rejection.\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:115:62\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:115:1"
+    },
+    {
+      "name": "deterministic-seek-custody",
+      "passed": true
+    },
+    {
+      "name": "returned-frame-does-not-mutate-future-seek",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n999 !== 0\n\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:121:196\n    at check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:15)\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:121:7"
+    },
+    {
+      "name": "tick-boundaries-and-pause-rate",
+      "passed": true
+    }
+  ]
+}

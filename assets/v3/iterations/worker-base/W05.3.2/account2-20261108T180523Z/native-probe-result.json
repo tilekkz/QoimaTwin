@@ -1,0 +1,499 @@
+{
+  "schema_id": "qoima.W05.3.2.independent-cpu-probe.v1",
+  "source": "frontend/tools/solve-worker-base-carry-v3.mjs",
+  "solver_sha256": "28c2df15de911327ea0850448eb15c0872936fe725cc9a107cbe3aab977b916f",
+  "validation": [
+    {
+      "label": "primitive_true",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_false",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_0",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_NaN",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_Infinity",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_-Infinity",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_null",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "primitive_undefined",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "two_axes",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "four_axes",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "palm_forbidden_X",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "palm_forbidden_Z",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "extra_joint",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "omitted_joint",
+      "accepted": false,
+      "expected": false,
+      "matches_expectation": true,
+      "error": "ERR_ASSERTION"
+    },
+    {
+      "label": "deleted_axis_leaves_sparse_length3",
+      "accepted": true,
+      "expected": false,
+      "matches_expectation": false,
+      "error": null
+    },
+    {
+      "label": "three_omitted_axes_sparse_length3",
+      "accepted": true,
+      "expected": false,
+      "matches_expectation": false,
+      "error": null
+    }
+  ],
+  "sparse_axis": {
+    "accepted": true,
+    "all_sparse_accepted": true,
+    "array_length": 3,
+    "present_indices": [
+      "0",
+      "2"
+    ],
+    "resulting_euler_xyz": [
+      -0.6504904911082828,
+      0,
+      -0.2927228655050811
+    ],
+    "original_euler_xyz": [
+      -0.6504904911082828,
+      0.55,
+      -0.2927228655050811
+    ],
+    "serialized_sparse_rejected": true,
+    "scope": "Extracted exact validator only; no production apply or saved JSON changed. Sparse holes cannot survive JSON serialization (they become null). Frozen generated pose uses dense finite arrays."
+  },
+  "contacts": [
+    {
+      "side": "L",
+      "point_m": [
+        -0.16000000000128717,
+        1.0800000000047452,
+        0.440000000000503
+      ],
+      "horizontal_radius_m": 0.46818799642969766,
+      "native_cargo_nearest": {
+        "distance_m": 3.873014742250547e-9,
+        "mesh": "small-carton__batch_02",
+        "triangle": 211,
+        "point_m": [
+          -0.1600000038743019,
+          1.0800000000047452,
+          0.44000000000050304
+        ]
+      }
+    },
+    {
+      "side": "R",
+      "point_m": [
+        0.16000000000128717,
+        1.0800000000047452,
+        0.440000000000503
+      ],
+      "horizontal_radius_m": 0.46818799642969766,
+      "native_cargo_nearest": {
+        "distance_m": 3.5775658546732814e-9,
+        "mesh": "small-carton__batch_02",
+        "triangle": 262,
+        "point_m": [
+          0.1599999964237213,
+          1.0800000000047452,
+          0.440000000000503
+        ]
+      }
+    }
+  ],
+  "lost_contact_after_20um": {
+    "gaps_m": [
+      0.00001999612698527775,
+      0.00001999642243416533
+    ],
+    "both_over_18um": true
+  },
+  "limits": [
+    {
+      "name": "joint__upper_arm_L",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": true
+    },
+    {
+      "name": "joint__forearm_L",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": true
+    },
+    {
+      "name": "joint__palm_roll_L",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": null
+    },
+    {
+      "name": "joint__hand_L",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": true
+    },
+    {
+      "name": "joint__upper_arm_R",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": true
+    },
+    {
+      "name": "joint__forearm_R",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": true
+    },
+    {
+      "name": "joint__palm_roll_R",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": null
+    },
+    {
+      "name": "joint__hand_R",
+      "all_axes_finite_and_in_range": true,
+      "dimension_spec_matches": true
+    }
+  ],
+  "native_patch_checks": [
+    {
+      "side": "L",
+      "hand_mesh": "worker-base__batch_12",
+      "hand_triangle": 36,
+      "cargo_mesh": "small-carton__batch_02",
+      "cargo_triangle": 166,
+      "hand_triangle_area_m2": 0.0021284998763501668,
+      "cargo_triangle_area_m2": 0.0002912497257441249,
+      "native_normal_dot": -1,
+      "patch_point_hand_triangle_distance_m": 6.2574356807232334e-9,
+      "patch_point_cargo_triangle_distance_m": 9.103998041667934e-15,
+      "hand_barycentric": [
+        0.2504325884585603,
+        0.3061561613907535,
+        0.4434112501506861
+      ],
+      "cargo_barycentric": [
+        0.492443974689513,
+        0.2511980091219768,
+        0.2563580161885102
+      ]
+    },
+    {
+      "side": "R",
+      "hand_mesh": "worker-base__batch_15",
+      "hand_triangle": 36,
+      "cargo_mesh": "small-carton__batch_02",
+      "cargo_triangle": 174,
+      "hand_triangle_area_m2": 0.0021284998763501685,
+      "cargo_triangle_area_m2": 0.0002912497257441249,
+      "native_normal_dot": -1,
+      "patch_point_hand_triangle_distance_m": 6.257570239753818e-9,
+      "patch_point_cargo_triangle_distance_m": 1.3104864908000505e-14,
+      "hand_barycentric": [
+        0.1691612089902783,
+        0.46805766293673656,
+        0.36278112807298507
+      ],
+      "cargo_barycentric": [
+        0.41901605667671427,
+        0.2899339353277113,
+        0.2910500079955744
+      ]
+    }
+  ],
+  "head_control": {
+    "point_m": [
+      -0.016835645597947667,
+      1.4396643526735173,
+      -0.06933569473559519
+    ],
+    "whole_native_angles_rad": [
+      12.566370614359174,
+      12.566370614359174
+    ],
+    "depths_m": [
+      0.035335581761373414,
+      0.0001643090194974467
+    ]
+  },
+  "thumb_witness_local_vertices": [
+    {
+      "mesh": "worker-base__batch_12",
+      "triangle": 132,
+      "local_vertices": [
+        [
+          0.021000003442168236,
+          -0.02599997818469993,
+          0.06600000709295273
+        ],
+        [
+          0.021000003442168236,
+          -0.02199998497962946,
+          0.07000000774860382
+        ],
+        [
+          0.017000002786517143,
+          -0.02199998497962946,
+          0.06600000709295273
+        ]
+      ],
+      "rest_vertices": [
+        [
+          -0.23399999878182717,
+          0.6890000551939011,
+          0.003999983378493832
+        ],
+        [
+          -0.22999999758874057,
+          0.6930000483989716,
+          0.003999982841058403
+        ],
+        [
+          -0.2339999982443917,
+          0.6930000483989716,
+          0.007999984571580354
+        ]
+      ],
+      "source_component_bounds_matches": [
+        "mitten_L_thumb"
+      ]
+    },
+    {
+      "mesh": "worker-base__batch_12",
+      "triangle": 136,
+      "local_vertices": [
+        [
+          0.04300000332295917,
+          -0.025999978184699984,
+          0.06600000709295273
+        ],
+        [
+          0.04700000397861004,
+          -0.021999984979629544,
+          0.06600000709295273
+        ],
+        [
+          0.043000003322958946,
+          -0.021999984979629517,
+          0.07000000774860379
+        ]
+      ],
+      "rest_vertices": [
+        [
+          -0.23400000173772198,
+          0.6890000551939011,
+          -0.01800001945819174
+        ],
+        [
+          -0.23400000227515752,
+          0.6930000483989714,
+          -0.022000020651278485
+        ],
+        [
+          -0.2300000005446354,
+          0.6930000483989714,
+          -0.01800001999562717
+        ]
+      ],
+      "source_component_bounds_matches": [
+        "mitten_L_thumb"
+      ]
+    },
+    {
+      "mesh": "worker-base__batch_12",
+      "triangle": 140,
+      "local_vertices": [
+        [
+          0.021000003442168236,
+          -0.025999978184699984,
+          -0.015999995172023773
+        ],
+        [
+          0.021000003442168236,
+          -0.02599997818469993,
+          0.06600000709295273
+        ],
+        [
+          0.017000002786517143,
+          -0.02199998497962946,
+          0.06600000709295273
+        ]
+      ],
+      "rest_vertices": [
+        [
+          -0.31600001206423023,
+          0.6890000551939011,
+          0.003999994395920359
+        ],
+        [
+          -0.23399999878182717,
+          0.6890000551939011,
+          0.003999983378493832
+        ],
+        [
+          -0.2339999982443917,
+          0.6930000483989716,
+          0.007999984571580354
+        ]
+      ],
+      "source_component_bounds_matches": [
+        "mitten_L_thumb"
+      ]
+    },
+    {
+      "mesh": "worker-base__batch_12",
+      "triangle": 141,
+      "local_vertices": [
+        [
+          0.021000003442168236,
+          -0.025999978184699984,
+          -0.015999995172023773
+        ],
+        [
+          0.017000002786517143,
+          -0.02199998497962946,
+          0.06600000709295273
+        ],
+        [
+          0.017000002786517143,
+          -0.02199998497962946,
+          -0.015999995172023773
+        ]
+      ],
+      "rest_vertices": [
+        [
+          -0.31600001206423023,
+          0.6890000551939011,
+          0.003999994395920359
+        ],
+        [
+          -0.2339999982443917,
+          0.6930000483989716,
+          0.007999984571580354
+        ],
+        [
+          -0.3160000115267947,
+          0.6930000483989716,
+          0.00799999558900688
+        ]
+      ],
+      "source_component_bounds_matches": [
+        "mitten_L_thumb"
+      ]
+    }
+  ],
+  "changed_nonadjacent_classification_truth_table": [
+    {
+      "label": "forearm_to_torso",
+      "changed": true,
+      "baseline_pair_observed": true,
+      "linked": false,
+      "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+      "blocks_material": true
+    },
+    {
+      "label": "upper_arm_to_head",
+      "changed": true,
+      "baseline_pair_observed": true,
+      "linked": false,
+      "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+      "blocks_material": true
+    },
+    {
+      "label": "opposite_forearms",
+      "changed": true,
+      "baseline_pair_observed": true,
+      "linked": false,
+      "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+      "blocks_material": true
+    },
+    {
+      "label": "opposite_upper_arms",
+      "changed": true,
+      "baseline_pair_observed": true,
+      "linked": false,
+      "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+      "blocks_material": true
+    }
+  ],
+  "stats_runtime_component_kind": "array",
+  "limitations": [
+    "No renderer or physical observation.",
+    "No full collision or continuous-motion certificate.",
+    "Nearest-distance, triangle-area and saved patch-point tests do not independently recompute total clipped contact area.",
+    "Validator probe isolates validation; it does not expose or invoke the production closure apply function.",
+    "Classification cases test extracted logic, not newly induced native-body collisions.",
+    "Native probes share the pinned Three library and GLTFLoader with the solver."
+  ]
+}

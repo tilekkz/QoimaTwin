@@ -1,0 +1,77 @@
+{
+  "schema_id": "qoima.placement-comparison-view.v1",
+  "source_kind": "analytical_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "default_horizon_periods": 1,
+  "headcount": 24,
+  "handling_units": 530,
+  "queues_modelled": false,
+  "period_is_hours": false,
+  "cost_assumptions": {
+    "forklift_assisted": {
+      "handling_allowance_s": 40,
+      "speed_m_s": 1.8
+    },
+    "manual_cart": {
+      "handling_allowance_s": 12,
+      "speed_m_s": 1.4
+    }
+  },
+  "cases": [
+    {
+      "horizon_periods": 1,
+      "comparison_inputs_sha256": "a9162b13348e1aef2ad0e485546fd5270fd78347ec77e52560885a2c9646fd67",
+      "baseline_proxy_cost_s": 198768.25990705262,
+      "adapted_proxy_cost_s": 198768.25990705262,
+      "relocation_proxy_cost_s": 0,
+      "net_proxy_saving_s": 0.0,
+      "transfer_count": 0
+    },
+    {
+      "horizon_periods": 2,
+      "comparison_inputs_sha256": "4c432dc3a70fd4c92193e0a20fd5b0965acfc181a50880af4cb0beb9f663a365",
+      "baseline_proxy_cost_s": 397536.51981410524,
+      "adapted_proxy_cost_s": 397142.4865805736,
+      "relocation_proxy_cost_s": 220.4947994733851,
+      "net_proxy_saving_s": 173.53843405824924,
+      "transfer_count": 2
+    },
+    {
+      "horizon_periods": 4,
+      "comparison_inputs_sha256": "5c7475163c6f8dada35c66d91d23f4e98a67e90bedb76f96a48c8ae095ed15c9",
+      "baseline_proxy_cost_s": 795073.0396282105,
+      "adapted_proxy_cost_s": 792795.9572881315,
+      "relocation_proxy_cost_s": 991.868551626163,
+      "net_proxy_saving_s": 1285.2137884528474,
+      "transfer_count": 8
+    },
+    {
+      "horizon_periods": 8,
+      "comparison_inputs_sha256": "e71a7510550c248a8017120f7240eebbd286f355636ddb3c4e3ef7bf803ddf67",
+      "baseline_proxy_cost_s": 1590146.079256421,
+      "adapted_proxy_cost_s": 1585591.914576263,
+      "relocation_proxy_cost_s": 991.868551626163,
+      "net_proxy_saving_s": 3562.296128531858,
+      "transfer_count": 8
+    }
+  ],
+  "source_hashes": {
+    "docs/v3/contract-proposals/handoff/examples/slotting-comparison.json": "b7578f8de97fc0861c301ff10adead80dbf2f5826eb3419237528e3528da182e",
+    "docs/adaptive-v3/evidence/C11-independent.json": "b7a9a6be30eafa0c32b25bcbb55aeb53ada47e0118f4bc962ec8bc0ec1cb3d9a",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/adaptation-input-v3.json": "5b9f294e4ac3f36bd196dcde5853432f394a7276f9fc4256e4d59a1a9aed8e23",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/adaptation-evaluation-v3.json": "9237c019b9995e318c473688f8dbe54278eb1394d3a310fda1347bb9d931a3c5",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "docs/v3/contract-proposals/storage-slots-v3.json": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "docs/v3/contract-proposals/layout-links-v3.json": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/adapted-assignment-v3.json": "57c6cde798b08c6d45da7acb311d13f81a31cd127e6352ddc7089ea818179b04",
+    "docs/v3/contract-proposals/adapted-assignment-horizon2-v3.json": "be67f3dbd8c1e9e65be82f2b0791000251259ae938486abfce43e2bf5f179ee3",
+    "docs/v3/contract-proposals/adapted-assignment-horizon4-v3.json": "e4a663f975acabfd333df56f7f4451fd88d503635c77a74ab772e4b5a2ea02b1",
+    "docs/v3/contract-proposals/adapted-assignment-horizon8-v3.json": "e1fe62e7fc9dd86f07b6a40f41774ab4055ebe67c06653f1f43e31895df885ea"
+  }
+}

@@ -1,0 +1,861 @@
+{
+  "asset_id": "packing-station",
+  "namespace": "v3",
+  "schema_version": "qoima-asset-dimensions-v3-proposal",
+  "status": "dimension_plan_VERIFY",
+  "units": "metres_radians",
+  "coordinate_system": "parent_local_runtime_XYZ_Y_up",
+  "origin": "floor_centre",
+  "forward_axis": "+Z towards worker",
+  "world_placement": {
+    "table_centre_z_m": 5.2,
+    "y_m": 0,
+    "yaw_radians": 0,
+    "pack_x_m": [
+      62,
+      73,
+      84,
+      95,
+      106,
+      117
+    ],
+    "worker_service_z_m": 6.1,
+    "fixed_geometry_max_z_cap_m": 5.7,
+    "work_cargo_centre_z_m": 5.3,
+    "work_hand_targets_z_range_m": [
+      5.45,
+      5.5
+    ],
+    "device_contact_targets_z_range_m": [
+      5.55,
+      5.6
+    ]
+  },
+  "fixed_geometry_bounds_local_xyz_m": {
+    "min": [
+      -0.9,
+      0,
+      -0.45
+    ],
+    "max": [
+      0.9,
+      1.4,
+      0.45
+    ]
+  },
+  "worktop": {
+    "width_x_m": 1.8,
+    "depth_z_m": 0.9,
+    "top_y_m": 0.92,
+    "thickness_m": 0.055,
+    "minimum_interface_open_width_m": 0.9,
+    "actual_clear_open_width_m": 1.0,
+    "opening_x_min_max_m": [
+      -0.5,
+      0.5
+    ],
+    "opening_z_min_max_m": [
+      -0.45,
+      0.45
+    ],
+    "shelf_opening_same_as_worktop": true,
+    "decision": "Root accepted1.00m actual channel around.90m guarded outer spur, leaving.05m each side; never a centre slab. R04 art language retained with functional sidewings."
+  },
+  "reserved_spur_volume_local_xyz_m": {
+    "min": [
+      -0.45,
+      0.72,
+      -0.45
+    ],
+    "max": [
+      0.45,
+      0.92,
+      0.3
+    ]
+  },
+  "spur_interface_source": "Root P08.1/L08 agreed dimensions; L08 remains ACTIVE/not yet a published accepted topology, so this is not spur geometry acceptance.",
+  "parts": [
+    {
+      "part_id": "worktop_L",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.9,
+          0.865,
+          -0.45
+        ],
+        "max": [
+          -0.5,
+          0.92,
+          0.45
+        ]
+      },
+      "material": "tan",
+      "shape": "box"
+    },
+    {
+      "part_id": "lower_shelf_L",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.9,
+          0.24,
+          -0.38
+        ],
+        "max": [
+          -0.5,
+          0.28,
+          0.38
+        ]
+      },
+      "material": "tan",
+      "shape": "box"
+    },
+    {
+      "part_id": "upper_side_rail_L",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8300000000000001,
+          0.795,
+          -0.38
+        ],
+        "max": [
+          -0.73,
+          0.865,
+          0.38
+        ]
+      },
+      "material": "petrol",
+      "shape": "box"
+    },
+    {
+      "part_id": "lower_side_rail_L",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8300000000000001,
+          0.205,
+          -0.38
+        ],
+        "max": [
+          -0.73,
+          0.24,
+          0.38
+        ]
+      },
+      "material": "petrol",
+      "shape": "box"
+    },
+    {
+      "part_id": "leg_LS",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8300000000000001,
+          0.035,
+          -0.38
+        ],
+        "max": [
+          -0.73,
+          0.865,
+          -0.28
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "foot_LS",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.865,
+          0,
+          -0.41500000000000004
+        ],
+        "max": [
+          -0.6950000000000001,
+          0.035,
+          -0.245
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "leg_LN",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8300000000000001,
+          0.035,
+          0.28
+        ],
+        "max": [
+          -0.73,
+          0.865,
+          0.38
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "foot_LN",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.865,
+          0,
+          0.245
+        ],
+        "max": [
+          -0.6950000000000001,
+          0.035,
+          0.41500000000000004
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "worktop_R",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.5,
+          0.865,
+          -0.45
+        ],
+        "max": [
+          0.9,
+          0.92,
+          0.45
+        ]
+      },
+      "material": "tan",
+      "shape": "box"
+    },
+    {
+      "part_id": "lower_shelf_R",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.5,
+          0.24,
+          -0.38
+        ],
+        "max": [
+          0.9,
+          0.28,
+          0.38
+        ]
+      },
+      "material": "tan",
+      "shape": "box"
+    },
+    {
+      "part_id": "upper_side_rail_R",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.73,
+          0.795,
+          -0.38
+        ],
+        "max": [
+          0.8300000000000001,
+          0.865,
+          0.38
+        ]
+      },
+      "material": "petrol",
+      "shape": "box"
+    },
+    {
+      "part_id": "lower_side_rail_R",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.73,
+          0.205,
+          -0.38
+        ],
+        "max": [
+          0.8300000000000001,
+          0.24,
+          0.38
+        ]
+      },
+      "material": "petrol",
+      "shape": "box"
+    },
+    {
+      "part_id": "leg_RS",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.73,
+          0.035,
+          -0.38
+        ],
+        "max": [
+          0.8300000000000001,
+          0.865,
+          -0.28
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "foot_RS",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.6950000000000001,
+          0,
+          -0.41500000000000004
+        ],
+        "max": [
+          0.865,
+          0.035,
+          -0.245
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "leg_RN",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.73,
+          0.035,
+          0.28
+        ],
+        "max": [
+          0.8300000000000001,
+          0.865,
+          0.38
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "foot_RN",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.6950000000000001,
+          0,
+          0.245
+        ],
+        "max": [
+          0.865,
+          0.035,
+          0.41500000000000004
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "front_low_cross_tie",
+      "group": "frame",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.83,
+          0.145,
+          0.34
+        ],
+        "max": [
+          0.83,
+          0.215,
+          0.42
+        ]
+      },
+      "material": "petrol",
+      "shape": "box",
+      "reason": "Beyond spur endpoint+.30, below transport frame; joins both front legs without blocking reserved channel."
+    },
+    {
+      "part_id": "screen_base",
+      "group": "screen",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.8,
+          0.92,
+          -0.41
+        ],
+        "max": [
+          -0.6,
+          0.95,
+          -0.23
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "screen_stem",
+      "group": "screen",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.725,
+          0.95,
+          -0.36
+        ],
+        "max": [
+          -0.675,
+          1.15,
+          -0.3
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "screen_housing",
+      "group": "screen",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.88,
+          1.1,
+          -0.35
+        ],
+        "max": [
+          -0.52,
+          1.4,
+          -0.285
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box",
+      "face": "front+Z; screen inset planar, no image texture required"
+    },
+    {
+      "part_id": "scanner_base",
+      "group": "scanner",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.84,
+          0.92,
+          0.19
+        ],
+        "max": [
+          -0.58,
+          0.95,
+          0.42
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "scanner_post",
+      "group": "scanner",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.74,
+          0.95,
+          0.27
+        ],
+        "max": [
+          -0.68,
+          1.14,
+          0.33
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "scanner_head",
+      "group": "scanner",
+      "bounds_local_xyz_m": {
+        "min": [
+          -0.81,
+          1.1,
+          0.25
+        ],
+        "max": [
+          -0.57,
+          1.22,
+          0.42
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box",
+      "face": "scan face/handle toward worker; VFX scan ray is not a fixed mesh support"
+    },
+    {
+      "part_id": "printer_base",
+      "group": "printer",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.52,
+          0.92,
+          0.1
+        ],
+        "max": [
+          0.7,
+          0.94,
+          0.34
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "printer_housing",
+      "group": "printer",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.52,
+          0.94,
+          0.1
+        ],
+        "max": [
+          0.7,
+          1.2,
+          0.34
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box",
+      "face": "label slot faces+Z; blank paper, no logo/barcode raster"
+    },
+    {
+      "part_id": "label_presenter",
+      "group": "printer",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.55,
+          1.01,
+          0.34
+        ],
+        "max": [
+          0.65,
+          1.03,
+          0.4
+        ]
+      },
+      "material": "offwhite",
+      "shape": "box",
+      "reason": "Short supported outlet joins printer face; stays clear of separate tape dispenser."
+    },
+    {
+      "part_id": "tape_base",
+      "group": "tape",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.73,
+          0.92,
+          0.12
+        ],
+        "max": [
+          0.89,
+          1.0,
+          0.44
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box"
+    },
+    {
+      "part_id": "tape_ring",
+      "group": "tape",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.785,
+          1.0,
+          0.185
+        ],
+        "max": [
+          0.835,
+          1.15,
+          0.335
+        ]
+      },
+      "material": "tan",
+      "shape": "open_annular_prism",
+      "axis": "X",
+      "centre_local_xyz_m": [
+        0.81,
+        1.075,
+        0.26
+      ],
+      "outer_radius_m": 0.075,
+      "inner_radius_m": 0.038,
+      "axial_depth_m": 0.05,
+      "open_through_both_sides": true,
+      "no_solid_hub_or_endcaps": true
+    },
+    {
+      "part_id": "tape_cutter_pedestal",
+      "group": "tape",
+      "bounds_local_xyz_m": {
+        "min": [
+          0.68,
+          0.95,
+          0.365
+        ],
+        "max": [
+          0.79,
+          1.08,
+          0.4
+        ]
+      },
+      "material": "charcoal",
+      "shape": "box",
+      "reason": "Touches base outside ring hole; broad blocky cutter, not a thin floating blade."
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "anchor_worker_service",
+      "local_xyz_m": [
+        0,
+        0,
+        0.9
+      ],
+      "role": "logical_service_floor",
+      "facing": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "anchor_id": "anchor_transfer_south_in",
+      "local_xyz_m": [
+        0,
+        0.92,
+        -0.45
+      ],
+      "role": "shared_bidirectional_spur_port",
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "anchor_id": "anchor_transfer_south_out",
+      "local_xyz_m": [
+        0,
+        0.92,
+        -0.45
+      ],
+      "role": "same_physical_port_reverse_operation",
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "anchor_id": "anchor_spur_terminal",
+      "local_xyz_m": [
+        0,
+        0.92,
+        0.3
+      ],
+      "role": "transport_endpoint_support_plane"
+    },
+    {
+      "anchor_id": "anchor_processing_base",
+      "local_xyz_m": [
+        0,
+        0.92,
+        0.1
+      ],
+      "role": "supported_payload_base_centre",
+      "payload_fit_status": "L08/C adopted payload still required"
+    },
+    {
+      "anchor_id": "anchor_hand_work_L",
+      "local_xyz_m": [
+        -0.22,
+        1.15,
+        0.28
+      ],
+      "role": "near_wall_or_contents_future_hand_target_not_fixed_geometry"
+    },
+    {
+      "anchor_id": "anchor_hand_work_R",
+      "local_xyz_m": [
+        0.22,
+        1.15,
+        0.28
+      ],
+      "role": "near_wall_or_contents_future_hand_target_not_fixed_geometry"
+    },
+    {
+      "anchor_id": "anchor_scanner_contact",
+      "local_xyz_m": [
+        -0.6,
+        1.15,
+        0.4
+      ],
+      "role": "device_contact_guide"
+    },
+    {
+      "anchor_id": "anchor_label_pick",
+      "local_xyz_m": [
+        0.6,
+        1.03,
+        0.4
+      ],
+      "role": "device_contact_guide"
+    },
+    {
+      "anchor_id": "anchor_tape_pull",
+      "local_xyz_m": [
+        0.69,
+        1.08,
+        0.4
+      ],
+      "role": "device_contact_guide"
+    },
+    {
+      "anchor_id": "anchor_screen_face",
+      "local_xyz_m": [
+        -0.7,
+        1.25,
+        -0.28
+      ],
+      "role": "display_face_guide_not_hand_target"
+    },
+    {
+      "anchor_id": "anchor_tape_ring",
+      "local_xyz_m": [
+        0.81,
+        1.075,
+        0.26
+      ],
+      "role": "open_ring_centre"
+    }
+  ],
+  "interaction_proxies": {
+    "status": "CHECK ONLY; P01.1 worker anatomy not yet root accepted, actual rig/torso/foot/hand collision proof deferred P08.3.",
+    "source": "people_packing P01.1 coordination: squat R05 shoulder±.215/Y1.105, approximate maxradial reach.4712; root agreed logical6.1 unchanged, measured small approach and20–22deg lean.",
+    "logical_worker_local_xyz_m": [
+      0,
+      0,
+      0.9
+    ],
+    "unposed_shoulders_local_xyz_m": {
+      "left": [
+        -0.215,
+        1.105,
+        0.9
+      ],
+      "right": [
+        0.215,
+        1.105,
+        0.9
+      ]
+    },
+    "provisional_arm_segments_m": {
+      "upper_arm": 0.2064,
+      "forearm": 0.1938,
+      "wrist_to_grip": 0.0711
+    },
+    "conservative_radial_reach_m": 0.4712,
+    "provisional_waist_pivot_y_m": 0.655,
+    "shoulder_pivot_lever_m": 0.45,
+    "pose_root_approach_toward_table_m": 0.1,
+    "agreed_max_approach_m": 0.12,
+    "pose_waist_lean_degrees": 22,
+    "agreed_lean_range_degrees": [
+      20,
+      22
+    ],
+    "stance_offset_x_by_target_m": {
+      "anchor_hand_work_L": 0,
+      "anchor_hand_work_R": 0,
+      "anchor_scanner_contact": -0.04,
+      "anchor_label_pick": 0.08,
+      "anchor_tape_pull": 0.08
+    },
+    "contact_hands": {
+      "anchor_hand_work_L": "left",
+      "anchor_hand_work_R": "right",
+      "anchor_scanner_contact": "left",
+      "anchor_label_pick": "right",
+      "anchor_tape_pull": "right"
+    },
+    "foot_proxy_half_width_x_m": 0.35,
+    "foot_proxy_front_rear_half_depth_z_m": 0.195,
+    "foot_proxy_height_m": 0.22,
+    "no_operation_teleport": true,
+    "logical_service_coordinates_changed": false,
+    "animation_requirement": "Continuous measured pose approach/lean/recover within service action; do not teleport cargo or claim proxy as actual rig acceptance."
+  },
+  "payload_support_reference_not_admission": {
+    "base_width_x_m": 0.6,
+    "base_depth_z_m": 0.4,
+    "base_centre_local_xyz_m": [
+      0,
+      0.92,
+      0.1
+    ],
+    "status": "Root agreed work cargo centre worldZ5.30; nominal.40m base ends at spur terminal5.50 flush. Actual L08/C payload support/clearance must pass before geometry/workflow acceptance; no overhang permitted.",
+    "nominal_front_support_margin_m": 0
+  },
+  "assembly_requirements": [
+    "All boxes small bevels within declared bounds; matte cuboid planar construction from R04.",
+    "Two wooden sidewings, four supported feet/posts, longitudinal rails and one front lowtie; no central worktop/lower shelf bridge in spur channel.",
+    "Device support chain contacts sidewing worktop; label presenter stays connected to printer face.",
+    "Tape annular opening must remain visibly open through both X faces, without a solid hub/endcaps; base/cutter must not fill hole.",
+    "No worker, cargo/carton/tote or transport-cell geometry baked into station. No additional business address or operation timestamps.",
+    "In/out anchors refer to the same exclusive bidirectional south spur port; no second conveyor or unsupported front outfeed invented."
+  ],
+  "reference": {
+    "primary_id": "R04",
+    "authority": "boxy matte station/tools/tote concept; central opening is root-required engineering adaptation, not literal copying of solid reference tabletop",
+    "palette": {
+      "charcoal": "#293D46",
+      "petrol": "#2E7376",
+      "tan": "#C99A60",
+      "offwhite": "#E8E3D9"
+    },
+    "bevel_m": {
+      "frame": 0.008,
+      "devices": 0.004
+    }
+  },
+  "read_only_input_fingerprints": [
+    {
+      "path": "assets/references/v3/r04-packing-line.png",
+      "bytes": 1767786,
+      "sha256": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a"
+    },
+    {
+      "path": "assets/references/v3/provenance/r04.json",
+      "bytes": 5820,
+      "sha256": "013fbfaa14799c76432111aa7974d81cf3c3f5d6bc12b48705b9858235eb41e9"
+    },
+    {
+      "path": "assets/references/v3/manifest.json",
+      "bytes": 13176,
+      "sha256": "89d19ec7cfc948f526b2461959535153defc1a52f817a1347c3ee17dbc2a59df"
+    },
+    {
+      "path": "docs/v3/contract-proposals/pedestrian-graph-v3.json",
+      "bytes": 73241,
+      "sha256": "baca17871f1f657596cade425793342169be785fb22e2c105063daafdba24529"
+    },
+    {
+      "path": "tools/blender/v3/v3_common.py",
+      "bytes": 10390,
+      "sha256": "994b7f080ee1f8c1126b3d087cff6d7621ed4db7e1caca5b963a14d773e68e0c"
+    }
+  ],
+  "next_gate": "Root dimension review/PASS; P08.2 only after both P08.1 PASS and L08 PASS. No geometry created."
+}

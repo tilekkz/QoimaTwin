@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#E9EFEC"><title>QoimaTwin — Сравнение</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%230E8076'/%3E%3Ccircle cx='20' cy='19' r='9' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M24 23l6 6' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E"></head>
+<body class="tw">
+<main id="twin" class="tw-app" data-phase="initial" data-mode="side">
+ <div id="tw-viewport" class="tw-viewport"></div>
+ <div id="tw-layer" class="tw-layer-host"></div>
+ <div id="tw-blade" class="tw-blade" role="slider" tabindex="0" aria-label="Граница шторки между A и B" aria-valuemin="8" aria-valuemax="92" aria-valuenow="50" hidden>
+  <span class="tw-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 7.5L5 12l4.5 4.5M14.5 7.5L19 12l-4.5 4.5"/></svg></span>
+ </div>
+
+ <!-- top corners -->
+ <div class="tw-tl">
+  <button id="tw-menu-btn" class="glass tw-brand" type="button" aria-expanded="false" aria-controls="tw-menu">
+   <span class="tw-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11.5" cy="11" r="5.6"/><path d="M15.6 15.2l3.6 3.6"/></svg></span>
+   <span class="tw-brand-name">QoimaTwin</span>
+   <svg class="tw-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+  </button>
+  <nav id="tw-menu" class="glass tw-pop tw-menu" aria-label="Разделы" data-open="false" inert>
+   <a href="home-v3.html"><b>Старт</b><span>Идея и выбор демонстрации</span></a>
+   <a href="warehouse-v3.html"><b>Склад</b><span>Исходный снимок и осмотр грузов</span></a>
+   <a href="twin-v3.html" aria-current="page"><b>Сравнение</b><span>Склад как сейчас и после перестройки</span></a>
+   <a href="staff-v3.html"><b>Команда</b><span>24 работника и их роли</span></a>
+   <a href="skills-v3.html"><b>Навыки</b><span>Допуски к постам и технике</span></a>
+   <a href="stand-v3.html"><b>Модели</b><span>Стенд принятых 3D-моделей</span></a>
+   <button id="tw-present-btn" class="tw-menu-action" type="button"><b>Режим защиты</b><span>Показ по шагам · клавиша P</span></button>
+   <div class="tw-prefs">
+    <p class="tw-pref-label" id="tw-fx-label">Эффекты</p>
+    <div class="tw-seg tw-seg-wide" role="group" aria-labelledby="tw-fx-label"><button type="button" data-effects="full" aria-pressed="true">Полные</button><button type="button" data-effects="calm" aria-pressed="false">Сдержанные</button><button type="button" data-effects="off" aria-pressed="false">Выкл</button></div>
+    <p class="tw-pref-hint">Мысли работников и волны. Цвета состояний остаются всегда.</p>
+    <div class="tw-sound-row"><button id="tw-sound" class="tw-sound" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path class="tw-wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>Звук выключен</span></button><input id="tw-volume" class="tw-volume" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Громкость" disabled></div>
+   </div>
+  </nav>
+ </div>
+ <div class="tw-tr">
+  <button class="glass tw-chip" type="button" data-open="source" aria-expanded="false"><span class="tw-chip-dot" aria-hidden="true"></span>Демо-сценарий</button>
+ </div>
+
+ <!-- floating sheets -->
+ <section class="glass tw-sheet tw-sheet-right" data-sheet="now" aria-labelledby="sh-now" data-open="false" inert>
+  <header><h2 id="sh-now">Состояние сейчас</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
+  <div id="tw-now" class="tw-now"></div>
+ </section>
+ <section class="glass tw-sheet tw-sheet-right" data-sheet="diff" aria-labelledby="sh-diff" data-open="false" inert>
+  <header><h2 id="sh-diff">Что меняет перестройка</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
+  <dl id="tw-diff-summary" class="tw-stats"></dl>
+  <ol id="tw-moves" class="tw-moves"></ol>
+ </section>
+ <section class="glass tw-sheet tw-sheet-right" data-sheet="source" aria-labelledby="sh-src" data-open="false" inert>
+  <header><h2 id="sh-src">Откуда данные</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
+  <div class="tw-prose">
+   <p><b>Склад и груз.</b> Принятые модели и исходный снимок: 530 грузовых единиц, 132 модуля, 24 работника.</p>
+   <p><b>Перестройка B.</b> Демонстрационный план. Каждый перенос прошёл проверку адреса: свободен, подходит по классу груза, габаритам и массе. Расстояния — по прямой между модулями, это оценка, а не маршрут.</p>
+   <p><b>Волны состояний.</b> Заранее записанный эпизод «Перегрузка ветки упаковки». Он показывает механизм, а не результат расчётного движка: движок V3 пока не подключён.</p>
+  </div>
+ </section>
+ <section class="glass tw-sheet tw-sheet-bottom" data-sheet="time" aria-labelledby="sh-time" data-open="false" inert>
+  <header><h2 id="sh-time">Время эпизода</h2>
+   <div class="tw-seg" role="group" aria-label="Скорость"><button type="button" data-speed="1" aria-pressed="false">1×</button><button type="button" data-speed="4" aria-pressed="true">4×</button><button type="button" data-speed="8" aria-pressed="false">8×</button></div>
+   <button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
+  <div id="tw-chapters" class="tw-chapters" aria-label="Главы"></div>
+  <canvas id="tw-river" class="tw-river" role="slider" tabindex="0" aria-label="Лента состояний зон для A и B. Перетащите или используйте стрелки" aria-valuemin="0" aria-valuemax="240" aria-valuenow="0"></canvas>
+ </section>
+ <section class="glass tw-sheet tw-sheet-left" data-sheet="sel" aria-labelledby="sh-sel" data-open="false" inert>
+  <header><h2 id="sh-sel">Груз</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
+  <div id="tw-selection"></div>
+ </section>
+
+ <!-- defence walk-through -->
+ <section id="tw-present" class="glass tw-pop tw-present" aria-labelledby="tw-present-title" aria-live="polite" data-open="false" inert>
+  <div class="tw-present-top"><span id="tw-present-step" class="tw-present-step"></span><span id="tw-present-dots" class="tw-dots" aria-hidden="true"></span><button class="tw-x" type="button" id="tw-present-close" aria-label="Выйти из режима защиты"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></div>
+  <h2 id="tw-present-title"></h2>
+  <p id="tw-present-text"></p>
+  <div class="tw-present-nav"><button type="button" id="tw-present-prev" class="tw-soft">Назад</button><button type="button" id="tw-present-next" class="tw-primary">Дальше</button></div>
+ </section>
+
+ <!-- mode picker -->
+ <div id="tw-modes" class="glass tw-pop tw-modes" role="radiogroup" aria-label="Как сравнивать" data-open="false" inert>
+  <button type="button" role="radio" data-mode="side" aria-checked="true"><span class="tw-mi" data-icon="side"></span><b>Рядом</b><small>Два склада бок о бок</small></button>
+  <button type="button" role="radio" data-mode="swipe" aria-checked="false"><span class="tw-mi" data-icon="swipe"></span><b>Шторка</b><small>Тяните границу</small></button>
+  <button type="button" role="radio" data-mode="overlay" aria-checked="false"><span class="tw-mi" data-icon="overlay"></span><b>Наложение</b><small>B поверх следов A</small></button>
+  <button type="button" role="radio" data-mode="diff" aria-checked="false"><span class="tw-mi" data-icon="diff"></span><b>Отличия</b><small>Только то, что изменилось</small></button>
+ </div>
+
+ <!-- dock -->
+ <nav class="glass tw-dock" aria-label="Управление">
+  <button id="tw-play" class="tw-play" type="button" aria-label="Пауза"></button>
+  <button class="tw-time" type="button" data-open="time" aria-expanded="false" aria-label="Время эпизода"><output id="tw-clock">00:00</output><span class="tw-track"><i id="tw-progress"></i></span></button>
+  <span class="tw-sep" aria-hidden="true"></span>
+  <button id="tw-mode-btn" class="tw-dbtn" type="button" aria-expanded="false" aria-controls="tw-modes"><span class="tw-mi" id="tw-mode-icon" data-icon="side"></span><span class="tw-dl" id="tw-mode-label">Рядом</span></button>
+  <button class="tw-dbtn" type="button" data-open="now" aria-expanded="false"><span class="tw-mi" data-icon="pulse"></span><span class="tw-dl">Состояние</span><i id="tw-alert" class="tw-alert" data-state="control" aria-hidden="true"></i></button>
+  <button class="tw-dbtn" type="button" data-open="diff" aria-expanded="false"><span class="tw-mi" data-icon="moves"></span><span class="tw-dl">Изменения</span></button>
+  <button id="tw-home" class="tw-dbtn tw-home" type="button" aria-label="Показать весь склад" data-shown="false"><span class="tw-mi" data-icon="home"></span><span class="tw-dl">Весь склад</span></button>
+ </nav>
+
+ <div class="tw-load"><div class="glass tw-load-card"><span class="tw-spinner" aria-hidden="true"></span><p id="tw-status" role="status" aria-live="polite"></p><button id="tw-retry" type="button" hidden>Повторить</button></div></div>
+</main>
+<noscript><p>Включите JavaScript для просмотра сравнения. <a href="staff-v3.html">Реестр работников</a></p></noscript>
+<script type="module" src="/src/adaptive-v3/twin/twinPage.ts"></script>
+</body></html>

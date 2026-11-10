@@ -1,0 +1,251 @@
+{
+  "task_id": "L10",
+  "status": "VERIFY",
+  "root_review": "pending",
+  "preview_kind": "engineering_volumes_not_final_art",
+  "asset_stats": {
+    "asset_id": "layout-engineering",
+    "namespace": "v3",
+    "layout_version": "qoima-144x72-v3",
+    "generated_at": "2026-11-07T09:41:35.389287+00:00",
+    "glb": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\public\\models\\v3\\layout-engineering.glb",
+    "source": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\assets\\v3\\blender\\layout-engineering.blend",
+    "glb_bytes": 1003940,
+    "sha256": "022126b86b6089bb48dac984bd77eb71c41f676fcc4a86e1c47c4ed54c1eed3f",
+    "source_meshes": 3963,
+    "runtime_meshes": 176,
+    "triangles": 14982,
+    "bounds_runtime": {
+      "min": [
+        0.0,
+        -8.742293555741298e-10,
+        -0.0
+      ],
+      "max": [
+        144.0,
+        8.0,
+        72.0
+      ]
+    },
+    "runtime_size": [
+      144.0,
+      8.000000000874229,
+      72.0
+    ],
+    "root_matrix_blender": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "worker_witness": {
+    "path": "assets/v3/iterations/worker-base/P01.2/iteration-02.blend",
+    "sha256": "d6b1771cbe66982dddc942048a13af172d597446bfff61f0c64b0d9dcb23a3e7",
+    "instances": 1,
+    "root_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "bounds_runtime": {
+      "min": [
+        71.6269760131836,
+        1.4901161193847656e-08,
+        37.839996337890625
+      ],
+      "max": [
+        72.3730239868164,
+        1.6999998092651367,
+        38.21999740600586
+      ]
+    },
+    "height_m": 1.6999997943639755
+  },
+  "counts": {
+    "module_volumes": 132,
+    "addresses": 776,
+    "ports": 6,
+    "conveyor_modules": 87,
+    "packing_stations": 6,
+    "inventory_units": 0
+  },
+  "read_only_input_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+      "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469"
+    },
+    {
+      "path": "docs/v3/contract-proposals/pedestrian-graph-v3.json",
+      "sha256": "baca17871f1f657596cade425793342169be785fb22e2c105063daafdba24529"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-graph-v3.json",
+      "sha256": "be17461061cc33fe07540d0bc5572f61ce74ac9852198ee5423ed549deb3f832"
+    },
+    {
+      "path": "docs/v3/contract-proposals/conveyor-v3.json",
+      "sha256": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612"
+    }
+  ],
+  "source_worker_unchanged": true,
+  "render_review": "Four source views actually reviewed; root actual browser top/close gate pending.",
+  "scope": "New engineering BLEND/GLB only; no main graph/frontend/backend/active-worker mutation.",
+  "updated_utc": "2026-11-07T09:45:42.296571+00:00",
+  "full_stats_path": "assets/v3/blender/layout-engineering.stats.json",
+  "binary_check_path": "assets/v3/previews/layout-engineering/binary-check.json",
+  "binary_check_passed": true,
+  "export_execution": {
+    "agent": "warehouse_props",
+    "session_id": 12173,
+    "exit_code": 0,
+    "command": "blender.exe --background --factory-startup --threads 2 --python tools/blender/v3/build_layout_engineering.py"
+  },
+  "render_execution": {
+    "agent": "warehouse_props",
+    "session_id": 35275,
+    "exit_code": 0,
+    "report_path": "assets/v3/previews/layout-engineering/render-report.json",
+    "views": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "resolution_px": [
+      1200,
+      1200
+    ],
+    "gpu_queue_released_to": "rack_crate"
+  },
+  "visual_review": {
+    "reviewer": "warehouse_props",
+    "method": "Actually opened each of four saved full-resolution PNGs",
+    "views": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "observed": [
+      "Quarter shows six port frames, separated W/E family banks, shallow HEAVY ground platforms, southern packing line and broad LONG aprons.",
+      "No missing module volume or visible scale substitution/geometry-export defect found within four-view scope.",
+      "Front/rear are shallow full-floor elevations and do not resolve worker details or all labels."
+    ],
+    "composition_observation": {
+      "module_footprint_m2": 416,
+      "floor_m2": 10368,
+      "module_footprint_percent": 4.012345679012346,
+      "interpretation": "Sparse accepted numeric layout is intentionally exposed; zero fabricated inventory."
+    },
+    "root_browser_top_and_close_review": "pending; required for root PASS"
+  },
+  "corrections": [
+    {
+      "finding": "South boundary buffer paint stroke protruded0.04m beyond floor.",
+      "fix": "Clamp only floor-paint stroke geometry to X0..144/Z0..72; accepted allocations unchanged.",
+      "repeat": "CPU export exit0 and independent GLB BIN bounds check passed."
+    }
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "One task-directed coverage call before creation: new outputs missing/current proposals not_tracked; no recorded parse gap is not completeness.",
+    "fallback": "Current helper/builder/full relevant accepted JSON and frozen witness were read directly; no index refresh."
+  },
+  "artifacts": [
+    {
+      "path": "tools/blender/v3/build_layout_engineering.py",
+      "bytes": 16745,
+      "sha256": "52fc30e52dd7b6a7a67a9aa091b0cc2ac06fce56e7b4dcb6d1182b6418bd652c"
+    },
+    {
+      "path": "assets/v3/blender/layout-engineering.blend",
+      "bytes": 1418522,
+      "sha256": "78f5aae3da682ce878b3b967b67cb96f8d0a23168ebd7ad9d08028b16d860019"
+    },
+    {
+      "path": "assets/v3/blender/layout-engineering.stats.json",
+      "bytes": 1640789,
+      "sha256": "3ccc1d24bfd950018b0cd35d664fd547e1b74c2ccb81c17de13ef537a84eaeee"
+    },
+    {
+      "path": "frontend/public/models/v3/layout-engineering.glb",
+      "bytes": 1003940,
+      "sha256": "022126b86b6089bb48dac984bd77eb71c41f676fcc4a86e1c47c4ed54c1eed3f"
+    },
+    {
+      "path": "docs/adaptive-v3/specs/L10.md",
+      "bytes": 6644,
+      "sha256": "db072e5f678f405d4a85c8ecd5911170ca0f97fe38ed4a3fcedd982687484718"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/binary-check.json",
+      "bytes": 2709,
+      "sha256": "577859285a89d583a08fd29314aa7a12b1359ebd19ab081bf4349cbee7dfca53"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/render-report.json",
+      "bytes": 5362,
+      "sha256": "82ade1bd293f173ada791091a54328ba6ac8a8d21b7ff8af3621cf59854dac9f"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/four-views.png",
+      "bytes": 786641,
+      "sha256": "85b0c040797f461c973c26a0da4b16eb0aa611194fc36d6b62bafc1c372c2539"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/front.png",
+      "bytes": 1229406,
+      "sha256": "f41902a81ca4839585770ee467464329c4132e50ae914cc3b79922bbbc52b737"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/side.png",
+      "bytes": 1326979,
+      "sha256": "a251641205b680045538a4b14846f665a34049c37e168aced2bab1e0e14ce09b"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/rear.png",
+      "bytes": 1234267,
+      "sha256": "55925a950929776ffbcba1e59ed1701301e50751c2531ee6df215ba107fd9479"
+    },
+    {
+      "path": "assets/v3/previews/layout-engineering/three-quarter.png",
+      "bytes": 1863535,
+      "sha256": "13c46c047282ced02d04bc00a40c8b623b489d05f3375ae64cb4144c40fda403"
+    }
+  ]
+}

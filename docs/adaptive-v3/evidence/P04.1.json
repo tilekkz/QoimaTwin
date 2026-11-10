@@ -1,0 +1,64 @@
+{
+  "task_id": "P04.1",
+  "status": "PASS",
+  "at": "2026-11-08T00:32:17.319361+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "workcell": "assets/v3/iterations/packer/P04.1/actual-workcell.json",
+  "native_hand_interfaces": "assets/v3/iterations/packer/P04.1/hand-interface.json",
+  "native_admitted_contacts": [
+    "assets/v3/iterations/packer/P04.1/front-tail-R-native.json",
+    "assets/v3/iterations/packer/P04.1/table-L-native.json"
+  ],
+  "worker_neutral_height_m": 1.7,
+  "body_root_m": [
+    0.3,
+    0,
+    0.7
+  ],
+  "table_front_contact_m": [
+    0.65,
+    0.89,
+    0.45
+  ],
+  "parcel_front_tape_contact_m": [
+    0,
+    1.17,
+    0.24
+  ],
+  "input_templates_unchanged": {
+    "assets/v3/blender/packing-station.blend": "39bd08428259e1bc062cb7621480ea76be3f3a25368429d29144994c493bf5ef",
+    "assets/v3/blender/conveyor-straight.blend": "8e478d7cab50631ef2513d80f44adf04fa1cc7782a569ca78d0a8bd469e6b042",
+    "assets/v3/blender/sealed-parcel.blend": "76ec815f554e6276c6273075702c1deee0f3e541bdd277daa52e4352f6162411",
+    "assets/v3/blender/worker-manual.blend": "cbaf236121536ff75b918ece4de89601556977ac7091f79bc4d12b0ba48a0423"
+  },
+  "shared_contracts_unchanged": 21,
+  "C02_unchanged_sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+  "root_review": {
+    "at": "2026-11-08T00:32:17.319361+00:00",
+    "retained_captures": 14,
+    "generated_captures": 15,
+    "discarded_captures": [
+      {
+        "screenshot": "../assets/v3/iterations/packer/P04.3/browser/parcel-contact-side.png",
+        "reason": "Tight parcel-only framing was occluded by the station device; not used as contact acceptance."
+      }
+    ],
+    "inspected": [
+      "3-2-quarter.png",
+      "3-2-side.png",
+      "3-2-front.png",
+      "3-2-rear.png",
+      "contact-R.png",
+      "contact-L.png",
+      "idle-quarter.png",
+      "blocked-quarter.png"
+    ],
+    "reference_files": [
+      "assets/references/v3/r04-packing-line.png",
+      "assets/references/v3/r05-workers.png"
+    ],
+    "result": "Retained whole-workcell and opposed hand/film/wood views inspected; R04/P08 forms and R05 orange role02 retained. Idle palms inward. Sampled source contact/clearance independently confirmed. Parcel-only crop discarded rather than presented as proof."
+  },
+  "scope": "Actual existing post/parcel/contact poses. Bare top-seam reaches were not admitted:2255 bounded candidates retained under top-seam-probe; not an exhaustive impossibility proof. The accepted finishing operation presses the front tape tail from outside; it does not close P03.5.3 SMALL picking."
+}

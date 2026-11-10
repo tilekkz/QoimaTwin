@@ -1,0 +1,1120 @@
+{
+  "task_id": "L03",
+  "status": "VERIFY",
+  "root_review": "pending",
+  "checked_at_utc": "2026-11-07T05:48:06.282433+00:00",
+  "local_checks": {
+    "status": "PASS",
+    "count": 102,
+    "failures": 0,
+    "results": [
+      {
+        "name": "all_numeric_values_finite",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "document_kind",
+        "expected": "inbound_ports_proposal",
+        "actual": "inbound_ports_proposal",
+        "status": "PASS"
+      },
+      {
+        "name": "units_match_zones",
+        "expected": {
+          "length": "m",
+          "time": "s",
+          "up_axis": "Y",
+          "handedness": "right"
+        },
+        "actual": {
+          "length": "m",
+          "time": "s",
+          "up_axis": "Y",
+          "handedness": "right"
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "port_count",
+        "expected": 3,
+        "actual": 3,
+        "status": "PASS"
+      },
+      {
+        "name": "exact_unique_inbound_ids",
+        "expected": [
+          "IN_E_PARCEL",
+          "IN_N_STANDARD",
+          "IN_W_BULK"
+        ],
+        "actual": [
+          "IN_E_PARCEL",
+          "IN_N_STANDARD",
+          "IN_W_BULK"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "unique_service_node_ids",
+        "expected": 3,
+        "actual": 3,
+        "status": "PASS"
+      },
+      {
+        "name": "existing_unique_actor_count",
+        "expected": 24,
+        "actual": 24,
+        "status": "PASS"
+      },
+      {
+        "name": "policy_actor_count",
+        "expected": 24,
+        "actual": 24,
+        "status": "PASS"
+      },
+      {
+        "name": "policy_exact_existing_actor_ids",
+        "expected": [
+          "F01",
+          "F02",
+          "K01",
+          "K02",
+          "K03",
+          "K04",
+          "K05",
+          "K06",
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "P05",
+          "P06",
+          "P07",
+          "P08",
+          "P09",
+          "P10",
+          "P11",
+          "P12",
+          "R01",
+          "R02",
+          "S01",
+          "S02"
+        ],
+        "actual": [
+          "F01",
+          "F02",
+          "K01",
+          "K02",
+          "K03",
+          "K04",
+          "K05",
+          "K06",
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "P05",
+          "P06",
+          "P07",
+          "P08",
+          "P09",
+          "P10",
+          "P11",
+          "P12",
+          "R01",
+          "R02",
+          "S01",
+          "S02"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "shared_receivers",
+        "expected": [
+          "R01",
+          "R02"
+        ],
+        "actual": [
+          "R01",
+          "R02"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "receiver_roles",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "inbound_pair_resolves_once",
+        "expected": [
+          "F01",
+          "FL01"
+        ],
+        "actual": [
+          "F01",
+          "FL01"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "baseline_driver_vehicle_binding",
+        "expected": [
+          "FL01",
+          "F01"
+        ],
+        "actual": [
+          "FL01",
+          "F01"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "outbound_pair_preserved",
+        "expected": [
+          "F02",
+          "FL02"
+        ],
+        "actual": [
+          "F02",
+          "FL02"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "no_local_resource_definitions",
+        "expected": [],
+        "actual": [],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:boundary_position",
+        "expected": [
+          0,
+          0,
+          18
+        ],
+        "actual": [
+          0,
+          0,
+          18
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:inbound",
+        "expected": "inbound",
+        "actual": "inbound",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:inward_normal",
+        "expected": [
+          1,
+          0,
+          0
+        ],
+        "actual": [
+          1,
+          0,
+          0
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:outward_normal",
+        "expected": [
+          -1,
+          0,
+          0
+        ],
+        "actual": [
+          -1,
+          0,
+          0
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:normal_unit_length",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:service_node_id",
+        "expected": "v3:service:IN_W_BULK",
+        "actual": "v3:service:IN_W_BULK",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:service_position",
+        "expected": [
+          6,
+          0,
+          18
+        ],
+        "actual": [
+          6,
+          0,
+          18
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:service_offset_6m_inward",
+        "expected": [
+          6,
+          0,
+          0
+        ],
+        "actual": [
+          6,
+          0,
+          0
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:strictly_inside_protected_approach",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:service_point_on_clear_floor",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:clearance_provisional",
+        "expected": "provisional_L05",
+        "actual": "provisional_L05",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:allowed_cargo_matrix",
+        "expected": [
+          "DRUM",
+          "FRAGILE_CRATE",
+          "HEAVY_BOX",
+          "IBC",
+          "LONG_BUNDLE",
+          "PALLET_LOAD"
+        ],
+        "actual": [
+          "DRUM",
+          "FRAGILE_CRATE",
+          "HEAVY_BOX",
+          "IBC",
+          "LONG_BUNDLE",
+          "PALLET_LOAD"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:time_rule_keys_match_matrix",
+        "expected": [
+          "DRUM",
+          "FRAGILE_CRATE",
+          "HEAVY_BOX",
+          "IBC",
+          "LONG_BUNDLE",
+          "PALLET_LOAD"
+        ],
+        "actual": [
+          "DRUM",
+          "FRAGILE_CRATE",
+          "HEAVY_BOX",
+          "IBC",
+          "LONG_BUNDLE",
+          "PALLET_LOAD"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:time_unit",
+        "expected": "s/handling_unit",
+        "actual": "s/handling_unit",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:one_HU_per_job",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:positive_service_times",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:bay_job_limit",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:bay_requires_shared_resources",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:exact_resource_rule_coverage",
+        "expected": [
+          "DRUM",
+          "FRAGILE_CRATE",
+          "HEAVY_BOX",
+          "IBC",
+          "LONG_BUNDLE",
+          "PALLET_LOAD"
+        ],
+        "actual": [
+          "DRUM",
+          "FRAGILE_CRATE",
+          "HEAVY_BOX",
+          "IBC",
+          "LONG_BUNDLE",
+          "PALLET_LOAD"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:equipment_refs_match_resource_rules",
+        "expected": [
+          "INBOUND_FORKLIFT_PAIR"
+        ],
+        "actual": [
+          "INBOUND_FORKLIFT_PAIR"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:buffer_unit",
+        "expected": "handling_unit",
+        "actual": "handling_unit",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:buffer_total_equals_allocations",
+        "expected": 2,
+        "actual": 2,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:only_accepted_staging_allocations",
+        "expected": [
+          "STAGE_IN_W_BULK"
+        ],
+        "actual": [
+          "STAGE_IN_W_BULK"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:open_windows",
+        "expected": [
+          [
+            0,
+            28800
+          ]
+        ],
+        "actual": [
+          [
+            0,
+            28800
+          ]
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:window_basis",
+        "expected": "elapsed_run_seconds",
+        "actual": "elapsed_run_seconds",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:half_open_window",
+        "expected": "[start,end)",
+        "actual": "[start,end)",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_W_BULK:source_assumption_present",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:boundary_position",
+        "expected": [
+          72,
+          0,
+          72
+        ],
+        "actual": [
+          72,
+          0,
+          72
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:inbound",
+        "expected": "inbound",
+        "actual": "inbound",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:inward_normal",
+        "expected": [
+          0,
+          0,
+          -1
+        ],
+        "actual": [
+          0,
+          0,
+          -1
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:outward_normal",
+        "expected": [
+          0,
+          0,
+          1
+        ],
+        "actual": [
+          0,
+          0,
+          1
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:normal_unit_length",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:service_node_id",
+        "expected": "v3:service:IN_N_STANDARD",
+        "actual": "v3:service:IN_N_STANDARD",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:service_position",
+        "expected": [
+          72,
+          0,
+          66
+        ],
+        "actual": [
+          72,
+          0,
+          66
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:service_offset_6m_inward",
+        "expected": [
+          0,
+          0,
+          -6
+        ],
+        "actual": [
+          0,
+          0,
+          -6
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:strictly_inside_protected_approach",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:service_point_on_clear_floor",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:clearance_provisional",
+        "expected": "provisional_L05",
+        "actual": "provisional_L05",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:allowed_cargo_matrix",
+        "expected": [
+          "PALLET_LOAD",
+          "STANDARD_CARTON"
+        ],
+        "actual": [
+          "PALLET_LOAD",
+          "STANDARD_CARTON"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:time_rule_keys_match_matrix",
+        "expected": [
+          "PALLET_LOAD",
+          "STANDARD_CARTON"
+        ],
+        "actual": [
+          "PALLET_LOAD",
+          "STANDARD_CARTON"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:time_unit",
+        "expected": "s/handling_unit",
+        "actual": "s/handling_unit",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:one_HU_per_job",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:positive_service_times",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:bay_job_limit",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:bay_requires_shared_resources",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:exact_resource_rule_coverage",
+        "expected": [
+          "PALLET_LOAD",
+          "STANDARD_CARTON"
+        ],
+        "actual": [
+          "PALLET_LOAD",
+          "STANDARD_CARTON"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:equipment_refs_match_resource_rules",
+        "expected": [
+          "INBOUND_FORKLIFT_PAIR"
+        ],
+        "actual": [
+          "INBOUND_FORKLIFT_PAIR"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:buffer_unit",
+        "expected": "handling_unit",
+        "actual": "handling_unit",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:buffer_total_equals_allocations",
+        "expected": 4,
+        "actual": 4,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:only_accepted_staging_allocations",
+        "expected": [
+          "STAGE_IN_N_E",
+          "STAGE_IN_N_W"
+        ],
+        "actual": [
+          "STAGE_IN_N_E",
+          "STAGE_IN_N_W"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:open_windows",
+        "expected": [
+          [
+            0,
+            28800
+          ]
+        ],
+        "actual": [
+          [
+            0,
+            28800
+          ]
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:window_basis",
+        "expected": "elapsed_run_seconds",
+        "actual": "elapsed_run_seconds",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:half_open_window",
+        "expected": "[start,end)",
+        "actual": "[start,end)",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_N_STANDARD:source_assumption_present",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:boundary_position",
+        "expected": [
+          144,
+          0,
+          54
+        ],
+        "actual": [
+          144,
+          0,
+          54
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:inbound",
+        "expected": "inbound",
+        "actual": "inbound",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:inward_normal",
+        "expected": [
+          -1,
+          0,
+          0
+        ],
+        "actual": [
+          -1,
+          0,
+          0
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:outward_normal",
+        "expected": [
+          1,
+          0,
+          0
+        ],
+        "actual": [
+          1,
+          0,
+          0
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:normal_unit_length",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:service_node_id",
+        "expected": "v3:service:IN_E_PARCEL",
+        "actual": "v3:service:IN_E_PARCEL",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:service_position",
+        "expected": [
+          138,
+          0,
+          54
+        ],
+        "actual": [
+          138,
+          0,
+          54
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:service_offset_6m_inward",
+        "expected": [
+          -6,
+          0,
+          0
+        ],
+        "actual": [
+          -6,
+          0,
+          0
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:strictly_inside_protected_approach",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:service_point_on_clear_floor",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:clearance_provisional",
+        "expected": "provisional_L05",
+        "actual": "provisional_L05",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:allowed_cargo_matrix",
+        "expected": [
+          "SMALL_CARTON",
+          "STANDARD_CARTON"
+        ],
+        "actual": [
+          "SMALL_CARTON",
+          "STANDARD_CARTON"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:time_rule_keys_match_matrix",
+        "expected": [
+          "SMALL_CARTON",
+          "STANDARD_CARTON"
+        ],
+        "actual": [
+          "SMALL_CARTON",
+          "STANDARD_CARTON"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:time_unit",
+        "expected": "s/handling_unit",
+        "actual": "s/handling_unit",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:one_HU_per_job",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:positive_service_times",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:bay_job_limit",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:bay_requires_shared_resources",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:exact_resource_rule_coverage",
+        "expected": [
+          "SMALL_CARTON",
+          "STANDARD_CARTON"
+        ],
+        "actual": [
+          "SMALL_CARTON",
+          "STANDARD_CARTON"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:equipment_refs_match_resource_rules",
+        "expected": [],
+        "actual": [],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:buffer_unit",
+        "expected": "handling_unit",
+        "actual": "handling_unit",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:buffer_total_equals_allocations",
+        "expected": 8,
+        "actual": 8,
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:only_accepted_staging_allocations",
+        "expected": [
+          "STAGE_IN_E_PARCEL"
+        ],
+        "actual": [
+          "STAGE_IN_E_PARCEL"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:open_windows",
+        "expected": [
+          [
+            0,
+            28800
+          ]
+        ],
+        "actual": [
+          [
+            0,
+            28800
+          ]
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:window_basis",
+        "expected": "elapsed_run_seconds",
+        "actual": "elapsed_run_seconds",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:half_open_window",
+        "expected": "[start,end)",
+        "actual": "[start,end)",
+        "status": "PASS"
+      },
+      {
+        "name": "IN_E_PARCEL:source_assumption_present",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "W_all_cargo_requires_shared_forklift",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "N_only_pallet_requires_forklift",
+        "expected": [
+          "PALLET_LOAD"
+        ],
+        "actual": [
+          "PALLET_LOAD"
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "E_no_forklift",
+        "expected": [],
+        "actual": [],
+        "status": "PASS"
+      },
+      {
+        "name": "L02_task_card_PASS",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "R07_task_card_PASS",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "R07_current_PNG_hash",
+        "expected": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+        "actual": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+        "status": "PASS"
+      }
+    ]
+  },
+  "port_checks": {
+    "IN_W_BULK": {
+      "service_clear_zone_id": "CLEAR_W_PERIMETER",
+      "service_world_pos": [
+        6,
+        0,
+        18
+      ],
+      "inward_offset_m": 6,
+      "clearance_candidate_m": [
+        7,
+        4.5
+      ],
+      "gate_opening_fits_protected_span": true,
+      "staging_access": {
+        "STAGE_IN_W_BULK": {
+          "gross_area_m2": 80,
+          "reachable_clear_boundary_cells": 28,
+          "max_handling_units": 2
+        }
+      },
+      "reachable_clear_floor_cells": 5584,
+      "buffer_ceiling_HU": 2,
+      "resource_definitions_created": 0
+    },
+    "IN_N_STANDARD": {
+      "service_clear_zone_id": "CLEAR_N_PERIMETER",
+      "service_world_pos": [
+        72,
+        0,
+        66
+      ],
+      "inward_offset_m": 6,
+      "clearance_candidate_m": [
+        6,
+        4.5
+      ],
+      "gate_opening_fits_protected_span": true,
+      "staging_access": {
+        "STAGE_IN_N_W": {
+          "gross_area_m2": 56,
+          "reachable_clear_boundary_cells": 36,
+          "max_handling_units": 2
+        },
+        "STAGE_IN_N_E": {
+          "gross_area_m2": 56,
+          "reachable_clear_boundary_cells": 36,
+          "max_handling_units": 2
+        }
+      },
+      "reachable_clear_floor_cells": 5584,
+      "buffer_ceiling_HU": 4,
+      "resource_definitions_created": 0
+    },
+    "IN_E_PARCEL": {
+      "service_clear_zone_id": "CLEAR_E_PERIMETER",
+      "service_world_pos": [
+        138,
+        0,
+        54
+      ],
+      "inward_offset_m": 6,
+      "clearance_candidate_m": [
+        4,
+        3.5
+      ],
+      "gate_opening_fits_protected_span": true,
+      "staging_access": {
+        "STAGE_IN_E_PARCEL": {
+          "gross_area_m2": 120,
+          "reachable_clear_boundary_cells": 32,
+          "max_handling_units": 8
+        }
+      },
+      "reachable_clear_floor_cells": 5584,
+      "buffer_ceiling_HU": 8,
+      "resource_definitions_created": 0
+    }
+  },
+  "resources": {
+    "existing_actor_count": 24,
+    "new_actors": 0,
+    "shared_receivers": [
+      "R01",
+      "R02"
+    ],
+    "single_inbound_pair": [
+      "F01",
+      "FL01"
+    ],
+    "outbound_pair_retained": [
+      "F02",
+      "FL02"
+    ],
+    "local_pool_definitions": 0,
+    "reservation_semantics": "Same actual actor/vehicle IDs exclusively reserved globally; no per-port pool multiplication."
+  },
+  "artifacts": {
+    "proposal": {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    },
+    "spec": {
+      "path": "docs/adaptive-v3/specs/L03.md",
+      "sha256": "aa38845abf72829a3cd5b71d127284c4b725c9737b9e96d91907e120753cbfe8"
+    }
+  },
+  "sources": {
+    "resource_policy": {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+      "read_only": true
+    },
+    "zones": {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566",
+      "read_only": true
+    },
+    "actor_contract": {
+      "path": "contracts/actors.example.json",
+      "sha256": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7",
+      "read_only": true
+    },
+    "R07": {
+      "path": "assets/references/v3/r07-ports-zones.png",
+      "sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+      "read_only": true
+    }
+  },
+  "verification_method": "Stdlib exact boundary/normal/gate-span checks, clear floor containment, temporary 1m occupancy flood fill to staging boundaries, finite per-HU buffers/time/window checks and exact existing resource identity comparison. No route graph authored.",
+  "reference_review": "R07 v2 actually reopened for port/large-gate context; not engineering clearance.",
+  "limitations": [
+    "Gate dimensions and loaded passage remain provisional to L05.",
+    "Finite HU count is only a ceiling; actual geometry, mass, orientation, support and handler limits still govern admission.",
+    "Service times and windows are synthetic intake assumptions, not backend KPI, workload generation or measured throughput."
+  ],
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "12 exact paths checked: inputs not_tracked or metadata_changed (actors), outputs missing. Exact current JSON/source and actual PNG fallback used; no completeness claim/index update."
+  },
+  "findings": [],
+  "scope": {
+    "no_geometry_or_route_graphs": true,
+    "no_shared_contract_resource_policy_or_OUT_edits": true,
+    "no_central_state_or_git_mutation": true,
+    "no_browser_GPU_Blender_or_test_runs": true
+  }
+}

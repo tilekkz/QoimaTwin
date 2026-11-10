@@ -1,0 +1,5145 @@
+{
+  "schema_id": "qoima.small-clamp.whole-native-flow.v1",
+  "passed": true,
+  "frames": 102,
+  "maximum_active_bar_gap_m": 0.000019365574376854965,
+  "maximum_cargo_frame_error_m": 0,
+  "duration_s": 1247.412426394077,
+  "phases": {
+    "tool_acquire_at_s": 201.2543499793411,
+    "source_start_s": 362.34260911400145,
+    "attach_at_s": 368.34260911400145,
+    "source_extract_end_s": 376.34260911400145,
+    "table_release_at_s": 530.52995627556,
+    "shipper_attach_at_s": 875.3097668218423,
+    "port_arrival_s": 990.1536828588393,
+    "dispatch_at_s": 1010.1536828588393,
+    "complete_at_s": 1247.412426394077
+  },
+  "port": "OUT_S_EXPRESS",
+  "participants": [
+    "P01",
+    "K02",
+    "S02"
+  ],
+  "original_workers": 24,
+  "original_vehicles": 2,
+  "source_stock_HUs": 530,
+  "tool_quantity": 1,
+  "HU_mass_kg": 0.94,
+  "HU_units": 24,
+  "tool_mass_bound_kg": 2.5,
+  "assembly_mass_bound_kg": 3.44,
+  "force_certified": false,
+  "source_hashes": {
+    "work/v3/full-tz-closeout-20261109/small-clamp/check-whole-factory.mjs": "6803a657eb0cd585c0f45208ff90b03652dc0fab5b5f62415e65fee6e91cee74",
+    "frontend/src/adaptive-v3/warehouseSmallClampManualTransfer.ts": "7693a7b1da9eb576f46f806f35ccc43d7b75be370502354dbad930c8380d0332",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseForearmPronationPose.ts": "a2861ffa225de9e6863069fb96f2c288daa9ba187e23420f981ab72be79a760d",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceAction.ts": "42c0dbe010dc186d1af288ad30afa0748f53e22758b0c5e81a6e86897499f748",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0",
+    "frontend/src/adaptive-v3/warehouseSmallClampWorkflowRoute.ts": "e9a3fb71e6bab00b3a79e24e8778378f2d868e08d9a3ca00f785766039d98b3d",
+    "frontend/src/adaptive-v3/warehouseSmallManualWorkflowRoute.ts": "3d0ecffd15d02813494ddd016eeb4de7ec0dffaadfc4d3fcbe1a3e6dacb55350",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/src/adaptive-v3/workerRoleAssignment.ts": "6bc0bdc205d752ebda084e022e01b6d03d4dbc39fd08db82955b27162fa2c266",
+    "frontend/src/adaptive-v3/warehouseStaffingPendingWork.ts": "fa3e057a62dd3cf82228ad54c854567dd89858ef58283a101e54264ff8c28cdd",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "232c4c335eb52bf93f69b520216523601e6452e29093f78248ee9aeebf080e10",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/warehouseLongScenarioPlan.ts": "1b50889308b322d6a178403cdf6feae1b37aa12e53b9d83eccbf663138b2aea9",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+    "frontend/src/adaptive-v3/warehouseSourceLongConcurrency.ts": "bd563c5554d3492962b4124d0647f2018f00efd39ba69977c5385816ed5b4f98",
+    "frontend/src/adaptive-v3/warehouseSourceLongConcurrencyBinding.json": "dc797d8c542be5a00df9be0ec1334b6774a3e5b30148e57b4455d9af1df94674",
+    "frontend/src/adaptive-v3/warehouseManualGripPose.ts": "ffdcff592b595554faa9926208da2993541fd40dd7bf862a1d225220e46c68a4",
+    "frontend/src/adaptive-v3/warehouseReceivingManualTransfer.ts": "9b18eac8560cdb2aa5cf8c8c4e6efd4311545c046f75ca726f07cb613b256aa7",
+    "frontend/src/adaptive-v3/warehouseReceivingWorkflowRoute.ts": "f44df6ee6236a7060b933f1acbc0c0161dcc226675bc3fcaab0cd9c61888619a",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/small-carton-clamp-tool.glb": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac"
+  },
+  "scope": "Actual24/2/530 native fixture, pure sampling, all phase boundaries/interiors, one selected wholeHU and finite tool, seek/reset/dispose/resource immutability. Not wholewarehouse continuous collision/force certification.",
+  "rows": [
+    {
+      "at_s": 1247.412426394077,
+      "phase_id": "tool_stowed_and_crew_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1244.614926394077,
+      "phase_id": "K02_settles_at_original_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1241.817426394077,
+      "phase_id": "K02_settles_at_original_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1214.428025083244,
+      "phase_id": "K02_returns_to_original_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1187.0386237724108,
+      "phase_id": "K02_returns_to_original_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1158.5616870352856,
+      "phase_id": "shipper_returns_to_original_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1130.08475029816,
+      "phase_id": "shipper_returns_to_original_home",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1125.5253122138583,
+      "phase_id": "shipper_clears_tool_support",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1120.9658741295568,
+      "phase_id": "shipper_clears_tool_support",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1120.4658741295568,
+      "phase_id": "shipper_releases_stowed_tool",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1119.9658741295568,
+      "phase_id": "shipper_releases_stowed_tool",
+      "contacts": [],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1119.7158741295568,
+      "phase_id": "finite_tool_stow_lease_released",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1119.4658741295568,
+      "phase_id": "finite_tool_stow_lease_released",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1118.4658741295568,
+      "phase_id": "shipper_stows_tool_on_original_conveyor",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.9299999999999999,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5023664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1117.4658741295568,
+      "phase_id": "shipper_stows_tool_on_original_conveyor",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1115.622298428395,
+      "phase_id": "shipper_returns_tool_over_native_support",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 0.000005614857894495766,
+          "point_world": [
+            73.22500033244346,
+            0.9997840647430678,
+            5.625357740559429
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.625363340832162
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 0.000005614857894495766,
+          "point_world": [
+            72.77499966755654,
+            0.9997840647430678,
+            5.625357740559429
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.625363340832162
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          5.134331425290463
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1113.778722727233,
+      "phase_id": "shipper_returns_tool_over_native_support",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.959694770849703
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.959694766122682
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.959694770849703
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.959694766122682
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          5.468662850580983
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1112.278722727233,
+      "phase_id": "shipper_raises_empty_tool_outside_post",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.174999829913615
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.175000000000001
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.625000170086386
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.625
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          72.06866285058098,
+          0.6838167892493268,
+          6.4
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.2561832107506733,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1110.778722727233,
+      "phase_id": "shipper_raises_empty_tool_outside_post",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.174999829913615
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.175000000000001
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.625000170086386
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.625
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          72.06866285058098,
+          0.4276335784986534,
+          6.4
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1087.7806887384831,
+      "phase_id": "shipper_returns_finite_tool_to_PK02",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 0.000019365574376854965,
+          "point_world": [
+            64.69396537260437,
+            0.9997840122572471,
+            10.224999303475617
+          ],
+          "bar_point_world": [
+            64.69394602037728,
+            0.9997838344045363,
+            10.225
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 0.000019365574376854965,
+          "point_world": [
+            64.69396537260437,
+            0.9997840122572471,
+            9.775000696524383
+          ],
+          "bar_point_world": [
+            64.69394602037728,
+            0.9997838344045363,
+            9.775
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          65.18497793591898,
+          0.4276335784986534,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1064.7826547497332,
+      "phase_id": "shipper_returns_finite_tool_to_PK02",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016215755327395e-7,
+          "point_world": [
+            47.77499982991362,
+            0.9997838325502743,
+            6.440305229150297
+          ],
+          "bar_point_world": [
+            47.775,
+            0.9997838344045363,
+            6.440305233877319
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016215755327395e-7,
+          "point_world": [
+            48.22500017008638,
+            0.9997838325502743,
+            6.440305229150297
+          ],
+          "bar_point_world": [
+            48.225,
+            0.9997838344045363,
+            6.440305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          48,
+          0.4276335784986534,
+          6.931337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1037.9681688042863,
+      "phase_id": "shipper_leaves_port_with_same_empty_tool",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 0.00000561485789751338,
+          "point_world": [
+            41.374420672337244,
+            0.9997840647430678,
+            1.225000332443454
+          ],
+          "bar_point_world": [
+            41.37441507206451,
+            0.9997838344045363,
+            1.2249999999999999
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 0.00000561485789749366,
+          "point_world": [
+            41.374420672337244,
+            0.9997840647430678,
+            0.7749996675565461
+          ],
+          "bar_point_world": [
+            41.37441507206451,
+            0.9997838344045363,
+            0.7749999999999999
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          41.86544698760621,
+          0.4276335784986534,
+          1
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1011.1536828588393,
+      "phase_id": "shipper_leaves_port_with_same_empty_tool",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            29.774999829913614,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            29.775,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            30.225000170086386,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            30.225,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          30,
+          0.4276335784986534,
+          2.35
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1010.6536828588393,
+      "phase_id": "shipper_opens_empty_clamp_after_receipt",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            29.774999829913614,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            29.775,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            30.225000170086386,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            30.225,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          30,
+          0.4276335784986534,
+          2.35
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.01,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1010.1536828588393,
+      "phase_id": "shipper_opens_empty_clamp_after_receipt",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            29.774999829913614,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            29.775,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            30.225000170086386,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            30.225,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          30,
+          0.4276335784986534,
+          2.35
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": true,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 1000.1536828588393,
+      "phase_id": "port_service_while_employee_holds_clamped_HU",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            29.774999829913614,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            29.775,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            30.225000170086386,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            30.225,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          30,
+          0.4276335784986534,
+          2.35
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 990.1536828588393,
+      "phase_id": "port_service_while_employee_holds_clamped_HU",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            29.774999829913614,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            29.775,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016216112907868e-7,
+          "point_world": [
+            30.225000170086386,
+            0.9997838325502743,
+            1.8589680797312789
+          ],
+          "bar_point_world": [
+            30.225,
+            0.9997838344045363,
+            1.8589680844583012
+          ]
+        }
+      ],
+      "actual_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "expected_cargo": [
+        30,
+        0.4276335784986534,
+        2
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          30,
+          0.4276335784986534,
+          2.35
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 964.2991969133923,
+      "phase_id": "whole_SMALL_enters_reserved_port_cell",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 0.0000183261733430664,
+          "point_world": [
+            43.51415632685258,
+            0.9997846329768177,
+            0.7749993052468727
+          ],
+          "bar_point_world": [
+            43.514174622432094,
+            0.9997838344045363,
+            0.7749999999999999
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 0.000018326173343091654,
+          "point_world": [
+            43.51415632685258,
+            0.9997846329768177,
+            1.2250006947531278
+          ],
+          "bar_point_world": [
+            43.514174622432094,
+            0.9997838344045363,
+            1.2249999999999999
+          ]
+        }
+      ],
+      "actual_cargo": [
+        43.37314270689039,
+        0.4276335784986534,
+        1
+      ],
+      "expected_cargo": [
+        43.37314270689039,
+        0.4276335784986534,
+        1
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          43.02314270689039,
+          0.4276335784986534,
+          1
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 938.4447109679454,
+      "phase_id": "whole_SMALL_enters_reserved_port_cell",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.701621575779471e-7,
+          "point_world": [
+            48.22500017008638,
+            0.9997838325502743,
+            5.559694770849704
+          ],
+          "bar_point_world": [
+            48.225,
+            0.9997838344045363,
+            5.559694766122682
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016215755327395e-7,
+          "point_world": [
+            47.77499982991362,
+            0.9997838325502743,
+            5.559694770849703
+          ],
+          "bar_point_world": [
+            47.775,
+            0.9997838344045363,
+            5.559694766122681
+          ]
+        }
+      ],
+      "actual_cargo": [
+        48,
+        0.4276335784986534,
+        5.418662850580982
+      ],
+      "expected_cargo": [
+        48,
+        0.4276335784986534,
+        5.418662850580982
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          48,
+          0.4276335784986534,
+          5.068662850580982
+        ],
+        "yaw_rad": -3.141592653589794,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 913.6866769791955,
+      "phase_id": "shipper_carries_to_outbound_port",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 0.00000561485789042641,
+          "point_world": [
+            65.92532995234988,
+            0.9997840647430678,
+            9.774999667556546
+          ],
+          "bar_point_world": [
+            65.92533555262261,
+            0.9997838344045363,
+            9.775
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 0.00000561485789042641,
+          "point_world": [
+            65.92532995234988,
+            0.9997840647430678,
+            10.225000332443454
+          ],
+          "bar_point_world": [
+            65.92533555262261,
+            0.9997838344045363,
+            10.225
+          ]
+        }
+      ],
+      "actual_cargo": [
+        65.78430363708091,
+        0.4276335784986534,
+        10
+      ],
+      "expected_cargo": [
+        65.78430363708091,
+        0.4276335784986534,
+        10
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          65.43430363708092,
+          0.4276335784986534,
+          10
+        ],
+        "yaw_rad": -1.5707963267948966,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 888.9286429904456,
+      "phase_id": "shipper_carries_to_outbound_port",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.4276335784986534,
+        6.981337149419018
+      ],
+      "expected_cargo": [
+        73,
+        0.4276335784986534,
+        6.981337149419018
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.4276335784986534,
+          7.331337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 887.4286429904456,
+      "phase_id": "shipper_lowers_compact_assembly",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.6838167892493267,
+        6.981337149419018
+      ],
+      "expected_cargo": [
+        73,
+        0.6838167892493267,
+        6.981337149419018
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.6838167892493267,
+          7.331337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.2561832107506732,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 885.9286429904456,
+      "phase_id": "shipper_lowers_compact_assembly",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.94,
+        6.981337149419018
+      ],
+      "expected_cargo": [
+        73,
+        0.94,
+        6.981337149419018
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          7.331337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 881.619204906144,
+      "phase_id": "shipper_extracts_from_conveyor",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 0.000009724636372245016,
+          "point_world": [
+            73.46971334457538,
+            0.9997842400923513,
+            6.395842239122924
+          ],
+          "bar_point_world": [
+            73.46970368524936,
+            0.9997838344045363,
+            6.395843288594556
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 0.000009724636368165515,
+          "point_world": [
+            73.40041055945936,
+            0.9997842400923513,
+            5.951209879604477
+          ],
+          "bar_point_world": [
+            73.40040103893627,
+            0.9997838344045363,
+            5.951211819607033
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73.57440175716266,
+        0.94,
+        6.151807809741587
+      ],
+      "expected_cargo": [
+        73.57440175716266,
+        0.94,
+        6.151807809741587
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73.92022623304184,
+          0.94,
+          6.097905751498076
+        ],
+        "yaw_rad": 1.7254175786530344,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 877.3097668218423,
+      "phase_id": "shipper_extracts_from_conveyor",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.94,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.94,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 876.3097668218423,
+      "phase_id": "shipper_lifts_whole_HU_clear",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.9299999999999999,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.9299999999999999,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.9299999999999999,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5023664215013465,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 875.3097668218423,
+      "phase_id": "shipper_lifts_whole_HU_clear",
+      "contacts": [
+        {
+          "actor_id": "S02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "S02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "S02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 874.8097668218423,
+      "phase_id": "shipper_grasps_same_tool_and_HU",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 874.3097668218423,
+      "phase_id": "shipper_grasps_same_tool_and_HU",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 873.3097668218423,
+      "phase_id": "shipper_prepares_bar_grip",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 872.3097668218423,
+      "phase_id": "shipper_prepares_bar_grip",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 870.7661911206803,
+      "phase_id": "shipper_approaches_supported_tool",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 869.2226154195184,
+      "phase_id": "shipper_approaches_supported_tool",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 846.2245814307685,
+      "phase_id": "shipper_goes_to_PK02",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 823.2265474420186,
+      "phase_id": "shipper_goes_to_PK02",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 796.7971461311854,
+      "phase_id": "K02_yields_for_shipper",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 770.3677448203523,
+      "phase_id": "K02_yields_for_shipper",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 766.1506700038424,
+      "phase_id": "K02_clears_supported_HU",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 761.9335951873323,
+      "phase_id": "K02_clears_supported_HU",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 761.8085951873323,
+      "phase_id": "PK02_retains_tool_for_shipper",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 761.6835951873323,
+      "phase_id": "PK02_retains_tool_for_shipper",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 761.1835951873323,
+      "phase_id": "K02_releases_supported_assembly",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "K02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 760.6835951873323,
+      "phase_id": "K02_releases_supported_assembly",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "K02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 756.9335951873323,
+      "phase_id": "K02_packs_checks_whole_HU_with_clamp_retained",
+      "contacts": [
+        {
+          "actor_id": "K02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "K02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "K02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 753.1835951873323,
+      "phase_id": "K02_packs_checks_whole_HU_with_clamp_retained",
+      "contacts": [
+        {
+          "actor_id": "K02",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "K02",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "K02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 752.6835951873323,
+      "phase_id": "K02_contacts_supported_tool",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 752.1835951873323,
+      "phase_id": "K02_contacts_supported_tool",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 751.1835951873323,
+      "phase_id": "K02_prepares_inspection",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 750.1835951873323,
+      "phase_id": "K02_prepares_inspection",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 748.6400194861703,
+      "phase_id": "K02_approaches_supported_assembly",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 747.0964437850084,
+      "phase_id": "K02_approaches_supported_assembly",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 719.7070424741753,
+      "phase_id": "K02_returns_to_native_post",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 692.3176411633422,
+      "phase_id": "K02_returns_to_native_post",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 616.3908735359611,
+      "phase_id": "P01_returns_home",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 540.46410590858,
+      "phase_id": "P01_returns_home",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 536.2470310920701,
+      "phase_id": "P01_clears_post_with_empty_hands",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 532.02995627556,
+      "phase_id": "P01_clears_post_with_empty_hands",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 531.52995627556,
+      "phase_id": "P01_releases_supported_tool",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 531.02995627556,
+      "phase_id": "P01_releases_supported_tool",
+      "contacts": [],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 530.77995627556,
+      "phase_id": "PK02_accepts_supported_clamped_HU",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 530.52995627556,
+      "phase_id": "PK02_accepts_supported_clamped_HU",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.92,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 529.52995627556,
+      "phase_id": "P01_sets_whole_HU_on_native_deck",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.9299999999999999,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.9299999999999999,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.9299999999999999,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5023664215013465,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 528.52995627556,
+      "phase_id": "P01_sets_whole_HU_on_native_deck",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.4410319202687205
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.441031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.94,
+        5.3
+      ],
+      "expected_cargo": [
+        73,
+        0.94,
+        5.3
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          4.95
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 526.986380574398,
+      "phase_id": "P01_places_assembly_over_real_conveyor",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 0.0000153475629682676,
+          "point_world": [
+            73.22500003459177,
+            0.9997842181817056,
+            5.700347998107301
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.700363340832207
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 0.0000153475629682676,
+          "point_world": [
+            72.77499996540823,
+            0.9997842181817056,
+            5.700347998107301
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.700363340832207
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.94,
+        5.559331425290508
+      ],
+      "expected_cargo": [
+        73,
+        0.94,
+        5.559331425290508
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          5.209331425290508
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 525.4428048732361,
+      "phase_id": "P01_places_assembly_over_real_conveyor",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.959694770849703
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.959694766122682
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.959694770849703
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.959694766122682
+          ]
+        }
+      ],
+      "actual_cargo": [
+        73,
+        0.94,
+        5.818662850580982
+      ],
+      "expected_cargo": [
+        73,
+        0.94,
+        5.818662850580982
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          5.468662850580983
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 523.9428048732361,
+      "phase_id": "P01_raises_assembly_outside_conveyor",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.174999829913615
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.175000000000001
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.625000170086386
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.625
+          ]
+        }
+      ],
+      "actual_cargo": [
+        72.41866285058097,
+        0.6838167892493268,
+        6.4
+      ],
+      "expected_cargo": [
+        72.41866285058097,
+        0.6838167892493268,
+        6.4
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          72.06866285058098,
+          0.6838167892493268,
+          6.4
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.2561832107506733,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 522.4428048732361,
+      "phase_id": "P01_raises_assembly_outside_conveyor",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.174999829913615
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.175000000000001
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016216344745523e-7,
+          "point_world": [
+            72.55969477084972,
+            0.9997838325502743,
+            6.625000170086386
+          ],
+          "bar_point_world": [
+            72.55969476612267,
+            0.9997838344045363,
+            6.625
+          ]
+        }
+      ],
+      "actual_cargo": [
+        72.41866285058097,
+        0.4276335784986534,
+        6.4
+      ],
+      "expected_cargo": [
+        72.41866285058097,
+        0.4276335784986534,
+        6.4
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          72.06866285058098,
+          0.4276335784986534,
+          6.4
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 449.3927069936188,
+      "phase_id": "P01_carries_same_whole_HU_to_PK02",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 0.0000056148578762524695,
+          "point_world": [
+            133.1572434753916,
+            0.9997840647430678,
+            9.774999667556546
+          ],
+          "bar_point_world": [
+            133.1572490756643,
+            0.9997838344045363,
+            9.775
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 0.0000056148578762524695,
+          "point_world": [
+            133.1572434753916,
+            0.9997840647430678,
+            10.225000332443454
+          ],
+          "bar_point_world": [
+            133.1572490756643,
+            0.9997838344045363,
+            10.225
+          ]
+        }
+      ],
+      "actual_cargo": [
+        133.0162171601226,
+        0.4276335784986534,
+        10
+      ],
+      "expected_cargo": [
+        133.0162171601226,
+        0.4276335784986534,
+        10
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          132.6662171601226,
+          0.4276335784986534,
+          10
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 376.34260911400145,
+      "phase_id": "P01_carries_same_whole_HU_to_PK02",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.701621581207579e-7,
+          "point_world": [
+            126.79103192026874,
+            0.9997838325502743,
+            50.294999829913614
+          ],
+          "bar_point_world": [
+            126.7910319155417,
+            0.9997838344045363,
+            50.294999999999995
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.701621581207579e-7,
+          "point_world": [
+            126.79103192026874,
+            0.9997838325502743,
+            50.74500017008638
+          ],
+          "bar_point_world": [
+            126.7910319155417,
+            0.9997838344045363,
+            50.745
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.64999999999999,
+        0.4276335784986534,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.64999999999999,
+        0.4276335784986534,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          126.3,
+          0.4276335784986534,
+          50.519999999999996
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 369.34260911400145,
+      "phase_id": "P01_clamps_extracts_whole_original_SMALL",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 6.825210003757532e-8,
+          "point_world": [
+            126.91219479640127,
+            0.8646502619711827,
+            50.29500006086681
+          ],
+          "bar_point_world": [
+            126.91219476612268,
+            0.864650255905883,
+            50.295
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 6.825210003757532e-8,
+          "point_world": [
+            126.91219479640127,
+            0.8646502619711827,
+            50.744999939133194
+          ],
+          "bar_point_world": [
+            126.91219476612268,
+            0.864650255905883,
+            50.745000000000005
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.29250000000000004,
+        50.52
+      ],
+      "expected_cargo": [
+        126.3,
+        0.29250000000000004,
+        50.52
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          126.3,
+          0.29250000000000004,
+          50.52
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": 0,
+        "grip_slide_m": 0,
+        "handle_height_m": 0,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 368.34260911400145,
+      "phase_id": "P01_clamps_extracts_whole_original_SMALL",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.8866918560483652e-7,
+          "point_world": [
+            126.91219477223648,
+            0.8221502538466572,
+            50.294999811441144
+          ],
+          "bar_point_world": [
+            126.91219476612268,
+            0.8221502559058829,
+            50.295
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.8866918560483652e-7,
+          "point_world": [
+            126.91219477223648,
+            0.8221502538466572,
+            50.74500018855886
+          ],
+          "bar_point_world": [
+            126.91219476612268,
+            0.8221502559058829,
+            50.745000000000005
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.52
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.52
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          126.3,
+          0.25,
+          50.52
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": 0,
+        "grip_slide_m": 0,
+        "handle_height_m": 0,
+        "jaw_open_m": 0,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 362.34260911400145,
+      "phase_id": "P01_clamps_extracts_whole_original_SMALL",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7090183937539722e-7,
+          "point_world": [
+            126.91219471916413,
+            0.9071503920537252,
+            50.2949999079886
+          ],
+          "bar_point_world": [
+            126.91219476612268,
+            0.9071502559058829,
+            50.295
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7090183937539722e-7,
+          "point_world": [
+            126.91219471916413,
+            0.9071503920537252,
+            50.74500009201141
+          ],
+          "bar_point_world": [
+            126.91219476612268,
+            0.9071502559058829,
+            50.745000000000005
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          126.3,
+          0.335,
+          50.52
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0,
+        "handle_height_m": 0,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 360.84260911400145,
+      "phase_id": "P01_prepares_source_clamp_height",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 7.347632151301226e-8,
+          "point_world": [
+            126.85161337056809,
+            0.9534670524436033,
+            50.295000066793904
+          ],
+          "bar_point_world": [
+            126.85161334083219,
+            0.9534670451552095,
+            50.295
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 7.347632151301226e-8,
+          "point_world": [
+            126.85161337056809,
+            0.9534670524436033,
+            50.7449999332061
+          ],
+          "bar_point_world": [
+            126.85161334083219,
+            0.9534670451552095,
+            50.745000000000005
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          126.3,
+          0.3813167892493267,
+          50.52
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.06058142529049122,
+        "handle_height_m": 0,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 359.34260911400145,
+      "phase_id": "P01_prepares_source_clamp_height",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.701621581207579e-7,
+          "point_world": [
+            126.79103192026874,
+            0.9997838325502743,
+            50.29499982991362
+          ],
+          "bar_point_world": [
+            126.7910319155417,
+            0.9997838344045363,
+            50.295
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.701621581207579e-7,
+          "point_world": [
+            126.79103192026874,
+            0.9997838325502743,
+            50.745000170086385
+          ],
+          "bar_point_world": [
+            126.7910319155417,
+            0.9997838344045363,
+            50.745000000000005
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          126.3,
+          0.4276335784986534,
+          50.52
+        ],
+        "yaw_rad": 4.71238898038469,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 0,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 287.3579176309729,
+      "phase_id": "P01_carries_empty_tool_to_original_source",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 0.00000712428535400298,
+          "point_world": [
+            128.53537897578784,
+            0.9997841285598946,
+            10.225000375939159
+          ],
+          "bar_point_world": [
+            128.53537186751208,
+            0.9997838344045363,
+            10.225
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 0.00000712428535400298,
+          "point_world": [
+            128.53537897578784,
+            0.9997841285598946,
+            9.774999624060841
+          ],
+          "bar_point_world": [
+            128.53537186751208,
+            0.9997838344045363,
+            9.775
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          129.02640378305378,
+          0.4276335784986534,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 215.37322614794437,
+      "phase_id": "P01_carries_empty_tool_to_original_source",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.4276335784986534,
+          7.331337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": 1.1102230246251565e-16,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 213.87322614794437,
+      "phase_id": "P01_lowers_compact_empty_tool",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.6838167892493267,
+          7.331337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.2561832107506732,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 212.37322614794437,
+      "phase_id": "P01_lowers_compact_empty_tool",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            6.840305229150298
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            6.840305233877319
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          7.331337149419018
+        ],
+        "yaw_rad": 0,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 207.81378806364273,
+      "phase_id": "P01_extracts_empty_tool_from_post",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 0.000012831313430235475,
+          "point_world": [
+            73.48839363739593,
+            0.9997843765752571,
+            6.318647408432533
+          ],
+          "bar_point_world": [
+            73.488381293417,
+            0.9997838344045363,
+            6.31865086890065
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 0.000012831313440260164,
+          "point_world": [
+            73.34879923464499,
+            0.9997843765752571,
+            5.89084561584274
+          ],
+          "bar_point_world": [
+            73.34878722535447,
+            0.9997838344045363,
+            5.890850101998872
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73.88539277059016,
+          0.94,
+          5.952427946251961
+        ],
+        "yaw_rad": 1.8862092388994713,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 203.2543499793411,
+      "phase_id": "P01_extracts_empty_tool_from_post",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.94,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5123664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 202.2543499793411,
+      "phase_id": "P01_lifts_empty_tool_clear",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.9299999999999999,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.5023664215013465,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 201.2543499793411,
+      "phase_id": "P01_lifts_empty_tool_clear",
+      "contacts": [
+        {
+          "actor_id": "P01",
+          "side": "L",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            73.22500017008639,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            73.225,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        },
+        {
+          "actor_id": "P01",
+          "side": "R",
+          "gap_m": 1.7016217175780025e-7,
+          "point_world": [
+            72.77499982991361,
+            0.9997838325502743,
+            5.29103192026872
+          ],
+          "bar_point_world": [
+            72.775,
+            0.9997838344045363,
+            5.291031915541699
+          ]
+        }
+      ],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "P01",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 200.7543499793411,
+      "phase_id": "P01_grasps_existing_bar_contact",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 200.2543499793411,
+      "phase_id": "P01_grasps_existing_bar_contact",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 199.2543499793411,
+      "phase_id": "P01_prepares_hands_above_tool_bar",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 198.2543499793411,
+      "phase_id": "P01_prepares_hands_above_tool_bar",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 196.990113378003,
+      "phase_id": "P01_approaches_tool_support",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 195.7258767766649,
+      "phase_id": "P01_approaches_tool_support",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 118.6612717216658,
+      "phase_id": "P01_goes_to_finite_stowed_tool",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 41.59666666666668,
+      "phase_id": "P01_goes_to_finite_stowed_tool",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 20.79833333333334,
+      "phase_id": "K02_clears_native_post",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    },
+    {
+      "at_s": 0,
+      "phase_id": "K02_clears_native_post",
+      "contacts": [],
+      "actual_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "expected_cargo": [
+        126.3,
+        0.25,
+        50.519999999999996
+      ],
+      "tool": {
+        "tool_id": "v3:tool:small-clamp:01",
+        "position": [
+          73,
+          0.92,
+          4.8
+        ],
+        "yaw_rad": 3.141592653589793,
+        "extension_m": -0.35,
+        "grip_slide_m": 0.12116285058098245,
+        "handle_height_m": -0.4923664215013466,
+        "jaw_open_m": 0.02,
+        "owner": "PK02",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false
+      },
+      "completed_visual": false,
+      "visible_actor_count": 24
+    }
+  ]
+}

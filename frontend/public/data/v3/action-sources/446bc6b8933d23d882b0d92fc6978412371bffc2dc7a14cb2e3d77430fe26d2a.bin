@@ -1,0 +1,110 @@
+{
+  "task_id": "P03.5.3.3",
+  "passed": true,
+  "reviewer": "root",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "visual_complete": false,
+  "backend_integration_complete": false,
+  "duration_s": 36,
+  "actor_id": "P01",
+  "original_package_ids": [
+    14,
+    17,
+    20,
+    23
+  ],
+  "transferred_package_ids": [
+    17,
+    23
+  ],
+  "source_packages_after": 2,
+  "tote_packages_after": 2,
+  "warehouse_headcount_delta": 0,
+  "arm_guides": 45,
+  "runtime": {
+    "runtime_frames": 3601,
+    "maximum_joint_angle_change_per_10ms_rad": 0.038397243543901144,
+    "maximum_angle_step_witness": {
+      "time": 32.63,
+      "name": "joint__palm_roll_R"
+    },
+    "native_frames_exported": 557,
+    "arbitrary_seeks": 100,
+    "invalid_time_rejected": 3,
+    "exclusive_binding": true,
+    "disposal_restores_hierarchy_and_transforms": true,
+    "source_package_objects_conserved": true
+  },
+  "native": {
+    "frames": 557,
+    "contacts": 2928,
+    "thumb_button_frames": 136,
+    "tote_support_contacts": 290,
+    "maximum_contact_gap_m": 1.8706744702428836e-06,
+    "maximum_boot_floor_error_m": 6.229430482562748e-08,
+    "spacing": "100ms whole clip;20ms final transfer;10ms gravity release",
+    "clearance_threshold_m": 2e-06
+  },
+  "browser_checks": {
+    "cold_reduced_motion_manual_only": true,
+    "same_actor_tool_and_four_package_objects": true,
+    "mobile_360_touch_seek_and_no_page_overflow": true,
+    "keyboard_seek": true,
+    "keyboard_view_focus_labels_and_status": true,
+    "manual_play_pause": true,
+    "live_reduced_motion_pauses": true,
+    "replacement_memory": [
+      {
+        "geometries": 103,
+        "textures": 13
+      },
+      {
+        "geometries": 103,
+        "textures": 13
+      },
+      {
+        "geometries": 103,
+        "textures": 13
+      }
+    ],
+    "missing_asset_cleanup_recovery": true,
+    "invalid_timeline_cleanup_recovery": true,
+    "loading_status_and_disabled_views": true,
+    "stale_load_does_not_resurrect_actor": true
+  },
+  "browser_lifecycle": {
+    "owned_pid": 26100,
+    "terminated": true,
+    "elapsed_ms": 37869
+  },
+  "reviewed_images": 17,
+  "input_hashes": {
+    "frontend/public/models/v3/picker-pick-source-fixture.glb": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "frontend/public/models/v3/small-package-gripper.glb": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
+    "frontend/public/models/v3/small-pick-v3.json": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+    "frontend/src/adaptive-v3/motion/smallPick.ts": "535aaa14075c18601fc30316188ea8501225c45a2fb6ce5de20b451006169874",
+    "frontend/src/adaptive-v3/motion/smallGripper.ts": "3694582b882fcd14620f000bfc0f883d02db441efa80749824113c8fbb18701b",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "assets/v3/blender/worker-small-pick.blend": "1bb90d350a1690e11944142e8f5df1cfa18abe54861a007a79bc4be3830a2e80",
+    "assets/v3/blender/small-package-gripper.blend": "c81e8974e145a3afd4617b5998ccfb8e70d25d4625228ba64aca51927bc4dc16",
+    "assets/v3/blender/picker-pick-source-fixture.blend": "2f0f95608f3d8732bda732128a32a1d8476374bbab331ecd92d108a7dc5a365d",
+    "frontend/tools/check-small-pick-v3.mjs": "f05f0aa19342d13e6543216699b42a38fe63bd54eb57a48d0b509e0380ff6783"
+  },
+  "artifacts": {
+    "assets/v3/iterations/worker-base/P03.5.3.3/runtime-native-poses.json": "ae41d31ffd646963458a709fea03341627ece72f6bfd7e32c449e43b58a6884b",
+    "assets/v3/iterations/worker-base/P03.5.3.3/native-path-checks.json": "3b4563ce2408d8833a0326e64490984fd7b2d5496e5e9ecc790fbb39541f38bc",
+    "assets/v3/iterations/worker-base/P03.5.3.3/browser/browser-checks.json": "f446a4aef7c1bde9e05cc30b51a04f6706d05f3d7a504c5617cb7279d50caa8e",
+    "assets/v3/iterations/worker-base/P03.5.3.3/visual-review.json": "d8ea073f766e7a35be6812f0af5d6238a241ddf12b04114192c2216a0ce990b9",
+    "assets/v3/iterations/worker-base/P03.5.3.3/shared-stand-regression.json": "f865a50be099d5bd63390403f70452f8d07ff7644469860d13ba4bc61d53576e"
+  },
+  "scope": "Accepted bounded prepared-tool pick/extract/grounded transfer/release/empty-tool withdrawal. Tool acquisition/stow and a complete warehouse action scheduler remain W05 integration work. Sampled checks are not continuous collision certification;36s and gravity are visual assumptions, not engine throughput or certified handling data.",
+  "receiver_integration_regression": "Current shared stand browser gate and actual image regression reviewed; P04/walk14screens pass, original P04 proofs unchanged.",
+  "shipper_integration_regression": {
+    "at_utc": "2026-11-08T06:24:43.211657+00:00",
+    "current_source_checked": true,
+    "source_body_action_unchanged": true
+  }
+}

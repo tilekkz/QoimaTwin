@@ -1,0 +1,229 @@
+{
+  "schema": "qoima-dock-module-dimensions-v1",
+  "declared_at": "2026-11-07T12:13:16.917746+00:00",
+  "asset_id": "dock-module",
+  "reference": "R07",
+  "reference_path": "assets/references/v3/r07-ports-zones.png",
+  "reference_sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+  "authority": "R07 architectural language; accepted L04 OUT_W_RETAIL and L11 collision pieces constrain actual size. Root explicitly accepted exact existing envelope before geometry.",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z inward",
+  "origin": "floor aperture centre at wall outside planeZ0",
+  "clear_aperture_m": {
+    "width": 4,
+    "height": 4.5,
+    "depth": 0.25
+  },
+  "outer_bounds_runtime": {
+    "min": [
+      -2.25,
+      0,
+      0
+    ],
+    "max": [
+      2.25,
+      4.75,
+      0.25
+    ]
+  },
+  "dimensions_m": [
+    4.5,
+    4.75,
+    0.25
+  ],
+  "collision_union": [
+    {
+      "id": "jamb_L",
+      "min": [
+        -2.25,
+        0,
+        0
+      ],
+      "max": [
+        -2,
+        4.5,
+        0.25
+      ]
+    },
+    {
+      "id": "jamb_R",
+      "min": [
+        2,
+        0,
+        0
+      ],
+      "max": [
+        2.25,
+        4.5,
+        0.25
+      ]
+    },
+    {
+      "id": "header",
+      "min": [
+        -2.25,
+        4.5,
+        0
+      ],
+      "max": [
+        2.25,
+        4.75,
+        0.25
+      ]
+    }
+  ],
+  "wall_integration_depth_m": [
+    0,
+    0.25
+  ],
+  "steel_U": {
+    "outer_half_width": 2.24,
+    "outer_top": 4.75,
+    "inner_half_width": 2.07,
+    "inner_top": 4.57,
+    "z": [
+      0.025,
+      0.225
+    ],
+    "bevel_m": 0.008
+  },
+  "tan_reveal_U": {
+    "outer_half_width": 2.09,
+    "outer_top": 4.59,
+    "inner_half_width": 2,
+    "inner_top": 4.5,
+    "z": [
+      0.04,
+      0.21
+    ],
+    "bevel_m": 0,
+    "reason": "Keep the exact rectangular aperture corners free; primary steel and secondary boxes carry small bevels."
+  },
+  "foot_each": {
+    "centre_abs_x": 2.1325,
+    "size": [
+      0.235,
+      0.16,
+      0.24
+    ],
+    "y": [
+      0,
+      0.16
+    ],
+    "z": [
+      0.005,
+      0.245
+    ]
+  },
+  "bumper_each": {
+    "centre_abs_x": 2.14,
+    "width": 0.17,
+    "y": [
+      0.14,
+      1.1
+    ],
+    "outside_z": [
+      0.012,
+      0.06
+    ],
+    "inside_z": [
+      0.19,
+      0.238
+    ]
+  },
+  "safety_band_each": {
+    "centre_abs_x": 2.14,
+    "width": 0.11,
+    "height": 0.06,
+    "centres_y": [
+      0.34,
+      0.87
+    ],
+    "outside_z": [
+      0,
+      0.016
+    ],
+    "inside_z": [
+      0.234,
+      0.25
+    ]
+  },
+  "header_panel_each": {
+    "width": 4.32,
+    "y": [
+      4.65,
+      4.72
+    ],
+    "outside_z": [
+      0.012,
+      0.028
+    ],
+    "inside_z": [
+      0.222,
+      0.238
+    ]
+  },
+  "anchors": {
+    "anchor_aperture_floor": [
+      0,
+      0,
+      0
+    ],
+    "anchor_clear_left": [
+      -2,
+      0,
+      0.125
+    ],
+    "anchor_clear_right": [
+      2,
+      0,
+      0.125
+    ],
+    "anchor_clear_top": [
+      0,
+      4.5,
+      0.125
+    ],
+    "anchor_wall_inside": [
+      0,
+      0,
+      0.25
+    ]
+  },
+  "layout_mount_example": {
+    "port_id": "OUT_W_RETAIL",
+    "position": [
+      0,
+      0,
+      54
+    ],
+    "yaw_rad": 1.5707963267948966,
+    "world_bounds": {
+      "min": [
+        0,
+        0,
+        51.75
+      ],
+      "max": [
+        0.25,
+        4.75,
+        56.25
+      ]
+    },
+    "layout_changed": false
+  },
+  "forbidden": [
+    "threshold across aperture",
+    "gate panel/door in aperture",
+    "geometry outside accepted collision union",
+    "moving port/route coordinates",
+    "other port sizes/full shell"
+  ],
+  "input_sha256": {
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/layout-conflicts-v3.json": "7007d809982f5df117dbd93cdec89005b69fdadad8d352285994048f03c2e917",
+    "tools/blender/v3/build_layout_engineering.py": "52fc30e52dd7b6a7a67a9aa091b0cc2ac06fce56e7b4dcb6d1182b6418bd652c"
+  },
+  "scope": "One standard retail module only; loaded-long gate and complete shell deferred toP09.2/P09.3."
+}

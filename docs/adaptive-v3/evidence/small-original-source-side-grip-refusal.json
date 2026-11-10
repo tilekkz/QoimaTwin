@@ -1,0 +1,768 @@
+{
+  "schema_id": "qoima.whole-small.source-side-grip-refusal.v1",
+  "method_id": "original542_opposed_lower_pad_side_grip_v1",
+  "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+  "source_slot_id": "v3:slot:SMALL_E:019:L1:B5",
+  "source_module_id": "v3:module:SMALL_E:019",
+  "actor_id": "P01",
+  "archetype_id": "SMALL_CARTON",
+  "dimensions_xyz_m": [
+    0.32,
+    0.24,
+    0.24
+  ],
+  "gross_mass_kg": 0.94,
+  "quantity_units": 24,
+  "source_hashes": {
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317"
+  },
+  "source_placement_module_local": {
+    "centre": [
+      0.88,
+      0.37,
+      0.30000000000000004
+    ],
+    "bottom": 0.25
+  },
+  "bin_usable_width_m": 0.42,
+  "available_side_clearance_m": 0.05,
+  "native_hand_spine_projection_m": 0.09000001102686637,
+  "clearance_deficit_m": 0.040000011026866386,
+  "native_witness": {
+    "body_component": "worker-base__batch_12#1",
+    "rack_component": "rack-small__batch_00#17",
+    "body_material": "V3_Worker_SkinWarm",
+    "rack_material": "SMALL | petrol",
+    "SAT_translation_overlap_m": 0.03749990676259074,
+    "shared_interior_margin_m": [
+      0.028088112179069924,
+      0.009411755730148741
+    ]
+  },
+  "qualified_scope": "Tested original-model opposed native lower-side-pad method at the exact DEMO001 source bin. Not a proof that every alternative grasp/tool method is impossible.",
+  "completed_visual": false,
+  "engine_operation": false,
+  "operational_admission": false,
+  "executed_native_source_check": {
+    "legal_corrected_joint_angles": [
+      -1.75,
+      2.15,
+      -0.4
+    ],
+    "all_joint_limits_passed": true,
+    "body_carton_contact_error_m": 1.692655490393646e-7,
+    "actual_shared_interior": {
+      "components": [
+        "worker-base__batch_12#1",
+        "rack-small__batch_00#17"
+      ],
+      "bones": [
+        "joint__hand_L",
+        "rack-small__MODULE"
+      ],
+      "signed_gap_m": -0.03749990676259074,
+      "separated": false,
+      "shared_volume": true,
+      "axis_A_to_B": [
+        -2.220446049250313e-16,
+        0,
+        1
+      ],
+      "move_A_for_separation_m": [
+        8.32665198182497e-18,
+        0,
+        -0.03749990676259074
+      ],
+      "minimum_translation_to_touch_m": 0.03749990676259074,
+      "axis_origin": {
+        "kind": "face",
+        "side": "B",
+        "component": "rack-small__batch_00#17",
+        "triangle": 782
+      },
+      "active_parallel_faces": [
+        {
+          "side": "A",
+          "component": "worker-base__batch_12#1",
+          "triangle": 80,
+          "normal": [
+            -5.769376705259051e-7,
+            2.4197578086959737e-7,
+            0.9999999999998044
+          ],
+          "offset_m": 50.327427054904476
+        },
+        {
+          "side": "A",
+          "component": "worker-base__batch_12#1",
+          "triangle": 81,
+          "normal": [
+            -5.769376705259051e-7,
+            2.4197578086959737e-7,
+            0.9999999999998044
+          ],
+          "offset_m": 50.327427054904476
+        },
+        {
+          "side": "A",
+          "component": "worker-base__batch_12#1",
+          "triangle": 84,
+          "normal": [
+            5.769376705259051e-7,
+            -2.4197578086959737e-7,
+            -0.9999999999998044
+          ],
+          "offset_m": -50.269927051998756
+        },
+        {
+          "side": "A",
+          "component": "worker-base__batch_12#1",
+          "triangle": 85,
+          "normal": [
+            5.769376705259051e-7,
+            -2.4197578086959737e-7,
+            -0.9999999999998044
+          ],
+          "offset_m": -50.269927051998756
+        },
+        {
+          "side": "B",
+          "component": "rack-small__batch_00#17",
+          "triangle": 782,
+          "normal": [
+            -2.220446049250313e-16,
+            0,
+            1
+          ],
+          "offset_m": 50.30999996662137
+        },
+        {
+          "side": "B",
+          "component": "rack-small__batch_00#17",
+          "triangle": 783,
+          "normal": [
+            -2.220446049250313e-16,
+            0,
+            1
+          ],
+          "offset_m": 50.30999996662137
+        },
+        {
+          "side": "B",
+          "component": "rack-small__batch_00#17",
+          "triangle": 790,
+          "normal": [
+            2.220446049250313e-16,
+            0,
+            -1
+          ],
+          "offset_m": -50.289999985694855
+        },
+        {
+          "side": "B",
+          "component": "rack-small__batch_00#17",
+          "triangle": 791,
+          "normal": [
+            2.220446049250313e-16,
+            0,
+            -1
+          ],
+          "offset_m": -50.289999985694855
+        }
+      ],
+      "axis_count": 4444,
+      "intersection": {
+        "vertex_count": 34,
+        "vertices": [
+          {
+            "point_m": [
+              126.30229532229714,
+              0.44420095538391513,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 52,
+              "edge": 0,
+              "u": 0.32323578685033005
+            }
+          },
+          {
+            "point_m": [
+              126.3022953107584,
+              0.44420096022342614,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 52,
+              "edge": 0,
+              "u": 0.7272757925534686
+            }
+          },
+          {
+            "point_m": [
+              126.30182424776557,
+              0.4482879969128726,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 52,
+              "edge": 2,
+              "u": 0.27272418197702286
+            }
+          },
+          {
+            "point_m": [
+              126.30208595960598,
+              0.44601742794319155,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 52,
+              "edge": 2,
+              "u": 0.6767642018298148
+            }
+          },
+          {
+            "point_m": [
+              126.30164760189588,
+              0.4498206117891232,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 53,
+              "edge": 1,
+              "u": 0.27272417242610597
+            }
+          },
+          {
+            "point_m": [
+              126.30164761343462,
+              0.4498206069496122,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 53,
+              "edge": 1,
+              "u": 0.6767641781292446
+            }
+          },
+          {
+            "point_m": [
+              126.39551922486687,
+              0.5617139536600467,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 56,
+              "edge": 0,
+              "u": 0.27272471954930605
+            }
+          },
+          {
+            "point_m": [
+              126.3955192364056,
+              0.5617139488205357,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 56,
+              "edge": 0,
+              "u": 0.6767647252524446
+            }
+          },
+          {
+            "point_m": [
+              126.3917160546948,
+              0.5612756023374761,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 56,
+              "edge": 2,
+              "u": 0.32323531693201635
+            }
+          },
+          {
+            "point_m": [
+              126.39398660706519,
+              0.5615373074531788,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 56,
+              "edge": 2,
+              "u": 0.7272752974503172
+            }
+          },
+          {
+            "point_m": [
+              126.38989958483991,
+              0.5610662399580217,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 57,
+              "edge": 1,
+              "u": 0.3232353370800943
+            }
+          },
+          {
+            "point_m": [
+              126.38989957330118,
+              0.5610662447975328,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 57,
+              "edge": 1,
+              "u": 0.7272753427832329
+            }
+          },
+          {
+            "point_m": [
+              126.36966942076934,
+              0.3907525877404108,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 66,
+              "edge": 0,
+              "u": 0.2727252539893904
+            }
+          },
+          {
+            "point_m": [
+              126.36966943230809,
+              0.39075258290089976,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 66,
+              "edge": 0,
+              "u": 0.676765259692529
+            }
+          },
+          {
+            "point_m": [
+              126.37347261749639,
+              0.3911909297847673,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 66,
+              "edge": 2,
+              "u": 0.32323469812297145
+            }
+          },
+          {
+            "point_m": [
+              126.37120204176546,
+              0.39092923431546184,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 66,
+              "edge": 2,
+              "u": 0.727274729010951
+            }
+          },
+          {
+            "point_m": [
+              126.37528908387378,
+              0.39140029176341357,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 67,
+              "edge": 1,
+              "u": 0.32323467797497846
+            }
+          },
+          {
+            "point_m": [
+              126.37528907233504,
+              0.3914002966029246,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 67,
+              "edge": 1,
+              "u": 0.727274683678175
+            }
+          },
+          {
+            "point_m": [
+              126.46289334641656,
+              0.5082655763375202,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 68,
+              "edge": 0,
+              "u": 0.32323422820469633
+            }
+          },
+          {
+            "point_m": [
+              126.46289333487782,
+              0.5082655811770312,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 68,
+              "edge": 0,
+              "u": 0.727274233907835
+            }
+          },
+          {
+            "point_m": [
+              126.46336439682811,
+              0.5041785535328889,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 68,
+              "edge": 2,
+              "u": 0.27272579156151283
+            }
+          },
+          {
+            "point_m": [
+              126.46310270808351,
+              0.5064491126645159,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 68,
+              "edge": 2,
+              "u": 0.6767657831150571
+            }
+          },
+          {
+            "point_m": [
+              126.46354104374034,
+              0.5026459296113343,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 69,
+              "edge": 1,
+              "u": 0.27272580111248607
+            }
+          },
+          {
+            "point_m": [
+              126.46354105527908,
+              0.5026459247718232,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 69,
+              "edge": 1,
+              "u": 0.6767658068156827
+            }
+          },
+          {
+            "point_m": [
+              126.3512948187341,
+              0.40532929344601343,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 76,
+              "edge": 2,
+              "u": 0.27272496857102213
+            }
+          },
+          {
+            "point_m": [
+              126.32407302296858,
+              0.42692454672900026,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 76,
+              "edge": 2,
+              "u": 0.6767645514294206
+            }
+          },
+          {
+            "point_m": [
+              126.36137341528551,
+              0.5251077028414971,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 78,
+              "edge": 2,
+              "u": 0.3232354937816429
+            }
+          },
+          {
+            "point_m": [
+              126.32571605943052,
+              0.48015999969561196,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 78,
+              "edge": 2,
+              "u": 0.7272756953596977
+            }
+          },
+          {
+            "point_m": [
+              126.41389382935431,
+              0.5471372460091002,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 82,
+              "edge": 2,
+              "u": 0.2727250049677124
+            }
+          },
+          {
+            "point_m": [
+              126.44111570517497,
+              0.5255419378463176,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 82,
+              "edge": 2,
+              "u": 0.6767654335164761
+            }
+          },
+          {
+            "point_m": [
+              126.4394724658073,
+              0.47230638993717555,
+              50.3099999666214
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 86,
+              "edge": 2,
+              "u": 0.27272566889762884
+            }
+          },
+          {
+            "point_m": [
+              126.40381516760246,
+              0.4273587206926989,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "worker-base__batch_12#1",
+              "edge_triangle": 86,
+              "edge": 2,
+              "u": 0.676765478726099
+            }
+          },
+          {
+            "point_m": [
+              126.40746057630092,
+              0.5522407968550642,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "rack-small__batch_00#17",
+              "edge_triangle": 790,
+              "edge": 2,
+              "u": 0.13436555001308845
+            }
+          },
+          {
+            "point_m": [
+              126.34562590397123,
+              0.5052572469641807,
+              50.289999985694884
+            ],
+            "origin": {
+              "component": "rack-small__batch_00#17",
+              "edge_triangle": 790,
+              "edge": 2,
+              "u": 0.2693757547338327
+            }
+          }
+        ],
+        "vertex_mean_point_m": [
+          126.38223837809807,
+          0.47932242171907596,
+          50.29941174142503
+        ],
+        "vertex_mean_halfspace_margins_m": [
+          0.028088112179069924,
+          0.009411755730148741
+        ],
+        "scope": "Contains all convex-intersection extreme vertices plus native triangulation-diagonal boundary points, within numeric tolerances; point mean is one interior sample, not a volume centroid or maximum penetration."
+      }
+    },
+    "source_front_lip": {
+      "bottom_y_m": 0.25,
+      "top_y_m": 0.32999999076128006,
+      "required_upward_clearance_before_front_extraction_m": 0.080002,
+      "source_HU_top_y_m": 0.49,
+      "available_headroom_m": 0.11,
+      "prelift_sequence_not_admitted": true
+    }
+  },
+  "one_front_biased_alternative": {
+    "executed": true,
+    "admitted": false,
+    "method": "Bilateral front-corner45degree normal, legal deepcrouch and0.45m stance; no airborne regrasp.",
+    "point_error_m": 0.0015758324882932959,
+    "point_budget_m": 0.001,
+    "maximum_skin_rack_SAT_translation_overlap_m": 0.04914614074807844,
+    "report_sha256": "b9a5a40b71dbc3904007695d2e9b665ab3cfa767a02c2223415cfd731dcd081b"
+  },
+  "outside_bin_only": {
+    "controls": [
+      "lift1",
+      "lift2",
+      "carry"
+    ],
+    "not_source_pickup_admission": true,
+    "table_cloth_convex_enclosure_depth_m": 0.0005905248224735261,
+    "full_workflow_emitted": false
+  },
+  "source_route_recipe": "frontend/src/adaptive-v3/warehouseSmallManualWorkflowRoute.ts",
+  "runtime_helper": "frontend/src/adaptive-v3/warehouseSmallSourceAdmission.ts",
+  "runtime_helper_sha256": "6968ad8a3fca3521ce48f7bb0915cf9003fcd3a2900b66f9ddfdbf4cf1d25456",
+  "old_STD_unchanged_sha256": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+  "raw_reports": {
+    "source": "work/v3/full-tz-closeout-20261109/small-manual/source-contact-refusal.json",
+    "source_sha256": "f9d619bd1793a3141935ee3cfdfcff11226de3df93ca9165233dfee7ea51e3fe",
+    "front_biased": "work/v3/full-tz-closeout-20261109/small-manual/source-rack-frontbiased-native.json",
+    "front_biased_sha256": "b9a5a40b71dbc3904007695d2e9b665ab3cfa767a02c2223415cfd731dcd081b"
+  },
+  "limitations": [
+    "Refuses the tested actual lower-side material-pad grip family at the current slot, not a proof that every possible whole-HU contact/tool method is impossible.",
+    "The initial arms-only exploratory crouch had ankle−.48 beyond native−.4; that pose is not admitted. This corrected deeper triplet respects all native joint bounds.",
+    "WholeHU24/.94kg is preserved; the old2inner-unit smallPick clip cannot satisfy it.",
+    "No rack/body/model/limit change or solid-contact waiver was used."
+  ],
+  "source_record_hashes": {
+    "hu": {
+      "source": "frontend/public/data/v3/warehouse-fixture-v3.json",
+      "json_pointer": "/inputs/initial_stock/0",
+      "encoding": "UTF-8 JSON.stringify(raw source record), source property order",
+      "sha256": "c50076220e3fa52d0e20fce450d8c6f5dc7a9466be3d62a716c9afa99ab062a8"
+    },
+    "slot": {
+      "source": "frontend/public/data/adaptive-v3/layout-manifest.json",
+      "json_pointer": "/data/storage/slots/rows/428",
+      "columns_pointer": "/data/storage/slots/columns",
+      "encoding": "UTF-8 JSON.stringify({columns,row}) with source ordering",
+      "sha256": "f720694123267f7ba059dc25983b3eb166fab3aaa89f063a8e04723865e43009"
+    }
+  },
+  "upper_edge_side_pad_check": {
+    "raw_report": "work/v3/full-tz-closeout-20261109/small-manual/upper-edge-hand-obstruction.json",
+    "sha256": "456f45ad7f40c5a9899e3b97e3d32ada84b2ea57b47f791d414b5626e74b5f0e",
+    "wall_rim_m": 0.5999999940395355,
+    "HU_top_m": 0.49,
+    "paired_spine_backing_m": [
+      {
+        "pad": "lower",
+        "projection_m": 0.08900000983476637,
+        "min_actual_convex_interior_margin_m": 0.0010000013264518937
+      },
+      {
+        "pad": "upper",
+        "projection_m": 0.08900000983476637,
+        "min_actual_convex_interior_margin_m": 0.0010000013264518937
+      }
+    ],
+    "conclusion": "Moving these native upper/lower side-pad centres to the HU top cannot place their solid backing above the wall rim. No extra pose solve performed.",
+    "scope": "Only actual opposed native side-pad normal-contact family at this fixed source HU/bin; does not cover top-face hooks, front grasps, tools, or all possible contact methods."
+  },
+  "free_higher_L2_inventory": {
+    "passed": true,
+    "controls": 5,
+    "covered_refusal": "SOURCE_HANDGRIP_CLEARANCE_DENIED",
+    "no_physical_case_issued": true,
+    "free_compatible_L2_count": 20,
+    "free_L2_examples": [
+      {
+        "slot_id": "v3:slot:SMALL_W:017:L2:B1",
+        "usable": [
+          0.42,
+          0.35,
+          0.42
+        ],
+        "bin_anchor": [
+          26.24,
+          1,
+          44.38
+        ]
+      },
+      {
+        "slot_id": "v3:slot:SMALL_W:017:L2:B2",
+        "usable": [
+          0.42,
+          0.35,
+          0.42
+        ],
+        "bin_anchor": [
+          26.24,
+          1,
+          43.94
+        ]
+      },
+      {
+        "slot_id": "v3:slot:SMALL_W:017:L2:B3",
+        "usable": [
+          0.42,
+          0.35,
+          0.42
+        ],
+        "bin_anchor": [
+          26.24,
+          1,
+          43.5
+        ]
+      }
+    ],
+    "higher_L2_same_side_gap_m": [
+      0.04999999999999999
+    ],
+    "higher_level_native_receiving_claimed": false,
+    "scope": "Pure source-bound refusal helper, scope guards and one freeL2 geometry inventory only. No admission, inventory mutation or generic-method impossibility proof."
+  }
+}

@@ -1,0 +1,2649 @@
+{
+  "actual_engine_run": false,
+  "all_expected_reasons_exact": true,
+  "all_rejections_before_cost": true,
+  "engine_operation": false,
+  "execution_ready": false,
+  "frozen_artifacts": {
+    "docs/adaptive-v3/evidence/W12.1.json": {
+      "bytes": 4955,
+      "sha256": "37f199d93618198bf03c04b0cba08a14182c738e14ded135a1f4c7d8723b6f78"
+    },
+    "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json": {
+      "bytes": 644667,
+      "sha256": "7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b"
+    },
+    "docs/adaptive-v3/specs/W12.1.md": {
+      "bytes": 4423,
+      "sha256": "d73588b61c8789a86ee1588442cd83773a15b31185b557086327ce3fb72ccfa6"
+    },
+    "tools/visual/v3/build_long_freight_scenario.py": {
+      "bytes": 15365,
+      "sha256": "4adc10a1be5ed7e36ae1f65cd5188ca5591fac6545120f5181e14057cc3abe4c"
+    }
+  },
+  "graph_discovery": "No graph-specific tools exposed; scoped source fallback only, no reindex or memory mutation.",
+  "input_integrity_verified": true,
+  "input_ref": {
+    "bytes": 644667,
+    "path": "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json",
+    "sha256": "7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b"
+  },
+  "limits": "Source eligibility only; no native motion, structural certification, physical slot admission, completed operation, runtime or performance proof. W12 root acceptance open.",
+  "negative_count": 242,
+  "negatives": [
+    {
+      "branch": "inputs.requests.16.request_id",
+      "case": "unknown_request",
+      "cost_evaluated": false,
+      "reason": "EXTERNAL_REQUEST_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.17.request_id",
+      "case": "duplicate_request",
+      "cost_evaluated": false,
+      "reason": "DUPLICATE_REQUEST",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.17.handling_unit_id",
+      "case": "duplicate_HU",
+      "cost_evaluated": false,
+      "reason": "DUPLICATE_HU",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.handling_unit_id",
+      "case": "unknown_HU",
+      "cost_evaluated": false,
+      "reason": "EXTERNAL_HU_LOT_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.lot_id",
+      "case": "unknown_lot",
+      "cost_evaluated": false,
+      "reason": "EXTERNAL_HU_LOT_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.9.lot_id",
+      "case": "duplicate_upstream_lot",
+      "cost_evaluated": false,
+      "reason": "DUPLICATE_UPSTREAM_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.request_id",
+      "case": "mismatched_HU_link",
+      "cost_evaluated": false,
+      "reason": "HU_REQUEST_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.sku_id",
+      "case": "unknown_SKU",
+      "cost_evaluated": false,
+      "reason": "REQUEST_SOURCE_ID",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.source_catalogue_id",
+      "case": "mismatched_source",
+      "cost_evaluated": false,
+      "reason": "HU_CATALOGUE_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.source_catalogue_pointer",
+      "case": "wrong_source_pointer",
+      "cost_evaluated": false,
+      "reason": "HU_CATALOGUE_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "partial_pick",
+      "cost_evaluated": false,
+      "reason": "REQUEST_NATIVE_QUANTITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.quantity_units",
+      "case": "wrong_HU_units",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.gross_mass_kg",
+      "case": "wrong_HU_mass",
+      "cost_evaluated": false,
+      "reason": "HU_MASS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.dimensions_xyz_m",
+      "case": "shrunken_HU",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.orientation_id",
+      "case": "forbidden_orientation",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.model_scale_factor",
+      "case": "scaled_HU",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock",
+      "case": "stock_grown",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.0.gross_mass_kg",
+      "case": "stock_mass_changed",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.lot_id",
+      "case": "original_upstream_changed",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.workers.0.actor_id",
+      "case": "original_people_changed",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_PEOPLE_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.vehicles.0.vehicle_id",
+      "case": "original_vehicle_changed",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_VEHICLES_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.ports.0.clear_width_m",
+      "case": "port_widened",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_PORTS_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.requested_at_s",
+      "case": "fake_release",
+      "cost_evaluated": false,
+      "reason": "SYNTHETIC_RELEASE_DEADLINE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.deadline_at_s",
+      "case": "fake_deadline",
+      "cost_evaluated": false,
+      "reason": "SYNTHETIC_RELEASE_DEADLINE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "preregistration.time_provenance",
+      "case": "C11_time_inference",
+      "cost_evaluated": false,
+      "reason": "FAKE_TIME_PROVENANCE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.8.included_in_initial_stock",
+      "case": "external_in_initial_stock",
+      "cost_evaluated": false,
+      "reason": "UPSTREAM_PROVENANCE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.port_id",
+      "case": "wrong_port",
+      "cost_evaluated": false,
+      "reason": "LONG_PORT_LINK",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_id",
+      "case": "narrow_wrong_gate",
+      "cost_evaluated": false,
+      "reason": "WRONG_GATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_id",
+      "case": "wrong_direction_gate",
+      "cost_evaluated": false,
+      "reason": "WRONG_GATE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "gate_geometry_override",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_asset_id",
+      "case": "wrong_gate_asset",
+      "cost_evaluated": false,
+      "reason": "GATE_ASSET_MISMATCH",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.mode",
+      "case": "manual_LONG",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_MODE_HANDLER",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.handler",
+      "case": "wrong_handler",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_MODE_HANDLER",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.actor_id",
+      "case": "wrong_driver",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_PAIR_VEHICLE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.vehicle_id",
+      "case": "wrong_vehicle",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_PAIR_VEHICLE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.equipment_pair_ref",
+      "case": "wrong_pair",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_PAIR_VEHICLE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.geometry_profile_id",
+      "case": "bare_profile",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOADED_PROFILE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "rotate_load_to_fit",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_id",
+      "case": "missing_cradle",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.positive_lock_required",
+      "case": "missing_lock",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.independent_restraint_required",
+      "case": "missing_restraint",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "cradle_mass_dropped",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "overweight_rating",
+      "cost_evaluated": false,
+      "reason": "RATING_EXCEEDED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "lower_rating",
+      "cost_evaluated": false,
+      "reason": "RATING_EXCEEDED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_override",
+      "cost_evaluated": false,
+      "reason": "RATING_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m",
+      "case": "loaded_envelope_shrunk",
+      "cost_evaluated": false,
+      "reason": "LOADED_ENVELOPE_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.endpoint_slot_source_id",
+      "case": "unknown_slot_source",
+      "cost_evaluated": false,
+      "reason": "ROUTE_ENDPOINT_SOURCE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.from_node_id",
+      "case": "wrong_endpoint",
+      "cost_evaluated": false,
+      "reason": "ROUTE_ENDPOINT_MISMATCH",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.node_ids.1",
+      "case": "unknown_node",
+      "cost_evaluated": false,
+      "reason": "UNKNOWN_ROUTE_NODE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.arc_ids.0",
+      "case": "unknown_arc",
+      "cost_evaluated": false,
+      "reason": "UNKNOWN_ROUTE_ARC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.policy_ref",
+      "case": "route_source_override",
+      "cost_evaluated": false,
+      "reason": "ROUTE_SOURCE_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.cost_evaluated",
+      "case": "fake_cost",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_ROUTE_ADMISSION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.storage_assignment",
+      "case": "fake_storage_assignment",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_ROUTE_ADMISSION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "source_hashes.docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "case": "stale_source",
+      "cost_evaluated": false,
+      "reason": "SOURCE_FINGERPRINT_MISMATCH",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "actual_engine_run",
+      "case": "fabricated_engine",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "execution_ready",
+      "case": "fabricated_readiness",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "actions",
+      "case": "fabricated_action",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_EXECUTION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "completion_events",
+      "case": "fabricated_completion",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_EXECUTION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "metrics",
+      "case": "fabricated_metrics",
+      "cost_evaluated": false,
+      "reason": "UNAUTHORIZED_FIELDS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "comparison_policy.variant_overrides_allowed",
+      "case": "variant_override",
+      "cost_evaluated": false,
+      "reason": "VARIANT_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.free_relocation",
+      "case": "nested_override",
+      "cost_evaluated": false,
+      "reason": "LONG_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.506.quantity_units",
+      "case": "strict_probe_01_stock_bool_units",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.501.dimensions_xyz_m.2",
+      "case": "strict_probe_02_stock_bool_dimension",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.quantity_handling_units",
+      "case": "strict_probe_03_original_bool_HU_count",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.8.quantity_units",
+      "case": "strict_probe_04_original_float_units",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.4.quantity_units",
+      "case": "strict_probe_05_upstream_bool_units",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.3.dimensions_xyz_m.2",
+      "case": "strict_probe_06_upstream_bool_dimension",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "strict_probe_07_upstream_bool_scale",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "strict_probe_08_bool_yaw",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.506.quantity_units",
+      "case": "stock_quantity_bool",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.506.quantity_units",
+      "case": "stock_quantity_string",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.506.quantity_units",
+      "case": "stock_quantity_null",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.506.quantity_units",
+      "case": "stock_quantity_list",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.506.quantity_units",
+      "case": "stock_quantity_dict",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.quantity_handling_units",
+      "case": "original_HU_count_bool",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.quantity_handling_units",
+      "case": "original_HU_count_string",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.quantity_handling_units",
+      "case": "original_HU_count_null",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.quantity_handling_units",
+      "case": "original_HU_count_list",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.quantity_handling_units",
+      "case": "original_HU_count_dict",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_units_bool",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_units_string",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_units_null",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_units_list",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_units_dict",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_HU_count_bool",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_HU_count_string",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_HU_count_null",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_HU_count_list",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_HU_count_dict",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "upstream_units_bool",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "upstream_units_string",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "upstream_units_null",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "upstream_units_list",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "upstream_units_dict",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "upstream_dimension_bool",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "upstream_dimension_string",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "upstream_dimension_null",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "upstream_dimension_list",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "upstream_dimension_dict",
+      "cost_evaluated": false,
+      "reason": "HU_DIMENSIONS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "upstream_mass_bool",
+      "cost_evaluated": false,
+      "reason": "HU_MASS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "upstream_mass_string",
+      "cost_evaluated": false,
+      "reason": "HU_MASS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "upstream_mass_null",
+      "cost_evaluated": false,
+      "reason": "HU_MASS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "upstream_mass_list",
+      "cost_evaluated": false,
+      "reason": "HU_MASS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "upstream_mass_dict",
+      "cost_evaluated": false,
+      "reason": "HU_MASS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "upstream_scale_bool",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "upstream_scale_string",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "upstream_scale_null",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "upstream_scale_list",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "upstream_scale_dict",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "yaw_bool",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "yaw_string",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "yaw_null",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "yaw_list",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "yaw_dict",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "attachment_mass_bool",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "attachment_mass_string",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "attachment_mass_null",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "attachment_mass_list",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "attachment_mass_dict",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "gate_width_bool",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "gate_width_string",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "gate_width_null",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "gate_width_list",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "gate_width_dict",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.transit_heading_world.0",
+      "case": "gate_axis_bool",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.transit_heading_world.0",
+      "case": "gate_axis_string",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.transit_heading_world.0",
+      "case": "gate_axis_null",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.transit_heading_world.0",
+      "case": "gate_axis_list",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.transit_heading_world.0",
+      "case": "gate_axis_dict",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "loaded_mass_bool",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "loaded_mass_string",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "loaded_mass_null",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "loaded_mass_list",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "loaded_mass_dict",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "loaded_dimension_bool",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "loaded_dimension_string",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "loaded_dimension_null",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "loaded_dimension_list",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "loaded_dimension_dict",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.scale_factor",
+      "case": "loaded_scale_bool",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.scale_factor",
+      "case": "loaded_scale_string",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.scale_factor",
+      "case": "loaded_scale_null",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.scale_factor",
+      "case": "loaded_scale_list",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.scale_factor",
+      "case": "loaded_scale_dict",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "loaded_arm_bool",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "loaded_arm_string",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "loaded_arm_null",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "loaded_arm_list",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "loaded_arm_dict",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_capacity_bool",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_capacity_string",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_capacity_null",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_capacity_list",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_capacity_dict",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_float_units",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_float_count",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_handling_units",
+      "case": "external_zero_count",
+      "cost_evaluated": false,
+      "reason": "REQUEST_NATIVE_QUANTITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.quantity_units",
+      "case": "external_negative_units",
+      "cost_evaluated": false,
+      "reason": "REQUEST_NATIVE_QUANTITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.4.quantity_units",
+      "case": "upstream_float_units",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "upstream_zero_units",
+      "cost_evaluated": false,
+      "reason": "HU_UNITS",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "scale_float_substitution",
+      "cost_evaluated": false,
+      "reason": "HU_ORIENTATION_SCALE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "yaw_float_substitution",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "loaded_mass_int_substitution",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "rating_float_substitution",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.0.engine_operation",
+      "case": "original_request_flag",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.0.location.placement.operational_admission",
+      "case": "stock_placement_flag",
+      "cost_evaluated": false,
+      "reason": "INITIAL_STOCK_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.ports.0.service_capacity.requires_shared_resources",
+      "case": "port_policy_flag",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_PORTS_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16.included_in_initial_stock",
+      "case": "external_request_flag",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0.included_in_initial_stock",
+      "case": "upstream_flag",
+      "cost_evaluated": false,
+      "reason": "UPSTREAM_PROVENANCE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.positive_lock_required",
+      "case": "positive_lock_flag",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.independent_restraint_required",
+      "case": "restraint_flag",
+      "cost_evaluated": false,
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.component_containment_verified",
+      "case": "loaded_verified_flag",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.certification",
+      "case": "rating_certification_flag",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.restricted_to_symmetrical_centre_of_gravity",
+      "case": "rating_symmetry_flag",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.operational_admission",
+      "case": "route_admission_flag",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_ROUTE_ADMISSION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.operational_admission",
+      "case": "long_admission_flag",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_ROUTE_ADMISSION",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "comparison_policy.no_op_allowed",
+      "case": "comparison_flag",
+      "cost_evaluated": false,
+      "reason": "VARIANT_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "preregistration.before_comparison",
+      "case": "preregistration_flag",
+      "cost_evaluated": false,
+      "reason": "FAKE_TIME_PROVENANCE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "execution_ready",
+      "case": "scope_flag",
+      "cost_evaluated": false,
+      "reason": "FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs",
+      "case": "inputs_wrong_container",
+      "cost_evaluated": false,
+      "reason": "INPUT_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests",
+      "case": "requests_wrong_container",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.requests.16",
+      "case": "request_wrong_record",
+      "cost_evaluated": false,
+      "reason": "REQUEST_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units",
+      "case": "upstream_wrong_container",
+      "cost_evaluated": false,
+      "reason": "HU_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "upstream_handling_units.0",
+      "case": "upstream_wrong_record",
+      "cost_evaluated": false,
+      "reason": "HU_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements",
+      "case": "long_wrong_container",
+      "cost_evaluated": false,
+      "reason": "LONG_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0",
+      "case": "long_wrong_record",
+      "cost_evaluated": false,
+      "reason": "LONG_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route",
+      "case": "route_wrong_container",
+      "cost_evaluated": false,
+      "reason": "ROUTE_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.node_ids",
+      "case": "route_nodes_wrong_container",
+      "cost_evaluated": false,
+      "reason": "ROUTE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints",
+      "case": "gate_wrong_container",
+      "cost_evaluated": false,
+      "reason": "GATE_GEOMETRY_OVERRIDE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements",
+      "case": "rating_wrong_container",
+      "cost_evaluated": false,
+      "reason": "RATING_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile",
+      "case": "loaded_wrong_container",
+      "cost_evaluated": false,
+      "reason": "LOADED_PROFILE_PRIMITIVE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.workers.0.assigned_vehicle_id",
+      "case": "source_optional_null_changed",
+      "cost_evaluated": false,
+      "reason": "ORIGINAL_PEOPLE_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.archetypes.0.handling_unit.units_per_handling_unit",
+      "case": "source_catalogue_bool_quantity",
+      "cost_evaluated": false,
+      "reason": "CARGO_CATALOGUE_CHANGED",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "inputs.initial_stock.0.dimensions_xyz_m.0",
+      "case": "nonfinite_01_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.initial_stock.0.dimensions_xyz_m.0",
+      "case": "nonfinite_01_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.initial_stock.0.dimensions_xyz_m.0",
+      "case": "nonfinite_01_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.initial_stock.0.gross_mass_kg",
+      "case": "nonfinite_02_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.initial_stock.0.gross_mass_kg",
+      "case": "nonfinite_02_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.initial_stock.0.gross_mass_kg",
+      "case": "nonfinite_02_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.requests.0.quantity_units",
+      "case": "nonfinite_03_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.requests.0.quantity_units",
+      "case": "nonfinite_03_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "inputs.requests.0.quantity_units",
+      "case": "nonfinite_03_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "nonfinite_04_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "nonfinite_04_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.quantity_units",
+      "case": "nonfinite_04_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "nonfinite_05_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "nonfinite_05_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.dimensions_xyz_m.0",
+      "case": "nonfinite_05_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "nonfinite_06_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "nonfinite_06_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.gross_mass_kg",
+      "case": "nonfinite_06_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "nonfinite_07_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "nonfinite_07_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "upstream_handling_units.0.model_scale_factor",
+      "case": "nonfinite_07_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "nonfinite_08_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "nonfinite_08_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.relative_load_yaw_deg",
+      "case": "nonfinite_08_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "nonfinite_09_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "nonfinite_09_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.attachment_mass_kg",
+      "case": "nonfinite_09_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "nonfinite_10_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "nonfinite_10_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.gate_constraints.clear_width_m",
+      "case": "nonfinite_10_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "nonfinite_11_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "nonfinite_11_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.total_lifted_mass_kg",
+      "case": "nonfinite_11_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "nonfinite_12_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "nonfinite_12_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.handling_unit_dimensions_xyz_m.0",
+      "case": "nonfinite_12_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "nonfinite_13_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "nonfinite_13_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.loaded_profile.extended_handling_rating_arm_from_fixed_Z04_m",
+      "case": "nonfinite_13_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "nonfinite_14_nan",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "nonfinite_14_positive_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.rating_requirements.nominal_capacity_kg",
+      "case": "nonfinite_14_negative_inf",
+      "cost_evaluated": false,
+      "reason": "NONFINITE_NUMERIC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "semantic_validate_entry_before_encoding",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "long_requirements.0.route.arc_ids.0",
+      "case": "actual_narrow_arc",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LONG_ARC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.arc_ids.0",
+      "case": "actual_bare_only_arc",
+      "cost_evaluated": false,
+      "reason": "FORBIDDEN_LONG_ARC",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "long_requirements.0.route.arc_ids.0",
+      "case": "discontinuous_allowed_path",
+      "cost_evaluated": false,
+      "reason": "PATH_DISCONTINUITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": true
+    },
+    {
+      "branch": "paired_runs.1.input_ref.path",
+      "case": "variant_path",
+      "cost_evaluated": false,
+      "reason": "PAIRED_INPUT_IDENTITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "paired_runs.1.input_ref.bytes",
+      "case": "variant_bytes",
+      "cost_evaluated": false,
+      "reason": "PAIRED_INPUT_IDENTITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "paired_runs.1.input_ref.sha256",
+      "case": "variant_sha256",
+      "cost_evaluated": false,
+      "reason": "PAIRED_INPUT_IDENTITY",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": false
+    },
+    {
+      "branch": "actual_engine_run",
+      "case": "evidence_engine",
+      "cost_evaluated": false,
+      "reason": "EVIDENCE_FABRICATED_SCOPE",
+      "rejected": true,
+      "source_rechecked": true,
+      "stage": "validate_after_superficial_rehash",
+      "superficial_hashes_recomputed": false
+    }
+  ],
+  "nonfinite_semantic_entry_count": 42,
+  "operational_admission": false,
+  "positive_count": 10,
+  "positives": [
+    {
+      "case": "canonical_source_authority",
+      "source_files": 24
+    },
+    {
+      "case": "original_population_and_external_conservation",
+      "summary": {
+        "LONG_loaded_profile": "long_loaded",
+        "LONG_requests": 6,
+        "added_external": {
+          "HUs": 4,
+          "gross_mass_kg": "800.0",
+          "units": 96
+        },
+        "added_requests": 4,
+        "all_upstream": {
+          "HUs": 12,
+          "gross_mass_kg": "2584.29",
+          "units": 203
+        },
+        "gate_ids": [
+          "v3:large-gate:IN_W_BULK",
+          "v3:large-gate:OUT_E_B2B"
+        ],
+        "initial_stock": {
+          "HUs": 530,
+          "gross_mass_kg": "9403.85",
+          "units": 12256
+        },
+        "original_requests": 16,
+        "original_upstream": {
+          "HUs": 8,
+          "gross_mass_kg": "1784.29",
+          "units": 107
+        },
+        "powered_vehicles": 2,
+        "total_requests": 20,
+        "workers": 24
+      }
+    },
+    {
+      "case": "same_full_input_bytes",
+      "input_ref": {
+        "bytes": 644667,
+        "path": "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json",
+        "sha256": "7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b"
+      }
+    },
+    {
+      "arc_count": 15,
+      "case": "source_eligible_LONG_chain",
+      "from_node": "v3:service:IN_W_BULK",
+      "gate_id": "v3:large-gate:IN_W_BULK",
+      "node_count": 16,
+      "pair": "INBOUND_FORKLIFT_PAIR",
+      "profile": "long_loaded",
+      "request_id": "v3:request:base:inbound:06",
+      "to_node": "v3:module:LONG_W:002:B1:vehicle:node"
+    },
+    {
+      "arc_count": 18,
+      "case": "source_eligible_LONG_chain",
+      "from_node": "v3:module:LONG_W:002:B1:vehicle:node",
+      "gate_id": "v3:large-gate:OUT_E_B2B",
+      "node_count": 19,
+      "pair": "OUTBOUND_FORKLIFT_PAIR",
+      "profile": "long_loaded",
+      "request_id": "v3:request:base:outbound:06",
+      "to_node": "v3:service:OUT_E_B2B"
+    },
+    {
+      "arc_count": 15,
+      "case": "source_eligible_LONG_chain",
+      "from_node": "v3:service:IN_W_BULK",
+      "gate_id": "v3:large-gate:IN_W_BULK",
+      "node_count": 16,
+      "pair": "INBOUND_FORKLIFT_PAIR",
+      "profile": "long_loaded",
+      "request_id": "v3:request:W12:external:01",
+      "to_node": "v3:module:LONG_W:002:B1:vehicle:node"
+    },
+    {
+      "arc_count": 15,
+      "case": "source_eligible_LONG_chain",
+      "from_node": "v3:service:IN_W_BULK",
+      "gate_id": "v3:large-gate:IN_W_BULK",
+      "node_count": 16,
+      "pair": "INBOUND_FORKLIFT_PAIR",
+      "profile": "long_loaded",
+      "request_id": "v3:request:W12:external:02",
+      "to_node": "v3:module:LONG_W:002:B1:vehicle:node"
+    },
+    {
+      "arc_count": 15,
+      "case": "source_eligible_LONG_chain",
+      "from_node": "v3:service:IN_W_BULK",
+      "gate_id": "v3:large-gate:IN_W_BULK",
+      "node_count": 16,
+      "pair": "INBOUND_FORKLIFT_PAIR",
+      "profile": "long_loaded",
+      "request_id": "v3:request:W12:external:03",
+      "to_node": "v3:module:LONG_W:002:B1:vehicle:node"
+    },
+    {
+      "arc_count": 15,
+      "case": "source_eligible_LONG_chain",
+      "from_node": "v3:service:IN_W_BULK",
+      "gate_id": "v3:large-gate:IN_W_BULK",
+      "node_count": 16,
+      "pair": "INBOUND_FORKLIFT_PAIR",
+      "profile": "long_loaded",
+      "request_id": "v3:request:W12:external:04",
+      "to_node": "v3:module:LONG_W:002:B1:vehicle:node"
+    },
+    {
+      "case": "independent_declaration_order_semantically_valid",
+      "in_memory_only": true
+    }
+  ],
+  "source_hashes": {
+    "assets/references/v3/r12-dimension-targets.json": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+    "docs/adaptive-v3/evidence/M10.json": "bbc6b7797815f9b3c959bc7c9195db9303fa9e250f4ee1bf6059c5ddd069756b",
+    "docs/adaptive-v3/evidence/P09.2.json": "79d8e3d9ee09c27864e762e27fe7f18045ea819a58c6922a87deb4986f595437",
+    "docs/adaptive-v3/fixtures/warehouse-request-stream-v3.json": "149462c7c3eb29c261a9ee309732fd79d018bb953e1886b2b3603529ed1bbb15",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/baseline-input-v3.json": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/handoff/manifest.json": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+    "docs/v3/contract-proposals/large-gate-v3.json": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8",
+    "docs/v3/contract-proposals/layout-links-v3.json": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "docs/v3/contract-proposals/storage-layout-v3.json": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+    "docs/v3/contract-proposals/vehicle-graph-v3.json": "be17461061cc33fe07540d0bc5572f61ce74ac9852198ee5423ed549deb3f832",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/route-policy-v3.json": "24ad87f197d14b1c681814b43b2c8841ca145c6b92515af744f3cb4473d35337",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "tools/visual/v3/build_warehouse_fixture.py": "883b53517e2f6c19cc823e37e799fb39d4d919f079bc7034b55e05ff5b63b6af"
+  },
+  "source_kind": "visual_fixture",
+  "status": "input_only_candidate_pending_root_review",
+  "strict_host_probe_count": 8,
+  "strict_host_probes_all_rejected": true,
+  "summary": {
+    "LONG_loaded_profile": "long_loaded",
+    "LONG_requests": 6,
+    "added_external": {
+      "HUs": 4,
+      "gross_mass_kg": "800.0",
+      "units": 96
+    },
+    "added_requests": 4,
+    "all_upstream": {
+      "HUs": 12,
+      "gross_mass_kg": "2584.29",
+      "units": 203
+    },
+    "gate_ids": [
+      "v3:large-gate:IN_W_BULK",
+      "v3:large-gate:OUT_E_B2B"
+    ],
+    "initial_stock": {
+      "HUs": 530,
+      "gross_mass_kg": "9403.85",
+      "units": 12256
+    },
+    "original_requests": 16,
+    "original_upstream": {
+      "HUs": 8,
+      "gross_mass_kg": "1784.29",
+      "units": 107
+    },
+    "powered_vehicles": 2,
+    "total_requests": 20,
+    "workers": 24
+  },
+  "superficial_hash_attack_policy": "Input digest and both full-file refs recomputed for every JSON-representable fixture mutation; nonfinite cases call validate entry before encoding.",
+  "task_id": "W12.1",
+  "verifier_ref": {
+    "bytes": 44147,
+    "path": "tools/visual/v3/verify_long_freight_scenario.py",
+    "sha256": "a50e4480367398dc3676ff33bf28aa307ece5931c892598e15e7c6e97d90bbce"
+  }
+}

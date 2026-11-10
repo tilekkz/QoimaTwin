@@ -1,0 +1,77 @@
+{
+  "schema_id": "qoima.W05.3.2.findings.v1",
+  "audit_complete": true,
+  "finding_count": 1,
+  "severity_counts": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 1
+  },
+  "findings": [
+    {
+      "id": "W05.3.2-F01",
+      "severity": "low",
+      "title": "Sparse JavaScript joint arrays bypass omitted-axis validation",
+      "scope": "Internal in-memory validatePose guard; frozen generated JSON candidate is unaffected",
+      "evidence_kind": "executed_counterexample_against_extracted_exact_validator",
+      "source_witnesses": [
+        {
+          "path": "frontend/tools/solve-worker-base-carry-v3.mjs",
+          "line": 20,
+          "observation": "vec requires length3 but v.every(finite) skips sparse holes"
+        },
+        {
+          "path": "frontend/tools/solve-worker-base-carry-v3.mjs",
+          "line": 71,
+          "observation": "joint range a.every also skips holes, so validatePose accepts omitted axes in sparse arrays"
+        },
+        {
+          "path": "frontend/tools/solve-worker-base-carry-v3.mjs",
+          "line": 15,
+          "observation": "q spreads axes into the Three Euler constructor"
+        },
+        {
+          "path": "frontend/tools/solve-worker-base-carry-v3.mjs",
+          "line": 73,
+          "observation": "apply invokes this validator before q; production apply itself was not invoked by the custom probe"
+        },
+        {
+          "path": "frontend/node_modules/three/build/three.module.js",
+          "line": 6833,
+          "observation": "undefined Euler constructor coordinates default to0"
+        },
+        {
+          "path": "docs/adaptive-v3/specs/W05.3.1.md",
+          "line": 13,
+          "observation": "Broad omitted-axis rejection claim exceeds this in-memory guard behavior"
+        }
+      ],
+      "reproduction": {
+        "command": "node work/v3/account2-base-carry-audit/20261108T180523Z/probe-native.mjs",
+        "probe_source": "probe-native.mjs",
+        "probe_source_lines": [
+          34,
+          59,
+          60,
+          63
+        ],
+        "result": "native-probe-result.json",
+        "cases": [
+          "delete request.jointEulerXYZ.joint__upper_arm_L[1]",
+          "request.jointEulerXYZ.joint__upper_arm_L = new Array(3)"
+        ],
+        "observed": "Both validate successfully; spreading the first array into the real Three Euler constructor suppliesY=0 instead of the frozen .55rad"
+      },
+      "impact": "The unconditional omitted-axis guard claim is too broad for JavaScript callers. This does not demonstrate an invalid frozen pose or a check-only acceptance bypass.",
+      "limitations": [
+        "Sparse holes serialize to null and then fail validation.",
+        "The only current caller constructs dense finite arrays internally.",
+        "No counterexample against the saved candidate or full production apply was executed."
+      ],
+      "suggested_followup": "Root may require all three indices to exist and validate them explicitly, or narrow the guard claim to dense JSON arrays. No production change made."
+    }
+  ],
+  "frozen_candidate_failure_demonstrated": false,
+  "unresolved_material_candidate_concerns": []
+}

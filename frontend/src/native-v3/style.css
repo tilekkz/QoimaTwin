@@ -1,0 +1,171 @@
+:root {
+  font-family:Inter,system-ui,sans-serif;
+  color:#233e43;
+  background:#f2f3ed;
+  font-synthesis:none
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0
+}
+.native-header {
+  display:flex;
+  justify-content:space-between;
+  padding:20px 32px;
+  background:#24444a;
+  color:#fff
+}
+.native-header a {
+  color:#fff
+}
+.native-main {
+  max-width:1540px;
+  margin:auto;
+  padding:30px
+}
+.native-title h1 {
+  font-size:clamp(28px,4vw,46px);
+  margin:8px 0
+}
+.native-kicker {
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:12px
+}
+.native-source,fieldset,.native-boundary {
+  padding:20px;
+  border:1px solid #b9c7bd;
+  border-radius:12px;
+  background:#fff;
+  margin:20px 0
+}
+.native-source h2,.native-boundary h2 {
+  font-size:18px;
+  margin-top:0
+}
+label {
+  display:block;
+  font-size:14px;
+  margin:8px 0
+}
+input,select,button {
+  font:inherit
+}
+input:not([type=range]),select {
+  padding:10px;
+  border:1px solid #8b9f9a;
+  border-radius:6px;
+  max-width:100%
+}
+#native-pair {
+  display:block;
+  width:100%;
+  font-family:monospace
+}
+button {
+  border:1px solid #24444a;
+  background:#24444a;
+  color:#fff;
+  border-radius:6px;
+  padding:10px 16px;
+  cursor:pointer
+}
+button:disabled {
+  opacity:.45;
+  cursor:default
+}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible {
+  outline:3px solid #dd9e28;
+  outline-offset:3px
+}
+.native-buttons,.native-files {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap
+}
+.native-buttons label {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin:0
+}
+#native-seek {
+  width:100%;
+  margin:14px 0
+}
+output {
+  margin-left:16px;
+  font-variant-numeric:tabular-nums
+}
+.native-workspace {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 330px;
+  gap:20px
+}
+#native-viewport {
+  height:650px;
+  min-height:400px;
+  position:relative;
+  border:1px solid #b9c7bd;
+  border-radius:12px;
+  overflow:hidden;
+  background:#dce1db
+}
+#native-viewport canvas {
+  display:block;
+  width:100%;
+  height:100%
+}
+.native-workspace aside {
+  background:#fff;
+  border:1px solid #b9c7bd;
+  border-radius:12px;
+  padding:18px;
+  max-height:650px;
+  overflow:auto
+}
+.native-workspace aside h2 {
+  font-size:18px
+}
+.native-workspace pre {
+  font-size:11px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere
+}
+.native-boundary {
+  font-size:14px;
+  line-height:1.55
+}
+.native-tote {
+  color:#1d6579;
+  font-weight:700
+}
+.native-parcel {
+  color:#9d651e;
+  font-weight:700
+}
+#native-status {
+  line-height:1.5
+}
+@media(max-width:850px) {
+  .native-main {
+  padding:16px
+}
+.native-workspace {
+  grid-template-columns:1fr
+}
+#native-viewport {
+  height:60vh
+}
+.native-header {
+  padding:16px;
+  gap:20px
+}
+.native-workspace aside {
+  max-height:400px
+}
+
+}

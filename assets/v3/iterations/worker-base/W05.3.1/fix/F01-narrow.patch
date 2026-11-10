@@ -1,0 +1,16 @@
+--- a/frontend/tools/solve-worker-base-carry-v3.mjs
++++ b/frontend/tools/solve-worker-base-carry-v3.mjs
+@@ -18,5 +18,5 @@
+ const baseSeed=[-.6504904911082828,.55,-.2927228655050811,-1.3309610961629978,-.12,.11682838845376949,1.029133436108498,.5887784728091617,.1861112137473792,.4];
+ const cargoPosition=[0,.96,.52],tangent=-1.4;
+-const finite=x=>typeof x==='number'&&Number.isFinite(x),vec=v=>Array.isArray(v)&&v.length===3&&v.every(finite);
++const finite=x=>typeof x==='number'&&Number.isFinite(x),vec=v=>Array.isArray(v)&&v.length===3&&Object.hasOwn(v,0)&&Object.hasOwn(v,1)&&Object.hasOwn(v,2)&&finite(v[0])&&finite(v[1])&&finite(v[2]);
+ const exactKeys=(v,keys)=>v&&Object.getPrototypeOf(v)===Object.prototype&&Object.keys(v).sort().join('|')===[...keys].sort().join('|');
+ const pairKey=(a,b)=>[a.name,b.name].sort().join('|');
+@@ -77,4 +77,6 @@
+   for(const value of [true,'0.32',NaN,Infinity,.31])reject('dimension_'+String(value),p=>p.cargo.dimensions_xyz_m[0]=value);
+   for(const value of [true,'0',NaN,Infinity,4])reject('joint_'+String(value),p=>p.jointEulerXYZ.joint__upper_arm_L[0]=value);
++  reject('sparse_joint_deleted_y',p=>{delete p.jointEulerXYZ.joint__upper_arm_L[1];});
++  reject('sparse_joint_Array3',p=>{p.jointEulerXYZ.joint__upper_arm_L=Array(3);});
+   reject('wrong_actor',p=>p.actor_id='P01');reject('manual_asset',p=>p.worker_asset='worker-manual');reject('wrong_HU',p=>p.cargo.handling_unit_ref='v3:HU:initial:DEMO_001:01');reject('scale',p=>p.cargo.scale[0]=.99);reject('caller_position',p=>p.cargo.position_m[2]=.4);reject('extra_joint',p=>p.jointEulerXYZ.joint__elbow_swivel_L=[0,0,0]);reject('missing_joint',p=>delete p.jointEulerXYZ.joint__hand_R);reject('source_fingerprint',p=>p.source_hashes['frontend/public/models/v3/worker-base.glb']='0'.repeat(64));reject('extra_field',p=>p.move_inventory=true);
+   for(const t of [true,'0',NaN,Infinity,.01]){const before=raw();assert.throws(()=>apply(request,t));assert.deepEqual(raw(),before);negatives.push('invalid_static_time_'+String(t));}

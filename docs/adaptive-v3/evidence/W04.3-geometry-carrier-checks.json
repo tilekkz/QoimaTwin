@@ -1,0 +1,125 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "checks": [
+    {
+      "case": "ordinary_mesh_parent_world_transform",
+      "supported": true
+    },
+    {
+      "case": "unchanged_support_repeat_is_identical"
+    },
+    {
+      "case": "parent_translation_invalidates_cached_faces",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_parent_translation",
+      "supported": true
+    },
+    {
+      "case": "moving_joint_invalidates_cached_faces",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_moving_joint",
+      "supported": true
+    },
+    {
+      "case": "yaw_rotates_horizontal_native_faces",
+      "supported": true
+    },
+    {
+      "case": "hidden_support_is_not_admitted",
+      "supported": false
+    },
+    {
+      "case": "visible_support_returns",
+      "supported": true
+    },
+    {
+      "case": "hidden_ancestor_is_not_admitted",
+      "supported": false
+    },
+    {
+      "case": "visible_ancestor_returns",
+      "supported": true
+    },
+    {
+      "case": "position_attribute_version_invalidates_cache",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_changed_native_floor",
+      "supported": true
+    },
+    {
+      "case": "geometry_replacement_invalidates_cache",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_replaced_native_geometry",
+      "supported": true
+    },
+    {
+      "case": "attribute_replacement_invalidates_cache",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_replaced_attribute",
+      "supported": true
+    },
+    {
+      "case": "index_replacement_invalidates_upward_face_cache",
+      "supported": false
+    },
+    {
+      "case": "restored_upward_faces_return",
+      "supported": true
+    },
+    {
+      "case": "index_version_invalidates_upward_face_cache",
+      "supported": false
+    },
+    {
+      "case": "ordinary_to_instanced_map_replacement",
+      "supported": true
+    },
+    {
+      "case": "instance_matrix_change_invalidates_cached_faces",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_support_instance",
+      "supported": true
+    },
+    {
+      "case": "support_instance_index_change_invalidates_cache",
+      "supported": false
+    },
+    {
+      "case": "cargo_follows_reselected_support_instance",
+      "supported": true
+    },
+    {
+      "case": "removed_support_array_invalidates_cache",
+      "supported": false
+    },
+    {
+      "case": "unknown_support_fails_closed"
+    },
+    {
+      "case": "out_of_range_instance_fails_closed"
+    },
+    {
+      "case": "side_clamp_geometry_observation_makes_no_support_claim"
+    }
+  ],
+  "input_hashes": {
+    "frontend/src/adaptive-v3/warehouseCargoGeometry.ts": "7886375ea6c778a8d09b7bfe8883cba1f2c6de9d9605da918f64c735498ed05c",
+    "frontend/tools/check-cargo-geometry-carriers-v3.mjs": "558889f8216c46c53e9e6ecacb690959517f0c0008a15b76cd5600a385356fa4"
+  },
+  "scope": "Synthetic CPU regression of native triangle transforms, visibility and cache invalidation only. Not native carrier acceptance, hand-contact proof, retention, strength, stability, motion or engine operation."
+}

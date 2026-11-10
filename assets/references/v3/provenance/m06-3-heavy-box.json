@@ -1,0 +1,144 @@
+{
+  "reference_id": "M06.3_REF",
+  "task_id": "M06.3",
+  "asset_id": "heavy-box",
+  "status": "VERIFY",
+  "mode": "built_in_imagegen",
+  "intent": "independent_new_raster_before_geometry",
+  "input_images": [
+    {
+      "path": "assets/references/v3/m06-3-heavy-box-v2.png",
+      "sha256": "f12a33a742d22b0c8eb704e9454737352c181779044573cc10bd9a227c405177",
+      "bytes": 1574495
+    }
+  ],
+  "model_or_render_input": false,
+  "source_image_path": "C:/Users/izbas/.codex/generated_images/01a1b22f-d55c-70c0-bbca-ca73113b0d1b/exec-2b693d8f-b8a2-46d6-84c6-33481edf4408.png",
+  "source_generation_id": "exec-2b693d8f-b8a2-46d6-84c6-33481edf4408",
+  "artifact": {
+    "path": "assets/references/v3/m06-3-heavy-box.png",
+    "sha256": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+    "bytes": 1580738,
+    "dimensions_px": [
+      1391,
+      1131
+    ]
+  },
+  "actual_prompt": {
+    "path": "assets/references/v3/prompts/m06-3-heavy-box.txt",
+    "sha256": "22dca62d788a733da43ba200fad7e269300d7c8b0a1506a5b589c67e48a5f564",
+    "bytes": 1022
+  },
+  "targets": {
+    "path": "assets/references/v3/m06-3-heavy-box.targets.json",
+    "sha256": "c547fae0eb161a4e44c76f4a848dc5e16caf94d56f23c75faab999c8ea93a761",
+    "bytes": 3021
+  },
+  "pre_generation_dimension_spec": {
+    "path": "assets/v3/specs/heavy-box.dimensions.json",
+    "sha256": "c547fae0eb161a4e44c76f4a848dc5e16caf94d56f23c75faab999c8ea93a761",
+    "bytes": 3021
+  },
+  "visually_consulted": {
+    "path": "assets/references/v3/r03-cargo.png",
+    "sha256": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+    "bytes": 1770624
+  },
+  "review": {
+    "actually_opened_generated_png": true,
+    "views": [
+      "front",
+      "right side",
+      "rear",
+      "three-quarter"
+    ],
+    "findings": [
+      "Same charcoal reinforced case: two attached front rectangular handles, two front latches, two rear hinges; right side has no extra handle.",
+      "Closed planar lid, connected corner structure and low grounded base; no misleading fork-through holes or floating trim.",
+      "Neutral grey background and complete four views; no cargo, people or model input."
+    ],
+    "metric_notes": "Cap/boot pixel thickness and side view proportions remain conceptual; exact .80/.65/.60, base<=.04 and C02 packing override raster pixels.",
+    "engineering_adaptation": "Root approved no integral fork-through pockets; directunderHU contact atY0 only from separately verified raised/open fixture, never ground pickup or manual200kg carrying.",
+    "pixel_bounds_cpu": {
+      "front": {
+        "min": [
+          80,
+          40
+        ],
+        "max": [
+          620,
+          469
+        ],
+        "size": [
+          541,
+          430
+        ]
+      },
+      "side": {
+        "min": [
+          828,
+          40
+        ],
+        "max": [
+          1253,
+          470
+        ],
+        "size": [
+          426,
+          431
+        ]
+      },
+      "side_front_width_ratio": 0.7874306839186691
+    },
+    "found_and_fixed": "Root identified side-view width mismatch; corrected only right-side raster twice, preserving histories. Ratio remains approximate; exact .60/.65 side model dimensions unchanged."
+  },
+  "geometry_created": false,
+  "initial_artifact": {
+    "path": "assets/references/v3/m06-3-heavy-box-v1.png",
+    "sha256": "8519bb395c9237767a82b96b1c7e1d70fae2c5b975bbf89ec295ff7514322f15",
+    "bytes": 1613193
+  },
+  "initial_prompt": {
+    "path": "assets/references/v3/prompts/m06-3-heavy-box-initial.txt",
+    "sha256": "57defa815c3d01a506be0c01218b8e640a06326df626f257071f9f25ef2401ec",
+    "bytes": 2995
+  },
+  "correction_history": [
+    {
+      "input": {
+        "path": "assets/references/v3/m06-3-heavy-box-v1.png",
+        "sha256": "8519bb395c9237767a82b96b1c7e1d70fae2c5b975bbf89ec295ff7514322f15",
+        "bytes": 1613193
+      },
+      "output": {
+        "path": "assets/references/v3/m06-3-heavy-box-v2.png",
+        "sha256": "f12a33a742d22b0c8eb704e9454737352c181779044573cc10bd9a227c405177",
+        "bytes": 1574495
+      },
+      "prompt": {
+        "path": "assets/references/v3/prompts/m06-3-heavy-box-correction-1.txt",
+        "sha256": "278fd2e737462a9c8219a3f283e113cfd9fe77d14cff27e67804bda829f396b9",
+        "bytes": 1398
+      },
+      "finding": "First side-width correction overshot narrow:380px vs540front, measured CPU."
+    },
+    {
+      "input": {
+        "path": "assets/references/v3/m06-3-heavy-box-v2.png",
+        "sha256": "f12a33a742d22b0c8eb704e9454737352c181779044573cc10bd9a227c405177",
+        "bytes": 1574495
+      },
+      "output": {
+        "path": "assets/references/v3/m06-3-heavy-box.png",
+        "sha256": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+        "bytes": 1580738
+      },
+      "prompt": {
+        "path": "assets/references/v3/prompts/m06-3-heavy-box.txt",
+        "sha256": "22dca62d788a733da43ba200fad7e269300d7c8b0a1506a5b589c67e48a5f564",
+        "bytes": 1022
+      },
+      "finding": "Second bounded side-width correction; exact current pixel bounds recorded, raster remains approximate engineering authority false."
+    }
+  ]
+}

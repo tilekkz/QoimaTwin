@@ -1,0 +1,200 @@
+{
+  "schema_id": "qoima.native-pair-adversarial-tests.v1",
+  "created_utc": "2026-11-10T03:37:58.250Z",
+  "passed": false,
+  "total": 45,
+  "passed_count": 44,
+  "failed_count": 1,
+  "source_hashes": {
+    "stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+    "playback.ts": "a8c95edcbe86d08103269aff94cfa90cc88ffbce567bf19b9c8fabb6e7278608"
+  },
+  "checker_sha256": "e4bd1ecfe77ca7c0849ecf5c3dca4ed77e97fc3ebb09ba3da430eeec1cc2beba",
+  "contract_scope": "Available local stream/playback guards and existing synthetic test protocol; ADR0099 primary document unavailable. Authenticated hashes are recomputed for semantic negative fixtures.",
+  "browser": "NOT_RUN",
+  "actual_http": "NOT_RUN",
+  "native_backend_capture": "NOT_CLAIMED",
+  "results": [
+    {
+      "name": "UTF8/chunk-split-1",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-2",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-3",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-7",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-137",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-65536",
+      "passed": true
+    },
+    {
+      "name": "valid-no-final-newline",
+      "passed": true
+    },
+    {
+      "name": "truncated-last-record",
+      "passed": true
+    },
+    {
+      "name": "missing-member",
+      "passed": true
+    },
+    {
+      "name": "duplicate-member",
+      "passed": true
+    },
+    {
+      "name": "raw-member-corruption",
+      "passed": true
+    },
+    {
+      "name": "catalog-before-capture",
+      "passed": true
+    },
+    {
+      "name": "nonsemantic-member-order",
+      "passed": true
+    },
+    {
+      "name": "event-sequence-gap",
+      "passed": true
+    },
+    {
+      "name": "duplicate-capture-tick",
+      "passed": true
+    },
+    {
+      "name": "invalid-UTF8",
+      "passed": true
+    },
+    {
+      "name": "invalid-base64",
+      "passed": true
+    },
+    {
+      "name": "unsafe-integer-event-tick",
+      "passed": true
+    },
+    {
+      "name": "exact-BigInt-and-string-preserved",
+      "passed": true
+    },
+    {
+      "name": "retained-header-budget-immediate",
+      "passed": true
+    },
+    {
+      "name": "unicode-record-byte-limit",
+      "passed": true
+    },
+    {
+      "name": "pre-abort-cancels-owned-reader",
+      "passed": true
+    },
+    {
+      "name": "abort-interrupts-pending-read",
+      "passed": true
+    },
+    {
+      "name": "abort-during-buffered-members",
+      "passed": true
+    },
+    {
+      "name": "header-and-body-pair-identities",
+      "passed": true
+    },
+    {
+      "name": "nonfinite-node-geometry-refused",
+      "passed": true
+    },
+    {
+      "name": "nonfinite-slot-geometry-refused",
+      "passed": true
+    },
+    {
+      "name": "negative-conveyor-radius-refused",
+      "passed": true
+    },
+    {
+      "name": "huge-valid-rational-finite-projection",
+      "passed": true
+    },
+    {
+      "name": "tiny-valid-rational-remains-nonzero",
+      "passed": true
+    },
+    {
+      "name": "rational-subnormal-and-underflow",
+      "passed": true
+    },
+    {
+      "name": "duplicate-captured-actor-refused",
+      "passed": true
+    },
+    {
+      "name": "reversed-relocation-times-refused",
+      "passed": true
+    },
+    {
+      "name": "belt-inner-outer-event-tick-refused",
+      "passed": true
+    },
+    {
+      "name": "captured-motion-null-end-refused",
+      "passed": true
+    },
+    {
+      "name": "partial-nullable-relocation-preserved",
+      "passed": true
+    },
+    {
+      "name": "captured-operation-with-null-node",
+      "passed": true
+    },
+    {
+      "name": "unrelated-optional-curve-fields-remain-optional",
+      "passed": true
+    },
+    {
+      "name": "huge-periodic-yaw-and-exact-pivot-delta",
+      "passed": true
+    },
+    {
+      "name": "huge-yaw-phase-exact-before-periodic-reduction",
+      "passed": false,
+      "error": "Error: Nonfinite native fraction projection\n    at need (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/work/native-pair-adversarial/compiled-3SOIUH/stream.mjs:6:15)\n    at ratio (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/work/native-pair-adversarial/compiled-3SOIUH/playback.mjs:36:5)\n    at interpolatedQuarters (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/work/native-pair-adversarial/compiled-3SOIUH/playback.mjs:57:23)\n    at sampledCarrier (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/work/native-pair-adversarial/compiled-3SOIUH/playback.mjs:99:184)\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/work/native-pair-adversarial/compiled-3SOIUH/playback.mjs:230:95\n    at Array.map (<anonymous>)\n    at Object.sample (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/work/native-pair-adversarial/compiled-3SOIUH/playback.mjs:230:86)\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:140:62\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:135:1"
+    },
+    {
+      "name": "finite-but-overflowing-geometry-fails-closed",
+      "passed": true
+    },
+    {
+      "name": "stalled-underlying-cancel-does-not-hang-rejection",
+      "passed": true
+    },
+    {
+      "name": "deterministic-seek-custody",
+      "passed": true
+    },
+    {
+      "name": "returned-frame-does-not-mutate-future-seek",
+      "passed": true
+    },
+    {
+      "name": "tick-boundaries-and-pause-rate",
+      "passed": true
+    }
+  ]
+}

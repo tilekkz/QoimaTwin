@@ -1,0 +1,25 @@
+1. **[P2] Tiny bigint fractions still collapse to zero** — `playback.ts`, `ratio`:
+
+   ```ts
+   Number(((n % d) << 54n) / d) / 2 ** 54
+   ```
+
+   For `1n / (2n ** 60n)`, integer division produces zero although the result is representable as a finite number. Negative equivalents also lose their sign. The tinyBigInt followup is still present; conversion needs to preserve the fraction’s exponent.
+
+2. **[P2] Huge yaw motions fail before periodic reduction** — `playback.ts`, `interpolatedQuarters`:
+
+   ```ts
+   const delta = ratio({ numerator: en * sd - sn * ed, denominator: ed * sd });
+   return quarters(start) + delta * t;
+   ```
+
+   A motion from zero to `10n ** 400n` quarters passes endpoint validation because `quarters` reduces both orientations modulo four. Sampling nevertheless throws while converting the unreduced delta—even at `t === 0`. Reduce the interpolated rational phase before numeric conversion.
+
+3. **[P2] Restoring the page desynchronizes playback speed** — `page.ts`, `preparePlayback`:
+
+   ```ts
+   clock = createPlaybackClock(end);
+   clock.setRate(4);
+   ```
+
+   After selecting speed `60`, a persisted `pageshow` reload creates a clock running at `4` while the retained selector still displays `60`. Retrying a load has the same effect. Initialize the clock from the selected speed or reset the selector alongside it.

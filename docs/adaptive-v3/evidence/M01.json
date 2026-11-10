@@ -1,0 +1,261 @@
+{
+  "task_id": "M01",
+  "owner": "rack_crate",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T13:25:16.125957+00:00",
+  "scope": "One reusable empty SMALL module; root final browser/Khronos acceptance separate.",
+  "artifacts": {
+    "builder": {
+      "path": "tools/blender/v3/build_rack_small.py",
+      "bytes": 9262,
+      "sha256": "b44c884439ca5c274777d2825eabdf539d97d110c47832a00bfea11507c909f6"
+    },
+    "dimension_plan": {
+      "path": "assets/v3/specs/rack-small.dimensions.json",
+      "bytes": 29918,
+      "sha256": "b2d9016377bad2e182ffe699b6bcfeb4dc9e6eaf00e42a72e728e9a9cb59ae24"
+    },
+    "source": {
+      "path": "assets/v3/blender/rack-small.blend",
+      "bytes": 131044,
+      "sha256": "14134f2e17526cfbf40780d76f459a3b11dc50acfaf19856c167039eb69c21ab"
+    },
+    "stats": {
+      "path": "assets/v3/blender/rack-small.stats.json",
+      "bytes": 26233,
+      "sha256": "10f2c5c4417f343e47190d3f7e2502e9f08c558733972fdec9662e3fc50e3958"
+    },
+    "GLB": {
+      "path": "frontend/public/models/v3/rack-small.glb",
+      "bytes": 164172,
+      "sha256": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7"
+    },
+    "source_geometry_checks": {
+      "path": "assets/v3/iterations/rack-small/candidate/geometry-checks.json",
+      "bytes": 19176,
+      "sha256": "08cff840666a4c8131847ac0db363badf8f13107f946ce872dfbf501df1f9ebc"
+    },
+    "binary_checks": {
+      "path": "assets/v3/iterations/rack-small/candidate/binary-checks.json",
+      "bytes": 4990,
+      "sha256": "ca64aeb79666b950cfaedb335e62c8bcb49e7e5cbcd2ec51564be4a10516bd54"
+    },
+    "preview_provenance": {
+      "path": "assets/v3/previews/rack-small/provenance.json",
+      "bytes": 4076,
+      "sha256": "0ce6d150d1aad07682c2054a9e998945d672c18c339e47af29f8e9ff369dd644"
+    },
+    "source_inspector": {
+      "path": "assets/v3/iterations/rack-small/inspect_source.py",
+      "bytes": 9688,
+      "sha256": "796102a804fb96765fe1c921c9c2c3a8c8cb0c92101a621d63baedb0b35db2bf"
+    },
+    "binary_inspector": {
+      "path": "assets/v3/iterations/rack-small/verify_glb.py",
+      "bytes": 10385,
+      "sha256": "e4287e4e7cdc56ae21e3486713f1c25a256673a84c9af191237505776c70f26d"
+    }
+  },
+  "reference": {
+    "path": "assets/references/v3/r13-1-rack-small.png",
+    "bytes": 1585930,
+    "sha256": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e"
+  },
+  "source_contract": {
+    "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+    "bytes": 3541951,
+    "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681"
+  },
+  "pregeometry_plan_sent_to_root_and_adaptations_accepted": true,
+  "summary": {
+    "source_parts": 59,
+    "runtime_meshes": 3,
+    "triangles": 2676,
+    "materials": [
+      "SMALL | charcoal",
+      "SMALL | petrol",
+      "SMALL | tan"
+    ],
+    "actual_BIN_dimensions_xyz_m": [
+      2.3999999165534973,
+      1.5499999765306711,
+      0.9999999888241291
+    ],
+    "GLB_bytes": 164172,
+    "GLB_sha256": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "anchors": 10,
+    "maximum_anchor_error_m": 5.364418020903372e-09,
+    "source_checks": 2583,
+    "source_failures": 0,
+    "source_closed_positive_volume_parts": 59,
+    "source_actual_mesh_contact_ground_connected_parts": 59,
+    "source_clear_segments": 1470,
+    "source_support_floor_rays": 810,
+    "BIN_clear_segments": 1470,
+    "BIN_support_floor_rays": 810,
+    "maximum_BIN_floor_error_m": 2.9802322387695312e-08,
+    "wood_petrol_coplanar_top_area_m2": [
+      0,
+      0
+    ]
+  },
+  "source_export_equivalence": {
+    "current_source_reopened_after_finish": true,
+    "all59part_signatures_modifiers_and10anchors_preserved": true,
+    "capture_geometry_matches_candidate": true,
+    "actual_BIN_triangle_multisets_match_source_per_material": true,
+    "original_initial_source_and_views_preserved": true
+  },
+  "actual_source_view_review": {
+    "front": "Five distinct real cavities per level, low separate front lip panels and visible tan deck thickness; no filled/painted bin cube. Two usable levels and charcoal posts/petrol shoes/collars match the reference. No thin split-wood front seam after refinement.",
+    "side": "Post/deck connections and low floor shoes are coherent. Shallow front bins and visible open rear wood deck strip are explicit engineering adaptation for the1m frame; rear strip is not extra usable storage. Unified recessed deck removes the former side join.",
+    "rear": "Five back-panel divisions per row, complete rear post/tie construction and grounded feet remain; backs do not imply a wall across the open rear strip.",
+    "three_quarter": "Ten empty interiors, .02 shared dividers and low lips have actual depth. Recessed petrol floors meet exact support planes, with no duplicate rims, cargo, floating component or exposed overlapping wood top. Matte charcoal/petrol/tan and small bevels retain R13.1; source dimensional spacing supersedes illustration spacing."
+  },
+  "views": [
+    {
+      "path": "assets/v3/previews/rack-small/front.png",
+      "bytes": 795909,
+      "sha256": "adfbbecd515edf699649e252033a91f5c3e46378b2e1d7788d6c4ee9fbc22fad",
+      "view": "front",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/rack-small/refined-01/views/front.png",
+        "bytes": 795909,
+        "sha256": "adfbbecd515edf699649e252033a91f5c3e46378b2e1d7788d6c4ee9fbc22fad"
+      },
+      "byte_identical": true,
+      "source_capture_mtime_utc": "2026-11-07T13:17:37.674069+00:00",
+      "actual_source_PNG_opened_after_refinement": true
+    },
+    {
+      "path": "assets/v3/previews/rack-small/side.png",
+      "bytes": 789458,
+      "sha256": "f882ad009d41f1368ed332e76c62b121cf57282105cc3bd4338bf06873b469e5",
+      "view": "side",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/rack-small/refined-01/views/side.png",
+        "bytes": 789458,
+        "sha256": "f882ad009d41f1368ed332e76c62b121cf57282105cc3bd4338bf06873b469e5"
+      },
+      "byte_identical": true,
+      "source_capture_mtime_utc": "2026-11-07T13:17:37.819585+00:00",
+      "actual_source_PNG_opened_after_refinement": true
+    },
+    {
+      "path": "assets/v3/previews/rack-small/rear.png",
+      "bytes": 778968,
+      "sha256": "43676f547983b5fc656186cf9e200e0c100f0876ab09e4c130ea14c9dee7bdb0",
+      "view": "rear",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/rack-small/refined-01/views/rear.png",
+        "bytes": 778968,
+        "sha256": "43676f547983b5fc656186cf9e200e0c100f0876ab09e4c130ea14c9dee7bdb0"
+      },
+      "byte_identical": true,
+      "source_capture_mtime_utc": "2026-11-07T13:17:37.961048+00:00",
+      "actual_source_PNG_opened_after_refinement": true
+    },
+    {
+      "path": "assets/v3/previews/rack-small/three-quarter.png",
+      "bytes": 989472,
+      "sha256": "f33d06e3685b0a14fa0d36ee09efb098da4ef24213fb4ba0ee727a30f41041aa",
+      "view": "three-quarter",
+      "dimensions_px": [
+        900,
+        900
+      ],
+      "source": {
+        "path": "assets/v3/iterations/rack-small/refined-01/views/three-quarter.png",
+        "bytes": 989472,
+        "sha256": "f33d06e3685b0a14fa0d36ee09efb098da4ef24213fb4ba0ee727a30f41041aa"
+      },
+      "byte_identical": true,
+      "source_capture_mtime_utc": "2026-11-07T13:17:38.118748+00:00",
+      "actual_source_PNG_opened_after_refinement": true
+    }
+  ],
+  "refinement": {
+    "initial_issue": "Three touching separately bevelled wood pieces per level created a visible front/side join line. No usable intrusion or stock issue.",
+    "fix": "One closed recessed wood extrusion per level, concave inner long edges excluded from bevel; source count63→59 and triangles2772→2676. Top wood exists only outside inlay patch; petrol fills .02 recess to supportY.",
+    "retested": "All four fresh source PNGs actually reopened; source/BIN geometry, cavity/support, normals/anchors and actual zero coplanar top-area checks passed.",
+    "initial_snapshot": "assets/v3/iterations/rack-small/initial",
+    "refined_snapshot": "assets/v3/iterations/rack-small/refined-01"
+  },
+  "approved_engineering_adaptations": [
+    "Outer2.4x1.55x1.0, usable.42x.35x.42, .44pitch and exact10C04anchors retained.",
+    "Rear wood stripZ-.48.. .01 behind usableZ.03.. .45 stays visibly open as structural deck, no extra/deeper address.",
+    ".10post envelopes contain .08shafts and .10shoes/collars/caps without footprint expansion.",
+    ".02shared dividers;5front/rear panels perlevel butt ends without doubled rims; low frontlip height.08 outside usableZmax.45.",
+    "Petrol inlay recessed.02into .10deck; its topY.25/1.00 is support plane, bottom gap0."
+  ],
+  "commands": {
+    "source_initial": "blender --background --factory-startup --threads 2 --python-exit-code 1 --python tools/blender/v3/run_build.py -- build_rack_small",
+    "source_refined": "same runner: build_rack_small --snapshot refined-01",
+    "render": "blender --background --factory-startup <source> --threads 2 --python-exit-code 1 --python tools/blender/v3/render_asset.py -- rack-small --out <absolute iteration/views>",
+    "export": "same runner: build_rack_small --snapshot candidate --export",
+    "source_check": "blender background source + assets/v3/iterations/rack-small/inspect_source.py -- --out <absolute geometry-checks.json>",
+    "independent_BIN": "Blender bundled Python executable assets/v3/iterations/rack-small/verify_glb.py (NumPy, no bpy)",
+    "all_final_exit_codes": 0
+  },
+  "root_reported_checks": {
+    "source4_and_browser4_actually_opened": true,
+    "Khronos_all12_GLBS_errors_warnings": [
+      0,
+      0
+    ],
+    "provenance": "Parent root message; not creator browser/validator execution. Final root resource/acceptance record remains root-owned."
+  },
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "New builder/plan missing before creation; V3/C04 inputs not_tracked; legacybox helper positive graph result62–67 metadata_changed. Current exact helpers/render/source and authored new files read directly, no reindex.",
+    "initial_generation": "2026-11-06T22:22:36Z",
+    "final_additional_coverage_generation": "2026-11-07T13:18:32Z",
+    "final_additional_coverage": "Source inspector metadata_changed, new BIN inspector/model/evidence not_tracked; direct authored source fallback retained. Parent index changed during task; creator did not reindex."
+  },
+  "limits": [
+    "One empty asset only; no SKU/stock, worker/cargo mesh, warehouse assembly, runtime operation or physical rating.",
+    "C04 dimensional anchors are support planes, not grip/animation proof; low lip transfer remains future contact/action gate.",
+    "Root decides final PASS after independent actual browser/resource/Khronos review. No creator live Blender/browser or shared source edits."
+  ],
+  "model_review": {
+    "path": "docs/adaptive-v3/models/M01.md",
+    "bytes": 4796,
+    "sha256": "1bed6e3842672f7f745a6ffc5451f9eb4570efe504bdba97400020ff7049df15"
+  },
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T13:33:12.976393+00:00",
+    "source_views_opened": [
+      "front",
+      "side",
+      "rear",
+      "three-quarter"
+    ],
+    "actual_browser_views_opened": [
+      "front",
+      "side",
+      "rear",
+      "quarter"
+    ],
+    "browser_errors": 0,
+    "failed_resources": 0,
+    "Khronos_errors": 0,
+    "Khronos_warnings": 0,
+    "BIN_checker_reexecuted_with": "Blender5 bundledPython/NumPy, no Blender renderer",
+    "review": "Actual source4 and finalGLB4views show ten deep open-front cells, complete rear panels, contained stepped feet/collars, thick tan recessed decks without seams and zero visible coplanar wood/petrol clash. Shallowfrontbin/rearstrip adaptation disclosed; exactC04 metrics override raster proportions. Final quarter reopened after distreference refresh; independent R13.1 now visible. Finite BIN normals/cavity/support/10anchors checked; human actions/inventory remain later."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "document_kind": "layout_envelope_proposal",
+  "proposal_id": "L01",
+  "proposal_version": "0.1.0",
+  "status": "proposal",
+  "layout_version": "qoima-144x72-v3-proposal",
+  "units": {
+    "length": "m",
+    "time": "s",
+    "up_axis": "Y",
+    "handedness": "right"
+  },
+  "axis_order": ["X", "Y", "Z"],
+  "origin": "minimum_floor_corner",
+  "bounds": {
+    "min": [0, 0, 0],
+    "max": [144, 8, 72]
+  },
+  "extent_m": {"x": 144, "y": 8, "z": 72},
+  "floor_corners_xz_m": [[0, 0], [144, 0], [144, 72], [0, 72]],
+  "floor_area_m2": 10368,
+  "gross_envelope_volume_m3": 82944,
+  "comparison_to_v2": {
+    "source": "contracts/layout.example.json",
+    "extent_m": {"x": 72, "y": 8, "z": 48},
+    "floor_area_m2": 3456,
+    "gross_envelope_volume_m3": 27648,
+    "floor_area_ratio": 3,
+    "gross_volume_ratio": 3
+  },
+  "scale_policy": {
+    "metres_per_world_unit": 1,
+    "reuse_v2_master_by_global_scaling": false,
+    "entity_dimension_scale_factor": 1,
+    "applies_to": ["people", "carts", "forklifts", "cargo"],
+    "note": "Layout growth changes configuration and counts, not entity scale. New family dimensions remain explicit metadata; nominal people remain about 1.70 m."
+  },
+  "source_assumptions": [
+    {
+      "id": "L01_SPACE",
+      "kind": "synthetic_design",
+      "source": "docs/adaptive-v3/brief/02_DESIGN_V3.md",
+      "section": "2. Физическое пространство",
+      "statement": "144 m X span, 72 m Z span and 8 m Y span are project assumptions, not measured premises."
+    },
+    {
+      "id": "L01_REFERENCE_CONTEXT",
+      "kind": "illustrative_reference",
+      "source": "assets/references/v3/r07-ports-zones.png",
+      "provenance": "assets/references/v3/provenance/r07.json",
+      "statement": "Accepted R07 version 2 depicts an 8 m building and a 4.5 m clear large-gate concept. Gate engineering, port positions and route constraints are not established by L01."
+    }
+  ],
+  "deferred_to_later_cards": [
+    "zones", "ports", "route_graphs", "gate_clearance",
+    "storage_slots", "usable_volume_and_capacities"
+  ]
+}

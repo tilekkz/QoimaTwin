@@ -1,0 +1,219 @@
+{
+  "task_id": "L12",
+  "parent_status_owner": "root",
+  "executor_result": "artifacts_ready_for_root_integration_review",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T12:00:13.736462+00:00",
+    "strict_package_check": "exit0,18files8tables8negative mutations, exact prior semantic/link bytes preserved",
+    "exact_source_review": "Read full L12.3 spec plus current projection/table validation/manifest/mutation/serialization functions.",
+    "actual_browser_fetch": "docs/adaptive-v3/evidence/L12.3-root-browser.json",
+    "integration": "Actual Chrome HTTP200 same-origin fetch; WebCrypto raw SHA eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db matches2341205bytes. Independently decoded columnar nodes/arcs/storage and checked24actors/6ports/132modules/776slots/588active candidates/188blocked reserve and graph cardinalities.",
+    "scope": "L12 geometry/data proposal accepted only. No actual inventory, handler admission, event scheduler, engine integration or final art acceptance."
+  },
+  "child_acceptance": {
+    "L12.1": "root PASS per parent coordination; preserved historical evidence",
+    "L12.2": "root PASS and root review in evidence",
+    "L12.3": "executor VERIFY; root actual HTTP/browser review pending"
+  },
+  "scope": "Isolated versioned geometry/data proposal. No backend/shared V2 mutation, actual inventory, operational admission, scheduler or final visual acceptance.",
+  "artifact_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/layout-semantic-index-v3.json",
+      "sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-links-v3.json",
+      "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+    },
+    {
+      "path": "frontend/public/data/adaptive-v3/layout-manifest.json",
+      "sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+      "bytes": 2341205
+    }
+  ],
+  "actual_strict_check_only_commands": [
+    {
+      "stage": "semantic",
+      "command": ".venv/Scripts/python.exe tools/visual/v3/compile_layout_v3.py --check-only",
+      "exit_code": 0,
+      "wall_time_seconds": 2.0707425,
+      "output": {
+        "passed": true,
+        "definition_count": 5081,
+        "reference_count": 23774,
+        "counts": {
+          "actor": 24,
+          "actor_pool": 2,
+          "attachment": 1,
+          "audit_route_ref": 1234,
+          "buffer_cell": 17,
+          "cargo_reference_target": 8,
+          "clear_floor_reservation": 2,
+          "conveyor_cell": 90,
+          "conveyor_edge": 45,
+          "conveyor_module": 87,
+          "conveyor_node": 34,
+          "conveyor_resource": 15,
+          "equipment_pair": 2,
+          "large_gate": 2,
+          "load_orientation": 1,
+          "local_path": 844,
+          "local_profile": 4,
+          "local_service": 844,
+          "manual_handoff": 3,
+          "packing_station": 6,
+          "ped_edge": 54,
+          "ped_node": 57,
+          "port": 6,
+          "service_place": 6,
+          "storage_family": 5,
+          "storage_module": 132,
+          "storage_orientation": 1,
+          "storage_slot": 776,
+          "traffic_resource": 282,
+          "transport_mode": 3,
+          "vehicle": 2,
+          "vehicle_blueprint": 1,
+          "vehicle_edge": 284,
+          "vehicle_junction": 16,
+          "vehicle_node": 104,
+          "vehicle_profile": 3,
+          "vehicle_reservation": 44,
+          "zone": 40
+        },
+        "negative_cases": 4,
+        "sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a"
+      }
+    },
+    {
+      "stage": "links",
+      "command": ".venv/Scripts/python.exe tools/visual/v3/compile_layout_v3.py --stage links --check-only",
+      "exit_code": 0,
+      "wall_time_seconds": 2.3488755,
+      "output": {
+        "passed": true,
+        "walk_nodes": 1633,
+        "walk_arcs": 4000,
+        "vehicle_nodes": 620,
+        "vehicle_arcs": 1316,
+        "reachability": {
+          "human_ports": 6,
+          "local_human_services": 728,
+          "local_cart_stops": 364,
+          "active_manual_candidates": 552,
+          "active_primary_candidates": 588,
+          "vehicle_prehandle_floor_poses": 116,
+          "conditional_vehicle_cargo_approaches": 100,
+          "reserve_geometry_only_floor_links": 16,
+          "blocked_reserve_addresses": 188,
+          "source_floor_references": {
+            "manual": "v3:service:IN_E_PARCEL",
+            "vehicle": "v3:service:IN_W_BULK",
+            "meaning": "Geometric reachability references only; no port operation or C08 admission."
+          },
+          "example_distances_m": {
+            "cartpark_to_intake_pedestrian": 8.599999999988
+          }
+        },
+        "checks": 22,
+        "robustness_cases": 3,
+        "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65"
+      }
+    },
+    {
+      "stage": "package",
+      "command": ".venv/Scripts/python.exe tools/visual/v3/compile_layout_v3.py --stage package --check-only",
+      "exit_code": 0,
+      "wall_time_seconds": 3.8339121,
+      "output": {
+        "passed": true,
+        "public_bytes": 2341205,
+        "public_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+        "private_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "validated_files": 18,
+        "counts": {
+          "actor": 24,
+          "vehicle": 2,
+          "zone": 40,
+          "port": 6,
+          "equipment_pair": 2,
+          "actor_pool": 2,
+          "cargo_reference_target": 8,
+          "storage_module": 132,
+          "storage_slot": 776,
+          "walk_node": 1633,
+          "walk_arc": 4000,
+          "vehicle_node": 620,
+          "vehicle_arc": 1316,
+          "traffic_resource": 282,
+          "traffic_route_ref": 1234,
+          "conveyor_node": 34,
+          "conveyor_edge": 45,
+          "conveyor_module": 87,
+          "conveyor_cell": 90,
+          "conveyor_resource": 15,
+          "packing_station": 6
+        },
+        "negative_cases": 8
+      }
+    }
+  ],
+  "child_evidence_paths": [
+    "docs/adaptive-v3/evidence/L12.1.json",
+    "docs/adaptive-v3/evidence/L12.2.json",
+    "docs/adaptive-v3/evidence/L12.3.json"
+  ],
+  "integration_invariants": {
+    "bounds_xyz_m": {
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "max": [
+        144,
+        8,
+        72
+      ]
+    },
+    "actor_count": 24,
+    "vehicle_count": 2,
+    "ports": 6,
+    "modules": 132,
+    "slots": 776,
+    "walk_nodes": 1633,
+    "walk_arcs": 4000,
+    "vehicle_nodes": 620,
+    "vehicle_arcs": 1316,
+    "traffic_cells": 282,
+    "traffic_route_bindings": 1234,
+    "reserve_retrieval_blocked": 188,
+    "empty_cargo_reserve_floor_paths": 16,
+    "edge0046_two_splits_retained": true,
+    "cartpark_intake_distance_m": 8.6,
+    "analytic_vehicle_yaw_and_reverse_preserved": true
+  },
+  "public_fetch_gate": {
+    "owner": "root",
+    "state": "pending",
+    "url": "/data/adaptive-v3/layout-manifest.json",
+    "schema_id": "qoima.layout-runtime.v3-proposal",
+    "schema_version": "0.1.0",
+    "layout_version": "qoima-144x72-v3-proposal",
+    "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+    "operational_admission": false,
+    "scheduling_implemented": false
+  },
+  "open_gates": [
+    "C02/C04/C08 actual catalog/mass/support/height/handler admission",
+    "W source scheduling/replay and backend integration",
+    "root SCENE_COMPOSITION_FINDINGS.md density/lighting/final visual gate"
+  ],
+  "parent_pass_not_assigned_by_executor": true
+}

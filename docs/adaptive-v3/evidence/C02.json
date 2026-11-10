@@ -1,0 +1,355 @@
+{
+  "builder": {
+    "path": "tools/visual/v3/build_cargo_catalog.py",
+    "sha256": "875f9241d2ca07532959ac76c65f58a36a8a3acee9a57d1f9b7f28e635a02d43"
+  },
+  "checked_utc": "2026-11-07T12:37:01.448537+00:00",
+  "negative_cases": [
+    {
+      "case": "duplicate_archetype",
+      "passed": true,
+      "result": "DUPLICATE_ARCHETYPE_ID"
+    },
+    {
+      "case": "missing_archetype",
+      "passed": true,
+      "result": "EXPECTED_EIGHT_ARCHETYPES"
+    },
+    {
+      "case": "stale_layout",
+      "passed": true,
+      "result": "LAYOUT_BINDING_MISMATCH"
+    },
+    {
+      "case": "stale_source_fingerprint",
+      "passed": true,
+      "result": "SOURCE_HASH_MISMATCH"
+    },
+    {
+      "case": "changed_R03_HU_target_even_with_correct_volume",
+      "passed": true,
+      "result": "REFERENCE_TARGET_MISMATCH"
+    },
+    {
+      "case": "HU_mass_identity",
+      "passed": true,
+      "result": "HU_GROSS_MASS_MISMATCH"
+    },
+    {
+      "case": "outside_inner_pack",
+      "passed": true,
+      "result": "PACKING_UNIT_OUTSIDE_INNER"
+    },
+    {
+      "case": "overlapping_contents_despite_sufficient_total_volume",
+      "passed": true,
+      "result": "PACKING_UNIT_OVERLAP"
+    },
+    {
+      "case": "wrong_pack_count",
+      "passed": true,
+      "result": "PACKING_COUNT_MISMATCH"
+    },
+    {
+      "case": "IBC_exceeds_all_active_ground_payloads",
+      "passed": true,
+      "result": "NO_PLAUSIBLE_ACTIVE_FAMILY"
+    },
+    {
+      "case": "symbolic_tank_overfill",
+      "passed": true,
+      "result": "SYMBOLIC_CAPACITY_EXCEEDED"
+    },
+    {
+      "case": "conflate_unit_with_HU",
+      "passed": true,
+      "result": "PACKING_UNIT_DIMENSION_MISMATCH"
+    },
+    {
+      "case": "shrink_HU_to_force_fit",
+      "passed": true,
+      "result": "SCALE_OVERRIDE_FORBIDDEN"
+    }
+  ],
+  "output": {
+    "bytes": 77328,
+    "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+    "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+  },
+  "passed": true,
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T12:43:07.326683+00:00",
+    "exact_source_review": "Read full catalogue spec and complete231line generator/validator/negative cases.8C01-validated records,107packing envelope prototypes and symbolic tank/drum contents distinct from inventory.",
+    "actual_strict_check_only_exit": 0,
+    "negative_cases": 13,
+    "independent_Decimal_mass_identities": {
+      "SMALL_CARTON": 0.94,
+      "STANDARD_CARTON": 6.35,
+      "HEAVY_BOX": 200.0,
+      "PALLET_LOAD": 455.0,
+      "IBC": 654.0,
+      "LONG_BUNDLE": 200.0,
+      "DRUM": 180.0,
+      "FRAGILE_CRATE": 88.0
+    },
+    "scope": "Exact R03HU geometry and fixed synthetic masses/packing accepted as catalogue proposal. No SKU/stock/assignments, handler/rating/route admission or actual mesh packing approval."
+  },
+  "source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.schema.json",
+      "sha256": "46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88"
+    },
+    {
+      "path": "tools/visual/v3/validate_cargo_contract.py",
+      "sha256": "6082648905e0c6cedb66aa724363eaa3852d1ef2034b10f175085b0ca36f2cd4"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.example.json",
+      "sha256": "fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    }
+  ],
+  "source_inputs_preserved": true,
+  "status": "VERIFY",
+  "summary": {
+    "HU_gross_mass_kg": {
+      "DRUM": 180.0,
+      "FRAGILE_CRATE": 88.0,
+      "HEAVY_BOX": 200.0,
+      "IBC": 654.0,
+      "LONG_BUNDLE": 200.0,
+      "PALLET_LOAD": 455.0,
+      "SMALL_CARTON": 0.94,
+      "STANDARD_CARTON": 6.35
+    },
+    "SKU_inventory_or_assignments_created": false,
+    "candidate_family_witnesses": [
+      {
+        "active_geometry_candidates_by_family": {
+          "FLEX": 8,
+          "SMALL": 480
+        },
+        "archetype_id": "SMALL_CARTON",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "FLEX": [
+            0.98,
+            0.26,
+            0.66
+          ],
+          "SMALL": [
+            0.04,
+            0.05,
+            0.12
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "FLEX": 8,
+          "STANDARD": 64
+        },
+        "archetype_id": "STANDARD_CARTON",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "FLEX": [
+            0.7,
+            0.1,
+            0.6
+          ],
+          "STANDARD": [
+            0.55,
+            0.55,
+            0.7
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "HEAVY": 24
+        },
+        "archetype_id": "HEAVY_BOX",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "HEAVY": [
+            0.5,
+            0.75,
+            0.5
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "HEAVY": 24
+        },
+        "archetype_id": "PALLET_LOAD",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "HEAVY": [
+            0.1,
+            0.05,
+            0.1
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "HEAVY": 24
+        },
+        "archetype_id": "IBC",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "HEAVY": [
+            0.1,
+            0.24,
+            0.1
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "LONG": 12
+        },
+        "archetype_id": "LONG_BUNDLE",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "LONG": [
+            0.1,
+            0.03,
+            0.15
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "HEAVY": 24
+        },
+        "archetype_id": "DRUM",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "HEAVY": [
+            0.62,
+            0.45,
+            0.42
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      },
+      {
+        "active_geometry_candidates_by_family": {
+          "STANDARD": 64
+        },
+        "archetype_id": "FRAGILE_CRATE",
+        "capacity_is_shared_not_dedicated": true,
+        "minimum_extra_allowance_after_declared_clearance_m": {
+          "STANDARD": [
+            0.05,
+            0,
+            0.15
+          ]
+        },
+        "operational_admission": false,
+        "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+      }
+    ],
+    "operational_admission": false,
+    "prototype_unit_instances": 107,
+    "records_validated": 8
+  },
+  "task_id": "C02",
+  "normal_run_exit_code": 0,
+  "check_only_exit_code": 0,
+  "independent_checks": [
+    {
+      "name": "exact8unique stable IDs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "exact R03 outer HU targets",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all8 exact Decimal volumes and mass identities",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all107 explicit boxes contained3axes and nonoverlapping",
+      "passed": true,
+      "actual": 107
+    },
+    {
+      "name": "support pads and layer separators explicitly included in outer tare",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "fluid convention counts one sealed container and exact density mass",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "active candidate family counts independently derived",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "IBC654kg has24sharedHEAVY ground candidates",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "FRAGILE exact height budget zero extra beyond clearance",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "six source file hashes untouched",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "proposal no operational or inventory/assignment claims",
+      "passed": true,
+      "actual": null
+    }
+  ],
+  "updated_utc": "2026-11-07T12:38:10.145515+00:00",
+  "spec": {
+    "path": "docs/adaptive-v3/specs/C02.md",
+    "sha256": "1057d3f6be3e4f7875f7264a714167a91432d30a45b3794f0d2746b27f4cd915"
+  },
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "One task-specific coverage call: new files missing/current inputs not_tracked; exact-source/hash fallback, no index refresh/completeness claim."
+  }
+}

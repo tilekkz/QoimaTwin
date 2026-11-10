@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:proposal:handoff:worker-profile:v3:0.1.0",
+  "title": "Qoima v3 isolated proposal: worker-profile",
+  "$comment": "Proposal only. Offline semantic validation and exact referenced hashes are required; no canonical backend adoption.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": {
+      "const": "qoima.worker-profile.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "proposal"
+    },
+    "source_kind": {
+      "const": "visual_fixture"
+    },
+    "engine_operation": {
+      "const": false
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "example_only": {
+      "type": "boolean"
+    },
+    "worker_id": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/id"
+    },
+    "registry_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "baseline_role": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/role"
+    },
+    "current_role": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/role"
+    },
+    "allowed_roles": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/role"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "walk_speed_m_s": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "skill_levels": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/role"
+      },
+      "additionalProperties": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 1
+      }
+    },
+    "allowed_vehicle_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/id"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "assumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "synthetic_design"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "statement"
+      ]
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "status",
+    "source_kind",
+    "engine_operation",
+    "operational_admission",
+    "example_only",
+    "worker_id",
+    "registry_ref",
+    "baseline_role",
+    "current_role",
+    "allowed_roles",
+    "walk_speed_m_s",
+    "skill_levels",
+    "allowed_vehicle_ids",
+    "assumption"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "allowed_roles": {
+            "contains": {
+              "const": "forklift_driver"
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "allowed_vehicle_ids": {
+            "minItems": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "allowed_vehicle_ids": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

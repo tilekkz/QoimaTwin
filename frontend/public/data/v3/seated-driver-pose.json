@@ -1,0 +1,172 @@
+{
+  "schema_id": "qoima.seated-driver.v3",
+  "source_kind": "visual_fixture",
+  "source_spec": {
+    "path": "assets/v3/specs/forklift.dimensions.json",
+    "sha256": "d13741cc15e2dc4486ec880cdcbba56fe2ebf7143481d5f24be40ea31a57818b"
+  },
+  "worker_glb_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+  "driver": {
+    "asset": "frontend/public/models/v3/worker-base.glb",
+    "worker_height_m": 1.7,
+    "worker_geometry_unchanged": true,
+    "worker_scale": [
+      1,
+      1,
+      1
+    ],
+    "seat_anchor_vehicle": [
+      0,
+      0.84,
+      -0.65
+    ],
+    "seat_contact_worker_bind": [
+      0,
+      0.55,
+      -0.035
+    ],
+    "worker_root_translation": [
+      0,
+      0.29,
+      -0.615
+    ],
+    "rotation_order": "native Three.js intrinsic Euler XYZ, radians",
+    "jointEulerXYZ": {
+      "joint__pelvis": [
+        0,
+        0,
+        0
+      ],
+      "joint__torso": [
+        0,
+        0,
+        0
+      ],
+      "joint__head": [
+        0,
+        0,
+        0
+      ],
+      "joint__upper_arm_L": [
+        -0.55,
+        0,
+        0.23
+      ],
+      "joint__forearm_L": [
+        -1,
+        0,
+        0
+      ],
+      "joint__hand_L": [
+        0,
+        0,
+        0
+      ],
+      "joint__thigh_L": [
+        -1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__shin_L": [
+        1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__foot_L": [
+        0,
+        0,
+        0
+      ],
+      "joint__upper_arm_R": [
+        -0.55,
+        0,
+        -0.23
+      ],
+      "joint__forearm_R": [
+        -1,
+        0,
+        0
+      ],
+      "joint__hand_R": [
+        0,
+        0,
+        0
+      ],
+      "joint__thigh_R": [
+        -1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__shin_R": [
+        1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__foot_R": [
+        0,
+        0,
+        0
+      ]
+    },
+    "pelvisShift": [
+      0,
+      0,
+      0
+    ],
+    "expected_grips": {
+      "L": [
+        -0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "R": [
+        0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ]
+    },
+    "expected_soles": {
+      "L": [
+        -0.11499999463558197,
+        0.53000003375113,
+        -0.39499998070299625
+      ],
+      "R": [
+        0.11499999463558197,
+        0.53000003375113,
+        -0.39499998070299625
+      ]
+    },
+    "grip_bar_radius_m": 0.018,
+    "grip_bar_length_m": 0.08,
+    "grip_bar_axis": "actual posed hand local X; connected through rim to steering column",
+    "steering_column": {
+      "start": [
+        0,
+        0.53,
+        -0.02
+      ],
+      "end": [
+        0,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "radius_m": 0.035
+    },
+    "entry_clear_portal": {
+      "x_plane_abs_m": 0.45,
+      "y": [
+        0.53,
+        2.04
+      ],
+      "z": [
+        -0.96,
+        -0.1
+      ]
+    },
+    "entry_check_scope": "seated-pose lateral portal clearance only; walking/climbing sequence not yet accepted",
+    "required_pose_tolerance_m": 2E-05,
+    "minimum_helmet_roof_gap_m": 0.045
+  },
+  "staffing_rule": "Bind an existing typed actor record; never append a new warehouse employee. Stand sample F01 represents an existing driver. Eligibility/assignments remain source registry responsibility."
+}

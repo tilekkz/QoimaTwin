@@ -1,0 +1,519 @@
+{
+  "reference_id": "M10_METAL_REF",
+  "asset_id": "long-bundle",
+  "units": "m",
+  "up_axis": "Y",
+  "dimensions_xyz_m": [
+    4.2,
+    0.52,
+    0.65
+  ],
+  "archetype_record": {
+    "archetype_id": "LONG_BUNDLE",
+    "compatibility": {
+      "candidate_only": true,
+      "property_tags": [
+        "upright",
+        "sealed"
+      ],
+      "storage_type_tags": [
+        "LONG"
+      ]
+    },
+    "fragile": false,
+    "handling": {
+      "candidate_only": true,
+      "modes": [
+        {
+          "required_equipment_tags": [
+            "forklift",
+            "approved_load_support"
+          ],
+          "required_handler_tag": "forklift_operator",
+          "transport_tag": "forklift_assisted"
+        }
+      ]
+    },
+    "handling_unit": {
+      "bounding_volume_m3": 1.4196,
+      "contents_gross_mass_kg": 192.0,
+      "dimensions_xyz_m": [
+        4.2,
+        0.52,
+        0.65
+      ],
+      "gross_mass_kg": 200.0,
+      "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+      "packaging_tare_mass_kg": 8,
+      "packaging_type": "bundled",
+      "units_per_handling_unit": 24
+    },
+    "label": "C02 synthetic LONG_BUNDLE",
+    "layout_binding": {
+      "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+      "layout_version": "qoima-144x72-v3-proposal",
+      "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+      "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+    },
+    "operational_admission": false,
+    "orientation": {
+      "permitted_orientations": [
+        {
+          "local_axes_in_destination": [
+            "+X",
+            "+Y",
+            "+Z"
+          ],
+          "orientation_id": "upright_xyz"
+        }
+      ],
+      "slot_orientation_mappings": [
+        {
+          "cargo_orientation_id": "upright_xyz",
+          "slot_orientation_id": "upright_xyz_in_module"
+        }
+      ],
+      "upright_only": true
+    },
+    "record_type": "CargoArchetype",
+    "reference_binding": {
+      "archetype_id": "LONG_BUNDLE",
+      "dimensions_role": "handling_unit_outer_target",
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    "schema_id": "qoima.cargo-archetype.v3-proposal",
+    "schema_version": "0.1.0",
+    "source_kind": "synthetic_design",
+    "source_of_assumptions": [
+      {
+        "assumption_id": "C02_LONG_BUNDLE_HU_TARGET",
+        "fields": [
+          "handling_unit.dimensions_xyz_m"
+        ],
+        "kind": "synthetic_design",
+        "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+      },
+      {
+        "assumption_id": "C02_LONG_BUNDLE_FIXED_PACK",
+        "fields": [
+          "unit",
+          "handling_unit",
+          "orientation",
+          "fragile",
+          "stacking",
+          "handling",
+          "compatibility"
+        ],
+        "kind": "synthetic_design",
+        "statement": "24rigid hollow profiles, end protection/bands; detachable vehicle cradle excluded. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+      }
+    ],
+    "stacking": {
+      "max_stack": 1,
+      "stackable": false
+    },
+    "status": "proposal",
+    "unit": {
+      "bounding_volume_m3": 0.0256,
+      "contents_mass_kg": 7.8,
+      "dimensions_xyz_m": [
+        4,
+        0.08,
+        0.08
+      ],
+      "gross_mass_kg": 8.0,
+      "mass_scope": "contents_plus_primary_unit_packaging",
+      "packaging_tare_mass_kg": 0.2
+    }
+  },
+  "packing_recipe": {
+    "archetype_id": "LONG_BUNDLE",
+    "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+    "grid_counts_xyz": [
+      1,
+      4,
+      6
+    ],
+    "inner_bounds_xyz_m": {
+      "max": [
+        4.12,
+        0.48,
+        0.6
+      ],
+      "min": [
+        0.08,
+        0.06,
+        0.05
+      ]
+    },
+    "method": "explicit_axis_aligned_unit_envelopes",
+    "packing_frame": "HU_minimum_outer_XYZ_corner",
+    "physical_unit_meaning": "24rigid hollow profiles, end protection/bands; detachable vehicle cradle excluded",
+    "prototype_contents_not_stock": true,
+    "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+    "support_convention": {
+      "inter_layer_separator_thickness_m": 0.008,
+      "kind": "localized_integral_packaging_dunnage_and_separators",
+      "lowest_unit_bottom_y_m": 0.098,
+      "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+      "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+    },
+    "unit_axes_in_HU": [
+      "+X",
+      "+Y",
+      "+Z"
+    ],
+    "unit_gap_xyz_m": [
+      0,
+      0.008,
+      0.008
+    ],
+    "unit_instances": [
+      {
+        "max_xyz_m": [
+          4.1,
+          0.178,
+          0.145
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.098,
+          0.065
+        ],
+        "unit_ordinal": 1
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.178,
+          0.233
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.098,
+          0.153
+        ],
+        "unit_ordinal": 2
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.178,
+          0.321
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.098,
+          0.241
+        ],
+        "unit_ordinal": 3
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.178,
+          0.409
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.098,
+          0.329
+        ],
+        "unit_ordinal": 4
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.178,
+          0.497
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.098,
+          0.417
+        ],
+        "unit_ordinal": 5
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.178,
+          0.585
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.098,
+          0.505
+        ],
+        "unit_ordinal": 6
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.266,
+          0.145
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.186,
+          0.065
+        ],
+        "unit_ordinal": 7
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.266,
+          0.233
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.186,
+          0.153
+        ],
+        "unit_ordinal": 8
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.266,
+          0.321
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.186,
+          0.241
+        ],
+        "unit_ordinal": 9
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.266,
+          0.409
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.186,
+          0.329
+        ],
+        "unit_ordinal": 10
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.266,
+          0.497
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.186,
+          0.417
+        ],
+        "unit_ordinal": 11
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.266,
+          0.585
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.186,
+          0.505
+        ],
+        "unit_ordinal": 12
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.354,
+          0.145
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.274,
+          0.065
+        ],
+        "unit_ordinal": 13
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.354,
+          0.233
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.274,
+          0.153
+        ],
+        "unit_ordinal": 14
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.354,
+          0.321
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.274,
+          0.241
+        ],
+        "unit_ordinal": 15
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.354,
+          0.409
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.274,
+          0.329
+        ],
+        "unit_ordinal": 16
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.354,
+          0.497
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.274,
+          0.417
+        ],
+        "unit_ordinal": 17
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.354,
+          0.585
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.274,
+          0.505
+        ],
+        "unit_ordinal": 18
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.442,
+          0.145
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.362,
+          0.065
+        ],
+        "unit_ordinal": 19
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.442,
+          0.233
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.362,
+          0.153
+        ],
+        "unit_ordinal": 20
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.442,
+          0.321
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.362,
+          0.241
+        ],
+        "unit_ordinal": 21
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.442,
+          0.409
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.362,
+          0.329
+        ],
+        "unit_ordinal": 22
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.442,
+          0.497
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.362,
+          0.417
+        ],
+        "unit_ordinal": 23
+      },
+      {
+        "max_xyz_m": [
+          4.1,
+          0.442,
+          0.585
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.362,
+          0.505
+        ],
+        "unit_ordinal": 24
+      }
+    ]
+  },
+  "profile_wall_m": 0.006,
+  "integral_skids": {
+    "centres_z_m": [
+      -0.2,
+      0.2
+    ],
+    "width_z_m": 0.06,
+    "bottom_y_m": 0,
+    "top_y_m": 0.06,
+    "length_x_m": 4.08
+  },
+  "dunnage_centres_x_m": [
+    -1.6,
+    0,
+    1.6
+  ],
+  "band_centres_x_m": [
+    -1.5,
+    1.5
+  ],
+  "cradle_support_centres_x_m": [
+    -1.4,
+    1.4
+  ],
+  "authority": "Exact immutable C02 placements/count/mass and actual support interfaces override minor perspective/count or illustrative skid-foot appearance in the raster. No new stock or complete operational admission.",
+  "material_authority": "R03 light metal sections/warmtan bands; M10_REF geometric topology retained",
+  "palette": {
+    "profiles": "#AAB2B5",
+    "inner": "#1C2C31",
+    "bands_endprotection": "#C99A60"
+  }
+}

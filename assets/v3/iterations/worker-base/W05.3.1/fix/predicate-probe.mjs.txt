@@ -1,0 +1,4 @@
+import assert from 'node:assert/strict';
+const finite=x=>typeof x==='number'&&Number.isFinite(x),oldVec=v=>Array.isArray(v)&&v.length===3&&v.every(finite);
+const newVec=v=>Array.isArray(v)&&v.length===3&&Object.hasOwn(v,0)&&Object.hasOwn(v,1)&&Object.hasOwn(v,2)&&finite(v[0])&&finite(v[1])&&finite(v[2]);
+const deleteY=[0,0,0];delete deleteY[1];const empty=Array(3);const cases=[['deletedY',deleteY],['Array3',empty]];for(const [name,v]of cases){assert.equal(oldVec(v),true);assert.equal(newVec(v),false);}assert.equal(newVec([0,0,0]),true);console.log(JSON.stringify({source_predicate_regression_only:true,full_gate_executed:false,cases:cases.map(([name,v])=>({name,old_wrongly_accepts:oldVec(v),new_rejects:!newVec(v)}))}));

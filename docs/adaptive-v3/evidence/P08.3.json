@@ -1,0 +1,201 @@
+{
+  "task_id": "P08.3",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T09:14:58.427342+00:00",
+  "scope": "Editable device source stage only; no final GLB or people/backend changes.",
+  "artifacts": {
+    "builder": {
+      "path": "tools/blender/v3/build_packing_station.py",
+      "bytes": 13352,
+      "sha256": "ae5b38d120c39a00b9d793e3c2511f389aa135b88a44cfbdce8c5707c0ccbb76"
+    },
+    "source": {
+      "path": "assets/v3/blender/packing-station.blend",
+      "bytes": 130117,
+      "sha256": "220812c4f7adb1811d043a8b12f7696b48b6a4f521551e1fd79842ecbb5b7502"
+    },
+    "stage_snapshot": {
+      "path": "assets/v3/iterations/packing-station/P08.3/packing-station.blend",
+      "bytes": 130117,
+      "sha256": "220812c4f7adb1811d043a8b12f7696b48b6a4f521551e1fd79842ecbb5b7502"
+    },
+    "source_metrics": {
+      "path": "assets/v3/iterations/packing-station/P08.3/source-metrics.json",
+      "bytes": 25927,
+      "sha256": "77ab4251279589fc0dcf2155136938b5fd0fae35d02cd1cd7433818af642cd05"
+    },
+    "geometry_checks": {
+      "path": "assets/v3/iterations/packing-station/P08.3/geometry-checks.json",
+      "bytes": 90371,
+      "sha256": "933e75654e0355ddbbaba756efd243fa3541fc0b93dd290e63fd37b6a1aa7752"
+    },
+    "views": [
+      {
+        "path": "assets/v3/iterations/packing-station/P08.3/views/front.png",
+        "bytes": 745682,
+        "sha256": "4a9c976ded10dbccc0f68e218c4ea97e0c5527a76d8a6439623a2fdf9fcb2930",
+        "view": "front",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      },
+      {
+        "path": "assets/v3/iterations/packing-station/P08.3/views/side.png",
+        "bytes": 775519,
+        "sha256": "cb758d26ff567dea5cf9a6cf2c0ee0d266667cf0171500db1d60282ef6929dcb",
+        "view": "side",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      },
+      {
+        "path": "assets/v3/iterations/packing-station/P08.3/views/rear.png",
+        "bytes": 734088,
+        "sha256": "8af83b241f0be0ee76bff3f7da53caab577f7462cc6183be6bcd47b44a261d3f",
+        "view": "rear",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      },
+      {
+        "path": "assets/v3/iterations/packing-station/P08.3/views/three-quarter.png",
+        "bytes": 964295,
+        "sha256": "1c2639ee4d0bd5cbb2a2fddca20b30f797058fe015a3c8c7bdf2c346e8a86c79",
+        "view": "three-quarter",
+        "dimensions_px": [
+          900,
+          900
+        ],
+        "actually_opened": true,
+        "full_projected_fit": true
+      }
+    ],
+    "P08.2_snapshot_preserved": {
+      "path": "assets/v3/iterations/packing-station/P08.2/packing-station.blend",
+      "bytes": 106100,
+      "sha256": "046dae94b719a0aef1071b36b48ee950ee4c0d272fa15518b36407bdc8d6d95f"
+    },
+    "first_device_checkpoint": "assets/v3/iterations/packing-station/P08.3/initial"
+  },
+  "summary": {
+    "mesh_parts": 49,
+    "triangles": 2496,
+    "material_count": 6,
+    "material_names": [
+      "P08 | charcoal",
+      "P08 | offwhite",
+      "P08 | petrol",
+      "P08 | recessed display",
+      "P08 | scanner lens",
+      "P08 | tan"
+    ],
+    "actual_bounds_runtime": {
+      "min": [
+        -0.8999999761581421,
+        0.0,
+        -0.44999998807907104
+      ],
+      "max": [
+        0.8999999761581421,
+        1.399999976158142,
+        0.44999998807907104
+      ]
+    },
+    "actual_dimensions_xyz_m": [
+      1.7999999523162842,
+      1.399999976158142,
+      0.8999999761581421
+    ],
+    "checks": 629,
+    "failures": 0,
+    "closed_positive_volume_meshes": 49,
+    "tape_Euler_characteristic": 0,
+    "tape_clear_axial_rays": 61,
+    "central_channel_rays": 357,
+    "unchanged_P08.2_frame_mesh_signatures": 17,
+    "device_guides": 5,
+    "measured_feature_depths_m": {
+      "screen_recess_m": 0.017000019550323486,
+      "scanner_recess_m": 0.009000003337860107,
+      "printer_mouth_recess_m": 0.024999946355819702
+    },
+    "GLB_exported": false,
+    "worker_geometry_or_pose_modified": false
+  },
+  "actual_view_review": {
+    "reference": "assets/references/v3/r04-packing-line.png",
+    "reference_previously_actually_opened_for_child": true,
+    "all4_final900PNG_actually_reopened": true,
+    "front": "Screen bezel, recessed UI blocks and solid scanner head are readable; printer mouth shows supported paper. Frame and central1m opening remain clear. Scanner projects in front of the screen bottom in axis-front view; both are separate/readable in quarter, with no physical collision.",
+    "side": "Twelve-sided tape annulus visibly has a through-hole; base/cutter support it without a hub. Monitor thickness/stem and device support chain visible.",
+    "rear": "Closed device backs, supported screen stem/base and grounded frame remain complete; no rear floating rail/device.",
+    "three_quarter": "Devices have thick coherent matte boxes, actual recessed screen/lens/mouth, paper path and open annular roll; tan/petrol/charcoal language matches R04.",
+    "unresolved_visible_device_defects": []
+  },
+  "geometry_check_details": {
+    "methods": "Read-only evaluated mesh/BVH; all49 closed manifold/positivevolume and inside approved host envelopes; grounded support contact chain; actual recess depths; five exact guide empties; P08.2 frame vertex/triangle geometry signatures compared after loading old snapshot.",
+    "tape": "Actual closed genus1 annular tube with open axial hole, no cap/hub.61 whole-scene rays within radius.035 pass through tube; annular-material ray hits actual ring. Designed guaranteed inner clear radius.038.",
+    "frame": "357 whole-scene vertical rays clear central opening through worktop/shelf bands; approved P08.2 exact geometry unchanged."
+  },
+  "corrections": [
+    {
+      "issue": "First device support review found1mm airgap behind embossed screen blocks.",
+      "fix": "Embedded their back2mm into display volume; visible front/bbox unchanged. Rebuilt and refreshed4views; actual support graph now connects all49 parts to grounded feet.",
+      "before_checkpoint": "assets/v3/iterations/packing-station/P08.3/initial"
+    },
+    {
+      "issue": "Avoid duplicate equivalent palette materials when adding devices to frame.",
+      "fix": "Reused existing frame palette materials; six actual material definitions."
+    }
+  ],
+  "commands": {
+    "build": "blender --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_packing_station",
+    "render": "blender --background --factory-startup assets/v3/blender/packing-station.blend --threads 2 --python tools/blender/v3/render_asset.py -- packing-station --size900 --out <absolute P08.3/views>",
+    "inspection": "blender --background --factory-startup assets/v3/blender/packing-station.blend --threads 2 --python assets/v3/iterations/packing-station/P08.3/inspect_source.py",
+    "all_exit_codes": 0,
+    "final_render_wall_s": 7.503,
+    "GPU_queue_released": true
+  },
+  "inputs": [
+    {
+      "path": "assets/v3/specs/packing-station.dimensions.json",
+      "bytes": 19534,
+      "sha256": "6c26e8476fadec3698a719cea0467320b06b8560afae9635eb8c091d2166ac51"
+    },
+    {
+      "path": "docs/v3/contract-proposals/conveyor-v3.json",
+      "bytes": 94202,
+      "sha256": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612"
+    },
+    {
+      "path": "assets/references/v3/r04-packing-line.png",
+      "bytes": 1767786,
+      "sha256": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a"
+    },
+    {
+      "path": "tools/blender/v3/v3_common.py",
+      "bytes": 10390,
+      "sha256": "994b7f080ee1f8c1126b3d087cff6d7621ed4db7e1caca5b963a14d773e68e0c"
+    },
+    {
+      "path": "tools/blender/v3/render_asset.py",
+      "bytes": 7578,
+      "sha256": "b8a5ea985b1bbc30a9d47c4bb234a061e8d388d88eb96dafe1a15bae8789c62e"
+    }
+  ],
+  "limits": [
+    "P08.3 is not final asset/runtime/material-export acceptance; GLB remains P08.6.",
+    "Device guide anchors are not actual hand/torso/foot or typed-payload proof. P08.4/P04/P01 perform measured interfaces.",
+    "No cargo/workers/operation timestamps/backend/helper/central state changes."
+  ],
+  "next_gate": "Root independently inspect source/views/evidence and decide PASS; do not begin P08.4 automatically."
+}

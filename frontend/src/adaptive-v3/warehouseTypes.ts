@@ -1,0 +1,15 @@
+import type {WorkerRegistry} from './workerRegistry';
+import type {VisualWorkerProfiles} from './workerProfiles';
+export type XYZ=[number,number,number];
+export type V3Record=Record<string,unknown>;
+export type V3Bounds={min:XYZ;max:XYZ};
+export type WarehouseModule={module_id:string;family:string;world_pos:XYZ;yaw_rad:number;zone_index:number;outer_bounds_world:V3Bounds};
+export type WarehouseSlot={slot_id:string;module_index:number;usable_dimensions_xyz_m:XYZ;usable_bounds_world:V3Bounds;bin_anchor:XYZ;reserve_only:boolean;retrieval_blocked:boolean;worker_node_index:number;cart_stop_node_index:number;vehicle_node_index:number|null;service_ref:['walk'|'vehicle',number];max_payload_kg:number;max_handling_units:number};
+export type WarehouseNode={node_id:string;world_pos:XYZ;yaw_rad:number|null;attributes:V3Record};
+export type WarehouseArc={arc_id:string;from_node_index:number;to_node_index:number;length_m:number;fields:V3Record};
+export type WarehouseGraph={nodes:WarehouseNode[];arcs:WarehouseArc[]};
+export type WarehouseLayout={layout_content_hash:string;data:V3Record;modules:WarehouseModule[];slots:WarehouseSlot[];walk:WarehouseGraph;vehicle:WarehouseGraph};
+export type InitialCargo={handling_unit_id:string;lot_id:string;sku_id:string;archetype_id:string;quantity_units:number;dimensions_xyz_m:XYZ;gross_mass_kg:number;model_scale_factor:1;orientation_id:'upright_xyz';location:{kind:'storage_slot';slot_id:string;module_id:string;placement:{centre_local_xyz_m:XYZ;bottom_y_m:number;top_y_m:number;support_gap_m:number}}};
+export type WarehouseRequest={request_id:string;kind:'receipt_request'|'order_request';direction:'inbound'|'outbound';requested_at_s:number;deadline_at_s:number;port_id:string;sku_id:string;archetype_id:string;handling_unit_id:string;lot_id:string;quantity_handling_units:1;quantity_units:number;initial_location_kind:'upstream'|'storage_slot';included_in_initial_stock:boolean;source_kind:'visual_fixture';engine_operation:false};
+export type WarehouseFixture={schema_id:string;fixture_id:string;source_kind:'visual_fixture';engine_operation:false;operational_admission:false;clock:{kind:'absolute_visual_seconds';duration_s:1800};layout_ref:{path:string;url:string;sha256:string;layout_content_hash:string};registry_ref:{path:string;sha256:string};profiles_ref:{path:string;sha256:string};input_hashes:Record<string,string>;inputs:{initial_stock:InitialCargo[];requests:WarehouseRequest[];workers:V3Record[];vehicles:V3Record[];ports:V3Record[];archetypes:V3Record[];skus:V3Record[]};summary:V3Record};
+export type WarehouseBundle={source_kind:'visual_fixture';engine_operation:false;fixture:WarehouseFixture;layout:WarehouseLayout;registry:WorkerRegistry;profiles:VisualWorkerProfiles};

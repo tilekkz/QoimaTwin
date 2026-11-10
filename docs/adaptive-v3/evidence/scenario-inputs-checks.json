@@ -1,0 +1,438 @@
+{
+  "passed": true,
+  "reviewer": "scenario_inputs",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "execution_ready": false,
+  "scenario_inputs_verified": [
+    {
+      "task_id": "W09",
+      "scenario_id": "v3:scenario:N0_NORMAL:001",
+      "initial_HUs": 530,
+      "SKUs": 200,
+      "quantity_units": 12256,
+      "gross_mass_kg": 9403.85,
+      "workers": 24,
+      "vehicles": 2,
+      "configured_ports": 6,
+      "requests": 16,
+      "upstream_HUs": 8,
+      "outbound_existing_HUs": 8,
+      "declared_port_changes": 0,
+      "port_counts": {
+        "inbound": {
+          "IN_E_PARCEL": 1,
+          "IN_N_STANDARD": 2,
+          "IN_W_BULK": 5
+        },
+        "outbound": {
+          "OUT_E_B2B": 4,
+          "OUT_S_EXPRESS": 1,
+          "OUT_W_RETAIL": 3
+        }
+      }
+    },
+    {
+      "task_id": "W10",
+      "scenario_id": "v3:scenario:N1_OUTBOUND_SHIFT:001",
+      "initial_HUs": 530,
+      "SKUs": 200,
+      "quantity_units": 12256,
+      "gross_mass_kg": 9403.85,
+      "workers": 24,
+      "vehicles": 2,
+      "configured_ports": 6,
+      "requests": 16,
+      "upstream_HUs": 8,
+      "outbound_existing_HUs": 8,
+      "declared_port_changes": 4,
+      "port_counts": {
+        "inbound": {
+          "IN_E_PARCEL": 2,
+          "IN_N_STANDARD": 1,
+          "IN_W_BULK": 5
+        },
+        "outbound": {
+          "OUT_E_B2B": 6,
+          "OUT_S_EXPRESS": 2
+        }
+      }
+    }
+  ],
+  "paired_inputs_identical": true,
+  "normal_requests_identical_to_W01": true,
+  "shift_preserves_all_non_port_request_fields": true,
+  "initial_530HUs_and_24workers_preserved": true,
+  "incoming8HUs_excluded_from_initial_stock": true,
+  "no_C11_period_to_seconds_conversion": true,
+  "no_actions_completions_or_metrics_generated": true,
+  "negatives": [
+    {
+      "case": "actual_engine_label",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "invented_engine_operation",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "invented_execution_ready",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "invented_action",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "FABRICATED_EXECUTION",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "invented_completion",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "FABRICATED_EXECUTION",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "invented_throughput",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "UNDECLARED_SCENARIO_FIELD",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "extra_worker",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "WORKER_INPUT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_worker_role",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "WORKER_INPUT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "wrong_vehicle_pair",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "VEHICLE_INPUT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "port_buffer_increased",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PORT_CONFIGURATION_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "port_service_rule_changed",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PORT_CONFIGURATION_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "port_dimensions_widened",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PORT_CONFIGURATION_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "duplicate_initial_HU",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "STOCK_IDENTITY_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_stock_quantity",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "STOCK_CONTENT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_HU_mass",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "CARGO_DIMENSION_MASS_SCALE_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_HU_dimensions",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "CARGO_DIMENSION_MASS_SCALE_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "shrunk_HU_scale",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "CARGO_DIMENSION_MASS_SCALE_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "unpriced_initial_relocation",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "INITIAL_STOCK_PLACEMENT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "unknown_port",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "UNKNOWN_PORT",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "wrong_port_direction",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PORT_DIRECTION_MISMATCH",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "heavy_at_small_port",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PORT_CARGO_FORBIDDEN",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "long_at_express_gate",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PORT_CARGO_FORBIDDEN",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "missing_request",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "REQUEST_IDENTITY_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "extra_request",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "REQUEST_IDENTITY_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "duplicate_request_ID",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "REQUEST_IDENTITY_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "extra_HU_per_request",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "REQUEST_QUANTITY_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_request_units",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "REQUEST_QUANTITY_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "request_scale_override",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "REQUEST_FIELDS_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "deadline_before_release",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "REQUEST_TIME_INVALID",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "nonfinite_request_time",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "REQUEST_TIME_INVALID",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_release_time",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "FROZEN_REQUEST_FIELD_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "incoming_counted_as_stock",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "UPSTREAM_STOCK_CONFUSION",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "incoming_HU_collides_with_stock",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "UPSTREAM_HU_COLLISION",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "outbound_HU_missing",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "OUTBOUND_STOCK_MISSING",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "normal_forced_port_shift",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "PREREGISTERED_PORT_ASSIGNMENT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "shift_undeclared_but_compatible_port",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PREREGISTERED_PORT_ASSIGNMENT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "changed_clock_horizon",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "CLOCK_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "staffing_mixed_with_slotting",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PAIRED_NONPLACEMENT_DIFFERENCE",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "port_changes_inside_pair",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PAIRED_NONPLACEMENT_DIFFERENCE",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "force_fake_improvement",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "FABRICATED_ADAPTATION_DECISION",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "invented_noop_result",
+      "task_id": "W09",
+      "rejected": true,
+      "reason": "FABRICATED_ADAPTATION_DECISION",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "hidden_service_override",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "PAIRED_NONPLACEMENT_DIFFERENCE",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "different_adaptive_start_stock",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "INITIAL_STOCK_PLACEMENT_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "removed_resource_prerequisites",
+      "task_id": "W10",
+      "rejected": true,
+      "reason": "EXECUTION_PREREQUISITES_CHANGED",
+      "generic_hashes_recomputed": true
+    },
+    {
+      "case": "adaptive_different_input_file",
+      "task_id": "pair",
+      "rejected": true,
+      "reason": "PAIRED_INPUTS_DIFFER"
+    },
+    {
+      "case": "adaptive_different_input_hash",
+      "task_id": "pair",
+      "rejected": true,
+      "reason": "PAIRED_INPUTS_DIFFER"
+    },
+    {
+      "case": "adaptive_request_override",
+      "task_id": "pair",
+      "rejected": true,
+      "reason": "PAIRED_RUN_OVERRIDE"
+    },
+    {
+      "case": "adaptive_staff_override",
+      "task_id": "pair",
+      "rejected": true,
+      "reason": "PAIRED_RUN_OVERRIDE"
+    },
+    {
+      "case": "mixed_plan_difference_allowed",
+      "task_id": "pair",
+      "rejected": true,
+      "reason": "PAIRED_NONPLACEMENT_DIFFERENCE"
+    },
+    {
+      "case": "manifest_invented_metrics",
+      "task_id": "pair",
+      "rejected": true,
+      "reason": "UNDECLARED_MANIFEST_FIELD"
+    }
+  ],
+  "input_hashes": {
+    "docs/adaptive-v3/fixtures/scenarios/W09-normal-input-v3.json": "8bfd657665c614e0ac0f1db00ecf83191eb70a073af05c89fe5cc3d7623ae88d",
+    "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5",
+    "docs/adaptive-v3/fixtures/scenarios/scenario-inputs-manifest-v3.json": "ecfef20d4791a75511a1bcb77b6505982b4e9879b90e1d3a2ca61bfec0d267ac",
+    "docs/adaptive-v3/fixtures/warehouse-request-stream-v3.json": "149462c7c3eb29c261a9ee309732fd79d018bb953e1886b2b3603529ed1bbb15",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/baseline-input-v3.json": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/handoff/manifest.json": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "frontend/public/data/v3/worker-profiles-v3.json": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+    "frontend/public/data/v3/worker-registry-v3.json": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+    "tools/visual/v3/build_warehouse_fixture.py": "883b53517e2f6c19cc823e37e799fb39d4d919f079bc7034b55e05ff5b63b6af",
+    "tools/visual/v3/build_warehouse_scenario_inputs.py": "5cfcf0a1b8bf1b94c043f907a6aacb9d97b914915f11c7d7805f4c365a96ec84",
+    "tools/visual/v3/verify_warehouse_scenario_inputs.py": "f5eaa6ec4a83d867d144768e6aaaa3c68eb48df71df8200373f3f6deebea1639"
+  },
+  "scope": "Preregistered input-only preparation for W09/W10. No runtime registration, admitted workflow, no-op decision, comparison outcome or parent task acceptance."
+}

@@ -1,0 +1,2589 @@
+{
+  "schema_id": "qoima.connected-heavy-inbound.v1",
+  "fixture_id": "v3:visual:N2:connected-pallet455:001",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "source_hashes": {
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundClock.ts": "551a6bff62b23325bbe8071afe4aff8690b024afc6e628ea3502d5c5fab7134b",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "docs/adaptive-v3/fixtures/scenarios/heavy-inbound/current-input-v3.json": "0f5f422bd09ade5064159183729e877ba12d5687a78341ec716b1c67410d7ee5",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba"
+  },
+  "business_input_sha256": "807e5f8c3c18ef69de7b5865f01dad2e0ba1dcc09782214dfc67964f8670b55c",
+  "receipt": {
+    "archetype_id": "PALLET_LOAD",
+    "dimensions_xyz_m": [
+      1.2,
+      1.35,
+      1
+    ],
+    "gross_mass_kg": 455,
+    "handling_unit_id": "v3:HU:W11:external:01",
+    "lot_id": "v3:lot:W11:external:01",
+    "model_scale_factor": 1,
+    "quantity_units": 24,
+    "request_id": "v3:request:W11:external:01",
+    "sku_id": "DEMO_172"
+  },
+  "actor_id": "F01",
+  "vehicle_id": "FL01",
+  "stage_cell_id": "v3:n2:staging:IN_W_BULK:01",
+  "destination_slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+  "source_pose": {
+    "position": [
+      16,
+      0.18,
+      14
+    ],
+    "yaw_rad": 3.141592653589793
+  },
+  "target_pose": {
+    "position": [
+      118.39999999999999,
+      0.18,
+      17.5
+    ],
+    "yaw_rad": 1.5707963267948966
+  },
+  "cargo_relative": {
+    "position": [
+      0,
+      0,
+      1
+    ],
+    "yaw_rad": 3.141592653589793
+  },
+  "staging": [
+    {
+      "support_id": "v3:visual-heavy-inbound:support:IN_W_BULK:01",
+      "position": [
+        16,
+        0,
+        14.11
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "support_id": "v3:n2:support:IN_W_BULK:02",
+      "position": [
+        22,
+        0,
+        13.95
+      ],
+      "yaw_rad": 0
+    }
+  ],
+  "phases": [
+    {
+      "phase_id": "upstream_boundary",
+      "start_s": 0,
+      "end_s": 2,
+      "kind": "receipt",
+      "from": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 0,
+          "front_R": 0,
+          "rear_L": 0,
+          "rear_R": 0
+        }
+      },
+      "to": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 0,
+          "front_R": 0,
+          "rear_L": 0,
+          "rear_R": 0
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "upstream",
+        "id": "IN_W_BULK"
+      },
+      "attached": false,
+      "cargo_visible": false,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:steer:0",
+      "start_s": 2,
+      "end_s": 5.141592653589793,
+      "kind": "hold",
+      "from": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 0,
+          "front_R": 0,
+          "rear_L": 0,
+          "rear_R": 0
+        }
+      },
+      "to": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 0,
+          "front_R": 0,
+          "rear_L": 0,
+          "rear_R": 0
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": -1.0471975511965976,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:drive:0",
+      "start_s": 5.141592653589793,
+      "end_s": 9.391460422590793,
+      "kind": "route",
+      "from": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 0,
+          "front_R": 0,
+          "rear_L": 0,
+          "rear_R": 0
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140555,
+          "front_R": 2.3996028019524633,
+          "rear_L": 12.685336550798494,
+          "rear_R": 10.284193390939622
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:empty_arrival:segment:00",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.416622589667,
+          "fields": {
+            "geometry": {
+              "kind": "rear_steer_arc",
+              "icr_world_xz_m": [
+                6.4,
+                17.191709623134525
+              ],
+              "icr_vehicle_local_x_m": 0.8082903768654762,
+              "front_axle_radius_m": 0.8082903768654762,
+              "start_yaw_rad": 1.5707963267948966,
+              "end_yaw_rad": 3.141592653589793,
+              "rear_virtual_steer_deg": -59.99999999999999
+            },
+            "motion_direction": 1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "empty_stage_approach:steer:1",
+      "start_s": 9.391460422590793,
+      "end_s": 12.533053076180586,
+      "kind": "hold",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140555,
+          "front_R": 2.3996028019524633,
+          "rear_L": 12.685336550798494,
+          "rear_R": 10.284193390939622
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140555,
+          "front_R": 2.3996028019524633,
+          "rear_L": 12.685336550798494,
+          "rear_R": 10.284193390939622
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": -1.0471975511965976,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:drive:1",
+      "start_s": 12.533053076180586,
+      "end_s": 20.512327134016896,
+      "kind": "route",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140555,
+          "front_R": 2.3996028019524633,
+          "rear_L": 12.685336550798494,
+          "rear_R": 10.284193390939622
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370718,
+          "front_R": 23.677666956182627,
+          "rear_L": 41.056088756438704,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:empty_arrival:segment:01",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 6.383419246269048,
+          "fields": {
+            "geometry": {
+              "kind": "line",
+              "front_axle_start_xz_m": [
+                7.2082903768654765,
+                17.191709623134525
+              ],
+              "front_axle_end_xz_m": [
+                7.2082903768654765,
+                10.808290376865477
+              ],
+              "start_yaw_rad": 3.141592653589793,
+              "end_yaw_rad": 3.141592653589793,
+              "rear_virtual_steer_deg": 0
+            },
+            "motion_direction": 1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "empty_stage_approach:steer:2",
+      "start_s": 20.512327134016896,
+      "end_s": 23.65391978760669,
+      "kind": "hold",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370718,
+          "front_R": 23.677666956182627,
+          "rear_L": 41.056088756438704,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370718,
+          "front_R": 23.677666956182627,
+          "rear_L": 41.056088756438704,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 1.0471975511965976,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:drive:2",
+      "start_s": 23.65391978760669,
+      "end_s": 27.90378755660769,
+      "kind": "route",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370718,
+          "front_R": 23.677666956182627,
+          "rear_L": 41.056088756438704,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "to": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732318,
+          "front_R": 29.74246118732318,
+          "rear_L": 51.340282147378325,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:empty_arrival:segment:02",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.416622589667,
+          "fields": {
+            "geometry": {
+              "kind": "rear_steer_arc",
+              "icr_world_xz_m": [
+                8.016580753730953,
+                10.808290376865477
+              ],
+              "icr_vehicle_local_x_m": -0.8082903768654762,
+              "front_axle_radius_m": 0.8082903768654762,
+              "start_yaw_rad": 3.141592653589793,
+              "end_yaw_rad": 1.5707963267948966,
+              "rear_virtual_steer_deg": 59.99999999999999
+            },
+            "motion_direction": 1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "empty_stage_approach:steer:3",
+      "start_s": 27.90378755660769,
+      "end_s": 31.045380210197482,
+      "kind": "hold",
+      "from": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732318,
+          "front_R": 29.74246118732318,
+          "rear_L": 51.340282147378325,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "to": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732318,
+          "front_R": 29.74246118732318,
+          "rear_L": 51.340282147378325,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 1.0471975511965976,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:drive:3",
+      "start_s": 31.045380210197482,
+      "end_s": 40.014291296951946,
+      "kind": "route",
+      "from": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732318,
+          "front_R": 29.74246118732318,
+          "rear_L": 51.340282147378325,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "to": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.65955741866841,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:empty_arrival:segment:03",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 7.17512886940357,
+          "fields": {
+            "geometry": {
+              "kind": "line",
+              "front_axle_start_xz_m": [
+                8.016580753730953,
+                10
+              ],
+              "front_axle_end_xz_m": [
+                15.191709623134523,
+                10
+              ],
+              "start_yaw_rad": 1.5707963267948966,
+              "end_yaw_rad": 1.5707963267948966,
+              "rear_virtual_steer_deg": 0
+            },
+            "motion_direction": 1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "empty_stage_approach:steer:4",
+      "start_s": 40.014291296951946,
+      "end_s": 43.155883950541735,
+      "kind": "hold",
+      "from": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.65955741866841,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "to": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.65955741866841,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 1.0471975511965976,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:drive:4",
+      "start_s": 43.155883950541735,
+      "end_s": 47.405751719542735,
+      "kind": "route",
+      "from": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.65955741866841,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.059160220620875,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:empty_arrival:segment:04",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.416622589667,
+          "fields": {
+            "geometry": {
+              "kind": "rear_steer_arc",
+              "icr_world_xz_m": [
+                15.191709623134523,
+                10.808290376865477
+              ],
+              "icr_vehicle_local_x_m": -0.8082903768654762,
+              "front_axle_radius_m": 0.8082903768654762,
+              "start_yaw_rad": 1.5707963267948966,
+              "end_yaw_rad": 0,
+              "rear_virtual_steer_deg": 59.99999999999999
+            },
+            "motion_direction": 1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "empty_stage_approach:steer:5",
+      "start_s": 47.405751719542735,
+      "end_s": 50.54734437313253,
+      "kind": "hold",
+      "from": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.059160220620875,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.059160220620875,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 1.0471975511965976,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "empty_stage_approach:drive:5",
+      "start_s": 50.54734437313253,
+      "end_s": 51.974481402050685,
+      "kind": "route",
+      "from": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.059160220620875,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:empty_arrival:segment:05",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.1417096231345223,
+          "fields": {
+            "geometry": {
+              "kind": "line",
+              "front_axle_start_xz_m": [
+                16,
+                10.808290376865477
+              ],
+              "front_axle_end_xz_m": [
+                16,
+                11.95
+              ],
+              "start_yaw_rad": 0,
+              "end_yaw_rad": 0,
+              "rear_virtual_steer_deg": 0
+            },
+            "motion_direction": 1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "empty_stage_approach:straighten",
+      "start_s": 51.974481402050685,
+      "end_s": 52.224481402050685,
+      "kind": "hold",
+      "from": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "stage_extend_high",
+      "start_s": 52.224481402050685,
+      "end_s": 54.224481402050685,
+      "kind": "handling",
+      "from": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "stage_lower_extended",
+      "start_s": 54.224481402050685,
+      "end_s": 56.224481402050685,
+      "kind": "handling",
+      "from": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "stage_controlled_insert",
+      "start_s": 56.224481402050685,
+      "end_s": 60.224481402050685,
+      "kind": "handling",
+      "from": {
+        "position": [
+          16,
+          0,
+          11.549999999999999
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 59.864858964402615,
+          "front_R": 63.530050393590706,
+          "rear_L": 98.58820217182058,
+          "rear_R": 100.98934533167946
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "stage_lift_attached",
+      "start_s": 60.224481402050685,
+      "end_s": 62.224481402050685,
+      "kind": "handling",
+      "from": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "stage_retract_loaded",
+      "start_s": 62.224481402050685,
+      "end_s": 64.22448140205069,
+      "kind": "handling",
+      "from": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "loaded_stage_departure:steer:0",
+      "start_s": 64.22448140205069,
+      "end_s": 64.47448140205069,
+      "kind": "hold",
+      "from": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_stage_departure:drive:0",
+      "start_s": 64.47448140205069,
+      "end_s": 67.21411843096884,
+      "kind": "route",
+      "from": {
+        "position": [
+          16,
+          0,
+          12.6
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 63.364858964402615,
+          "front_R": 67.03005039359071,
+          "rear_L": 103.25486883848725,
+          "rear_R": 105.65601199834613
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.05916022062087,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:loaded_departure:segment:00",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 2.191709623134523,
+          "fields": {
+            "geometry": {
+              "kind": "line",
+              "front_axle_start_xz_m": [
+                16,
+                13
+              ],
+              "front_axle_end_xz_m": [
+                16,
+                10.808290376865477
+              ],
+              "start_yaw_rad": 0,
+              "end_yaw_rad": 0,
+              "rear_virtual_steer_deg": 0
+            },
+            "motion_direction": -1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "loaded_stage_departure:steer:1",
+      "start_s": 67.21411843096884,
+      "end_s": 70.35571108455864,
+      "kind": "hold",
+      "from": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.05916022062087,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "to": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.05916022062087,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 1.0471975511965976,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_stage_departure:drive:1",
+      "start_s": 70.35571108455864,
+      "end_s": 74.60557885355963,
+      "kind": "route",
+      "from": {
+        "position": [
+          16,
+          0,
+          10.408290376865477
+        ],
+        "yaw_rad": 0,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 56.05916022062087,
+          "front_R": 59.724351649808966,
+          "rear_L": 93.5139371801116,
+          "rear_R": 95.91508033997047
+        }
+      },
+      "to": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.659557418668406,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:loaded_departure:segment:01",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.416622589667,
+          "fields": {
+            "geometry": {
+              "kind": "rear_steer_arc",
+              "icr_world_xz_m": [
+                15.191709623134523,
+                10.808290376865477
+              ],
+              "icr_vehicle_local_x_m": -0.8082903768654762,
+              "front_axle_radius_m": 0.8082903768654762,
+              "start_yaw_rad": 0,
+              "end_yaw_rad": 1.5707963267948966,
+              "rear_virtual_steer_deg": 59.99999999999999
+            },
+            "motion_direction": -1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "loaded_stage_departure:steer:2",
+      "start_s": 74.60557885355963,
+      "end_s": 77.74717150714943,
+      "kind": "hold",
+      "from": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.659557418668406,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "to": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.659557418668406,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 1.0471975511965976,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_stage_departure:drive:2",
+      "start_s": 77.74717150714943,
+      "end_s": 86.71608259390389,
+      "kind": "route",
+      "from": {
+        "position": [
+          14.791709623134523,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 53.659557418668406,
+          "front_R": 53.65955741866841,
+          "rear_L": 83.22974378917198,
+          "rear_R": 83.22974378917198
+        }
+      },
+      "to": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732317,
+          "front_R": 29.742461187323176,
+          "rear_L": 51.34028214737833,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:loaded_departure:segment:02",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 7.17512886940357,
+          "fields": {
+            "geometry": {
+              "kind": "line",
+              "front_axle_start_xz_m": [
+                15.191709623134523,
+                10
+              ],
+              "front_axle_end_xz_m": [
+                8.016580753730953,
+                10
+              ],
+              "start_yaw_rad": 1.5707963267948966,
+              "end_yaw_rad": 1.5707963267948966,
+              "rear_virtual_steer_deg": 0
+            },
+            "motion_direction": -1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "loaded_stage_departure:steer:3",
+      "start_s": 86.71608259390389,
+      "end_s": 89.85767524749369,
+      "kind": "hold",
+      "from": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732317,
+          "front_R": 29.742461187323176,
+          "rear_L": 51.34028214737833,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "to": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732317,
+          "front_R": 29.742461187323176,
+          "rear_L": 51.34028214737833,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 1.0471975511965976,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_stage_departure:drive:3",
+      "start_s": 89.85767524749369,
+      "end_s": 94.10754301649469,
+      "kind": "route",
+      "from": {
+        "position": [
+          7.616580753730952,
+          0,
+          10
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 29.74246118732317,
+          "front_R": 29.742461187323176,
+          "rear_L": 51.34028214737833,
+          "rear_R": 51.34028214737833
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370704,
+          "front_R": 23.67766695618262,
+          "rear_L": 41.05608875643871,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:loaded_departure:segment:03",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.416622589667,
+          "fields": {
+            "geometry": {
+              "kind": "rear_steer_arc",
+              "icr_world_xz_m": [
+                8.016580753730953,
+                10.808290376865477
+              ],
+              "icr_vehicle_local_x_m": -0.8082903768654762,
+              "front_axle_radius_m": 0.8082903768654762,
+              "start_yaw_rad": 1.5707963267948966,
+              "end_yaw_rad": 3.141592653589793,
+              "rear_virtual_steer_deg": 59.99999999999999
+            },
+            "motion_direction": -1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "loaded_stage_departure:steer:4",
+      "start_s": 94.10754301649469,
+      "end_s": 97.24913567008448,
+      "kind": "hold",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370704,
+          "front_R": 23.67766695618262,
+          "rear_L": 41.05608875643871,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370704,
+          "front_R": 23.67766695618262,
+          "rear_L": 41.05608875643871,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 1.0471975511965976,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_stage_departure:drive:4",
+      "start_s": 97.24913567008448,
+      "end_s": 105.22840972792079,
+      "kind": "route",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          11.208290376865477
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 27.342858385370704,
+          "front_R": 23.67766695618262,
+          "rear_L": 41.05608875643871,
+          "rear_R": 38.654945596579836
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140542,
+          "front_R": 2.399602801952458,
+          "rear_L": 12.6853365507985,
+          "rear_R": 10.284193390939624
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:loaded_departure:segment:04",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 6.383419246269048,
+          "fields": {
+            "geometry": {
+              "kind": "line",
+              "front_axle_start_xz_m": [
+                7.2082903768654765,
+                10.808290376865477
+              ],
+              "front_axle_end_xz_m": [
+                7.2082903768654765,
+                17.191709623134525
+              ],
+              "start_yaw_rad": 3.141592653589793,
+              "end_yaw_rad": 3.141592653589793,
+              "rear_virtual_steer_deg": 0
+            },
+            "motion_direction": -1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "loaded_stage_departure:steer:5",
+      "start_s": 105.22840972792079,
+      "end_s": 108.37000238151059,
+      "kind": "hold",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140542,
+          "front_R": 2.399602801952458,
+          "rear_L": 12.6853365507985,
+          "rear_R": 10.284193390939624
+        }
+      },
+      "to": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140542,
+          "front_R": 2.399602801952458,
+          "rear_L": 12.6853365507985,
+          "rear_R": 10.284193390939624
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": -1.0471975511965976,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_stage_departure:drive:5",
+      "start_s": 108.37000238151059,
+      "end_s": 112.61987015051159,
+      "kind": "route",
+      "from": {
+        "position": [
+          7.2082903768654765,
+          0,
+          17.591709623134523
+        ],
+        "yaw_rad": 3.141592653589793,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 6.064794231140542,
+          "front_R": 2.399602801952458,
+          "rear_L": 12.6853365507985,
+          "rear_R": 10.284193390939624
+        }
+      },
+      "to": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": -1.2434497875801753e-14,
+          "front_R": -5.329070518200751e-15,
+          "rear_L": 5.329070518200751e-15,
+          "rear_R": 1.7763568394002505e-15
+        }
+      },
+      "path": {
+        "kind": "vehicle_arc",
+        "arc": {
+          "arc_id": "v3:n2:staging:IN_W_BULK:01:PALLET_LOAD:loaded_departure:segment:05",
+          "from_node_index": 0,
+          "to_node_index": 1,
+          "length_m": 1.416622589667,
+          "fields": {
+            "geometry": {
+              "kind": "rear_steer_arc",
+              "icr_world_xz_m": [
+                6.4,
+                17.191709623134525
+              ],
+              "icr_vehicle_local_x_m": 0.8082903768654762,
+              "front_axle_radius_m": 0.8082903768654762,
+              "start_yaw_rad": 3.141592653589793,
+              "end_yaw_rad": 1.5707963267948966,
+              "rear_virtual_steer_deg": -59.99999999999999
+            },
+            "motion_direction": -1
+          }
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "loaded_stage_departure:straighten",
+      "start_s": 112.61987015051159,
+      "end_s": 115.76146280410138,
+      "kind": "hold",
+      "from": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": -1.2434497875801753e-14,
+          "front_R": -5.329070518200751e-15,
+          "rear_L": 5.329070518200751e-15,
+          "rear_R": 1.7763568394002505e-15
+        }
+      },
+      "to": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": -1.2434497875801753e-14,
+          "front_R": -5.329070518200751e-15,
+          "rear_L": 5.329070518200751e-15,
+          "rear_R": 1.7763568394002505e-15
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": -1.0471975511965976,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "loaded_canonical_50arc_route",
+      "start_s": 115.76146280410138,
+      "end_s": 295.92815037220765,
+      "kind": "route",
+      "from": {
+        "position": [
+          6,
+          0,
+          18
+        ],
+        "yaw_rad": 1.5707963267948966,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": -1.2434497875801753e-14,
+          "front_R": -5.329070518200751e-15,
+          "rear_L": 5.329070518200751e-15,
+          "rear_R": 1.7763568394002505e-15
+        }
+      },
+      "to": {
+        "position": [
+          120.80000000000001,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.7062421122948,
+          "front_R": 517.3758592539186,
+          "rear_L": 720.4898785325627,
+          "rear_R": 715.6875922128448
+        }
+      },
+      "path": {
+        "kind": "source_route",
+        "route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:HEAVY_E:001:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0161",
+            "v3:vehicle:edge:0247:part:000",
+            "v3:vehicle:edge:0247:part:001",
+            "v3:vehicle:edge:0247:part:002",
+            "v3:vehicle:edge:0247:part:003",
+            "v3:vehicle:edge:0247:part:004",
+            "v3:vehicle:edge:0247:part:005",
+            "v3:vehicle:edge:0247:part:006",
+            "v3:vehicle:edge:0247:part:007",
+            "v3:vehicle:edge:0247:part:008",
+            "v3:vehicle:edge:0073",
+            "v3:vehicle:edge:0251:part:000",
+            "v3:vehicle:edge:0251:part:001",
+            "v3:vehicle:edge:0251:part:002",
+            "v3:vehicle:edge:0251:part:003",
+            "v3:vehicle:edge:0251:part:004",
+            "v3:vehicle:edge:0251:part:005",
+            "v3:vehicle:edge:0251:part:006",
+            "v3:vehicle:edge:0251:part:007",
+            "v3:vehicle:edge:0251:part:008",
+            "v3:vehicle:edge:0173",
+            "v3:vehicle:edge:0255:part:000",
+            "v3:vehicle:edge:0255:part:001",
+            "v3:vehicle:edge:0255:part:002",
+            "v3:vehicle:edge:0255:part:003",
+            "v3:vehicle:edge:0255:part:004",
+            "v3:vehicle:edge:0255:part:005",
+            "v3:vehicle:edge:0255:part:006",
+            "v3:vehicle:edge:0255:part:007",
+            "v3:vehicle:edge:0255:part:008",
+            "v3:vehicle:edge:0187",
+            "v3:vehicle:edge:0281",
+            "v3:module:HEAVY_E:001:B1:vehicle:segment:000:f",
+            "v3:module:HEAVY_E:001:B1:vehicle:segment:001:f",
+            "v3:module:HEAVY_E:001:B1:vehicle:segment:002:f"
+          ],
+          "length_m": 159.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "PALLET_LOAD",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        }
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "timing_basis": "source_route_geometry"
+    },
+    {
+      "phase_id": "target_explicit_50mm_graph_connector",
+      "start_s": 295.92815037220765,
+      "end_s": 296.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          120.80000000000001,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.7062421122948,
+          "front_R": 517.3758592539186,
+          "rear_L": 720.4898785325627,
+          "rear_R": 715.6875922128448
+        }
+      },
+      "to": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "target_approach_high_retracted",
+      "start_s": 296.92815037220765,
+      "end_s": 299.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "to": {
+        "position": [
+          119.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 528.0395754456282,
+          "front_R": 520.709192587252,
+          "rear_L": 724.9343229770071,
+          "rear_R": 720.1320366572893
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "target_extend_loaded",
+      "start_s": 299.92815037220765,
+      "end_s": 301.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          119.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 528.0395754456282,
+          "front_R": 520.709192587252,
+          "rear_L": 724.9343229770071,
+          "rear_R": 720.1320366572893
+        }
+      },
+      "to": {
+        "position": [
+          119.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 528.0395754456282,
+          "front_R": 520.709192587252,
+          "rear_L": 724.9343229770071,
+          "rear_R": 720.1320366572893
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "target_setdown",
+      "start_s": 301.92815037220765,
+      "end_s": 303.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          119.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 528.0395754456282,
+          "front_R": 520.709192587252,
+          "rear_L": 724.9343229770071,
+          "rear_R": 720.1320366572893
+        }
+      },
+      "to": {
+        "position": [
+          119.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 528.0395754456282,
+          "front_R": 520.709192587252,
+          "rear_L": 724.9343229770071,
+          "rear_R": 720.1320366572893
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "attached": true,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "target_controlled_withdraw",
+      "start_s": 303.92815037220765,
+      "end_s": 307.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          119.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 528.0395754456282,
+          "front_R": 520.709192587252,
+          "rear_L": 724.9343229770071,
+          "rear_R": 720.1320366572893
+        }
+      },
+      "to": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "storage_slot",
+        "id": "v3:slot:HEAVY_E:001:L1:B1"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "target_raise_empty",
+      "start_s": 307.92815037220765,
+      "end_s": 309.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.18,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "to": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "storage_slot",
+        "id": "v3:slot:HEAVY_E:001:L1:B1"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "target_retract_empty",
+      "start_s": 309.92815037220765,
+      "end_s": 311.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0.4,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "to": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "storage_slot",
+        "id": "v3:slot:HEAVY_E:001:L1:B1"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "source_action_keys"
+    },
+    {
+      "phase_id": "target_return_to_graph",
+      "start_s": 311.92815037220765,
+      "end_s": 312.92815037220765,
+      "kind": "handling",
+      "from": {
+        "position": [
+          120.85,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.5395754456282,
+          "front_R": 517.209192587252,
+          "rear_L": 720.2676563103405,
+          "rear_R": 715.4653699906227
+        }
+      },
+      "to": {
+        "position": [
+          120.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.7062421122948,
+          "front_R": 517.3758592539186,
+          "rear_L": 720.4898785325627,
+          "rear_R": 715.6875922128448
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "storage_slot",
+        "id": "v3:slot:HEAVY_E:001:L1:B1"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    },
+    {
+      "phase_id": "terminal_stored",
+      "start_s": 312.92815037220765,
+      "end_s": 314.92815037220765,
+      "kind": "hold",
+      "from": {
+        "position": [
+          120.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.7062421122948,
+          "front_R": 517.3758592539186,
+          "rear_L": 720.4898785325627,
+          "rear_R": 715.6875922128448
+        }
+      },
+      "to": {
+        "position": [
+          120.8,
+          0,
+          17.5
+        ],
+        "yaw_rad": 4.71238898038469,
+        "fork_top_m": 0.7,
+        "extension_m": 0,
+        "wheel_angles_rad": {
+          "front_L": 524.7062421122948,
+          "front_R": 517.3758592539186,
+          "rear_L": 720.4898785325627,
+          "rear_R": 715.6875922128448
+        }
+      },
+      "path": {
+        "kind": "line"
+      },
+      "cargo_location": {
+        "kind": "storage_slot",
+        "id": "v3:slot:HEAVY_E:001:L1:B1"
+      },
+      "attached": false,
+      "cargo_visible": true,
+      "steer_from_rad": 0,
+      "steer_to_rad": 0,
+      "timing_basis": "bounded_visual_assumption"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "N2:receipt:01",
+      "at_s": 2,
+      "kind": "receipt",
+      "handling_unit_id": "v3:HU:W11:external:01",
+      "from": {
+        "kind": "upstream",
+        "id": "IN_W_BULK"
+      },
+      "to": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      }
+    },
+    {
+      "event_id": "N2:attach:01",
+      "at_s": 60.224481402050685,
+      "kind": "attach",
+      "handling_unit_id": "v3:HU:W11:external:01",
+      "from": {
+        "kind": "staging_cell",
+        "id": "v3:n2:staging:IN_W_BULK:01"
+      },
+      "to": {
+        "kind": "vehicle",
+        "id": "FL01"
+      }
+    },
+    {
+      "event_id": "N2:setdown:01",
+      "at_s": 303.92815037220765,
+      "kind": "setdown",
+      "handling_unit_id": "v3:HU:W11:external:01",
+      "from": {
+        "kind": "vehicle",
+        "id": "FL01"
+      },
+      "to": {
+        "kind": "storage_slot",
+        "id": "v3:slot:HEAVY_E:001:L1:B1"
+      }
+    }
+  ],
+  "leases": [
+    {
+      "resource_id": "actor:F01",
+      "start_s": 0,
+      "end_s": 314.92815037220765,
+      "quantity": 1,
+      "capacity": 1,
+      "semantics": "planned_half_open"
+    },
+    {
+      "resource_id": "vehicle:FL01",
+      "start_s": 0,
+      "end_s": 314.92815037220765,
+      "quantity": 1,
+      "capacity": 1,
+      "semantics": "planned_half_open"
+    },
+    {
+      "resource_id": "HU:v3:HU:W11:external:01",
+      "start_s": 0,
+      "end_s": 314.92815037220765,
+      "quantity": 1,
+      "capacity": 1,
+      "semantics": "planned_half_open"
+    },
+    {
+      "resource_id": "slot:v3:slot:HEAVY_E:001:L1:B1",
+      "start_s": 0,
+      "end_s": 314.92815037220765,
+      "quantity": 1,
+      "capacity": 1,
+      "semantics": "planned_half_open"
+    },
+    {
+      "resource_id": "stage:v3:n2:staging:IN_W_BULK:01",
+      "start_s": 2,
+      "end_s": 60.224481402050685,
+      "quantity": 1,
+      "capacity": 1,
+      "semantics": "planned_half_open"
+    }
+  ],
+  "native_proof_scope": "Separate new PALLET relative-pi native contact/enclosure evidence; source graph and published connector profile geometry. No supplier unload, traffic scheduler, full native dynamic sweep or authoritative engine admission.",
+  "assumptions": [
+    "Receipt at2s is an explicit external-input boundary onto finite supported stage01; supplier→stage trajectory is outside this episode.",
+    "Original530 stock,24workers and2vehicles remain; same external01 identity455kg/24units throughout.",
+    "Published connector timings are bounded visual assumptions; canonical50arc route uses unchanged W03 preview timing/steering/wheels.",
+    "A/B share exactly the same business-input hash; only externalreceipt01 is visualized. The other11 source receipts are outside this selected episode and remain unexecuted."
+  ]
+}

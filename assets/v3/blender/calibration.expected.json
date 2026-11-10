@@ -1,0 +1,45 @@
+{
+  "asset_id": "calibration",
+  "namespace": "v3",
+  "layout_version": "qoima-144x72-v3",
+  "purpose": "Independent engineering fixture, not a final art asset",
+  "declared_before_geometry": true,
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "tolerance_m": 0.00001,
+  "bounds_runtime": {"min": [-0.05, 0.0, -0.05], "max": [1.0, 2.0, 3.0]},
+  "dimensions_m": [1.05, 2.0, 3.05],
+  "axis_lengths_m": {"X": 1.0, "Y": 2.0, "Z": 3.0},
+  "root_name": "calibration_root__V3",
+  "root_transform": "identity",
+  "source_mesh_count": 7,
+  "runtime_mesh_count": 6,
+  "parts": {
+    "axis_X_1m": {"centre": [0.5, 0.05, 0.0], "size": [1.0, 0.1, 0.1]},
+    "axis_Y_2m": {"centre": [0.0, 1.0, 0.0], "size": [0.1, 2.0, 0.1]},
+    "axis_Z_3m": {"centre": [0.0, 0.05, 1.5], "size": [0.1, 0.1, 3.0]},
+    "asymmetric_box": {"centre": [0.55, 0.4, 0.8], "size": [0.3, 0.8, 0.4], "bevel_m": 0.008},
+    "joint_A_part_1": {"parent": "joint__calibration_A", "local_centre": [0.1, 0.0, 0.0], "size": [0.1, 0.1, 0.1], "local_yaw_radians": 0.7853981633974483},
+    "joint_A_part_2": {"parent": "joint__calibration_A", "local_centre": [0.1, 0.15, 0.0], "size": [0.1, 0.1, 0.1]},
+    "joint_B_part": {"parent": "joint__calibration_B", "local_centre": [0.0, 0.1, 0.0], "size": [0.12, 0.2, 0.16]}
+  },
+  "anchors": {
+    "anchor_origin": [0.0, 0.0, 0.0],
+    "anchor_axis_X": [1.0, 0.0, 0.0],
+    "anchor_axis_Y": [0.0, 2.0, 0.0],
+    "anchor_axis_Z": [0.0, 0.0, 3.0],
+    "anchor_asymmetric": [0.35, 1.2, 2.4],
+    "anchor_signed": [-0.4, 0.75, -0.6],
+    "anchor_nested": [0.75, 0.7, 2.05]
+  },
+  "pivots": {
+    "joint__calibration_A": {"parent": "calibration_root__V3", "local_runtime": [0.45, 0.3, 1.7], "position_runtime": [0.45, 0.3, 1.7], "axis": "Y"},
+    "joint__calibration_B": {"parent": "joint__calibration_A", "local_runtime": [0.25, 0.1, 0.2], "position_runtime": [0.7, 0.4, 1.9], "axis": "X"}
+  },
+  "nested_anchor_parent": "joint__calibration_B",
+  "nested_anchor_local_runtime": [0.05, 0.3, 0.15],
+  "joint_A_batch_bounds_runtime": {"min": [0.4792893218813453, 0.25, 1.6292893218813453], "max": [0.6207106781186548, 0.5, 1.7707106781186548]},
+  "batching_expectation": "Root tan mesh, joint A tan meshes, and joint B tan mesh remain in separate batches; only the two meshes under A join. Both pivots and all anchors survive.",
+  "notes": "Axis bars have finite 0.1m thickness; mesh bounds intentionally extend 0.05m into negative X/Z. Anchors do not enlarge mesh bounds. A's first mesh has45-degree yaw; joining its unrotated sibling retains a rotated local frame, so the A-batch test catches inflated transformed-local-AABB estimates. Numeric values are declared independently before building."
+}

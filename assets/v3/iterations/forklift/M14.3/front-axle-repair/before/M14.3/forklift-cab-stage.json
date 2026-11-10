@@ -1,0 +1,637 @@
+{
+  "stage": "M14.3",
+  "status": "VERIFY",
+  "asset_id": "forklift-cab-stage",
+  "complete_forklift": false,
+  "root": "forklift_root",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "declared_bounds": {
+    "min": [
+      -0.6,
+      0,
+      -1.5
+    ],
+    "max": [
+      0.6,
+      2.1,
+      0.7
+    ]
+  },
+  "preserve_body_default_stage": true,
+  "accepted_body_source_sha256": "2c526a4fb281b49cce7c3e6e7411836a5968911965950708414975857aa670ff",
+  "accepted_body_glb_sha256": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9",
+  "cab_boxes": [
+    {
+      "name": "seat_pedestal",
+      "min": [
+        -0.2,
+        0.5,
+        -0.81
+      ],
+      "max": [
+        0.2,
+        0.77,
+        -0.64
+      ],
+      "material": "petrol",
+      "purpose": "seat joins floorboard and overlaps rear cushion10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_cushion_rear",
+      "min": [
+        -0.22,
+        0.76,
+        -0.81
+      ],
+      "max": [
+        0.22,
+        0.84,
+        -0.65
+      ],
+      "material": "rubber",
+      "purpose": "pelvis rear underside bears on top .84",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_cushion_nose",
+      "min": [
+        -0.22,
+        0.74,
+        -0.655
+      ],
+      "max": [
+        0.22,
+        0.775,
+        -0.53
+      ],
+      "material": "rubber",
+      "purpose": "lowered shortened nose clears folded thighs and vertical shins",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "seat_back",
+      "min": [
+        -0.215,
+        0.83,
+        -0.85
+      ],
+      "max": [
+        0.215,
+        1.4,
+        -0.76
+      ],
+      "material": "rubber",
+      "purpose": "back cushion with clothing clearance",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_rear_L",
+      "min": [
+        -0.5,
+        0.53,
+        -1.05
+      ],
+      "max": [
+        -0.45,
+        2.05,
+        -0.96
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_front_L",
+      "min": [
+        -0.5,
+        0.53,
+        -0.1
+      ],
+      "max": [
+        -0.45,
+        2.05,
+        -0.04
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_rear_R",
+      "min": [
+        0.45,
+        0.53,
+        -1.05
+      ],
+      "max": [
+        0.5,
+        2.05,
+        -0.96
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "guard_front_R",
+      "min": [
+        0.45,
+        0.53,
+        -0.1
+      ],
+      "max": [
+        0.5,
+        2.05,
+        -0.04
+      ],
+      "material": "steel",
+      "purpose": "grounded guard joins frame and overlaps roof10mm",
+      "parent": "forklift_root"
+    },
+    {
+      "name": "roof_guard",
+      "min": [
+        -0.5,
+        2.04,
+        -1.15
+      ],
+      "max": [
+        0.5,
+        2.1,
+        0.15
+      ],
+      "material": "steel",
+      "purpose": "open-sided head guard, 50mm actual helmet clearance",
+      "parent": "forklift_root"
+    }
+  ],
+  "guard_material_override": "petrol, root accepted M14.2-REACH current art direction",
+  "driver": {
+    "asset": "frontend/public/models/v3/worker-base.glb",
+    "worker_height_m": 1.7,
+    "worker_geometry_unchanged": true,
+    "worker_scale": [
+      1,
+      1,
+      1
+    ],
+    "seat_anchor_vehicle": [
+      0,
+      0.84,
+      -0.65
+    ],
+    "seat_contact_worker_bind": [
+      0,
+      0.55,
+      -0.035
+    ],
+    "worker_root_translation": [
+      0,
+      0.29,
+      -0.615
+    ],
+    "rotation_order": "native Three.js intrinsic Euler XYZ, radians",
+    "jointEulerXYZ": {
+      "joint__pelvis": [
+        0,
+        0,
+        0
+      ],
+      "joint__torso": [
+        0,
+        0,
+        0
+      ],
+      "joint__head": [
+        0,
+        0,
+        0
+      ],
+      "joint__upper_arm_L": [
+        -0.55,
+        0,
+        0.23
+      ],
+      "joint__forearm_L": [
+        -1,
+        0,
+        0
+      ],
+      "joint__hand_L": [
+        0,
+        0,
+        0
+      ],
+      "joint__thigh_L": [
+        -1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__shin_L": [
+        1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__foot_L": [
+        0,
+        0,
+        0
+      ],
+      "joint__upper_arm_R": [
+        -0.55,
+        0,
+        -0.23
+      ],
+      "joint__forearm_R": [
+        -1,
+        0,
+        0
+      ],
+      "joint__hand_R": [
+        0,
+        0,
+        0
+      ],
+      "joint__thigh_R": [
+        -1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__shin_R": [
+        1.5707963267948966,
+        0,
+        0
+      ],
+      "joint__foot_R": [
+        0,
+        0,
+        0
+      ]
+    },
+    "pelvisShift": [
+      0,
+      0,
+      0
+    ],
+    "expected_grips": {
+      "L": [
+        -0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "R": [
+        0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ]
+    },
+    "expected_soles": {
+      "L": [
+        -0.11499999463558197,
+        0.53000003375113,
+        -0.39499998070299625
+      ],
+      "R": [
+        0.11499999463558197,
+        0.53000003375113,
+        -0.39499998070299625
+      ]
+    },
+    "grip_bar_radius_m": 0.018,
+    "grip_bar_length_m": 0.08,
+    "grip_bar_axis": "actual posed hand local X; connected through rim to steering column",
+    "steering_column": {
+      "start": [
+        0,
+        0.53,
+        -0.02
+      ],
+      "end": [
+        0,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "radius_m": 0.035
+    },
+    "entry_clear_portal": {
+      "x_plane_abs_m": 0.45,
+      "y": [
+        0.53,
+        2.04
+      ],
+      "z": [
+        -0.96,
+        -0.1
+      ]
+    },
+    "entry_check_scope": "seated-pose lateral portal clearance only; walking/climbing sequence not yet accepted",
+    "required_pose_tolerance_m": 2e-05,
+    "minimum_helmet_roof_gap_m": 0.045
+  },
+  "frozen_actual_driver_witnesses": {
+    "bounds": {
+      "min": [
+        -0.3186166839187567,
+        0.5300000337511301,
+        -0.774999999217689
+      ],
+      "max": [
+        0.31861668398389065,
+        1.9899998390674591,
+        -0.16780037650191984
+      ]
+    },
+    "supports": [
+      {
+        "part": "boot_L",
+        "surface": [
+          -0.115,
+          0.5300000337511301,
+          -0.395
+        ],
+        "supportY": 0.53
+      },
+      {
+        "part": "boot_R",
+        "surface": [
+          0.115,
+          0.5300000337511301,
+          -0.395
+        ],
+        "supportY": 0.53
+      },
+      {
+        "part": "pelvis_cloth",
+        "surface": [
+          0,
+          0.8400000044703484,
+          -0.7
+        ],
+        "supportY": 0.84
+      }
+    ],
+    "grips": [
+      {
+        "side": "L",
+        "centre": [
+          -0.24188875983010355,
+          1.2780096372028482,
+          -0.2534595793976674
+        ],
+        "axis": [
+          0.9736663950053749,
+          0.1943564292921462,
+          -0.11916094003508176
+        ],
+        "radius": 0.018,
+        "length": 0.08,
+        "sampledTriangleMinDistance": 0.004499980404973035,
+        "exactFlatChannelAir": {
+          "vertical": 0.0045000000000000005,
+          "spine": 0.004499999999999997
+        },
+        "scope": "plan capsule; actual rim/handle mesh and closed grasp action remain later"
+      },
+      {
+        "side": "R",
+        "centre": [
+          0.24188875983010355,
+          1.2780096372028482,
+          -0.2534595793976674
+        ],
+        "axis": [
+          0.9736663950053749,
+          -0.1943564292921462,
+          0.11916094003508176
+        ],
+        "radius": 0.018,
+        "length": 0.08,
+        "sampledTriangleMinDistance": 0.004499980404973026,
+        "exactFlatChannelAir": {
+          "vertical": 0.0045000000000000005,
+          "spine": 0.004499999999999997
+        },
+        "scope": "plan capsule; actual rim/handle mesh and closed grasp action remain later"
+      }
+    ],
+    "columnConservativeGap": 0.09058300300972977
+  },
+  "controls": {
+    "style": "connected steering yoke/crossbar; held segments aligned to unchanged hand-channel axes",
+    "grip_radius_m": 0.018,
+    "held_segment_length_m": 0.08,
+    "central_crossbar_radius_m": 0.014,
+    "central_crossbar_x_range_m": [
+      -0.215,
+      0.215
+    ],
+    "central_crossbar_yz_m": [
+      1.285783894374534,
+      -0.2582260170000707
+    ],
+    "hub_radius_m": 0.045,
+    "hub_length_m": 0.04,
+    "column": {
+      "start": [
+        0,
+        0.53,
+        -0.02
+      ],
+      "end": [
+        0,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "radius_m": 0.035
+    },
+    "actual_circular_rim_not_assumed_to_fit_hand_void": true,
+    "circular_rim": {
+      "major_radius_m": 0.14,
+      "tube_radius_m": 0.012,
+      "major_segments": 20,
+      "minor_segments": 8,
+      "parent": "joint__steering_wheel",
+      "normal": "perpendicular to declared column axis",
+      "existing_crossbar": "connected diametric spokes",
+      "hands_anchors_unchanged": true,
+      "approval": "root bounded visual refinement after actual image review"
+    }
+  },
+  "planned_anchors": {
+    "anchor_floor_origin": [
+      0,
+      0,
+      0
+    ],
+    "anchor_front_axle": [
+      0,
+      0.3,
+      0.4
+    ],
+    "anchor_rear_axle": [
+      0,
+      0.225,
+      -1.0
+    ],
+    "anchor_driver_seat": [
+      0,
+      0.84,
+      -0.65
+    ],
+    "anchor_footrest_L": [
+      -0.115,
+      0.53,
+      -0.395
+    ],
+    "anchor_footrest_R": [
+      0.115,
+      0.53,
+      -0.395
+    ],
+    "anchor_steering_grip_L": [
+      -0.24188875983010355,
+      1.2780096372028482,
+      -0.2534595793976674
+    ],
+    "anchor_steering_grip_R": [
+      0.24188875983010355,
+      1.2780096372028482,
+      -0.2534595793976674
+    ]
+  },
+  "source_reference": "M14.2-REACH",
+  "source_reference_sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+  "next_proofs": [
+    "body25source meshes/evaluatedgeometry unchanged",
+    "allcabpartsclosedpositiveandconnected",
+    "actual unchanged seated P01 clearance/cargo-free paired views",
+    "four empty-cab source views vs independent reference",
+    "distinct GLB CPUdecode; root browser/Khronos gate"
+  ],
+  "future_not_built": [
+    "mast/reach/forks",
+    "pickup/setdown/actions",
+    "complete forklift acceptance"
+  ],
+  "actual": {
+    "source_meshes": 40,
+    "closed_positive_vehicle_parts": 40,
+    "contact_witnesses": 43,
+    "unchanged_body_parts": 25,
+    "max_body_evaluated_vertex_delta_m": 0.0,
+    "source_sha256": "2a6c62a42e2db98a94f0a89fadcca8318e594505c170395c0b375592839bd147",
+    "GLB": {
+      "sha256": "7bafad7b673dca566d19ff6b15f43f40d6ab20110d066dfef400a76ce936ecf4",
+      "bytes": 254156,
+      "triangles": 4810,
+      "vertices": 8874,
+      "nodeCount": 34,
+      "meshes": 18,
+      "bounds": {
+        "min": [
+          -0.6000000238418579,
+          0,
+          -1.5
+        ],
+        "max": [
+          0.6000000238418579,
+          2.099999874830246,
+          0.7000000178813934
+        ]
+      },
+      "maxNormalError": 4.687954936466454e-07,
+      "maxBatchBoundError": 5.960464477539063e-08,
+      "roofGap": 0.050000092983245814,
+      "actualGrips": [
+        {
+          "side": "L",
+          "maxAxial": 0.040000003328632246,
+          "maxRadial": 0.01800002007532245,
+          "actualVertexToHandTriangleMinAir": 0.004500682264832103
+        },
+        {
+          "side": "R",
+          "maxAxial": 0.04000006916358753,
+          "maxRadial": 0.018000072716718694,
+          "actualVertexToHandTriangleMinAir": 0.004500620302272852
+        }
+      ]
+    },
+    "vehicle_anchors": {
+      "anchor_driver_seat": [
+        0.0,
+        0.8399999737739563,
+        -0.6499999761581421
+      ],
+      "anchor_floor_origin": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "anchor_footrest_L": [
+        -0.11500000208616257,
+        0.5299999713897705,
+        -0.39500001072883606
+      ],
+      "anchor_footrest_R": [
+        0.11500000208616257,
+        0.5299999713897705,
+        -0.39500001072883606
+      ],
+      "anchor_front_axle": [
+        0.0,
+        0.30000001192092896,
+        0.4000000059604645
+      ],
+      "anchor_rear_axle": [
+        0.0,
+        0.22499999403953552,
+        -1.0
+      ],
+      "anchor_steering_grip_L": [
+        -0.24188876152038574,
+        1.2780096530914307,
+        -0.2534595727920532
+      ],
+      "anchor_steering_grip_R": [
+        0.24188876152038574,
+        1.2780096530914307,
+        -0.2534595727920532
+      ]
+    },
+    "worker_source_sha256": "baa1c944421a7b3621f37adc48bd03dc6e05060a652bfa257b3ec81ff8a55400",
+    "worker_bounds": {
+      "min": [
+        -0.3186166286468506,
+        0.5299999117851257,
+        -0.7750000357627869
+      ],
+      "max": [
+        0.3186166286468506,
+        1.989999771118164,
+        -0.16780030727386475
+      ]
+    },
+    "source_roof_gap_m": 0.05000019073486328,
+    "unexpected_worker_vehicle_intersections": 0,
+    "column_future_lift_plate_gap_z_m": 0.04499997943639755
+  },
+  "resolved_source_defect": {
+    "observation": "visible lower-column spike through nose in actual iteration01 front/side/quarter",
+    "correction": "closed plane cut maxZ-.045 inside original column capsule, hidden behind unchanged nose front-.04",
+    "blueprint_anchors_changed": false,
+    "body_geometry_changed": false
+  },
+  "QA_worker": "unchanged neutral blue P01; runtime driver05 roles remain P02/root integration; no worker in productionGLB",
+  "final_visual_refinement": {
+    "found_by_root": "crossbar alone read as scooter handlebar",
+    "correction": "connected circularR.14/tube.012 rim,20segments, around unchanged hub; existingbar acts as diametric spokes",
+    "new_joint_or_actor": false,
+    "grip_anchors_or_P01_pose_changed": false,
+    "actual_BVH_clear": true,
+    "final_empty_and_paired4views_actually_opened": true
+  }
+}

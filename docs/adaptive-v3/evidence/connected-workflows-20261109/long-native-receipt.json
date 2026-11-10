@@ -1,0 +1,60 @@
+{
+  "schema_id": "qoima.materialized-long-crossdock-review.v1",
+  "passed": true,
+  "created_at_utc": "2026-11-09T17:13:44.211639+00:00",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseLongScenarioPlan.ts": "1b50889308b322d6a178403cdf6feae1b37aa12e53b9d83eccbf663138b2aea9",
+    "frontend/src/adaptive-v3/warehouseLongScenarioScene.ts": "1eb4c10ac6fdc8faef9a11181ea48a1885b074ff3415987c6a244939037294c0",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "a753d4cfef8a39f5ae15ffecad354ac4d071d6c32cdaea5c11a8d08bc44ff23a",
+    "frontend/tools/check-warehouse-long-scenario-v3.mjs": "6ac60797e79d0beee153453e566a4ae776d9c9b688220bd317f5265f814f5c1c"
+  },
+  "case_ids": "v3:visual:N3:secured-assembly-crossdock:001",
+  "current_duration_s": 666.9580467105654,
+  "current_phases": 72,
+  "source_N3_request_count_unchanged": 20,
+  "materialized_extra_jobs": 1,
+  "materialized_extra_HUs": 1,
+  "HU_mass_kg": 200,
+  "HU_units": 24,
+  "attachment_mass_kg_separate": 40,
+  "kit_instances": 1,
+  "crew_and_vehicle_pair": [
+    "F02",
+    "FL02"
+  ],
+  "source_population": [
+    530,
+    24,
+    2
+  ],
+  "native_contact_pairs": 108,
+  "native_handling_intervals": 10,
+  "native_support_component_pair_checks": 159800,
+  "native_travel_enclosures": 197,
+  "native_absolute_samples": 442,
+  "native_maximum_frame_error_m": 2.929642751054232e-14,
+  "actual_open_channel_uncovered_fork_triangles": 0,
+  "actual_nonfork_swept_mesh_pairs": 528,
+  "actual_native_pin_bore_radial_air_m": 0.0019518225417580904,
+  "post_height_join_numeric_samples": 405,
+  "legacy765a_equivalence_samples": 13,
+  "exact_native_phase_control_transfer": 68,
+  "A_B_materialized_input_sha256": "777534ed350c17808f533b87aa012c149826280bb252b9efed9db2c4bd1bc5e4",
+  "evidence": {
+    "native-before-clock-join/checks.json": "522a5ca01c9c8401475cde19cd2a1b8586464eda3e7255e22fc4dca47e8c1ddd",
+    "pocket-void-checks.json": "73580fd3b9d554b755e56e91a41d697a39aa65a4e62995a6f533c30ec524b836",
+    "execution-checks.json": "73150350da680a2e27646574b4eadd153396d0e56f98839881db9f60455ed358"
+  },
+  "limitations": [
+    "New standalone materialized crossdock IDs; original N3source20requests remain unchanged and unexecuted.",
+    "Supplier already-retained assembly preparation and recipient unloading are explicit unexecuted boundaries. No source rack pickup/install/stow operation is claimed.",
+    "Published C08 directed-arc/connector profile proofs are reused only after actual native travel envelope containment; no traffic or authoritative engine admission.",
+    "Focused new support/capture interfaces. Existing corrected-cap27bb kit remains exact; no new attachment/vehicle/worker geometry was created.",
+    "Actual outer gate crossing is not part of this episode; it delivers to the explicit OUT_E_B2B buffer.",
+    "Whole retained assembly remains at the recipient buffer; no rig install/stow or original-rack LONG pickup is represented.",
+    "Existing70-phase native proof is preserved. New72-phase epoch adds two explicit unloaded fork-height joins;68 contact/handling/route phases have exact identical controls and geometry, verified independently."
+  ]
+}

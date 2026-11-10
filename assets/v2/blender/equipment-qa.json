@@ -1,0 +1,101 @@
+{
+  "reviewed_on": "2026-11-07",
+  "evidence_type": "Actual generated Blender model views inspected against the selected raster references",
+  "scope": [
+    "forklift",
+    "packing-station",
+    "buffer-pallet",
+    "pallet",
+    "crate"
+  ],
+  "assets": [
+    {
+      "asset_id": "forklift",
+      "static_geometry_status": "passed",
+      "reference": "assets/references/forklift.png",
+      "view_paths": [
+        "assets/v2/previews/forklift/front.png",
+        "assets/v2/previews/forklift/side.png",
+        "assets/v2/previews/forklift/rear.png",
+        "assets/v2/previews/forklift/three-quarter.png"
+      ],
+      "observations": [
+        "Counterweight, four dimensional tires, cage, cockpit, mast and twin forks retain the reference silhouette.",
+        "V2 forks have a connected thin flat support section that fits the pallet pockets; the toe tapers.",
+        "No geometry displacement was introduced by articulation parenting."
+      ]
+    },
+    {
+      "asset_id": "packing-station",
+      "static_geometry_status": "passed",
+      "reference": "assets/references/packing-station-reference.png",
+      "view_paths": [
+        "assets/v2/previews/packing-station/front.png",
+        "assets/v2/previews/packing-station/side.png",
+        "assets/v2/previews/packing-station/rear.png",
+        "assets/v2/previews/packing-station/three-quarter.png"
+      ],
+      "observations": [
+        "Final four views inspected after the source correction: bundle contacts shelf, components are connected.",
+        "Two passive roller transfer benches bridge the line/table gaps without adding transport cells; +596 triangles.",
+        "Printer faces +X from rear-left and monitor is rear-centre; actual component bounds clear the input tote, scanner and output parcel corridor.",
+        "Runtime hides pivot_packing_carton while authoritative cargo replaces the reference fixture carton."
+      ]
+    },
+    {
+      "asset_id": "buffer-pallet",
+      "static_geometry_status": "passed",
+      "reference": "assets/references/buffer-pallet.png",
+      "view_paths": [
+        "assets/v2/previews/buffer-pallet/front.png",
+        "assets/v2/previews/buffer-pallet/side.png",
+        "assets/v2/previews/buffer-pallet/rear.png",
+        "assets/v2/previews/buffer-pallet/three-quarter.png"
+      ],
+      "observations": [
+        "Intentionally thin 75mm empty buffer stand preserves slats, real feet, gaps, charcoal rails and yellow corners."
+      ]
+    },
+    {
+      "asset_id": "pallet",
+      "static_geometry_status": "passed",
+      "reference": "assets/references/buffer-pallet.png",
+      "reference_adaptation": "Technical v2 shipping pallet is 140mm high, with nine blocks and three lower runners; warm slatted wood style reused.",
+      "view_paths": [
+        "assets/v2/previews/pallet/front.png",
+        "assets/v2/previews/pallet/side.png",
+        "assets/v2/previews/pallet/rear.png",
+        "assets/v2/previews/pallet/three-quarter.png"
+      ],
+      "observations": [
+        "Four views show dimensional deck, nine blocks and bottom runners, with open fork access and no load stack."
+      ]
+    },
+    {
+      "asset_id": "crate",
+      "static_geometry_status": "passed",
+      "reference": "assets/references/crate-reference.png",
+      "view_paths": [
+        "assets/v2/previews/crate/front.png",
+        "assets/v2/previews/crate/side.png",
+        "assets/v2/previews/crate/rear.png",
+        "assets/v2/previews/crate/three-quarter.png"
+      ],
+      "observations": [
+        "Closed dimensional storage carton preserves folded rim, separate flaps, seam, tape wrap and blank label; centre origin retained."
+      ]
+    }
+  ],
+  "structural_articulation": {
+    "status": "passed",
+    "checks": [
+      "49 named equipment pivots and anchors confirmed in the actual GLB JSON.",
+      "All manifest local translations agree with exported nodes within 2e-6m.",
+      "Each functional pivot has exported geometry descendants.",
+      "Flat fork support .045m + pickup lift .071m equals pallet deck underside .116m."
+    ]
+  },
+  "remaining_verification": [
+    "Final frozen production browser suite and screenshot evidence are recorded separately in docs/visual/BROWSER_QA.json."
+  ]
+}

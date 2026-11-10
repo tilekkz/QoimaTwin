@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:proposal:handoff:slotting-comparison:v3:0.1.0",
+  "title": "Qoima v3 isolated proposal: slotting-comparison",
+  "$comment": "Proposal only. Offline semantic validation and exact referenced hashes are required; no canonical backend adoption.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": {
+      "const": "qoima.slotting-comparison.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "proposal"
+    },
+    "source_kind": {
+      "const": "analytical_fixture"
+    },
+    "engine_operation": {
+      "const": false
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "layout_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "layout_content_hash": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+    },
+    "scenario_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "baseline_placement_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "evaluation_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "metrics_scope": {
+      "const": "expected_route_travel_proxy_seconds"
+    },
+    "staff_count": {
+      "const": 24
+    },
+    "staff_allocation_changes_allowed": {
+      "const": false
+    },
+    "period_has_clock_duration": {
+      "const": false
+    },
+    "default_horizon_periods": {
+      "const": 1
+    },
+    "one_off_relocation_cost_included": {
+      "const": true
+    },
+    "allowed_differences": {
+      "type": "array",
+      "items": {
+        "const": "HU slot placement and the explicitly priced one-off relocation sequence"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "horizon_periods": {
+            "enum": [
+              1,
+              2,
+              4,
+              8
+            ]
+          },
+          "candidate_ref": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+          },
+          "comparison_inputs_sha256": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+          },
+          "baseline_proxy_cost_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "adapted_proxy_cost_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "relocation_proxy_cost_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "net_proxy_saving_s": {
+            "type": "number"
+          },
+          "transfer_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "horizon_periods",
+          "candidate_ref",
+          "comparison_inputs_sha256",
+          "baseline_proxy_cost_s",
+          "adapted_proxy_cost_s",
+          "relocation_proxy_cost_s",
+          "net_proxy_saving_s",
+          "transfer_count"
+        ]
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "status",
+    "source_kind",
+    "engine_operation",
+    "operational_admission",
+    "layout_ref",
+    "layout_content_hash",
+    "scenario_ref",
+    "baseline_placement_ref",
+    "evaluation_ref",
+    "metrics_scope",
+    "staff_count",
+    "staff_allocation_changes_allowed",
+    "period_has_clock_duration",
+    "default_horizon_periods",
+    "one_off_relocation_cost_included",
+    "allowed_differences",
+    "cases",
+    "scope"
+  ]
+}

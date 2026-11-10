@@ -1,0 +1,70 @@
+{
+  "actual_engine_run": false,
+  "evaluations": [
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 1,
+      "net_transport_proxy_s": 0.0,
+      "passed": true,
+      "path": "adapted-assignment-v3.json",
+      "relocation_route_legs": 0,
+      "transfers": 0,
+      "units": 12256
+    },
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 2,
+      "net_transport_proxy_s": 173.53843405824924,
+      "passed": true,
+      "path": "adapted-assignment-horizon2-v3.json",
+      "relocation_route_legs": 4,
+      "transfers": 2,
+      "units": 12256
+    },
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 4,
+      "net_transport_proxy_s": 1285.2137884528474,
+      "passed": true,
+      "path": "adapted-assignment-horizon4-v3.json",
+      "relocation_route_legs": 16,
+      "transfers": 8,
+      "units": 12256
+    },
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 8,
+      "net_transport_proxy_s": 3562.296128531858,
+      "passed": true,
+      "path": "adapted-assignment-horizon8-v3.json",
+      "relocation_route_legs": 16,
+      "transfers": 8,
+      "units": 12256
+    }
+  ],
+  "independent_checks": [
+    "canonical HU/SKU/lot identities and mass",
+    "every final slot/module eligibility and placement",
+    "each transfer current occupancy/mass and directed forward/reverse graph arc chain",
+    "same material flow/horizon hashes per pair",
+    "gross, one-off relocation and net arithmetic recomputed"
+  ],
+  "negative_checks": [
+    "unit quantity tampering rejected",
+    "occupied relocation destination rejected",
+    "normal unchanged flow returns no-op",
+    "prohibitive relocation handling cost returns no-op"
+  ],
+  "operational_admission": false,
+  "passed": true,
+  "source_kind": "synthetic_planning_fixture",
+  "task_id": "C11"
+}

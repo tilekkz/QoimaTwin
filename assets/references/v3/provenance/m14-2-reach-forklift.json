@@ -1,0 +1,79 @@
+{
+  "reference_id": "M14.2-REACH",
+  "status": "VERIFY",
+  "root_registration": "PASS: root actually opened all4views and bound M14.2-REACH to forklift in manifest",
+  "mode": "built-in imagegen",
+  "intent": "new independent production concept, then two targeted edits; no model-render input",
+  "path": "assets/references/v3/m14-2-reach-forklift.png",
+  "source_id": "exec-cd4e48d7-fcdf-410a-b100-8fe39cc2cc79",
+  "source_image": "C:/Users/izbas/.codex/generated_images/01a1b22e-d46a-7ae2-a4a4-53a22b9b0597/exec-cd4e48d7-fcdf-410a-b100-8fe39cc2cc79.png",
+  "source_path_returned_by": "image_gen output_hint",
+  "sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+  "dimensions_px": [
+    1536,
+    1024
+  ],
+  "prompt": "assets/references/v3/prompts/m14-2-reach-forklift.txt",
+  "prompt_sha256": "a4443d8a012729cdd08617110cfda88eaa610951080810a59dd07cc40fa12f76",
+  "tool_prompt_utf8_sha256": "a4443d8a012729cdd08617110cfda88eaa610951080810a59dd07cc40fa12f76",
+  "transparent_background": false,
+  "authority_inputs": [
+    {
+      "path": "assets/references/v3/r06-forklift.png",
+      "sha256": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6"
+    },
+    {
+      "path": "assets/v3/specs/forklift.dimensions.json",
+      "sha256": "d13741cc15e2dc4486ec880cdcbba56fe2ebf7143481d5f24be40ea31a57818b"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+    }
+  ],
+  "actually_opened": true,
+  "reviewed_at": "2026-11-07T15:16:11.461233+00:00",
+  "review": [
+    "All four saved views actually opened, complete and inside framing.",
+    "Front: twin mast, substantial connected forward carriage and equal raised pair of forks; two front tyres and grounded construction.",
+    "Side: petrol body/tan counterweight and tan hubs retain chunky masses; front tyre larger than rear; empty accessible cab; elevated fork assembly clear in silhouette, nested guides readable.",
+    "Rear: same broad stepped counterweight, two rear tyres, guard and seat symmetry.",
+    "Quarter: four-wheel design resolved through ordinary occlusion, broad body depth and connected nested mechanism; no floating extra blade or obvious detached wheel.",
+    "V1 depicted a visibly long reach extension despite high-travel request. V2 compacted it but obscured mechanism. V3 makes nested guide connection readable after targeted edit.",
+    "Raster is an art/construction guide, not numerical measurement proof. Root actually reviewed all4views and accepted apparent heel/mast offset as illustrative only; numeric .40heel/axle and mastZ<=.06 mandatory. Petrol guard accepted as current reference art direction."
+  ],
+  "iterations": [
+    {
+      "iteration": 1,
+      "path": "assets/references/v3/m14-2-reach-forklift-v1.png",
+      "source_id": "exec-9f6d1711-eda7-4437-b1c8-740a7eaad1d0",
+      "prompt": "assets/references/v3/prompts/m14-2-reach-forklift-v1.txt",
+      "sha256": "453fd97673bfb749db40326a573efca5c4b5fc0306a0379309ebf6d412a47fdc",
+      "defect": "reach appears extended, too far forward for travel",
+      "selected": false
+    },
+    {
+      "iteration": 2,
+      "path": "assets/references/v3/m14-2-reach-forklift-v2.png",
+      "source_id": "exec-bb97f682-f28a-40bb-af3c-31c96e69c50c",
+      "prompt": "assets/references/v3/prompts/m14-2-reach-forklift-v2.txt",
+      "sha256": "0ea3c52642348ac627a3a4cf59838a321ba56ae2f57ccb37ee738677d0d339ce",
+      "defect": "compact mechanism not clearly readable; mast still too close to axle in projection",
+      "selected": false
+    },
+    {
+      "iteration": 3,
+      "path": "assets/references/v3/m14-2-reach-forklift.png",
+      "source_id": "exec-cd4e48d7-fcdf-410a-b100-8fe39cc2cc79",
+      "prompt": "assets/references/v3/prompts/m14-2-reach-forklift.txt",
+      "sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+      "selected": true,
+      "status": "VERIFY, numeric authority remains M14.1/C08"
+    }
+  ],
+  "root_review": {
+    "status": "PASS",
+    "scope": "independent reference + numeric plan before body",
+    "accepted_direction": "petrol guard as current supplement art; illustrative heel/mast placement never overrides numeric M14.1/C08"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "task_id": "M14.6.3",
+  "status": "PASS",
+  "at": "2026-11-07T19:17:52.858946+00:00",
+  "native_checks": "assets/v3/iterations/forklift/M14.6.3/actual-loaded-native-checks.json",
+  "actual_families": 6,
+  "actual_frames": 18,
+  "actual_fork_contact_witnesses": 72,
+  "canonical_component_containment": true,
+  "single_HU_per_case": true,
+  "long_interface": {
+    "restraint_removal_HU_bottom_y_m": 0.45,
+    "upper_rig_vertical_removal_m": 0.58,
+    "keeper_outward_retraction_m": 0.35,
+    "keeper_then_front_translation_m": 0.75,
+    "actual_keeper_bore_rays": 108,
+    "whole_free_keeper_sweep_hulls_clear": 8,
+    "whole_rig_removal_hulls_clear": 10,
+    "HU_top_y_m": 0.97,
+    "removed_post_bottom_y_m": 0.99,
+    "top_air_m": 0.02,
+    "whole_vehicle_and_cradle_withdrawal_hulls_clear": 81,
+    "rack_Z_withdrawal_m": [
+      0,
+      2
+    ],
+    "lowered_pad_top_y_m": 0.23,
+    "stored_HU_bottom_y_m": 0.25,
+    "release_gap_m": 0.02,
+    "actual_fixture_sha256": "346e88692e2d7230f008d49c4a929bba9515f018c8a61e178cc64b9a58e011ca",
+    "limits": "Geometry only. Upper-rig keeper extraction and manual removal/stow must be explicit stopped actions; no invisible removal or empty transit with rig installed is admitted."
+  },
+  "browser_captures": 35,
+  "views_reviewed": "Six native travel quarters; actual rack release quarter+side; native base and independent restraint reference reviewed separately",
+  "khronos": "All seven GLBs0errors/0warnings; vertices/normal/index/native batch and articulation checks pass",
+  "defects_fixed": [
+    "Original inner reach-guide intrusion into PALLET platform",
+    "Deep bridge required actual two guide relief notches",
+    "Keeper heads must face extraction direction",
+    "Free keepers cannot rise through HU dunnage: extract separately above rack arms",
+    "Single L-fork AABB filled empty corner; each actual vertex covered by separate blade/heel swept boxes"
+  ],
+  "limits": "Actual geometry contacts/closed travel containment and bounded continuous interface sweeps. Full absolute-clock action, exclusive operator/vehicle/traffic reservations and upper-rig install/stow remain action/integration gates. No upper reserve access."
+}

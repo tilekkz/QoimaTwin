@@ -1,0 +1,257 @@
+{
+  "schema_id": "qoima.connected-heavy-inbound.desktop-browser-summary.v1",
+  "status": "FUNCTIONAL_PASS_WITH_HARNESS_SHUTDOWN_NOTE",
+  "functional_passed": true,
+  "assertions_passed": true,
+  "case_count": 12,
+  "cases": [
+    "original530_stock_24workers_2vehicles_plus_one_same_incoming_id",
+    "upstream_receipt_is_hidden_without_duplicate_source_stock",
+    "receipt_reveals_single_same_pallet_on_proposed_native_stand",
+    "actual_native_reach_capture_preserves_same_HU_world_transform",
+    "loaded_route_keeps_original_driver_and_actual_captured_pallet",
+    "setdown_is_continuous_and_same_HU_remains_in_empty_storage_slot",
+    "terminal_ledger_conserves531_HUs_and_releases_staging",
+    "absolute_phase_boundaries_interiors_and32seeded_seeks_preserve_native_identity",
+    "real_play_pause_rate_and_reset_use_one_absolute_clock",
+    "native_keyboard_timeline_seek_reaches_same_terminal_state",
+    "reload_recreates_only_one_incoming_HU_with_original_resource_population",
+    "exact_fixture_and_original_model_corruption_fail_closed_and_retry_recovers"
+  ],
+  "errors": [],
+  "source_drift": [],
+  "desktop_only": true,
+  "fixture_sha256": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+  "fixture_id": "v3:visual:N2:connected-pallet455:001",
+  "counts": {
+    "original_stock_handling_units": 530,
+    "incoming_handling_units": 1,
+    "total_handling_units": 531,
+    "workers": 24,
+    "vehicles": 2,
+    "staging_support_instances": 2
+  },
+  "staging_frames": [
+    {
+      "support_id": "v3:visual-heavy-inbound:support:IN_W_BULK:01",
+      "position": [
+        16,
+        0,
+        14.11
+      ],
+      "yaw_rad": 0
+    },
+    {
+      "support_id": "v3:n2:support:IN_W_BULK:02",
+      "position": [
+        22,
+        0,
+        13.95
+      ],
+      "yaw_rad": 0
+    }
+  ],
+  "duration_s": 314.92815037220765,
+  "native_adapter": {
+    "path": "docs/adaptive-v3/evidence/heavy-inbound-native-adapter-checks.json",
+    "sha256": "90c2ada420ee71738dc49b06cfcb9d6f019f45fe7a17566c41e4ff77eaeca854",
+    "passed": true,
+    "checks": 7,
+    "samples": 158,
+    "max_cargo_frame_position_error_m": 8.881784197001252e-16,
+    "max_cargo_frame_angle_error_rad": 2.220446049250313e-16,
+    "max_actual_driver_contact_error_m": 6.961322927149707e-8,
+    "scope": "Actual native GLBs/original F01 factory and seated binding, real new adapter. One source cargo and one source support prototype; no full source population or continuous obstacle sweep claim."
+  },
+  "captures": [
+    {
+      "path": "assets/v3/iterations/heavy-inbound/connected-1/01-stage.png",
+      "sha256": "e0bafcd50d54e7c364cd1af7b8431ad40edf1d609438ea14f22738956e0a4cb4",
+      "bytes": 138704,
+      "width_px": 1440,
+      "height_px": 1000
+    },
+    {
+      "path": "assets/v3/iterations/heavy-inbound/connected-1/02-fork-capture.png",
+      "sha256": "470235624611b74638574f7fcddf1c201de654272e69026eaed332825c5cd88f",
+      "bytes": 129799,
+      "width_px": 1440,
+      "height_px": 1000
+    },
+    {
+      "path": "assets/v3/iterations/heavy-inbound/connected-1/03-loaded-route.png",
+      "sha256": "8aea3902db829b568fa941b8d8764340883c8ec4a6af6736a5f7ba311f3aa622",
+      "bytes": 121567,
+      "width_px": 1440,
+      "height_px": 1000
+    },
+    {
+      "path": "assets/v3/iterations/heavy-inbound/connected-1/04-storage-setdown.png",
+      "sha256": "58d5a56d1292aa657dc9aef93a93e42edffd0b050e44a00908864d91327e818f",
+      "bytes": 176375,
+      "width_px": 1440,
+      "height_px": 1000
+    }
+  ],
+  "input_hashes": {
+    "frontend/heavy-inbound-v3.html": "c527e01a6708008c7827e21050054a30a7e141607d0fb50017e98fc3d79a2fe1",
+    "frontend/src/adaptive-v3/heavyInboundPage.ts": "0ab594d3454f073d28782dac878ff807c632bb3f61317147d917821daad764cd",
+    "frontend/src/adaptive-v3/heavyInbound.css": "caab1f525c27f339678ec9b2445f9f1ac9f59d9052d84d4d14834d268cd4d2ca",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundScene.ts": "12a93271adbd72bb6f6da8d5c13ceeb4cae3994d7e53fe478f419f9e5733bf02",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundClock.ts": "551a6bff62b23325bbe8071afe4aff8690b024afc6e628ea3502d5c5fab7134b",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundBinding.ts": "cb27122e35922e595bf793a073e8ff4645ac499d4ee42a8595a05731c70c5a17",
+    "frontend/public/data/v3/heavy-inbound-fixture.json": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "f4f0d144eb1f741e7c8c47d1c3d72ea3fc825b642ae8011df51b53c7f803db78",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9"
+  },
+  "harness": {
+    "command": "node frontend/tools/check-heavy-inbound-v3.mjs",
+    "executed_checker_sha256": "9b741e20707b5719a14540a12d80f2cf9b6059ca5bbeb93272a8ecce1d8c5f75",
+    "current_checker_sha256": "1dbf6cfb19597c68ac58dc95b5bf908ffd4335d7aa632c54bf2870e2f65785ca",
+    "raw_exit_code": 1,
+    "followup": "Future cleanup PowerShell helpers now explicitly exit0 after an empty Get-Process result; static syntax check passed. No repeat browser run after this harness-only correction."
+  },
+  "lifecycle": {
+    "cleanup_complete": true,
+    "normal_harness_shutdown": false,
+    "owned_process_count": 8,
+    "remaining_owned_process_count": 0,
+    "native_CDP_close_returned": true,
+    "context_close_returned": true,
+    "browser_disconnect_returned": true,
+    "server_close_deadline_ms": 3000,
+    "forced_termination_confirmed": false,
+    "forced_termination_status": "not_confirmed_by_raw_shell_result",
+    "note": "All12 functional assertions passed. Browser-server closure exceeded its bound and the scoped cleanup helper returned exit1. Only the8 attested owned IDs were eligible for fallback; no forced termination is documented by the raw result. Independent fresh Get-Process verifies all8 absent. The unchanged raw report and exit1 are preserved below."
+  },
+  "raw_execution": {
+    "source_path": "work/v3/heavy-inbound-desktop-20261109/1794234786531/checks.json",
+    "sha256": "b7140b2a575d7412dadd66f76b0e3375a1d88f0976b1a02fcf4e485bc2a65b91",
+    "report": {
+      "schema_id": "qoima.connected-heavy-inbound.desktop-browser.v1",
+      "functional_passed": true,
+      "assertions_passed": true,
+      "case_count": 12,
+      "cases": [
+        "original530_stock_24workers_2vehicles_plus_one_same_incoming_id",
+        "upstream_receipt_is_hidden_without_duplicate_source_stock",
+        "receipt_reveals_single_same_pallet_on_proposed_native_stand",
+        "actual_native_reach_capture_preserves_same_HU_world_transform",
+        "loaded_route_keeps_original_driver_and_actual_captured_pallet",
+        "setdown_is_continuous_and_same_HU_remains_in_empty_storage_slot",
+        "terminal_ledger_conserves531_HUs_and_releases_staging",
+        "absolute_phase_boundaries_interiors_and32seeded_seeks_preserve_native_identity",
+        "real_play_pause_rate_and_reset_use_one_absolute_clock",
+        "native_keyboard_timeline_seek_reaches_same_terminal_state",
+        "reload_recreates_only_one_incoming_HU_with_original_resource_population",
+        "exact_fixture_and_original_model_corruption_fail_closed_and_retry_recovers"
+      ],
+      "errors": [],
+      "input_hashes": {
+        "frontend/heavy-inbound-v3.html": "c527e01a6708008c7827e21050054a30a7e141607d0fb50017e98fc3d79a2fe1",
+        "frontend/src/adaptive-v3/heavyInboundPage.ts": "0ab594d3454f073d28782dac878ff807c632bb3f61317147d917821daad764cd",
+        "frontend/src/adaptive-v3/heavyInbound.css": "caab1f525c27f339678ec9b2445f9f1ac9f59d9052d84d4d14834d268cd4d2ca",
+        "frontend/src/adaptive-v3/warehouseHeavyInboundScene.ts": "12a93271adbd72bb6f6da8d5c13ceeb4cae3994d7e53fe478f419f9e5733bf02",
+        "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+        "frontend/src/adaptive-v3/warehouseHeavyInboundClock.ts": "551a6bff62b23325bbe8071afe4aff8690b024afc6e628ea3502d5c5fab7134b",
+        "frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba",
+        "frontend/src/adaptive-v3/warehouseHeavyInboundBinding.ts": "cb27122e35922e595bf793a073e8ff4645ac499d4ee42a8595a05731c70c5a17",
+        "frontend/public/data/v3/heavy-inbound-fixture.json": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+        "frontend/src/adaptive-v3/warehouseScene.ts": "f4f0d144eb1f741e7c8c47d1c3d72ea3fc825b642ae8011df51b53c7f803db78",
+        "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+        "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+        "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+        "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9"
+      },
+      "source_drift": [],
+      "captures": [
+        "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\heavy-inbound-desktop-20261109\\1794234786531\\01-stage.png",
+        "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\heavy-inbound-desktop-20261109\\1794234786531\\02-fork-capture.png",
+        "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\heavy-inbound-desktop-20261109\\1794234786531\\03-loaded-route.png",
+        "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\heavy-inbound-desktop-20261109\\1794234786531\\04-storage-setdown.png"
+      ],
+      "cleanup_complete": false,
+      "normal_cleanup": false,
+      "forced_owned_cleanup": false,
+      "cleanup": [
+        "CDP Browser.close returned",
+        "context.close returned",
+        "browser.close returned",
+        "server.close deadline 3000ms",
+        "Command failed: powershell -NoProfile -NonInteractive -Command $saved=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('W3siUHJvY2Vzc0lkIjoyMjA2NCwiQ3JlYXRpb25EYXRlIjoiMjAyNi0xMS0wOVQxNDozMzowNi41NTI0NzYwWiJ9LHsiUHJvY2Vzc0lkIjozMjY0LCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA2Ljc4MzM2NDBaIn0seyJQcm9jZXNzSWQiOjM5MTcyLCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA3LjM3MzE2NDBaIn0seyJQcm9jZXNzSWQiOjM0MDY4LCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA3LjM3OTY3MzBaIn0seyJQcm9jZXNzSWQiOjE1Mzg0LCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA3LjQxMTkwMzBaIn0seyJQcm9jZXNzSWQiOjM2ODQ4LCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA3LjY4NTk5MTBaIn0seyJQcm9jZXNzSWQiOjM2NDYwLCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA4LjM5MDcyNTBaIn0seyJQcm9jZXNzSWQiOjEzNTMyLCJDcmVhdGlvbkRhdGUiOiIyMDI2LTExLTA5VDE0OjMzOjA4LjM5OTY2MTBaIn1d'))|ConvertFrom-Json; foreach($item in @($saved)){ $p=Get-Process -Id $item.ProcessId -ErrorAction SilentlyContinue; if($p -and $p.StartTime.ToUniversalTime().Ticks -eq ([datetime]$item.CreationDate).ToUniversalTime().Ticks){ try { Stop-Process -Id $p.Id -Force -ErrorAction Stop; Write-Output ('stopped_owned_'+$p.Id) } catch { if(Get-Process -Id $item.ProcessId -ErrorAction SilentlyContinue){throw} } } }\n"
+      ],
+      "owned_processes": [
+        {
+          "ProcessId": 22064,
+          "ParentProcessId": 8804,
+          "CreationDate": "2026-11-09T14:33:06.5524760Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsUpgrades,HttpsFirstBalancedModeAutoEnable,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,AvoidCorsURLLoaderRestartOnRedirect,TcpPortRandomizationWin,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,PreconnectToSearch,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --enable-unsafe-swiftshader --edge-skip-compat-layer-relaunch --disable-stack-profiler --disable-infobars --disable-sync --do-not-de-elevate --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-proxy-server --mute-audio --user-data-dir=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W --remote-debugging-pipe --no-startup-window"
+        },
+        {
+          "ProcessId": 3264,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:06.7833640Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=crashpad-handler --user-data-dir=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W /prefetch:4 --monitor-self-annotation=ptype=crashpad-handler --user-stream-region=248,65568 --database=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\\Crashpad --metrics-dir=C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=Win64 --annotation=prod=Chrome --annotation=ver=156.0.8078.81 --initial-client-data=0x148,0x14c,0x150,0x118,0x154,0x7ffd58f08f40,0x7ffd58f08f50,0x7ffd58f08f60"
+        },
+        {
+          "ProcessId": 39172,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:07.3731640Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\" --no-pre-read-main-dll --gpu-preferences=WAAAAAAAAADgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAAEAAAAAIAAAABAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --field-trial-handle=1884,i,12899649122544501522,12096569695067648849,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1916,i,17740693207018412985,17568443883535141776,4 --trace-process-track-uuid=3190708988185955192 --mojo-platform-channel-handle=1880 /prefetch:2"
+        },
+        {
+          "ProcessId": 34068,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:07.3796730Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=network.mojom.NetworkService --lang=ru --service-sandbox-type=none --no-sandbox --mute-audio --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\" --no-pre-read-main-dll --field-trial-handle=1884,i,12899649122544501522,12096569695067648849,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1916,i,17740693207018412985,17568443883535141776,4 --trace-process-track-uuid=3190708989122997041 --mojo-platform-channel-handle=2108 /prefetch:11"
+        },
+        {
+          "ProcessId": 15384,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:07.4119030Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=utility --utility-sub-type=storage.mojom.StorageService --lang=ru --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\" --no-pre-read-main-dll --field-trial-handle=1884,i,12899649122544501522,12096569695067648849,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1916,i,17740693207018412985,17568443883535141776,4 --trace-process-track-uuid=3190708990060038890 --mojo-platform-channel-handle=2468 /prefetch:13"
+        },
+        {
+          "ProcessId": 36848,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:07.6859910Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\" --no-pre-read-main-dll --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --video-capture-use-gpu-memory-buffer --lang=ru --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=34007708647 --field-trial-handle=1884,i,12899649122544501522,12096569695067648849,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1916,i,17740693207018412985,17568443883535141776,4 --trace-process-track-uuid=3190708990997080739 --mojo-platform-channel-handle=3680 /prefetch:1"
+        },
+        {
+          "ProcessId": 36460,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:08.3907250Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\" --no-pre-read-main-dll --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --video-capture-use-gpu-memory-buffer --lang=ru --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=34008413237 --field-trial-handle=1884,i,12899649122544501522,12096569695067648849,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1916,i,17740693207018412985,17568443883535141776,4 --trace-process-track-uuid=3190708992871164437 --mojo-platform-channel-handle=3952 /prefetch:1"
+        },
+        {
+          "ProcessId": 13532,
+          "ParentProcessId": 22064,
+          "CreationDate": "2026-11-09T14:33:08.3996610Z",
+          "CommandLine": "\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" --type=renderer --noerrdialogs --user-data-dir=\"C:\\Users\\izbas\\AppData\\Local\\Temp\\playwright_chromiumdev_profile-REYI9W\" --no-pre-read-main-dll --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --video-capture-use-gpu-memory-buffer --lang=ru --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=34008422027 --field-trial-handle=1884,i,12899649122544501522,12096569695067648849,262144 --enable-features=CDPScreenshotNewSurface,SkipListAccountsWithoutGaiaCookies --disable-features=AimEnabled,AvoidCorsURLLoaderRestartOnRedirect,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,HttpsFirstBalancedModeAutoEnable,HttpsUpgrades,LensOverlay,MediaRouter,NetworkTimeServiceQuerying,OptimizationHints,PaintHolding,PreconnectToSearch,TcpPortRandomizationWin,ThirdPartyStoragePartitioning,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1916,i,17740693207018412985,17568443883535141776,4 --trace-process-track-uuid=3190708991934122588 --mojo-platform-channel-handle=3984 /prefetch:1"
+        }
+      ],
+      "elapsed_ms": 15970,
+      "desktop_only": true,
+      "engine_operation": false
+    }
+  },
+  "post_cleanup_verification": {
+    "source_path": "work/v3/heavy-inbound-desktop-20261109/1794234786531/post-cleanup.json",
+    "sha256": "1fc41996c428b316687a5d64686bdcac1fb938a96fb7a3d653c22b17938f0b6c",
+    "report": {
+      "verified_utc": "2026-11-09T14:33:46.0830799Z",
+      "owned_count": 8,
+      "remaining_owned": [],
+      "remaining_count": 0
+    }
+  },
+  "scope": "One source-bound same-HU desktop episode, stage receipt→native fork capture→loaded movement→free HEAVY slot, with actual play/pause/reset/rate/timeline/reload and fixture/model corruption controls. All42 phase boundaries/interiors plus32seeded absolute times were evaluated on live native objects; capture03 shows early loaded departure, not mid-canonical-route. Supplier unloading, engine jobs and full repository regression are outside scope. Separate native physics evidence owns contact/clearance admission.",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false
+}

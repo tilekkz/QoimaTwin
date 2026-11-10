@@ -1,0 +1,260 @@
+{
+  "status": "completed_with_findings",
+  "counts_by_severity": {
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 2
+  },
+  "findings": [
+    {
+      "id": "TWIN-A2-001",
+      "severity": "medium",
+      "title": "Worker bubble cache loses click targets and keeps obsolete causes",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+          "line": 188
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+          "line": 190
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+          "line": 117
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+          "line": 58
+        }
+      ],
+      "repro": "At a fixed episode time with a visible worker bubble, switch effects off and back on. Also reachable by zooming below and back above the bubble scale threshold. Separately keep a packing worker visible in B from t=34 to t=48; its wait reaction remains the same kind while its cause changes at t=46.",
+      "observed": "The hidden branch deletes dataset.actor but retains dataset.key. Reappearing with the same actor:bubble key skips the only assignment restoring actor, so the installed click handler does nothing. The key also omits reaction text: aria-label retains the earlier PK03 queue cause after the PK05 rerouting event.",
+      "expected": "Every visible bubble has its current actor ID and current accessible reason, including after hide/show and same-kind cause changes.",
+      "why_it_matters": "Normal effects/camera interactions break worker-card entry; the accessible cause can disagree with fixture time and the worker card.",
+      "confidence": "high; executed WHITE_BOX COMPONENT_ONLY exact domFor and installed click callback, real scenario samplers; fake worker, DOM and projection; no renderer",
+      "executed_probe_ids": [
+        "bubble-reappearance",
+        "bubble-cause-cache"
+      ]
+    },
+    {
+      "id": "TWIN-A2-002",
+      "severity": "medium",
+      "title": "Reload keeps the selection card but drops scene/list selection",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 259
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 266
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 278
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 287
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 229
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+          "line": 47
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+          "line": 48
+        }
+      ],
+      "repro": "Select a moved HU, trigger context-loss recovery and click Retry, or restore through persisted pageshow. Use a URL without present=1, whose presenter initialization separately clears selection.",
+      "observed": "disposeAll destroys the twin without clearing selectedId/selectedKind or closing/rebuilding its card. load creates an unselected twin and reconstructs moves buttons without replaying select. The old card and page selected ID remain while the new scene has no selected ring/pin/actor and the rebuilt list has no selected aria-pressed state.",
+      "expected": "Clear card and selected ID on disposal, or validate and restore selection into the ready replacement twin and rebuilt controls.",
+      "why_it_matters": "Supported recovery leaves displayed selection inconsistent with scene and list. If data changes, unreconstructed facts could also remain from the earlier bundle; differing data was not executed.",
+      "confidence": "high for missing reset/restoration in source; COMPONENT_ONLY actual load/dispose helpers confirmed retained page ID with a new unselected twin, using synthetic source/scene/UI dependencies and a pre-existing card fixture",
+      "executed_probe_ids": [
+        "reload-selection-retention"
+      ]
+    },
+    {
+      "id": "TWIN-A2-003",
+      "severity": "low",
+      "title": "Presentation clicker cannot finish at the final step",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 175
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 105
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 116
+        }
+      ],
+      "repro": "At step 8 of 8, press PageDown or ArrowRight and compare with the Finish button.",
+      "observed": "Keyboard always calls goStep(index+1); its clamp repeats the last step and leaves the presenter open. The Next button calls endPresent at that boundary.",
+      "expected": "Forward completion keys finish consistently with the final button.",
+      "why_it_matters": "Clicker users need Escape/P or a pointer to complete the flow.",
+      "confidence": "high; executed actual goStep/endPresent and installed keyboard/Next callbacks with downstream clock/camera/selection/UI functions stubbed",
+      "executed_probe_ids": [
+        "presenter-boundaries"
+      ]
+    },
+    {
+      "id": "TWIN-A2-004",
+      "severity": "low",
+      "title": "Visibility/pagehide cleanup does not silence activated cues",
+      "sources": [
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 56
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 61
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 259
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 298
+        },
+        {
+          "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+          "line": 299
+        }
+      ],
+      "repro": "Explicitly enable sound, then hide or leave immediately after scheduling a two-note SOS/control cue.",
+      "observed": "Oscillators are scheduled on AudioContext time. Visibilitychange stops playback/camera; pagehide additionally disposes visual objects. Neither mutes/suspends/closes audio or stops its voices. Queued notes may continue to their scheduled stops, approximately 0.6 seconds maximum for current cues, subject to browser suspension behavior.",
+      "expected": "Explicitly silence pending cues and manage the audio context on visibility/page lifecycle transitions, with a consistent persisted-page resume policy.",
+      "why_it_matters": "The view can report stopped/disposed while already scheduled sound remains active; context suspension/release is not owned by the cleanup code.",
+      "confidence": "medium; inferred exact-source finding, no browser or audio-hardware execution",
+      "executed_probe_ids": []
+    }
+  ],
+  "scope": {
+    "canonical_repo": "C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin",
+    "inputs": [
+      "frontend/twin-v3.html",
+      "frontend/src/adaptive-v3/twin/twinPage.ts",
+      "frontend/src/adaptive-v3/twin/twinRender.ts",
+      "frontend/src/adaptive-v3/twin/twinNavigation.ts",
+      "frontend/src/adaptive-v3/twin/twinScenario.ts",
+      "frontend/src/adaptive-v3/twin/twin.css"
+    ],
+    "bridge": "frontend/src/adaptive-v3/warehouseScene.ts: narrow renderPass/frameAt/requestRender, capture and pending-init/disposal joins only",
+    "writes": "work/v3/account2-twin-ui-audit/20261108T171019Z only",
+    "source_evidence": "Exact current local source fallback. No graph tools, indexing or freshness/completeness claims. No material imports needed."
+  },
+  "executed_checks": [
+    "Initial and final SHA-256 hashes of all seven scoped inputs; JSON validation.",
+    "WHITE_BOX private passes helper: four modes at 1200x700 and 600x900; equal paired viewport sizes/zoom. No draw loop/pixels.",
+    "WHITE_BOX domFor plus installed bubble click callback; actual scenario functions, synthetic worker/DOM/projection. Reappearance and stale-cause defects reproduced.",
+    "COMPONENT_ONLY presenter: 16 forward/back/reentrant step applications verified configured time/mode/focus and selection clearing through recording stubs. Final keyboard/button mismatch reproduced.",
+    "Private debug presenter NaN index throws TypeError; no normal UI producer identified, not counted as a product finding.",
+    "COMPONENT_ONLY actual load/disposeAll/setPhase: reload-selection mismatch; latest-request late resolution; pagehide-sequence late resolution; current scene rejection. Source reader/adapter, scenes/twins/navigation and UI helpers stubbed."
+  ],
+  "inferred_checks": [
+    "Single page-owned absolute time feeds both scenario variants and renderer overlays; no separate variant clock identified.",
+    "Side routes equal A/B framing; swipe uses a full viewport and complementary scissors; overlay/diff intentionally render B plus A relocation traces. Draw finally restores A instance state, camera projection and renderer state.",
+    "Navigation frameAt routes through warehouseScene frameTarget/resize to requestRender and the installed renderPass. No actual cache color/depth/reprojection execution.",
+    "Selection looks up HU IDs in initial stock and actors in the registry, escapes source facts and derives both worker reasons from fixture time. No additional normal selection-switch mismatch identified beyond reported reload/bubble defects.",
+    "History/source UI explicitly distinguishes visual fixture events, address-checked relocation ideas, straight-line estimates and absent engine results. No backend completion or operational inventory truth established.",
+    "Sound defaults off and needs explicit activation; four-voice/cooldown limits exist. Effects off gives zero bubbles and suppresses pulses while retaining state colors. Lifecycle audio gap is inferred finding 004.",
+    "Source navigation/renderer disposal removes owned listeners, observers and RAFs; synthetic late-resolution ownership passed. Real loader/listener/RAF/resource cleanup not certified."
+  ],
+  "limitations": [
+    "No Git, browser, renderer, server, Blender, PowerPoint, COM, screenshot or heavy visual process; no actual public bootstrap, native scene/assets, admission, complete 530-HU acceptance or audio hardware execution.",
+    "AST-extracted helpers/callbacks run with explicitly labeled stub dependencies; these probes do not certify substituted components or rendered visual quality.",
+    "No auth, secret or raw session-transcript inspection; no settings/model/approval changes, accepted-proof regeneration, project-card acceptance, implementation, metadata or central-state edits.",
+    "Known MQL event-state fix/checker was not rerun; no W05.3 implementation or old receiver/shipper assumptions.",
+    "Concurrency comparison covers the seven scoped source hashes; no broader repository change claim."
+  ],
+  "probe_command": "node work/v3/account2-twin-ui-audit/20261108T171019Z/component-probes.cjs",
+  "probe_results": "probe-results.json",
+  "probe_records": 9,
+  "harness_note": "First harness run encountered an untranspiled TypeScript callback. The audit-only harness was corrected; the full rerun passed all its assertions (which intentionally assert the recorded product defects).",
+  "source_hashes_before": [
+    {
+      "path": "frontend/twin-v3.html",
+      "sha256": "c1ef466fcddf01e81fb90b374c5b2615dfdd801784bc2685df32e6fcd8f2a301"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+      "sha256": "bceee567a07399887c0a33a83a666fd39cb5e47cc3c210cd0f22802ddb078edc"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+      "sha256": "11b7001b50daf734ab84cb0f5599d53444a0379fdfbd62f5dc2f7ba5274cda56"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinNavigation.ts",
+      "sha256": "bce40d085d14ab94f9fc6781eb2eade5005a6645f914bd65aeced1e3d7eb2981"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+      "sha256": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twin.css",
+      "sha256": "df1a9078f71e2b5cc168cf83c9001cf9c207fc1d5cba7f1a79bb78cea8e35e6b"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+      "sha256": "54bc13bf2ac1d950447ad9102b04e180d83039c8d5e000c8299639dd9aa325a8"
+    }
+  ],
+  "source_hashes_after": [
+    {
+      "path": "frontend/twin-v3.html",
+      "sha256": "c1ef466fcddf01e81fb90b374c5b2615dfdd801784bc2685df32e6fcd8f2a301"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+      "sha256": "bceee567a07399887c0a33a83a666fd39cb5e47cc3c210cd0f22802ddb078edc"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+      "sha256": "11b7001b50daf734ab84cb0f5599d53444a0379fdfbd62f5dc2f7ba5274cda56"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinNavigation.ts",
+      "sha256": "bce40d085d14ab94f9fc6781eb2eade5005a6645f914bd65aeced1e3d7eb2981"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+      "sha256": "b0003192ae049d3bbf00f2078c0e137122357f58e88283ac69de6d93fab155dc"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twin.css",
+      "sha256": "df1a9078f71e2b5cc168cf83c9001cf9c207fc1d5cba7f1a79bb78cea8e35e6b"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScene.ts",
+      "sha256": "54bc13bf2ac1d950447ad9102b04e180d83039c8d5e000c8299639dd9aa325a8"
+    }
+  ],
+  "concurrency_changes": {
+    "checked": true,
+    "changed_files": [],
+    "scoped_sources_unchanged": true
+  },
+  "validation": {
+    "json": true,
+    "probe_result_records": 9,
+    "source_hash_pairs": 7,
+    "scoped_source_changes": 0,
+    "validated_at": "2026-11-08T17:19:45.778Z"
+  }
+}

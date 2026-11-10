@@ -1,0 +1,3984 @@
+{
+  "source_kind": "visual_fixture_browser_QA",
+  "engine_operation": false,
+  "accepted_action": false,
+  "preview_only": true,
+  "url": "http://127.0.0.1:4173/stand-v3.html?asset=shipper-workcell-fixture&fixture=shipper",
+  "visible": false,
+  "input_hashes": {
+    "frontend/stand-v3.html": "041b282f4c6f18a11ccfe89298ea46c2740b5e139f346d02719143d975251ed6",
+    "frontend/src/adaptive-v3/assetStand.ts": "347c3abe0d2133f396166825f32b8f887d72a77b6dc31afe86a16cb3518f55c6",
+    "frontend/src/adaptive-v3/motion/shipper.ts": "e21e0886d00f665523e414642cb93e959916c0b52a09fa58162a56cac689d991",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/public/data/v3/shipper-v3.json": "4dc580ee7dbbafbb9469e6e083c946f06bf76e1208baf408794af12f0cd0b06b",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/shipper-workcell-fixture.glb": "c80ff7569413d6402f27dfc8c6d53b99d69ecb635a59bb551fcac470c4256ffe",
+    "frontend/tools/check-shipper-browser-v3.mjs": "ca8b7c27889a1f7cf12f31df1ca5ecd54aa35be14974c1667ce28a59abb01d43"
+  },
+  "checks": {
+    "cold_reduced_motion_no_autoplay": true,
+    "same_actor_package_pallet_and_24_content_frames": true,
+    "scan_place_idle_blocked_distinct": true,
+    "inward_rest_palms": true
+  },
+  "frames": [
+    {
+      "mode": "place",
+      "time": 0,
+      "file": "place-0.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 0,
+          "label": "Ожидание посылки",
+          "mode": "place",
+          "complete": false,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": false,
+          "placed": false,
+          "displacement_m": 0,
+          "body_distance_m": 0,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "contact": {
+            "active": false,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.7274497122008564,
+              0.5976011515874247,
+              1.8100000191206158
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.17,
+              1.39
+            ],
+            "error_m": 0.7109451024300589
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.7155494488752603,
+          2.4621981068477155
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.7155494488752603,
+            2.0121981187686444
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 203.2164944813537,
+          "min_y": 290.84978801516866,
+          "max_x": 837.4559829654148,
+          "max_y": 804.7944112198815
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.25
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.550000011920929,
+            1.8850000010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.149999976158142,
+            1.8450000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6751710800967198,
+            1.8180000056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.7053597581275541,
+            0.6751710800967198,
+            1.8180000056544978
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -4.934527751410913,
+            4.909396924918161,
+            4.832721265825318
+          ],
+          "target": [
+            0.12999999918974936,
+            0.8577747244376301,
+            0.7810990653447867
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23589333878203916,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 243,
+          "triangles": 62169,
+          "memory": {
+            "geometries": 61,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "place",
+      "time": 7.9,
+      "file": "place-7p9.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 7.9,
+          "label": "Укладка на выход",
+          "mode": "place",
+          "complete": false,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": true,
+          "placed": false,
+          "displacement_m": 0.06730240000000001,
+          "body_distance_m": 0.06730240000000001,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.1826976
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            -0.008,
+            1.7826976
+          ],
+          "contact": {
+            "active": true,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.6899999736077543,
+              1.1619999904272318,
+              1.3226975988141354
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.162,
+              1.3226976
+            ],
+            "error_m": 2.8099729407908578e-8
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161138336505e-8,
+                1.77
+              ],
+              "target": {
+                "travel": 0.08,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                -0.1735738913003342,
+                0.2936218027850676,
+                -0.1200479114847334
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                0.010854116867410946,
+                1.7953952000000002
+              ],
+              "target": {
+                "travel": 0.05460480000000002,
+                "lift": 0.010854101966249684,
+                "stance": false
+              },
+              "joint_angles": [
+                -0.21488101515200042,
+                0.4935706976478118,
+                -0.2786896824958114
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                8.462889861116095e-8,
+                -0.9999999999999956,
+                -4.153390187333628e-8
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.7155494488752603,
+          2.4621981068477155
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.7155494488752603,
+            2.0121981187686444
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 203.2164944813537,
+          "min_y": 290.84978801516866,
+          "max_x": 837.4559829654148,
+          "max_y": 804.7944112198815
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.1826976
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.1826976
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            -0.008,
+            1.7826976
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.542000011920929,
+            1.8176976010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161138336505e-8,
+            1.77
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            0.010854116867410946,
+            1.7953952000000002
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.141999976158142,
+            1.7776976001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6671710800967198,
+            1.7506976056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.6979999668790611,
+            1.1517499922812064,
+            1.4026975817183558
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -4.934527751410913,
+            4.909396924918161,
+            4.832721265825318
+          ],
+          "target": [
+            0.12999999918974936,
+            0.8577747244376301,
+            0.7810990653447867
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23589333878203916,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 243,
+          "triangles": 62169,
+          "memory": {
+            "geometries": 61,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "place",
+      "time": 27,
+      "file": "place-27.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 27,
+          "label": "Готово",
+          "mode": "place",
+          "complete": true,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": true,
+          "placed": true,
+          "displacement_m": 0.16,
+          "body_distance_m": 0,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.09
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "contact": {
+            "active": false,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.7274497122008564,
+              0.5976011515874247,
+              1.8100000191206158
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.17,
+              1.39
+            ],
+            "error_m": 0.7109451024300589
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.7155494488752603,
+          2.4621981068477155
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.7155494488752603,
+            2.0121981187686444
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 203.2164944813537,
+          "min_y": 290.84978801516866,
+          "max_x": 837.4559829654148,
+          "max_y": 804.7944112198815
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.09
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.09
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.550000011920929,
+            1.8850000010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.149999976158142,
+            1.8450000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6751710800967198,
+            1.8180000056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.7053597581275541,
+            0.6751710800967198,
+            1.8180000056544978
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -4.934527751410913,
+            4.909396924918161,
+            4.832721265825318
+          ],
+          "target": [
+            0.12999999918974936,
+            0.8577747244376301,
+            0.7810990653447867
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23589333878203916,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 243,
+          "triangles": 62169,
+          "memory": {
+            "geometries": 61,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "scan",
+      "time": 1,
+      "file": "scan-1.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 1,
+          "label": "Сканирование этикетки",
+          "mode": "scan",
+          "complete": false,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": true,
+          "scan_complete": false,
+          "placed": false,
+          "displacement_m": 0,
+          "body_distance_m": 0,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "contact": {
+            "active": false,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.7274497122008564,
+              0.5976011515874247,
+              1.8100000191206158
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.17,
+              1.39
+            ],
+            "error_m": 0.7109451024300589
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.7122698865818862,
+          2.4621981068477155
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.7122698865818862,
+            2.0121981187686444
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 202.9227219532513,
+          "min_y": 290.43282381723424,
+          "max_x": 837.6837203480461,
+          "max_y": 804.7883473599605
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.25
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.550000011920929,
+            1.8850000010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.149999976158142,
+            1.8450000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6751710800967198,
+            1.8180000056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.7053597581275541,
+            0.6751710800967198,
+            1.8180000056544978
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -4.930789493292429,
+            4.9047665372766875,
+            4.82973065933053
+          ],
+          "target": [
+            0.12999999918974936,
+            0.8561349432909431,
+            0.7810990653447867
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.2358075422720615,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 244,
+          "triangles": 62169,
+          "memory": {
+            "geometries": 62,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "idle",
+      "time": 0,
+      "file": "idle.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 0,
+          "label": "Ожидание задания",
+          "mode": "idle",
+          "complete": false,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": false,
+          "placed": false,
+          "displacement_m": 0,
+          "body_distance_m": 0,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "contact": {
+            "active": false,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.7274497122008564,
+              0.5976011515874247,
+              1.8100000191206158
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.17,
+              1.39
+            ],
+            "error_m": 0.7109451024300589
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.699999839067459,
+          2.45999998729676
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.699999839067459,
+            2.009999999217689
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 202.08364914860067,
+          "min_y": 288.97805237543315,
+          "max_x": 838.6435343329154,
+          "max_y": 804.7639726585919
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.25
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.550000011920929,
+            1.8850000010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.149999976158142,
+            1.8450000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6751710800967198,
+            1.8180000056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.7053597581275541,
+            0.6751710800967198,
+            1.8180000056544978
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -4.91836009231272,
+            4.888687992735707,
+            4.818688078771285
+          ],
+          "target": [
+            0.12999999918974936,
+            0.8499999195337296,
+            0.780000005569309
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23540501087037516,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 243,
+          "triangles": 62169,
+          "memory": {
+            "geometries": 62,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "blocked",
+      "time": 0,
+      "file": "blocked.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 0,
+          "label": "Выход занят · отгрузка не начата",
+          "mode": "blocked",
+          "complete": false,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": false,
+          "placed": false,
+          "displacement_m": 0,
+          "body_distance_m": 0,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "contact": {
+            "active": false,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.7274497122008564,
+              0.5976011515874247,
+              1.8100000191206158
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.17,
+              1.39
+            ],
+            "error_m": 0.7109451024300589
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                1.4901161193847656e-8,
+                1.85
+              ],
+              "target": {
+                "travel": 0,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                0,
+                0,
+                0
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.7125542676551713,
+          2.4874249523941687
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.7125542676551713,
+            2.0374249643150977
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 199.91648549850132,
+          "min_y": 289.1973996649799,
+          "max_x": 836.461684272464,
+          "max_y": 804.8071380511916
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.25
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.25
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            0,
+            1.85
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.550000011920929,
+            1.8850000010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            1.4901161193847656e-8,
+            1.85
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.149999976158142,
+            1.8450000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6751710800967198,
+            1.8180000056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.7053597581275541,
+            0.6751710800967198,
+            1.8180000056544978
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -4.913246988686707,
+            4.890874724128754,
+            4.828310078419182
+          ],
+          "target": [
+            0.12999999918974936,
+            0.8562771338275856,
+            0.7937124881180133
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23676615337953372,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 243,
+          "triangles": 62169,
+          "memory": {
+            "geometries": 62,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "place",
+      "time": 7.9,
+      "file": "contact-detail.png",
+      "state": {
+        "modelId": "shipper-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": "shipper_existing_parcel",
+        "gripper": null,
+        "fixture": "shipper-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 7.9,
+          "label": "Укладка на выход",
+          "mode": "place",
+          "complete": false,
+          "actorId": "S01",
+          "role": "shipper",
+          "actor_uuid": "a83d62d5-ffbc-440e-8435-dd03d86e9075",
+          "package_uuid": "2c511970-a3ef-4abd-bdd3-06bc057847ac",
+          "package_id": "v3:fixture:package:SMALL001",
+          "contents_HU_ref": "v3:fixture:HU:SMALL001",
+          "pallet_uuid": "6d6e1a14-8930-49a8-bef6-3bebc4334c0d",
+          "pallet_HU_ref": "v3:fixture:HU:OUTBOUND01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": true,
+          "placed": false,
+          "displacement_m": 0.06730240000000001,
+          "body_distance_m": 0.06730240000000001,
+          "parcel_root_workcell_m": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.1826976
+          ],
+          "body_root_workcell_m": [
+            -0.39,
+            -0.008,
+            1.7826976
+          ],
+          "contact": {
+            "active": true,
+            "surface": "rear_paper_and_tape",
+            "point_workcell_m": [
+              -0.6899999736077543,
+              1.1619999904272318,
+              1.3226975988141354
+            ],
+            "target_workcell_m": [
+              -0.69,
+              1.162,
+              1.3226976
+            ],
+            "error_m": 2.8099729407908578e-8
+          },
+          "actualFeet": [
+            {
+              "side": "L",
+              "world": [
+                -0.27500000536441804,
+                1.4901161138336505e-8,
+                1.77
+              ],
+              "target": {
+                "travel": 0.08,
+                "lift": 0,
+                "stance": true
+              },
+              "joint_angles": [
+                -0.1735738913003342,
+                0.2936218027850676,
+                -0.1200479114847334
+              ]
+            },
+            {
+              "side": "R",
+              "world": [
+                -0.504999994635582,
+                0.010854116867410946,
+                1.7953952000000002
+              ],
+              "target": {
+                "travel": 0.05460480000000002,
+                "lift": 0.010854101966249684,
+                "stance": false
+              },
+              "joint_angles": [
+                -0.21488101515200042,
+                0.4935706976478118,
+                -0.2786896824958114
+              ]
+            }
+          ],
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274954e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                8.462889861116095e-8,
+                -0.9999999999999956,
+                -4.153390187333628e-8
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.540000073146075,
+          1.7155494488752603,
+          2.4621981068477155
+        ],
+        "bounds_m": {
+          "min": [
+            -1.1400000373832881,
+            0,
+            -0.44999998807907104
+          ],
+          "max": [
+            1.4000000357627869,
+            1.7155494488752603,
+            2.0121981187686444
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": -660.16893785855,
+          "min_y": -519.7896652351847,
+          "max_x": 2534.2871462839676,
+          "max_y": 1788.752819444129
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_shipper_contact": [
+            -0.6899999976158142,
+            1.1699999570846558,
+            1.3899999856948853
+          ],
+          "anchor_shipper_place_end": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.090000033378601
+          ],
+          "anchor_shipper_scan_lens": [
+            -0.7200000286102295,
+            1.1299999952316284,
+            0.39100000262260437
+          ],
+          "anchor_shipper_scan_target": [
+            -0.6200000047683716,
+            1.0750000476837158,
+            1.1100000143051147
+          ],
+          "anchor_shipper_service": [
+            -0.38999998569488525,
+            0,
+            1.850000023841858
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.3019999861717224
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            0.800000011920929,
+            0,
+            1.2000000476837158
+          ],
+          "anchor_cog_declared": [
+            0.800000011920929,
+            0.675000011920929,
+            1.2000000476837158
+          ],
+          "anchor_content_HU_support": [
+            -0.6899999976158142,
+            0.9230000376701355,
+            1.1826976
+          ],
+          "anchor_support_bottom": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.1826976
+          ],
+          "anchor_floor": [
+            -0.6899999976158142,
+            0,
+            0.949999988079071
+          ],
+          "anchor_payload_centre": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.949999988079071
+          ],
+          "anchor_port_minus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            0.44999998807907104
+          ],
+          "anchor_port_plus": [
+            -0.6899999976158142,
+            0.9200000166893005,
+            1.4500000476837158
+          ],
+          "anchor_floor_origin": [
+            -0.39,
+            -0.008,
+            1.7826976
+          ],
+          "anchor_seat_contact": [
+            -0.39,
+            0.542000011920929,
+            1.8176976010803343
+          ],
+          "anchor_foot_floor_L": [
+            -0.27500000536441804,
+            1.4901161138336505e-8,
+            1.77
+          ],
+          "anchor_foot_floor_R": [
+            -0.504999994635582,
+            0.010854116867410946,
+            1.7953952000000002
+          ],
+          "anchor_neck_base": [
+            -0.39,
+            1.141999976158142,
+            1.7776976001117588
+          ],
+          "anchor_hand_grip_L": [
+            -0.0746402418724458,
+            0.6671710800967198,
+            1.7506976056544978
+          ],
+          "anchor_hand_grip_R": [
+            -0.6979999668790611,
+            1.1517499922812064,
+            1.4026975817183558
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "shipper_workcell_root",
+          "anchor_shipper_contact",
+          "anchor_shipper_place_end",
+          "anchor_shipper_scan_lens",
+          "anchor_shipper_scan_target",
+          "anchor_shipper_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "shipper-workcell-fixture__batch_00",
+          "shipper-workcell-fixture__batch_01",
+          "shipper-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "shipper-workcell-fixture__batch_03",
+          "shipper-workcell-fixture__batch_04",
+          "shipper-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "shipper-workcell-fixture__batch_06",
+          "shipper-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "shipper-workcell-fixture__batch_08",
+          "shipper-workcell-fixture__batch_09",
+          "shipper-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "shipper-workcell-fixture__batch_11",
+          "shipper-workcell-fixture__batch_12",
+          "shipper_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "shipper-workcell-fixture__batch_13",
+          "shipper-workcell-fixture__batch_14",
+          "shipper-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "shipper_existing_parcel",
+          "anchor_content_HU_support",
+          "anchor_support_bottom",
+          "shipper-workcell-fixture__batch_16",
+          "shipper-workcell-fixture__batch_17",
+          "front_paper_and_print__closed_film",
+          "front_paper_and_print__closed_film_1",
+          "front_paper_and_print__closed_film_2",
+          "front_paper_and_print__closed_film_3",
+          "front_paper_and_print__closed_film_4",
+          "shipper_outbound_belt",
+          "anchor_floor",
+          "anchor_payload_centre",
+          "anchor_port_minus",
+          "anchor_port_plus",
+          "belt_surface",
+          "shipper-workcell-fixture__batch_18",
+          "shipper-workcell-fixture__batch_19",
+          "conveyor_frame",
+          "shipper-workcell-fixture__batch_20",
+          "shipper-workcell-fixture__batch_21",
+          "shipper-workcell-fixture__batch_22",
+          "shipper-workcell-fixture__batch_23",
+          "actor__S01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__S01",
+          "worker-manual__batch_28",
+          "shipper_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_PARCEL_cardboard",
+          "V3_PARCEL_paper_tape",
+          "V3_PARCEL_label",
+          "V3_PARCEL_ink",
+          "V3_PARCEL_fold",
+          "V3_Conveyor_Belt",
+          "V3_Conveyor_BeltSegment",
+          "V3_Conveyor_Charcoal",
+          "V3_Conveyor_Petrol",
+          "V3_Conveyor_Marker",
+          "V3_Conveyor_Bolt",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 15540,
+        "metadata": {
+          "name": "shipper_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"R05\", \"M07.2_REF\", \"M08_REF\"]",
+          "contains_worker": false,
+          "HU_instances": 2,
+          "warehouse_headcount_delta": 0,
+          "scope": "Existing light1.02kg sealed parcel guided160mm on real belt support; separate already staged455kgHU for mechanical dispatch. Visual scanner cue only; no decoder/stock mutation/actual engine run or human pallet lift.",
+          "asset_id": "shipper-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            -1.525061905009558,
+            1.728049550650923,
+            1.850747044380448
+          ],
+          "target": [
+            -0.6899999976158142,
+            1.0600000247359276,
+            1.182697518465453
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.032109818864141604,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009828889115918299
+        },
+        "renderer": {
+          "calls": 163,
+          "triangles": 54329,
+          "memory": {
+            "geometries": 62,
+            "textures": 10
+          }
+        }
+      }
+    }
+  ],
+  "fatal": [],
+  "failed_resources": [],
+  "expected_failures": [],
+  "lifecycle": {
+    "owned_pid": 18712,
+    "terminated": true,
+    "elapsed_ms": 10663
+  },
+  "scope": "Browser role/identity/rendering/controls/lifecycle gates only; native geometry and explicit screenshot review remain separate."
+}

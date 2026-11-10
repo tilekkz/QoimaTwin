@@ -1,0 +1,215 @@
+{
+  "stage": "M14.4",
+  "status": "PASS",
+  "asset_id": "forklift-mast-stage",
+  "units": "m",
+  "up_axis": "Y",
+  "forward_axis": "+Z",
+  "root": "forklift_root",
+  "source_reference": "M14.2-REACH",
+  "geometry_created": true,
+  "input_sha256": {
+    "assets/v3/specs/forklift.dimensions.json": "d13741cc15e2dc4486ec880cdcbba56fe2ebf7143481d5f24be40ea31a57818b",
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "assets/v3/blender/forklift-body-wheels.blend": "047c84bbc27ea5ff73e160ddfd1d51155ef6962b4c7335b471ebb48c05d18e19",
+    "frontend/public/models/v3/forklift-body-wheels.glb": "27b373611a8878024dd949ee13995991943201d6e390969b495cafebf4786c1b",
+    "assets/v3/blender/forklift-cab-stage.blend": "1ac874cb188c84b455d74aee75d7f22ed323e92eb092ae6e3c01f33e4145e080",
+    "frontend/public/models/v3/forklift-cab-stage.glb": "117dce493fd8bcf26a4d09c6d9558b19870628abe79153579830d1dd80729e68"
+  },
+  "travel_bounds": {
+    "min": [
+      -0.6,
+      0,
+      -1.5
+    ],
+    "max": [
+      0.6,
+      2.1,
+      1.5
+    ]
+  },
+  "allowed_stopped_max_z": 1.9,
+  "fixed_mast": {
+    "rails_x_abs": [
+      0.2,
+      0.28
+    ],
+    "y": [
+      0.08,
+      2.1
+    ],
+    "z": [
+      -0.02,
+      0.06
+    ],
+    "channel": {
+      "inner_x_abs": [
+        0.214,
+        0.266
+      ],
+      "inner_z": [
+        -0.006,
+        0.06
+      ]
+    },
+    "roller_radius": 0.015,
+    "roller_z": 0.009,
+    "rollers_per_rail": 2,
+    "shoe_x_abs": [
+      0.218,
+      0.262
+    ],
+    "shoe_z": [
+      0.01,
+      0.067
+    ],
+    "shoe_y_relative_top": [
+      -0.055,
+      0.145
+    ]
+  },
+  "rear_plate": {
+    "x": [
+      -0.56,
+      0.56
+    ],
+    "y_relative_top": [
+      -0.07,
+      0.16
+    ],
+    "z": [
+      0.064,
+      0.08
+    ],
+    "fixed_rail_front_air_m": 0.004
+  },
+  "outer_rail": {
+    "x_abs": [
+      0.5,
+      0.56
+    ],
+    "y_relative_top": [
+      -0.07,
+      -0.015
+    ],
+    "z": [
+      -0.02,
+      0.62
+    ],
+    "wall_m": 0.008
+  },
+  "inner_rail": {
+    "x_abs": [
+      0.512,
+      0.548
+    ],
+    "y_relative_top": [
+      -0.0575,
+      -0.0275
+    ],
+    "bind_z": [
+      -0.02,
+      0.62
+    ],
+    "length_m": 0.64,
+    "stroke_m": 0.4,
+    "minimum_overlap_m": 0.24,
+    "air_x_each_m": 0.004,
+    "air_y_each_m": 0.0045
+  },
+  "forward_plate": {
+    "x": [
+      -0.56,
+      0.56
+    ],
+    "y_relative_top": [
+      -0.07,
+      0.04
+    ],
+    "z_relative_heel": [
+      -0.04,
+      0
+    ]
+  },
+  "forks": {
+    "one_piece_closed_L": true,
+    "width_m": 0.08,
+    "blade_length_m": 1.1,
+    "blade_thickness_m": 0.07,
+    "stem_height_relative_top": 0.3,
+    "stem_z_relative_heel": [
+      -0.025,
+      0
+    ],
+    "half_spacing_m": [
+      0.24,
+      0.4
+    ]
+  },
+  "joints": {
+    "joint__carriage": {
+      "parent": "forklift_root",
+      "bind_local": [
+        0,
+        0.7,
+        0.04
+      ],
+      "translate_axis": "Y",
+      "delta_range_m": [
+        -0.52,
+        0.8
+      ]
+    },
+    "joint__reach": {
+      "parent": "joint__carriage",
+      "bind_local": [
+        0,
+        0,
+        0.36
+      ],
+      "translate_axis": "Z",
+      "delta_range_m": [
+        0,
+        0.4
+      ]
+    },
+    "joint__fork_L": {
+      "parent": "joint__reach",
+      "bind_local": [
+        -0.4,
+        0,
+        0
+      ],
+      "translate_axis": "X",
+      "position_range_m": [
+        -0.4,
+        -0.24
+      ]
+    },
+    "joint__fork_R": {
+      "parent": "joint__reach",
+      "bind_local": [
+        0.4,
+        0,
+        0
+      ],
+      "translate_axis": "X",
+      "position_range_m": [
+        0.24,
+        0.4
+      ]
+    }
+  },
+  "sequence": [
+    "travel reach0/top.70 or LONG.75",
+    "stop; extend high",
+    "lower only fullreach.40",
+    "engage/release",
+    "lift to travel top while extended",
+    "retract high"
+  ],
+  "contacts_policy": "Welded/static joints use actual interior mesh witnesses. Captured channels/guide rollers use physical tangent/clearance and overlap witnesses; no false solid penetration required. Mast/action/HU/rack workflow remains later gates.",
+  "source_qa": "assets/v3/iterations/forklift/M14.4/actual-mast-checks.json",
+  "final_glb_sha256": "ef6e58f8131c4e51881a7c1d648bb6ebd79492683b19d09ba5389c48c97e7121",
+  "roof_refinement": "Open slat head guard from existing M14.2-REACH reference; unchanged bounds and underside. Existing cab/body source files unchanged."
+}

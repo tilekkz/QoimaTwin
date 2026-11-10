@@ -1,0 +1,46 @@
+@import './staffRegistry.css';
+.warehouse-header{padding:12px 28px;min-height:70px}.warehouse-header nav{display:flex;gap:24px;font-size:12px}.warehouse-main{max-width:none;padding:22px 28px 30px;min-height:calc(100vh - 70px)}.warehouse-title{display:flex;align-items:center;justify-content:space-between;gap:30px}.warehouse-title .eyebrow{margin-bottom:9px}.warehouse-title h1{font-size:29px;line-height:1.13;letter-spacing:-.025em}.warehouse-source{text-align:right}.warehouse-source p{font-size:12px;color:#607477;margin:7px 0 0}.warehouse-load{margin:20px 0 18px;min-height:50px}.warehouse-load p{max-width:900px}.warehouse-workspace{display:grid;grid-template-columns:minmax(0,1fr) 304px;gap:20px;align-items:start}.warehouse-stage{min-width:0;border:1px solid #c1cdc6;background:#e0e5dc;border-radius:9px;overflow:hidden}.warehouse-toolbar{display:flex;gap:16px;justify-content:space-between;padding:12px 15px;background:#fafaf6;border-bottom:1px solid #cbd2cd}.warehouse-toolbar>div{min-width:0;flex:1}.warehouse-toolbar label,.warehouse-panel>label{display:block;font-size:11px;color:#607477;margin-bottom:5px}.warehouse-toolbar select,.warehouse-panel select{width:100%;min-height:44px;max-width:100%;border:1px solid #bfcac9;background:#fff;border-radius:6px;color:#293d46;padding:8px 10px;font-size:12px}.warehouse-viewport{width:100%;height:max(480px,calc(100vh - 390px));position:relative;touch-action:none}.warehouse-viewport canvas{width:100%;height:100%;display:block;touch-action:none}.warehouse-caption{display:flex;justify-content:space-between;gap:15px;padding:9px 15px;font-size:10px;color:#607477;background:#fafaf6;border-top:1px solid #cbd2cd}.warehouse-inspector{min-width:0;display:flex;flex-direction:column;gap:15px;max-height:calc(100vh - 260px);overflow:auto;padding:1px 4px 6px 1px}.warehouse-panel{border:1px solid #cbd2cd;border-radius:8px;background:#fafaf6;padding:17px;min-width:0}.warehouse-panel .eyebrow{font-size:10px;margin:0 0 12px}.warehouse-facts{display:grid;grid-template-columns:1fr auto;gap:8px 15px;font-size:12px;margin:0}.warehouse-facts dt{color:#607477}.warehouse-facts dd{margin:0;font-variant-numeric:tabular-nums}.warehouse-footnote{font-size:11px;line-height:1.55;color:#607477;margin:12px 0 0}.warehouse-selection{font-size:12px;line-height:1.6;overflow-wrap:anywhere}.warehouse-selection h2{font-size:15px;line-height:1.5;margin:16px 0 10px}.warehouse-selection p{color:#607477;margin:12px 0}.warehouse-selection dl{display:grid;grid-template-columns:1fr 1.5fr;gap:8px 12px;margin-bottom:0}.warehouse-selection dt{color:#607477}.warehouse-selection dd{margin:0}.warehouse-requests summary{font-size:12px;font-weight:600;cursor:pointer}.warehouse-requests ol{list-style:none;padding:0;margin:12px 0 0}.warehouse-requests li{border-top:1px solid #d9dfda;padding:10px 0;font-size:11px;line-height:1.6}.warehouse-requests strong{font-size:11px;display:block}.warehouse-requests span{color:#607477;display:block;overflow-wrap:anywhere}[data-phase=error] .warehouse-load{color:#8b6046}[data-phase=loading] .warehouse-load{color:#607477}
+@media(max-width:850px){.warehouse-header{padding:14px 20px;gap:15px}.warehouse-header nav{gap:13px;font-size:11px}.warehouse-main{padding:22px 20px}.warehouse-workspace{grid-template-columns:minmax(0,1fr)}.warehouse-inspector{max-height:none;overflow:visible;display:grid;grid-template-columns:1fr 1fr;padding:0}.warehouse-requests{grid-column:1/-1}.warehouse-viewport{height:440px}.warehouse-title h1{font-size:26px}.warehouse-source p{max-width:190px}}
+@media(max-width:500px){.warehouse-header{align-items:flex-start;gap:12px}.warehouse-header nav{display:grid;grid-template-columns:1fr 1fr;gap:7px 14px}.warehouse-header .brand strong{font-size:16px}.warehouse-header .brand small{font-size:8px;max-width:115px}.warehouse-header .brand-mark{width:32px;height:32px;font-size:24px;flex-shrink:0}.warehouse-main{padding:23px 15px}.warehouse-title{display:block}.warehouse-title h1{font-size:26px}.warehouse-source{text-align:left;margin-top:18px;border-left:2px solid #b9c9c5;padding-left:12px}.warehouse-source p{max-width:none;margin-top:6px}.warehouse-load{display:block;padding:6px 0}.warehouse-load button,.warehouse-load a{margin-bottom:10px}.warehouse-toolbar{display:block;padding:12px}.warehouse-toolbar>div+div{margin-top:12px}.warehouse-viewport{height:365px;min-height:365px}.warehouse-caption{display:block;font-size:9px}.warehouse-caption span{display:block}.warehouse-inspector{display:flex}.warehouse-panel{padding:16px}.warehouse-selection dl{grid-template-columns:1fr 1.5fr}}
+
+.route-panel summary{font-size:12px;font-weight:600;cursor:pointer}.route-panel>label{display:block;font-size:11px;color:#607477;margin:14px 0 5px}.route-panel>p{margin:10px 0 12px}.route-panel select{min-height:42px}.route-playback{display:flex;gap:8px;margin:13px 0}.route-playback button{font-size:11px;padding:7px 10px;min-height:40px}.route-panel #route-seek{width:100%;margin:8px 0 12px;accent-color:#286f76}.route-panel output{float:right;font-variant-numeric:tabular-nums}.route-options{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}.route-options label{font-size:11px;display:flex;gap:7px;align-items:center}.route-options select{width:62px;min-height:36px}.route-options input{accent-color:#286f76;width:16px;height:16px}.route-panel #route-retry{font-size:11px;margin-top:10px}
+
+.route-panel button:disabled{cursor:default;opacity:.7}
+
+.pallet-stages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0}.pallet-stages button{font-size:11px;min-height:40px;padding:7px}.pallet-stages button:last-child{grid-column:1/-1}#pallet-seek{width:100%;accent-color:#286f76}
+/* Links under an inspected item: to its skills page and to the same item in the A/B comparison. */
+#warehouse-selection a{display:inline-block;margin:10px 16px 0 0;font-weight:600}
+
+@media (min-width:1024px){
+ #warehouse .warehouse-title h1{text-wrap:balance}
+ #warehouse .warehouse-title .eyebrow{font-size:12px;color:#0b6b63}
+ #warehouse .warehouse-source p{font-size:14px;line-height:1.6;color:#52645f}
+ #warehouse>.warehouse-load{min-height:56px}
+ #warehouse .warehouse-workspace{grid-template-columns:minmax(0,1fr) 344px;gap:24px}
+ #warehouse .warehouse-toolbar{gap:16px;padding:16px 20px}
+ #warehouse .warehouse-toolbar label,#warehouse .warehouse-panel>label{font-size:12px;color:#52645f;margin-bottom:6px}
+ #warehouse .warehouse-toolbar select,#warehouse .warehouse-panel select{font-size:14px;min-height:44px}
+ #warehouse .warehouse-viewport{height:max(400px,calc(100vh - 466px))}
+ #warehouse .warehouse-caption{font-size:12px;color:#52645f;line-height:1.5;padding:12px 20px}
+ #warehouse .warehouse-inspector{gap:16px;max-height:calc(100vh - 320px);padding:3px 6px 6px 3px;scrollbar-gutter:stable;background:transparent;box-shadow:none;border-radius:0}
+ #warehouse .warehouse-panel{padding:20px}
+ #warehouse .warehouse-panel .eyebrow{font-size:12px;color:#0b6b63;margin-bottom:16px}
+ #warehouse .warehouse-facts{font-size:14px;line-height:1.5;gap:10px 16px;grid-template-columns:minmax(0,1fr) auto}
+ #warehouse .warehouse-facts dt{color:#52645f}
+ #warehouse .warehouse-facts dd{text-align:right}
+ #warehouse .warehouse-footnote{font-size:14px;line-height:1.6;color:#52645f}
+ #warehouse .warehouse-selection{font-size:14px;line-height:1.6}
+ #warehouse .warehouse-selection :is(p,dt){color:#52645f}
+ #warehouse .warehouse-selection a{color:#0b6b63;min-height:28px}
+ #warehouse .warehouse-panel summary{font-size:14px;line-height:1.5;min-height:24px}
+ #warehouse .warehouse-requests :is(li,strong){font-size:14px;line-height:1.6}
+ #warehouse .warehouse-requests span{color:#52645f}
+ #warehouse .route-panel>label{font-size:12px;color:#52645f}
+ #warehouse .route-playback{flex-wrap:wrap}
+ #warehouse .route-playback button,#warehouse .route-panel #route-retry,
+ #warehouse .pallet-stages button{font-size:14px;min-height:44px}
+ #warehouse .route-options label{font-size:14px;line-height:1.5}
+ #warehouse .route-options select{width:68px}
+ #warehouse .route-panel button:disabled{color:#52645f;opacity:1}
+ #warehouse .route-panel output{font-size:14px;color:var(--ink,#293d46)}
+}

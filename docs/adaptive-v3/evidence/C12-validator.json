@@ -1,0 +1,344 @@
+{
+  "task_id": "C12",
+  "passed": true,
+  "source_kind": "contract_proposal_handoff",
+  "engine_operation": false,
+  "backend_integration_complete": false,
+  "actual_v3_run_supported": false,
+  "worker_registry_materialized": false,
+  "source_checkpoint_commit": "c661a726eede7bd1a38999a311228cb5c279463e",
+  "manifest_sha256": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+  "tool_sha256": {
+    "tools/visual/v3/build_contract_handoff_v3.py": "ad3e9a4c65a94677f8d34e3b3b3dcd2caccc068cb31f608b860d6f637ec86c05",
+    "tools/visual/v3/validate_contract_handoff_v3.py": "473dfbdb4da6e63a9b1137177e0ea61012a71312f428d64cd26483bc40a2c712"
+  },
+  "jsonschema_version": "4.26.0",
+  "offline_local_reference_registry": true,
+  "schemas_checked": 8,
+  "examples_checked": 7,
+  "cargo_records_checked": 8,
+  "slot_modules_checked": 132,
+  "slots_checked": 776,
+  "port_views_checked": 6,
+  "preserved_source_artifacts": 33,
+  "unchanged_canonical_contracts": 21,
+  "referenced_files_checked": 70,
+  "negative_cases": [
+    {
+      "case": "actual_kind_cannot_promote_visual_fixture",
+      "passed": true,
+      "reason": "ACTUAL_V3_UNSUPPORTED"
+    },
+    {
+      "case": "engine_flag_conflicts_with_fixture",
+      "passed": true,
+      "reason": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "unknown_schema_version",
+      "passed": true,
+      "reason": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "wrong_layout_hash",
+      "passed": true,
+      "reason": "LAYOUT_BINDING_MISMATCH"
+    },
+    {
+      "case": "changed_payload_bytes",
+      "passed": true,
+      "reason": "ARTIFACT_HASH_MISMATCH"
+    },
+    {
+      "case": "unregistered_payload_reference",
+      "passed": true,
+      "reason": "UNSUPPORTED_PAYLOAD_REFERENCE"
+    },
+    {
+      "case": "wrong_visual_clock",
+      "passed": true,
+      "reason": "CLOCK_MISMATCH"
+    },
+    {
+      "case": "analytical_period_is_not_elapsed_clock",
+      "passed": true,
+      "reason": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "unknown_or_cloned_worker",
+      "passed": true,
+      "reason": "UNKNOWN_WORKER_ID"
+    },
+    {
+      "case": "role_outside_capabilities",
+      "passed": true,
+      "reason": "ROLE_NOT_ALLOWED"
+    },
+    {
+      "case": "skill_missing_for_allowed_role",
+      "passed": true,
+      "reason": "SKILL_ROLE_MISMATCH"
+    },
+    {
+      "case": "picker_not_automatically_a_forklift_driver",
+      "passed": true,
+      "reason": "FORKLIFT_QUALIFICATION_UNDECLARED"
+    },
+    {
+      "case": "wrong_driver_vehicle",
+      "passed": true,
+      "reason": "VEHICLE_QUALIFICATION_MISMATCH"
+    },
+    {
+      "case": "nonfinite_speed",
+      "passed": true,
+      "reason": "NONFINITE_NUMBER"
+    },
+    {
+      "case": "port_normal_conflict",
+      "passed": true,
+      "reason": "PORT_NORMAL_CONFLICT"
+    },
+    {
+      "case": "duplicate_port_identity",
+      "passed": true,
+      "reason": "DUPLICATE_PORT_ID"
+    },
+    {
+      "case": "port_bound_to_opposite_source_document",
+      "passed": true,
+      "reason": "PORT_SOURCE_REFERENCE_INVALID"
+    },
+    {
+      "case": "cherry_picked_horizon",
+      "passed": true,
+      "reason": "HORIZON_SET_MISMATCH"
+    },
+    {
+      "case": "relocation_cost_ignored",
+      "passed": true,
+      "reason": "COST_SOURCE_MISMATCH"
+    },
+    {
+      "case": "candidate_used_as_different_baseline",
+      "passed": true,
+      "reason": "BASELINE_REFERENCE_MISMATCH"
+    },
+    {
+      "case": "invented_throughput_metric",
+      "passed": true,
+      "reason": "SCHEMA_FIELD_ERROR"
+    },
+    {
+      "case": "quantity_changed_between_alternatives",
+      "passed": true,
+      "reason": "STOCK_IDENTITY_MISMATCH"
+    },
+    {
+      "case": "reference_cannot_escape_repository",
+      "passed": true,
+      "reason": "OUTSIDE_REPOSITORY"
+    }
+  ],
+  "original_source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/adaptation-evaluation-v3.json",
+      "sha256": "9237c019b9995e318c473688f8dbe54278eb1394d3a310fda1347bb9d931a3c5",
+      "bytes": 479,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adaptation-input-v3.json",
+      "sha256": "5b9f294e4ac3f36bd196dcde5853432f394a7276f9fc4256e4d59a1a9aed8e23",
+      "bytes": 122776,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-horizon2-v3.json",
+      "sha256": "be67f3dbd8c1e9e65be82f2b0791000251259ae938486abfce43e2bf5f179ee3",
+      "bytes": 1703106,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-horizon4-v3.json",
+      "sha256": "e4a663f975acabfd333df56f7f4451fd88d503635c77a74ab772e4b5a2ea02b1",
+      "bytes": 1737294,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-horizon8-v3.json",
+      "sha256": "e1fe62e7fc9dd86f07b6a40f41774ab4055ebe67c06653f1f43e31895df885ea",
+      "bytes": 1737640,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-v3.json",
+      "sha256": "57c6cde798b08c6d45da7acb311d13f81a31cd127e6352ddc7089ea818179b04",
+      "bytes": 1698633,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/admission-policy-v3.json",
+      "sha256": "9e4c530b88db10c0f2598a43c232884173b93c0b503e8d982bb9ad8c9d8b9460",
+      "bytes": 37692,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/baseline-assignment-v3.json",
+      "sha256": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+      "bytes": 735121,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/baseline-input-v3.json",
+      "sha256": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+      "bytes": 122106,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.example.json",
+      "sha256": "fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86",
+      "bytes": 3966,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.schema.json",
+      "sha256": "46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88",
+      "bytes": 11821,
+      "kind": "schema"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+      "bytes": 77328,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-geometry-cases-v3.json",
+      "sha256": "8b0fc13360fef030134c4a05c743901fc899455cadf7064592314733d675c3ae",
+      "bytes": 12182,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-mass-cases-v3.json",
+      "sha256": "3d4e15a4941f4692d14238f4891a1ca24bdd46858e327d4e1e0682fb2b4e25ce",
+      "bytes": 13982,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/conveyor-v3.json",
+      "sha256": "3bf8cb57e46f853921bcf322d939e61dfd32db96d4e46184db18923889d17612",
+      "bytes": 94202,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/large-gate-v3.json",
+      "sha256": "ee61f9a7413d57eb89c168097efb3cf38a925137e6fa6c637c8bed036c05ddf8",
+      "bytes": 16236,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-conflicts-v3.json",
+      "sha256": "7007d809982f5df117dbd93cdec89005b69fdadad8d352285994048f03c2e917",
+      "bytes": 593061,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-links-v3.json",
+      "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+      "bytes": 5905710,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+      "bytes": 8009,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-semantic-index-v3.json",
+      "sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a",
+      "bytes": 5128507,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.envelope.json",
+      "sha256": "f664edfee2fb78b0d6eb4219d01fc8ffc3734dd62abdaf27029dcf0eed4fbcc5",
+      "bytes": 2078,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566",
+      "bytes": 32051,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/pedestrian-graph-v3.json",
+      "sha256": "baca17871f1f657596cade425793342169be785fb22e2c105063daafdba24529",
+      "bytes": 73241,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+      "bytes": 1756,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+      "bytes": 13240,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+      "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+      "bytes": 27396,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/sku-catalog-v3.json",
+      "sha256": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+      "bytes": 34508,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-compatibility-v3.json",
+      "sha256": "3270abb7c10d0f609bcac1121e16dff277d35220e43e9c7c167c989bdf794857",
+      "bytes": 47317,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2",
+      "bytes": 2777075,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-slot-v3.schema.json",
+      "sha256": "b7cd65bf84536d3a8de23ff263f23ef8b6cb8509a11f30977fcce6fa09e8c29b",
+      "bytes": 29385,
+      "kind": "schema"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-slots-v3.json",
+      "sha256": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+      "bytes": 3541951,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-graph-v3.json",
+      "sha256": "be17461061cc33fe07540d0bc5572f61ce74ac9852198ee5423ed549deb3f832",
+      "bytes": 1147159,
+      "kind": "proposal_json"
+    },
+    {
+      "path": "docs/v3/contract-proposals/vehicle-handling-v3.json",
+      "sha256": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+      "bytes": 812841,
+      "kind": "proposal_json"
+    }
+  ],
+  "scope": "Additive C12 proposal package over frozen root inputs at the recorded checkpoint. No Arman/backend/shared V2 mutation or adoption; no actual V3 engine run. Future source additions require a new reviewed bundle generation."
+}

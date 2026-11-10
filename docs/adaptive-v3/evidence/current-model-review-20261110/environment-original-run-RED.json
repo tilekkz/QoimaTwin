@@ -1,0 +1,1948 @@
+{
+  "schema_id": "qoima.current-selected-model-fourviews.v1",
+  "passed": false,
+  "functional_passed": false,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "source_hashes": {
+    "docs/adaptive-v3/handoff/desktop-20261109/asset-manifest.json": "2abbf2afd659db923bc20c965f1b970e25a91ac766597993560de8c21cec9597",
+    "frontend/stand-v3.html": "822ace191c0be68ad6827a953f856d9219b3c4186676bfe6f4080dd09a1403aa",
+    "frontend/src/adaptive-v3/assetStand.ts": "347c3abe0d2133f396166825f32b8f887d72a77b6dc31afe86a16cb3518f55c6",
+    "frontend/tools/check-current-model-fourviews-v3.mjs": "e189b0135a43eb7d1fcdf7bc38d7753eff1d4ece29af8e3b4ed4ae08cecb899a",
+    "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "frontend/public/models/v3/picker-pick-source-fixture.glb": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "frontend/public/models/v3/packer-workcell-fixture.glb": "a378a056a09776b4b833befcce5cb36916ccd3a7dfd07c2050744cc41a339b5a",
+    "frontend/public/models/v3/receiver-workcell-fixture.glb": "5eb51073d5c456f71ccc64c4bc231eadbf6761c6da89a96c4c87900dac1de54b",
+    "frontend/public/models/v3/shipper-workcell-fixture.glb": "c80ff7569413d6402f27dfc8c6d53b99d69ecb635a59bb551fcac470c4256ffe",
+    "frontend/public/models/v3/forklift-pallet-low-fixture.glb": "b172dc6dd245208a49fdddebccd6ff5d64cc3771c4e0259dabdd633adbd2808a",
+    "frontend/public/models/v3/small-package-gripper.glb": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8"
+  },
+  "models": [
+    {
+      "asset_id": "environment-markings-fixture",
+      "path": "frontend/public/models/v3/environment-markings-fixture.glb",
+      "model_sha256": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+      "served_url": "/models/v3/environment-markings-fixture.glb",
+      "served_sha256": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+      "views": [
+        {
+          "view": "front",
+          "file": "work/v3/full-tz-closeout-20261109/current-model-fourviews/2026-11-09T19-17-58-396Z/environment-markings-fixture/front.png",
+          "image_sha256": "7aa1c394049dc75e56a37376613704ef17db04fb57295057fd398a8d4a9088a7",
+          "state": {
+            "modelId": "environment-markings-fixture",
+            "phase": "ready",
+            "view": "front",
+            "focus": null,
+            "gripper": null,
+            "fixture": null,
+            "grip": null,
+            "driver": null,
+            "action": null,
+            "roles": [],
+            "dimensions_m": [
+              145.1999969482422,
+              8.550000071525574,
+              73.19999694824219
+            ],
+            "bounds_m": {
+              "min": [
+                -0.5999984741210938,
+                -0.5499999970197678,
+                -0.5999984741210938
+              ],
+              "max": [
+                144.5999984741211,
+                8.000000074505806,
+                72.5999984741211
+              ]
+            },
+            "screen_bounds_px": {
+              "min_x": 78.70370370370361,
+              "min_y": 456.0731253884043,
+              "max_x": 1171.296296296296,
+              "max_y": 534.0259821607187
+            },
+            "canvas": {
+              "width": 1250,
+              "height": 990
+            },
+            "anchors": {
+              "anchor_ceiling_8m": [
+                72,
+                8,
+                36
+              ],
+              "anchor_floor_NE": [
+                144,
+                0,
+                72
+              ],
+              "anchor_floor_NW": [
+                0,
+                0,
+                72
+              ],
+              "anchor_floor_SE": [
+                144,
+                0,
+                0
+              ],
+              "anchor_floor_SW": [
+                0,
+                0,
+                0
+              ],
+              "anchor_marking_IN_E_PARCEL": [
+                140.19999882186423,
+                0,
+                53.999999489436256
+              ],
+              "anchor_marking_IN_N_STANDARD": [
+                71.99999966779306,
+                0,
+                68.19999551773071
+              ],
+              "anchor_marking_IN_W_BULK": [
+                3.8000004628799324,
+                0,
+                17.99999948943635
+              ],
+              "anchor_marking_OUT_E_B2B": [
+                140.19999715293395,
+                0,
+                17.999999489436032
+              ],
+              "anchor_marking_OUT_S_EXPRESS": [
+                48,
+                0,
+                3.799999952316284
+              ],
+              "anchor_marking_OUT_W_RETAIL": [
+                3.8000004628799324,
+                0,
+                53.999999489436355
+              ],
+              "anchor_marking_FLEX_E": [
+                102,
+                0,
+                14
+              ],
+              "anchor_marking_FLEX_W": [
+                42,
+                0,
+                14
+              ],
+              "anchor_marking_HEAVY_E": [
+                122,
+                0,
+                25
+              ],
+              "anchor_marking_HEAVY_W": [
+                22,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_E": [
+                92,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_W": [
+                52,
+                0,
+                25
+              ],
+              "anchor_marking_PACKING_LIGHT_LINE": [
+                93,
+                0,
+                4
+              ],
+              "anchor_marking_RESERVE_E": [
+                101,
+                0,
+                60
+              ],
+              "anchor_marking_RESERVE_W": [
+                43,
+                0,
+                60
+              ],
+              "anchor_marking_SMALL_E": [
+                122,
+                0,
+                49
+              ],
+              "anchor_marking_SMALL_W": [
+                22,
+                0,
+                49
+              ],
+              "anchor_marking_STAGE_IN_E_PARCEL": [
+                122,
+                0,
+                59
+              ],
+              "anchor_marking_STAGE_IN_N_E": [
+                83,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_N_W": [
+                61,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_W_BULK": [
+                22,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_E_B2B": [
+                122,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_S_EXPRESS": [
+                27,
+                0,
+                4
+              ],
+              "anchor_marking_STAGE_OUT_W_RETAIL": [
+                22,
+                0,
+                59
+              ],
+              "anchor_marking_STANDARD_E": [
+                92,
+                0,
+                48
+              ],
+              "anchor_marking_STANDARD_W": [
+                52,
+                0,
+                48
+              ]
+            },
+            "nodes": [
+              "Scene",
+              "environment_markings_fixture_root",
+              "environment_shell_root",
+              "anchor_ceiling_8m",
+              "anchor_floor_NE",
+              "anchor_floor_NW",
+              "anchor_floor_SE",
+              "anchor_floor_SW",
+              "ARCHITECTURE__COLUMNS",
+              "environment-markings-fixture__batch_00",
+              "environment-markings-fixture__batch_01",
+              "ARCHITECTURE__OPAQUE_WINDOWS",
+              "environment-markings-fixture__batch_02",
+              "environment-markings-fixture__batch_03",
+              "ARCHITECTURE__WALLS",
+              "environment-markings-fixture__batch_04",
+              "WALL__E__05_mesh",
+              "WALL__E__05_mesh_1",
+              "WALL__E__05_mesh_2",
+              "FLOOR_SUPPORTS",
+              "environment-markings-fixture__batch_05",
+              "environment-markings-fixture__batch_06",
+              "GATE__IN_E_PARCEL",
+              "environment-markings-fixture__batch_07",
+              "environment-markings-fixture__batch_08",
+              "environment-markings-fixture__batch_09",
+              "environment-markings-fixture__batch_10",
+              "environment-markings-fixture__batch_11",
+              "PORT__IN_E_PARCEL__clear_left",
+              "PORT__IN_E_PARCEL__clear_right",
+              "PORT__IN_E_PARCEL__clear_top",
+              "PORT__IN_E_PARCEL__floor",
+              "PORT__IN_E_PARCEL__wall_inside",
+              "GATE__IN_N_STANDARD",
+              "environment-markings-fixture__batch_12",
+              "environment-markings-fixture__batch_13",
+              "environment-markings-fixture__batch_14",
+              "environment-markings-fixture__batch_15",
+              "environment-markings-fixture__batch_16",
+              "PORT__IN_N_STANDARD__clear_left",
+              "PORT__IN_N_STANDARD__clear_right",
+              "PORT__IN_N_STANDARD__clear_top",
+              "PORT__IN_N_STANDARD__floor",
+              "PORT__IN_N_STANDARD__wall_inside",
+              "GATE__IN_W_BULK",
+              "environment-markings-fixture__batch_17",
+              "environment-markings-fixture__batch_18",
+              "environment-markings-fixture__batch_19",
+              "environment-markings-fixture__batch_20",
+              "environment-markings-fixture__batch_21",
+              "PORT__IN_W_BULK__clear_left",
+              "PORT__IN_W_BULK__clear_right",
+              "PORT__IN_W_BULK__clear_top",
+              "PORT__IN_W_BULK__floor",
+              "PORT__IN_W_BULK__wall_inside",
+              "GATE__OUT_E_B2B",
+              "environment-markings-fixture__batch_22",
+              "environment-markings-fixture__batch_23",
+              "environment-markings-fixture__batch_24",
+              "environment-markings-fixture__batch_25",
+              "environment-markings-fixture__batch_26",
+              "PORT__OUT_E_B2B__clear_left",
+              "PORT__OUT_E_B2B__clear_right",
+              "PORT__OUT_E_B2B__clear_top",
+              "PORT__OUT_E_B2B__floor",
+              "PORT__OUT_E_B2B__wall_inside",
+              "GATE__OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_27",
+              "environment-markings-fixture__batch_28",
+              "environment-markings-fixture__batch_29",
+              "environment-markings-fixture__batch_30",
+              "environment-markings-fixture__batch_31",
+              "PORT__OUT_S_EXPRESS__clear_left",
+              "PORT__OUT_S_EXPRESS__clear_right",
+              "PORT__OUT_S_EXPRESS__clear_top",
+              "PORT__OUT_S_EXPRESS__floor",
+              "PORT__OUT_S_EXPRESS__wall_inside",
+              "GATE__OUT_W_RETAIL",
+              "environment-markings-fixture__batch_32",
+              "environment-markings-fixture__batch_33",
+              "environment-markings-fixture__batch_34",
+              "environment-markings-fixture__batch_35",
+              "environment-markings-fixture__batch_36",
+              "PORT__OUT_W_RETAIL__clear_left",
+              "PORT__OUT_W_RETAIL__clear_right",
+              "PORT__OUT_W_RETAIL__clear_top",
+              "PORT__OUT_W_RETAIL__floor",
+              "PORT__OUT_W_RETAIL__wall_inside",
+              "floor_markings_root",
+              "port__IN_E_PARCEL",
+              "anchor_marking_IN_E_PARCEL",
+              "environment-markings-fixture__batch_37",
+              "environment-markings-fixture__batch_38",
+              "environment-markings-fixture__batch_39",
+              "port__IN_N_STANDARD",
+              "anchor_marking_IN_N_STANDARD",
+              "environment-markings-fixture__batch_40",
+              "environment-markings-fixture__batch_41",
+              "environment-markings-fixture__batch_42",
+              "port__IN_W_BULK",
+              "anchor_marking_IN_W_BULK",
+              "environment-markings-fixture__batch_43",
+              "environment-markings-fixture__batch_44",
+              "environment-markings-fixture__batch_45",
+              "port__OUT_E_B2B",
+              "anchor_marking_OUT_E_B2B",
+              "environment-markings-fixture__batch_46",
+              "environment-markings-fixture__batch_47",
+              "environment-markings-fixture__batch_48",
+              "port__OUT_S_EXPRESS",
+              "anchor_marking_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_49",
+              "environment-markings-fixture__batch_50",
+              "environment-markings-fixture__batch_51",
+              "port__OUT_W_RETAIL",
+              "anchor_marking_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_52",
+              "environment-markings-fixture__batch_53",
+              "environment-markings-fixture__batch_54",
+              "route__CLEAR_CENTRAL_SPINE",
+              "environment-markings-fixture__batch_55",
+              "route__CLEAR_CROSS_E",
+              "environment-markings-fixture__batch_56",
+              "route__CLEAR_CROSS_W",
+              "environment-markings-fixture__batch_57",
+              "zone__FLEX_E",
+              "anchor_marking_FLEX_E",
+              "environment-markings-fixture__batch_58",
+              "environment-markings-fixture__batch_59",
+              "zone__FLEX_W",
+              "anchor_marking_FLEX_W",
+              "environment-markings-fixture__batch_60",
+              "environment-markings-fixture__batch_61",
+              "zone__HEAVY_E",
+              "anchor_marking_HEAVY_E",
+              "environment-markings-fixture__batch_62",
+              "environment-markings-fixture__batch_63",
+              "zone__HEAVY_W",
+              "anchor_marking_HEAVY_W",
+              "environment-markings-fixture__batch_64",
+              "environment-markings-fixture__batch_65",
+              "zone__LONG_E",
+              "anchor_marking_LONG_E",
+              "environment-markings-fixture__batch_66",
+              "environment-markings-fixture__batch_67",
+              "zone__LONG_W",
+              "anchor_marking_LONG_W",
+              "environment-markings-fixture__batch_68",
+              "environment-markings-fixture__batch_69",
+              "zone__PACKING_LIGHT_LINE",
+              "anchor_marking_PACKING_LIGHT_LINE",
+              "environment-markings-fixture__batch_70",
+              "environment-markings-fixture__batch_71",
+              "zone__RESERVE_E",
+              "anchor_marking_RESERVE_E",
+              "environment-markings-fixture__batch_72",
+              "environment-markings-fixture__batch_73",
+              "zone__RESERVE_W",
+              "anchor_marking_RESERVE_W",
+              "environment-markings-fixture__batch_74",
+              "environment-markings-fixture__batch_75",
+              "zone__SMALL_E",
+              "anchor_marking_SMALL_E",
+              "environment-markings-fixture__batch_76",
+              "environment-markings-fixture__batch_77",
+              "zone__SMALL_W",
+              "anchor_marking_SMALL_W",
+              "environment-markings-fixture__batch_78",
+              "environment-markings-fixture__batch_79",
+              "zone__STAGE_IN_E_PARCEL",
+              "anchor_marking_STAGE_IN_E_PARCEL",
+              "environment-markings-fixture__batch_80",
+              "environment-markings-fixture__batch_81",
+              "zone__STAGE_IN_N_E",
+              "anchor_marking_STAGE_IN_N_E",
+              "environment-markings-fixture__batch_82",
+              "environment-markings-fixture__batch_83",
+              "zone__STAGE_IN_N_W",
+              "anchor_marking_STAGE_IN_N_W",
+              "environment-markings-fixture__batch_84",
+              "environment-markings-fixture__batch_85",
+              "zone__STAGE_IN_W_BULK",
+              "anchor_marking_STAGE_IN_W_BULK",
+              "environment-markings-fixture__batch_86",
+              "environment-markings-fixture__batch_87",
+              "zone__STAGE_OUT_E_B2B",
+              "anchor_marking_STAGE_OUT_E_B2B",
+              "environment-markings-fixture__batch_88",
+              "environment-markings-fixture__batch_89",
+              "zone__STAGE_OUT_S_EXPRESS",
+              "anchor_marking_STAGE_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_90",
+              "environment-markings-fixture__batch_91",
+              "zone__STAGE_OUT_W_RETAIL",
+              "anchor_marking_STAGE_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_92",
+              "environment-markings-fixture__batch_93",
+              "zone__STANDARD_E",
+              "anchor_marking_STANDARD_E",
+              "environment-markings-fixture__batch_94",
+              "environment-markings-fixture__batch_95",
+              "zone__STANDARD_W",
+              "anchor_marking_STANDARD_W",
+              "environment-markings-fixture__batch_96",
+              "environment-markings-fixture__batch_97"
+            ],
+            "materials": [
+              "V3_Shell_charcoal",
+              "V3_Shell_petrol",
+              "V3_Shell_opaque_pane",
+              "V3_Shell_wall",
+              "V3_Shell_plinth",
+              "V3_Wayfinding_concrete",
+              "V3_Dock_Bumper",
+              "V3_Dock_Charcoal",
+              "V3_Dock_SafetyTan",
+              "V3_Dock_PetrolSteel",
+              "V3_Dock_TanReveal",
+              "V3_PAINT_incoming",
+              "V3_PAINT_lettering",
+              "V3_PAINT_safety_tan",
+              "V3_PAINT_outgoing",
+              "V3_PAINT_warm_white"
+            ],
+            "triangles": 45176,
+            "metadata": {
+              "name": "environment_markings_fixture_root",
+              "layout_version": "qoima-144x72-v3",
+              "namespace": "v3",
+              "units": "m",
+              "up_axis": "Y",
+              "forward_axis": "+Z",
+              "role": "architectural_paint_QA_fixture",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "reference_id": "R07",
+              "asset_id": "environment-markings-fixture"
+            },
+            "camera": {
+              "type": "OrthographicCamera",
+              "position": [
+                72,
+                11.8640755437829,
+                361.56302020159535
+              ],
+              "target": [
+                72,
+                3.725000038743018,
+                36
+              ]
+            },
+            "presentation": {
+              "contact_shading": false,
+              "radius_m": 0.3,
+              "camera_inertia": false,
+              "ground_y_m": -0.5519999970197678
+            },
+            "renderer": {
+              "calls": 140,
+              "triangles": 61579,
+              "memory": {
+                "geometries": 102,
+                "textures": 10
+              }
+            }
+          }
+        },
+        {
+          "view": "rear",
+          "file": "work/v3/full-tz-closeout-20261109/current-model-fourviews/2026-11-09T19-17-58-396Z/environment-markings-fixture/rear.png",
+          "image_sha256": "788815d1569bec4e99f7a1711bbdaea4d769cf37b7fc4cdc42c2e9db8f780ba8",
+          "state": {
+            "modelId": "environment-markings-fixture",
+            "phase": "ready",
+            "view": "rear",
+            "focus": null,
+            "gripper": null,
+            "fixture": null,
+            "grip": null,
+            "driver": null,
+            "action": null,
+            "roles": [],
+            "dimensions_m": [
+              145.1999969482422,
+              8.550000071525574,
+              73.19999694824219
+            ],
+            "bounds_m": {
+              "min": [
+                -0.5999984741210938,
+                -0.5499999970197678,
+                -0.5999984741210938
+              ],
+              "max": [
+                144.5999984741211,
+                8.000000074505806,
+                72.5999984741211
+              ]
+            },
+            "screen_bounds_px": {
+              "min_x": 78.70370370370416,
+              "min_y": 456.0731259966807,
+              "max_x": 1171.296296296296,
+              "max_y": 534.0259821607187
+            },
+            "canvas": {
+              "width": 1250,
+              "height": 990
+            },
+            "anchors": {
+              "anchor_ceiling_8m": [
+                72,
+                8,
+                36
+              ],
+              "anchor_floor_NE": [
+                144,
+                0,
+                72
+              ],
+              "anchor_floor_NW": [
+                0,
+                0,
+                72
+              ],
+              "anchor_floor_SE": [
+                144,
+                0,
+                0
+              ],
+              "anchor_floor_SW": [
+                0,
+                0,
+                0
+              ],
+              "anchor_marking_IN_E_PARCEL": [
+                140.19999882186423,
+                0,
+                53.999999489436256
+              ],
+              "anchor_marking_IN_N_STANDARD": [
+                71.99999966779306,
+                0,
+                68.19999551773071
+              ],
+              "anchor_marking_IN_W_BULK": [
+                3.8000004628799324,
+                0,
+                17.99999948943635
+              ],
+              "anchor_marking_OUT_E_B2B": [
+                140.19999715293395,
+                0,
+                17.999999489436032
+              ],
+              "anchor_marking_OUT_S_EXPRESS": [
+                48,
+                0,
+                3.799999952316284
+              ],
+              "anchor_marking_OUT_W_RETAIL": [
+                3.8000004628799324,
+                0,
+                53.999999489436355
+              ],
+              "anchor_marking_FLEX_E": [
+                102,
+                0,
+                14
+              ],
+              "anchor_marking_FLEX_W": [
+                42,
+                0,
+                14
+              ],
+              "anchor_marking_HEAVY_E": [
+                122,
+                0,
+                25
+              ],
+              "anchor_marking_HEAVY_W": [
+                22,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_E": [
+                92,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_W": [
+                52,
+                0,
+                25
+              ],
+              "anchor_marking_PACKING_LIGHT_LINE": [
+                93,
+                0,
+                4
+              ],
+              "anchor_marking_RESERVE_E": [
+                101,
+                0,
+                60
+              ],
+              "anchor_marking_RESERVE_W": [
+                43,
+                0,
+                60
+              ],
+              "anchor_marking_SMALL_E": [
+                122,
+                0,
+                49
+              ],
+              "anchor_marking_SMALL_W": [
+                22,
+                0,
+                49
+              ],
+              "anchor_marking_STAGE_IN_E_PARCEL": [
+                122,
+                0,
+                59
+              ],
+              "anchor_marking_STAGE_IN_N_E": [
+                83,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_N_W": [
+                61,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_W_BULK": [
+                22,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_E_B2B": [
+                122,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_S_EXPRESS": [
+                27,
+                0,
+                4
+              ],
+              "anchor_marking_STAGE_OUT_W_RETAIL": [
+                22,
+                0,
+                59
+              ],
+              "anchor_marking_STANDARD_E": [
+                92,
+                0,
+                48
+              ],
+              "anchor_marking_STANDARD_W": [
+                52,
+                0,
+                48
+              ]
+            },
+            "nodes": [
+              "Scene",
+              "environment_markings_fixture_root",
+              "environment_shell_root",
+              "anchor_ceiling_8m",
+              "anchor_floor_NE",
+              "anchor_floor_NW",
+              "anchor_floor_SE",
+              "anchor_floor_SW",
+              "ARCHITECTURE__COLUMNS",
+              "environment-markings-fixture__batch_00",
+              "environment-markings-fixture__batch_01",
+              "ARCHITECTURE__OPAQUE_WINDOWS",
+              "environment-markings-fixture__batch_02",
+              "environment-markings-fixture__batch_03",
+              "ARCHITECTURE__WALLS",
+              "environment-markings-fixture__batch_04",
+              "WALL__E__05_mesh",
+              "WALL__E__05_mesh_1",
+              "WALL__E__05_mesh_2",
+              "FLOOR_SUPPORTS",
+              "environment-markings-fixture__batch_05",
+              "environment-markings-fixture__batch_06",
+              "GATE__IN_E_PARCEL",
+              "environment-markings-fixture__batch_07",
+              "environment-markings-fixture__batch_08",
+              "environment-markings-fixture__batch_09",
+              "environment-markings-fixture__batch_10",
+              "environment-markings-fixture__batch_11",
+              "PORT__IN_E_PARCEL__clear_left",
+              "PORT__IN_E_PARCEL__clear_right",
+              "PORT__IN_E_PARCEL__clear_top",
+              "PORT__IN_E_PARCEL__floor",
+              "PORT__IN_E_PARCEL__wall_inside",
+              "GATE__IN_N_STANDARD",
+              "environment-markings-fixture__batch_12",
+              "environment-markings-fixture__batch_13",
+              "environment-markings-fixture__batch_14",
+              "environment-markings-fixture__batch_15",
+              "environment-markings-fixture__batch_16",
+              "PORT__IN_N_STANDARD__clear_left",
+              "PORT__IN_N_STANDARD__clear_right",
+              "PORT__IN_N_STANDARD__clear_top",
+              "PORT__IN_N_STANDARD__floor",
+              "PORT__IN_N_STANDARD__wall_inside",
+              "GATE__IN_W_BULK",
+              "environment-markings-fixture__batch_17",
+              "environment-markings-fixture__batch_18",
+              "environment-markings-fixture__batch_19",
+              "environment-markings-fixture__batch_20",
+              "environment-markings-fixture__batch_21",
+              "PORT__IN_W_BULK__clear_left",
+              "PORT__IN_W_BULK__clear_right",
+              "PORT__IN_W_BULK__clear_top",
+              "PORT__IN_W_BULK__floor",
+              "PORT__IN_W_BULK__wall_inside",
+              "GATE__OUT_E_B2B",
+              "environment-markings-fixture__batch_22",
+              "environment-markings-fixture__batch_23",
+              "environment-markings-fixture__batch_24",
+              "environment-markings-fixture__batch_25",
+              "environment-markings-fixture__batch_26",
+              "PORT__OUT_E_B2B__clear_left",
+              "PORT__OUT_E_B2B__clear_right",
+              "PORT__OUT_E_B2B__clear_top",
+              "PORT__OUT_E_B2B__floor",
+              "PORT__OUT_E_B2B__wall_inside",
+              "GATE__OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_27",
+              "environment-markings-fixture__batch_28",
+              "environment-markings-fixture__batch_29",
+              "environment-markings-fixture__batch_30",
+              "environment-markings-fixture__batch_31",
+              "PORT__OUT_S_EXPRESS__clear_left",
+              "PORT__OUT_S_EXPRESS__clear_right",
+              "PORT__OUT_S_EXPRESS__clear_top",
+              "PORT__OUT_S_EXPRESS__floor",
+              "PORT__OUT_S_EXPRESS__wall_inside",
+              "GATE__OUT_W_RETAIL",
+              "environment-markings-fixture__batch_32",
+              "environment-markings-fixture__batch_33",
+              "environment-markings-fixture__batch_34",
+              "environment-markings-fixture__batch_35",
+              "environment-markings-fixture__batch_36",
+              "PORT__OUT_W_RETAIL__clear_left",
+              "PORT__OUT_W_RETAIL__clear_right",
+              "PORT__OUT_W_RETAIL__clear_top",
+              "PORT__OUT_W_RETAIL__floor",
+              "PORT__OUT_W_RETAIL__wall_inside",
+              "floor_markings_root",
+              "port__IN_E_PARCEL",
+              "anchor_marking_IN_E_PARCEL",
+              "environment-markings-fixture__batch_37",
+              "environment-markings-fixture__batch_38",
+              "environment-markings-fixture__batch_39",
+              "port__IN_N_STANDARD",
+              "anchor_marking_IN_N_STANDARD",
+              "environment-markings-fixture__batch_40",
+              "environment-markings-fixture__batch_41",
+              "environment-markings-fixture__batch_42",
+              "port__IN_W_BULK",
+              "anchor_marking_IN_W_BULK",
+              "environment-markings-fixture__batch_43",
+              "environment-markings-fixture__batch_44",
+              "environment-markings-fixture__batch_45",
+              "port__OUT_E_B2B",
+              "anchor_marking_OUT_E_B2B",
+              "environment-markings-fixture__batch_46",
+              "environment-markings-fixture__batch_47",
+              "environment-markings-fixture__batch_48",
+              "port__OUT_S_EXPRESS",
+              "anchor_marking_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_49",
+              "environment-markings-fixture__batch_50",
+              "environment-markings-fixture__batch_51",
+              "port__OUT_W_RETAIL",
+              "anchor_marking_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_52",
+              "environment-markings-fixture__batch_53",
+              "environment-markings-fixture__batch_54",
+              "route__CLEAR_CENTRAL_SPINE",
+              "environment-markings-fixture__batch_55",
+              "route__CLEAR_CROSS_E",
+              "environment-markings-fixture__batch_56",
+              "route__CLEAR_CROSS_W",
+              "environment-markings-fixture__batch_57",
+              "zone__FLEX_E",
+              "anchor_marking_FLEX_E",
+              "environment-markings-fixture__batch_58",
+              "environment-markings-fixture__batch_59",
+              "zone__FLEX_W",
+              "anchor_marking_FLEX_W",
+              "environment-markings-fixture__batch_60",
+              "environment-markings-fixture__batch_61",
+              "zone__HEAVY_E",
+              "anchor_marking_HEAVY_E",
+              "environment-markings-fixture__batch_62",
+              "environment-markings-fixture__batch_63",
+              "zone__HEAVY_W",
+              "anchor_marking_HEAVY_W",
+              "environment-markings-fixture__batch_64",
+              "environment-markings-fixture__batch_65",
+              "zone__LONG_E",
+              "anchor_marking_LONG_E",
+              "environment-markings-fixture__batch_66",
+              "environment-markings-fixture__batch_67",
+              "zone__LONG_W",
+              "anchor_marking_LONG_W",
+              "environment-markings-fixture__batch_68",
+              "environment-markings-fixture__batch_69",
+              "zone__PACKING_LIGHT_LINE",
+              "anchor_marking_PACKING_LIGHT_LINE",
+              "environment-markings-fixture__batch_70",
+              "environment-markings-fixture__batch_71",
+              "zone__RESERVE_E",
+              "anchor_marking_RESERVE_E",
+              "environment-markings-fixture__batch_72",
+              "environment-markings-fixture__batch_73",
+              "zone__RESERVE_W",
+              "anchor_marking_RESERVE_W",
+              "environment-markings-fixture__batch_74",
+              "environment-markings-fixture__batch_75",
+              "zone__SMALL_E",
+              "anchor_marking_SMALL_E",
+              "environment-markings-fixture__batch_76",
+              "environment-markings-fixture__batch_77",
+              "zone__SMALL_W",
+              "anchor_marking_SMALL_W",
+              "environment-markings-fixture__batch_78",
+              "environment-markings-fixture__batch_79",
+              "zone__STAGE_IN_E_PARCEL",
+              "anchor_marking_STAGE_IN_E_PARCEL",
+              "environment-markings-fixture__batch_80",
+              "environment-markings-fixture__batch_81",
+              "zone__STAGE_IN_N_E",
+              "anchor_marking_STAGE_IN_N_E",
+              "environment-markings-fixture__batch_82",
+              "environment-markings-fixture__batch_83",
+              "zone__STAGE_IN_N_W",
+              "anchor_marking_STAGE_IN_N_W",
+              "environment-markings-fixture__batch_84",
+              "environment-markings-fixture__batch_85",
+              "zone__STAGE_IN_W_BULK",
+              "anchor_marking_STAGE_IN_W_BULK",
+              "environment-markings-fixture__batch_86",
+              "environment-markings-fixture__batch_87",
+              "zone__STAGE_OUT_E_B2B",
+              "anchor_marking_STAGE_OUT_E_B2B",
+              "environment-markings-fixture__batch_88",
+              "environment-markings-fixture__batch_89",
+              "zone__STAGE_OUT_S_EXPRESS",
+              "anchor_marking_STAGE_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_90",
+              "environment-markings-fixture__batch_91",
+              "zone__STAGE_OUT_W_RETAIL",
+              "anchor_marking_STAGE_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_92",
+              "environment-markings-fixture__batch_93",
+              "zone__STANDARD_E",
+              "anchor_marking_STANDARD_E",
+              "environment-markings-fixture__batch_94",
+              "environment-markings-fixture__batch_95",
+              "zone__STANDARD_W",
+              "anchor_marking_STANDARD_W",
+              "environment-markings-fixture__batch_96",
+              "environment-markings-fixture__batch_97"
+            ],
+            "materials": [
+              "V3_Shell_charcoal",
+              "V3_Shell_petrol",
+              "V3_Shell_opaque_pane",
+              "V3_Shell_wall",
+              "V3_Shell_plinth",
+              "V3_Wayfinding_concrete",
+              "V3_Dock_Bumper",
+              "V3_Dock_Charcoal",
+              "V3_Dock_SafetyTan",
+              "V3_Dock_PetrolSteel",
+              "V3_Dock_TanReveal",
+              "V3_PAINT_incoming",
+              "V3_PAINT_lettering",
+              "V3_PAINT_safety_tan",
+              "V3_PAINT_outgoing",
+              "V3_PAINT_warm_white"
+            ],
+            "triangles": 45176,
+            "metadata": {
+              "name": "environment_markings_fixture_root",
+              "layout_version": "qoima-144x72-v3",
+              "namespace": "v3",
+              "units": "m",
+              "up_axis": "Y",
+              "forward_axis": "+Z",
+              "role": "architectural_paint_QA_fixture",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "reference_id": "R07",
+              "asset_id": "environment-markings-fixture"
+            },
+            "camera": {
+              "type": "OrthographicCamera",
+              "position": [
+                72.00000000000004,
+                11.8640755437829,
+                -289.56302020159535
+              ],
+              "target": [
+                72,
+                3.725000038743018,
+                36
+              ]
+            },
+            "presentation": {
+              "contact_shading": false,
+              "radius_m": 0.3,
+              "camera_inertia": false,
+              "ground_y_m": -0.5519999970197678
+            },
+            "renderer": {
+              "calls": 140,
+              "triangles": 61579,
+              "memory": {
+                "geometries": 102,
+                "textures": 10
+              }
+            }
+          }
+        },
+        {
+          "view": "side",
+          "file": "work/v3/full-tz-closeout-20261109/current-model-fourviews/2026-11-09T19-17-58-396Z/environment-markings-fixture/side.png",
+          "image_sha256": "6390090dff6719993f7b7004f26dbd01a8012681d21984a56c7d7f15e3501ffb",
+          "state": {
+            "modelId": "environment-markings-fixture",
+            "phase": "ready",
+            "view": "side",
+            "focus": null,
+            "gripper": null,
+            "fixture": null,
+            "grip": null,
+            "driver": null,
+            "action": null,
+            "roles": [],
+            "dimensions_m": [
+              145.1999969482422,
+              8.550000071525574,
+              73.19999694824219
+            ],
+            "bounds_m": {
+              "min": [
+                -0.5999984741210938,
+                -0.5499999970197678,
+                -0.5999984741210938
+              ],
+              "max": [
+                144.5999984741211,
+                8.000000074505806,
+                72.5999984741211
+              ]
+            },
+            "screen_bounds_px": {
+              "min_x": 78.70370370370313,
+              "min_y": 404.35507463020076,
+              "max_x": 1171.2962962962956,
+              "max_y": 585.8415157581895
+            },
+            "canvas": {
+              "width": 1250,
+              "height": 990
+            },
+            "anchors": {
+              "anchor_ceiling_8m": [
+                72,
+                8,
+                36
+              ],
+              "anchor_floor_NE": [
+                144,
+                0,
+                72
+              ],
+              "anchor_floor_NW": [
+                0,
+                0,
+                72
+              ],
+              "anchor_floor_SE": [
+                144,
+                0,
+                0
+              ],
+              "anchor_floor_SW": [
+                0,
+                0,
+                0
+              ],
+              "anchor_marking_IN_E_PARCEL": [
+                140.19999882186423,
+                0,
+                53.999999489436256
+              ],
+              "anchor_marking_IN_N_STANDARD": [
+                71.99999966779306,
+                0,
+                68.19999551773071
+              ],
+              "anchor_marking_IN_W_BULK": [
+                3.8000004628799324,
+                0,
+                17.99999948943635
+              ],
+              "anchor_marking_OUT_E_B2B": [
+                140.19999715293395,
+                0,
+                17.999999489436032
+              ],
+              "anchor_marking_OUT_S_EXPRESS": [
+                48,
+                0,
+                3.799999952316284
+              ],
+              "anchor_marking_OUT_W_RETAIL": [
+                3.8000004628799324,
+                0,
+                53.999999489436355
+              ],
+              "anchor_marking_FLEX_E": [
+                102,
+                0,
+                14
+              ],
+              "anchor_marking_FLEX_W": [
+                42,
+                0,
+                14
+              ],
+              "anchor_marking_HEAVY_E": [
+                122,
+                0,
+                25
+              ],
+              "anchor_marking_HEAVY_W": [
+                22,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_E": [
+                92,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_W": [
+                52,
+                0,
+                25
+              ],
+              "anchor_marking_PACKING_LIGHT_LINE": [
+                93,
+                0,
+                4
+              ],
+              "anchor_marking_RESERVE_E": [
+                101,
+                0,
+                60
+              ],
+              "anchor_marking_RESERVE_W": [
+                43,
+                0,
+                60
+              ],
+              "anchor_marking_SMALL_E": [
+                122,
+                0,
+                49
+              ],
+              "anchor_marking_SMALL_W": [
+                22,
+                0,
+                49
+              ],
+              "anchor_marking_STAGE_IN_E_PARCEL": [
+                122,
+                0,
+                59
+              ],
+              "anchor_marking_STAGE_IN_N_E": [
+                83,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_N_W": [
+                61,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_W_BULK": [
+                22,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_E_B2B": [
+                122,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_S_EXPRESS": [
+                27,
+                0,
+                4
+              ],
+              "anchor_marking_STAGE_OUT_W_RETAIL": [
+                22,
+                0,
+                59
+              ],
+              "anchor_marking_STANDARD_E": [
+                92,
+                0,
+                48
+              ],
+              "anchor_marking_STANDARD_W": [
+                52,
+                0,
+                48
+              ]
+            },
+            "nodes": [
+              "Scene",
+              "environment_markings_fixture_root",
+              "environment_shell_root",
+              "anchor_ceiling_8m",
+              "anchor_floor_NE",
+              "anchor_floor_NW",
+              "anchor_floor_SE",
+              "anchor_floor_SW",
+              "ARCHITECTURE__COLUMNS",
+              "environment-markings-fixture__batch_00",
+              "environment-markings-fixture__batch_01",
+              "ARCHITECTURE__OPAQUE_WINDOWS",
+              "environment-markings-fixture__batch_02",
+              "environment-markings-fixture__batch_03",
+              "ARCHITECTURE__WALLS",
+              "environment-markings-fixture__batch_04",
+              "WALL__E__05_mesh",
+              "WALL__E__05_mesh_1",
+              "WALL__E__05_mesh_2",
+              "FLOOR_SUPPORTS",
+              "environment-markings-fixture__batch_05",
+              "environment-markings-fixture__batch_06",
+              "GATE__IN_E_PARCEL",
+              "environment-markings-fixture__batch_07",
+              "environment-markings-fixture__batch_08",
+              "environment-markings-fixture__batch_09",
+              "environment-markings-fixture__batch_10",
+              "environment-markings-fixture__batch_11",
+              "PORT__IN_E_PARCEL__clear_left",
+              "PORT__IN_E_PARCEL__clear_right",
+              "PORT__IN_E_PARCEL__clear_top",
+              "PORT__IN_E_PARCEL__floor",
+              "PORT__IN_E_PARCEL__wall_inside",
+              "GATE__IN_N_STANDARD",
+              "environment-markings-fixture__batch_12",
+              "environment-markings-fixture__batch_13",
+              "environment-markings-fixture__batch_14",
+              "environment-markings-fixture__batch_15",
+              "environment-markings-fixture__batch_16",
+              "PORT__IN_N_STANDARD__clear_left",
+              "PORT__IN_N_STANDARD__clear_right",
+              "PORT__IN_N_STANDARD__clear_top",
+              "PORT__IN_N_STANDARD__floor",
+              "PORT__IN_N_STANDARD__wall_inside",
+              "GATE__IN_W_BULK",
+              "environment-markings-fixture__batch_17",
+              "environment-markings-fixture__batch_18",
+              "environment-markings-fixture__batch_19",
+              "environment-markings-fixture__batch_20",
+              "environment-markings-fixture__batch_21",
+              "PORT__IN_W_BULK__clear_left",
+              "PORT__IN_W_BULK__clear_right",
+              "PORT__IN_W_BULK__clear_top",
+              "PORT__IN_W_BULK__floor",
+              "PORT__IN_W_BULK__wall_inside",
+              "GATE__OUT_E_B2B",
+              "environment-markings-fixture__batch_22",
+              "environment-markings-fixture__batch_23",
+              "environment-markings-fixture__batch_24",
+              "environment-markings-fixture__batch_25",
+              "environment-markings-fixture__batch_26",
+              "PORT__OUT_E_B2B__clear_left",
+              "PORT__OUT_E_B2B__clear_right",
+              "PORT__OUT_E_B2B__clear_top",
+              "PORT__OUT_E_B2B__floor",
+              "PORT__OUT_E_B2B__wall_inside",
+              "GATE__OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_27",
+              "environment-markings-fixture__batch_28",
+              "environment-markings-fixture__batch_29",
+              "environment-markings-fixture__batch_30",
+              "environment-markings-fixture__batch_31",
+              "PORT__OUT_S_EXPRESS__clear_left",
+              "PORT__OUT_S_EXPRESS__clear_right",
+              "PORT__OUT_S_EXPRESS__clear_top",
+              "PORT__OUT_S_EXPRESS__floor",
+              "PORT__OUT_S_EXPRESS__wall_inside",
+              "GATE__OUT_W_RETAIL",
+              "environment-markings-fixture__batch_32",
+              "environment-markings-fixture__batch_33",
+              "environment-markings-fixture__batch_34",
+              "environment-markings-fixture__batch_35",
+              "environment-markings-fixture__batch_36",
+              "PORT__OUT_W_RETAIL__clear_left",
+              "PORT__OUT_W_RETAIL__clear_right",
+              "PORT__OUT_W_RETAIL__clear_top",
+              "PORT__OUT_W_RETAIL__floor",
+              "PORT__OUT_W_RETAIL__wall_inside",
+              "floor_markings_root",
+              "port__IN_E_PARCEL",
+              "anchor_marking_IN_E_PARCEL",
+              "environment-markings-fixture__batch_37",
+              "environment-markings-fixture__batch_38",
+              "environment-markings-fixture__batch_39",
+              "port__IN_N_STANDARD",
+              "anchor_marking_IN_N_STANDARD",
+              "environment-markings-fixture__batch_40",
+              "environment-markings-fixture__batch_41",
+              "environment-markings-fixture__batch_42",
+              "port__IN_W_BULK",
+              "anchor_marking_IN_W_BULK",
+              "environment-markings-fixture__batch_43",
+              "environment-markings-fixture__batch_44",
+              "environment-markings-fixture__batch_45",
+              "port__OUT_E_B2B",
+              "anchor_marking_OUT_E_B2B",
+              "environment-markings-fixture__batch_46",
+              "environment-markings-fixture__batch_47",
+              "environment-markings-fixture__batch_48",
+              "port__OUT_S_EXPRESS",
+              "anchor_marking_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_49",
+              "environment-markings-fixture__batch_50",
+              "environment-markings-fixture__batch_51",
+              "port__OUT_W_RETAIL",
+              "anchor_marking_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_52",
+              "environment-markings-fixture__batch_53",
+              "environment-markings-fixture__batch_54",
+              "route__CLEAR_CENTRAL_SPINE",
+              "environment-markings-fixture__batch_55",
+              "route__CLEAR_CROSS_E",
+              "environment-markings-fixture__batch_56",
+              "route__CLEAR_CROSS_W",
+              "environment-markings-fixture__batch_57",
+              "zone__FLEX_E",
+              "anchor_marking_FLEX_E",
+              "environment-markings-fixture__batch_58",
+              "environment-markings-fixture__batch_59",
+              "zone__FLEX_W",
+              "anchor_marking_FLEX_W",
+              "environment-markings-fixture__batch_60",
+              "environment-markings-fixture__batch_61",
+              "zone__HEAVY_E",
+              "anchor_marking_HEAVY_E",
+              "environment-markings-fixture__batch_62",
+              "environment-markings-fixture__batch_63",
+              "zone__HEAVY_W",
+              "anchor_marking_HEAVY_W",
+              "environment-markings-fixture__batch_64",
+              "environment-markings-fixture__batch_65",
+              "zone__LONG_E",
+              "anchor_marking_LONG_E",
+              "environment-markings-fixture__batch_66",
+              "environment-markings-fixture__batch_67",
+              "zone__LONG_W",
+              "anchor_marking_LONG_W",
+              "environment-markings-fixture__batch_68",
+              "environment-markings-fixture__batch_69",
+              "zone__PACKING_LIGHT_LINE",
+              "anchor_marking_PACKING_LIGHT_LINE",
+              "environment-markings-fixture__batch_70",
+              "environment-markings-fixture__batch_71",
+              "zone__RESERVE_E",
+              "anchor_marking_RESERVE_E",
+              "environment-markings-fixture__batch_72",
+              "environment-markings-fixture__batch_73",
+              "zone__RESERVE_W",
+              "anchor_marking_RESERVE_W",
+              "environment-markings-fixture__batch_74",
+              "environment-markings-fixture__batch_75",
+              "zone__SMALL_E",
+              "anchor_marking_SMALL_E",
+              "environment-markings-fixture__batch_76",
+              "environment-markings-fixture__batch_77",
+              "zone__SMALL_W",
+              "anchor_marking_SMALL_W",
+              "environment-markings-fixture__batch_78",
+              "environment-markings-fixture__batch_79",
+              "zone__STAGE_IN_E_PARCEL",
+              "anchor_marking_STAGE_IN_E_PARCEL",
+              "environment-markings-fixture__batch_80",
+              "environment-markings-fixture__batch_81",
+              "zone__STAGE_IN_N_E",
+              "anchor_marking_STAGE_IN_N_E",
+              "environment-markings-fixture__batch_82",
+              "environment-markings-fixture__batch_83",
+              "zone__STAGE_IN_N_W",
+              "anchor_marking_STAGE_IN_N_W",
+              "environment-markings-fixture__batch_84",
+              "environment-markings-fixture__batch_85",
+              "zone__STAGE_IN_W_BULK",
+              "anchor_marking_STAGE_IN_W_BULK",
+              "environment-markings-fixture__batch_86",
+              "environment-markings-fixture__batch_87",
+              "zone__STAGE_OUT_E_B2B",
+              "anchor_marking_STAGE_OUT_E_B2B",
+              "environment-markings-fixture__batch_88",
+              "environment-markings-fixture__batch_89",
+              "zone__STAGE_OUT_S_EXPRESS",
+              "anchor_marking_STAGE_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_90",
+              "environment-markings-fixture__batch_91",
+              "zone__STAGE_OUT_W_RETAIL",
+              "anchor_marking_STAGE_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_92",
+              "environment-markings-fixture__batch_93",
+              "zone__STANDARD_E",
+              "anchor_marking_STANDARD_E",
+              "environment-markings-fixture__batch_94",
+              "environment-markings-fixture__batch_95",
+              "zone__STANDARD_W",
+              "anchor_marking_STANDARD_W",
+              "environment-markings-fixture__batch_96",
+              "environment-markings-fixture__batch_97"
+            ],
+            "materials": [
+              "V3_Shell_charcoal",
+              "V3_Shell_petrol",
+              "V3_Shell_opaque_pane",
+              "V3_Shell_wall",
+              "V3_Shell_plinth",
+              "V3_Wayfinding_concrete",
+              "V3_Dock_Bumper",
+              "V3_Dock_Charcoal",
+              "V3_Dock_SafetyTan",
+              "V3_Dock_PetrolSteel",
+              "V3_Dock_TanReveal",
+              "V3_PAINT_incoming",
+              "V3_PAINT_lettering",
+              "V3_PAINT_safety_tan",
+              "V3_PAINT_outgoing",
+              "V3_PAINT_warm_white"
+            ],
+            "triangles": 45176,
+            "metadata": {
+              "name": "environment_markings_fixture_root",
+              "layout_version": "qoima-144x72-v3",
+              "namespace": "v3",
+              "units": "m",
+              "up_axis": "Y",
+              "forward_axis": "+Z",
+              "role": "architectural_paint_QA_fixture",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "reference_id": "R07",
+              "asset_id": "environment-markings-fixture"
+            },
+            "camera": {
+              "type": "OrthographicCamera",
+              "position": [
+                397.56302020159535,
+                11.8640755437829,
+                36.00000000000002
+              ],
+              "target": [
+                72,
+                3.725000038743018,
+                36
+              ]
+            },
+            "presentation": {
+              "contact_shading": false,
+              "radius_m": 0.3,
+              "camera_inertia": false,
+              "ground_y_m": -0.5519999970197678
+            },
+            "renderer": {
+              "calls": 140,
+              "triangles": 61579,
+              "memory": {
+                "geometries": 102,
+                "textures": 10
+              }
+            }
+          }
+        },
+        {
+          "view": "quarter",
+          "file": "work/v3/full-tz-closeout-20261109/current-model-fourviews/2026-11-09T19-17-58-396Z/environment-markings-fixture/quarter.png",
+          "image_sha256": "e5d9e9691bdf0ca5116b15e832b3d8419fa1b2c749ee0d5467061a6f498894f3",
+          "state": {
+            "modelId": "environment-markings-fixture",
+            "phase": "ready",
+            "view": "quarter",
+            "focus": null,
+            "gripper": null,
+            "fixture": null,
+            "grip": null,
+            "driver": null,
+            "action": null,
+            "roles": [],
+            "dimensions_m": [
+              145.1999969482422,
+              8.550000071525574,
+              73.19999694824219
+            ],
+            "bounds_m": {
+              "min": [
+                -0.5999984741210938,
+                -0.5499999970197678,
+                -0.5999984741210938
+              ],
+              "max": [
+                144.5999984741211,
+                8.000000074505806,
+                72.5999984741211
+              ]
+            },
+            "screen_bounds_px": {
+              "min_x": 140.38545742530607,
+              "min_y": 313.2571272504185,
+              "max_x": 1168.3047565391923,
+              "max_y": 795.9228925691743
+            },
+            "canvas": {
+              "width": 1250,
+              "height": 990
+            },
+            "anchors": {
+              "anchor_ceiling_8m": [
+                72,
+                8,
+                36
+              ],
+              "anchor_floor_NE": [
+                144,
+                0,
+                72
+              ],
+              "anchor_floor_NW": [
+                0,
+                0,
+                72
+              ],
+              "anchor_floor_SE": [
+                144,
+                0,
+                0
+              ],
+              "anchor_floor_SW": [
+                0,
+                0,
+                0
+              ],
+              "anchor_marking_IN_E_PARCEL": [
+                140.19999882186423,
+                0,
+                53.999999489436256
+              ],
+              "anchor_marking_IN_N_STANDARD": [
+                71.99999966779306,
+                0,
+                68.19999551773071
+              ],
+              "anchor_marking_IN_W_BULK": [
+                3.8000004628799324,
+                0,
+                17.99999948943635
+              ],
+              "anchor_marking_OUT_E_B2B": [
+                140.19999715293395,
+                0,
+                17.999999489436032
+              ],
+              "anchor_marking_OUT_S_EXPRESS": [
+                48,
+                0,
+                3.799999952316284
+              ],
+              "anchor_marking_OUT_W_RETAIL": [
+                3.8000004628799324,
+                0,
+                53.999999489436355
+              ],
+              "anchor_marking_FLEX_E": [
+                102,
+                0,
+                14
+              ],
+              "anchor_marking_FLEX_W": [
+                42,
+                0,
+                14
+              ],
+              "anchor_marking_HEAVY_E": [
+                122,
+                0,
+                25
+              ],
+              "anchor_marking_HEAVY_W": [
+                22,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_E": [
+                92,
+                0,
+                25
+              ],
+              "anchor_marking_LONG_W": [
+                52,
+                0,
+                25
+              ],
+              "anchor_marking_PACKING_LIGHT_LINE": [
+                93,
+                0,
+                4
+              ],
+              "anchor_marking_RESERVE_E": [
+                101,
+                0,
+                60
+              ],
+              "anchor_marking_RESERVE_W": [
+                43,
+                0,
+                60
+              ],
+              "anchor_marking_SMALL_E": [
+                122,
+                0,
+                49
+              ],
+              "anchor_marking_SMALL_W": [
+                22,
+                0,
+                49
+              ],
+              "anchor_marking_STAGE_IN_E_PARCEL": [
+                122,
+                0,
+                59
+              ],
+              "anchor_marking_STAGE_IN_N_E": [
+                83,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_N_W": [
+                61,
+                0,
+                60
+              ],
+              "anchor_marking_STAGE_IN_W_BULK": [
+                22,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_E_B2B": [
+                122,
+                0,
+                14
+              ],
+              "anchor_marking_STAGE_OUT_S_EXPRESS": [
+                27,
+                0,
+                4
+              ],
+              "anchor_marking_STAGE_OUT_W_RETAIL": [
+                22,
+                0,
+                59
+              ],
+              "anchor_marking_STANDARD_E": [
+                92,
+                0,
+                48
+              ],
+              "anchor_marking_STANDARD_W": [
+                52,
+                0,
+                48
+              ]
+            },
+            "nodes": [
+              "Scene",
+              "environment_markings_fixture_root",
+              "environment_shell_root",
+              "anchor_ceiling_8m",
+              "anchor_floor_NE",
+              "anchor_floor_NW",
+              "anchor_floor_SE",
+              "anchor_floor_SW",
+              "ARCHITECTURE__COLUMNS",
+              "environment-markings-fixture__batch_00",
+              "environment-markings-fixture__batch_01",
+              "ARCHITECTURE__OPAQUE_WINDOWS",
+              "environment-markings-fixture__batch_02",
+              "environment-markings-fixture__batch_03",
+              "ARCHITECTURE__WALLS",
+              "environment-markings-fixture__batch_04",
+              "WALL__E__05_mesh",
+              "WALL__E__05_mesh_1",
+              "WALL__E__05_mesh_2",
+              "FLOOR_SUPPORTS",
+              "environment-markings-fixture__batch_05",
+              "environment-markings-fixture__batch_06",
+              "GATE__IN_E_PARCEL",
+              "environment-markings-fixture__batch_07",
+              "environment-markings-fixture__batch_08",
+              "environment-markings-fixture__batch_09",
+              "environment-markings-fixture__batch_10",
+              "environment-markings-fixture__batch_11",
+              "PORT__IN_E_PARCEL__clear_left",
+              "PORT__IN_E_PARCEL__clear_right",
+              "PORT__IN_E_PARCEL__clear_top",
+              "PORT__IN_E_PARCEL__floor",
+              "PORT__IN_E_PARCEL__wall_inside",
+              "GATE__IN_N_STANDARD",
+              "environment-markings-fixture__batch_12",
+              "environment-markings-fixture__batch_13",
+              "environment-markings-fixture__batch_14",
+              "environment-markings-fixture__batch_15",
+              "environment-markings-fixture__batch_16",
+              "PORT__IN_N_STANDARD__clear_left",
+              "PORT__IN_N_STANDARD__clear_right",
+              "PORT__IN_N_STANDARD__clear_top",
+              "PORT__IN_N_STANDARD__floor",
+              "PORT__IN_N_STANDARD__wall_inside",
+              "GATE__IN_W_BULK",
+              "environment-markings-fixture__batch_17",
+              "environment-markings-fixture__batch_18",
+              "environment-markings-fixture__batch_19",
+              "environment-markings-fixture__batch_20",
+              "environment-markings-fixture__batch_21",
+              "PORT__IN_W_BULK__clear_left",
+              "PORT__IN_W_BULK__clear_right",
+              "PORT__IN_W_BULK__clear_top",
+              "PORT__IN_W_BULK__floor",
+              "PORT__IN_W_BULK__wall_inside",
+              "GATE__OUT_E_B2B",
+              "environment-markings-fixture__batch_22",
+              "environment-markings-fixture__batch_23",
+              "environment-markings-fixture__batch_24",
+              "environment-markings-fixture__batch_25",
+              "environment-markings-fixture__batch_26",
+              "PORT__OUT_E_B2B__clear_left",
+              "PORT__OUT_E_B2B__clear_right",
+              "PORT__OUT_E_B2B__clear_top",
+              "PORT__OUT_E_B2B__floor",
+              "PORT__OUT_E_B2B__wall_inside",
+              "GATE__OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_27",
+              "environment-markings-fixture__batch_28",
+              "environment-markings-fixture__batch_29",
+              "environment-markings-fixture__batch_30",
+              "environment-markings-fixture__batch_31",
+              "PORT__OUT_S_EXPRESS__clear_left",
+              "PORT__OUT_S_EXPRESS__clear_right",
+              "PORT__OUT_S_EXPRESS__clear_top",
+              "PORT__OUT_S_EXPRESS__floor",
+              "PORT__OUT_S_EXPRESS__wall_inside",
+              "GATE__OUT_W_RETAIL",
+              "environment-markings-fixture__batch_32",
+              "environment-markings-fixture__batch_33",
+              "environment-markings-fixture__batch_34",
+              "environment-markings-fixture__batch_35",
+              "environment-markings-fixture__batch_36",
+              "PORT__OUT_W_RETAIL__clear_left",
+              "PORT__OUT_W_RETAIL__clear_right",
+              "PORT__OUT_W_RETAIL__clear_top",
+              "PORT__OUT_W_RETAIL__floor",
+              "PORT__OUT_W_RETAIL__wall_inside",
+              "floor_markings_root",
+              "port__IN_E_PARCEL",
+              "anchor_marking_IN_E_PARCEL",
+              "environment-markings-fixture__batch_37",
+              "environment-markings-fixture__batch_38",
+              "environment-markings-fixture__batch_39",
+              "port__IN_N_STANDARD",
+              "anchor_marking_IN_N_STANDARD",
+              "environment-markings-fixture__batch_40",
+              "environment-markings-fixture__batch_41",
+              "environment-markings-fixture__batch_42",
+              "port__IN_W_BULK",
+              "anchor_marking_IN_W_BULK",
+              "environment-markings-fixture__batch_43",
+              "environment-markings-fixture__batch_44",
+              "environment-markings-fixture__batch_45",
+              "port__OUT_E_B2B",
+              "anchor_marking_OUT_E_B2B",
+              "environment-markings-fixture__batch_46",
+              "environment-markings-fixture__batch_47",
+              "environment-markings-fixture__batch_48",
+              "port__OUT_S_EXPRESS",
+              "anchor_marking_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_49",
+              "environment-markings-fixture__batch_50",
+              "environment-markings-fixture__batch_51",
+              "port__OUT_W_RETAIL",
+              "anchor_marking_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_52",
+              "environment-markings-fixture__batch_53",
+              "environment-markings-fixture__batch_54",
+              "route__CLEAR_CENTRAL_SPINE",
+              "environment-markings-fixture__batch_55",
+              "route__CLEAR_CROSS_E",
+              "environment-markings-fixture__batch_56",
+              "route__CLEAR_CROSS_W",
+              "environment-markings-fixture__batch_57",
+              "zone__FLEX_E",
+              "anchor_marking_FLEX_E",
+              "environment-markings-fixture__batch_58",
+              "environment-markings-fixture__batch_59",
+              "zone__FLEX_W",
+              "anchor_marking_FLEX_W",
+              "environment-markings-fixture__batch_60",
+              "environment-markings-fixture__batch_61",
+              "zone__HEAVY_E",
+              "anchor_marking_HEAVY_E",
+              "environment-markings-fixture__batch_62",
+              "environment-markings-fixture__batch_63",
+              "zone__HEAVY_W",
+              "anchor_marking_HEAVY_W",
+              "environment-markings-fixture__batch_64",
+              "environment-markings-fixture__batch_65",
+              "zone__LONG_E",
+              "anchor_marking_LONG_E",
+              "environment-markings-fixture__batch_66",
+              "environment-markings-fixture__batch_67",
+              "zone__LONG_W",
+              "anchor_marking_LONG_W",
+              "environment-markings-fixture__batch_68",
+              "environment-markings-fixture__batch_69",
+              "zone__PACKING_LIGHT_LINE",
+              "anchor_marking_PACKING_LIGHT_LINE",
+              "environment-markings-fixture__batch_70",
+              "environment-markings-fixture__batch_71",
+              "zone__RESERVE_E",
+              "anchor_marking_RESERVE_E",
+              "environment-markings-fixture__batch_72",
+              "environment-markings-fixture__batch_73",
+              "zone__RESERVE_W",
+              "anchor_marking_RESERVE_W",
+              "environment-markings-fixture__batch_74",
+              "environment-markings-fixture__batch_75",
+              "zone__SMALL_E",
+              "anchor_marking_SMALL_E",
+              "environment-markings-fixture__batch_76",
+              "environment-markings-fixture__batch_77",
+              "zone__SMALL_W",
+              "anchor_marking_SMALL_W",
+              "environment-markings-fixture__batch_78",
+              "environment-markings-fixture__batch_79",
+              "zone__STAGE_IN_E_PARCEL",
+              "anchor_marking_STAGE_IN_E_PARCEL",
+              "environment-markings-fixture__batch_80",
+              "environment-markings-fixture__batch_81",
+              "zone__STAGE_IN_N_E",
+              "anchor_marking_STAGE_IN_N_E",
+              "environment-markings-fixture__batch_82",
+              "environment-markings-fixture__batch_83",
+              "zone__STAGE_IN_N_W",
+              "anchor_marking_STAGE_IN_N_W",
+              "environment-markings-fixture__batch_84",
+              "environment-markings-fixture__batch_85",
+              "zone__STAGE_IN_W_BULK",
+              "anchor_marking_STAGE_IN_W_BULK",
+              "environment-markings-fixture__batch_86",
+              "environment-markings-fixture__batch_87",
+              "zone__STAGE_OUT_E_B2B",
+              "anchor_marking_STAGE_OUT_E_B2B",
+              "environment-markings-fixture__batch_88",
+              "environment-markings-fixture__batch_89",
+              "zone__STAGE_OUT_S_EXPRESS",
+              "anchor_marking_STAGE_OUT_S_EXPRESS",
+              "environment-markings-fixture__batch_90",
+              "environment-markings-fixture__batch_91",
+              "zone__STAGE_OUT_W_RETAIL",
+              "anchor_marking_STAGE_OUT_W_RETAIL",
+              "environment-markings-fixture__batch_92",
+              "environment-markings-fixture__batch_93",
+              "zone__STANDARD_E",
+              "anchor_marking_STANDARD_E",
+              "environment-markings-fixture__batch_94",
+              "environment-markings-fixture__batch_95",
+              "zone__STANDARD_W",
+              "anchor_marking_STANDARD_W",
+              "environment-markings-fixture__batch_96",
+              "environment-markings-fixture__batch_97"
+            ],
+            "materials": [
+              "V3_Shell_charcoal",
+              "V3_Shell_petrol",
+              "V3_Shell_opaque_pane",
+              "V3_Shell_wall",
+              "V3_Shell_plinth",
+              "V3_Wayfinding_concrete",
+              "V3_Dock_Bumper",
+              "V3_Dock_Charcoal",
+              "V3_Dock_SafetyTan",
+              "V3_Dock_PetrolSteel",
+              "V3_Dock_TanReveal",
+              "V3_PAINT_incoming",
+              "V3_PAINT_lettering",
+              "V3_PAINT_safety_tan",
+              "V3_PAINT_outgoing",
+              "V3_PAINT_warm_white"
+            ],
+            "triangles": 45176,
+            "metadata": {
+              "name": "environment_markings_fixture_root",
+              "layout_version": "qoima-144x72-v3",
+              "namespace": "v3",
+              "units": "m",
+              "up_axis": "Y",
+              "forward_axis": "+Z",
+              "role": "architectural_paint_QA_fixture",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "reference_id": "R07",
+              "asset_id": "environment-markings-fixture"
+            },
+            "camera": {
+              "type": "PerspectiveCamera",
+              "position": [
+                222.98235398815882,
+                116.9617655298621,
+                224.72794248519853
+              ],
+              "target": [
+                72,
+                3.725000038743018,
+                36
+              ]
+            },
+            "presentation": {
+              "contact_shading": false,
+              "radius_m": 0.3,
+              "camera_inertia": false,
+              "ground_y_m": -0.5519999970197678
+            },
+            "renderer": {
+              "calls": 140,
+              "triangles": 61579,
+              "memory": {
+                "geometries": 102,
+                "textures": 10
+              }
+            }
+          }
+        }
+      ],
+      "independent_reference": "/references/v3/r07-ports-zones.png"
+    }
+  ],
+  "selected_model_count": 31,
+  "actual_model_count": 1,
+  "view_count": 4,
+  "cases": [],
+  "errors": [],
+  "consoleErrors": [],
+  "failure": {
+    "current": "rack-small",
+    "error": "TimeoutError: locator.screenshot: Timeout 21612.310000000012ms exceeded.\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n",
+    "stack": "locator.screenshot: Timeout 21612.310000000012ms exceeded.\nCall log:\n\u001b[2m  - taking element screenshot\u001b[22m\n\u001b[2m  - waiting for fonts to load...\u001b[22m\n\u001b[2m  - fonts loaded\u001b[22m\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n    at C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\frontend\\tools\\check-current-model-fourviews-v3.mjs:55:80"
+  },
+  "cleanup_complete": true,
+  "forced_cleanup": false,
+  "cleanup": [
+    "Final attestation: Command failed: pwsh -NoProfile -NonInteractive -Command Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,@{Name='CreationDate';Expression={$_.CreationDate.ToUniversalTime().ToString('o')}},CommandLine | ConvertTo-Json -Compress\n",
+    "CDP Browser.close returned",
+    "browserContext.close: Protocol error (Target.disposeBrowserContext): Failed to find context with id 58C80AD47C1DBFD2C1A1EDE6C39D8F72",
+    "browser.close returned",
+    "server.close exceeded 3000ms",
+    "No live attested process required fallback",
+    "Owned server transport released"
+  ],
+  "root_visual_review": "PENDING: capture and framing assertions do not by themselves accept design/reference match",
+  "duration_s": 161.386
+}

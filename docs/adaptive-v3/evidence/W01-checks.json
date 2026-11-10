@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "initial_HUs_checked": 530,
+  "SKUs_checked": 200,
+  "initial_quantity_units": 12256,
+  "initial_gross_mass_kg": 9403.85,
+  "workers_checked": 24,
+  "vehicles_checked": 2,
+  "ports_checked": 6,
+  "materialized_requests_checked": 16,
+  "all_eight_archetypes_in_each_direction": true,
+  "no_execution_or_metrics_generated": true,
+  "incoming_requests_excluded_from_initial_stock": true,
+  "negatives": [
+    {
+      "case": "actual_engine_label",
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "invented_completion",
+      "reason": "FABRICATED_EXECUTION",
+      "rejected": true
+    },
+    {
+      "case": "layout_content_hash",
+      "reason": "LAYOUT_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "extra_PK01_worker",
+      "reason": "WORKER_IDENTITY_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "driver_wrong_vehicle",
+      "reason": "VEHICLE_PAIR_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "port_widening",
+      "reason": "PORT_OVERRIDE",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_stock",
+      "reason": "STOCK_IDENTITY_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "changed_stock_units",
+      "reason": "STOCK_CONTENT_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "shrink_cargo",
+      "reason": "CARGO_DIMENSION_MASS_SCALE_OVERRIDE",
+      "rejected": true
+    },
+    {
+      "case": "reduce_cargo_mass",
+      "reason": "CARGO_DIMENSION_MASS_SCALE_OVERRIDE",
+      "rejected": true
+    },
+    {
+      "case": "teleport_storage",
+      "reason": "STOCK_PLACEMENT_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_request",
+      "reason": "REQUEST_IDENTITY_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "unknown_port",
+      "reason": "UNKNOWN_PORT",
+      "rejected": true
+    },
+    {
+      "case": "wrong_port_direction",
+      "reason": "PORT_DIRECTION_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "manual_port_heavy",
+      "reason": "PORT_CARGO_FORBIDDEN",
+      "rejected": true
+    },
+    {
+      "case": "request_wrong_units",
+      "reason": "REQUEST_QUANTITY_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "deadline_before_release",
+      "reason": "REQUEST_TIME_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "nonfinite_request_time",
+      "reason": "REQUEST_TIME_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "upstream_counted_stock",
+      "reason": "UPSTREAM_STOCK_CONFUSION",
+      "rejected": true
+    },
+    {
+      "case": "missing_outbound_HU",
+      "reason": "OUTBOUND_STOCK_MISSING",
+      "rejected": true
+    },
+    {
+      "case": "false_summary",
+      "reason": "SUMMARY_MISMATCH",
+      "rejected": true
+    }
+  ],
+  "input_hashes": {
+    "docs/adaptive-v3/fixtures/warehouse-request-stream-v3.json": "149462c7c3eb29c261a9ee309732fd79d018bb953e1886b2b3603529ed1bbb15",
+    "docs/v3/contract-proposals/baseline-assignment-v3.json": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "docs/v3/contract-proposals/baseline-input-v3.json": "2abbaec208c3113c397d416a295b34bb29cd11f057fb4e34f3f8af6759a65cd1",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/handoff/manifest.json": "8ce028b619b7044d71898b37b5d9d323eca6a8e0a77b7395ad7fc99e29f024ad",
+    "docs/v3/contract-proposals/layout-manifest-v3.json": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "docs/v3/contract-proposals/ports-v3.inbound.json": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+    "docs/v3/contract-proposals/ports-v3.outbound.json": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "tools/visual/v3/build_warehouse_fixture.py": "883b53517e2f6c19cc823e37e799fb39d4d919f079bc7034b55e05ff5b63b6af",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "tools/visual/v3/verify_warehouse_fixture.py": "2a4fa82a5d24b20aa2654730fa9763e57158e0784d90296e4883043210cc9304"
+  }
+}

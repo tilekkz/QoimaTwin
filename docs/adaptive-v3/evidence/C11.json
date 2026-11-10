@@ -1,0 +1,92 @@
+{
+  "task_id": "C11",
+  "status": "PASS",
+  "owner": "root",
+  "independent_evidence": "docs/adaptive-v3/evidence/C11-independent.json",
+  "strict_deterministic_bytes_checked": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "evaluations": [
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 1,
+      "net_transport_proxy_s": 0.0,
+      "passed": true,
+      "path": "adapted-assignment-v3.json",
+      "relocation_route_legs": 0,
+      "transfers": 0,
+      "units": 12256
+    },
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 2,
+      "net_transport_proxy_s": 173.53843405824924,
+      "passed": true,
+      "path": "adapted-assignment-horizon2-v3.json",
+      "relocation_route_legs": 4,
+      "transfers": 2,
+      "units": 12256
+    },
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 4,
+      "net_transport_proxy_s": 1285.2137884528474,
+      "passed": true,
+      "path": "adapted-assignment-horizon4-v3.json",
+      "relocation_route_legs": 16,
+      "transfers": 8,
+      "units": 12256
+    },
+    {
+      "HUs": 530,
+      "flow_legs": 1639,
+      "gross_mass_kg": 9403.85,
+      "horizon_periods": 8,
+      "net_transport_proxy_s": 3562.296128531858,
+      "passed": true,
+      "path": "adapted-assignment-horizon8-v3.json",
+      "relocation_route_legs": 16,
+      "transfers": 8,
+      "units": 12256
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/v3/contract-proposals/adaptation-input-v3.json",
+      "sha256": "5b9f294e4ac3f36bd196dcde5853432f394a7276f9fc4256e4d59a1a9aed8e23"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adaptation-evaluation-v3.json",
+      "sha256": "9237c019b9995e318c473688f8dbe54278eb1394d3a310fda1347bb9d931a3c5"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-v3.json",
+      "sha256": "57c6cde798b08c6d45da7acb311d13f81a31cd127e6352ddc7089ea818179b04"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-horizon2-v3.json",
+      "sha256": "be67f3dbd8c1e9e65be82f2b0791000251259ae938486abfce43e2bf5f179ee3"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-horizon4-v3.json",
+      "sha256": "e4a663f975acabfd333df56f7f4451fd88d503635c77a74ab772e4b5a2ea02b1"
+    },
+    {
+      "path": "docs/v3/contract-proposals/adapted-assignment-horizon8-v3.json",
+      "sha256": "e1fe62e7fc9dd86f07b6a40f41774ab4055ebe67c06653f1f43e31895df885ea"
+    }
+  ],
+  "visual_complete": false,
+  "backend_integration_complete": false,
+  "actual_engine_run": false,
+  "scope": "Bounded frozen analytical proposal. Default one-period no-op retained; horizon sensitivity explicitly declared and equal for each compared pair. No actual traffic/availability/action/throughput/financial result."
+}

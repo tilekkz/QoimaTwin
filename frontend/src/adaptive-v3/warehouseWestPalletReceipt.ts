@@ -1,0 +1,19 @@
+import {isWarehouseHeavyInboundPlan,type WarehouseHeavyInboundPlan} from './warehouseHeavyInboundPlan';
+import type {WarehouseBundle,WarehouseRequest,V3Record} from './warehouseTypes';
+
+export type WarehouseWestPalletReceipt={readonly source_kind:'visual_fixture';readonly engine_operation:false;readonly before_A_B:true;readonly visual_horizon_s:1800|2100|2400|2700;readonly source_horizon_s:1800;readonly supplier_handover_executed:false;readonly original_requests_replaced:false;readonly request:WarehouseRequest;readonly upstream_handling_unit:V3Record;readonly source_fixture_path:'frontend/public/data/v3/heavy-inbound-fixture.json';readonly source_fixture_sha256:'7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da';readonly scheduling:'after_source_transport_and_admitted_human_cases'};
+const issued=new WeakMap<object,{bundle:WarehouseBundle;native:WarehouseHeavyInboundPlan}>();
+function need(v:unknown,message:string):asserts v{if(!v)throw Error(message);}
+function freeze<T>(v:T):T{if(v&&typeof v==='object'&&!Object.isFrozen(v)){for(const c of Object.values(v))freeze(c);Object.freeze(v);}return v;}
+
+/** Additional visual input, never an alias for the original northern PALLET.
+ * The caller inserts these exact rows once before compiling either variant. */
+export function materializeWarehouseWestPalletReceipt(bundle:WarehouseBundle,native:WarehouseHeavyInboundPlan,options:{visual_horizon_s?:1800|2100|2400|2700}={}):WarehouseWestPalletReceipt{
+ need(Object.isFrozen(bundle)&&bundle.source_kind==='visual_fixture'&&!bundle.engine_operation&&isWarehouseHeavyInboundPlan(native),'ISSUED_WEST_PALLET_SOURCE_REQUIRED');
+ const horizon=options.visual_horizon_s??1800;need([1800,2100,2400,2700].includes(horizon),'WEST_PALLET_VISUAL_HORIZON_REQUIRED');const r=native.fixture.receipt,source=bundle.fixture.inputs.requests.find(q=>q.direction==='inbound'&&q.archetype_id==='PALLET_LOAD'&&q.sku_id==='DEMO_172');
+ need(source&&r.handling_unit_id==='v3:HU:W11:external:01'&&r.request_id==='v3:request:W11:external:01'&&r.lot_id==='v3:lot:W11:external:01'&&r.sku_id==='DEMO_172'&&r.gross_mass_kg===455&&r.quantity_units===24&&r.dimensions_xyz_m.every((n,i)=>n===[1.2,1.35,1][i])&&native.fixture.source_hashes['frontend/public/data/v3/warehouse-fixture-v3.json']==='81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579','EXACT_WEST_PALLET_FIXTURE_REQUIRED');
+ const port=bundle.fixture.inputs.ports.find(p=>p.port_id==='IN_W_BULK');need(port?.direction==='inbound'&&(port.allowed_cargo_archetype_ids as string[]).includes('PALLET_LOAD'),'WEST_PALLET_PORT_FORBIDDEN');
+ const request:WarehouseRequest={...source,request_id:r.request_id,handling_unit_id:r.handling_unit_id,lot_id:r.lot_id,port_id:'IN_W_BULK',requested_at_s:0,deadline_at_s:horizon};
+ const value:WarehouseWestPalletReceipt=freeze({source_kind:'visual_fixture',engine_operation:false,before_A_B:true,visual_horizon_s:horizon,source_horizon_s:1800,supplier_handover_executed:false,original_requests_replaced:false,request,upstream_handling_unit:{handling_unit_id:r.handling_unit_id,lot_id:r.lot_id,sku_id:r.sku_id,archetype_id:r.archetype_id,dimensions_xyz_m:[...r.dimensions_xyz_m],gross_mass_kg:r.gross_mass_kg,quantity_units:r.quantity_units,model_scale_factor:1,orientation_id:'upright_xyz',location_kind:'upstream'},source_fixture_path:'frontend/public/data/v3/heavy-inbound-fixture.json',source_fixture_sha256:'7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da',scheduling:'after_source_transport_and_admitted_human_cases'});issued.set(value,{bundle,native});return value;
+}
+export function isWarehouseWestPalletReceipt(value:unknown,bundle:WarehouseBundle,native:WarehouseHeavyInboundPlan|undefined):value is WarehouseWestPalletReceipt{const row=value&&typeof value==='object'?issued.get(value):undefined;return !!row&&row.bundle===bundle&&row.native===native;}

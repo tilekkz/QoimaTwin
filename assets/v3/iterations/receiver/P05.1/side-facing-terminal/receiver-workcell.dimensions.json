@@ -1,0 +1,92 @@
+{
+  "asset_id": "receiver-workcell-fixture",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "units": "m",
+  "up_axis": "Y",
+  "source_hashes": {
+    "assets/v3/blender/packing-station.blend": "39bd08428259e1bc062cb7621480ea76be3f3a25368429d29144994c493bf5ef",
+    "assets/v3/blender/pallet-load.blend": "9fad6db44929a7c33b21ac740c2b606b9ea083c333344a2d453e8abdfd86a6de",
+    "assets/v3/blender/worker-manual.blend": "cbaf236121536ff75b918ece4de89601556977ac7091f79bc4d12b0ba48a0423",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "assets/v3/blender/packing-station.stats.json": "d5d602f6385190a88d7de389c0d9ea35689946afe7319ca0d01623e67af557b2"
+  },
+  "references": [
+    {
+      "reference_id": "R04",
+      "path": "assets/references/v3/r04-packing-line.png",
+      "sha256": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a"
+    },
+    {
+      "reference_id": "R05",
+      "path": "assets/references/v3/r05-workers.png",
+      "sha256": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b"
+    },
+    {
+      "reference_id": "M08_REF",
+      "path": "assets/references/v3/m08-pallet-load.png",
+      "sha256": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb"
+    }
+  ],
+  "station_root": [
+    0,
+    0,
+    0
+  ],
+  "pallet_root": [
+    -0.69,
+    0,
+    1.25
+  ],
+  "pallet_dimensions_xyz_m": [
+    1.2,
+    1.35,
+    1.0
+  ],
+  "declared_pallet_gross_mass_kg": 455,
+  "expected_workcell_bounds_m": {
+    "min": [
+      -1.29,
+      0,
+      -0.5
+    ],
+    "max": [
+      0.9,
+      1.4,
+      1.75
+    ]
+  },
+  "scanner_lens_front_xyz_m": [
+    -0.69,
+    1.16,
+    0.391
+  ],
+  "scanner_nominal_direction": [
+    0,
+    0,
+    1
+  ],
+  "visual_scan_cone_half_angle_deg": 12,
+  "scan_target": "actual closest-facing offwhite upper carton label patch; selected by true face centroid/normal and whole-scene ray",
+  "confirmation_candidate_xyz_m": [
+    -0.723,
+    1.305,
+    -0.405
+  ],
+  "receiver_candidate_root": [
+    -1.1,
+    0,
+    -0.15
+  ],
+  "receiver_candidate_yaw_rad": 1.5707963267948966,
+  "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+  "bounds_correction": "Initial planning assumed station maxX1.05; unchanged accepted source measures.9. Correct expected assembly bounds, no model change.",
+  "screen_swivel_yaw_rad": -1.5707963267948966,
+  "screen_swivel_pivot_xyz_m": [
+    -0.7,
+    0,
+    -0.32
+  ],
+  "assembly_revision": "Turn existing complete screen/base/stem assembly90deg toward side operator around its real base centre; no mesh/source/template change. Recheck board support and update physical screen anchor."
+}

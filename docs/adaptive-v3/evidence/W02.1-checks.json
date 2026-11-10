@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "fixture_id": "v3:fixture:warehouse-base:001",
+  "full_stock_HUs": 530,
+  "workers": 24,
+  "profiles": 24,
+  "ports": 6,
+  "requests": 16,
+  "decoded_modules": 132,
+  "decoded_slots": 776,
+  "walk_nodes": 1633,
+  "walk_arcs": 4000,
+  "vehicle_nodes": 620,
+  "vehicle_arcs": 1316,
+  "all_decoded_rows_match_source": true,
+  "named_columns_reordering_supported": true,
+  "inputs_unchanged": true,
+  "output_recursively_frozen": true,
+  "no_generated_actions_completions_or_metrics": true,
+  "negatives": [
+    {
+      "case": "actual_engine_run",
+      "reason": "ACTUAL_V3_UNSUPPORTED",
+      "rejected": true
+    },
+    {
+      "case": "engine_operation",
+      "reason": "ACTUAL_V3_UNSUPPORTED",
+      "rejected": true
+    },
+    {
+      "case": "analytical_fixture",
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "V2_run",
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "unknown_visual_fixture",
+      "reason": "FIXTURE_NOT_REGISTERED",
+      "rejected": true
+    },
+    {
+      "case": "invented_completion",
+      "reason": "SOURCE_SCOPE_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "broken_json",
+      "reason": "INVALID_JSON",
+      "rejected": true
+    },
+    {
+      "case": "reduced_mass",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "changed_units",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "teleported_HU",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "extra_PK01",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "modified_request_time",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "mixed_layout",
+      "reason": "LAYOUT_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "modified_geometry_same_hash_label",
+      "reason": "LAYOUT_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "mismatched_registry",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "mismatched_profiles",
+      "reason": "BUNDLE_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "negative_arc_index",
+      "reason": "INDEX_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "fractional_arc_index",
+      "reason": "INDEX_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "out_of_range_vehicle_index",
+      "reason": "INDEX_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "negative_arc_length",
+      "reason": "TABLE_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "nonfinite_arc_length",
+      "reason": "TABLE_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_node_id",
+      "reason": "IDENTITY_MISMATCH",
+      "rejected": true
+    },
+    {
+      "case": "truncated_table_row",
+      "reason": "TABLE_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_column",
+      "reason": "TABLE_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "invalid_slot_module_index",
+      "reason": "INDEX_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "invalid_slot_service_index",
+      "reason": "INDEX_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "invalid_vehicle_primitive",
+      "reason": "TABLE_INVALID",
+      "rejected": true
+    },
+    {
+      "case": "global_scale",
+      "reason": "LAYOUT_MISMATCH",
+      "rejected": true
+    }
+  ],
+  "input_hashes": {
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/tools/check-warehouse-adapter-v3.mjs": "fc17d8f3a717155e85a877bad0f51b380be64560c2b13a5b4f051da8a2358733"
+  },
+  "scope": "Registered W01base only; new scenarios need explicit admitted registration. Source hashes are byte bindings, not employee qualification, physical workflow admission or actual engine support. W02.2viewer and W03+movement/cargo/clock remain separate."
+}

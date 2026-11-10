@@ -1,0 +1,183 @@
+{
+  "task_id": "P07",
+  "status": "PASS",
+  "at": "2026-11-07T19:48:28.765065+00:00",
+  "references": [
+    "R05",
+    "M14.2-REACH"
+  ],
+  "native": "assets/v3/iterations/worker-base/P07/actual-native-driver-checks.json",
+  "runtime": "assets/v3/iterations/worker-base/P07/actual-runtime-driver-checks.json",
+  "native_closed_body_parts": 50,
+  "retired_picker_ink": "Old picker01outline excluded in native QA exactly as P02runtime replaces the hidden ink batch; accepted driver05glyph is separately bounded clear of every actual vehicle component in CPU/runtime QA. Original P01source/GLB unchanged.",
+  "supports": [
+    {
+      "contact": "seat",
+      "point": [
+        0,
+        0.84,
+        -0.7
+      ],
+      "actual_vehicle_parts": [
+        "seat_cushion_rear"
+      ]
+    },
+    {
+      "contact": "sole_L",
+      "point": [
+        -0.115,
+        0.53,
+        -0.395
+      ],
+      "actual_vehicle_parts": [
+        "driver_floorboard"
+      ]
+    },
+    {
+      "contact": "sole_R",
+      "point": [
+        0.115,
+        0.53,
+        -0.395
+      ],
+      "actual_vehicle_parts": [
+        "driver_floorboard"
+      ]
+    }
+  ],
+  "helmet_gap_m": 0.05000019073486328,
+  "whole_lift_reach_hulls_clear": 14,
+  "runtime_pose_errors": {
+    "actorId": "F01",
+    "role": "forklift_driver",
+    "disposed": false,
+    "assignment": "seated_existing_actor",
+    "warehouse_headcount_delta": 0,
+    "root_local": [
+      0,
+      0.29,
+      -0.615
+    ],
+    "scale": [
+      1,
+      1,
+      1
+    ],
+    "seat_local": [
+      0,
+      0.840000011920929,
+      -0.6500000010803342
+    ],
+    "hands_local": {
+      "L": [
+        -0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ],
+      "R": [
+        0.24188875983010355,
+        1.2780096372028482,
+        -0.2534595793976674
+      ]
+    },
+    "feet_local": {
+      "L": [
+        -0.11499999463558197,
+        0.5300000337511301,
+        -0.39499998070299625
+      ],
+      "R": [
+        0.11499999463558197,
+        0.5300000337511301,
+        -0.39499998070299625
+      ]
+    },
+    "seat_error_m": 4.556651384525492e-08,
+    "grip_error_m": {
+      "L": 1.728983067211064e-08,
+      "R": 1.728983067211064e-08
+    },
+    "sole_error_m": {
+      "L": 6.961322706871522e-08,
+      "R": 6.961322706871522e-08
+    }
+  },
+  "unchanged_C08_vehicle_component_contains_driver": true,
+  "ownership": "Production binder reparents supplied existing WorkerInstance; it creates/clones/disposes no workers and edits no registry. Release restores original parent/pose; wrong role/nonunit scale/double binding/occupied vehicle reject. Stand owns one sample F01through P02factory.",
+  "shared_body_meshes": 23,
+  "yellow_tint_clones": 2,
+  "shared_template_resources_disposed": 0,
+  "owned_resource_disposals": 3,
+  "static_views_reviewed": [
+    "front",
+    "side",
+    "rear",
+    "quarter",
+    "top"
+  ],
+  "close_views_reviewed": [
+    "side",
+    "quarter"
+  ],
+  "action_driver_frames_checked": 13,
+  "action_driver_frames_opened": [
+    8,
+    14,
+    22
+  ],
+  "browser_checks": {
+    "no_autoplay": true,
+    "play_pause": true,
+    "live_reduce_pauses_and_static_phases_work": true,
+    "reduced_keyboard_seek": true,
+    "cold_reduce_static": true,
+    "explicit_replay": true,
+    "invalid_timeline_error_cleanup": true,
+    "stale_async_load_does_not_replace_new_model": true,
+    "repeated_load_resources_stable": [
+      {
+        "geometries": 8,
+        "textures": 10
+      },
+      {
+        "geometries": 8,
+        "textures": 10
+      },
+      {
+        "geometries": 8,
+        "textures": 10
+      }
+    ]
+  },
+  "browser_errors": [],
+  "browser_cleanup": {
+    "owned_pid": 13612,
+    "cleanup": "graceful",
+    "terminated": true,
+    "elapsed_ms": 25545
+  },
+  "build": "npm run build PASS; existing GLTFLoader chunk-size warning only",
+  "files": [
+    {
+      "path": "frontend/src/adaptive-v3/seatedDriver.ts",
+      "sha256": "1bfe7f2c09ed7a006bb08575f6fa6c40c1458bdf97b4f6ff60877f5bef26829a"
+    },
+    {
+      "path": "frontend/public/data/v3/seated-driver-pose.json",
+      "sha256": "cb3ebbd6cddc71b47a9e9c9766b8da3bdfa91001cd0123f69b84ed0a87c78473"
+    },
+    {
+      "path": "frontend/src/adaptive-v3/assetStand.ts",
+      "sha256": "a3607a33e40b5bf11978efa51e7527ce466afa00d71767ccbe965acead665a7b"
+    },
+    {
+      "path": "frontend/tools/check-seated-driver-v3.mjs",
+      "sha256": "12a541fd9bd7382fc820d00e312ea4c4756bc4dae1dccddec86673c6d8bbf1b9"
+    },
+    {
+      "path": "tools/blender/v3/verify_seated_driver.py",
+      "sha256": "93df50984645ba86aac47680990edabcb7b5f21d08fdb980149672af9e351d4f"
+    }
+  ],
+  "limits": "Seated/straight-motion controls and body support gate. Entry/climb, steering-wheel IK, complete LONG manual accessory handling and warehouse source scheduling remain separate. Canonical24staff/source contracts unchanged."
+}

@@ -1,0 +1,94 @@
+{
+  "task_id": "W05.4.4",
+  "reviewer": "root",
+  "passed": true,
+  "root_visual_go": true,
+  "engine_operation": false,
+  "physical_join": false,
+  "completed_jobs": 0,
+  "recorded_at_utc": "2026-11-08T16:20:35Z",
+  "review_method": "Root personally reviewed all9 current captures on the labelled sheet and opened the loaded and mobile originals before assigning this evidence persistence task. This file records that explicit root visual GO; the artifact/spec packet remains subject to root review.",
+  "browser_report_sha256": "1eee2d3db7134d21bf930b91d082ff7e50428f10c4a4430481f64231ee39c2fb",
+  "original_run_path": "work/v3/pallet-transfer-browser/2026-11-08T16-04-55.552Z",
+  "images": [
+    {
+      "file": "01-paused-source.png",
+      "sha256": "14c0e9dc68e055e0f6d87e4b380f74d84d2a707542c03f8955de794ea1b2c2d4",
+      "observation": "Initial source pallet is selected at HEAVY_E:011. Preview is paused at zero; surrounding stock and the source address remain visible."
+    },
+    {
+      "file": "stage-attach.png",
+      "sha256": "01c83e5a00c2d6b3509efe8e520a58240338520655541398c47058c802957577",
+      "observation": "The same selected pallet is shown at the forks of FL02 with seated F02. The selected card changes to the vehicle owner; no new cargo is shown."
+    },
+    {
+      "file": "stage-loaded.png",
+      "sha256": "690eded72c5993b2ce39cb0ba56324582fa2dd4af7100edf0cb2e38366b30080",
+      "observation": "The selected pallet travels with FL02 on the loaded route. The seated driver and pallet remain visible with the same selected HU identity."
+    },
+    {
+      "file": "stage-release.png",
+      "sha256": "3044e22d00d38507e405a4b966d75c3328e48bbc9d016270e70d2a2986207e27",
+      "observation": "The pallet is shown on the target support at HEAVY_E:009 during controlled withdrawal; its selected-card address is the target slot."
+    },
+    {
+      "file": "stage-end.png",
+      "sha256": "4b370803541a14efde0f964c1568c28e759d49ea458f657d8fdf946a5073f1f3",
+      "observation": "End of the reversible preview leaves the selected pallet at the target and the truck withdrawn. The interface does not claim an order or engine job was completed."
+    },
+    {
+      "file": "06-live-reduced-manual.png",
+      "sha256": "6159a4da32d5134e3d4c3ac299abb5a5dd71ef9f5866b55e2c11ad89ff1db20b",
+      "observation": "Reduced motion leaves the loaded stage paused while the manual stage and seek controls remain usable."
+    },
+    {
+      "file": "07-mobile-setdown.png",
+      "sha256": "04311f6cd7d84e19cd0a7db7df27a5c3b8f6d4b331360ff4cd006f70bceaf1ab",
+      "observation": "The narrow mobile layout presents the target setdown and selected pallet with manual controls and no horizontal page overflow."
+    },
+    {
+      "file": "error-missing.png",
+      "sha256": "df296bef86b08e297c2729ea6abed951aae7b1d7ec3fa5403f66e8649360ad03",
+      "observation": "An injected missing source produces a clear recoverable preparation error. The original source pallet remains displayed and the preview has no acquired frame."
+    },
+    {
+      "file": "error-tampered.png",
+      "sha256": "df296bef86b08e297c2729ea6abed951aae7b1d7ec3fa5403f66e8649360ad03",
+      "observation": "Tampered source bytes are refused with a recoverable preparation error and no acquired frame; the original source card remains visible."
+    }
+  ],
+  "auxiliary_sheet": {
+    "file": "sheet.png",
+    "sha256": "abb7289f0a26838d283ff0ab8fe54372d5af9a0525f59c01e4c83863293e6887",
+    "primary_capture_count": false
+  },
+  "component_archives": [
+    {
+      "file": "component-audit-findings.json",
+      "source_path": "work/v3/account2-pallet-preview-audit/20261108T152113Z/findings.json",
+      "sha256": "b1e40c3e3d93de9f5d1a2d4b54bcd70b6b531ebe4771885c8a15e6cd119af84c"
+    },
+    {
+      "file": "component-fix-verification.json",
+      "source_path": "work/v3/pallet-preview-lifecycle-check/w0544-fix/verification-record.json",
+      "sha256": "c515bb4d2491ef8a9d4db7556214af918c65f1b3e42544826c50f2ffc9e740be"
+    },
+    {
+      "file": "component-results-before.json",
+      "source_path": "work/v3/pallet-preview-lifecycle-check/w0544-fix/component-results-red.json",
+      "sha256": "54224049e5d87c2941550894ecd1a301b475d0fd3040ff8c05db23be97b0fee4"
+    },
+    {
+      "file": "component-results-after.json",
+      "source_path": "work/v3/pallet-preview-lifecycle-check/w0544-fix/component-results-green.json",
+      "sha256": "d366f097db3b0bc789fefedf8841e0e7b34af0e82494e0762772861e8cf9f8e9"
+    },
+    {
+      "file": "component-regressions.cjs.txt",
+      "source_path": "work/v3/pallet-preview-lifecycle-check/w0544-fix/component-regressions.cjs",
+      "sha256": "2ea11a480e4e37784b67812a71fc1ef9f853ab980236d892800307b906fbaa58"
+    }
+  ],
+  "root_artifact_review_pending": true,
+  "scope": "Rendered appearance and visible state of this bounded reversible visual fixture only. Image review does not resolve12409 native no-witness component observations, certify continuous collision/stability or admit operational execution."
+}

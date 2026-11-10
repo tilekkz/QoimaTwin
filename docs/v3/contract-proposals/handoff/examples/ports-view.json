@@ -1,0 +1,267 @@
+{
+  "schema_id": "qoima.port-view.v3-proposal",
+  "schema_version": "0.1.0",
+  "status": "proposal",
+  "source_kind": "geometry_proposal",
+  "engine_operation": false,
+  "operational_admission": false,
+  "layout_ref": {
+    "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "bytes": 8009
+  },
+  "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+  "resource_policy_ref": {
+    "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+    "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "bytes": 1756
+  },
+  "ports": [
+    {
+      "port_id": "IN_W_BULK",
+      "direction": "inbound",
+      "world_pos": [
+        0,
+        0,
+        18
+      ],
+      "outward_normal": [
+        -1,
+        0,
+        0
+      ],
+      "inward_facing": [
+        1,
+        0,
+        0
+      ],
+      "service_node_id": "v3:service:IN_W_BULK",
+      "service_node_world_pos": [
+        6,
+        0,
+        18
+      ],
+      "allowed_cargo_archetype_ids": [
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "LONG_BUNDLE",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ],
+      "clear_width_m": 7,
+      "clear_height_m": 4.5,
+      "operational_admission": false,
+      "loaded_admission_scope": "family_filter_only; loaded admission remains separate",
+      "source_ref": {
+        "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+        "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+        "bytes": 13240
+      },
+      "source_port_index": 0
+    },
+    {
+      "port_id": "IN_N_STANDARD",
+      "direction": "inbound",
+      "world_pos": [
+        72,
+        0,
+        72
+      ],
+      "outward_normal": [
+        0,
+        0,
+        1
+      ],
+      "inward_facing": [
+        0,
+        0,
+        -1
+      ],
+      "service_node_id": "v3:service:IN_N_STANDARD",
+      "service_node_world_pos": [
+        72,
+        0,
+        66
+      ],
+      "allowed_cargo_archetype_ids": [
+        "STANDARD_CARTON",
+        "PALLET_LOAD"
+      ],
+      "clear_width_m": 6,
+      "clear_height_m": 4.5,
+      "operational_admission": false,
+      "loaded_admission_scope": "family_filter_only; loaded admission remains separate",
+      "source_ref": {
+        "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+        "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+        "bytes": 13240
+      },
+      "source_port_index": 1
+    },
+    {
+      "port_id": "IN_E_PARCEL",
+      "direction": "inbound",
+      "world_pos": [
+        144,
+        0,
+        54
+      ],
+      "outward_normal": [
+        1,
+        0,
+        0
+      ],
+      "inward_facing": [
+        -1,
+        0,
+        0
+      ],
+      "service_node_id": "v3:service:IN_E_PARCEL",
+      "service_node_world_pos": [
+        138,
+        0,
+        54
+      ],
+      "allowed_cargo_archetype_ids": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON"
+      ],
+      "clear_width_m": 4,
+      "clear_height_m": 3.5,
+      "operational_admission": false,
+      "loaded_admission_scope": "family_filter_only; loaded admission remains separate",
+      "source_ref": {
+        "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+        "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d",
+        "bytes": 13240
+      },
+      "source_port_index": 2
+    },
+    {
+      "port_id": "OUT_W_RETAIL",
+      "direction": "outbound",
+      "world_pos": [
+        0,
+        0,
+        54
+      ],
+      "outward_normal": [
+        -1,
+        0,
+        0
+      ],
+      "inward_facing": [
+        1,
+        0,
+        0
+      ],
+      "service_node_id": "v3:service:OUT_W_RETAIL",
+      "service_node_world_pos": [
+        6,
+        0,
+        54
+      ],
+      "allowed_cargo_archetype_ids": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON",
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ],
+      "clear_width_m": 4,
+      "clear_height_m": 4.5,
+      "operational_admission": false,
+      "loaded_admission_scope": "family_filter_only; loaded admission remains separate",
+      "source_ref": {
+        "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+        "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+        "bytes": 27396
+      },
+      "source_port_index": 0
+    },
+    {
+      "port_id": "OUT_S_EXPRESS",
+      "direction": "outbound",
+      "world_pos": [
+        48,
+        0,
+        0
+      ],
+      "outward_normal": [
+        0,
+        0,
+        -1
+      ],
+      "inward_facing": [
+        0,
+        0,
+        1
+      ],
+      "service_node_id": "v3:service:OUT_S_EXPRESS",
+      "service_node_world_pos": [
+        48,
+        0,
+        6
+      ],
+      "allowed_cargo_archetype_ids": [
+        "SMALL_CARTON",
+        "STANDARD_CARTON"
+      ],
+      "clear_width_m": 3,
+      "clear_height_m": 3.5,
+      "operational_admission": false,
+      "loaded_admission_scope": "family_filter_only; loaded admission remains separate",
+      "source_ref": {
+        "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+        "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+        "bytes": 27396
+      },
+      "source_port_index": 1
+    },
+    {
+      "port_id": "OUT_E_B2B",
+      "direction": "outbound",
+      "world_pos": [
+        144,
+        0,
+        18
+      ],
+      "outward_normal": [
+        1,
+        0,
+        0
+      ],
+      "inward_facing": [
+        -1,
+        0,
+        0
+      ],
+      "service_node_id": "v3:service:OUT_E_B2B",
+      "service_node_world_pos": [
+        138,
+        0,
+        18
+      ],
+      "allowed_cargo_archetype_ids": [
+        "HEAVY_BOX",
+        "PALLET_LOAD",
+        "IBC",
+        "LONG_BUNDLE",
+        "DRUM",
+        "FRAGILE_CRATE"
+      ],
+      "clear_width_m": 6,
+      "clear_height_m": 4.5,
+      "operational_admission": false,
+      "loaded_admission_scope": "family_filter_only; loaded admission remains separate",
+      "source_ref": {
+        "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+        "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469",
+        "bytes": 27396
+      },
+      "source_port_index": 2
+    }
+  ]
+}

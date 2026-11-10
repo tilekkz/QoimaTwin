@@ -1,0 +1,121 @@
+{
+  "task_id": "M13.3",
+  "status": "PASS",
+  "at": "2026-11-07T09:14:07.651767+00:00",
+  "asset_id": "conveyor-diverter",
+  "reference_id": "R04",
+  "glb_sha256": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+  "dimensions_m": [
+    1.0,
+    1.0,
+    0.9500000178813934
+  ],
+  "triangles": 1116,
+  "runtime_meshes": 5,
+  "actual_checks": {
+    "status": "PASS",
+    "method": "Actual GLB decoded with pinned Three GLTFLoader; actual16-edge hole loop, world-space vertices and91 physical joint poses",
+    "actual_hole_edges": 16,
+    "poses": 91,
+    "tested_disk_vertices": 15288,
+    "max_actual_disk_radius_m": 0.40500000119209456,
+    "min_actual_hole_margin_m": 0.001999974250793457,
+    "bounds": {
+      "min": [
+        -0.5,
+        0,
+        -0.45000000996515155
+      ],
+      "max": [
+        0.5,
+        0.9999999925494194,
+        0.5000000149011612
+      ]
+    },
+    "ports": {
+      "anchor_port_east": [
+        0.5,
+        0.92,
+        0
+      ],
+      "anchor_port_west": [
+        -0.5,
+        0.92,
+        0
+      ],
+      "anchor_port_branch": [
+        0,
+        0.92,
+        0.5
+      ]
+    },
+    "carrier_anchor_world": [
+      0,
+      0.92,
+      0
+    ],
+    "reset_angle_rad": 0,
+    "actual_source_events_tested": false
+  },
+  "live_browser_pose_reset": "docs/adaptive-v3/evidence/M13.3-browser-pivot.json",
+  "khronos": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "visual_review": "Root opened all4source+4actualbrowser views and a45degree posed view. Thick petrol frame, four connected legs/feet, open three deck ports and warm transfer volume match R04 direction. The functional12-sided revolving platform replaces the illustrative square transfer pad and provides the L08 real stop/pivot mechanic. Clear surrounding deck, readable volume and stable supported surface; no sidewall crosses a port.",
+  "defects_fixed": [
+    "Parent-local payload anchor corrected from .92 to .02 underY.90 pivot, restoring physical deckY.92.",
+    "Initial static polygon hole would collide at intermediate disk angles. Rebuilt as a circumscribed12-sided hole with.407m apothem; actual GLB16-edge hole loop/15288 posed vertices prove at least1.99997mm clearance through91poses. Allfinalviews refreshed."
+  ],
+  "images": [
+    {
+      "path": "assets/v3/previews/conveyor-diverter/front.png",
+      "sha256": "3733a21dedd6ac7c449deb9d56034862dea72a7a9c0f95b404c7cad92c124342",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/previews/conveyor-diverter/side.png",
+      "sha256": "18547953e7f99bf2a961c71d7d5ce092f14acf2e62e1e742982ec85e7f575482",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/previews/conveyor-diverter/rear.png",
+      "sha256": "598b8ffced1b763aefd926ae7eb42ff3827080628029f9309940c3d9e61e457c",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/previews/conveyor-diverter/three-quarter.png",
+      "sha256": "bcd29509f0191571a9392d888ca49d5d975d802d6886cb9a5b9710eb714a9710",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-diverter/front.png",
+      "sha256": "8eb73270a0469bc71ea0473455c47c60e51c2ecfad9a1fccdde686c313e4cd3a",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-diverter/side.png",
+      "sha256": "69f18522f116ad742fc1b74117d0b481624c596c55afbe331719102ec134c6eb",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-diverter/rear.png",
+      "sha256": "39e4e50f50e8bf34f5bd55feb1d644abf196e07a620506e2453618eb389abc9f",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-diverter/quarter.png",
+      "sha256": "396185644885901f10fcd147d6f4acdac44756132150a707fbbc26d4c028ee50",
+      "actually_opened_by_root": true
+    },
+    {
+      "path": "assets/v3/qa-browser/conveyor-diverter/transfer-45.png",
+      "sha256": "451020c9f417bbaa3deace84ddb4f066ea2e3e8003797a2b79405dde9057b90b",
+      "actually_opened_by_root": true
+    }
+  ],
+  "deferred": [
+    "M13 assembled seam integration",
+    "Source event stop/pivot.8s and payload reservations in W runtime gates"
+  ]
+}

@@ -1,0 +1,2965 @@
+{
+  "assumption_freeze": "All8unit/pack dimensions/masses/counts/tags fixed before any optimization or assignment.",
+  "candidate_family_witnesses": [
+    {
+      "active_geometry_candidates_by_family": {
+        "FLEX": 8,
+        "SMALL": 480
+      },
+      "archetype_id": "SMALL_CARTON",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "FLEX": [
+          0.98,
+          0.26,
+          0.66
+        ],
+        "SMALL": [
+          0.04,
+          0.05,
+          0.12
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "FLEX": 8,
+        "STANDARD": 64
+      },
+      "archetype_id": "STANDARD_CARTON",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "FLEX": [
+          0.7,
+          0.1,
+          0.6
+        ],
+        "STANDARD": [
+          0.55,
+          0.55,
+          0.7
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "HEAVY": 24
+      },
+      "archetype_id": "HEAVY_BOX",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "HEAVY": [
+          0.5,
+          0.75,
+          0.5
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "HEAVY": 24
+      },
+      "archetype_id": "PALLET_LOAD",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "HEAVY": [
+          0.1,
+          0.05,
+          0.1
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "HEAVY": 24
+      },
+      "archetype_id": "IBC",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "HEAVY": [
+          0.1,
+          0.24,
+          0.1
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "LONG": 12
+      },
+      "archetype_id": "LONG_BUNDLE",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "LONG": [
+          0.1,
+          0.03,
+          0.15
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "HEAVY": 24
+      },
+      "archetype_id": "DRUM",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "HEAVY": [
+          0.62,
+          0.45,
+          0.42
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    },
+    {
+      "active_geometry_candidates_by_family": {
+        "STANDARD": 64
+      },
+      "archetype_id": "FRAGILE_CRATE",
+      "capacity_is_shared_not_dedicated": true,
+      "minimum_extra_allowance_after_declared_clearance_m": {
+        "STANDARD": [
+          0.05,
+          0,
+          0.15
+        ]
+      },
+      "operational_admission": false,
+      "scope": "Only active type/upright d+2c dimension budget/per-HU payload/capacity witness, not placement. Never infer base+c hover; support/vertical clearance allocation is C04. Handler/routes/lift/assignment remain later gates."
+    }
+  ],
+  "candidate_witness_tolerance_m": 1e-09,
+  "capacity_note": "Per-archetype witness counts share the same physical slots; never sum them as independent capacity or an assignment.",
+  "deferred": [
+    "200SKU binding,stock,lots and assignments",
+    "C04-C09 actual compatibility,handler/route/support/rating/height/clearance",
+    "actual cargo meshes and P/W contacts/source scheduling"
+  ],
+  "geometry_policy": {
+    "HU_model_origin": "floor_centre_XZ_Y0",
+    "HU_model_scale_factor": 1,
+    "recipe_origin": "HU_minimum_outer_XYZ_corner",
+    "recipe_to_HU_model": "(x-HUwidth/2,y,z-HUdepth/2)",
+    "unit_instance_scale_factor": 1
+  },
+  "layout_binding": {
+    "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+    "layout_version": "qoima-144x72-v3-proposal",
+    "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+  },
+  "operational_admission": false,
+  "packing_recipes": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        4,
+        2,
+        3
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          0.305,
+          0.225,
+          0.225
+        ],
+        "min": [
+          0.015,
+          0.015,
+          0.015
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "Individually packed small accessories",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0.005,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.0775,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0.005,
+        0.005,
+        0.005
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            0.0925,
+            0.1175,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.0325,
+            0.0775,
+            0.055
+          ],
+          "unit_ordinal": 1
+        },
+        {
+          "max_xyz_m": [
+            0.0925,
+            0.1175,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.0325,
+            0.0775,
+            0.1
+          ],
+          "unit_ordinal": 2
+        },
+        {
+          "max_xyz_m": [
+            0.0925,
+            0.1175,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.0325,
+            0.0775,
+            0.145
+          ],
+          "unit_ordinal": 3
+        },
+        {
+          "max_xyz_m": [
+            0.0925,
+            0.1625,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.0325,
+            0.1225,
+            0.055
+          ],
+          "unit_ordinal": 4
+        },
+        {
+          "max_xyz_m": [
+            0.0925,
+            0.1625,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.0325,
+            0.1225,
+            0.1
+          ],
+          "unit_ordinal": 5
+        },
+        {
+          "max_xyz_m": [
+            0.0925,
+            0.1625,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.0325,
+            0.1225,
+            0.145
+          ],
+          "unit_ordinal": 6
+        },
+        {
+          "max_xyz_m": [
+            0.1575,
+            0.1175,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.0975,
+            0.0775,
+            0.055
+          ],
+          "unit_ordinal": 7
+        },
+        {
+          "max_xyz_m": [
+            0.1575,
+            0.1175,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.0975,
+            0.0775,
+            0.1
+          ],
+          "unit_ordinal": 8
+        },
+        {
+          "max_xyz_m": [
+            0.1575,
+            0.1175,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.0975,
+            0.0775,
+            0.145
+          ],
+          "unit_ordinal": 9
+        },
+        {
+          "max_xyz_m": [
+            0.1575,
+            0.1625,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.0975,
+            0.1225,
+            0.055
+          ],
+          "unit_ordinal": 10
+        },
+        {
+          "max_xyz_m": [
+            0.1575,
+            0.1625,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.0975,
+            0.1225,
+            0.1
+          ],
+          "unit_ordinal": 11
+        },
+        {
+          "max_xyz_m": [
+            0.1575,
+            0.1625,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.0975,
+            0.1225,
+            0.145
+          ],
+          "unit_ordinal": 12
+        },
+        {
+          "max_xyz_m": [
+            0.2225,
+            0.1175,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.1625,
+            0.0775,
+            0.055
+          ],
+          "unit_ordinal": 13
+        },
+        {
+          "max_xyz_m": [
+            0.2225,
+            0.1175,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.1625,
+            0.0775,
+            0.1
+          ],
+          "unit_ordinal": 14
+        },
+        {
+          "max_xyz_m": [
+            0.2225,
+            0.1175,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.1625,
+            0.0775,
+            0.145
+          ],
+          "unit_ordinal": 15
+        },
+        {
+          "max_xyz_m": [
+            0.2225,
+            0.1625,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.1625,
+            0.1225,
+            0.055
+          ],
+          "unit_ordinal": 16
+        },
+        {
+          "max_xyz_m": [
+            0.2225,
+            0.1625,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.1625,
+            0.1225,
+            0.1
+          ],
+          "unit_ordinal": 17
+        },
+        {
+          "max_xyz_m": [
+            0.2225,
+            0.1625,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.1625,
+            0.1225,
+            0.145
+          ],
+          "unit_ordinal": 18
+        },
+        {
+          "max_xyz_m": [
+            0.2875,
+            0.1175,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.2275,
+            0.0775,
+            0.055
+          ],
+          "unit_ordinal": 19
+        },
+        {
+          "max_xyz_m": [
+            0.2875,
+            0.1175,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.2275,
+            0.0775,
+            0.1
+          ],
+          "unit_ordinal": 20
+        },
+        {
+          "max_xyz_m": [
+            0.2875,
+            0.1175,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.2275,
+            0.0775,
+            0.145
+          ],
+          "unit_ordinal": 21
+        },
+        {
+          "max_xyz_m": [
+            0.2875,
+            0.1625,
+            0.095
+          ],
+          "min_xyz_m": [
+            0.2275,
+            0.1225,
+            0.055
+          ],
+          "unit_ordinal": 22
+        },
+        {
+          "max_xyz_m": [
+            0.2875,
+            0.1625,
+            0.14
+          ],
+          "min_xyz_m": [
+            0.2275,
+            0.1225,
+            0.1
+          ],
+          "unit_ordinal": 23
+        },
+        {
+          "max_xyz_m": [
+            0.2875,
+            0.1625,
+            0.185
+          ],
+          "min_xyz_m": [
+            0.2275,
+            0.1225,
+            0.145
+          ],
+          "unit_ordinal": 24
+        }
+      ]
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        4,
+        3,
+        2
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          0.58,
+          0.38,
+          0.28
+        ],
+        "min": [
+          0.02,
+          0.02,
+          0.02
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "Individually packed standard goods; same mass/design as C01",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0.01,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.07,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            0.185,
+            0.15,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.085,
+            0.07,
+            0.085
+          ],
+          "unit_ordinal": 1
+        },
+        {
+          "max_xyz_m": [
+            0.185,
+            0.15,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.085,
+            0.07,
+            0.155
+          ],
+          "unit_ordinal": 2
+        },
+        {
+          "max_xyz_m": [
+            0.185,
+            0.24,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.085,
+            0.16,
+            0.085
+          ],
+          "unit_ordinal": 3
+        },
+        {
+          "max_xyz_m": [
+            0.185,
+            0.24,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.085,
+            0.16,
+            0.155
+          ],
+          "unit_ordinal": 4
+        },
+        {
+          "max_xyz_m": [
+            0.185,
+            0.33,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.085,
+            0.25,
+            0.085
+          ],
+          "unit_ordinal": 5
+        },
+        {
+          "max_xyz_m": [
+            0.185,
+            0.33,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.085,
+            0.25,
+            0.155
+          ],
+          "unit_ordinal": 6
+        },
+        {
+          "max_xyz_m": [
+            0.295,
+            0.15,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.195,
+            0.07,
+            0.085
+          ],
+          "unit_ordinal": 7
+        },
+        {
+          "max_xyz_m": [
+            0.295,
+            0.15,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.195,
+            0.07,
+            0.155
+          ],
+          "unit_ordinal": 8
+        },
+        {
+          "max_xyz_m": [
+            0.295,
+            0.24,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.195,
+            0.16,
+            0.085
+          ],
+          "unit_ordinal": 9
+        },
+        {
+          "max_xyz_m": [
+            0.295,
+            0.24,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.195,
+            0.16,
+            0.155
+          ],
+          "unit_ordinal": 10
+        },
+        {
+          "max_xyz_m": [
+            0.295,
+            0.33,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.195,
+            0.25,
+            0.085
+          ],
+          "unit_ordinal": 11
+        },
+        {
+          "max_xyz_m": [
+            0.295,
+            0.33,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.195,
+            0.25,
+            0.155
+          ],
+          "unit_ordinal": 12
+        },
+        {
+          "max_xyz_m": [
+            0.405,
+            0.15,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.305,
+            0.07,
+            0.085
+          ],
+          "unit_ordinal": 13
+        },
+        {
+          "max_xyz_m": [
+            0.405,
+            0.15,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.305,
+            0.07,
+            0.155
+          ],
+          "unit_ordinal": 14
+        },
+        {
+          "max_xyz_m": [
+            0.405,
+            0.24,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.305,
+            0.16,
+            0.085
+          ],
+          "unit_ordinal": 15
+        },
+        {
+          "max_xyz_m": [
+            0.405,
+            0.24,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.305,
+            0.16,
+            0.155
+          ],
+          "unit_ordinal": 16
+        },
+        {
+          "max_xyz_m": [
+            0.405,
+            0.33,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.305,
+            0.25,
+            0.085
+          ],
+          "unit_ordinal": 17
+        },
+        {
+          "max_xyz_m": [
+            0.405,
+            0.33,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.305,
+            0.25,
+            0.155
+          ],
+          "unit_ordinal": 18
+        },
+        {
+          "max_xyz_m": [
+            0.515,
+            0.15,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.415,
+            0.07,
+            0.085
+          ],
+          "unit_ordinal": 19
+        },
+        {
+          "max_xyz_m": [
+            0.515,
+            0.15,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.415,
+            0.07,
+            0.155
+          ],
+          "unit_ordinal": 20
+        },
+        {
+          "max_xyz_m": [
+            0.515,
+            0.24,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.415,
+            0.16,
+            0.085
+          ],
+          "unit_ordinal": 21
+        },
+        {
+          "max_xyz_m": [
+            0.515,
+            0.24,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.415,
+            0.16,
+            0.155
+          ],
+          "unit_ordinal": 22
+        },
+        {
+          "max_xyz_m": [
+            0.515,
+            0.33,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.415,
+            0.25,
+            0.085
+          ],
+          "unit_ordinal": 23
+        },
+        {
+          "max_xyz_m": [
+            0.515,
+            0.33,
+            0.215
+          ],
+          "min_xyz_m": [
+            0.415,
+            0.25,
+            0.155
+          ],
+          "unit_ordinal": 24
+        }
+      ]
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        2,
+        2,
+        2
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          0.75,
+          0.6,
+          0.55
+        ],
+        "min": [
+          0.05,
+          0.06,
+          0.05
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "Dense packaged machinery parts in a reinforced supported box",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0.02,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.12,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0.02,
+        0.02,
+        0.02
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            0.39,
+            0.32,
+            0.29
+          ],
+          "min_xyz_m": [
+            0.09,
+            0.12,
+            0.09
+          ],
+          "unit_ordinal": 1
+        },
+        {
+          "max_xyz_m": [
+            0.39,
+            0.32,
+            0.51
+          ],
+          "min_xyz_m": [
+            0.09,
+            0.12,
+            0.31
+          ],
+          "unit_ordinal": 2
+        },
+        {
+          "max_xyz_m": [
+            0.39,
+            0.54,
+            0.29
+          ],
+          "min_xyz_m": [
+            0.09,
+            0.34,
+            0.09
+          ],
+          "unit_ordinal": 3
+        },
+        {
+          "max_xyz_m": [
+            0.39,
+            0.54,
+            0.51
+          ],
+          "min_xyz_m": [
+            0.09,
+            0.34,
+            0.31
+          ],
+          "unit_ordinal": 4
+        },
+        {
+          "max_xyz_m": [
+            0.71,
+            0.32,
+            0.29
+          ],
+          "min_xyz_m": [
+            0.41,
+            0.12,
+            0.09
+          ],
+          "unit_ordinal": 5
+        },
+        {
+          "max_xyz_m": [
+            0.71,
+            0.32,
+            0.51
+          ],
+          "min_xyz_m": [
+            0.41,
+            0.12,
+            0.31
+          ],
+          "unit_ordinal": 6
+        },
+        {
+          "max_xyz_m": [
+            0.71,
+            0.54,
+            0.29
+          ],
+          "min_xyz_m": [
+            0.41,
+            0.34,
+            0.09
+          ],
+          "unit_ordinal": 7
+        },
+        {
+          "max_xyz_m": [
+            0.71,
+            0.54,
+            0.51
+          ],
+          "min_xyz_m": [
+            0.41,
+            0.34,
+            0.31
+          ],
+          "unit_ordinal": 8
+        }
+      ]
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        3,
+        4,
+        2
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          1.18,
+          1.31,
+          0.98
+        ],
+        "min": [
+          0.02,
+          0.16,
+          0.02
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "24sealed cartons above an integral pallet and restraints",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0.02,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.185,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0.02,
+        0.02,
+        0.02
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            0.4,
+            0.445,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.185,
+            0.21
+          ],
+          "unit_ordinal": 1
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            0.445,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.185,
+            0.51
+          ],
+          "unit_ordinal": 2
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            0.725,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.465,
+            0.21
+          ],
+          "unit_ordinal": 3
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            0.725,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.465,
+            0.51
+          ],
+          "unit_ordinal": 4
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            1.005,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.745,
+            0.21
+          ],
+          "unit_ordinal": 5
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            1.005,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.745,
+            0.51
+          ],
+          "unit_ordinal": 6
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            1.285,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.04,
+            1.025,
+            0.21
+          ],
+          "unit_ordinal": 7
+        },
+        {
+          "max_xyz_m": [
+            0.4,
+            1.285,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.04,
+            1.025,
+            0.51
+          ],
+          "unit_ordinal": 8
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            0.445,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.42,
+            0.185,
+            0.21
+          ],
+          "unit_ordinal": 9
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            0.445,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.42,
+            0.185,
+            0.51
+          ],
+          "unit_ordinal": 10
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            0.725,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.42,
+            0.465,
+            0.21
+          ],
+          "unit_ordinal": 11
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            0.725,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.42,
+            0.465,
+            0.51
+          ],
+          "unit_ordinal": 12
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            1.005,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.42,
+            0.745,
+            0.21
+          ],
+          "unit_ordinal": 13
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            1.005,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.42,
+            0.745,
+            0.51
+          ],
+          "unit_ordinal": 14
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            1.285,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.42,
+            1.025,
+            0.21
+          ],
+          "unit_ordinal": 15
+        },
+        {
+          "max_xyz_m": [
+            0.78,
+            1.285,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.42,
+            1.025,
+            0.51
+          ],
+          "unit_ordinal": 16
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            0.445,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.8,
+            0.185,
+            0.21
+          ],
+          "unit_ordinal": 17
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            0.445,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.8,
+            0.185,
+            0.51
+          ],
+          "unit_ordinal": 18
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            0.725,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.8,
+            0.465,
+            0.21
+          ],
+          "unit_ordinal": 19
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            0.725,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.8,
+            0.465,
+            0.51
+          ],
+          "unit_ordinal": 20
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            1.005,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.8,
+            0.745,
+            0.21
+          ],
+          "unit_ordinal": 21
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            1.005,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.8,
+            0.745,
+            0.51
+          ],
+          "unit_ordinal": 22
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            1.285,
+            0.49
+          ],
+          "min_xyz_m": [
+            0.8,
+            1.025,
+            0.21
+          ],
+          "unit_ordinal": 23
+        },
+        {
+          "max_xyz_m": [
+            1.16,
+            1.285,
+            0.79
+          ],
+          "min_xyz_m": [
+            0.8,
+            1.025,
+            0.51
+          ],
+          "unit_ordinal": 24
+        }
+      ]
+    },
+    {
+      "archetype_id": "IBC",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        1,
+        1,
+        1
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          1.15,
+          1.13,
+          0.95
+        ],
+        "min": [
+          0.05,
+          0.1,
+          0.05
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "One sealed filled inner bottle; fluid kg/litres are not unit counts",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.105,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "symbolic_liquid": {
+        "declared_usable_capacity_m3": 0.65,
+        "density_kg_m3": 1000,
+        "fill_volume_m3": 0.6,
+        "shape_convention": "Synthetic sealed tank fill indicator; no mesh/internal-volume certification"
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0,
+        0,
+        0
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            1.14,
+            1.125,
+            0.94
+          ],
+          "min_xyz_m": [
+            0.06,
+            0.105,
+            0.06
+          ],
+          "unit_ordinal": 1
+        }
+      ]
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        1,
+        4,
+        6
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          4.12,
+          0.48,
+          0.6
+        ],
+        "min": [
+          0.08,
+          0.06,
+          0.05
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "24rigid hollow profiles, end protection/bands; detachable vehicle cradle excluded",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0.008,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.098,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0,
+        0.008,
+        0.008
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            4.1,
+            0.178,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.098,
+            0.065
+          ],
+          "unit_ordinal": 1
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.178,
+            0.233
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.098,
+            0.153
+          ],
+          "unit_ordinal": 2
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.178,
+            0.321
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.098,
+            0.241
+          ],
+          "unit_ordinal": 3
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.178,
+            0.409
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.098,
+            0.329
+          ],
+          "unit_ordinal": 4
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.178,
+            0.497
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.098,
+            0.417
+          ],
+          "unit_ordinal": 5
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.178,
+            0.585
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.098,
+            0.505
+          ],
+          "unit_ordinal": 6
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.266,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.186,
+            0.065
+          ],
+          "unit_ordinal": 7
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.266,
+            0.233
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.186,
+            0.153
+          ],
+          "unit_ordinal": 8
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.266,
+            0.321
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.186,
+            0.241
+          ],
+          "unit_ordinal": 9
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.266,
+            0.409
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.186,
+            0.329
+          ],
+          "unit_ordinal": 10
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.266,
+            0.497
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.186,
+            0.417
+          ],
+          "unit_ordinal": 11
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.266,
+            0.585
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.186,
+            0.505
+          ],
+          "unit_ordinal": 12
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.354,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.274,
+            0.065
+          ],
+          "unit_ordinal": 13
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.354,
+            0.233
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.274,
+            0.153
+          ],
+          "unit_ordinal": 14
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.354,
+            0.321
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.274,
+            0.241
+          ],
+          "unit_ordinal": 15
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.354,
+            0.409
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.274,
+            0.329
+          ],
+          "unit_ordinal": 16
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.354,
+            0.497
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.274,
+            0.417
+          ],
+          "unit_ordinal": 17
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.354,
+            0.585
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.274,
+            0.505
+          ],
+          "unit_ordinal": 18
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.442,
+            0.145
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.362,
+            0.065
+          ],
+          "unit_ordinal": 19
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.442,
+            0.233
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.362,
+            0.153
+          ],
+          "unit_ordinal": 20
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.442,
+            0.321
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.362,
+            0.241
+          ],
+          "unit_ordinal": 21
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.442,
+            0.409
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.362,
+            0.329
+          ],
+          "unit_ordinal": 22
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.442,
+            0.497
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.362,
+            0.417
+          ],
+          "unit_ordinal": 23
+        },
+        {
+          "max_xyz_m": [
+            4.1,
+            0.442,
+            0.585
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.362,
+            0.505
+          ],
+          "unit_ordinal": 24
+        }
+      ]
+    },
+    {
+      "archetype_id": "DRUM",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        1,
+        1,
+        1
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          0.65,
+          0.92,
+          0.65
+        ],
+        "min": [
+          0.03,
+          0.08,
+          0.03
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "One sealed primary drum on integral restraint/support; not160unit boxes",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.09,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "symbolic_liquid": {
+        "declared_usable_capacity_m3": 0.18,
+        "density_kg_m3": 1000,
+        "fill_volume_m3": 0.16,
+        "shape_convention": "Synthetic sealed drum fill indicator; no mesh/internal-volume certification"
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0,
+        0,
+        0
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            0.64,
+            0.91,
+            0.64
+          ],
+          "min_xyz_m": [
+            0.04,
+            0.09,
+            0.04
+          ],
+          "unit_ordinal": 1
+        }
+      ]
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+      "grid_counts_xyz": [
+        1,
+        1,
+        1
+      ],
+      "inner_bounds_xyz_m": {
+        "max": [
+          1.02,
+          0.86,
+          0.77
+        ],
+        "min": [
+          0.08,
+          0.1,
+          0.08
+        ]
+      },
+      "method": "explicit_axis_aligned_unit_envelopes",
+      "packing_frame": "HU_minimum_outer_XYZ_corner",
+      "physical_unit_meaning": "One primary-packaged instrument inside a cushioned outer crate",
+      "prototype_contents_not_stock": true,
+      "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+      "support_convention": {
+        "inter_layer_separator_thickness_m": 0,
+        "kind": "localized_integral_packaging_dunnage_and_separators",
+        "lowest_unit_bottom_y_m": 0.13,
+        "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+        "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+      },
+      "unit_axes_in_HU": [
+        "+X",
+        "+Y",
+        "+Z"
+      ],
+      "unit_gap_xyz_m": [
+        0,
+        0,
+        0
+      ],
+      "unit_instances": [
+        {
+          "max_xyz_m": [
+            1.0,
+            0.83,
+            0.75
+          ],
+          "min_xyz_m": [
+            0.1,
+            0.13,
+            0.1
+          ],
+          "unit_ordinal": 1
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "SMALL",
+          "FLEX"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [],
+            "required_handler_tag": "manual_operator",
+            "transport_tag": "manual_hand_carry"
+          },
+          {
+            "required_equipment_tags": [
+              "manual_cart"
+            ],
+            "required_handler_tag": "manual_operator",
+            "transport_tag": "manual_cart"
+          },
+          {
+            "required_equipment_tags": [
+              "light_conveyor"
+            ],
+            "required_handler_tag": "handoff_operator",
+            "transport_tag": "light_conveyor"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 0.018432,
+        "contents_gross_mass_kg": 0.84,
+        "dimensions_xyz_m": [
+          0.32,
+          0.24,
+          0.24
+        ],
+        "gross_mass_kg": 0.94,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 0.1,
+        "packaging_type": "carton",
+        "units_per_handling_unit": 24
+      },
+      "label": "C02 synthetic SMALL_CARTON",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "SMALL_CARTON",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_SMALL_CARTON_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_SMALL_CARTON_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Individually packed small accessories. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 9.6e-05,
+        "contents_mass_kg": 0.03,
+        "dimensions_xyz_m": [
+          0.06,
+          0.04,
+          0.04
+        ],
+        "gross_mass_kg": 0.035,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 0.005
+      }
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "STANDARD",
+          "FLEX"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [],
+            "required_handler_tag": "manual_operator",
+            "transport_tag": "manual_hand_carry"
+          },
+          {
+            "required_equipment_tags": [
+              "manual_cart"
+            ],
+            "required_handler_tag": "manual_operator",
+            "transport_tag": "manual_cart"
+          },
+          {
+            "required_equipment_tags": [
+              "light_conveyor"
+            ],
+            "required_handler_tag": "handoff_operator",
+            "transport_tag": "light_conveyor"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 0.072,
+        "contents_gross_mass_kg": 6.0,
+        "dimensions_xyz_m": [
+          0.6,
+          0.4,
+          0.3
+        ],
+        "gross_mass_kg": 6.35,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 0.35,
+        "packaging_type": "carton",
+        "units_per_handling_unit": 24
+      },
+      "label": "C02 synthetic STANDARD_CARTON",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "STANDARD_CARTON",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_STANDARD_CARTON_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_STANDARD_CARTON_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Individually packed standard goods; same mass/design as C01. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.00048,
+        "contents_mass_kg": 0.2,
+        "dimensions_xyz_m": [
+          0.1,
+          0.08,
+          0.06
+        ],
+        "gross_mass_kg": 0.25,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 0.05
+      }
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "HEAVY"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [
+              "forklift",
+              "approved_load_support"
+            ],
+            "required_handler_tag": "forklift_operator",
+            "transport_tag": "forklift_assisted"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 0.312,
+        "contents_gross_mass_kg": 184.0,
+        "dimensions_xyz_m": [
+          0.8,
+          0.65,
+          0.6
+        ],
+        "gross_mass_kg": 200.0,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 16,
+        "packaging_type": "protective_crate",
+        "units_per_handling_unit": 8
+      },
+      "label": "C02 synthetic HEAVY_BOX",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "HEAVY_BOX",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_HEAVY_BOX_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_HEAVY_BOX_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Dense packaged machinery parts in a reinforced supported box. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.012,
+        "contents_mass_kg": 22,
+        "dimensions_xyz_m": [
+          0.3,
+          0.2,
+          0.2
+        ],
+        "gross_mass_kg": 23.0,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 1
+      }
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "HEAVY"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [
+              "forklift",
+              "approved_load_support"
+            ],
+            "required_handler_tag": "forklift_operator",
+            "transport_tag": "forklift_assisted"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 1.62,
+        "contents_gross_mass_kg": 432.0,
+        "dimensions_xyz_m": [
+          1.2,
+          1.35,
+          1.0
+        ],
+        "gross_mass_kg": 455.0,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 23,
+        "packaging_type": "palletized",
+        "units_per_handling_unit": 24
+      },
+      "label": "C02 synthetic PALLET_LOAD",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "PALLET_LOAD",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_PALLET_LOAD_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_PALLET_LOAD_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "24sealed cartons above an integral pallet and restraints. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.026208,
+        "contents_mass_kg": 17.2,
+        "dimensions_xyz_m": [
+          0.36,
+          0.26,
+          0.28
+        ],
+        "gross_mass_kg": 18.0,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 0.8
+      }
+    },
+    {
+      "archetype_id": "IBC",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "HEAVY"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [
+              "forklift",
+              "approved_load_support"
+            ],
+            "required_handler_tag": "forklift_operator",
+            "transport_tag": "forklift_assisted"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 1.392,
+        "contents_gross_mass_kg": 614.0,
+        "dimensions_xyz_m": [
+          1.2,
+          1.16,
+          1.0
+        ],
+        "gross_mass_kg": 654.0,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 40,
+        "packaging_type": "caged_tank",
+        "units_per_handling_unit": 1
+      },
+      "label": "C02 synthetic IBC",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "IBC",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_IBC_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_IBC_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "One sealed filled inner bottle; fluid kg/litres are not unit counts. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.969408,
+        "contents_mass_kg": 600,
+        "dimensions_xyz_m": [
+          1.08,
+          1.02,
+          0.88
+        ],
+        "gross_mass_kg": 614.0,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 14
+      }
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "LONG"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [
+              "forklift",
+              "approved_load_support"
+            ],
+            "required_handler_tag": "forklift_operator",
+            "transport_tag": "forklift_assisted"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 1.4196,
+        "contents_gross_mass_kg": 192.0,
+        "dimensions_xyz_m": [
+          4.2,
+          0.52,
+          0.65
+        ],
+        "gross_mass_kg": 200.0,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 8,
+        "packaging_type": "bundled",
+        "units_per_handling_unit": 24
+      },
+      "label": "C02 synthetic LONG_BUNDLE",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "LONG_BUNDLE",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_LONG_BUNDLE_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_LONG_BUNDLE_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "24rigid hollow profiles, end protection/bands; detachable vehicle cradle excluded. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.0256,
+        "contents_mass_kg": 7.8,
+        "dimensions_xyz_m": [
+          4,
+          0.08,
+          0.08
+        ],
+        "gross_mass_kg": 8.0,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 0.2
+      }
+    },
+    {
+      "archetype_id": "DRUM",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed"
+        ],
+        "storage_type_tags": [
+          "HEAVY"
+        ]
+      },
+      "fragile": false,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [
+              "forklift",
+              "approved_load_support"
+            ],
+            "required_handler_tag": "forklift_operator",
+            "transport_tag": "forklift_assisted"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 0.43928,
+        "contents_gross_mass_kg": 172.0,
+        "dimensions_xyz_m": [
+          0.68,
+          0.95,
+          0.68
+        ],
+        "gross_mass_kg": 180.0,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 8,
+        "packaging_type": "drum_on_support",
+        "units_per_handling_unit": 1
+      },
+      "label": "C02 synthetic DRUM",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "DRUM",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_DRUM_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_DRUM_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "One sealed primary drum on integral restraint/support; not160unit boxes. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.2952,
+        "contents_mass_kg": 160,
+        "dimensions_xyz_m": [
+          0.6,
+          0.82,
+          0.6
+        ],
+        "gross_mass_kg": 172.0,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 12
+      }
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "compatibility": {
+        "candidate_only": true,
+        "property_tags": [
+          "upright",
+          "sealed",
+          "fragile"
+        ],
+        "storage_type_tags": [
+          "STANDARD"
+        ]
+      },
+      "fragile": true,
+      "handling": {
+        "candidate_only": true,
+        "modes": [
+          {
+            "required_equipment_tags": [
+              "forklift",
+              "approved_load_support"
+            ],
+            "required_handler_tag": "forklift_operator",
+            "transport_tag": "forklift_assisted"
+          }
+        ]
+      },
+      "handling_unit": {
+        "bounding_volume_m3": 0.88825,
+        "contents_gross_mass_kg": 73.0,
+        "dimensions_xyz_m": [
+          1.1,
+          0.95,
+          0.85
+        ],
+        "gross_mass_kg": 88.0,
+        "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+        "packaging_tare_mass_kg": 15,
+        "packaging_type": "protective_crate",
+        "units_per_handling_unit": 1
+      },
+      "label": "C02 synthetic FRAGILE_CRATE",
+      "layout_binding": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      },
+      "operational_admission": false,
+      "orientation": {
+        "permitted_orientations": [
+          {
+            "local_axes_in_destination": [
+              "+X",
+              "+Y",
+              "+Z"
+            ],
+            "orientation_id": "upright_xyz"
+          }
+        ],
+        "slot_orientation_mappings": [
+          {
+            "cargo_orientation_id": "upright_xyz",
+            "slot_orientation_id": "upright_xyz_in_module"
+          }
+        ],
+        "upright_only": true
+      },
+      "record_type": "CargoArchetype",
+      "reference_binding": {
+        "archetype_id": "FRAGILE_CRATE",
+        "dimensions_role": "handling_unit_outer_target",
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+      },
+      "schema_id": "qoima.cargo-archetype.v3-proposal",
+      "schema_version": "0.1.0",
+      "source_kind": "synthetic_design",
+      "source_of_assumptions": [
+        {
+          "assumption_id": "C02_FRAGILE_CRATE_HU_TARGET",
+          "fields": [
+            "handling_unit.dimensions_xyz_m"
+          ],
+          "kind": "synthetic_design",
+          "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+        },
+        {
+          "assumption_id": "C02_FRAGILE_CRATE_FIXED_PACK",
+          "fields": [
+            "unit",
+            "handling_unit",
+            "orientation",
+            "fragile",
+            "stacking",
+            "handling",
+            "compatibility"
+          ],
+          "kind": "synthetic_design",
+          "statement": "One primary-packaged instrument inside a cushioned outer crate. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+        }
+      ],
+      "stacking": {
+        "max_stack": 1,
+        "stackable": false
+      },
+      "status": "proposal",
+      "unit": {
+        "bounding_volume_m3": 0.4095,
+        "contents_mass_kg": 68,
+        "dimensions_xyz_m": [
+          0.9,
+          0.7,
+          0.65
+        ],
+        "gross_mass_kg": 73.0,
+        "mass_scope": "contents_plus_primary_unit_packaging",
+        "packaging_tare_mass_kg": 5
+      }
+    }
+  ],
+  "reference_adoption": {
+    "archetype_ids": [
+      "SMALL_CARTON",
+      "STANDARD_CARTON",
+      "HEAVY_BOX",
+      "PALLET_LOAD",
+      "IBC",
+      "LONG_BUNDLE",
+      "DRUM",
+      "FRAGILE_CRATE"
+    ],
+    "path": "assets/references/v3/r03-dimension-targets.json",
+    "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9",
+    "status": "C02explicit_R03_HU_target_adoption_proposal",
+    "targets_changed": false
+  },
+  "schema_id": "qoima.cargo-catalog.v3-proposal",
+  "schema_version": "0.1.0",
+  "source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.schema.json",
+      "sha256": "46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88"
+    },
+    {
+      "path": "tools/visual/v3/validate_cargo_contract.py",
+      "sha256": "6082648905e0c6cedb66aa724363eaa3852d1ef2034b10f175085b0ca36f2cd4"
+    },
+    {
+      "path": "docs/v3/contract-proposals/cargo-archetype-v3.example.json",
+      "sha256": "fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+    },
+    {
+      "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+      "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+    }
+  ],
+  "source_kind": "synthetic_design",
+  "status": "proposal"
+}

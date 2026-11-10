@@ -1,0 +1,2626 @@
+{
+  "passed": true,
+  "candidate_only": true,
+  "accepted_pose": false,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "background": true,
+  "blender_version": "5.0.1",
+  "owned_pid": 8088,
+  "contact_tolerance_m": 2e-06,
+  "input_hashes": {
+    "assets/v3/iterations/warehouse/W04.3/candidate-carry-pose.json": "f9fa159807a6faa806e01e74680cadc7b87ca230739c22bf9e7201dacfe302ce",
+    "assets/v3/iterations/warehouse/W04.3/carry-candidate-browser/review-capture.json": "bc7026427e88ff23edacedb4a968d28f4948eef28399cbb3b8cd24e64da6bacc",
+    "assets/v3/blender/worker-base.blend": "23950616b324a8520b364427396bde8c4bcba337b182b5d4fd14e7253dc2fcb5",
+    "assets/v3/blender/worker-manual.blend": "cbaf236121536ff75b918ece4de89601556977ac7091f79bc4d12b0ba48a0423",
+    "assets/v3/blender/small-carton.blend": "209470b224993bb314f0d9adf175b2f97c8d0ba8642512f59594bfe942324996",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "assets/v3/specs/worker-base.dimensions.json": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "tools/blender/v3/verify_cargo_carry_pose.py": "4520a38764531380cdfbdfdbb9a6481507e1d9401ef03711b496300bda4f7023",
+    "tools/blender/v3/native_clearance.py": "1d50e485ec5848d07896ecc31f4cf37a6ecd390bbe2b75e5df3f202df8e358d8",
+    "tools/blender/v3/build_picker_figure.py": "18c5b567bd7de0265cbab41b3884236701543256b1be294a65914ca380a3bebc",
+    "tools/blender/v3/build_standard_carton.py": "0323731c0220be85912342b0e9f47bf97bf439a0acb7133777baf3e88003392f",
+    "tools/blender/v3/build_sealed_parcel.py": "e220bb6fda21056d5d5c462ef222cf8dd8ff86392675db1f6ba5b0d5ffe0545f",
+    "tools/blender/v3/v3_common.py": "049a20163757f140599866c21514d88d5e7478a8b4fbb875244b794e457798e3",
+    "frontend/work/w04-carry-review.html": "cd83df44fb5a7e650344fb837b51a318753625e11865469c98d97bd9cfd800df",
+    "frontend/work/review-w04-carry.mjs": "86ef0af123bfeafc01416c2e2b1d8e2cd4affab0aa5c8e707df94698dfbb8e87",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e"
+  },
+  "runtime_pose_sha256": "bc7026427e88ff23edacedb4a968d28f4948eef28399cbb3b8cd24e64da6bacc",
+  "candidate_sha256": "f9fa159807a6faa806e01e74680cadc7b87ca230739c22bf9e7201dacfe302ce",
+  "identical_captured_views": 5,
+  "exact_runtime_joints": 27,
+  "immutable_HU": {
+    "handling_unit_ref": "v3:HU:initial:DEMO_001:01",
+    "lot_ref": "v3:lot:initial:DEMO_001",
+    "sku_ref": "DEMO_001",
+    "archetype_id": "SMALL_CARTON",
+    "dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "gross_mass_kg": 0.94,
+    "quantity_units": 24,
+    "position_m": [
+      0,
+      0.85,
+      0.4
+    ],
+    "yaw_rad": 0,
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "neutral_source_agreement": {
+    "original_body_parts": 50,
+    "manual_body_parts": 50,
+    "maximum_world_vertex_error_m": 0,
+    "original_signature": "8c7a96fdd41187e6a2dfb88aef1a0faf33cd73488c1d82a6be042ee6ba5a404f",
+    "manual_neutral_signature": "8c7a96fdd41187e6a2dfb88aef1a0faf33cd73488c1d82a6be042ee6ba5a404f",
+    "method": "Same named native closed pieces/topology, world vertex comparison before posing"
+  },
+  "limits": {
+    "original_joint_limits_retained": 15,
+    "changed_rotation_joints": [
+      {
+        "joint": "joint__shoulder_lift_L",
+        "angles": [
+          -0.03828657513561112,
+          0,
+          0
+        ],
+        "bounds": [
+          [
+            -0.8,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "joint": "joint__upper_arm_L",
+        "angles": [
+          -0.7891742256334926,
+          -0.11290539496451539,
+          -0.05048461815616913
+        ],
+        "bounds": [
+          [
+            -2.2,
+            0.7
+          ],
+          [
+            -0.55,
+            0.55
+          ],
+          [
+            -0.7,
+            0.7
+          ]
+        ]
+      },
+      {
+        "joint": "joint__elbow_swivel_L",
+        "angles": [
+          -0.2671139730874948,
+          0,
+          0
+        ],
+        "bounds": [
+          [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "joint": "joint__forearm_L",
+        "angles": [
+          -0.7395475201016745,
+          0.02867222313869329,
+          0.06003628874214074
+        ],
+        "bounds": [
+          [
+            -2.2,
+            0.15
+          ],
+          [
+            -0.12,
+            0.12
+          ],
+          [
+            -0.12,
+            0.12
+          ]
+        ]
+      },
+      {
+        "joint": "joint__palm_roll_L",
+        "angles": [
+          0,
+          1.3490057264870154,
+          0
+        ],
+        "bounds": [
+          [
+            0,
+            0
+          ],
+          [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "joint": "joint__hand_L",
+        "angles": [
+          -0.5697639875210095,
+          -0.14081435361629696,
+          0.2391019910934541
+        ],
+        "bounds": [
+          [
+            -0.6,
+            0.6
+          ],
+          [
+            -0.65,
+            0.65
+          ],
+          [
+            -0.4,
+            0.4
+          ]
+        ]
+      },
+      {
+        "joint": "joint__shoulder_lift_R",
+        "angles": [
+          -0.038283710107037044,
+          0,
+          0
+        ],
+        "bounds": [
+          [
+            -0.8,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "joint": "joint__upper_arm_R",
+        "angles": [
+          -0.7891829091051029,
+          0.11291450549884223,
+          0.05049299369190695
+        ],
+        "bounds": [
+          [
+            -2.2,
+            0.7
+          ],
+          [
+            -0.55,
+            0.55
+          ],
+          [
+            -0.7,
+            0.7
+          ]
+        ]
+      },
+      {
+        "joint": "joint__elbow_swivel_R",
+        "angles": [
+          0.26714297376652435,
+          0,
+          0
+        ],
+        "bounds": [
+          [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "joint": "joint__forearm_R",
+        "angles": [
+          -0.7395482351992472,
+          -0.028662739720970505,
+          -0.060039363474209524
+        ],
+        "bounds": [
+          [
+            -2.2,
+            0.15
+          ],
+          [
+            -0.12,
+            0.12
+          ],
+          [
+            -0.12,
+            0.12
+          ]
+        ]
+      },
+      {
+        "joint": "joint__palm_roll_R",
+        "angles": [
+          0,
+          -1.3490038603643075,
+          0
+        ],
+        "bounds": [
+          [
+            0,
+            0
+          ],
+          [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      {
+        "joint": "joint__hand_R",
+        "angles": [
+          -0.569757974971127,
+          0.14081844236521424,
+          -0.23909287000450455
+        ],
+        "bounds": [
+          [
+            -0.6,
+            0.6
+          ],
+          [
+            -0.65,
+            0.65
+          ],
+          [
+            -0.4,
+            0.4
+          ]
+        ]
+      }
+    ],
+    "unchanged_original_rest_joints": [
+      "joint__foot_L",
+      "joint__foot_R",
+      "joint__head",
+      "joint__pelvis",
+      "joint__shin_L",
+      "joint__shin_R",
+      "joint__thigh_L",
+      "joint__thigh_R",
+      "joint__torso"
+    ],
+    "maximum_declared_runtime_rotation_error_rad": 0,
+    "all27_local_positions_match_source_or_approved_translation": true,
+    "maximum_runtime_local_position_error_m": 5.960464477539063e-08,
+    "approved_thumb_retraction_m": 0.005,
+    "candidate_angles_used_for_limit_check_only": true,
+    "native_pose_uses_exact_captured_quaternions": true
+  },
+  "native_body_parts": 50,
+  "native_cargo_parts": 19,
+  "original_raw_mesh_vertices_unchanged": true,
+  "scale_one": true,
+  "posed_body_signature": "861a18f38591241569144fea50d41f4a43ec96a6bccb5c368775d10183bed539",
+  "body_cargo": {
+    "pairs_checked": 950,
+    "true_closed_solid_penetrations": []
+  },
+  "body_self": {
+    "all_physical_pairs_checked": 1225,
+    "same_segment_assembly_intersections": [
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "connected_shoulder_band",
+        "b": "shirt_core",
+        "triangles": [
+          41,
+          7
+        ],
+        "point": [
+          0.1944990865496728,
+          1.1244990685582241,
+          -0.12499750000000003
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "connected_shoulder_band",
+        "b": "short_neck",
+        "triangles": [
+          39,
+          42
+        ],
+        "point": [
+          0.06999750029802322,
+          1.1499974761581422,
+          -0.03139186955391267
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "connected_shoulder_band",
+        "b": "vest_side",
+        "triangles": [
+          41,
+          35
+        ],
+        "point": [
+          -0.20999749344348909,
+          1.0690000773751507,
+          -0.1249975
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "connected_shoulder_band",
+        "b": "vest_side.001",
+        "triangles": [
+          41,
+          12
+        ],
+        "point": [
+          0.20277928216678898,
+          1.1042757559064682,
+          -0.1249975
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "ear_L",
+        "triangles": [
+          35,
+          18
+        ],
+        "point": [
+          -0.16499750655651094,
+          1.3699215894985945,
+          -0.04007472030501464
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "ear_R",
+        "triangles": [
+          42,
+          18
+        ],
+        "point": [
+          0.16499750655651094,
+          1.3727278259351596,
+          -0.037268503034065655
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "face_brow_L",
+        "triangles": [
+          37,
+          33
+        ],
+        "point": [
+          -0.08917254595645352,
+          1.404002424659729,
+          0.1499974910593033
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "face_brow_R",
+        "triangles": [
+          36,
+          23
+        ],
+        "point": [
+          0.09194823297243945,
+          1.4049516242332563,
+          0.14999749105930332
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "face_eye_L",
+        "triangles": [
+          37,
+          12
+        ],
+        "point": [
+          -0.07504638117114007,
+          1.376149969235614,
+          0.14999749105930332
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "face_eye_R",
+        "triangles": [
+          36,
+          24
+        ],
+        "point": [
+          0.07475008212812087,
+          1.376446271038112,
+          0.14999749105930332
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "sample_inside_closed_solid",
+        "a": "face_smile",
+        "b": "cuboid_head",
+        "point": [
+          -0.04464873671531677,
+          1.2794034481048584,
+          0.148499995470047
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "hair_back",
+        "triangles": [
+          7,
+          27
+        ],
+        "point": [
+          0.16138003174237517,
+          1.4677319680316967,
+          -0.13488356572656035
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "hair_temple_L",
+        "triangles": [
+          15,
+          32
+        ],
+        "point": [
+          -0.16249824117374378,
+          1.3665024008178712,
+          -0.13449822913360554
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "hair_temple_R",
+        "triangles": [
+          42,
+          32
+        ],
+        "point": [
+          0.16499750655651094,
+          1.366502400817871,
+          -0.09550000075250864
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "helmet_brim",
+        "triangles": [
+          27,
+          32
+        ],
+        "point": [
+          0.16116725179680635,
+          1.4550024237060548,
+          0.1458292089737998
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "ear_L",
+        "b": "hair_temple_L",
+        "triangles": [
+          18,
+          23
+        ],
+        "point": [
+          -0.15825937779211535,
+          1.3682440439207944,
+          -0.04175225442576397
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "ear_R",
+        "b": "hair_temple_R",
+        "triangles": [
+          18,
+          43
+        ],
+        "point": [
+          0.1719975058412552,
+          1.3721602544635534,
+          -0.03783607062935652
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "hair_back",
+        "b": "hair_temple_L",
+        "triangles": [
+          37,
+          32
+        ],
+        "point": [
+          -0.16050000488758087,
+          1.366502400817871,
+          -0.13450249690055846
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "hair_back",
+        "b": "hair_temple_R",
+        "triangles": [
+          27,
+          32
+        ],
+        "point": [
+          0.16255468517136243,
+          1.3665024008178712,
+          -0.13605821915554758
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "hair_back",
+        "b": "helmet_brim",
+        "triangles": [
+          27,
+          32
+        ],
+        "point": [
+          0.16207887791055933,
+          1.4550024237060548,
+          -0.1355824118947445
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "hair_temple_L",
+        "b": "helmet_brim",
+        "triangles": [
+          14,
+          32
+        ],
+        "point": [
+          -0.17004768497315761,
+          1.4550024237060548,
+          -0.14294878795679608
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "hair_temple_R",
+        "b": "helmet_brim",
+        "triangles": [
+          14,
+          32
+        ],
+        "point": [
+          0.15995232813986432,
+          1.4550024237060548,
+          -0.1429487879567961
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "helmet_brim",
+        "b": "helmet_crown",
+        "triangles": [
+          39,
+          43
+        ],
+        "point": [
+          0.19249749523162843,
+          1.504997376022339,
+          0.013370286602190043
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "helmet_centre_rib",
+        "b": "helmet_crown",
+        "triangles": [
+          14,
+          38
+        ],
+        "point": [
+          -0.05576292453035863,
+          1.6599974666213995,
+          -0.14123353311100367
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "helmet_centre_rib",
+        "b": "helmet_upper_step",
+        "triangles": [
+          14,
+          19
+        ],
+        "point": [
+          -0.052237944456843655,
+          1.6772378983372356,
+          -0.1447585131845186
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "helmet_crown",
+        "b": "helmet_upper_step",
+        "triangles": [
+          39,
+          42
+        ],
+        "point": [
+          0.1499975059604645,
+          1.659997466621399,
+          -0.025096536530225484
+        ],
+        "segments": [
+          "joint__head",
+          "joint__head"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_L",
+        "b": "fore_sleeve_L",
+        "triangles": [
+          31,
+          37
+        ],
+        "point": [
+          -0.2445173247742488,
+          1.050730053711836,
+          0.31753914201814015
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__forearm_L"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_L_lower_pad",
+        "b": "mitten_L_spine",
+        "triangles": [
+          38,
+          36
+        ],
+        "point": [
+          -0.2193233097451585,
+          0.9571939929606536,
+          0.3735861212565147
+        ],
+        "segments": [
+          "joint__hand_L",
+          "joint__hand_L"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_L_thumb",
+        "b": "mitten_L_upper_pad",
+        "triangles": [
+          33,
+          28
+        ],
+        "point": [
+          -0.22633628158448868,
+          0.9603160198217183,
+          0.3159005411083449
+        ],
+        "segments": [
+          "joint__hand_L",
+          "joint__hand_L"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_L_thumb",
+        "b": "mitten_L_spine",
+        "triangles": [
+          32,
+          43
+        ],
+        "point": [
+          -0.25927756440138683,
+          0.9432740476014285,
+          0.3390441780740672
+        ],
+        "segments": [
+          "joint__hand_L",
+          "joint__hand_L"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_L_upper_pad",
+        "b": "mitten_L_spine",
+        "triangles": [
+          9,
+          10
+        ],
+        "point": [
+          -0.25063479991899973,
+          1.0313945358529704,
+          0.36528918830708845
+        ],
+        "segments": [
+          "joint__hand_L",
+          "joint__hand_L"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_R",
+        "b": "fore_sleeve_R",
+        "triangles": [
+          31,
+          36
+        ],
+        "point": [
+          0.32139499321377385,
+          1.063715797099426,
+          0.3128471988122942
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__forearm_R"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_R_lower_pad",
+        "b": "mitten_R_spine",
+        "triangles": [
+          25,
+          27
+        ],
+        "point": [
+          0.2197191457877489,
+          1.0186989735840388,
+          0.4024586559185599
+        ],
+        "segments": [
+          "joint__hand_R",
+          "joint__hand_R"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_R_thumb",
+        "b": "mitten_R_upper_pad",
+        "triangles": [
+          24,
+          36
+        ],
+        "point": [
+          0.24946738908312066,
+          0.9759803495697328,
+          0.2883646950130259
+        ],
+        "segments": [
+          "joint__hand_R",
+          "joint__hand_R"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_R_thumb",
+        "b": "mitten_R_spine",
+        "triangles": [
+          18,
+          34
+        ],
+        "point": [
+          0.3122608633649009,
+          0.9455779461142299,
+          0.33311812368765653
+        ],
+        "segments": [
+          "joint__hand_R",
+          "joint__hand_R"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "mitten_R_upper_pad",
+        "b": "mitten_R_spine",
+        "triangles": [
+          33,
+          37
+        ],
+        "point": [
+          0.24831639340587752,
+          0.9545672988674504,
+          0.3356332528108875
+        ],
+        "segments": [
+          "joint__hand_R",
+          "joint__hand_R"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "role_badge_base",
+        "b": "vest_front_L",
+        "triangles": [
+          7,
+          47
+        ],
+        "point": [
+          -0.06260341675628137,
+          1.0673965114201214,
+          0.1299974952316284
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "shirt_core",
+        "b": "short_neck",
+        "triangles": [
+          38,
+          14
+        ],
+        "point": [
+          -0.0658969673353149,
+          1.1299974952316285,
+          -0.061099495548804596
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back",
+        "b": "vest_back_reflective",
+        "triangles": [
+          82,
+          38
+        ],
+        "point": [
+          -0.20426706139738854,
+          0.7869975004768371,
+          -0.13999750059604646
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back",
+        "b": "vest_side",
+        "triangles": [
+          59,
+          38
+        ],
+        "point": [
+          -0.20768939182059096,
+          1.1049975190734866,
+          -0.13202244282950762
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back",
+        "b": "vest_side.001",
+        "triangles": [
+          112,
+          35
+        ],
+        "point": [
+          0.20200250703334807,
+          0.7109684978013127,
+          -0.13200249928474425
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back",
+        "b": "vest_side_reflective",
+        "triangles": [
+          21,
+          7
+        ],
+        "point": [
+          -0.20914966956480913,
+          0.7863985618456941,
+          -0.13934679335156427
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back",
+        "b": "vest_side_reflective.001",
+        "triangles": [
+          45,
+          34
+        ],
+        "point": [
+          0.20900249141693114,
+          0.7858873440989812,
+          -0.13250602838134856
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back_reflective",
+        "b": "vest_side_reflective",
+        "triangles": [
+          30,
+          25
+        ],
+        "point": [
+          -0.20915142288790653,
+          0.7864478994656643,
+          -0.13915143004046396
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_back_reflective",
+        "b": "vest_side_reflective.001",
+        "triangles": [
+          5,
+          3
+        ],
+        "point": [
+          0.20949999243021006,
+          0.7865956784798916,
+          -0.1394999995827675
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_front_L",
+        "b": "vest_front_reflective",
+        "triangles": [
+          47,
+          23
+        ],
+        "point": [
+          -0.014042151238664459,
+          0.7536613411891625,
+          0.12999749523162846
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_front_L",
+        "b": "vest_side",
+        "triangles": [
+          60,
+          24
+        ],
+        "point": [
+          -0.2027590119578726,
+          1.104255485496185,
+          0.12200250137090683
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_front_L",
+        "b": "vest_side_reflective",
+        "triangles": [
+          22,
+          32
+        ],
+        "point": [
+          -0.20972746126977534,
+          0.7530024613761904,
+          0.1232310003203553
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_front_R",
+        "b": "vest_front_reflective.001",
+        "triangles": [
+          49,
+          39
+        ],
+        "point": [
+          0.19154282834869185,
+          0.7869975004768371,
+          0.12999749523162843
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_front_R",
+        "b": "vest_side.001",
+        "triangles": [
+          32,
+          39
+        ],
+        "point": [
+          0.2080645061791105,
+          1.1049975190734862,
+          0.12201507764274792
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_front_R",
+        "b": "vest_side_reflective.001",
+        "triangles": [
+          11,
+          33
+        ],
+        "point": [
+          0.20984822313737828,
+          0.7530024613761904,
+          0.12864823441457707
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_side",
+        "b": "vest_side_reflective",
+        "triangles": [
+          35,
+          32
+        ],
+        "point": [
+          -0.20999749344348909,
+          0.7530024613761902,
+          -0.03517887285772186
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "vest_side.001",
+        "b": "vest_side_reflective.001",
+        "triangles": [
+          20,
+          32
+        ],
+        "point": [
+          0.20987021574671616,
+          0.7530024613761904,
+          -0.13462623906342552
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__torso"
+        ],
+        "classification": "same_rigid_body_segment_assembly"
+      }
+    ],
+    "adjacent_joint_interface_intersections": [
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "boot_L",
+        "b": "trouser_shin_L",
+        "triangles": [
+          19,
+          14
+        ],
+        "point": [
+          -0.18458667529781825,
+          0.1583712633125406,
+          -0.09862521533945895
+        ],
+        "segments": [
+          "joint__foot_L",
+          "joint__shin_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "trouser_shin_L",
+        "b": "trouser_thigh_L",
+        "triangles": [
+          15,
+          9
+        ],
+        "point": [
+          -0.18317118965246387,
+          0.3470160983317545,
+          -0.08325848916618882
+        ],
+        "segments": [
+          "joint__shin_L",
+          "joint__thigh_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "trouser_thigh_L",
+        "b": "pelvis_cloth",
+        "triangles": [
+          12,
+          35
+        ],
+        "point": [
+          -0.17499749701976777,
+          0.6109272190519335,
+          -0.04824498266161086
+        ],
+        "segments": [
+          "joint__thigh_L",
+          "joint__pelvis"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "boot_R",
+        "b": "trouser_shin_R",
+        "triangles": [
+          19,
+          40
+        ],
+        "point": [
+          0.05218360362562068,
+          0.15769149241229527,
+          -0.0993049862397043
+        ],
+        "segments": [
+          "joint__foot_R",
+          "joint__shin_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "trouser_shin_R",
+        "b": "trouser_thigh_R",
+        "triangles": [
+          21,
+          17
+        ],
+        "point": [
+          0.17774630226325913,
+          0.34828659109521887,
+          -0.08858106275696809
+        ],
+        "segments": [
+          "joint__shin_R",
+          "joint__thigh_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "trouser_thigh_R",
+        "b": "pelvis_cloth",
+        "triangles": [
+          24,
+          43
+        ],
+        "point": [
+          0.17499749701976777,
+          0.6146204532510403,
+          0.03669943146059106
+        ],
+        "segments": [
+          "joint__thigh_R",
+          "joint__pelvis"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "connected_shoulder_band",
+        "b": "upper_sleeve_L",
+        "triangles": [
+          39,
+          36
+        ],
+        "point": [
+          -0.1802315273879588,
+          1.1499974761581422,
+          0.09356212481437305
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__upper_arm_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "connected_shoulder_band",
+        "b": "upper_sleeve_R",
+        "triangles": [
+          23,
+          38
+        ],
+        "point": [
+          0.22907222271709826,
+          1.0670758305551384,
+          -0.06476611393524617
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__upper_arm_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuboid_head",
+        "b": "short_neck",
+        "triangles": [
+          33,
+          43
+        ],
+        "point": [
+          0.06999750029802322,
+          1.175002452316284,
+          0.06654139761137234
+        ],
+        "segments": [
+          "joint__head",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_L",
+        "b": "mitten_L_thumb",
+        "triangles": [
+          38,
+          43
+        ],
+        "point": [
+          -0.2646724804973207,
+          0.9364618051021312,
+          0.3151707429517853
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__hand_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_L",
+        "b": "mitten_L_upper_pad",
+        "triangles": [
+          30,
+          1
+        ],
+        "point": [
+          -0.25338270055339174,
+          1.049758536601433,
+          0.3146125300394248
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__hand_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_L",
+        "b": "mitten_L_spine",
+        "triangles": [
+          33,
+          18
+        ],
+        "point": [
+          -0.3198969907230059,
+          1.0095836797063453,
+          0.3558655398095014
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__hand_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_L",
+        "b": "mitten_L_thumb",
+        "triangles": [
+          32,
+          32
+        ],
+        "point": [
+          -0.2838210818566666,
+          0.9390704128263938,
+          0.3595899942819592
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__hand_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_L",
+        "b": "mitten_L_upper_pad",
+        "triangles": [
+          33,
+          35
+        ],
+        "point": [
+          -0.25324726360955735,
+          1.036039094585644,
+          0.3598367764746607
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__hand_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_L",
+        "b": "mitten_L_spine",
+        "triangles": [
+          23,
+          36
+        ],
+        "point": [
+          -0.22769089233758577,
+          0.9422583332860308,
+          0.3571207131828575
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__hand_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_L",
+        "b": "upper_sleeve_L",
+        "triangles": [
+          39,
+          32
+        ],
+        "point": [
+          -0.2325011982161325,
+          0.9092150534561334,
+          0.13286542408808716
+        ],
+        "segments": [
+          "joint__forearm_L",
+          "joint__upper_arm_L"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "upper_sleeve_L",
+        "b": "shirt_core",
+        "triangles": [
+          38,
+          34
+        ],
+        "point": [
+          -0.19999750298023228,
+          1.0803755379667834,
+          -0.04093773223155402
+        ],
+        "segments": [
+          "joint__upper_arm_L",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "upper_sleeve_L",
+        "b": "vest_front_L",
+        "triangles": [
+          36,
+          58
+        ],
+        "point": [
+          -0.19601307526542947,
+          1.121780412574342,
+          0.12479913823781975
+        ],
+        "segments": [
+          "joint__upper_arm_L",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "upper_sleeve_L",
+        "b": "vest_side",
+        "triangles": [
+          38,
+          12
+        ],
+        "point": [
+          -0.20892817254820872,
+          1.1045683045744972,
+          -0.02309030436155329
+        ],
+        "segments": [
+          "joint__upper_arm_L",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_R",
+        "b": "mitten_R_thumb",
+        "triangles": [
+          32,
+          21
+        ],
+        "point": [
+          0.29665570758985543,
+          0.9481346903499203,
+          0.35819627978914415
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__hand_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_R",
+        "b": "mitten_R_upper_pad",
+        "triangles": [
+          33,
+          43
+        ],
+        "point": [
+          0.25008787903454166,
+          1.0361629729851993,
+          0.35951814991861514
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__hand_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cuff_R",
+        "b": "mitten_R_spine",
+        "triangles": [
+          32,
+          39
+        ],
+        "point": [
+          0.3151569992828327,
+          1.0227847962041443,
+          0.35593326480586857
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__hand_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_R",
+        "b": "mitten_R_thumb",
+        "triangles": [
+          32,
+          21
+        ],
+        "point": [
+          0.2962199957912007,
+          0.9478807730397522,
+          0.3587266499390753
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__hand_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_R",
+        "b": "mitten_R_upper_pad",
+        "triangles": [
+          33,
+          43
+        ],
+        "point": [
+          0.25038343675217956,
+          1.035973767004351,
+          0.3600048168735698
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__hand_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_R",
+        "b": "mitten_R_spine",
+        "triangles": [
+          8,
+          34
+        ],
+        "point": [
+          0.23391792863287897,
+          0.934553912268665,
+          0.36147370861313866
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__hand_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "fore_sleeve_R",
+        "b": "upper_sleeve_R",
+        "triangles": [
+          24,
+          32
+        ],
+        "point": [
+          0.3397858321947203,
+          0.9524348929732307,
+          0.12707920440639148
+        ],
+        "segments": [
+          "joint__forearm_R",
+          "joint__upper_arm_R"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "upper_sleeve_R",
+        "b": "shirt_core",
+        "triangles": [
+          38,
+          24
+        ],
+        "point": [
+          0.19410247380468867,
+          1.1278939836425124,
+          0.003784088134357004
+        ],
+        "segments": [
+          "joint__upper_arm_R",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "upper_sleeve_R",
+        "b": "vest_front_R",
+        "triangles": [
+          34,
+          49
+        ],
+        "point": [
+          0.1804657367650961,
+          1.0694154753439933,
+          0.12999749523162846
+        ],
+        "segments": [
+          "joint__upper_arm_R",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "upper_sleeve_R",
+        "b": "vest_side.001",
+        "triangles": [
+          38,
+          12
+        ],
+        "point": [
+          0.20308055155816332,
+          1.104577028290694,
+          -0.020670461840475395
+        ],
+        "segments": [
+          "joint__upper_arm_R",
+          "joint__torso"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      },
+      {
+        "kind": "transverse_surface_shared_interior",
+        "a": "shirt_core",
+        "b": "pelvis_cloth",
+        "triangles": [
+          33,
+          43
+        ],
+        "point": [
+          0.17499749701976777,
+          0.6400024856948853,
+          0.10182030823610454
+        ],
+        "segments": [
+          "joint__torso",
+          "joint__pelvis"
+        ],
+        "classification": "declared_adjacent_rigid_joint_interface"
+      }
+    ],
+    "nonadjacent_penetrations": [],
+    "segment_of_physical_parts": {
+      "boot_L": "joint__foot_L",
+      "trouser_shin_L": "joint__shin_L",
+      "trouser_thigh_L": "joint__thigh_L",
+      "boot_R": "joint__foot_R",
+      "trouser_shin_R": "joint__shin_R",
+      "trouser_thigh_R": "joint__thigh_R",
+      "connected_shoulder_band": "joint__torso",
+      "cuboid_head": "joint__head",
+      "ear_L": "joint__head",
+      "ear_R": "joint__head",
+      "face_brow_L": "joint__head",
+      "face_brow_R": "joint__head",
+      "face_eye_L": "joint__head",
+      "face_eye_R": "joint__head",
+      "face_smile": "joint__head",
+      "hair_back": "joint__head",
+      "hair_temple_L": "joint__head",
+      "hair_temple_R": "joint__head",
+      "helmet_brim": "joint__head",
+      "helmet_centre_rib": "joint__head",
+      "helmet_crown": "joint__head",
+      "helmet_upper_step": "joint__head",
+      "cuff_L": "joint__forearm_L",
+      "fore_sleeve_L": "joint__forearm_L",
+      "mitten_L_lower_pad": "joint__hand_L",
+      "mitten_L_thumb": "joint__hand_L",
+      "mitten_L_upper_pad": "joint__hand_L",
+      "mitten_L_spine": "joint__hand_L",
+      "upper_sleeve_L": "joint__upper_arm_L",
+      "cuff_R": "joint__forearm_R",
+      "fore_sleeve_R": "joint__forearm_R",
+      "mitten_R_lower_pad": "joint__hand_R",
+      "mitten_R_thumb": "joint__hand_R",
+      "mitten_R_upper_pad": "joint__hand_R",
+      "mitten_R_spine": "joint__hand_R",
+      "upper_sleeve_R": "joint__upper_arm_R",
+      "role_badge_base": "joint__torso",
+      "shirt_core": "joint__torso",
+      "short_neck": "joint__torso",
+      "vest_back": "joint__torso",
+      "vest_back_reflective": "joint__torso",
+      "vest_front_L": "joint__torso",
+      "vest_front_R": "joint__torso",
+      "vest_front_reflective": "joint__torso",
+      "vest_front_reflective.001": "joint__torso",
+      "vest_side": "joint__torso",
+      "vest_side.001": "joint__torso",
+      "vest_side_reflective": "joint__torso",
+      "vest_side_reflective.001": "joint__torso",
+      "pelvis_cloth": "joint__pelvis"
+    },
+    "adjacency_policy": "Only same rigid segment or explicit original bone adjacency; every actual allowed witness is recorded. No foreign-part whitelist."
+  },
+  "connectivity": {
+    "all50_native_parts_connected": true,
+    "all_body_contact_edges": [
+      [
+        "boot_L",
+        "trouser_shin_L"
+      ],
+      [
+        "trouser_shin_L",
+        "trouser_thigh_L"
+      ],
+      [
+        "trouser_thigh_L",
+        "pelvis_cloth"
+      ],
+      [
+        "boot_R",
+        "trouser_shin_R"
+      ],
+      [
+        "trouser_shin_R",
+        "trouser_thigh_R"
+      ],
+      [
+        "trouser_thigh_R",
+        "pelvis_cloth"
+      ],
+      [
+        "connected_shoulder_band",
+        "upper_sleeve_L"
+      ],
+      [
+        "connected_shoulder_band",
+        "upper_sleeve_R"
+      ],
+      [
+        "connected_shoulder_band",
+        "shirt_core"
+      ],
+      [
+        "connected_shoulder_band",
+        "short_neck"
+      ],
+      [
+        "connected_shoulder_band",
+        "vest_side"
+      ],
+      [
+        "connected_shoulder_band",
+        "vest_side.001"
+      ],
+      [
+        "cuboid_head",
+        "ear_L"
+      ],
+      [
+        "cuboid_head",
+        "ear_R"
+      ],
+      [
+        "cuboid_head",
+        "face_brow_L"
+      ],
+      [
+        "cuboid_head",
+        "face_brow_R"
+      ],
+      [
+        "cuboid_head",
+        "face_eye_L"
+      ],
+      [
+        "cuboid_head",
+        "face_eye_R"
+      ],
+      [
+        "cuboid_head",
+        "face_smile"
+      ],
+      [
+        "cuboid_head",
+        "hair_back"
+      ],
+      [
+        "cuboid_head",
+        "hair_temple_L"
+      ],
+      [
+        "cuboid_head",
+        "hair_temple_R"
+      ],
+      [
+        "cuboid_head",
+        "helmet_brim"
+      ],
+      [
+        "cuboid_head",
+        "short_neck"
+      ],
+      [
+        "ear_L",
+        "hair_temple_L"
+      ],
+      [
+        "ear_R",
+        "hair_temple_R"
+      ],
+      [
+        "hair_back",
+        "hair_temple_L"
+      ],
+      [
+        "hair_back",
+        "hair_temple_R"
+      ],
+      [
+        "hair_back",
+        "helmet_brim"
+      ],
+      [
+        "hair_temple_L",
+        "helmet_brim"
+      ],
+      [
+        "hair_temple_R",
+        "helmet_brim"
+      ],
+      [
+        "helmet_brim",
+        "helmet_crown"
+      ],
+      [
+        "helmet_centre_rib",
+        "helmet_crown"
+      ],
+      [
+        "helmet_centre_rib",
+        "helmet_upper_step"
+      ],
+      [
+        "helmet_crown",
+        "helmet_upper_step"
+      ],
+      [
+        "cuff_L",
+        "fore_sleeve_L"
+      ],
+      [
+        "cuff_L",
+        "mitten_L_thumb"
+      ],
+      [
+        "cuff_L",
+        "mitten_L_upper_pad"
+      ],
+      [
+        "cuff_L",
+        "mitten_L_spine"
+      ],
+      [
+        "fore_sleeve_L",
+        "mitten_L_thumb"
+      ],
+      [
+        "fore_sleeve_L",
+        "mitten_L_upper_pad"
+      ],
+      [
+        "fore_sleeve_L",
+        "mitten_L_spine"
+      ],
+      [
+        "fore_sleeve_L",
+        "upper_sleeve_L"
+      ],
+      [
+        "mitten_L_lower_pad",
+        "mitten_L_spine"
+      ],
+      [
+        "mitten_L_thumb",
+        "mitten_L_upper_pad"
+      ],
+      [
+        "mitten_L_thumb",
+        "mitten_L_spine"
+      ],
+      [
+        "mitten_L_upper_pad",
+        "mitten_L_spine"
+      ],
+      [
+        "upper_sleeve_L",
+        "shirt_core"
+      ],
+      [
+        "upper_sleeve_L",
+        "vest_front_L"
+      ],
+      [
+        "upper_sleeve_L",
+        "vest_side"
+      ],
+      [
+        "cuff_R",
+        "fore_sleeve_R"
+      ],
+      [
+        "cuff_R",
+        "mitten_R_thumb"
+      ],
+      [
+        "cuff_R",
+        "mitten_R_upper_pad"
+      ],
+      [
+        "cuff_R",
+        "mitten_R_spine"
+      ],
+      [
+        "fore_sleeve_R",
+        "mitten_R_thumb"
+      ],
+      [
+        "fore_sleeve_R",
+        "mitten_R_upper_pad"
+      ],
+      [
+        "fore_sleeve_R",
+        "mitten_R_spine"
+      ],
+      [
+        "fore_sleeve_R",
+        "upper_sleeve_R"
+      ],
+      [
+        "mitten_R_lower_pad",
+        "mitten_R_spine"
+      ],
+      [
+        "mitten_R_thumb",
+        "mitten_R_upper_pad"
+      ],
+      [
+        "mitten_R_thumb",
+        "mitten_R_spine"
+      ],
+      [
+        "mitten_R_upper_pad",
+        "mitten_R_spine"
+      ],
+      [
+        "upper_sleeve_R",
+        "shirt_core"
+      ],
+      [
+        "upper_sleeve_R",
+        "vest_front_R"
+      ],
+      [
+        "upper_sleeve_R",
+        "vest_side.001"
+      ],
+      [
+        "role_badge_base",
+        "vest_front_L"
+      ],
+      [
+        "shirt_core",
+        "short_neck"
+      ],
+      [
+        "shirt_core",
+        "pelvis_cloth"
+      ],
+      [
+        "vest_back",
+        "vest_back_reflective"
+      ],
+      [
+        "vest_back",
+        "vest_side"
+      ],
+      [
+        "vest_back",
+        "vest_side.001"
+      ],
+      [
+        "vest_back",
+        "vest_side_reflective"
+      ],
+      [
+        "vest_back",
+        "vest_side_reflective.001"
+      ],
+      [
+        "vest_back_reflective",
+        "vest_side_reflective"
+      ],
+      [
+        "vest_back_reflective",
+        "vest_side_reflective.001"
+      ],
+      [
+        "vest_front_L",
+        "vest_front_reflective"
+      ],
+      [
+        "vest_front_L",
+        "vest_side"
+      ],
+      [
+        "vest_front_L",
+        "vest_side_reflective"
+      ],
+      [
+        "vest_front_R",
+        "vest_front_reflective.001"
+      ],
+      [
+        "vest_front_R",
+        "vest_side.001"
+      ],
+      [
+        "vest_front_R",
+        "vest_side_reflective.001"
+      ],
+      [
+        "vest_side",
+        "vest_side_reflective"
+      ],
+      [
+        "vest_side.001",
+        "vest_side_reflective.001"
+      ]
+    ],
+    "four_piece_hand_contact_edges": {
+      "L": [
+        [
+          "mitten_L_lower_pad",
+          "mitten_L_spine"
+        ],
+        [
+          "mitten_L_upper_pad",
+          "mitten_L_thumb"
+        ],
+        [
+          "mitten_L_upper_pad",
+          "mitten_L_spine"
+        ],
+        [
+          "mitten_L_thumb",
+          "mitten_L_spine"
+        ]
+      ],
+      "R": [
+        [
+          "mitten_R_lower_pad",
+          "mitten_R_spine"
+        ],
+        [
+          "mitten_R_upper_pad",
+          "mitten_R_thumb"
+        ],
+        [
+          "mitten_R_upper_pad",
+          "mitten_R_spine"
+        ],
+        [
+          "mitten_R_thumb",
+          "mitten_R_spine"
+        ]
+      ]
+    },
+    "forearm_cuff_hand_contact_edges": {
+      "L": [
+        [
+          "fore_sleeve_L",
+          "cuff_L"
+        ],
+        [
+          "fore_sleeve_L",
+          "mitten_L_upper_pad"
+        ],
+        [
+          "fore_sleeve_L",
+          "mitten_L_thumb"
+        ],
+        [
+          "fore_sleeve_L",
+          "mitten_L_spine"
+        ],
+        [
+          "cuff_L",
+          "mitten_L_upper_pad"
+        ],
+        [
+          "cuff_L",
+          "mitten_L_thumb"
+        ],
+        [
+          "cuff_L",
+          "mitten_L_spine"
+        ],
+        [
+          "mitten_L_lower_pad",
+          "mitten_L_spine"
+        ],
+        [
+          "mitten_L_upper_pad",
+          "mitten_L_thumb"
+        ],
+        [
+          "mitten_L_upper_pad",
+          "mitten_L_spine"
+        ],
+        [
+          "mitten_L_thumb",
+          "mitten_L_spine"
+        ]
+      ],
+      "R": [
+        [
+          "fore_sleeve_R",
+          "cuff_R"
+        ],
+        [
+          "fore_sleeve_R",
+          "mitten_R_upper_pad"
+        ],
+        [
+          "fore_sleeve_R",
+          "mitten_R_thumb"
+        ],
+        [
+          "fore_sleeve_R",
+          "mitten_R_spine"
+        ],
+        [
+          "cuff_R",
+          "mitten_R_upper_pad"
+        ],
+        [
+          "cuff_R",
+          "mitten_R_thumb"
+        ],
+        [
+          "cuff_R",
+          "mitten_R_spine"
+        ],
+        [
+          "mitten_R_lower_pad",
+          "mitten_R_spine"
+        ],
+        [
+          "mitten_R_upper_pad",
+          "mitten_R_thumb"
+        ],
+        [
+          "mitten_R_upper_pad",
+          "mitten_R_spine"
+        ],
+        [
+          "mitten_R_thumb",
+          "mitten_R_spine"
+        ]
+      ]
+    },
+    "explicit_shoulder_elbow_wrist_leg_links": [
+      [
+        "upper_sleeve_L",
+        "fore_sleeve_L"
+      ],
+      [
+        "cuff_L",
+        "mitten_L_spine"
+      ],
+      [
+        "trouser_thigh_L",
+        "trouser_shin_L"
+      ],
+      [
+        "trouser_shin_L",
+        "boot_L"
+      ],
+      [
+        "upper_sleeve_L",
+        "connected_shoulder_band"
+      ],
+      [
+        "upper_sleeve_L",
+        "shirt_core"
+      ],
+      [
+        "upper_sleeve_L",
+        "vest_front_L"
+      ],
+      [
+        "upper_sleeve_L",
+        "vest_side"
+      ],
+      [
+        "upper_sleeve_R",
+        "fore_sleeve_R"
+      ],
+      [
+        "cuff_R",
+        "mitten_R_spine"
+      ],
+      [
+        "trouser_thigh_R",
+        "trouser_shin_R"
+      ],
+      [
+        "trouser_shin_R",
+        "boot_R"
+      ],
+      [
+        "upper_sleeve_R",
+        "connected_shoulder_band"
+      ],
+      [
+        "upper_sleeve_R",
+        "shirt_core"
+      ],
+      [
+        "upper_sleeve_R",
+        "vest_front_R"
+      ],
+      [
+        "upper_sleeve_R",
+        "vest_side.001"
+      ]
+    ]
+  },
+  "opposed_contacts": [
+    {
+      "side": "L",
+      "native_hand_part": "mitten_L_lower_pad",
+      "native_carton_part": "shell_left",
+      "expected_world_m": [
+        -0.1599999999999117,
+        0.9700000000001632,
+        0.39999999999961094
+      ],
+      "native_world_m": [
+        -0.1599999964237213,
+        0.9700000286102295,
+        0.40000003576278687
+      ],
+      "hand_surface_gap_m": 2.9802322387695312e-08,
+      "carton_surface_gap_m": 0.0,
+      "actual_surface_pair_gap_m": 2.9802322387695312e-08,
+      "selected_hand_face_normal_runtime": [
+        0.9963558912277222,
+        -0.030906883999705315,
+        0.07949768006801605
+      ],
+      "carton_face_normal_runtime": [
+        -1.0,
+        -0.0,
+        0.0
+      ],
+      "clamp_normal_runtime": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "hand_support_plane_excess_m": 0.0,
+      "contact_kind": "Native convex fingertip/edge contact; opposite support planes. Individual edge-face normals may tilt, not claimed parallel flat-face contact."
+    },
+    {
+      "side": "R",
+      "native_hand_part": "mitten_R_lower_pad",
+      "native_carton_part": "shell_right",
+      "expected_world_m": [
+        0.15999999999990966,
+        0.9700000000001705,
+        0.39999999999960767
+      ],
+      "native_world_m": [
+        0.1600000113248825,
+        0.9700000286102295,
+        0.4000000059604645
+      ],
+      "hand_surface_gap_m": 5.960464477539063e-08,
+      "carton_surface_gap_m": 1.4901161193847656e-08,
+      "actual_surface_pair_gap_m": 6.143906154658885e-08,
+      "selected_hand_face_normal_runtime": [
+        -0.9963557124137878,
+        -0.030907247215509415,
+        0.07949819415807724
+      ],
+      "carton_face_normal_runtime": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "clamp_normal_runtime": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "hand_support_plane_excess_m": 0.0,
+      "contact_kind": "Native convex fingertip/edge contact; opposite support planes. Individual edge-face normals may tilt, not claimed parallel flat-face contact."
+    }
+  ],
+  "native_floor_and_HU": {
+    "boot_floor_error_m": {
+      "L": 1.4901161193847656e-08,
+      "R": 1.4901161193847656e-08
+    },
+    "cargo_bounds": {
+      "min": [
+        -0.1599999964237213,
+        0.8500000238418579,
+        0.2800000011920929
+      ],
+      "max": [
+        0.1599999964237213,
+        1.090000033378601,
+        0.5199999809265137
+      ]
+    },
+    "exact_dimensions_preserved": true,
+    "original15limits_preserved": true
+  },
+  "failure": null,
+  "scope": "One static candidate pose from five identical captured views. Native closed-solid winding/transverse penetration, actual adjacency/connectivity and opposed convex-edge support-plane contacts. No strength, friction adequacy, balance/stability, ergonomic, moving action/trajectory, engine operation or full W04 acceptance."
+}

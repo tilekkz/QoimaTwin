@@ -1,0 +1,246 @@
+{
+  "asset_id": "pallet",
+  "layout_version": "qoima-72x48-v2",
+  "root_name": "pallet_root",
+  "units": "metres_radians",
+  "coordinate_system": "right_handed_Y_up",
+  "forward_axis": "+Z",
+  "reference": "assets/references/buffer-pallet.png",
+  "origin": "floor_centre",
+  "root_properties": {
+    "layout_version": "qoima-72x48-v2",
+    "asset_id": "pallet",
+    "reference": "assets/references/buffer-pallet.png",
+    "forward_axis": "+Z",
+    "origin": "floor_centre",
+    "animation_api_version": "1.0",
+    "role": "empty_shipping_pallet",
+    "size_m": [
+      1.4,
+      0.14,
+      1.0
+    ],
+    "top_height_m": 0.14,
+    "deck_underside_m": 0.116,
+    "contains_cargo": false,
+    "fork_direction_runtime": [
+      0,
+      0,
+      1
+    ],
+    "fork_contact_lift_m": 0.071,
+    "reference_adaptation": "Same warm slatted wood language; v2 has a full 140mm pallet with nine blocks and three bottom runners.",
+    "art_revision": "equipment-polish-2"
+  },
+  "animation": "Apply deltas relative to each stored rest transform; never overwrite the tilted steering rest quaternion.",
+  "nodes": [
+    {
+      "name": "anchor_cargo",
+      "parent": "pallet_root",
+      "position_local_runtime": [
+        0.0,
+        0.14000000059604645,
+        0.0
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.0,
+        0.14000000059604645,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    },
+    {
+      "name": "anchor_fork_entry_front_left",
+      "parent": "pallet_root",
+      "position_local_runtime": [
+        -0.22499999403953552,
+        0.057999998331069946,
+        0.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.22499999403953552,
+        0.057999998331069946,
+        0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m",
+        "approach_runtime": [
+          0,
+          0,
+          -1
+        ],
+        "clear_height_m": 0.116,
+        "clear_width_m": 0.44
+      }
+    },
+    {
+      "name": "anchor_fork_entry_front_right",
+      "parent": "pallet_root",
+      "position_local_runtime": [
+        0.22499999403953552,
+        0.057999998331069946,
+        0.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.22499999403953552,
+        0.057999998331069946,
+        0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m",
+        "approach_runtime": [
+          0,
+          0,
+          -1
+        ],
+        "clear_height_m": 0.116,
+        "clear_width_m": 0.44
+      }
+    },
+    {
+      "name": "anchor_fork_entry_rear_left",
+      "parent": "pallet_root",
+      "position_local_runtime": [
+        -0.22499999403953552,
+        0.057999998331069946,
+        -0.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        -0.22499999403953552,
+        0.057999998331069946,
+        -0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m",
+        "approach_runtime": [
+          0,
+          0,
+          1
+        ],
+        "clear_height_m": 0.116,
+        "clear_width_m": 0.44
+      }
+    },
+    {
+      "name": "anchor_fork_entry_rear_right",
+      "parent": "pallet_root",
+      "position_local_runtime": [
+        0.22499999403953552,
+        0.057999998331069946,
+        -0.5
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.22499999403953552,
+        0.057999998331069946,
+        -0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m",
+        "approach_runtime": [
+          0,
+          0,
+          1
+        ],
+        "clear_height_m": 0.116,
+        "clear_width_m": 0.44
+      }
+    },
+    {
+      "name": "anchor_pallet_base",
+      "parent": "pallet_root",
+      "position_local_runtime": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_local_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale_local": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "position_asset_runtime": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "attachment",
+        "coordinate_system": "runtime_Y_up_m"
+      }
+    }
+  ]
+}

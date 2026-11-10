@@ -1,0 +1,212 @@
+{
+  "reference_id": "M12_REF",
+  "asset_id": "fragile-crate",
+  "units": "m",
+  "up_axis": "Y",
+  "dimensions_xyz_m": [
+    1.1,
+    0.95,
+    0.85
+  ],
+  "canonical_record": {
+    "archetype_id": "FRAGILE_CRATE",
+    "compatibility": {
+      "candidate_only": true,
+      "property_tags": [
+        "upright",
+        "sealed",
+        "fragile"
+      ],
+      "storage_type_tags": [
+        "STANDARD"
+      ]
+    },
+    "fragile": true,
+    "handling": {
+      "candidate_only": true,
+      "modes": [
+        {
+          "required_equipment_tags": [
+            "forklift",
+            "approved_load_support"
+          ],
+          "required_handler_tag": "forklift_operator",
+          "transport_tag": "forklift_assisted"
+        }
+      ]
+    },
+    "handling_unit": {
+      "bounding_volume_m3": 0.88825,
+      "contents_gross_mass_kg": 73.0,
+      "dimensions_xyz_m": [
+        1.1,
+        0.95,
+        0.85
+      ],
+      "gross_mass_kg": 88.0,
+      "mass_scope": "packaged_units_plus_HU_packaging_and_integral_support_excludes_vehicle_attachments",
+      "packaging_tare_mass_kg": 15,
+      "packaging_type": "protective_crate",
+      "units_per_handling_unit": 1
+    },
+    "label": "C02 synthetic FRAGILE_CRATE",
+    "layout_binding": {
+      "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+      "layout_version": "qoima-144x72-v3-proposal",
+      "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+      "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+      "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+    },
+    "operational_admission": false,
+    "orientation": {
+      "permitted_orientations": [
+        {
+          "local_axes_in_destination": [
+            "+X",
+            "+Y",
+            "+Z"
+          ],
+          "orientation_id": "upright_xyz"
+        }
+      ],
+      "slot_orientation_mappings": [
+        {
+          "cargo_orientation_id": "upright_xyz",
+          "slot_orientation_id": "upright_xyz_in_module"
+        }
+      ],
+      "upright_only": true
+    },
+    "record_type": "CargoArchetype",
+    "reference_binding": {
+      "archetype_id": "FRAGILE_CRATE",
+      "dimensions_role": "handling_unit_outer_target",
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    "schema_id": "qoima.cargo-archetype.v3-proposal",
+    "schema_version": "0.1.0",
+    "source_kind": "synthetic_design",
+    "source_of_assumptions": [
+      {
+        "assumption_id": "C02_FRAGILE_CRATE_HU_TARGET",
+        "fields": [
+          "handling_unit.dimensions_xyz_m"
+        ],
+        "kind": "synthetic_design",
+        "statement": "Explicit unchanged adoption of accepted R03outerHU target, not unit contents or SKU dimensions."
+      },
+      {
+        "assumption_id": "C02_FRAGILE_CRATE_FIXED_PACK",
+        "fields": [
+          "unit",
+          "handling_unit",
+          "orientation",
+          "fragile",
+          "stacking",
+          "handling",
+          "compatibility"
+        ],
+        "kind": "synthetic_design",
+        "statement": "One primary-packaged instrument inside a cushioned outer crate. All masses/counts/packing/handling assumptions fixed before optimization; eligibility/support/rating/contacts remain C04-C09/P/W."
+      }
+    ],
+    "stacking": {
+      "max_stack": 1,
+      "stackable": false
+    },
+    "status": "proposal",
+    "unit": {
+      "bounding_volume_m3": 0.4095,
+      "contents_mass_kg": 68,
+      "dimensions_xyz_m": [
+        0.9,
+        0.7,
+        0.65
+      ],
+      "gross_mass_kg": 73.0,
+      "mass_scope": "contents_plus_primary_unit_packaging",
+      "packaging_tare_mass_kg": 5
+    }
+  },
+  "packing_recipe": {
+    "archetype_id": "FRAGILE_CRATE",
+    "display_semantics": "One HU glyph contains its stated unit templates. Interior glyphs are contents, never extra lots; no scaling or units-as-litres.",
+    "grid_counts_xyz": [
+      1,
+      1,
+      1
+    ],
+    "inner_bounds_xyz_m": {
+      "max": [
+        1.02,
+        0.86,
+        0.77
+      ],
+      "min": [
+        0.08,
+        0.1,
+        0.08
+      ]
+    },
+    "method": "explicit_axis_aligned_unit_envelopes",
+    "packing_frame": "HU_minimum_outer_XYZ_corner",
+    "physical_unit_meaning": "One primary-packaged instrument inside a cushioned outer crate",
+    "prototype_contents_not_stock": true,
+    "scope": "Geometric envelope witness/symbolic sealed contents convention; no manufacturing, support/rating, admission or warehouse inventory.",
+    "support_convention": {
+      "inter_layer_separator_thickness_m": 0,
+      "kind": "localized_integral_packaging_dunnage_and_separators",
+      "lowest_unit_bottom_y_m": 0.13,
+      "mass_included_in": "handling_unit.packaging_tare_mass_kg",
+      "rule": "Lowest units rest on packaging/support pads at statedY; upper aligned columns bear through units and gap-thickness separators. Not a solid full-volume slab or support/rating approval."
+    },
+    "unit_axes_in_HU": [
+      "+X",
+      "+Y",
+      "+Z"
+    ],
+    "unit_gap_xyz_m": [
+      0,
+      0,
+      0
+    ],
+    "unit_instances": [
+      {
+        "max_xyz_m": [
+          1.0,
+          0.83,
+          0.75
+        ],
+        "min_xyz_m": [
+          0.1,
+          0.13,
+          0.1
+        ],
+        "unit_ordinal": 1
+      }
+    ]
+  },
+  "canonical_catalog_sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+  "operational_admission": false,
+  "inner_clear_bounds_runtime": {
+    "min": [
+      -0.47,
+      0.1,
+      -0.345
+    ],
+    "max": [
+      0.47,
+      0.86,
+      0.345
+    ]
+  },
+  "cushion_support_y_m": 0.13,
+  "base_bearing_centres_x_m": [
+    -0.4,
+    0,
+    0.4
+  ],
+  "side_grip": "shallow backed recess, no cavity intrusion",
+  "frame_palette": "warmtan/offwhite per original R03"
+}

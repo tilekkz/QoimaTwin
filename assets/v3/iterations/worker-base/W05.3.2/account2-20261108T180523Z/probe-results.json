@@ -1,0 +1,230 @@
+{
+  "schema_id": "qoima.W05.3.2.probe-results.v1",
+  "audit_complete": true,
+  "scope": "Read-only correctness audit of the frozen static local P02 worker-base whole-HU candidate",
+  "graph": {
+    "evidence_kind": "root_supplied_metadata",
+    "project": "qoima-twin",
+    "generation": "2026-11-08T05:55:56Z",
+    "status": "ready",
+    "scoped_solver_search": {
+      "results": 0,
+      "has_more": false
+    },
+    "coverage": "solver/spec/pose/report/manual seed not_tracked; workerRoles/Fixture and upstream contract/catalogue/stats metadata_changed; node_modules excluded",
+    "action": "Exact-source fallback used; no completeness claim, graph verification rerun, or reindex performed"
+  },
+  "source_snapshot": {
+    "before": "source-hashes-before.json",
+    "after": "source-hashes-after.json",
+    "inputs": 21,
+    "declared_pins_matching_before": 20,
+    "declared_pins_matching_after": 20,
+    "unchanged": 21
+  },
+  "commands": [
+    {
+      "command": "node tools/solve-worker-base-carry-v3.mjs --check-only",
+      "cwd": "frontend",
+      "scratch_override": "Process-local TMP and TEMP point to the audit-owned scratch directory",
+      "exit_code": 0,
+      "duration_ms": 702,
+      "stdout": "{\"passed\":true,\"check_only\":true,\"actor_id\":\"P02\",\"worker_asset\":\"worker-base\",\"native_contacts\":2,\"maximum_native_gap_m\":1.3708408796997418e-8,\"material_witnesses\":0,\"original_join_observations\":24,\"negative_cases\":36,\"pose_sha256\":\"074a3964a2fc4e19c2d7c879412016377eec0479b994e86f7e82cf53763de9a1\",\"report_sha256\":\"d1bf121843b038f441781129a1e01aad3ce876a805b4a8ff1686d3cf978b3aca\",\"source_kind\":\"visual_fixture\",\"engine_operation\":false,\"completed_jobs\":0}",
+      "invocation_count": 1,
+      "evidence_kind": "executed_original_cli",
+      "result": {
+        "passed": true,
+        "check_only": true,
+        "actor_id": "P02",
+        "worker_asset": "worker-base",
+        "native_contacts": 2,
+        "maximum_native_gap_m": 1.3708408796997418e-8,
+        "material_witnesses": 0,
+        "original_join_observations": 24,
+        "negative_cases": 36,
+        "pose_sha256": "074a3964a2fc4e19c2d7c879412016377eec0479b994e86f7e82cf53763de9a1",
+        "report_sha256": "d1bf121843b038f441781129a1e01aad3ce876a805b4a8ff1686d3cf978b3aca",
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "completed_jobs": 0
+      },
+      "limitations": [
+        "Recomputes the original solver; it is not an independent collision algorithm.",
+        "No normal write-mode execution."
+      ]
+    },
+    {
+      "command": "node work/v3/account2-base-carry-audit/20261108T180523Z/probe-native.mjs",
+      "cwd": ".",
+      "invocation_count": 3,
+      "exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "revisions": [
+        "Initial native and extracted-validator probe",
+        "Added strict barycentric interior and original thumb component mapping",
+        "Added exact classification-expression truth table"
+      ],
+      "final_source": "probe-native.mjs",
+      "final_result": "native-probe-result.json",
+      "validation_mutations": 16,
+      "expected_invalid_mutations_rejected": 14,
+      "sparse_omitted_axis_mutations_unexpectedly_accepted": 2,
+      "json_roundtrip_sparse_rejected": true,
+      "native_contacts_reconstructed": 2,
+      "native_patch_normals_opposed": true,
+      "patch_points_strictly_inside_both_triangles": true,
+      "lost_contact_20um": {
+        "gaps_m": [
+          0.00001999612698527775,
+          0.00001999642243416533
+        ],
+        "both_over_18um": true
+      },
+      "head_control": {
+        "point_m": [
+          -0.016835645597947667,
+          1.4396643526735173,
+          -0.06933569473559519
+        ],
+        "whole_native_angles_rad": [
+          12.566370614359174,
+          12.566370614359174
+        ],
+        "depths_m": [
+          0.035335581761373414,
+          0.0001643090194974467
+        ]
+      },
+      "thumb_component_matches": [
+        {
+          "triangle": 132,
+          "source_parts": [
+            "mitten_L_thumb"
+          ]
+        },
+        {
+          "triangle": 136,
+          "source_parts": [
+            "mitten_L_thumb"
+          ]
+        },
+        {
+          "triangle": 140,
+          "source_parts": [
+            "mitten_L_thumb"
+          ]
+        },
+        {
+          "triangle": 141,
+          "source_parts": [
+            "mitten_L_thumb"
+          ]
+        }
+      ],
+      "classification_truth_table_cases": [
+        {
+          "label": "forearm_to_torso",
+          "changed": true,
+          "baseline_pair_observed": true,
+          "linked": false,
+          "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+          "blocks_material": true
+        },
+        {
+          "label": "upper_arm_to_head",
+          "changed": true,
+          "baseline_pair_observed": true,
+          "linked": false,
+          "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+          "blocks_material": true
+        },
+        {
+          "label": "opposite_forearms",
+          "changed": true,
+          "baseline_pair_observed": true,
+          "linked": false,
+          "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+          "blocks_material": true
+        },
+        {
+          "label": "opposite_upper_arms",
+          "changed": true,
+          "baseline_pair_observed": true,
+          "linked": false,
+          "classification": "MATERIAL_CHANGED_NONADJACENT_OR_NEW_PAIR",
+          "blocks_material": true
+        }
+      ],
+      "limitations": [
+        "No renderer or physical observation.",
+        "No full collision or continuous-motion certificate.",
+        "Nearest-distance, triangle-area and saved patch-point tests do not independently recompute total clipped contact area.",
+        "Validator probe isolates validation; it does not expose or invoke the production closure apply function.",
+        "Classification cases test extracted logic, not newly induced native-body collisions.",
+        "Native probes share the pinned Three library and GLTFLoader with the solver."
+      ]
+    },
+    {
+      "command": "read-only source inspection using rg, PowerShell Get-Content/Get-FileHash, and Node JSON/GLB inspection",
+      "evidence_kind": "source_inspection",
+      "scope": "The21 declared inputs, relevant GLTF hierarchy/metadata and Euler implementation only; applicable AGENTS.md paths checked",
+      "failed_inspection_command": {
+        "kind": "Node -e source-summary read",
+        "exit_code": 1,
+        "reason": "An extra closing brace caused SyntaxError before execution; corrected read then succeeded"
+      },
+      "limitations": [
+        "No raw transcript or environment dump retained.",
+        "Not a whole-codebase exploration."
+      ]
+    }
+  ],
+  "source_only_checks_without_mutation_experiment": [
+    {
+      "topic": "Stale edited pose/report rejection",
+      "witnesses": [
+        "frontend/tools/solve-worker-base-carry-v3.mjs:43",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:103",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:110",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:111"
+      ],
+      "result": "Recompute precedes exact-byte comparison; saved pose/report are not used as candidate solve inputs. No edited-output counterexample executed."
+    },
+    {
+      "topic": "Input hash dependency direction",
+      "witnesses": [
+        "frontend/tools/solve-worker-base-carry-v3.mjs:44",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:101",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:103",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:104"
+      ],
+      "result": "Pose embeds19 source hashes; report adds recomputed pose hash as20th. Report is not its own hash input. Fresh source hashing is consistency evidence, not independent historical source authorization."
+    },
+    {
+      "topic": "Original hierarchy, full mesh winding/depth and actual edge/triangle crossings",
+      "witnesses": [
+        "frontend/tools/solve-worker-base-carry-v3.mjs:31",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:32",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:35",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:36",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:37",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:88",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:89",
+        "frontend/tools/solve-worker-base-carry-v3.mjs:91"
+      ],
+      "result": "Component boxes prune only; whole-original-mesh tris determine winding/depth. Crossings use real native edges and Ray.intersectTriangle, followed by shared-interior tests. Candidate native checks executed through the original CLI; independent all-pair collision search not executed."
+    }
+  ],
+  "explicit_limitations": [
+    "No browser, renderer, Blender, server, installation, reindex, production edit, Git/auth/global settings change or warehouse mutation.",
+    "Native collision probes are bounded; absence of detected witnesses is not full intersection or continuous-collision clearance.",
+    "No force/friction stability, strength, ergonomics or manual-handling certification.",
+    "Pickup, source approach/withdrawal, loaded walking/turning, same-HU setdown, packing and Scene integration remain unimplemented.",
+    "Candidate correctness and audit completion are distinct; root retains visual review and acceptance authority.",
+    "No coordinated source-and-output tampering experiment or adversarial installed-dependency substitution performed.",
+    "Declared source pin set is not asserted to cover every transitive execution dependency."
+  ]
+}

@@ -1,0 +1,2674 @@
+{
+  "schema_id": "qoima.runtime-provenance-audit.v1",
+  "created_utc": "2026-11-09T23:37:07.147416+00:00",
+  "passed": true,
+  "criterion": "Bounded H05 provenance disclosure for selected runtime assets/references/SFX; every selected asset has pinned project/source origin and uncertain rights are explicitly stated.",
+  "global_H05_or_H_gate_status_changed": false,
+  "legal_clearance_or_public_license_granted": false,
+  "product_or_generator_files_changed": false,
+  "summary": {
+    "selected_model_records": 39,
+    "selected_model_byte_hashes_pass": 39,
+    "imagegen_reference_records": 30,
+    "reference_and_provenance_hashes_pass": 30,
+    "served_reference_copies_pass": 30,
+    "engineering_supplement_records": 15,
+    "engineering_supplement_matching_pins": 14,
+    "new_engineering_component_records": 3,
+    "dependency_license_records": 4,
+    "credits_adequate_for_bounded_scope": true,
+    "source_snapshot_drift_records": 7
+  },
+  "credits": {
+    "path": "docs/adaptive-v3/handoff/runtime-20261110/credits.md",
+    "sha256": "340ce15a7c608ed0d7c7f349e1603d613d2d0c9636769dbc02d430bd23869011",
+    "bytes": 3614
+  },
+  "runtime_asset_manifest": {
+    "path": "docs/adaptive-v3/handoff/runtime-20261110/asset-manifest.json",
+    "sha256": "d412eec3cf9b31b93be79fad650de3c7483c5ef0b1e6ceed2eed43154a7834ea",
+    "bytes": 1337270
+  },
+  "models": [
+    {
+      "path": "frontend/public/models/v3/environment-markings-fixture.glb",
+      "sha256": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+      "bytes": 2563348,
+      "asset_id": "environment-markings-fixture",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_environment_shell.py",
+          "sha256": "9871db509d3e2a6c51b1a12f0b1c049239543e5647d37e5dfd8508302d066af7",
+          "bytes": 10312
+        },
+        {
+          "path": "tools/blender/v3/build_floor_markings.py",
+          "sha256": "c1e8a0abfc79937d4d47c2d41658f07feed291123ed9e1018ca4b95746d33021",
+          "bytes": 12956
+        },
+        {
+          "path": "tools/blender/v3/build_dock_module.py",
+          "sha256": "df1c8da5d7de5818e35c7b9f4b9416bee174d3f0902b3e47502c6f4b064c065d",
+          "bytes": 7097
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/rack-small.glb",
+      "sha256": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+      "bytes": 164172,
+      "asset_id": "rack-small",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_rack_small.py",
+          "sha256": "b44c884439ca5c274777d2825eabdf539d97d110c47832a00bfea11507c909f6",
+          "bytes": 9262
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/rack-small/provenance.json",
+        "sha256": "0ce6d150d1aad07682c2054a9e998945d672c18c339e47af29f8e9ff369dd644",
+        "bytes": 4076
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/rack-standard.glb",
+      "sha256": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+      "bytes": 287448,
+      "asset_id": "rack-standard",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_rack_standard.py",
+          "sha256": "86b7c230e0caf3fb20a67d923fc71ad8183eafe17c81b47d3b08c47bb0d2bc73",
+          "bytes": 27191
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/heavy-bay.glb",
+      "sha256": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+      "bytes": 47860,
+      "asset_id": "heavy-bay",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_heavy_bay.py",
+          "sha256": "b33d159f1184ca8860575e65684e6844dce63ca80293029c7a69e77df4f4afd3",
+          "bytes": 6755
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/heavy-bay/provenance.json",
+        "sha256": "3336874f97e72125474388233ca091ba88b59df7e940e44abbbf7956f5cf0c53",
+        "bytes": 4646
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/long-rack.glb",
+      "sha256": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+      "bytes": 56364,
+      "asset_id": "long-rack",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_long_rack.py",
+          "sha256": "7cce2ab7e48757adb249b390c57764d77f887250290f182d113050fe9616752a",
+          "bytes": 7568
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/flex-bay.glb",
+      "sha256": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+      "bytes": 47820,
+      "asset_id": "flex-bay",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_flex_bay.py",
+          "sha256": "431671f89f0e9ef57a042ec82cef17ccf95e27a28bbdade37fe04dc7a323d452",
+          "bytes": 7908
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/flex-bay/provenance.json",
+        "sha256": "e70e7d9985144e7a2f7da0eb675cf031eaf140efc79b72000ea8dbde8379cc8a",
+        "bytes": 3761
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/small-carton.glb",
+      "sha256": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+      "bytes": 49300,
+      "asset_id": "small-carton",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_small_carton.py",
+          "sha256": "95bbd298b4daeecc043e1540daed9b18a5ff4c5ffc7af7f3c61330dbbebf4c08",
+          "bytes": 15771
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/standard-carton.glb",
+      "sha256": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+      "bytes": 50416,
+      "asset_id": "standard-carton",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_standard_carton.py",
+          "sha256": "0323731c0220be85912342b0e9f47bf97bf439a0acb7133777baf3e88003392f",
+          "bytes": 15232
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/heavy-box.glb",
+      "sha256": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+      "bytes": 127900,
+      "asset_id": "heavy-box",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_heavy_box.py",
+          "sha256": "8c1e0ad19426f28a4cfdaf481acbdcfc5945873ba312b8cbfed0109c2d41e6c7",
+          "bytes": 16038
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/pallet-load.glb",
+      "sha256": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+      "bytes": 334892,
+      "asset_id": "pallet-load",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_pallet_load.py",
+          "sha256": "bb800abe67ca6e34d757da3f4b045ad34db122bd934a415f54f736dfe610765c",
+          "bytes": 9649
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/pallet-load/provenance.json",
+        "sha256": "aef90f473f9e82b79e818efd43a05eecd0c24da66817f5403590d577ad3932e0",
+        "bytes": 4038
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/ibc.glb",
+      "sha256": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+      "bytes": 191516,
+      "asset_id": "ibc",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_ibc.py",
+          "sha256": "97bb009e718818cd17ee15f3453ac747b3247e01010ff75663c7a69a04bdc946",
+          "bytes": 10524
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/ibc/provenance.json",
+        "sha256": "46091caa6a72eee602d2d1f2101521d747a4e0e0ba2eb397e16fe0972aaca27d",
+        "bytes": 4528
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/long-bundle.glb",
+      "sha256": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+      "bytes": 211896,
+      "asset_id": "long-bundle",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_long_bundle.py",
+          "sha256": "3fee6f1cd7987ec87d8b6af1a44c3057b10839fce66929b3be3ed43bc4d7fe88",
+          "bytes": 10831
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/drum.glb",
+      "sha256": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+      "bytes": 100596,
+      "asset_id": "drum",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_drum.py",
+          "sha256": "b501be3c6e099c1ea0c663cb68149c9a8f70b8b730bfc0b80d78fbdc117913e4",
+          "bytes": 8080
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/fragile-crate.glb",
+      "sha256": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+      "bytes": 161352,
+      "asset_id": "fragile-crate",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_fragile_crate.py",
+          "sha256": "b29a0790f04c7981df4b731ade9b1bb1a89f2c11b54baa173774d62e1537b225",
+          "bytes": 12987
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/packing-station.glb",
+      "sha256": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+      "bytes": 155352,
+      "asset_id": "packing-station",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_packing_station.py",
+          "sha256": "29430bd25e8055a8cc9ccaa63cbe8eb1d92b36c406bb42d07050a5d1a15c85a1",
+          "bytes": 14550
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/packing-station/provenance.json",
+        "sha256": "40e7aed7157bd67f8d9d70882d93a44cdcd4ae9e05142163f9df633524f118cf",
+        "bytes": 4039
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/conveyor-straight.glb",
+      "sha256": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+      "bytes": 92096,
+      "asset_id": "conveyor-straight",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_conveyor_straight.py",
+          "sha256": "3f66f3b43390717401624324397529b9496e8605b1a9f127caccc21acc8cfdce",
+          "bytes": 3571
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/conveyor-diverter.glb",
+      "sha256": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+      "bytes": 69444,
+      "asset_id": "conveyor-diverter",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_conveyor_diverter.py",
+          "sha256": "6347888e543950c44e03265658ad68b1138f4e1981b5983007458b0cef28f7a3",
+          "bytes": 5030
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/conveyor-turn.glb",
+      "sha256": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+      "bytes": 69764,
+      "asset_id": "conveyor-turn",
+      "selected_by": [
+        "warehouse_binding",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_conveyor_turn.py",
+          "sha256": "2216d6e40bc5f67570d7aa33a030c920c6d66d1db376a5150fbf4955ec96f437",
+          "bytes": 4359
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/worker-base.glb",
+      "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+      "bytes": 183028,
+      "asset_id": "worker-base",
+      "selected_by": [
+        "warehouse_binding",
+        "registry_source:driver_seated",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "current_original_employee_542",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_worker_base.py",
+          "sha256": "62288b1ad72e6c3882dbdaa2c41ae530a6f6af09e3b0c52ac6526f02d35ba65e",
+          "bytes": 15958
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/worker-base/provenance.json",
+        "sha256": "819c240f9995d9196f470dba37ab679da5ad29e1851c3ced358dc7c653f3a7a4",
+        "bytes": 1689
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/forklift.glb",
+      "sha256": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+      "bytes": 434992,
+      "asset_id": "forklift",
+      "selected_by": [
+        "warehouse_binding",
+        "registry:driver_seated",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_forklift.py",
+          "sha256": "64a11fde3e429a64a0983ef745bad1abb1df64a512986dedf8ac0fd71e92cece",
+          "bytes": 24727
+        },
+        {
+          "path": "tools/blender/v3/build_forklift_contacts.py",
+          "sha256": "f17d097bed1be090a51c38de5ba61584cedba18977512f6a328d997140313af7",
+          "bytes": 6450
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/worker-manual.glb",
+      "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+      "bytes": 192732,
+      "asset_id": "worker-manual",
+      "selected_by": [
+        "registry:picker_idle",
+        "registry_source:picker_idle",
+        "registry_source:packer_finish",
+        "registry_source:packer_idle",
+        "registry_source:packer_blocked",
+        "registry_source:receiver_scan",
+        "registry_source:receiver_receive",
+        "registry_source:receiver_idle",
+        "registry_source:receiver_blocked",
+        "registry_source:shipper_scan",
+        "registry_source:shipper_place",
+        "registry_source:shipper_idle",
+        "registry_source:shipper_blocked",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "legacy_dbf74_prototype_not_current_employee",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_worker_base.py",
+          "sha256": "62288b1ad72e6c3882dbdaa2c41ae530a6f6af09e3b0c52ac6526f02d35ba65e",
+          "bytes": 15958
+        },
+        {
+          "path": "tools/blender/v3/build_worker_manual.py",
+          "sha256": "ec9eb6fc215e66a3a34e6312611b2feacdea6813e3eb1132151118d96953d17c",
+          "bytes": 8582
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/picking-cart-tote-fixture.glb",
+      "sha256": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+      "bytes": 429140,
+      "asset_id": "picking-cart-tote-fixture",
+      "selected_by": [
+        "registry:picker_walk",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_picking_cart.py",
+          "sha256": "a0e49fedd3a739eb2df36eede0a0535ceff9aff1905371efcd425cad55f8236e",
+          "bytes": 10739
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/picker-pick-source-fixture.glb",
+      "sha256": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1",
+      "bytes": 752024,
+      "asset_id": "picker-pick-source-fixture",
+      "selected_by": [
+        "registry:picker_pick"
+      ],
+      "runtime_classification": "standalone_registry_clip_asset_not_automatic_job_admission",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_small_pick_source.py",
+          "sha256": "6c634926689b3443b734e425f1a596c8557c827c7f0a8c1d24bea13ed0e49549",
+          "bytes": 19080
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/worker-small-pick.glb",
+      "sha256": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+      "bytes": 193540,
+      "asset_id": "worker-small-pick",
+      "selected_by": [
+        "registry_source:picker_pick",
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_picker_figure.py",
+          "sha256": "18c5b567bd7de0265cbab41b3884236701543256b1be294a65914ca380a3bebc",
+          "bytes": 4144
+        },
+        {
+          "path": "tools/blender/v3/build_picker_thumb.py",
+          "sha256": "79301d45e828455d3013dc405b83c2bb4061a8e4d93e6ca81b6b1a4c467e6151",
+          "bytes": 3275
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/packer-workcell-fixture.glb",
+      "sha256": "a378a056a09776b4b833befcce5cb36916ccd3a7dfd07c2050744cc41a339b5a",
+      "bytes": 389932,
+      "asset_id": "packer-workcell-fixture",
+      "selected_by": [
+        "registry:packer_finish",
+        "registry:packer_idle",
+        "registry:packer_blocked"
+      ],
+      "runtime_classification": "standalone_registry_clip_asset_not_automatic_job_admission",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_packer_workcell.py",
+          "sha256": "cf234c772bfadb70ee24a8c32b43dc256edd2ed27d769c91872aedbfe66eff6d",
+          "bytes": 3418
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/receiver-workcell-fixture.glb",
+      "sha256": "5eb51073d5c456f71ccc64c4bc231eadbf6761c6da89a96c4c87900dac1de54b",
+      "bytes": 492484,
+      "asset_id": "receiver-workcell-fixture",
+      "selected_by": [
+        "registry:receiver_scan",
+        "registry:receiver_receive",
+        "registry:receiver_idle",
+        "registry:receiver_blocked"
+      ],
+      "runtime_classification": "standalone_registry_clip_asset_not_automatic_job_admission",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_receiver_workcell.py",
+          "sha256": "925bb5f66620fe7bac36f6204b1dab7f8505ae2604fb95ab4f37999efa80a699",
+          "bytes": 7685
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/shipper-workcell-fixture.glb",
+      "sha256": "c80ff7569413d6402f27dfc8c6d53b99d69ecb635a59bb551fcac470c4256ffe",
+      "bytes": 643440,
+      "asset_id": "shipper-workcell-fixture",
+      "selected_by": [
+        "registry:shipper_scan",
+        "registry:shipper_place",
+        "registry:shipper_idle",
+        "registry:shipper_blocked"
+      ],
+      "runtime_classification": "standalone_registry_clip_asset_not_automatic_job_admission",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_shipper_workcell.py",
+          "sha256": "0d4b41a295f90a85e9d32098784d313ed690cf8695078ca8b48764b557d68ebb",
+          "bytes": 7214
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/forklift-pallet-low-fixture.glb",
+      "sha256": "b172dc6dd245208a49fdddebccd6ff5d64cc3771c4e0259dabdd633adbd2808a",
+      "bytes": 818836,
+      "asset_id": "forklift-pallet-low-fixture",
+      "selected_by": [
+        "registry:driver_pickup"
+      ],
+      "runtime_classification": "standalone_registry_clip_asset_not_automatic_job_admission",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_forklift_contacts.py",
+          "sha256": "f17d097bed1be090a51c38de5ba61584cedba18977512f6a328d997140313af7",
+          "bytes": 6450
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/small-package-gripper.glb",
+      "sha256": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
+      "bytes": 423112,
+      "asset_id": "small-package-gripper",
+      "selected_by": [
+        "registry_picker_pick_companion"
+      ],
+      "runtime_classification": "standalone_registry_clip_asset_not_automatic_job_admission",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_small_gripper.py",
+          "sha256": "bef47580f9bc0204d470664cd1612a1dd68336cc2d2e0e2e42f39f5ad653a72c",
+          "bytes": 10968
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/long-cradle.glb",
+      "sha256": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+      "bytes": 234472,
+      "asset_id": "long-cradle",
+      "selected_by": [
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_long_cradle.py",
+          "sha256": "10e9a93f57f2adea4b5530014ab5e425bc014a42d15ee33b949968becde5e455",
+          "bytes": 13794
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/long-restraint-rig.glb",
+      "sha256": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+      "bytes": 134992,
+      "asset_id": "long-restraint-rig",
+      "selected_by": [
+        "original_hold_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_long_cradle.py",
+          "sha256": "10e9a93f57f2adea4b5530014ab5e425bc014a42d15ee33b949968becde5e455",
+          "bytes": 13794
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/source/frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+      "sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+      "bytes": 1547892,
+      "asset_id": "long-wheel-roll-profile-preserved-variant",
+      "selected_by": [
+        "LONG_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/visual/v3/build_long_calibration_assets.mjs",
+          "sha256": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+          "bytes": 21933
+        },
+        {
+          "path": "assets/v3/long-calibration/recipe.json",
+          "sha256": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+          "bytes": 27966
+        },
+        {
+          "path": "assets/v3/long-calibration/README.md",
+          "sha256": "6c6aabb33c2030f428e56d641c1af02b5884f57d72f7fc5569f501b6bc9c051e",
+          "bytes": 7744
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/source/frontend/public/models/v3/worker-base.glb",
+      "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+      "bytes": 183028,
+      "asset_id": "worker-base",
+      "selected_by": [
+        "LONG_sourcepack"
+      ],
+      "runtime_classification": "current_original_employee_542",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_worker_base.py",
+          "sha256": "62288b1ad72e6c3882dbdaa2c41ae530a6f6af09e3b0c52ac6526f02d35ba65e",
+          "bytes": 15958
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/worker-base/provenance.json",
+        "sha256": "819c240f9995d9196f470dba37ab679da5ad29e1851c3ced358dc7c653f3a7a4",
+        "bytes": 1689
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/source/frontend/public/models/v3/forklift.glb",
+      "sha256": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+      "bytes": 434992,
+      "asset_id": "forklift",
+      "selected_by": [
+        "LONG_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_forklift.py",
+          "sha256": "64a11fde3e429a64a0983ef745bad1abb1df64a512986dedf8ac0fd71e92cece",
+          "bytes": 24727
+        },
+        {
+          "path": "tools/blender/v3/build_forklift_contacts.py",
+          "sha256": "f17d097bed1be090a51c38de5ba61584cedba18977512f6a328d997140313af7",
+          "bytes": 6450
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/source/frontend/public/models/v3/environment-shell.glb",
+      "sha256": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+      "bytes": 987460,
+      "asset_id": "environment-shell",
+      "selected_by": [
+        "LONG_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build_environment_shell.py",
+          "sha256": "9871db509d3e2a6c51b1a12f0b1c049239543e5647d37e5dfd8508302d066af7",
+          "bytes": 10312
+        }
+      ],
+      "preview_provenance": {
+        "path": "assets/v3/previews/environment-shell/provenance.json",
+        "sha256": "9990c8ce0c79232e4b0afbc98371c2c7468f133b7d18881dc7b45e387ca52d49",
+        "bytes": 2585
+      },
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/source/work/v3/long-approach-floor/optional-long-approach-floor.glb",
+      "sha256": "b3f3c7348ca40c37b63179c85fe424e50920623d063c31fcecb3662805dcb6ce",
+      "bytes": 4084,
+      "asset_id": "optional-long-approach-floor",
+      "selected_by": [
+        "LONG_sourcepack"
+      ],
+      "runtime_classification": "frozen_preheld_sourcepack_alias",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/visual/v3/build_long_calibration_assets.mjs",
+          "sha256": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+          "bytes": 21933
+        },
+        {
+          "path": "assets/v3/long-calibration/recipe.json",
+          "sha256": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+          "bytes": 27966
+        },
+        {
+          "path": "assets/v3/long-calibration/README.md",
+          "sha256": "6c6aabb33c2030f428e56d641c1af02b5884f57d72f7fc5569f501b6bc9c051e",
+          "bytes": 7744
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "QoimaTwin optional source-bound apron prototype",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+      "sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+      "bytes": 1547892,
+      "asset_id": "long-wheel-roll-profile-preserved-variant",
+      "selected_by": [
+        "connected_runtime_engineering_component"
+      ],
+      "runtime_classification": "connected_engineering_component",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/visual/v3/build_long_calibration_assets.mjs",
+          "sha256": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+          "bytes": 21933
+        },
+        {
+          "path": "assets/v3/long-calibration/recipe.json",
+          "sha256": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+          "bytes": 27966
+        },
+        {
+          "path": "assets/v3/long-calibration/README.md",
+          "sha256": "6c6aabb33c2030f428e56d641c1af02b5884f57d72f7fc5569f501b6bc9c051e",
+          "bytes": 7744
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "Khronos glTF Blender I/O v5.0.21",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/long-upper-handling-bridge.glb",
+      "sha256": "c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527",
+      "bytes": 199120,
+      "asset_id": "long-upper-handling-bridge",
+      "selected_by": [
+        "connected_runtime_engineering_component"
+      ],
+      "runtime_classification": "connected_engineering_component",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build-long-upper-handling-bridge.mjs",
+          "sha256": "8f6b1111aa08d6df048b63ef25f8e6aa674f68491a596a6604a817c731b1ff94",
+          "bytes": 7966
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "THREE.GLTFExporter r169",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    },
+    {
+      "path": "frontend/public/models/v3/small-carton-clamp-tool.glb",
+      "sha256": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac",
+      "bytes": 54712,
+      "asset_id": "small-carton-clamp-tool",
+      "selected_by": [
+        "connected_runtime_engineering_component"
+      ],
+      "runtime_classification": "connected_engineering_component",
+      "origin": "Project-authored procedural geometry / repository Blender export, or explicit native source composition/calibration recipe.",
+      "origin_evidence": [
+        {
+          "path": "tools/blender/v3/build-small-carton-clamp-tool.mjs",
+          "sha256": "c8b1a83aaad055785356c2d0776c8b13a037d96eea2bc19b8f5d180eb4e29fbc",
+          "bytes": 7666
+        }
+      ],
+      "preview_provenance": null,
+      "actual_glb_generator": "THREE.GLTFExporter r169",
+      "embedded_image_count": 0,
+      "license_status": "No explicit public model redistribution license established by these project records. Not labelled free/CC0/MIT merely because its exporter is MIT.",
+      "reproduction_scope": "Source lineage inspected and selected bytes pinned; no generator, Blender export or geometry proof executed in this audit."
+    }
+  ],
+  "references": [
+    {
+      "reference_id": "R01",
+      "artifact": {
+        "path": "assets/references/v3/r01-style-board.png",
+        "sha256": "b39cf5edced8b84e3bde36df6986117898721b3b787fd05073d3b05dd3cc3579",
+        "bytes": 1791889
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r01-style-board.png",
+        "sha256": "b39cf5edced8b84e3bde36df6986117898721b3b787fd05073d3b05dd3cc3579",
+        "bytes": 1791889
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r01.json",
+        "sha256": "629046eaf70bb9e1356d5467ab38e030db62b0d8f54a1a75901a039c248b4f14",
+        "bytes": 1091
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R02",
+      "artifact": {
+        "path": "assets/references/v3/r02-storage.png",
+        "sha256": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+        "bytes": 1753816
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r02-storage.png",
+        "sha256": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+        "bytes": 1753816
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r02.json",
+        "sha256": "ee6591c3eef5679897c12ea5e6173abd0e3c4ac7aa887188783d825ab7d2215e",
+        "bytes": 5182
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-afb21035-059f-4e5c-917f-0ac8add910fa",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R03",
+      "artifact": {
+        "path": "assets/references/v3/r03-cargo.png",
+        "sha256": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+        "bytes": 1770624
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r03-cargo.png",
+        "sha256": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+        "bytes": 1770624
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r03.json",
+        "sha256": "41a78c8745627b1826787ca33e252b27162414c60f7c6ded0502e6d3f0677330",
+        "bytes": 1713
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen plus independently drawn engineering scale supplement",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R04",
+      "artifact": {
+        "path": "assets/references/v3/r04-packing-line.png",
+        "sha256": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a",
+        "bytes": 1767786
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r04-packing-line.png",
+        "sha256": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a",
+        "bytes": 1767786
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r04.json",
+        "sha256": "013fbfaa14799c76432111aa7974d81cf3c3f5d6bc12b48705b9858235eb41e9",
+        "bytes": 5820
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "image_gen.imagegen",
+      "generation_id": "exec-fcf0e258-0109-4e57-bd84-5aad67174bf1",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R05",
+      "artifact": {
+        "path": "assets/references/v3/r05-workers.png",
+        "sha256": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+        "bytes": 1682118
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r05-workers.png",
+        "sha256": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+        "bytes": 1682118
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r05.json",
+        "sha256": "e43dd1943702f01afc265fec40b26fbff2bb5d84922367ac825292dad7984373",
+        "bytes": 3512
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-ee642efe-d340-4ae2-a669-943d2753ae76",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R06",
+      "artifact": {
+        "path": "assets/references/v3/r06-forklift.png",
+        "sha256": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+        "bytes": 1542456
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r06-forklift.png",
+        "sha256": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+        "bytes": 1542456
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r06.json",
+        "sha256": "d984cd26771cc543720d30afdef7a1115f41c63af60fafed47697168faa2e772",
+        "bytes": 8413
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-95048c91-82eb-49cd-9d29-def4898ead0c",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R07",
+      "artifact": {
+        "path": "assets/references/v3/r07-ports-zones.png",
+        "sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+        "bytes": 2088176
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r07-ports-zones.png",
+        "sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+        "bytes": 2088176
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r07.json",
+        "sha256": "91639b1ce46f060313a952a276130e82a45a9d893bf2b4a8308cd3c5aa2d3e25",
+        "bytes": 1466
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R08",
+      "artifact": {
+        "path": "assets/references/v3/r08-composition.png",
+        "sha256": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+        "bytes": 1915132
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r08-composition.png",
+        "sha256": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+        "bytes": 1915132
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r08.json",
+        "sha256": "3fb384631e0641be22aff7545723012d59be0ee689c2cb76a2896a7a1fa6685b",
+        "bytes": 1299
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen with accepted reference inputs",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R11",
+      "artifact": {
+        "path": "assets/references/v3/r11-picking-cart.png",
+        "sha256": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+        "bytes": 1649687
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r11-picking-cart.png",
+        "sha256": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+        "bytes": 1649687
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r11.json",
+        "sha256": "3730a2a567b519533c3247439c417fb676e885ad66f3aa0cdfc16917972a1cb7",
+        "bytes": 4627
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-0d4f4069-5a05-4591-82af-a96ea0bb2e6f",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R12",
+      "artifact": {
+        "path": "assets/references/v3/r12-long-cradle.png",
+        "sha256": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+        "bytes": 1598752
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r12-long-cradle.png",
+        "sha256": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+        "bytes": 1598752
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r12.json",
+        "sha256": "cbabcd5939c69726788222388adf8d5983e48645fa62295a83485d2388c57d7c",
+        "bytes": 5958
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen, generated earlier by root; registration only by rack_crate",
+      "generation_id": "exec-87821ac2-5e26-4a4d-8719-0834f5c2dabc",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R13.1",
+      "artifact": {
+        "path": "assets/references/v3/r13-1-rack-small.png",
+        "sha256": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e",
+        "bytes": 1585930
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r13-1-rack-small.png",
+        "sha256": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e",
+        "bytes": 1585930
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r13-1.json",
+        "sha256": "28acabc5c897a28b1b31a70d5a19821b5e9de4a287befbf20fc15bc2a914d2f6",
+        "bytes": 4753
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-d8d1855f-b4a8-4f9f-9665-be738fb0a17e",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R13.2",
+      "artifact": {
+        "path": "assets/references/v3/r13-2-rack-standard.png",
+        "sha256": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+        "bytes": 1639446
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r13-2-rack-standard.png",
+        "sha256": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+        "bytes": 1639446
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r13-2.json",
+        "sha256": "e001a7df16b26d30d918abfc5bc56ded44a93cddf7defe8442c9dd610c5b612a",
+        "bytes": 3271
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen edit of R02 to dedicated STANDARD sheet",
+      "generation_id": "exec-b7a6c177-c5bb-4243-9dec-062fc4b1dec9",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R13.3",
+      "artifact": {
+        "path": "assets/references/v3/r13-3-heavy-bay.png",
+        "sha256": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+        "bytes": 1508962
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r13-3-heavy-bay.png",
+        "sha256": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+        "bytes": 1508962
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r13-3.json",
+        "sha256": "86086ed4d0cc5c799390051c64e6351dda2cf24295034e4f346ae3b0a7d4db9f",
+        "bytes": 6623
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-1c96509d-4f7a-4d25-9ac4-c8539bf1c0f5",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R13.4",
+      "artifact": {
+        "path": "assets/references/v3/r13-4-long-rack.png",
+        "sha256": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+        "bytes": 1606787
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r13-4-long-rack.png",
+        "sha256": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+        "bytes": 1606787
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r13-4.json",
+        "sha256": "7c566d4e0034d70413e6e7a233e03a870d1a6711ff37f5431fe3bed88e4c3b1a",
+        "bytes": 3014
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen edit of R02 then targeted correction",
+      "generation_id": "exec-69b7c414-ebe1-492f-93f2-e3e2ffccfed1",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "R13.5",
+      "artifact": {
+        "path": "assets/references/v3/r13-5-flex-bay.png",
+        "sha256": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66",
+        "bytes": 1363160
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/r13-5-flex-bay.png",
+        "sha256": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66",
+        "bytes": 1363160
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/r13-5.json",
+        "sha256": "0b0dabb90cbb58659f52461586aba55986a185c1100190a4b1938aa5ff26b4d7",
+        "bytes": 2053
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen with R02 style reference and precise independent FLEX topology",
+      "generation_id": "exec-006b51b3-82ca-4b5f-813e-f464eaa3e1c5",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M06.1_REF",
+      "artifact": {
+        "path": "assets/references/v3/m06-1-small-carton.png",
+        "sha256": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+        "bytes": 1741957
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m06-1-small-carton.png",
+        "sha256": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+        "bytes": 1741957
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m06-1-small-carton.json",
+        "sha256": "64cad6b5896eac3af334c8007f79630fc1fc3434487b3eb446b0857fb9a163fd",
+        "bytes": 2090
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built_in_imagegen",
+      "generation_id": "exec-783cf0e6-d6c6-479c-9f9f-6eca4d025394",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M08_REF",
+      "artifact": {
+        "path": "assets/references/v3/m08-pallet-load.png",
+        "sha256": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb",
+        "bytes": 1646882
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m08-pallet-load.png",
+        "sha256": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb",
+        "bytes": 1646882
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m08-pallet-load.json",
+        "sha256": "f75de881f13210adc24aad652e1ae627019474830acbd0d56ccb8cdd989298d8",
+        "bytes": 2183
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M14.2-REACH",
+      "artifact": {
+        "path": "assets/references/v3/m14-2-reach-forklift.png",
+        "sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+        "bytes": 1592675
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m14-2-reach-forklift.png",
+        "sha256": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+        "bytes": 1592675
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m14-2-reach-forklift.json",
+        "sha256": "2d2e21c23591483f66b7f662a2612026035e604eeb28d27448e06da7eebfccff",
+        "bytes": 4370
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in imagegen",
+      "generation_id": "exec-cd4e48d7-fcdf-410a-b100-8fe39cc2cc79",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M06.2_REF",
+      "artifact": {
+        "path": "assets/references/v3/m06-2-standard-carton.png",
+        "sha256": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+        "bytes": 1636359
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m06-2-standard-carton.png",
+        "sha256": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+        "bytes": 1636359
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m06-2-standard-carton.json",
+        "sha256": "236cbb654a58697fea443a1bf9181532d77c5af661dab48a9d63645082d59bf3",
+        "bytes": 5190
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built_in_imagegen",
+      "generation_id": "exec-0a8768a4-cca8-4b27-b511-c89980067674",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M06.3_REF",
+      "artifact": {
+        "path": "assets/references/v3/m06-3-heavy-box.png",
+        "sha256": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+        "bytes": 1580738
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m06-3-heavy-box.png",
+        "sha256": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+        "bytes": 1580738
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m06-3-heavy-box.json",
+        "sha256": "f9ff86f0e5d9123cb1c4e11b3218872294542b7e70f2302e89d3ecc29870738d",
+        "bytes": 5312
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built_in_imagegen",
+      "generation_id": "exec-2b693d8f-b8a2-46d6-84c6-33481edf4408",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M09_REF",
+      "artifact": {
+        "path": "assets/references/v3/m09-ibc.png",
+        "sha256": "1950df50675d80c1e08a85b3bb40a6fd4010bbfde2c83f35f07f17906c4aee18",
+        "bytes": 1583571
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m09-ibc.png",
+        "sha256": "1950df50675d80c1e08a85b3bb40a6fd4010bbfde2c83f35f07f17906c4aee18",
+        "bytes": 1583571
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m09-ibc.json",
+        "sha256": "b1b17e8b0d30b4836eb0d66c6f1c6626e5d08d57fdc9062aab92ddbd6573b445",
+        "bytes": 1919
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M07.1_REF",
+      "artifact": {
+        "path": "assets/references/v3/m07-1-order-tote.png",
+        "sha256": "489050cfa686994531e4f8a9de11aa9d527b88352b04c8173479ced0007eb83f",
+        "bytes": 1379830
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m07-1-order-tote.png",
+        "sha256": "489050cfa686994531e4f8a9de11aa9d527b88352b04c8173479ced0007eb83f",
+        "bytes": 1379830
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m07-1-order-tote.json",
+        "sha256": "2f306cc6c3869360413058414a55e0fa34756011abaa7da0ee1b5665d1896d4c",
+        "bytes": 2565
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built_in_imagegen",
+      "generation_id": "exec-d3df17a1-a0d3-4fb1-ba97-a94568f523b3",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M07.2_REF",
+      "artifact": {
+        "path": "assets/references/v3/m07-2-sealed-parcel.png",
+        "sha256": "806ec55802141601527c93694e92b5c696e7e6535e31ea8c75898dd02d15d6ce",
+        "bytes": 1652754
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m07-2-sealed-parcel.png",
+        "sha256": "806ec55802141601527c93694e92b5c696e7e6535e31ea8c75898dd02d15d6ce",
+        "bytes": 1652754
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m07-2-sealed-parcel.json",
+        "sha256": "5b0b6f42c3dd734a18a1546624a4b098f04141082d543a18bfa318a0fd86a3cf",
+        "bytes": 2016
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built_in_imagegen",
+      "generation_id": "exec-2188fd26-1a97-427f-81b2-dcd16ed0d7c1",
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M04_TRANSFER_REF",
+      "artifact": {
+        "path": "assets/references/v3/m04-transfer-clear.png",
+        "sha256": "be2d9334362b023abe05ed03894e6b53ac6a8cee425b246ece396a31f51a9df8",
+        "bytes": 1758313
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m04-transfer-clear.png",
+        "sha256": "be2d9334362b023abe05ed03894e6b53ac6a8cee425b246ece396a31f51a9df8",
+        "bytes": 1758313
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m04-transfer-clear.json",
+        "sha256": "65afa424c928b29fb5372b34c4a1346a24766da95e6b66e227291767340ebe02",
+        "bytes": 440
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M10_REF",
+      "artifact": {
+        "path": "assets/references/v3/m10-long-bundle.png",
+        "sha256": "db86837e4d8adb40b04ffb64d4948da9ed4cfca056bea00cb20454a8099942e5",
+        "bytes": 1599587
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m10-long-bundle.png",
+        "sha256": "db86837e4d8adb40b04ffb64d4948da9ed4cfca056bea00cb20454a8099942e5",
+        "bytes": 1599587
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m10-long-bundle.json",
+        "sha256": "bf1ee53b728fc4a1c881e189383005f7501bb3de5b4e9107b71f88ed4ce4be3e",
+        "bytes": 476
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M11_REF",
+      "artifact": {
+        "path": "assets/references/v3/m11-drum.png",
+        "sha256": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+        "bytes": 1562012
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m11-drum.png",
+        "sha256": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+        "bytes": 1562012
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m11-drum.json",
+        "sha256": "2783f725fc33b29d0ca48a1b181b8b30b3ea80566a2d093a12498f50a176097a",
+        "bytes": 455
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M12_REF",
+      "artifact": {
+        "path": "assets/references/v3/m12-fragile-crate.png",
+        "sha256": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+        "bytes": 1700960
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m12-fragile-crate.png",
+        "sha256": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+        "bytes": 1700960
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m12-fragile-crate.json",
+        "sha256": "f669b9974a69efe172cfa32e7f3e47ec0023c50f24617dbcc31a050d2a6094cc",
+        "bytes": 464
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M10_METAL_REF",
+      "artifact": {
+        "path": "assets/references/v3/m10-long-bundle-metal.png",
+        "sha256": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+        "bytes": 1512002
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m10-long-bundle-metal.png",
+        "sha256": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+        "bytes": 1512002
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m10-long-bundle-metal.json",
+        "sha256": "fc647d0c640dc66424d556054bd4a4219811b92049f8f6c3089715fc3ebe919a",
+        "bytes": 384
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "M14_LONG_LOCK_REF",
+      "artifact": {
+        "path": "assets/references/v3/m14-long-cradle-locks.png",
+        "sha256": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+        "bytes": 1855870
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/m14-long-cradle-locks.png",
+        "sha256": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+        "bytes": 1855870
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/m14-long-cradle-locks.json",
+        "sha256": "0bfaaf89871d843239be00cfbbea4bb6c0fba781cc4986c8873dc1d6137ae3e6",
+        "bytes": 442
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen.imagegen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    },
+    {
+      "reference_id": "P03_SMALL_GRIPPER_REF",
+      "artifact": {
+        "path": "assets/references/v3/p03-small-gripper.png",
+        "sha256": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+        "bytes": 1938037
+      },
+      "served_copy": {
+        "path": "frontend/public/references/v3/p03-small-gripper.png",
+        "sha256": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+        "bytes": 1938037
+      },
+      "provenance": {
+        "path": "assets/references/v3/provenance/p03-small-gripper.json",
+        "sha256": "5a588247c8dacfdd73819648a9cfd18cdbc22af7957a067ddfff37d4d996f95d",
+        "bytes": 1525
+      },
+      "origin": "Built-in image generation, declared by reference manifest and per-image provenance records.",
+      "tool_record": "built-in image_gen",
+      "generation_id": null,
+      "license_status": "Redistribution rights not established by provenance metadata; no free/CC0/public-domain claim.",
+      "generation_reexecuted": false
+    }
+  ],
+  "engineering_supplements": {
+    "origin": "Project-authored explicit synthetic engineering dimensions and SVG scale diagram, not warehouse measurements or a license for raster references.",
+    "records": [
+      {
+        "path": "assets/references/v3/r03-common-scale.svg",
+        "sha256": "881268373079030f988f0bc118c6ce0fbaac3238add11c1af8cc8d545cf0cc3d",
+        "bytes": 6598
+      },
+      {
+        "path": "assets/references/v3/r03-common-scale.png",
+        "sha256": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359",
+        "bytes": 35436
+      },
+      {
+        "path": "assets/references/v3/r03-dimension-targets.json",
+        "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9",
+        "bytes": 1322
+      },
+      {
+        "path": "assets/references/v3/r12-dimension-targets.json",
+        "sha256": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+        "bytes": 2895
+      },
+      {
+        "path": "assets/references/v3/r13-1-rack-small-targets.json",
+        "sha256": "0101cb2a02e812e5c938594d6f3098b91c087d9cd074f75a6358bf4719b753f2",
+        "bytes": 2822
+      },
+      {
+        "path": "assets/references/v3/r13-2-rack-standard.targets.json",
+        "sha256": "a327fe63fdbc10f161d63ee8edead4a54c9af07c14ea1995d429517b6f74d822",
+        "bytes": 2421
+      },
+      {
+        "path": "assets/references/v3/r13-3-heavy-bay-targets.json",
+        "sha256": "8ded7b0aec932678c32172c9e2fb6666a3c238b3608bbeef411a72486df6ddde",
+        "bytes": 2782
+      },
+      {
+        "path": "assets/references/v3/r13-4-long-rack-targets.json",
+        "sha256": "a1965dac8b0c177f5e4e741f7277f8e06da8360e191263ed0344094a8e3d6bc6",
+        "bytes": 1813
+      },
+      {
+        "path": "assets/references/v3/r13-5-flex-bay-targets.json",
+        "sha256": "26c79c519f0c47eb377781a4e5f066c6da94ab5c2cf848f097712671fbb4945b",
+        "bytes": 1579
+      },
+      {
+        "path": "assets/references/v3/m06-1-small-carton.targets.json",
+        "sha256": "879dff7b6b88bae74127fd06fc0d7a7a13f83a2c3a9ce2ea5785070a67ccc2cc",
+        "bytes": 1266
+      },
+      {
+        "path": "assets/references/v3/r12-c08-interface-targets-v2.json",
+        "sha256": "1e97fbf8a770d319c63548dbe7d38cf0cf29736832f6174df324d1768ea5e6fd",
+        "bytes": 1194
+      },
+      {
+        "path": "assets/references/v3/m08-pallet-load.targets.json",
+        "sha256": "06792cc6c077bd6192d517aa4c2fa8e1e1a23b5ff7d5a258b836b7abdd3fa8e8",
+        "bytes": 13036
+      },
+      {
+        "path": "assets/references/v3/m14-2-reach-forklift.targets.json",
+        "sha256": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b",
+        "bytes": 2987
+      },
+      {
+        "path": "assets/references/v3/m06-2-standard-carton.targets.json",
+        "sha256": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e",
+        "bytes": 1283
+      },
+      {
+        "path": "assets/references/v3/p03-small-gripper.targets.json",
+        "sha256": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+        "bytes": 2348
+      }
+    ],
+    "raster_scale_copy": "The small common-scale PNG is the rendered SVG supplement, separate from30 generated concept references."
+  },
+  "engineering_components": [
+    {
+      "asset_id": "long-wheel-roll-profile-preserved-variant",
+      "sha256": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+      "native_root": "forklift-loaded-long-bundle",
+      "selected_native_subtrees": [
+        "long-cradle",
+        "long-restraint-rig"
+      ],
+      "metadata_origin": "Exact-SHA author/controller SI contract; not an invented GLB asset_id or namespace",
+      "authorities": [
+        {
+          "path": "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts",
+          "sha256": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+          "bytes": 24041
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseLongSourceOperationScene.ts",
+          "sha256": "d0fc64c7278ed579af3c6af22ed0288919c95fa2b9d8f9c04867a31597835b32",
+          "bytes": 14719
+        }
+      ],
+      "source_native_root_extras": {
+        "name": "forklift-loaded-long-bundle",
+        "layout_version": "qoima-144x72-v3",
+        "namespace": "v3",
+        "units": "m",
+        "up_axis": "Y",
+        "forward_axis": "+Z",
+        "role": "visual_QA_fixture",
+        "source_label": "One native C08 cargo/vehicle assembly; pose geometry, no source operation or scheduler execution",
+        "asset_id": "forklift-loaded-long-bundle"
+      }
+    },
+    {
+      "asset_id": "long-upper-handling-bridge",
+      "sha256": "c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527",
+      "native_root": "long-upper-handling-bridge",
+      "selected_native_subtrees": [
+        "long-upper-handling-bridge"
+      ],
+      "metadata_origin": "Exact-SHA author/controller SI contract; not an invented GLB asset_id or namespace",
+      "authorities": [
+        {
+          "path": "tools/blender/v3/build-long-upper-handling-bridge.mjs",
+          "sha256": "8f6b1111aa08d6df048b63ef25f8e6aa674f68491a596a6604a817c731b1ff94",
+          "bytes": 7966
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts",
+          "sha256": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+          "bytes": 24041
+        }
+      ],
+      "source_native_root_extras": {
+        "name": "long-upper-handling-bridge",
+        "tool_id": "v3:attachment:visual:long-upper-handling-bridge:01",
+        "declared_mass_kg": 5,
+        "quantity": 1,
+        "fork_halfspacing_m": 0.4,
+        "design_only": true,
+        "manufacturer_or_structural_certificate": false,
+        "source_geometry_replaced": false,
+        "hook_stroke_m": 0.006,
+        "pocket_inner_width_m": 0.084,
+        "pocket_inner_height_m": 0.07000002,
+        "pocket_x_m": [
+          1.48,
+          2.56
+        ],
+        "forklift_pose_rig_local": {
+          "position": [
+            3,
+            0,
+            0
+          ],
+          "yaw_rad": -1.5707963267948966,
+          "fork_top_above_rig_origin_m": 0.63
+        },
+        "kit_mass_kg": 40,
+        "whole_HU_mass_kg": 200,
+        "whole_HU_quantity_units": 24,
+        "ledger_total_kg": 245,
+        "handling_pair_upper_load_bound_kg": 45,
+        "installed_travel_load_bound_kg": 240,
+        "tool_removed_before_loaded_route": true,
+        "stow_one_M03_relative_tool_root": [
+          0.55,
+          0,
+          0
+        ],
+        "stow_tool_origin_y_m": 0.029,
+        "stow_existing_support_id": "proposed:LONG-upper-rig-stow:IN_W:01:right-M03",
+        "geometry_volume_sum_m3": 0.0017868456511999644,
+        "aluminium_density_assumption_kg_m3": 2700,
+        "geometry_mass_upper_sum_kg": 4.824483258239904
+      }
+    },
+    {
+      "asset_id": "small-carton-clamp-tool",
+      "sha256": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac",
+      "native_root": "small_carton_clamp_tool_root",
+      "selected_native_subtrees": [
+        "small_carton_clamp_tool_root"
+      ],
+      "metadata_origin": "Exact-SHA author/controller SI contract; not an invented GLB asset_id or namespace",
+      "authorities": [
+        {
+          "path": "tools/blender/v3/build-small-carton-clamp-tool.mjs",
+          "sha256": "c8b1a83aaad055785356c2d0776c8b13a037d96eea2bc19b8f5d180eb4e29fbc",
+          "bytes": 7666
+        },
+        {
+          "path": "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts",
+          "sha256": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0",
+          "bytes": 41931
+        }
+      ],
+      "source_native_root_extras": {
+        "name": "small_carton_clamp_tool_root",
+        "asset_id": "small-carton-clamp-tool",
+        "source_kind": "engineering_visual_variant",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "force_certified": false,
+        "source_HU_dimensions_xyz_m": [
+          0.32,
+          0.24,
+          0.24
+        ],
+        "jaw_thickness_m": 0.004,
+        "handle_centre_tool_m": [
+          0,
+          0.5498664215013466,
+          -0.61
+        ],
+        "source_HU_bottom_tool_m": [
+          0,
+          0,
+          0
+        ],
+        "extension_range_m": [
+          -0.35,
+          0
+        ],
+        "clamp_open_travel_m": 0.02,
+        "grip_slide_range_m": [
+          0,
+          0.12116285058098245
+        ],
+        "handle_height_range_m": [
+          -0.5198664215013467,
+          0
+        ]
+      }
+    }
+  ],
+  "sfx": {
+    "origin": "Original deterministic project WebAudio synthesis. Cues use oscillators or locally constructed deterministic noise buffers; no sampled third-party recording is loaded by the inspected controller.",
+    "controller": {
+      "path": "frontend/src/replay/sfx.ts",
+      "sha256": "4c6d1c402a32307de6395858bc4b0d6d80dcce4fafc1c32b6e2a29d4eec9dcdd",
+      "bytes": 10181
+    },
+    "scenario_projection": {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioEffects.ts",
+      "sha256": "e7e15135dd01a48749ddc8bb6f8398351b676e9c2ab8ed087dbb974d24775b14",
+      "bytes": 3319
+    },
+    "external_audio_media": false,
+    "unknown_rights_promoted_to_free": false
+  },
+  "native_pair_presentation": {
+    "origin": "Repository frontend reader/presentation of separately versioned saved backend native records; reuses registered original warehouse assets.",
+    "spec": {
+      "path": "frontend/docs/proposals/0100-recorded-native-pair-playback.md",
+      "sha256": "42320122021792b0a13ed6a0a2c649617ab77a2719ac0449cc6691af13dd5ae5",
+      "bytes": 6430
+    },
+    "sources": [
+      {
+        "path": "frontend/src/native-v3/page.ts",
+        "sha256": "c4644f17fe6c32f6b44d291139b615f6cbabe4491ab1e14b52c0c5fc26d64286",
+        "bytes": 11613
+      },
+      {
+        "path": "frontend/src/native-v3/stream.ts",
+        "sha256": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93",
+        "bytes": 19754
+      },
+      {
+        "path": "frontend/src/native-v3/playback.ts",
+        "sha256": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc",
+        "bytes": 11658
+      },
+      {
+        "path": "frontend/src/native-v3/scene.ts",
+        "sha256": "c760cc8f49d08700247bd0c8e4ee781c40a12aad2d242b67d7c86770b82c87b5",
+        "bytes": 9278
+      }
+    ],
+    "limits": "Recorded native identities/cuts differ from presentation glyph/interpolated coordinates. This is not newly imported third-party model geometry, dispatch generation, force/contact proof or full N1 admission."
+  },
+  "dependency_licenses": [
+    {
+      "name": "three",
+      "version": "0.169.0",
+      "declared_package_license": "MIT",
+      "installed_full_notice": {
+        "path": "frontend/node_modules/three/LICENSE",
+        "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+        "bytes": 1081
+      },
+      "runtime": true
+    },
+    {
+      "name": "vue",
+      "version": "3.5.45",
+      "declared_package_license": "MIT",
+      "installed_full_notice": {
+        "path": "frontend/node_modules/vue/LICENSE",
+        "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175",
+        "bytes": 1091
+      },
+      "runtime": true
+    },
+    {
+      "name": "gltf-validator",
+      "version": "2.0.0-dev.3.10",
+      "declared_package_license": "Apache-2.0",
+      "installed_full_notice": {
+        "path": "frontend/node_modules/gltf-validator/LICENSE",
+        "sha256": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+        "bytes": 11560
+      },
+      "runtime": false
+    },
+    {
+      "name": "typescript",
+      "version": "5.9.3",
+      "declared_package_license": "Apache-2.0",
+      "installed_full_notice": {
+        "path": "frontend/node_modules/typescript/LICENSE.txt",
+        "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+        "bytes": 9197
+      },
+      "runtime": false
+    }
+  ],
+  "notices": [
+    {
+      "path": "frontend/THIRD_PARTY_NOTICES.md",
+      "sha256": "f5b4fa62b2caaf8bc5f5122358ae2fef43e290c02afdd22c33b96d5b0741d8b0",
+      "bytes": 1299
+    },
+    {
+      "path": "frontend/licenses/three-LICENSE.txt",
+      "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+      "bytes": 1081
+    },
+    {
+      "path": "frontend/licenses/vue-LICENSE.txt",
+      "sha256": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175",
+      "bytes": 1091
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "6de1fcce531ceb53fe7993a02434858d659487cea1f58c64dc785fbfb7ce466e",
+      "bytes": 3696
+    },
+    {
+      "path": "donors/smart-warehouse-LICENSE.txt",
+      "sha256": "61f55207d854b23fd16353910f4f38149caa962e33a09aba0a69866cde95acc6",
+      "bytes": 1084
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "957df69d2e01a197e08968480ac5eeb3afaa135bddb087af0e1e3360514129a9",
+      "bytes": 45515
+    }
+  ],
+  "rights_disclosures": [
+    {
+      "category": "Project models/code",
+      "status": "No explicit repository-wide or model-specific public license established here. Project-authored/procedural origin does not itself grant public redistribution rights."
+    },
+    {
+      "category": "Generated raster references",
+      "status": "Origin/tool metadata verified; license/terms-based redistribution entitlement not adjudicated. No free/CC0/public-domain assumption."
+    },
+    {
+      "category": "User photos and supplied archive",
+      "status": "Reference-only user material; no public redistribution license inferred. The3 box-hold photos and old feedback assets are excluded from this runtime selection; this audit does not read/copy/stage their pixels."
+    },
+    {
+      "category": "AI assistance",
+      "status": "CLI/Codex review or code-generation assistance is authorship/process provenance, not evidence that a third-party downloadable model was imported or licensed."
+    },
+    {
+      "category": "Existing donor/data notices",
+      "status": "Existing root notices retain smart-warehouse MIT attribution and UCI CC BY4.0 dataset attribution. They do not license project models or assert donor animation is selected."
+    }
+  ],
+  "user_photo_distribution_selection": {
+    "selected": false,
+    "selection_lists_checked": [
+      "docs/adaptive-v3/handoff/runtime-20261110/asset-manifest.json",
+      "frontend/public/references/v3/manifest.json"
+    ],
+    "runtime_builder_reads_or_copies_user_photo_bytes": false,
+    "parent_packaging_must_preserve_exclusion": true
+  },
+  "runtime_snapshot_freshness": {
+    "kind": "Historical current-runtime inventory snapshot; do not relabel old controller hashes as current",
+    "later_workspace_changes": [
+      {
+        "path": "frontend/src/adaptive-v3/warehouseScenarioExecution.ts",
+        "snapshot_sha256": "10e4d80b82c2c7e77174cb49e48ae661321d90e2aa3ed1be1bb1a8b3a8630889",
+        "current_sha256": "ff832adbdb7c0b33cb499cc4c7f5a9c2fde6959a162d7b111b6926b3ce55cbc8"
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehouseScenarioScene.ts",
+        "snapshot_sha256": "157aa374ac0fabc1a4001c839e0dd75576bebe7f1bd6b50fe555a9aa031f0d54",
+        "current_sha256": "f0df521e809f3b4c0e2c38fc7930cb9010964a654c434a7f7e656f590c718595"
+      },
+      {
+        "path": "frontend/src/adaptive-v3/warehouseLayoutPlan.ts",
+        "snapshot_sha256": "3e36bbb27d496ff96740a1769c426eb3c60d8415a6d32691b45bab53758780b4",
+        "current_sha256": "8c38388ed3f1179948471ee077f9342afb8548fa53b572c0742f90548b0d7618"
+      },
+      {
+        "path": "frontend/src/adaptive-v3/scenarioPage.ts",
+        "snapshot_sha256": "6e3f4c2a603be8901ea84b1afb2810b27a6a7f128067e9e04bbdd46b2ac016ea",
+        "current_sha256": "ef0cb09d5f0b7ba383fead5637b23b200deb959df5604875f51cb7ee2c7dbc14"
+      },
+      {
+        "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+        "snapshot_sha256": "8dfb7cc1e364d368fb36c946b5acefc66b8faa676def9febae6d3992b1a1b415",
+        "current_sha256": "0209f6d2598f18bcec30d8030d7c11e87ca67afd88ee17970b556a0c8119872f"
+      },
+      {
+        "path": "frontend/skills-v3.html",
+        "snapshot_sha256": "0a1f679a350c857b3e5794e466504471c04ecad361d1f707dc199298e4d013cc",
+        "current_sha256": "bdc93f54ac4fd965cc78a6028558ed2abb7e3e050ef527f08f864f71faa63989"
+      },
+      {
+        "path": "frontend/home-v3.html",
+        "snapshot_sha256": "140fa962172f573274356782df2a0380b0817e572ca42f73d53a8f060c9d897f",
+        "current_sha256": "14aa7f4d8890a5082bbf7fe4920058ff237a936a7e1456fe911ec4966c980cba"
+      }
+    ],
+    "provenance_pass_does_not_certify_current_controller_execution": true
+  },
+  "graph_evidence": {
+    "project": "qoima-twin",
+    "tier": "Verify",
+    "generation": "2026-11-08T05:55:56Z",
+    "sfx_search_total": 22,
+    "search_pages_complete": true,
+    "coverage": "sfx metadata_changed; new generators/native-pair files not_tracked;32 public images excluded-suffix. Exact repository source/byte checks used; no reindex."
+  },
+  "integrity_warnings": [
+    {
+      "label": "engineering_supplement",
+      "path": "assets/references/v3/m14-2-reach-forklift.targets.json",
+      "expected": "bed5fcdd3f58e6ca56eae35938bc72582650d2323e810eb4a06a78524079708f",
+      "actual": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b"
+    }
+  ],
+  "all_reference_manifest_supplement_pins_current": false,
+  "source_hashes": {
+    "docs/adaptive-v3/handoff/runtime-20261110/asset-manifest.json": "d412eec3cf9b31b93be79fad650de3c7483c5ef0b1e6ceed2eed43154a7834ea",
+    "docs/adaptive-v3/handoff/runtime-20261110/credits.md": "340ce15a7c608ed0d7c7f349e1603d613d2d0c9636769dbc02d430bd23869011",
+    "frontend/public/references/v3/manifest.json": "7ee8cb9bbb801793b99ebe806b1f03dac5a10d23ebd8e24bdd8195ecf7a15d33",
+    "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+    "tools/blender/v3/build_environment_shell.py": "9871db509d3e2a6c51b1a12f0b1c049239543e5647d37e5dfd8508302d066af7",
+    "tools/blender/v3/build_floor_markings.py": "c1e8a0abfc79937d4d47c2d41658f07feed291123ed9e1018ca4b95746d33021",
+    "tools/blender/v3/build_dock_module.py": "df1c8da5d7de5818e35c7b9f4b9416bee174d3f0902b3e47502c6f4b064c065d",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "tools/blender/v3/build_rack_small.py": "b44c884439ca5c274777d2825eabdf539d97d110c47832a00bfea11507c909f6",
+    "assets/v3/previews/rack-small/provenance.json": "0ce6d150d1aad07682c2054a9e998945d672c18c339e47af29f8e9ff369dd644",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "tools/blender/v3/build_rack_standard.py": "86b7c230e0caf3fb20a67d923fc71ad8183eafe17c81b47d3b08c47bb0d2bc73",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "tools/blender/v3/build_heavy_bay.py": "b33d159f1184ca8860575e65684e6844dce63ca80293029c7a69e77df4f4afd3",
+    "assets/v3/previews/heavy-bay/provenance.json": "3336874f97e72125474388233ca091ba88b59df7e940e44abbbf7956f5cf0c53",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "tools/blender/v3/build_long_rack.py": "7cce2ab7e48757adb249b390c57764d77f887250290f182d113050fe9616752a",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "tools/blender/v3/build_flex_bay.py": "431671f89f0e9ef57a042ec82cef17ccf95e27a28bbdade37fe04dc7a323d452",
+    "assets/v3/previews/flex-bay/provenance.json": "e70e7d9985144e7a2f7da0eb675cf031eaf140efc79b72000ea8dbde8379cc8a",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "tools/blender/v3/build_small_carton.py": "95bbd298b4daeecc043e1540daed9b18a5ff4c5ffc7af7f3c61330dbbebf4c08",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "tools/blender/v3/build_standard_carton.py": "0323731c0220be85912342b0e9f47bf97bf439a0acb7133777baf3e88003392f",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "tools/blender/v3/build_heavy_box.py": "8c1e0ad19426f28a4cfdaf481acbdcfc5945873ba312b8cbfed0109c2d41e6c7",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "tools/blender/v3/build_pallet_load.py": "bb800abe67ca6e34d757da3f4b045ad34db122bd934a415f54f736dfe610765c",
+    "assets/v3/previews/pallet-load/provenance.json": "aef90f473f9e82b79e818efd43a05eecd0c24da66817f5403590d577ad3932e0",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "tools/blender/v3/build_ibc.py": "97bb009e718818cd17ee15f3453ac747b3247e01010ff75663c7a69a04bdc946",
+    "assets/v3/previews/ibc/provenance.json": "46091caa6a72eee602d2d1f2101521d747a4e0e0ba2eb397e16fe0972aaca27d",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "tools/blender/v3/build_long_bundle.py": "3fee6f1cd7987ec87d8b6af1a44c3057b10839fce66929b3be3ed43bc4d7fe88",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "tools/blender/v3/build_drum.py": "b501be3c6e099c1ea0c663cb68149c9a8f70b8b730bfc0b80d78fbdc117913e4",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "tools/blender/v3/build_fragile_crate.py": "b29a0790f04c7981df4b731ade9b1bb1a89f2c11b54baa173774d62e1537b225",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "tools/blender/v3/build_packing_station.py": "29430bd25e8055a8cc9ccaa63cbe8eb1d92b36c406bb42d07050a5d1a15c85a1",
+    "assets/v3/previews/packing-station/provenance.json": "40e7aed7157bd67f8d9d70882d93a44cdcd4ae9e05142163f9df633524f118cf",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "tools/blender/v3/build_conveyor_straight.py": "3f66f3b43390717401624324397529b9496e8605b1a9f127caccc21acc8cfdce",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "tools/blender/v3/build_conveyor_diverter.py": "6347888e543950c44e03265658ad68b1138f4e1981b5983007458b0cef28f7a3",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "tools/blender/v3/build_conveyor_turn.py": "2216d6e40bc5f67570d7aa33a030c920c6d66d1db376a5150fbf4955ec96f437",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "tools/blender/v3/build_worker_base.py": "62288b1ad72e6c3882dbdaa2c41ae530a6f6af09e3b0c52ac6526f02d35ba65e",
+    "assets/v3/previews/worker-base/provenance.json": "819c240f9995d9196f470dba37ab679da5ad29e1851c3ced358dc7c653f3a7a4",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "tools/blender/v3/build_forklift.py": "64a11fde3e429a64a0983ef745bad1abb1df64a512986dedf8ac0fd71e92cece",
+    "tools/blender/v3/build_forklift_contacts.py": "f17d097bed1be090a51c38de5ba61584cedba18977512f6a328d997140313af7",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "tools/blender/v3/build_worker_manual.py": "ec9eb6fc215e66a3a34e6312611b2feacdea6813e3eb1132151118d96953d17c",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "tools/blender/v3/build_picking_cart.py": "a0e49fedd3a739eb2df36eede0a0535ceff9aff1905371efcd425cad55f8236e",
+    "frontend/public/models/v3/picker-pick-source-fixture.glb": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1",
+    "tools/blender/v3/build_small_pick_source.py": "6c634926689b3443b734e425f1a596c8557c827c7f0a8c1d24bea13ed0e49549",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "tools/blender/v3/build_picker_figure.py": "18c5b567bd7de0265cbab41b3884236701543256b1be294a65914ca380a3bebc",
+    "tools/blender/v3/build_picker_thumb.py": "79301d45e828455d3013dc405b83c2bb4061a8e4d93e6ca81b6b1a4c467e6151",
+    "frontend/public/models/v3/packer-workcell-fixture.glb": "a378a056a09776b4b833befcce5cb36916ccd3a7dfd07c2050744cc41a339b5a",
+    "tools/blender/v3/build_packer_workcell.py": "cf234c772bfadb70ee24a8c32b43dc256edd2ed27d769c91872aedbfe66eff6d",
+    "frontend/public/models/v3/receiver-workcell-fixture.glb": "5eb51073d5c456f71ccc64c4bc231eadbf6761c6da89a96c4c87900dac1de54b",
+    "tools/blender/v3/build_receiver_workcell.py": "925bb5f66620fe7bac36f6204b1dab7f8505ae2604fb95ab4f37999efa80a699",
+    "frontend/public/models/v3/shipper-workcell-fixture.glb": "c80ff7569413d6402f27dfc8c6d53b99d69ecb635a59bb551fcac470c4256ffe",
+    "tools/blender/v3/build_shipper_workcell.py": "0d4b41a295f90a85e9d32098784d313ed690cf8695078ca8b48764b557d68ebb",
+    "frontend/public/models/v3/forklift-pallet-low-fixture.glb": "b172dc6dd245208a49fdddebccd6ff5d64cc3771c4e0259dabdd633adbd2808a",
+    "frontend/public/models/v3/small-package-gripper.glb": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
+    "tools/blender/v3/build_small_gripper.py": "bef47580f9bc0204d470664cd1612a1dd68336cc2d2e0e2e42f39f5ad653a72c",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "tools/blender/v3/build_long_cradle.py": "10e9a93f57f2adea4b5530014ab5e425bc014a42d15ee33b949968becde5e455",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+    "frontend/public/source/frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "tools/visual/v3/build_long_calibration_assets.mjs": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+    "assets/v3/long-calibration/recipe.json": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+    "assets/v3/long-calibration/README.md": "6c6aabb33c2030f428e56d641c1af02b5884f57d72f7fc5569f501b6bc9c051e",
+    "frontend/public/source/frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/source/frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/source/frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "assets/v3/previews/environment-shell/provenance.json": "9990c8ce0c79232e4b0afbc98371c2c7468f133b7d18881dc7b45e387ca52d49",
+    "frontend/public/source/work/v3/long-approach-floor/optional-long-approach-floor.glb": "b3f3c7348ca40c37b63179c85fe424e50920623d063c31fcecb3662805dcb6ce",
+    "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "frontend/public/models/v3/long-upper-handling-bridge.glb": "c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527",
+    "tools/blender/v3/build-long-upper-handling-bridge.mjs": "8f6b1111aa08d6df048b63ef25f8e6aa674f68491a596a6604a817c731b1ff94",
+    "frontend/public/models/v3/small-carton-clamp-tool.glb": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac",
+    "tools/blender/v3/build-small-carton-clamp-tool.mjs": "c8b1a83aaad055785356c2d0776c8b13a037d96eea2bc19b8f5d180eb4e29fbc",
+    "assets/references/v3/r01-style-board.png": "b39cf5edced8b84e3bde36df6986117898721b3b787fd05073d3b05dd3cc3579",
+    "frontend/public/references/v3/r01-style-board.png": "b39cf5edced8b84e3bde36df6986117898721b3b787fd05073d3b05dd3cc3579",
+    "assets/references/v3/provenance/r01.json": "629046eaf70bb9e1356d5467ab38e030db62b0d8f54a1a75901a039c248b4f14",
+    "assets/references/v3/r02-storage.png": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+    "frontend/public/references/v3/r02-storage.png": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+    "assets/references/v3/provenance/r02.json": "ee6591c3eef5679897c12ea5e6173abd0e3c4ac7aa887188783d825ab7d2215e",
+    "assets/references/v3/r03-cargo.png": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+    "frontend/public/references/v3/r03-cargo.png": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+    "assets/references/v3/provenance/r03.json": "41a78c8745627b1826787ca33e252b27162414c60f7c6ded0502e6d3f0677330",
+    "assets/references/v3/r04-packing-line.png": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a",
+    "frontend/public/references/v3/r04-packing-line.png": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a",
+    "assets/references/v3/provenance/r04.json": "013fbfaa14799c76432111aa7974d81cf3c3f5d6bc12b48705b9858235eb41e9",
+    "assets/references/v3/r05-workers.png": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+    "frontend/public/references/v3/r05-workers.png": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+    "assets/references/v3/provenance/r05.json": "e43dd1943702f01afc265fec40b26fbff2bb5d84922367ac825292dad7984373",
+    "assets/references/v3/r06-forklift.png": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+    "frontend/public/references/v3/r06-forklift.png": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+    "assets/references/v3/provenance/r06.json": "d984cd26771cc543720d30afdef7a1115f41c63af60fafed47697168faa2e772",
+    "assets/references/v3/r07-ports-zones.png": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+    "frontend/public/references/v3/r07-ports-zones.png": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+    "assets/references/v3/provenance/r07.json": "91639b1ce46f060313a952a276130e82a45a9d893bf2b4a8308cd3c5aa2d3e25",
+    "assets/references/v3/r08-composition.png": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+    "frontend/public/references/v3/r08-composition.png": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+    "assets/references/v3/provenance/r08.json": "3fb384631e0641be22aff7545723012d59be0ee689c2cb76a2896a7a1fa6685b",
+    "assets/references/v3/r11-picking-cart.png": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+    "frontend/public/references/v3/r11-picking-cart.png": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+    "assets/references/v3/provenance/r11.json": "3730a2a567b519533c3247439c417fb676e885ad66f3aa0cdfc16917972a1cb7",
+    "assets/references/v3/r12-long-cradle.png": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+    "frontend/public/references/v3/r12-long-cradle.png": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+    "assets/references/v3/provenance/r12.json": "cbabcd5939c69726788222388adf8d5983e48645fa62295a83485d2388c57d7c",
+    "assets/references/v3/r13-1-rack-small.png": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e",
+    "frontend/public/references/v3/r13-1-rack-small.png": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e",
+    "assets/references/v3/provenance/r13-1.json": "28acabc5c897a28b1b31a70d5a19821b5e9de4a287befbf20fc15bc2a914d2f6",
+    "assets/references/v3/r13-2-rack-standard.png": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+    "frontend/public/references/v3/r13-2-rack-standard.png": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+    "assets/references/v3/provenance/r13-2.json": "e001a7df16b26d30d918abfc5bc56ded44a93cddf7defe8442c9dd610c5b612a",
+    "assets/references/v3/r13-3-heavy-bay.png": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+    "frontend/public/references/v3/r13-3-heavy-bay.png": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+    "assets/references/v3/provenance/r13-3.json": "86086ed4d0cc5c799390051c64e6351dda2cf24295034e4f346ae3b0a7d4db9f",
+    "assets/references/v3/r13-4-long-rack.png": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+    "frontend/public/references/v3/r13-4-long-rack.png": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+    "assets/references/v3/provenance/r13-4.json": "7c566d4e0034d70413e6e7a233e03a870d1a6711ff37f5431fe3bed88e4c3b1a",
+    "assets/references/v3/r13-5-flex-bay.png": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66",
+    "frontend/public/references/v3/r13-5-flex-bay.png": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66",
+    "assets/references/v3/provenance/r13-5.json": "0b0dabb90cbb58659f52461586aba55986a185c1100190a4b1938aa5ff26b4d7",
+    "assets/references/v3/m06-1-small-carton.png": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+    "frontend/public/references/v3/m06-1-small-carton.png": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+    "assets/references/v3/provenance/m06-1-small-carton.json": "64cad6b5896eac3af334c8007f79630fc1fc3434487b3eb446b0857fb9a163fd",
+    "assets/references/v3/m08-pallet-load.png": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb",
+    "frontend/public/references/v3/m08-pallet-load.png": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb",
+    "assets/references/v3/provenance/m08-pallet-load.json": "f75de881f13210adc24aad652e1ae627019474830acbd0d56ccb8cdd989298d8",
+    "assets/references/v3/m14-2-reach-forklift.png": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+    "frontend/public/references/v3/m14-2-reach-forklift.png": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+    "assets/references/v3/provenance/m14-2-reach-forklift.json": "2d2e21c23591483f66b7f662a2612026035e604eeb28d27448e06da7eebfccff",
+    "assets/references/v3/m06-2-standard-carton.png": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+    "frontend/public/references/v3/m06-2-standard-carton.png": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+    "assets/references/v3/provenance/m06-2-standard-carton.json": "236cbb654a58697fea443a1bf9181532d77c5af661dab48a9d63645082d59bf3",
+    "assets/references/v3/m06-3-heavy-box.png": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+    "frontend/public/references/v3/m06-3-heavy-box.png": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+    "assets/references/v3/provenance/m06-3-heavy-box.json": "f9ff86f0e5d9123cb1c4e11b3218872294542b7e70f2302e89d3ecc29870738d",
+    "assets/references/v3/m09-ibc.png": "1950df50675d80c1e08a85b3bb40a6fd4010bbfde2c83f35f07f17906c4aee18",
+    "frontend/public/references/v3/m09-ibc.png": "1950df50675d80c1e08a85b3bb40a6fd4010bbfde2c83f35f07f17906c4aee18",
+    "assets/references/v3/provenance/m09-ibc.json": "b1b17e8b0d30b4836eb0d66c6f1c6626e5d08d57fdc9062aab92ddbd6573b445",
+    "assets/references/v3/m07-1-order-tote.png": "489050cfa686994531e4f8a9de11aa9d527b88352b04c8173479ced0007eb83f",
+    "frontend/public/references/v3/m07-1-order-tote.png": "489050cfa686994531e4f8a9de11aa9d527b88352b04c8173479ced0007eb83f",
+    "assets/references/v3/provenance/m07-1-order-tote.json": "2f306cc6c3869360413058414a55e0fa34756011abaa7da0ee1b5665d1896d4c",
+    "assets/references/v3/m07-2-sealed-parcel.png": "806ec55802141601527c93694e92b5c696e7e6535e31ea8c75898dd02d15d6ce",
+    "frontend/public/references/v3/m07-2-sealed-parcel.png": "806ec55802141601527c93694e92b5c696e7e6535e31ea8c75898dd02d15d6ce",
+    "assets/references/v3/provenance/m07-2-sealed-parcel.json": "5b0b6f42c3dd734a18a1546624a4b098f04141082d543a18bfa318a0fd86a3cf",
+    "assets/references/v3/m04-transfer-clear.png": "be2d9334362b023abe05ed03894e6b53ac6a8cee425b246ece396a31f51a9df8",
+    "frontend/public/references/v3/m04-transfer-clear.png": "be2d9334362b023abe05ed03894e6b53ac6a8cee425b246ece396a31f51a9df8",
+    "assets/references/v3/provenance/m04-transfer-clear.json": "65afa424c928b29fb5372b34c4a1346a24766da95e6b66e227291767340ebe02",
+    "assets/references/v3/m10-long-bundle.png": "db86837e4d8adb40b04ffb64d4948da9ed4cfca056bea00cb20454a8099942e5",
+    "frontend/public/references/v3/m10-long-bundle.png": "db86837e4d8adb40b04ffb64d4948da9ed4cfca056bea00cb20454a8099942e5",
+    "assets/references/v3/provenance/m10-long-bundle.json": "bf1ee53b728fc4a1c881e189383005f7501bb3de5b4e9107b71f88ed4ce4be3e",
+    "assets/references/v3/m11-drum.png": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+    "frontend/public/references/v3/m11-drum.png": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+    "assets/references/v3/provenance/m11-drum.json": "2783f725fc33b29d0ca48a1b181b8b30b3ea80566a2d093a12498f50a176097a",
+    "assets/references/v3/m12-fragile-crate.png": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+    "frontend/public/references/v3/m12-fragile-crate.png": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+    "assets/references/v3/provenance/m12-fragile-crate.json": "f669b9974a69efe172cfa32e7f3e47ec0023c50f24617dbcc31a050d2a6094cc",
+    "assets/references/v3/m10-long-bundle-metal.png": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+    "frontend/public/references/v3/m10-long-bundle-metal.png": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+    "assets/references/v3/provenance/m10-long-bundle-metal.json": "fc647d0c640dc66424d556054bd4a4219811b92049f8f6c3089715fc3ebe919a",
+    "assets/references/v3/m14-long-cradle-locks.png": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+    "frontend/public/references/v3/m14-long-cradle-locks.png": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+    "assets/references/v3/provenance/m14-long-cradle-locks.json": "0bfaaf89871d843239be00cfbbea4bb6c0fba781cc4986c8873dc1d6137ae3e6",
+    "assets/references/v3/p03-small-gripper.png": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+    "frontend/public/references/v3/p03-small-gripper.png": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+    "assets/references/v3/provenance/p03-small-gripper.json": "5a588247c8dacfdd73819648a9cfd18cdbc22af7957a067ddfff37d4d996f95d",
+    "assets/references/v3/r03-common-scale.svg": "881268373079030f988f0bc118c6ce0fbaac3238add11c1af8cc8d545cf0cc3d",
+    "assets/references/v3/r03-common-scale.png": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359",
+    "assets/references/v3/r03-dimension-targets.json": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9",
+    "assets/references/v3/r12-dimension-targets.json": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+    "assets/references/v3/r13-1-rack-small-targets.json": "0101cb2a02e812e5c938594d6f3098b91c087d9cd074f75a6358bf4719b753f2",
+    "assets/references/v3/r13-2-rack-standard.targets.json": "a327fe63fdbc10f161d63ee8edead4a54c9af07c14ea1995d429517b6f74d822",
+    "assets/references/v3/r13-3-heavy-bay-targets.json": "8ded7b0aec932678c32172c9e2fb6666a3c238b3608bbeef411a72486df6ddde",
+    "assets/references/v3/r13-4-long-rack-targets.json": "a1965dac8b0c177f5e4e741f7277f8e06da8360e191263ed0344094a8e3d6bc6",
+    "assets/references/v3/r13-5-flex-bay-targets.json": "26c79c519f0c47eb377781a4e5f066c6da94ab5c2cf848f097712671fbb4945b",
+    "assets/references/v3/m06-1-small-carton.targets.json": "879dff7b6b88bae74127fd06fc0d7a7a13f83a2c3a9ce2ea5785070a67ccc2cc",
+    "assets/references/v3/r12-c08-interface-targets-v2.json": "1e97fbf8a770d319c63548dbe7d38cf0cf29736832f6174df324d1768ea5e6fd",
+    "assets/references/v3/m08-pallet-load.targets.json": "06792cc6c077bd6192d517aa4c2fa8e1e1a23b5ff7d5a258b836b7abdd3fa8e8",
+    "assets/references/v3/m14-2-reach-forklift.targets.json": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b",
+    "assets/references/v3/m06-2-standard-carton.targets.json": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e",
+    "assets/references/v3/p03-small-gripper.targets.json": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+    "frontend/public/references/v3/r03-common-scale.svg": "881268373079030f988f0bc118c6ce0fbaac3238add11c1af8cc8d545cf0cc3d",
+    "frontend/public/references/v3/r03-common-scale.png": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359",
+    "frontend/node_modules/three/package.json": "2dea831b9915a94b23a5c1ecc4bce0433f0cb6bca213401ff660277e85c3fe01",
+    "frontend/node_modules/three/LICENSE": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+    "frontend/node_modules/vue/package.json": "0ff842d6a96dad3c940d099316bc21de8fd25f0d4a3d9206b64921989ea10cd2",
+    "frontend/node_modules/vue/LICENSE": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175",
+    "frontend/node_modules/gltf-validator/package.json": "3578d16153fa237c72784588da2e8fcccc9cd3c1c58ef34c7912f0732d2f5fa6",
+    "frontend/node_modules/gltf-validator/LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "frontend/node_modules/typescript/package.json": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6",
+    "frontend/node_modules/typescript/LICENSE.txt": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+    "frontend/THIRD_PARTY_NOTICES.md": "f5b4fa62b2caaf8bc5f5122358ae2fef43e290c02afdd22c33b96d5b0741d8b0",
+    "frontend/licenses/three-LICENSE.txt": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+    "frontend/licenses/vue-LICENSE.txt": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175",
+    "THIRD_PARTY_NOTICES.md": "6de1fcce531ceb53fe7993a02434858d659487cea1f58c64dc785fbfb7ce466e",
+    "donors/smart-warehouse-LICENSE.txt": "61f55207d854b23fd16353910f4f38149caa962e33a09aba0a69866cde95acc6",
+    "frontend/package-lock.json": "957df69d2e01a197e08968480ac5eeb3afaa135bddb087af0e1e3360514129a9",
+    "frontend/src/replay/sfx.ts": "4c6d1c402a32307de6395858bc4b0d6d80dcce4fafc1c32b6e2a29d4eec9dcdd",
+    "frontend/src/adaptive-v3/warehouseScenarioEffects.ts": "e7e15135dd01a48749ddc8bb6f8398351b676e9c2ab8ed087dbb974d24775b14",
+    "frontend/docs/proposals/0100-recorded-native-pair-playback.md": "42320122021792b0a13ed6a0a2c649617ab77a2719ac0449cc6691af13dd5ae5",
+    "frontend/src/native-v3/page.ts": "c4644f17fe6c32f6b44d291139b615f6cbabe4491ab1e14b52c0c5fc26d64286",
+    "frontend/src/native-v3/stream.ts": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93",
+    "frontend/src/native-v3/playback.ts": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc",
+    "frontend/src/native-v3/scene.ts": "c760cc8f49d08700247bd0c8e4ee781c40a12aad2d242b67d7c86770b82c87b5",
+    "tools/visual/v3/build_desktop_asset_handoff.mjs": "df3ba21b121afa5ee0cdebc7c80202db66349a4fd7c1e4446d989477d09a5e7d",
+    "frontend/src/adaptive-v3/warehouseAssetBindings.json": "3a416f8034246595c3f0f80e427fe1e3e3120ed206a7ab32c971bc5f78d30b2c",
+    "frontend/public/models/v3/forklift-loaded-long-bundle.glb": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationScene.ts": "d0fc64c7278ed579af3c6af22ed0288919c95fa2b9d8f9c04867a31597835b32",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0"
+  },
+  "source_hashes_after": {
+    "docs/adaptive-v3/handoff/runtime-20261110/asset-manifest.json": "d412eec3cf9b31b93be79fad650de3c7483c5ef0b1e6ceed2eed43154a7834ea",
+    "docs/adaptive-v3/handoff/runtime-20261110/credits.md": "340ce15a7c608ed0d7c7f349e1603d613d2d0c9636769dbc02d430bd23869011",
+    "frontend/public/references/v3/manifest.json": "7ee8cb9bbb801793b99ebe806b1f03dac5a10d23ebd8e24bdd8195ecf7a15d33",
+    "frontend/public/models/v3/environment-markings-fixture.glb": "b50d93e84391b1c5ce7099cb0dacc78e8829bd8379eda817c8638f0768236cc2",
+    "tools/blender/v3/build_environment_shell.py": "9871db509d3e2a6c51b1a12f0b1c049239543e5647d37e5dfd8508302d066af7",
+    "tools/blender/v3/build_floor_markings.py": "c1e8a0abfc79937d4d47c2d41658f07feed291123ed9e1018ca4b95746d33021",
+    "tools/blender/v3/build_dock_module.py": "df1c8da5d7de5818e35c7b9f4b9416bee174d3f0902b3e47502c6f4b064c065d",
+    "frontend/public/models/v3/rack-small.glb": "c7e80d1c799fd51ff25592b72defdd48724775934cd12f41f1a901ce130da4e7",
+    "tools/blender/v3/build_rack_small.py": "b44c884439ca5c274777d2825eabdf539d97d110c47832a00bfea11507c909f6",
+    "assets/v3/previews/rack-small/provenance.json": "0ce6d150d1aad07682c2054a9e998945d672c18c339e47af29f8e9ff369dd644",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866",
+    "tools/blender/v3/build_rack_standard.py": "86b7c230e0caf3fb20a67d923fc71ad8183eafe17c81b47d3b08c47bb0d2bc73",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "tools/blender/v3/build_heavy_bay.py": "b33d159f1184ca8860575e65684e6844dce63ca80293029c7a69e77df4f4afd3",
+    "assets/v3/previews/heavy-bay/provenance.json": "3336874f97e72125474388233ca091ba88b59df7e940e44abbbf7956f5cf0c53",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "tools/blender/v3/build_long_rack.py": "7cce2ab7e48757adb249b390c57764d77f887250290f182d113050fe9616752a",
+    "frontend/public/models/v3/flex-bay.glb": "3dc964a3a823dd786aaa97d2f20bd0fb0d9ec3ee81432253af8734d68c44da9a",
+    "tools/blender/v3/build_flex_bay.py": "431671f89f0e9ef57a042ec82cef17ccf95e27a28bbdade37fe04dc7a323d452",
+    "assets/v3/previews/flex-bay/provenance.json": "e70e7d9985144e7a2f7da0eb675cf031eaf140efc79b72000ea8dbde8379cc8a",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "tools/blender/v3/build_small_carton.py": "95bbd298b4daeecc043e1540daed9b18a5ff4c5ffc7af7f3c61330dbbebf4c08",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "tools/blender/v3/build_standard_carton.py": "0323731c0220be85912342b0e9f47bf97bf439a0acb7133777baf3e88003392f",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "tools/blender/v3/build_heavy_box.py": "8c1e0ad19426f28a4cfdaf481acbdcfc5945873ba312b8cbfed0109c2d41e6c7",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "tools/blender/v3/build_pallet_load.py": "bb800abe67ca6e34d757da3f4b045ad34db122bd934a415f54f736dfe610765c",
+    "assets/v3/previews/pallet-load/provenance.json": "aef90f473f9e82b79e818efd43a05eecd0c24da66817f5403590d577ad3932e0",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "tools/blender/v3/build_ibc.py": "97bb009e718818cd17ee15f3453ac747b3247e01010ff75663c7a69a04bdc946",
+    "assets/v3/previews/ibc/provenance.json": "46091caa6a72eee602d2d1f2101521d747a4e0e0ba2eb397e16fe0972aaca27d",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "tools/blender/v3/build_long_bundle.py": "3fee6f1cd7987ec87d8b6af1a44c3057b10839fce66929b3be3ed43bc4d7fe88",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "tools/blender/v3/build_drum.py": "b501be3c6e099c1ea0c663cb68149c9a8f70b8b730bfc0b80d78fbdc117913e4",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "tools/blender/v3/build_fragile_crate.py": "b29a0790f04c7981df4b731ade9b1bb1a89f2c11b54baa173774d62e1537b225",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "tools/blender/v3/build_packing_station.py": "29430bd25e8055a8cc9ccaa63cbe8eb1d92b36c406bb42d07050a5d1a15c85a1",
+    "assets/v3/previews/packing-station/provenance.json": "40e7aed7157bd67f8d9d70882d93a44cdcd4ae9e05142163f9df633524f118cf",
+    "frontend/public/models/v3/conveyor-straight.glb": "215b54e0375dc6e586d4a94734825e1e72f6288069153c72c8b4000652612d70",
+    "tools/blender/v3/build_conveyor_straight.py": "3f66f3b43390717401624324397529b9496e8605b1a9f127caccc21acc8cfdce",
+    "frontend/public/models/v3/conveyor-diverter.glb": "d5bc76bafc75478c4569b5c20883e2b4bdfe9a132a26c24e9dbc63da14d44b26",
+    "tools/blender/v3/build_conveyor_diverter.py": "6347888e543950c44e03265658ad68b1138f4e1981b5983007458b0cef28f7a3",
+    "frontend/public/models/v3/conveyor-turn.glb": "bc2e5a89d5463cc90def87ec9795bb451847b1945e785229e5a2ce9ad55667de",
+    "tools/blender/v3/build_conveyor_turn.py": "2216d6e40bc5f67570d7aa33a030c920c6d66d1db376a5150fbf4955ec96f437",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "tools/blender/v3/build_worker_base.py": "62288b1ad72e6c3882dbdaa2c41ae530a6f6af09e3b0c52ac6526f02d35ba65e",
+    "assets/v3/previews/worker-base/provenance.json": "819c240f9995d9196f470dba37ab679da5ad29e1851c3ced358dc7c653f3a7a4",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "tools/blender/v3/build_forklift.py": "64a11fde3e429a64a0983ef745bad1abb1df64a512986dedf8ac0fd71e92cece",
+    "tools/blender/v3/build_forklift_contacts.py": "f17d097bed1be090a51c38de5ba61584cedba18977512f6a328d997140313af7",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "tools/blender/v3/build_worker_manual.py": "ec9eb6fc215e66a3a34e6312611b2feacdea6813e3eb1132151118d96953d17c",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "tools/blender/v3/build_picking_cart.py": "a0e49fedd3a739eb2df36eede0a0535ceff9aff1905371efcd425cad55f8236e",
+    "frontend/public/models/v3/picker-pick-source-fixture.glb": "a02ea15b92d0280904fe0c2574b9d3248f7b0ec6bf6783bfc8289d13f480afe1",
+    "tools/blender/v3/build_small_pick_source.py": "6c634926689b3443b734e425f1a596c8557c827c7f0a8c1d24bea13ed0e49549",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "tools/blender/v3/build_picker_figure.py": "18c5b567bd7de0265cbab41b3884236701543256b1be294a65914ca380a3bebc",
+    "tools/blender/v3/build_picker_thumb.py": "79301d45e828455d3013dc405b83c2bb4061a8e4d93e6ca81b6b1a4c467e6151",
+    "frontend/public/models/v3/packer-workcell-fixture.glb": "a378a056a09776b4b833befcce5cb36916ccd3a7dfd07c2050744cc41a339b5a",
+    "tools/blender/v3/build_packer_workcell.py": "cf234c772bfadb70ee24a8c32b43dc256edd2ed27d769c91872aedbfe66eff6d",
+    "frontend/public/models/v3/receiver-workcell-fixture.glb": "5eb51073d5c456f71ccc64c4bc231eadbf6761c6da89a96c4c87900dac1de54b",
+    "tools/blender/v3/build_receiver_workcell.py": "925bb5f66620fe7bac36f6204b1dab7f8505ae2604fb95ab4f37999efa80a699",
+    "frontend/public/models/v3/shipper-workcell-fixture.glb": "c80ff7569413d6402f27dfc8c6d53b99d69ecb635a59bb551fcac470c4256ffe",
+    "tools/blender/v3/build_shipper_workcell.py": "0d4b41a295f90a85e9d32098784d313ed690cf8695078ca8b48764b557d68ebb",
+    "frontend/public/models/v3/forklift-pallet-low-fixture.glb": "b172dc6dd245208a49fdddebccd6ff5d64cc3771c4e0259dabdd633adbd2808a",
+    "frontend/public/models/v3/small-package-gripper.glb": "4019fdc6d407c1d836f2b73ad258436acc2c2943e7c1b88b924ca47e0f99ec49",
+    "tools/blender/v3/build_small_gripper.py": "bef47580f9bc0204d470664cd1612a1dd68336cc2d2e0e2e42f39f5ad653a72c",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "tools/blender/v3/build_long_cradle.py": "10e9a93f57f2adea4b5530014ab5e425bc014a42d15ee33b949968becde5e455",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+    "frontend/public/source/frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "tools/visual/v3/build_long_calibration_assets.mjs": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+    "assets/v3/long-calibration/recipe.json": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+    "assets/v3/long-calibration/README.md": "6c6aabb33c2030f428e56d641c1af02b5884f57d72f7fc5569f501b6bc9c051e",
+    "frontend/public/source/frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/source/frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/source/frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "assets/v3/previews/environment-shell/provenance.json": "9990c8ce0c79232e4b0afbc98371c2c7468f133b7d18881dc7b45e387ca52d49",
+    "frontend/public/source/work/v3/long-approach-floor/optional-long-approach-floor.glb": "b3f3c7348ca40c37b63179c85fe424e50920623d063c31fcecb3662805dcb6ce",
+    "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "frontend/public/models/v3/long-upper-handling-bridge.glb": "c719712c8caa5b5a37daff86c3591be37a9992ef5ae6d81667a294b813811527",
+    "tools/blender/v3/build-long-upper-handling-bridge.mjs": "8f6b1111aa08d6df048b63ef25f8e6aa674f68491a596a6604a817c731b1ff94",
+    "frontend/public/models/v3/small-carton-clamp-tool.glb": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac",
+    "tools/blender/v3/build-small-carton-clamp-tool.mjs": "c8b1a83aaad055785356c2d0776c8b13a037d96eea2bc19b8f5d180eb4e29fbc",
+    "assets/references/v3/r01-style-board.png": "b39cf5edced8b84e3bde36df6986117898721b3b787fd05073d3b05dd3cc3579",
+    "frontend/public/references/v3/r01-style-board.png": "b39cf5edced8b84e3bde36df6986117898721b3b787fd05073d3b05dd3cc3579",
+    "assets/references/v3/provenance/r01.json": "629046eaf70bb9e1356d5467ab38e030db62b0d8f54a1a75901a039c248b4f14",
+    "assets/references/v3/r02-storage.png": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+    "frontend/public/references/v3/r02-storage.png": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+    "assets/references/v3/provenance/r02.json": "ee6591c3eef5679897c12ea5e6173abd0e3c4ac7aa887188783d825ab7d2215e",
+    "assets/references/v3/r03-cargo.png": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+    "frontend/public/references/v3/r03-cargo.png": "31f85867fbdba498f117babba454a96d8fdb3916d067c639f308abe66ef36656",
+    "assets/references/v3/provenance/r03.json": "41a78c8745627b1826787ca33e252b27162414c60f7c6ded0502e6d3f0677330",
+    "assets/references/v3/r04-packing-line.png": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a",
+    "frontend/public/references/v3/r04-packing-line.png": "206ab336a16290b4349200e455e1fbaddce431fabe9049db5dd14915a29f2a9a",
+    "assets/references/v3/provenance/r04.json": "013fbfaa14799c76432111aa7974d81cf3c3f5d6bc12b48705b9858235eb41e9",
+    "assets/references/v3/r05-workers.png": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+    "frontend/public/references/v3/r05-workers.png": "542f0169e23c732b60c8bda99a5ce0068bd8e4bf256e3810f5a656d79a0aeb1b",
+    "assets/references/v3/provenance/r05.json": "e43dd1943702f01afc265fec40b26fbff2bb5d84922367ac825292dad7984373",
+    "assets/references/v3/r06-forklift.png": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+    "frontend/public/references/v3/r06-forklift.png": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6",
+    "assets/references/v3/provenance/r06.json": "d984cd26771cc543720d30afdef7a1115f41c63af60fafed47697168faa2e772",
+    "assets/references/v3/r07-ports-zones.png": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+    "frontend/public/references/v3/r07-ports-zones.png": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+    "assets/references/v3/provenance/r07.json": "91639b1ce46f060313a952a276130e82a45a9d893bf2b4a8308cd3c5aa2d3e25",
+    "assets/references/v3/r08-composition.png": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+    "frontend/public/references/v3/r08-composition.png": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+    "assets/references/v3/provenance/r08.json": "3fb384631e0641be22aff7545723012d59be0ee689c2cb76a2896a7a1fa6685b",
+    "assets/references/v3/r11-picking-cart.png": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+    "frontend/public/references/v3/r11-picking-cart.png": "6cadd12ab0ea6413c89b8c19a062789b4517f113930d1bf62d53415c26e9e46a",
+    "assets/references/v3/provenance/r11.json": "3730a2a567b519533c3247439c417fb676e885ad66f3aa0cdfc16917972a1cb7",
+    "assets/references/v3/r12-long-cradle.png": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+    "frontend/public/references/v3/r12-long-cradle.png": "375d96a76808a1c1894341b0ec0d63a8f4235ba58249a7617a6d3daf5ad3b935",
+    "assets/references/v3/provenance/r12.json": "cbabcd5939c69726788222388adf8d5983e48645fa62295a83485d2388c57d7c",
+    "assets/references/v3/r13-1-rack-small.png": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e",
+    "frontend/public/references/v3/r13-1-rack-small.png": "aeb9a6b0700201e471513610d6eabfe4a342802e92e4ece0a9531ad89dcdb45e",
+    "assets/references/v3/provenance/r13-1.json": "28acabc5c897a28b1b31a70d5a19821b5e9de4a287befbf20fc15bc2a914d2f6",
+    "assets/references/v3/r13-2-rack-standard.png": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+    "frontend/public/references/v3/r13-2-rack-standard.png": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+    "assets/references/v3/provenance/r13-2.json": "e001a7df16b26d30d918abfc5bc56ded44a93cddf7defe8442c9dd610c5b612a",
+    "assets/references/v3/r13-3-heavy-bay.png": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+    "frontend/public/references/v3/r13-3-heavy-bay.png": "030801d34d8a2e946b0f725ceba972e0e440f40c3b862f9863a4465e706dce08",
+    "assets/references/v3/provenance/r13-3.json": "86086ed4d0cc5c799390051c64e6351dda2cf24295034e4f346ae3b0a7d4db9f",
+    "assets/references/v3/r13-4-long-rack.png": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+    "frontend/public/references/v3/r13-4-long-rack.png": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+    "assets/references/v3/provenance/r13-4.json": "7c566d4e0034d70413e6e7a233e03a870d1a6711ff37f5431fe3bed88e4c3b1a",
+    "assets/references/v3/r13-5-flex-bay.png": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66",
+    "frontend/public/references/v3/r13-5-flex-bay.png": "f05526abba4a36db3d0e49a061dd35efb81c4fb2a1a2b3b72a95c8ef3c5cce66",
+    "assets/references/v3/provenance/r13-5.json": "0b0dabb90cbb58659f52461586aba55986a185c1100190a4b1938aa5ff26b4d7",
+    "assets/references/v3/m06-1-small-carton.png": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+    "frontend/public/references/v3/m06-1-small-carton.png": "57db644ee854f7f875d3a9022b803b485a4bc41fe62a47e4db4c706754ed1585",
+    "assets/references/v3/provenance/m06-1-small-carton.json": "64cad6b5896eac3af334c8007f79630fc1fc3434487b3eb446b0857fb9a163fd",
+    "assets/references/v3/m08-pallet-load.png": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb",
+    "frontend/public/references/v3/m08-pallet-load.png": "3b18254c7c581591f9c302dedb0fd0ee871e861a99b790b8681e95aea37dadfb",
+    "assets/references/v3/provenance/m08-pallet-load.json": "f75de881f13210adc24aad652e1ae627019474830acbd0d56ccb8cdd989298d8",
+    "assets/references/v3/m14-2-reach-forklift.png": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+    "frontend/public/references/v3/m14-2-reach-forklift.png": "292537a3b0517e41f34a39c7419b6f78da3e2e8b5f8aa897fba5bbba76ee8534",
+    "assets/references/v3/provenance/m14-2-reach-forklift.json": "2d2e21c23591483f66b7f662a2612026035e604eeb28d27448e06da7eebfccff",
+    "assets/references/v3/m06-2-standard-carton.png": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+    "frontend/public/references/v3/m06-2-standard-carton.png": "84259478f0cd7786903d9f018443f374e5e3dc82e6ded5c8d7bdf646c9579ce4",
+    "assets/references/v3/provenance/m06-2-standard-carton.json": "236cbb654a58697fea443a1bf9181532d77c5af661dab48a9d63645082d59bf3",
+    "assets/references/v3/m06-3-heavy-box.png": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+    "frontend/public/references/v3/m06-3-heavy-box.png": "caccb6e96e7cc7804e9441c72b1495d8bdd15a04c0085143b9ee73c03735fb29",
+    "assets/references/v3/provenance/m06-3-heavy-box.json": "f9ff86f0e5d9123cb1c4e11b3218872294542b7e70f2302e89d3ecc29870738d",
+    "assets/references/v3/m09-ibc.png": "1950df50675d80c1e08a85b3bb40a6fd4010bbfde2c83f35f07f17906c4aee18",
+    "frontend/public/references/v3/m09-ibc.png": "1950df50675d80c1e08a85b3bb40a6fd4010bbfde2c83f35f07f17906c4aee18",
+    "assets/references/v3/provenance/m09-ibc.json": "b1b17e8b0d30b4836eb0d66c6f1c6626e5d08d57fdc9062aab92ddbd6573b445",
+    "assets/references/v3/m07-1-order-tote.png": "489050cfa686994531e4f8a9de11aa9d527b88352b04c8173479ced0007eb83f",
+    "frontend/public/references/v3/m07-1-order-tote.png": "489050cfa686994531e4f8a9de11aa9d527b88352b04c8173479ced0007eb83f",
+    "assets/references/v3/provenance/m07-1-order-tote.json": "2f306cc6c3869360413058414a55e0fa34756011abaa7da0ee1b5665d1896d4c",
+    "assets/references/v3/m07-2-sealed-parcel.png": "806ec55802141601527c93694e92b5c696e7e6535e31ea8c75898dd02d15d6ce",
+    "frontend/public/references/v3/m07-2-sealed-parcel.png": "806ec55802141601527c93694e92b5c696e7e6535e31ea8c75898dd02d15d6ce",
+    "assets/references/v3/provenance/m07-2-sealed-parcel.json": "5b0b6f42c3dd734a18a1546624a4b098f04141082d543a18bfa318a0fd86a3cf",
+    "assets/references/v3/m04-transfer-clear.png": "be2d9334362b023abe05ed03894e6b53ac6a8cee425b246ece396a31f51a9df8",
+    "frontend/public/references/v3/m04-transfer-clear.png": "be2d9334362b023abe05ed03894e6b53ac6a8cee425b246ece396a31f51a9df8",
+    "assets/references/v3/provenance/m04-transfer-clear.json": "65afa424c928b29fb5372b34c4a1346a24766da95e6b66e227291767340ebe02",
+    "assets/references/v3/m10-long-bundle.png": "db86837e4d8adb40b04ffb64d4948da9ed4cfca056bea00cb20454a8099942e5",
+    "frontend/public/references/v3/m10-long-bundle.png": "db86837e4d8adb40b04ffb64d4948da9ed4cfca056bea00cb20454a8099942e5",
+    "assets/references/v3/provenance/m10-long-bundle.json": "bf1ee53b728fc4a1c881e189383005f7501bb3de5b4e9107b71f88ed4ce4be3e",
+    "assets/references/v3/m11-drum.png": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+    "frontend/public/references/v3/m11-drum.png": "661ee2501025d58d913677d893c000f826f1f2060b802fee3b0545058e2eea40",
+    "assets/references/v3/provenance/m11-drum.json": "2783f725fc33b29d0ca48a1b181b8b30b3ea80566a2d093a12498f50a176097a",
+    "assets/references/v3/m12-fragile-crate.png": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+    "frontend/public/references/v3/m12-fragile-crate.png": "79a7010c2a790336c9bd489acf9b08a6c1def6e9b1d82786b401157a0972ffed",
+    "assets/references/v3/provenance/m12-fragile-crate.json": "f669b9974a69efe172cfa32e7f3e47ec0023c50f24617dbcc31a050d2a6094cc",
+    "assets/references/v3/m10-long-bundle-metal.png": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+    "frontend/public/references/v3/m10-long-bundle-metal.png": "3bca4b2de2fe5ad5b8fef8c70cfb87fa1f09623b468bc62b13855557c4d50e14",
+    "assets/references/v3/provenance/m10-long-bundle-metal.json": "fc647d0c640dc66424d556054bd4a4219811b92049f8f6c3089715fc3ebe919a",
+    "assets/references/v3/m14-long-cradle-locks.png": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+    "frontend/public/references/v3/m14-long-cradle-locks.png": "0b2a27d0371d35cb7001a9006977c0c5e5afad3b6dc95298a184366c600b81f2",
+    "assets/references/v3/provenance/m14-long-cradle-locks.json": "0bfaaf89871d843239be00cfbbea4bb6c0fba781cc4986c8873dc1d6137ae3e6",
+    "assets/references/v3/p03-small-gripper.png": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+    "frontend/public/references/v3/p03-small-gripper.png": "7dbcfe40f1e76befb9bd58e105febdc0e39e246a3aac08139e80180575ce7355",
+    "assets/references/v3/provenance/p03-small-gripper.json": "5a588247c8dacfdd73819648a9cfd18cdbc22af7957a067ddfff37d4d996f95d",
+    "assets/references/v3/r03-common-scale.svg": "881268373079030f988f0bc118c6ce0fbaac3238add11c1af8cc8d545cf0cc3d",
+    "assets/references/v3/r03-common-scale.png": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359",
+    "assets/references/v3/r03-dimension-targets.json": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9",
+    "assets/references/v3/r12-dimension-targets.json": "016470df377539eb5f8935d5c4561ac7ca35475e0019adf13ff6216bc73a7cbf",
+    "assets/references/v3/r13-1-rack-small-targets.json": "0101cb2a02e812e5c938594d6f3098b91c087d9cd074f75a6358bf4719b753f2",
+    "assets/references/v3/r13-2-rack-standard.targets.json": "a327fe63fdbc10f161d63ee8edead4a54c9af07c14ea1995d429517b6f74d822",
+    "assets/references/v3/r13-3-heavy-bay-targets.json": "8ded7b0aec932678c32172c9e2fb6666a3c238b3608bbeef411a72486df6ddde",
+    "assets/references/v3/r13-4-long-rack-targets.json": "a1965dac8b0c177f5e4e741f7277f8e06da8360e191263ed0344094a8e3d6bc6",
+    "assets/references/v3/r13-5-flex-bay-targets.json": "26c79c519f0c47eb377781a4e5f066c6da94ab5c2cf848f097712671fbb4945b",
+    "assets/references/v3/m06-1-small-carton.targets.json": "879dff7b6b88bae74127fd06fc0d7a7a13f83a2c3a9ce2ea5785070a67ccc2cc",
+    "assets/references/v3/r12-c08-interface-targets-v2.json": "1e97fbf8a770d319c63548dbe7d38cf0cf29736832f6174df324d1768ea5e6fd",
+    "assets/references/v3/m08-pallet-load.targets.json": "06792cc6c077bd6192d517aa4c2fa8e1e1a23b5ff7d5a258b836b7abdd3fa8e8",
+    "assets/references/v3/m14-2-reach-forklift.targets.json": "8d34e207ac513c007b329a6b3ecf47f47c990063267c59a18738dd0f92746b9b",
+    "assets/references/v3/m06-2-standard-carton.targets.json": "8914ad4dc902d6820cf7c98dd948c7d779f5a3eafb5a414f2ed75c1b056b899e",
+    "assets/references/v3/p03-small-gripper.targets.json": "6ee7028ffaca5a52ba7c58f8da1dbdc5f43999869d588f577bb9ec11b421ad7c",
+    "frontend/public/references/v3/r03-common-scale.svg": "881268373079030f988f0bc118c6ce0fbaac3238add11c1af8cc8d545cf0cc3d",
+    "frontend/public/references/v3/r03-common-scale.png": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359",
+    "frontend/node_modules/three/package.json": "2dea831b9915a94b23a5c1ecc4bce0433f0cb6bca213401ff660277e85c3fe01",
+    "frontend/node_modules/three/LICENSE": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+    "frontend/node_modules/vue/package.json": "0ff842d6a96dad3c940d099316bc21de8fd25f0d4a3d9206b64921989ea10cd2",
+    "frontend/node_modules/vue/LICENSE": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175",
+    "frontend/node_modules/gltf-validator/package.json": "3578d16153fa237c72784588da2e8fcccc9cd3c1c58ef34c7912f0732d2f5fa6",
+    "frontend/node_modules/gltf-validator/LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "frontend/node_modules/typescript/package.json": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6",
+    "frontend/node_modules/typescript/LICENSE.txt": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+    "frontend/THIRD_PARTY_NOTICES.md": "f5b4fa62b2caaf8bc5f5122358ae2fef43e290c02afdd22c33b96d5b0741d8b0",
+    "frontend/licenses/three-LICENSE.txt": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+    "frontend/licenses/vue-LICENSE.txt": "1bb85cc9b13b81ef41c81c51866172fc345e0503c86726a6755b796590b70175",
+    "THIRD_PARTY_NOTICES.md": "6de1fcce531ceb53fe7993a02434858d659487cea1f58c64dc785fbfb7ce466e",
+    "donors/smart-warehouse-LICENSE.txt": "61f55207d854b23fd16353910f4f38149caa962e33a09aba0a69866cde95acc6",
+    "frontend/package-lock.json": "957df69d2e01a197e08968480ac5eeb3afaa135bddb087af0e1e3360514129a9",
+    "frontend/src/replay/sfx.ts": "4c6d1c402a32307de6395858bc4b0d6d80dcce4fafc1c32b6e2a29d4eec9dcdd",
+    "frontend/src/adaptive-v3/warehouseScenarioEffects.ts": "e7e15135dd01a48749ddc8bb6f8398351b676e9c2ab8ed087dbb974d24775b14",
+    "frontend/docs/proposals/0100-recorded-native-pair-playback.md": "42320122021792b0a13ed6a0a2c649617ab77a2719ac0449cc6691af13dd5ae5",
+    "frontend/src/native-v3/page.ts": "c4644f17fe6c32f6b44d291139b615f6cbabe4491ab1e14b52c0c5fc26d64286",
+    "frontend/src/native-v3/stream.ts": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93",
+    "frontend/src/native-v3/playback.ts": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc",
+    "frontend/src/native-v3/scene.ts": "c760cc8f49d08700247bd0c8e4ee781c40a12aad2d242b67d7c86770b82c87b5",
+    "tools/visual/v3/build_desktop_asset_handoff.mjs": "df3ba21b121afa5ee0cdebc7c80202db66349a4fd7c1e4446d989477d09a5e7d",
+    "frontend/src/adaptive-v3/warehouseAssetBindings.json": "3a416f8034246595c3f0f80e427fe1e3e3120ed206a7ab32c971bc5f78d30b2c",
+    "frontend/public/models/v3/forklift-loaded-long-bundle.glb": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+    "frontend/src/adaptive-v3/warehouseLongSourceOperationScene.ts": "d0fc64c7278ed579af3c6af22ed0288919c95fa2b9d8f9c04867a31597835b32",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0"
+  },
+  "blocking_origin_issues": [],
+  "limitations": [
+    "No generators, Blender, browser, audio playback, collision sweeps or source mutations executed.",
+    "Byte/source lineage audit is not a copyright ownership adjudication, legal advice, OEM/force certificate or public redistribution license.",
+    "Originalworker542 remains current; manualdbf74 and other changed diagnostic bodies retain explicit nondefault classifications.",
+    "External original image-generation service records were not fetched; repository per-image origin records and exact retained bytes were verified.",
+    "One historical engineering target pin is stale: M14.2 current2987B/8d34e207 differs manifest2808B/bed5fcdd; origin/sourceclass unchanged, exact mismatch retained as integritywarning.",
+    "Package license review is bounded to the four dependencies named in runtime credits plus preserved Three/Vue runtime notices, not an exhaustive transitive dependency legal audit."
+  ]
+}

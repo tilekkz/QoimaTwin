@@ -1,0 +1,3027 @@
+{
+  "phase": "ready",
+  "variant": "A",
+  "scenario_id": "N4",
+  "clock": {
+    "at_s": 0,
+    "playing": false,
+    "rate": 60,
+    "duration_s": 600,
+    "disposed": false
+  },
+  "sample": 0,
+  "effects": null,
+  "visual_cues": null,
+  "costs": null,
+  "comparison": {
+    "enabled": false,
+    "selected_variant": "A",
+    "frame": null,
+    "paired": false,
+    "costs": null
+  },
+  "staffing": {
+    "A": {
+      "variant": "A",
+      "time_s": 0,
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false,
+      "fixture_id": "v3:staffing:role-assignment:demo:001",
+      "worker_count": 24,
+      "workers": [
+        {
+          "actor_id": "P01",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            14.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": {
+            "task_id": "scenario-job:v3:request:base:outbound:01",
+            "job_id": "scenario-job:v3:request:base:outbound:01",
+            "request_id": "v3:request:base:outbound:01",
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "assigned_actor_id": "P01",
+            "requested_at_s": 120,
+            "port_id": "OUT_S_EXPRESS",
+            "archetype_id": "SMALL_CARTON",
+            "sku_id": "DEMO_001",
+            "lot_id": "v3:lot:initial:DEMO_001",
+            "quantity_units": 24,
+            "gross_mass_kg": 0.94,
+            "dimensions_xyz_m": [
+              0.32,
+              0.24,
+              0.24
+            ],
+            "position_world_m": [
+              126.3,
+              0.25,
+              50.519999999999996
+            ],
+            "yaw_rad": 1.5707963267948966,
+            "owner": {
+              "kind": "storage_slot",
+              "id": "v3:slot:SMALL_E:019:L1:B5"
+            },
+            "remaining_work_s": null,
+            "origin": "issued_N0_scenario_pending_job",
+            "source_snapshot_at_s": 0,
+            "source_job": {
+              "job_id": "scenario-job:v3:request:base:outbound:01",
+              "request_id": "v3:request:base:outbound:01",
+              "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+              "direction": "outbound",
+              "port_id": "OUT_S_EXPRESS",
+              "requested_at_s": 120,
+              "deadline_at_s": 720,
+              "actor_id": "P01",
+              "actor_ids": [
+                "P01",
+                "K01",
+                "S01"
+              ],
+              "vehicle_id": null,
+              "post_id": "PK01",
+              "destination_slot_id": null,
+              "start_s": 120,
+              "arrival_s": 120,
+              "end_s": 1800,
+              "route_id": "scenario-route:v3:request:base:outbound:01",
+              "loaded_route": {
+                "ok": true,
+                "reason": "ROUTE_OK",
+                "source_kind": "visual_fixture",
+                "engine_operation": false,
+                "operational_admission": false,
+                "cost_evaluated": true,
+                "graph": "walk",
+                "from_node_id": "v3:module:SMALL_E:019:B5:worker:node",
+                "to_node_id": "v3:service:OUT_S_EXPRESS",
+                "arc_ids": [
+                  "v3:module:SMALL_E:019:B5:worker:segment:002:r",
+                  "v3:module:SMALL_E:019:B5:worker:segment:001:r",
+                  "v3:module:SMALL_E:019:B5:worker:segment:000:r",
+                  "v3:ped-edge:0048:f",
+                  "v3:ped-edge:0052:r",
+                  "v3:ped-edge:0035:r",
+                  "v3:ped-edge:0025:r",
+                  "v3:ped-edge:0022:r",
+                  "v3:ped-edge:0021:r",
+                  "v3:ped-edge:0015:part:001:r",
+                  "v3:ped-edge:0015:part:000:r",
+                  "v3:ped-edge:0014:r"
+                ],
+                "length_m": 145.66,
+                "mode": "pedestrian",
+                "actor_id": "P01",
+                "vehicle_id": null,
+                "cargo_archetype_id": "SMALL_CARTON",
+                "geometry_basis": "canonical_walk",
+                "resource_admission_required": true,
+                "actual_action_admission_required": true
+              },
+              "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+              "native_join_required": true,
+              "native_case": null
+            },
+            "source_request": {
+              "archetype_id": "SMALL_CARTON",
+              "deadline_at_s": 720,
+              "direction": "outbound",
+              "engine_operation": false,
+              "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+              "included_in_initial_stock": true,
+              "initial_location_kind": "storage_slot",
+              "kind": "order_request",
+              "lot_id": "v3:lot:initial:DEMO_001",
+              "port_id": "OUT_S_EXPRESS",
+              "quantity_handling_units": 1,
+              "quantity_units": 24,
+              "request_id": "v3:request:base:outbound:01",
+              "requested_at_s": 120,
+              "sku_id": "DEMO_001",
+              "source_kind": "visual_fixture"
+            },
+            "state": "retained",
+            "release_state": "not_released",
+            "work_executed": false,
+            "completed": false
+          }
+        },
+        {
+          "actor_id": "P02",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            17.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": {
+            "task_id": "scenario-job:v3:request:base:outbound:02",
+            "job_id": "scenario-job:v3:request:base:outbound:02",
+            "request_id": "v3:request:base:outbound:02",
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "assigned_actor_id": "P02",
+            "requested_at_s": 240,
+            "port_id": "OUT_W_RETAIL",
+            "archetype_id": "STANDARD_CARTON",
+            "sku_id": "DEMO_111",
+            "lot_id": "v3:lot:initial:DEMO_111",
+            "quantity_units": 24,
+            "gross_mass_kg": 6.35,
+            "dimensions_xyz_m": [
+              0.6,
+              0.4,
+              0.3
+            ],
+            "position_world_m": [
+              102.1,
+              0.2,
+              44.25
+            ],
+            "yaw_rad": 3.141592653589793,
+            "owner": {
+              "kind": "storage_slot",
+              "id": "v3:slot:STANDARD_E:007:L1:B2"
+            },
+            "remaining_work_s": null,
+            "origin": "issued_N0_scenario_pending_job",
+            "source_snapshot_at_s": 0,
+            "source_job": {
+              "job_id": "scenario-job:v3:request:base:outbound:02",
+              "request_id": "v3:request:base:outbound:02",
+              "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+              "direction": "outbound",
+              "port_id": "OUT_W_RETAIL",
+              "requested_at_s": 240,
+              "deadline_at_s": 840,
+              "actor_id": "P02",
+              "actor_ids": [
+                "P02",
+                "K02",
+                "S02"
+              ],
+              "vehicle_id": null,
+              "post_id": "PK02",
+              "destination_slot_id": null,
+              "start_s": 240,
+              "arrival_s": 240,
+              "end_s": 1800,
+              "route_id": "scenario-route:v3:request:base:outbound:02",
+              "loaded_route": {
+                "ok": true,
+                "reason": "ROUTE_OK",
+                "source_kind": "visual_fixture",
+                "engine_operation": false,
+                "operational_admission": false,
+                "cost_evaluated": true,
+                "graph": "walk",
+                "from_node_id": "v3:module:STANDARD_E:007:B2:worker:node",
+                "to_node_id": "v3:service:OUT_W_RETAIL",
+                "arc_ids": [
+                  "v3:module:STANDARD_E:007:B2:worker:segment:002:r",
+                  "v3:module:STANDARD_E:007:B2:worker:segment:001:r",
+                  "v3:module:STANDARD_E:007:B2:worker:segment:000:r",
+                  "v3:ped-edge:0034:r",
+                  "v3:ped-edge:0025:r",
+                  "v3:ped-edge:0018:r",
+                  "v3:ped-edge:0007:r",
+                  "v3:ped-edge:0006:f",
+                  "v3:ped-edge:0008:f"
+                ],
+                "length_m": 117.74,
+                "mode": "pedestrian",
+                "actor_id": "P02",
+                "vehicle_id": null,
+                "cargo_archetype_id": "STANDARD_CARTON",
+                "geometry_basis": "canonical_walk",
+                "resource_admission_required": true,
+                "actual_action_admission_required": true
+              },
+              "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+              "native_join_required": true,
+              "native_case": null
+            },
+            "source_request": {
+              "archetype_id": "STANDARD_CARTON",
+              "deadline_at_s": 840,
+              "direction": "outbound",
+              "engine_operation": false,
+              "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+              "included_in_initial_stock": true,
+              "initial_location_kind": "storage_slot",
+              "kind": "order_request",
+              "lot_id": "v3:lot:initial:DEMO_111",
+              "port_id": "OUT_W_RETAIL",
+              "quantity_handling_units": 1,
+              "quantity_units": 24,
+              "request_id": "v3:request:base:outbound:02",
+              "requested_at_s": 240,
+              "sku_id": "DEMO_111",
+              "source_kind": "visual_fixture"
+            },
+            "state": "retained",
+            "release_state": "not_released",
+            "work_executed": false,
+            "completed": false
+          }
+        },
+        {
+          "actor_id": "P03",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            20.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P04",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            23.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P05",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            26.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P06",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            29.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P07",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            114.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P08",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            117.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P09",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            120.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P10",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            123.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P11",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            126.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P12",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            129.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "K01",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            62,
+            0,
+            6.1
+          ],
+          "station_id": "PK01",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K02",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            73,
+            0,
+            6.1
+          ],
+          "station_id": "PK02",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K03",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            84,
+            0,
+            6.1
+          ],
+          "station_id": "PK03",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K04",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            95,
+            0,
+            6.1
+          ],
+          "station_id": "PK04",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K05",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            106,
+            0,
+            6.1
+          ],
+          "station_id": "PK05",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K06",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            117,
+            0,
+            6.1
+          ],
+          "station_id": "PK06",
+          "retained_task": null
+        },
+        {
+          "actor_id": "R01",
+          "baseline_role": "receiver",
+          "effective_role": "receiver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            72,
+            0,
+            66
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "R02",
+          "baseline_role": "receiver",
+          "effective_role": "receiver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            138,
+            0,
+            54
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "S01",
+          "baseline_role": "shipper",
+          "effective_role": "shipper",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            6,
+            0,
+            54
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "S02",
+          "baseline_role": "shipper",
+          "effective_role": "shipper",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            48,
+            0,
+            6
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "F01",
+          "baseline_role": "forklift_driver",
+          "effective_role": "forklift_driver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            6,
+            0,
+            18
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "F02",
+          "baseline_role": "forklift_driver",
+          "effective_role": "forklift_driver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            138,
+            0,
+            18
+          ],
+          "station_id": null,
+          "retained_task": null
+        }
+      ],
+      "business_inputs_sha256": "3c39bdaf6142358b0ebf6681c77df4d8179a8703315c3b23f7d026e90051d3a7",
+      "allocation_sha256": "d03f3a232b3d4c1fd1331ab05f2d9e54d9942a8508dc31651bc29b814e6f7166",
+      "pending_work_basis": "issued_scenario_plan",
+      "pending_work_source_materialized_input_sha256": "81e7ae0a5289f6d165b4d982f44138565d9313af0c06b24ac72130fa2eb3397c",
+      "pending_work_source_sha256": "9dc1a9aecf7eecd945a519819d00e2aca27dc5fabd26f4c58c395fe388b284df",
+      "pending_tasks_executed": false,
+      "completed_jobs": 0,
+      "calendar_kind": "synthetic_design_same_A_B",
+      "break_actor_positions_not_simulated": true,
+      "scene_binding": false,
+      "transition_costs": []
+    },
+    "B": {
+      "variant": "B",
+      "time_s": 0,
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "operational_admission": false,
+      "fixture_id": "v3:staffing:role-assignment:demo:001",
+      "worker_count": 24,
+      "workers": [
+        {
+          "actor_id": "P01",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            14.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": {
+            "task_id": "scenario-job:v3:request:base:outbound:01",
+            "job_id": "scenario-job:v3:request:base:outbound:01",
+            "request_id": "v3:request:base:outbound:01",
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "assigned_actor_id": "P01",
+            "requested_at_s": 120,
+            "port_id": "OUT_S_EXPRESS",
+            "archetype_id": "SMALL_CARTON",
+            "sku_id": "DEMO_001",
+            "lot_id": "v3:lot:initial:DEMO_001",
+            "quantity_units": 24,
+            "gross_mass_kg": 0.94,
+            "dimensions_xyz_m": [
+              0.32,
+              0.24,
+              0.24
+            ],
+            "position_world_m": [
+              126.3,
+              0.25,
+              50.519999999999996
+            ],
+            "yaw_rad": 1.5707963267948966,
+            "owner": {
+              "kind": "storage_slot",
+              "id": "v3:slot:SMALL_E:019:L1:B5"
+            },
+            "remaining_work_s": null,
+            "origin": "issued_N0_scenario_pending_job",
+            "source_snapshot_at_s": 0,
+            "source_job": {
+              "job_id": "scenario-job:v3:request:base:outbound:01",
+              "request_id": "v3:request:base:outbound:01",
+              "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+              "direction": "outbound",
+              "port_id": "OUT_S_EXPRESS",
+              "requested_at_s": 120,
+              "deadline_at_s": 720,
+              "actor_id": "P01",
+              "actor_ids": [
+                "P01",
+                "K01",
+                "S01"
+              ],
+              "vehicle_id": null,
+              "post_id": "PK01",
+              "destination_slot_id": null,
+              "start_s": 120,
+              "arrival_s": 120,
+              "end_s": 1800,
+              "route_id": "scenario-route:v3:request:base:outbound:01",
+              "loaded_route": {
+                "ok": true,
+                "reason": "ROUTE_OK",
+                "source_kind": "visual_fixture",
+                "engine_operation": false,
+                "operational_admission": false,
+                "cost_evaluated": true,
+                "graph": "walk",
+                "from_node_id": "v3:module:SMALL_E:019:B5:worker:node",
+                "to_node_id": "v3:service:OUT_S_EXPRESS",
+                "arc_ids": [
+                  "v3:module:SMALL_E:019:B5:worker:segment:002:r",
+                  "v3:module:SMALL_E:019:B5:worker:segment:001:r",
+                  "v3:module:SMALL_E:019:B5:worker:segment:000:r",
+                  "v3:ped-edge:0048:f",
+                  "v3:ped-edge:0052:r",
+                  "v3:ped-edge:0035:r",
+                  "v3:ped-edge:0025:r",
+                  "v3:ped-edge:0022:r",
+                  "v3:ped-edge:0021:r",
+                  "v3:ped-edge:0015:part:001:r",
+                  "v3:ped-edge:0015:part:000:r",
+                  "v3:ped-edge:0014:r"
+                ],
+                "length_m": 145.66,
+                "mode": "pedestrian",
+                "actor_id": "P01",
+                "vehicle_id": null,
+                "cargo_archetype_id": "SMALL_CARTON",
+                "geometry_basis": "canonical_walk",
+                "resource_admission_required": true,
+                "actual_action_admission_required": true
+              },
+              "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+              "native_join_required": true,
+              "native_case": null
+            },
+            "source_request": {
+              "archetype_id": "SMALL_CARTON",
+              "deadline_at_s": 720,
+              "direction": "outbound",
+              "engine_operation": false,
+              "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+              "included_in_initial_stock": true,
+              "initial_location_kind": "storage_slot",
+              "kind": "order_request",
+              "lot_id": "v3:lot:initial:DEMO_001",
+              "port_id": "OUT_S_EXPRESS",
+              "quantity_handling_units": 1,
+              "quantity_units": 24,
+              "request_id": "v3:request:base:outbound:01",
+              "requested_at_s": 120,
+              "sku_id": "DEMO_001",
+              "source_kind": "visual_fixture"
+            },
+            "state": "retained",
+            "release_state": "not_released",
+            "work_executed": false,
+            "completed": false
+          }
+        },
+        {
+          "actor_id": "P02",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            17.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": {
+            "task_id": "scenario-job:v3:request:base:outbound:02",
+            "job_id": "scenario-job:v3:request:base:outbound:02",
+            "request_id": "v3:request:base:outbound:02",
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "assigned_actor_id": "P02",
+            "requested_at_s": 240,
+            "port_id": "OUT_W_RETAIL",
+            "archetype_id": "STANDARD_CARTON",
+            "sku_id": "DEMO_111",
+            "lot_id": "v3:lot:initial:DEMO_111",
+            "quantity_units": 24,
+            "gross_mass_kg": 6.35,
+            "dimensions_xyz_m": [
+              0.6,
+              0.4,
+              0.3
+            ],
+            "position_world_m": [
+              102.1,
+              0.2,
+              44.25
+            ],
+            "yaw_rad": 3.141592653589793,
+            "owner": {
+              "kind": "storage_slot",
+              "id": "v3:slot:STANDARD_E:007:L1:B2"
+            },
+            "remaining_work_s": null,
+            "origin": "issued_N0_scenario_pending_job",
+            "source_snapshot_at_s": 0,
+            "source_job": {
+              "job_id": "scenario-job:v3:request:base:outbound:02",
+              "request_id": "v3:request:base:outbound:02",
+              "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+              "direction": "outbound",
+              "port_id": "OUT_W_RETAIL",
+              "requested_at_s": 240,
+              "deadline_at_s": 840,
+              "actor_id": "P02",
+              "actor_ids": [
+                "P02",
+                "K02",
+                "S02"
+              ],
+              "vehicle_id": null,
+              "post_id": "PK02",
+              "destination_slot_id": null,
+              "start_s": 240,
+              "arrival_s": 240,
+              "end_s": 1800,
+              "route_id": "scenario-route:v3:request:base:outbound:02",
+              "loaded_route": {
+                "ok": true,
+                "reason": "ROUTE_OK",
+                "source_kind": "visual_fixture",
+                "engine_operation": false,
+                "operational_admission": false,
+                "cost_evaluated": true,
+                "graph": "walk",
+                "from_node_id": "v3:module:STANDARD_E:007:B2:worker:node",
+                "to_node_id": "v3:service:OUT_W_RETAIL",
+                "arc_ids": [
+                  "v3:module:STANDARD_E:007:B2:worker:segment:002:r",
+                  "v3:module:STANDARD_E:007:B2:worker:segment:001:r",
+                  "v3:module:STANDARD_E:007:B2:worker:segment:000:r",
+                  "v3:ped-edge:0034:r",
+                  "v3:ped-edge:0025:r",
+                  "v3:ped-edge:0018:r",
+                  "v3:ped-edge:0007:r",
+                  "v3:ped-edge:0006:f",
+                  "v3:ped-edge:0008:f"
+                ],
+                "length_m": 117.74,
+                "mode": "pedestrian",
+                "actor_id": "P02",
+                "vehicle_id": null,
+                "cargo_archetype_id": "STANDARD_CARTON",
+                "geometry_basis": "canonical_walk",
+                "resource_admission_required": true,
+                "actual_action_admission_required": true
+              },
+              "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+              "native_join_required": true,
+              "native_case": null
+            },
+            "source_request": {
+              "archetype_id": "STANDARD_CARTON",
+              "deadline_at_s": 840,
+              "direction": "outbound",
+              "engine_operation": false,
+              "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+              "included_in_initial_stock": true,
+              "initial_location_kind": "storage_slot",
+              "kind": "order_request",
+              "lot_id": "v3:lot:initial:DEMO_111",
+              "port_id": "OUT_W_RETAIL",
+              "quantity_handling_units": 1,
+              "quantity_units": 24,
+              "request_id": "v3:request:base:outbound:02",
+              "requested_at_s": 240,
+              "sku_id": "DEMO_111",
+              "source_kind": "visual_fixture"
+            },
+            "state": "retained",
+            "release_state": "not_released",
+            "work_executed": false,
+            "completed": false
+          }
+        },
+        {
+          "actor_id": "P03",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            20.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P04",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            23.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P05",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            26.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P06",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            29.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P07",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            114.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P08",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            117.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P09",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            120.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P10",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            123.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P11",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            126.86,
+            0,
+            44.38
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "P12",
+          "baseline_role": "picker",
+          "effective_role": "picker",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            129.14,
+            0,
+            42.62
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "K01",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            62,
+            0,
+            6.1
+          ],
+          "station_id": "PK01",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K02",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            73,
+            0,
+            6.1
+          ],
+          "station_id": "PK02",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K03",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            84,
+            0,
+            6.1
+          ],
+          "station_id": "PK03",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K04",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            95,
+            0,
+            6.1
+          ],
+          "station_id": "PK04",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K05",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            106,
+            0,
+            6.1
+          ],
+          "station_id": "PK05",
+          "retained_task": null
+        },
+        {
+          "actor_id": "K06",
+          "baseline_role": "packer",
+          "effective_role": "packer",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            117,
+            0,
+            6.1
+          ],
+          "station_id": "PK06",
+          "retained_task": null
+        },
+        {
+          "actor_id": "R01",
+          "baseline_role": "receiver",
+          "effective_role": "receiver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            72,
+            0,
+            66
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "R02",
+          "baseline_role": "receiver",
+          "effective_role": "receiver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            138,
+            0,
+            54
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "S01",
+          "baseline_role": "shipper",
+          "effective_role": "shipper",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            6,
+            0,
+            54
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "S02",
+          "baseline_role": "shipper",
+          "effective_role": "shipper",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            48,
+            0,
+            6
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "F01",
+          "baseline_role": "forklift_driver",
+          "effective_role": "forklift_driver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            6,
+            0,
+            18
+          ],
+          "station_id": null,
+          "retained_task": null
+        },
+        {
+          "actor_id": "F02",
+          "baseline_role": "forklift_driver",
+          "effective_role": "forklift_driver",
+          "phase": "baseline",
+          "available": true,
+          "planned_position_m": [
+            138,
+            0,
+            18
+          ],
+          "station_id": null,
+          "retained_task": null
+        }
+      ],
+      "business_inputs_sha256": "3c39bdaf6142358b0ebf6681c77df4d8179a8703315c3b23f7d026e90051d3a7",
+      "allocation_sha256": "f0ee365bbd3c1563133bfc60afdb09dc58801cb5eb106170407d5e3645993b4a",
+      "pending_work_basis": "issued_scenario_plan",
+      "pending_work_source_materialized_input_sha256": "81e7ae0a5289f6d165b4d982f44138565d9313af0c06b24ac72130fa2eb3397c",
+      "pending_work_source_sha256": "9dc1a9aecf7eecd945a519819d00e2aca27dc5fabd26f4c58c395fe388b284df",
+      "pending_tasks_executed": false,
+      "completed_jobs": 0,
+      "calendar_kind": "synthetic_design_same_A_B",
+      "break_actor_positions_not_simulated": true,
+      "scene_binding": false,
+      "transition_costs": [
+        {
+          "actor_id": "P01",
+          "handoff_s": 8,
+          "outbound_walk_s": 132.21666666666667,
+          "return_walk_s": 132.2166666666667,
+          "walk_distance_m": 317.32000000000005
+        },
+        {
+          "actor_id": "P02",
+          "handoff_s": 8,
+          "outbound_walk_s": 142.85000000000002,
+          "return_walk_s": 142.85000000000002,
+          "walk_distance_m": 342.84000000000003
+        }
+      ]
+    },
+    "pending_work": {
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "source_materialized_input_sha256": "81e7ae0a5289f6d165b4d982f44138565d9313af0c06b24ac72130fa2eb3397c",
+      "source_work_sha256": "9dc1a9aecf7eecd945a519819d00e2aca27dc5fabd26f4c58c395fe388b284df",
+      "source_epoch": {
+        "kind": "semantic_rebase",
+        "changes": [
+          {
+            "path": "/base_fixture_ref/sha256",
+            "from": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+            "to": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579"
+          },
+          {
+            "path": "/registry_ref/sha256",
+            "from": "fef5502f82d6cc624c9d6713d8e6e744bdc75c10a4992c4b1dc530044e0fef30",
+            "to": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82"
+          },
+          {
+            "path": "/profiles_ref/sha256",
+            "from": "c046dfcfe36eb1dcddcc5e70954384d005b7393c60d21ae9b5ad950ca198b8a0",
+            "to": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5"
+          }
+        ],
+        "physical_tables_verified": [
+          "initial_stock",
+          "workers",
+          "vehicles",
+          "ports",
+          "archetypes",
+          "skus"
+        ]
+      },
+      "source_snapshot_at_s": 0,
+      "pending_jobs": [
+        {
+          "task_id": "scenario-job:v3:request:base:outbound:01",
+          "job_id": "scenario-job:v3:request:base:outbound:01",
+          "request_id": "v3:request:base:outbound:01",
+          "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+          "assigned_actor_id": "P01",
+          "requested_at_s": 120,
+          "port_id": "OUT_S_EXPRESS",
+          "archetype_id": "SMALL_CARTON",
+          "sku_id": "DEMO_001",
+          "lot_id": "v3:lot:initial:DEMO_001",
+          "quantity_units": 24,
+          "gross_mass_kg": 0.94,
+          "dimensions_xyz_m": [
+            0.32,
+            0.24,
+            0.24
+          ],
+          "position_world_m": [
+            126.3,
+            0.25,
+            50.519999999999996
+          ],
+          "yaw_rad": 1.5707963267948966,
+          "owner": {
+            "kind": "storage_slot",
+            "id": "v3:slot:SMALL_E:019:L1:B5"
+          },
+          "remaining_work_s": null,
+          "origin": "issued_N0_scenario_pending_job",
+          "source_snapshot_at_s": 0,
+          "source_job": {
+            "job_id": "scenario-job:v3:request:base:outbound:01",
+            "request_id": "v3:request:base:outbound:01",
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "direction": "outbound",
+            "port_id": "OUT_S_EXPRESS",
+            "requested_at_s": 120,
+            "deadline_at_s": 720,
+            "actor_id": "P01",
+            "actor_ids": [
+              "P01",
+              "K01",
+              "S01"
+            ],
+            "vehicle_id": null,
+            "post_id": "PK01",
+            "destination_slot_id": null,
+            "start_s": 120,
+            "arrival_s": 120,
+            "end_s": 1800,
+            "route_id": "scenario-route:v3:request:base:outbound:01",
+            "loaded_route": {
+              "ok": true,
+              "reason": "ROUTE_OK",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "operational_admission": false,
+              "cost_evaluated": true,
+              "graph": "walk",
+              "from_node_id": "v3:module:SMALL_E:019:B5:worker:node",
+              "to_node_id": "v3:service:OUT_S_EXPRESS",
+              "arc_ids": [
+                "v3:module:SMALL_E:019:B5:worker:segment:002:r",
+                "v3:module:SMALL_E:019:B5:worker:segment:001:r",
+                "v3:module:SMALL_E:019:B5:worker:segment:000:r",
+                "v3:ped-edge:0048:f",
+                "v3:ped-edge:0052:r",
+                "v3:ped-edge:0035:r",
+                "v3:ped-edge:0025:r",
+                "v3:ped-edge:0022:r",
+                "v3:ped-edge:0021:r",
+                "v3:ped-edge:0015:part:001:r",
+                "v3:ped-edge:0015:part:000:r",
+                "v3:ped-edge:0014:r"
+              ],
+              "length_m": 145.66,
+              "mode": "pedestrian",
+              "actor_id": "P01",
+              "vehicle_id": null,
+              "cargo_archetype_id": "SMALL_CARTON",
+              "geometry_basis": "canonical_walk",
+              "resource_admission_required": true,
+              "actual_action_admission_required": true
+            },
+            "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+            "native_join_required": true,
+            "native_case": null
+          },
+          "source_request": {
+            "archetype_id": "SMALL_CARTON",
+            "deadline_at_s": 720,
+            "direction": "outbound",
+            "engine_operation": false,
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "included_in_initial_stock": true,
+            "initial_location_kind": "storage_slot",
+            "kind": "order_request",
+            "lot_id": "v3:lot:initial:DEMO_001",
+            "port_id": "OUT_S_EXPRESS",
+            "quantity_handling_units": 1,
+            "quantity_units": 24,
+            "request_id": "v3:request:base:outbound:01",
+            "requested_at_s": 120,
+            "sku_id": "DEMO_001",
+            "source_kind": "visual_fixture"
+          }
+        },
+        {
+          "task_id": "scenario-job:v3:request:base:outbound:02",
+          "job_id": "scenario-job:v3:request:base:outbound:02",
+          "request_id": "v3:request:base:outbound:02",
+          "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+          "assigned_actor_id": "P02",
+          "requested_at_s": 240,
+          "port_id": "OUT_W_RETAIL",
+          "archetype_id": "STANDARD_CARTON",
+          "sku_id": "DEMO_111",
+          "lot_id": "v3:lot:initial:DEMO_111",
+          "quantity_units": 24,
+          "gross_mass_kg": 6.35,
+          "dimensions_xyz_m": [
+            0.6,
+            0.4,
+            0.3
+          ],
+          "position_world_m": [
+            102.1,
+            0.2,
+            44.25
+          ],
+          "yaw_rad": 3.141592653589793,
+          "owner": {
+            "kind": "storage_slot",
+            "id": "v3:slot:STANDARD_E:007:L1:B2"
+          },
+          "remaining_work_s": null,
+          "origin": "issued_N0_scenario_pending_job",
+          "source_snapshot_at_s": 0,
+          "source_job": {
+            "job_id": "scenario-job:v3:request:base:outbound:02",
+            "request_id": "v3:request:base:outbound:02",
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "direction": "outbound",
+            "port_id": "OUT_W_RETAIL",
+            "requested_at_s": 240,
+            "deadline_at_s": 840,
+            "actor_id": "P02",
+            "actor_ids": [
+              "P02",
+              "K02",
+              "S02"
+            ],
+            "vehicle_id": null,
+            "post_id": "PK02",
+            "destination_slot_id": null,
+            "start_s": 240,
+            "arrival_s": 240,
+            "end_s": 1800,
+            "route_id": "scenario-route:v3:request:base:outbound:02",
+            "loaded_route": {
+              "ok": true,
+              "reason": "ROUTE_OK",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "operational_admission": false,
+              "cost_evaluated": true,
+              "graph": "walk",
+              "from_node_id": "v3:module:STANDARD_E:007:B2:worker:node",
+              "to_node_id": "v3:service:OUT_W_RETAIL",
+              "arc_ids": [
+                "v3:module:STANDARD_E:007:B2:worker:segment:002:r",
+                "v3:module:STANDARD_E:007:B2:worker:segment:001:r",
+                "v3:module:STANDARD_E:007:B2:worker:segment:000:r",
+                "v3:ped-edge:0034:r",
+                "v3:ped-edge:0025:r",
+                "v3:ped-edge:0018:r",
+                "v3:ped-edge:0007:r",
+                "v3:ped-edge:0006:f",
+                "v3:ped-edge:0008:f"
+              ],
+              "length_m": 117.74,
+              "mode": "pedestrian",
+              "actor_id": "P02",
+              "vehicle_id": null,
+              "cargo_archetype_id": "STANDARD_CARTON",
+              "geometry_basis": "canonical_walk",
+              "resource_admission_required": true,
+              "actual_action_admission_required": true
+            },
+            "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+            "native_join_required": true,
+            "native_case": null
+          },
+          "source_request": {
+            "archetype_id": "STANDARD_CARTON",
+            "deadline_at_s": 840,
+            "direction": "outbound",
+            "engine_operation": false,
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "included_in_initial_stock": true,
+            "initial_location_kind": "storage_slot",
+            "kind": "order_request",
+            "lot_id": "v3:lot:initial:DEMO_111",
+            "port_id": "OUT_W_RETAIL",
+            "quantity_handling_units": 1,
+            "quantity_units": 24,
+            "request_id": "v3:request:base:outbound:02",
+            "requested_at_s": 240,
+            "sku_id": "DEMO_111",
+            "source_kind": "visual_fixture"
+          }
+        }
+      ],
+      "outstanding_requests": 2,
+      "jobs_executed_in_staffing": false,
+      "source_stock_moved_in_staffing": false
+    }
+  },
+  "native": {
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "scene_binding": true,
+    "worker_count": 24,
+    "rendered_actor_ids": [
+      "F01",
+      "F02",
+      "K01",
+      "K02",
+      "K03",
+      "K04",
+      "K05",
+      "K06",
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "R01",
+      "R02",
+      "S01",
+      "S02"
+    ],
+    "original_worker_source_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "changed_actor_ids": [
+      "P01",
+      "P02",
+      "K05",
+      "K06"
+    ],
+    "variant": "A",
+    "at_s": 0,
+    "business_inputs_sha256": "3c39bdaf6142358b0ebf6681c77df4d8179a8703315c3b23f7d026e90051d3a7",
+    "allocation_sha256": "d03f3a232b3d4c1fd1331ab05f2d9e54d9942a8508dc31651bc29b814e6f7166",
+    "pending_tasks_executed": false,
+    "completed_jobs": 0,
+    "source_break_positions_not_simulated": true,
+    "break_positions_simulated": true,
+    "minimum_continuous_worker_spacing_m": 1.1400000000000006,
+    "common_break_routes": [
+      {
+        "actor_id": "K05",
+        "node_id": "v3:module:FLEX_E:004:B1:cart:node",
+        "outbound_arc_ids": [
+          "v3:ped-edge:0041:f",
+          "v3:ped-edge:0042:f",
+          "v3:ped-edge:0040:r",
+          "v3:ped-edge:0039:f",
+          "v3:module:FLEX_E:004:B1:worker:segment:000:f",
+          "v3:module:FLEX_E:004:B1:worker:segment:001:f"
+        ],
+        "return_arc_ids": [
+          "v3:module:FLEX_E:004:B1:worker:segment:001:r",
+          "v3:module:FLEX_E:004:B1:worker:segment:000:r",
+          "v3:ped-edge:0039:r",
+          "v3:ped-edge:0040:f",
+          "v3:ped-edge:0042:r",
+          "v3:ped-edge:0041:r"
+        ],
+        "outbound_duration_s": 12.625,
+        "return_duration_s": 12.625,
+        "outbound_from_s": 30,
+        "return_arrival_s": 600,
+        "segments": [
+          {
+            "from_s": 0,
+            "to_s": 30,
+            "a": [
+              106,
+              0,
+              6.1
+            ],
+            "b": [
+              106,
+              0,
+              6.1
+            ]
+          },
+          {
+            "from_s": 30,
+            "to_s": 30.916666666666668,
+            "a": [
+              106,
+              0,
+              6.1
+            ],
+            "b": [
+              106,
+              0,
+              7.2
+            ]
+          },
+          {
+            "from_s": 30.916666666666668,
+            "to_s": 33.25,
+            "a": [
+              106,
+              0,
+              7.2
+            ],
+            "b": [
+              106,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 33.25,
+            "to_s": 36.583333333333336,
+            "a": [
+              106,
+              0,
+              10
+            ],
+            "b": [
+              102,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 36.583333333333336,
+            "to_s": 37.208333333333336,
+            "a": [
+              102,
+              0,
+              10
+            ],
+            "b": [
+              102,
+              0,
+              10.75
+            ]
+          },
+          {
+            "from_s": 37.208333333333336,
+            "to_s": 39.29166666666667,
+            "a": [
+              102,
+              0,
+              10.75
+            ],
+            "b": [
+              102,
+              0,
+              13.25
+            ]
+          },
+          {
+            "from_s": 39.29166666666667,
+            "to_s": 42.625,
+            "a": [
+              102,
+              0,
+              13.25
+            ],
+            "b": [
+              106,
+              0,
+              13.25
+            ]
+          },
+          {
+            "from_s": 42.625,
+            "to_s": 587.375,
+            "a": [
+              106,
+              0,
+              13.25
+            ],
+            "b": [
+              106,
+              0,
+              13.25
+            ]
+          },
+          {
+            "from_s": 587.375,
+            "to_s": 590.7083333333334,
+            "a": [
+              106,
+              0,
+              13.25
+            ],
+            "b": [
+              102,
+              0,
+              13.25
+            ]
+          },
+          {
+            "from_s": 590.7083333333334,
+            "to_s": 592.7916666666667,
+            "a": [
+              102,
+              0,
+              13.25
+            ],
+            "b": [
+              102,
+              0,
+              10.75
+            ]
+          },
+          {
+            "from_s": 592.7916666666667,
+            "to_s": 593.4166666666667,
+            "a": [
+              102,
+              0,
+              10.75
+            ],
+            "b": [
+              102,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 593.4166666666667,
+            "to_s": 596.7500000000001,
+            "a": [
+              102,
+              0,
+              10
+            ],
+            "b": [
+              106,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 596.7500000000001,
+            "to_s": 599.0833333333335,
+            "a": [
+              106,
+              0,
+              10
+            ],
+            "b": [
+              106,
+              0,
+              7.2
+            ]
+          },
+          {
+            "from_s": 599.0833333333335,
+            "to_s": 600,
+            "a": [
+              106,
+              0,
+              7.2
+            ],
+            "b": [
+              106,
+              0,
+              6.1
+            ]
+          }
+        ]
+      },
+      {
+        "actor_id": "K06",
+        "node_id": "v3:ped-node:12975:01000",
+        "outbound_arc_ids": [
+          "v3:ped-edge:0044:f",
+          "v3:ped-edge:0045:f",
+          "v3:ped-edge:0046:part:000:f"
+        ],
+        "return_arc_ids": [
+          "v3:ped-edge:0046:part:000:r",
+          "v3:ped-edge:0045:r",
+          "v3:ped-edge:0044:r"
+        ],
+        "outbound_duration_s": 13.875000000002501,
+        "return_duration_s": 13.875000000002501,
+        "outbound_from_s": 30,
+        "return_arrival_s": 600,
+        "segments": [
+          {
+            "from_s": 0,
+            "to_s": 30,
+            "a": [
+              117,
+              0,
+              6.1
+            ],
+            "b": [
+              117,
+              0,
+              6.1
+            ]
+          },
+          {
+            "from_s": 30,
+            "to_s": 30.916666666666668,
+            "a": [
+              117,
+              0,
+              6.1
+            ],
+            "b": [
+              117,
+              0,
+              7.2
+            ]
+          },
+          {
+            "from_s": 30.916666666666668,
+            "to_s": 33.25,
+            "a": [
+              117,
+              0,
+              7.2
+            ],
+            "b": [
+              117,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 33.25,
+            "to_s": 43.8750000000025,
+            "a": [
+              117,
+              0,
+              10
+            ],
+            "b": [
+              129.750000000003,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 43.8750000000025,
+            "to_s": 586.1249999999975,
+            "a": [
+              129.750000000003,
+              0,
+              10
+            ],
+            "b": [
+              129.750000000003,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 586.1249999999975,
+            "to_s": 596.75,
+            "a": [
+              129.750000000003,
+              0,
+              10
+            ],
+            "b": [
+              117,
+              0,
+              10
+            ]
+          },
+          {
+            "from_s": 596.75,
+            "to_s": 599.0833333333334,
+            "a": [
+              117,
+              0,
+              10
+            ],
+            "b": [
+              117,
+              0,
+              7.2
+            ]
+          },
+          {
+            "from_s": 599.0833333333334,
+            "to_s": 600,
+            "a": [
+              117,
+              0,
+              7.2
+            ],
+            "b": [
+              117,
+              0,
+              6.1
+            ]
+          }
+        ]
+      }
+    ],
+    "workers": [
+      {
+        "actor_id": "F01",
+        "role": "forklift_driver",
+        "effective_role": "forklift_driver",
+        "baseline_role": "forklift_driver",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          5.385,
+          0.29,
+          18
+        ],
+        "planned_position_m": [
+          6,
+          0,
+          18
+        ],
+        "role_color": "#F4C542",
+        "native_tint_colors": [
+          "#f4c542"
+        ],
+        "role_code": "05",
+        "badge_role": "forklift_driver",
+        "badge_code": "05",
+        "retained_task": null
+      },
+      {
+        "actor_id": "F02",
+        "role": "forklift_driver",
+        "effective_role": "forklift_driver",
+        "baseline_role": "forklift_driver",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          137.385,
+          0.29,
+          18
+        ],
+        "planned_position_m": [
+          138,
+          0,
+          18
+        ],
+        "role_color": "#F4C542",
+        "native_tint_colors": [
+          "#f4c542"
+        ],
+        "role_code": "05",
+        "badge_role": "forklift_driver",
+        "badge_code": "05",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P01",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          14.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          14.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": {
+          "task_id": "scenario-job:v3:request:base:outbound:01",
+          "job_id": "scenario-job:v3:request:base:outbound:01",
+          "request_id": "v3:request:base:outbound:01",
+          "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+          "assigned_actor_id": "P01",
+          "requested_at_s": 120,
+          "port_id": "OUT_S_EXPRESS",
+          "archetype_id": "SMALL_CARTON",
+          "sku_id": "DEMO_001",
+          "lot_id": "v3:lot:initial:DEMO_001",
+          "quantity_units": 24,
+          "gross_mass_kg": 0.94,
+          "dimensions_xyz_m": [
+            0.32,
+            0.24,
+            0.24
+          ],
+          "position_world_m": [
+            126.3,
+            0.25,
+            50.519999999999996
+          ],
+          "yaw_rad": 1.5707963267948966,
+          "owner": {
+            "kind": "storage_slot",
+            "id": "v3:slot:SMALL_E:019:L1:B5"
+          },
+          "remaining_work_s": null,
+          "origin": "issued_N0_scenario_pending_job",
+          "source_snapshot_at_s": 0,
+          "source_job": {
+            "job_id": "scenario-job:v3:request:base:outbound:01",
+            "request_id": "v3:request:base:outbound:01",
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "direction": "outbound",
+            "port_id": "OUT_S_EXPRESS",
+            "requested_at_s": 120,
+            "deadline_at_s": 720,
+            "actor_id": "P01",
+            "actor_ids": [
+              "P01",
+              "K01",
+              "S01"
+            ],
+            "vehicle_id": null,
+            "post_id": "PK01",
+            "destination_slot_id": null,
+            "start_s": 120,
+            "arrival_s": 120,
+            "end_s": 1800,
+            "route_id": "scenario-route:v3:request:base:outbound:01",
+            "loaded_route": {
+              "ok": true,
+              "reason": "ROUTE_OK",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "operational_admission": false,
+              "cost_evaluated": true,
+              "graph": "walk",
+              "from_node_id": "v3:module:SMALL_E:019:B5:worker:node",
+              "to_node_id": "v3:service:OUT_S_EXPRESS",
+              "arc_ids": [
+                "v3:module:SMALL_E:019:B5:worker:segment:002:r",
+                "v3:module:SMALL_E:019:B5:worker:segment:001:r",
+                "v3:module:SMALL_E:019:B5:worker:segment:000:r",
+                "v3:ped-edge:0048:f",
+                "v3:ped-edge:0052:r",
+                "v3:ped-edge:0035:r",
+                "v3:ped-edge:0025:r",
+                "v3:ped-edge:0022:r",
+                "v3:ped-edge:0021:r",
+                "v3:ped-edge:0015:part:001:r",
+                "v3:ped-edge:0015:part:000:r",
+                "v3:ped-edge:0014:r"
+              ],
+              "length_m": 145.66,
+              "mode": "pedestrian",
+              "actor_id": "P01",
+              "vehicle_id": null,
+              "cargo_archetype_id": "SMALL_CARTON",
+              "geometry_basis": "canonical_walk",
+              "resource_admission_required": true,
+              "actual_action_admission_required": true
+            },
+            "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+            "native_join_required": true,
+            "native_case": null
+          },
+          "source_request": {
+            "archetype_id": "SMALL_CARTON",
+            "deadline_at_s": 720,
+            "direction": "outbound",
+            "engine_operation": false,
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "included_in_initial_stock": true,
+            "initial_location_kind": "storage_slot",
+            "kind": "order_request",
+            "lot_id": "v3:lot:initial:DEMO_001",
+            "port_id": "OUT_S_EXPRESS",
+            "quantity_handling_units": 1,
+            "quantity_units": 24,
+            "request_id": "v3:request:base:outbound:01",
+            "requested_at_s": 120,
+            "sku_id": "DEMO_001",
+            "source_kind": "visual_fixture"
+          },
+          "state": "retained",
+          "release_state": "not_released",
+          "work_executed": false,
+          "completed": false
+        }
+      },
+      {
+        "actor_id": "P02",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          17.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          17.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": {
+          "task_id": "scenario-job:v3:request:base:outbound:02",
+          "job_id": "scenario-job:v3:request:base:outbound:02",
+          "request_id": "v3:request:base:outbound:02",
+          "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+          "assigned_actor_id": "P02",
+          "requested_at_s": 240,
+          "port_id": "OUT_W_RETAIL",
+          "archetype_id": "STANDARD_CARTON",
+          "sku_id": "DEMO_111",
+          "lot_id": "v3:lot:initial:DEMO_111",
+          "quantity_units": 24,
+          "gross_mass_kg": 6.35,
+          "dimensions_xyz_m": [
+            0.6,
+            0.4,
+            0.3
+          ],
+          "position_world_m": [
+            102.1,
+            0.2,
+            44.25
+          ],
+          "yaw_rad": 3.141592653589793,
+          "owner": {
+            "kind": "storage_slot",
+            "id": "v3:slot:STANDARD_E:007:L1:B2"
+          },
+          "remaining_work_s": null,
+          "origin": "issued_N0_scenario_pending_job",
+          "source_snapshot_at_s": 0,
+          "source_job": {
+            "job_id": "scenario-job:v3:request:base:outbound:02",
+            "request_id": "v3:request:base:outbound:02",
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "direction": "outbound",
+            "port_id": "OUT_W_RETAIL",
+            "requested_at_s": 240,
+            "deadline_at_s": 840,
+            "actor_id": "P02",
+            "actor_ids": [
+              "P02",
+              "K02",
+              "S02"
+            ],
+            "vehicle_id": null,
+            "post_id": "PK02",
+            "destination_slot_id": null,
+            "start_s": 240,
+            "arrival_s": 240,
+            "end_s": 1800,
+            "route_id": "scenario-route:v3:request:base:outbound:02",
+            "loaded_route": {
+              "ok": true,
+              "reason": "ROUTE_OK",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "operational_admission": false,
+              "cost_evaluated": true,
+              "graph": "walk",
+              "from_node_id": "v3:module:STANDARD_E:007:B2:worker:node",
+              "to_node_id": "v3:service:OUT_W_RETAIL",
+              "arc_ids": [
+                "v3:module:STANDARD_E:007:B2:worker:segment:002:r",
+                "v3:module:STANDARD_E:007:B2:worker:segment:001:r",
+                "v3:module:STANDARD_E:007:B2:worker:segment:000:r",
+                "v3:ped-edge:0034:r",
+                "v3:ped-edge:0025:r",
+                "v3:ped-edge:0018:r",
+                "v3:ped-edge:0007:r",
+                "v3:ped-edge:0006:f",
+                "v3:ped-edge:0008:f"
+              ],
+              "length_m": 117.74,
+              "mode": "pedestrian",
+              "actor_id": "P02",
+              "vehicle_id": null,
+              "cargo_archetype_id": "STANDARD_CARTON",
+              "geometry_basis": "canonical_walk",
+              "resource_admission_required": true,
+              "actual_action_admission_required": true
+            },
+            "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+            "native_join_required": true,
+            "native_case": null
+          },
+          "source_request": {
+            "archetype_id": "STANDARD_CARTON",
+            "deadline_at_s": 840,
+            "direction": "outbound",
+            "engine_operation": false,
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "included_in_initial_stock": true,
+            "initial_location_kind": "storage_slot",
+            "kind": "order_request",
+            "lot_id": "v3:lot:initial:DEMO_111",
+            "port_id": "OUT_W_RETAIL",
+            "quantity_handling_units": 1,
+            "quantity_units": 24,
+            "request_id": "v3:request:base:outbound:02",
+            "requested_at_s": 240,
+            "sku_id": "DEMO_111",
+            "source_kind": "visual_fixture"
+          },
+          "state": "retained",
+          "release_state": "not_released",
+          "work_executed": false,
+          "completed": false
+        }
+      },
+      {
+        "actor_id": "P03",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          20.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          20.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P04",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          23.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          23.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P05",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          26.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          26.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P06",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          29.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          29.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P07",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          114.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          114.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P08",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          117.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          117.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P09",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          120.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          120.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P10",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          123.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          123.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P11",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          126.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          126.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "P12",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          129.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          129.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K01",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          62,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          62,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K02",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          73,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          73,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K03",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          84,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          84,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K04",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          95,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          95,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K05",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          106,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          106,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K06",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          117,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          117,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "R01",
+        "role": "receiver",
+        "effective_role": "receiver",
+        "baseline_role": "receiver",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          72,
+          0,
+          66
+        ],
+        "planned_position_m": [
+          72,
+          0,
+          66
+        ],
+        "role_color": "#9B59D0",
+        "native_tint_colors": [
+          "#9b59d0"
+        ],
+        "role_code": "03",
+        "badge_role": "receiver",
+        "badge_code": "03",
+        "retained_task": null
+      },
+      {
+        "actor_id": "R02",
+        "role": "receiver",
+        "effective_role": "receiver",
+        "baseline_role": "receiver",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          138,
+          0,
+          54
+        ],
+        "planned_position_m": [
+          138,
+          0,
+          54
+        ],
+        "role_color": "#9B59D0",
+        "native_tint_colors": [
+          "#9b59d0"
+        ],
+        "role_code": "03",
+        "badge_role": "receiver",
+        "badge_code": "03",
+        "retained_task": null
+      },
+      {
+        "actor_id": "S01",
+        "role": "shipper",
+        "effective_role": "shipper",
+        "baseline_role": "shipper",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          6,
+          0,
+          54
+        ],
+        "planned_position_m": [
+          6,
+          0,
+          54
+        ],
+        "role_color": "#2AA56A",
+        "native_tint_colors": [
+          "#2aa56a"
+        ],
+        "role_code": "04",
+        "badge_role": "shipper",
+        "badge_code": "04",
+        "retained_task": null
+      },
+      {
+        "actor_id": "S02",
+        "role": "shipper",
+        "effective_role": "shipper",
+        "baseline_role": "shipper",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          48,
+          0,
+          6
+        ],
+        "planned_position_m": [
+          48,
+          0,
+          6
+        ],
+        "role_color": "#2AA56A",
+        "native_tint_colors": [
+          "#2aa56a"
+        ],
+        "role_code": "04",
+        "badge_role": "shipper",
+        "badge_code": "04",
+        "retained_task": null
+      }
+    ],
+    "actors": [
+      {
+        "actor_id": "P01",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          14.86,
+          0,
+          44.38
+        ],
+        "planned_position_m": [
+          14.86,
+          0,
+          44.38
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": {
+          "task_id": "scenario-job:v3:request:base:outbound:01",
+          "job_id": "scenario-job:v3:request:base:outbound:01",
+          "request_id": "v3:request:base:outbound:01",
+          "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+          "assigned_actor_id": "P01",
+          "requested_at_s": 120,
+          "port_id": "OUT_S_EXPRESS",
+          "archetype_id": "SMALL_CARTON",
+          "sku_id": "DEMO_001",
+          "lot_id": "v3:lot:initial:DEMO_001",
+          "quantity_units": 24,
+          "gross_mass_kg": 0.94,
+          "dimensions_xyz_m": [
+            0.32,
+            0.24,
+            0.24
+          ],
+          "position_world_m": [
+            126.3,
+            0.25,
+            50.519999999999996
+          ],
+          "yaw_rad": 1.5707963267948966,
+          "owner": {
+            "kind": "storage_slot",
+            "id": "v3:slot:SMALL_E:019:L1:B5"
+          },
+          "remaining_work_s": null,
+          "origin": "issued_N0_scenario_pending_job",
+          "source_snapshot_at_s": 0,
+          "source_job": {
+            "job_id": "scenario-job:v3:request:base:outbound:01",
+            "request_id": "v3:request:base:outbound:01",
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "direction": "outbound",
+            "port_id": "OUT_S_EXPRESS",
+            "requested_at_s": 120,
+            "deadline_at_s": 720,
+            "actor_id": "P01",
+            "actor_ids": [
+              "P01",
+              "K01",
+              "S01"
+            ],
+            "vehicle_id": null,
+            "post_id": "PK01",
+            "destination_slot_id": null,
+            "start_s": 120,
+            "arrival_s": 120,
+            "end_s": 1800,
+            "route_id": "scenario-route:v3:request:base:outbound:01",
+            "loaded_route": {
+              "ok": true,
+              "reason": "ROUTE_OK",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "operational_admission": false,
+              "cost_evaluated": true,
+              "graph": "walk",
+              "from_node_id": "v3:module:SMALL_E:019:B5:worker:node",
+              "to_node_id": "v3:service:OUT_S_EXPRESS",
+              "arc_ids": [
+                "v3:module:SMALL_E:019:B5:worker:segment:002:r",
+                "v3:module:SMALL_E:019:B5:worker:segment:001:r",
+                "v3:module:SMALL_E:019:B5:worker:segment:000:r",
+                "v3:ped-edge:0048:f",
+                "v3:ped-edge:0052:r",
+                "v3:ped-edge:0035:r",
+                "v3:ped-edge:0025:r",
+                "v3:ped-edge:0022:r",
+                "v3:ped-edge:0021:r",
+                "v3:ped-edge:0015:part:001:r",
+                "v3:ped-edge:0015:part:000:r",
+                "v3:ped-edge:0014:r"
+              ],
+              "length_m": 145.66,
+              "mode": "pedestrian",
+              "actor_id": "P01",
+              "vehicle_id": null,
+              "cargo_archetype_id": "SMALL_CARTON",
+              "geometry_basis": "canonical_walk",
+              "resource_admission_required": true,
+              "actual_action_admission_required": true
+            },
+            "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+            "native_join_required": true,
+            "native_case": null
+          },
+          "source_request": {
+            "archetype_id": "SMALL_CARTON",
+            "deadline_at_s": 720,
+            "direction": "outbound",
+            "engine_operation": false,
+            "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+            "included_in_initial_stock": true,
+            "initial_location_kind": "storage_slot",
+            "kind": "order_request",
+            "lot_id": "v3:lot:initial:DEMO_001",
+            "port_id": "OUT_S_EXPRESS",
+            "quantity_handling_units": 1,
+            "quantity_units": 24,
+            "request_id": "v3:request:base:outbound:01",
+            "requested_at_s": 120,
+            "sku_id": "DEMO_001",
+            "source_kind": "visual_fixture"
+          },
+          "state": "retained",
+          "release_state": "not_released",
+          "work_executed": false,
+          "completed": false
+        }
+      },
+      {
+        "actor_id": "P02",
+        "role": "picker",
+        "effective_role": "picker",
+        "baseline_role": "picker",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          17.14,
+          0,
+          42.62
+        ],
+        "planned_position_m": [
+          17.14,
+          0,
+          42.62
+        ],
+        "role_color": "#3478F6",
+        "native_tint_colors": [
+          "#3478f6"
+        ],
+        "role_code": "01",
+        "badge_role": "picker",
+        "badge_code": "01",
+        "retained_task": {
+          "task_id": "scenario-job:v3:request:base:outbound:02",
+          "job_id": "scenario-job:v3:request:base:outbound:02",
+          "request_id": "v3:request:base:outbound:02",
+          "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+          "assigned_actor_id": "P02",
+          "requested_at_s": 240,
+          "port_id": "OUT_W_RETAIL",
+          "archetype_id": "STANDARD_CARTON",
+          "sku_id": "DEMO_111",
+          "lot_id": "v3:lot:initial:DEMO_111",
+          "quantity_units": 24,
+          "gross_mass_kg": 6.35,
+          "dimensions_xyz_m": [
+            0.6,
+            0.4,
+            0.3
+          ],
+          "position_world_m": [
+            102.1,
+            0.2,
+            44.25
+          ],
+          "yaw_rad": 3.141592653589793,
+          "owner": {
+            "kind": "storage_slot",
+            "id": "v3:slot:STANDARD_E:007:L1:B2"
+          },
+          "remaining_work_s": null,
+          "origin": "issued_N0_scenario_pending_job",
+          "source_snapshot_at_s": 0,
+          "source_job": {
+            "job_id": "scenario-job:v3:request:base:outbound:02",
+            "request_id": "v3:request:base:outbound:02",
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "direction": "outbound",
+            "port_id": "OUT_W_RETAIL",
+            "requested_at_s": 240,
+            "deadline_at_s": 840,
+            "actor_id": "P02",
+            "actor_ids": [
+              "P02",
+              "K02",
+              "S02"
+            ],
+            "vehicle_id": null,
+            "post_id": "PK02",
+            "destination_slot_id": null,
+            "start_s": 240,
+            "arrival_s": 240,
+            "end_s": 1800,
+            "route_id": "scenario-route:v3:request:base:outbound:02",
+            "loaded_route": {
+              "ok": true,
+              "reason": "ROUTE_OK",
+              "source_kind": "visual_fixture",
+              "engine_operation": false,
+              "operational_admission": false,
+              "cost_evaluated": true,
+              "graph": "walk",
+              "from_node_id": "v3:module:STANDARD_E:007:B2:worker:node",
+              "to_node_id": "v3:service:OUT_W_RETAIL",
+              "arc_ids": [
+                "v3:module:STANDARD_E:007:B2:worker:segment:002:r",
+                "v3:module:STANDARD_E:007:B2:worker:segment:001:r",
+                "v3:module:STANDARD_E:007:B2:worker:segment:000:r",
+                "v3:ped-edge:0034:r",
+                "v3:ped-edge:0025:r",
+                "v3:ped-edge:0018:r",
+                "v3:ped-edge:0007:r",
+                "v3:ped-edge:0006:f",
+                "v3:ped-edge:0008:f"
+              ],
+              "length_m": 117.74,
+              "mode": "pedestrian",
+              "actor_id": "P02",
+              "vehicle_id": null,
+              "cargo_archetype_id": "STANDARD_CARTON",
+              "geometry_basis": "canonical_walk",
+              "resource_admission_required": true,
+              "actual_action_admission_required": true
+            },
+            "reason": "NATIVE_PEDESTRIAN_TIMING_REQUIRED",
+            "native_join_required": true,
+            "native_case": null
+          },
+          "source_request": {
+            "archetype_id": "STANDARD_CARTON",
+            "deadline_at_s": 840,
+            "direction": "outbound",
+            "engine_operation": false,
+            "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+            "included_in_initial_stock": true,
+            "initial_location_kind": "storage_slot",
+            "kind": "order_request",
+            "lot_id": "v3:lot:initial:DEMO_111",
+            "port_id": "OUT_W_RETAIL",
+            "quantity_handling_units": 1,
+            "quantity_units": 24,
+            "request_id": "v3:request:base:outbound:02",
+            "requested_at_s": 240,
+            "sku_id": "DEMO_111",
+            "source_kind": "visual_fixture"
+          },
+          "state": "retained",
+          "release_state": "not_released",
+          "work_executed": false,
+          "completed": false
+        }
+      },
+      {
+        "actor_id": "K05",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          106,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          106,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      },
+      {
+        "actor_id": "K06",
+        "role": "packer",
+        "effective_role": "packer",
+        "baseline_role": "packer",
+        "phase": "baseline",
+        "available": true,
+        "position": [
+          117,
+          0,
+          6.1
+        ],
+        "planned_position_m": [
+          117,
+          0,
+          6.1
+        ],
+        "role_color": "#F28C28",
+        "native_tint_colors": [
+          "#f28c28"
+        ],
+        "role_code": "02",
+        "badge_role": "packer",
+        "badge_code": "02",
+        "retained_task": null
+      }
+    ],
+    "original_roots_preserved": false,
+    "original_roots_restored": true,
+    "disposed": false
+  },
+  "plan": null,
+  "source_kind": "visual_fixture",
+  "engine_operation": false
+}

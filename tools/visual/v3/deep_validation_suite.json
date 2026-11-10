@@ -1,0 +1,427 @@
+{
+  "schema_id": "qoima.deep-validation-suite.v1",
+  "schema_version": "1.0.0",
+  "description": "Current source-labelled contract/schema/layout/catalogue/physical-packet Python checks. Prepared manifest; no authoritative engine or full visual admission is inferred.",
+  "offline_intended": true,
+  "execution_policy": "Sequential; explicit external Python; isolated repository only; keep every failure and timeout. --check-only never means refresh saved evidence.",
+  "source_documents": [
+    "docs/adaptive-v3/specs/C01.md",
+    "docs/adaptive-v3/specs/C02.md",
+    "docs/adaptive-v3/specs/C03.md",
+    "docs/adaptive-v3/specs/C04.md",
+    "docs/adaptive-v3/specs/C05.md",
+    "docs/adaptive-v3/specs/C06.md",
+    "docs/adaptive-v3/specs/C07.md",
+    "docs/adaptive-v3/specs/C08.md",
+    "docs/adaptive-v3/specs/C09.md",
+    "docs/adaptive-v3/specs/C10.md",
+    "docs/v3/contract-proposals/handoff/README.md",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/README.md"
+  ],
+  "commands": [
+    {
+      "id": "c12",
+      "script": "tools/visual/v3/validate_contract_handoff_v3.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 180,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/adaptive-v3/evidence/C12-validator.json"
+      ],
+      "note": "Validates without comparing saved report bytes."
+    },
+    {
+      "id": "c01",
+      "script": "tools/visual/v3/validate_cargo_contract.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 180,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/adaptive-v3/evidence/C01.json"
+      ],
+      "note": "Validates without comparing saved report bytes."
+    },
+    {
+      "id": "l11",
+      "script": "tools/visual/v3/audit_layout_spatial.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/v3/contract-proposals/layout-conflicts-v3.json",
+        "docs/adaptive-v3/evidence/L11.json"
+      ],
+      "note": "Recomputes current report and asserts equality to saved layout-conflicts-v3.json."
+    },
+    {
+      "id": "q03",
+      "script": "tools/visual/v3/check_all_sku_slot_compatibility.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/adaptive-v3/evidence/Q03.json",
+        "docs/adaptive-v3/evidence/Q03.json.tmp"
+      ],
+      "note": "Recomputes exact bytes and compares saved Q03 evidence."
+    },
+    {
+      "id": "c02",
+      "script": "tools/visual/v3/build_cargo_catalog.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c03",
+      "script": "tools/visual/v3/build_sku_catalog.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c04",
+      "script": "tools/visual/v3/build_storage_contract.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c05",
+      "script": "tools/visual/v3/storage_eligibility.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c06",
+      "script": "tools/visual/v3/verify_cargo_geometry.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c07",
+      "script": "tools/visual/v3/verify_cargo_mass.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c08",
+      "script": "tools/visual/v3/build_vehicle_handling.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c09",
+      "script": "tools/visual/v3/admission_policy.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c10",
+      "script": "tools/visual/v3/build_baseline_assignment.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c10-independent",
+      "script": "tools/visual/v3/verify_baseline_assignment.py",
+      "args": [],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "isolated_report_write",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/adaptive-v3/evidence/C10-independent.json"
+      ],
+      "note": "No --check-only/argparse exists: passing --help or --check-only would NOT prevent execution/writes; run only in mutable export."
+    },
+    {
+      "id": "c11-independent",
+      "script": "tools/visual/v3/verify_adapted_assignment.py",
+      "args": [],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "isolated_report_write",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/adaptive-v3/evidence/C11-independent.json"
+      ],
+      "note": "No --check-only/argparse exists: passing --help or --check-only would NOT prevent execution/writes; run only in mutable export."
+    },
+    {
+      "id": "w01",
+      "script": "tools/visual/v3/verify_warehouse_fixture.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "w10-inputs",
+      "script": "tools/visual/v3/build_warehouse_scenario_inputs.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "w10-inputs-independent",
+      "script": "tools/visual/v3/verify_warehouse_scenario_inputs.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "w11-current-input",
+      "script": "tools/visual/v3/build_heavy_inbound_current_scenario.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "w11-current-input-independent",
+      "script": "tools/visual/v3/verify_heavy_inbound_current_scenario.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "w12-historical-input",
+      "script": "tools/visual/v3/build_long_freight_scenario.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "w12-historical-input-independent",
+      "script": "tools/visual/v3/verify_long_freight_scenario.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [],
+      "note": "Do not use default generator mode or --freeze-inputs. Stale saved artifact is a refusal to report, not permission to refresh."
+    },
+    {
+      "id": "c11-horizon-1",
+      "script": "tools/visual/v3/build_adapted_assignment.py",
+      "args": [
+        "--check-only",
+        "--horizon",
+        "1"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only_conditional_write",
+      "required_existing_paths": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "write_hazards": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "note": "Recomputes matching saved comparison/evaluation bytes; never --freeze-inputs."
+    },
+    {
+      "id": "c11-horizon-2",
+      "script": "tools/visual/v3/build_adapted_assignment.py",
+      "args": [
+        "--check-only",
+        "--horizon",
+        "2"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only_conditional_write",
+      "required_existing_paths": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "write_hazards": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "note": "Recomputes matching saved comparison/evaluation bytes; never --freeze-inputs."
+    },
+    {
+      "id": "c11-horizon-4",
+      "script": "tools/visual/v3/build_adapted_assignment.py",
+      "args": [
+        "--check-only",
+        "--horizon",
+        "4"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only_conditional_write",
+      "required_existing_paths": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "write_hazards": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "note": "Recomputes matching saved comparison/evaluation bytes; never --freeze-inputs."
+    },
+    {
+      "id": "c11-horizon-8",
+      "script": "tools/visual/v3/build_adapted_assignment.py",
+      "args": [
+        "--check-only",
+        "--horizon",
+        "8"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "check_only_conditional_write",
+      "required_existing_paths": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "write_hazards": [
+        "docs/v3/contract-proposals/adaptation-evaluation-v3.json"
+      ],
+      "note": "Recomputes matching saved comparison/evaluation bytes; never --freeze-inputs."
+    },
+    {
+      "id": "freeze-n2-n3-interfaces-v3",
+      "script": "tools/visual/v3/freeze_n2_n3_interfaces_v3.py",
+      "args": [
+        "--check-only"
+      ],
+      "cwd": ".",
+      "timeout_s": 180,
+      "mode": "check_only",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/bundle.json"
+      ],
+      "note": "Exact unchanged published section/extension/artifact bundle, native provenance and source hashes."
+    },
+    {
+      "id": "verify-n2-n3-interfaces-v3",
+      "script": "tools/visual/v3/verify_n2_n3_interfaces_v3.py",
+      "args": [
+        "--negative-controls",
+        "--output",
+        "{out}/n2-n3-verifier.json"
+      ],
+      "cwd": ".",
+      "timeout_s": 600,
+      "mode": "owned_output",
+      "required_existing_paths": [],
+      "write_hazards": [
+        "{out}/n2-n3-verifier.json"
+      ],
+      "note": "Original native GLB contacts, continuous route geometry, frozen current-input migration, full80join packet plus negative controls. No current newtool action is inherited from this oldpacket."
+    }
+  ]
+}

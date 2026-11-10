@@ -1,0 +1,197 @@
+{
+  "schema_id": "qoima.native-pair-adversarial-tests.v1",
+  "created_utc": "2026-11-10T03:33:32.061Z",
+  "passed": false,
+  "total": 44,
+  "passed_count": 42,
+  "failed_count": 2,
+  "source_hashes": {
+    "stream.ts": "c0111342b989df5ade1532c769a9c97d72b32108e1680016f923f7983bd276c9",
+    "playback.ts": "ef7f0a425fe0aea0222e84667d2fb750859d799e690f81c0c1889978e88e1f69"
+  },
+  "checker_sha256": "ac85ab22bfae0329508725ba2b0afbb7b1e7f62e2d0aee1d73064ea1b5cbb8d7",
+  "contract_scope": "Available local stream/playback guards and existing synthetic test protocol; ADR0099 primary document unavailable. Authenticated hashes are recomputed for semantic negative fixtures.",
+  "browser": "NOT_RUN",
+  "actual_http": "NOT_RUN",
+  "native_backend_capture": "NOT_CLAIMED",
+  "results": [
+    {
+      "name": "UTF8/chunk-split-1",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-2",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-3",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-7",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-137",
+      "passed": true
+    },
+    {
+      "name": "UTF8/chunk-split-65536",
+      "passed": true
+    },
+    {
+      "name": "valid-no-final-newline",
+      "passed": true
+    },
+    {
+      "name": "truncated-last-record",
+      "passed": true
+    },
+    {
+      "name": "missing-member",
+      "passed": true
+    },
+    {
+      "name": "duplicate-member",
+      "passed": true
+    },
+    {
+      "name": "raw-member-corruption",
+      "passed": true
+    },
+    {
+      "name": "catalog-before-capture",
+      "passed": true
+    },
+    {
+      "name": "nonsemantic-member-order",
+      "passed": true
+    },
+    {
+      "name": "event-sequence-gap",
+      "passed": true
+    },
+    {
+      "name": "duplicate-capture-tick",
+      "passed": true
+    },
+    {
+      "name": "invalid-UTF8",
+      "passed": true
+    },
+    {
+      "name": "invalid-base64",
+      "passed": true
+    },
+    {
+      "name": "unsafe-integer-event-tick",
+      "passed": true
+    },
+    {
+      "name": "exact-BigInt-and-string-preserved",
+      "passed": true
+    },
+    {
+      "name": "retained-header-budget-immediate",
+      "passed": true
+    },
+    {
+      "name": "unicode-record-byte-limit",
+      "passed": true
+    },
+    {
+      "name": "pre-abort-cancels-owned-reader",
+      "passed": true
+    },
+    {
+      "name": "abort-interrupts-pending-read",
+      "passed": true
+    },
+    {
+      "name": "abort-during-buffered-members",
+      "passed": true
+    },
+    {
+      "name": "header-and-body-pair-identities",
+      "passed": true
+    },
+    {
+      "name": "nonfinite-node-geometry-refused",
+      "passed": true
+    },
+    {
+      "name": "nonfinite-slot-geometry-refused",
+      "passed": true
+    },
+    {
+      "name": "negative-conveyor-radius-refused",
+      "passed": true
+    },
+    {
+      "name": "huge-valid-rational-finite-projection",
+      "passed": true
+    },
+    {
+      "name": "tiny-valid-rational-remains-nonzero",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(f.position[0] > 0)\n\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:114:69\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:112:1"
+    },
+    {
+      "name": "rational-subnormal-and-underflow",
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n0 !== 1e-322\n\n    at file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:119:78\n    at async check (file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:67:9)\n    at async file:///C:/Users/izbas/Documents/Codex/_qt-bughunt-1110-t1/frontend/tools/check-native-pair-adversarial-v3.mjs:116:1"
+    },
+    {
+      "name": "duplicate-captured-actor-refused",
+      "passed": true
+    },
+    {
+      "name": "reversed-relocation-times-refused",
+      "passed": true
+    },
+    {
+      "name": "belt-inner-outer-event-tick-refused",
+      "passed": true
+    },
+    {
+      "name": "captured-motion-null-end-refused",
+      "passed": true
+    },
+    {
+      "name": "partial-nullable-relocation-preserved",
+      "passed": true
+    },
+    {
+      "name": "captured-operation-with-null-node",
+      "passed": true
+    },
+    {
+      "name": "unrelated-optional-curve-fields-remain-optional",
+      "passed": true
+    },
+    {
+      "name": "huge-periodic-yaw-and-exact-pivot-delta",
+      "passed": true
+    },
+    {
+      "name": "finite-but-overflowing-geometry-fails-closed",
+      "passed": true
+    },
+    {
+      "name": "stalled-underlying-cancel-does-not-hang-rejection",
+      "passed": true
+    },
+    {
+      "name": "deterministic-seek-custody",
+      "passed": true
+    },
+    {
+      "name": "returned-frame-does-not-mutate-future-seek",
+      "passed": true
+    },
+    {
+      "name": "tick-boundaries-and-pause-rate",
+      "passed": true
+    }
+  ]
+}

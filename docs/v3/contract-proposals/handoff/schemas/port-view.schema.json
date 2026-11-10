@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:qoima:proposal:handoff:port-view:v3:0.1.0",
+  "title": "Qoima v3 isolated proposal: port-view",
+  "$comment": "Proposal only. Offline semantic validation and exact referenced hashes are required; no canonical backend adoption.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_id": {
+      "const": "qoima.port-view.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "proposal"
+    },
+    "source_kind": {
+      "const": "geometry_proposal"
+    },
+    "engine_operation": {
+      "const": false
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "layout_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "layout_content_hash": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/hash64"
+    },
+    "resource_policy_ref": {
+      "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "port_id": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/id"
+          },
+          "direction": {
+            "enum": [
+              "inbound",
+              "outbound"
+            ]
+          },
+          "world_pos": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/xyz"
+          },
+          "outward_normal": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/xyz"
+          },
+          "inward_facing": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/xyz"
+          },
+          "service_node_id": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/id"
+          },
+          "service_node_world_pos": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/xyz"
+          },
+          "allowed_cargo_archetype_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/archetype"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "clear_width_m": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "clear_height_m": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "operational_admission": {
+            "const": false
+          },
+          "loaded_admission_scope": {
+            "const": "family_filter_only; loaded admission remains separate"
+          },
+          "source_ref": {
+            "$ref": "urn:qoima:proposal:handoff:common:v3:0.1.0#/$defs/artifact"
+          },
+          "source_port_index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2
+          }
+        },
+        "required": [
+          "port_id",
+          "direction",
+          "world_pos",
+          "outward_normal",
+          "inward_facing",
+          "service_node_id",
+          "service_node_world_pos",
+          "allowed_cargo_archetype_ids",
+          "clear_width_m",
+          "clear_height_m",
+          "operational_admission",
+          "loaded_admission_scope",
+          "source_ref",
+          "source_port_index"
+        ]
+      },
+      "minItems": 6,
+      "maxItems": 6
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "status",
+    "source_kind",
+    "engine_operation",
+    "operational_admission",
+    "layout_ref",
+    "layout_content_hash",
+    "resource_policy_ref",
+    "ports"
+  ]
+}

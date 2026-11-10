@@ -1,0 +1,2709 @@
+{
+  "document_kind": "isolated_contract_proposal",
+  "proposal_id": "pedestrian-graph-v3",
+  "proposal_version": "0.1.0",
+  "status": "proposal_VERIFY",
+  "layout_version": "qoima-144x72-v3-proposal",
+  "units": "metres_seconds",
+  "coordinate_system": "right_handed_Y_up_X_east_Z_north",
+  "graph_id": "v3:pedestrian",
+  "determinism": "Nodes canonicalized by exact centimetre coordinate; physical edges sorted by endpoint coordinate; no random seed or generated timestamp in proposal.",
+  "source_of_assumption": "Synthetic L06 routing/envelope/speed proposal, not measured throughput or safety certification.",
+  "nodes": [
+    {
+      "node_id": "v3:ped-node:00600:01000",
+      "world_pos": [
+        6,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:IN_W_BULK",
+      "world_pos": [
+        6,
+        0,
+        18
+      ],
+      "node_type": "port_service",
+      "port_id": "IN_W_BULK",
+      "meaning": "Access for people/manual cart only; does not approve heavy cargo movement.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:00600:02500",
+      "world_pos": [
+        6,
+        0,
+        25
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:00600:03800",
+      "world_pos": [
+        6,
+        0,
+        38
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:00600:04900",
+      "world_pos": [
+        6,
+        0,
+        49
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:OUT_W_RETAIL",
+      "world_pos": [
+        6,
+        0,
+        54
+      ],
+      "node_type": "port_service",
+      "port_id": "OUT_W_RETAIL",
+      "meaning": "Access for people/manual cart only; does not approve heavy cargo movement.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:00600:06600",
+      "world_pos": [
+        6,
+        0,
+        66
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:HEAVY_W",
+      "world_pos": [
+        10.75,
+        0,
+        25
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "HEAVY_W",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:SMALL_W",
+      "world_pos": [
+        10.75,
+        0,
+        49
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "SMALL_W",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:04200:01000",
+      "world_pos": [
+        42,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:FLEX_W",
+      "world_pos": [
+        42,
+        0,
+        10.75
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "FLEX_W",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:OUT_S_EXPRESS",
+      "world_pos": [
+        48,
+        0,
+        6
+      ],
+      "node_type": "port_service",
+      "port_id": "OUT_S_EXPRESS",
+      "meaning": "Access for people/manual cart only; does not approve heavy cargo movement.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:04800:01000",
+      "world_pos": [
+        48,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:LONG_W",
+      "world_pos": [
+        52,
+        0,
+        35.25
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "LONG_W",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:05200:03800",
+      "world_pos": [
+        52,
+        0,
+        38
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:STANDARD_W",
+      "world_pos": [
+        52,
+        0,
+        40.75
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "STANDARD_W",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:PK01",
+      "world_pos": [
+        62,
+        0,
+        6.1
+      ],
+      "node_type": "packing_pedestrian_service",
+      "pack_id": "PK01",
+      "allowed_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:cart-stop:PK01",
+      "world_pos": [
+        62,
+        0,
+        7.2
+      ],
+      "node_type": "packing_cart_stop",
+      "pack_id": "PK01",
+      "meaning": "Assembly-envelope anchor; transient stop, not inventory/staging or permanent parking.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:06200:01000",
+      "world_pos": [
+        62,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:07200:01000",
+      "world_pos": [
+        72,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:07200:03800",
+      "world_pos": [
+        72,
+        0,
+        38
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:IN_N_STANDARD",
+      "world_pos": [
+        72,
+        0,
+        66
+      ],
+      "node_type": "port_service",
+      "port_id": "IN_N_STANDARD",
+      "meaning": "Access for people/manual cart only; does not approve heavy cargo movement.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:PK02",
+      "world_pos": [
+        73,
+        0,
+        6.1
+      ],
+      "node_type": "packing_pedestrian_service",
+      "pack_id": "PK02",
+      "allowed_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:cart-stop:PK02",
+      "world_pos": [
+        73,
+        0,
+        7.2
+      ],
+      "node_type": "packing_cart_stop",
+      "pack_id": "PK02",
+      "meaning": "Assembly-envelope anchor; transient stop, not inventory/staging or permanent parking.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:07300:01000",
+      "world_pos": [
+        73,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:PK03",
+      "world_pos": [
+        84,
+        0,
+        6.1
+      ],
+      "node_type": "packing_pedestrian_service",
+      "pack_id": "PK03",
+      "allowed_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:cart-stop:PK03",
+      "world_pos": [
+        84,
+        0,
+        7.2
+      ],
+      "node_type": "packing_cart_stop",
+      "pack_id": "PK03",
+      "meaning": "Assembly-envelope anchor; transient stop, not inventory/staging or permanent parking.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:08400:01000",
+      "world_pos": [
+        84,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:LONG_E",
+      "world_pos": [
+        92,
+        0,
+        35.25
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "LONG_E",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:09200:03800",
+      "world_pos": [
+        92,
+        0,
+        38
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:STANDARD_E",
+      "world_pos": [
+        92,
+        0,
+        40.75
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "STANDARD_E",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:PK04",
+      "world_pos": [
+        95,
+        0,
+        6.1
+      ],
+      "node_type": "packing_pedestrian_service",
+      "pack_id": "PK04",
+      "allowed_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:cart-stop:PK04",
+      "world_pos": [
+        95,
+        0,
+        7.2
+      ],
+      "node_type": "packing_cart_stop",
+      "pack_id": "PK04",
+      "meaning": "Assembly-envelope anchor; transient stop, not inventory/staging or permanent parking.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:09500:01000",
+      "world_pos": [
+        95,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:10200:01000",
+      "world_pos": [
+        102,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:FLEX_E",
+      "world_pos": [
+        102,
+        0,
+        10.75
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "FLEX_E",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:PK05",
+      "world_pos": [
+        106,
+        0,
+        6.1
+      ],
+      "node_type": "packing_pedestrian_service",
+      "pack_id": "PK05",
+      "allowed_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:cart-stop:PK05",
+      "world_pos": [
+        106,
+        0,
+        7.2
+      ],
+      "node_type": "packing_cart_stop",
+      "pack_id": "PK05",
+      "meaning": "Assembly-envelope anchor; transient stop, not inventory/staging or permanent parking.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:10600:01000",
+      "world_pos": [
+        106,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:PK06",
+      "world_pos": [
+        117,
+        0,
+        6.1
+      ],
+      "node_type": "packing_pedestrian_service",
+      "pack_id": "PK06",
+      "allowed_modes": [
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:cart-stop:PK06",
+      "world_pos": [
+        117,
+        0,
+        7.2
+      ],
+      "node_type": "packing_cart_stop",
+      "pack_id": "PK06",
+      "meaning": "Assembly-envelope anchor; transient stop, not inventory/staging or permanent parking.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:11700:01000",
+      "world_pos": [
+        117,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:HEAVY_E",
+      "world_pos": [
+        133.25,
+        0,
+        25
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "HEAVY_E",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:gateway:SMALL_E",
+      "world_pos": [
+        133.25,
+        0,
+        49
+      ],
+      "node_type": "zone_gateway_approach",
+      "zone_id": "SMALL_E",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:13800:01000",
+      "world_pos": [
+        138,
+        0,
+        10
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:OUT_E_B2B",
+      "world_pos": [
+        138,
+        0,
+        18
+      ],
+      "node_type": "port_service",
+      "port_id": "OUT_E_B2B",
+      "meaning": "Access for people/manual cart only; does not approve heavy cargo movement.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:13800:02500",
+      "world_pos": [
+        138,
+        0,
+        25
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:13800:03800",
+      "world_pos": [
+        138,
+        0,
+        38
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:13800:04900",
+      "world_pos": [
+        138,
+        0,
+        49
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:service:IN_E_PARCEL",
+      "world_pos": [
+        138,
+        0,
+        54
+      ],
+      "node_type": "port_service",
+      "port_id": "IN_E_PARCEL",
+      "meaning": "Access for people/manual cart only; does not approve heavy cargo movement.",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    },
+    {
+      "node_id": "v3:ped-node:13800:06600",
+      "world_pos": [
+        138,
+        0,
+        66
+      ],
+      "node_type": "corridor_junction",
+      "allowed_modes": [
+        "manual_cart",
+        "pedestrian"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "v3:ped-edge:0001",
+      "from_node_id": "v3:ped-node:00600:01000",
+      "to_node_id": "v3:service:IN_W_BULK",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 8,
+      "cost_m": 8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 6.153846154,
+        "manual_cart": 8.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0002",
+      "from_node_id": "v3:ped-node:00600:01000",
+      "to_node_id": "v3:ped-node:04200:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 36,
+      "cost_m": 36,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 27.692307692,
+        "manual_cart": 36.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0003",
+      "from_node_id": "v3:service:IN_W_BULK",
+      "to_node_id": "v3:ped-node:00600:02500",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 7,
+      "cost_m": 7,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 5.384615385,
+        "manual_cart": 7.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0004",
+      "from_node_id": "v3:ped-node:00600:02500",
+      "to_node_id": "v3:ped-node:00600:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 13,
+      "cost_m": 13,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 10.0,
+        "manual_cart": 13.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0005",
+      "from_node_id": "v3:ped-node:00600:02500",
+      "to_node_id": "v3:gateway:HEAVY_W",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 4.75,
+      "cost_m": 4.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.653846154,
+        "manual_cart": 4.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0006",
+      "from_node_id": "v3:ped-node:00600:03800",
+      "to_node_id": "v3:ped-node:00600:04900",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 11,
+      "cost_m": 11,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 8.461538462,
+        "manual_cart": 11.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0007",
+      "from_node_id": "v3:ped-node:00600:03800",
+      "to_node_id": "v3:ped-node:05200:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 46,
+      "cost_m": 46,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 35.384615385,
+        "manual_cart": 46.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0008",
+      "from_node_id": "v3:ped-node:00600:04900",
+      "to_node_id": "v3:service:OUT_W_RETAIL",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 5,
+      "cost_m": 5,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.846153846,
+        "manual_cart": 5.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0009",
+      "from_node_id": "v3:ped-node:00600:04900",
+      "to_node_id": "v3:gateway:SMALL_W",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 4.75,
+      "cost_m": 4.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.653846154,
+        "manual_cart": 4.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0010",
+      "from_node_id": "v3:service:OUT_W_RETAIL",
+      "to_node_id": "v3:ped-node:00600:06600",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 12,
+      "cost_m": 12,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 9.230769231,
+        "manual_cart": 12.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0011",
+      "from_node_id": "v3:ped-node:00600:06600",
+      "to_node_id": "v3:service:IN_N_STANDARD",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 66,
+      "cost_m": 66,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 50.769230769,
+        "manual_cart": 66.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0012",
+      "from_node_id": "v3:ped-node:04200:01000",
+      "to_node_id": "v3:gateway:FLEX_W",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 0.75,
+      "cost_m": 0.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.576923077,
+        "manual_cart": 0.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0013",
+      "from_node_id": "v3:ped-node:04200:01000",
+      "to_node_id": "v3:ped-node:04800:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 6,
+      "cost_m": 6,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 4.615384615,
+        "manual_cart": 6.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0014",
+      "from_node_id": "v3:service:OUT_S_EXPRESS",
+      "to_node_id": "v3:ped-node:04800:01000",
+      "direction": "both",
+      "edge_type": "port_service_access",
+      "length_m": 4,
+      "cost_m": 4,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.076923077,
+        "manual_cart": 4.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0015",
+      "from_node_id": "v3:ped-node:04800:01000",
+      "to_node_id": "v3:ped-node:06200:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 14,
+      "cost_m": 14,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 10.769230769,
+        "manual_cart": 14.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0016",
+      "from_node_id": "v3:gateway:LONG_W",
+      "to_node_id": "v3:ped-node:05200:03800",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 2.75,
+      "cost_m": 2.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.115384615,
+        "manual_cart": 2.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0017",
+      "from_node_id": "v3:ped-node:05200:03800",
+      "to_node_id": "v3:gateway:STANDARD_W",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 2.75,
+      "cost_m": 2.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.115384615,
+        "manual_cart": 2.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0018",
+      "from_node_id": "v3:ped-node:05200:03800",
+      "to_node_id": "v3:ped-node:07200:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 20,
+      "cost_m": 20,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 15.384615385,
+        "manual_cart": 20.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0019",
+      "from_node_id": "v3:service:PK01",
+      "to_node_id": "v3:cart-stop:PK01",
+      "direction": "both",
+      "edge_type": "packing_pedestrian_terminal",
+      "length_m": 1.1,
+      "cost_m": 1.1,
+      "width_m": 0.7,
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.846153846
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0020",
+      "from_node_id": "v3:cart-stop:PK01",
+      "to_node_id": "v3:ped-node:06200:01000",
+      "direction": "both",
+      "edge_type": "packing_access",
+      "length_m": 2.8,
+      "cost_m": 2.8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.153846154,
+        "manual_cart": 2.8
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0021",
+      "from_node_id": "v3:ped-node:06200:01000",
+      "to_node_id": "v3:ped-node:07200:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 10,
+      "cost_m": 10,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 7.692307692,
+        "manual_cart": 10.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0022",
+      "from_node_id": "v3:ped-node:07200:01000",
+      "to_node_id": "v3:ped-node:07200:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 28,
+      "cost_m": 28,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 21.538461538,
+        "manual_cart": 28.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0023",
+      "from_node_id": "v3:ped-node:07200:01000",
+      "to_node_id": "v3:ped-node:07300:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 1,
+      "cost_m": 1,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.769230769,
+        "manual_cart": 1.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0024",
+      "from_node_id": "v3:ped-node:07200:03800",
+      "to_node_id": "v3:service:IN_N_STANDARD",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 28,
+      "cost_m": 28,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 21.538461538,
+        "manual_cart": 28.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0025",
+      "from_node_id": "v3:ped-node:07200:03800",
+      "to_node_id": "v3:ped-node:09200:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 20,
+      "cost_m": 20,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 15.384615385,
+        "manual_cart": 20.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0026",
+      "from_node_id": "v3:service:IN_N_STANDARD",
+      "to_node_id": "v3:ped-node:13800:06600",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 66,
+      "cost_m": 66,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 50.769230769,
+        "manual_cart": 66.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0027",
+      "from_node_id": "v3:service:PK02",
+      "to_node_id": "v3:cart-stop:PK02",
+      "direction": "both",
+      "edge_type": "packing_pedestrian_terminal",
+      "length_m": 1.1,
+      "cost_m": 1.1,
+      "width_m": 0.7,
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.846153846
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0028",
+      "from_node_id": "v3:cart-stop:PK02",
+      "to_node_id": "v3:ped-node:07300:01000",
+      "direction": "both",
+      "edge_type": "packing_access",
+      "length_m": 2.8,
+      "cost_m": 2.8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.153846154,
+        "manual_cart": 2.8
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0029",
+      "from_node_id": "v3:ped-node:07300:01000",
+      "to_node_id": "v3:ped-node:08400:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 11,
+      "cost_m": 11,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 8.461538462,
+        "manual_cart": 11.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0030",
+      "from_node_id": "v3:service:PK03",
+      "to_node_id": "v3:cart-stop:PK03",
+      "direction": "both",
+      "edge_type": "packing_pedestrian_terminal",
+      "length_m": 1.1,
+      "cost_m": 1.1,
+      "width_m": 0.7,
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.846153846
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0031",
+      "from_node_id": "v3:cart-stop:PK03",
+      "to_node_id": "v3:ped-node:08400:01000",
+      "direction": "both",
+      "edge_type": "packing_access",
+      "length_m": 2.8,
+      "cost_m": 2.8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.153846154,
+        "manual_cart": 2.8
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0032",
+      "from_node_id": "v3:ped-node:08400:01000",
+      "to_node_id": "v3:ped-node:09500:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 11,
+      "cost_m": 11,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 8.461538462,
+        "manual_cart": 11.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0033",
+      "from_node_id": "v3:gateway:LONG_E",
+      "to_node_id": "v3:ped-node:09200:03800",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 2.75,
+      "cost_m": 2.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.115384615,
+        "manual_cart": 2.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0034",
+      "from_node_id": "v3:ped-node:09200:03800",
+      "to_node_id": "v3:gateway:STANDARD_E",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 2.75,
+      "cost_m": 2.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.115384615,
+        "manual_cart": 2.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0035",
+      "from_node_id": "v3:ped-node:09200:03800",
+      "to_node_id": "v3:ped-node:13800:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 46,
+      "cost_m": 46,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 35.384615385,
+        "manual_cart": 46.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0036",
+      "from_node_id": "v3:service:PK04",
+      "to_node_id": "v3:cart-stop:PK04",
+      "direction": "both",
+      "edge_type": "packing_pedestrian_terminal",
+      "length_m": 1.1,
+      "cost_m": 1.1,
+      "width_m": 0.7,
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.846153846
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0037",
+      "from_node_id": "v3:cart-stop:PK04",
+      "to_node_id": "v3:ped-node:09500:01000",
+      "direction": "both",
+      "edge_type": "packing_access",
+      "length_m": 2.8,
+      "cost_m": 2.8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.153846154,
+        "manual_cart": 2.8
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0038",
+      "from_node_id": "v3:ped-node:09500:01000",
+      "to_node_id": "v3:ped-node:10200:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 7,
+      "cost_m": 7,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 5.384615385,
+        "manual_cart": 7.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0039",
+      "from_node_id": "v3:ped-node:10200:01000",
+      "to_node_id": "v3:gateway:FLEX_E",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 0.75,
+      "cost_m": 0.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.576923077,
+        "manual_cart": 0.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0040",
+      "from_node_id": "v3:ped-node:10200:01000",
+      "to_node_id": "v3:ped-node:10600:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 4,
+      "cost_m": 4,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.076923077,
+        "manual_cart": 4.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0041",
+      "from_node_id": "v3:service:PK05",
+      "to_node_id": "v3:cart-stop:PK05",
+      "direction": "both",
+      "edge_type": "packing_pedestrian_terminal",
+      "length_m": 1.1,
+      "cost_m": 1.1,
+      "width_m": 0.7,
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.846153846
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0042",
+      "from_node_id": "v3:cart-stop:PK05",
+      "to_node_id": "v3:ped-node:10600:01000",
+      "direction": "both",
+      "edge_type": "packing_access",
+      "length_m": 2.8,
+      "cost_m": 2.8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.153846154,
+        "manual_cart": 2.8
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0043",
+      "from_node_id": "v3:ped-node:10600:01000",
+      "to_node_id": "v3:ped-node:11700:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 11,
+      "cost_m": 11,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 8.461538462,
+        "manual_cart": 11.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0044",
+      "from_node_id": "v3:service:PK06",
+      "to_node_id": "v3:cart-stop:PK06",
+      "direction": "both",
+      "edge_type": "packing_pedestrian_terminal",
+      "length_m": 1.1,
+      "cost_m": 1.1,
+      "width_m": 0.7,
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 0.846153846
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0045",
+      "from_node_id": "v3:cart-stop:PK06",
+      "to_node_id": "v3:ped-node:11700:01000",
+      "direction": "both",
+      "edge_type": "packing_access",
+      "length_m": 2.8,
+      "cost_m": 2.8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 2.153846154,
+        "manual_cart": 2.8
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0046",
+      "from_node_id": "v3:ped-node:11700:01000",
+      "to_node_id": "v3:ped-node:13800:01000",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 21,
+      "cost_m": 21,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 16.153846154,
+        "manual_cart": 21.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0047",
+      "from_node_id": "v3:gateway:HEAVY_E",
+      "to_node_id": "v3:ped-node:13800:02500",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 4.75,
+      "cost_m": 4.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.653846154,
+        "manual_cart": 4.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0048",
+      "from_node_id": "v3:gateway:SMALL_E",
+      "to_node_id": "v3:ped-node:13800:04900",
+      "direction": "both",
+      "edge_type": "zone_gateway_approach",
+      "length_m": 4.75,
+      "cost_m": 4.75,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.653846154,
+        "manual_cart": 4.75
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0049",
+      "from_node_id": "v3:ped-node:13800:01000",
+      "to_node_id": "v3:service:OUT_E_B2B",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 8,
+      "cost_m": 8,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 6.153846154,
+        "manual_cart": 8.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0050",
+      "from_node_id": "v3:service:OUT_E_B2B",
+      "to_node_id": "v3:ped-node:13800:02500",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 7,
+      "cost_m": 7,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 5.384615385,
+        "manual_cart": 7.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0051",
+      "from_node_id": "v3:ped-node:13800:02500",
+      "to_node_id": "v3:ped-node:13800:03800",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 13,
+      "cost_m": 13,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 10.0,
+        "manual_cart": 13.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0052",
+      "from_node_id": "v3:ped-node:13800:03800",
+      "to_node_id": "v3:ped-node:13800:04900",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 11,
+      "cost_m": 11,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 8.461538462,
+        "manual_cart": 11.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0053",
+      "from_node_id": "v3:ped-node:13800:04900",
+      "to_node_id": "v3:service:IN_E_PARCEL",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 5,
+      "cost_m": 5,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 3.846153846,
+        "manual_cart": 5.0
+      }
+    },
+    {
+      "edge_id": "v3:ped-edge:0054",
+      "from_node_id": "v3:service:IN_E_PARCEL",
+      "to_node_id": "v3:ped-node:13800:06600",
+      "direction": "both",
+      "edge_type": "corridor",
+      "length_m": 12,
+      "cost_m": 12,
+      "width_m": 2,
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "forbidden_modes": [
+        "forklift",
+        "heavy_load_drag"
+      ],
+      "state": "open_proposal",
+      "access_restrictions": [
+        "whole assembly must fit approved mode envelope",
+        "no stopping cargo/overflow in protected circulation",
+        "actual cargo mass/handler eligibility remains C02/C08"
+      ],
+      "travel_time_s_by_mode": {
+        "pedestrian": 9.230769231,
+        "manual_cart": 12.0
+      }
+    }
+  ],
+  "modes": [
+    {
+      "mode_id": "pedestrian",
+      "clearance_radius_m": 0.35,
+      "body_height_m": 1.7,
+      "speed_m_s": 1.3,
+      "assumption": "Synthetic0.70m diameter worker/carry envelope; only compatible carried cargo, not automatic admission for any archetype."
+    },
+    {
+      "mode_id": "manual_cart",
+      "clearance_radius_m": 0.95,
+      "minimum_edge_width_m": 1.9,
+      "speed_m_s": 1,
+      "anchor_meaning": "Centre of conservative combined cart+operator envelope, not the cart model origin.",
+      "assumption": "Synthetic1.90m diameter envelope encloses R11 cart target plus operator/turning margin; exact rig and loaded envelope later C/P checks."
+    }
+  ],
+  "port_services": [
+    {
+      "port_id": "IN_W_BULK",
+      "node_id": "v3:service:IN_W_BULK",
+      "world_pos": [
+        6,
+        0,
+        18
+      ]
+    },
+    {
+      "port_id": "IN_N_STANDARD",
+      "node_id": "v3:service:IN_N_STANDARD",
+      "world_pos": [
+        72,
+        0,
+        66
+      ]
+    },
+    {
+      "port_id": "IN_E_PARCEL",
+      "node_id": "v3:service:IN_E_PARCEL",
+      "world_pos": [
+        138,
+        0,
+        54
+      ]
+    },
+    {
+      "port_id": "OUT_W_RETAIL",
+      "node_id": "v3:service:OUT_W_RETAIL",
+      "world_pos": [
+        6,
+        0,
+        54
+      ]
+    },
+    {
+      "port_id": "OUT_S_EXPRESS",
+      "node_id": "v3:service:OUT_S_EXPRESS",
+      "world_pos": [
+        48,
+        0,
+        6
+      ]
+    },
+    {
+      "port_id": "OUT_E_B2B",
+      "node_id": "v3:service:OUT_E_B2B",
+      "world_pos": [
+        138,
+        0,
+        18
+      ]
+    }
+  ],
+  "zone_gateways": [
+    {
+      "zone_id": "SMALL_W",
+      "approach_node_id": "v3:gateway:SMALL_W",
+      "zone_boundary_world_pos": [
+        12,
+        0,
+        49
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0009"
+      ]
+    },
+    {
+      "zone_id": "SMALL_E",
+      "approach_node_id": "v3:gateway:SMALL_E",
+      "zone_boundary_world_pos": [
+        132,
+        0,
+        49
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0048"
+      ]
+    },
+    {
+      "zone_id": "HEAVY_W",
+      "approach_node_id": "v3:gateway:HEAVY_W",
+      "zone_boundary_world_pos": [
+        12,
+        0,
+        25
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0005"
+      ]
+    },
+    {
+      "zone_id": "HEAVY_E",
+      "approach_node_id": "v3:gateway:HEAVY_E",
+      "zone_boundary_world_pos": [
+        132,
+        0,
+        25
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0047"
+      ]
+    },
+    {
+      "zone_id": "STANDARD_W",
+      "approach_node_id": "v3:gateway:STANDARD_W",
+      "zone_boundary_world_pos": [
+        52,
+        0,
+        42
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0017"
+      ]
+    },
+    {
+      "zone_id": "STANDARD_E",
+      "approach_node_id": "v3:gateway:STANDARD_E",
+      "zone_boundary_world_pos": [
+        92,
+        0,
+        42
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0034"
+      ]
+    },
+    {
+      "zone_id": "LONG_W",
+      "approach_node_id": "v3:gateway:LONG_W",
+      "zone_boundary_world_pos": [
+        52,
+        0,
+        34
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0016"
+      ]
+    },
+    {
+      "zone_id": "LONG_E",
+      "approach_node_id": "v3:gateway:LONG_E",
+      "zone_boundary_world_pos": [
+        92,
+        0,
+        34
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0033"
+      ]
+    },
+    {
+      "zone_id": "FLEX_W",
+      "approach_node_id": "v3:gateway:FLEX_W",
+      "zone_boundary_world_pos": [
+        42,
+        0,
+        12
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0012"
+      ]
+    },
+    {
+      "zone_id": "FLEX_E",
+      "approach_node_id": "v3:gateway:FLEX_E",
+      "zone_boundary_world_pos": [
+        102,
+        0,
+        12
+      ],
+      "standoff_from_boundary_m": 1.25,
+      "connection_type": "external_zone_gateway_only",
+      "interior_slot_aisles_defined": false,
+      "boundary_is_not_a_walk_node": true,
+      "later_owner": "L09 local slot aisles/branches; no undefined address reachability claimed",
+      "gateway_edge_ids": [
+        "v3:ped-edge:0039"
+      ]
+    }
+  ],
+  "packing_access": [
+    {
+      "pack_id": "PK01",
+      "corridor_world_pos": [
+        62,
+        0,
+        10
+      ],
+      "cart_stop_node_id": "v3:cart-stop:PK01",
+      "cart_stop_world_pos": [
+        62,
+        0,
+        7.2
+      ],
+      "service_node_id": "v3:service:PK01",
+      "service_node_world_pos": [
+        62,
+        0,
+        6.1
+      ],
+      "terminal_mode": "pedestrian_only",
+      "integration_owner": "root L08; tables/conveyor must stay at Z<=5.7; cart-to-hand transfer/attachments later workflow"
+    },
+    {
+      "pack_id": "PK02",
+      "corridor_world_pos": [
+        73,
+        0,
+        10
+      ],
+      "cart_stop_node_id": "v3:cart-stop:PK02",
+      "cart_stop_world_pos": [
+        73,
+        0,
+        7.2
+      ],
+      "service_node_id": "v3:service:PK02",
+      "service_node_world_pos": [
+        73,
+        0,
+        6.1
+      ],
+      "terminal_mode": "pedestrian_only",
+      "integration_owner": "root L08; tables/conveyor must stay at Z<=5.7; cart-to-hand transfer/attachments later workflow"
+    },
+    {
+      "pack_id": "PK03",
+      "corridor_world_pos": [
+        84,
+        0,
+        10
+      ],
+      "cart_stop_node_id": "v3:cart-stop:PK03",
+      "cart_stop_world_pos": [
+        84,
+        0,
+        7.2
+      ],
+      "service_node_id": "v3:service:PK03",
+      "service_node_world_pos": [
+        84,
+        0,
+        6.1
+      ],
+      "terminal_mode": "pedestrian_only",
+      "integration_owner": "root L08; tables/conveyor must stay at Z<=5.7; cart-to-hand transfer/attachments later workflow"
+    },
+    {
+      "pack_id": "PK04",
+      "corridor_world_pos": [
+        95,
+        0,
+        10
+      ],
+      "cart_stop_node_id": "v3:cart-stop:PK04",
+      "cart_stop_world_pos": [
+        95,
+        0,
+        7.2
+      ],
+      "service_node_id": "v3:service:PK04",
+      "service_node_world_pos": [
+        95,
+        0,
+        6.1
+      ],
+      "terminal_mode": "pedestrian_only",
+      "integration_owner": "root L08; tables/conveyor must stay at Z<=5.7; cart-to-hand transfer/attachments later workflow"
+    },
+    {
+      "pack_id": "PK05",
+      "corridor_world_pos": [
+        106,
+        0,
+        10
+      ],
+      "cart_stop_node_id": "v3:cart-stop:PK05",
+      "cart_stop_world_pos": [
+        106,
+        0,
+        7.2
+      ],
+      "service_node_id": "v3:service:PK05",
+      "service_node_world_pos": [
+        106,
+        0,
+        6.1
+      ],
+      "terminal_mode": "pedestrian_only",
+      "integration_owner": "root L08; tables/conveyor must stay at Z<=5.7; cart-to-hand transfer/attachments later workflow"
+    },
+    {
+      "pack_id": "PK06",
+      "corridor_world_pos": [
+        117,
+        0,
+        10
+      ],
+      "cart_stop_node_id": "v3:cart-stop:PK06",
+      "cart_stop_world_pos": [
+        117,
+        0,
+        7.2
+      ],
+      "service_node_id": "v3:service:PK06",
+      "service_node_world_pos": [
+        117,
+        0,
+        6.1
+      ],
+      "terminal_mode": "pedestrian_only",
+      "integration_owner": "root L08; tables/conveyor must stay at Z<=5.7; cart-to-hand transfer/attachments later workflow"
+    }
+  ],
+  "packing_clear_reservations": [
+    {
+      "reservation_id": "PACK_NORTH_ACCESS_STRIP",
+      "floor_bounds_xz_m": {
+        "min": [
+          54,
+          6
+        ],
+        "max": [
+          132,
+          8
+        ]
+      },
+      "allowed_modes": [
+        "pedestrian",
+        "manual_cart"
+      ],
+      "meaning": "Explicit clear-floor exception inside L02 reserved packing area, root L08 honors."
+    },
+    {
+      "reservation_id": "PACK_SERVICE_TERMINAL_APRON",
+      "floor_bounds_xz_m": {
+        "min": [
+          54,
+          5.7
+        ],
+        "max": [
+          132,
+          6
+        ]
+      },
+      "allowed_modes": [
+        "pedestrian"
+      ],
+      "meaning": "Only terminal human envelope, minimum Z5.75 stays0.05m north of tables/conveyor cap5.7; not cart access."
+    }
+  ],
+  "packing_table_conveyor_max_z": 5.7,
+  "actors": {
+    "source_ref": "contracts/actors.example.json",
+    "preserved_count": 24,
+    "actor_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "K01",
+      "K02",
+      "K03",
+      "K04",
+      "K05",
+      "K06",
+      "R01",
+      "R02",
+      "S01",
+      "S02",
+      "F01",
+      "F02"
+    ],
+    "positions_or_roles_reassigned": false
+  },
+  "routing_semantics": {
+    "physical_edges_stored_once": true,
+    "direction_both_expands_to_two_arcs": true,
+    "shortest_path_cost": "sum cost_m == sum geometric edge lengths",
+    "mode_filter": "Use only edges allowing requested mode and meeting full assembly envelope; manual cart cannot enter pedestrian terminal.",
+    "unreachable_or_empty_graph": "Return no_path with empty path; never substitute a straight line/zero-distance successful route.",
+    "reservations_and_collision": "Graph reachability does not schedule intersecting agents; later replay/backend reserves actual resources and accounts for waits.",
+    "no_interiors": "Only external zone gateways; storage/staging/reserve interiors and undefined slot addresses are not graph-connected."
+  },
+  "read_only_input_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "bytes": 32051,
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "bytes": 13240,
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+      "bytes": 27396,
+      "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469"
+    },
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "bytes": 1756,
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    },
+    {
+      "path": "contracts/actors.example.json",
+      "bytes": 4286,
+      "sha256": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7"
+    },
+    {
+      "path": "assets/references/v3/provenance/r11.json",
+      "bytes": 4627,
+      "sha256": "3730a2a567b519533c3247439c417fb676e885ad66f3aa0cdfc16917972a1cb7"
+    }
+  ],
+  "deferred": [
+    "L09 accepted storage-local aisles and per-slot access branches",
+    "L08 honors packing strip/apron and no conveyor crossing of express protected approach",
+    "L07 vehicle graph separate; no forklift movement on this graph",
+    "C02/C04/C08 actual cargo/loaded footprint/height/mass/handler eligibility",
+    "Actual actor placements, collision scheduling, attachments and runtime model tests"
+  ]
+}

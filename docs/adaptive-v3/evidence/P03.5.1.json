@@ -1,0 +1,70 @@
+{
+  "task_id": "P03.5.1",
+  "status": "PASS",
+  "at": "2026-11-07T21:29:14.172649+00:00",
+  "reference": "R05",
+  "native_checks": "assets/v3/iterations/worker-base/P03.5.1/actual-manual-rig-checks.json",
+  "unchanged_raw_body_meshes": true,
+  "neutral_world_vertex_error_m": 0,
+  "closed_physical_parts": 50,
+  "original_joints": 15,
+  "new_explicit_manual_controls": 8,
+  "total_pivots": 23,
+  "anchors": 7,
+  "native_control_connection_poses": 10,
+  "temporary_C02_unit_envelope_contacts": 6,
+  "QA_envelopes_not_exported": true,
+  "glb_sha256": "f0ec183ca1002fff4820456043e9c2b4aa73db1ac49478227f1376ac9b22af35",
+  "khronos": "0errors/0warnings",
+  "native_GLTF_batches": "29batches2848triangles; normals,indices,bounds,anchors,pivots match actual source",
+  "body_height_m": 1.7,
+  "neutral_browser_views_reviewed": [
+    "front",
+    "side",
+    "rear",
+    "quarter",
+    "top"
+  ],
+  "browser_tests_visible": true,
+  "manual_gait_browser_frames_captured": 9,
+  "manual_gait_frames_reviewed": [
+    3.5,
+    9
+  ],
+  "manual_gait_checks": "assets/v3/iterations/worker-base/P03.5.1/gait/actual-runtime-walk-checks.json",
+  "native_manual_gait": "assets/v3/iterations/worker-base/P03.5.1/gait/actual-native-walk-checks.json",
+  "base_and_manual_gait": "each901runtime/91native poses and100whole-node seeks pass",
+  "manual_browser_checks": {
+    "no_autoplay": true,
+    "same_actor_and_cart_across_seeks": true,
+    "play_pause_repeat": true,
+    "live_reduced_motion": true,
+    "keyboard_seek": true,
+    "cold_reduced_motion": true,
+    "replacement_memory": [
+      {
+        "geometries": 52,
+        "textures": 10
+      },
+      {
+        "geometries": 52,
+        "textures": 10
+      },
+      {
+        "geometries": 52,
+        "textures": 10
+      }
+    ],
+    "error_cleanup_recovery": true,
+    "stale_timeline_request_does_not_resurrect_actor": true,
+    "pallet_cycle_controls_regression": true
+  },
+  "manual_browser_lifecycle": {
+    "owned_pid": 3752,
+    "cleanup": "graceful",
+    "terminated": true,
+    "elapsed_ms": 23545
+  },
+  "graph_evidence": "Existing qoima-twin generation2026-11-07T15:43:42Z stale; coverage checks before new manual file showed new/changed paths. Final coverage call returned Transport closed. New/changed exact source was directly read/written and actual native/runtime tests used; no graph completeness claim.",
+  "scope": "Rig interface and compatibility only. Unit-envelope witnesses are not actual source/action acceptance. P03.5.2partial case andP03.5.3pick remain. Original worker-base/C02 unchanged; one existing employee, no backend/registry write."
+}

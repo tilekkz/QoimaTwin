@@ -1,0 +1,196 @@
+{
+  "schema_id": "qoima.original-cart.restored-body-scope-rebase.v1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "status": "ACCEPTED_RESTORED_ORIGINAL_CART_COMPONENT",
+  "historical_tasks_updated": false,
+  "historical_rejected_evidence_preserved": true,
+  "historical": {
+    "task_ids": [
+      "W05.3.8",
+      "W05.3.9"
+    ],
+    "worker_model": "frontend/public/models/v3/worker-manual.glb",
+    "worker_sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "result": "FIX / no accepted endpoint or release in that source epoch",
+    "criteria": "Historical fixed-root/feet prescribed hand-frame release and cart-arm correction, not this restored-body moving calibration."
+  },
+  "restored_body_case": {
+    "worker_model": "frontend/public/models/v3/worker-base.glb",
+    "worker_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "cart_model": "frontend/public/models/v3/picking-cart-tote-fixture.glb",
+    "cart_sha256": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "actor_id": "P01",
+    "cart_id": "C01",
+    "source_geometry_materials_node_positions_scales_unchanged": true,
+    "pose_mapping": "Existing native joints plus source-derived fixedgain0.5 forearm mesh quaternion coupling; no vertex or scale change.",
+    "hand_contact": "Actual original lower-pad hand Z=.06 normal[0,0,1], same continuous bar atX±.225; not the historical prescribed anchor ±.195 hand frame.",
+    "sequence": "Prepositioned calibration→prepare→native approach→grip→native0.84m push→release→native retreat-before-turn→free-hands settle",
+    "duration_s": 21.019166666666667,
+    "practical_pad_budget_m": 0.001,
+    "maximum_sampled_pad_error_m": 0.000004622854677030331,
+    "old_2um_contact_certificate_claimed": false,
+    "retained_source_shoulder_joins": "Measured original upper-arm/torso adjacent joins retained under unchanged original checker classification. No all-join clearance claim.",
+    "whole_warehouse_job_completed": false,
+    "stock_transfer_executed": false,
+    "source_home_departure_executed": false
+  },
+  "executed_native": {
+    "passed": true,
+    "poses": 151,
+    "body_cart_hits": 0,
+    "unresolved_cart_pairs": 0,
+    "native_limit_failures": 0,
+    "nonadjacent_arm_core_failures": 0,
+    "unchanged_buffers": 135,
+    "unchanged_material_references": 45,
+    "tyre_polygon_floor_gap_m": {
+      "minimum": 0,
+      "maximum": 0.0005271123644672582
+    },
+    "exact_polygon_no_slip_claimed": false,
+    "raw_report_path": "docs/adaptive-v3/evidence/original-cart-restored-native-checks.json",
+    "raw_report_sha256": "b55886a5274ab79bb0259cb2bb9390cb0344aacf2ce3f8b51702f0819c6207dc",
+    "reproducible_checker": "frontend/tools/check-original-cart-action-v3.mjs",
+    "portable_checker_verified": "Syntax only after portable move; original151native report unchanged.",
+    "executed_work_report_path": "work/v3/full-tz-closeout-20261109/original-cart/action-native-checks.json"
+  },
+  "executed_isolated_browser": {
+    "passed": true,
+    "captures": 5,
+    "page_errors": 0,
+    "source_drift": 0,
+    "all8_owned_chrome_pids_absent": true,
+    "forced_cleanup": false,
+    "raw_report_path": "work/v3/full-tz-closeout-20261109/scenario-scene/manual-captures-1794249291184/checks.json",
+    "raw_report_sha256": "ecabb2fc67c300f133229fb2e93a5f64559610bcad4929173a624cc239c1ee9e",
+    "cleanup_note": "CDP Browser.close returned. server.close wrapper timed out after browser exited; fresh Get-Process verified every owned PID absent. Raw note preserved.",
+    "public_entry_browser_claimed": false
+  },
+  "public_entry": {
+    "path": "frontend/original-cart-v3.html",
+    "discovery_path": "frontend/home-v3.html",
+    "discovery_selector": "a[href=\"original-cart-v3.html\"]",
+    "one_clock": true,
+    "controls": [
+      "play_pause",
+      "reverse_view",
+      "absolute_seek",
+      "reset",
+      "half_speed",
+      "front_side_quarter"
+    ],
+    "source_models_hash_checked": true,
+    "browser_verification": "Seven primary controls passed in the preserved earlier source epoch; two targeted controls passed on the corrected shipped Page0763/CSS07c2. No claim to one nine-case clean rerun."
+  },
+  "source_hashes": {
+    "frontend/original-cart-v3.html": "9fbdd5ebda587f323b364c13a6e2152b846fd47aaf0b5cd745cb33be0928c1af",
+    "frontend/src/adaptive-v3/originalCartPage.ts": "0763ed7520e53067cfe28694743746067c3d88ab711b4a530d45df432dcda627",
+    "frontend/src/adaptive-v3/originalCart.css": "07c2b1b6a86e8051dad0a60bf5b17f2d35aa73634cb276261ca4ea3e1068f501",
+    "frontend/src/adaptive-v3/warehouseOriginalCartAction.ts": "7367fe3cd4611724153cca598cc7994a7863b40688225d7d539f7de82741522b",
+    "frontend/tools/check-original-cart-action-v3.mjs": "e1ecca96ecd5f6ef6a0a7119775bb3fef5c3da8c2a0de0d007c9a873b792b66a",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "frontend/tools/check-original-cart-ui-v3.mjs": "bbf527866fd9aedbba573456fdfd3048864841cba6812ccb0d6da4be7380548e"
+  },
+  "graph": {
+    "project": "qoima-twin",
+    "generation": "2026-11-08T05:55:56Z",
+    "new_files": "not_tracked; exact whole source fallback",
+    "reindexed": false
+  },
+  "limits": [
+    "Visual calibration, no inventory mutation, job completion, throughput or engine admission.",
+    "Finite sampled native proof, not continuous all-body/traffic/force certificate.",
+    "Historical worker-manual FIX reports and task status remain unchanged."
+  ],
+  "shipped_browser_attempt": {
+    "passed": false,
+    "controls_passed": 7,
+    "page_errors": 0,
+    "source_drift": 0,
+    "failure": "Read-only snapshot after disposal called the native snapshot after worker hierarchy teardown.",
+    "raw_report_path": "work/v3/full-tz-closeout-20261109/original-cart/shipped-browser-1794250539578/checks.json",
+    "raw_report_sha256": "af5fb7ee3c66d325c6bedaa54bea23893923055c2c8a2f238bddf169463f8d4a",
+    "owned_cleanup_complete": true,
+    "forced_cleanup": false,
+    "executed_checker_path": "work/v3/full-tz-closeout-20261109/original-cart/shipped-browser-1794250539578/executed-checker.mjs",
+    "executed_checker_sha256": "fe7eae5ae7c44cfa269bf993bb5e750aefdc3d723f2754e582a67952872acfb2"
+  },
+  "lifecycle_fix": {
+    "scope": "originalCartPage.ts only",
+    "change": "Capture the exact disposed native snapshot before private worker hierarchy teardown; return a data copy for later disposed snapshots.",
+    "native_action_or_physics_changed": false,
+    "affected_browser": "PASS2 on rebuilt shipped entry",
+    "camera_control_fix": "PASS: all three actual camera buttons visible and clickable."
+  },
+  "recorded_at_utc": "2026-11-09T19:12:08Z",
+  "local_review_date": "2026-11-10 Asia/Qyzylorda",
+  "historical_task_hashes_before_rebase": {
+    "docs/adaptive-v3/tasks/W05.3.8.md": "b421fd7360a7c4734ed11ad03c70b72e8a99fc39ce43fe61cc42c55e44b3380c",
+    "docs/adaptive-v3/tasks/W05.3.9.md": "918603adad2cd6021543163b0dfad4db3b0b04edb6fc8ebdd2b093850af5a0af"
+  },
+  "executed_public_browser": {
+    "composite_accepted": true,
+    "primary_controls_passed": 7,
+    "affected_controls_passed": 2,
+    "one_full_nine_case_green_run_claimed": false,
+    "prior_overall_red_preserved": true,
+    "affected_report_path": "work/v3/full-tz-closeout-20261109/original-cart/shipped-browser-1794251447268/checks.json",
+    "affected_report_sha256": "a66642ff93da4e75f95f22595470d0a210dafd1c242a137f78fab107d392619d",
+    "affected_executed_checker_path": "work/v3/full-tz-closeout-20261109/original-cart/shipped-browser-1794251447268/executed-checker.mjs",
+    "affected_executed_checker_sha256": "d5efac5a63a778b76933b0d152e05d897efef24acd6b2f9ffd718ae761b4a68e",
+    "affected_cases": [
+      "all_three_camera_tabs_are_visible_and_operable",
+      "dispose_and_reload_restore_clean_native_action"
+    ],
+    "errors": [],
+    "source_drift": [],
+    "cleanup_complete": true,
+    "forced_owned_cleanup": false,
+    "fresh_absence_path": "work/v3/full-tz-closeout-20261109/original-cart/shipped-browser-1794251447268/fresh-process-absence.json",
+    "fresh_absence_sha256": "1bd094d0621237855285c3469c99eb733150bfe9565ce32948bff73b29cf56d9",
+    "cleanup_note": [
+      "CDP Browser.close returned",
+      "browserContext.close: browserContext.close: Browser closed",
+      "browser.close returned",
+      "server.close deadline 3000ms",
+      "No live owned process required fallback"
+    ],
+    "raw_report_unchanged": true
+  },
+  "captures": [
+    {
+      "source": "work/v3/full-tz-closeout-20261109/original-cart/shipped-browser-1794251447268/05-shipped-visible-camera-controls.png",
+      "target": "assets/v3/iterations/picking-cart/restored-original-action/shipped-controls-push.png",
+      "scope": "Current shipped UI, actual native push and visible camera controls; Page0763/CSS07c2.",
+      "sha256": "933d5306d57f978c0ed1e465a375df2634f1e91cffb6235a9bc5ba8fa0cd5f9e"
+    },
+    {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/manual-captures-1794249291184/01-grip-front.png",
+      "target": "assets/v3/iterations/picking-cart/restored-original-action/native-grip-front.png",
+      "scope": "Isolated actual native diagnostic, original542/C01; not a shipped UI capture.",
+      "sha256": "a5cc951b47839d65ec674d3bbb9373336987d9f643fdc595f98742065f74f73e"
+    },
+    {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/manual-captures-1794249291184/02-grip-side.png",
+      "target": "assets/v3/iterations/picking-cart/restored-original-action/native-grip-side.png",
+      "scope": "Isolated actual native diagnostic, original542/C01; not a shipped UI capture.",
+      "sha256": "61985454769f85f5bd54ee27acb730ace9de2f8d89dbbd2aed9a6fcd24b34d17"
+    },
+    {
+      "source": "work/v3/full-tz-closeout-20261109/scenario-scene/manual-captures-1794249291184/04-release-quarter.png",
+      "target": "assets/v3/iterations/picking-cart/restored-original-action/native-release-quarter.png",
+      "scope": "Isolated actual native diagnostic, original542/C01; not a shipped UI capture.",
+      "sha256": "653441970fc2763f4f1f23b8f4c8920cdead38264cca362830512c5656028f91"
+    }
+  ],
+  "portable_browser_checker": {
+    "path": "frontend/tools/check-original-cart-ui-v3.mjs",
+    "current_sha256": "bbf527866fd9aedbba573456fdfd3048864841cba6812ccb0d6da4be7380548e",
+    "future_harness_scope_metadata_corrected_after_run": true,
+    "rerun": false
+  }
+}

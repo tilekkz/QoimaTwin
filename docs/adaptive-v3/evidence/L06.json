@@ -1,0 +1,5598 @@
+{
+  "task_id": "L06",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T06:43:50.085292+00:00",
+  "method": "Independent current JSON re-read; exact buffered-rectangle clear-floor union checks plus0.25m full-envelope sampling; mode-filtered Dijkstra, cost/reverse checks, blocked/empty/disconnected fixtures, immutable source SHA and SVG coordinate checks.",
+  "proposal": {
+    "path": "docs/v3/contract-proposals/pedestrian-graph-v3.json",
+    "bytes": 73241,
+    "sha256": "baca17871f1f657596cade425793342169be785fb22e2c105063daafdba24529"
+  },
+  "summary": {
+    "checks": 950,
+    "failures": 0,
+    "nodes": 51,
+    "physical_edges": 54,
+    "bidirectional_arcs": 108,
+    "total_physical_length_m": 622.9,
+    "edge_envelope_samples": 52452,
+    "pedestrian_reachable_nodes": 51,
+    "port_services": 6,
+    "external_zone_gateways": 10,
+    "packing_pedestrian_services": 6,
+    "packing_cart_stops": 6,
+    "actors_preserved": 24,
+    "blocked_shortcut": {
+      "invalid_direct_m": 122.5,
+      "valid_route_m": 163.5
+    },
+    "minimum_pack_human_to_table_gap_m": 0.05,
+    "manual_cart_reachable_nodes": 45,
+    "negative_diagonal_rejection": "NON_ORTHOGONAL"
+  },
+  "checks": [
+    {
+      "check": "51_unique_nodes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "54_unique_physical_edges",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "no_duplicate_node_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "exact_6_ports_10_gateways_6_packing",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "actor24_IDs_unchanged",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 20.0,
+        "covered_m2": 20.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0001:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 20.0,
+        "covered_m2": 20.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0001:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:incident_node_allowed_modes:v3:ped-node:00600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:incident_node_allowed_modes:v3:service:IN_W_BULK",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 76.0,
+        "covered_m2": 76.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0002:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 76.0,
+        "covered_m2": 76.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0002:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:incident_node_allowed_modes:v3:ped-node:00600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:incident_node_allowed_modes:v3:ped-node:04200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 18.0,
+        "covered_m2": 18.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0003:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 18.0,
+        "covered_m2": 18.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0003:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:incident_node_allowed_modes:v3:service:IN_W_BULK",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:incident_node_allowed_modes:v3:ped-node:00600:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 30.0,
+        "covered_m2": 30.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0004:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 30.0,
+        "covered_m2": 30.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0004:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:incident_node_allowed_modes:v3:ped-node:00600:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:incident_node_allowed_modes:v3:ped-node:00600:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0005:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0005:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:incident_node_allowed_modes:v3:ped-node:00600:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:incident_node_allowed_modes:v3:gateway:HEAVY_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0006:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0006:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:incident_node_allowed_modes:v3:ped-node:00600:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:incident_node_allowed_modes:v3:ped-node:00600:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 96.0,
+        "covered_m2": 96.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0007:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 96.0,
+        "covered_m2": 96.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0007:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:incident_node_allowed_modes:v3:ped-node:00600:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:incident_node_allowed_modes:v3:ped-node:05200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 14.0,
+        "covered_m2": 14.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0008:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 14.0,
+        "covered_m2": 14.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0008:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:incident_node_allowed_modes:v3:ped-node:00600:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:incident_node_allowed_modes:v3:service:OUT_W_RETAIL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0009:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0009:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:incident_node_allowed_modes:v3:ped-node:00600:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:incident_node_allowed_modes:v3:gateway:SMALL_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 28.0,
+        "covered_m2": 28.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0010:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 28.0,
+        "covered_m2": 28.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0010:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:incident_node_allowed_modes:v3:service:OUT_W_RETAIL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:incident_node_allowed_modes:v3:ped-node:00600:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 136.0,
+        "covered_m2": 136.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0011:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 136.0,
+        "covered_m2": 136.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0011:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:incident_node_allowed_modes:v3:ped-node:00600:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:incident_node_allowed_modes:v3:service:IN_N_STANDARD",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 5.5,
+        "covered_m2": 5.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0012:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 5.5,
+        "covered_m2": 5.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0012:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:incident_node_allowed_modes:v3:ped-node:04200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:incident_node_allowed_modes:v3:gateway:FLEX_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 16.0,
+        "covered_m2": 16.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0013:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 16.0,
+        "covered_m2": 16.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0013:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:incident_node_allowed_modes:v3:ped-node:04200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:incident_node_allowed_modes:v3:ped-node:04800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 12.0,
+        "covered_m2": 12.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0014:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 12.0,
+        "covered_m2": 12.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0014:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:incident_node_allowed_modes:v3:service:OUT_S_EXPRESS",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:incident_node_allowed_modes:v3:ped-node:04800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 32.0,
+        "covered_m2": 32.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0015:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 32.0,
+        "covered_m2": 32.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0015:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:incident_node_allowed_modes:v3:ped-node:04800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:incident_node_allowed_modes:v3:ped-node:06200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0016:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0016:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:incident_node_allowed_modes:v3:gateway:LONG_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:incident_node_allowed_modes:v3:ped-node:05200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0017:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0017:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:incident_node_allowed_modes:v3:ped-node:05200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:incident_node_allowed_modes:v3:gateway:STANDARD_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 44.0,
+        "covered_m2": 44.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0018:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 44.0,
+        "covered_m2": 44.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0018:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:incident_node_allowed_modes:v3:ped-node:05200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:incident_node_allowed_modes:v3:ped-node:07200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 1.260000000000005,
+        "covered_m2": 1.260000000000005
+      }
+    },
+    {
+      "check": "v3:ped-edge:0019:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:incident_node_allowed_modes:v3:service:PK01",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:incident_node_allowed_modes:v3:cart-stop:PK01",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0020:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0020:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:incident_node_allowed_modes:v3:cart-stop:PK01",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:incident_node_allowed_modes:v3:ped-node:06200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 24.0,
+        "covered_m2": 24.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0021:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 24.0,
+        "covered_m2": 24.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0021:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:incident_node_allowed_modes:v3:ped-node:06200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:incident_node_allowed_modes:v3:ped-node:07200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 60.0,
+        "covered_m2": 60.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0022:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 60.0,
+        "covered_m2": 60.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0022:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:incident_node_allowed_modes:v3:ped-node:07200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:incident_node_allowed_modes:v3:ped-node:07200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 6.0,
+        "covered_m2": 6.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0023:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 6.0,
+        "covered_m2": 6.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0023:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:incident_node_allowed_modes:v3:ped-node:07200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:incident_node_allowed_modes:v3:ped-node:07300:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 60.0,
+        "covered_m2": 60.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0024:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 60.0,
+        "covered_m2": 60.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0024:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:incident_node_allowed_modes:v3:ped-node:07200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:incident_node_allowed_modes:v3:service:IN_N_STANDARD",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 44.0,
+        "covered_m2": 44.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0025:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 44.0,
+        "covered_m2": 44.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0025:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:incident_node_allowed_modes:v3:ped-node:07200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:incident_node_allowed_modes:v3:ped-node:09200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 136.0,
+        "covered_m2": 136.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0026:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 136.0,
+        "covered_m2": 136.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0026:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:incident_node_allowed_modes:v3:service:IN_N_STANDARD",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:incident_node_allowed_modes:v3:ped-node:13800:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 1.2599999999999794,
+        "covered_m2": 1.2599999999999794
+      }
+    },
+    {
+      "check": "v3:ped-edge:0027:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:incident_node_allowed_modes:v3:service:PK02",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:incident_node_allowed_modes:v3:cart-stop:PK02",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0028:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0028:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:incident_node_allowed_modes:v3:cart-stop:PK02",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:incident_node_allowed_modes:v3:ped-node:07300:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0029:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0029:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:incident_node_allowed_modes:v3:ped-node:07300:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:incident_node_allowed_modes:v3:ped-node:08400:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 1.2599999999999794,
+        "covered_m2": 1.2599999999999794
+      }
+    },
+    {
+      "check": "v3:ped-edge:0030:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:incident_node_allowed_modes:v3:service:PK03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:incident_node_allowed_modes:v3:cart-stop:PK03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0031:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0031:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:incident_node_allowed_modes:v3:cart-stop:PK03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:incident_node_allowed_modes:v3:ped-node:08400:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0032:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0032:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:incident_node_allowed_modes:v3:ped-node:08400:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:incident_node_allowed_modes:v3:ped-node:09500:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0033:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0033:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:incident_node_allowed_modes:v3:gateway:LONG_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:incident_node_allowed_modes:v3:ped-node:09200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0034:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.5,
+        "covered_m2": 9.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0034:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:incident_node_allowed_modes:v3:ped-node:09200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:incident_node_allowed_modes:v3:gateway:STANDARD_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 96.0,
+        "covered_m2": 96.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0035:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 96.0,
+        "covered_m2": 96.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0035:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:incident_node_allowed_modes:v3:ped-node:09200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:incident_node_allowed_modes:v3:ped-node:13800:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 1.2599999999999794,
+        "covered_m2": 1.2599999999999794
+      }
+    },
+    {
+      "check": "v3:ped-edge:0036:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:incident_node_allowed_modes:v3:service:PK04",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:incident_node_allowed_modes:v3:cart-stop:PK04",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0037:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0037:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:incident_node_allowed_modes:v3:cart-stop:PK04",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:incident_node_allowed_modes:v3:ped-node:09500:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 18.0,
+        "covered_m2": 18.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0038:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 18.0,
+        "covered_m2": 18.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0038:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:incident_node_allowed_modes:v3:ped-node:09500:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:incident_node_allowed_modes:v3:ped-node:10200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 5.5,
+        "covered_m2": 5.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0039:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 5.5,
+        "covered_m2": 5.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0039:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:incident_node_allowed_modes:v3:ped-node:10200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:incident_node_allowed_modes:v3:gateway:FLEX_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 12.0,
+        "covered_m2": 12.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0040:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 12.0,
+        "covered_m2": 12.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0040:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:incident_node_allowed_modes:v3:ped-node:10200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:incident_node_allowed_modes:v3:ped-node:10600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 1.2599999999999794,
+        "covered_m2": 1.2599999999999794
+      }
+    },
+    {
+      "check": "v3:ped-edge:0041:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:incident_node_allowed_modes:v3:service:PK05",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:incident_node_allowed_modes:v3:cart-stop:PK05",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0042:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0042:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:incident_node_allowed_modes:v3:cart-stop:PK05",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:incident_node_allowed_modes:v3:ped-node:10600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0043:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0043:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:incident_node_allowed_modes:v3:ped-node:10600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:incident_node_allowed_modes:v3:ped-node:11700:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 1.2599999999999794,
+        "covered_m2": 1.2599999999999794
+      }
+    },
+    {
+      "check": "v3:ped-edge:0044:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:incident_node_allowed_modes:v3:service:PK06",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:incident_node_allowed_modes:v3:cart-stop:PK06",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0045:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 9.6,
+        "covered_m2": 9.6
+      }
+    },
+    {
+      "check": "v3:ped-edge:0045:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:incident_node_allowed_modes:v3:cart-stop:PK06",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:incident_node_allowed_modes:v3:ped-node:11700:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 46.0,
+        "covered_m2": 46.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0046:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 46.0,
+        "covered_m2": 46.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0046:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:incident_node_allowed_modes:v3:ped-node:11700:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:incident_node_allowed_modes:v3:ped-node:13800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0047:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0047:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:incident_node_allowed_modes:v3:gateway:HEAVY_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:incident_node_allowed_modes:v3:ped-node:13800:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0048:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 13.5,
+        "covered_m2": 13.5
+      }
+    },
+    {
+      "check": "v3:ped-edge:0048:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:incident_node_allowed_modes:v3:gateway:SMALL_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:incident_node_allowed_modes:v3:ped-node:13800:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 20.0,
+        "covered_m2": 20.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0049:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 20.0,
+        "covered_m2": 20.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0049:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:incident_node_allowed_modes:v3:ped-node:13800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:incident_node_allowed_modes:v3:service:OUT_E_B2B",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 18.0,
+        "covered_m2": 18.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0050:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 18.0,
+        "covered_m2": 18.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0050:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:incident_node_allowed_modes:v3:service:OUT_E_B2B",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:incident_node_allowed_modes:v3:ped-node:13800:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 30.0,
+        "covered_m2": 30.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0051:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 30.0,
+        "covered_m2": 30.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0051:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:incident_node_allowed_modes:v3:ped-node:13800:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:incident_node_allowed_modes:v3:ped-node:13800:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0052:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 26.0,
+        "covered_m2": 26.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0052:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:incident_node_allowed_modes:v3:ped-node:13800:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:incident_node_allowed_modes:v3:ped-node:13800:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 14.0,
+        "covered_m2": 14.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0053:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 14.0,
+        "covered_m2": 14.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0053:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:incident_node_allowed_modes:v3:ped-node:13800:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:incident_node_allowed_modes:v3:service:IN_E_PARCEL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:positive_orthogonal_Y0",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:length_cost_actual_metres",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:explicit_both_direction_access",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:pedestrian:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:pedestrian:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 28.0,
+        "covered_m2": 28.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0054:pedestrian:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:pedestrian:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:manual_cart:width_speed",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:manual_cart:full_envelope_exact_clear_union",
+      "pass": true,
+      "actual": {
+        "area_m2": 28.0,
+        "covered_m2": 28.0
+      }
+    },
+    {
+      "check": "v3:ped-edge:0054:manual_cart:full_envelope_025m_sampling",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:manual_cart:no_storage_staging_reserve_overlap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:incident_node_allowed_modes:v3:service:IN_E_PARCEL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:incident_node_allowed_modes:v3:ped-node:13800:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:00600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:IN_W_BULK",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:00600:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:00600:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:00600:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:OUT_W_RETAIL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:00600:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:HEAVY_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:SMALL_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:04200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:FLEX_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:OUT_S_EXPRESS",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:04800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:LONG_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:05200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:STANDARD_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:PK01",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:cart-stop:PK01",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:06200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:07200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:07200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:IN_N_STANDARD",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:PK02",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:cart-stop:PK02",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:07300:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:PK03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:cart-stop:PK03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:08400:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:LONG_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:09200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:STANDARD_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:PK04",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:cart-stop:PK04",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:09500:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:10200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:FLEX_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:PK05",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:cart-stop:PK05",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:10600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:PK06",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:cart-stop:PK06",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:11700:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:HEAVY_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:gateway:SMALL_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:13800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:OUT_E_B2B",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:13800:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:13800:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:13800:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:service:IN_E_PARCEL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "human_reachable:v3:ped-node:13800:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_port_reachable:IN_W_BULK",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_port_reachable:IN_N_STANDARD",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_port_reachable:IN_E_PARCEL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_port_reachable:OUT_W_RETAIL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_port_reachable:OUT_S_EXPRESS",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_port_reachable:OUT_E_B2B",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:SMALL_W:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:SMALL_W:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:SMALL_E:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:SMALL_E:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:HEAVY_W:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:HEAVY_W:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:HEAVY_E:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:HEAVY_E:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:STANDARD_W:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:STANDARD_W:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:STANDARD_E:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:STANDARD_E:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:LONG_W:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:LONG_W:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:LONG_E:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:LONG_E:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:FLEX_W:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:FLEX_W:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:FLEX_E:outside_storage_and_standoff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "gateway:FLEX_E:typed_edge_and_modes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK01:straight_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK01:human_service_cart_stop_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK01:human_north_of_table_cap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK02:straight_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK02:human_service_cart_stop_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK02:human_north_of_table_cap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK03:straight_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK03:human_service_cart_stop_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK03:human_north_of_table_cap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK04:straight_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK04:human_service_cart_stop_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK04:human_north_of_table_cap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK05:straight_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK05:human_service_cart_stop_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK05:human_north_of_table_cap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK06:straight_positions",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK06:human_service_cart_stop_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "PK06:human_north_of_table_cap",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→IN_N_STANDARD:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→IN_N_STANDARD:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→IN_E_PARCEL:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→IN_E_PARCEL:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→OUT_W_RETAIL:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→OUT_W_RETAIL:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→OUT_S_EXPRESS:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→OUT_S_EXPRESS:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→OUT_E_B2B:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_W_BULK→OUT_E_B2B:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→IN_E_PARCEL:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→IN_E_PARCEL:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→OUT_W_RETAIL:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→OUT_W_RETAIL:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→OUT_S_EXPRESS:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→OUT_S_EXPRESS:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→OUT_E_B2B:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_N_STANDARD→OUT_E_B2B:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_E_PARCEL→OUT_W_RETAIL:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_E_PARCEL→OUT_W_RETAIL:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_E_PARCEL→OUT_S_EXPRESS:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_E_PARCEL→OUT_S_EXPRESS:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_E_PARCEL→OUT_E_B2B:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "IN_E_PARCEL→OUT_E_B2B:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL→OUT_S_EXPRESS:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL→OUT_S_EXPRESS:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL→OUT_E_B2B:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL→OUT_E_B2B:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS→OUT_E_B2B:pedestrian:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS→OUT_E_B2B:manual_cart:sum_and_reverse",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "negative_shortcut_storage_crossing_rejected",
+      "pass": true,
+      "actual": {
+        "invalid_direct_m": 122.5,
+        "valid_route_m": 163.5
+      }
+    },
+    {
+      "check": "negative_diagonal_shortcut_rejected",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "negative_empty_graph_returns_no_path",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "negative_disconnected_graph_no_straightline_fallback",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "negative_forklift_mode_no_path",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "canonical_topology_stable_under_input_reorder",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "unchanged:docs/v3/contract-proposals/layout-v3.zones.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "unchanged:docs/v3/contract-proposals/ports-v3.inbound.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "unchanged:docs/v3/contract-proposals/ports-v3.outbound.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "unchanged:docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "unchanged:contracts/actors.example.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "unchanged:assets/references/v3/provenance/r11.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0001:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0002:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0003:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0004:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0005:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0006:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0007:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0008:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0009:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0010:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0011:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0012:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0013:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0014:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0015:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0016:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0017:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0018:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0019:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0020:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0021:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0022:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0023:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0024:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0025:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0026:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0027:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0028:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0029:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0030:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0031:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0032:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0033:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0034:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0035:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0036:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0037:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0038:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0039:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0040:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0041:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0042:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0043:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0044:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0045:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0046:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0047:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0048:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0049:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0050:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0051:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0052:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0053:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:ped-edge:0054:SVG_data_agreement",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:00600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:service:IN_W_BULK",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:00600:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:00600:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:00600:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:service:OUT_W_RETAIL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:00600:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:HEAVY_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:SMALL_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:04200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:FLEX_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:service:OUT_S_EXPRESS",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:04800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:LONG_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:05200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:STANDARD_W",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:cart-stop:PK01",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:06200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:07200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:07200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:service:IN_N_STANDARD",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:cart-stop:PK02",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:07300:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:cart-stop:PK03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:08400:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:LONG_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:09200:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:STANDARD_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:cart-stop:PK04",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:09500:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:10200:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:FLEX_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:cart-stop:PK05",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:10600:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:cart-stop:PK06",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:11700:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:HEAVY_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:gateway:SMALL_E",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:13800:01000",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:service:OUT_E_B2B",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:13800:02500",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:13800:03800",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:13800:04900",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:service:IN_E_PARCEL",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "cart_all_eligible_node_reachable:v3:ped-node:13800:06600",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→IN_N_STANDARD:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→IN_N_STANDARD:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→IN_E_PARCEL:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→IN_E_PARCEL:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→OUT_W_RETAIL:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→OUT_W_RETAIL:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→OUT_S_EXPRESS:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→OUT_S_EXPRESS:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→OUT_E_B2B:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_W_BULK→OUT_E_B2B:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→IN_E_PARCEL:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→IN_E_PARCEL:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→OUT_W_RETAIL:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→OUT_W_RETAIL:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→OUT_S_EXPRESS:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→OUT_S_EXPRESS:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→OUT_E_B2B:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_N_STANDARD→OUT_E_B2B:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_E_PARCEL→OUT_W_RETAIL:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_E_PARCEL→OUT_W_RETAIL:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_E_PARCEL→OUT_S_EXPRESS:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_E_PARCEL→OUT_S_EXPRESS:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_E_PARCEL→OUT_E_B2B:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:IN_E_PARCEL→OUT_E_B2B:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:OUT_W_RETAIL→OUT_S_EXPRESS:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:OUT_W_RETAIL→OUT_S_EXPRESS:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:OUT_W_RETAIL→OUT_E_B2B:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:OUT_W_RETAIL→OUT_E_B2B:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:OUT_S_EXPRESS→OUT_E_B2B:pedestrian",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "route_contiguous:OUT_S_EXPRESS→OUT_E_B2B:manual_cart",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "negative_diagonal_candidate_returns_explicit_rejection",
+      "pass": true,
+      "actual": {
+        "from_xyz": [
+          6,
+          0,
+          18
+        ],
+        "to_xyz": [
+          138,
+          0,
+          54
+        ],
+        "reason": "NON_ORTHOGONAL"
+      }
+    }
+  ],
+  "port_pair_routes": [
+    {
+      "from": "IN_W_BULK",
+      "to": "IN_N_STANDARD",
+      "mode": "pedestrian",
+      "distance_m": 114,
+      "edge_ids": [
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0008",
+        "v3:ped-edge:0010",
+        "v3:ped-edge:0011"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "IN_N_STANDARD",
+      "mode": "manual_cart",
+      "distance_m": 114,
+      "edge_ids": [
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0008",
+        "v3:ped-edge:0010",
+        "v3:ped-edge:0011"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "IN_E_PARCEL",
+      "mode": "pedestrian",
+      "distance_m": 168,
+      "edge_ids": [
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0007",
+        "v3:ped-edge:0018",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0052",
+        "v3:ped-edge:0053"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "IN_E_PARCEL",
+      "mode": "manual_cart",
+      "distance_m": 168,
+      "edge_ids": [
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0007",
+        "v3:ped-edge:0018",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0052",
+        "v3:ped-edge:0053"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "OUT_W_RETAIL",
+      "mode": "pedestrian",
+      "distance_m": 36,
+      "edge_ids": [
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0008"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "OUT_W_RETAIL",
+      "mode": "manual_cart",
+      "distance_m": 36,
+      "edge_ids": [
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0008"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "OUT_S_EXPRESS",
+      "mode": "pedestrian",
+      "distance_m": 54,
+      "edge_ids": [
+        "v3:ped-edge:0001",
+        "v3:ped-edge:0002",
+        "v3:ped-edge:0013",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "OUT_S_EXPRESS",
+      "mode": "manual_cart",
+      "distance_m": 54,
+      "edge_ids": [
+        "v3:ped-edge:0001",
+        "v3:ped-edge:0002",
+        "v3:ped-edge:0013",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "OUT_E_B2B",
+      "mode": "pedestrian",
+      "distance_m": 148,
+      "edge_ids": [
+        "v3:ped-edge:0001",
+        "v3:ped-edge:0002",
+        "v3:ped-edge:0013",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0023",
+        "v3:ped-edge:0029",
+        "v3:ped-edge:0032",
+        "v3:ped-edge:0038",
+        "v3:ped-edge:0040",
+        "v3:ped-edge:0043",
+        "v3:ped-edge:0046",
+        "v3:ped-edge:0049"
+      ]
+    },
+    {
+      "from": "IN_W_BULK",
+      "to": "OUT_E_B2B",
+      "mode": "manual_cart",
+      "distance_m": 148,
+      "edge_ids": [
+        "v3:ped-edge:0001",
+        "v3:ped-edge:0002",
+        "v3:ped-edge:0013",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0023",
+        "v3:ped-edge:0029",
+        "v3:ped-edge:0032",
+        "v3:ped-edge:0038",
+        "v3:ped-edge:0040",
+        "v3:ped-edge:0043",
+        "v3:ped-edge:0046",
+        "v3:ped-edge:0049"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "IN_E_PARCEL",
+      "mode": "pedestrian",
+      "distance_m": 78,
+      "edge_ids": [
+        "v3:ped-edge:0026",
+        "v3:ped-edge:0054"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "IN_E_PARCEL",
+      "mode": "manual_cart",
+      "distance_m": 78,
+      "edge_ids": [
+        "v3:ped-edge:0026",
+        "v3:ped-edge:0054"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "OUT_W_RETAIL",
+      "mode": "pedestrian",
+      "distance_m": 78,
+      "edge_ids": [
+        "v3:ped-edge:0011",
+        "v3:ped-edge:0010"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "OUT_W_RETAIL",
+      "mode": "manual_cart",
+      "distance_m": 78,
+      "edge_ids": [
+        "v3:ped-edge:0011",
+        "v3:ped-edge:0010"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "OUT_S_EXPRESS",
+      "mode": "pedestrian",
+      "distance_m": 84,
+      "edge_ids": [
+        "v3:ped-edge:0024",
+        "v3:ped-edge:0022",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "OUT_S_EXPRESS",
+      "mode": "manual_cart",
+      "distance_m": 84,
+      "edge_ids": [
+        "v3:ped-edge:0024",
+        "v3:ped-edge:0022",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "OUT_E_B2B",
+      "mode": "pedestrian",
+      "distance_m": 114,
+      "edge_ids": [
+        "v3:ped-edge:0024",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0051",
+        "v3:ped-edge:0050"
+      ]
+    },
+    {
+      "from": "IN_N_STANDARD",
+      "to": "OUT_E_B2B",
+      "mode": "manual_cart",
+      "distance_m": 114,
+      "edge_ids": [
+        "v3:ped-edge:0024",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0051",
+        "v3:ped-edge:0050"
+      ]
+    },
+    {
+      "from": "IN_E_PARCEL",
+      "to": "OUT_W_RETAIL",
+      "mode": "pedestrian",
+      "distance_m": 156,
+      "edge_ids": [
+        "v3:ped-edge:0054",
+        "v3:ped-edge:0026",
+        "v3:ped-edge:0011",
+        "v3:ped-edge:0010"
+      ]
+    },
+    {
+      "from": "IN_E_PARCEL",
+      "to": "OUT_W_RETAIL",
+      "mode": "manual_cart",
+      "distance_m": 156,
+      "edge_ids": [
+        "v3:ped-edge:0054",
+        "v3:ped-edge:0026",
+        "v3:ped-edge:0011",
+        "v3:ped-edge:0010"
+      ]
+    },
+    {
+      "from": "IN_E_PARCEL",
+      "to": "OUT_S_EXPRESS",
+      "mode": "pedestrian",
+      "distance_m": 138,
+      "edge_ids": [
+        "v3:ped-edge:0053",
+        "v3:ped-edge:0052",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0022",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "IN_E_PARCEL",
+      "to": "OUT_S_EXPRESS",
+      "mode": "manual_cart",
+      "distance_m": 138,
+      "edge_ids": [
+        "v3:ped-edge:0053",
+        "v3:ped-edge:0052",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0022",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "IN_E_PARCEL",
+      "to": "OUT_E_B2B",
+      "mode": "pedestrian",
+      "distance_m": 36,
+      "edge_ids": [
+        "v3:ped-edge:0053",
+        "v3:ped-edge:0052",
+        "v3:ped-edge:0051",
+        "v3:ped-edge:0050"
+      ]
+    },
+    {
+      "from": "IN_E_PARCEL",
+      "to": "OUT_E_B2B",
+      "mode": "manual_cart",
+      "distance_m": 36,
+      "edge_ids": [
+        "v3:ped-edge:0053",
+        "v3:ped-edge:0052",
+        "v3:ped-edge:0051",
+        "v3:ped-edge:0050"
+      ]
+    },
+    {
+      "from": "OUT_W_RETAIL",
+      "to": "OUT_S_EXPRESS",
+      "mode": "pedestrian",
+      "distance_m": 90,
+      "edge_ids": [
+        "v3:ped-edge:0008",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0001",
+        "v3:ped-edge:0002",
+        "v3:ped-edge:0013",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "OUT_W_RETAIL",
+      "to": "OUT_S_EXPRESS",
+      "mode": "manual_cart",
+      "distance_m": 90,
+      "edge_ids": [
+        "v3:ped-edge:0008",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0004",
+        "v3:ped-edge:0003",
+        "v3:ped-edge:0001",
+        "v3:ped-edge:0002",
+        "v3:ped-edge:0013",
+        "v3:ped-edge:0014"
+      ]
+    },
+    {
+      "from": "OUT_W_RETAIL",
+      "to": "OUT_E_B2B",
+      "mode": "pedestrian",
+      "distance_m": 168,
+      "edge_ids": [
+        "v3:ped-edge:0008",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0007",
+        "v3:ped-edge:0018",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0051",
+        "v3:ped-edge:0050"
+      ]
+    },
+    {
+      "from": "OUT_W_RETAIL",
+      "to": "OUT_E_B2B",
+      "mode": "manual_cart",
+      "distance_m": 168,
+      "edge_ids": [
+        "v3:ped-edge:0008",
+        "v3:ped-edge:0006",
+        "v3:ped-edge:0007",
+        "v3:ped-edge:0018",
+        "v3:ped-edge:0025",
+        "v3:ped-edge:0035",
+        "v3:ped-edge:0051",
+        "v3:ped-edge:0050"
+      ]
+    },
+    {
+      "from": "OUT_S_EXPRESS",
+      "to": "OUT_E_B2B",
+      "mode": "pedestrian",
+      "distance_m": 102,
+      "edge_ids": [
+        "v3:ped-edge:0014",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0023",
+        "v3:ped-edge:0029",
+        "v3:ped-edge:0032",
+        "v3:ped-edge:0038",
+        "v3:ped-edge:0040",
+        "v3:ped-edge:0043",
+        "v3:ped-edge:0046",
+        "v3:ped-edge:0049"
+      ]
+    },
+    {
+      "from": "OUT_S_EXPRESS",
+      "to": "OUT_E_B2B",
+      "mode": "manual_cart",
+      "distance_m": 102,
+      "edge_ids": [
+        "v3:ped-edge:0014",
+        "v3:ped-edge:0015",
+        "v3:ped-edge:0021",
+        "v3:ped-edge:0023",
+        "v3:ped-edge:0029",
+        "v3:ped-edge:0032",
+        "v3:ped-edge:0038",
+        "v3:ped-edge:0040",
+        "v3:ped-edge:0043",
+        "v3:ped-edge:0046",
+        "v3:ped-edge:0049"
+      ]
+    }
+  ],
+  "source_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "bytes": 32051,
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "bytes": 13240,
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+      "bytes": 27396,
+      "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469"
+    },
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "bytes": 1756,
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    },
+    {
+      "path": "contracts/actors.example.json",
+      "bytes": 4286,
+      "sha256": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7"
+    },
+    {
+      "path": "assets/references/v3/provenance/r11.json",
+      "bytes": 4627,
+      "sha256": "3730a2a567b519533c3247439c417fb676e885ad66f3aa0cdfc16917972a1cb7"
+    }
+  ],
+  "corrections": [
+    {
+      "issue": "Initial actual SVG review showed OUT_S_EXPRESS isolated: preferred service node existed without its south-approach edge.",
+      "fix": "Added orthogonal [48,0,10]↔[48,0,6] connector, split corridor node and renumbered deterministic edges; all connectivity/geometry/mode checks rerun.",
+      "fixed_counts": {
+        "nodes": 51,
+        "edges": 54
+      }
+    }
+  ],
+  "svg": {
+    "path": "docs/adaptive-v3/evidence/L06-pedestrian-graph.svg",
+    "sha256": "5561d092faf219e1c4cb41ff18f4d35d7203931792595bf7122eb1fde8a7810a",
+    "all_graph_edges_match_SVG": true,
+    "actual_CPU_preview_viewed": true,
+    "final_corrected_preview_pending": false,
+    "actual_corrected_CPU_preview_viewed": true,
+    "preview_method": "Sharp rasterized SVG in memory through node_repl; actual output inspected. No PNG file, GPU, renderer, browser or 3D process created."
+  },
+  "limits": [
+    "This is an isolated routing proposal, not geometry, collision scheduling, loaded handler admission or actual engine run.",
+    "Ten gateways stop outside storage; no undefined slot or staging interior reachability is claimed.",
+    "Packing strip/apron commitments must be honored by root L08; cart stops before pedestrian-only terminal.",
+    "Synthetic envelope/speed assumptions require later actual rig/cargo/turning checks; vehicle graph remains separate."
+  ],
+  "next_gate": "Root artifact/image review and PASS. No L09, racks or 3D work.",
+  "knowledge_graph_context": {
+    "project": "qoima-twin",
+    "parent_tier": 2,
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage_source": "Parent supplied: current proposal/card/zones untracked; exact direct JSON/file reads used. New domain graph is not the repository knowledge graph.",
+    "index_updated": false
+  },
+  "final_readonly_sources_rechecked_utc": "2026-11-07T06:46:06.141344+00:00"
+}

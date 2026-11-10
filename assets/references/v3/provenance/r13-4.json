@@ -1,0 +1,65 @@
+{
+  "reference_id": "R13.4",
+  "version": 2,
+  "status": "VERIFY",
+  "mode": "built-in imagegen edit of R02 then targeted correction",
+  "path": "assets/references/v3/r13-4-long-rack.png",
+  "sha256": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80",
+  "dimensions_px": [
+    1753,
+    897
+  ],
+  "source_id": "exec-69b7c414-ebe1-492f-93f2-e3e2ffccfed1",
+  "source_image": "C:\\Users\\izbas\\.codex\\generated_images\\01a1b208-3827-7d52-ac17-991ca36df506\\exec-69b7c414-ebe1-492f-93f2-e3e2ffccfed1.png",
+  "source_copy_identical": true,
+  "input_reference": {
+    "path": "assets/references/v3/r02-storage.png",
+    "bytes": 1753816,
+    "sha256": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825"
+  },
+  "prompts": [
+    {
+      "path": "assets/references/v3/prompts/r13-4.txt",
+      "bytes": 2306,
+      "sha256": "fcf4632e66cae39b7b4e02a4c82f3207ad63e23a9508c2d162bddc01a351a734"
+    },
+    {
+      "path": "assets/references/v3/prompts/r13-4-fix-01.txt",
+      "bytes": 1756,
+      "sha256": "7302fec9ac0de4a65d9a17abccc65dc2b9ef83329eeb7150989cb28cabc74438"
+    }
+  ],
+  "tool_prompt_policy": "Exact saved texts used; only final newline trimmed.",
+  "target": {
+    "path": "assets/references/v3/r13-4-long-rack-targets.json",
+    "bytes": 1813,
+    "sha256": "a1965dac8b0c177f5e4e741f7277f8e06da8360e191263ed0344094a8e3d6bc6"
+  },
+  "iterations": [
+    {
+      "version": 1,
+      "source_id": "exec-5c5b317c-5cd1-4426-ab95-548263ad8e5b",
+      "artifact": {
+        "path": "assets/references/v3/r13-4-long-rack-v1.png",
+        "bytes": 1413589,
+        "sha256": "75f47558e89a2753a64254b4df5d7c3519f521cb884df8d1b019ee686078cc6e"
+      },
+      "selected": false,
+      "defect": "High arms and no lateral longrail overhang."
+    },
+    {
+      "version": 2,
+      "source_id": "exec-69b7c414-ebe1-492f-93f2-e3e2ffccfed1",
+      "artifact": {
+        "path": "assets/references/v3/r13-4-long-rack.png",
+        "bytes": 1606787,
+        "sha256": "ce7e4322efab1f620e8239e6f72727428c2faaa940045584d8cf815753cdfa80"
+      },
+      "selected": true,
+      "correction": "Lower arm levels and extended lengthwise rails, topology preserved."
+    }
+  ],
+  "actual_review": "Root opened saved V1 and V2 four-view PNG. Three grounded rear posts/forward basefeet and exactly two sets of three cantilever arms are coherent in front/rear/side/quarter. V1 arm levels were too high and longrails stopped at outerposts; V2 lowers bottom arms close to base, leaves substantial bare post above upper arms and extends the two tan longitudinal rails beyond both outerposts. Rear ties remain connected and visible, no front upright or cargo. Side occlusion is normal. Raster spacing is illustrative: exact L09 postsX-1.6/0/+1.6, outer4.8x2.2x1.3, levels.25/1.3 and usable4.4x.65x.9 override art. Support/rating/loaded contacts remain C08/M04.",
+  "no_model_render_input": true,
+  "no_cargo_or_operational_approval": true
+}

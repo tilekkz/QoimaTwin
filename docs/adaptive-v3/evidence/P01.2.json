@@ -1,0 +1,91 @@
+{
+  "task_id": "P01.2",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T08:08:37.794350+00:00",
+  "reference": "R05 actual accepted PNG opened; root-approved P01.1 plan read",
+  "builder": {
+    "path": "tools/blender/v3/build_worker_base.py",
+    "sha256": "50cc95794cebd2b3d4615be881e4955168eaa60a906eac07e751181194214631"
+  },
+  "source": {
+    "path": "assets/v3/blender/worker-base.blend",
+    "sha256": "d6b1771cbe66982dddc942048a13af172d597446bfff61f0c64b0d9dcb23a3e7"
+  },
+  "spec_sha256_unchanged": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+  "actual": {
+    "dimensions_m": [
+      0.7460470199584961,
+      1.6999997943639755,
+      0.3800000101327896
+    ],
+    "evaluated_triangles": 1784,
+    "mesh_parts": 38,
+    "independent_joints": 15,
+    "anchors": 7,
+    "floor_minY": 1.4901161193847656e-08
+  },
+  "iterations": [
+    {
+      "iteration": "01",
+      "artifacts": {
+        "assets/v3/iterations/worker-base/P01.2/iteration-01.blend": "171d8fdef9ec8ad82afc9ae8b65e633f7887a3c20e8152cb9c1af25dd6e37761",
+        "assets/v3/iterations/worker-base/P01.2/iteration-01.numeric.json": "2c9e399878000273fe497a3b1ad40f67d7f878584916cd2da419a231cb874402",
+        "assets/v3/iterations/worker-base/P01.2/iteration-01.render.json": "b07b84c4e3fce9ef00c52d7d01a396635ffb82199bc7f3bb5528c6a9613e6244",
+        "assets/v3/iterations/worker-base/P01.2/iteration-01/front.png": "f6d19e0ea429610ff04061bf50cb7a1faf759536826d2fcc407eb41aecabfe85",
+        "assets/v3/iterations/worker-base/P01.2/iteration-01/side.png": "9a096811abf0a0a01f6451fc709648a629d5668bd88ed6639d9819f171f79df9",
+        "assets/v3/iterations/worker-base/P01.2/iteration-01/rear.png": "0c1cc687dc0cee3d0e00172ff078815db52761921f245d89ee849de66cc1f334",
+        "assets/v3/iterations/worker-base/P01.2/iteration-01/three-quarter.png": "560008f14cf6e80077f00ee85d221c12338897036f90ad4792a4e04675bb45dc"
+      }
+    },
+    {
+      "iteration": "02",
+      "artifacts": {
+        "assets/v3/iterations/worker-base/P01.2/iteration-02.blend": "d6b1771cbe66982dddc942048a13af172d597446bfff61f0c64b0d9dcb23a3e7",
+        "assets/v3/iterations/worker-base/P01.2/iteration-02.numeric.json": "cbef557e23fb5d38f19d036b8e36a6beb581cf457068c488e9350f74d4f97407",
+        "assets/v3/iterations/worker-base/P01.2/iteration-02.render.json": "a17390a0e15709bb94dc03257da7495e875dd119ae4380d26060b98a0c38b86b",
+        "assets/v3/iterations/worker-base/P01.2/iteration-02/front.png": "5866782fd0d2a0587b2943a074839a8e50066ac571c0dce28cbf6f243c036b77",
+        "assets/v3/iterations/worker-base/P01.2/iteration-02/side.png": "da3cea7b7dbf9a1c101e84b118fa1787c8ed3e4a99008e701d73f4fc06ec9532",
+        "assets/v3/iterations/worker-base/P01.2/iteration-02/rear.png": "ef96a365f499ba3ac19c9206d6c07c17ff0c6f8cfc1b82a6c24b1907e83d332c",
+        "assets/v3/iterations/worker-base/P01.2/iteration-02/three-quarter.png": "5bdac4518d88b40e4f756d43d6aa5bf17bb6be6c527a15bb9f1e350427cbef8c"
+      }
+    }
+  ],
+  "inspection": [
+    "Actually opened all4iteration01PNG, then all4finaliteration02PNG.",
+    "Front: square head/stepped helmet, broad connected shoulders, thick cuboid limbs, open hand/hip gaps and grounded boots.",
+    "Side: head/body depth, short neck, cloth layers and boot thickness are clear. Two hands/feet normally overlap in projection; no source gap seen.",
+    "Rear: continuous blue back garment over dark torso, attached sleeves, plain square nape/hair mass and two grounded soles.",
+    "Quarter: tangible head/helmet/body depth and separated vest panels/side/back; silhouette is squat and connected, matching R05 primary construction.",
+    "Face contains only2rough eye marks; final smile/ears/badge and functional grasp belong to later gates."
+  ],
+  "defects_and_retests": [
+    {
+      "iteration": "01",
+      "found": "Reflective tape separated2-3mm from blue panels; rough-eye rear faces coplanar with head.",
+      "fix": "Tape planes now overlap garment1mm and eye marks embed1mm; source rebuilt as02 and all4views rerendered/opened.",
+      "result": "No floating tape or face-plane seam observed in final source views."
+    },
+    {
+      "technical": "Initial relative --out resolved incorrectly by Blender and could not savePNG.",
+      "fix": "All successful renders use absolute workspace --out; shared renderer untouched."
+    }
+  ],
+  "commands": {
+    "build": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_worker_base --stage P01.2 --iteration 02",
+    "render": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup assets/v3/blender/worker-base.blend --threads 2 --python tools/blender/v3/render_asset.py -- worker-base --size 900 --out 'C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin/assets/v3/iterations/worker-base/P01.2/iteration-02'"
+  },
+  "root_actual_review": "Root opened all4finalPNG and accepted P01.2 source silhouette; root owns final cardPASS.",
+  "limits": [
+    "Source silhouette gate only; no GLB export/browser/Khronos/pose acceptance.",
+    "No final face/badge/microdetail; no extra models or shared helpers changed.",
+    "Next P01.3 must validate actual posed joint contacts, not infer them from neutral/source numbers."
+  ],
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "new builder initially missing and relevant inputs not_tracked; exact source/actual PNG fallback used; no refresh"
+  },
+  "next": "root marks source gate then assigns P01.3; render queue released"
+}

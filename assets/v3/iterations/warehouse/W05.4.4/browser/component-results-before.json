@@ -1,0 +1,92 @@
+{
+  "label": "WHITE_BOX / COMPONENT_ONLY",
+  "source": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+  "source_sha256": "b0a27a32e5c5a7f947920121242b83ec82883be500a6a725808c510bea370b53",
+  "generatedAtUtc": "2026-11-08T15:40:03.589Z",
+  "limitations": [
+    "DOM is an event-order stub, not a browser.",
+    "Catalogue, policy compiler, source reader and scene/native controller are dependency stubs.",
+    "No public bootstrap, real private issuance, physical admission, real 530-HU scene, assets or rendered appearance established."
+  ],
+  "counts": {
+    "cases": 11,
+    "passed": 8,
+    "harnessFailures": 3
+  },
+  "results": [
+    {
+      "id": "C01_DEFAULT_PAUSED_FINITE_TIME",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C02_ERROR_PERSISTENCE",
+      "outcome": "HARNESS_FAILURE",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- 'CHANGED_NATIVE_BINDING'\n\n    at C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:66:476\n    at async check (C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:62:47)\n    at async C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:66:3"
+    },
+    {
+      "id": "C03_FAILED_INITIAL_APPLY_OWNERSHIP",
+      "outcome": "HARNESS_FAILURE",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\ntrue !== false\n\n    at C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:67:227\n    at async check (C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:62:47)\n    at async C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:67:3"
+    },
+    {
+      "id": "C04_DISPOSE_STOP_REACTIVATE",
+      "outcome": "HARNESS_FAILURE",
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'idle' !== 'disposed'\n\n    at C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:68:319\n    at async check (C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:62:47)\n    at async C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\work\\v3\\pallet-preview-lifecycle-check\\w0544-fix\\component-regressions.cjs:68:3"
+    },
+    {
+      "id": "C05_STOP_DURING_PREPARE",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C06_DISPOSE_DURING_PREPARE",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C07_LATEST_REQUEST_WINS",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C08_POLICY_ABORT_DEADLINE",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue",
+      "deadlineMs": 30000
+    },
+    {
+      "id": "C09_CAPTURE_PHASE_LEGACY_SELECTORS",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue",
+      "legacyBubbleObservedDisposeCounts": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "C10_NONFINITE_SPEED_PAUSES",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C11_NONCOOPERATIVE_PREPARE_DEADLINE",
+      "outcome": "PASS",
+      "classification": "conditional_limitation",
+      "observedAfterDeadline": {
+        "phase": "loading",
+        "error": null,
+        "playing": false,
+        "at_s": 0,
+        "duration_s": null,
+        "frame": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "settledAfterDeadline": false,
+      "explanation": "Abort-only outer deadline needs awaited dependency settlement. This stub does not prove an actual accepted support asset stalls."
+    }
+  ]
+}

@@ -1,0 +1,645 @@
+{
+  "task_id": "L02",
+  "status": "VERIFY",
+  "root_review": "pending",
+  "checked_at_utc": "2026-11-07T05:33:35.795347+00:00",
+  "local_checks": {
+    "status": "PASS",
+    "count": 44,
+    "failures": 0,
+    "results": [
+      {
+        "name": "bounds_agree_with_L01",
+        "expected": {
+          "min": [
+            0,
+            0,
+            0
+          ],
+          "max": [
+            144,
+            8,
+            72
+          ]
+        },
+        "actual": {
+          "min": [
+            0,
+            0,
+            0
+          ],
+          "max": [
+            144,
+            8,
+            72
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "units_agree_with_L01",
+        "expected": {
+          "length": "m",
+          "time": "s",
+          "up_axis": "Y",
+          "handedness": "right"
+        },
+        "actual": {
+          "length": "m",
+          "time": "s",
+          "up_axis": "Y",
+          "handedness": "right"
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "unique_zone_ids",
+        "expected": 40,
+        "actual": 40,
+        "status": "PASS"
+      },
+      {
+        "name": "zone_count",
+        "expected": 40,
+        "actual": 40,
+        "status": "PASS"
+      },
+      {
+        "name": "positive_in_bounds_integer_rectangles",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "declared_zone_areas",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "interior_overlaps",
+        "expected": [],
+        "actual": [],
+        "status": "PASS"
+      },
+      {
+        "name": "sum_zone_area_m2",
+        "expected": 10368,
+        "actual": 10368,
+        "status": "PASS"
+      },
+      {
+        "name": "independent_occupancy_floor_cells_m2",
+        "expected": 10368,
+        "actual": 10368,
+        "status": "PASS"
+      },
+      {
+        "name": "occupancy_exactly_one_zone_per_cell",
+        "expected": [
+          1
+        ],
+        "actual": [
+          1
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "area_by_kind_m2",
+        "expected": {
+          "circulation": 5584,
+          "packing": 624,
+          "reserve": 112,
+          "staging": 752,
+          "storage": 3296
+        },
+        "actual": {
+          "circulation": 5584,
+          "packing": 624,
+          "reserve": 112,
+          "staging": 752,
+          "storage": 3296
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "revision_area_accounting",
+        "expected": {
+          "circulation": 5584,
+          "packing": 624,
+          "reserve": 112,
+          "staging": 752,
+          "storage": 3296
+        },
+        "actual": {
+          "circulation": 5584,
+          "packing": 624,
+          "reserve": 112,
+          "staging": 752,
+          "storage": 3296
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "clear_floor_single_connected_component_m2",
+        "expected": 5584,
+        "actual": 5584,
+        "status": "PASS"
+      },
+      {
+        "name": "minimum_reserved_link_width_m",
+        "expected": 4,
+        "actual": 4,
+        "status": "PASS"
+      },
+      {
+        "name": "central_spine_bounds_xz",
+        "expected": [
+          68,
+          12,
+          76,
+          62
+        ],
+        "actual": [
+          68,
+          12,
+          76,
+          62
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "west_cross_bounds_xz",
+        "expected": [
+          12,
+          34,
+          68,
+          42
+        ],
+        "actual": [
+          12,
+          34,
+          68,
+          42
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "east_cross_bounds_xz",
+        "expected": [
+          76,
+          34,
+          132,
+          42
+        ],
+        "actual": [
+          76,
+          34,
+          132,
+          42
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "SMALL_area_count",
+        "expected": 2,
+        "actual": 2,
+        "status": "PASS"
+      },
+      {
+        "name": "STANDARD_area_count",
+        "expected": 2,
+        "actual": 2,
+        "status": "PASS"
+      },
+      {
+        "name": "HEAVY_area_count",
+        "expected": 2,
+        "actual": 2,
+        "status": "PASS"
+      },
+      {
+        "name": "LONG_area_count",
+        "expected": 2,
+        "actual": 2,
+        "status": "PASS"
+      },
+      {
+        "name": "FLEX_area_count",
+        "expected": 2,
+        "actual": 2,
+        "status": "PASS"
+      },
+      {
+        "name": "minimum_class_pair_x_gap_m",
+        "expected": 8,
+        "actual": 8,
+        "status": "PASS"
+      },
+      {
+        "name": "FLEX_finite_area_m2_each",
+        "expected": [
+          48,
+          48
+        ],
+        "actual": [
+          48,
+          48
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "FLEX_candidate_family_limits",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "non_clear_capacities_deferred",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "non_clear_shared_access_edges_at_least_4m",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "six_brief_port_coordinates",
+        "expected": {
+          "IN_W_BULK": [
+            0,
+            18
+          ],
+          "IN_N_STANDARD": [
+            72,
+            72
+          ],
+          "IN_E_PARCEL": [
+            144,
+            54
+          ],
+          "OUT_W_RETAIL": [
+            0,
+            54
+          ],
+          "OUT_S_EXPRESS": [
+            48,
+            0
+          ],
+          "OUT_E_B2B": [
+            144,
+            18
+          ]
+        },
+        "actual": {
+          "IN_W_BULK": [
+            0,
+            18
+          ],
+          "IN_N_STANDARD": [
+            72,
+            72
+          ],
+          "IN_E_PARCEL": [
+            144,
+            54
+          ],
+          "OUT_W_RETAIL": [
+            0,
+            54
+          ],
+          "OUT_S_EXPRESS": [
+            48,
+            0
+          ],
+          "OUT_E_B2B": [
+            144,
+            18
+          ]
+        },
+        "status": "PASS"
+      },
+      {
+        "name": "all_approaches_unchanged_clear_connected",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "packing_reserve_station_count",
+        "expected": 6,
+        "actual": 6,
+        "status": "PASS"
+      },
+      {
+        "name": "packing_bounds_unchanged",
+        "expected": [
+          54,
+          0,
+          132,
+          8
+        ],
+        "actual": [
+          54,
+          0,
+          132,
+          8
+        ],
+        "status": "PASS"
+      },
+      {
+        "name": "no_station_anchors_or_conveyor_topology",
+        "expected": false,
+        "actual": false,
+        "status": "PASS"
+      },
+      {
+        "name": "metric_entity_scale",
+        "expected": 1,
+        "actual": 1,
+        "status": "PASS"
+      },
+      {
+        "name": "retained_actor_count_context",
+        "expected": 24,
+        "actual": 24,
+        "status": "PASS"
+      },
+      {
+        "name": "no_rack_slots_graphs_or_service_points",
+        "expected": [],
+        "actual": [],
+        "status": "PASS"
+      },
+      {
+        "name": "svg_zone_rectangle_count",
+        "expected": 40,
+        "actual": 40,
+        "status": "PASS"
+      },
+      {
+        "name": "svg_json_coordinates_at_7_5px_per_m",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "R02_actual_image_hash",
+        "expected": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+        "actual": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+        "status": "PASS"
+      },
+      {
+        "name": "R02_task_card_PASS",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "R07_actual_image_hash",
+        "expected": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+        "actual": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+        "status": "PASS"
+      },
+      {
+        "name": "R07_task_card_PASS",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "R08_actual_image_hash",
+        "expected": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+        "actual": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+        "status": "PASS"
+      },
+      {
+        "name": "R08_task_card_PASS",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      },
+      {
+        "name": "L01_task_card_PASS",
+        "expected": true,
+        "actual": true,
+        "status": "PASS"
+      }
+    ],
+    "verification_attempts": 3,
+    "verifier_correction": "First-draft access-edge equality corrected to intended >=4m; subsequent final plan rerun after root zoning revision."
+  },
+  "area_accounting_m2": {
+    "circulation": 5584,
+    "packing": 624,
+    "reserve": 112,
+    "staging": 752,
+    "storage": 3296
+  },
+  "class_pairs": {
+    "SMALL": {
+      "west_id": "SMALL_W",
+      "east_id": "SMALL_E",
+      "west_area_m2": 280,
+      "east_area_m2": 280,
+      "x_gap_m": 80,
+      "centroid_x_separation_m": 100.0
+    },
+    "STANDARD": {
+      "west_id": "STANDARD_W",
+      "east_id": "STANDARD_E",
+      "west_area_m2": 384,
+      "east_area_m2": 384,
+      "x_gap_m": 8,
+      "centroid_x_separation_m": 40.0
+    },
+    "HEAVY": {
+      "west_id": "HEAVY_W",
+      "east_id": "HEAVY_E",
+      "west_area_m2": 360,
+      "east_area_m2": 360,
+      "x_gap_m": 80,
+      "centroid_x_separation_m": 100.0
+    },
+    "LONG": {
+      "west_id": "LONG_W",
+      "east_id": "LONG_E",
+      "west_area_m2": 576,
+      "east_area_m2": 576,
+      "x_gap_m": 8,
+      "centroid_x_separation_m": 40.0
+    },
+    "FLEX": {
+      "west_id": "FLEX_W",
+      "east_id": "FLEX_E",
+      "west_area_m2": 48,
+      "east_area_m2": 48,
+      "x_gap_m": 48,
+      "centroid_x_separation_m": 60.0
+    }
+  },
+  "port_approach_results": {
+    "IN_W_BULK": {
+      "overlay_area_m2": 144,
+      "entirely_connected_clear_floor": true,
+      "staging_overlap_m2": 0
+    },
+    "IN_N_STANDARD": {
+      "overlay_area_m2": 160,
+      "entirely_connected_clear_floor": true,
+      "staging_overlap_m2": 0
+    },
+    "IN_E_PARCEL": {
+      "overlay_area_m2": 144,
+      "entirely_connected_clear_floor": true,
+      "staging_overlap_m2": 0
+    },
+    "OUT_W_RETAIL": {
+      "overlay_area_m2": 144,
+      "entirely_connected_clear_floor": true,
+      "staging_overlap_m2": 0
+    },
+    "OUT_S_EXPRESS": {
+      "overlay_area_m2": 144,
+      "entirely_connected_clear_floor": true,
+      "staging_overlap_m2": 0
+    },
+    "OUT_E_B2B": {
+      "overlay_area_m2": 144,
+      "entirely_connected_clear_floor": true,
+      "staging_overlap_m2": 0
+    }
+  },
+  "non_clear_shared_access_edges_m": {
+    "SMALL_W": 20,
+    "STANDARD_W": 32,
+    "HEAVY_W": 20,
+    "LONG_W": 32,
+    "FLEX_W": 12,
+    "SMALL_E": 20,
+    "STANDARD_E": 32,
+    "HEAVY_E": 20,
+    "LONG_E": 32,
+    "FLEX_E": 12,
+    "RESERVE_W": 14,
+    "RESERVE_E": 14,
+    "STAGE_IN_W_BULK": 20,
+    "STAGE_OUT_E_B2B": 20,
+    "STAGE_OUT_W_RETAIL": 20,
+    "STAGE_IN_E_PARCEL": 20,
+    "STAGE_IN_N_W": 14,
+    "STAGE_IN_N_E": 14,
+    "STAGE_OUT_S_EXPRESS": 30,
+    "PACKING_LIGHT_LINE": 78
+  },
+  "minimum_non_clear_shared_access_edge_m": 12,
+  "verification_method": {
+    "numeric": "Exact rectangle intersection and area; independent 144x72 one-square-metre occupancy partition; 4-neighbour flood fill of reserved clear floor; SVG XML/JSON coordinate comparison. No runtime route graph was produced.",
+    "visual": "Actually reopened revised SVG via CPU-only Sharp rasterization after reducing spine/cross to 8 m; ten class areas, six approach markers, clear bands and labels remain visible without clipping. No 3D or browser run.",
+    "limitations": [
+      "A connected floor mask is not loaded-vehicle swept-path, traffic capacity or door engineering proof.",
+      "Gross zone areas are not slot dimensions, inventory capacity, utilization or a demonstrated 200-SKU binding.",
+      "Storage family candidate permissions are not final cargo compatibility.",
+      "8m spine/cross and 4m links are synthetic provisional reservations pending L05/L07/C08; no safety certification."
+    ],
+    "runtime": "C:\\Users\\izbas\\Documents\\Codex\\2026-11-06\\new-chat\\work\\QoimaTwin\\.venv\\Scripts\\python.exe",
+    "browser_gpu_blender_or_test_runs": false
+  },
+  "artifacts": {
+    "proposal": {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    "plan": {
+      "path": "docs/adaptive-v3/evidence/L02-zone-plan.svg",
+      "sha256": "a9d98256323016c9eaba194c2ad1effd48206d7bf9ca6398bbba97300ceccdf5",
+      "dimensions_px": [
+        1500,
+        1000
+      ],
+      "plot_scale_px_per_m": 7.5
+    },
+    "spec": {
+      "path": "docs/adaptive-v3/specs/L02.md",
+      "sha256": "9e906318f1971597b86cce7013ce34fcb9734db09cada7257340c2b1647b2b88"
+    },
+    "envelope_input": {
+      "path": "docs/v3/contract-proposals/layout-v3.envelope.json",
+      "sha256": "f664edfee2fb78b0d6eb4219d01fc8ffc3734dd62abdaf27029dcf0eed4fbcc5"
+    }
+  },
+  "reference_inputs": {
+    "R02": {
+      "path": "assets/references/v3/r02-storage.png",
+      "sha256": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825",
+      "actually_viewed": true,
+      "task_card_status": "PASS",
+      "provenance_status": "VERIFY",
+      "provenance_note": "R02 executor provenance remains VERIFY; root PASS is recorded in its task card."
+    },
+    "R07": {
+      "path": "assets/references/v3/r07-ports-zones.png",
+      "sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc",
+      "actually_viewed": true,
+      "task_card_status": "PASS",
+      "provenance_status": "PASS",
+      "provenance_note": null
+    },
+    "R08": {
+      "path": "assets/references/v3/r08-composition.png",
+      "sha256": "baada616315ba822b139a9dc4072357d6dbb5d02b04af7fb1dd2198b89f2d6be",
+      "actually_viewed": true,
+      "task_card_status": "PASS",
+      "provenance_status": "PASS",
+      "provenance_note": null
+    }
+  },
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "16 exact paths checked; inputs not_tracked/no recorded issue and new outputs missing. Direct current file reads and actual reference views used. No graph completeness claim or index update."
+  },
+  "findings": [
+    {
+      "finding": "Root actual first-draft SVG review: 16m spine /14m cross produced excessive empty central floor.",
+      "resolution": "Revised to 8m spine X68..76 and 8m cross Z34..42, expanded both storage banks by928m2; approaches/packing kept.",
+      "status": "corrected_pending_root_final_review"
+    }
+  ],
+  "scope": {
+    "implemented": "Functional zoning and reserved clear-floor plan only.",
+    "not_implemented": [
+      "rack/slot/asset placement",
+      "capacities",
+      "port service points/resources",
+      "route graphs",
+      "3D geometry",
+      "L03"
+    ],
+    "shared_contracts_or_v2_runtime_modified_by_executor": false,
+    "central_state_modified_by_executor": false,
+    "git_mutation_performed": false
+  },
+  "area_revision": {
+    "superseded_draft_m2": {
+      "circulation": 6448,
+      "packing": 624,
+      "reserve": 168,
+      "staging": 760,
+      "storage": 2368
+    },
+    "current_proposal_m2": {
+      "circulation": 5584,
+      "packing": 624,
+      "reserve": 112,
+      "staging": 752,
+      "storage": 3296
+    },
+    "reason": "Root actual SVG review found the 16 m spine and 14 m cross draft too sparse. Reduced both to 8 m and expanded storage banks into released floor; six port approaches remain unchanged. These are gross footprints, not accepted capacities.",
+    "storage_gain_m2": 928
+  }
+}

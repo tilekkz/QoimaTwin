@@ -1,0 +1,4420 @@
+{
+  "schema_id": "qoima.current-runtime-animation-event-map.v1",
+  "snapshot_date": "2026-11-10",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "global_gate_status_changed": false,
+  "index_scope": "Actual source-bound native controllers, fixtures and supplied plan events; no invented timings or engine KPI.",
+  "registry": {
+    "ref": {
+      "path": "frontend/public/data/v3/worker-registry-v3.json",
+      "sha256": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82"
+    },
+    "clip_count": 16,
+    "kind": "Standalone registry clips; not automatic admission for warehouse jobs",
+    "clips": [
+      {
+        "clip_id": "picker_idle",
+        "role": "picker",
+        "label": "Ожидание",
+        "asset_id": "worker-manual",
+        "fixture": null,
+        "mode": null,
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P03",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P03.json",
+          "sha256": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Исходная поза; свободные руки.",
+        "fixture_actor_id": "P01",
+        "canonical_actor_id": "P01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "picker_walk",
+        "role": "picker",
+        "label": "Ведение тележки",
+        "asset_id": "picking-cart-tote-fixture",
+        "fixture": "walk",
+        "mode": null,
+        "duration_s": 9,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P03",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P03.json",
+          "sha256": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/picker-cart-walk.json",
+            "sha256": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2"
+          },
+          {
+            "path": "frontend/public/data/v3/picker-push-pose.json",
+            "sha256": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062"
+          }
+        ],
+        "prerequisites": "Существующая тележка и лоток; хват уже установлен.",
+        "fixture_actor_id": "P01",
+        "canonical_actor_id": "P01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "picker_pick",
+        "role": "picker",
+        "label": "Отбор SMALL в лоток",
+        "asset_id": "picker-pick-source-fixture",
+        "fixture": "pick",
+        "mode": null,
+        "duration_s": 36,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P03.5.3.3",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P03.5.3.3.json",
+          "sha256": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/models/v3/small-pick-v3.json",
+            "sha256": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-small-pick.glb",
+            "sha256": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0"
+          }
+        ],
+        "prerequisites": "Подготовленный ручной захват; исходные упаковки14/17/20/23 и лоток. Получение/укладка инструмента — отдельное действие.",
+        "fixture_actor_id": "P01",
+        "canonical_actor_id": "P01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "packer_finish",
+        "role": "packer",
+        "label": "Финальная проверка ленты",
+        "asset_id": "packer-workcell-fixture",
+        "fixture": "packer",
+        "mode": "pack",
+        "duration_s": 7.5,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P04",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P04.json",
+          "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/packer-seam-end.json",
+            "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+        "fixture_actor_id": "PK01",
+        "canonical_actor_id": "K01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "packer_idle",
+        "role": "packer",
+        "label": "Ожидание",
+        "asset_id": "packer-workcell-fixture",
+        "fixture": "packer",
+        "mode": "idle",
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P04",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P04.json",
+          "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/packer-seam-end.json",
+            "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+        "fixture_actor_id": "PK01",
+        "canonical_actor_id": "K01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "packer_blocked",
+        "role": "packer",
+        "label": "Пост занят",
+        "asset_id": "packer-workcell-fixture",
+        "fixture": "packer",
+        "mode": "blocked",
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P04",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P04.json",
+          "sha256": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/packer-seam-end.json",
+            "sha256": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Уже закрытая исходная посылка на опоре; клип не складывает коробку и не создаёт содержимое.",
+        "fixture_actor_id": "PK01",
+        "canonical_actor_id": "K01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "receiver_scan",
+        "role": "receiver",
+        "label": "Проверка этикетки",
+        "asset_id": "receiver-workcell-fixture",
+        "fixture": "receiver",
+        "mode": "scan",
+        "duration_s": 2.5,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P05",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P05.json",
+          "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/receiver-v3.json",
+            "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+        "fixture_actor_id": "R01",
+        "canonical_actor_id": "R01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "receiver_receive",
+        "role": "receiver",
+        "label": "Подтверждение приёмки",
+        "asset_id": "receiver-workcell-fixture",
+        "fixture": "receiver",
+        "mode": "receive",
+        "duration_s": 17.8,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P05",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P05.json",
+          "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/receiver-v3.json",
+            "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+        "fixture_actor_id": "R01",
+        "canonical_actor_id": "R01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "receiver_idle",
+        "role": "receiver",
+        "label": "Ожидание",
+        "asset_id": "receiver-workcell-fixture",
+        "fixture": "receiver",
+        "mode": "idle",
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P05",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P05.json",
+          "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/receiver-v3.json",
+            "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+        "fixture_actor_id": "R01",
+        "canonical_actor_id": "R01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "receiver_blocked",
+        "role": "receiver",
+        "label": "Пост занят",
+        "asset_id": "receiver-workcell-fixture",
+        "fixture": "receiver",
+        "mode": "blocked",
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P05",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P05.json",
+          "sha256": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/receiver-v3.json",
+            "sha256": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Исходная паллета уже на полу у сканера; реальная перевозка и backend-приёмка не выполняются.",
+        "fixture_actor_id": "R01",
+        "canonical_actor_id": "R01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "shipper_scan",
+        "role": "shipper",
+        "label": "Проверка этикетки",
+        "asset_id": "shipper-workcell-fixture",
+        "fixture": "shipper",
+        "mode": "scan",
+        "duration_s": 2.5,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P06",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P06.json",
+          "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/shipper-v3.json",
+            "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+        "fixture_actor_id": "S01",
+        "canonical_actor_id": "S01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "shipper_place",
+        "role": "shipper",
+        "label": "Укладка на выход",
+        "asset_id": "shipper-workcell-fixture",
+        "fixture": "shipper",
+        "mode": "place",
+        "duration_s": 27,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P06",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P06.json",
+          "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/shipper-v3.json",
+            "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+        "fixture_actor_id": "S01",
+        "canonical_actor_id": "S01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "shipper_idle",
+        "role": "shipper",
+        "label": "Ожидание",
+        "asset_id": "shipper-workcell-fixture",
+        "fixture": "shipper",
+        "mode": "idle",
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P06",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P06.json",
+          "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/shipper-v3.json",
+            "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+        "fixture_actor_id": "S01",
+        "canonical_actor_id": "S01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "shipper_blocked",
+        "role": "shipper",
+        "label": "Выход занят",
+        "asset_id": "shipper-workcell-fixture",
+        "fixture": "shipper",
+        "mode": "blocked",
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P06",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P06.json",
+          "sha256": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/shipper-v3.json",
+            "sha256": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-manual.glb",
+            "sha256": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875"
+          }
+        ],
+        "prerequisites": "Лёгкая исходная посылка уже на ленте; отдельная тяжёлая паллета на полу для механизированной отгрузки.",
+        "fixture_actor_id": "S01",
+        "canonical_actor_id": "S01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "driver_seated",
+        "role": "forklift_driver",
+        "label": "В кабине · ожидание",
+        "asset_id": "forklift",
+        "fixture": "driver",
+        "mode": null,
+        "duration_s": 0,
+        "clock_kind": "static_pose",
+        "accepted_task": "P07",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P07.json",
+          "sha256": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/seated-driver-pose.json",
+            "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+          },
+          {
+            "path": "frontend/public/models/v3/worker-base.glb",
+            "sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+          }
+        ],
+        "prerequisites": "Посадка уже установлена; вход/выход из кабины — отдельные действия.",
+        "fixture_actor_id": "F01",
+        "canonical_actor_id": "F01",
+        "warehouse_joined": false
+      },
+      {
+        "clip_id": "driver_pickup",
+        "role": "forklift_driver",
+        "label": "Подхват и установка паллеты",
+        "asset_id": "forklift-pallet-low-fixture",
+        "fixture": "pickup",
+        "mode": null,
+        "duration_s": 30,
+        "clock_kind": "explanatory_visual_clock",
+        "accepted_task": "P07",
+        "proof": {
+          "path": "docs/adaptive-v3/evidence/P07.json",
+          "sha256": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249"
+        },
+        "sources": [
+          {
+            "path": "frontend/public/data/v3/pallet-pickup-cycle.json",
+            "sha256": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59"
+          },
+          {
+            "path": "frontend/public/data/v3/seated-driver-pose.json",
+            "sha256": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0"
+          }
+        ],
+        "prerequisites": "Существующая техника, закреплённый водитель и подготовленная паллета; маршрут склада ещё не соединён с клипом.",
+        "fixture_actor_id": "F01",
+        "canonical_actor_id": "F01",
+        "warehouse_joined": false
+      }
+    ]
+  },
+  "preheld_episodes": [
+    {
+      "id": "original_hold",
+      "manifest_ref": {
+        "path": "frontend/public/data/v3/motion-review/manifest.json",
+        "sha256": "5026e1e8aa9c4d01fec299ffd8d013fc9e5fc172859324503dff41e5ac600611"
+      },
+      "duration_s": 28.470000000000006,
+      "worker_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+      "source_pickup_executed": false,
+      "breathing": false
+    },
+    {
+      "id": "LONG_preheld",
+      "manifest_ref": {
+        "path": "frontend/public/data/v3/long-motion/manifest.json",
+        "sha256": "39176414cccaa5a496482bb9e757451dfd594f15ba87afe4ee9673e17dd0e70c"
+      },
+      "duration_s": 10,
+      "source_pickup_executed": false
+    }
+  ],
+  "connected_native_controllers": [
+    {
+      "id": "primary_PALLET455",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts",
+        "sha256": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9"
+      },
+      "native_action_api": "compileWarehouseHeavyInboundPlan; plan.sample(absolute_local_s)",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "native_scene_api": "createWarehouseHeavyInboundScene / common createWarehouseScenarioScene",
+      "whole_HU": {
+        "archetype_id": "PALLET_LOAD",
+        "gross_mass_kg": 455,
+        "quantity_units": 24,
+        "dimensions_xyz_m": [
+          1.2,
+          1.35,
+          1
+        ]
+      },
+      "local_fixture_ref": {
+        "path": "frontend/public/data/v3/heavy-inbound-fixture.json",
+        "sha256": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da"
+      },
+      "local_timing_origin": "Actual immutable source fixture events",
+      "local_events": [
+        {
+          "event_id": "N2:receipt:01",
+          "at_s": 2,
+          "kind": "receipt",
+          "handling_unit_id": "v3:HU:W11:external:01",
+          "from": {
+            "kind": "upstream",
+            "id": "IN_W_BULK"
+          },
+          "to": {
+            "kind": "staging_cell",
+            "id": "v3:n2:staging:IN_W_BULK:01"
+          }
+        },
+        {
+          "event_id": "N2:attach:01",
+          "at_s": 60.224481402050685,
+          "kind": "attach",
+          "handling_unit_id": "v3:HU:W11:external:01",
+          "from": {
+            "kind": "staging_cell",
+            "id": "v3:n2:staging:IN_W_BULK:01"
+          },
+          "to": {
+            "kind": "vehicle",
+            "id": "FL01"
+          }
+        },
+        {
+          "event_id": "N2:setdown:01",
+          "at_s": 303.92815037220765,
+          "kind": "setdown",
+          "handling_unit_id": "v3:HU:W11:external:01",
+          "from": {
+            "kind": "vehicle",
+            "id": "FL01"
+          },
+          "to": {
+            "kind": "storage_slot",
+            "id": "v3:slot:HEAVY_E:001:L1:B1"
+          }
+        }
+      ],
+      "local_duration_s": 314.92815037220765,
+      "supplier_handover_executed": false,
+      "materialization": "Optional additional WEST receipt must be inserted once before A/B. Original northern PALLET request is not relabelled."
+    },
+    {
+      "id": "additional_IBC_and_HEAVY",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts",
+        "sha256": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b"
+      },
+      "native_action_api": "validateAdditionalHeavyPacket / createWarehouseAdditionalHeavyCases / compileWarehouseAdditionalHeavyCase",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "native_scene_api": "createWarehouseAdditionalHeavyScene",
+      "classes": [
+        {
+          "archetype_id": "IBC",
+          "gross_mass_kg": 654
+        },
+        {
+          "archetype_id": "HEAVY_BOX",
+          "gross_mass_kg": 200
+        }
+      ],
+      "absolute_clock_composition": "Explicit empty forklift return before the next issued case; finite F01/FL01 leases; no reset to home.",
+      "all_receipts_executed": false
+    },
+    {
+      "id": "whole_STANDARD_outbound",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts",
+        "sha256": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2"
+      },
+      "native_action_api": "createWarehouseManualTransfer / isWarehouseManualTransfer / case.sample / case.apply",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "participants": [
+        "P02",
+        "K01",
+        "S01 or S02 according to source port"
+      ],
+      "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+      "whole_HU": {
+        "gross_mass_kg": 6.35,
+        "quantity_units": 24,
+        "dimensions_xyz_m": [
+          0.6,
+          0.4,
+          0.3
+        ]
+      },
+      "join": "Source shelf → supported whole-palm carry → actual PK01 table → native pack/yield → shipper pickup → held port service → explicit downstream boundary.",
+      "duration_origin": "Issued factory native gait, actual action phases and source service references; no generic fabricated duration.",
+      "practical_scope": "Per-factory native contacts/limits/support and separate shared-clock proofs. No universal collision or hardware certificate."
+    },
+    {
+      "id": "whole_STANDARD_receiving",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseReceivingManualTransfer.ts",
+        "sha256": "9b18eac8560cdb2aa5cf8c8c4e6efd4311545c046f75ca726f07cb613b256aa7"
+      },
+      "native_action_api": "createWarehouseReceivingManualTransfer / isWarehouseReceivingManualTransfer / sample / apply",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "participants": [
+        "R01 or R02 according to actual input port"
+      ],
+      "recipe_api": "createWarehouseReceivingWorkflowRoute / validateWarehouseReceivingN1Input",
+      "join": "Explicit supplier boundary into already posed hands → directed native loaded walk → compatible free L1 shelf insertion → receiver return.",
+      "supplier_execution_claimed": false,
+      "conditional_capacity": "An optional extra STANDARD receipt may use the exact slot vacated by the confirmed full outbound case. The new original SMALL receiver uses its own original request instead."
+    },
+    {
+      "id": "original_LONG_source_transport",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts",
+        "sha256": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb"
+      },
+      "native_action_api": "compileWarehouseLongSourceOperationPlan / isWarehouseLongSourceOperationPlan / plan.sample",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "native_scene_api": "createWarehouseLongSourceOperationScene",
+      "native_binding_api": "createWarehouseLongSourceCargoBinding",
+      "participants": [
+        "F01/FL01",
+        "F02/FL02"
+      ],
+      "handling_unit_id": "v3:HU:initial:DEMO_180:01",
+      "request_id": "v3:request:base:outbound:06",
+      "whole_HU": {
+        "gross_mass_kg": 200,
+        "quantity_units": 24,
+        "dimensions_xyz_m": [
+          4.2,
+          0.52,
+          0.65
+        ]
+      },
+      "attachments": [
+        {
+          "asset_id": "long-wheel-roll-profile-preserved-variant",
+          "selected_nodes": [
+            "long-cradle",
+            "long-restraint-rig"
+          ],
+          "quantity": 1,
+          "accounted_mass_kg": 40
+        },
+        {
+          "asset_id": "long-upper-handling-bridge",
+          "quantity": 1,
+          "mass_bound_kg": 5
+        }
+      ],
+      "join": "Original source HU → controlled rack withdrawal → source-native upper retention installation → tool stow and exact F01 return → F02 loaded graph route → whole HU outside actual gate on finite apron.",
+      "terminal": "outside_gate_retained; on-site yard custody remains held through the scenario horizon.",
+      "completed_visual_transport": true,
+      "order_dispatched": false,
+      "recipient_unloading_executed": false,
+      "preparation": "Lower cradle and upper/tool initial preparation states are declared, not falsely executed supplier/equipment-installation jobs.",
+      "extra_LONG_crossdock": "Mutually exclusive historical optional case; never a substitute for this original request."
+    },
+    {
+      "id": "original_SMALL_outbound_with_one_finite_tool",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseSmallClampManualTransfer.ts",
+        "sha256": "8334fd798114ab36cb5ca5bff2ce84f2f51f6f6d0354a0c606a7c18e718054c3"
+      },
+      "native_action_api": "createWarehouseSmallClampManualTransfer / isWarehouseSmallClampManualTransfer / sample / apply",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "participants": [
+        "P01",
+        "K02",
+        "S01 or S02 according to original port"
+      ],
+      "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+      "request_id": "v3:request:base:outbound:01",
+      "whole_HU": {
+        "gross_mass_kg": 0.94,
+        "quantity_units": 24,
+        "dimensions_xyz_m": [
+          0.32,
+          0.24,
+          0.24
+        ]
+      },
+      "tool": {
+        "asset_id": "small-carton-clamp-tool",
+        "finite_quantity": 1,
+        "mass_bound_kg": 2.5,
+        "whole_carried_assembly_mass_bound_kg": 3.44,
+        "force_certified": false
+      },
+      "join": "Acquire finite tool from actual PK02 support → whole source carton acquisition → packer whole-HU processing → native shipper carry/held port boundary → same tool recovered/stowed → same crew returns.",
+      "duration_origin": "Actual issued native gait/actions. Source deadlines and request release times remain unchanged."
+    },
+    {
+      "id": "original_SMALL_receiving_same_tool",
+      "controller_ref": {
+        "path": "frontend/src/adaptive-v3/warehouseSmallClampReceivingTransfer.ts",
+        "sha256": "77c0d17417fff5e129d2eac31827db20669090ec1f0350b0c65b9ce2c6199bcb"
+      },
+      "native_action_api": "createWarehouseSmallClampReceivingTransfer / isWarehouseSmallClampReceivingTransfer / sample / apply",
+      "source_kind": "visual_fixture",
+      "engine_operation": false,
+      "participant": "R02",
+      "handling_unit_id": "v3:HU:incoming:DEMO_001:01",
+      "request_id": "v3:request:base:inbound:01",
+      "port_id": "IN_E_PARCEL",
+      "extra_handling_units": 0,
+      "tool_quantity_added": 0,
+      "dependency": "Exact issued full SMALL outbound, same private tool token, actual native source slot physically cleared.",
+      "join": "Retrieve same stowed tool → explicit original supplier boundary → native loaded walk → original freed SMALL slot → same tool returns to PK02 → R02 original home.",
+      "supplier_execution_claimed": false,
+      "force_certified": false
+    }
+  ],
+  "standalone_cart": {
+    "id": "original_cart_episode",
+    "controller_ref": {
+      "path": "frontend/src/adaptive-v3/warehouseOriginalCartAction.ts",
+      "sha256": "7367fe3cd4611724153cca598cc7994a7863b40688225d7d539f7de82741522b"
+    },
+    "native_action_api": "createWarehouseOriginalCartAction / apply / snapshot / dispose",
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "worker_model_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "cart_model_sha256": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "join": "Approach/grip → native cart movement → release → withdrawal on one absolute clock.",
+    "warehouse_job_completion_claimed": false
+  },
+  "common_clock": {
+    "compiler": "compileWarehouseScenarioExecution",
+    "clock": "createWarehouseScenarioClock",
+    "methods": [
+      "play",
+      "pause",
+      "seek",
+      "reset",
+      "advance",
+      "setRate",
+      "snapshot",
+      "sample"
+    ],
+    "rates_include": [
+      30,
+      60
+    ],
+    "sampling": "Absolute deterministic time; seeking does not replay operational/sound events.",
+    "native_scene": "createWarehouseScenarioScene; issued case identity guards; original 24 workers / 2 vehicles / 530 initial HUs; no duplicated population.",
+    "queues": "Finite roles/equipment/slots/posts/ports/staging; unsupported joins remain reasoned queued/refused/native_join_required.",
+    "comparison": "A above B below, same logical scene/clock/camera; paired issued plans from identical materialized input and native factory identities. Restore selected variant/render state after both passes. Current N0–N3 placement is explicit no-op; no invented gain."
+  },
+  "N4": {
+    "duration_s": 600,
+    "controller": "createStaffingComparison / createWarehouseStaffingScene",
+    "pending_source": "createWarehouseStaffingPendingWork from pristine issued N0 plan before handling begins",
+    "actors": 24,
+    "actual_pending_jobs": [
+      {
+        "archetype_id": "SMALL_CARTON",
+        "deadline_at_s": 720,
+        "direction": "outbound",
+        "engine_operation": false,
+        "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+        "included_in_initial_stock": true,
+        "initial_location_kind": "storage_slot",
+        "kind": "order_request",
+        "lot_id": "v3:lot:initial:DEMO_001",
+        "port_id": "OUT_S_EXPRESS",
+        "quantity_handling_units": 1,
+        "quantity_units": 24,
+        "request_id": "v3:request:base:outbound:01",
+        "requested_at_s": 120,
+        "sku_id": "DEMO_001",
+        "source_kind": "visual_fixture"
+      },
+      {
+        "archetype_id": "STANDARD_CARTON",
+        "deadline_at_s": 840,
+        "direction": "outbound",
+        "engine_operation": false,
+        "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+        "included_in_initial_stock": true,
+        "initial_location_kind": "storage_slot",
+        "kind": "order_request",
+        "lot_id": "v3:lot:initial:DEMO_111",
+        "port_id": "OUT_W_RETAIL",
+        "quantity_handling_units": 1,
+        "quantity_units": 24,
+        "request_id": "v3:request:base:outbound:02",
+        "requested_at_s": 240,
+        "sku_id": "DEMO_111",
+        "source_kind": "visual_fixture"
+      }
+    ],
+    "unknown_remaining_work_s": null,
+    "work_executed_in_staffing_view": false,
+    "stock_moved_in_staffing_view": false,
+    "legacy_two_argument_mode": "Separately labelled synthetic 120-second retained-task fixture remains backward compatible."
+  },
+  "effects": {
+    "audio_source": {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioEffects.ts",
+      "sha256": "e7e15135dd01a48749ddc8bb6f8398351b676e9c2ab8ed087dbb974d24775b14"
+    },
+    "visual_source": {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioVisualCues.ts",
+      "sha256": "16688c8b033a05de8f5479512a266f75151dc7b389a07af2dd8e1d3728effae2"
+    },
+    "audio_event_projection": "Forward admitted completed_visual: inbound → pallet_putaway cue; outbound → order_dispatched cue. Source LONG retained transport and historical crossdock are excluded.",
+    "visual_projection": "Forward completed_visual/refusal marks only; maximum3 local rings, per-kind cooldown.35s, wall-time TTL.7s. Geometry/inventory/leases are never changed.",
+    "seek_pause_reset": "Cancel/clear cues; no retrospective sound storm; terminal completion cue is finite and motor loops stop.",
+    "user_gesture_required": true,
+    "default_muted": true,
+    "reduced_motion": "Native manual seeking remains available; effects avoid pulse fading when reduced motion is requested.",
+    "replay_source": {
+      "path": "frontend/src/replay/sfx.ts",
+      "sha256": "4c6d1c402a32307de6395858bc4b0d6d80dcce4fafc1c32b6e2a29d4eec9dcdd",
+      "cue_table": {
+        "sku_picked": {
+          "category": "feedback",
+          "frequency": 780,
+          "duration": 0.09,
+          "priority": 2
+        },
+        "tote_inducted": {
+          "category": "mechanical",
+          "frequency": 190,
+          "duration": 0.12,
+          "priority": 1
+        },
+        "order_packed": {
+          "category": "feedback",
+          "frequency": 620,
+          "duration": 0.16,
+          "priority": 2
+        },
+        "parcel_scanned": {
+          "category": "feedback",
+          "frequency": 980,
+          "duration": 0.07,
+          "priority": 3
+        },
+        "pallet_sealed": {
+          "category": "mechanical",
+          "frequency": 140,
+          "duration": 0.18,
+          "priority": 1
+        },
+        "order_dispatched": {
+          "category": "feedback",
+          "frequency": 880,
+          "duration": 0.23,
+          "priority": 4
+        },
+        "receipt_accepted": {
+          "category": "mechanical",
+          "frequency": 240,
+          "duration": 0.13,
+          "priority": 1
+        },
+        "pallet_putaway": {
+          "category": "mechanical",
+          "frequency": 170,
+          "duration": 0.12,
+          "priority": 1
+        },
+        "visual_footstep": {
+          "category": "mechanical",
+          "frequency": 420,
+          "duration": 0.065,
+          "priority": 0,
+          "texture": "step"
+        },
+        "visual_tape": {
+          "category": "mechanical",
+          "frequency": 1400,
+          "duration": 0.16,
+          "priority": 1,
+          "texture": "tape"
+        }
+      },
+      "maximum_voices": 4,
+      "per_source_wall_cooldown_s": 0.22,
+      "accelerated_speed_threshold": 10,
+      "accelerated_global_cooldown_s": 1.5,
+      "media_origin": "Own deterministic WebAudio/noise synthesis; no third-party sampled audio."
+    }
+  },
+  "Twin": {
+    "events_evaluated": true,
+    "source_ref": {
+      "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+      "sha256": "2fa7ee7b96004f679502376b01442bc7a6dec088411bb5f86a4dbf6bd2dedacd"
+    },
+    "page_ref": {
+      "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+      "sha256": "0209f6d2598f18bcec30d8030d7c11e87ca67afd88ee17970b556a0c8119872f"
+    },
+    "duration_s": 240,
+    "events": {
+      "A": [
+        {
+          "at_s": 30,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK03",
+          "cause": "Очередь на ветку PK03 растёт"
+        },
+        {
+          "at_s": 58,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "sos",
+          "resource_id": "PK03",
+          "cause": "PK03 недоступен, буфер его ветки заполнен"
+        },
+        {
+          "at_s": 72,
+          "zone_id": "STANDARD_E",
+          "state": "danger",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Обратное давление: отбор ждёт свободную ячейку ветки"
+        },
+        {
+          "at_s": 86,
+          "zone_id": "SMALL_E",
+          "state": "danger",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Обратное давление: отбор ждёт свободную ячейку ветки"
+        },
+        {
+          "at_s": 110,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "danger",
+          "resource_id": "OUT_S_EXPRESS",
+          "cause": "Отказ: LONG_BUNDLE не допускается в ворота OUT_S_EXPRESS, там разрешены только SMALL и STANDARD"
+        },
+        {
+          "at_s": 124,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "control",
+          "resource_id": "OUT_E_B2B",
+          "cause": "Длинномер направлен в допустимые ворота OUT_E_B2B"
+        },
+        {
+          "at_s": 150,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK03",
+          "cause": "PK03 снова работает, очередь уходит"
+        },
+        {
+          "at_s": 166,
+          "zone_id": "STANDARD_E",
+          "state": "control",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка снова принимает передачи"
+        },
+        {
+          "at_s": 176,
+          "zone_id": "SMALL_E",
+          "state": "control",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка снова принимает передачи"
+        },
+        {
+          "at_s": 200,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "control",
+          "resource_id": "PK03",
+          "cause": "Очередь ниже нижнего порога и держится"
+        }
+      ],
+      "B": [
+        {
+          "at_s": 30,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK03",
+          "cause": "Очередь на ветку PK03 растёт"
+        },
+        {
+          "at_s": 46,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "danger",
+          "resource_id": "PK05",
+          "cause": "Поток ветки PK03 переведён на свободный PK05"
+        },
+        {
+          "at_s": 60,
+          "zone_id": "STANDARD_E",
+          "state": "danger",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка почти полна, отбор ждёт"
+        },
+        {
+          "at_s": 88,
+          "zone_id": "STANDARD_E",
+          "state": "control",
+          "from_zone_id": "PACKING_LIGHT_LINE",
+          "cause": "Ветка разгружается"
+        },
+        {
+          "at_s": 104,
+          "zone_id": "PACKING_LIGHT_LINE",
+          "state": "control",
+          "resource_id": "PK05",
+          "cause": "Очередь ниже нижнего порога и держится"
+        },
+        {
+          "at_s": 110,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "danger",
+          "resource_id": "OUT_S_EXPRESS",
+          "cause": "Отказ: LONG_BUNDLE не допускается в ворота OUT_S_EXPRESS, там разрешены только SMALL и STANDARD"
+        },
+        {
+          "at_s": 124,
+          "zone_id": "STAGE_OUT_S_EXPRESS",
+          "state": "control",
+          "resource_id": "OUT_E_B2B",
+          "cause": "Длинномер направлен в допустимые ворота OUT_E_B2B"
+        }
+      ]
+    },
+    "cue_notes": {
+      "danger": [
+        [
+          660,
+          0,
+          "sine"
+        ]
+      ],
+      "sos": [
+        [
+          440,
+          0,
+          "triangle"
+        ],
+        [
+          370,
+          0.2,
+          "triangle"
+        ]
+      ],
+      "control": [
+        [
+          523,
+          0,
+          "sine"
+        ],
+        [
+          784,
+          0.14,
+          "sine"
+        ]
+      ],
+      "refuse": [
+        [
+          196,
+          0,
+          "triangle"
+        ]
+      ]
+    },
+    "scope": "Separate staged visual fixture, not an engine run or a measured KPI.",
+    "audio_policy": {
+      "maximum_voices": 4,
+      "wall_cooldown_s": 0.9,
+      "user_gesture_required": true,
+      "default_muted": true
+    }
+  },
+  "actual_plan_example": {
+    "ref": {
+      "path": "docs/adaptive-v3/evidence/six-port-native-20261110/plan.json",
+      "sha256": "d1ea9f9bf074dc3df31d1bd308c833d464956035dc11e3bbbde1f2ada7cb6ea5",
+      "origin": "actual_issued_native_common_clock_plan",
+      "portable": true,
+      "native_proof_ref": {
+        "path": "docs/adaptive-v3/evidence/six-port-native-20261110/checks.json",
+        "sha256": "fa7a5e2bb6617c2d9493658a605a26dcbb31fa3ba531da8a354bc683d9315bd3",
+        "matched_source_pins": 68
+      },
+      "checkpoint_ref": {
+        "path": "docs/adaptive-v3/evidence/six-port-native-20261110/index.json",
+        "sha256": "f710816224ac3c736eb6279d60402e604181a3cef17f2bd8eacfb181015072fd"
+      },
+      "checkpoint_scope": "One common absolute clock, original20N3 requests + ONE explicitWest455kg receipt and45minvisualhorizon; originals/deadlines preserved. SourceLONG retainsyardcustody, notdispatched.",
+      "native_counts": {
+        "requests": 21,
+        "not_released": 0,
+        "queued": 14,
+        "travelling": 0,
+        "native_join_required": 0,
+        "completed_visual": 6,
+        "refused": 1,
+        "workers": 24,
+        "vehicles": 2,
+        "baseline_handling_units": 530,
+        "total_handling_units": 543,
+        "onsite_handling_units": 531,
+        "upstream_handling_units": 10,
+        "downstream_handling_units": 2,
+        "attachment_instances": 3,
+        "attachment_mass_kg": 47.5,
+        "outbound_buffer_occupied": 0,
+        "stage_capacity": 2,
+        "stage_occupied": 0,
+        "units": 12483,
+        "gross_mass_kg": 12443.140000000001
+      },
+      "browser_admission": "Separate current browser acceptance pending"
+    },
+    "materialized_input_sha256": "ca6c883e3bb7348b4e8f0f2e9ed40a7e4b6323ba05b6959277c3bd1528a78d34",
+    "source_request_ids": null,
+    "supplemental_request_ids": null,
+    "visual_extensions": null,
+    "placement": null,
+    "jobs": [
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:01",
+        "request_id": "v3:request:base:outbound:01",
+        "handling_unit_id": "v3:HU:initial:DEMO_001:01",
+        "direction": "outbound",
+        "port_id": "OUT_S_EXPRESS",
+        "requested_at_s": 120,
+        "deadline_at_s": 720,
+        "actor_id": "P01",
+        "actor_ids": [
+          "P01",
+          "K02",
+          "S02"
+        ],
+        "vehicle_id": null,
+        "post_id": "PK02",
+        "destination_slot_id": null,
+        "start_s": 208.17751047954573,
+        "arrival_s": 1232.4111933383847,
+        "end_s": 1476.7099368736226,
+        "route_id": null,
+        "loaded_route": null,
+        "reason": "PROVED_ORIGINAL_SMALL_FINITE_CLAMP_DISPATCH",
+        "native_join_required": false,
+        "native_case": "small_manual_transfer"
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:02",
+        "request_id": "v3:request:base:inbound:02",
+        "handling_unit_id": "v3:HU:incoming:DEMO_111:01",
+        "direction": "inbound",
+        "port_id": "IN_N_STANDARD",
+        "requested_at_s": 180,
+        "deadline_at_s": 780,
+        "actor_id": "R01",
+        "actor_ids": [
+          "R01"
+        ],
+        "vehicle_id": null,
+        "post_id": null,
+        "destination_slot_id": "v3:slot:STANDARD_E:016:L1:B1",
+        "start_s": 180,
+        "arrival_s": 353.6078430901295,
+        "end_s": 449.9444968167128,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "walk",
+          "from_node_id": "v3:service:IN_N_STANDARD",
+          "to_node_id": "v3:module:STANDARD_E:016:B1:worker:node",
+          "arc_ids": [
+            "v3:ped-edge:0024:r",
+            "v3:ped-edge:0025:f",
+            "v3:ped-edge:0034:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:000:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:001:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:002:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:003:f"
+          ],
+          "length_m": 76.44,
+          "mode": "pedestrian",
+          "actor_id": "R01",
+          "vehicle_id": null,
+          "cargo_archetype_id": "STANDARD_CARTON",
+          "geometry_basis": "canonical_walk",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "PROVED_STANDARD_RECEIVING_TO_L1",
+        "native_join_required": false,
+        "native_case": "manual_receiving",
+        "module_mass_reservation": {
+          "module_id": "v3:module:STANDARD_E:016",
+          "mass_before_kg": 88,
+          "quantity_kg": 6.35,
+          "maximum_kg": 1500
+        }
+      },
+      {
+        "job_id": "scenario-job:v3:request:W12:external:01",
+        "request_id": "v3:request:W12:external:01",
+        "handling_unit_id": "v3:HU:W12:external:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 180,
+        "deadline_at_s": 1080,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:LONG_W:001:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:LONG_W:001:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0163",
+            "v3:vehicle:edge:0277",
+            "v3:module:LONG_W:001:B1:vehicle:segment:000:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:001:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:002:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:003:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:004:f"
+          ],
+          "length_m": 98.81678993341119,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "LONG_BUNDLE",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:02",
+        "request_id": "v3:request:base:outbound:02",
+        "handling_unit_id": "v3:HU:initial:DEMO_111:01",
+        "direction": "outbound",
+        "port_id": "OUT_W_RETAIL",
+        "requested_at_s": 240,
+        "deadline_at_s": 840,
+        "actor_id": "P02",
+        "actor_ids": [
+          "P02",
+          "K01",
+          "S01"
+        ],
+        "vehicle_id": null,
+        "post_id": "PK01",
+        "destination_slot_id": null,
+        "start_s": 240,
+        "arrival_s": 1117.2911132520646,
+        "end_s": 1186.503390912233,
+        "route_id": null,
+        "loaded_route": null,
+        "reason": "PROVED_MANUAL_WHOLE_HU_DISPATCH",
+        "native_join_required": false,
+        "native_case": "manual_transfer"
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:03",
+        "request_id": "v3:request:base:inbound:03",
+        "handling_unit_id": "v3:HU:incoming:DEMO_166:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 300,
+        "deadline_at_s": 900,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:HEAVY_E:002:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:HEAVY_E:002:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0161",
+            "v3:vehicle:edge:0247:part:000",
+            "v3:vehicle:edge:0247:part:001",
+            "v3:vehicle:edge:0247:part:002",
+            "v3:vehicle:edge:0247:part:003",
+            "v3:vehicle:edge:0247:part:004",
+            "v3:vehicle:edge:0247:part:005",
+            "v3:vehicle:edge:0247:part:006",
+            "v3:vehicle:edge:0247:part:007",
+            "v3:vehicle:edge:0247:part:008",
+            "v3:vehicle:edge:0073",
+            "v3:vehicle:edge:0251:part:000",
+            "v3:vehicle:edge:0251:part:001",
+            "v3:vehicle:edge:0251:part:002",
+            "v3:vehicle:edge:0251:part:003",
+            "v3:vehicle:edge:0251:part:004",
+            "v3:vehicle:edge:0251:part:005",
+            "v3:vehicle:edge:0251:part:006",
+            "v3:vehicle:edge:0251:part:007",
+            "v3:vehicle:edge:0251:part:008",
+            "v3:vehicle:edge:0173",
+            "v3:vehicle:edge:0255:part:000",
+            "v3:vehicle:edge:0255:part:001",
+            "v3:vehicle:edge:0255:part:002",
+            "v3:vehicle:edge:0255:part:003",
+            "v3:vehicle:edge:0255:part:004",
+            "v3:vehicle:edge:0255:part:005",
+            "v3:vehicle:edge:0255:part:006",
+            "v3:vehicle:edge:0255:part:007",
+            "v3:vehicle:edge:0255:part:008",
+            "v3:vehicle:edge:0187",
+            "v3:vehicle:edge:0281",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:000:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:001:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:002:f"
+          ],
+          "length_m": 157.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "HEAVY_BOX",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:03",
+        "request_id": "v3:request:base:outbound:03",
+        "handling_unit_id": "v3:HU:initial:DEMO_166:01",
+        "direction": "outbound",
+        "port_id": "OUT_E_B2B",
+        "requested_at_s": 360,
+        "deadline_at_s": 960,
+        "actor_id": "F02",
+        "actor_ids": [
+          "F02"
+        ],
+        "vehicle_id": "FL02",
+        "post_id": null,
+        "destination_slot_id": null,
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:module:HEAVY_W:011:B1:vehicle:node",
+          "to_node_id": "v3:service:OUT_E_B2B",
+          "arc_ids": [
+            "v3:module:HEAVY_W:011:B1:vehicle:segment:002:r",
+            "v3:module:HEAVY_W:011:B1:vehicle:segment:001:r",
+            "v3:module:HEAVY_W:011:B1:vehicle:segment:000:r",
+            "v3:vehicle:edge:0275:reverse",
+            "v3:vehicle:edge:0155:reverse",
+            "v3:vehicle:edge:0245:reverse",
+            "v3:vehicle:edge:0165:reverse",
+            "v3:vehicle:edge:0249:reverse",
+            "v3:vehicle:edge:0079:reverse",
+            "v3:vehicle:edge:0253:reverse",
+            "v3:vehicle:edge:0177:reverse",
+            "v3:vehicle:edge:0257:reverse",
+            "v3:vehicle:edge:0189:reverse",
+            "v3:vehicle:edge:0261:reverse",
+            "v3:vehicle:edge:0113:reverse",
+            "v3:vehicle:edge:0217:reverse",
+            "v3:vehicle:edge:0097:reverse",
+            "v3:vehicle:edge:0099"
+          ],
+          "length_m": 147.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F02",
+          "vehicle_id": "FL02",
+          "cargo_archetype_id": "HEAVY_BOX",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:W12:external:02",
+        "request_id": "v3:request:W12:external:02",
+        "handling_unit_id": "v3:HU:W12:external:02",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 360,
+        "deadline_at_s": 1260,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:LONG_W:001:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:LONG_W:001:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0163",
+            "v3:vehicle:edge:0277",
+            "v3:module:LONG_W:001:B1:vehicle:segment:000:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:001:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:002:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:003:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:004:f"
+          ],
+          "length_m": 98.81678993341119,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "LONG_BUNDLE",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:04",
+        "request_id": "v3:request:base:inbound:04",
+        "handling_unit_id": "v3:HU:incoming:DEMO_172:01",
+        "direction": "inbound",
+        "port_id": "IN_N_STANDARD",
+        "requested_at_s": 420,
+        "deadline_at_s": 1020,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:HEAVY_E:002:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_N_STANDARD",
+          "to_node_id": "v3:module:HEAVY_E:002:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0233",
+            "v3:vehicle:edge:0061",
+            "v3:vehicle:edge:0251:part:000",
+            "v3:vehicle:edge:0251:part:001",
+            "v3:vehicle:edge:0251:part:002",
+            "v3:vehicle:edge:0251:part:003",
+            "v3:vehicle:edge:0251:part:004",
+            "v3:vehicle:edge:0251:part:005",
+            "v3:vehicle:edge:0251:part:006",
+            "v3:vehicle:edge:0251:part:007",
+            "v3:vehicle:edge:0251:part:008",
+            "v3:vehicle:edge:0173",
+            "v3:vehicle:edge:0255:part:000",
+            "v3:vehicle:edge:0255:part:001",
+            "v3:vehicle:edge:0255:part:002",
+            "v3:vehicle:edge:0255:part:003",
+            "v3:vehicle:edge:0255:part:004",
+            "v3:vehicle:edge:0255:part:005",
+            "v3:vehicle:edge:0255:part:006",
+            "v3:vehicle:edge:0255:part:007",
+            "v3:vehicle:edge:0255:part:008",
+            "v3:vehicle:edge:0187",
+            "v3:vehicle:edge:0281",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:000:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:001:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:002:f"
+          ],
+          "length_m": 97.10012550780814,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "PALLET_LOAD",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:04",
+        "request_id": "v3:request:base:outbound:04",
+        "handling_unit_id": "v3:HU:initial:DEMO_172:01",
+        "direction": "outbound",
+        "port_id": "OUT_W_RETAIL",
+        "requested_at_s": 480,
+        "deadline_at_s": 1080,
+        "actor_id": "F02",
+        "actor_ids": [
+          "F02"
+        ],
+        "vehicle_id": "FL02",
+        "post_id": null,
+        "destination_slot_id": null,
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:module:HEAVY_E:011:B1:vehicle:node",
+          "to_node_id": "v3:service:OUT_W_RETAIL",
+          "arc_ids": [
+            "v3:module:HEAVY_E:011:B1:vehicle:segment:002:r",
+            "v3:module:HEAVY_E:011:B1:vehicle:segment:001:r",
+            "v3:module:HEAVY_E:011:B1:vehicle:segment:000:r",
+            "v3:vehicle:edge:0281:reverse",
+            "v3:vehicle:edge:0187:reverse",
+            "v3:vehicle:edge:0255:reverse:part:000",
+            "v3:vehicle:edge:0255:reverse:part:001",
+            "v3:vehicle:edge:0255:reverse:part:002",
+            "v3:vehicle:edge:0255:reverse:part:003",
+            "v3:vehicle:edge:0255:reverse:part:004",
+            "v3:vehicle:edge:0255:reverse:part:005",
+            "v3:vehicle:edge:0255:reverse:part:006",
+            "v3:vehicle:edge:0255:reverse:part:007",
+            "v3:vehicle:edge:0255:reverse:part:008",
+            "v3:vehicle:edge:0173:reverse",
+            "v3:vehicle:edge:0251:reverse:part:000",
+            "v3:vehicle:edge:0251:reverse:part:001",
+            "v3:vehicle:edge:0251:reverse:part:002",
+            "v3:vehicle:edge:0251:reverse:part:003",
+            "v3:vehicle:edge:0251:reverse:part:004",
+            "v3:vehicle:edge:0251:reverse:part:005",
+            "v3:vehicle:edge:0251:reverse:part:006",
+            "v3:vehicle:edge:0251:reverse:part:007",
+            "v3:vehicle:edge:0251:reverse:part:008",
+            "v3:vehicle:edge:0073:reverse",
+            "v3:vehicle:edge:0247:reverse:part:000",
+            "v3:vehicle:edge:0247:reverse:part:001",
+            "v3:vehicle:edge:0247:reverse:part:002",
+            "v3:vehicle:edge:0247:reverse:part:003",
+            "v3:vehicle:edge:0247:reverse:part:004",
+            "v3:vehicle:edge:0247:reverse:part:005",
+            "v3:vehicle:edge:0247:reverse:part:006",
+            "v3:vehicle:edge:0247:reverse:part:007",
+            "v3:vehicle:edge:0247:reverse:part:008",
+            "v3:vehicle:edge:0161:reverse",
+            "v3:vehicle:edge:0243:reverse:part:000",
+            "v3:vehicle:edge:0243:reverse:part:001",
+            "v3:vehicle:edge:0243:reverse:part:002",
+            "v3:vehicle:edge:0243:reverse:part:003",
+            "v3:vehicle:edge:0243:reverse:part:004",
+            "v3:vehicle:edge:0243:reverse:part:005",
+            "v3:vehicle:edge:0243:reverse:part:006",
+            "v3:vehicle:edge:0243:reverse:part:007",
+            "v3:vehicle:edge:0243:reverse:part:008",
+            "v3:vehicle:edge:0149:reverse",
+            "v3:vehicle:edge:0239:reverse",
+            "v3:vehicle:edge:0017:reverse",
+            "v3:vehicle:edge:0211:reverse",
+            "v3:vehicle:edge:0047:reverse",
+            "v3:vehicle:edge:0049"
+          ],
+          "length_m": 143.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F02",
+          "vehicle_id": "FL02",
+          "cargo_archetype_id": "PALLET_LOAD",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:05",
+        "request_id": "v3:request:base:inbound:05",
+        "handling_unit_id": "v3:HU:incoming:DEMO_177:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 540,
+        "deadline_at_s": 1140,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:HEAVY_E:002:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:HEAVY_E:002:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0161",
+            "v3:vehicle:edge:0247:part:000",
+            "v3:vehicle:edge:0247:part:001",
+            "v3:vehicle:edge:0247:part:002",
+            "v3:vehicle:edge:0247:part:003",
+            "v3:vehicle:edge:0247:part:004",
+            "v3:vehicle:edge:0247:part:005",
+            "v3:vehicle:edge:0247:part:006",
+            "v3:vehicle:edge:0247:part:007",
+            "v3:vehicle:edge:0247:part:008",
+            "v3:vehicle:edge:0073",
+            "v3:vehicle:edge:0251:part:000",
+            "v3:vehicle:edge:0251:part:001",
+            "v3:vehicle:edge:0251:part:002",
+            "v3:vehicle:edge:0251:part:003",
+            "v3:vehicle:edge:0251:part:004",
+            "v3:vehicle:edge:0251:part:005",
+            "v3:vehicle:edge:0251:part:006",
+            "v3:vehicle:edge:0251:part:007",
+            "v3:vehicle:edge:0251:part:008",
+            "v3:vehicle:edge:0173",
+            "v3:vehicle:edge:0255:part:000",
+            "v3:vehicle:edge:0255:part:001",
+            "v3:vehicle:edge:0255:part:002",
+            "v3:vehicle:edge:0255:part:003",
+            "v3:vehicle:edge:0255:part:004",
+            "v3:vehicle:edge:0255:part:005",
+            "v3:vehicle:edge:0255:part:006",
+            "v3:vehicle:edge:0255:part:007",
+            "v3:vehicle:edge:0255:part:008",
+            "v3:vehicle:edge:0187",
+            "v3:vehicle:edge:0281",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:000:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:001:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:002:f"
+          ],
+          "length_m": 157.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "IBC",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:W12:external:03",
+        "request_id": "v3:request:W12:external:03",
+        "handling_unit_id": "v3:HU:W12:external:03",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 540,
+        "deadline_at_s": 1440,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:LONG_W:001:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:LONG_W:001:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0163",
+            "v3:vehicle:edge:0277",
+            "v3:module:LONG_W:001:B1:vehicle:segment:000:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:001:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:002:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:003:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:004:f"
+          ],
+          "length_m": 98.81678993341119,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "LONG_BUNDLE",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:05",
+        "request_id": "v3:request:base:outbound:05",
+        "handling_unit_id": "v3:HU:initial:DEMO_177:01",
+        "direction": "outbound",
+        "port_id": "OUT_E_B2B",
+        "requested_at_s": 600,
+        "deadline_at_s": 1200,
+        "actor_id": "F02",
+        "actor_ids": [
+          "F02"
+        ],
+        "vehicle_id": "FL02",
+        "post_id": null,
+        "destination_slot_id": null,
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:module:HEAVY_E:006:B1:vehicle:node",
+          "to_node_id": "v3:service:OUT_E_B2B",
+          "arc_ids": [
+            "v3:module:HEAVY_E:006:B1:vehicle:segment:002:r",
+            "v3:module:HEAVY_E:006:B1:vehicle:segment:001:r",
+            "v3:module:HEAVY_E:006:B1:vehicle:segment:000:r",
+            "v3:vehicle:edge:0281:reverse",
+            "v3:vehicle:edge:0191:reverse",
+            "v3:vehicle:edge:0261:reverse",
+            "v3:vehicle:edge:0113:reverse",
+            "v3:vehicle:edge:0217:reverse",
+            "v3:vehicle:edge:0097:reverse",
+            "v3:vehicle:edge:0099"
+          ],
+          "length_m": 45.316748097475156,
+          "mode": "forklift",
+          "actor_id": "F02",
+          "vehicle_id": "FL02",
+          "cargo_archetype_id": "IBC",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:06",
+        "request_id": "v3:request:base:inbound:06",
+        "handling_unit_id": "v3:HU:incoming:DEMO_180:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 660,
+        "deadline_at_s": 1260,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:LONG_W:001:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:LONG_W:001:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0163",
+            "v3:vehicle:edge:0277",
+            "v3:module:LONG_W:001:B1:vehicle:segment:000:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:001:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:002:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:003:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:004:f"
+          ],
+          "length_m": 98.81678993341119,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "LONG_BUNDLE",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:06",
+        "request_id": "v3:request:base:outbound:06",
+        "handling_unit_id": "v3:HU:initial:DEMO_180:01",
+        "direction": "outbound",
+        "port_id": "OUT_E_B2B",
+        "requested_at_s": 720,
+        "deadline_at_s": 1320,
+        "actor_id": "F02",
+        "actor_ids": [
+          "F01",
+          "F02"
+        ],
+        "vehicle_id": "FL02",
+        "post_id": null,
+        "destination_slot_id": null,
+        "preparation_start_s": 0,
+        "start_s": 720,
+        "arrival_s": 1348.7273532926079,
+        "end_s": 1359.0320227345212,
+        "route_id": null,
+        "loaded_route": null,
+        "reason": "PROVED_ORIGINAL_LONG_TRANSPORT_OUTSIDE_GATE_RETAINED",
+        "native_join_required": false,
+        "native_case": "source_long_transfer",
+        "operation": "long_source_to_outside_gate"
+      },
+      {
+        "job_id": "scenario-job:v3:request:W12:external:04",
+        "request_id": "v3:request:W12:external:04",
+        "handling_unit_id": "v3:HU:W12:external:04",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 720,
+        "deadline_at_s": 1620,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:LONG_W:001:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:LONG_W:001:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0163",
+            "v3:vehicle:edge:0277",
+            "v3:module:LONG_W:001:B1:vehicle:segment:000:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:001:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:002:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:003:f",
+            "v3:module:LONG_W:001:B1:vehicle:segment:004:f"
+          ],
+          "length_m": 98.81678993341119,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "LONG_BUNDLE",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:07",
+        "request_id": "v3:request:base:inbound:07",
+        "handling_unit_id": "v3:HU:incoming:DEMO_188:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 780,
+        "deadline_at_s": 1380,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:HEAVY_E:002:L1:B1",
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:service:IN_W_BULK",
+          "to_node_id": "v3:module:HEAVY_E:002:B1:vehicle:node",
+          "arc_ids": [
+            "v3:vehicle:edge:0007:reverse",
+            "v3:vehicle:edge:0005",
+            "v3:vehicle:edge:0205",
+            "v3:vehicle:edge:0021",
+            "v3:vehicle:edge:0239",
+            "v3:vehicle:edge:0149",
+            "v3:vehicle:edge:0243:part:000",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0161",
+            "v3:vehicle:edge:0247:part:000",
+            "v3:vehicle:edge:0247:part:001",
+            "v3:vehicle:edge:0247:part:002",
+            "v3:vehicle:edge:0247:part:003",
+            "v3:vehicle:edge:0247:part:004",
+            "v3:vehicle:edge:0247:part:005",
+            "v3:vehicle:edge:0247:part:006",
+            "v3:vehicle:edge:0247:part:007",
+            "v3:vehicle:edge:0247:part:008",
+            "v3:vehicle:edge:0073",
+            "v3:vehicle:edge:0251:part:000",
+            "v3:vehicle:edge:0251:part:001",
+            "v3:vehicle:edge:0251:part:002",
+            "v3:vehicle:edge:0251:part:003",
+            "v3:vehicle:edge:0251:part:004",
+            "v3:vehicle:edge:0251:part:005",
+            "v3:vehicle:edge:0251:part:006",
+            "v3:vehicle:edge:0251:part:007",
+            "v3:vehicle:edge:0251:part:008",
+            "v3:vehicle:edge:0173",
+            "v3:vehicle:edge:0255:part:000",
+            "v3:vehicle:edge:0255:part:001",
+            "v3:vehicle:edge:0255:part:002",
+            "v3:vehicle:edge:0255:part:003",
+            "v3:vehicle:edge:0255:part:004",
+            "v3:vehicle:edge:0255:part:005",
+            "v3:vehicle:edge:0255:part:006",
+            "v3:vehicle:edge:0255:part:007",
+            "v3:vehicle:edge:0255:part:008",
+            "v3:vehicle:edge:0187",
+            "v3:vehicle:edge:0281",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:000:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:001:f",
+            "v3:module:HEAVY_E:002:B1:vehicle:segment:002:f"
+          ],
+          "length_m": 157.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F01",
+          "vehicle_id": "FL01",
+          "cargo_archetype_id": "DRUM",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:07",
+        "request_id": "v3:request:base:outbound:07",
+        "handling_unit_id": "v3:HU:initial:DEMO_188:01",
+        "direction": "outbound",
+        "port_id": "OUT_W_RETAIL",
+        "requested_at_s": 840,
+        "deadline_at_s": 1440,
+        "actor_id": "F02",
+        "actor_ids": [
+          "F02"
+        ],
+        "vehicle_id": "FL02",
+        "post_id": null,
+        "destination_slot_id": null,
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:module:HEAVY_E:010:B1:vehicle:node",
+          "to_node_id": "v3:service:OUT_W_RETAIL",
+          "arc_ids": [
+            "v3:module:HEAVY_E:010:B1:vehicle:segment:002:r",
+            "v3:module:HEAVY_E:010:B1:vehicle:segment:001:r",
+            "v3:module:HEAVY_E:010:B1:vehicle:segment:000:r",
+            "v3:vehicle:edge:0281:reverse",
+            "v3:vehicle:edge:0187:reverse",
+            "v3:vehicle:edge:0255:reverse:part:000",
+            "v3:vehicle:edge:0255:reverse:part:001",
+            "v3:vehicle:edge:0255:reverse:part:002",
+            "v3:vehicle:edge:0255:reverse:part:003",
+            "v3:vehicle:edge:0255:reverse:part:004",
+            "v3:vehicle:edge:0255:reverse:part:005",
+            "v3:vehicle:edge:0255:reverse:part:006",
+            "v3:vehicle:edge:0255:reverse:part:007",
+            "v3:vehicle:edge:0255:reverse:part:008",
+            "v3:vehicle:edge:0173:reverse",
+            "v3:vehicle:edge:0251:reverse:part:000",
+            "v3:vehicle:edge:0251:reverse:part:001",
+            "v3:vehicle:edge:0251:reverse:part:002",
+            "v3:vehicle:edge:0251:reverse:part:003",
+            "v3:vehicle:edge:0251:reverse:part:004",
+            "v3:vehicle:edge:0251:reverse:part:005",
+            "v3:vehicle:edge:0251:reverse:part:006",
+            "v3:vehicle:edge:0251:reverse:part:007",
+            "v3:vehicle:edge:0251:reverse:part:008",
+            "v3:vehicle:edge:0073:reverse",
+            "v3:vehicle:edge:0247:reverse:part:000",
+            "v3:vehicle:edge:0247:reverse:part:001",
+            "v3:vehicle:edge:0247:reverse:part:002",
+            "v3:vehicle:edge:0247:reverse:part:003",
+            "v3:vehicle:edge:0247:reverse:part:004",
+            "v3:vehicle:edge:0247:reverse:part:005",
+            "v3:vehicle:edge:0247:reverse:part:006",
+            "v3:vehicle:edge:0247:reverse:part:007",
+            "v3:vehicle:edge:0247:reverse:part:008",
+            "v3:vehicle:edge:0161:reverse",
+            "v3:vehicle:edge:0243:reverse:part:000",
+            "v3:vehicle:edge:0243:reverse:part:001",
+            "v3:vehicle:edge:0243:reverse:part:002",
+            "v3:vehicle:edge:0243:reverse:part:003",
+            "v3:vehicle:edge:0243:reverse:part:004",
+            "v3:vehicle:edge:0243:reverse:part:005",
+            "v3:vehicle:edge:0243:reverse:part:006",
+            "v3:vehicle:edge:0243:reverse:part:007",
+            "v3:vehicle:edge:0243:reverse:part:008",
+            "v3:vehicle:edge:0149:reverse",
+            "v3:vehicle:edge:0239:reverse",
+            "v3:vehicle:edge:0017:reverse",
+            "v3:vehicle:edge:0211:reverse",
+            "v3:vehicle:edge:0047:reverse",
+            "v3:vehicle:edge:0049"
+          ],
+          "length_m": 145.31674809747517,
+          "mode": "forklift",
+          "actor_id": "F02",
+          "vehicle_id": "FL02",
+          "cargo_archetype_id": "DRUM",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:08",
+        "request_id": "v3:request:base:inbound:08",
+        "handling_unit_id": "v3:HU:incoming:DEMO_193:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 900,
+        "deadline_at_s": 1500,
+        "actor_id": null,
+        "actor_ids": [],
+        "vehicle_id": null,
+        "post_id": null,
+        "destination_slot_id": null,
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": null,
+        "reason": "NO_COMPATIBLE_FREE_SLOT",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:outbound:08",
+        "request_id": "v3:request:base:outbound:08",
+        "handling_unit_id": "v3:HU:initial:DEMO_193:01",
+        "direction": "outbound",
+        "port_id": "OUT_E_B2B",
+        "requested_at_s": 960,
+        "deadline_at_s": 1560,
+        "actor_id": "F02",
+        "actor_ids": [
+          "F02"
+        ],
+        "vehicle_id": "FL02",
+        "post_id": null,
+        "destination_slot_id": null,
+        "start_s": null,
+        "arrival_s": null,
+        "end_s": null,
+        "route_id": null,
+        "loaded_route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "vehicle",
+          "from_node_id": "v3:module:STANDARD_W:001:B2:vehicle:node",
+          "to_node_id": "v3:service:OUT_E_B2B",
+          "arc_ids": [
+            "v3:module:STANDARD_W:001:B2:vehicle:segment:001:r",
+            "v3:module:STANDARD_W:001:B2:vehicle:segment:000:r",
+            "v3:vehicle:edge:0243:part:001",
+            "v3:vehicle:edge:0243:part:002",
+            "v3:vehicle:edge:0243:part:003",
+            "v3:vehicle:edge:0243:part:004",
+            "v3:vehicle:edge:0243:part:005",
+            "v3:vehicle:edge:0243:part:006",
+            "v3:vehicle:edge:0243:part:007",
+            "v3:vehicle:edge:0243:part:008",
+            "v3:vehicle:edge:0161",
+            "v3:vehicle:edge:0247:part:000",
+            "v3:vehicle:edge:0247:part:001",
+            "v3:vehicle:edge:0247:part:002",
+            "v3:vehicle:edge:0247:part:003",
+            "v3:vehicle:edge:0247:part:004",
+            "v3:vehicle:edge:0247:part:005",
+            "v3:vehicle:edge:0247:part:006",
+            "v3:vehicle:edge:0247:part:007",
+            "v3:vehicle:edge:0247:part:008",
+            "v3:vehicle:edge:0073",
+            "v3:vehicle:edge:0251:part:000",
+            "v3:vehicle:edge:0251:part:001",
+            "v3:vehicle:edge:0251:part:002",
+            "v3:vehicle:edge:0251:part:003",
+            "v3:vehicle:edge:0251:part:004",
+            "v3:vehicle:edge:0251:part:005",
+            "v3:vehicle:edge:0251:part:006",
+            "v3:vehicle:edge:0251:part:007",
+            "v3:vehicle:edge:0251:part:008",
+            "v3:vehicle:edge:0173",
+            "v3:vehicle:edge:0255:part:000",
+            "v3:vehicle:edge:0255:part:001",
+            "v3:vehicle:edge:0255:part:002",
+            "v3:vehicle:edge:0255:part:003",
+            "v3:vehicle:edge:0255:part:004",
+            "v3:vehicle:edge:0255:part:005",
+            "v3:vehicle:edge:0255:part:006",
+            "v3:vehicle:edge:0255:part:007",
+            "v3:vehicle:edge:0255:part:008",
+            "v3:vehicle:edge:0185",
+            "v3:vehicle:edge:0259",
+            "v3:vehicle:edge:0117",
+            "v3:vehicle:edge:0219",
+            "v3:vehicle:edge:0095",
+            "v3:vehicle:edge:0101:reverse"
+          ],
+          "length_m": 127.33328701527005,
+          "mode": "forklift",
+          "actor_id": "F02",
+          "vehicle_id": "FL02",
+          "cargo_archetype_id": "FRAGILE_CRATE",
+          "geometry_basis": "C08_immutable_load",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "reason": "RESOURCE_BUSY_UNTIL_HORIZON",
+        "native_join_required": true,
+        "native_case": null
+      },
+      {
+        "job_id": "scenario-job:v3:request:base:inbound:01",
+        "request_id": "v3:request:base:inbound:01",
+        "handling_unit_id": "v3:HU:incoming:DEMO_001:01",
+        "direction": "inbound",
+        "port_id": "IN_E_PARCEL",
+        "requested_at_s": 60,
+        "deadline_at_s": 660,
+        "actor_id": "R02",
+        "actor_ids": [
+          "R02"
+        ],
+        "vehicle_id": null,
+        "post_id": null,
+        "destination_slot_id": "v3:slot:SMALL_E:019:L1:B5",
+        "start_s": 1476.7099368736226,
+        "arrival_s": 1862.8505786037017,
+        "end_s": 2163.791601152242,
+        "route_id": null,
+        "loaded_route": null,
+        "reason": "PROVED_ORIGINAL_SMALL_RECEIVING_WITH_SAME_FINITE_TOOL",
+        "native_join_required": false,
+        "native_case": "small_manual_receiving",
+        "module_mass_reservation": {
+          "module_id": "v3:module:SMALL_E:019",
+          "mass_before_kg": 8.459999999999997,
+          "quantity_kg": 0.94,
+          "maximum_kg": 150
+        }
+      },
+      {
+        "job_id": "scenario-job:v3:request:W11:external:01",
+        "request_id": "v3:request:W11:external:01",
+        "handling_unit_id": "v3:HU:W11:external:01",
+        "direction": "inbound",
+        "port_id": "IN_W_BULK",
+        "requested_at_s": 0,
+        "deadline_at_s": 2700,
+        "actor_id": "F01",
+        "actor_ids": [
+          "F01"
+        ],
+        "vehicle_id": "FL01",
+        "post_id": null,
+        "destination_slot_id": "v3:slot:HEAVY_E:001:L1:B1",
+        "start_s": 2163.791601152242,
+        "arrival_s": 2165.791601152242,
+        "end_s": 2478.7197515244497,
+        "route_id": null,
+        "loaded_route": null,
+        "reason": "PROVED_CONNECTED_PALLET455",
+        "native_join_required": false,
+        "native_case": "connected_pallet455"
+      }
+    ],
+    "routes": [],
+    "events": [
+      {
+        "at_s": 0,
+        "kind": "source_preparation",
+        "job_id": "scenario-job:v3:request:base:outbound:06",
+        "handling_unit_id": "v3:HU:initial:DEMO_180:01"
+      },
+      {
+        "at_s": 0,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:W11:external:01",
+        "handling_unit_id": "v3:HU:W11:external:01"
+      },
+      {
+        "at_s": 60,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:01",
+        "handling_unit_id": "v3:HU:incoming:DEMO_001:01"
+      },
+      {
+        "at_s": 120,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:01",
+        "handling_unit_id": "v3:HU:initial:DEMO_001:01"
+      },
+      {
+        "at_s": 180,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:02",
+        "handling_unit_id": "v3:HU:incoming:DEMO_111:01"
+      },
+      {
+        "at_s": 180,
+        "kind": "assignment",
+        "job_id": "scenario-job:v3:request:base:inbound:02",
+        "handling_unit_id": "v3:HU:incoming:DEMO_111:01"
+      },
+      {
+        "at_s": 180,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:W12:external:01",
+        "handling_unit_id": "v3:HU:W12:external:01"
+      },
+      {
+        "at_s": 208.17751047954573,
+        "kind": "assignment",
+        "job_id": "scenario-job:v3:request:base:outbound:01",
+        "handling_unit_id": "v3:HU:initial:DEMO_001:01"
+      },
+      {
+        "at_s": 240,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:02",
+        "handling_unit_id": "v3:HU:initial:DEMO_111:01"
+      },
+      {
+        "at_s": 240,
+        "kind": "assignment",
+        "job_id": "scenario-job:v3:request:base:outbound:02",
+        "handling_unit_id": "v3:HU:initial:DEMO_111:01"
+      },
+      {
+        "at_s": 300,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:03",
+        "handling_unit_id": "v3:HU:incoming:DEMO_166:01"
+      },
+      {
+        "at_s": 353.6078430901295,
+        "kind": "completed_visual",
+        "job_id": "scenario-job:v3:request:base:inbound:02",
+        "handling_unit_id": "v3:HU:incoming:DEMO_111:01"
+      },
+      {
+        "at_s": 360,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:03",
+        "handling_unit_id": "v3:HU:initial:DEMO_166:01"
+      },
+      {
+        "at_s": 360,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:W12:external:02",
+        "handling_unit_id": "v3:HU:W12:external:02"
+      },
+      {
+        "at_s": 420,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:04",
+        "handling_unit_id": "v3:HU:incoming:DEMO_172:01"
+      },
+      {
+        "at_s": 480,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:04",
+        "handling_unit_id": "v3:HU:initial:DEMO_172:01"
+      },
+      {
+        "at_s": 540,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:05",
+        "handling_unit_id": "v3:HU:incoming:DEMO_177:01"
+      },
+      {
+        "at_s": 540,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:W12:external:03",
+        "handling_unit_id": "v3:HU:W12:external:03"
+      },
+      {
+        "at_s": 600,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:05",
+        "handling_unit_id": "v3:HU:initial:DEMO_177:01"
+      },
+      {
+        "at_s": 660,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:06",
+        "handling_unit_id": "v3:HU:incoming:DEMO_180:01"
+      },
+      {
+        "at_s": 720,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:06",
+        "handling_unit_id": "v3:HU:initial:DEMO_180:01"
+      },
+      {
+        "at_s": 720,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:W12:external:04",
+        "handling_unit_id": "v3:HU:W12:external:04"
+      },
+      {
+        "at_s": 780,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:07",
+        "handling_unit_id": "v3:HU:incoming:DEMO_188:01"
+      },
+      {
+        "at_s": 840,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:07",
+        "handling_unit_id": "v3:HU:initial:DEMO_188:01"
+      },
+      {
+        "at_s": 900,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:inbound:08",
+        "handling_unit_id": "v3:HU:incoming:DEMO_193:01"
+      },
+      {
+        "at_s": 960,
+        "kind": "request",
+        "job_id": "scenario-job:v3:request:base:outbound:08",
+        "handling_unit_id": "v3:HU:initial:DEMO_193:01"
+      },
+      {
+        "at_s": 1117.2911132520646,
+        "kind": "completed_visual",
+        "job_id": "scenario-job:v3:request:base:outbound:02",
+        "handling_unit_id": "v3:HU:initial:DEMO_111:01"
+      },
+      {
+        "at_s": 1232.4111933383847,
+        "kind": "completed_visual",
+        "job_id": "scenario-job:v3:request:base:outbound:01",
+        "handling_unit_id": "v3:HU:initial:DEMO_001:01"
+      },
+      {
+        "at_s": 1359.0320227345212,
+        "kind": "completed_visual_transport",
+        "job_id": "scenario-job:v3:request:base:outbound:06",
+        "handling_unit_id": "v3:HU:initial:DEMO_180:01"
+      },
+      {
+        "at_s": 1476.7099368736226,
+        "kind": "assignment",
+        "job_id": "scenario-job:v3:request:base:inbound:01",
+        "handling_unit_id": "v3:HU:incoming:DEMO_001:01"
+      },
+      {
+        "at_s": 1862.8505786037017,
+        "kind": "completed_visual",
+        "job_id": "scenario-job:v3:request:base:inbound:01",
+        "handling_unit_id": "v3:HU:incoming:DEMO_001:01"
+      },
+      {
+        "at_s": 2163.791601152242,
+        "kind": "assignment",
+        "job_id": "scenario-job:v3:request:W11:external:01",
+        "handling_unit_id": "v3:HU:W11:external:01"
+      },
+      {
+        "at_s": 2478.7197515244497,
+        "kind": "completed_visual",
+        "job_id": "scenario-job:v3:request:W11:external:01",
+        "handling_unit_id": "v3:HU:W11:external:01"
+      }
+    ],
+    "selected_native_cases": [
+      "small_manual_transfer",
+      "manual_receiving",
+      "manual_transfer",
+      "source_long_transfer",
+      "small_manual_receiving",
+      "connected_pallet455"
+    ],
+    "six_native_workflow_kinds_recorded": true,
+    "all_requests_physically_completed": false,
+    "browser_admission": "Separate browser/native evidence is required; reading this snapshot does not recertify it."
+  },
+  "example_status": "six_workflow_plan_recorded",
+  "module_api": [
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioExecution.ts",
+      "sha256": "ff832adbdb7c0b33cb499cc4c7f5a9c2fde6959a162d7b111b6926b3ce55cbc8",
+      "exports": [
+        {
+          "name": "ScenarioJobStatus",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 17
+        },
+        {
+          "name": "ScenarioExecutionRoute",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 18
+        },
+        {
+          "name": "ScenarioExecutionActor",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 19
+        },
+        {
+          "name": "ScenarioExecutionVehicle",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "ScenarioExecutionCargo",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "ScenarioExecutionLease",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 22
+        },
+        {
+          "name": "ScenarioN2HeavyQueue",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 23
+        },
+        {
+          "name": "ScenarioExecutionJob",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 24
+        },
+        {
+          "name": "WarehouseScenarioLongCrossdockPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 25
+        },
+        {
+          "name": "WarehouseScenarioAdditionalHeavyPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "ScenarioAdditionalHeavySample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 27
+        },
+        {
+          "name": "ScenarioReceivingSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 28
+        },
+        {
+          "name": "ScenarioExecutionEvent",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 29
+        },
+        {
+          "name": "ScenarioSmallReceivingSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 30
+        },
+        {
+          "name": "WarehouseScenarioSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 31
+        },
+        {
+          "name": "WarehouseScenarioOptions",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 32
+        },
+        {
+          "name": "WarehouseScenarioPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 33
+        },
+        {
+          "name": "isWarehouseScenarioPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 63
+        },
+        {
+          "name": "compileWarehouseScenarioExecution",
+          "kind": "FunctionDeclaration",
+          "source_line": 67
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioClock.ts",
+      "sha256": "2489467b5c7e660f09343d16d3f1288a2b7d3b8a36b71a3d4a4b49f0744040f8",
+      "exports": [
+        {
+          "name": "createWarehouseScenarioClock",
+          "kind": "FunctionDeclaration",
+          "source_line": 4
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioScene.ts",
+      "sha256": "f0df521e809f3b4c0e2c38fc7930cb9010964a654c434a7f7e656f590c718595",
+      "exports": [
+        {
+          "name": "ScenarioNativeRoute",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "ScenarioNativeSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 25
+        },
+        {
+          "name": "ScenarioNativePlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "createWarehouseScenarioScene",
+          "kind": "FunctionDeclaration",
+          "source_line": 36
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioSources.ts",
+      "sha256": "249eddefaf9c61e91b49eb5fb21cebd985ea91ab6e47a0aec66050adb288e2d4",
+      "exports": [
+        {
+          "name": "WAREHOUSE_SCENARIO_SOURCES",
+          "kind": "VariableDeclaration",
+          "source_line": 1
+        },
+        {
+          "name": "WarehouseScenarioId",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 23
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioCosts.ts",
+      "sha256": "dc6914d0cc03f0b858400626b3c10f3f547e67ac3db5940c664d6dc6e3db286e",
+      "exports": [
+        {
+          "name": "WarehouseScenarioCostSnapshot",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 5
+        },
+        {
+          "name": "summarizeWarehouseScenarioCosts",
+          "kind": "FunctionDeclaration",
+          "source_line": 92
+        },
+        {
+          "name": "compareWarehouseScenarioCosts",
+          "kind": "FunctionDeclaration",
+          "source_line": 249
+        },
+        {
+          "name": "WarehouseScenarioCostComparison",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 302
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioEffects.ts",
+      "sha256": "e7e15135dd01a48749ddc8bb6f8398351b676e9c2ab8ed087dbb974d24775b14",
+      "exports": [
+        {
+          "name": "createWarehouseScenarioEffects",
+          "kind": "FunctionDeclaration",
+          "source_line": 7
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioVisualCues.ts",
+      "sha256": "16688c8b033a05de8f5479512a266f75151dc7b389a07af2dd8e1d3728effae2",
+      "exports": [
+        {
+          "name": "createWarehouseScenarioVisualCues",
+          "kind": "FunctionDeclaration",
+          "source_line": 12
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioComparisonRender.ts",
+      "sha256": "1cf462291de9b9c28bb6348e672e394532e204f0bdc4d36efbce60a40e1e32fb",
+      "exports": [
+        {
+          "name": "WarehouseScenarioComparisonVariant",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 3
+        },
+        {
+          "name": "WarehouseScenarioComparisonRenderOptions",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 4
+        },
+        {
+          "name": "WarehouseScenarioComparisonPane",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "renderWarehouseScenarioComparison",
+          "kind": "FunctionDeclaration",
+          "source_line": 39
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts",
+      "sha256": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+      "exports": [
+        {
+          "name": "HeavyInboundLocation",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "HeavyInboundWheels",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "HeavyInboundControls",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "HeavyInboundRouteGeometry",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "HeavyInboundPhase",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "HeavyInboundLease",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "HeavyInboundEvent",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "HeavyInboundReceipt",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 14
+        },
+        {
+          "name": "HeavyInboundFixture",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "HeavyInboundSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 16
+        },
+        {
+          "name": "WarehouseHeavyInboundPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 17
+        },
+        {
+          "name": "isWarehouseHeavyInboundPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 25
+        },
+        {
+          "name": "compileWarehouseHeavyInboundPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 28
+        },
+        {
+          "name": "sampleWarehouseHeavyInboundPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 78
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseHeavyInboundScene.ts",
+      "sha256": "12a93271adbd72bb6f6da8d5c13ceeb4cae3994d7e53fe478f419f9e5733bf02",
+      "exports": [
+        {
+          "name": "createWarehouseHeavyInboundScene",
+          "kind": "FunctionDeclaration",
+          "source_line": 16
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts",
+      "sha256": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba",
+      "exports": [
+        {
+          "name": "HEAVY_INBOUND_PALLET_PI_PROFILE",
+          "kind": "VariableDeclaration",
+          "source_line": 4
+        },
+        {
+          "name": "HEAVY_INBOUND_NATIVE_EPS_M",
+          "kind": "VariableDeclaration",
+          "source_line": 5
+        },
+        {
+          "name": "heavyInboundPalletEndpoints",
+          "kind": "FunctionDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "HeavyInboundPalletCapture",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 35
+        },
+        {
+          "name": "captureHeavyInboundPallet",
+          "kind": "FunctionDeclaration",
+          "source_line": 38
+        },
+        {
+          "name": "sampleHeavyInboundPalletCapture",
+          "kind": "FunctionDeclaration",
+          "source_line": 47
+        },
+        {
+          "name": "checkHeavyInboundPalletNativeEnvelope",
+          "kind": "FunctionDeclaration",
+          "source_line": 56
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts",
+      "sha256": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+      "exports": [
+        {
+          "name": "AdditionalHeavyClass",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "AdditionalHeavyCase",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "AdditionalHeavyPacket",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "ADDITIONAL_HEAVY_PACKET_SHA256",
+          "kind": "VariableDeclaration",
+          "source_line": 18
+        },
+        {
+          "name": "validateAdditionalHeavyPacket",
+          "kind": "FunctionDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "createWarehouseAdditionalHeavyCases",
+          "kind": "FunctionDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "isWarehouseAdditionalHeavyCase",
+          "kind": "FunctionDeclaration",
+          "source_line": 47
+        },
+        {
+          "name": "captureAdditionalHeavyCase",
+          "kind": "FunctionDeclaration",
+          "source_line": 48
+        },
+        {
+          "name": "sampleAdditionalHeavyCapture",
+          "kind": "FunctionDeclaration",
+          "source_line": 55
+        },
+        {
+          "name": "compileWarehouseAdditionalHeavyCase",
+          "kind": "FunctionDeclaration",
+          "source_line": 58
+        },
+        {
+          "name": "isWarehouseAdditionalHeavyPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 82
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseAdditionalHeavyScene.ts",
+      "sha256": "6f3592d2ca0ef326f8d2815989cda75751ece46398800da11ca27925a958a2f0",
+      "exports": [
+        {
+          "name": "AdditionalHeavyDisplayRow",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "createWarehouseAdditionalHeavyScene",
+          "kind": "FunctionDeclaration",
+          "source_line": 20
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseWestPalletReceipt.ts",
+      "sha256": "b7040a26388b3966da1214441e1ae9652229d580bbab90645cb4ff0ce54331f6",
+      "exports": [
+        {
+          "name": "WarehouseWestPalletReceipt",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 4
+        },
+        {
+          "name": "materializeWarehouseWestPalletReceipt",
+          "kind": "FunctionDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "isWarehouseWestPalletReceipt",
+          "kind": "FunctionDeclaration",
+          "source_line": 19
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts",
+      "sha256": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+      "exports": [
+        {
+          "name": "ManualPadTarget",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "ManualArmSolution",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "solveWarehouseManualPadPose",
+          "kind": "FunctionDeclaration",
+          "source_line": 16
+        },
+        {
+          "name": "isWarehouseManualTransfer",
+          "kind": "VariableDeclaration",
+          "source_line": 52
+        },
+        {
+          "name": "createWarehouseManualTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 109
+        },
+        {
+          "name": "WarehouseManualTransfer",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 145
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseManualWorkflowRoute.ts",
+      "sha256": "9bcc6aeef4b54d613856de3fd884910d205b98160925fc24851d1c59c1f43186",
+      "exports": [
+        {
+          "name": "ManualWorkflowActorId",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 6
+        },
+        {
+          "name": "ManualWorkflowOptions",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "ManualWorkflowLeg",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "ManualWorkflowPhase",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "WarehouseManualWorkflowRoute",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "createWarehouseManualWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 16
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseManualGripPose.ts",
+      "sha256": "ffdcff592b595554faa9926208da2993541fd40dd7bf862a1d225220e46c68a4",
+      "exports": [
+        {
+          "name": "WAREHOUSE_MANUAL_GRIP_SOURCE",
+          "kind": "VariableDeclaration",
+          "source_line": 3
+        },
+        {
+          "name": "WarehouseManualGripPose",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 4
+        },
+        {
+          "name": "sampleWarehouseManualGripPose",
+          "kind": "FunctionDeclaration",
+          "source_line": 5
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseReceivingWorkflowRoute.ts",
+      "sha256": "f44df6ee6236a7060b933f1acbc0c0161dcc226675bc3fcaab0cd9c61888619a",
+      "exports": [
+        {
+          "name": "ReceivingRouteLeg",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 6
+        },
+        {
+          "name": "WarehouseReceivingWorkflowRoute",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "ReceivingRouteOptions",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "validateWarehouseReceivingN1Input",
+          "kind": "FunctionDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "materializeWarehouseReceivingExtraStandard",
+          "kind": "FunctionDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "createWarehouseReceivingWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 24
+        },
+        {
+          "name": "isWarehouseReceivingWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 47
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseReceivingManualTransfer.ts",
+      "sha256": "9b18eac8560cdb2aa5cf8c8c4e6efd4311545c046f75ca726f07cb613b256aa7",
+      "exports": [
+        {
+          "name": "WarehouseReceivingRecipe",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "isWarehouseReceivingManualTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "createWarehouseReceivingManualTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 19
+        },
+        {
+          "name": "WarehouseReceivingManualTransfer",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 55
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseLongSourceOperationPlan.ts",
+      "sha256": "e248a70308ef0f00f39375da22da1553a54ca84a079170e0af1c227a1b28feeb",
+      "exports": [
+        {
+          "name": "LONG_SOURCE_OPERATION_IDS",
+          "kind": "VariableDeclaration",
+          "source_line": 6
+        },
+        {
+          "name": "LONG_SOURCE_OPERATION_SOURCES",
+          "kind": "VariableDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "LongSourceWheels",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "LongSourceVehicle",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "LongSourcePose",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "LongSourceBridgeControl",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "LongSourceControl",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "LongSourcePhase",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "LongSourceSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 14
+        },
+        {
+          "name": "WarehouseLongSourceOperationPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "isWarehouseLongSourceOperationPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 17
+        },
+        {
+          "name": "compileWarehouseLongSourceOperationPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 28
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseLongSourceOperationScene.ts",
+      "sha256": "d0fc64c7278ed579af3c6af22ed0288919c95fa2b9d8f9c04867a31597835b32",
+      "exports": [
+        {
+          "name": "createWarehouseLongSourceOperationScene",
+          "kind": "FunctionDeclaration",
+          "source_line": 13
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseLongSourceCargoBinding.ts",
+      "sha256": "8c7482f2353364b1b4176bba048f6c9b59eae5ac90333dbc0805a0ad6c9be1b4",
+      "exports": [
+        {
+          "name": "WarehouseLongSourceCargoBindingError",
+          "kind": "ClassDeclaration",
+          "source_line": 5
+        },
+        {
+          "name": "DynamicCargoBindingSnapshot",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 6
+        },
+        {
+          "name": "WarehouseLongSourceCargoBinding",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "isWarehouseLongSourceCargoBinding",
+          "kind": "FunctionDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "createWarehouseLongSourceCargoBinding",
+          "kind": "FunctionDeclaration",
+          "source_line": 28
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSourceLongConcurrency.ts",
+      "sha256": "bd563c5554d3492962b4124d0647f2018f00efd39ba69977c5385816ed5b4f98",
+      "exports": [
+        {
+          "name": "SOURCE_LONG_CONCURRENCY_CERTIFICATE",
+          "kind": "VariableDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "WarehouseSourceLongConcurrencyCertificate",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "warehouseSourceLongConcurrencySignatures",
+          "kind": "FunctionDeclaration",
+          "source_line": 19
+        },
+        {
+          "name": "validateWarehouseSourceLongConcurrencyCertificate",
+          "kind": "FunctionDeclaration",
+          "source_line": 24
+        },
+        {
+          "name": "isWarehouseSourceLongConcurrencyCertificate",
+          "kind": "FunctionDeclaration",
+          "source_line": 34
+        },
+        {
+          "name": "warehouseSourceLongConcurrencyAllows",
+          "kind": "FunctionDeclaration",
+          "source_line": 35
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSmallClampWorkflowRoute.ts",
+      "sha256": "e9a3fb71e6bab00b3a79e24e8778378f2d868e08d9a3ca00f785766039d98b3d",
+      "exports": [
+        {
+          "name": "WarehouseSmallClampWorkflowRoute",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "isWarehouseSmallClampWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "createWarehouseSmallClampWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 10
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSmallClampManualTransfer.ts",
+      "sha256": "8334fd798114ab36cb5ca5bff2ce84f2f51f6f6d0354a0c606a7c18e718054c3",
+      "exports": [
+        {
+          "name": "SmallClampToolPose",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "isWarehouseSmallClampManualTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 19
+        },
+        {
+          "name": "isWarehouseSmallClampToolToken",
+          "kind": "FunctionDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "acquireWarehouseSmallClampTool",
+          "kind": "FunctionDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "createWarehouseSmallClampManualTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 24
+        },
+        {
+          "name": "WarehouseSmallClampManualTransfer",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 88
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSmallClampReceivingWorkflowRoute.ts",
+      "sha256": "38da5cb2ca6c4902fbf1dffeeb9ae4f68db28afde8404fa2754aac36d20767d2",
+      "exports": [
+        {
+          "name": "isWarehouseSmallClampReceivingWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "createWarehouseSmallClampReceivingWorkflowRoute",
+          "kind": "FunctionDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "WarehouseSmallClampReceivingWorkflowRoute",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 31
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSmallClampReceivingTransfer.ts",
+      "sha256": "77c0d17417fff5e129d2eac31827db20669090ec1f0350b0c65b9ce2c6199bcb",
+      "exports": [
+        {
+          "name": "isWarehouseSmallClampReceivingTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 18
+        },
+        {
+          "name": "createWarehouseSmallClampReceivingTransfer",
+          "kind": "FunctionDeclaration",
+          "source_line": 22
+        },
+        {
+          "name": "WarehouseSmallClampReceivingTransfer",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 67
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSmallClampSourceAction.ts",
+      "sha256": "42c0dbe010dc186d1af288ad30afa0748f53e22758b0c5e81a6e86897499f748",
+      "exports": [
+        {
+          "name": "isWarehouseSmallClampSourceAction",
+          "kind": "FunctionDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "createWarehouseSmallClampSourceAction",
+          "kind": "FunctionDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "WarehouseSmallClampSourceAction",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 38
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts",
+      "sha256": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0",
+      "exports": [
+        {
+          "name": "SMALL_CLAMP_SOURCE_DATA",
+          "kind": "VariableDeclaration",
+          "source_line": 2
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseOriginalCartAction.ts",
+      "sha256": "7367fe3cd4611724153cca598cc7994a7863b40688225d7d539f7de82741522b",
+      "exports": [
+        {
+          "name": "isWarehouseOriginalCartAction",
+          "kind": "FunctionDeclaration",
+          "source_line": 14
+        },
+        {
+          "name": "createWarehouseOriginalCartAction",
+          "kind": "FunctionDeclaration",
+          "source_line": 17
+        },
+        {
+          "name": "WarehouseOriginalCartAction",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 48
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/originalCartPage.ts",
+      "sha256": "0763ed7520e53067cfe28694743746067c3d88ab711b4a530d45df432dcda627",
+      "exports": []
+    },
+    {
+      "path": "frontend/src/adaptive-v3/workerRoleAssignment.ts",
+      "sha256": "6bc0bdc205d752ebda084e022e01b6d03d4dbc39fd08db82955b27162fa2c266",
+      "exports": [
+        {
+          "name": "STAFFING_DURATION_S",
+          "kind": "VariableDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "STAFFING_BREAK",
+          "kind": "VariableDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "RoleAssignmentRequest",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "AssignmentReason",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "RoleAssignmentPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "AssignmentResult",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "StaffingWorker",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 14
+        },
+        {
+          "name": "StaffingComparisonOptions",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "staffingHomeNodes",
+          "kind": "FunctionDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "createStaffingComparison",
+          "kind": "FunctionDeclaration",
+          "source_line": 29
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseStaffingPendingWork.ts",
+      "sha256": "fa3e057a62dd3cf82228ad54c854567dd89858ef58283a101e54264ff8c28cdd",
+      "exports": [
+        {
+          "name": "WarehouseStaffingPendingJob",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "WarehouseStaffingRetainedJob",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 31
+        },
+        {
+          "name": "WarehouseStaffingPendingWork",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 37
+        },
+        {
+          "name": "isWarehouseStaffingPendingWork",
+          "kind": "FunctionDeclaration",
+          "source_line": 68
+        },
+        {
+          "name": "createWarehouseStaffingPendingWork",
+          "kind": "FunctionDeclaration",
+          "source_line": 76
+        },
+        {
+          "name": "sampleWarehouseStaffingPendingWork",
+          "kind": "FunctionDeclaration",
+          "source_line": 132
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseStaffingScene.ts",
+      "sha256": "d26887e00f3746e3129b6d4ade35146f4d2dac29401332be4d40b881314b6060",
+      "exports": [
+        {
+          "name": "WarehouseStaffingComparison",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "WarehouseStaffingSceneOptions",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "createWarehouseStaffingScene",
+          "kind": "FunctionDeclaration",
+          "source_line": 28
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseLayoutPlan.ts",
+      "sha256": "8c38388ed3f1179948471ee077f9342afb8548fa53b572c0742f90548b0d7618",
+      "exports": [
+        {
+          "name": "PlannedModule",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 5
+        },
+        {
+          "name": "PlannedHU",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 6
+        },
+        {
+          "name": "PlannedSlot",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "PlannedZone",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "LayoutObstacle",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "WarehouseLayoutPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "createDenseWarehouseLayoutPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "createBlockRebuildWarehouseLayoutPlan",
+          "kind": "FunctionDeclaration",
+          "source_line": 25
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/warehouseLayoutAccess.ts",
+      "sha256": "23955242b1f01144c7d163b946c4d184d96f714a1498573a99faa38723f487d1",
+      "exports": [
+        {
+          "name": "WarehouseLayoutAccessResult",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "validateWarehouseLayoutPlanAccess",
+          "kind": "FunctionDeclaration",
+          "source_line": 77
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinLayoutVariant.ts",
+      "sha256": "11fbfe1347df32c82d9527d80455c8bc584e42c4c17a69c243bb18e4e790d228",
+      "exports": [
+        {
+          "name": "LayoutRect",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 5
+        },
+        {
+          "name": "LayoutBox",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 6
+        },
+        {
+          "name": "LayoutModule",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "LayoutHU",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "LayoutActor",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "LayoutZone",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "LayoutViewBounds",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "TwinLayoutPlan",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "createTwinLayoutVariant",
+          "kind": "FunctionDeclaration",
+          "source_line": 26
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinPlacementComparison.ts",
+      "sha256": "19a584ab071d80e812ff84a404a51f55b6bf956b671da520abeb6d12f0713563",
+      "exports": [
+        {
+          "name": "validatePlacementComparison",
+          "kind": "FunctionDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "mountPlacementComparison",
+          "kind": "FunctionDeclaration",
+          "source_line": 19
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/longCalibration/browserAPI.ts",
+      "sha256": "865b11f175a7a87fc570c1a5cf6fdba099f8c89682bc3353bc27e0b1753d6a61",
+      "exports": [
+        {
+          "name": "Vec3",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 16
+        },
+        {
+          "name": "Quat",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 17
+        },
+        {
+          "name": "WheelId",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 18
+        },
+        {
+          "name": "WheelDefinition",
+          "kind": "InterfaceDeclaration",
+          "source_line": 19
+        },
+        {
+          "name": "Crossing",
+          "kind": "InterfaceDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "LongTimeline",
+          "kind": "InterfaceDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "ModelDescriptor",
+          "kind": "InterfaceDeclaration",
+          "source_line": 22
+        },
+        {
+          "name": "VerifiedLongModel",
+          "kind": "InterfaceDeclaration",
+          "source_line": 25
+        },
+        {
+          "name": "ValidatedTimeline",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "verifyLongModel",
+          "kind": "FunctionDeclaration",
+          "source_line": 33
+        },
+        {
+          "name": "validateLongTimeline",
+          "kind": "FunctionDeclaration",
+          "source_line": 44
+        },
+        {
+          "name": "AbsoluteSample",
+          "kind": "InterfaceDeclaration",
+          "source_line": 52
+        },
+        {
+          "name": "sampleDistance",
+          "kind": "FunctionDeclaration",
+          "source_line": 54
+        },
+        {
+          "name": "sampleTime",
+          "kind": "FunctionDeclaration",
+          "source_line": 61
+        },
+        {
+          "name": "NativeSources",
+          "kind": "InterfaceDeclaration",
+          "source_line": 66
+        },
+        {
+          "name": "CalibrationInput",
+          "kind": "InterfaceDeclaration",
+          "source_line": 67
+        },
+        {
+          "name": "LongCalibration",
+          "kind": "InterfaceDeclaration",
+          "source_line": 73
+        },
+        {
+          "name": "createLongCalibration",
+          "kind": "FunctionDeclaration",
+          "source_line": 117
+        },
+        {
+          "name": "prepareLongModel",
+          "kind": "FunctionDeclaration",
+          "source_line": 164
+        },
+        {
+          "name": "SourceBytes",
+          "kind": "InterfaceDeclaration",
+          "source_line": 177
+        },
+        {
+          "name": "VerifiedLongSources",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 179
+        },
+        {
+          "name": "prepareLongSources",
+          "kind": "FunctionDeclaration",
+          "source_line": 180
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/scenarioPage.ts",
+      "sha256": "1a1147c4345bfb14755dcebf9e162ce857d534f305700510f7ffa85ba47dbeb6",
+      "exports": []
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinPage.ts",
+      "sha256": "0209f6d2598f18bcec30d8030d7c11e87ca67afd88ee17970b556a0c8119872f",
+      "exports": []
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinScenario.ts",
+      "sha256": "2fa7ee7b96004f679502376b01442bc7a6dec088411bb5f86a4dbf6bd2dedacd",
+      "exports": [
+        {
+          "name": "AtmoState",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 9
+        },
+        {
+          "name": "Variant",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 10
+        },
+        {
+          "name": "AtmoEvent",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 11
+        },
+        {
+          "name": "ZoneSample",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 12
+        },
+        {
+          "name": "DEMO_DURATION_S",
+          "kind": "VariableDeclaration",
+          "source_line": 14
+        },
+        {
+          "name": "DEMO_SOURCE",
+          "kind": "VariableDeclaration",
+          "source_line": 15
+        },
+        {
+          "name": "ATMO_ZONES",
+          "kind": "VariableDeclaration",
+          "source_line": 18
+        },
+        {
+          "name": "INFLUENCE_EDGES",
+          "kind": "VariableDeclaration",
+          "source_line": 31
+        },
+        {
+          "name": "DEMO_EVENTS",
+          "kind": "VariableDeclaration",
+          "source_line": 44
+        },
+        {
+          "name": "CHAPTERS",
+          "kind": "VariableDeclaration",
+          "source_line": 65
+        },
+        {
+          "name": "PresenterStep",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 71
+        },
+        {
+          "name": "PRESENTER_STEPS",
+          "kind": "VariableDeclaration",
+          "source_line": 75
+        },
+        {
+          "name": "sampleAtmosphere",
+          "kind": "FunctionDeclaration",
+          "source_line": 87
+        },
+        {
+          "name": "activePulses",
+          "kind": "FunctionDeclaration",
+          "source_line": 94
+        },
+        {
+          "name": "stateSegments",
+          "kind": "FunctionDeclaration",
+          "source_line": 98
+        },
+        {
+          "name": "eventsUpTo",
+          "kind": "FunctionDeclaration",
+          "source_line": 103
+        },
+        {
+          "name": "zoneHistory",
+          "kind": "FunctionDeclaration",
+          "source_line": 105
+        },
+        {
+          "name": "recoveredZones",
+          "kind": "FunctionDeclaration",
+          "source_line": 109
+        },
+        {
+          "name": "MoveCandidate",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 116
+        },
+        {
+          "name": "outboundCandidates",
+          "kind": "FunctionDeclaration",
+          "source_line": 118
+        },
+        {
+          "name": "Bubble",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 141
+        },
+        {
+          "name": "WorkerSpot",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 142
+        },
+        {
+          "name": "Reaction",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 143
+        },
+        {
+          "name": "Effects",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 144
+        },
+        {
+          "name": "RELIEF_S",
+          "kind": "VariableDeclaration",
+          "source_line": 147
+        },
+        {
+          "name": "bubbleBudget",
+          "kind": "FunctionDeclaration",
+          "source_line": 149
+        },
+        {
+          "name": "BUBBLE_RU",
+          "kind": "VariableDeclaration",
+          "source_line": 151
+        },
+        {
+          "name": "reactionsAt",
+          "kind": "FunctionDeclaration",
+          "source_line": 161
+        },
+        {
+          "name": "visibleReactions",
+          "kind": "FunctionDeclaration",
+          "source_line": 179
+        },
+        {
+          "name": "workerStatus",
+          "kind": "FunctionDeclaration",
+          "source_line": 189
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/adaptive-v3/twin/twinRender.ts",
+      "sha256": "b03cb833cd95e80b2742d10075fc4e61ffb2aaf426e5e3fd94a3cfacbe5ee574",
+      "exports": [
+        {
+          "name": "Mode",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 18
+        },
+        {
+          "name": "Pose",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 19
+        },
+        {
+          "name": "Move",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 20
+        },
+        {
+          "name": "Pick",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 21
+        },
+        {
+          "name": "SIDE_GAP_M",
+          "kind": "VariableDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "SIDE_SHIFT",
+          "kind": "VariableDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "STATE_RU",
+          "kind": "VariableDeclaration",
+          "source_line": 29
+        },
+        {
+          "name": "STATE_COLOR",
+          "kind": "VariableDeclaration",
+          "source_line": 30
+        },
+        {
+          "name": "ICON",
+          "kind": "VariableDeclaration",
+          "source_line": 31
+        },
+        {
+          "name": "VARIANT_TITLE",
+          "kind": "VariableDeclaration",
+          "source_line": 49
+        },
+        {
+          "name": "createTwinRenderer",
+          "kind": "FunctionDeclaration",
+          "source_line": 53
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/native-v3/page.ts",
+      "sha256": "c4644f17fe6c32f6b44d291139b615f6cbabe4491ab1e14b52c0c5fc26d64286",
+      "exports": []
+    },
+    {
+      "path": "frontend/src/native-v3/stream.ts",
+      "sha256": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93",
+      "exports": [
+        {
+          "name": "Json",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 2
+        },
+        {
+          "name": "ArmName",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 3
+        },
+        {
+          "name": "Fraction",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 4
+        },
+        {
+          "name": "BeltPose",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 8
+        },
+        {
+          "name": "Operation",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "Relocation",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 24
+        },
+        {
+          "name": "BeltEvent",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 35
+        },
+        {
+          "name": "NativeEvent",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 44
+        },
+        {
+          "name": "Carrier",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 54
+        },
+        {
+          "name": "Worker",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 67
+        },
+        {
+          "name": "Capture",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 72
+        },
+        {
+          "name": "Descriptor",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 79
+        },
+        {
+          "name": "ArmData",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 84
+        },
+        {
+          "name": "need",
+          "kind": "FunctionDeclaration",
+          "source_line": 99
+        },
+        {
+          "name": "object",
+          "kind": "FunctionDeclaration",
+          "source_line": 103
+        },
+        {
+          "name": "integer",
+          "kind": "FunctionDeclaration",
+          "source_line": 104
+        },
+        {
+          "name": "canonical",
+          "kind": "FunctionDeclaration",
+          "source_line": 108
+        },
+        {
+          "name": "sha256",
+          "kind": "FunctionDeclaration",
+          "source_line": 118
+        },
+        {
+          "name": "parseNativeJSON",
+          "kind": "FunctionDeclaration",
+          "source_line": 122
+        },
+        {
+          "name": "decodeArmStream",
+          "kind": "FunctionDeclaration",
+          "source_line": 317
+        },
+        {
+          "name": "verifyArmPair",
+          "kind": "FunctionDeclaration",
+          "source_line": 362
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/native-v3/playback.ts",
+      "sha256": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc",
+      "exports": [
+        {
+          "name": "XYZ",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 2
+        },
+        {
+          "name": "Geometry",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 7
+        },
+        {
+          "name": "ActorFrame",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 26
+        },
+        {
+          "name": "PlaybackFrame",
+          "kind": "TypeAliasDeclaration",
+          "source_line": 32
+        },
+        {
+          "name": "compilePlayback",
+          "kind": "FunctionDeclaration",
+          "source_line": 168
+        },
+        {
+          "name": "createPlaybackClock",
+          "kind": "FunctionDeclaration",
+          "source_line": 201
+        }
+      ]
+    },
+    {
+      "path": "frontend/src/native-v3/scene.ts",
+      "sha256": "c760cc8f49d08700247bd0c8e4ee781c40a12aad2d242b67d7c86770b82c87b5",
+      "exports": [
+        {
+          "name": "nativeGeometry",
+          "kind": "FunctionDeclaration",
+          "source_line": 13
+        },
+        {
+          "name": "createNativeLayer",
+          "kind": "FunctionDeclaration",
+          "source_line": 173
+        }
+      ]
+    }
+  ],
+  "build_entry_points": [
+    {
+      "path": "frontend/native-pair-v3.html",
+      "url": "/native-pair-v3.html",
+      "sha256": "3e24eaca484e5866324a172e998aceac061a4afdb96c6d7fc2cb85ebd43ac320"
+    },
+    {
+      "path": "frontend/index.html",
+      "url": "/index.html",
+      "sha256": "f72cf8087a7467446bbd8d098d4d3d3c0f370f7cc8a72b86d1ac5ffef56e3938"
+    },
+    {
+      "path": "frontend/stand-v3.html",
+      "url": "/stand-v3.html",
+      "sha256": "822ace191c0be68ad6827a953f856d9219b3c4186676bfe6f4080dd09a1403aa"
+    },
+    {
+      "path": "frontend/staff-v3.html",
+      "url": "/staff-v3.html",
+      "sha256": "5318a1ad2149f6a99a44bdb3a5f9fd4521d4b6b977d8ca5fa42d6fd2a16ed066"
+    },
+    {
+      "path": "frontend/skills-v3.html",
+      "url": "/skills-v3.html",
+      "sha256": "bdc93f54ac4fd965cc78a6028558ed2abb7e3e050ef527f08f864f71faa63989"
+    },
+    {
+      "path": "frontend/warehouse-v3.html",
+      "url": "/warehouse-v3.html",
+      "sha256": "36b4b9946bbe639d21b9cffc4b0c8910d2298b761af5bcef75dadc11d93a07ec"
+    },
+    {
+      "path": "frontend/twin-v3.html",
+      "url": "/twin-v3.html",
+      "sha256": "2d5e06caed35bc66c6ff33aba2d2aeea19dc89000fa8389a4c707cb4cce45bbb"
+    },
+    {
+      "path": "frontend/home-v3.html",
+      "url": "/home-v3.html",
+      "sha256": "39a9216eeae30e90a2b61accb1705798a158edb16b46348e742cce585b4aec9e"
+    },
+    {
+      "path": "frontend/motion-v3.html",
+      "url": "/motion-v3.html",
+      "sha256": "f1cd1eb78017946f80d211279b9edabc0959aae66a68c06873fb8ee3b8c75548"
+    },
+    {
+      "path": "frontend/original-cart-v3.html",
+      "url": "/original-cart-v3.html",
+      "sha256": "9fbdd5ebda587f323b364c13a6e2152b846fd47aaf0b5cd745cb33be0928c1af"
+    },
+    {
+      "path": "frontend/long-motion-v3.html",
+      "url": "/long-motion-v3.html",
+      "sha256": "e8452188573ae2887a4b946813c8f8451a41e46a2f55374160c203413fa329e7"
+    },
+    {
+      "path": "frontend/heavy-inbound-v3.html",
+      "url": "/heavy-inbound-v3.html",
+      "sha256": "c527e01a6708008c7827e21050054a30a7e141607d0fb50017e98fc3d79a2fe1"
+    },
+    {
+      "path": "frontend/scenario-v3.html",
+      "url": "/scenario-v3.html",
+      "sha256": "7c738da3bc613bed7f9e2c58702ad8144ad61ccd69ccb9831535fd05f6be5ff4"
+    }
+  ],
+  "native_pair_record_viewer": {
+    "source_kind": "verified_saved_native_pair",
+    "page": "/native-pair-v3.html",
+    "api": "/api/v3/relocation-pairs/{pair}/arms/{baseline|candidate}/bundle",
+    "controllers": [
+      {
+        "path": "frontend/src/native-v3/page.ts",
+        "sha256": "c4644f17fe6c32f6b44d291139b615f6cbabe4491ab1e14b52c0c5fc26d64286"
+      },
+      {
+        "path": "frontend/src/native-v3/stream.ts",
+        "sha256": "a671e39ca652f5615ec95a27340544ab27a2c3e4ec44079c23b9a01526b70a93"
+      },
+      {
+        "path": "frontend/src/native-v3/playback.ts",
+        "sha256": "59808ee89ac43b874e5d97ea69df137c3ac15769abf288067471fff190cbe6dc"
+      },
+      {
+        "path": "frontend/src/native-v3/scene.ts",
+        "sha256": "c760cc8f49d08700247bd0c8e4ee781c40a12aad2d242b67d7c86770b82c87b5"
+      }
+    ],
+    "scope": "Authenticated saved-record presentation interpolation. Custody changes at recorded events; symbolic conveyor marker dimensions. Driver bodies are hidden when a recorded dismount pose is absent.",
+    "physical_admission": false,
+    "full_n1_acceptance": false,
+    "requires_separate_API_or_saved_native_record": true,
+    "source_kind_is_not_the_visual_fixture_six_workflow_demo": true
+  }
+}

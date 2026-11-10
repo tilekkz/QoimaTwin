@@ -1,0 +1,78 @@
+{
+  "task_id": "P04.3",
+  "status": "PASS",
+  "at": "2026-11-08T00:32:17.319361+00:00",
+  "browser_report": "assets/v3/iterations/packer/P04.3/browser/browser-checks.json",
+  "retained_captures": 14,
+  "root_visual_review": {
+    "at": "2026-11-08T00:32:17.319361+00:00",
+    "retained_captures": 14,
+    "generated_captures": 15,
+    "discarded_captures": [
+      {
+        "screenshot": "../assets/v3/iterations/packer/P04.3/browser/parcel-contact-side.png",
+        "reason": "Tight parcel-only framing was occluded by the station device; not used as contact acceptance."
+      }
+    ],
+    "inspected": [
+      "3-2-quarter.png",
+      "3-2-side.png",
+      "3-2-front.png",
+      "3-2-rear.png",
+      "contact-R.png",
+      "contact-L.png",
+      "idle-quarter.png",
+      "blocked-quarter.png"
+    ],
+    "reference_files": [
+      "assets/references/v3/r04-packing-line.png",
+      "assets/references/v3/r05-workers.png"
+    ],
+    "result": "Retained whole-workcell and opposed hand/film/wood views inspected; R04/P08 forms and R05 orange role02 retained. Idle palms inward. Sampled source contact/clearance independently confirmed. Parcel-only crop discarded rather than presented as proof."
+  },
+  "checks": {
+    "no_autoplay": true,
+    "play_pause_repeat": true,
+    "distinct_idle_blocked_no_work_and_inward_palms": true,
+    "live_reduced_motion": true,
+    "keyboard_seek": true,
+    "cold_reduced_motion": true,
+    "replacement_memory": [
+      {
+        "geometries": 62,
+        "textures": 10
+      },
+      {
+        "geometries": 62,
+        "textures": 10
+      },
+      {
+        "geometries": 62,
+        "textures": 10
+      }
+    ],
+    "error_cleanup_recovery": true,
+    "invalid_timeline_cleanup_recovery": true,
+    "stale_request_does_not_resurrect_actor": true,
+    "walk_cycle_controls_regression": true
+  },
+  "lifecycle": {
+    "owned_pid": 5804,
+    "cleanup": "graceful",
+    "terminated": true,
+    "elapsed_ms": 22485
+  },
+  "errors": [],
+  "failed_resources": [],
+  "build": {
+    "command": "npm run build",
+    "exit_code": 0,
+    "existing_warning": "GLTFLoader chunk exceeds500kB; no typecheck/build failure",
+    "source_hashes": {
+      "frontend/src/adaptive-v3/assetStand.ts": "66e341b2ef01bec633f4795b24abb604ca4f34b8395caa10197088ca4cde8b2c",
+      "frontend/src/adaptive-v3/motion/packer.ts": "8693a251674da5d64e7f8ebc12260c25beca37c2ffedd395339618a7aa814441",
+      "frontend/stand-v3.html": "f449f43f861da227271711db305f1d16e4a48df630bc968d09fd09b50086c351"
+    }
+  },
+  "scope": "Bounded local headless QA. No visible browser/window or deployed web-version opened."
+}

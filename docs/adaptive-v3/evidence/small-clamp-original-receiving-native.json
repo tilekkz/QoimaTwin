@@ -1,0 +1,114 @@
+{
+  "schema_id": "qoima.small-clamp.original-receiving-native.v1",
+  "passed": true,
+  "original_inputs_preserved": {
+    "incoming_request": "v3:request:base:inbound:01",
+    "incoming_HU": "v3:HU:incoming:DEMO_001:01",
+    "outgoing_request": "v3:request:base:outbound:01",
+    "outgoing_HU": "v3:HU:initial:DEMO_001:01",
+    "quantity_units": 24,
+    "gross_mass_kg": 0.94,
+    "dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "source_stock_HUs": 530,
+    "workers": 24,
+    "vehicles": 2
+  },
+  "tool": {
+    "finite_quantity": 1,
+    "model_sha256": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac",
+    "mass_bound_kg": 2.5,
+    "assembly_mass_bound_kg": 3.44,
+    "same_physical_root_and_token": true,
+    "stow_position": [
+      73,
+      0.92,
+      4.8
+    ],
+    "force_certified": false
+  },
+  "cases": [
+    {
+      "outbound_port": "OUT_S_EXPRESS",
+      "inbound_port": "IN_E_PARCEL",
+      "outbound_duration_s": 1268.5324263940768,
+      "receiving_duration_s": 687.0816642786192,
+      "combined_local_duration_s": 1955.614090672696,
+      "earliest_absolute_end_s": 2075.614090672696,
+      "receipt_phases": {
+        "tool_acquire_at_s": 135.1526206906566,
+        "receipt_at_s": 301.57268043330697,
+        "port_departure_s": 311.57268043330697,
+        "loaded_arrival_s": 378.1406417300791,
+        "stored_at_s": 386.1406417300791,
+        "tool_clear_at_s": 392.1406417300791,
+        "complete_at_s": 687.0816642786192
+      },
+      "frames": 46,
+      "outbound_control_frames": 8,
+      "maximum_active_bar_gap_m": 1.7080613414359156e-05,
+      "maximum_cargo_frame_error_m": 0,
+      "receiving_actor": "R02",
+      "slot": "v3:slot:SMALL_E:019:L1:B5",
+      "phase_epsilon_continuity": {
+        "epsilon_s": 1e-06,
+        "boundaries": 70,
+        "maximum_tool_position_delta_m": 1.8851933902964257e-09,
+        "maximum_cargo_position_delta_m": 1.8851933902964257e-09,
+        "maximum_actor_position_delta_m": 3.684162857619926e-09,
+        "maximum_tool_yaw_delta_rad": 8.881784197001252e-15,
+        "maximum_actor_yaw_delta_rad": 8.881784197001252e-15
+      }
+    },
+    {
+      "outbound_port": "OUT_W_RETAIL",
+      "inbound_port": "IN_E_PARCEL",
+      "outbound_duration_s": 1534.6433328791024,
+      "receiving_duration_s": 687.0816642786192,
+      "combined_local_duration_s": 2221.7249971577216,
+      "earliest_absolute_end_s": 2341.7249971577216,
+      "receipt_phases": {
+        "tool_acquire_at_s": 135.1526206906566,
+        "receipt_at_s": 301.57268043330697,
+        "port_departure_s": 311.57268043330697,
+        "loaded_arrival_s": 378.1406417300791,
+        "stored_at_s": 386.1406417300791,
+        "tool_clear_at_s": 392.1406417300791,
+        "complete_at_s": 687.0816642786192
+      },
+      "frames": 46,
+      "outbound_control_frames": 8,
+      "maximum_active_bar_gap_m": 1.7080613414359156e-05,
+      "maximum_cargo_frame_error_m": 0,
+      "receiving_actor": "R02",
+      "slot": "v3:slot:SMALL_E:019:L1:B5",
+      "phase_epsilon_continuity": {
+        "epsilon_s": 1e-06,
+        "boundaries": 70,
+        "maximum_tool_position_delta_m": 1.8851933902964257e-09,
+        "maximum_cargo_position_delta_m": 1.8851933902964257e-09,
+        "maximum_actor_position_delta_m": 3.684162857619926e-09,
+        "maximum_tool_yaw_delta_rad": 8.881784197001252e-15,
+        "maximum_actor_yaw_delta_rad": 8.881784197001252e-15
+      }
+    }
+  ],
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseSmallClampManualTransfer.ts": "8334fd798114ab36cb5ca5bff2ce84f2f51f6f6d0354a0c606a7c18e718054c3",
+    "frontend/src/adaptive-v3/warehouseSmallClampReceivingWorkflowRoute.ts": "38da5cb2ca6c4902fbf1dffeeb9ae4f68db28afde8404fa2754aac36d20767d2",
+    "frontend/src/adaptive-v3/warehouseSmallClampReceivingTransfer.ts": "77c0d17417fff5e129d2eac31827db20669090ec1f0350b0c65b9ce2c6199bcb",
+    "frontend/src/adaptive-v3/warehouseSmallClampWorkflowRoute.ts": "e9a3fb71e6bab00b3a79e24e8778378f2d868e08d9a3ca00f785766039d98b3d",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceAction.ts": "42c0dbe010dc186d1af288ad30afa0748f53e22758b0c5e81a6e86897499f748",
+    "frontend/src/adaptive-v3/warehouseSmallClampSourceData.ts": "d3666b0faffc08911cd304b4fb773bbb10d443e2dac9de41a069403088b921f0",
+    "frontend/public/models/v3/small-carton-clamp-tool.glb": "7ea46c6c8dee3bf443e0c22656c832665cb4820c39dc3a9c9b668fdd543e5aac",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+  },
+  "native_checker": {
+    "path": "work/v3/full-tz-closeout-20261109/small-clamp/check-receiving-factory.mjs",
+    "sha256": "fe7cb7147524c870daff5719cd23cff242dcb0f96f6e63192e8ed5689546f1e2"
+  },
+  "scope": "Actual native 24-worker/2-vehicle/530-HU fixture. All 46 new receiving phase boundaries/interiors, 8 bounded outbound controls per variant, all phase epsilon continuity, same one tool, whole original incoming HU, actual freed-slot guard, pure sampling, reverse seeks and outbound-first disposal. Original native buffers, materials and 530 instance matrices restore. Source insertion reverses the previously checked exact same native source trajectory. This is not a continuous global warehouse collision or force certificate. Source/LONG and other-flow admission is owned by scenario execution."
+}

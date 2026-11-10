@@ -1,0 +1,520 @@
+{
+  "document_kind": "large_gate_loaded_envelope_proposal",
+  "proposal_id": "L05",
+  "proposal_version": "0.1.0",
+  "status": "proposal",
+  "layout_version": "qoima-144x72-v3-proposal",
+  "units": {
+    "length": "m",
+    "time": "s",
+    "angle": "degree",
+    "up_axis": "Y",
+    "handedness": "right"
+  },
+  "assumption_status": "Synthetic geometric blueprint and conservative sufficient test. No safety/stress/stability certification and no universal cargo admission.",
+  "vehicle_blueprint": {
+    "blueprint_id": "v3:forklift:long-transport-geometry:01",
+    "consumers": [
+      "C08 handling eligibility",
+      "M14.1 forklift model/steering pivots",
+      "L07 vehicle swept paths"
+    ],
+    "axes": [
+      "X lateral",
+      "Y up",
+      "Z forward"
+    ],
+    "origin": "Floor centre of complete unloaded operating footprint, including forks and steered tyres.",
+    "dimensions_xyz_m": [
+      1.2,
+      2.1,
+      3.0
+    ],
+    "bounds_local_m": {
+      "min": [
+        -0.6,
+        0,
+        -1.5
+      ],
+      "max": [
+        0.6,
+        2.1,
+        1.5
+      ]
+    },
+    "fork_heel_z_m": 0.4,
+    "fork_blade_z_range_m": [
+      0.4,
+      1.5
+    ],
+    "fork_top_travel_y_m": 0.3,
+    "fork_thickness_m": 0.07,
+    "fork_centres_x_m": [
+      -0.4,
+      0.4
+    ],
+    "steering": {
+      "model": "Synthetic low-speed rear-steer bicycle bound with Ackermann wheel-angle reconciliation",
+      "wheelbase_m": 1.4,
+      "front_axle_z_m": 0.4,
+      "rear_axle_z_m": -1.0,
+      "track_width_m": 0.7,
+      "virtual_rear_axle_centre_angle_deg": 60,
+      "required_inner_rear_wheel_angle_deg": 71.87412684189971,
+      "required_outer_rear_wheel_angle_deg": 50.39733586235933,
+      "rear_wheel_angle_limit_deg": 75,
+      "rear_tyre_radius_m": 0.225,
+      "rear_tyre_width_m": 0.2,
+      "front_tyre_radius_m": 0.3,
+      "front_tyre_width_m": 0.24,
+      "icr_local_xz_m": [
+        0.8082903768654762,
+        0.4
+      ],
+      "meaning": "ICR is lateral R=wheelbase/tan(virtual angle), on the front axle plane. This is not an in-place spin. All steered tyre extents must stay inside the stated operating bounds; actual path/model acceptance remains later."
+    },
+    "scale_factor": 1,
+    "on_model_change": "Recompute L05 bounds before acceptance; do not shrink cargo or reuse stale clearance."
+  },
+  "load_profile": {
+    "archetype_id": "LONG_BUNDLE",
+    "source": "assets/references/v3/r03-dimension-targets.json",
+    "dimensions_xyz_m": [
+      4.2,
+      0.52,
+      0.65
+    ],
+    "scale_factor": 1,
+    "orientation_id": "v3:orientation:long-transverse-upright:01",
+    "load_axes_to_vehicle": {
+      "X": "X",
+      "Y": "Y",
+      "Z": "Z"
+    },
+    "relative_yaw_deg": 0,
+    "centre_local_xz_m": [
+      0,
+      1.0
+    ],
+    "bottom_travel_y_m": 0.45,
+    "bounds_local_m": {
+      "min": [
+        -2.1,
+        0.45,
+        0.675
+      ],
+      "max": [
+        2.1,
+        0.97,
+        1.325
+      ]
+    },
+    "meaning": "4.2m long axis is across the forks, not along travel. Whole vehicle/load may yaw together; relative load yaw/tilt is not allowed by this profile."
+  },
+  "cradle_assumption": {
+    "attachment_id": "v3:attachment:long-cradle:01",
+    "dimensions_xyz_m": [
+      3.2,
+      0.15,
+      0.85
+    ],
+    "bounds_local_m": {
+      "min": [
+        -1.6,
+        0.3,
+        0.575
+      ],
+      "max": [
+        1.6,
+        0.45,
+        1.425
+      ]
+    },
+    "fork_pocket_centres_x_m": [
+      -0.4,
+      0.4
+    ],
+    "support_pad_centres_x_m": [
+      -1.4,
+      1.4
+    ],
+    "support_centres_span_m": 2.8,
+    "load_end_distance_from_support_centre_m": 0.7,
+    "load_end_overhang_beyond_frame_m": 0.5,
+    "nominal_longitudinal_load_centre_from_fork_heel_m": 0.6,
+    "nominal_centre_z_m": 1.0,
+    "gross_payload_mass_kg": null,
+    "required_C08_checks": [
+      "actual gross load plus cradle mass and centre of gravity",
+      "rated forklift capacity at actual load centre/height",
+      "cradle rating and approved support span/end overhang for this bundle",
+      "positive fork-pocket/attachment lock and load restraint",
+      "compatible pickup/setdown support and actual approach trajectory"
+    ],
+    "eligibility_status": "required_later_not_approved",
+    "meaning": "Geometric cradle candidate only. Two fork pockets transfer load to a restrained cradle; two distant pads support the long bundle. No bending or payload capacity is inferred from these dimensions."
+  },
+  "loaded_bound": {
+    "method": "Component AABB union, with conservative rotation circle around declared ICR.",
+    "bounds_local_m": {
+      "min": [
+        -2.1,
+        0,
+        -1.5
+      ],
+      "max": [
+        2.1,
+        2.1,
+        1.5
+      ]
+    },
+    "dimensions_xyz_m": [
+      4.2,
+      2.1,
+      3.0
+    ],
+    "horizontal_padding_each_side_m": 0.25,
+    "top_padding_m": 0.25,
+    "required_straight_gate_width_m": 4.7,
+    "required_gate_height_m": 2.35,
+    "conservative_AABB_sweep_radius_m": 3.47392471365865,
+    "padded_sweep_radius_m": 3.72392471365865,
+    "padded_sweep_diameter_m": 7.4478494273173,
+    "meaning": "Includes empty corners of the union AABB, so it overbounds the actual components; no time-sampled path alone establishes clearance.",
+    "conservative_radius_formula": "sqrt((2.1 + wheelbase/tan(60deg))^2 + (1.5 + .4)^2)",
+    "padded_radius_formula": "conservative_AABB_sweep_radius_m + horizontal_padding_each_side_m"
+  },
+  "gates": [
+    {
+      "gate_id": "v3:large-gate:IN_W_BULK",
+      "port_id": "IN_W_BULK",
+      "direction": "inbound",
+      "boundary_world_pos": [
+        0,
+        0,
+        18
+      ],
+      "service_node_id": "v3:service:IN_W_BULK",
+      "service_node_world_pos": [
+        6,
+        0,
+        18
+      ],
+      "transit_heading_world": [
+        1,
+        0,
+        0
+      ],
+      "long_axis_world_at_gate": [
+        0,
+        0,
+        -1
+      ],
+      "clear_width_m": 7,
+      "clear_height_m": 4.5,
+      "protected_approach_xz_m": {
+        "min": [
+          0,
+          12
+        ],
+        "max": [
+          12,
+          24
+        ]
+      },
+      "forklift_pair_ref": "INBOUND_FORKLIFT_PAIR",
+      "geometry_status": "conditionally_sufficient_for_this_profile",
+      "operational_admission": "pending_C08_and_L07",
+      "straight_clearance": {
+        "required_width_m": 4.7,
+        "required_height_m": 2.35,
+        "extra_width_after_padding_m": 2.3,
+        "extra_height_after_padding_m": 2.15
+      },
+      "approach_turn": {
+        "start_vehicle_heading_world": [
+          1,
+          0,
+          0
+        ],
+        "icr_world_pos": [
+          6.4,
+          0,
+          17.191709623134525
+        ],
+        "padded_circle_radius_m": 3.72392471365865,
+        "padded_circle_bounds_xz_m": {
+          "min": [
+            2.67607528634135,
+            13.467784909475874
+          ],
+          "max": [
+            10.123924713658651,
+            20.915634336793175
+          ]
+        },
+        "meaning": "Full circular bound is contained by this 12x12 m approach for the specified pose; no complete buffer-to-port path is asserted.",
+        "also_checked_opposite_steer_icr_world_pos": [
+          6.4,
+          0,
+          18.808290376865475
+        ],
+        "opposite_steer_padded_circle_bounds_xz_m": {
+          "min": [
+            2.67607528634135,
+            15.084365663206825
+          ],
+          "max": [
+            10.123924713658651,
+            22.532215090524126
+          ]
+        }
+      },
+      "gate_motion_rule": "Straight aligned crossing only. Enter fully before turning inbound; finish internal turn before aligned outbound crossing. No turn inside the wall aperture."
+    },
+    {
+      "gate_id": "v3:large-gate:OUT_E_B2B",
+      "port_id": "OUT_E_B2B",
+      "direction": "outbound",
+      "boundary_world_pos": [
+        144,
+        0,
+        18
+      ],
+      "service_node_id": "v3:service:OUT_E_B2B",
+      "service_node_world_pos": [
+        138,
+        0,
+        18
+      ],
+      "transit_heading_world": [
+        1,
+        0,
+        0
+      ],
+      "long_axis_world_at_gate": [
+        0,
+        0,
+        -1
+      ],
+      "clear_width_m": 6,
+      "clear_height_m": 4.5,
+      "protected_approach_xz_m": {
+        "min": [
+          132,
+          12
+        ],
+        "max": [
+          144,
+          24
+        ]
+      },
+      "forklift_pair_ref": "OUTBOUND_FORKLIFT_PAIR",
+      "geometry_status": "conditionally_sufficient_for_this_profile",
+      "operational_admission": "pending_C08_and_L07",
+      "straight_clearance": {
+        "required_width_m": 4.7,
+        "required_height_m": 2.35,
+        "extra_width_after_padding_m": 1.2999999999999998,
+        "extra_height_after_padding_m": 2.15
+      },
+      "approach_turn": {
+        "start_vehicle_heading_world": [
+          1,
+          0,
+          0
+        ],
+        "icr_world_pos": [
+          138.4,
+          0,
+          17.191709623134525
+        ],
+        "padded_circle_radius_m": 3.72392471365865,
+        "padded_circle_bounds_xz_m": {
+          "min": [
+            134.67607528634136,
+            13.467784909475874
+          ],
+          "max": [
+            142.12392471365865,
+            20.915634336793175
+          ]
+        },
+        "meaning": "Full circular bound is contained by this 12x12 m approach for the specified pose; no complete buffer-to-port path is asserted.",
+        "also_checked_opposite_steer_icr_world_pos": [
+          138.4,
+          0,
+          18.808290376865475
+        ],
+        "opposite_steer_padded_circle_bounds_xz_m": {
+          "min": [
+            134.67607528634136,
+            15.084365663206825
+          ],
+          "max": [
+            142.12392471365865,
+            22.532215090524126
+          ]
+        }
+      },
+      "gate_motion_rule": "Straight aligned crossing only. Enter fully before turning inbound; finish internal turn before aligned outbound crossing. No turn inside the wall aperture."
+    }
+  ],
+  "circulation_test": {
+    "straight_spine_width_m": 8,
+    "straight_cross_width_m": 8,
+    "perimeter_width_m": 12,
+    "turn_cell_xz_m": {
+      "min": [
+        68,
+        34
+      ],
+      "max": [
+        76,
+        42
+      ]
+    },
+    "turn_icr_world_pos": [
+      72,
+      0,
+      38
+    ],
+    "turn_bounds_xz_m": {
+      "min": [
+        68.27607528634135,
+        34.27607528634135
+      ],
+      "max": [
+        75.72392471365865,
+        41.72392471365865
+      ]
+    },
+    "full_turn_cell_spare_side_length_m": 0.5521505726826996,
+    "rule": "Place the actual ICR within the square eroded by padded radius, rather than placing only vehicle root at its centre. This sufficient full-turn square is checked locally; L07 must prove continuous entry/exit and all route collisions.",
+    "not_admitted_for_this_transverse_LONG": [
+      "4m local links",
+      "CLEAR_S_TRANSFER parallel to its X axis"
+    ],
+    "staging_orientation_note": "OUT_E_B2B buffer cells hold LONG along world X. Gate transport holds LONG along world Z, requiring a whole loaded-vehicle 90deg reorientation in a verified free manoeuvre area. The 2m-deep buffer cell is not a turn bay; buffer pickup/access remains C08/L07."
+  },
+  "admission_rule": {
+    "order": [
+      "port allowed archetype membership",
+      "exact cargo dimensions/scale and approved relative orientation",
+      "correct exclusive shared handler pair available",
+      "actual C08 load/support/attachment/rating approval",
+      "straight gate padded dimensions",
+      "actual L07 loaded path and turn clearances"
+    ],
+    "missing_prerequisites": "Reject/hold with explicit reason; geometric fit does not produce operational admission.",
+    "reason_codes_proposed": [
+      "PORT_CARGO_FORBIDDEN",
+      "DIMENSION_MISMATCH",
+      "ORIENTATION_FORBIDDEN",
+      "HANDLER_UNAVAILABLE",
+      "PATH_CLEARANCE"
+    ],
+    "PORT_CARGO_FORBIDDEN_note": "Namespaced proposal semantic reason; no canonical shared reason-code registry modified.",
+    "operational_admission_currently": false
+  },
+  "verification_cases": [
+    {
+      "case_id": "both_large_gates_geometric",
+      "expected": "CONDITIONAL_GEOMETRY_FIT_C08_L07_PENDING"
+    },
+    {
+      "case_id": "narrow_gate_4_4m",
+      "override_clear_width_m": 4.4,
+      "expected": "PATH_CLEARANCE"
+    },
+    {
+      "case_id": "low_gate_2_2m",
+      "override_clear_height_m": 2.2,
+      "expected": "PATH_CLEARANCE"
+    },
+    {
+      "case_id": "relative_load_yaw_90deg",
+      "relative_yaw_deg": 90,
+      "expected": "ORIENTATION_FORBIDDEN"
+    },
+    {
+      "case_id": "missing_forklift_pair",
+      "handler_available": false,
+      "expected": "HANDLER_UNAVAILABLE"
+    },
+    {
+      "case_id": "missing_approved_cradle_or_rating",
+      "C08_approved": false,
+      "expected": "HANDLER_UNAVAILABLE"
+    },
+    {
+      "case_id": "IN_N_STANDARD_physically_fits_but_forbidden",
+      "port_id": "IN_N_STANDARD",
+      "expected": "PORT_CARGO_FORBIDDEN"
+    },
+    {
+      "case_id": "turn_square_7m",
+      "turn_square_side_m": 7,
+      "expected": "PATH_CLEARANCE"
+    },
+    {
+      "case_id": "4m_local_lane",
+      "corridor_width_m": 4,
+      "expected": "PATH_CLEARANCE"
+    },
+    {
+      "case_id": "cargo_scale_0_9",
+      "cargo_scale": 0.9,
+      "expected": "DIMENSION_MISMATCH"
+    },
+    {
+      "case_id": "wrong_direction_forklift_pair",
+      "pair_ref": "OUTBOUND_FORKLIFT_PAIR",
+      "port_id": "IN_W_BULK",
+      "expected": "HANDLER_UNAVAILABLE"
+    }
+  ],
+  "source_of_assumption": {
+    "cargo": "Accepted R03 reference target, unchanged; C02 must adopt or explicitly re-review.",
+    "vehicle_support_steering_and_padding": "L05 synthetic visual/analytical engineering assumptions, not an actual manufacturer rating.",
+    "ports_zones_resources": "Accepted L02/L03/L04 and shared resource policy read-only. F01/FL01 inbound, F02/FL02 outbound; no additional operators.",
+    "reference": "Actually viewed R03 common scale and R06 four-view boxy forklift; reference art supplies construction intent, not measured blueprint dimensions.",
+    "manual_limit": "15kg limit in L04 is synthetic manual-only context, not a forklift load rating."
+  },
+  "deferred": [
+    "C08 actual payload/support/load-centre/attachment admission",
+    "M14.1 geometry and steering implementation matching this operating envelope",
+    "L07 complete loaded routes and kinematic trajectories",
+    "stability/stress/safety certification is outside this synthetic model"
+  ],
+  "read_only_input_fingerprints": [
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+      "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "assets/references/v3/r03-common-scale.png",
+      "sha256": "f2b2786e1d4fe9fa66741724a738377d125052bb0b171e9382afa18522211359"
+    },
+    {
+      "path": "assets/references/v3/r06-forklift.png",
+      "sha256": "4f96c33a48d1e51d758edacc51ce0de2eb788eefd9919d986f9405b07b20a2b6"
+    }
+  ]
+}

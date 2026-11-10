@@ -1,0 +1,111 @@
+{
+  "task_id": "P05.1",
+  "passed": true,
+  "reviewer": "root",
+  "source_kind": "visual_fixture_workcell",
+  "engine_operation": false,
+  "glb_sha256": "8fcf7bc4fc2b6fb8111710342c91b139e9bd60a9391a573929f988a7e05681e7",
+  "bounds_m": {
+    "min": [
+      -1.290000081062317,
+      0.0,
+      -0.44999998807907104
+    ],
+    "max": [
+      0.8999999761581421,
+      1.399999976158142,
+      1.75
+    ]
+  },
+  "native_parts": {
+    "station": 49,
+    "pallet": 84
+  },
+  "triangles": 9648,
+  "runtime_batches": 16,
+  "station_floor_contacts": 4,
+  "pallet_floor_contacts": 3,
+  "scan": {
+    "source_part": "unit_body_015",
+    "lens_front_xyz_m": [
+      -0.6899999976158142,
+      1.159999966621399,
+      0.39100000262260437
+    ],
+    "label_xyz_m": [
+      -0.625,
+      1.1150000095367432,
+      0.9600000381469727
+    ],
+    "label_normal_runtime": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "direction_runtime": [
+      0.11314859241247177,
+      -0.07833357155323029,
+      0.990485429763794
+    ],
+    "range_m": 0.57446584931798,
+    "axis_angle_deg": 7.91003695514989,
+    "first_actual_triangle_hit": [
+      -0.625,
+      1.1150000095367432,
+      0.9600000381469727
+    ],
+    "target_error_m": 0.0,
+    "visual_assumption": true,
+    "actual_decoding": false
+  },
+  "HU_instances": 1,
+  "worker_instances": 0,
+  "unchanged_source_hashes": {
+    "assets/v3/blender/packing-station.blend": "39bd08428259e1bc062cb7621480ea76be3f3a25368429d29144994c493bf5ef",
+    "assets/v3/blender/pallet-load.blend": "9fad6db44929a7c33b21ac740c2b606b9ea083c333344a2d453e8abdfd86a6de",
+    "assets/v3/blender/worker-manual.blend": "cbaf236121536ff75b918ece4de89601556977ac7091f79bc4d12b0ba48a0423",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "assets/v3/blender/packing-station.stats.json": "d5d602f6385190a88d7de389c0d9ea35689946afe7319ca0d01623e67af557b2"
+  },
+  "browser_lifecycle": {
+    "owned_pid": 8224,
+    "cleanup": "graceful",
+    "terminated": true,
+    "termination_check": "owned PID OS probe after bounded exit wait",
+    "elapsed_ms": 4716
+  },
+  "reviewed_views": [
+    {
+      "view": "front",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/front.png",
+      "sha256": "21dfa7ad677369c124629f9a4e62a7009f76735d0683f4e911532e27faf7745a",
+      "observation": "One unchanged full-height pallet,3cartons across/4layers, integral pallet floor support; existing station partly behind HU, no extra worker."
+    },
+    {
+      "view": "side",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/side.png",
+      "sha256": "be5ae84b6614a362a580408c1f1b499e4994babc9420a9a6059b93cbc57c38b7",
+      "observation": "Two cartons per layer, scanner faces the existing upper label across a clear gap; source pallet and four station feet at floor."
+    },
+    {
+      "view": "rear",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/rear.png",
+      "sha256": "34945107c8702422a0ef946e692869b756105b96ce0a689adf8ba4c43b480195",
+      "observation": "Station back/screen stand and pallet construction remain complete; no paper-thin model or missing rear."
+    },
+    {
+      "view": "quarter",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/quarter.png",
+      "sha256": "ba4894f56352689df94991a145cf24ba8b092675458335b3974764da8899c76f",
+      "observation": "Scanner, monitor and printer/tape stands are visible beside one full-size pallet; matte blocky design matches R04/M08_REF."
+    },
+    {
+      "view": "top",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/top.png",
+      "sha256": "c05c10ff00f68b2bca5fb4c16ccc4cc00581585a758202f97616da6e355d9e2a",
+      "observation": "Clear physical separation between the existing station and pallet; scanner lane unobstructed; no overlap/hidden central cargo."
+    }
+  ],
+  "scope": "Only workcell/supports/actual synthetic scan sightline accepted. Human contact/action and UI states remain P05.2/.3. No actual decoder/backend receipt or human pallet lift."
+}

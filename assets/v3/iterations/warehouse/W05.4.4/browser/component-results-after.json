@@ -1,0 +1,167 @@
+{
+  "label": "WHITE_BOX / COMPONENT_ONLY",
+  "source": "frontend/src/adaptive-v3/warehousePalletTransferPreview.ts",
+  "source_sha256": "9f0bfd29a4bed7fe99d4d196a974701a14509ed23a0db4d36ff4b25e5071e661",
+  "generatedAtUtc": "2026-11-08T15:40:27.984Z",
+  "limitations": [
+    "DOM is an event-order stub, not a browser.",
+    "Catalogue, policy compiler, source reader and scene/native controller are dependency stubs.",
+    "No public bootstrap, real private issuance, physical admission, real 530-HU scene, assets or rendered appearance established."
+  ],
+  "counts": {
+    "cases": 11,
+    "passed": 11,
+    "harnessFailures": 0
+  },
+  "results": [
+    {
+      "id": "C01_DEFAULT_PAUSED_FINITE_TIME",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C02_ERROR_PERSISTENCE",
+      "outcome": "PASS",
+      "classification": "regression_green",
+      "finding": "W0544-A2-001",
+      "before": {
+        "phase": "error",
+        "error": "CHANGED_NATIVE_BINDING",
+        "playing": false,
+        "at_s": 0,
+        "duration_s": 10,
+        "frame": {
+          "at_s": 0,
+          "phase_id": "loaded_route"
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "afterReset": {
+        "phase": "error",
+        "error": "CHANGED_NATIVE_BINDING",
+        "playing": false,
+        "at_s": 0,
+        "duration_s": 10,
+        "frame": {
+          "at_s": 0,
+          "phase_id": "loaded_route"
+        },
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "afterStop": {
+        "phase": "idle",
+        "error": "CHANGED_NATIVE_BINDING",
+        "playing": false,
+        "at_s": 0,
+        "duration_s": null,
+        "frame": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "legacyCancellationRetainsDiagnostic": true
+    },
+    {
+      "id": "C03_FAILED_INITIAL_APPLY_OWNERSHIP",
+      "outcome": "PASS",
+      "classification": "regression_green",
+      "finding": "W0544-A2-002",
+      "returned": false,
+      "snapshot": {
+        "phase": "error",
+        "error": "CHANGED_NATIVE_BINDING",
+        "playing": false,
+        "at_s": 0,
+        "duration_s": null,
+        "frame": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "disposeCalls": 1,
+      "readerDisposed": true
+    },
+    {
+      "id": "C04_DISPOSE_STOP_REACTIVATE",
+      "outcome": "PASS",
+      "classification": "regression_green",
+      "finding": "W0544-A2-003",
+      "afterStop": {
+        "phase": "disposed",
+        "error": null,
+        "playing": false,
+        "at_s": 0,
+        "duration_s": null,
+        "frame": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "returned": false,
+      "panelRemoved": true
+    },
+    {
+      "id": "C05_STOP_DURING_PREPARE",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C06_DISPOSE_DURING_PREPARE",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C07_LATEST_REQUEST_WINS",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C08_POLICY_ABORT_DEADLINE",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue",
+      "deadlineMs": 30000
+    },
+    {
+      "id": "C09_CAPTURE_PHASE_LEGACY_SELECTORS",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue",
+      "legacyBubbleObservedDisposeCounts": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "C10_NONFINITE_SPEED_PAUSES",
+      "outcome": "PASS",
+      "classification": "bounded_no_additional_issue"
+    },
+    {
+      "id": "C11_NONCOOPERATIVE_PREPARE_DEADLINE",
+      "outcome": "PASS",
+      "classification": "conditional_limitation",
+      "observedAfterDeadline": {
+        "phase": "loading",
+        "error": null,
+        "playing": false,
+        "at_s": 0,
+        "duration_s": null,
+        "frame": null,
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "physical_join": false,
+        "completed_jobs": 0
+      },
+      "settledAfterDeadline": false,
+      "explanation": "Abort-only outer deadline needs awaited dependency settlement. This stub does not prove an actual accepted support asset stalls."
+    }
+  ]
+}

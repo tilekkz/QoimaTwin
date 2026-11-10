@@ -1,0 +1,88 @@
+{
+  "asset_id": "tote-low",
+  "layout_version": "qoima-72x48-v2",
+  "coordinate_system": "right_handed_Y_up_metres",
+  "root_name": "tote_low_root",
+  "reference": "assets/references/v2/order-tote.png",
+  "root_properties": {
+    "layout_version": "qoima-72x48-v2",
+    "asset_id": "tote-low",
+    "role": "order_tote",
+    "forward_axis": "+Z",
+    "reference": "assets/references/v2/order-tote.png",
+    "lod": "low",
+    "size_m": [
+      0.6,
+      0.3,
+      0.4
+    ],
+    "interior_minimum_m": [
+      0.502,
+      0.265,
+      0.302
+    ],
+    "recommended_contents_envelope_m": [
+      0.48,
+      0.22,
+      0.28
+    ],
+    "cargo_kind": "tote",
+    "hollow": true,
+    "origin": "bottom_centre",
+    "handhold_shape": "omitted_at_distance"
+  },
+  "nodes": [
+    {
+      "name": "anchor_cargo",
+      "parent": "tote_low_root",
+      "position_local_runtime": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "cargo_attachment"
+      }
+    },
+    {
+      "name": "anchor_contents",
+      "parent": "tote_low_root",
+      "position_local_runtime": [
+        0.0,
+        0.03500000014901161,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "contents_attachment"
+      }
+    },
+    {
+      "name": "anchor_grip_left",
+      "parent": "tote_low_root",
+      "position_local_runtime": [
+        -0.2919999957084656,
+        0.2630000114440918,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "hand_contact"
+      }
+    },
+    {
+      "name": "anchor_grip_right",
+      "parent": "tote_low_root",
+      "position_local_runtime": [
+        0.2919999957084656,
+        0.2630000114440918,
+        0.0
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "hand_contact"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2351 @@
+{
+  "schema_id": "qoima.loaded-hip-diagnosis.v1",
+  "scope": "Read-only seven-point native diagnosis and isolated kinematic hypothesis only; no production/evidence refresh or new waiver.",
+  "source_hashes": {
+    "work/v3/loaded-hip-diagnosis/diagnose.mjs": "e6f45e3eb49ac82a69419fdfefd0ac818a7e1a461f2eb284ca8eaf53a0c5470d",
+    "docs/adaptive-v3/evidence/W05.3.3-checks.json": "d6de25573cd713d06aa3d938ff962f9f714effe51d8fa72b0f3e5c7958068378",
+    "work/v3/loaded-walk-calibration-check/replay-trace.json": "a15495a7f841d8c0e3e12e9d1a579606714cd1c0ebe7c48626bc12a060133bb4",
+    "docs/adaptive-v3/evidence/W05.2-checks.json": "f316cfa8b5eb0e0297e00fbb5d4155ff490d65252f1ea28b863f14f141f0b4fb",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/tools/check-warehouse-worker-walk-v3.mjs": "aa58b0d90bd6c226f3805f967ecbb2a7792d43693e2d4daeca4af6698339df75",
+    "frontend/tools/check-warehouse-loaded-walk-calibration-v3.mjs": "117d8ef79c6e421d76f3adad355e9222518e20ada394820709e030c7639f04cb",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163"
+  },
+  "gait_source_same_in_W05_2_and_loaded_report": true,
+  "gait_hashes": {
+    "W05_2": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "W05_3_3": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "current": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3"
+  },
+  "source": {
+    "pelvis_closed": true,
+    "pelvis_bounds_actor": {
+      "min": [
+        -0.17499999701976776,
+        0.5500000044703484,
+        -0.12000000197440386
+      ],
+      "max": [
+        0.17499999701976776,
+        0.6900000050663948,
+        0.11000000219792128
+      ]
+    },
+    "shirt_lower_actor_y": 0.6399999856948853,
+    "thighs": {
+      "L": {
+        "joint_position": [
+          -0.0949999988079071,
+          -0.02499997615814209,
+          0
+        ],
+        "joint_world_position": [
+          -0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "limits": [
+          [
+            -1.75,
+            0.65
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            -0.35,
+            0.35
+          ]
+        ],
+        "shin_limits": [
+          [
+            -0.08,
+            2.35
+          ],
+          [
+            -0.08,
+            0.08
+          ],
+          [
+            -0.08,
+            0.08
+          ]
+        ],
+        "foot_limits": [
+          [
+            -0.4,
+            0.4
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            -0.15,
+            0.15
+          ]
+        ],
+        "source_closed": true,
+        "bounds_actor": {
+          "min": [
+            -0.1903538902769079,
+            0.33969933315558415,
+            -0.10548472723684071
+          ],
+          "max": [
+            -0.009646112703324314,
+            0.6203006453867437,
+            0.10548472723684071
+          ]
+        },
+        "proximal_cap_y": 0.6203006453867437,
+        "proximal_cap_triangles": []
+      },
+      "R": {
+        "joint_position": [
+          0.0949999988079071,
+          -0.02499997615814209,
+          0
+        ],
+        "joint_world_position": [
+          0.0949999988079071,
+          0.5950000286102295,
+          -0.004999999888241291
+        ],
+        "limits": [
+          [
+            -1.75,
+            0.65
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            -0.35,
+            0.35
+          ]
+        ],
+        "shin_limits": [
+          [
+            -0.08,
+            2.35
+          ],
+          [
+            -0.08,
+            0.08
+          ],
+          [
+            -0.08,
+            0.08
+          ]
+        ],
+        "foot_limits": [
+          [
+            -0.4,
+            0.4
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            -0.15,
+            0.15
+          ]
+        ],
+        "source_closed": true,
+        "bounds_actor": {
+          "min": [
+            0.009646112703324314,
+            0.33969933315558415,
+            -0.10548472723684071
+          ],
+          "max": [
+            0.1903538902769079,
+            0.6203006453867437,
+            0.10548472723684071
+          ]
+        },
+        "proximal_cap_y": 0.6203006453867437,
+        "proximal_cap_triangles": []
+      }
+    },
+    "named_hip_or_cap_meshes": []
+  },
+  "results": [
+    {
+      "at_s": 0.6097529420605104,
+      "side": "L",
+      "world_point": [
+        10.647078239421893,
+        0.639393789152283,
+        48.82046824697174
+      ],
+      "point_actor_m": [
+        -0.1795317530282574,
+        0.6400046908049263,
+        0.07593312421447074
+      ],
+      "point_pelvis_local_m": [
+        -0.1795317530282574,
+        0.020004686036554697,
+        0.08093312410271203
+      ],
+      "point_thigh_local_m": [
+        -0.08453175422035741,
+        0.013270388566033908,
+        0.09164871512241923
+      ],
+      "point_torso_local_m": [
+        -0.1795317530282574,
+        -0.034995321116002676,
+        0.08093312410271203
+      ],
+      "current_native_depths_m": [
+        0.00000470511003966279,
+        0.000004705110040914562
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": -8.326672684688674e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.004531756008489651,
+          "mesh": "worker-base__batch_22",
+          "triangle": 34,
+          "point_m": [
+            10.647078239421893,
+            0.639393789152283,
+            48.82500000298023
+          ],
+          "normal": [
+            0,
+            0,
+            -0.9999999999999999
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": 4.996003610813204e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.021799460726708842,
+          "mesh": "worker-base__batch_02",
+          "triangle": 12,
+          "point_m": [
+            -0.17114632840035413,
+            0.6199015274433952,
+            0.076807174925053
+          ],
+          "normal": [
+            -0.6757548194091308,
+            0.7364307332214323,
+            -0.03201873220907543
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.019704045418182603,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          10,
+          77
+        ],
+        "point_m": [
+          10.647078239421893,
+          0.639393789152283,
+          48.82046824697174
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.56637061435989,
+          12.566370614359172
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00000470511003966279,
+          0.000004705110040914562
+        ],
+        "probes": 25,
+        "crossing_pairs": 6
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.3636963859469087,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.36457715529766466,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          -0.0008807693507560167,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          0.0700352960018587,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          -0.02165701562013015,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          -0.04837828038172853,
+          0,
+          0
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 4.163336342344337e-17,
+            "boot_world_matrix_max_delta": 1.474514954580286e-17,
+            "angles": [
+              [
+                -0.3636963859469087,
+                0,
+                0
+              ],
+              [
+                0.36457715529766466,
+                0,
+                0
+              ],
+              [
+                -0.0008807693507560314,
+                0,
+                0
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 6.938893903907228e-18,
+            "boot_world_matrix_max_delta": 0,
+            "angles": [
+              [
+                0.07003529600185872,
+                0,
+                0
+              ],
+              [
+                -0.021657015620130147,
+                0,
+                0
+              ],
+              [
+                -0.048378280381728554,
+                0,
+                0
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              10,
+              77
+            ],
+            "point_m": [
+              10.647078239421893,
+              0.639393789152283,
+              48.82046824697174
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435989,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00000470511003966279,
+              0.000004705110040914562
+            ],
+            "probes": 25,
+            "crossing_pairs": 6
+          },
+          {
+            "side": "R",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    },
+    {
+      "at_s": 1.0596582351248094,
+      "side": "R",
+      "world_point": [
+        10.471628733237232,
+        0.6395880188604446,
+        49.17551594392444
+      ],
+      "point_actor_m": [
+        0.17551594392443803,
+        0.6400880188604445,
+        0.07692534249058447
+      ],
+      "point_pelvis_local_m": [
+        0.17551594392443803,
+        0.020088014092072948,
+        0.08192534237882576
+      ],
+      "point_thigh_local_m": [
+        0.08051594511653093,
+        0.021238591873174784,
+        0.09106926377179114
+      ],
+      "point_torso_local_m": [
+        0.17551594392443803,
+        -0.034911993060484425,
+        0.08192534237882576
+      ],
+      "current_native_depths_m": [
+        0.00004124885495987717,
+        0.00008803316555927587
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": -1.7763568394002505e-15,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.0005159469046702725,
+          "mesh": "worker-base__batch_22",
+          "triangle": 43,
+          "point_m": [
+            10.471628733237232,
+            0.6395880188604446,
+            49.17499999701977
+          ],
+          "normal": [
+            0,
+            0,
+            0.9999999999999999
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": -3.8163916471489756e-17,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.020630368646648186,
+          "mesh": "worker-base__batch_05",
+          "triangle": 24,
+          "point_m": [
+            0.17114632840016114,
+            0.6199447432016284,
+            0.07780113721513382
+          ],
+          "normal": [
+            0.6757548194091362,
+            0.7364307332214273,
+            -0.03201873220907521
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.019787373473700853,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          5,
+          76
+        ],
+        "point_m": [
+          10.471628733237232,
+          0.6395880188604446,
+          49.17551594392444
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359204,
+          12.566370614359174
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00004124885495987717,
+          0.00008803316555927587
+        ],
+        "probes": 12,
+        "crossing_pairs": 1
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.04356995573835665,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.023778538627702073,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          0.01979141711065457,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          -0.2739970374501328,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0.4872730483633845,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          -0.21327601091325157,
+          0,
+          0
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 4.5102810375396984e-17,
+            "boot_world_matrix_max_delta": 3.469446951953614e-18,
+            "angles": [
+              [
+                -0.04356995573835665,
+                0,
+                0
+              ],
+              [
+                0.023778538627702073,
+                0,
+                0
+              ],
+              [
+                0.019791417110654574,
+                0,
+                0
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 5.721958498152797e-17,
+            "boot_world_matrix_max_delta": 2.7755575615628914e-17,
+            "angles": [
+              [
+                -0.2739970374501328,
+                0,
+                0
+              ],
+              [
+                0.4872730483633845,
+                0,
+                0
+              ],
+              [
+                -0.21327601091325155,
+                0,
+                0
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          },
+          {
+            "side": "R",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              5,
+              76
+            ],
+            "point_m": [
+              10.471628733237232,
+              0.6395880188604446,
+              49.17551594392444
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359204,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00004124885495987717,
+              0.00008803316555927587
+            ],
+            "probes": 12,
+            "crossing_pairs": 1
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    },
+    {
+      "at_s": 6.928333333333335,
+      "side": "L",
+      "world_point": [
+        5.996265155502653,
+        0.6390882882547112,
+        48.80814956128088
+      ],
+      "point_actor_m": [
+        -0.17581743052431165,
+        0.6400878142007603,
+        0.07686853077799327
+      ],
+      "point_pelvis_local_m": [
+        -0.17581743052431165,
+        0.020087809432388748,
+        0.08186853066623101
+      ],
+      "point_thigh_local_m": [
+        -0.08081743171641874,
+        0.02096201723871793,
+        0.09108215278631702
+      ],
+      "point_torso_local_m": [
+        -0.17581743052431165,
+        -0.034912197720168514,
+        0.08186853066623101
+      ],
+      "current_native_depths_m": [
+        0.000041608582854539486,
+        0.00008782850587507607
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": 8.326672684688674e-17,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.0008174335045441997,
+          "mesh": "worker-base__batch_22",
+          "triangle": 34,
+          "point_m": [
+            5.995952337243403,
+            0.6390882882547112,
+            48.808904771364915
+          ],
+          "normal": [
+            0.3826834323650869,
+            0,
+            -0.923879532511288
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": 5.551115123125783e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.02069852740188901,
+          "mesh": "worker-base__batch_02",
+          "triangle": 12,
+          "point_m": [
+            -0.17114632840017213,
+            0.6199422774011639,
+            0.07774442381296755
+          ],
+          "normal": [
+            -0.6757548194091308,
+            0.7364307332214323,
+            -0.03201873220907543
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.019787168814016654,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          1,
+          77
+        ],
+        "point_m": [
+          5.996265155502653,
+          0.6390882882547112,
+          48.80814956128088
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.56637061435917,
+          12.566370614359174
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.000041608582854539486,
+          0.00008782850587507607
+        ],
+        "probes": 15,
+        "crossing_pairs": 3
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.2772013745902609,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.4894586290490958,
+          0.039269908169872435,
+          -0.03494341919890616
+        ],
+        "joint__foot_L": [
+          -0.21437295947833707,
+          0.0851245677440324,
+          0.02598356075721945
+        ],
+        "joint__thigh_R": [
+          0.04133329622521117,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          -0.013165953246268477,
+          0.039269908169872435,
+          0.051912589128192584
+        ],
+        "joint__foot_R": [
+          -0.023238760308649725,
+          0.09297655864433522,
+          -0.05322782551793061
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 3.336627187198494e-13,
+            "boot_world_matrix_max_delta": 3.090860900556436e-13,
+            "angles": [
+              [
+                -0.2780907203730927,
+                0,
+                -0.01851373305213196
+              ],
+              [
+                0.4888190721819613,
+                0.039269908169872435,
+                -1.73606191679852e-18
+              ],
+              [
+                -0.21214658239767947,
+                0.09757522013898733,
+                0.009624624142139661
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 1.1091389101788988e-11,
+            "boot_world_matrix_max_delta": 1.0988682186408028e-11,
+            "angles": [
+              [
+                0.03383519107831087,
+                -5.421010862427522e-20,
+                0.025629590657340526
+              ],
+              [
+                0.004053225793986609,
+                0.03926990816987243,
+                0
+              ],
+              [
+                -0.03435285017236194,
+                0.09247678085401698,
+                -0.02719901399905693
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              1,
+              77
+            ],
+            "point_m": [
+              5.99675394076353,
+              0.6390864840995968,
+              48.806831480994006
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00003823055400686354,
+              0.00008602435076066062
+            ],
+            "probes": 13,
+            "crossing_pairs": 3
+          },
+          {
+            "side": "R",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    },
+    {
+      "at_s": 7.568333333333335,
+      "side": "L",
+      "world_point": [
+        6.092690749145674,
+        0.639088288254711,
+        48.83198522409339
+      ],
+      "point_actor_m": [
+        -0.1758174305243081,
+        0.6400878142007603,
+        0.07686853077798617
+      ],
+      "point_pelvis_local_m": [
+        -0.17581743052430454,
+        0.020087809432388748,
+        0.08186853066622746
+      ],
+      "point_thigh_local_m": [
+        -0.08081743171639744,
+        0.020962017238721486,
+        0.09108215278631349
+      ],
+      "point_torso_local_m": [
+        -0.17581743052430454,
+        -0.034912197720168625,
+        0.08186853066622746
+      ],
+      "current_native_depths_m": [
+        0.00004160858285852829,
+        0.00008782850587507607
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": 2.498001805406602e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.0008174335045395217,
+          "mesh": "worker-base__batch_22",
+          "triangle": 34,
+          "point_m": [
+            6.092042235544382,
+            0.639088288254711,
+            48.83248284608173
+          ],
+          "normal": [
+            0.7933533402912397,
+            0,
+            -0.6087614290087147
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": 8.326672684688674e-17,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.020698527401888534,
+          "mesh": "worker-base__batch_02",
+          "triangle": 12,
+          "point_m": [
+            -0.17114632840017213,
+            0.6199422774011636,
+            0.07774442381296046
+          ],
+          "normal": [
+            -0.6757548194091308,
+            0.7364307332214323,
+            -0.03201873220907543
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.019787168814016654,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          1,
+          77
+        ],
+        "point_m": [
+          6.092690749145674,
+          0.639088288254711,
+          48.83198522409339
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359178,
+          12.566370614359174
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00004160858285852829,
+          0.00008782850587507607
+        ],
+        "probes": 14,
+        "crossing_pairs": 5
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.27720137459025845,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.4894586290491031,
+          0.0392699081698725,
+          -0.03494341919889689
+        ],
+        "joint__foot_L": [
+          -0.21437295947834614,
+          0.08512456774403426,
+          0.025983560757209874
+        ],
+        "joint__thigh_R": [
+          0.041333296225216545,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          -0.0131659532462682,
+          0.039269908169872504,
+          0.05191258912819898
+        ],
+        "joint__foot_R": [
+          -0.023238760308654745,
+          0.09297655864433588,
+          -0.05322782551793725
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 3.3371043031257364e-13,
+            "boot_world_matrix_max_delta": 2.4868995751603507e-13,
+            "angles": [
+              [
+                -0.27809072037308896,
+                0,
+                -0.018513733052123605
+              ],
+              [
+                0.48881907218197024,
+                0.03926990816987249,
+                0
+              ],
+              [
+                -0.21214658239769102,
+                0.09757522013898509,
+                0.009624624142131133
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 1.1091390428178654e-11,
+            "boot_world_matrix_max_delta": 1.0988682186408028e-11,
+            "angles": [
+              [
+                0.03383519107834861,
+                -5.421010862427522e-20,
+                0.025629590657356132
+              ],
+              [
+                0.004053225793941954,
+                0.03926990816987249,
+                -1.3562983724988436e-20
+              ],
+              [
+                -0.034352850172352976,
+                0.09247678085401845,
+                -0.02719901399907226
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              1,
+              77
+            ],
+            "point_m": [
+              6.093773089742026,
+              0.6390864840995966,
+              48.831088125711155
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359192,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00003823055400665501,
+              0.00008602435076066062
+            ],
+            "probes": 12,
+            "crossing_pairs": 5
+          },
+          {
+            "side": "R",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    },
+    {
+      "at_s": 8.208333333333336,
+      "side": "L",
+      "world_point": [
+        6.164279931409274,
+        0.6390882882547112,
+        48.90084031042655
+      ],
+      "point_actor_m": [
+        -0.1758174305243101,
+        0.6400878142007602,
+        0.07686853077799327
+      ],
+      "point_pelvis_local_m": [
+        -0.17581743052431098,
+        0.020087809432388637,
+        0.08186853066624167
+      ],
+      "point_thigh_local_m": [
+        -0.08081743171640442,
+        0.02096201723871793,
+        0.09108215278630637
+      ],
+      "point_torso_local_m": [
+        -0.17581743052431098,
+        -0.034912197720168736,
+        0.08186853066624167
+      ],
+      "current_native_depths_m": [
+        0.00004160858285810585,
+        0.00008782850587507607
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": -6.938893903907228e-17,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.0008174335045431063,
+          "mesh": "worker-base__batch_22",
+          "triangle": 34,
+          "point_m": [
+            6.163469491161679,
+            0.6390882882547112,
+            48.90094700690929
+          ],
+          "normal": [
+            0.9914448613738108,
+            0,
+            -0.13052619222004727
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": -2.498001805406602e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.02069852740188855,
+          "mesh": "worker-base__batch_02",
+          "triangle": 12,
+          "point_m": [
+            -0.17114632840017213,
+            0.6199422774011639,
+            0.07774442381296755
+          ],
+          "normal": [
+            -0.6757548194091308,
+            0.7364307332214323,
+            -0.03201873220907543
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.019787168814016542,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          1,
+          77
+        ],
+        "point_m": [
+          6.164279931409274,
+          0.6390882882547112,
+          48.90084031042655
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359178,
+          12.566370614359172
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00004160858285810585,
+          0.00008782850587507607
+        ],
+        "probes": 13,
+        "crossing_pairs": 3
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.2772013745902531,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.4894586290490964,
+          0.03926990816987235,
+          -0.03494341919890412
+        ],
+        "joint__foot_L": [
+          -0.21437295947834528,
+          0.08512456774403243,
+          0.025983560757217063
+        ],
+        "joint__thigh_R": [
+          0.0413332962252045,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          -0.01316595324626891,
+          0.03926990816987249,
+          0.05191258912819122
+        ],
+        "joint__foot_R": [
+          -0.023238760308642782,
+          0.09297655864433502,
+          -0.05322782551792896
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 3.3368257870465693e-13,
+            "boot_world_matrix_max_delta": 3.268496584496461e-13,
+            "angles": [
+              [
+                -0.2780907203730981,
+                0,
+                -0.018513733052136647
+              ],
+              [
+                0.4888190721819558,
+                0.039269908169872345,
+                0
+              ],
+              [
+                -0.2121465823976691,
+                0.09757522013898826,
+                0.009624624142144612
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 1.1091335554993231e-11,
+            "boot_world_matrix_max_delta": 1.0988709941983643e-11,
+            "angles": [
+              [
+                0.033835191078338635,
+                0,
+                0.025629590657353693
+              ],
+              [
+                0.004053225793930466,
+                0.039269908169872476,
+                0
+              ],
+              [
+                -0.034352850172331924,
+                0.09247678085401803,
+                -0.027199013999068985
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              1,
+              77
+            ],
+            "point_m": [
+              6.165665815052378,
+              0.6390864840995967,
+              48.90060457073603
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00003823055400600435,
+              0.0000860243507605496
+            ],
+            "probes": 10,
+            "crossing_pairs": 3
+          },
+          {
+            "side": "R",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    },
+    {
+      "at_s": 9.590535545375875,
+      "side": "L",
+      "world_point": [
+        6.179535285759234,
+        0.6391131371023046,
+        48.896590411553994
+      ],
+      "point_actor_m": [
+        -0.1795352857592336,
+        0.6400046833317333,
+        0.07590958844600237
+      ],
+      "point_pelvis_local_m": [
+        -0.1795352857592336,
+        0.020004678563361744,
+        0.08090958833424367
+      ],
+      "point_thigh_local_m": [
+        -0.08453528695132739,
+        0.01296262764644851,
+        0.09167197344618216
+      ],
+      "point_torso_local_m": [
+        -0.1795352857592336,
+        -0.03499532858919563,
+        0.08090958833424367
+      ],
+      "current_native_depths_m": [
+        0.0000046976368468221824,
+        0.000004697636848072229
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": -1.3877787807814457e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.004535288739465848,
+          "mesh": "worker-base__batch_22",
+          "triangle": 34,
+          "point_m": [
+            6.174999997019768,
+            0.6391131371023046,
+            48.896590411553994
+          ],
+          "normal": [
+            0.9999999999999999,
+            0,
+            0
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": -2.220446049250313e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.021801756599521754,
+          "mesh": "worker-base__batch_02",
+          "triangle": 12,
+          "point_m": [
+            -0.17114632840035868,
+            0.6199005060656047,
+            0.07678368323939916
+          ],
+          "normal": [
+            -0.6757548194091308,
+            0.7364307332214323,
+            -0.03201873220907543
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.01970403794498965,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          10,
+          77
+        ],
+        "point_m": [
+          6.179535285759234,
+          0.6391131371023046,
+          48.896590411553994
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614358226,
+          12.566370614359172
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.0000046976368468221824,
+          0.000004697636848072229
+        ],
+        "probes": 25,
+        "crossing_pairs": 6
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.36714568534814696,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.3644467752357743,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          0.002698910112372625,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          0.05762922699926267,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0.005773708188348638,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          -0.06340293518761132,
+          0,
+          0
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 1.1188630228279524e-16,
+            "boot_world_matrix_max_delta": 9.410874857174178e-17,
+            "angles": [
+              [
+                -0.36714568534814696,
+                0,
+                0
+              ],
+              [
+                0.3644467752357743,
+                0,
+                0
+              ],
+              [
+                0.002698910112372531,
+                -7.163009423047084e-49,
+                1.523013750831354e-32
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 7.376145397762941e-17,
+            "boot_world_matrix_max_delta": 1.3877787807814457e-17,
+            "angles": [
+              [
+                0.05762922699926267,
+                0,
+                0
+              ],
+              [
+                0.005773708188348638,
+                0,
+                0
+              ],
+              [
+                -0.06340293518761134,
+                -1.0691058840368783e-50,
+                2.2317184901152703e-33
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              10,
+              77
+            ],
+            "point_m": [
+              6.179535285759234,
+              0.6391131371023046,
+              48.896590411553994
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614358226,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0000046976368468221824,
+              0.000004697636848072229
+            ],
+            "probes": 25,
+            "crossing_pairs": 6
+          },
+          {
+            "side": "R",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    },
+    {
+      "at_s": 10.044683098490498,
+      "side": "R",
+      "world_point": [
+        5.824431655798832,
+        0.6395879832197243,
+        48.71782180186118
+      ],
+      "point_actor_m": [
+        0.17556834420116818,
+        0.6400879832197243,
+        0.07691540372253769
+      ],
+      "point_pelvis_local_m": [
+        0.17556834420116818,
+        0.020087978451352684,
+        0.08191540361077898
+      ],
+      "point_thigh_local_m": [
+        0.08056834539326108,
+        0.02119052180035297,
+        0.09107150369580097
+      ],
+      "point_torso_local_m": [
+        0.17556834420116818,
+        -0.03491202870120469,
+        0.08191540361077898
+      ],
+      "current_native_depths_m": [
+        0.00004131111392544693,
+        0.00008799752483901191
+      ],
+      "current_native_inside": [
+        true,
+        true
+      ],
+      "pelvis": {
+        "solid_angle_rad": 0,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.0005683471814004193,
+          "mesh": "worker-base__batch_22",
+          "triangle": 43,
+          "point_m": [
+            5.825000002980232,
+            0.6395879832197243,
+            48.71782180186118
+          ],
+          "normal": [
+            -0.9999999999999999,
+            0,
+            0
+          ]
+        }
+      },
+      "unchanged_source_thigh_cap_volume": {
+        "solid_angle_rad": 1.0408340855860843e-16,
+        "inside": false,
+        "nearest": {
+          "distance_m": 0.020641917725041915,
+          "mesh": "worker-base__batch_05",
+          "triangle": 24,
+          "point_m": [
+            0.17114632840016306,
+            0.6199443118292883,
+            0.07779121565280203
+          ],
+          "normal": [
+            0.6757548194091362,
+            0.7364307332214273,
+            -0.03201873220907521
+          ]
+        }
+      },
+      "height_above_unchanged_source_cap_m": 0.01978733783298059,
+      "old_centroid_witness": null,
+      "new_edge_witness": {
+        "found": true,
+        "method": "native edge/triangle crossing then shared whole-mesh interior",
+        "triangles": [
+          5,
+          76
+        ],
+        "point_m": [
+          5.824431655798832,
+          0.6395879832197243,
+          48.71782180186118
+        ],
+        "whole_mesh_solid_angles_rad": [
+          12.566370614359174,
+          12.566370614359172
+        ],
+        "whole_mesh_surface_depths_m": [
+          0.00004131111392544693,
+          0.00008799752483901191
+        ],
+        "probes": 12,
+        "crossing_pairs": 1
+      },
+      "arm_pose_independent": true,
+      "original_leg_angles": {
+        "joint__thigh_L": [
+          -0.04382872245673307,
+          0,
+          0
+        ],
+        "joint__shin_L": [
+          0.023083779618862536,
+          0,
+          0
+        ],
+        "joint__foot_L": [
+          0.020744942837870543,
+          0,
+          0
+        ],
+        "joint__thigh_R": [
+          -0.2745540536026616,
+          0,
+          0
+        ],
+        "joint__shin_R": [
+          0.48713117234399217,
+          0,
+          0
+        ],
+        "joint__foot_R": [
+          -0.21257711874133056,
+          0,
+          0
+        ]
+      },
+      "classification": "TRUE_OUTSIDE_UNCHANGED_NATIVE_PELVIS_AND_SOURCE_REST_THIGH_CAP",
+      "experimental_hip_Z_allocation": {
+        "not_accepted": true,
+        "no_stance_or_root_change": true,
+        "legs": [
+          {
+            "side": "L",
+            "solved": true,
+            "IK_error_m": 1.0061396160665481e-16,
+            "boot_world_matrix_max_delta": 2.220446049250313e-16,
+            "angles": [
+              [
+                -0.04382872245673306,
+                0,
+                0
+              ],
+              [
+                0.023083779618862536,
+                0,
+                0
+              ],
+              [
+                0.02074494283787054,
+                1.9721522630525295e-31,
+                -1.1158592450576355e-33
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          },
+          {
+            "side": "R",
+            "solved": true,
+            "IK_error_m": 4.163336342344337e-17,
+            "boot_world_matrix_max_delta": 5.551115123125783e-17,
+            "angles": [
+              [
+                -0.2745540536026616,
+                0,
+                0
+              ],
+              [
+                0.48713117234399217,
+                0,
+                0
+              ],
+              [
+                -0.21257711874133053,
+                -3.4211388289180104e-49,
+                -2.2952364446348005e-32
+              ]
+            ],
+            "limits": [
+              [
+                [
+                  -1.75,
+                  0.65
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.35,
+                  0.35
+                ]
+              ],
+              [
+                [
+                  -0.08,
+                  2.35
+                ],
+                [
+                  -0.08,
+                  0.08
+                ],
+                [
+                  -0.08,
+                  0.08
+                ]
+              ],
+              [
+                [
+                  -0.4,
+                  0.4
+                ],
+                [
+                  -0.2,
+                  0.2
+                ],
+                [
+                  -0.15,
+                  0.15
+                ]
+              ]
+            ],
+            "violations": []
+          }
+        ],
+        "thigh_torso_gate": [
+          {
+            "side": "L",
+            "found": false,
+            "probes": 0,
+            "crossing_pairs": 0
+          },
+          {
+            "side": "R",
+            "found": true,
+            "method": "native edge/triangle crossing then shared whole-mesh interior",
+            "triangles": [
+              5,
+              76
+            ],
+            "point_m": [
+              5.824431655798832,
+              0.6395879832197243,
+              48.71782180186118
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00004131111392544693,
+              0.00008799752483901191
+            ],
+            "probes": 12,
+            "crossing_pairs": 1
+          }
+        ],
+        "scope": "Seven saved frames only. Source hipZ replaces kneeZ lateral DOF; exact native foot matrices targeted. No full-body, fixed-obstacle or continuous native clearance conclusion."
+      }
+    }
+  ],
+  "counts": {
+    "points": 7,
+    "outside_source_pelvis": 7,
+    "outside_unchanged_source_thigh_cap_volume": 7,
+    "old_centroid_method_positive": 0,
+    "new_edge_method_positive": 7,
+    "experimental_frames_solved": 7,
+    "experimental_frames_with_material_thigh_torso": 7
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema_id": "qoima.visual-root-handoff-acceptance.v1",
+  "task_id": "H02",
+  "passed": true,
+  "reviewer": "root",
+  "reviewed_utc": "2026-11-10T01:33:36.735Z",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "runtime_source_commit": "b9f23d10e381b5e179a853c473da2f0eca09e517",
+  "criterion": "Clip names, pivots, triggers, interruption/replay rules и adapter boundary документированы",
+  "observed_result": "Clip/nativecontroller/event/interrupt/restore boundaries indexed separately from actualengine events.",
+  "evidence": [
+    {
+      "key": "handoff_events",
+      "path": "docs/adaptive-v3/handoff/runtime-20261110/animation-event-map.json",
+      "bytes": 150246,
+      "sha256": "fc7246b7d0df5ba8cc4b5b2d8c880c70fac22237c7e6ff33de2d9d6b562a9846"
+    },
+    {
+      "key": "handoff_checks",
+      "path": "docs/adaptive-v3/handoff/runtime-20261110/checks.json",
+      "bytes": 80122,
+      "sha256": "7f5d82a4a15f87021b8ee1841af0951325f35f0dc37caa6e509036fc3a017871"
+    }
+  ],
+  "limitations": [
+    "Desktop delivery; original542 preserved; same-input scenario A/B and structural configuration demonstration are distinct.",
+    "SourceLONG remains retained outside; no recipient unload or backend KPI claimed."
+  ]
+}

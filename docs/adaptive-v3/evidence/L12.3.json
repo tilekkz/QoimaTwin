@@ -1,0 +1,212 @@
+{
+  "checked_utc": "2026-11-07T11:44:46.620787+00:00",
+  "compiler": {
+    "path": "tools/visual/v3/compile_layout_v3.py",
+    "sha256": "2ff3e49814936aa79b0af905e3081d790f69fed99cf3adf4ddfa838996f7de7c"
+  },
+  "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+  "links_sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65",
+  "negative_cases": [
+    {
+      "case": "public_bytes_changed",
+      "passed": true,
+      "result": "PUBLIC_CHECKSUM_MISMATCH"
+    },
+    {
+      "case": "accepted_source_bytes_changed",
+      "passed": true,
+      "result": "SOURCE_HASH_MISMATCH"
+    },
+    {
+      "case": "referenced_file_missing",
+      "passed": true,
+      "result": "SOURCE_MISSING"
+    },
+    {
+      "case": "duplicate_slot_even_if_outer_checksum_recomputed",
+      "passed": true,
+      "result": "DUPLICATE_RUNTIME_ID"
+    },
+    {
+      "case": "wrong_layout_version_even_if_rehashed",
+      "passed": true,
+      "result": "LAYOUT_VERSION_MISMATCH"
+    },
+    {
+      "case": "unapproved_operational_claim_even_if_rehashed",
+      "passed": true,
+      "result": "UNAPPROVED_OPERATIONAL_LABEL"
+    },
+    {
+      "case": "wrong_units_even_if_rehashed",
+      "passed": true,
+      "result": "UNITS_OR_ENVELOPE_MISMATCH"
+    },
+    {
+      "case": "source_snapshot_mismatch_even_if_rehashed",
+      "passed": true,
+      "result": "SOURCE_SNAPSHOT_MISMATCH"
+    }
+  ],
+  "operational_admission": false,
+  "passed": true,
+  "previous_evidence_preserved": {
+    "docs\\adaptive-v3\\evidence\\L12.1.json": "e2b62f7d0bdeef3702cb423b954823507e4a4780b92621ac615df2cb9f65a821",
+    "docs\\adaptive-v3\\evidence\\L12.2.json": "a97780379a618c17b32712a56944e1913db698e59ffa7fe864e555046997fb27"
+  },
+  "private_manifest": {
+    "bytes": 8009,
+    "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+  },
+  "public_runtime": {
+    "bytes": 2341205,
+    "path": "frontend/public/data/adaptive-v3/layout-manifest.json",
+    "schema_id": "qoima.layout-runtime.v3-proposal",
+    "sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "url": "/data/adaptive-v3/layout-manifest.json"
+  },
+  "root_http_browser_check": "pending",
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T12:00:13.736462+00:00",
+    "strict_package_check": "exit0,18files8tables8negative mutations, exact prior semantic/link bytes preserved",
+    "exact_source_review": "Read full L12.3 spec plus current projection/table validation/manifest/mutation/serialization functions.",
+    "actual_browser_fetch": "docs/adaptive-v3/evidence/L12.3-root-browser.json",
+    "integration": "Actual Chrome HTTP200 same-origin fetch; WebCrypto raw SHA eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db matches2341205bytes. Independently decoded columnar nodes/arcs/storage and checked24actors/6ports/132modules/776slots/588active candidates/188blocked reserve and graph cardinalities.",
+    "scope": "L12 geometry/data proposal accepted only. No actual inventory, handler admission, event scheduler, engine integration or final art acceptance."
+  },
+  "scheduling_implemented": false,
+  "semantic_index_sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a",
+  "status": "VERIFY",
+  "task_id": "L12.3",
+  "validation": {
+    "active_geometry_candidates": 588,
+    "blocked_reserve": 188,
+    "counts": {
+      "actor": 24,
+      "actor_pool": 2,
+      "cargo_reference_target": 8,
+      "conveyor_cell": 90,
+      "conveyor_edge": 45,
+      "conveyor_module": 87,
+      "conveyor_node": 34,
+      "conveyor_resource": 15,
+      "equipment_pair": 2,
+      "packing_station": 6,
+      "port": 6,
+      "storage_module": 132,
+      "storage_slot": 776,
+      "traffic_resource": 282,
+      "traffic_route_ref": 1234,
+      "vehicle": 2,
+      "vehicle_arc": 1316,
+      "vehicle_node": 620,
+      "walk_arc": 4000,
+      "walk_node": 1633,
+      "zone": 40
+    },
+    "validated_files": 18,
+    "validated_tables": 8
+  },
+  "independent_checks": [
+    {
+      "name": "raw public checksum length and canonical LF",
+      "passed": true,
+      "actual": 2341205
+    },
+    {
+      "name": "all18 local dependency hashes exist and match",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "semantic and links exact frozen bytes retained",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "walk node coordinates,all arc endpoints/costs/permissions survive projection",
+      "passed": true,
+      "actual": {
+        "nodes": 1633,
+        "arcs": 4000
+      }
+    },
+    {
+      "name": "vehicle node coordinates,all arc endpoints/costs/permissions survive projection",
+      "passed": true,
+      "actual": {
+        "nodes": 620,
+        "arcs": 1316
+      }
+    },
+    {
+      "name": "132 module placement and operating bounds roundtrip",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "776 usable geometry/mass/access/reserve fields roundtrip",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "zones ports and resource identities retain source",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "all conveyor data sections retained",
+      "passed": true,
+      "actual": {
+        "modules": 87,
+        "cells": 90,
+        "stations": 6
+      }
+    },
+    {
+      "name": "1234 traffic mappings preserve exact compiled arcs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "282 spatial cell memberships preserve all original route refs",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "188 reserve slots blocked and16floor cargo sets empty",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "proposal labels and no fabricated stock/engine execution",
+      "passed": true,
+      "actual": null
+    },
+    {
+      "name": "previous child evidence unchanged after root reviews",
+      "passed": true,
+      "actual": null
+    }
+  ],
+  "package_check_only_exit_code": 0,
+  "updated_utc": "2026-11-07T11:50:18.489246+00:00",
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "One task-directed coverage call; current paths not_tracked/new outputs missing. Exact-source/JSON/hash fallback used; no completeness claim."
+  },
+  "spec": {
+    "path": "docs/adaptive-v3/specs/L12.3.md",
+    "sha256": "f5bf48a51973be1e707344bfab91bc9dccc96326c1c6660be2d1e71122ac228c"
+  },
+  "parent_integration_prepared": {
+    "spec": "docs/adaptive-v3/specs/L12.md",
+    "evidence": "docs/adaptive-v3/evidence/L12.json",
+    "parent_status_owner": "root",
+    "http_browser_gate": "pending"
+  }
+}

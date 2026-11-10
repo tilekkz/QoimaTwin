@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "vectorized_scalar_angle_comparisons": 192,
+  "maximum_solid_angle_difference_rad": 3.375077994860476e-14,
+  "cases": [
+    {
+      "case": "touching",
+      "expected_penetration": false,
+      "result": null
+    },
+    {
+      "case": "ten_mm_overlap",
+      "expected_penetration": true,
+      "result": {
+        "kind": "sample_inside_closed_solid",
+        "a": "A",
+        "b": "ten_mm_overlap",
+        "point": [
+          1.0,
+          0.6666666865348816,
+          0.3333333432674408
+        ]
+      }
+    },
+    {
+      "case": "half_um_contact_budget",
+      "expected_penetration": false,
+      "result": null
+    },
+    {
+      "case": "ten_um_penetration",
+      "expected_penetration": true,
+      "result": {
+        "kind": "sample_inside_closed_solid",
+        "a": "A",
+        "b": "ten_um_penetration",
+        "point": [
+          1.0,
+          0.6666666865348816,
+          0.3333333432674408
+        ]
+      }
+    },
+    {
+      "case": "identical",
+      "expected_penetration": true,
+      "result": {
+        "kind": "coincident_face_shared_interior",
+        "a": "A",
+        "b": "identical",
+        "point": [
+          6e-06,
+          0.6666666666666666,
+          0.6666666666666666
+        ]
+      }
+    },
+    {
+      "case": "contained",
+      "expected_penetration": true,
+      "result": {
+        "kind": "sample_inside_closed_solid",
+        "a": "contained",
+        "b": "A",
+        "point": [
+          0.20000001788139343,
+          0.20000001788139343,
+          0.4000000059604645
+        ]
+      }
+    },
+    {
+      "case": "outside",
+      "expected_penetration": false,
+      "result": null
+    },
+    {
+      "case": "crossing_thin_slabs_without_contained_vertices",
+      "expected_penetration": true,
+      "result": {
+        "kind": "transverse_surface_shared_interior",
+        "a": "cross_horizontal",
+        "b": "cross_vertical",
+        "triangles": [
+          9,
+          5
+        ],
+        "point": [
+          0.009997499776482581,
+          -0.009997499776482581,
+          0.005049999886006117
+        ]
+      }
+    },
+    {
+      "case": "overlapping_AABBs_but_separate_solids",
+      "expected_penetration": false,
+      "result": null
+    },
+    {
+      "case": "rod_inside_real_bore_without_metal_contact",
+      "expected_penetration": false,
+      "result": null
+    },
+    {
+      "case": "actual_faceted_bar_tangent_pad_0",
+      "expected_penetration": false,
+      "result": null
+    },
+    {
+      "case": "actual_faceted_bar_tangent_pad_1e-05",
+      "expected_penetration": true,
+      "result": {
+        "kind": "transverse_surface_shared_interior",
+        "a": "rubber_Tbar",
+        "b": "tangent_pad.001",
+        "triangles": [
+          83,
+          5
+        ],
+        "point": [
+          0.03999749910593033,
+          0.1342742779527907,
+          0.2444188146616216
+        ]
+      }
+    }
+  ],
+  "method": "Transverse native triangle segments and closed-mesh solid angle,2um gate. Nearest-edge signed normal alone is never an inside test.",
+  "scope": "Analytical calibration fixtures only, not an engine run."
+}

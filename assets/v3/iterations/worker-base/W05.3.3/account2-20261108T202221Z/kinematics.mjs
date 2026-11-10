@@ -1,0 +1,30 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import assert from 'node:assert/strict';
+const output=path.dirname(fileURLToPath(import.meta.url)),repo='C:/Users/izbas/Documents/Codex/2026-11-06/new-chat/work/QoimaTwin',front=path.join(repo,'frontend');
+const threeURL=pathToFileURL(path.join(front,'node_modules/three/build/three.module.js')).href;
+const T=await import(threeURL),{GLTFLoader}=await import(pathToFileURL(path.join(front,'node_modules/three/examples/jsm/loaders/GLTFLoader.js'))),{default:ts}=await import(pathToFileURL(path.join(front,'node_modules/typescript/lib/typescript.js')));
+const helper=await readFile(path.join(output,'loaded-leg-solver.ts'),'utf8');
+const helperJS=ts.transpileModule(`import * as THREE from ${JSON.stringify(threeURL)};const axisY=new THREE.Vector3(0,1,0);function requireValue(v,reason,details={}){if(!v)throw Object.assign(new Error(reason),{reason,details});}\n${helper}\nexport {solveLoadedLegs};`,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
+await writeFile(path.join(output,'cache/loaded-leg-solver.mjs'),helperJS);
+const {solveLoadedLegs}=await import(pathToFileURL(path.join(output,'cache/loaded-leg-solver.mjs'))),{deriveNativeWorkerGaitRig,compileNativeWorkerGait}=await import(pathToFileURL(path.join(output,'cache/warehouseWorkerGait.mjs'))),{adaptWarehouseV3}=await import(pathToFileURL(path.join(output,'cache/warehouseAdapter.mjs')));
+const texts={};for(const[k,p]of Object.entries({fixture:'frontend/public/data/v3/warehouse-fixture-v3.json',layout:'frontend/public/data/adaptive-v3/layout-manifest.json',registry:'frontend/public/data/v3/worker-registry-v3.json',profiles:'frontend/public/data/v3/worker-profiles-v3.json'}))texts[k]=await readFile(path.join(repo,p),'utf8');
+const bundle=await adaptWarehouseV3(texts),bytes=await readFile(path.join(front,'public/models/v3/worker-base.glb')),root=(await new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'')).scene.getObjectByName('worker_base_root'),rig=deriveNativeWorkerGaitRig(root),gait=compileNativeWorkerGait(rig,[[10.75,0,49],[6,0,49],[6,0,38]],-Math.PI/2,1.2,bundle.layout.modules.map(m=>m.outer_bounds_world));
+const baseline=JSON.parse(await readFile(path.join(repo,'docs/adaptive-v3/evidence/W05.3.3-checks.json'),'utf8'));
+const times=new Set(baseline.frames.map(f=>f.at_s));for(const e of [1e-12,1e-10,1e-8,1e-6,1e-4]){times.add(e);times.add(gait.duration_s-e);}times.add(0);times.add(gait.duration_s);
+let maximumIKError=0,maximumFootError=0,maximumYawError=0,minimumLimitMargin=Infinity;const extrema={},endpointContinuity=[];
+for(const t of [...times].sort((a,b)=>a-b)){
+ const pure=gait.sample(t),p=solveLoadedLegs(rig,pure);assert.deepEqual(p.root_world,pure.root_world);assert.equal(p.yaw_rad,pure.yaw_rad);assert.equal(p.body_drop_m,pure.body_drop_m);assert.deepEqual(p.feet,pure.feet);assert.equal(p.at_s,pure.at_s);assert.equal(p.stage,pure.stage);
+ for(const [name,q]of Object.entries(pure.joint_rotations))if(!/^joint__(thigh|shin|foot)_[LR]$/.test(name))assert.deepEqual(p.joint_rotations[name],q);
+ maximumIKError=Math.max(maximumIKError,p.maximum_IK_error_m);
+ for(const leg of rig.legs){
+  const names=['thigh','shin','foot'].map(j=>'joint__'+j+'_'+leg.side),[q1,q2,q3]=names.map(n=>new T.Quaternion(...p.joint_rotations[n])),q12=q1.clone().multiply(q2),q123=q12.clone().multiply(q3);
+  const sole=new T.Vector3(...leg.hip).add(new T.Vector3(...leg.a).applyQuaternion(q1)).add(new T.Vector3(...leg.b).applyQuaternion(q12)).add(new T.Vector3(...leg.sole).applyQuaternion(q123)).applyAxisAngle(new T.Vector3(0,1,0),p.yaw_rad).add(new T.Vector3(...p.root_world)),target=p.feet[leg.side];
+  maximumFootError=Math.max(maximumFootError,sole.distanceTo(new T.Vector3(...target.point)));const desired=new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),target.yaw_rad-p.yaw_rad);maximumYawError=Math.max(maximumYawError,2*Math.atan2(new T.Vector3(q123.x-desired.x,q123.y-desired.y,q123.z-desired.z).length(),1));
+  for(let i=0;i<names.length;i++){const name=names[i],e=new T.Euler().setFromQuaternion([q1,q2,q3][i],'XYZ'),values=[e.x,e.y,e.z],ranges=rig.nodes.find(n=>n.name===name).limits;extrema[name]??={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};for(let k=0;k<3;k++){assert(values[k]>=ranges[k][0]-1e-8&&values[k]<=ranges[k][1]+1e-8);minimumLimitMargin=Math.min(minimumLimitMargin,values[k]-ranges[k][0],ranges[k][1]-values[k]);extrema[name].min[k]=Math.min(extrema[name].min[k],values[k]);extrema[name].max[k]=Math.max(extrema[name].max[k],values[k]);}}
+ }
+ if(t<=1e-4||gait.duration_s-t<=1.001e-4){let maximumAngle=0;for(const leg of rig.legs)for(const j of ['thigh','shin','foot']){const n='joint__'+j+'_'+leg.side,q=new T.Quaternion(...p.joint_rotations[n]),rest=new T.Quaternion(...rig.nodes.find(x=>x.name===n).quaternion);maximumAngle=Math.max(maximumAngle,q.angleTo(rest));}endpointContinuity.push({at_s:t,distance_to_endpoint_s:Math.min(t,gait.duration_s-t),maximum_source_rest_joint_angle_rad:maximumAngle});}
+}
+const result={passed:true,sample_count:times.size,duration_s:gait.duration_s,root_timing_bodydrop_and_foot_targets_exact:true,nonleg_pure_rotations_unchanged:true,maximum_IK_error_m:maximumIKError,maximum_reconstructed_foot_error_m:maximumFootError,maximum_quaternion_component_orientation_difference_bound_rad:maximumYawError,minimum_original_limit_margin_rad:minimumLimitMargin,joint_euler_extrema_rad:extrema,source_rig_legs:rig.legs.map(({vertices,...leg})=>leg),original_leg_limits:Object.fromEntries(rig.nodes.filter(n=>/^joint__(thigh|shin|foot)_[LR]$/.test(n.name)).map(n=>[n.name,n.limits])),endpoint_continuity:endpointContinuity};
+await writeFile(path.join(output,'kinematics-results.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({passed:result.passed,samples:result.sample_count,duration_s:result.duration_s,maximumFootError,maximumIKError,minimumLimitMargin,endpointContinuity}));

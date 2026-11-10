@@ -1,0 +1,70 @@
+{
+  "reference_id": "R13.2",
+  "version": 2,
+  "status": "VERIFY",
+  "mode": "built-in imagegen edit of R02 to dedicated STANDARD sheet",
+  "path": "assets/references/v3/r13-2-rack-standard.png",
+  "sha256": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb",
+  "dimensions_px": [
+    1070,
+    1470
+  ],
+  "source_id": "exec-b7a6c177-c5bb-4243-9dec-062fc4b1dec9",
+  "source_image": "C:\\Users\\izbas\\.codex\\generated_images\\01a1b208-3827-7d52-ac17-991ca36df506\\exec-b7a6c177-c5bb-4243-9dec-062fc4b1dec9.png",
+  "source_copy_identical": true,
+  "input_reference": {
+    "path": "assets/references/v3/r02-storage.png",
+    "bytes": 1753816,
+    "sha256": "b2f9581d8e496b729b3516bfc8109ece4047b51865df6058ac6bd5f7a3cac825"
+  },
+  "prompts": [
+    {
+      "path": "assets/references/v3/prompts/r13-2.txt",
+      "bytes": 2620,
+      "sha256": "ec50bd1119a34c31fd960cce9c462269a3c3c95375802e4b838b348dca50650f"
+    },
+    {
+      "path": "assets/references/v3/prompts/r13-2-tool.txt",
+      "bytes": 2019,
+      "sha256": "0c5cfc2867323e8cec12b0b322234001b387e039c0a008adaa0b86bb668523bd"
+    },
+    {
+      "path": "assets/references/v3/prompts/r13-2-fix-01.txt",
+      "bytes": 872,
+      "sha256": "a45e0ffc326bcbcd9ead60069d1e596808cfa0f9bd12c73df88887b46d7b3bff"
+    }
+  ],
+  "prompt_policy": "r13-2.txt is pre-authored detailed brief; r13-2-tool.txt stores exact initial tool text; fix-01 exact edit text, trim only final newline.",
+  "iterations": [
+    {
+      "version": 1,
+      "source_id": "exec-6257557f-ed12-447a-b2f5-8f9cc025d2d7",
+      "artifact": {
+        "path": "assets/references/v3/r13-2-rack-standard-v1.png",
+        "bytes": 1612945,
+        "sha256": "2e3464b5806b2bc03d9088c513ede437146f077c6f24e6a1684cd91611a72ecc"
+      },
+      "selected": false,
+      "defect": "Rear diagonals omitted in front view."
+    },
+    {
+      "version": 2,
+      "source_id": "exec-b7a6c177-c5bb-4243-9dec-062fc4b1dec9",
+      "artifact": {
+        "path": "assets/references/v3/r13-2-rack-standard.png",
+        "bytes": 1639446,
+        "sha256": "3b2a45d4e305bbc8af961600af8ef756f654e6e5ec777a1e45b93fe4004510fb"
+      },
+      "selected": true,
+      "correction": "Rear braces visible through FRONT openings with opposite-view reversal; other construction retained."
+    }
+  ],
+  "target": {
+    "path": "assets/references/v3/r13-2-rack-standard.targets.json",
+    "bytes": 2421,
+    "sha256": "a327fe63fdbc10f161d63ee8edead4a54c9af07c14ea1995d429517b6f74d822"
+  },
+  "actual_review": "Root actually opened saved V1 and V2 PNGs. Six-post two-bay/three-deck empty construction, attached headers, shelf depth, grounded feet and matte R02 palette agree in four views. V1 front omitted rear diagonals; corrected V2 front now exposes the same six back braces in the mirrored opposite-view direction. Quarter is a rear-quarter construction view. Image proportions/brace placement are conceptual; exact L09 dimensions, usable bounds and no front intrusion remain geometry gates.",
+  "no_model_render_input": true,
+  "limits": "Art only; exact dimensions/usable geometry and payload/access stay L09/C04/M02, upper levels remain reserve-only unless explicit later admission."
+}

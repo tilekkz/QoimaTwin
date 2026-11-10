@@ -1,0 +1,15 @@
+# Picker/cart generated production reference
+
+Mode: built-in imagegen. Date: 2026-11-06.
+Source visual evaluation: all five user images in Qoyma_Twin/рефы; charcoal steel, tan cartons, yellow safety, volumetric compact warehouse objects. Reference sheet is visual guidance; dimensions are enforced by build script.
+
+Use case: stylized-concept.
+Asset type: four-view production reference sheet for a warehouse digital-twin low-poly 3D asset.
+Primary request: a single assembled warehouse order picker pushing a compact picking trolley, shown as FOUR consistent views of precisely the same asset on a clean 2x2 sheet: front view, right side view, rear view, front three-quarter view. A neutral mid-light grey studio backdrop and subtle contact shadows, no environment.
+Visual direction: attractive physical low-poly miniatures, substantial dimensional construction, faceted forms with small soft bevels, matte flat colors, professionally designed game diorama. Draw from compact industrial warehouse props: charcoal steel, warm tan cartons and muted yellow safety accents; use dark desaturated blue-teal worker clothing. Functional construction and convincing silhouette.
+Subject: a pleasantly stylized adult warehouse worker with realistic body proportions, height 1.70m, head proportional around one seventh body height, small simple facial features and short dark hair visible below a small muted saffron hardhat. Teal long sleeve work clothes, small saffron high-visibility vest with two narrow reflective strips, charcoal work boots. Both feet on the ground. Arms have clear shoulders, bent elbows and hands physically holding the trolley's push handle in front. Face, hands, torso and limbs have volume, no flat cutouts.
+Trolley: narrow 0.55m wide, around 0.9m tall, 0.65m deep, dark charcoal steel frame, upper rigid open rectangular basket with solid shallow tan/teal inset panels and simple spaced vertical rails, lower shelf with one modest tan carton. Four caster assemblies: four dark wheels, all touching the same floor, fork/yoke connection physically attached to chassis. Handle at worker waist height behind basket. Entire group width at most 0.8m. Trolley directly ahead along the worker's local forward direction, not beside worker. Human facing forward along runtime local +Z; origin at floor center below the figure.
+Composition: consistent four-view sheet, same scale in every panel and full group visible with generous margins. Side view must reveal actual cart depth, hand/handle connection and full rear-to-front separation. Rear view must reveal vest and handle. All objects in 3D volume; coherent match between views. Small unobtrusive view labels only: FRONT, SIDE, REAR, THREE-QUARTER.
+Lighting: soft neutral studio light, readable broad faces and mild ambient shadows, enough contrast to distinguish navy frame from dark wheels.
+Avoid: enormous childish head, floating limbs, floating cart, extra people, extra cart wheels, disconnected tubes, noisy textures, logos, decorative text, warehouse background, glossy plastic, wireframe, photorealism, dimensions or measurement arrows.
+

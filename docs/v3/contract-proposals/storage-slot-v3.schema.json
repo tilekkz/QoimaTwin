@@ -1,0 +1,1155 @@
+{
+  "$defs": {
+    "module": {
+      "additionalProperties": false,
+      "properties": {
+        "aisle": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "collision_bounds_broadphase_only": {
+          "const": true
+        },
+        "family": {
+          "enum": [
+            "SMALL",
+            "STANDARD",
+            "HEAVY",
+            "LONG",
+            "FLEX"
+          ]
+        },
+        "max_handling_units": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "max_module_payload_kg": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "module_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "operating_bounds_world": {
+          "additionalProperties": false,
+          "properties": {
+            "max": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            },
+            "min": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "type": "object"
+        },
+        "outer_bounds_world": {
+          "additionalProperties": false,
+          "properties": {
+            "max": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            },
+            "min": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "type": "object"
+        },
+        "physical_outer_dimensions_xyz_m": {
+          "items": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "record_type": {
+          "const": "StorageModule"
+        },
+        "region_classification": {
+          "enum": [
+            "explicit_reserve_region",
+            "primary_storage_region"
+          ]
+        },
+        "row": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "slot_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "world_pos": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "yaw_rad": {
+          "type": "number"
+        },
+        "zone_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "module_id",
+        "zone_id",
+        "family",
+        "world_pos",
+        "yaw_rad",
+        "outer_bounds_world",
+        "operating_bounds_world",
+        "row",
+        "aisle",
+        "record_type",
+        "physical_outer_dimensions_xyz_m",
+        "max_module_payload_kg",
+        "max_handling_units",
+        "slot_ids",
+        "region_classification",
+        "collision_bounds_broadphase_only"
+      ],
+      "type": "object"
+    },
+    "slot": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "additionalProperties": false,
+          "dependentRequired": {
+            "vehicle": [
+              "vehicle_approach_id"
+            ],
+            "vehicle_approach_id": [
+              "vehicle"
+            ]
+          },
+          "properties": {
+            "cart_stop_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "cart_transport_requires_gross_mass_at_most_15kg": {
+              "const": true
+            },
+            "vehicle": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "vehicle_approach_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "worker": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "worker_node_id": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "cart_stop_id",
+            "worker_node_id",
+            "worker",
+            "cart_transport_requires_gross_mass_at_most_15kg"
+          ],
+          "type": "object"
+        },
+        "active_pick_candidate": {
+          "type": "boolean"
+        },
+        "allowed_cargo_archetype_ids": {
+          "items": {
+            "enum": [
+              "SMALL_CARTON",
+              "STANDARD_CARTON",
+              "HEAVY_BOX",
+              "PALLET_LOAD",
+              "IBC",
+              "LONG_BUNDLE",
+              "DRUM",
+              "FRAGILE_CRATE"
+            ]
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "allowed_orientation_ids": {
+          "const": [
+            "upright_xyz_in_module"
+          ]
+        },
+        "bay": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "bin_anchor": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "bin_anchor_meaning": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "bin_anchor_module_local": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "cargo_mass_packing_and_compatibility_status": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "clearance_each_side_m": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "conditional_handler_options": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "allowed_cargo_archetype_ids": {
+                "items": {
+                  "enum": [
+                    "SMALL_CARTON",
+                    "STANDARD_CARTON",
+                    "HEAVY_BOX",
+                    "PALLET_LOAD",
+                    "IBC",
+                    "LONG_BUNDLE",
+                    "DRUM",
+                    "FRAGILE_CRATE"
+                  ]
+                },
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "availability_asserted": {
+                "const": false
+              },
+              "manual_gross_mass_limit_kg": {
+                "exclusiveMinimum": 0,
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "operational_admission": {
+                "const": false
+              },
+              "required_equipment_tags": {
+                "items": {
+                  "enum": [
+                    "manual_cart",
+                    "forklift",
+                    "approved_load_support"
+                  ]
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "required_handler_tag": {
+                "enum": [
+                  "manual_operator",
+                  "forklift_operator"
+                ]
+              },
+              "source_handler_rule": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "transport_tag": {
+                "enum": [
+                  "manual_hand_carry",
+                  "manual_cart",
+                  "forklift_assisted"
+                ]
+              }
+            },
+            "required": [
+              "transport_tag",
+              "required_handler_tag",
+              "required_equipment_tags",
+              "allowed_cargo_archetype_ids",
+              "manual_gross_mass_limit_kg",
+              "availability_asserted",
+              "operational_admission",
+              "source_handler_rule"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "level": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "manual_gross_mass_limit_kg": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "manual_pick_allowed": {
+          "type": "boolean"
+        },
+        "max_handling_units": {
+          "const": 1
+        },
+        "max_payload_kg": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "module_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "module_physical_bounds_world_broadphase": {
+          "additionalProperties": false,
+          "properties": {
+            "max": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            },
+            "min": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "type": "object"
+        },
+        "module_world_yaw_rad": {
+          "type": "number"
+        },
+        "operational_admission": {
+          "const": false
+        },
+        "placement_rule": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "record_type": {
+          "const": "StorageSlot"
+        },
+        "required_handler": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reserve_classification": {
+          "enum": [
+            "explicit_reserve_region",
+            "upper_level_reserve",
+            "active_geometric_candidate"
+          ]
+        },
+        "reserve_only": {
+          "type": "boolean"
+        },
+        "retrieval_block_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retrieval_blocked": {
+          "type": "boolean"
+        },
+        "service_height_m": {
+          "minimum": 0,
+          "type": "number"
+        },
+        "service_node_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "slot_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_pointer": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "stacking_allowed": {
+          "const": false
+        },
+        "storage_type": {
+          "enum": [
+            "SMALL",
+            "STANDARD",
+            "HEAVY",
+            "LONG",
+            "FLEX"
+          ]
+        },
+        "typed_access_references": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "graph": {
+                "enum": [
+                  "walk",
+                  "vehicle"
+                ]
+              },
+              "id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "walk_node",
+                  "vehicle_node",
+                  "local_path"
+                ]
+              },
+              "source_field": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source_field",
+              "kind",
+              "graph",
+              "id"
+            ],
+            "type": "object"
+          },
+          "minItems": 4,
+          "type": "array"
+        },
+        "usable_bounds_module_local": {
+          "additionalProperties": false,
+          "properties": {
+            "max": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            },
+            "min": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "type": "object"
+        },
+        "usable_bounds_world": {
+          "additionalProperties": false,
+          "properties": {
+            "max": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            },
+            "min": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3,
+              "type": "array"
+            }
+          },
+          "required": [
+            "min",
+            "max"
+          ],
+          "type": "object"
+        },
+        "usable_dimensions_xyz_m": {
+          "items": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "usable_volume_m3": {
+          "exclusiveMinimum": 0,
+          "type": "number"
+        },
+        "zone_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "slot_id",
+        "module_id",
+        "zone_id",
+        "bin_anchor_meaning",
+        "placement_rule",
+        "required_handler",
+        "service_node_id",
+        "cargo_mass_packing_and_compatibility_status",
+        "source_pointer",
+        "record_type",
+        "storage_type",
+        "level",
+        "bay",
+        "usable_dimensions_xyz_m",
+        "usable_bounds_world",
+        "usable_volume_m3",
+        "service_height_m",
+        "bin_anchor",
+        "allowed_orientation_ids",
+        "module_world_yaw_rad",
+        "allowed_cargo_archetype_ids",
+        "clearance_each_side_m",
+        "max_payload_kg",
+        "max_handling_units",
+        "stacking_allowed",
+        "active_pick_candidate",
+        "reserve_only",
+        "retrieval_blocked",
+        "retrieval_block_reason",
+        "manual_gross_mass_limit_kg",
+        "manual_pick_allowed",
+        "access",
+        "operational_admission",
+        "bin_anchor_module_local",
+        "usable_bounds_module_local",
+        "module_physical_bounds_world_broadphase",
+        "reserve_classification",
+        "conditional_handler_options",
+        "typed_access_references"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:qoima:proposal:storage-slot:v3:0.1.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "counts": {
+      "const": {
+        "active_geometric_candidates": 588,
+        "explicit_reserve_region_modules": 8,
+        "explicit_reserve_region_slots": 48,
+        "modules": 132,
+        "modules_by_family": {
+          "FLEX": 8,
+          "HEAVY": 24,
+          "LONG": 12,
+          "SMALL": 48,
+          "STANDARD": 40
+        },
+        "reserve_blocked": 188,
+        "slots": 776,
+        "slots_by_type": {
+          "FLEX": 8,
+          "HEAVY": 24,
+          "LONG": 24,
+          "SMALL": 480,
+          "STANDARD": 240
+        },
+        "upper_primary_region_reserve": 140
+      }
+    },
+    "layout_binding": {
+      "const": {
+        "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+        "layout_version": "qoima-144x72-v3-proposal",
+        "manifest_path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+        "manifest_sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+        "public_runtime_sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+      }
+    },
+    "manual_access": {
+      "const": {
+        "horizontal_grasp_reach_m": 0.4712,
+        "max_grasp_height_m": 1.25,
+        "max_gross_mass_kg": 15
+      }
+    },
+    "module_definitions": {
+      "const": {
+        "FLEX": {
+          "bays": [
+            0
+          ],
+          "cargo": [
+            "SMALL_CARTON",
+            "STANDARD_CARTON"
+          ],
+          "clearance": 0.05,
+          "construction": {
+            "deck_thickness_m": 0.04,
+            "deck_top_y_m": [
+              0.18
+            ],
+            "meaning": "Connected posts/decks/supports. LONG has three rear posts and cantilever arms. FLEX front stays open.",
+            "posts": [
+              {
+                "max": [
+                  -0.7,
+                  0.85,
+                  -0.5
+                ],
+                "min": [
+                  -0.8,
+                  0,
+                  -0.6000000000000001
+                ]
+              },
+              {
+                "max": [
+                  0.8,
+                  0.85,
+                  -0.5
+                ],
+                "min": [
+                  0.7,
+                  0,
+                  -0.6000000000000001
+                ]
+              }
+            ]
+          },
+          "levels": [
+            0.18
+          ],
+          "module_payload": 15,
+          "outer": [
+            1.6,
+            0.85,
+            1.2
+          ],
+          "payload": 15,
+          "usable": [
+            1.4,
+            0.6,
+            1.0
+          ]
+        },
+        "HEAVY": {
+          "bays": [
+            0
+          ],
+          "cargo": [
+            "HEAVY_BOX",
+            "PALLET_LOAD",
+            "IBC",
+            "DRUM"
+          ],
+          "clearance": 0.05,
+          "construction": {
+            "base_height_m": 0.18,
+            "block_count": 9,
+            "deck_thickness_m": 0.04,
+            "fork_pocket_centres_x_m": [
+              -0.4,
+              0.4
+            ],
+            "fork_pocket_clear_height_m": 0.1,
+            "fork_pocket_clear_width_m": 0.18,
+            "meaning": "Open reinforced ground support; no tall enclosing mesh. C08 still approves actual support and forks.",
+            "open_top": true,
+            "posts": [],
+            "runner_count": 3
+          },
+          "levels": [
+            0.18
+          ],
+          "module_payload": 1000,
+          "operating_height": 1.8,
+          "outer": [
+            1.6,
+            0.18,
+            1.4
+          ],
+          "payload": 1000,
+          "usable": [
+            1.4,
+            1.5,
+            1.2
+          ]
+        },
+        "LONG": {
+          "bays": [
+            0
+          ],
+          "cargo": [
+            "LONG_BUNDLE"
+          ],
+          "clearance": 0.05,
+          "construction": {
+            "deck_thickness_m": 0.12,
+            "deck_top_y_m": [
+              0.25,
+              1.3
+            ],
+            "meaning": "Connected posts/decks/supports. LONG has three rear posts and cantilever arms. FLEX front stays open.",
+            "posts": [
+              {
+                "max": [
+                  -1.52,
+                  2.2,
+                  -0.47000000000000003
+                ],
+                "min": [
+                  -1.6800000000000002,
+                  0,
+                  -0.63
+                ]
+              },
+              {
+                "max": [
+                  0.08,
+                  2.2,
+                  -0.47000000000000003
+                ],
+                "min": [
+                  -0.08,
+                  0,
+                  -0.63
+                ]
+              },
+              {
+                "max": [
+                  1.6800000000000002,
+                  2.2,
+                  -0.47000000000000003
+                ],
+                "min": [
+                  1.52,
+                  0,
+                  -0.63
+                ]
+              }
+            ]
+          },
+          "levels": [
+            0.25,
+            1.3
+          ],
+          "module_payload": 1200,
+          "outer": [
+            4.8,
+            2.2,
+            1.3
+          ],
+          "payload": 600,
+          "usable": [
+            4.4,
+            0.65,
+            0.9
+          ]
+        },
+        "SMALL": {
+          "bays": [
+            -0.88,
+            -0.44,
+            0,
+            0.44,
+            0.88
+          ],
+          "cargo": [
+            "SMALL_CARTON"
+          ],
+          "clearance": 0.03,
+          "construction": {
+            "deck_thickness_m": 0.1,
+            "deck_top_y_m": [
+              0.25,
+              1.0
+            ],
+            "meaning": "Connected posts/decks/supports. LONG has three rear posts and cantilever arms. FLEX front stays open.",
+            "posts": [
+              {
+                "max": [
+                  -1.0999999999999999,
+                  1.55,
+                  -0.4
+                ],
+                "min": [
+                  -1.2,
+                  0,
+                  -0.5
+                ]
+              },
+              {
+                "max": [
+                  -1.0999999999999999,
+                  1.55,
+                  0.5
+                ],
+                "min": [
+                  -1.2,
+                  0,
+                  0.4
+                ]
+              },
+              {
+                "max": [
+                  1.2,
+                  1.55,
+                  -0.4
+                ],
+                "min": [
+                  1.0999999999999999,
+                  0,
+                  -0.5
+                ]
+              },
+              {
+                "max": [
+                  1.2,
+                  1.55,
+                  0.5
+                ],
+                "min": [
+                  1.0999999999999999,
+                  0,
+                  0.4
+                ]
+              }
+            ]
+          },
+          "levels": [
+            0.25,
+            1.0
+          ],
+          "module_payload": 150,
+          "outer": [
+            2.4,
+            1.55,
+            1.0
+          ],
+          "payload": 15,
+          "usable": [
+            0.42,
+            0.35,
+            0.42
+          ]
+        },
+        "STANDARD": {
+          "bays": [
+            -0.7,
+            0.7
+          ],
+          "cargo": [
+            "STANDARD_CARTON",
+            "FRAGILE_CRATE"
+          ],
+          "clearance": 0.05,
+          "construction": {
+            "deck_thickness_m": 0.1,
+            "deck_top_y_m": [
+              0.2,
+              1.4,
+              2.6
+            ],
+            "meaning": "Connected posts/decks/supports. LONG has three rear posts and cantilever arms. FLEX front stays open.",
+            "posts": [
+              {
+                "max": [
+                  -1.33,
+                  3.85,
+                  -0.615
+                ],
+                "min": [
+                  -1.4,
+                  0,
+                  -0.685
+                ]
+              },
+              {
+                "max": [
+                  -1.33,
+                  3.85,
+                  0.685
+                ],
+                "min": [
+                  -1.4,
+                  0,
+                  0.615
+                ]
+              },
+              {
+                "max": [
+                  0.035,
+                  3.85,
+                  -0.615
+                ],
+                "min": [
+                  -0.035,
+                  0,
+                  -0.685
+                ]
+              },
+              {
+                "max": [
+                  0.035,
+                  3.85,
+                  0.685
+                ],
+                "min": [
+                  -0.035,
+                  0,
+                  0.615
+                ]
+              },
+              {
+                "max": [
+                  1.4,
+                  3.85,
+                  -0.615
+                ],
+                "min": [
+                  1.33,
+                  0,
+                  -0.685
+                ]
+              },
+              {
+                "max": [
+                  1.4,
+                  3.85,
+                  0.685
+                ],
+                "min": [
+                  1.33,
+                  0,
+                  0.615
+                ]
+              }
+            ]
+          },
+          "levels": [
+            0.2,
+            1.4,
+            2.6
+          ],
+          "module_payload": 1500,
+          "outer": [
+            2.8,
+            3.85,
+            1.4
+          ],
+          "payload": 250,
+          "usable": [
+            1.25,
+            1.05,
+            1.1
+          ]
+        }
+      }
+    },
+    "modules": {
+      "items": {
+        "$ref": "#/$defs/module"
+      },
+      "maxItems": 132,
+      "minItems": 132,
+      "type": "array"
+    },
+    "operational_admission": {
+      "const": false
+    },
+    "orientation_mapping": {
+      "const": {
+        "HU_local_axes_in_module": [
+          "+X",
+          "+Y",
+          "+Z"
+        ],
+        "additional_rotation_permission": false,
+        "cargo_orientation_id": "upright_xyz",
+        "module_world_yaw_applied_separately": true,
+        "slot_orientation_id": "upright_xyz_in_module"
+      }
+    },
+    "placement_policy": {
+      "const": {
+        "admission": "not_granted; mass, handler, equipment, support, packing, grip and schedule checks remain separate",
+        "bottom_gap_m": 0,
+        "fit_budget": "HU outer dimensions + 2*c <= usable dimensions on every local axis",
+        "module_load_rule": "sum of complete HU gross masses across module slots <= module max payload",
+        "physical_bounds_role": "module collision AABB is broadphase only, never usable volume or a solid cavity",
+        "service_height_role": "cargo_support_plane_not_grip_target",
+        "vertical_top_clearance_factor": 2,
+        "x_placement": "centred, clearance at least c on each face",
+        "y_placement": "HU bottom at bin_anchor.Y; entire 2*c budget above HU",
+        "z_placement": "front aligned, front clearance c; remaining rear clearance at least c"
+      }
+    },
+    "record_type": {
+      "const": "StorageSlotProjection"
+    },
+    "reserve_policy": {
+      "const": "Reserve-only addresses reject retrieval with HEIGHT_ACCESS_UNAVAILABLE_PENDING_C08 until a real lift/handling process is approved. Never active inaccessible inventory."
+    },
+    "schema_id": {
+      "const": "qoima.storage-slots.v3-proposal"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "scope": {
+      "const": "Source projection and compatibility prerequisites only; no inventory, resource availability, cargo admission, scheduling, model fit or new rotations."
+    },
+    "slots": {
+      "items": {
+        "$ref": "#/$defs/slot"
+      },
+      "maxItems": 776,
+      "minItems": 776,
+      "type": "array"
+    },
+    "source_bindings": {
+      "const": [
+        {
+          "bytes": 3966,
+          "path": "docs/v3/contract-proposals/cargo-archetype-v3.example.json",
+          "sha256": "fe368164ff73d29b7e1bdb3d66bb33278a7b9c37d880f9652237ef128805cc86"
+        },
+        {
+          "bytes": 11821,
+          "path": "docs/v3/contract-proposals/cargo-archetype-v3.schema.json",
+          "sha256": "46f7d2e384113225fa73ea2dd1b2e0408de91b715231c14d2606c62d0dad1c88"
+        },
+        {
+          "bytes": 5905710,
+          "path": "docs/v3/contract-proposals/layout-links-v3.json",
+          "sha256": "c1fb96d2a72d29d66932ff4de0213b0bf4ebc0abd92102052f6c6ba841942d65"
+        },
+        {
+          "bytes": 8009,
+          "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+          "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8"
+        },
+        {
+          "bytes": 5128507,
+          "path": "docs/v3/contract-proposals/layout-semantic-index-v3.json",
+          "sha256": "67fd946600405172548220bcac6e2e1c4609d1aa1be370856ba8bccafe39b75a"
+        },
+        {
+          "bytes": 2777075,
+          "path": "docs/v3/contract-proposals/storage-layout-v3.json",
+          "sha256": "dca88f92d6537d7ba1b178235cad79255dbba659a8381d211d636070bf282ab2"
+        },
+        {
+          "bytes": 2341205,
+          "path": "frontend/public/data/adaptive-v3/layout-manifest.json",
+          "sha256": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+        },
+        {
+          "bytes": 1322,
+          "path": "assets/references/v3/r03-dimension-targets.json",
+          "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+        }
+      ]
+    },
+    "status": {
+      "const": "proposal"
+    },
+    "units": {
+      "const": {
+        "angle": "radian",
+        "length": "m",
+        "mass": "kg",
+        "up_axis": "Y"
+      }
+    }
+  },
+  "required": [
+    "schema_id",
+    "schema_version",
+    "record_type",
+    "status",
+    "operational_admission",
+    "layout_binding",
+    "source_bindings",
+    "units",
+    "orientation_mapping",
+    "placement_policy",
+    "manual_access",
+    "reserve_policy",
+    "module_definitions",
+    "counts",
+    "scope",
+    "slots",
+    "modules"
+  ],
+  "title": "Pinned C04 StorageSlot projection; not admission",
+  "type": "object"
+}

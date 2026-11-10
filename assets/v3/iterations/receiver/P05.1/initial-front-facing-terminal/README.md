@@ -1,0 +1,1 @@
+Initial workcell was geometrically valid/reviewed but the front-facing terminal was awkward for side confirmation. Retained before rotating the entire existing screen assembly around its own base; original P08 source unchanged. Not current action acceptance.

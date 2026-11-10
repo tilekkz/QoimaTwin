@@ -1,0 +1,97 @@
+{
+  "schema_id": "qoima.slotting-comparison.v3-proposal",
+  "schema_version": "0.1.0",
+  "status": "proposal",
+  "source_kind": "analytical_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "layout_ref": {
+    "path": "docs/v3/contract-proposals/layout-manifest-v3.json",
+    "sha256": "f85a4b840e06dc4285df6dbf8f4f39ec32f9fd8d826c18157ff3c27128c620a8",
+    "bytes": 8009
+  },
+  "layout_content_hash": "407642632968cbd0e3f5ce1879177921c6fb7daa3292ecf375938012a0de2b71",
+  "scenario_ref": {
+    "path": "docs/v3/contract-proposals/adaptation-input-v3.json",
+    "sha256": "5b9f294e4ac3f36bd196dcde5853432f394a7276f9fc4256e4d59a1a9aed8e23",
+    "bytes": 122776
+  },
+  "baseline_placement_ref": {
+    "path": "docs/v3/contract-proposals/baseline-assignment-v3.json",
+    "sha256": "576785a5893594517b4af5b8e888c7c20fe01c16c8ab901fd6191872a65c7939",
+    "bytes": 735121
+  },
+  "evaluation_ref": {
+    "path": "docs/v3/contract-proposals/adaptation-evaluation-v3.json",
+    "sha256": "9237c019b9995e318c473688f8dbe54278eb1394d3a310fda1347bb9d931a3c5",
+    "bytes": 479
+  },
+  "metrics_scope": "expected_route_travel_proxy_seconds",
+  "staff_count": 24,
+  "staff_allocation_changes_allowed": false,
+  "period_has_clock_duration": false,
+  "default_horizon_periods": 1,
+  "one_off_relocation_cost_included": true,
+  "allowed_differences": [
+    "HU slot placement and the explicitly priced one-off relocation sequence"
+  ],
+  "cases": [
+    {
+      "horizon_periods": 1,
+      "candidate_ref": {
+        "path": "docs/v3/contract-proposals/adapted-assignment-v3.json",
+        "sha256": "57c6cde798b08c6d45da7acb311d13f81a31cd127e6352ddc7089ea818179b04",
+        "bytes": 1698633
+      },
+      "comparison_inputs_sha256": "a9162b13348e1aef2ad0e485546fd5270fd78347ec77e52560885a2c9646fd67",
+      "baseline_proxy_cost_s": 198768.25990705262,
+      "adapted_proxy_cost_s": 198768.25990705262,
+      "relocation_proxy_cost_s": 0,
+      "net_proxy_saving_s": 0.0,
+      "transfer_count": 0
+    },
+    {
+      "horizon_periods": 2,
+      "candidate_ref": {
+        "path": "docs/v3/contract-proposals/adapted-assignment-horizon2-v3.json",
+        "sha256": "be67f3dbd8c1e9e65be82f2b0791000251259ae938486abfce43e2bf5f179ee3",
+        "bytes": 1703106
+      },
+      "comparison_inputs_sha256": "4c432dc3a70fd4c92193e0a20fd5b0965acfc181a50880af4cb0beb9f663a365",
+      "baseline_proxy_cost_s": 397536.51981410524,
+      "adapted_proxy_cost_s": 397142.4865805736,
+      "relocation_proxy_cost_s": 220.4947994733851,
+      "net_proxy_saving_s": 173.53843405824924,
+      "transfer_count": 2
+    },
+    {
+      "horizon_periods": 4,
+      "candidate_ref": {
+        "path": "docs/v3/contract-proposals/adapted-assignment-horizon4-v3.json",
+        "sha256": "e4a663f975acabfd333df56f7f4451fd88d503635c77a74ab772e4b5a2ea02b1",
+        "bytes": 1737294
+      },
+      "comparison_inputs_sha256": "5c7475163c6f8dada35c66d91d23f4e98a67e90bedb76f96a48c8ae095ed15c9",
+      "baseline_proxy_cost_s": 795073.0396282105,
+      "adapted_proxy_cost_s": 792795.9572881315,
+      "relocation_proxy_cost_s": 991.868551626163,
+      "net_proxy_saving_s": 1285.2137884528474,
+      "transfer_count": 8
+    },
+    {
+      "horizon_periods": 8,
+      "candidate_ref": {
+        "path": "docs/v3/contract-proposals/adapted-assignment-horizon8-v3.json",
+        "sha256": "e1fe62e7fc9dd86f07b6a40f41774ab4055ebe67c06653f1f43e31895df885ea",
+        "bytes": 1737640
+      },
+      "comparison_inputs_sha256": "e71a7510550c248a8017120f7240eebbd286f355636ddb3c4e3ef7bf803ddf67",
+      "baseline_proxy_cost_s": 1590146.079256421,
+      "adapted_proxy_cost_s": 1585591.914576263,
+      "relocation_proxy_cost_s": 991.868551626163,
+      "net_proxy_saving_s": 3562.296128531858,
+      "transfer_count": 8
+    }
+  ],
+  "scope": "Same frozen C11 N2 flows for both placements within each case; C10 is placement identity, not its old-flow cost. Horizons1/2/4/8 are explicit sensitivity cases, no measured duration or DES/staffing simulation."
+}

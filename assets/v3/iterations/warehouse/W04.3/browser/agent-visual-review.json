@@ -1,0 +1,39 @@
+{
+  "reviewer": "root/holder_browser_gate",
+  "review_kind": "actual_current_frame_review",
+  "updated_utc": "2026-11-08T11:16:08.302997+00:00",
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "report_sha256": "500a82dd4d75285f663adc7d42a81caf95f081c5a4be859769e45806123b3b0b",
+  "image_sha256": {
+    "actor-small.png": "5b854adf51aab00362346650fa6ebdd02efea230ba106c29cd3b1b510c1c3e3c",
+    "cart-small.png": "c952ef340643bf730c5129a7d7080d62c205511a5a63820984739875d287e113",
+    "belt-small.png": "edaae1ba2f569ae2aff1e7be1ac6ca1906fee8a75ab6441649a3d84cb94b92b7",
+    "belt-standard.png": "e8d276dcfd3c2595d3008a40fc2b1be36522a4738452ff7b225dce6f20edeaf6",
+    "vehicle-HEAVY_BOX.png": "5a825d0294ca75e9c9be2b44650f94bc104e1beb72e6aac892e1e6acbb8a6500",
+    "vehicle-PALLET_LOAD.png": "bbf18e4dee635a6a8a836ac797e48251d1a8d6bb8b143be1480f99bb708a1d04",
+    "vehicle-IBC.png": "e6b570de6cd01395e46d6e46f41a78aa94f578b2bc3e29a482752495d87b8e52",
+    "vehicle-LONG_BUNDLE.png": "a311969c465022cebb85b21c97f48799ebe0944b20f9d4a67c2be2a2332f6e72",
+    "vehicle-DRUM.png": "93579b3212bbb875b26027a9de9f8e74e852bdb49bfd2076b42390d8ebfcf2dc",
+    "vehicle-FRAGILE_CRATE.png": "ea44bb5ceccb22a584e076fc575bc71bcbaf09c7523709615bb295aa7f91224f",
+    "mobile-cart.png": "415c59b5c9b33cd52bef8e84a375da4f9386d132ebb30d7a207dd66f0ff60daa",
+    "missing-optional-model.png": "d0c42cef8afa4dd79c6b50f93d154ec2edc19984aa3184fd64e90a19f0e51d85",
+    "modified-optional-model.png": "d0c42cef8afa4dd79c6b50f93d154ec2edc19984aa3184fd64e90a19f0e51d85",
+    "optional-timeout.png": "3b39775c66234c3ad62aa0542168ff9ba7d6c59ca0d7ad7c41e20a0f9dfab566"
+  },
+  "observations": [
+    "All14 actual current PNGs opened and inspected in this agent session.",
+    "Actor outward carry shows full SMALL HU between connected hands; shelf is behind the body and the box remains readable.",
+    "Cart view shows the same full-size SMALL HU inside one upper tote. Two belt views distinguish SMALL and STANDARD without scale changes.",
+    "All6 forklift cargo families remain visibly distinct; LONG shows cradle and retention rig, PALLET shows its pallet, IBC its cage, DRUM its base, FRAGILE its frame.",
+    "Optional404/SHA/timeout captures keep the base warehouse visible with a readable retry action.",
+    "Mobile cart view has no horizontal clipping; scene retains scale/detail at its smaller viewport."
+  ],
+  "limitations": [
+    "Frame review does not establish dynamic collision-free actions, loaded routes, resource admission, force/stability or ergonomics.",
+    "External scene clearance remains a separate CPU/native gate.",
+    "Overview remains the frozen sparse source layout; no new stock or smaller building is inferred."
+  ]
+}

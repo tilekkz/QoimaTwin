@@ -1,0 +1,47 @@
+{
+  "task_id": "W04.1",
+  "passed": true,
+  "reviewer": "root",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "visual_complete": false,
+  "backend_integration_complete": false,
+  "input_hashes": {
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
+    "frontend/tools/check-warehouse-cargo-v3.mjs": "1d63888aabdacc32884124fb940c29c2a46a8a78312e7317e148e10124986e81",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "docs/adaptive-v3/evidence/W04.1-checks.json": "2e7df69fd57aff2ddb69a106f28cb8ef4b542d8660fb6fb941361322d5faac7b",
+    "docs/v3/contract-proposals/storage-slots-v3.json": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "tools/visual/v3/verify_warehouse_cargo.py": "c6c8c6f4e1278bdcdaa5c8cc4eab56ba47d579b1b5109cf764fcd72c2edf020b",
+    "docs/adaptive-v3/evidence/W04.1-independent.json": "579f2d0c1f1c0b242c16caa70ec668d60353242d64cbef99e4524e5669365da5"
+  },
+  "artifacts": {
+    "docs/adaptive-v3/evidence/W04.1-independent.json": "579f2d0c1f1c0b242c16caa70ec668d60353242d64cbef99e4524e5669365da5",
+    "docs/adaptive-v3/evidence/W04.1-checks.json": "2e7df69fd57aff2ddb69a106f28cb8ef4b542d8660fb6fb941361322d5faac7b"
+  },
+  "checks": {
+    "initial_HUs": 530,
+    "quantity_units": 12256,
+    "gross_mass_kg": 9403.85,
+    "world_corner_checks": 4240,
+    "negative_cases": 24,
+    "free_compatible_relocations": 8,
+    "atomic_swap": true,
+    "absolute_reset": true,
+    "maximum_position_error_m": 1.4210854715202004e-14
+  },
+  "root_review": "Opened actual current reports; independently checked C04local front-aligned/support vs runtime worldpositions for530originalplacements+8allfamilyfree placements. Reviewed invalid extra HU/destination overrides,duplicateidentity,occupancy,reserve,wrongfamily and unreviewedcarrier rejection; costs never evaluated. Independentreview also fixed inherited constructor/hasOwnProperty destination-kind rejection;24negativecases nowpass.",
+  "scope": "Typed single-parent storage binding only, not rendered cargo transfer. W04.2native meshes/support andW04.3carriers remain.",
+  "handoff_note": "Storage-only gate freshly rerun after connected holder integration; native carriers are separately accepted in W04.3. Physical action joins remain W05.",
+  "regression_review_utc": "2026-11-08T16:30:00.816680+00:00",
+  "source_epoch_review": "Actual full CPU/browser gates rerun after natural-arm metadata and reversible pallet preview integration. Canonical fixture semantic inputs/profile values are unchanged. Root current screenshot review is separately bound; no unchanged historical proof is promoted by hash replacement."
+}

@@ -1,0 +1,266 @@
+{
+  "task_id": "P01.3",
+  "owner": "people_packing",
+  "status": "VERIFY",
+  "recorded_at": "2026-11-07T09:16:34.376325+00:00",
+  "result": "Functional cuboid mitten grip and positive actual-mesh joint/support contacts in four explicitly sampled FK source poses.",
+  "reference": "R05 accepted actual image; root-approved P01.1 dimensions and P01.2 source silhouette.",
+  "builder": {
+    "path": "tools/blender/v3/build_worker_base.py",
+    "sha256": "9d7cf572994e0058e6bcc6ad895316b2638b875d20cd4bc36b6e7addf1add862"
+  },
+  "source": {
+    "path": "assets/v3/blender/worker-base.blend",
+    "sha256": "b5e142c079a75c69fc991369ed57e5a750f752a6fa1487ad89dc1fe0471747a1",
+    "neutral": true,
+    "qa_gauges_in_canonical_source": false
+  },
+  "preserved": {
+    "P01.2_iteration_02_sha256": "d6b1771cbe66982dddc942048a13af172d597446bfff61f0c64b0d9dcb23a3e7",
+    "dimension_spec_sha256": "ff4c30f9abbb4cd066066feddfd1187fa7e16a47177c5433bdaaccf47801aafc",
+    "grip_anchors_runtime_m": {
+      "L": [
+        -0.307,
+        0.665,
+        0.075
+      ],
+      "R": [
+        0.307,
+        0.665,
+        0.075
+      ]
+    }
+  },
+  "actual": {
+    "dimensions_m": [
+      0.7460470199584961,
+      1.6999997943639755,
+      0.3800000101327896
+    ],
+    "evaluated_triangles": 1960,
+    "mesh_objects": 42,
+    "independent_joints": 15,
+    "anchors": 7,
+    "floor_min_y_m": 1.4901161193847656e-08
+  },
+  "checks": {
+    "report": "assets/v3/iterations/worker-base/P01.3/actual-mesh-checks.json",
+    "method": "Evaluated beveled mesh BVH closedness/inside+nearest-surface distances, actual sole rays and gauge triangle intersection/clearance samples",
+    "poses": 4,
+    "joint_contacts": 56,
+    "joint_contacts_per_pose": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "minimum_joint_surface_margin_m": 0.014999985694885254,
+    "sole_ray_hits": 72,
+    "maximum_sole_contact_error_m": 2.2351741790771484e-08,
+    "gauge_skin_triangle_intersections": 0,
+    "gauge_section_m": [
+      0.04,
+      0.04
+    ],
+    "gauge_sample_points_per_hand_per_pose": 27,
+    "minimum_sampled_gauge_clearance_m": 0.002499918220564723,
+    "mitten_component_overlap": "Each upper/lower pad overlaps rear spine; thumb overlaps upper pad. Positive actual-mesh interior witness margin >1mm."
+  },
+  "poses": [
+    {
+      "name": "neutral",
+      "runtime_euler_xyz_radians": {},
+      "pelvis_y_shift_m": 0,
+      "snapshot": "assets/v3/iterations/worker-base/P01.3/neutral.blend"
+    },
+    {
+      "name": "bent-arm",
+      "runtime_euler_xyz_radians": {
+        "upper_arm_L": [
+          -0.65,
+          0,
+          -0.1
+        ],
+        "upper_arm_R": [
+          -0.65,
+          0,
+          0.1
+        ],
+        "forearm_L": [
+          -0.95,
+          0,
+          0
+        ],
+        "forearm_R": [
+          -0.95,
+          0,
+          0
+        ],
+        "hand_L": [
+          0.15,
+          0,
+          0
+        ],
+        "hand_R": [
+          0.15,
+          0,
+          0
+        ]
+      },
+      "pelvis_y_shift_m": 0,
+      "snapshot": "assets/v3/iterations/worker-base/P01.3/bent-arm.blend"
+    },
+    {
+      "name": "bent-knee",
+      "runtime_euler_xyz_radians": {
+        "thigh_L": [
+          -0.45,
+          0,
+          0
+        ],
+        "thigh_R": [
+          -0.45,
+          0,
+          0
+        ],
+        "shin_L": [
+          0.9,
+          0,
+          0
+        ],
+        "shin_R": [
+          0.9,
+          0,
+          0
+        ],
+        "foot_L": [
+          -0.45,
+          0,
+          0
+        ],
+        "foot_R": [
+          -0.45,
+          0,
+          0
+        ]
+      },
+      "pelvis_y_shift_m": -0.053995922207832336,
+      "snapshot": "assets/v3/iterations/worker-base/P01.3/bent-knee.blend"
+    },
+    {
+      "name": "waist-bend",
+      "runtime_euler_xyz_radians": {
+        "torso": [
+          0.45,
+          0,
+          0
+        ],
+        "head": [
+          -0.15,
+          0,
+          0
+        ],
+        "upper_arm_L": [
+          -0.25,
+          0,
+          0
+        ],
+        "upper_arm_R": [
+          -0.25,
+          0,
+          0
+        ]
+      },
+      "pelvis_y_shift_m": 0,
+      "snapshot": "assets/v3/iterations/worker-base/P01.3/waist-bend.blend"
+    }
+  ],
+  "change": "Replaced solid palm with connected C-shaped cuboid spine, upper/lower pads and thumb, maintaining accepted envelope and anchor positions. Source tagging follows requested stage.",
+  "inspection": [
+    "Actually opened all four four-view contact sheets assembled from original 900px front/side/rear/quarter PNGs, plus all five original closeup PNGs.",
+    "Neutral retains R05 square head, stepped helmet, layered blue vest/dark clothing and squat connected body; feet meet floor.",
+    "Bent arms retain filled shoulder/elbow/cuff interfaces; mitten thumb/pads attach to spine, front-open channel surrounds contrasting QA gauge.",
+    "Bent knees retain filled hip/knee/ankle interfaces; both broad boot soles stay flat after the documented pelvis support correction.",
+    "Waist bend rear closeup shows a filled dark cloth underlap beneath vest, not background through torso; tilted head remains connected to short neck.",
+    "Rigid cuboid seams remain visible at close range; no detached body part, floating thumb or sole hover observed in the four stated poses."
+  ],
+  "views": {
+    "full_views": 16,
+    "closeups": 5,
+    "contact_sheets": [
+      "assets/v3/iterations/worker-base/P01.3/contact-neutral.png",
+      "assets/v3/iterations/worker-base/P01.3/contact-bent-arm.png",
+      "assets/v3/iterations/worker-base/P01.3/contact-bent-knee.png",
+      "assets/v3/iterations/worker-base/P01.3/contact-waist-bend.png"
+    ],
+    "closeup_paths": [
+      "assets/v3/iterations/worker-base/P01.3/closeups/bent-elbow-hand.png",
+      "assets/v3/iterations/worker-base/P01.3/closeups/bent-hip-knee-sole.png",
+      "assets/v3/iterations/worker-base/P01.3/closeups/neck-bent.png",
+      "assets/v3/iterations/worker-base/P01.3/closeups/neutral-hand-gauge.png",
+      "assets/v3/iterations/worker-base/P01.3/closeups/waist-back.png"
+    ],
+    "render_exit_code": 0,
+    "render_wall_seconds": 9.0,
+    "render_threads": 2,
+    "queue_released": true
+  },
+  "commands": {
+    "build": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python tools/blender/v3/run_build.py -- build_worker_base --stage P01.3 --iteration 01",
+    "mesh_check": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python assets/v3/iterations/worker-base/P01.3/check_poses.py",
+    "render": "& 'C:/Program Files/Blender Foundation/Blender 5.0/blender.exe' --background --factory-startup --threads 2 --python assets/v3/iterations/worker-base/P01.3/render_poses.py"
+  },
+  "artifacts": {
+    "assets/v3/iterations/worker-base/P01.3/actual-mesh-checks.json": "1dbe66d1cdc1bed2f36055cf7cb659357c9b14d6f8684c16cca5b2cd968d1463",
+    "assets/v3/iterations/worker-base/P01.3/bent-arm/front.png": "a42552ab02fda3fdd8a9e5a77a53bde97588d65d5fe4b65242e052abb9f89da4",
+    "assets/v3/iterations/worker-base/P01.3/bent-arm/rear.png": "4a4eaa6f9693b66f69aebab1ff8aa6ce13ea1793f24b1a5ac537542a49a2cb1b",
+    "assets/v3/iterations/worker-base/P01.3/bent-arm/side.png": "8c716a07eb2fd67f8575ae67cdf289c75d2556032c3218f24ad31dfec9bb4c68",
+    "assets/v3/iterations/worker-base/P01.3/bent-arm/three-quarter.png": "86ed54616b6e2f14ac4d6d1502dacc6dbb67e179f0b0428f76dcb22fb2ab3180",
+    "assets/v3/iterations/worker-base/P01.3/bent-arm.blend": "c9f21117e8e4addd3185625c8570f7337634e35ee376e952342f15d51c49ef68",
+    "assets/v3/iterations/worker-base/P01.3/bent-arm.render.json": "fa778f04fc7744a715e8faefab14b2136c40b35ff0af34eec78f448ef9974945",
+    "assets/v3/iterations/worker-base/P01.3/bent-knee/front.png": "de1af24889b8d4d8a000300aa6cf28c4ea638004fde50ae6b808d06ec0013fd4",
+    "assets/v3/iterations/worker-base/P01.3/bent-knee/rear.png": "a9cb7090a3fbc595ba5e0e97b16fb31e4648962166d05357cc8ade6822ed3d33",
+    "assets/v3/iterations/worker-base/P01.3/bent-knee/side.png": "81450af4b29c291fa38ab2c4207e8f936da1ee9db85eec95b8c20edf0345c6f3",
+    "assets/v3/iterations/worker-base/P01.3/bent-knee/three-quarter.png": "e79a308c9c5f19e4e9ba7ad472d1a953aa085050dfb34b19720a95ea61d82518",
+    "assets/v3/iterations/worker-base/P01.3/bent-knee.blend": "569d81cc10a632270804cb28f5cfd5afd5598590d65fb8052d87a8baf6ed8984",
+    "assets/v3/iterations/worker-base/P01.3/bent-knee.render.json": "29af4c25bd69231939d5ccb7ea3755cf213e979e22b5aebe8cc0c315e2e31630",
+    "assets/v3/iterations/worker-base/P01.3/check_poses.py": "dc1feab7eac55b5fb79790878e38da99619e6067dbbab30d505cd296740ab4c0",
+    "assets/v3/iterations/worker-base/P01.3/closeups/bent-elbow-hand.png": "c4c634a8d2ef7144cd6634aa98edc00fa88b18b7b3109f2802cf6f52907daa04",
+    "assets/v3/iterations/worker-base/P01.3/closeups/bent-hip-knee-sole.png": "607c52b673b382667ec3a9e714880eb3b04715ac77020f0b4c7bcc876e36595b",
+    "assets/v3/iterations/worker-base/P01.3/closeups/neck-bent.png": "05d7e35fb94e894b4977c02961a5748e9a6eb9d5999cebbba55bf89fc4f820d1",
+    "assets/v3/iterations/worker-base/P01.3/closeups/neutral-hand-gauge.png": "6a7bc5da10b65756c4d47a0a85e9f877c6b4c1629f2376a70bad960f5ee22fcc",
+    "assets/v3/iterations/worker-base/P01.3/closeups/waist-back.png": "0c3b6cb1f553da4a131ab838b57a3e43b53165c02fa3601570e7c9e7fd803ed1",
+    "assets/v3/iterations/worker-base/P01.3/contact-bent-arm.png": "131a52131a1af5d16b8a72df14cacb7f16be745938c5378bb0b8e5b5c575a22c",
+    "assets/v3/iterations/worker-base/P01.3/contact-bent-knee.png": "16f222342bb35172ab14a1acbcd371d9d3649504ee236a6bdf0f4cdf3eebdbc1",
+    "assets/v3/iterations/worker-base/P01.3/contact-neutral.png": "7f614e2a79bc57b7df9e80d254156da92b5d8673f7a8c1740f78be5372801a1a",
+    "assets/v3/iterations/worker-base/P01.3/contact-waist-bend.png": "55b93bb641afe3a6c3f782f301e37a6ec36e594d162f60f03d766a71ba842b56",
+    "assets/v3/iterations/worker-base/P01.3/iteration-01.blend": "b5e142c079a75c69fc991369ed57e5a750f752a6fa1487ad89dc1fe0471747a1",
+    "assets/v3/iterations/worker-base/P01.3/iteration-01.numeric.json": "cdb9951390ee3fb41bd5e3eeb0c21350b26da7e0197a16594022cdb48e70f246",
+    "assets/v3/iterations/worker-base/P01.3/neutral/front.png": "7a8bb99ae5ac8ca2f791aa28d845956149d9d7047b91ba6eaff97057966b497e",
+    "assets/v3/iterations/worker-base/P01.3/neutral/rear.png": "f430a5d3c957d211a1db171cb15c0b584a82a0e3138f9a76d8d13df06f2038c7",
+    "assets/v3/iterations/worker-base/P01.3/neutral/side.png": "c27ab77734ac8bc22eb8fd0a4e0c1381b5e78b9135e6a1088eb1eb9cd55ff827",
+    "assets/v3/iterations/worker-base/P01.3/neutral/three-quarter.png": "168030621d5264c33c34c67ffc7269d29bde26cc12feed58bacfec94fb7536e8",
+    "assets/v3/iterations/worker-base/P01.3/neutral.blend": "cd9d17a68c573360d4a071578ca8bb9e6b94aa65b720e73d6ad43941953f5fa2",
+    "assets/v3/iterations/worker-base/P01.3/neutral.render.json": "e453f3a824abe5137aa2e4727f0950386a4bff2a073b596e8416210a538eab67",
+    "assets/v3/iterations/worker-base/P01.3/render_poses.py": "522a433b061ac0fc5836f89181c1aa12d1f65e4681d39418b48223b9b40fe7b8",
+    "assets/v3/iterations/worker-base/P01.3/waist-bend/front.png": "a6c4a3c79a49f26028f0592ef79ba8b6c48a1fabca3554443fb54f0698f3ddd8",
+    "assets/v3/iterations/worker-base/P01.3/waist-bend/rear.png": "1de79d541aaddc28ad466c51c90c9ee83035d279eaab56a3d425e25b7f3fa995",
+    "assets/v3/iterations/worker-base/P01.3/waist-bend/side.png": "8253006512ef62c582cf79389e993fdb05a092296d337ea4efe284854dec7739",
+    "assets/v3/iterations/worker-base/P01.3/waist-bend/three-quarter.png": "5f367e5b01861e33c773a7309ebb1a93f8a3b19634e47b108bc819606f84423c",
+    "assets/v3/iterations/worker-base/P01.3/waist-bend.blend": "034b282c89384f1bd9e1fb52068825347c0aa37a1b7688c9871f69b81bbd6d2e",
+    "assets/v3/iterations/worker-base/P01.3/waist-bend.render.json": "5ad57f0205c1a1b05fc0e7b724d82428f280ef3cea55fe8d8b222e7ee158b83e"
+  },
+  "limits": [
+    "Four sampled source poses only; no claim for arbitrary/extreme joint angles.",
+    "40mm engineering gauge is a grip-clearance check, not final cart/equipment fit. QA gauges are only in pose snapshots.",
+    "No GLB/export/browser/Khronos gate, final face/ears/badge, production motion or frontend acceptance here.",
+    "Root must review actual images and mark PASS; P01.4 geometry remains unstarted."
+  ],
+  "graph": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-06T22:22:36Z",
+    "coverage": "Seven exact paths no_recorded_issue with not_tracked freshness; actual source/direct image fallback used. No index refresh."
+  },
+  "next": "Root actual-image review; then P01.4 detail gate."
+}

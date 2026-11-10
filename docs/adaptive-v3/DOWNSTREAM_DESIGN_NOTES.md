@@ -1,0 +1,23 @@
+# Downstream design candidates — review before geometry/runtime
+
+These are planning candidates recorded during root integration. They do not change accepted sources, approve a model, or assert an implemented workflow. The owning card must adopt or revise exact parameters before execution and test actual geometry/state. Current task/state and canonical data take precedence.
+
+## Tote / parcel / cart fit to resolve in M07 and P03
+
+C02 SMALL HU is .32W x.24H x.24D, gross .94kg. STANDARD HU is .60W x.40H x.30D, gross6.35kg. R11 cart target .72W x1.00H x.92D, handleY.98, original upper/lower tray supportY.62/.22, upper usable .65W x.70D, tote outer base .60W x.40D. Standard HU cannot fit inside a tote narrower than .60m internally, and .40m-high standard HU on lowerY.22 would intersect an upper tray underside below.62. Do not scale/shrink either HU to make it fit.
+
+A feasible candidate to measure before modeling: upper tray floorY.66 with .02tray thickness (underside.64); lower floor stays.22, leaving.42clear below upper tray, so .40-high standard HU has.02top air. Keep handleY.98 and overall cart/tote top<=1.00. Tote outer .60W x.34H x.40D, inner usable .56W x.30H x.36D with .02floor/upper rim budgets, stands on upperY.66. Its rear edge must clear the fixed handle and actual hands. This is an explicit4cm revision of the R11 upper-tray target, requiring a new dimension plan/supplement rather than silent provenance edits.
+
+Candidate sealed workflow parcel .36W x.28H x.28D with real .003m cardboard walls: inner .354x.274x.274 encloses the unchanged SMALL HU with positive margin. This wrapper is a separate package, not a shrunken HU or a second lot. With declared .01per-face X/Z and .02vertical-top budget, the parcel fits tote .56x.30x.36; support gap0. Its added packaging tare and package ID/content ancestry must be explicit. Standard HU travels directly on lower cart tray/belt and uses its own compatible packaging flow; never pretend it fits the smaller tote. All values remain proposals until actual model/interactions are checked.
+
+P08 fixed station work anchor is centre localZ+.10 (worldZ5.30), worker serviceZ6.10. P01 arm reach is .4712m, so an upright fixed root may not reach cargo. Prefer a physically checked waist/knee lean with grounded feet and fixed limb lengths; do not stretch arms or silently move service nodes. Actual parcel front/side contact, frame/belt clearance, feet and all intermediate timestamps must pass P04. Device scan/label/tape targets are the measured P08.4 anchors, requiring lateral stance/approach changes.
+
+## N4 staffing needs genuinely free existing stations
+
+Canonical headcount24 includes six primary packers and six packing stations. If all six stations are occupied, two additional cross-trained pickers cannot become extra simultaneous packers. A possible explicit N4 fixture is a common predeclared short availability/break window for K05/K06, leaving PK05/PK06 free in BOTH cases. Baseline has4active packers and2unavailable primary packers; B routes cross-trained P11/P12 to those two existing free stations, pays transition time, then restores them before common packer return. Same24identities, common break schedule/input hash, skills, resource ownership and work conservation are required. No extra worker, desk or changed downtime between cases. This is a candidate scenario to freeze before comparison, not a promised improvement or actual engine integration.
+
+## C08 must resolve physical interfaces before M14
+
+Read actual L05/L07/C02/C04 before choosing exact interface values. Potential conflicts requiring explicit checks: fixed wide fork centres may not fit .80m HEAVY or .68m DRUM supports; ordinary adjustable fork spacing can be modeled within the same outer body envelope only after declaring ranges/pocket checks. Nominal L05 fork pose and actual loaded cradle-pocket engagement are distinct. Cradle bottom/pocket roof/actual fork plane need consistent signed offsets, not visual surface overlap.
+
+LONG rack has rear postsX-1.6/0/+1.6 and lower supportY.25; cradle spans3.2m with padsX+/-1.4. A full solid cradle slab may collide with rack arms during transfer. A relieved spreader frame and appropriate cantilever-arm end positions within unchanged outer/usable bounds may solve it, but must be checked against actual component meshes for insertion/lower/setdown/withdrawal. R12 art must be revised if functional topology changes materially. IBC inner bottle/support height also constrains pocket thickness; derive from exact C02 packing and actual L05 fork geometry, not guessed dimensions. All188reserve retrievals remain blocked unless an explicitly supported later process is actually approved.

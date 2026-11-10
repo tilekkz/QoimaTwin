@@ -1,0 +1,544 @@
+[
+  {
+    "side": "L",
+    "slices": [
+      {
+        "hand_local_z_m": 0.050000011920928955,
+        "lower": {
+          "distance_m": 0.022499980404971726,
+          "triangle": 39
+        },
+        "upper": {
+          "distance_m": 0.022500045597554388,
+          "triangle": 33
+        },
+        "actual_native_throat_m": 0.04500002600252612
+      },
+      {
+        "hand_local_z_m": 0.05,
+        "lower": {
+          "distance_m": 0.02249998040497522,
+          "triangle": 39
+        },
+        "upper": {
+          "distance_m": 0.02250004559755413,
+          "triangle": 33
+        },
+        "actual_native_throat_m": 0.04500002600252935
+      },
+      {
+        "hand_local_z_m": 0.055,
+        "lower": {
+          "distance_m": 0.02249998040497505,
+          "triangle": 39
+        },
+        "upper": {
+          "distance_m": 0.022500045597554388,
+          "triangle": 33
+        },
+        "actual_native_throat_m": 0.045000026002529434
+      }
+    ],
+    "bar_native_y_diameter_in_hand_frame_m": 0.045000009760201465,
+    "nominal_diameter_m": 0.045,
+    "minimum_slice_margin_m": 1.6242324651916107e-8,
+    "original_manual_controls": [
+      {
+        "name": "joint__shoulder_lift_L",
+        "parent": "joint__torso",
+        "position": [
+          -0.2150000035762787,
+          0.4300000071525574,
+          0.004999999888241291
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__shoulder_lift_L",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__shoulder_lift_L",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "X",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "manual_additional_shoulder_elevation",
+          "rotation_range_radians": [
+            -0.8,
+            0
+          ],
+          "meaning": "Additional manual reach range. Original upper-arm delta limits remain unchanged; combined X elevation minimum is -3.0rad."
+        }
+      },
+      {
+        "name": "joint__elbow_swivel_L",
+        "parent": "joint__upper_arm_L",
+        "position": [
+          -0.050000011920928955,
+          -0.19999998807907104,
+          0.009999999776482582
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__elbow_swivel_L",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__elbow_swivel_L",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "upper_arm_axial_swivel",
+          "rotation_range_radians": [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          "custom_axis_runtime": [
+            -0.24225078523159027,
+            -0.9690031409263611,
+            0.048450153321027756
+          ],
+          "meaning": "Elbow-plane swivel about the actual upper-arm longitudinal axis. Distinct from wrist flexion and original elbow bend."
+        }
+      },
+      {
+        "name": "joint__palm_roll_L",
+        "parent": "joint__forearm_L",
+        "position": [
+          -0.034999996423721313,
+          -0.1899999976158142,
+          0.014999998733401299
+        ],
+        "euler": [
+          -3.141592653589793,
+          1.2246467991473532e-16,
+          -3.141592653589793
+        ],
+        "metadata": {
+          "name": "joint__palm_roll_L",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__palm_roll_L",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "forearm_axial_pronation",
+          "rotation_range_radians": [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          "neutral_runtime_y_rad": 1.5707963267948966,
+          "meaning": "Axial pronation, distinct from the original wrist flexion limits."
+        }
+      },
+      {
+        "name": "joint__finger_lower_L",
+        "parent": "joint__hand_L",
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__finger_lower_L",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__finger_lower_L",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "rigid_finger_pad_translation",
+          "translation_axis_runtime": "Y",
+          "signed_travel_m": [
+            0,
+            0.014
+          ],
+          "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+        }
+      },
+      {
+        "name": "joint__finger_thumb_L",
+        "parent": "joint__hand_L",
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__finger_thumb_L",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__finger_thumb_L",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Z",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "rigid_finger_pad_translation",
+          "translation_axis_runtime": "Z",
+          "signed_travel_m": [
+            -0.005,
+            0
+          ],
+          "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+        }
+      },
+      {
+        "name": "joint__finger_upper_L",
+        "parent": "joint__hand_L",
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__finger_upper_L",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__finger_upper_L",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "rigid_finger_pad_translation",
+          "translation_axis_runtime": "Y",
+          "signed_travel_m": [
+            -0.014,
+            0
+          ],
+          "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+        }
+      }
+    ]
+  },
+  {
+    "side": "R",
+    "slices": [
+      {
+        "hand_local_z_m": 0.050000011920928955,
+        "lower": {
+          "distance_m": 0.022499980404971726,
+          "triangle": 39
+        },
+        "upper": {
+          "distance_m": 0.022500045597554388,
+          "triangle": 33
+        },
+        "actual_native_throat_m": 0.04500002600252612
+      },
+      {
+        "hand_local_z_m": 0.05,
+        "lower": {
+          "distance_m": 0.02249998040497522,
+          "triangle": 39
+        },
+        "upper": {
+          "distance_m": 0.02250004559755413,
+          "triangle": 33
+        },
+        "actual_native_throat_m": 0.04500002600252935
+      },
+      {
+        "hand_local_z_m": 0.055,
+        "lower": {
+          "distance_m": 0.02249998040497505,
+          "triangle": 39
+        },
+        "upper": {
+          "distance_m": 0.022500045597554388,
+          "triangle": 33
+        },
+        "actual_native_throat_m": 0.045000026002529434
+      }
+    ],
+    "bar_native_y_diameter_in_hand_frame_m": 0.04500000976020324,
+    "nominal_diameter_m": 0.045,
+    "minimum_slice_margin_m": 1.6242322875559267e-8,
+    "original_manual_controls": [
+      {
+        "name": "joint__shoulder_lift_R",
+        "parent": "joint__torso",
+        "position": [
+          0.2150000035762787,
+          0.4300000071525574,
+          0.004999999888241291
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__shoulder_lift_R",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__shoulder_lift_R",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "X",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "manual_additional_shoulder_elevation",
+          "rotation_range_radians": [
+            -0.8,
+            0
+          ],
+          "meaning": "Additional manual reach range. Original upper-arm delta limits remain unchanged; combined X elevation minimum is -3.0rad."
+        }
+      },
+      {
+        "name": "joint__elbow_swivel_R",
+        "parent": "joint__upper_arm_R",
+        "position": [
+          0.050000011920928955,
+          -0.19999998807907104,
+          0.009999999776482582
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__elbow_swivel_R",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__elbow_swivel_R",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "upper_arm_axial_swivel",
+          "rotation_range_radians": [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          "custom_axis_runtime": [
+            0.24225078523159027,
+            -0.9690031409263611,
+            0.048450153321027756
+          ],
+          "meaning": "Elbow-plane swivel about the actual upper-arm longitudinal axis. Distinct from wrist flexion and original elbow bend."
+        }
+      },
+      {
+        "name": "joint__palm_roll_R",
+        "parent": "joint__forearm_R",
+        "position": [
+          0.034999996423721313,
+          -0.1899999976158142,
+          0.014999998733401299
+        ],
+        "euler": [
+          3.141592653589793,
+          -1.2246467991473532e-16,
+          3.141592653589793
+        ],
+        "metadata": {
+          "name": "joint__palm_roll_R",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__palm_roll_R",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "forearm_axial_pronation",
+          "rotation_range_radians": [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          "neutral_runtime_y_rad": -1.5707963267948966,
+          "meaning": "Axial pronation, distinct from the original wrist flexion limits."
+        }
+      },
+      {
+        "name": "joint__finger_lower_R",
+        "parent": "joint__hand_R",
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__finger_lower_R",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__finger_lower_R",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "rigid_finger_pad_translation",
+          "translation_axis_runtime": "Y",
+          "signed_travel_m": [
+            0,
+            0.014
+          ],
+          "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+        }
+      },
+      {
+        "name": "joint__finger_thumb_R",
+        "parent": "joint__hand_R",
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__finger_thumb_R",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__finger_thumb_R",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Z",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "rigid_finger_pad_translation",
+          "translation_axis_runtime": "Z",
+          "signed_travel_m": [
+            -0.005,
+            0
+          ],
+          "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+        }
+      },
+      {
+        "name": "joint__finger_upper_R",
+        "parent": "joint__hand_R",
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "euler": [
+          0,
+          0,
+          0
+        ],
+        "metadata": {
+          "name": "joint__finger_upper_R",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "pivot_id": "joint__finger_upper_R",
+          "role": "rigid_joint_pivot",
+          "rotation_axis_runtime": "Y",
+          "bind_local_runtime": [
+            0,
+            0,
+            0
+          ],
+          "joint_mode": "rigid_finger_pad_translation",
+          "translation_axis_runtime": "Y",
+          "signed_travel_m": [
+            -0.014,
+            0
+          ],
+          "meaning": "Same rigid closed mitten part; no geometry scaling or deformation."
+        }
+      }
+    ]
+  }
+]

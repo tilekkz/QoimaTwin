@@ -1,0 +1,68 @@
+{
+  "schema_id": "qoima.relocation-full-cost-view.v1",
+  "source_kind": "analytical_fixture",
+  "engine_operation": false,
+  "native_execution_admitted": false,
+  "headcount": 24,
+  "handling_units": 530,
+  "default_horizon_periods": 1,
+  "period_has_clock_hours": false,
+  "selected_runtime_variant": "baseline_no_op",
+  "cases": [
+    {
+      "horizon_periods": 1,
+      "comparison_inputs_sha256": "9553e59049e2bb38affc7450aa8767575176e0e7716bcbbbbc99ecc8f99d103d",
+      "decision": "keep_no_op",
+      "candidate_transfers": 2,
+      "selected_transfers": 0,
+      "cost": {
+        "baseline_affected_HU_flow_proxy_s": 2129.8282652801663,
+        "candidate_affected_HU_flow_proxy_s": 1932.811648514319,
+        "gross_saving_proxy_s": 197.0166167658474,
+        "initial_travel_take_place_loaded_and_return_proxy_s": 515.1934129284407,
+        "wait_s": 334.1561484496783,
+        "waiting_proxy_price_s_per_s": 1,
+        "wait_proxy_s": 334.1561484496783,
+        "one_off_total_proxy_s": 849.349561378119,
+        "net_saving_proxy_s": -652.3329446122716,
+        "person_reservation_s": 849.349561378119,
+        "active_labor_s": null,
+        "paid_labor_s": null,
+        "money": null
+      }
+    },
+    {
+      "horizon_periods": 2,
+      "comparison_inputs_sha256": "1e8a9928085b1158f547250992be3128e5bea2002e4c6b548087dd4780975b44",
+      "decision": "keep_no_op",
+      "candidate_transfers": 2,
+      "selected_transfers": 0,
+      "cost": {
+        "baseline_affected_HU_flow_proxy_s": 4259.656530560333,
+        "candidate_affected_HU_flow_proxy_s": 3865.623297028638,
+        "gross_saving_proxy_s": 394.0332335316948,
+        "initial_travel_take_place_loaded_and_return_proxy_s": 515.1934129284407,
+        "wait_s": 334.1561484496783,
+        "waiting_proxy_price_s_per_s": 1,
+        "wait_proxy_s": 334.1561484496783,
+        "one_off_total_proxy_s": 849.349561378119,
+        "net_saving_proxy_s": -455.3163278464242,
+        "person_reservation_s": 849.349561378119,
+        "active_labor_s": null,
+        "paid_labor_s": null,
+        "money": null
+      }
+    }
+  ],
+  "source_refs": {
+    "trace-h1.json": {
+      "sha256": "3af85b14b61edaaaee00233cb025caf2ad162696f031e87f20cdfc80ef568015",
+      "source": "work/v3/full-tz-closeout-20261109/relocation-costs/trace-h1.json"
+    },
+    "trace-h2.json": {
+      "sha256": "7b3bda4fcc660d3db6693db07e43943ab3cacd1f27c44c177c4349b601fc864d",
+      "source": "work/v3/full-tz-closeout-20261109/relocation-costs/trace-h2.json"
+    }
+  },
+  "scope": "Current source routes, approaches, finite resource and destination waits, take/place, loaded movement and empty returns for exactly two C11 candidates. No native cart operation or measured labor/KPI."
+}

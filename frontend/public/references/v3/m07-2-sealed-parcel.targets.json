@@ -1,0 +1,102 @@
+{
+  "reference_id": "M07.2_REF",
+  "asset_id": "sealed-parcel",
+  "role": "workflow_package_template_not_SKU_stock_or_lot",
+  "units": "m",
+  "up_axis": "Y",
+  "front_axis": "+Z",
+  "origin": "floor centre",
+  "outer_dimensions_xyz_m": [
+    0.36,
+    0.28,
+    0.28
+  ],
+  "nominal_actual_wall_gauge_m": 0.003,
+  "inner_clear_dimensions_xyz_m": [
+    0.354,
+    0.274,
+    0.274
+  ],
+  "inner_bounds_runtime": {
+    "min": [
+      -0.177,
+      0.003,
+      -0.137
+    ],
+    "max": [
+      0.177,
+      0.277,
+      0.137
+    ]
+  },
+  "paper_inlay_plan": {
+    "total_sealed_wall_gauge_m": 0.003,
+    "outer_paper_film_m": 0.0002,
+    "cardboard_under_inlay_m": 0.0028,
+    "scope": "Flush paper tape/label replaces outer .0002 skin locally; totalphysicalwall3mm and exactinner/outer preserved. No inflatedrim or HUshrink."
+  },
+  "contents": {
+    "existing_archetype_id": "SMALL_CARTON",
+    "unchanged_HU_dimensions_xyz_m": [
+      0.32,
+      0.24,
+      0.24
+    ],
+    "existing_HU_gross_mass_kg": 0.94,
+    "HU_bottom_in_package_y_m": 0.003,
+    "support_bottom_gap_m": 0,
+    "actual_clearance_m": {
+      "X_each": 0.017,
+      "Z_each": 0.017,
+      "top": 0.034
+    }
+  },
+  "package_tare_kg": 0.08,
+  "package_complete_gross_mass_kg": 1.02,
+  "package_identity_policy": {
+    "instance_package_id_required": true,
+    "content_HU_reference_required": true,
+    "HU_identity_quantity_unchanged": true,
+    "creates_new_SKU_lot_or_stock": false,
+    "fixture_example_only": {
+      "package_id": "v3:fixture:package:SMALL001",
+      "contents_HU_ref": "v3:fixture:HU:SMALL001"
+    }
+  },
+  "tote_fit": {
+    "actual_usable_dimensions_xyz_m": [
+      0.56,
+      0.3,
+      0.36
+    ],
+    "floor_support_y_m": 0.02,
+    "parcel_bottom_y_m": 0.02,
+    "actual_X_each": 0.1,
+    "actual_Z_each": 0.04,
+    "top_budget": 0.02,
+    "support_bottom_gap": 0,
+    "declared_X_Z_min_each": 0.01,
+    "loaded_tote_gross_kg": 4.02,
+    "manual_limit_kg": 15
+  },
+  "source_bindings": [
+    {
+      "path": "docs/v3/contract-proposals/cargo-catalog-v3.json",
+      "sha256": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9"
+    },
+    {
+      "path": "assets/v3/specs/order-tote.geometry.json",
+      "sha256": "642c3ee5bd48f37ef0a2fbe7dd0258b2b843f677c7de727c9dfb80ff656fb5f4"
+    },
+    {
+      "path": "assets/v3/blender/order-tote.stats.json",
+      "sha256": "f5960515f31b05365a2a3f569b43a668332b7e6a1a3150115a256fcbb2099f05"
+    },
+    {
+      "path": "assets/v3/blender/small-carton.stats.json",
+      "sha256": "897d902ce762fc33c41e3a8a3d3dd698211d1ae5dac00304ebfff51d5f1c3e68"
+    }
+  ],
+  "raster_is_engineering_authority": false,
+  "operational_admission": false
+}

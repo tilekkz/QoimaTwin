@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseScenarioCosts.ts": "f546d8853fb6ea07f55823ca08b6f76bc62815c916c49d25cae3da016dc05658",
+    "frontend/tools/check-warehouse-scenario-costs-v3.mjs": "a42fbd8a71cbd81ee5d885427901a2e4fc9afae937db67d8c56cbb2ed76a4575"
+  },
+  "checks": 12,
+  "native_LONG_first_empty_route_s": 192.37397163793602,
+  "native_LONG_terminal_empty_route_s": 272.04027448328713,
+  "N2_chain_total_empty_forklift_route_s": 451.79148491108157,
+  "N2_components": {
+    "top_level": 358.66670846954577,
+    "native_pallet": 31.124925480511926,
+    "native_additional_heavy": 61.99985096102385,
+    "native_long": 0
+  },
+  "active_labor_s": null,
+  "paid_labor_s": null,
+  "typecheck": "PASS vue-tsc --noEmit",
+  "scope": [
+    "Read-only schedule accounting, not DES, labor measurement, paid time or operational throughput.",
+    "empty_forklift_route_s includes confirmed top-level return schedules and issued native empty route phases; explicit native handling/hold phases are excluded. Canonical W03 routes keep internal steering dwells.",
+    "No generic unissued internal lease corruption is injected; forged objects are rejected by the existing issuance guard."
+  ]
+}

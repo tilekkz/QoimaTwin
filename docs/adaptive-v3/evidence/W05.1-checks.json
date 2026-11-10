@@ -1,0 +1,448 @@
+{
+  "passed": true,
+  "task_id": "W05.1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "operational_admission": false,
+  "physical_join": false,
+  "cost_evaluated": false,
+  "completed_jobs": 0,
+  "catalogue_clips": 16,
+  "resource_counts": {
+    "actors": 24,
+    "vehicles": 2,
+    "posts": 6,
+    "carts": 1,
+    "handling_units": 530
+  },
+  "resource_capacity": 1,
+  "positive_cases": [
+    "registered_exact_sources_and_finite_canonical_resources",
+    "source_durations_adjacent_half_open_dependency_chain",
+    "half_open_boundaries_absolute_local_time_and_cross_skill_without_assignment",
+    "catalogue_clip_picker_idle",
+    "catalogue_clip_picker_walk",
+    "catalogue_clip_picker_pick",
+    "catalogue_clip_packer_finish",
+    "catalogue_clip_packer_idle",
+    "catalogue_clip_packer_blocked",
+    "catalogue_clip_receiver_scan",
+    "catalogue_clip_receiver_receive",
+    "catalogue_clip_receiver_idle",
+    "catalogue_clip_receiver_blocked",
+    "catalogue_clip_shipper_scan",
+    "catalogue_clip_shipper_place",
+    "catalogue_clip_shipper_idle",
+    "catalogue_clip_shipper_blocked",
+    "catalogue_clip_driver_seated",
+    "catalogue_clip_driver_pickup",
+    "gap_releases_actor_and_samples_empty",
+    "six_existing_posts_can_operate_concurrently",
+    "microsecond_starts_do_not_create_float_boundary_overlap",
+    "empty_timeline_is_not_an_engine_completion",
+    "invalid_batch_leaves_existing_timeline_unchanged",
+    "issued_catalogue_timeline_and_samples_are_deeply_immutable",
+    "unissued_cart_rejected_before_source_read_or_cost",
+    "post_issue_horizon_mutation_blocked",
+    "post_issue_actor_resource_mutation_blocked",
+    "post_issue_post_resource_mutation_blocked",
+    "post_issue_profile_mutation_blocked",
+    "post_issue_HU_identity_mutation_blocked",
+    "compiler_uses_private_verified_snapshot_not_original_bundle_reads",
+    "clock_boundary_fixture",
+    "fixture_identity_stock_and_prior_timeline_conserved"
+  ],
+  "negative_cases": [
+    {
+      "case": "same_actor",
+      "reason": "RESOURCE_CAPACITY_EXCEEDED"
+    },
+    {
+      "case": "same_cart",
+      "reason": "RESOURCE_CAPACITY_EXCEEDED"
+    },
+    {
+      "case": "same_post",
+      "reason": "RESOURCE_CAPACITY_EXCEEDED"
+    },
+    {
+      "case": "same_HU",
+      "reason": "RESOURCE_CAPACITY_EXCEEDED"
+    },
+    {
+      "case": "wrong_vehicle_pair",
+      "reason": "VEHICLE_PAIR_MISMATCH"
+    },
+    {
+      "case": "unknown_actor",
+      "reason": "UNKNOWN_ACTOR"
+    },
+    {
+      "case": "QA_actor_alias",
+      "reason": "UNKNOWN_ACTOR"
+    },
+    {
+      "case": "unknown_clip",
+      "reason": "UNKNOWN_CLIP"
+    },
+    {
+      "case": "ineligible_role",
+      "reason": "ROLE_NOT_ELIGIBLE"
+    },
+    {
+      "case": "unknown_cart",
+      "reason": "UNKNOWN_RESOURCE"
+    },
+    {
+      "case": "missing_cart",
+      "reason": "RESOURCE_REQUIRED"
+    },
+    {
+      "case": "unknown_post",
+      "reason": "UNKNOWN_RESOURCE"
+    },
+    {
+      "case": "missing_post",
+      "reason": "RESOURCE_REQUIRED"
+    },
+    {
+      "case": "unknown_HU",
+      "reason": "UNKNOWN_RESOURCE"
+    },
+    {
+      "case": "missing_payload_HU",
+      "reason": "RESOURCE_REQUIRED"
+    },
+    {
+      "case": "wrong_duration",
+      "reason": "CLIP_DURATION_MISMATCH"
+    },
+    {
+      "case": "driver_missing_vehicle",
+      "reason": "RESOURCE_REQUIRED"
+    },
+    {
+      "case": "cart_not_for_packer",
+      "reason": "RESOURCE_NOT_ALLOWED"
+    },
+    {
+      "case": "post_not_for_picker",
+      "reason": "RESOURCE_NOT_ALLOWED"
+    },
+    {
+      "case": "vehicle_not_for_picker",
+      "reason": "RESOURCE_NOT_ALLOWED"
+    },
+    {
+      "case": "duplicate_action_id",
+      "reason": "DUPLICATE_ACTION"
+    },
+    {
+      "case": "unknown_dependency",
+      "reason": "INVALID_DEPENDENCY"
+    },
+    {
+      "case": "self_dependency",
+      "reason": "INVALID_DEPENDENCY"
+    },
+    {
+      "case": "dependency_cycle",
+      "reason": "DEPENDENCY_CYCLE"
+    },
+    {
+      "case": "dependency_not_finished",
+      "reason": "DEPENDENCY_NOT_FINISHED"
+    },
+    {
+      "case": "cart_not_materialized",
+      "reason": "RESOURCE_UNAVAILABLE"
+    },
+    {
+      "case": "forbidden_duration_s",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_scale",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_transform",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_position",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_cost",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_role",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_quantity_units",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_source_kind",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "forbidden_resource_capacity",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "interval_NaN",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "interval_infinite",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "interval_negative",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "interval_reversed",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "interval_empty",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "interval_past_horizon",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "interval_submicrosecond",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "malformed_42",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "malformed_43",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "malformed_44",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "malformed_45",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "malformed_46",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "malformed_47",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "duplicate_dependency",
+      "reason": "INVALID_REQUEST"
+    },
+    {
+      "case": "unissued_catalogue",
+      "reason": "INVALID_CATALOGUE"
+    },
+    {
+      "case": "catalogue_different_bundle",
+      "reason": "INVALID_CATALOGUE"
+    },
+    {
+      "case": "registration_offline",
+      "reason": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "case": "registration_bad_bytes",
+      "reason": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "case": "registration_malformed_utf8",
+      "reason": "SOURCE_BUNDLE_MISMATCH"
+    },
+    {
+      "case": "registration_stale_clip",
+      "reason": "SOURCE_HASH_MISMATCH"
+    },
+    {
+      "case": "registration_stale_registry",
+      "reason": "SOURCE_BUNDLE_MISMATCH"
+    },
+    {
+      "case": "unissued_holder_catalogue",
+      "reason": "INVALID_HOLDER_CATALOGUE"
+    },
+    {
+      "case": "issued_holder_wrong_native_cart_source",
+      "reason": "INVALID_HOLDER_CATALOGUE"
+    },
+    {
+      "case": "modified_bundle_against_canonical_bytes",
+      "reason": "SOURCE_BUNDLE_MISMATCH"
+    },
+    {
+      "case": "rejected_shallow_bundle_cannot_borrow_prior_catalogue",
+      "reason": "INVALID_CATALOGUE"
+    },
+    {
+      "case": "shallow_frozen_bundle_rejected_without_freezing_foreign_descendants",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "nested_mutable_clock_rejected_before_source_read",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "nested_mutable_resources_rejected_before_source_read",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "nested_mutable_profile_rejected_before_source_read",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "frozen_accessor_rejected_without_invoking_getter",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "custom_prototype_rejected",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "cycle_rejected_without_recursion_or_JSON_throw",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "fully_frozen_toJSON_mask_cannot_hide_altered_horizon",
+      "reason": "INVALID_BUNDLE"
+    },
+    {
+      "case": "horizon_still_1800_after_attempts",
+      "reason": "INVALID_INTERVAL"
+    },
+    {
+      "case": "post7_still_absent_after_attempts",
+      "reason": "UNKNOWN_RESOURCE"
+    },
+    {
+      "case": "P03_still_ineligible_after_attempts",
+      "reason": "ROLE_NOT_ELIGIBLE"
+    },
+    {
+      "case": "advance_-1",
+      "reason": "INVALID_ADVANCE"
+    },
+    {
+      "case": "advance_NaN",
+      "reason": "INVALID_ADVANCE"
+    },
+    {
+      "case": "advance_Infinity",
+      "reason": "INVALID_ADVANCE"
+    },
+    {
+      "case": "advance_-Infinity",
+      "reason": "INVALID_ADVANCE"
+    },
+    {
+      "case": "setSpeed_0",
+      "reason": "INVALID_SPEED"
+    },
+    {
+      "case": "setSpeed_-1",
+      "reason": "INVALID_SPEED"
+    },
+    {
+      "case": "setSpeed_60.1",
+      "reason": "INVALID_SPEED"
+    },
+    {
+      "case": "setSpeed_NaN",
+      "reason": "INVALID_SPEED"
+    },
+    {
+      "case": "setSpeed_Infinity",
+      "reason": "INVALID_SPEED"
+    },
+    {
+      "case": "seek_NaN",
+      "reason": "INVALID_TIME"
+    },
+    {
+      "case": "seek_Infinity",
+      "reason": "INVALID_TIME"
+    },
+    {
+      "case": "seek_-Infinity",
+      "reason": "INVALID_TIME"
+    },
+    {
+      "case": "unissued_clock_timeline",
+      "reason": "INVALID_TIMELINE"
+    },
+    {
+      "case": "clock_catalogue_switch",
+      "reason": "TIMELINE_SOURCE_MISMATCH"
+    }
+  ],
+  "clock_checks": [
+    "adjacent_end_then_start_emitted_once_at_exact_crossing",
+    "seek_pause_speed_and_ended_clock_do_not_backfill_cues",
+    "seek_to_existing_boundary_does_not_replay_past_cues",
+    "speed60_clamps_once_dispose_is_idempotent_and_stops_clock"
+  ],
+  "source_reads": 141,
+  "input_hashes": {
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseActionTimeline.ts": "bcf943b08b9917666bca033b4a734ba968d8b40c6d3da5ec221a96196d6014fb",
+    "frontend/src/adaptive-v3/warehouseActionClock.ts": "8571f689b03d4de8ec60b1dd547c6a97a0033ab7893727e2d5c3b4e8e84e35b0",
+    "frontend/src/adaptive-v3/warehouseTypes.ts": "922eaadbf2a49f7478cdc284eb91f53fad19b05021b748bdbd1819aef8fd8b33",
+    "frontend/tools/check-warehouse-action-timeline-v3.mjs": "5280ddf6610f3fa1e7ef379bc51f3ba4ac4cb20adf1a1938472e7bbf828b44cc",
+    "docs/adaptive-v3/specs/W05.1.md": "7b1d1d153296b784b7c39ebe34cc656cc1930bb4cf932ef30aab39bf07812eed",
+    "frontend/package.json": "39b8a6f25e107ab91c08ecfd07dbe088e344470fe3903a1bd3b8e0fa4cf39397",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/models/v3/picking-cart-tote-fixture.glb": "d04225956f8ddfa5391bc32cb3e481a4906499c68983d2294b032679308dbc1c",
+    "contracts/actors.example.json": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7",
+    "docs/v3/contract-proposals/port-resource-policy-v3.json": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "docs/adaptive-v3/evidence/P03.json": "b6c2155b8b151014978c83bbb402e5b27cafffa7852eecd089eb6e83c2aa9428",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/data/v3/picker-cart-walk.json": "6732f3b3a44deacec1a27d9ce58a2c26d619544a88e07314051ab61fde9d0ea2",
+    "frontend/public/data/v3/picker-push-pose.json": "4973e477b186c26449715b80c48c827bbe34e4559b2aa94302c7966a41ab7062",
+    "docs/adaptive-v3/evidence/P03.5.3.3.json": "446bc6b8933d23d882b0d92fc6978412371bffc2dc7a14cb2e3d77430fe26d2a",
+    "frontend/public/models/v3/small-pick-v3.json": "4fdaad22b2269547abc27634a61d72797e9a7dc0359dfcc6f5712fcb4c5ccba0",
+    "frontend/public/models/v3/worker-small-pick.glb": "195035d778ba1ed279bb49341441a101b7983a4c14c88ab960ab3af8d13c19c0",
+    "docs/adaptive-v3/evidence/P04.json": "5c7cc7a92c07550f179b5eeaf0827ae92edbbbd1543e3159ea3b3040dae2fac1",
+    "frontend/public/data/v3/packer-seam-end.json": "2285eda822fb7a9f50a45a462d6a8b4a748c5ba970384ef52547c9a54e076f4b",
+    "docs/adaptive-v3/evidence/P05.json": "2c1d9da43f1c5a8b41abef9424c6325d333e6d2182df541803ed336d9aa27d97",
+    "frontend/public/data/v3/receiver-v3.json": "8805b997da4d2533eb094ee8b903199f3cd444c70953c8dd996b13145dfa90c9",
+    "docs/adaptive-v3/evidence/P06.json": "19a7fb3f82a94e868b438664492a766381333c888854441dd22ce33f92bea64d",
+    "frontend/public/data/v3/shipper-v3.json": "0b062233c9a3de490a7e8be017fff2e2b09a3f361027e5a98630ad5929fbce32",
+    "docs/adaptive-v3/evidence/P07.json": "a71be30dfb259d633e316c55568e88ae60e509629bfe7156d5472a542bd91249",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/data/v3/pallet-pickup-cycle.json": "9a37e18d64d9cb63718e504773f99a472783531a8b8a22e07276c847aae4cb59",
+    "frontend/tools/build-worker-registry-v3.mjs": "9ee5fffb2d75dec83da957be6968b44f7daaef4b542556110d1ac76ec3121f4a",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+    "frontend/public/data/v3/warehouse-carry-pose.json": "f9fa159807a6faa806e01e74680cadc7b87ca230739c22bf9e7201dacfe302ce",
+    "frontend/public/data/v3/warehouse-vehicle-support.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4"
+  },
+  "scope": "Pure accepted-source action interval/resource-calendar and absolute visual clock foundation. No native workflow join, transform, cargo quantity change, role assignment, strength/geometry admission, scheduler operation or completed job is created."
+}

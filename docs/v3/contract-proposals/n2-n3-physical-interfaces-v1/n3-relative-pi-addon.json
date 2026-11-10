@@ -1,0 +1,5700 @@
+{
+  "schema_id": "qoima.n3.long-retention-relative-pi.v1",
+  "schema_version": "1.0.0",
+  "source_kind": "visual_fixture",
+  "units": "m_s_kg",
+  "coordinate_system": {
+    "handedness": "right",
+    "up_axis": "+Y",
+    "vehicle_forward": "+Z",
+    "quaternion_order": "xyzw",
+    "matrix_order": "column_major",
+    "scale": 1
+  },
+  "variant_id": "long_loaded_source_frame_pi",
+  "status": "STATIC_NATIVE_ENDPOINT_PROPOSAL_ONLY",
+  "requires_explicit_consumer_opt_in": true,
+  "source_hashes": {
+    "docs/v3/contract-proposals/vehicle-handling-v3.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "frontend/public/data/v3/warehouse-vehicle-support.json": "22693087d090a8a45a101d995581573c3b85bf826f67ae7d44fdc524b74cd3e4",
+    "assets/v3/specs/long-cradle.geometry.json": "24ed610e4d3d2f8417df49ebee911463ae18fb23619aa4ef0f243b8b0e35a2b5",
+    "frontend/public/models/v3/long-cradle.glb": "5fc1251b9408ad0b942f413412e04b60ef90ad36b57564365ba8e7e27d93c8ed",
+    "frontend/public/models/v3/long-restraint-rig.glb": "49f997146d9fe09b9caba276eb1db30124f71c59a8aa559df67b18dc1c1486d8",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/forklift-loaded-long-bundle.glb": "f7f320796cb0b85c45f52cb06e4cf617043e70c686516944fe2fc7f0582b1c60",
+    "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb": "27bb0fee20fb673de4aeb8f094cf8d77862ab1013df514babbfd5fa9c3d2a77d",
+    "docs/adaptive-v3/evidence/M14.6.3.json": "8f4fb4811aa1225e9c93965f13719e57654546a250519d1fb38e0e8d4e4571a1",
+    "docs/adaptive-v3/evidence/W12.2.json": "96b75e5bbc31579fce25c3573be8437ba417f25435eaa34d4c97743e4991ddd2",
+    "assets/v3/long-calibration/recipe.json": "f3794963525118c30282c665d5151fbf60a950b6c6b5e09311b0f3a418fae248",
+    "frontend/public/data/v3/long-calibration/timeline.json": "09c84fe7a7d3cee84db18929c37d8a46631bfd579028b7b9e437c611b0db54b4",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/long-rack.glb": "cb11977f459880bb1a55cf81e37b63491205454be024faa7ab080434a39621db",
+    "frontend/public/models/v3/long-rack-release-fixture.glb": "346e88692e2d7230f008d49c4a929bba9515f018c8a61e178cc64b9a58e011ca",
+    "frontend/src/adaptive-v3/warehouseSupportBindings.json": "f52adab3fd863979f59e641852cc0b914f9755dc86685351cb1af91f0dbac205",
+    "frontend/src/adaptive-v3/warehouseSupportKit.ts": "4f3929b70a751faedc8526f3c9c4ea27bc91686249e7b83a30ea79115f8c3c47",
+    "frontend/src/adaptive-v3/forkliftPickup.ts": "e6d570f20ffd2130c9b171d9c04dab16268e8056ca7c74ed09cd663c91d00181",
+    "frontend/src/adaptive-v3/longMotionSetup.ts": "197f7a3d08ae5a21b366661685665cb64d37e9bb345b1d97a18b28668801a875",
+    "frontend/src/adaptive-v3/longCalibration/browserAPI.ts": "865b11f175a7a87fc570c1a5cf6fdba099f8c89682bc3353bc27e0b1753d6a61",
+    "tools/blender/v3/build_long_cradle.py": "10e9a93f57f2adea4b5530014ab5e425bc014a42d15ee33b949968becde5e455",
+    "tools/blender/v3/verify_loaded_forklift.py": "2c48cb4b4573a0b10ec06a324d97927be8919993b24e46876ae37ba59600d42f",
+    "tools/visual/v3/build_long_calibration_assets.mjs": "a8d12aa2716c36a003917519578a7b1c009ea763651293d4767f4d1c379cda5b",
+    "docs/adaptive-v3/specs/M14.8.md": "11ef1750edddb165e071d79b240c76826e1f8f3ecc8102ac42a2def225de1b94",
+    "docs/adaptive-v3/specs/W12.2.md": "db16e81aeddbf1f94146d49cb6cf8d55b3b77426100395df54ab770855f96fff",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/environment-shell.glb": "2580e0988d5d25d07dd90a9ffe9452130f555ccb0954d3ee07db0018fa796f70",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db"
+  },
+  "frozen_core_sha256": "6243bba567637350b7c170ef378a1a94cc0c139da583ef80cac6a625e2432f03",
+  "core_modified": false,
+  "old_C08_relative_yaw0_admission_changed": false,
+  "engine_operation": false,
+  "actual_engine_run": false,
+  "operational_workflow_admitted": false,
+  "source_workflow_executed": false,
+  "force_balance_or_structural_certification": false,
+  "relative_frame": {
+    "HU_relative_quaternion_xyzw": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "HU_relative_yaw_rad": 3.141592653589793,
+    "kept_constant_through_selected_profile": true,
+    "relative_yaw_change_during_operation_allowed": false,
+    "whole_HU_count": 1,
+    "HU_mass_kg": 200,
+    "attachment_total_kg": 40,
+    "total_lifted_kg": 240,
+    "quantity_units": 24,
+    "declared_HU_dimensions_xyz_m": [
+      4.2,
+      0.52,
+      0.65
+    ],
+    "scale": [
+      1,
+      1,
+      1
+    ]
+  },
+  "capture_world_guard": {
+    "same_original_HU_required": true,
+    "vehicle_world_quaternion_xyzw": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "captured_HU_world_position_m": [
+      0,
+      0.45,
+      0.225
+    ],
+    "captured_HU_world_quaternion_xyzw": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "computed_fixed_relative_quaternion_xyzw": [
+      0,
+      1,
+      0,
+      0
+    ],
+    "quaternion_sign_equivalence": true,
+    "all_native_triangle_vertex_occurrences_compared": 11232,
+    "maximum_world_capture_rebind_delta_m": 1.1102230246251565e-16,
+    "no_HU_world_flip": true,
+    "bind_refusals": [
+      "CONSUMER_EXPLICIT_PROFILE_OPT_IN_REQUIRED",
+      "CAPTURED_HU_WORLD_FRAME_MISMATCH",
+      "SOURCE_PIN_MISMATCH",
+      "SAME_EXISTING_HU_IDENTITY_REQUIRED"
+    ],
+    "tolerance_note": "Captured world matrices must agree within declared numeric tolerance, not arbitrary symmetry or AABB equivalence."
+  },
+  "endpoints": [
+    {
+      "label": "travel_relative_pi",
+      "model_path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+      "vehicle_root_world_position_m": [
+        0,
+        0,
+        0
+      ],
+      "vehicle_quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "fork_top_y_m": 0.75,
+      "reach_extension_m": 0,
+      "HU_root_world_position_m": [
+        0.0,
+        0.8,
+        1.0
+      ],
+      "HU_quaternion_xyzw": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "fixed_HU_relative_quaternion_xyzw": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "native_contacts": [
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            -0.4,
+            0.75,
+            0.7625
+          ],
+          "down": {
+            "point_asset_m": [
+              -0.4,
+              0.75,
+              0.7625
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              0.9999999999999999,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 18,
+              "node_name": "forklift-loaded-long-bundle__batch_05",
+              "mesh_index": 8,
+              "primitive_index": 0,
+              "triangle_index": 247,
+              "position_accessor": 24,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_L"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -0.4,
+              0.7500000014901161,
+              0.7625
+            ],
+            "distance_m": 0.004000001490116144,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 143,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            -0.4,
+            0.75,
+            1.2375
+          ],
+          "down": {
+            "point_asset_m": [
+              -0.4,
+              0.75,
+              1.2375
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 18,
+              "node_name": "forklift-loaded-long-bundle__batch_05",
+              "mesh_index": 8,
+              "primitive_index": 0,
+              "triangle_index": 223,
+              "position_accessor": 24,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_L"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -0.4,
+              0.7500000014901161,
+              1.2375
+            ],
+            "distance_m": 0.004000001490116145,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 132,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            0.4,
+            0.75,
+            0.7625
+          ],
+          "down": {
+            "point_asset_m": [
+              0.4,
+              0.75,
+              0.7625
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              0.9999999999999999,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 22,
+              "node_name": "forklift-loaded-long-bundle__batch_06",
+              "mesh_index": 9,
+              "primitive_index": 0,
+              "triangle_index": 247,
+              "position_accessor": 27,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              0.4,
+              0.7500000014901161,
+              0.7625
+            ],
+            "distance_m": 0.004000001490116144,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 439,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            0.4,
+            0.75,
+            1.2375
+          ],
+          "down": {
+            "point_asset_m": [
+              0.4,
+              0.75,
+              1.2375
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 22,
+              "node_name": "forklift-loaded-long-bundle__batch_06",
+              "mesh_index": 9,
+              "primitive_index": 0,
+              "triangle_index": 223,
+              "position_accessor": 27,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              0.4,
+              0.7500000014901161,
+              1.2375
+            ],
+            "distance_m": 0.004000001490116145,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 428,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            -1.4,
+            0.8,
+            0.8
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999854713679,
+              0.8
+            ],
+            "distance_m": 0.00400001452863219,
+            "normal_asset": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 29,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999720603228,
+              0.8
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              -0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            -1.4,
+            0.8,
+            1.2
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999854713679,
+              1.2
+            ],
+            "distance_m": 0.004000014528632191,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 27,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999720603228,
+              1.2
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 76,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            0.775
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              0.775
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 123,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              0.775
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            0.865
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              0.865
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 191,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              0.865
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            0.955
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              0.955
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 259,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              0.955
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            1.045
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              1.045
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 327,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              1.045
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            1.135
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              1.135
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 395,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              1.135
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            1.225
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              1.225
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 463,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              1.225
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            1.4,
+            0.8,
+            0.8
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.7999999854713679,
+              0.8
+            ],
+            "distance_m": 0.00400001452863219,
+            "normal_asset": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 81,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.7999999720603228,
+              0.8
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            1.4,
+            0.8,
+            1.2
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.7999999854713679,
+              1.2
+            ],
+            "distance_m": 0.00400001452863219,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 79,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.7999999720603228,
+              1.2
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 77,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            0.775
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              0.775
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 122,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              0.775
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            0.865
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              0.865
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 190,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              0.865
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            0.955
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              0.955
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 258,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              0.955
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            1.045
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              1.045
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 326,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              1.045
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            1.135
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              1.135
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 394,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              1.135
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            1.225
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              1.225
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 462,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              1.225
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        }
+      ],
+      "native_contact_count": 20,
+      "whole_HU_bounds_original_vehicle_m": {
+        "min": [
+          -2.0999999046325684,
+          0.7999999839812517,
+          0.675000011920929
+        ],
+        "max": [
+          2.0999999046325684,
+          1.3199999928474426,
+          1.324999988079071
+        ]
+      },
+      "whole_HU_bounds_relative_pi_vehicle_m": {
+        "min": [
+          -2.0999999046325684,
+          0.7999999720603228,
+          0.675000011920929
+        ],
+        "max": [
+          2.0999999046325684,
+          1.3199999809265137,
+          1.324999988079071
+        ]
+      },
+      "actual_HU_dimensions_m": [
+        4.199999809265137,
+        0.5200000088661909,
+        0.6499999761581421
+      ],
+      "binary_geometry_and_materials_unchanged": true
+    },
+    {
+      "label": "travel_relative_pi",
+      "model_path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+      "vehicle_root_world_position_m": [
+        0,
+        0,
+        0
+      ],
+      "vehicle_quaternion_xyzw": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "fork_top_y_m": 0.75,
+      "reach_extension_m": 0,
+      "HU_root_world_position_m": [
+        0.0,
+        0.8,
+        1.0
+      ],
+      "HU_quaternion_xyzw": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "fixed_HU_relative_quaternion_xyzw": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "native_contacts": [
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            -0.4,
+            0.75,
+            0.7625
+          ],
+          "down": {
+            "point_asset_m": [
+              -0.4,
+              0.75,
+              0.7625
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              0.9999999999999999,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 18,
+              "node_name": "forklift-loaded-long-bundle__batch_05",
+              "mesh_index": 8,
+              "primitive_index": 0,
+              "triangle_index": 247,
+              "position_accessor": 24,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_L"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -0.4,
+              0.7500000014901161,
+              0.7625
+            ],
+            "distance_m": 0.004000001490116144,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 143,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            -0.4,
+            0.75,
+            1.2375
+          ],
+          "down": {
+            "point_asset_m": [
+              -0.4,
+              0.75,
+              1.2375
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 18,
+              "node_name": "forklift-loaded-long-bundle__batch_05",
+              "mesh_index": 8,
+              "primitive_index": 0,
+              "triangle_index": 223,
+              "position_accessor": 24,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_L"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -0.4,
+              0.7500000014901161,
+              1.2375
+            ],
+            "distance_m": 0.004000001490116145,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 132,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            0.4,
+            0.75,
+            0.7625
+          ],
+          "down": {
+            "point_asset_m": [
+              0.4,
+              0.75,
+              0.7625
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              0.9999999999999999,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 22,
+              "node_name": "forklift-loaded-long-bundle__batch_06",
+              "mesh_index": 9,
+              "primitive_index": 0,
+              "triangle_index": 247,
+              "position_accessor": 27,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              0.4,
+              0.7500000014901161,
+              0.7625
+            ],
+            "distance_m": 0.004000001490116144,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 439,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            0.4,
+            0.75,
+            1.2375
+          ],
+          "down": {
+            "point_asset_m": [
+              0.4,
+              0.75,
+              1.2375
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 22,
+              "node_name": "forklift-loaded-long-bundle__batch_06",
+              "mesh_index": 9,
+              "primitive_index": 0,
+              "triangle_index": 223,
+              "position_accessor": 27,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              0.4,
+              0.7500000014901161,
+              1.2375
+            ],
+            "distance_m": 0.004000001490116145,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 428,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            -1.4,
+            0.8,
+            0.8
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999854713679,
+              0.8
+            ],
+            "distance_m": 0.00400001452863219,
+            "normal_asset": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 29,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999720603228,
+              0.8
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              -0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            -1.4,
+            0.8,
+            1.2
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999854713679,
+              1.2
+            ],
+            "distance_m": 0.004000014528632191,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 27,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.7999999720603228,
+              1.2
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 76,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            0.775
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              0.775
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 123,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              0.775
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            0.865
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              0.865
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 191,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              0.865
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            0.955
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              0.955
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 259,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              0.955
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            1.045
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              1.045
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 327,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              1.045
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            1.135
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              1.135
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 395,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              1.135
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            1.242,
+            1.225
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              1.24200000166893,
+              1.225
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 463,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              1.24199995175004,
+              1.225
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            1.4,
+            0.8,
+            0.8
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.7999999854713679,
+              0.8
+            ],
+            "distance_m": 0.00400001452863219,
+            "normal_asset": [
+              0.0,
+              1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 81,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.7999999720603228,
+              0.8
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            1.4,
+            0.8,
+            1.2
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.7999999854713679,
+              1.2
+            ],
+            "distance_m": 0.00400001452863219,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 79,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.7999999720603228,
+              1.2
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 77,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.341104505225843e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            0.775
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              0.775
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 122,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              0.775
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            0.865
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              0.865
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 190,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              0.865
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            0.955
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              0.955
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 258,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              0.955
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            1.045
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              1.045
+            ],
+            "distance_m": 0.003999998331069899,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 326,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              1.045
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            1.135
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              1.135
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 394,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              1.135
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            1.242,
+            1.225
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              1.24200000166893,
+              1.225
+            ],
+            "distance_m": 0.003999998331069898,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 462,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              1.24199995175004,
+              1.225
+            ],
+            "distance_m": 0.003999951750039976,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/long-wheel-roll-profile-preserved-variant.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.991889013261641e-08,
+          "passed": true
+        }
+      ],
+      "native_contact_count": 20,
+      "whole_HU_bounds_original_vehicle_m": {
+        "min": [
+          -2.0999999046325684,
+          0.7999999839812517,
+          0.675000011920929
+        ],
+        "max": [
+          2.0999999046325684,
+          1.3199999928474426,
+          1.324999988079071
+        ]
+      },
+      "whole_HU_bounds_relative_pi_vehicle_m": {
+        "min": [
+          -2.0999999046325684,
+          0.7999999720603228,
+          0.675000011920929
+        ],
+        "max": [
+          2.0999999046325684,
+          1.3199999809265137,
+          1.324999988079071
+        ]
+      },
+      "actual_HU_dimensions_m": [
+        4.199999809265137,
+        0.5200000088661909,
+        0.6499999761581421
+      ],
+      "binary_geometry_and_materials_unchanged": true
+    },
+    {
+      "label": "rack_lifted_before_keeper_removal",
+      "model_path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+      "vehicle_root_world_position_m": [
+        0,
+        0,
+        1.625
+      ],
+      "vehicle_quaternion_xyzw": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "fork_top_y_m": 0.4,
+      "reach_extension_m": 0.4,
+      "HU_root_world_position_m": [
+        0.0,
+        0.45,
+        0.2250000000000001
+      ],
+      "HU_quaternion_xyzw": [
+        0,
+        0,
+        0,
+        -1
+      ],
+      "fixed_HU_relative_quaternion_xyzw": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "native_contacts": [
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            0.4,
+            0.4,
+            0.46250000000000013
+          ],
+          "down": {
+            "point_asset_m": [
+              0.4,
+              0.4,
+              0.46250000000000013
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              -0.0,
+              0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 18,
+              "node_name": "forklift-loaded-long-bundle__batch_05",
+              "mesh_index": 8,
+              "primitive_index": 0,
+              "triangle_index": 247,
+              "position_accessor": 24,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_L"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              0.4,
+              0.40000000149011616,
+              0.46250000000000013
+            ],
+            "distance_m": 0.004000001490116144,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 143,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            0.4,
+            0.4,
+            -0.012499999999999956
+          ],
+          "down": {
+            "point_asset_m": [
+              0.4,
+              0.4,
+              -0.012499999999999956
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 18,
+              "node_name": "forklift-loaded-long-bundle__batch_05",
+              "mesh_index": 8,
+              "primitive_index": 0,
+              "triangle_index": 223,
+              "position_accessor": 24,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_L"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              0.4,
+              0.40000000149011616,
+              -0.012499999999999956
+            ],
+            "distance_m": 0.004000001490116145,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 132,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            -0.4,
+            0.4,
+            0.46250000000000013
+          ],
+          "down": {
+            "point_asset_m": [
+              -0.4,
+              0.4,
+              0.46250000000000013
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              -0.0,
+              0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 22,
+              "node_name": "forklift-loaded-long-bundle__batch_06",
+              "mesh_index": 9,
+              "primitive_index": 0,
+              "triangle_index": 247,
+              "position_accessor": 27,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -0.4,
+              0.40000000149011616,
+              0.46250000000000013
+            ],
+            "distance_m": 0.004000001490116144,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 439,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "fork_cradle",
+          "expected_world_m": [
+            -0.4,
+            0.4,
+            -0.012499999999999956
+          ],
+          "down": {
+            "point_asset_m": [
+              -0.4,
+              0.4,
+              -0.012499999999999956
+            ],
+            "distance_m": 0.004000000000000003,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 22,
+              "node_name": "forklift-loaded-long-bundle__batch_06",
+              "mesh_index": 9,
+              "primitive_index": 0,
+              "triangle_index": 223,
+              "position_accessor": 27,
+              "index_accessor": 26,
+              "source_parts": [
+                "fork_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -0.4,
+              0.40000000149011616,
+              -0.012499999999999956
+            ],
+            "distance_m": 0.004000001490116145,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 71,
+              "node_name": "forklift-loaded-long-bundle__batch_32",
+              "mesh_index": 30,
+              "primitive_index": 0,
+              "triangle_index": 428,
+              "position_accessor": 83,
+              "index_accessor": 85,
+              "source_parts": [
+                "real_fork_pocket_L",
+                "real_fork_pocket_R"
+              ]
+            }
+          },
+          "signed_gap_m": 1.4901161415892261e-09,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            1.4,
+            0.45,
+            0.42500000000000004
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.4499999854713679,
+              0.42500000000000004
+            ],
+            "distance_m": 0.004000014528632133,
+            "normal_asset": [
+              -0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 29,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.4499999720603228,
+              0.42500000000000004
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.3411045107769581e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            1.4,
+            0.45,
+            0.025000000000000133
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.4499999854713679,
+              0.025000000000000133
+            ],
+            "distance_m": 0.004000014528632134,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 27,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.4499999720603228,
+              0.025000000000000133
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 76,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.3411045107769581e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            0.892,
+            0.4500000000000002
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.89200000166893,
+              0.4500000000000002
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 123,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.8919999517500401,
+              0.4500000000000002
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            0.892,
+            0.3600000000000001
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.89200000166893,
+              0.3600000000000001
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 191,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.8919999517500401,
+              0.3600000000000001
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            0.892,
+            0.27
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.89200000166893,
+              0.27
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 259,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.8919999517500401,
+              0.27
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            0.892,
+            0.18000000000000016
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.89200000166893,
+              0.18000000000000016
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 327,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.8919999517500401,
+              0.18000000000000016
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            0.892,
+            0.09000000000000008
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.89200000166893,
+              0.09000000000000008
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 395,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.8919999517500401,
+              0.09000000000000008
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            1.4,
+            0.892,
+            0.0
+          ],
+          "down": {
+            "point_asset_m": [
+              1.4,
+              0.89200000166893,
+              0.0
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 463,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              1.4,
+              0.8919999517500401,
+              0.0
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 93,
+              "node_name": "forklift-loaded-long-bundle__batch_43",
+              "mesh_index": 44,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 118,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_L"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            -1.4,
+            0.45,
+            0.42500000000000004
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.4499999854713679,
+              0.42500000000000004
+            ],
+            "distance_m": 0.004000014528632135,
+            "normal_asset": [
+              -0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 81,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.4499999720603228,
+              0.42500000000000004
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -0.9999999999999999,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.3411045107769581e-08,
+          "passed": true
+        },
+        {
+          "kind": "cradle_HU",
+          "expected_world_m": [
+            -1.4,
+            0.45,
+            0.025000000000000133
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.4499999854713679,
+              0.025000000000000133
+            ],
+            "distance_m": 0.004000014528632135,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 70,
+              "node_name": "forklift-loaded-long-bundle__batch_31",
+              "mesh_index": 29,
+              "primitive_index": 0,
+              "triangle_index": 79,
+              "position_accessor": 80,
+              "index_accessor": 82,
+              "source_parts": [
+                "pad_surface_L",
+                "pad_surface_R"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.4499999720603228,
+              0.025000000000000133
+            ],
+            "distance_m": 0.003999972060322765,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 60,
+              "node_name": "forklift-loaded-long-bundle__batch_27",
+              "mesh_index": 27,
+              "primitive_index": 0,
+              "triangle_index": 77,
+              "position_accessor": 74,
+              "index_accessor": 76,
+              "source_parts": [
+                "integral_skid_front",
+                "integral_skid_rear"
+              ]
+            }
+          },
+          "signed_gap_m": -1.3411045107769581e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            0.892,
+            0.4500000000000002
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.89200000166893,
+              0.4500000000000002
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 122,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.8919999517500401,
+              0.4500000000000002
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            0.892,
+            0.3600000000000001
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.89200000166893,
+              0.3600000000000001
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 190,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.8919999517500401,
+              0.3600000000000001
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            0.892,
+            0.27
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.89200000166893,
+              0.27
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 258,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.8919999517500401,
+              0.27
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              -0.0,
+              -1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 32,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            0.892,
+            0.18000000000000016
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.89200000166893,
+              0.18000000000000016
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 326,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.8919999517500401,
+              0.18000000000000016
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            0.892,
+            0.09000000000000008
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.89200000166893,
+              0.09000000000000008
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 394,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.8919999517500401,
+              0.09000000000000008
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        },
+        {
+          "kind": "HU_upper_restraint",
+          "expected_world_m": [
+            -1.4,
+            0.892,
+            0.0
+          ],
+          "down": {
+            "point_asset_m": [
+              -1.4,
+              0.89200000166893,
+              0.0
+            ],
+            "distance_m": 0.003999998331070009,
+            "normal_asset": [
+              0.0,
+              1.0,
+              0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 58,
+              "node_name": "forklift-loaded-long-bundle__batch_25",
+              "mesh_index": 25,
+              "primitive_index": 0,
+              "triangle_index": 462,
+              "position_accessor": 65,
+              "index_accessor": 67,
+              "source_parts": [
+                "content_profile_01",
+                "content_profile_02",
+                "content_profile_03",
+                "content_profile_04",
+                "content_profile_05",
+                "content_profile_06",
+                "content_profile_07",
+                "content_profile_08",
+                "content_profile_09",
+                "content_profile_10",
+                "content_profile_11",
+                "content_profile_12",
+                "content_profile_13",
+                "content_profile_14",
+                "content_profile_15",
+                "content_profile_16",
+                "content_profile_17",
+                "content_profile_18",
+                "content_profile_19",
+                "content_profile_20",
+                "content_profile_21",
+                "content_profile_22",
+                "content_profile_23",
+                "content_profile_24"
+              ]
+            }
+          },
+          "up": {
+            "point_asset_m": [
+              -1.4,
+              0.8919999517500401,
+              0.0
+            ],
+            "distance_m": 0.003999951750040087,
+            "normal_asset": [
+              0.0,
+              -1.0,
+              -0.0
+            ],
+            "native_ref": {
+              "path": "frontend/public/models/v3/forklift-loaded-long-bundle.glb",
+              "node_index": 97,
+              "node_name": "forklift-loaded-long-bundle__batch_45",
+              "mesh_index": 46,
+              "primitive_index": 0,
+              "triangle_index": 33,
+              "position_accessor": 123,
+              "index_accessor": 120,
+              "source_parts": [
+                "soft_pressure_pad_R"
+              ]
+            }
+          },
+          "signed_gap_m": -4.9918889910571806e-08,
+          "passed": true
+        }
+      ],
+      "native_contact_count": 20
+    }
+  ],
+  "native_source_rack_release": {
+    "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+    "HU_world_quaternion_xyzw": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "vehicle_world_quaternion_xyzw": [
+      0,
+      -1,
+      0,
+      4.371138828673793e-08
+    ],
+    "relative_yaw_pi": true,
+    "rack_contacts": [
+      {
+        "kind": "rack_HU",
+        "expected_world_m": [
+          -1.6,
+          0.25,
+          0.025
+        ],
+        "down": {
+          "point_asset_m": [
+            -1.6,
+            0.2499999962747097,
+            0.025
+          ],
+          "distance_m": 0.004000003725290302,
+          "normal_asset": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 86,
+            "node_name": "long-rack-release-fixture__batch_33",
+            "mesh_index": 33,
+            "primitive_index": 0,
+            "triangle_index": 39,
+            "position_accessor": 92,
+            "index_accessor": 94,
+            "source_parts": [
+              "arm_L1_0",
+              "arm_L1_1",
+              "arm_L1_2",
+              "arm_L2_0",
+              "arm_L2_1",
+              "arm_L2_2",
+              "rear_tie_L1",
+              "rear_tie_L2"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            -1.6,
+            0.2499999962747097,
+            0.025
+          ],
+          "distance_m": 0.003999996274709704,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 57,
+            "node_name": "long-rack-release-fixture__batch_24",
+            "mesh_index": 24,
+            "primitive_index": 0,
+            "triangle_index": 32,
+            "position_accessor": 62,
+            "index_accessor": 64,
+            "source_parts": [
+              "base_dunnage_0",
+              "base_dunnage_1",
+              "base_dunnage_2",
+              "end_side_lining_L_front",
+              "end_side_lining_L_rear",
+              "end_side_lining_R_front",
+              "end_side_lining_R_rear",
+              "end_support_L",
+              "end_support_R",
+              "end_top_lining_L",
+              "end_top_lining_R",
+              "layer_separator_1_0",
+              "layer_separator_1_1",
+              "layer_separator_1_2",
+              "layer_separator_2_0",
+              "layer_separator_2_1",
+              "layer_separator_2_2",
+              "layer_separator_3_0",
+              "layer_separator_3_1",
+              "layer_separator_3_2",
+              "top_band_pad_L",
+              "top_band_pad_R"
+            ]
+          }
+        },
+        "signed_gap_m": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "rack_HU",
+        "expected_world_m": [
+          -1.6,
+          0.25,
+          0.425
+        ],
+        "down": {
+          "point_asset_m": [
+            -1.6,
+            0.2499999962747097,
+            0.425
+          ],
+          "distance_m": 0.004000003725290302,
+          "normal_asset": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 86,
+            "node_name": "long-rack-release-fixture__batch_33",
+            "mesh_index": 33,
+            "primitive_index": 0,
+            "triangle_index": 39,
+            "position_accessor": 92,
+            "index_accessor": 94,
+            "source_parts": [
+              "arm_L1_0",
+              "arm_L1_1",
+              "arm_L1_2",
+              "arm_L2_0",
+              "arm_L2_1",
+              "arm_L2_2",
+              "rear_tie_L1",
+              "rear_tie_L2"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            -1.6,
+            0.2499999962747097,
+            0.425
+          ],
+          "distance_m": 0.003999996274709704,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 57,
+            "node_name": "long-rack-release-fixture__batch_24",
+            "mesh_index": 24,
+            "primitive_index": 0,
+            "triangle_index": 33,
+            "position_accessor": 62,
+            "index_accessor": 64,
+            "source_parts": [
+              "base_dunnage_0",
+              "base_dunnage_1",
+              "base_dunnage_2",
+              "end_side_lining_L_front",
+              "end_side_lining_L_rear",
+              "end_side_lining_R_front",
+              "end_side_lining_R_rear",
+              "end_support_L",
+              "end_support_R",
+              "end_top_lining_L",
+              "end_top_lining_R",
+              "layer_separator_1_0",
+              "layer_separator_1_1",
+              "layer_separator_1_2",
+              "layer_separator_2_0",
+              "layer_separator_2_1",
+              "layer_separator_2_2",
+              "layer_separator_3_0",
+              "layer_separator_3_1",
+              "layer_separator_3_2",
+              "top_band_pad_L",
+              "top_band_pad_R"
+            ]
+          }
+        },
+        "signed_gap_m": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "rack_HU",
+        "expected_world_m": [
+          0,
+          0.25,
+          0.025
+        ],
+        "down": {
+          "point_asset_m": [
+            0.0,
+            0.2499999962747097,
+            0.025
+          ],
+          "distance_m": 0.004000003725290302,
+          "normal_asset": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 86,
+            "node_name": "long-rack-release-fixture__batch_33",
+            "mesh_index": 33,
+            "primitive_index": 0,
+            "triangle_index": 127,
+            "position_accessor": 92,
+            "index_accessor": 94,
+            "source_parts": [
+              "arm_L1_0",
+              "arm_L1_1",
+              "arm_L1_2",
+              "arm_L2_0",
+              "arm_L2_1",
+              "arm_L2_2",
+              "rear_tie_L1",
+              "rear_tie_L2"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            0.0,
+            0.2499999962747097,
+            0.025
+          ],
+          "distance_m": 0.003999996274709705,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 57,
+            "node_name": "long-rack-release-fixture__batch_24",
+            "mesh_index": 24,
+            "primitive_index": 0,
+            "triangle_index": 956,
+            "position_accessor": 62,
+            "index_accessor": 64,
+            "source_parts": [
+              "base_dunnage_0",
+              "base_dunnage_1",
+              "base_dunnage_2",
+              "end_side_lining_L_front",
+              "end_side_lining_L_rear",
+              "end_side_lining_R_front",
+              "end_side_lining_R_rear",
+              "end_support_L",
+              "end_support_R",
+              "end_top_lining_L",
+              "end_top_lining_R",
+              "layer_separator_1_0",
+              "layer_separator_1_1",
+              "layer_separator_1_2",
+              "layer_separator_2_0",
+              "layer_separator_2_1",
+              "layer_separator_2_2",
+              "layer_separator_3_0",
+              "layer_separator_3_1",
+              "layer_separator_3_2",
+              "top_band_pad_L",
+              "top_band_pad_R"
+            ]
+          }
+        },
+        "signed_gap_m": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "rack_HU",
+        "expected_world_m": [
+          0,
+          0.25,
+          0.425
+        ],
+        "down": {
+          "point_asset_m": [
+            0.0,
+            0.2499999962747097,
+            0.425
+          ],
+          "distance_m": 0.004000003725290302,
+          "normal_asset": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 86,
+            "node_name": "long-rack-release-fixture__batch_33",
+            "mesh_index": 33,
+            "primitive_index": 0,
+            "triangle_index": 127,
+            "position_accessor": 92,
+            "index_accessor": 94,
+            "source_parts": [
+              "arm_L1_0",
+              "arm_L1_1",
+              "arm_L1_2",
+              "arm_L2_0",
+              "arm_L2_1",
+              "arm_L2_2",
+              "rear_tie_L1",
+              "rear_tie_L2"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            0.0,
+            0.2499999962747097,
+            0.425
+          ],
+          "distance_m": 0.003999996274709705,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 57,
+            "node_name": "long-rack-release-fixture__batch_24",
+            "mesh_index": 24,
+            "primitive_index": 0,
+            "triangle_index": 957,
+            "position_accessor": 62,
+            "index_accessor": 64,
+            "source_parts": [
+              "base_dunnage_0",
+              "base_dunnage_1",
+              "base_dunnage_2",
+              "end_side_lining_L_front",
+              "end_side_lining_L_rear",
+              "end_side_lining_R_front",
+              "end_side_lining_R_rear",
+              "end_support_L",
+              "end_support_R",
+              "end_top_lining_L",
+              "end_top_lining_R",
+              "layer_separator_1_0",
+              "layer_separator_1_1",
+              "layer_separator_1_2",
+              "layer_separator_2_0",
+              "layer_separator_2_1",
+              "layer_separator_2_2",
+              "layer_separator_3_0",
+              "layer_separator_3_1",
+              "layer_separator_3_2",
+              "top_band_pad_L",
+              "top_band_pad_R"
+            ]
+          }
+        },
+        "signed_gap_m": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "rack_HU",
+        "expected_world_m": [
+          1.6,
+          0.25,
+          0.025
+        ],
+        "down": {
+          "point_asset_m": [
+            1.6,
+            0.2499999962747097,
+            0.025
+          ],
+          "distance_m": 0.004000003725290302,
+          "normal_asset": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 86,
+            "node_name": "long-rack-release-fixture__batch_33",
+            "mesh_index": 33,
+            "primitive_index": 0,
+            "triangle_index": 215,
+            "position_accessor": 92,
+            "index_accessor": 94,
+            "source_parts": [
+              "arm_L1_0",
+              "arm_L1_1",
+              "arm_L1_2",
+              "arm_L2_0",
+              "arm_L2_1",
+              "arm_L2_2",
+              "rear_tie_L1",
+              "rear_tie_L2"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            1.6,
+            0.2499999962747097,
+            0.025
+          ],
+          "distance_m": 0.003999996274709705,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 57,
+            "node_name": "long-rack-release-fixture__batch_24",
+            "mesh_index": 24,
+            "primitive_index": 0,
+            "triangle_index": 912,
+            "position_accessor": 62,
+            "index_accessor": 64,
+            "source_parts": [
+              "base_dunnage_0",
+              "base_dunnage_1",
+              "base_dunnage_2",
+              "end_side_lining_L_front",
+              "end_side_lining_L_rear",
+              "end_side_lining_R_front",
+              "end_side_lining_R_rear",
+              "end_support_L",
+              "end_support_R",
+              "end_top_lining_L",
+              "end_top_lining_R",
+              "layer_separator_1_0",
+              "layer_separator_1_1",
+              "layer_separator_1_2",
+              "layer_separator_2_0",
+              "layer_separator_2_1",
+              "layer_separator_2_2",
+              "layer_separator_3_0",
+              "layer_separator_3_1",
+              "layer_separator_3_2",
+              "top_band_pad_L",
+              "top_band_pad_R"
+            ]
+          }
+        },
+        "signed_gap_m": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "rack_HU",
+        "expected_world_m": [
+          1.6,
+          0.25,
+          0.425
+        ],
+        "down": {
+          "point_asset_m": [
+            1.6,
+            0.2499999962747097,
+            0.425
+          ],
+          "distance_m": 0.004000003725290302,
+          "normal_asset": [
+            0.0,
+            1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 86,
+            "node_name": "long-rack-release-fixture__batch_33",
+            "mesh_index": 33,
+            "primitive_index": 0,
+            "triangle_index": 215,
+            "position_accessor": 92,
+            "index_accessor": 94,
+            "source_parts": [
+              "arm_L1_0",
+              "arm_L1_1",
+              "arm_L1_2",
+              "arm_L2_0",
+              "arm_L2_1",
+              "arm_L2_2",
+              "rear_tie_L1",
+              "rear_tie_L2"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            1.6,
+            0.2499999962747097,
+            0.425
+          ],
+          "distance_m": 0.003999996274709705,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 57,
+            "node_name": "long-rack-release-fixture__batch_24",
+            "mesh_index": 24,
+            "primitive_index": 0,
+            "triangle_index": 913,
+            "position_accessor": 62,
+            "index_accessor": 64,
+            "source_parts": [
+              "base_dunnage_0",
+              "base_dunnage_1",
+              "base_dunnage_2",
+              "end_side_lining_L_front",
+              "end_side_lining_L_rear",
+              "end_side_lining_R_front",
+              "end_side_lining_R_rear",
+              "end_support_L",
+              "end_support_R",
+              "end_top_lining_L",
+              "end_top_lining_R",
+              "layer_separator_1_0",
+              "layer_separator_1_1",
+              "layer_separator_1_2",
+              "layer_separator_2_0",
+              "layer_separator_2_1",
+              "layer_separator_2_2",
+              "layer_separator_3_0",
+              "layer_separator_3_1",
+              "layer_separator_3_2",
+              "top_band_pad_L",
+              "top_band_pad_R"
+            ]
+          }
+        },
+        "signed_gap_m": 0.0,
+        "passed": true
+      }
+    ],
+    "fork_cradle_contacts": [
+      {
+        "kind": "released_fork_cradle",
+        "expected_world_m": [
+          0.39999989837102223,
+          0.18,
+          0.4624999650308892
+        ],
+        "down": {
+          "point_asset_m": [
+            0.39999989837102223,
+            0.18000000715255737,
+            0.4624999650308892
+          ],
+          "distance_m": 0.003999992847442625,
+          "normal_asset": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 10,
+            "node_name": "long-rack-release-fixture__batch_05",
+            "mesh_index": 0,
+            "primitive_index": 0,
+            "triangle_index": 247,
+            "position_accessor": 0,
+            "index_accessor": 2,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            0.39999989837102223,
+            0.17999999970197678,
+            0.4624999650308892
+          ],
+          "distance_m": 0.003999999701976786,
+          "normal_asset": [
+            -0.0,
+            -1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 75,
+            "node_name": "long-rack-release-fixture__batch_32",
+            "mesh_index": 32,
+            "primitive_index": 0,
+            "triangle_index": 143,
+            "position_accessor": 89,
+            "index_accessor": 91,
+            "source_parts": [
+              "real_fork_pocket_L",
+              "real_fork_pocket_R"
+            ]
+          }
+        },
+        "signed_gap_m": -7.450580596923828e-09,
+        "passed": true
+      },
+      {
+        "kind": "released_fork_cradle",
+        "expected_world_m": [
+          0.3999998568452034,
+          0.18,
+          -0.012500034969110674
+        ],
+        "down": {
+          "point_asset_m": [
+            0.3999998568452034,
+            0.18000000715255737,
+            -0.012500034969110674
+          ],
+          "distance_m": 0.003999992847442624,
+          "normal_asset": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 10,
+            "node_name": "long-rack-release-fixture__batch_05",
+            "mesh_index": 0,
+            "primitive_index": 0,
+            "triangle_index": 223,
+            "position_accessor": 0,
+            "index_accessor": 2,
+            "source_parts": [
+              "fork_L"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            0.3999998568452034,
+            0.17999999970197678,
+            -0.012500034969110674
+          ],
+          "distance_m": 0.003999999701976786,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 75,
+            "node_name": "long-rack-release-fixture__batch_32",
+            "mesh_index": 32,
+            "primitive_index": 0,
+            "triangle_index": 132,
+            "position_accessor": 89,
+            "index_accessor": 91,
+            "source_parts": [
+              "real_fork_pocket_L",
+              "real_fork_pocket_R"
+            ]
+          }
+        },
+        "signed_gap_m": -7.450580596923828e-09,
+        "passed": true
+      },
+      {
+        "kind": "released_fork_cradle",
+        "expected_world_m": [
+          -0.4000001016289778,
+          0.18,
+          0.46250003496911063
+        ],
+        "down": {
+          "point_asset_m": [
+            -0.4000001016289778,
+            0.18000000715255737,
+            0.46250003496911063
+          ],
+          "distance_m": 0.003999992847442625,
+          "normal_asset": [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 14,
+            "node_name": "long-rack-release-fixture__batch_06",
+            "mesh_index": 1,
+            "primitive_index": 0,
+            "triangle_index": 247,
+            "position_accessor": 3,
+            "index_accessor": 2,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            -0.4000001016289778,
+            0.17999999970197678,
+            0.46250003496911063
+          ],
+          "distance_m": 0.003999999701976786,
+          "normal_asset": [
+            -0.0,
+            -1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 75,
+            "node_name": "long-rack-release-fixture__batch_32",
+            "mesh_index": 32,
+            "primitive_index": 0,
+            "triangle_index": 439,
+            "position_accessor": 89,
+            "index_accessor": 91,
+            "source_parts": [
+              "real_fork_pocket_L",
+              "real_fork_pocket_R"
+            ]
+          }
+        },
+        "signed_gap_m": -7.450580596923828e-09,
+        "passed": true
+      },
+      {
+        "kind": "released_fork_cradle",
+        "expected_world_m": [
+          -0.40000014315479665,
+          0.18,
+          -0.012499965030889237
+        ],
+        "down": {
+          "point_asset_m": [
+            -0.40000014315479665,
+            0.18000000715255737,
+            -0.012499965030889237
+          ],
+          "distance_m": 0.003999992847442624,
+          "normal_asset": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 14,
+            "node_name": "long-rack-release-fixture__batch_06",
+            "mesh_index": 1,
+            "primitive_index": 0,
+            "triangle_index": 223,
+            "position_accessor": 3,
+            "index_accessor": 2,
+            "source_parts": [
+              "fork_R"
+            ]
+          }
+        },
+        "up": {
+          "point_asset_m": [
+            -0.40000014315479665,
+            0.17999999970197678,
+            -0.012499965030889237
+          ],
+          "distance_m": 0.003999999701976786,
+          "normal_asset": [
+            0.0,
+            -1.0,
+            -0.0
+          ],
+          "native_ref": {
+            "path": "frontend/public/models/v3/long-rack-release-fixture.glb",
+            "node_index": 75,
+            "node_name": "long-rack-release-fixture__batch_32",
+            "mesh_index": 32,
+            "primitive_index": 0,
+            "triangle_index": 428,
+            "position_accessor": 89,
+            "index_accessor": 91,
+            "source_parts": [
+              "real_fork_pocket_L",
+              "real_fork_pocket_R"
+            ]
+          }
+        },
+        "signed_gap_m": -7.450580596923828e-09,
+        "passed": true
+      }
+    ],
+    "deliberate_cradle_HU_release_gap_m": 0.02,
+    "upper_rig_removed": true
+  },
+  "API_boundary": {
+    "current_sampleLongFrames": "Only original relative-yaw0. Extra variant fields/selector arguments explicitly refused.",
+    "relative_pi_addon": "Data for future explicitly selected, capture-preserving consumer. Not implemented by current prototype.",
+    "unexecuted_event_preparer": "State-name validation only, no transition-table/scheduler admission; actor/vehicle resource references cross-checked exactly."
+  },
+  "proof_limits": [
+    "Fresh finite native endpoint contact proof, not continuous contact/collision/traffic approval.",
+    "No source stock world rotation or position was changed. Equivalent q/-q accepted only as same orientation, not a cargo symmetry shortcut.",
+    "Historical source rack-release endpoint is reused as geometry evidence only; no full W12 pickup/install/stow workflow inherited.",
+    "Native contacts do not prove pin-cap/bridge full solids clearance or forces. Optional27bb corrected-cap geometry remains separately selected."
+  ]
+}

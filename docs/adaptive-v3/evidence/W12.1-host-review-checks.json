@@ -1,0 +1,156 @@
+{
+  "all_checks_pass": true,
+  "all_strict_probes_rejected": true,
+  "all_bytes_mtimes_preserved": true,
+  "frozen_four_match": true,
+  "checks": [
+    {
+      "path": "tools/visual/v3/build_long_freight_scenario.py",
+      "returncode": 0,
+      "stdout": "{\"input_integrity_candidate\": true, \"execution_ready\": false, \"check_only\": true, \"files\": {\"docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json\": {\"bytes\": 644667, \"sha256\": \"7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b\"}, \"docs/adaptive-v3/specs/W12.1.md\": {\"bytes\": 4423, \"sha256\": \"d73588b61c8789a86ee1588442cd83773a15b31185b557086327ce3fb72ccfa6\"}, \"docs/adaptive-v3/evidence/W12.1.json\": {\"bytes\": 4955, \"sha256\": \"37f199d93618198bf03c04b0cba08a14182c738e14ded135a1f4c7d8723b6f78\"}}}",
+      "stderr": "",
+      "duration_s": 0.47
+    },
+    {
+      "path": "tools/visual/v3/verify_long_freight_scenario.py",
+      "returncode": 0,
+      "stdout": "{\"input_integrity_verified\": true, \"execution_ready\": false, \"positive_count\": 10, \"negative_count\": 242, \"check_only\": true, \"report_sha256\": \"e523472cd2bee1c7bddafadbf68bd3375474c369a51fc88a9c1cd1d66a908cbc\"}",
+      "stderr": "",
+      "duration_s": 246.51
+    }
+  ],
+  "probes": [
+    {
+      "case": "initial_stock_bool_quantity",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "INITIAL_STOCK_CHANGED",
+      "full_rehash": true
+    },
+    {
+      "case": "initial_stock_bool_dimension",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "INITIAL_STOCK_CHANGED",
+      "full_rehash": true
+    },
+    {
+      "case": "original_request_bool_HU_count",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "full_rehash": true
+    },
+    {
+      "case": "original_request_float_quantity",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "ORIGINAL_REQUEST_CHANGED",
+      "full_rehash": true
+    },
+    {
+      "case": "upstream_bool_quantity",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "HU_UNITS",
+      "full_rehash": true
+    },
+    {
+      "case": "upstream_bool_dimension",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "HU_DIMENSIONS",
+      "full_rehash": true
+    },
+    {
+      "case": "upstream_bool_scale",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "HU_ORIENTATION_SCALE",
+      "full_rehash": true
+    },
+    {
+      "case": "relative_yaw_bool",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "FORBIDDEN_LOAD_REORIENTATION",
+      "full_rehash": true
+    },
+    {
+      "case": "upstream_string_dimension",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "HU_DIMENSIONS",
+      "full_rehash": true
+    },
+    {
+      "case": "upstream_null_dimension",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "HU_DIMENSIONS",
+      "full_rehash": true
+    },
+    {
+      "case": "external_request_float_quantity",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "REQUEST_PRIMITIVE",
+      "full_rehash": true
+    },
+    {
+      "case": "lock_numeric_instead_bool",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "MISSING_CRADLE_LOCK_RESTRAINT",
+      "full_rehash": true
+    },
+    {
+      "case": "upstream_nonfinite_mass_direct",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "NONFINITE_NUMERIC",
+      "full_rehash": false
+    },
+    {
+      "case": "upstream_infinite_dimension_direct",
+      "rejected": true,
+      "stage": "semantic_validate_entry",
+      "reason": "NONFINITE_NUMERIC",
+      "full_rehash": false
+    }
+  ],
+  "files": {
+    "tools/visual/v3/build_long_freight_scenario.py": {
+      "bytes": 15365,
+      "sha256": "4adc10a1be5ed7e36ae1f65cd5188ca5591fac6545120f5181e14057cc3abe4c",
+      "mtime_ns": 1794137923261121100
+    },
+    "tools/visual/v3/verify_long_freight_scenario.py": {
+      "bytes": 44147,
+      "sha256": "a50e4480367398dc3676ff33bf28aa307ece5931c892598e15e7c6e97d90bbce",
+      "mtime_ns": 1794138669056886300
+    },
+    "docs/adaptive-v3/fixtures/scenarios/W12-long-freight-input-v3.json": {
+      "bytes": 644667,
+      "sha256": "7aeccbc8b9b980e5170c9bd63dab5d71d12cf56ff762bd9193cd13414d74a60b",
+      "mtime_ns": 1794138120748241800
+    },
+    "docs/adaptive-v3/specs/W12.1.md": {
+      "bytes": 4423,
+      "sha256": "d73588b61c8789a86ee1588442cd83773a15b31185b557086327ce3fb72ccfa6",
+      "mtime_ns": 1794138120749248300
+    },
+    "docs/adaptive-v3/evidence/W12.1.json": {
+      "bytes": 4955,
+      "sha256": "37f199d93618198bf03c04b0cba08a14182c738e14ded135a1f4c7d8723b6f78",
+      "mtime_ns": 1794138120749248300
+    },
+    "docs/adaptive-v3/evidence/W12.1-checks.json": {
+      "bytes": 90817,
+      "sha256": "e523472cd2bee1c7bddafadbf68bd3375474c369a51fc88a9c1cd1d66a908cbc",
+      "mtime_ns": 1794138983452671500
+    }
+  },
+  "external_cli_job_timed_out": true,
+  "scope": "Host verification of actual second-account produced fix. No root acceptance or production fixture change."
+}

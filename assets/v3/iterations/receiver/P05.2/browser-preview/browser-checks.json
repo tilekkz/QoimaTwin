@@ -1,0 +1,3088 @@
+{
+  "source_kind": "visual_fixture_browser_QA",
+  "engine_operation": false,
+  "accepted_action": false,
+  "preview_only": true,
+  "url": "http://127.0.0.1:4173/stand-v3.html?asset=receiver-workcell-fixture&fixture=receiver",
+  "visible": false,
+  "input_hashes": {
+    "frontend/stand-v3.html": "70e80d2b8c440740afdc24287c72a7d26fd3032dafae2b74b4763b27559788cf",
+    "frontend/src/adaptive-v3/assetStand.ts": "6a0af1be3cec9648ada899cbd2ffbff2e8785ca132ebddbe36efdf7bc4559498",
+    "frontend/src/adaptive-v3/motion/receiver.ts": "91968c4b76f5ae106e2db4e7e8b21276b5cf7059d39fb1370bc1cc2827a972e1",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/public/data/v3/receiver-v3.json": "0e03ce190cd2a1afbf06e55ca2484ee4eac1262df63dea8ae6b039748a84b959",
+    "frontend/public/models/v3/worker-manual.glb": "dbf74a8d2aa4f7bb60cca547b90a4e973d9691038aee614f51eb4269d8d18875",
+    "frontend/public/models/v3/receiver-workcell-fixture.glb": "5eb51073d5c456f71ccc64c4bc231eadbf6761c6da89a96c4c87900dac1de54b",
+    "frontend/tools/check-receiver-browser-v3.mjs": "b3d55eb4bb67848d1bf1c70f5fb1a59ce956ba664c02d2f7e29e96eb2d59d753"
+  },
+  "checks": {
+    "cold_reduced_motion_no_autoplay": true,
+    "same_actor_HU_and_24_content_frames": true,
+    "scan_receive_idle_blocked_distinct": true,
+    "inward_rest_palms": true
+  },
+  "frames": [
+    {
+      "mode": "receive",
+      "time": 0,
+      "file": "receive-0.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 0,
+          "label": "Ожидание паллеты",
+          "mode": "receive",
+          "complete": false,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": false,
+          "received": false,
+          "contact": {
+            "active": false,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.6576064317452126,
+              0.5983483423501843,
+              -0.7630000184488216
+            ],
+            "error_m": 0.714649819419738
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.7155494488752603,
+          2.7151981187686447
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9651981187686445
+          ],
+          "max": [
+            0.8999999761581421,
+            1.7155494488752603,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 325.9314339725797,
+          "min_y": 241.6223727055005,
+          "max_x": 915.7589232917416,
+          "max_y": 804.7779619420631
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6846402418724459,
+            0.6751710800967198,
+            -0.7710000056544977
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            4.815769886330994,
+            4.922341338084645,
+            -3.6721656730313375
+          ],
+          "target": [
+            -0.26493838072777254,
+            0.8577747244376301,
+            0.39240094061567776
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23807026369010886,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 195,
+          "triangles": 48745,
+          "memory": {
+            "geometries": 49,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "receive",
+      "time": 7.8,
+      "file": "receive-7p8.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 7.8,
+          "label": "Нажатие подтверждения",
+          "mode": "receive",
+          "complete": false,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": true,
+          "received": false,
+          "contact": {
+            "active": true,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.7000000268153902,
+              1.1749999904272315,
+              -0.34299999860646596
+            ],
+            "error_m": 2.8506928793687995e-8
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                8.462889816707175e-8,
+                -0.9999999999999957,
+                -4.153390170680282e-8
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.7155494488752603,
+          2.7151981187686447
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9651981187686445
+          ],
+          "max": [
+            0.8999999761581421,
+            1.7155494488752603,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 325.9314339725797,
+          "min_y": 241.6223727055005,
+          "max_x": 915.7589232917416,
+          "max_y": 804.7779619420631
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6920000331209389,
+            1.1597499922812062,
+            -0.4229999817183559
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            4.815769886330994,
+            4.922341338084645,
+            -3.6721656730313375
+          ],
+          "target": [
+            -0.26493838072777254,
+            0.8577747244376301,
+            0.39240094061567776
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23807026369010886,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 195,
+          "triangles": 48745,
+          "memory": {
+            "geometries": 49,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "receive",
+      "time": 17.8,
+      "file": "receive-17p8.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 17.8,
+          "label": "Готово",
+          "mode": "receive",
+          "complete": true,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": true,
+          "received": true,
+          "contact": {
+            "active": false,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.6576064317452126,
+              0.5983483423501843,
+              -0.7630000184488216
+            ],
+            "error_m": 0.714649819419738
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.7155494488752603,
+          2.7151981187686447
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9651981187686445
+          ],
+          "max": [
+            0.8999999761581421,
+            1.7155494488752603,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 325.9314339725797,
+          "min_y": 241.6223727055005,
+          "max_x": 915.7589232917416,
+          "max_y": 804.7779619420631
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6846402418724459,
+            0.6751710800967198,
+            -0.7710000056544977
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            4.815769886330994,
+            4.922341338084645,
+            -3.6721656730313375
+          ],
+          "target": [
+            -0.26493838072777254,
+            0.8577747244376301,
+            0.39240094061567776
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23807026369010886,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 195,
+          "triangles": 48745,
+          "memory": {
+            "geometries": 49,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "scan",
+      "time": 1,
+      "file": "scan-1.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 1,
+          "label": "Сканирование этикетки",
+          "mode": "scan",
+          "complete": false,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": true,
+          "scan_complete": false,
+          "received": false,
+          "contact": {
+            "active": false,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.6576064317452126,
+              0.5983483423501843,
+              -0.7630000184488216
+            ],
+            "error_m": 0.714649819419738
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.7122698865818862,
+          2.7151981187686447
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9651981187686445
+          ],
+          "max": [
+            0.8999999761581421,
+            1.7122698865818862,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 325.7662525127277,
+          "min_y": 241.1943220816929,
+          "max_x": 908.9543183347696,
+          "max_y": 804.7718987025729
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6846402418724459,
+            0.6751710800967198,
+            -0.7710000056544977
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            4.812031628212511,
+            4.917710950443172,
+            -3.66917506653655
+          ],
+          "target": [
+            -0.2649383807277726,
+            0.8561349432909432,
+            0.3924009406156777
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23798525198871073,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 196,
+          "triangles": 48745,
+          "memory": {
+            "geometries": 50,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "idle",
+      "time": 0,
+      "file": "idle.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 0,
+          "label": "Ожидание задания",
+          "mode": "idle",
+          "complete": false,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": false,
+          "received": false,
+          "contact": {
+            "active": false,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.6576064317452126,
+              0.5983483423501843,
+              -0.7630000184488216
+            ],
+            "error_m": 0.714649819419738
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.699999839067459,
+          2.712999999217689
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9629999992176891
+          ],
+          "max": [
+            0.8999999761581421,
+            1.699999839067459,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 325.3526930573802,
+          "min_y": 239.7014486833688,
+          "max_x": 917.4722084037135,
+          "max_y": 804.7475350078303
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6846402418724459,
+            0.6751710800967198,
+            -0.7710000056544977
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            4.799602227232802,
+            4.90163240590219,
+            -3.6581324859773057
+          ],
+          "target": [
+            -0.26493838072777254,
+            0.8499999195337296,
+            0.3935000003911553
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.2375779834493483,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 195,
+          "triangles": 48745,
+          "memory": {
+            "geometries": 50,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "blocked",
+      "time": 0,
+      "file": "blocked.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": null,
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 0,
+          "label": "Пост занят · приёмка не начата",
+          "mode": "blocked",
+          "complete": false,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": false,
+          "received": false,
+          "contact": {
+            "active": false,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.6576064317452126,
+              0.5983483423501843,
+              -0.7630000184488216
+            ],
+            "error_m": 0.714649819419738
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                -0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.7125542676551713,
+          2.7404249643150975
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9904249643150976
+          ],
+          "max": [
+            0.8999999761581421,
+            1.7125542676551713,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": 323.41111603574734,
+          "min_y": 239.9234913009901,
+          "max_x": 898.9855334947218,
+          "max_y": 804.7905927389522
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6846402418724459,
+            0.6751710800967198,
+            -0.7710000056544977
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            4.7944891236067875,
+            4.903819137295235,
+            -3.6677544856251982
+          ],
+          "target": [
+            -0.2649383807277725,
+            0.8562771338275856,
+            0.37978751784245113
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.23903126946467404,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 195,
+          "triangles": 48745,
+          "memory": {
+            "geometries": 50,
+            "textures": 10
+          }
+        }
+      }
+    },
+    {
+      "mode": "receive",
+      "time": 7.8,
+      "file": "contact-detail.png",
+      "state": {
+        "modelId": "receiver-workcell-fixture",
+        "phase": "ready",
+        "view": "quarter",
+        "focus": "screen__DEVICE",
+        "gripper": null,
+        "fixture": "receiver-visual-QA",
+        "grip": null,
+        "driver": null,
+        "action": {
+          "time": 7.8,
+          "label": "Нажатие подтверждения",
+          "mode": "receive",
+          "complete": false,
+          "actorId": "R01",
+          "role": "receiver",
+          "actor_uuid": "1c8b707b-73a1-41e9-8c4e-220075bfd95c",
+          "HU_uuid": "f806771d-fe4d-465e-bada-e4c47d5f7065",
+          "HU_ref": "v3:fixture:HU:RECEIVE01",
+          "warehouse_headcount_delta": 0,
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "inventory_mutated": false,
+          "scanning": false,
+          "scan_complete": true,
+          "received": false,
+          "contact": {
+            "active": true,
+            "surface": "screen_footer",
+            "point_workcell_m": [
+              -0.7000000268153902,
+              1.1749999904272315,
+              -0.34299999860646596
+            ],
+            "error_m": 2.8506928793687995e-8
+          },
+          "palms_worker_local": [
+            {
+              "side": "L",
+              "direction": [
+                0.9887710779360335,
+                -0.1494381324735979,
+                -1.3435883843274957e-7
+              ]
+            },
+            {
+              "side": "R",
+              "direction": [
+                8.462889816707175e-8,
+                -0.9999999999999957,
+                -4.153390170680282e-8
+              ]
+            }
+          ],
+          "playing": false,
+          "reduced_motion": true
+        },
+        "roles": [],
+        "dimensions_m": [
+          2.3298767137718293,
+          1.7155494488752603,
+          2.7151981187686447
+        ],
+        "bounds_m": {
+          "min": [
+            -1.4298767376136872,
+            0,
+            -0.9651981187686445
+          ],
+          "max": [
+            0.8999999761581421,
+            1.7155494488752603,
+            1.75
+          ]
+        },
+        "screen_bounds_px": {
+          "min_x": -3587.807083236359,
+          "min_y": -248.64715940761863,
+          "max_x": 1767.8529643797983,
+          "max_y": 4636.235170755293
+        },
+        "canvas": {
+          "width": 1090,
+          "height": 930
+        },
+        "anchors": {
+          "anchor_receiver_confirm": [
+            -0.699999988079071,
+            1.1749999523162842,
+            -0.34299999475479126
+          ],
+          "anchor_receiver_scan_lens": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_receiver_scan_target": [
+            -0.625,
+            1.1150000095367432,
+            0.9600000381469727
+          ],
+          "anchor_receiver_service": [
+            -1,
+            0,
+            -0.8029999732971191
+          ],
+          "anchor_hand_work_L": [
+            -0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_hand_work_R": [
+            0.2199999988079071,
+            1.149999976158142,
+            0.2800000011920929
+          ],
+          "anchor_label_pick": [
+            0.6000000238418579,
+            1.0299999713897705,
+            0.3799999952316284
+          ],
+          "anchor_processing_base": [
+            0,
+            0.9200000166893005,
+            0.10000000149011612
+          ],
+          "anchor_scanner_contact": [
+            -0.6899999976158142,
+            1.159999966621399,
+            0.39100000262260437
+          ],
+          "anchor_screen_face": [
+            -0.699999988079071,
+            1.3300000429153442,
+            -0.33799999952316284
+          ],
+          "anchor_spur_terminal": [
+            0,
+            0.9200000166893005,
+            0.30000001192092896
+          ],
+          "anchor_tape_pull": [
+            0.7350000143051147,
+            1.059999942779541,
+            0.4000000059604645
+          ],
+          "anchor_tape_ring": [
+            0.8100000023841858,
+            1.0750000476837158,
+            0.25999999046325684
+          ],
+          "anchor_transfer_south_in": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_transfer_south_out": [
+            0,
+            0.9200000166893005,
+            -0.44999998807907104
+          ],
+          "anchor_worker_service": [
+            0,
+            0,
+            0.8999999761581421
+          ],
+          "anchor_worktop_L": [
+            -0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_worktop_R": [
+            0.699999988079071,
+            0.9200000166893005,
+            0
+          ],
+          "anchor_attach": [
+            -0.6899999976158142,
+            0,
+            1.25
+          ],
+          "anchor_cog_declared": [
+            -0.6899999976158142,
+            0.675000011920929,
+            1.25
+          ],
+          "anchor_floor_origin": [
+            -1,
+            0,
+            -0.803
+          ],
+          "anchor_seat_contact": [
+            -1,
+            0.550000011920929,
+            -0.8380000010803342
+          ],
+          "anchor_foot_floor_L": [
+            -1.114999994635582,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_foot_floor_R": [
+            -0.885000005364418,
+            1.4901161193847656e-8,
+            -0.803
+          ],
+          "anchor_neck_base": [
+            -1,
+            1.149999976158142,
+            -0.7980000001117588
+          ],
+          "anchor_hand_grip_L": [
+            -1.3153597581275542,
+            0.6751710800967198,
+            -0.7710000056544977
+          ],
+          "anchor_hand_grip_R": [
+            -0.6920000331209389,
+            1.1597499922812062,
+            -0.4229999817183559
+          ]
+        },
+        "nodes": [
+          "Scene",
+          "receiver_workcell_root",
+          "anchor_receiver_confirm",
+          "anchor_receiver_scan_lens",
+          "anchor_receiver_scan_target",
+          "anchor_receiver_service",
+          "packing-station__MODULE",
+          "anchor_hand_work_L",
+          "anchor_hand_work_R",
+          "anchor_label_pick",
+          "anchor_processing_base",
+          "anchor_scanner_contact",
+          "anchor_screen_face",
+          "anchor_spur_terminal",
+          "anchor_tape_pull",
+          "anchor_tape_ring",
+          "anchor_transfer_south_in",
+          "anchor_transfer_south_out",
+          "anchor_worker_service",
+          "anchor_worktop_L",
+          "anchor_worktop_R",
+          "frame__ASSEMBLY",
+          "receiver-workcell-fixture__batch_00",
+          "receiver-workcell-fixture__batch_01",
+          "receiver-workcell-fixture__batch_02",
+          "printer__DEVICE",
+          "receiver-workcell-fixture__batch_03",
+          "receiver-workcell-fixture__batch_04",
+          "receiver-workcell-fixture__batch_05",
+          "scanner__DEVICE",
+          "receiver-workcell-fixture__batch_06",
+          "receiver-workcell-fixture__batch_07",
+          "screen__DEVICE",
+          "receiver-workcell-fixture__batch_08",
+          "receiver-workcell-fixture__batch_09",
+          "receiver-workcell-fixture__batch_10",
+          "tape__DEVICE",
+          "receiver-workcell-fixture__batch_11",
+          "receiver-workcell-fixture__batch_12",
+          "receiver_existing_pallet",
+          "anchor_attach",
+          "anchor_cog_declared",
+          "receiver-workcell-fixture__batch_13",
+          "receiver-workcell-fixture__batch_14",
+          "receiver-workcell-fixture__batch_15",
+          "unit_body_001__closed_carton",
+          "unit_body_001__closed_carton_1",
+          "unit_body_001__closed_carton_2",
+          "unit__001",
+          "unit__002",
+          "unit__003",
+          "unit__004",
+          "unit__005",
+          "unit__006",
+          "unit__007",
+          "unit__008",
+          "unit__009",
+          "unit__010",
+          "unit__011",
+          "unit__012",
+          "unit__013",
+          "unit__014",
+          "unit__015",
+          "unit__016",
+          "unit__017",
+          "unit__018",
+          "unit__019",
+          "unit__020",
+          "unit__021",
+          "unit__022",
+          "unit__023",
+          "unit__024",
+          "actor__R01",
+          "anchor_floor_origin",
+          "joint__pelvis",
+          "anchor_seat_contact",
+          "joint__thigh_L",
+          "joint__shin_L",
+          "joint__foot_L",
+          "anchor_foot_floor_L",
+          "worker-manual__batch_00",
+          "worker-manual__batch_01",
+          "worker-manual__batch_02",
+          "joint__thigh_R",
+          "joint__shin_R",
+          "joint__foot_R",
+          "anchor_foot_floor_R",
+          "worker-manual__batch_03",
+          "worker-manual__batch_04",
+          "worker-manual__batch_05",
+          "joint__torso",
+          "anchor_neck_base",
+          "joint__head",
+          "worker-manual__batch_07",
+          "worker-manual__batch_08",
+          "worker-manual__batch_09",
+          "worker-manual__batch_10",
+          "joint__shoulder_lift_L",
+          "joint__upper_arm_L",
+          "joint__elbow_swivel_L",
+          "joint__forearm_L",
+          "joint__palm_roll_L",
+          "joint__hand_L",
+          "anchor_hand_grip_L",
+          "joint__finger_lower_L",
+          "worker-manual__batch_12",
+          "joint__finger_thumb_L",
+          "worker-manual__batch_13",
+          "joint__finger_upper_L",
+          "worker-manual__batch_14",
+          "worker-manual__batch_15",
+          "worker-manual__batch_11",
+          "worker-manual__batch_16",
+          "joint__shoulder_lift_R",
+          "joint__upper_arm_R",
+          "joint__elbow_swivel_R",
+          "joint__forearm_R",
+          "joint__palm_roll_R",
+          "joint__hand_R",
+          "anchor_hand_grip_R",
+          "joint__finger_lower_R",
+          "worker-manual__batch_18",
+          "joint__finger_thumb_R",
+          "worker-manual__batch_19",
+          "joint__finger_upper_R",
+          "worker-manual__batch_20",
+          "worker-manual__batch_21",
+          "worker-manual__batch_17",
+          "worker-manual__batch_22",
+          "worker-manual__batch_06",
+          "worker-manual__batch_23",
+          "worker-manual__batch_24",
+          "worker-manual__batch_25",
+          "worker-manual__batch_26",
+          "worker-manual__batch_27",
+          "role_badge__R01",
+          "worker-manual__batch_28",
+          "receiver_visual_scan_cue"
+        ],
+        "materials": [
+          "P08 | charcoal",
+          "P08 | petrol",
+          "P08 | tan",
+          "P08 | offwhite",
+          "P08 | scanner lens",
+          "P08 | recessed display",
+          "PALLET_LOAD | petrol",
+          "PALLET_LOAD | wood",
+          "PALLET_LOAD | carton",
+          "PALLET_LOAD | offwhite",
+          "V3_Worker_BootsShared",
+          "V3_Worker_TrousersShared",
+          "V3_Worker_SkinWarm",
+          "V3_Worker_HairDark",
+          "V3_Worker_BadgeInk",
+          "V3_Worker_RoleHeadwear",
+          "V3_Worker_ShirtShared",
+          "V3_Worker_BadgeBase",
+          "V3_Worker_RoleVest",
+          "V3_Worker_Reflective"
+        ],
+        "triangles": 12184,
+        "metadata": {
+          "name": "receiver_workcell_root",
+          "layout_version": "qoima-144x72-v3",
+          "namespace": "v3",
+          "units": "m",
+          "up_axis": "Y",
+          "forward_axis": "+Z",
+          "role": "visual_QA_fixture",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "reference_id": "R04",
+          "component_reference_ids_json": "[\"R04\", \"M08_REF\", \"R05\"]",
+          "contains_worker": false,
+          "HU_instances": 1,
+          "warehouse_headcount_delta": 0,
+          "scope": "One already placed synthetic HU and existing scanner station, no baked worker or extra inventory. Visual cone/range/scan cue only, not certified scanner specification or actual barcode/backend receipt. Human never lifts455kg.",
+          "asset_id": "receiver-workcell-fixture"
+        },
+        "camera": {
+          "type": "PerspectiveCamera",
+          "position": [
+            0.1925236751878049,
+            1.8740189672855334,
+            -1.0340189097005985
+          ],
+          "target": [
+            -0.7000000284941588,
+            1.1600000043399632,
+            -0.3199999467550274
+          ]
+        },
+        "presentation": {
+          "contact_shading": true,
+          "radius_m": 0.03758510552892122,
+          "camera_inertia": false,
+          "ground_y_m": -0.00009919594320421204
+        },
+        "renderer": {
+          "calls": 143,
+          "triangles": 44545,
+          "memory": {
+            "geometries": 50,
+            "textures": 10
+          }
+        }
+      }
+    }
+  ],
+  "fatal": [],
+  "failed_resources": [],
+  "expected_failures": [],
+  "lifecycle": {
+    "owned_pid": 16636,
+    "terminated": true,
+    "elapsed_ms": 10272
+  },
+  "scope": "Browser role/identity/rendering/controls/lifecycle gates only; native geometry and explicit screenshot review remain separate."
+}

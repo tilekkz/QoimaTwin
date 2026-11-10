@@ -1,0 +1,66 @@
+{
+  "asset_id": "conveyor-high",
+  "layout_version": "qoima-72x48-v2",
+  "coordinate_system": "right_handed_Y_up_metres",
+  "root_name": "conveyor_high_root",
+  "reference": "assets/references/v2/conveyor.png",
+  "root_properties": {
+    "layout_version": "qoima-72x48-v2",
+    "asset_id": "conveyor-high",
+    "role": "conveyor_straight",
+    "forward_axis": "+Z",
+    "reference": "assets/references/v2/conveyor.png",
+    "lod": "high",
+    "nominal_size_m": [
+      0.68,
+      0.95,
+      1.0
+    ],
+    "belt_surface_y": 0.9,
+    "cell_length_m": 1.0,
+    "port_clear_width_m": 0.632,
+    "belt_materials_json": "[\"v2_conveyor_rubber_belt_surface\", \"v2_conveyor_belt_tread_bands\"]",
+    "belt_visual_top_y": 0.9,
+    "tread_bands_are_visual_only": true
+  },
+  "nodes": [
+    {
+      "name": "port_input",
+      "parent": "conveyor_high_root",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        -0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "conveyor_port",
+        "port_name": "input",
+        "direction_runtime": [
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "name": "port_output",
+      "parent": "conveyor_high_root",
+      "position_local_runtime": [
+        0.0,
+        0.8999999761581421,
+        0.5
+      ],
+      "properties": {
+        "layout_version": "qoima-72x48-v2",
+        "role": "conveyor_port",
+        "port_name": "output",
+        "direction_runtime": [
+          0,
+          0,
+          1
+        ]
+      }
+    }
+  ]
+}

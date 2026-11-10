@@ -1,0 +1,4643 @@
+{
+  "passed": true,
+  "checks": [
+    "issued_recipe_and_factory_identity",
+    "exact_original542_receiver_body",
+    "already_posed_actual_hands_receipt_boundary",
+    "385_same_clock_actual24actor_HU_samples",
+    "same_material_grip_practical1mm",
+    "upright_exact_wholeHU6.35kg24units",
+    "five_actual_native_L1_shelf_support_witnesses",
+    "exact_slot_frame_without_release_jump",
+    "terminal_HU_persists_while_original_actor_is_free",
+    "reverse_seek_and_absolute_seek_determinism",
+    "invalid_time_inert",
+    "reset_dispose_exact24source_parents_and530_instance_bytes"
+  ],
+  "actor_id": "R02",
+  "handling_unit_id": "v3:HU:incoming:DEMO_111:01",
+  "source_stock_HUs": 530,
+  "received_HUs": 1,
+  "maximum_sampled_pad_error_m": 0.00003555176734446247,
+  "native_shelf_witnesses": [
+    [
+      106.5,
+      0.19999999552965164,
+      52.55
+    ],
+    [
+      106.21,
+      0.19999999552965164,
+      52.41
+    ],
+    [
+      106.21,
+      0.19999999552965164,
+      52.69
+    ],
+    [
+      106.79,
+      0.19999999552965164,
+      52.41
+    ],
+    [
+      106.79,
+      0.19999999552965164,
+      52.69
+    ]
+  ],
+  "duration_s": 275.4383203932496,
+  "phases": {
+    "empty_arrival_s": 23.490000000000006,
+    "receipt_at_s": 25.490000000000006,
+    "port_departure_s": 39.49000000000001,
+    "loaded_arrival_s": 156.43499999999977,
+    "lowered_at_s": 164.43499999999977,
+    "stored_at_s": 167.43499999999977,
+    "released_at_s": 169.43499999999977,
+    "return_start_s": 178.2833203932497,
+    "complete_at_s": 275.4383203932496
+  },
+  "recipe": {
+    "source_kind": "visual_fixture",
+    "engine_operation": false,
+    "operational_admission": false,
+    "physical_join": false,
+    "request_id": "v3:request:base:inbound:02",
+    "handling_unit_id": "v3:HU:incoming:DEMO_111:01",
+    "actor_id": "R02",
+    "port_id": "IN_E_PARCEL",
+    "request": {
+      "archetype_id": "STANDARD_CARTON",
+      "deadline_at_s": 780,
+      "direction": "inbound",
+      "engine_operation": false,
+      "handling_unit_id": "v3:HU:incoming:DEMO_111:01",
+      "included_in_initial_stock": false,
+      "initial_location_kind": "upstream",
+      "kind": "receipt_request",
+      "lot_id": "v3:lot:incoming:DEMO_111",
+      "port_id": "IN_E_PARCEL",
+      "quantity_handling_units": 1,
+      "quantity_units": 24,
+      "request_id": "v3:request:base:inbound:02",
+      "requested_at_s": 180,
+      "sku_id": "DEMO_111",
+      "source_kind": "visual_fixture"
+    },
+    "request_source": {
+      "kind": "frozen_N1_semantic_rebase",
+      "path": "docs/adaptive-v3/fixtures/scenarios/W10-port-mix-input-v3.json",
+      "sha256": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5"
+    },
+    "dimensions_xyz_m": [
+      0.6,
+      0.4,
+      0.3
+    ],
+    "gross_mass_kg": 6.35,
+    "quantity_units": 24,
+    "model_scale_factor": 1,
+    "captured_relative_yaw_rad": 3.141592653589793,
+    "home": {
+      "node_id": "v3:service:IN_E_PARCEL",
+      "position": [
+        138,
+        0,
+        54
+      ],
+      "yaw_rad": 0
+    },
+    "receipt": {
+      "actor_position": [
+        130,
+        0,
+        59.5
+      ],
+      "actor_yaw_rad": 0,
+      "HU_position": [
+        130,
+        0.65,
+        60
+      ],
+      "HU_yaw_rad": 3.141592653589793,
+      "zone_id": "STAGE_IN_E_PARCEL",
+      "zone_json_pointer": "/data/zones/35",
+      "cell_id": "v3:visual-receiving:IN_E_PARCEL:held:01",
+      "bounds": {
+        "min": [
+          129.2,
+          58.7
+        ],
+        "max": [
+          130.8,
+          60.3
+        ]
+      },
+      "capacity": 1,
+      "source_zone_capacity": 8,
+      "source_port_capacity": 8,
+      "service_time_s": 14,
+      "source_kind": "new_reserved_held_footprint_in_existing_zone",
+      "supplier_handover_executed": false
+    },
+    "target": {
+      "slot_id": "v3:slot:STANDARD_E:016:L1:B1",
+      "module_id": "v3:module:STANDARD_E:016",
+      "HU_position": [
+        106.5,
+        0.2,
+        52.55
+      ],
+      "HU_yaw_rad": 3.141592653589793,
+      "standing_position": [
+        106.5,
+        0,
+        52
+      ],
+      "extract_position": [
+        106.5,
+        0,
+        51.35
+      ],
+      "worker_position": [
+        106.5,
+        0,
+        51.94
+      ],
+      "worker_node_id": "v3:module:STANDARD_E:016:B1:worker:node",
+      "worker_yaw_rad": 6.283185307179586,
+      "initially_empty": true,
+      "native_insert_distance_m": 0.65,
+      "loaded_graph_tail_trim_m": 0.5899999999999963,
+      "empty_graph_head_trim_m": 0.5899999999999963
+    },
+    "dependency": null,
+    "extra_materialization": null,
+    "legs": [
+      {
+        "route_id": "empty_to_receipt",
+        "actor_id": "R02",
+        "points_world": [
+          [
+            138,
+            0,
+            54
+          ],
+          [
+            138,
+            0,
+            57.5
+          ],
+          [
+            130,
+            0,
+            57.5
+          ],
+          [
+            130,
+            0,
+            59.5
+          ]
+        ],
+        "start_yaw_rad": 0,
+        "speed_m_s": 1.2,
+        "route": null,
+        "native_motion_required": true,
+        "physical_join": false
+      },
+      {
+        "route_id": "loaded_to_slot",
+        "actor_id": "R02",
+        "points_world": [
+          [
+            130,
+            0,
+            59.5
+          ],
+          [
+            138,
+            0,
+            59.5
+          ],
+          [
+            138,
+            0,
+            54
+          ],
+          [
+            138,
+            0,
+            49
+          ],
+          [
+            138,
+            0,
+            38
+          ],
+          [
+            92,
+            0,
+            38
+          ],
+          [
+            92,
+            0,
+            40.75
+          ],
+          [
+            92,
+            0,
+            49
+          ],
+          [
+            106.5,
+            0,
+            49
+          ],
+          [
+            106.5,
+            0,
+            51.1
+          ],
+          [
+            106.5,
+            0,
+            51.35
+          ]
+        ],
+        "start_yaw_rad": 0,
+        "speed_m_s": 1.2,
+        "route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "walk",
+          "from_node_id": "v3:service:IN_E_PARCEL",
+          "to_node_id": "v3:module:STANDARD_E:016:B1:worker:node",
+          "arc_ids": [
+            "v3:ped-edge:0053:r",
+            "v3:ped-edge:0052:r",
+            "v3:ped-edge:0035:r",
+            "v3:ped-edge:0034:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:000:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:001:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:002:f",
+            "v3:module:STANDARD_E:016:B1:worker:segment:003:f"
+          ],
+          "length_m": 90.44,
+          "mode": "pedestrian",
+          "actor_id": "R02",
+          "vehicle_id": null,
+          "cargo_archetype_id": "STANDARD_CARTON",
+          "geometry_basis": "canonical_walk",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "native_motion_required": true,
+        "physical_join": false
+      },
+      {
+        "route_id": "empty_return",
+        "actor_id": "R02",
+        "points_world": [
+          [
+            106.5,
+            0,
+            51.35
+          ],
+          [
+            106.5,
+            0,
+            51.1
+          ],
+          [
+            106.5,
+            0,
+            49
+          ],
+          [
+            92,
+            0,
+            49
+          ],
+          [
+            92,
+            0,
+            40.75
+          ],
+          [
+            92,
+            0,
+            38
+          ],
+          [
+            138,
+            0,
+            38
+          ],
+          [
+            138,
+            0,
+            49
+          ],
+          [
+            138,
+            0,
+            54
+          ]
+        ],
+        "start_yaw_rad": 6.283185307179586,
+        "speed_m_s": 1.2,
+        "route": {
+          "ok": true,
+          "reason": "ROUTE_OK",
+          "source_kind": "visual_fixture",
+          "engine_operation": false,
+          "operational_admission": false,
+          "cost_evaluated": true,
+          "graph": "walk",
+          "from_node_id": "v3:module:STANDARD_E:016:B1:worker:node",
+          "to_node_id": "v3:service:IN_E_PARCEL",
+          "arc_ids": [
+            "v3:module:STANDARD_E:016:B1:worker:segment:003:r",
+            "v3:module:STANDARD_E:016:B1:worker:segment:002:r",
+            "v3:module:STANDARD_E:016:B1:worker:segment:001:r",
+            "v3:module:STANDARD_E:016:B1:worker:segment:000:r",
+            "v3:ped-edge:0034:r",
+            "v3:ped-edge:0035:f",
+            "v3:ped-edge:0052:f",
+            "v3:ped-edge:0053:f"
+          ],
+          "length_m": 90.44,
+          "mode": "pedestrian",
+          "actor_id": "R02",
+          "vehicle_id": null,
+          "cargo_archetype_id": null,
+          "geometry_basis": "canonical_walk",
+          "resource_admission_required": true,
+          "actual_action_admission_required": true
+        },
+        "native_motion_required": true,
+        "physical_join": false
+      }
+    ],
+    "routes": {
+      "loaded": {
+        "ok": true,
+        "reason": "ROUTE_OK",
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "operational_admission": false,
+        "cost_evaluated": true,
+        "graph": "walk",
+        "from_node_id": "v3:service:IN_E_PARCEL",
+        "to_node_id": "v3:module:STANDARD_E:016:B1:worker:node",
+        "arc_ids": [
+          "v3:ped-edge:0053:r",
+          "v3:ped-edge:0052:r",
+          "v3:ped-edge:0035:r",
+          "v3:ped-edge:0034:f",
+          "v3:module:STANDARD_E:016:B1:worker:segment:000:f",
+          "v3:module:STANDARD_E:016:B1:worker:segment:001:f",
+          "v3:module:STANDARD_E:016:B1:worker:segment:002:f",
+          "v3:module:STANDARD_E:016:B1:worker:segment:003:f"
+        ],
+        "length_m": 90.44,
+        "mode": "pedestrian",
+        "actor_id": "R02",
+        "vehicle_id": null,
+        "cargo_archetype_id": "STANDARD_CARTON",
+        "geometry_basis": "canonical_walk",
+        "resource_admission_required": true,
+        "actual_action_admission_required": true
+      },
+      "empty_return": {
+        "ok": true,
+        "reason": "ROUTE_OK",
+        "source_kind": "visual_fixture",
+        "engine_operation": false,
+        "operational_admission": false,
+        "cost_evaluated": true,
+        "graph": "walk",
+        "from_node_id": "v3:module:STANDARD_E:016:B1:worker:node",
+        "to_node_id": "v3:service:IN_E_PARCEL",
+        "arc_ids": [
+          "v3:module:STANDARD_E:016:B1:worker:segment:003:r",
+          "v3:module:STANDARD_E:016:B1:worker:segment:002:r",
+          "v3:module:STANDARD_E:016:B1:worker:segment:001:r",
+          "v3:module:STANDARD_E:016:B1:worker:segment:000:r",
+          "v3:ped-edge:0034:r",
+          "v3:ped-edge:0035:f",
+          "v3:ped-edge:0052:f",
+          "v3:ped-edge:0053:f"
+        ],
+        "length_m": 90.44,
+        "mode": "pedestrian",
+        "actor_id": "R02",
+        "vehicle_id": null,
+        "cargo_archetype_id": null,
+        "geometry_basis": "canonical_walk",
+        "resource_admission_required": true,
+        "actual_action_admission_required": true
+      }
+    },
+    "leases": [
+      {
+        "resource_id": "actor:R02",
+        "capacity": 1,
+        "from_phase_id": "empty_to_receipt",
+        "through_phase_id": "empty_return",
+        "timing": "native_durations_required"
+      },
+      {
+        "resource_id": "HU:v3:HU:incoming:DEMO_111:01",
+        "capacity": 1,
+        "from_phase_id": "empty_to_receipt",
+        "through_phase_id": "empty_return",
+        "timing": "native_durations_required"
+      },
+      {
+        "resource_id": "slot:v3:slot:STANDARD_E:016:L1:B1",
+        "capacity": 1,
+        "from_phase_id": "empty_to_receipt",
+        "through_phase_id": "empty_return",
+        "timing": "native_durations_required"
+      },
+      {
+        "resource_id": "stage:v3:visual-receiving:IN_E_PARCEL:held:01",
+        "capacity": 1,
+        "from_phase_id": "empty_to_receipt",
+        "through_phase_id": "empty_return",
+        "timing": "native_durations_required"
+      },
+      {
+        "resource_id": "port:IN_E_PARCEL",
+        "capacity": 1,
+        "from_phase_id": "empty_to_receipt",
+        "through_phase_id": "empty_return",
+        "timing": "native_durations_required"
+      }
+    ],
+    "module_mass_reservation": {
+      "module_id": "v3:module:STANDARD_E:016",
+      "current_after_dependency_kg": 88,
+      "incoming_kg": 6.35,
+      "maximum_kg": 1500
+    },
+    "connector_check": {
+      "radius_m": 0.8,
+      "scope": "conservative_segment_capsule_vs_source_module_and_fixed_bounds",
+      "segments": 5,
+      "passed": true
+    },
+    "limitations": [
+      "This declares route/slot and a new reserved held-HU footprint inside an existing finite buffer; no capacity is added.",
+      "The supplier handover boundary creates visibility in already posed hands; supplier execution is not represented.",
+      "Native gait, grip, placement and contact must be issued by the separate receiving factory.",
+      "Loaded/empty source graph endpoints are trimmed on actual first/last source segments; lower/insert/release/backoff is a native action, not teleportation.",
+      "R02 extra STANDARD is explicitly materialized before A/B and starts only after the same full manual case confirms downstream and releases its source slot.",
+      "The original IN_E_PARCEL SMALL request remains unchanged and uncompleted by this recipe."
+    ]
+  },
+  "source_hashes": {
+    "frontend/tools/check-additional-heavy-scene-v3.mjs": "38d7a323fade2297d48f1c994978af19c3637ad9409afb5137a5cc9a9efa8c4f",
+    "frontend/src/adaptive-v3/warehouseScenarioScene.ts": "fef54e469bfc71c8cb50e95c7424e7923c66186ce0a4c47821476231b5b418e5",
+    "frontend/src/adaptive-v3/warehouseWorkerGait.ts": "1909f2fcb42fad2de4776c98e2632f49609355669b0c25274227cbee184b79b3",
+    "frontend/src/adaptive-v3/warehouseCargo.ts": "96165e6a9beb1bbb6c4f1ce1a515fbf6b6c81ffb7993a055e561addbd3f18d72",
+    "frontend/src/adaptive-v3/warehouseAdapter.ts": "d0d0e493b0a5cae0e4bc7b6ac972fa17d0a9b81b46712e638926e8f6d58a2176",
+    "frontend/src/adaptive-v3/workerRegistry.ts": "9630e55f8a41cab097ea92d830a31e1c60c26cc3d9a56c9137a57c779d335eed",
+    "frontend/src/adaptive-v3/workerProfiles.ts": "bd0056d83bc492d014a59f850fc53803ef9994dcc5346ddd89068f742ae74b50",
+    "frontend/src/adaptive-v3/warehouseCargoHolders.ts": "ae22bec439928ac71f67203c44ec6b89aebbcac3a30258ccfb4931aafbe49c73",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundScene.ts": "12a93271adbd72bb6f6da8d5c13ceeb4cae3994d7e53fe478f419f9e5733bf02",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPlan.ts": "b4b73566023b5f70e13ebe906ec38b63141080dbef199c0cdb8037bbe14c0ee9",
+    "frontend/src/adaptive-v3/warehouseRoutePose.ts": "bbbdc8b0563b3cf8085f8932b3169e793ede15286e9df9f28c33e25c0d166e39",
+    "frontend/src/adaptive-v3/warehouseHeavyInboundPhysics.ts": "11cc3f0cd92a17bf6d376d6b041343e70fe7f46ee3b88599668407eb047aebba",
+    "frontend/src/adaptive-v3/warehouseScenarioExecution.ts": "a753d4cfef8a39f5ae15ffecad354ac4d071d6c32cdaea5c11a8d08bc44ff23a",
+    "frontend/src/adaptive-v3/warehouseRouting.ts": "3f2c80afdec7d211d918b7faed7d5fc7657d3dec1d723e32e7c3c8afbcc2b727",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyCases.ts": "e3d66f9cf5ca6dc71488b22571cd7dff4b2f7595738507e797b315a7f802334b",
+    "frontend/src/adaptive-v3/warehouseLongScenarioPlan.ts": "1b50889308b322d6a178403cdf6feae1b37aa12e53b9d83eccbf663138b2aea9",
+    "frontend/src/adaptive-v3/warehouseScenarioManualTransfer.ts": "cb29de61b7a7accb308358bcb5bd5c9f09478de53136b9892b00710e76edb3d2",
+    "frontend/src/adaptive-v3/workerRoles.ts": "582e6d3cd4f21c72bf59a10f10a4bfbd09caaf0f43c85034daffc22e8173353e",
+    "frontend/src/adaptive-v3/workerRolesFixture.ts": "fed06e7626ea91fc59b40a3b68d6664e7134b30aca119336249b84328a72ac22",
+    "frontend/src/adaptive-v3/warehouseForearmPronationPose.ts": "a2861ffa225de9e6863069fb96f2c288daa9ba187e23420f981ab72be79a760d",
+    "frontend/src/adaptive-v3/warehouseAdditionalHeavyScene.ts": "6f3592d2ca0ef326f8d2815989cda75751ece46398800da11ca27925a958a2f0",
+    "frontend/src/adaptive-v3/warehouseLongScenarioScene.ts": "1eb4c10ac6fdc8faef9a11181ea48a1885b074ff3415987c6a244939037294c0",
+    "frontend/src/adaptive-v3/warehouseManualWorkflowRoute.ts": "9bcc6aeef4b54d613856de3fd884910d205b98160925fc24851d1c59c1f43186",
+    "frontend/src/adaptive-v3/seatedDriver.ts": "32eace0fb97a413073fa90ddff830bc9c9b52c70c455978ac6a91ae044901360",
+    "frontend/src/adaptive-v3/workerRoleAssignment.ts": "8156eed54a082d2f5625c8beb2c3ef4fbe6437b19c04911b172c441b02c08e0f",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "81d0caad4898a68a41f9c647141e7290df480900599e82b81739809cab0f9579",
+    "frontend/public/data/adaptive-v3/layout-manifest.json": "eb8afaf677864983a326af6ca47f4f41fbbd6ba162613fbce078feff0128f7db",
+    "frontend/public/data/v3/worker-registry-v3.json": "b21c2754fd2abec813adc1d9d1c24cf7f338f6a8a83efa051f70ef7982597e82",
+    "frontend/public/data/v3/worker-profiles-v3.json": "f30eb892ccc75ae5d2e6650e1a41b58acecbecd1a7c5cbcaf9b5836d8b7a8dc5",
+    "frontend/public/data/v3/route-policy-v3.json": "5aae5cf56ffa97cadc2b21886099cdfaa48064a78c7950febe20ddcefb0bdf41",
+    "docs/v3/contract-proposals/n2-n3-physical-interfaces-v1/route-terminal-interfaces.json": "97268ccfc80e7eb81fdae4b7ddfdb77997949d4eeb2acf52dee8c8f9715d7276",
+    "frontend/public/data/v3/heavy-inbound-fixture.json": "7e5b49f04b5b3a59f2ac23f62f2d57e9381a5cbacb98ae9ba00254a00ffc70da",
+    "frontend/public/models/v3/forklift.glb": "937816125a8c1522148e4928b34257096bc22dcb4a359201a08b80d78b1ee156",
+    "frontend/public/models/v3/worker-base.glb": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "frontend/public/models/v3/heavy-bay.glb": "dcc28aaeb9c924569de7699265a3bb08941b6c27faaf4fc8541c5a66b15838e9",
+    "frontend/public/models/v3/small-carton.glb": "10ae707579214c6ef87bf1897a04c35c59c913ca6093d5e511f8515c9354f317",
+    "frontend/public/models/v3/standard-carton.glb": "eaeb8b62e0451c28dd2468df0a8f6f904f6cd1bf67b6f8c3147a18b38a115721",
+    "frontend/public/models/v3/heavy-box.glb": "3464429a21139139556026f3bb7ff0ca515844780a8348cbf54ed58ef1a301a5",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "frontend/public/models/v3/ibc.glb": "25ea85ca946f8afa6e032dd9462318bc5d656627b94ea19bf0c84fcda87dc63a",
+    "frontend/public/models/v3/long-bundle.glb": "8e2659783485decda0f21ee20e68a32c5e7faf1cc1d346989bfca822e8907d7b",
+    "frontend/public/models/v3/drum.glb": "8a9c315306b2aa7ef6534f2491b0f307dd027ce90820c480a29a99912904ed24",
+    "frontend/public/models/v3/fragile-crate.glb": "acb07b7587c5e32be886e9ee998bed5f918b5ff7bbd064021cabeb3264c204b1",
+    "frontend/public/data/v3/seated-driver-pose.json": "5478b84a85ed33ff2f54a4620522756ad5b26d77239a118c99dcc61ebe11c7e0",
+    "frontend/src/adaptive-v3/warehouseReceivingManualTransfer.ts": "9b18eac8560cdb2aa5cf8c8c4e6efd4311545c046f75ca726f07cb613b256aa7",
+    "frontend/src/adaptive-v3/warehouseManualGripPose.ts": "ffdcff592b595554faa9926208da2993541fd40dd7bf862a1d225220e46c68a4",
+    "frontend/src/adaptive-v3/warehouseReceivingWorkflowRoute.ts": "f44df6ee6236a7060b933f1acbc0c0161dcc226675bc3fcaab0cd9c61888619a",
+    "frontend/public/data/v3/scenarios/N1.json": "b8ad34e25ff27cd40e4656bef541e6a69aee475f3257b4af8b5695b87d0998b5",
+    "frontend/public/models/v3/rack-standard.glb": "5917721fd91de2dd755ec9929284ded8ceee5285366111f48145c8aa097ca866"
+  },
+  "frames": [
+    {
+      "at_s": 0,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 0.7172872926907542,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 1.4345745853815084,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 2.1518618780722627,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 2.869149170763017,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 3.586436463453771,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 4.303723756144525,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 5.0210110488352795,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 5.738298341526034,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 6.4555856342167885,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 7.172872926907542,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 7.890160219598297,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 8.60744751228905,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 9.324734804979805,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 10.042022097670559,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 10.759309390361315,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 11.476596683052067,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 12.193883975742821,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 12.911171268433577,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 13.628458561124331,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 14.345745853815083,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 15.06303314650584,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 15.780320439196593,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 16.497607731887346,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 17.2148950245781,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 17.932182317268857,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 18.64946960995961,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 19.366756902650362,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 20.084044195341118,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 20.801331488031874,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 21.51861878072263,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 22.23590607341338,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 22.953193366104134,
+      "phase": "receiver_empty_approach",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 23.67048065879489,
+      "phase": "receiver_prepares_native_hands",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 24.387767951485642,
+      "phase": "receiver_prepares_native_hands",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 25.1050552441764,
+      "phase": "receiver_prepares_native_hands",
+      "visible": false,
+      "owner": "upstream:IN_E_PARCEL",
+      "completed": false
+    },
+    {
+      "at_s": 25.822342536867154,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 26.539629829557907,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 27.256917122248662,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 27.97420441493942,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 28.691491707630167,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 29.408779000320923,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 30.12606629301168,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 30.84335358570243,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 31.560640878393187,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 32.27792817108394,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 32.99521546377469,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 33.71250275646545,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 34.4297900491562,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 35.14707734184696,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 35.864364634537715,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 36.581651927228464,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 37.29893921991922,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 38.016226512609975,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 38.733513805300724,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 39.45080109799148,
+      "phase": "receiver_checks_held_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 40.168088390682236,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 40.88537568337299,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 41.60266297606375,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 42.3199502687545,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 43.03723756144526,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 43.75452485413601,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 44.47181214682676,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 45.18909943951752,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 45.90638673220827,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 46.623674024899024,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 47.34096131758978,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 48.058248610280536,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 48.775535902971285,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 49.49282319566205,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 50.2101104883528,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 50.927397781043545,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 51.64468507373431,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 52.36197236642506,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 53.07925965911581,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 53.79654695180657,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 54.513834244497325,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 55.23112153718807,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 55.94840882987884,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 56.665696122569585,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 57.382983415260334,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 58.1002707079511,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 58.817558000641846,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 59.5348452933326,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 60.25213258602336,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 60.96941987871411,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 61.68670717140486,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 62.403994464095625,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 63.121281756786374,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 63.83856904947712,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 64.55585634216789,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 65.27314363485864,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 65.99043092754938,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 66.70771822024015,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 67.4250055129309,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 68.14229280562165,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 68.8595800983124,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 69.57686739100316,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 70.29415468369392,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 71.01144197638466,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 71.72872926907543,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 72.44601656176617,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 73.16330385445693,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 73.88059114714768,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 74.59787843983844,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 75.3151657325292,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 76.03245302521995,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 76.7497403179107,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 77.46702761060145,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 78.18431490329222,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 78.90160219598296,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 79.61888948867372,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 80.33617678136447,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 81.05346407405523,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 81.77075136674598,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 82.48803865943674,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 83.2053259521275,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 83.92261324481824,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 84.639900537509,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 85.35718783019975,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 86.07447512289052,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 86.79176241558126,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 87.50904970827202,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 88.22633700096277,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 88.94362429365351,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 89.66091158634428,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 90.37819887903504,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 91.09548617172578,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 91.81277346441654,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 92.53006075710731,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 93.24734804979805,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 93.9646353424888,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 94.68192263517956,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 95.3992099278703,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 96.11649722056107,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 96.83378451325183,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 97.55107180594257,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 98.26835909863333,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 98.9856463913241,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 99.70293368401484,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 100.4202209767056,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 101.13750826939635,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 101.85479556208709,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 102.57208285477786,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 103.28937014746862,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 104.00665744015936,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 104.72394473285011,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 105.44123202554088,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 106.15851931823163,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 106.87580661092238,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 107.59309390361314,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 108.31038119630388,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 109.02766848899465,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 109.7449557816854,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 110.46224307437615,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 111.1795303670669,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 111.89681765975767,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 112.61410495244841,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 113.33139224513917,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 114.04867953782993,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 114.76596683052067,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 115.48325412321144,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 116.2005414159022,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 116.91782870859294,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 117.63511600128369,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 118.35240329397446,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 119.0696905866652,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 119.78697787935596,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 120.50426517204671,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 121.22155246473746,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 121.93883975742823,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 122.65612705011898,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 123.37341434280972,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 124.09070163550048,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 124.80798892819125,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 125.52527622088199,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 126.24256351357275,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 126.9598508062635,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 127.67713809895425,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 128.394425391645,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 129.11171268433577,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 129.8289999770265,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 130.54628726971728,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 131.26357456240802,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 131.98086185509877,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 132.69814914778954,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 133.4154364404803,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 134.13272373317105,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 134.8500110258618,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 135.56729831855256,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 136.2845856112433,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 137.00187290393407,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 137.7191601966248,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 138.43644748931555,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 139.15373478200632,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 139.87102207469707,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 140.58830936738784,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 141.30559666007858,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 142.02288395276932,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 142.7401712454601,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 143.45745853815086,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 144.1747458308416,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 144.89203312353234,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 145.6093204162231,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 146.32660770891385,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 147.04389500160462,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 147.76118229429537,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 148.4784695869861,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 149.19575687967688,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 149.91304417236765,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 150.6303314650584,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 151.34761875774913,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 152.0649060504399,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 152.78219334313064,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 153.4994806358214,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 154.21676792851216,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 154.9340552212029,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 155.65134251389367,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 156.36862980658444,
+      "phase": "receiver_carries_whole_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 157.08591709927518,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 157.80320439196592,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 158.5204916846567,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 159.23777897734743,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 159.9550662700382,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 160.67235356272894,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 161.38964085541969,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 162.10692814811046,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 162.82421544080123,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 163.54150273349197,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 164.2587900261827,
+      "phase": "receiver_lowers_clear_HU",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 164.97607731887348,
+      "phase": "receiver_inserts_into_free_L1",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 165.69336461156422,
+      "phase": "receiver_inserts_into_free_L1",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 166.410651904255,
+      "phase": "receiver_inserts_into_free_L1",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 167.12793919694573,
+      "phase": "receiver_inserts_into_free_L1",
+      "visible": true,
+      "owner": "R02",
+      "completed": false
+    },
+    {
+      "at_s": 167.84522648963647,
+      "phase": "receiver_releases_supported_HU",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 168.56251378232724,
+      "phase": "receiver_releases_supported_HU",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 169.279801075018,
+      "phase": "receiver_releases_supported_HU",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 169.99708836770876,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 170.7143756603995,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 171.43166295309027,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 172.14895024578104,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 172.86623753847178,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 173.58352483116252,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 174.30081212385326,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 175.01809941654403,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 175.7353867092348,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 176.45267400192554,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 177.16996129461631,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 177.88724858730703,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 178.6045358799978,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 179.32182317268857,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 180.0391104653793,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 180.75639775807008,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 181.47368505076085,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 182.19097234345156,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 182.90825963614233,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 183.62554692883307,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 184.34283422152384,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 185.06012151421461,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 185.77740880690533,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 186.4946960995961,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 187.21198339228684,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 187.9292706849776,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 188.64655797766838,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 189.36384527035912,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 190.08113256304986,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 190.7984198557406,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 191.51570714843137,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 192.23299444112214,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 192.9502817338129,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 193.66756902650366,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 194.38485631919437,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 195.10214361188514,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 195.8194309045759,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 196.53671819726665,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 197.25400548995742,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 197.9712927826482,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 198.6885800753389,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 199.40586736802967,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 200.12315466072042,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 200.8404419534112,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 201.55772924610196,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 202.2750165387927,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 202.99230383148344,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 203.70959112417418,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 204.42687841686495,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 205.14416570955572,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 205.86145300224646,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 206.57874029493723,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 207.29602758762795,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 208.01331488031872,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 208.7306021730095,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 209.44788946570023,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 210.165176758391,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 210.88246405108177,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 211.59975134377248,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 212.31703863646325,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 213.034325929154,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 213.75161322184476,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 214.46890051453553,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 215.18618780722628,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 215.90347509991702,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 216.62076239260776,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 217.33804968529853,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 218.0553369779893,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 218.77262427068004,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 219.4899115633708,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 220.20719885606152,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 220.9244861487523,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 221.64177344144306,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 222.3590607341338,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 223.07634802682458,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 223.79363531951535,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 224.51092261220606,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 225.22820990489683,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 225.94549719758757,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 226.66278449027834,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 227.3800717829691,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 228.09735907565985,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 228.8146463683506,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 229.53193366104134,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 230.2492209537321,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 230.96650824642288,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 231.68379553911362,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 232.4010828318044,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 233.1183701244951,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 233.83565741718587,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 234.55294470987664,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 235.27023200256738,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 235.98751929525815,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 236.70480658794892,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 237.42209388063964,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 238.1393811733304,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 238.85666846602115,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 239.57395575871192,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 240.2912430514027,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 241.00853034409343,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 241.72581763678417,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 242.4431049294749,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 243.16039222216568,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 243.87767951485645,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 244.5949668075472,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 245.31225410023796,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 246.02954139292868,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 246.74682868561945,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 247.46411597831022,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 248.18140327100096,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 248.89869056369173,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 249.6159778563825,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 250.3332651490732,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 251.05055244176398,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 251.76783973445472,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 252.4851270271455,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 253.20241431983627,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 253.919701612527,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 254.63698890521775,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 255.3542761979085,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 256.07156349059926,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 256.78885078329,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 257.5061380759808,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 258.22342536867154,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 258.9407126613623,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 259.657999954053,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 260.37528724674377,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 261.09257453943457,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 261.8098618321253,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 262.52714912481605,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 263.2444364175068,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 263.96172371019753,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 264.67901100288833,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 265.3962982955791,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 266.1135855882698,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 266.8308728809606,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 267.5481601736513,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 268.2654474663421,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 268.98273475903284,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 269.7000220517236,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 270.4173093444144,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 271.1345966371051,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 271.85188392979586,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 272.5691712224866,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 273.28645851517734,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 274.00374580786814,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 274.7210331005589,
+      "phase": "receiver_returns_home",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    },
+    {
+      "at_s": 275.4383203932496,
+      "phase": "receiving_completed_visual",
+      "visible": true,
+      "owner": "v3:slot:STANDARD_E:016:L1:B1",
+      "completed": true
+    }
+  ],
+  "contact_frames": [
+    {
+      "at_s": 25.822342536867154,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 26.539629829557907,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 27.256917122248662,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 27.97420441493942,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 28.691491707630167,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 29.408779000320923,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 30.12606629301168,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 30.84335358570243,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 31.560640878393187,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 32.27792817108394,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 32.99521546377469,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 33.71250275646545,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 34.4297900491562,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 35.14707734184696,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 35.864364634537715,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 36.581651927228464,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 37.29893921991922,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 38.016226512609975,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 38.733513805300724,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 39.45080109799148,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 40.168088390682236,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 40.88537568337299,
+      "errors": [
+        1.7924509698921552e-7,
+        1.7924509403635027e-7
+      ]
+    },
+    {
+      "at_s": 41.60266297606375,
+      "errors": [
+        1.7924508917109247e-7,
+        1.7924509153801738e-7
+      ]
+    },
+    {
+      "at_s": 42.3199502687545,
+      "errors": [
+        1.7924507909349635e-7,
+        1.7924509146318673e-7
+      ]
+    },
+    {
+      "at_s": 43.03723756144526,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 43.75452485413601,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 44.47181214682676,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 45.18909943951752,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 45.90638673220827,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 46.623674024899024,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 47.34096131758978,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 48.058248610280536,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 48.775535902971285,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 49.49282319566205,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 50.2101104883528,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 50.927397781043545,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 51.64468507373431,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 52.36197236642506,
+      "errors": [
+        1.792451233336474e-7,
+        1.7924511362326646e-7
+      ]
+    },
+    {
+      "at_s": 53.07925965911581,
+      "errors": [
+        1.792450983095238e-7,
+        1.792451142343113e-7
+      ]
+    },
+    {
+      "at_s": 53.79654695180657,
+      "errors": [
+        1.792450932413098e-7,
+        1.7924510670651622e-7
+      ]
+    },
+    {
+      "at_s": 54.513834244497325,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 55.23112153718807,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 55.94840882987884,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 56.665696122569585,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 57.382983415260334,
+      "errors": [
+        1.7924509160274968e-7,
+        1.7924509160274968e-7
+      ]
+    },
+    {
+      "at_s": 58.1002707079511,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 58.817558000641846,
+      "errors": [
+        1.7924509160274968e-7,
+        1.7924509160274968e-7
+      ]
+    },
+    {
+      "at_s": 59.5348452933326,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 60.25213258602336,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 60.96941987871411,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 61.68670717140486,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 62.403994464095625,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 63.121281756786374,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 63.83856904947712,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 64.55585634216789,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 65.27314363485864,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 65.99043092754938,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 66.70771822024015,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 67.4250055129309,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 68.14229280562165,
+      "errors": [
+        1.7924509160274968e-7,
+        1.7924509160274968e-7
+      ]
+    },
+    {
+      "at_s": 68.8595800983124,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 69.57686739100316,
+      "errors": [
+        1.7924509160274968e-7,
+        1.7924509160274968e-7
+      ]
+    },
+    {
+      "at_s": 70.29415468369392,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 71.01144197638466,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 71.72872926907543,
+      "errors": [
+        1.7924509160274968e-7,
+        1.7924509160274968e-7
+      ]
+    },
+    {
+      "at_s": 72.44601656176617,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 73.16330385445693,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 73.88059114714768,
+      "errors": [
+        1.7924509167865852e-7,
+        1.7924509167865852e-7
+      ]
+    },
+    {
+      "at_s": 74.59787843983844,
+      "errors": [
+        1.792450916407041e-7,
+        1.792450916407041e-7
+      ]
+    },
+    {
+      "at_s": 75.3151657325292,
+      "errors": [
+        1.7924510897474356e-7,
+        1.7924509227740411e-7
+      ]
+    },
+    {
+      "at_s": 76.03245302521995,
+      "errors": [
+        1.792450926417004e-7,
+        1.7924510861741866e-7
+      ]
+    },
+    {
+      "at_s": 76.7497403179107,
+      "errors": [
+        1.7924512289681522e-7,
+        1.792450725696743e-7
+      ]
+    },
+    {
+      "at_s": 77.46702761060145,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 78.18431490329222,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 78.90160219598296,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 79.61888948867372,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 80.33617678136447,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 81.05346407405523,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 81.77075136674598,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 82.48803865943674,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 83.2053259521275,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 83.92261324481824,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 84.639900537509,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 85.35718783019975,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 86.07447512289052,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 86.79176241558126,
+      "errors": [
+        1.792450797948894e-7,
+        1.792450797948894e-7
+      ]
+    },
+    {
+      "at_s": 87.50904970827202,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 88.22633700096277,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 88.94362429365351,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 89.66091158634428,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 90.37819887903504,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 91.09548617172578,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 91.81277346441654,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 92.53006075710731,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 93.24734804979805,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 93.9646353424888,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 94.68192263517956,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 95.3992099278703,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 96.11649722056107,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 96.83378451325183,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 97.55107180594257,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 98.26835909863333,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 98.9856463913241,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 99.70293368401484,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 100.4202209767056,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 101.13750826939635,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 101.85479556208709,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 102.57208285477786,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 103.28937014746862,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 104.00665744015936,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 104.72394473285011,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 105.44123202554088,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 106.15851931823163,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 106.87580661092238,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 107.59309390361314,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 108.31038119630388,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 109.02766848899465,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 109.7449557816854,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 110.46224307437615,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 111.1795303670669,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 111.89681765975767,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 112.61410495244841,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 113.33139224513917,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 114.04867953782993,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 114.76596683052067,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 115.48325412321144,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 116.2005414159022,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 116.91782870859294,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 117.63511600128369,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 118.35240329397446,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 119.0696905866652,
+      "errors": [
+        1.7924508911150185e-7,
+        1.7924508266059863e-7
+      ]
+    },
+    {
+      "at_s": 119.78697787935596,
+      "errors": [
+        1.792450967446265e-7,
+        1.792450986099496e-7
+      ]
+    },
+    {
+      "at_s": 120.50426517204671,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 121.22155246473746,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 121.93883975742823,
+      "errors": [
+        1.7924509623212895e-7,
+        1.7924509623212895e-7
+      ]
+    },
+    {
+      "at_s": 122.65612705011898,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 123.37341434280972,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 124.09070163550048,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 124.80798892819125,
+      "errors": [
+        1.792450963080378e-7,
+        1.792450963080378e-7
+      ]
+    },
+    {
+      "at_s": 125.52527622088199,
+      "errors": [
+        1.792450963080378e-7,
+        1.792450963080378e-7
+      ]
+    },
+    {
+      "at_s": 126.24256351357275,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 126.9598508062635,
+      "errors": [
+        1.792450963080378e-7,
+        1.792450963080378e-7
+      ]
+    },
+    {
+      "at_s": 127.67713809895425,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 128.394425391645,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 129.11171268433577,
+      "errors": [
+        1.792450963080378e-7,
+        1.792450963080378e-7
+      ]
+    },
+    {
+      "at_s": 129.8289999770265,
+      "errors": [
+        1.7924509623212895e-7,
+        1.7924509623212895e-7
+      ]
+    },
+    {
+      "at_s": 130.54628726971728,
+      "errors": [
+        1.7924509623212895e-7,
+        1.7924509623212895e-7
+      ]
+    },
+    {
+      "at_s": 131.26357456240802,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 131.98086185509877,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 132.69814914778954,
+      "errors": [
+        1.7924509632052547e-7,
+        1.7924508716284236e-7
+      ]
+    },
+    {
+      "at_s": 133.4154364404803,
+      "errors": [
+        1.7924509017447674e-7,
+        1.7924508993505586e-7
+      ]
+    },
+    {
+      "at_s": 134.13272373317105,
+      "errors": [
+        1.7924507978142737e-7,
+        1.7924509066933094e-7
+      ]
+    },
+    {
+      "at_s": 134.8500110258618,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 135.56729831855256,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 136.2845856112433,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 137.00187290393407,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 137.7191601966248,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 138.43644748931555,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 139.15373478200632,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 139.87102207469707,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 140.58830936738784,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 141.30559666007858,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 142.02288395276932,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 142.7401712454601,
+      "errors": [
+        1.7924509228352422e-7,
+        1.7924509228352422e-7
+      ]
+    },
+    {
+      "at_s": 143.45745853815086,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 144.1747458308416,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 144.89203312353234,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 145.6093204162231,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 146.32660770891385,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 147.04389500160462,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 147.76118229429537,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 148.4784695869861,
+      "errors": [
+        1.7924509235943306e-7,
+        1.7924509235943306e-7
+      ]
+    },
+    {
+      "at_s": 149.19575687967688,
+      "errors": [
+        1.7924509232147865e-7,
+        1.7924509232147865e-7
+      ]
+    },
+    {
+      "at_s": 149.91304417236765,
+      "errors": [
+        1.7924508955483437e-7,
+        1.7924510223787948e-7
+      ]
+    },
+    {
+      "at_s": 150.6303314650584,
+      "errors": [
+        1.792451038585479e-7,
+        1.7924509573220356e-7
+      ]
+    },
+    {
+      "at_s": 151.34761875774913,
+      "errors": [
+        1.7924509867746293e-7,
+        1.7924509539802765e-7
+      ]
+    },
+    {
+      "at_s": 152.0649060504399,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 152.78219334313064,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 153.4994806358214,
+      "errors": [
+        1.7924509623212895e-7,
+        1.7924509623212895e-7
+      ]
+    },
+    {
+      "at_s": 154.21676792851216,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 154.9340552212029,
+      "errors": [
+        1.7924509623212895e-7,
+        1.7924509623212895e-7
+      ]
+    },
+    {
+      "at_s": 155.65134251389367,
+      "errors": [
+        1.7924509623212895e-7,
+        1.7924509623212895e-7
+      ]
+    },
+    {
+      "at_s": 156.36862980658444,
+      "errors": [
+        1.7924509627008338e-7,
+        1.7924509627008338e-7
+      ]
+    },
+    {
+      "at_s": 157.08591709927518,
+      "errors": [
+        0.000035505325300198636,
+        0.000035505325300198636
+      ]
+    },
+    {
+      "at_s": 157.80320439196592,
+      "errors": [
+        0.00002475997991356062,
+        0.00002475997991356062
+      ]
+    },
+    {
+      "at_s": 158.5204916846567,
+      "errors": [
+        0.00003369048176984042,
+        0.00003369048176984042
+      ]
+    },
+    {
+      "at_s": 159.23777897734743,
+      "errors": [
+        0.00003555176734446247,
+        0.00003555176734446247
+      ]
+    },
+    {
+      "at_s": 159.9550662700382,
+      "errors": [
+        0.000017281342668474277,
+        0.000017281342668474277
+      ]
+    },
+    {
+      "at_s": 160.67235356272894,
+      "errors": [
+        0.00001625945238454128,
+        0.00001625945238454128
+      ]
+    },
+    {
+      "at_s": 161.38964085541969,
+      "errors": [
+        0.000011139720302016081,
+        0.000011139720297822697
+      ]
+    },
+    {
+      "at_s": 162.10692814811046,
+      "errors": [
+        0.000010650749267036822,
+        0.000010650749267036822
+      ]
+    },
+    {
+      "at_s": 162.82421544080123,
+      "errors": [
+        0.000008621954773759245,
+        0.000008621954773759245
+      ]
+    },
+    {
+      "at_s": 163.54150273349197,
+      "errors": [
+        0.00001583046057248512,
+        0.00001583046057248512
+      ]
+    },
+    {
+      "at_s": 164.2587900261827,
+      "errors": [
+        2.7299858468066416e-7,
+        2.7299858468066416e-7
+      ]
+    },
+    {
+      "at_s": 164.97607731887348,
+      "errors": [
+        4.931925577616077e-8,
+        4.931925577616077e-8
+      ]
+    },
+    {
+      "at_s": 165.69336461156422,
+      "errors": [
+        4.931925577616077e-8,
+        4.931925577616077e-8
+      ]
+    },
+    {
+      "at_s": 166.410651904255,
+      "errors": [
+        4.931925577616077e-8,
+        4.931925577616077e-8
+      ]
+    },
+    {
+      "at_s": 167.12793919694573,
+      "errors": [
+        4.931925577616077e-8,
+        4.931925577616077e-8
+      ]
+    }
+  ],
+  "scope": "Actual original24workers/2vehicles/source530HU parts; one receiver and new wholeSTD incoming. Reused exact65knots/practical<=1mm, no newDLS/no old2µm/fullmaterial/traffic/stance certificate. Target shelf source triangles tested; supplier handover is explicit boundary."
+}

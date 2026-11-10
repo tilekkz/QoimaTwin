@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+import ts from 'typescript';
+const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),out=path.join(repo,'work/v3/full-tz-closeout-20261109/scenario-effects'),cache=new Map(),pins={};fs.mkdirSync(out,{recursive:true});
+const read=p=>{const b=fs.readFileSync(path.join(repo,p));pins[p]=createHash('sha256').update(b).digest('hex');return b;};
+function compile(p){if(cache.has(p))return cache.get(p);const target=path.join(out,'runtime',p+'.mjs');cache.set(p,target);let code=ts.transpileModule(read(p).toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;code=code.replace(/import\s+(\w+)\s+from\s+['"]([^'"]+\.json)['"];?/g,(_,name,spec)=>'const '+name+'='+read(path.posix.normalize(path.posix.dirname(p)+'/'+spec)).toString()+';').replace(/from ['"](\.[^'"]+)['"]/g,(_,spec)=>`from '${pathToFileURL(compile(path.posix.normalize(path.posix.dirname(p)+'/'+spec+'.ts'))).href}'`).replace(/from ['"](three(?:\/[^'"]+)?)['"]/g,(_,id)=>`from '${pathToFileURL(path.join(repo,'frontend/node_modules',id==='three'?'three/build/three.module.js':id)).href}'`);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,code);return target;}
+const load=n=>import(pathToFileURL(compile('frontend/src/adaptive-v3/'+n+'.ts')));
+const [{adaptWarehouseV3},{validateRoutePolicy},{compileWarehouseHeavyInboundPlan},{compileWarehouseScenarioExecution},{createWarehouseScenarioEffects}]=await Promise.all(['warehouseAdapter','warehouseRouting','warehouseHeavyInboundPlan','warehouseScenarioExecution','warehouseScenarioEffects'].map(load));
+const files={fixture:'frontend/public/data/v3/warehouse-fixture-v3.json',layout:'frontend/public/data/adaptive-v3/layout-manifest.json',registry:'frontend/public/data/v3/worker-registry-v3.json',profiles:'frontend/public/data/v3/worker-profiles-v3.json'},texts=Object.fromEntries(Object.entries(files).map(([k,p])=>[k,read(p).toString()]));
+const bundle=await adaptWarehouseV3(texts),policy=await validateRoutePolicy(read('frontend/public/data/v3/route-policy-v3.json').toString(),bundle),heavy=compileWarehouseHeavyInboundPlan(bundle,JSON.parse(read('frontend/public/data/v3/heavy-inbound-fixture.json'))),plan=await compileWarehouseScenarioExecution(bundle,policy,JSON.parse(read('frontend/public/data/v3/scenarios/N2.json')),{scenario_id:'N2',allow_semantic_rebase:true,native_heavy_plan:heavy}),job=plan.jobs.find(j=>j.native_case==='connected_pallet455');
+let oscillatorCount=0,closeCount=0;
+const param=()=>({value:0,setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}}),node=()=>({connect(){return this;},disconnect(){}});
+const context={state:'running',currentTime:0,sampleRate:48000,destination:{},resume:async()=>{},close:async()=>{closeCount++;},createGain:()=>({...node(),gain:param()}),createOscillator:()=>{oscillatorCount++;return{...node(),frequency:param(),start(){},stop(at){if(at===undefined)this.onended?.();},onended:null};}};
+const fx=createWarehouseScenarioEffects(plan,{createContext:()=>context}),cases=[];
+fx.apply(0,{playing:false,speed:1,discontinuity:true},0);assert.equal(fx.snapshot().muted,true);assert.equal(oscillatorCount,0);cases.push('startup_muted_without_AudioContext_or_cues');
+assert(await fx.unlock());fx.setMuted(false);
+for(const speed of [30,60]){
+ fx.apply(0,{playing:false,speed,discontinuity:true},0);const before=fx.snapshot().cues;
+ fx.apply(job.end_s-.01,{playing:true,speed},1);assert.equal(fx.snapshot().cues,before);
+ fx.apply(job.end_s+.01,{playing:true,speed},2);assert.equal(fx.snapshot().cues,before+1);assert(fx.snapshot().voices<=4);
+ fx.apply(job.end_s+.01,{playing:true,speed},3);assert.equal(fx.snapshot().cues,before+1);
+ fx.apply(job.end_s+.01,{playing:false,speed},4);assert.equal(fx.snapshot().voices,0);
+ fx.apply(0,{playing:false,speed,discontinuity:true},5);assert.equal(fx.snapshot().cues,before+1);
+ fx.apply(job.end_s+1,{playing:false,speed,discontinuity:true},6);assert.equal(fx.snapshot().cues,before+1);
+ fx.apply(job.end_s+1,{playing:true,speed},7);assert.equal(fx.snapshot().cues,before+1);
+ cases.push(speed+'x_crossing_once_repeat_pause_reset_and_forward_seek_silent');
+}
+fx.apply(job.end_s-.01,{playing:false,speed:60,discontinuity:true},20);
+const terminalBefore=fx.snapshot().cues,terminalOscillators=oscillatorCount;
+fx.apply(plan.duration_s,{playing:true,speed:60,terminal:true},21);assert.equal(fx.snapshot().cues,terminalBefore+1);assert.equal(oscillatorCount-terminalOscillators,1,'Final interval emits one completion cue and no motor loop');assert.equal(fx.snapshot().voices,1);
+fx.apply(plan.duration_s,{playing:true,speed:60,terminal:true},22);assert.equal(fx.snapshot().cues,terminalBefore+1);
+fx.apply(plan.duration_s,{playing:false,speed:60},23);assert.equal(fx.snapshot().voices,0);cases.push('natural_terminal_interval_emits_completion_once_without_continuous_motor');
+const state=fx.snapshot();assert.throws(()=>fx.apply(NaN,{playing:true,speed:60}),/INVALID_SCENARIO_TIME/);assert.throws(()=>fx.apply(0,{playing:true,speed:0}),/INVALID_EFFECT_SPEED/);assert.deepEqual(fx.snapshot(),state);cases.push('invalid_time_or_rate_inert');
+fx.setMuted(true);fx.apply(0,{playing:false,speed:60,discontinuity:true});fx.apply(job.end_s+1,{playing:true,speed:60});assert.equal(fx.snapshot().cues,state.cues);assert.equal(fx.snapshot().voices,0);cases.push('muted_crossing_does_not_schedule_audible_events');
+assert.throws(()=>createWarehouseScenarioEffects({...plan}),/ISSUED_SCENARIO_PLAN_REQUIRED/);cases.push('forged_plan_refused');fx.dispose();fx.dispose();assert.equal(closeCount,1);assert.throws(()=>fx.apply(0,{playing:false,speed:1}),/SCENARIO_EFFECTS_DISPOSED/);cases.push('idempotent_dispose_closes_owned_context_once');
+const {compileWarehouseLongScenarioPlan}=await load('warehouseLongScenarioPlan');
+const long=await compileWarehouseLongScenarioPlan(bundle,policy,read('frontend/public/data/v3/additional-heavy-connectors.json').toString());
+const longPlan=await compileWarehouseScenarioExecution(bundle,policy,JSON.parse(read('frontend/public/data/v3/scenarios/N3.json')),{scenario_id:'N3',allow_semantic_rebase:true,native_long_crossdock_plan:long});
+const longFx=createWarehouseScenarioEffects(longPlan,{createContext:()=>context});await longFx.unlock();longFx.setMuted(false);longFx.apply(0,{playing:false,speed:60,discontinuity:true});longFx.apply(long.duration_s+.01,{playing:true,speed:60});assert.equal(longFx.snapshot().cues,0);assert.equal(longFx.snapshot().crossed_completion_events,0);longFx.dispose();cases.push('port_buffer_delivery_does_not_emit_a_dispatched_shipment_cue');
+const drift=Object.keys(pins).filter(p=>createHash('sha256').update(fs.readFileSync(path.join(repo,p))).digest('hex')!==pins[p]);assert.deepEqual(drift,[]);
+const report={passed:true,cases,source_hashes:pins,source_drift:drift,actual_audio_output:false,method:'Actual issued scenario/primaryheavy plan and unchanged shared SFX scheduler, injected silent AudioContext. No speaker output or native contact recertification.',scope:'Common-clock completion cues at30x/60x and lifecycle. Actual browser controls checked separately.'};fs.writeFileSync(path.join(out,'checks.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,cases:cases.length,report:path.join(out,'checks.json')}));

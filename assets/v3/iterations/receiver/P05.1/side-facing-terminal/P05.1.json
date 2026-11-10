@@ -1,0 +1,120 @@
+{
+  "task_id": "P05.1",
+  "passed": true,
+  "reviewer": "root",
+  "source_kind": "visual_fixture_workcell",
+  "engine_operation": false,
+  "glb_sha256": "89fbccd861226cc52c3b9e91be9459cb45f7fc16bb248d33b77614f1b6514578",
+  "bounds_m": {
+    "min": [
+      -1.290000081062317,
+      0.0,
+      -0.5
+    ],
+    "max": [
+      0.8999999761581421,
+      1.3999998569488525,
+      1.75
+    ]
+  },
+  "native_parts": {
+    "station": 49,
+    "pallet": 84
+  },
+  "triangles": 9648,
+  "runtime_batches": 16,
+  "station_floor_contacts": 4,
+  "pallet_floor_contacts": 3,
+  "scan": {
+    "source_part": "unit_body_015",
+    "lens_front_xyz_m": [
+      -0.6899999976158142,
+      1.159999966621399,
+      0.39100000262260437
+    ],
+    "label_xyz_m": [
+      -0.625,
+      1.1150000095367432,
+      0.9600000381469727
+    ],
+    "label_normal_runtime": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "direction_runtime": [
+      0.11314859241247177,
+      -0.07833357155323029,
+      0.990485429763794
+    ],
+    "range_m": 0.57446584931798,
+    "axis_angle_deg": 7.91003695514989,
+    "first_actual_triangle_hit": [
+      -0.625,
+      1.1150000095367432,
+      0.9600000381469727
+    ],
+    "target_error_m": 0.0,
+    "visual_assumption": true,
+    "actual_decoding": false
+  },
+  "HU_instances": 1,
+  "worker_instances": 0,
+  "unchanged_source_hashes": {
+    "assets/v3/blender/packing-station.blend": "39bd08428259e1bc062cb7621480ea76be3f3a25368429d29144994c493bf5ef",
+    "assets/v3/blender/pallet-load.blend": "9fad6db44929a7c33b21ac740c2b606b9ea083c333344a2d453e8abdfd86a6de",
+    "assets/v3/blender/worker-manual.blend": "cbaf236121536ff75b918ece4de89601556977ac7091f79bc4d12b0ba48a0423",
+    "frontend/public/models/v3/packing-station.glb": "1eb7d31499634468ff2d835055f03e54eeb04bdb3a1ffaaa076591376d7ca304",
+    "frontend/public/models/v3/pallet-load.glb": "4fa2fda74115016160ad9a4b8ee68ff178cc8a653159dc4f5266d99af7dd5c34",
+    "assets/v3/blender/packing-station.stats.json": "d5d602f6385190a88d7de389c0d9ea35689946afe7319ca0d01623e67af557b2"
+  },
+  "browser_lifecycle": {
+    "owned_pid": 7224,
+    "cleanup": "graceful",
+    "terminated": true,
+    "termination_check": "owned PID OS probe after bounded exit wait",
+    "elapsed_ms": 4832
+  },
+  "reviewed_views": [
+    {
+      "view": "front",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/front.png",
+      "sha256": "66fa8c3106b6959cd983395e1ee2e008a6760d5b44f7513f13409fa281d61c24",
+      "observation": "One unchanged full-height pallet,3cartons across/4layers, integral pallet floor support; existing station partly behind HU, no extra worker."
+    },
+    {
+      "view": "side",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/side.png",
+      "sha256": "1b41fb58043d57f4c213e12c3335c0f7157647724eb104213eea28c23fe6a39b",
+      "observation": "Two cartons per layer, scanner faces the existing upper label across a clear gap; source pallet and four station feet at floor."
+    },
+    {
+      "view": "rear",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/rear.png",
+      "sha256": "d8e8941b98d8e295f089b9a28de40c3e870f27733ed58fff1125d821ea67d24e",
+      "observation": "Station back/screen stand and pallet construction remain complete; no paper-thin model or missing rear."
+    },
+    {
+      "view": "quarter",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/quarter.png",
+      "sha256": "6989d242ba3d8df659608f37997c16d757457baaf88780a42dddd7c64b13ae46",
+      "observation": "New opposite diagonal exposes the supported side-facing display, real scanner lane and complete unchanged pallet; operator side is accessible."
+    },
+    {
+      "view": "top",
+      "path": "assets/v3/qa-browser/receiver-workcell-fixture/top.png",
+      "sha256": "d7a59d464edc4c9fc8954db7a1619ef52e411d305d18d00f1b303ed621077add",
+      "observation": "Clear physical separation between the existing station and pallet; scanner lane unobstructed; no overlap/hidden central cargo."
+    }
+  ],
+  "scope": "Only workcell/supports/actual synthetic scan sightline accepted. Human contact/action and UI states remain P05.2/.3. No actual decoder/backend receipt or human pallet lift.",
+  "screen_base_actual_support": [
+    [
+      -0.7000000476837158,
+      0.9199999570846558,
+      -0.3199999928474426
+    ]
+  ],
+  "screen_swivel_yaw_rad": -1.5707963267948966,
+  "assembly_revision": "Entire existing monitor/base/stem turned90deg toward operator; initial workcell retained; no original P08 source geometry change."
+}

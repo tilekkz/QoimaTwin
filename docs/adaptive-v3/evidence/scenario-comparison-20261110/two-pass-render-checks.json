@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "scope": "Real Three.js orthographic matrices/scene identities plus a no-WebGL renderer-state oracle. No GPU/browser/native case admission or performance certificate.",
+  "checks": [
+    "same_scene_two_equal_aspect_stacked_passes_A_above_B_no_population_copy",
+    "parented_world_camera_horizontal_projection_and_pixel_isotropy_preserved",
+    "odd_height_clear_seam_and_all_viewport_scissor_clearflags_target_projection_state_restored",
+    "single_variant_renders_full_original_projection_and_restores_false_autoClear",
+    "apply_and_render_exceptions_restore_selected_variant_state_and_release_guard",
+    "restore_failure_keeps_original_failure_and_still_restores_renderer_camera",
+    "reentrant_renderer_scene_or_camera_refused_before_nested_mutation",
+    "source_projection_fields_matrices_and_existing_view_object_restored_after_callback",
+    "invalid_options_and_nonfinite_or_too_small_viewport_are_inert",
+    "singular_or_nonorthographic_projection_refused_before_mutation",
+    "fresh_frameAt_and_parent_TRS_evaluated_before_renderer_without_mutating_stale_source_matrices"
+  ],
+  "source_hashes": {
+    "frontend/src/adaptive-v3/warehouseScenarioComparisonRender.ts": "1cf462291de9b9c28bb6348e672e394532e204f0bdc4d36efbce60a40e1e32fb",
+    "frontend/tools/check-warehouse-scenario-comparison-render-v3.mjs": "88fd0a445dd9a8e16ab8014e284e83720f0e47f236a083c282d4d97cb6932eed"
+  },
+  "limitations": [
+    "Page owns same-input paired-plan guard and absolute-time sampling.",
+    "One logical warehouse is drawn twice; this helper creates camera copies only.",
+    "Actual native N4 A/B and N0–N3 source cases require the separate affected browser integration run."
+  ]
+}

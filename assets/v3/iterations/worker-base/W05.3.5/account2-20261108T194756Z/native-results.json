@@ -1,0 +1,3444 @@
+{
+  "task": "W05.3.5",
+  "started_at_utc": "2026-11-08T19:51:05.931Z",
+  "finished_at_utc": "2026-11-08T19:51:06.656Z",
+  "executed": true,
+  "execution_kind": "CPU Node / actual GLTFLoader hierarchy / exact AST extracted frozen native helpers plus own bounded LM",
+  "source_pose": {
+    "position_m": [
+      0,
+      1,
+      0.56
+    ],
+    "yaw_rad": -3.141592653589793,
+    "world_bottom_m": [
+      17.7,
+      1,
+      42.62
+    ],
+    "world_yaw_rad": 4.71238898038469,
+    "worker_world": [
+      17.14,
+      0,
+      42.62
+    ],
+    "worker_yaw_rad": 7.853981633974483
+  },
+  "helper_extraction": {
+    "source": "frontend/tools/solve-worker-base-carry-v3.mjs",
+    "sha256": "5ba9e5ec5856ee8dccd5788223152582feda9e893614d41d2861be70baf6150d",
+    "functions_and_variables": [
+      "const q=a=>new T.Quaternion",
+      "function linear",
+      "const norm=v=>v.reduce",
+      "function chain",
+      "function forward",
+      "function residual",
+      "function components",
+      "function geometry",
+      "function winding",
+      "function nearest",
+      "const overlaps=",
+      "function interior",
+      "function witness",
+      "function clip",
+      "function envelopeInteriors",
+      "function planeOverlap"
+    ],
+    "writer_executed": false
+  },
+  "geometry": {
+    "worker_meshes": 23,
+    "worker_triangles": 2848,
+    "cargo_meshes": 4,
+    "cargo_triangles": 796,
+    "cargo_bounds": {
+      "min": [
+        -0.16000001132488254,
+        1,
+        0.4399999994516839
+      ],
+      "max": [
+        0.1600000038743019,
+        1.2400000039488077,
+        0.679999997317791
+      ]
+    }
+  },
+  "stats": {
+    "attempts": 1,
+    "side_solves": 2,
+    "LM_iterations": 2,
+    "best_weighted_residual": 8.377731976683705e-12
+  },
+  "native_endpoint_established": true,
+  "endpoint": {
+    "y": 1.08,
+    "z": 0.44,
+    "tangent": -1.4,
+    "solutions": {
+      "L": {
+        "angles": [
+          -0.6504904911082828,
+          0.55,
+          -0.2927228655050811,
+          -1.3309610961629978,
+          -0.12,
+          0.11682838845376949,
+          1.029133436108498,
+          0.5887784728091617,
+          0.1861112137473792,
+          0.4
+        ],
+        "iterations": 0,
+        "residual_weighted": 8.377731976683705e-12,
+        "wrist_position_error_m": 4.965783845404412e-13,
+        "limits_rad": [
+          [
+            -2.2,
+            0.7
+          ],
+          [
+            -0.55,
+            0.55
+          ],
+          [
+            -0.7,
+            0.7
+          ],
+          [
+            -2.2,
+            0.15
+          ],
+          [
+            -0.12,
+            0.12
+          ],
+          [
+            -0.12,
+            0.12
+          ],
+          [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          [
+            -0.6,
+            0.6
+          ],
+          [
+            -0.65,
+            0.65
+          ],
+          [
+            -0.4,
+            0.4
+          ]
+        ],
+        "active_limits": [
+          1,
+          4,
+          9
+        ]
+      },
+      "R": {
+        "angles": [
+          -0.6504904911082828,
+          -0.55,
+          0.2927228655050811,
+          -1.3309610961629978,
+          0.12,
+          -0.11682838845376949,
+          -1.029133436108498,
+          0.5887784728091617,
+          -0.1861112137473792,
+          -0.4
+        ],
+        "iterations": 0,
+        "residual_weighted": 8.377731976683705e-12,
+        "wrist_position_error_m": 4.965783845404412e-13,
+        "limits_rad": [
+          [
+            -2.2,
+            0.7
+          ],
+          [
+            -0.55,
+            0.55
+          ],
+          [
+            -0.7,
+            0.7
+          ],
+          [
+            -2.2,
+            0.15
+          ],
+          [
+            -0.12,
+            0.12
+          ],
+          [
+            -0.12,
+            0.12
+          ],
+          [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          [
+            -0.6,
+            0.6
+          ],
+          [
+            -0.65,
+            0.65
+          ],
+          [
+            -0.4,
+            0.4
+          ]
+        ],
+        "active_limits": [
+          1,
+          4,
+          9
+        ]
+      }
+    },
+    "contacts": [
+      {
+        "side": "L",
+        "area_sum_m2": 0.00011703800714407153,
+        "maximum_plane_gap_m": 6.257828227829165e-9,
+        "pairs": [
+          {
+            "hand_mesh": "worker-base__batch_12",
+            "hand_triangle": 37,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 130,
+            "area_m2": 0.000031017225321285547,
+            "point_m": [
+              -0.15999999642372134,
+              1.1096146649829977,
+              0.4426865834953908
+            ],
+            "radius_m": 0.4707137241067148,
+            "height_m": 1.1096146649829977,
+            "plane_gap_m": 6.257828227829165e-9,
+            "native_pad_gap_m": 6.257405676945993e-9,
+            "native_cargo_gap_m": 8.882478059288706e-15,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_12",
+            "hand_triangle": 37,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 131,
+            "area_m2": 0.00004821801202079545,
+            "point_m": [
+              -0.15999999642372134,
+              1.106098788966563,
+              0.4414365846874837
+            ],
+            "radius_m": 0.4695383447133373,
+            "height_m": 1.106098788966563,
+            "plane_gap_m": 6.257828227829165e-9,
+            "native_pad_gap_m": 6.257386886421301e-9,
+            "native_cargo_gap_m": 0,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_12",
+            "hand_triangle": 37,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 263,
+            "area_m2": 0.00003780276980199053,
+            "point_m": [
+              -0.15999999642372129,
+              1.115701507950063,
+              0.4449361918916406
+            ],
+            "radius_m": 0.47283000508705625,
+            "height_m": 1.115701507950063,
+            "plane_gap_m": 6.257828172318014e-9,
+            "native_pad_gap_m": 6.2574376236135265e-9,
+            "native_cargo_gap_m": 5.551115123125783e-17,
+            "normal_dot": -1
+          }
+        ],
+        "admissible_patch_pairs": 2,
+        "pass": true
+      },
+      {
+        "side": "R",
+        "area_sum_m2": 0.00011703800714407162,
+        "maximum_plane_gap_m": 1.3708408796997418e-8,
+        "pairs": [
+          {
+            "hand_mesh": "worker-base__batch_15",
+            "hand_triangle": 36,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 122,
+            "area_m2": 0.000010199861207361086,
+            "point_m": [
+              0.1599999964237213,
+              1.119299798324376,
+              0.4413742391970487
+            ],
+            "radius_m": 0.4694797310665972,
+            "height_m": 1.119299798324376,
+            "plane_gap_m": 6.25782820007359e-9,
+            "native_pad_gap_m": 6.257485835048371e-9,
+            "native_cargo_gap_m": 2.7755631126724633e-14,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_15",
+            "hand_triangle": 36,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 123,
+            "area_m2": 0.00000806908531011202,
+            "point_m": [
+              0.1599999964237213,
+              1.1199445528852752,
+              0.4426242380049558
+            ],
+            "radius_m": 0.4706550912558565,
+            "height_m": 1.1199445528852752,
+            "plane_gap_m": 6.25782820007359e-9,
+            "native_pad_gap_m": 6.257483170513112e-9,
+            "native_cargo_gap_m": 0,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_15",
+            "hand_triangle": 36,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 210,
+            "area_m2": 0.00000871603093385485,
+            "point_m": [
+              0.1600000038743019,
+              1.1211506388386852,
+              0.4449361918916406
+            ],
+            "radius_m": 0.4728300076082433,
+            "height_m": 1.1211506388386852,
+            "plane_gap_m": 1.3708408796997418e-8,
+            "native_pad_gap_m": 1.3708058937966783e-8,
+            "native_cargo_gap_m": 0,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_15",
+            "hand_triangle": 37,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 122,
+            "area_m2": 0.00002961464799684607,
+            "point_m": [
+              0.1599999964237213,
+              1.1011217277293044,
+              0.4412842306633114
+            ],
+            "radius_m": 0.4693951119128761,
+            "height_m": 1.1011217277293044,
+            "plane_gap_m": 6.257473289528193e-9,
+            "native_pad_gap_m": 6.257350582128396e-9,
+            "native_cargo_gap_m": 8.438425365424546e-15,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_15",
+            "hand_triangle": 37,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 123,
+            "area_m2": 0.000031351642827761906,
+            "point_m": [
+              0.1599999964237213,
+              1.1054979540082677,
+              0.4425342294712185
+            ],
+            "radius_m": 0.47057044436436496,
+            "height_m": 1.1054979540082677,
+            "plane_gap_m": 6.257473289528193e-9,
+            "native_pad_gap_m": 6.2573758119466305e-9,
+            "native_cargo_gap_m": 0,
+            "normal_dot": -1
+          },
+          {
+            "hand_mesh": "worker-base__batch_15",
+            "hand_triangle": 37,
+            "cargo_mesh": "small-carton__batch_02",
+            "cargo_triangle": 210,
+            "area_m2": 0.000029086738868135687,
+            "point_m": [
+              0.1600000038743019,
+              1.1140686403534865,
+              0.4449361918916406
+            ],
+            "radius_m": 0.4728300076082433,
+            "height_m": 1.1140686403534865,
+            "plane_gap_m": 1.370805388645202e-8,
+            "native_pad_gap_m": 1.370800603583966e-8,
+            "native_cargo_gap_m": 0,
+            "normal_dot": -1
+          }
+        ],
+        "admissible_patch_pairs": 4,
+        "pass": true
+      }
+    ],
+    "mouths": [
+      {
+        "side": "L",
+        "tested": 88,
+        "violations": []
+      },
+      {
+        "side": "R",
+        "tested": 88,
+        "violations": []
+      }
+    ],
+    "anatomy": [
+      {
+        "side": "L",
+        "shoulder_m": [
+          -0.2150000035762787,
+          1.1050000190734863,
+          0
+        ],
+        "elbow_m": [
+          -0.29978706940551225,
+          1.0026778380431336,
+          0.1579282152008063
+        ],
+        "wrist_m": [
+          -0.22000000000047892,
+          1.086634114055639,
+          0.3132838268778241
+        ],
+        "pole_y_m": -0.09266847093806728,
+        "signed_native_bend_rad": -1.3323269830538655,
+        "pass": true
+      },
+      {
+        "side": "R",
+        "shoulder_m": [
+          0.2150000035762787,
+          1.1050000190734863,
+          0
+        ],
+        "elbow_m": [
+          0.29978706940551225,
+          1.0026778380431336,
+          0.1579282152008063
+        ],
+        "wrist_m": [
+          0.22000000000047892,
+          1.086634114055639,
+          0.3132838268778241
+        ],
+        "pole_y_m": -0.09266847093806728,
+        "signed_native_bend_rad": -1.3323269830538655,
+        "pass": true
+      }
+    ],
+    "hu_envelope_interiors": [],
+    "body_HU_witnesses": [],
+    "self_check": {
+      "pair_count": 253,
+      "probes": 389,
+      "crossing_pairs": 815,
+      "observations": [
+        {
+          "meshes": [
+            "worker-base__batch_00",
+            "worker-base__batch_01"
+          ],
+          "bones": [
+            "joint__foot_L",
+            "joint__shin_L"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_00#0",
+            "source_triangle": 38,
+            "point_m": [
+              -0.14566666136185327,
+              0.1597500113248825,
+              -0.0023333340262373286
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000002,
+              0.03646912131960327
+            ],
+            "probes": 2,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_00#0",
+          "source_triangle": 38,
+          "point_m": [
+            -0.14566666136185327,
+            0.1597500113248825,
+            -0.0023333340262373286
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359172,
+            12.566370614359174
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000000002,
+            0.03646912131960327
+          ],
+          "probes": 2,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_01",
+            "worker-base__batch_02"
+          ],
+          "bones": [
+            "joint__shin_L",
+            "joint__thigh_L"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_01#0",
+            "source_triangle": 1,
+            "point_m": [
+              -0.17639598869610681,
+              0.3767143519702619,
+              0.09513133932271674
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002499999999999991,
+              0.009444893195136535
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_01#0",
+          "source_triangle": 1,
+          "point_m": [
+            -0.17639598869610681,
+            0.3767143519702619,
+            0.09513133932271674
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359174,
+            12.566370614359174
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002499999999999991,
+            0.009444893195136535
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_02",
+            "worker-base__batch_22"
+          ],
+          "bones": [
+            "joint__thigh_L",
+            "joint__pelvis"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_02#0",
+            "source_triangle": 1,
+            "point_m": [
+              -0.17390399246132418,
+              0.6150522185940877,
+              0.08873979121342193
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999998916,
+              0.0010960045584435807
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_02#0",
+          "source_triangle": 1,
+          "point_m": [
+            -0.17390399246132418,
+            0.6150522185940877,
+            0.08873979121342193
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.56637061435917,
+            12.566370614359172
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00024999999999998916,
+            0.0010960045584435807
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_03",
+            "worker-base__batch_04"
+          ],
+          "bones": [
+            "joint__foot_R",
+            "joint__shin_R"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_03#0",
+            "source_triangle": 38,
+            "point_m": [
+              0.08433332790931065,
+              0.1597500113248825,
+              -0.0023333340262373286
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000002,
+              0.03918967844421637
+            ],
+            "probes": 2,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_03#0",
+          "source_triangle": 38,
+          "point_m": [
+            0.08433332790931065,
+            0.1597500113248825,
+            -0.0023333340262373286
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.56637061435917,
+            12.566370614359172
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000000002,
+            0.03918967844421637
+          ],
+          "probes": 2,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_04",
+            "worker-base__batch_05"
+          ],
+          "bones": [
+            "joint__shin_R",
+            "joint__thigh_R"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_04#0",
+            "source_triangle": 1,
+            "point_m": [
+              0.03249310729786935,
+              0.37033127728194615,
+              0.09484764707263943
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000002115,
+              0.010005580743079633
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_04#0",
+          "source_triangle": 1,
+          "point_m": [
+            0.03249310729786935,
+            0.37033127728194615,
+            0.09484764707263943
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359172,
+            12.566370614359176
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00025000000000002115,
+            0.010005580743079633
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_05",
+            "worker-base__batch_22"
+          ],
+          "bones": [
+            "joint__thigh_R",
+            "joint__pelvis"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_05#0",
+            "source_triangle": 1,
+            "point_m": [
+              0.015009164378714778,
+              0.6081567822670527,
+              0.08903959280487393
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359178
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000000017,
+              0.020960409393047344
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_05#0",
+          "source_triangle": 1,
+          "point_m": [
+            0.015009164378714778,
+            0.6081567822670527,
+            0.08903959280487393
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359172,
+            12.566370614359178
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00025000000000000017,
+            0.020960409393047344
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_07",
+            "worker-base__batch_08"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__head"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_08#0",
+            "source_triangle": 2,
+            "point_m": [
+              -0.09118899585797882,
+              1.4048108982805254,
+              0.14931100393782967
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.56637061435917
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.000688991778086484,
+              0.0002500000000000428
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_08#0",
+          "source_triangle": 2,
+          "point_m": [
+            -0.09118899585797882,
+            1.4048108982805254,
+            0.14931100393782967
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359174,
+            12.56637061435917
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.000688991778086484,
+            0.0002500000000000428
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_07",
+            "worker-base__batch_09"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__head"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_09#0",
+            "source_triangle": 2,
+            "point_m": [
+              -0.0748223305000061,
+              1.3341775702864278,
+              0.14917767058696124
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359181,
+              12.566370614359162
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0008223251289549149,
+              0.00024999999999996536
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_09#0",
+          "source_triangle": 2,
+          "point_m": [
+            -0.0748223305000061,
+            1.3341775702864278,
+            0.14917767058696124
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359181,
+            12.566370614359162
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0008223251289549149,
+            0.00024999999999996536
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_07",
+            "worker-base__batch_10"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__head"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_07#0",
+            "source_triangle": 1,
+            "point_m": [
+              -0.15952233478167874,
+              1.4695222626600586,
+              0.14452232394108397
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359181,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002499999999999531,
+              0.01452236316839084
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_07#0",
+          "source_triangle": 1,
+          "point_m": [
+            -0.15952233478167874,
+            1.4695222626600586,
+            0.14452232394108397
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359181,
+            12.566370614359176
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002499999999999531,
+            0.01452236316839084
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_07",
+            "worker-base__batch_19"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__torso"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_07#0",
+            "source_triangle": 32,
+            "point_m": [
+              0.052333335081736244,
+              1.1752499225139619,
+              -0.0406666649505496
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359165,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000835,
+              0.01766666521628698
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_07#0",
+          "source_triangle": 32,
+          "point_m": [
+            0.052333335081736244,
+            1.1752499225139619,
+            -0.0406666649505496
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359165,
+            12.566370614359174
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000000835,
+            0.01766666521628698
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_08",
+            "worker-base__batch_10"
+          ],
+          "bones": [
+            "joint__head",
+            "joint__head"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_08#1",
+            "source_triangle": 45,
+            "point_m": [
+              -0.17052233729521882,
+              1.4600222437662256,
+              0.023522331599231606
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359162,
+              12.566370614359178
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000005286,
+              0.005022344274557833
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_08#1",
+          "source_triangle": 45,
+          "point_m": [
+            -0.17052233729521882,
+            1.4600222437662256,
+            0.023522331599231606
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359162,
+            12.566370614359178
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00025000000000005286,
+            0.005022344274557833
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_12",
+            "worker-base__batch_11"
+          ],
+          "bones": [
+            "joint__hand_L",
+            "joint__forearm_L"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_12#1",
+            "source_triangle": 45,
+            "point_m": [
+              -0.2753110035827541,
+              0.7321890841269272,
+              0.08418898072296907
+            ],
+            "whole_mesh_solid_angles_rad": [
+              25.132741228718338,
+              25.132741228718345
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000753,
+              0.010768526118176818
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_12#1",
+          "source_triangle": 47,
+          "point_m": [
+            -0.24718899652100831,
+            1.1478834498493835,
+            0.30640506284940605
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.56637061435917,
+            25.13274122871835
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00024999999999996775,
+            0.007672857534316488
+          ],
+          "probes": 7,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_11",
+            "worker-base__batch_13"
+          ],
+          "bones": [
+            "joint__forearm_L",
+            "joint__upper_arm_L"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_11#1",
+            "source_triangle": 45,
+            "point_m": [
+              -0.3237404858745065,
+              0.9343110248014107,
+              0.08244017985207844
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359176,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000001609,
+              0.011793756385690933
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_11#1",
+          "source_triangle": 49,
+          "point_m": [
+            -0.23375644515414018,
+            1.0324858463228117,
+            0.09228830446025627
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359174,
+            12.566370614359172
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000000096,
+            0.04369497110643201
+          ],
+          "probes": 3,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_13",
+            "worker-base__batch_06"
+          ],
+          "bones": [
+            "joint__upper_arm_L",
+            "joint__torso"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_13#0",
+            "source_triangle": 5,
+            "point_m": [
+              -0.14451493265359228,
+              1.104534189443288,
+              0.08465120923837083
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              25.132741228718338
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999992183,
+              0.025465805788340345
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_13#0",
+          "source_triangle": 5,
+          "point_m": [
+            -0.11333437874943977,
+            1.1108433732259737,
+            0.04200173075667212
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359176,
+            25.13274122871834
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00024999999999999935,
+            0.01915662200565471
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_13",
+            "worker-base__batch_20"
+          ],
+          "bones": [
+            "joint__upper_arm_L",
+            "joint__torso"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_13#0",
+            "source_triangle": 36,
+            "point_m": [
+              -0.20919105241174635,
+              1.040641722798138,
+              0.0930800346604854
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002499999999999924,
+              0.000808941031742727
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_13#0",
+          "source_triangle": 43,
+          "point_m": [
+            -0.20306779682346937,
+            0.9998475161355802,
+            0.1224623353394512
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359174,
+            25.132741228718224
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002499999999999811,
+            0.0004623311745766412
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_15",
+            "worker-base__batch_14"
+          ],
+          "bones": [
+            "joint__hand_R",
+            "joint__forearm_R"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_15#1",
+            "source_triangle": 45,
+            "point_m": [
+              0.27531101545711945,
+              0.7321890841269272,
+              -0.004189018642330583
+            ],
+            "whole_mesh_solid_angles_rad": [
+              25.132741228718352,
+              25.13274122871835
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000468,
+              0.003927357287196618
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_15#1",
+          "source_triangle": 45,
+          "point_m": [
+            0.1953110029579721,
+            1.060791385989482,
+            0.2913837088329442
+          ],
+          "whole_mesh_solid_angles_rad": [
+            25.132741228718356,
+            25.13274122871835
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00025000000000001513,
+            0.008911234196001644
+          ],
+          "probes": 6,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_14",
+            "worker-base__batch_16"
+          ],
+          "bones": [
+            "joint__forearm_R",
+            "joint__upper_arm_R"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_14#1",
+            "source_triangle": 45,
+            "point_m": [
+              0.2017359663644991,
+              0.9119757149417862,
+              0.08420349362586438
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000202,
+              0.014410470723927551
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_14#1",
+          "source_triangle": 45,
+          "point_m": [
+            0.23375644515414018,
+            1.0324858463228117,
+            0.09228830446025627
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359172,
+            12.566370614359169
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000000096,
+            0.04369497110643203
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_16",
+            "worker-base__batch_06"
+          ],
+          "bones": [
+            "joint__upper_arm_R",
+            "joint__torso"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_16#0",
+            "source_triangle": 1,
+            "point_m": [
+              0.14451493265359228,
+              1.104534189443288,
+              0.08465120923837083
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              25.132741228718356
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000002147,
+              0.025465805788340345
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_16#0",
+          "source_triangle": 1,
+          "point_m": [
+            0.11333437874943977,
+            1.1108433732259737,
+            0.04200173075667212
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359172,
+            25.132741228718356
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.000250000000000047,
+            0.01915662200565471
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_16",
+            "worker-base__batch_20"
+          ],
+          "bones": [
+            "joint__upper_arm_R",
+            "joint__torso"
+          ],
+          "classification": "observed_original_adjacent_joint_pair",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_16#0",
+            "source_triangle": 40,
+            "point_m": [
+              0.20919105205566288,
+              1.031677920474815,
+              -0.08619601733567177
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.56637061435918
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000063,
+              0.0008089413878261953
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_20#2",
+          "source_triangle": 180,
+          "point_m": [
+            0.208989417582197,
+            1.1046341337481325,
+            0.1288535041405235
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359169,
+            12.566370614359169
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.004183837849781474,
+            0.00025000000000000396
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_06",
+            "worker-base__batch_19"
+          ],
+          "bones": [
+            "joint__torso",
+            "joint__torso"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_19#0",
+            "source_triangle": 0,
+            "point_m": [
+              -0.06452232852319102,
+              1.125477691444365,
+              0.06952232841143231
+            ],
+            "whole_mesh_solid_angles_rad": [
+              25.132741228718345,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.004522303787263482,
+              0.00024999999999996916
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_19#0",
+          "source_triangle": 0,
+          "point_m": [
+            -0.06452232852319102,
+            1.125477691444365,
+            0.06952232841143231
+          ],
+          "whole_mesh_solid_angles_rad": [
+            25.132741228718345,
+            12.566370614359176
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.004522303787263482,
+            0.00024999999999996916
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_06",
+            "worker-base__batch_20"
+          ],
+          "bones": [
+            "joint__torso",
+            "joint__torso"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_20#3",
+            "source_triangle": 256,
+            "point_m": [
+              -0.20882321881063284,
+              1.1043232397594436,
+              -0.048166667111217976
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359185,
+              12.566370614359764
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.008823215830400605,
+              0.0002500000000000508
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_20#3",
+          "source_triangle": 256,
+          "point_m": [
+            -0.20882321881063284,
+            1.1043232397594436,
+            -0.048166667111217976
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359185,
+            12.566370614359764
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.008823215830400605,
+            0.0002500000000000508
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_06",
+            "worker-base__batch_22"
+          ],
+          "bones": [
+            "joint__torso",
+            "joint__pelvis"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_06#1",
+            "source_triangle": 76,
+            "point_m": [
+              0.06400000055631001,
+              0.6402499856948852,
+              -0.04399999945114056
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359176,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999997247,
+              0.04975001937150958
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_06#1",
+          "source_triangle": 76,
+          "point_m": [
+            0.06400000055631001,
+            0.6402499856948852,
+            -0.04399999945114056
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359176,
+            12.566370614359174
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.00024999999999997247,
+            0.04975001937150958
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_17",
+            "worker-base__batch_18"
+          ],
+          "bones": [
+            "joint__torso",
+            "joint__torso"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_17#0",
+            "source_triangle": 36,
+            "point_m": [
+              -0.0911999965707461,
+              1.0321333184838295,
+              0.1397499987334013
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359169,
+              12.56637061435917
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000002,
+              0.0012499983832240102
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_17#0",
+          "source_triangle": 36,
+          "point_m": [
+            -0.0911999965707461,
+            1.0321333184838295,
+            0.1397499987334013
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.566370614359169,
+            12.56637061435917
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0002500000000000002,
+            0.0012499983832240102
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_17",
+            "worker-base__batch_20"
+          ],
+          "bones": [
+            "joint__torso",
+            "joint__torso"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_17#0",
+            "source_triangle": 14,
+            "point_m": [
+              -0.1474232209587904,
+              0.997866652905941,
+              0.1293767753380757
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435919,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.000249999999999994,
+              0.0006232152369398392
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_17#0",
+          "source_triangle": 14,
+          "point_m": [
+            -0.1474232209587904,
+            0.997866652905941,
+            0.1293767753380757
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.56637061435919,
+            12.566370614359172
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.000249999999999994,
+            0.0006232152369398392
+          ],
+          "probes": 1,
+          "crossing_pairs": 0
+        },
+        {
+          "meshes": [
+            "worker-base__batch_20",
+            "worker-base__batch_21"
+          ],
+          "bones": [
+            "joint__torso",
+            "joint__torso"
+          ],
+          "classification": "unchanged_native_model_join",
+          "baseline_pair_witness": {
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_21#0",
+            "source_triangle": 28,
+            "point_m": [
+              0.06976666549841562,
+              0.7534100901675845,
+              -0.13964345061774389
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614362656
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0003565546349154347,
+              0.0002499999999999812
+            ],
+            "probes": 9,
+            "crossing_pairs": 0
+          },
+          "found": true,
+          "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+          "source_component": "worker-base__batch_21#0",
+          "source_triangle": 28,
+          "point_m": [
+            0.06976666549841562,
+            0.7534100901675845,
+            -0.13964345061774389
+          ],
+          "whole_mesh_solid_angles_rad": [
+            12.56637061435917,
+            12.566370614362656
+          ],
+          "whole_mesh_surface_depths_m": [
+            0.0003565546349154347,
+            0.0002499999999999812
+          ],
+          "probes": 9,
+          "crossing_pairs": 0
+        }
+      ],
+      "material": []
+    },
+    "feet": [
+      {
+        "side": "L",
+        "sole_m": [
+          -0.11499999463558197,
+          1.4901161193847656e-8,
+          0
+        ],
+        "boot_bottom_y_m": 1.4901161193847656e-8,
+        "source_quaternion_unchanged": true
+      },
+      {
+        "side": "R",
+        "sole_m": [
+          0.11499999463558197,
+          1.4901161193847656e-8,
+          0
+        ],
+        "boot_bottom_y_m": 1.4901161193847656e-8,
+        "source_quaternion_unchanged": true
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "y": 1.08,
+      "z": 0.44,
+      "tangent": -1.4,
+      "solutions": {
+        "L": {
+          "angles": [
+            -0.6504904911082828,
+            0.55,
+            -0.2927228655050811,
+            -1.3309610961629978,
+            -0.12,
+            0.11682838845376949,
+            1.029133436108498,
+            0.5887784728091617,
+            0.1861112137473792,
+            0.4
+          ],
+          "iterations": 0,
+          "residual_weighted": 8.377731976683705e-12,
+          "wrist_position_error_m": 4.965783845404412e-13,
+          "limits_rad": [
+            [
+              -2.2,
+              0.7
+            ],
+            [
+              -0.55,
+              0.55
+            ],
+            [
+              -0.7,
+              0.7
+            ],
+            [
+              -2.2,
+              0.15
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -3.141592653589793,
+              3.141592653589793
+            ],
+            [
+              -0.6,
+              0.6
+            ],
+            [
+              -0.65,
+              0.65
+            ],
+            [
+              -0.4,
+              0.4
+            ]
+          ],
+          "active_limits": [
+            1,
+            4,
+            9
+          ]
+        },
+        "R": {
+          "angles": [
+            -0.6504904911082828,
+            -0.55,
+            0.2927228655050811,
+            -1.3309610961629978,
+            0.12,
+            -0.11682838845376949,
+            -1.029133436108498,
+            0.5887784728091617,
+            -0.1861112137473792,
+            -0.4
+          ],
+          "iterations": 0,
+          "residual_weighted": 8.377731976683705e-12,
+          "wrist_position_error_m": 4.965783845404412e-13,
+          "limits_rad": [
+            [
+              -2.2,
+              0.7
+            ],
+            [
+              -0.55,
+              0.55
+            ],
+            [
+              -0.7,
+              0.7
+            ],
+            [
+              -2.2,
+              0.15
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -0.12,
+              0.12
+            ],
+            [
+              -3.141592653589793,
+              3.141592653589793
+            ],
+            [
+              -0.6,
+              0.6
+            ],
+            [
+              -0.65,
+              0.65
+            ],
+            [
+              -0.4,
+              0.4
+            ]
+          ],
+          "active_limits": [
+            1,
+            4,
+            9
+          ]
+        }
+      },
+      "contacts": [
+        {
+          "side": "L",
+          "area_sum_m2": 0.00011703800714407153,
+          "maximum_plane_gap_m": 6.257828227829165e-9,
+          "pairs": [
+            {
+              "hand_mesh": "worker-base__batch_12",
+              "hand_triangle": 37,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 130,
+              "area_m2": 0.000031017225321285547,
+              "point_m": [
+                -0.15999999642372134,
+                1.1096146649829977,
+                0.4426865834953908
+              ],
+              "radius_m": 0.4707137241067148,
+              "height_m": 1.1096146649829977,
+              "plane_gap_m": 6.257828227829165e-9,
+              "native_pad_gap_m": 6.257405676945993e-9,
+              "native_cargo_gap_m": 8.882478059288706e-15,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_12",
+              "hand_triangle": 37,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 131,
+              "area_m2": 0.00004821801202079545,
+              "point_m": [
+                -0.15999999642372134,
+                1.106098788966563,
+                0.4414365846874837
+              ],
+              "radius_m": 0.4695383447133373,
+              "height_m": 1.106098788966563,
+              "plane_gap_m": 6.257828227829165e-9,
+              "native_pad_gap_m": 6.257386886421301e-9,
+              "native_cargo_gap_m": 0,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_12",
+              "hand_triangle": 37,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 263,
+              "area_m2": 0.00003780276980199053,
+              "point_m": [
+                -0.15999999642372129,
+                1.115701507950063,
+                0.4449361918916406
+              ],
+              "radius_m": 0.47283000508705625,
+              "height_m": 1.115701507950063,
+              "plane_gap_m": 6.257828172318014e-9,
+              "native_pad_gap_m": 6.2574376236135265e-9,
+              "native_cargo_gap_m": 5.551115123125783e-17,
+              "normal_dot": -1
+            }
+          ],
+          "admissible_patch_pairs": 2,
+          "pass": true
+        },
+        {
+          "side": "R",
+          "area_sum_m2": 0.00011703800714407162,
+          "maximum_plane_gap_m": 1.3708408796997418e-8,
+          "pairs": [
+            {
+              "hand_mesh": "worker-base__batch_15",
+              "hand_triangle": 36,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 122,
+              "area_m2": 0.000010199861207361086,
+              "point_m": [
+                0.1599999964237213,
+                1.119299798324376,
+                0.4413742391970487
+              ],
+              "radius_m": 0.4694797310665972,
+              "height_m": 1.119299798324376,
+              "plane_gap_m": 6.25782820007359e-9,
+              "native_pad_gap_m": 6.257485835048371e-9,
+              "native_cargo_gap_m": 2.7755631126724633e-14,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_15",
+              "hand_triangle": 36,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 123,
+              "area_m2": 0.00000806908531011202,
+              "point_m": [
+                0.1599999964237213,
+                1.1199445528852752,
+                0.4426242380049558
+              ],
+              "radius_m": 0.4706550912558565,
+              "height_m": 1.1199445528852752,
+              "plane_gap_m": 6.25782820007359e-9,
+              "native_pad_gap_m": 6.257483170513112e-9,
+              "native_cargo_gap_m": 0,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_15",
+              "hand_triangle": 36,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 210,
+              "area_m2": 0.00000871603093385485,
+              "point_m": [
+                0.1600000038743019,
+                1.1211506388386852,
+                0.4449361918916406
+              ],
+              "radius_m": 0.4728300076082433,
+              "height_m": 1.1211506388386852,
+              "plane_gap_m": 1.3708408796997418e-8,
+              "native_pad_gap_m": 1.3708058937966783e-8,
+              "native_cargo_gap_m": 0,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_15",
+              "hand_triangle": 37,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 122,
+              "area_m2": 0.00002961464799684607,
+              "point_m": [
+                0.1599999964237213,
+                1.1011217277293044,
+                0.4412842306633114
+              ],
+              "radius_m": 0.4693951119128761,
+              "height_m": 1.1011217277293044,
+              "plane_gap_m": 6.257473289528193e-9,
+              "native_pad_gap_m": 6.257350582128396e-9,
+              "native_cargo_gap_m": 8.438425365424546e-15,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_15",
+              "hand_triangle": 37,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 123,
+              "area_m2": 0.000031351642827761906,
+              "point_m": [
+                0.1599999964237213,
+                1.1054979540082677,
+                0.4425342294712185
+              ],
+              "radius_m": 0.47057044436436496,
+              "height_m": 1.1054979540082677,
+              "plane_gap_m": 6.257473289528193e-9,
+              "native_pad_gap_m": 6.2573758119466305e-9,
+              "native_cargo_gap_m": 0,
+              "normal_dot": -1
+            },
+            {
+              "hand_mesh": "worker-base__batch_15",
+              "hand_triangle": 37,
+              "cargo_mesh": "small-carton__batch_02",
+              "cargo_triangle": 210,
+              "area_m2": 0.000029086738868135687,
+              "point_m": [
+                0.1600000038743019,
+                1.1140686403534865,
+                0.4449361918916406
+              ],
+              "radius_m": 0.4728300076082433,
+              "height_m": 1.1140686403534865,
+              "plane_gap_m": 1.370805388645202e-8,
+              "native_pad_gap_m": 1.370800603583966e-8,
+              "native_cargo_gap_m": 0,
+              "normal_dot": -1
+            }
+          ],
+          "admissible_patch_pairs": 4,
+          "pass": true
+        }
+      ],
+      "mouths": [
+        {
+          "side": "L",
+          "tested": 88,
+          "violations": []
+        },
+        {
+          "side": "R",
+          "tested": 88,
+          "violations": []
+        }
+      ],
+      "anatomy": [
+        {
+          "side": "L",
+          "shoulder_m": [
+            -0.2150000035762787,
+            1.1050000190734863,
+            0
+          ],
+          "elbow_m": [
+            -0.29978706940551225,
+            1.0026778380431336,
+            0.1579282152008063
+          ],
+          "wrist_m": [
+            -0.22000000000047892,
+            1.086634114055639,
+            0.3132838268778241
+          ],
+          "pole_y_m": -0.09266847093806728,
+          "signed_native_bend_rad": -1.3323269830538655,
+          "pass": true
+        },
+        {
+          "side": "R",
+          "shoulder_m": [
+            0.2150000035762787,
+            1.1050000190734863,
+            0
+          ],
+          "elbow_m": [
+            0.29978706940551225,
+            1.0026778380431336,
+            0.1579282152008063
+          ],
+          "wrist_m": [
+            0.22000000000047892,
+            1.086634114055639,
+            0.3132838268778241
+          ],
+          "pole_y_m": -0.09266847093806728,
+          "signed_native_bend_rad": -1.3323269830538655,
+          "pass": true
+        }
+      ],
+      "hu_envelope_interiors": [],
+      "body_HU_witnesses": [],
+      "self_check": {
+        "pair_count": 253,
+        "probes": 389,
+        "crossing_pairs": 815,
+        "observations": [
+          {
+            "meshes": [
+              "worker-base__batch_00",
+              "worker-base__batch_01"
+            ],
+            "bones": [
+              "joint__foot_L",
+              "joint__shin_L"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_00#0",
+              "source_triangle": 38,
+              "point_m": [
+                -0.14566666136185327,
+                0.1597500113248825,
+                -0.0023333340262373286
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359172,
+                12.566370614359174
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000002,
+                0.03646912131960327
+              ],
+              "probes": 2,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_00#0",
+            "source_triangle": 38,
+            "point_m": [
+              -0.14566666136185327,
+              0.1597500113248825,
+              -0.0023333340262373286
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000002,
+              0.03646912131960327
+            ],
+            "probes": 2,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_01",
+              "worker-base__batch_02"
+            ],
+            "bones": [
+              "joint__shin_L",
+              "joint__thigh_L"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_01#0",
+              "source_triangle": 1,
+              "point_m": [
+                -0.17639598869610681,
+                0.3767143519702619,
+                0.09513133932271674
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359174,
+                12.566370614359174
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002499999999999991,
+                0.009444893195136535
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_01#0",
+            "source_triangle": 1,
+            "point_m": [
+              -0.17639598869610681,
+              0.3767143519702619,
+              0.09513133932271674
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002499999999999991,
+              0.009444893195136535
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_02",
+              "worker-base__batch_22"
+            ],
+            "bones": [
+              "joint__thigh_L",
+              "joint__pelvis"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_02#0",
+              "source_triangle": 1,
+              "point_m": [
+                -0.17390399246132418,
+                0.6150522185940877,
+                0.08873979121342193
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.56637061435917,
+                12.566370614359172
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00024999999999998916,
+                0.0010960045584435807
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_02#0",
+            "source_triangle": 1,
+            "point_m": [
+              -0.17390399246132418,
+              0.6150522185940877,
+              0.08873979121342193
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999998916,
+              0.0010960045584435807
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_03",
+              "worker-base__batch_04"
+            ],
+            "bones": [
+              "joint__foot_R",
+              "joint__shin_R"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_03#0",
+              "source_triangle": 38,
+              "point_m": [
+                0.08433332790931065,
+                0.1597500113248825,
+                -0.0023333340262373286
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.56637061435917,
+                12.566370614359172
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000002,
+                0.03918967844421637
+              ],
+              "probes": 2,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_03#0",
+            "source_triangle": 38,
+            "point_m": [
+              0.08433332790931065,
+              0.1597500113248825,
+              -0.0023333340262373286
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000002,
+              0.03918967844421637
+            ],
+            "probes": 2,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_04",
+              "worker-base__batch_05"
+            ],
+            "bones": [
+              "joint__shin_R",
+              "joint__thigh_R"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_04#0",
+              "source_triangle": 1,
+              "point_m": [
+                0.03249310729786935,
+                0.37033127728194615,
+                0.09484764707263943
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359172,
+                12.566370614359176
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00025000000000002115,
+                0.010005580743079633
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_04#0",
+            "source_triangle": 1,
+            "point_m": [
+              0.03249310729786935,
+              0.37033127728194615,
+              0.09484764707263943
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000002115,
+              0.010005580743079633
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_05",
+              "worker-base__batch_22"
+            ],
+            "bones": [
+              "joint__thigh_R",
+              "joint__pelvis"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_05#0",
+              "source_triangle": 1,
+              "point_m": [
+                0.015009164378714778,
+                0.6081567822670527,
+                0.08903959280487393
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359172,
+                12.566370614359178
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00025000000000000017,
+                0.020960409393047344
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_05#0",
+            "source_triangle": 1,
+            "point_m": [
+              0.015009164378714778,
+              0.6081567822670527,
+              0.08903959280487393
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359178
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000000017,
+              0.020960409393047344
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_07",
+              "worker-base__batch_08"
+            ],
+            "bones": [
+              "joint__head",
+              "joint__head"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_08#0",
+              "source_triangle": 2,
+              "point_m": [
+                -0.09118899585797882,
+                1.4048108982805254,
+                0.14931100393782967
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359174,
+                12.56637061435917
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.000688991778086484,
+                0.0002500000000000428
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_08#0",
+            "source_triangle": 2,
+            "point_m": [
+              -0.09118899585797882,
+              1.4048108982805254,
+              0.14931100393782967
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.56637061435917
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.000688991778086484,
+              0.0002500000000000428
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_07",
+              "worker-base__batch_09"
+            ],
+            "bones": [
+              "joint__head",
+              "joint__head"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_09#0",
+              "source_triangle": 2,
+              "point_m": [
+                -0.0748223305000061,
+                1.3341775702864278,
+                0.14917767058696124
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359181,
+                12.566370614359162
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0008223251289549149,
+                0.00024999999999996536
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_09#0",
+            "source_triangle": 2,
+            "point_m": [
+              -0.0748223305000061,
+              1.3341775702864278,
+              0.14917767058696124
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359181,
+              12.566370614359162
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0008223251289549149,
+              0.00024999999999996536
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_07",
+              "worker-base__batch_10"
+            ],
+            "bones": [
+              "joint__head",
+              "joint__head"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_07#0",
+              "source_triangle": 1,
+              "point_m": [
+                -0.15952233478167874,
+                1.4695222626600586,
+                0.14452232394108397
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359181,
+                12.566370614359176
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002499999999999531,
+                0.01452236316839084
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_07#0",
+            "source_triangle": 1,
+            "point_m": [
+              -0.15952233478167874,
+              1.4695222626600586,
+              0.14452232394108397
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359181,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002499999999999531,
+              0.01452236316839084
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_07",
+              "worker-base__batch_19"
+            ],
+            "bones": [
+              "joint__head",
+              "joint__torso"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_07#0",
+              "source_triangle": 32,
+              "point_m": [
+                0.052333335081736244,
+                1.1752499225139619,
+                -0.0406666649505496
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359165,
+                12.566370614359174
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000835,
+                0.01766666521628698
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_07#0",
+            "source_triangle": 32,
+            "point_m": [
+              0.052333335081736244,
+              1.1752499225139619,
+              -0.0406666649505496
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359165,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000835,
+              0.01766666521628698
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_08",
+              "worker-base__batch_10"
+            ],
+            "bones": [
+              "joint__head",
+              "joint__head"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_08#1",
+              "source_triangle": 45,
+              "point_m": [
+                -0.17052233729521882,
+                1.4600222437662256,
+                0.023522331599231606
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359162,
+                12.566370614359178
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00025000000000005286,
+                0.005022344274557833
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_08#1",
+            "source_triangle": 45,
+            "point_m": [
+              -0.17052233729521882,
+              1.4600222437662256,
+              0.023522331599231606
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359162,
+              12.566370614359178
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000005286,
+              0.005022344274557833
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_12",
+              "worker-base__batch_11"
+            ],
+            "bones": [
+              "joint__hand_L",
+              "joint__forearm_L"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_12#1",
+              "source_triangle": 45,
+              "point_m": [
+                -0.2753110035827541,
+                0.7321890841269272,
+                0.08418898072296907
+              ],
+              "whole_mesh_solid_angles_rad": [
+                25.132741228718338,
+                25.132741228718345
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000753,
+                0.010768526118176818
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_12#1",
+            "source_triangle": 47,
+            "point_m": [
+              -0.24718899652100831,
+              1.1478834498493835,
+              0.30640506284940605
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              25.13274122871835
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999996775,
+              0.007672857534316488
+            ],
+            "probes": 7,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_11",
+              "worker-base__batch_13"
+            ],
+            "bones": [
+              "joint__forearm_L",
+              "joint__upper_arm_L"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_11#1",
+              "source_triangle": 45,
+              "point_m": [
+                -0.3237404858745065,
+                0.9343110248014107,
+                0.08244017985207844
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359176,
+                12.566370614359172
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000001609,
+                0.011793756385690933
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_11#1",
+            "source_triangle": 49,
+            "point_m": [
+              -0.23375644515414018,
+              1.0324858463228117,
+              0.09228830446025627
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000096,
+              0.04369497110643201
+            ],
+            "probes": 3,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_13",
+              "worker-base__batch_06"
+            ],
+            "bones": [
+              "joint__upper_arm_L",
+              "joint__torso"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_13#0",
+              "source_triangle": 5,
+              "point_m": [
+                -0.14451493265359228,
+                1.104534189443288,
+                0.08465120923837083
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.56637061435917,
+                25.132741228718338
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00024999999999992183,
+                0.025465805788340345
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_13#0",
+            "source_triangle": 5,
+            "point_m": [
+              -0.11333437874943977,
+              1.1108433732259737,
+              0.04200173075667212
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359176,
+              25.13274122871834
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999999935,
+              0.01915662200565471
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_13",
+              "worker-base__batch_20"
+            ],
+            "bones": [
+              "joint__upper_arm_L",
+              "joint__torso"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_13#0",
+              "source_triangle": 36,
+              "point_m": [
+                -0.20919105241174635,
+                1.040641722798138,
+                0.0930800346604854
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359174,
+                12.566370614359176
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002499999999999924,
+                0.000808941031742727
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_13#0",
+            "source_triangle": 43,
+            "point_m": [
+              -0.20306779682346937,
+              0.9998475161355802,
+              0.1224623353394512
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359174,
+              25.132741228718224
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002499999999999811,
+              0.0004623311745766412
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_15",
+              "worker-base__batch_14"
+            ],
+            "bones": [
+              "joint__hand_R",
+              "joint__forearm_R"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_15#1",
+              "source_triangle": 45,
+              "point_m": [
+                0.27531101545711945,
+                0.7321890841269272,
+                -0.004189018642330583
+              ],
+              "whole_mesh_solid_angles_rad": [
+                25.132741228718352,
+                25.13274122871835
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000468,
+                0.003927357287196618
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_15#1",
+            "source_triangle": 45,
+            "point_m": [
+              0.1953110029579721,
+              1.060791385989482,
+              0.2913837088329442
+            ],
+            "whole_mesh_solid_angles_rad": [
+              25.132741228718356,
+              25.13274122871835
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00025000000000001513,
+              0.008911234196001644
+            ],
+            "probes": 6,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_14",
+              "worker-base__batch_16"
+            ],
+            "bones": [
+              "joint__forearm_R",
+              "joint__upper_arm_R"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_14#1",
+              "source_triangle": 45,
+              "point_m": [
+                0.2017359663644991,
+                0.9119757149417862,
+                0.08420349362586438
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359172,
+                12.566370614359172
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000202,
+                0.014410470723927551
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_14#1",
+            "source_triangle": 45,
+            "point_m": [
+              0.23375644515414018,
+              1.0324858463228117,
+              0.09228830446025627
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              12.566370614359169
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000096,
+              0.04369497110643203
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_16",
+              "worker-base__batch_06"
+            ],
+            "bones": [
+              "joint__upper_arm_R",
+              "joint__torso"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_16#0",
+              "source_triangle": 1,
+              "point_m": [
+                0.14451493265359228,
+                1.104534189443288,
+                0.08465120923837083
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359172,
+                25.132741228718356
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00025000000000002147,
+                0.025465805788340345
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_16#0",
+            "source_triangle": 1,
+            "point_m": [
+              0.11333437874943977,
+              1.1108433732259737,
+              0.04200173075667212
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359172,
+              25.132741228718356
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.000250000000000047,
+              0.01915662200565471
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_16",
+              "worker-base__batch_20"
+            ],
+            "bones": [
+              "joint__upper_arm_R",
+              "joint__torso"
+            ],
+            "classification": "observed_original_adjacent_joint_pair",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_16#0",
+              "source_triangle": 40,
+              "point_m": [
+                0.20919105205566288,
+                1.031677920474815,
+                -0.08619601733567177
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359172,
+                12.56637061435918
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000063,
+                0.0008089413878261953
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_20#2",
+            "source_triangle": 180,
+            "point_m": [
+              0.208989417582197,
+              1.1046341337481325,
+              0.1288535041405235
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359169,
+              12.566370614359169
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.004183837849781474,
+              0.00025000000000000396
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_06",
+              "worker-base__batch_19"
+            ],
+            "bones": [
+              "joint__torso",
+              "joint__torso"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_19#0",
+              "source_triangle": 0,
+              "point_m": [
+                -0.06452232852319102,
+                1.125477691444365,
+                0.06952232841143231
+              ],
+              "whole_mesh_solid_angles_rad": [
+                25.132741228718345,
+                12.566370614359176
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.004522303787263482,
+                0.00024999999999996916
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_19#0",
+            "source_triangle": 0,
+            "point_m": [
+              -0.06452232852319102,
+              1.125477691444365,
+              0.06952232841143231
+            ],
+            "whole_mesh_solid_angles_rad": [
+              25.132741228718345,
+              12.566370614359176
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.004522303787263482,
+              0.00024999999999996916
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_06",
+              "worker-base__batch_20"
+            ],
+            "bones": [
+              "joint__torso",
+              "joint__torso"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_20#3",
+              "source_triangle": 256,
+              "point_m": [
+                -0.20882321881063284,
+                1.1043232397594436,
+                -0.048166667111217976
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359185,
+                12.566370614359764
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.008823215830400605,
+                0.0002500000000000508
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_20#3",
+            "source_triangle": 256,
+            "point_m": [
+              -0.20882321881063284,
+              1.1043232397594436,
+              -0.048166667111217976
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359185,
+              12.566370614359764
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.008823215830400605,
+              0.0002500000000000508
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_06",
+              "worker-base__batch_22"
+            ],
+            "bones": [
+              "joint__torso",
+              "joint__pelvis"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_06#1",
+              "source_triangle": 76,
+              "point_m": [
+                0.06400000055631001,
+                0.6402499856948852,
+                -0.04399999945114056
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359176,
+                12.566370614359174
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.00024999999999997247,
+                0.04975001937150958
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_06#1",
+            "source_triangle": 76,
+            "point_m": [
+              0.06400000055631001,
+              0.6402499856948852,
+              -0.04399999945114056
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359176,
+              12.566370614359174
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.00024999999999997247,
+              0.04975001937150958
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_17",
+              "worker-base__batch_18"
+            ],
+            "bones": [
+              "joint__torso",
+              "joint__torso"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_17#0",
+              "source_triangle": 36,
+              "point_m": [
+                -0.0911999965707461,
+                1.0321333184838295,
+                0.1397499987334013
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.566370614359169,
+                12.56637061435917
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0002500000000000002,
+                0.0012499983832240102
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_17#0",
+            "source_triangle": 36,
+            "point_m": [
+              -0.0911999965707461,
+              1.0321333184838295,
+              0.1397499987334013
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.566370614359169,
+              12.56637061435917
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0002500000000000002,
+              0.0012499983832240102
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_17",
+              "worker-base__batch_20"
+            ],
+            "bones": [
+              "joint__torso",
+              "joint__torso"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_17#0",
+              "source_triangle": 14,
+              "point_m": [
+                -0.1474232209587904,
+                0.997866652905941,
+                0.1293767753380757
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.56637061435919,
+                12.566370614359172
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.000249999999999994,
+                0.0006232152369398392
+              ],
+              "probes": 1,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_17#0",
+            "source_triangle": 14,
+            "point_m": [
+              -0.1474232209587904,
+              0.997866652905941,
+              0.1293767753380757
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435919,
+              12.566370614359172
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.000249999999999994,
+              0.0006232152369398392
+            ],
+            "probes": 1,
+            "crossing_pairs": 0
+          },
+          {
+            "meshes": [
+              "worker-base__batch_20",
+              "worker-base__batch_21"
+            ],
+            "bones": [
+              "joint__torso",
+              "joint__torso"
+            ],
+            "classification": "unchanged_native_model_join",
+            "baseline_pair_witness": {
+              "found": true,
+              "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+              "source_component": "worker-base__batch_21#0",
+              "source_triangle": 28,
+              "point_m": [
+                0.06976666549841562,
+                0.7534100901675845,
+                -0.13964345061774389
+              ],
+              "whole_mesh_solid_angles_rad": [
+                12.56637061435917,
+                12.566370614362656
+              ],
+              "whole_mesh_surface_depths_m": [
+                0.0003565546349154347,
+                0.0002499999999999812
+              ],
+              "probes": 9,
+              "crossing_pairs": 0
+            },
+            "found": true,
+            "method": "native triangle centroid inward250um, both entire native meshes winding/depth",
+            "source_component": "worker-base__batch_21#0",
+            "source_triangle": 28,
+            "point_m": [
+              0.06976666549841562,
+              0.7534100901675845,
+              -0.13964345061774389
+            ],
+            "whole_mesh_solid_angles_rad": [
+              12.56637061435917,
+              12.566370614362656
+            ],
+            "whole_mesh_surface_depths_m": [
+              0.0003565546349154347,
+              0.0002499999999999812
+            ],
+            "probes": 9,
+            "crossing_pairs": 0
+          }
+        ],
+        "material": []
+      },
+      "feet": [
+        {
+          "side": "L",
+          "sole_m": [
+            -0.11499999463558197,
+            1.4901161193847656e-8,
+            0
+          ],
+          "boot_bottom_y_m": 1.4901161193847656e-8,
+          "source_quaternion_unchanged": true
+        },
+        {
+          "side": "R",
+          "sole_m": [
+            0.11499999463558197,
+            1.4901161193847656e-8,
+            0
+          ],
+          "boot_bottom_y_m": 1.4901161193847656e-8,
+          "source_quaternion_unchanged": true
+        }
+      ]
+    }
+  ],
+  "original_translations_scales_geometry_nonarm_rotations_unchanged": true,
+  "withdrawal_executed": false,
+  "force_validation": false,
+  "continuous_collision_certificate": false,
+  "operational_admission": false,
+  "order_admission": false,
+  "completed_jobs": 0
+}

@@ -1,0 +1,59 @@
+.staff-assignment{margin-top:32px;padding:24px;border:1px solid #cbd2cd;border-radius:8px;background:#fafaf6;scroll-margin-top:24px;font-size:14px;line-height:1.5}
+.staff-assignment>p{max-width:1100px;font-size:14px;color:#4f6668;text-wrap:pretty}
+.staff-assignment .assignment-assumption{font-size:14px}
+#role-assignment .source-tag{font-size:12px}
+.staff-assignment [data-status]{color:#27676a;min-height:21px;margin:14px 0 0}
+.staff-assignment [data-status]:empty{display:none}
+.staff-assignment [data-status][data-reason]:not([data-reason=ASSIGNMENT_OK]){color:#8a4b30}
+.staff-assignment button{font-size:14px;min-height:44px;font-weight:600}
+.staff-assignment button.assignment-primary{color:#fff;background:#0e8076;border-color:#0e8076}
+#role-assignment button.assignment-primary:hover:not(:disabled){background:#0b6b63;border-color:#0b6b63}
+#role-assignment button:active:not(:disabled){scale:1;box-shadow:inset 0 1px 3px #293d4626}
+.staff-assignment button:disabled{cursor:wait;color:#697b77;background:#e4eae6;border-color:#cbd2cd}
+.assignment-form{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:20px 0}
+.assignment-form>div{flex:1 1 175px;min-width:0}
+.assignment-form label{display:block;font-size:12px;font-weight:600;color:#4f6668;margin-bottom:6px}
+.assignment-form select{width:100%;min-height:44px;padding:9px 12px;border:1px solid #bfcac9;border-radius:7px;background:#fff;color:#293d46;font-size:14px}
+.assignment-clock{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px 24px;padding:16px 0;border-top:1px solid #d7ddda;border-bottom:1px solid #d7ddda}
+.assignment-clock label{font-size:14px;color:#4f6668}
+.assignment-clock strong{font-size:22px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums;color:#293d46;margin-left:12px}
+.assignment-clock input{grid-column:1/-1;grid-row:2;width:100%;min-width:0;height:24px;margin:0;accent-color:#0e8076;cursor:pointer}
+.assignment-clock .assignment-segments{display:flex;gap:3px;padding:3px;border:1px solid #cbd6d0;border-radius:8px;background:#e9eeea}
+.assignment-clock .assignment-segments button{min-height:38px;padding:6px 16px;border:1px solid transparent;border-radius:5px;background:transparent;box-shadow:none;color:#4f6668;font-size:14px;font-weight:500}
+#role-assignment .assignment-segments button:hover:not(:disabled):not([aria-pressed=true]){background:#e0e8e2}
+#role-assignment .assignment-segments button[aria-pressed=true]{background:#dcece5;border-color:#9bbab0;color:#0b6b63;box-shadow:0 1px 2px #293d4612;font-weight:600}
+.assignment-plan{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(310px,1fr);align-items:center;gap:24px;margin:24px 0}
+.assignment-plan svg{display:block;width:100%;aspect-ratio:2/1;border-radius:5px;overflow:visible}
+.assignment-plan figcaption{min-width:0;font-size:14px;color:#4f6668}
+.assignment-plan figcaption>strong{display:block;color:#293d46;font-size:16px;font-weight:600;margin-bottom:12px}
+.assignment-plan figcaption>p{margin:12px 0 0;text-wrap:pretty}
+.assignment-plan [data-plan-status]{display:grid;gap:8px;font-variant-numeric:tabular-nums}
+.assignment-worker-state{padding:10px 12px;border:1px solid #d2dcd6;border-left:3px solid var(--actor-color);border-radius:5px;background:#fff}
+.assignment-worker-state p{margin:0;color:#293d46}
+.assignment-worker-state strong{color:var(--actor-color);font-size:16px;font-weight:700}
+.assignment-worker-state p:nth-child(2){font-weight:600;margin-top:2px}
+.assignment-worker-state small{display:block;color:#4f6668;font-size:12px;margin-top:3px}
+.assignment-current-role::before{content:'';display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--current-role-color);margin-right:6px}
+.assignment-plan-key{display:grid;gap:4px}
+.assignment-plan-key span{display:flex;align-items:center;gap:9px}
+.assignment-plan-key i{display:inline-block;flex:0 0 22px}
+.assignment-plan-key .assignment-key-home{height:12px;flex-basis:12px;border:2px solid #2e7376;border-radius:50%;margin:0 5px}
+.assignment-plan-key .assignment-key-role{height:10px;flex-basis:10px;background:#293d46;border-radius:50%;margin:0 6px}
+.assignment-key-route{border-top:3px solid #2e7376}
+.assignment-key-return{border-top:3px dashed #2e7376}
+.assignment-plan-note{padding-top:10px;border-top:1px solid #d7ddda}
+.assignment-post-label{paint-order:stroke;stroke:#eef1e8;stroke-width:.9;stroke-linejoin:round}
+.assignment-table{overflow:auto;margin-top:20px}
+.assignment-table table{width:100%;border-collapse:collapse;font-size:14px;text-align:left;font-variant-numeric:tabular-nums}
+.assignment-table caption{text-align:left;font-size:14px;margin:0 0 12px;font-weight:600}
+.assignment-table th,.assignment-table td{border-bottom:1px solid #d7ddda;padding:12px 10px;vertical-align:top}
+.assignment-table th{color:#4f6668;font-size:12px;font-weight:600}
+.assignment-table td:first-child{font-weight:600;white-space:nowrap}
+.staff-assignment [data-summary]{font-size:14px;margin-top:20px;color:#4f6668;font-variant-numeric:tabular-nums}
+.staff-assignment [data-summary] p{margin:10px 0;text-wrap:pretty}
+.staff-assignment details{font-size:14px;margin-top:20px}
+.staff-assignment details summary{cursor:pointer;color:#426c70}
+.staff-assignment pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;color:#4f6668}
+@media(prefers-reduced-motion:no-preference){#role-assignment button{transition:background-color 150ms ease,border-color 150ms ease,color 150ms ease,box-shadow 150ms ease}}
+@media(max-width:1100px){.assignment-form{gap:10px}.assignment-form>div{flex-basis:150px}.assignment-form button{padding:10px 12px}.assignment-plan{grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);gap:20px}}
+@media(max-width:800px){.assignment-clock{grid-template-columns:1fr;gap:12px}.assignment-clock input{grid-row:3}.assignment-clock .assignment-segments{justify-self:start}.assignment-clock .assignment-segments button{padding:6px 12px}.assignment-plan{grid-template-columns:1fr}.assignment-plan [data-plan-status]{grid-template-columns:repeat(2,minmax(0,1fr))}}

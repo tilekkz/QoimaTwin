@@ -1,0 +1,102 @@
+{
+  "schema_id": "qoima.twin-shift-adversarial-receipt.v1",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "base_commit": "713db76e2c5f071b57e8657d2dbf3310d9338f29",
+  "isolated_root": "C:\\Users\\izbas\\Documents\\Codex\\_qt-bughunt-1110-t1",
+  "source_frozen": true,
+  "passed": true,
+  "new_groups": 10,
+  "raw_before_fix": {
+    "path": "work\\v3\\twin-shift-adversarial\\2026-11-10T03-25-17-835Z\\checks.json",
+    "passed": 2,
+    "groups": 9,
+    "assertions_not_suppressed": true,
+    "failed": 7,
+    "sha256": "c40ef6cfb168a80bb172be10c41aec50a4139a3afc4faad806557536b6d08aeb"
+  },
+  "final": {
+    "failed_groups": 0,
+    "sha256": "5ee0a91ae88c8106b6abf880b1c7121859aad800985a812d100c93e3bfac6edd",
+    "source_drift": [],
+    "passed_groups": 10,
+    "path": "work\\v3\\twin-shift-adversarial\\2026-11-10T03-34-22-608Z\\checks.json"
+  },
+  "metrics": {
+    "replay_observations": 846,
+    "finite_frames": 974,
+    "boundary_probes": 12208
+  },
+  "fixes": [
+    {
+      "id": "time_atomicity",
+      "after": "Reject nonfinite/nonnumeric values before mutation; clamp finite clocks to0..1800, including snapshot metadata.",
+      "before": "Nonfinite clocks accepted; Scene assigned invalid time then TypeError/partial frame write."
+    },
+    {
+      "id": "baseline_workload",
+      "after": "Reference demand/period/deadlines derive from unchanged sourceA paths, while actualA/B travel uses each geometry.",
+      "before": "Only switchingB changed P01A period234.4444444444→45.3703703704 and its release stream."
+    },
+    {
+      "id": "handoff_endpoint",
+      "after": "Wait at the reached handoff endpoint; all12208sampled phase boundaries max4.20000334e-7m.",
+      "before": "P01 jumped1.799999825m at36.1030924153 into a queue offset."
+    },
+    {
+      "id": "smoothed_vertex_heading",
+      "after": "Matching half-angle from both sides, shortest-angle pi seam, zero-length segment handling; max tested2.61799387e-7rad.",
+      "before": "smooth=true reached only half-angle before vertex, then snapped.7853982943rad."
+    },
+    {
+      "id": "route_controls",
+      "after": "Validate path/distance before writing output; copy input points and support stationary path.",
+      "before": "Empty/nonfinite path and invalid distance lacked inert rejection."
+    }
+  ],
+  "scene_lifecycle": {
+    "invalid_time_preserves_native_instance_buffers": true,
+    "source_geometry_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+    "source_resources_not_disposed": true,
+    "owned_resources_disposed_exactly_once": true,
+    "source_buffers_restored": true,
+    "valid_layout_swap_preserves_time_and_A": true,
+    "invalid_layout_swap_inert": true,
+    "disposed_layout_setter_inert": true,
+    "source_actors": 24
+  },
+  "typecheck": {
+    "command": "node node_modules/vue-tsc/bin/vue-tsc.js --noEmit",
+    "tool_chunk_id": "536e06",
+    "exit_code": 0
+  },
+  "existing_legacy_test": {
+    "command": "node frontend/tools/check-twin-scenario-v3.mjs",
+    "tool_chunk_id": "d17e67",
+    "counted_as_pass": false,
+    "exit_code": 1,
+    "source_review_only": "This old test also assumes allzones finishcontrol andHeavy/LONGneverreact, unlike current authored1800s incident fixture. Those later assertions were not executed.",
+    "status": "BLOCKED_PREEXISTING_EXTENSIONLESS_IMPORT",
+    "observed_error": "ERR_MODULE_NOT_FOUND frontend/src/adaptive-v3/twin/twinShiftProblems imported by untouched twinScenario.ts",
+    "test_unchanged": true
+  },
+  "source_hashes": {
+    "frontend/src/adaptive-v3/twin/twinShiftRoutes.ts": "7fe52b13e9b1dc40f13e533e37b4c5e5e73b0476450d2c53b30251ea09992503",
+    "frontend/src/adaptive-v3/twin/twinShiftScene.ts": "109a318522fa0fa04336ef98f015d09004be951fa3b70c49fb7f4862cfd3a9df",
+    "frontend/src/adaptive-v3/twin/twinShift.ts": "ead38bf75225695030c88759912b61b254f5ece11bcde2083100e79f58842c57",
+    "frontend/tools/check-twin-shift-adversarial-v3.mjs": "af5a06d2459a86028161a7229b6495206d80314bce18517925afabed008a119c"
+  },
+  "graph_evidence": {
+    "tier": 2,
+    "fallback": "Exact current isolated source files and direct helper callsites; no indexing.",
+    "project": "qoima-twin",
+    "generation": "2026-11-08T05:55:56Z",
+    "parent_queries": "TwinShift|WarehouseScenario|NativePair|PlaybackClock total0/no pagination; Twin scope not_tracked"
+  },
+  "limitations": [
+    "Extra48actors and proxy equipment remain authored presentation, not operational or continuous-traffic admission.",
+    "Translational phase endpoint tests do not certify all physical turns/joint velocities or native gripping.",
+    "No Chrome/GPU/bundle build or canonical/Git mutation by this worker.",
+    "SourceA phase timings and demand are preserved across B layouts; no engine uplift is inferred."
+  ]
+}

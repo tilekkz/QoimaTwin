@@ -1,0 +1,59 @@
+{
+  "schema_id": "qoima.visual-root-acceptance.v1",
+  "task_id": "Q04",
+  "passed": true,
+  "reviewer": "root",
+  "reviewed_utc": "2026-11-10T01:32:26.223Z",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "runtime_source_commit": "b9f23d10e381b5e179a853c473da2f0eca09e517",
+  "runtime_branch": "codex/twin-v3-desktop-verified-20261110",
+  "criterion": "Запрещённые повороты и ручной перенос тяжёлого груза отклоняются с reason code",
+  "observed_result": "Forbidden yaw/reflection/scale/mass/handler cases reject beforecost; heavy uses fixedsource F01/FL01; LONG preserveswholeHU4.2×.52×.65/200kg.",
+  "method": "Root reviewed actual native/browser outputs and images; this record rolls up executed evidence, it is not a new test run.",
+  "evidence": [
+    {
+      "key": "current_numeric",
+      "path": "docs/adaptive-v3/evidence/Q03-current-numeric-20261110.json",
+      "bytes": 78784,
+      "sha256": "ab19c0a9f6ced627b6a6c9518966a6abc8aeb2d08734e85abe721cbbc2653aa4"
+    },
+    {
+      "key": "small",
+      "path": "docs/adaptive-v3/evidence/small-clamp-connected-workflow-native.json",
+      "bytes": 15473,
+      "sha256": "aa5c8119f2962756753d99a3cc03cc4ac62ddcff01cd06609041d6fd301054a9"
+    },
+    {
+      "key": "additional_heavy",
+      "path": "docs/adaptive-v3/evidence/connected-workflows-20261109/additional-heavy-plan.json",
+      "bytes": 139671,
+      "sha256": "025e710c8595f27aaa35f52113be8e83d79a5fccd1c1d0190fbe0016da880e12"
+    },
+    {
+      "key": "source_gate",
+      "path": "docs/adaptive-v3/evidence/source-long-operation-20261110/out-gate-native-checks.json",
+      "bytes": 16110,
+      "sha256": "2a0aee43cc9bc4d282851ebf15ab6e2182392953e2b6b4d9df5af384f42356e5"
+    },
+    {
+      "key": "fifo",
+      "path": "docs/adaptive-v3/evidence/n2-fifo-horizon-20261110/checks.json",
+      "bytes": 98361,
+      "sha256": "67eda786947f43ed97aa2332e659014d2f789d0e675ddf54815363cc5792bb4a"
+    },
+    {
+      "key": "deep45",
+      "path": "docs/adaptive-v3/evidence/deep-production-regression-20261110/aggregate-45-checks.json",
+      "bytes": 40519,
+      "sha256": "d82ef3b9fa63b8dca8604c498e4fe9df399c72a4c1bd523da9add19e8d4176b3"
+    }
+  ],
+  "limitations": [
+    "Accepted desktop scope uses byte-exact original542 character and practical carry; no ideal90-degree/globaljoint/force/OEM certificate.",
+    "SourceLONG is retained outside on F02; recipient unloading and operational backend KPI are not claimed.",
+    "Structural configuration demonstration and same-input operational visual A/B are explicitly separate.",
+    "Historical Python checks are reported at their declared epoch; current23/28 and historical5/5 are not falsely merged into current28/28.",
+    "Native headless tab hiding was unavailable; Stand logical visibility guard is separately identified."
+  ]
+}

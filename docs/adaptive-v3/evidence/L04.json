@@ -1,0 +1,876 @@
+{
+  "task_id": "L04",
+  "status": "VERIFY",
+  "checked_at_utc": "2026-11-07T05:52:49.266435+00:00",
+  "method": "Independent re-read of current JSON artifacts. Exact rectangle intersections and clear-floor union area, world normal/position checks, actual IN service nonoverlap, source SHA rechecks, original actor/policy memberships. No geometry/graphs/backend execution.",
+  "proposal": {
+    "path": "docs/v3/contract-proposals/ports-v3.outbound.json",
+    "bytes": 27396,
+    "sha256": "cac549d64150ac359e747e911338937f40892c6c29832a8aa09a9aa031dd3469"
+  },
+  "actual_inputs": [
+    {
+      "path": "docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "bytes": 1756,
+      "sha256": "0b462fb24d8f783282c9c1e415af6456a0e60455f1a5c562c9208551d0223e9b"
+    },
+    {
+      "path": "docs/v3/contract-proposals/layout-v3.zones.json",
+      "bytes": 32051,
+      "sha256": "1e80b83599be90334c3e60d88febf35464f2cd9dfac5737ab19f2b647798b566"
+    },
+    {
+      "path": "contracts/actors.example.json",
+      "bytes": 4286,
+      "sha256": "c3df4bfeb402ef6562044a80e69fb5dc269c17c527f6b3eba1f989ef78f8e7e7"
+    },
+    {
+      "path": "assets/references/v3/r07-ports-zones.png",
+      "bytes": 2088176,
+      "sha256": "91a4583f501c6434e776fe0c67842ebad0ff6abc033c6d7dca11a71b9704e6bc"
+    },
+    {
+      "path": "assets/references/v3/r03-dimension-targets.json",
+      "bytes": 1322,
+      "sha256": "9cbef56613c271ee0fedb39b03e1d5e424dea1b127128c4b0436097e2a4e11c9"
+    },
+    {
+      "path": "docs/adaptive-v3/evidence/L02-zone-plan.svg",
+      "bytes": 19073,
+      "sha256": "a9d98256323016c9eaba194c2ad1effd48206d7bf9ca6398bbba97300ceccdf5"
+    },
+    {
+      "path": "docs/v3/contract-proposals/ports-v3.inbound.json",
+      "bytes": 13240,
+      "sha256": "e762747f815aaa9cbec66dd77e384686b72f4a894446159542f9781e9f9c7c9d"
+    }
+  ],
+  "actual_visual_inputs_opened": [
+    "assets/references/v3/r07-ports-zones.png",
+    "docs/adaptive-v3/evidence/L02-root-plan.png"
+  ],
+  "summary": {
+    "checks": 151,
+    "failures": 0,
+    "outbound_ports": 3,
+    "unique_combined_IN_OUT_ports": 6,
+    "actors_preserved": 24,
+    "vehicles_preserved": 2,
+    "shared_shippers": [
+      "S01",
+      "S02"
+    ],
+    "outbound_pair": [
+      "F02",
+      "FL02"
+    ],
+    "finite_outbound_HUs": 17,
+    "buffer_cell_intersections": 0,
+    "port_metrics": [
+      {
+        "port_id": "OUT_W_RETAIL",
+        "approach_clear_area_m2": 144,
+        "minimum_IN_service_distance_m": 36.0,
+        "buffer_HUs": 6,
+        "buffer_cell_area_m2": 24.0,
+        "accepted_staging_area_m2": 120
+      },
+      {
+        "port_id": "OUT_S_EXPRESS",
+        "approach_clear_area_m2": 144,
+        "minimum_IN_service_distance_m": 43.68065933568311,
+        "buffer_HUs": 8,
+        "buffer_cell_area_m2": 11.520000000000024,
+        "accepted_staging_area_m2": 240
+      },
+      {
+        "port_id": "OUT_E_B2B",
+        "approach_clear_area_m2": 144,
+        "minimum_IN_service_distance_m": 36.0,
+        "buffer_HUs": 3,
+        "buffer_cell_area_m2": 31.199999999999932,
+        "accepted_staging_area_m2": 80
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check": "three_expected_OUT_ids",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "six_unique_combined_port_ids",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "six_unique_combined_service_ids",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "24_original_actor_ids_match_policy",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "two_original_vehicle_ids",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "shared_S01_S02_only",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "F02_FL02_outbound_pair_exact",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "actual_F02_FL02_reciprocal",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:positions_direction_normals",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:service_6m_inside",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:inside_approach_and_clear_floor",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:whole_approach_clear",
+      "pass": true,
+      "actual": {
+        "expected_m2": 144,
+        "covered_m2": 144
+      }
+    },
+    {
+      "check": "OUT_W_RETAIL:nonoverlap_actual_IN_points",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:nonoverlap_IN_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:positive_gate_inside_envelope",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:gate_width_inside_approach",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:finite_positive_capacity",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:outbound_stage_allocation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:one_job_not_new_staff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:positive_service_times_exact_classes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:half_open_8h_elapsed_window",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:each_class_one_resource_group",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:shared_actual_pool_pair_refs",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_W_RETAIL:express_has_no_forklift",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:01:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:01:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:01:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:01:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:01:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:02:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:02:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:02:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:02:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:02:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:03:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:03:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:03:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:03:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:03:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:04:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:04:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:04:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:04:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:04:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:05:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:05:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:05:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:05:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:05:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:06:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:06:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:06:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:06:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_W_RETAIL:06:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "OUT_S_EXPRESS:positions_direction_normals",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:service_6m_inside",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:inside_approach_and_clear_floor",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:whole_approach_clear",
+      "pass": true,
+      "actual": {
+        "expected_m2": 144,
+        "covered_m2": 144
+      }
+    },
+    {
+      "check": "OUT_S_EXPRESS:nonoverlap_actual_IN_points",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:nonoverlap_IN_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:positive_gate_inside_envelope",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:gate_width_inside_approach",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:finite_positive_capacity",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:outbound_stage_allocation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:one_job_not_new_staff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:positive_service_times_exact_classes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:half_open_8h_elapsed_window",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:each_class_one_resource_group",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:shared_actual_pool_pair_refs",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_S_EXPRESS:express_has_no_forklift",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:01:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:01:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:01:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:01:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:01:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:02:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:02:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:02:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:02:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:02:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:03:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:03:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:03:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:03:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:03:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:04:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:04:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:04:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:04:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:04:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:05:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:05:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:05:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:05:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:05:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:06:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:06:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:06:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:06:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:06:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:07:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:07:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:07:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:07:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:07:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:08:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:08:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:08:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:08:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_S_EXPRESS:08:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "OUT_E_B2B:positions_direction_normals",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:service_6m_inside",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:inside_approach_and_clear_floor",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:whole_approach_clear",
+      "pass": true,
+      "actual": {
+        "expected_m2": 144,
+        "covered_m2": 144
+      }
+    },
+    {
+      "check": "OUT_E_B2B:nonoverlap_actual_IN_points",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:nonoverlap_IN_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:positive_gate_inside_envelope",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:gate_width_inside_approach",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:finite_positive_capacity",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:outbound_stage_allocation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:one_job_not_new_staff",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:positive_service_times_exact_classes",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:half_open_8h_elapsed_window",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:each_class_one_resource_group",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:shared_actual_pool_pair_refs",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "OUT_E_B2B:express_has_no_forklift",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:01:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:01:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:01:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:01:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:01:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:02:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:02:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:02:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:02:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:02:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:03:positive_single_nonstack_HU",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:03:inside_existing_staging",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:03:outside_all_circulation",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:03:outside_all_6_approaches",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "v3:buffer:OUT_E_B2B:03:nominal_R03_footprints_fit",
+      "pass": true,
+      "actual": "Footprint only; load/handler/swept-path acceptance deferred"
+    },
+    {
+      "check": "17_unique_buffer_cells_no_intersections",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "declared_IN_snapshot_matches_current_L03",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "read_only_input_unchanged:docs/v3/contract-proposals/port-resource-policy-v3.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "read_only_input_unchanged:docs/v3/contract-proposals/layout-v3.zones.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "read_only_input_unchanged:contracts/actors.example.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "read_only_input_unchanged:assets/references/v3/r07-ports-zones.png",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "read_only_input_unchanged:assets/references/v3/r03-dimension-targets.json",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "read_only_input_unchanged:docs/adaptive-v3/evidence/L02-zone-plan.svg",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "LONG_gate_requested_6x4.5",
+      "pass": true,
+      "actual": null
+    },
+    {
+      "check": "no_KPI_actual_run_claim",
+      "pass": true,
+      "actual": null
+    }
+  ],
+  "corrections": [
+    {
+      "kind": "verification_harness",
+      "issue": "Initial combined check assumed L03 port objects duplicate approach rectangles; no such field exists.",
+      "fix": "Approach overlays read by port_id from accepted L02 zones, the canonical spatial source. Re-ran every assertion; proposal coordinates unchanged."
+    }
+  ],
+  "limits": [
+    "Synthetic service/capacities/windows are assumptions, not operational KPI or actual engine run.",
+    "Nominal target footprints fit staging cells; actual gross mass, payload/support span/load centre/attachment and loaded swept access remain L05/L07/C08.",
+    "15kg manual gross-mass ceiling is a synthetic assumption; unknown or over-limit rejects manual mode.",
+    "No old contracts, shared policy, IN proposal, models/geometry, graphs or central state modified."
+  ],
+  "next_gate": "Root artifact review and PASS decision; L05 must not start automatically."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_id": "qoima.actual-second-codex-composition-review.v1",
+  "actual_model": "gpt-6.1-sol",
+  "actual_reasoning_effort": "high",
+  "thread_id": "01a1c252-840d-7183-aaf7-0a5508d9ee1d",
+  "owned_pid": 23536,
+  "duration_s": 129.28,
+  "returncode": 0,
+  "changed_inputs": [],
+  "source_inputs": {
+    "frontend/src/adaptive-v3/scenarioPage.ts": "b8c1937866d397cd7544af27bf77eedb0115a5055e308a9a7ef22ed3b71d32d7",
+    "frontend/src/adaptive-v3/warehouseScenarioEffects.ts": "4a18c4daaaaf43b29e285a04e62ac5aafc19b4dd6bd518268406dbdcffcb5afc",
+    "frontend/src/adaptive-v3/warehouseScenarioVisualCues.ts": "16688c8b033a05de8f5479512a266f75151dc7b389a07af2dd8e1d3728effae2",
+    "frontend/src/adaptive-v3/warehouseScenarioComparisonRender.ts": "1cf462291de9b9c28bb6348e672e394532e204f0bdc4d36efbce60a40e1e32fb"
+  },
+  "review": "review.md",
+  "root_status": "FOCUSED_FIXES_VERIFIED",
+  "findings": [
+    {
+      "id": 1,
+      "fix": "Persisted pageshow remounts panel and reloads disposedscene."
+    },
+    {
+      "id": 2,
+      "fix": "Context loss invalidates epoch and aborts/disposes loading orreadyscene."
+    },
+    {
+      "id": 3,
+      "verification": "Actual Clock stops on horizon confirmed fromsource.",
+      "fix": "Finalforward interval deliveredonce with stoppedmotor; finite cueTTLraf, manualpause/seek stillsilent."
+    }
+  ],
+  "child_executed_tests": false,
+  "full_TZ_closed": false,
+  "actual_browser": {
+    "report": "browser-5-PASS.json",
+    "passed": true,
+    "cases": 5,
+    "native_BFCache": true,
+    "forced_cleanup": false,
+    "cleanup_complete": true,
+    "source_drift": []
+  },
+  "effects": {
+    "report": "effects-9-PASS.json",
+    "passed": true,
+    "cases": 9,
+    "actual_speaker_output": false
+  }
+}

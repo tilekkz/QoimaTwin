@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: four-view design reference for a SEALED outgoing parcel in a warehouse game.
+Primary request: Show the SAME sealed cardboard shipping parcel in four consistent views: orthographic front, orthographic left side, orthographic rear, and a large elevated three-quarter view. Clean 2x2 grid on neutral medium-light grey studio background/floor.
+Subject: A compact rectangular corrugated cardboard parcel, .50m wide, .32m high, .38m deep. Warm light tan matte cardboard, softly bevelled manufactured edges, flat top with two flap halves meeting in a clean straight central seam. One muted ochre packing-tape strip follows the centre seam over the top and wraps down front and rear, plus short edge sealing strips near the end flaps. Small pale blank shipping label on one broad face. Indented fold lines at the side/end flap junctions and restrained darker folded corners make actual packaging construction readable. It is clearly CLOSED and ready for shipping, distinct from the reusable hollow teal order tote and from a large storage crate.
+Style: Premium crafted low-poly miniature industrial game asset matching warm tan warehouse cartons, charcoal/blue steel and industrial yellow surroundings; small soft edge bevels, simple matte colors, readable tape thickness and box depth. No photoreal noise, distressed damage or excessive labels.
+Views: Exactly the same object, seams, tape and label placement across four views; entire object visible; soft broad studio lighting and contact shadow.
+Constraints: No open flaps, no lid gap, no hollow top, no goods inside/outside, no pallet, no conveyor or person. No printing, no logos, no barcode or legible label text, no watermark; small view labels permitted.
+
+Generated with built-in image_gen on 2026-11-07; design reference only. Canonical geometry/anchors follow contracts.

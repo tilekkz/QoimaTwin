@@ -1,0 +1,265 @@
+{
+  "task_id": "M14.2",
+  "owner": "people_packing",
+  "status": "PASS",
+  "recorded_at": "2026-11-07T16:59:02.561495+00:00",
+  "scope": "Bounded user-requested front attachment repair; body/cab stages only, no mast/actions.",
+  "previous_root_acceptance": "assets/v3/iterations/forklift/M14.3/front-axle-repair/before/M14.2/M14.2.json",
+  "reference_id": "M14.2-REACH",
+  "repair": {
+    "recorded_at": "2026-11-07T16:59:02.561495+00:00",
+    "reason": "User observed detached-looking front wheels; root authorized bounded structural repair before mast.",
+    "changes": [
+      "closed cast central ramp",
+      "larger axle saddle and 90mm-radius shaft",
+      "two bearing collars",
+      "low crossmember and two connected tapered outboard frame cheeks"
+    ],
+    "fixed_hull_xyz_m": [
+      1.2,
+      2.1,
+      3.0
+    ],
+    "tyres_pivots_cab_driver_C08_unchanged": true,
+    "before_stub_m": 0.084,
+    "after_stub_m": 0.009000003337860107,
+    "actual_source_checks": "assets/v3/iterations/forklift/M14.3/front-axle-repair/actual-repair-checks.json",
+    "actual_GLTFLoader_checks": "assets/v3/iterations/forklift/M14.3/front-axle-repair/actual-repair-glb-checks.json",
+    "source_closed_positive_parts": 45,
+    "source_interior_contact_witnesses": 52,
+    "old_parts_unchanged_except_three_authorized_frame_parts": 37,
+    "new_body_cab_identical_parts": 30,
+    "actual_tyre_triangle_intersections": 0,
+    "continuous_declared_interface_clearances": [
+      {
+        "interface": "rearplate_minY_to_actual_ramp_slice",
+        "continuous_gap_m": 0.015000001192092896
+      },
+      {
+        "interface": "rearplate/outerguide_minY_to_rear_crossmember",
+        "continuous_gap_m": 0.015000001192092896
+      },
+      {
+        "interface": "outerguide/plate_max_absX_to_cheeks",
+        "continuous_gap_m": 0.009999992847442574
+      },
+      {
+        "interface": "high_forward_plate_and_forks",
+        "continuous_gap_m": 0.13
+      },
+      {
+        "interface": "low_extended_forward_plate",
+        "continuous_gap_m": 0.24000001907348634
+      },
+      {
+        "interface": "low_extended_fork_stem",
+        "continuous_gap_m": 0.25500001907348635
+      },
+      {
+        "interface": "rear_steered_tyre_envelope",
+        "continuous_gap_m": 0.5137785603195154
+      },
+      {
+        "interface": "unchanged_seated_worker_all_new_fixed_parts",
+        "continuous_gap_m": 0.029999911785125732
+      },
+      {
+        "interface": "front_tyre_inner_face_to_bearing_collar",
+        "continuous_gap_m": 0.004999995231628418
+      },
+      {
+        "interface": "rear_crossmember_to_front_tyre_rear_face",
+        "continuous_gap_m": 0.009999997913837433
+      },
+      {
+        "interface": "shaft_to_rotating_annular_tyre_bore",
+        "continuous_gap_m": 0.04384505628546442
+      }
+    ],
+    "clearance_scope": "Actual fixed repair solids against frozen declared moving interfaces; production mast/actions are not yet built or accepted.",
+    "negative_cases": {
+      "raised_rear_frame_20mm_rejected": true,
+      "cheek_shift20mm_into_guide_rejected": true
+    },
+    "actual_source_images_opened": [
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/before/wheel-close.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/front.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/side.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/rear.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/three-quarter.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/wheel-close.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/paired-after/three-quarter.png"
+    ],
+    "visual_findings": "Substantial centre housing and side frame connect wheel assembly to body. No detached axle reading in side/quarter. Four grounded tyres, unchanged cab/driver fit. No new visible defect in the seven opened PNGs.",
+    "mechanical_closeup_visibility": "Cab/control meshes hidden only in the identical before/after wheel-close camera; all full views and paired-quarter retain complete source hierarchy.",
+    "previous_previews": "Body-only four views and three older paired views are historical pre-repair images; current four cab views include the complete repaired body. Current driver witness is paired-after/three-quarter.png.",
+    "no_whole_route_or_unchanged_worker_pipeline_repeat": true,
+    "full_forklift_accepted": false
+  },
+  "current_source": {
+    "path": "assets/v3/blender/forklift-body-wheels.blend",
+    "bytes": 122738,
+    "sha256": "047c84bbc27ea5ff73e160ddfd1d51155ef6962b4c7335b471ebb48c05d18e19"
+  },
+  "actual_runtime": {
+    "asset_id": "forklift-body-wheels",
+    "sha256": "27b373611a8878024dd949ee13995991943201d6e390969b495cafebf4786c1b",
+    "bytes": 192688,
+    "previous_sha256": "a074423afa7624216f5508f9933d18083fd9479780e658c58ba476f0bb50faa9",
+    "source_parts": 30,
+    "meshes": 15,
+    "nodes": 22,
+    "triangles": 3748,
+    "vertices": 6816,
+    "pivots": 6,
+    "anchors": 0,
+    "unchanged_interface_matrices": 6,
+    "unchanged_wheel_batches": 12,
+    "maxNormalError": 7.922972011797924e-08,
+    "maxBatchBoundError": 3.725290298461914e-08,
+    "bounds": {
+      "min": [
+        -0.6000000238418579,
+        0,
+        -1.5
+      ],
+      "max": [
+        0.6000000238418579,
+        0.9200000166893005,
+        0.7000000178813934
+      ]
+    },
+    "materials": [
+      "V3_Forklift_Charcoal",
+      "V3_Forklift_Petrol",
+      "V3_Forklift_Tan",
+      "V3_Forklift_Rubber"
+    ],
+    "completeForkliftAccepted": false
+  },
+  "execution": {
+    "source_checker_exit": 0,
+    "repair_GLTFLoader_exit": 0,
+    "lean_Workbench_render_exit": 0,
+    "threads": 2,
+    "all_Blender_processes_closed": true,
+    "browser_and_Khronos": "Root owns final changed-artifact acceptance; not claimed here."
+  },
+  "remaining": [
+    "Root actual final body/cab browser + changed GLB Khronos gate",
+    "Separate mast/reach/forks/actions children"
+  ],
+  "shared_helpers_contracts_P01_modified": false,
+  "graph_evidence": {
+    "tier": 2,
+    "project": "qoima-twin",
+    "generation": "2026-11-07T15:43:42Z",
+    "coverage": "No recorded issue but metadata_changed/not_tracked; exact source/artifacts read. No reindex."
+  },
+  "artifacts": [
+    {
+      "path": "tools/blender/v3/build_forklift.py",
+      "bytes": 14709,
+      "sha256": "48db947d3b5d029efc02520e62287034b79d0c3f1bbd2ea7b220c41f2683450f"
+    },
+    {
+      "path": "assets/v3/blender/forklift-body-wheels.blend",
+      "bytes": 122738,
+      "sha256": "047c84bbc27ea5ff73e160ddfd1d51155ef6962b4c7335b471ebb48c05d18e19"
+    },
+    {
+      "path": "assets/v3/blender/forklift-body-wheels.stats.json",
+      "bytes": 20772,
+      "sha256": "d8b70438c4bfd4a65e10bfb43c35ea2f5847a5a6d98e162538702332a3cc9a34"
+    },
+    {
+      "path": "frontend/public/models/v3/forklift-body-wheels.glb",
+      "bytes": 192688,
+      "sha256": "27b373611a8878024dd949ee13995991943201d6e390969b495cafebf4786c1b"
+    },
+    {
+      "path": "assets/v3/specs/forklift-body-wheels.json",
+      "bytes": 29037,
+      "sha256": "4cd667b126389360a86d4fc90fd3fa83d511410c6317cf97dc51b4d9c9b0c138"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/check_repair.py",
+      "bytes": 9860,
+      "sha256": "fdf2f1d1144529e57126b223ddfd6cdfc354c8ea64834da13d6e5504c0828f10"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/actual-repair-checks.json",
+      "bytes": 25936,
+      "sha256": "7787ee166043792aac175fcf20cb407b929bd9b56188c5dd2700a6247e885fd9"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/verify_repair_glb.mjs",
+      "bytes": 5112,
+      "sha256": "d5d4ada8f3bc23acf04e8e2a829d810fb78f243afc0c03720c371a2d70cfffe7"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/actual-repair-glb-checks.json",
+      "bytes": 2101,
+      "sha256": "1ef60c3fd5da13d67b83a7eca932425c1d6915c71ccfd7e8618ff0409fc80a43"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/before/wheel-close.png",
+      "bytes": 900733,
+      "sha256": "fa62e9fd3eddfefff22a9f4e9831aa7c65c2a29e45eabb6aedc87a47a954bbc0"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/wheel-close.png",
+      "bytes": 909109,
+      "sha256": "05b7226fd77f491a916d55192f59fd1b0dee347f72480d7161010ee43d246c95"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/paired-after/three-quarter.png",
+      "bytes": 952892,
+      "sha256": "e984dff6d6d7f4df905e91946b27ed59364eac73c14ceeb9aa655f5c5eaedd6c"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/front.png",
+      "bytes": 776877,
+      "sha256": "c11f59cc234e24844d8228eb9b2ff14708d4b38ccd8293f1cb38903952763edb"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/side.png",
+      "bytes": 799882,
+      "sha256": "c75f201e57dea1bfbf86fc429220b31438ebfacd3639558fe24d444f85b393c7"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/rear.png",
+      "bytes": 767285,
+      "sha256": "623282ee63e916994fb5b6081ab736b1d0fbd56e2d99bcb7a269b1273dacd9dd"
+    },
+    {
+      "path": "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/three-quarter.png",
+      "bytes": 926515,
+      "sha256": "3c8f948801addc91583c4ca7cb4e519c5c88903b1a039d7a33c9111e756bb0a9"
+    }
+  ],
+  "root_review": {
+    "status": "PASS",
+    "at": "2026-11-07T17:02:02.878063+00:00",
+    "scope": "User-requested front wheel/frame attachment repair; body/cab stages only",
+    "actual_opened": [
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/before/wheel-close.png",
+      "assets/v3/iterations/forklift/M14.3/front-axle-repair/after/wheel-close.png",
+      "assets/v3/qa-browser/forklift-cab-stage/side.png",
+      "assets/v3/qa-browser/forklift-cab-stage/quarter.png"
+    ],
+    "artifact_hashes_verified": 16,
+    "browser_views_saved": [
+      "front",
+      "side",
+      "rear",
+      "quarter",
+      "top"
+    ],
+    "browser_errors": 0,
+    "failed_resources": 0,
+    "Khronos_errors": 0,
+    "Khronos_warnings": 0,
+    "findings": "Cast centre support, bearing collars and joined side cheeks replace detached-looking skinny connection; exposed stub84mm to9mm. Actual source contact/clearance proof and unchanged tyre/rig matrices checked. Same conservative hull; mast/actions remain separate."
+  }
+}
