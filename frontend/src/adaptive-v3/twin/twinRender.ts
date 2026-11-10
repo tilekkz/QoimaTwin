@@ -165,6 +165,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  const labelW:Partial<Record<Variant,number>>={},labelH:Partial<Record<Variant,number>>={};
  /** Pixels on the right reserved for open panels on desktop; the window narrows instead of being covered. */
  let inset=0;
+ /** Pixels on the left kept for floating cards (the demo-shift card) on desktop, so the framing never sits under them. */
+ let insetLeft=0;
  /** Canvas CSS size, refreshed by a ResizeObserver: reading clientWidth in every draw forces a layout. */
  let size:[number,number]|null=null,sizeObs:ResizeObserver|null=null;
  function canvasSize(el:HTMLCanvasElement):[number,number]{
@@ -284,7 +286,8 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   // Swipe keeps them either side of the blade; phones put them at the top, under the brand button for A.
   if(mode==='side'){
    // In the shared space each label sits beside its own warehouse, by the short west wall.
-   const q=project(new THREE.Vector3(-4,2,36),vp);labels[v].style.left=Math.max(sc.x+8,q.x-lw-6)+'px';labels[v].style.top=q.y-lh/2+'px';
+   // No room left of the wall (narrow window or a kept left column): sit just above the warehouse's north-west corner instead.
+   const q=project(new THREE.Vector3(-4,2,36),vp);if(q.x-lw-6>=sc.x+8){labels[v].style.left=q.x-lw-6+'px';labels[v].style.top=q.y-lh/2+'px';}else{const c=project(new THREE.Vector3(0,2,-1.5),vp);labels[v].style.left=Math.max(sc.x+8,c.x)+'px';labels[v].style.top=c.y-lh-4+'px';}
   }else{labels[v].style.left=(narrow?sc.x+8:v==='A'?sc.x+sc.w-lw-34:sc.x+34)+'px';labels[v].style.top=sc.y+(sc.y<60||narrow?62:12)+'px';}
   const R=region(W,H),r=22;
   corners[v].forEach(c=>{const k=c.dataset.c!;c.hidden=!pass.round.includes(k);if(c.hidden)return;c.style.left=(k[1]==='r'?R.x+R.w-r:R.x)+'px';c.style.top=(k[0]==='b'?R.y+R.h-r:R.y)+'px';});
@@ -323,7 +326,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   if(p){const q=project(new THREE.Vector3(p.position[0],p.position[1]+p.dims[1]/2,p.position[2]),vp);rings[v].hidden=!inside(q,sc);rings[v].style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-50%)`;}
  }
  /** The window both warehouses live in: the whole screen minus a margin, and minus the right panels on desktop. */
- function region(W:number,H:number):Rect{const narrow=W<720,m=narrow?8:14;return {x:m,y:m,w:Math.max(240,W-2*m-(narrow?0:inset)),h:H-2*m};}
+ function region(W:number,H:number):Rect{const narrow=W<720,m=narrow?8:14,left=narrow?0:insetLeft;return {x:m+left,y:m,w:Math.max(240,W-2*m-left-(narrow?0:inset)),h:H-2*m};}
  /** Zoom for a view so the overview framing (a 16:9 window across the warehouse) still fits it: the full width,
   *  and enough height for short wide views. Tall phone views keep the slightly closer framing they had before. */
  const fit=(r:Rect)=>{const a=r.w/r.h;return Math.max(a<1.4?.82:1,.86*a*9/16);};
@@ -471,6 +474,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   setMoves,draw,pick,ground,
   setMode(next:Mode){mode=next;draw();},
   setInset(px:number){if(px===inset)return;inset=px;draw();},
+  setInsetLeft(px:number){if(px===insetLeft)return;insetLeft=px;draw();},
   region:()=>ctx?region(...canvasSize(ctx.renderer.domElement)):null,
   setSplit(next:number){split=Math.min(.92,Math.max(.08,next));draw();},
   setTime(next:number){t=next;draw();},

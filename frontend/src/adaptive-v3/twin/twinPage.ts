@@ -142,7 +142,7 @@ let effects:Effects=EFFECTS.includes(store.get('qoima.twin.effects') as Effects)
 function applyEffects(){app.dataset.effects=effects;for(const b of $$<HTMLButtonElement>('button[data-effects]'))b.setAttribute('aria-pressed',String(b.dataset.effects===effects));twin?.setEffects(effects,bubbleBudget(effects,phone.matches));}
 for(const b of $$<HTMLButtonElement>('button[data-effects]'))b.addEventListener('click',()=>{effects=b.dataset.effects as Effects;store.set('qoima.twin.effects',effects);applyEffects();});
 phone.addEventListener('change',()=>{applyEffects();layoutPanels();});
-window.addEventListener('resize',()=>requestAnimationFrame(positionBlade));
+window.addEventListener('resize',()=>requestAnimationFrame(()=>{layoutPanels();positionBlade();}));
 /** Soft synthesized cues. Muted until the viewer turns sound on; at most 4 voices, per-kind cooldown,
  *  only on forward playback crossings: seek, reset and presenter jumps stay silent. */
 type Cue='danger'|'sos'|'control'|'refuse';
@@ -196,7 +196,9 @@ function setPop(which:'menu'|null){show(menu,which==='menu');menuBtn.setAttribut
 /** Desktop panels open on the right and the comparison window narrows instead of hiding under them. */
 function layoutPanels(){
  const right=!phone.matches&&!!sheet&&sheet!=='time',sel=!phone.matches&&sheets.find(s=>s.dataset.sheet==='sel')?.dataset.open==='true';
- app.dataset.right=String(right);twin?.setInset((right?376:0)+(sel?(right?346:346):0));positionBlade();drawMini();
+ app.dataset.right=String(right);twin?.setInset((right?376:0)+(sel?(right?346:346):0));
+ // The demo-shift card floats top-left: keep its column out of the framing on desktop.
+ {const card=document.getElementById('tw-shift'),r=!phone.matches&&card&&!card.hidden?card.getBoundingClientRect():null;twin?.setInsetLeft(r&&r.width?Math.round(r.right-host.getBoundingClientRect().left-14+12):0);}positionBlade();drawMini();
 }
 for(const s of sheets)s.tabIndex=-1;
 function setSheet(name:string|null){
@@ -622,7 +624,7 @@ async function load(){
   const keys=Object.keys(WAREHOUSE_BASE_FILES) as (keyof WarehouseTexts)[],values=await Promise.all(keys.map(k=>readLocal(WAREHOUSE_BASE_FILES[k],owned.signal)));
   const sourceTexts=Object.fromEntries(keys.map((k,i)=>[k,values[i]])) as WarehouseTexts;
   const data=await adaptWarehouseV3(sourceTexts);if(token!==serial)return;
-  const tw=createTwinRenderer(data,layer,()=>reduced.matches);twin=tw;tw.onBubble((id,v)=>select(id,'actor',v));
+  const tw=createTwinRenderer(data,layer,()=>reduced.matches);twin=tw;layoutPanels();tw.onBubble((id,v)=>select(id,'actor',v));
   // The A/B labels stand by their warehouse: a click takes you to that one, to look at it on its own.
   tw.onLabel(v=>{const o=tw.offsetOf(v);fly([OVERVIEW.target[0],OVERVIEW.target[1],OVERVIEW.target[2]+o[2]],mode==='side'?150:OVERVIEW.span);});
   let world:Scene|undefined;
