@@ -32,7 +32,7 @@
    <div class="tw-prefs">
     <p class="tw-pref-label" id="tw-fx-label">Эффекты</p>
     <div class="tw-seg tw-seg-wide" role="group" aria-labelledby="tw-fx-label"><button type="button" data-effects="full" aria-pressed="true">Полные</button><button type="button" data-effects="calm" aria-pressed="false">Сдержанные</button><button type="button" data-effects="off" aria-pressed="false">Выкл</button></div>
-    <p class="tw-pref-hint">Мысли работников и волны. Цвета состояний остаются всегда.</p>
+   <p class="tw-pref-hint">Мысли, сигналы ожидания и волны. Работа смены и цвета состояний остаются видны.</p>
     <div class="tw-sound-row"><button id="tw-sound" class="tw-sound" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z"/><path class="tw-wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><span>Звук выключен</span></button><input id="tw-volume" class="tw-volume" type="range" min="0" max="1" step="0.05" value="0.5" aria-label="Громкость" disabled></div>
    </div>
   </nav>
@@ -43,6 +43,13 @@
  </div>
 
  <!-- floating sheets -->
+ <aside id="tw-shift" class="glass tw-shift" data-state="loading" aria-label="Насыщенная демонстрационная смена">
+  <strong>Насыщенная смена · демонстрация</strong>
+  <p id="tw-shift-status" role="status">Подготавливаем бригаду и маршруты…</p>
+  <span id="tw-shift-A" class="tw-shift-a"></span>
+  <span id="tw-shift-B" class="tw-shift-b"></span>
+  <small>Один поток заказов. Темп, очереди и сроки — постановка.</small>
+ </aside>
  <nav class="glass tw-motion-nav" aria-label="Показать движение в демо">
   <span>Движение в демо</span>
   <button type="button" data-motion-focus="belt">Конвейер</button>
@@ -65,6 +72,7 @@
    <p id="tw-stock-summary" class="tw-note" role="status">Подготавливаем товар…</p>
    <p id="tw-stock-note" class="tw-note"></p>
   </div>
+  <p id="tw-shift-routes" class="tw-note">Маршруты демонстрационной смены подготавливаются.</p>
   <dl id="tw-diff-summary" class="tw-stats"></dl>
   <ol id="tw-moves" class="tw-moves"></ol>
   </div>
@@ -79,9 +87,11 @@
   <div class="tw-prose">
    <p><b>Склад и груз.</b> Принятые модели и исходный снимок: 530 грузовых единиц, 132 модуля, 24 работника.</p>
    <p><b>Заполнение.</b> Дополнительный товар заполняет доступные ячейки каждой планировки. Адреса приёмки и перемещений остаются свободными. Переключатель «Исходные 530» возвращает общий снимок для расчётного сравнения.</p>
-   <p><b>Движение.</b> Конвейер, погрузчик с паллетой и походка работника показаны в общем демонстрационном эпизоде. Пауза и перемотка управляют всей сценой. Это визуальная демонстрация, она не добавляет выполненные задания в расчётные результаты.</p>
+   <p><b>Насыщенная смена · демонстрация.</b> Все 24 штатных работника и дополнительная демо-бригада, погрузчики, машины, паллеты, коробки и тележки работают по общей шкале. Дополнительные люди отмечены бирюзовым кольцом. Груз смены — демо-груз, отдельно от исходных 530 ГЕ.</p>
+   <p><b>Два сценария.</b> Один поток демо-заказов: A спешит, ждёт ресурсы и копит очередь; B спокойно идёт по своей планировке. Темп, ожидания и сроки заданы для показа. Длины маршрутов считаются по геометрии. Счётчики передач и очереди получены из генератора, это не расчёт эффективности.</p>
+   <p><b>Управление.</b> Пауза, перемотка и сброс воспроизводят тот же момент смены. При уменьшении движения смена открывается на паузе; можно изучать её по шкале. «Выкл» скрывает сигналы и мысли, сохраняя рабочий процесс.</p>
    <p><b>Перестройка B.</b> Демонстрационный план. Каждый перенос исходного груза прошёл проверку адреса по классу, габаритам и массе. Расстояния — по прямой между модулями.</p>
-   <p><b>Волны состояний.</b> Заранее записанный эпизод «Перегрузка ветки упаковки». Он показывает механизм, а не результат расчётного движка: движок V3 пока не подключён.</p>
+   <p><b>Проблемы.</b> Опоздавшая приёмка, заторы у ворот, остановка конвейера, перегрузка отбора, перекрытый проезд, нехватка упаковщиков, ожидание пополнения, негабарит и опоздание к рейсу. Это демонстрационные события; интеграция с расчётным движком не заявляется.</p>
   </div>
   </div>
  </section>
@@ -90,7 +100,7 @@
    <div class="tw-seg" role="group" aria-label="Скорость"><button type="button" data-speed="1" aria-pressed="false">1×</button><button type="button" data-speed="4" aria-pressed="true">4×</button><button type="button" data-speed="8" aria-pressed="false">8×</button></div>
    <button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>
   <div id="tw-chapters" class="tw-chapters" aria-label="Главы"></div>
-  <canvas id="tw-river" class="tw-river" role="slider" tabindex="0" aria-label="Лента состояний зон для A и B. Перетащите или используйте стрелки" aria-valuemin="0" aria-valuemax="240" aria-valuenow="0"></canvas>
+  <canvas id="tw-river" class="tw-river" role="slider" tabindex="0" aria-label="Лента состояний зон для A и B. Перетащите или используйте стрелки" aria-valuemin="0" aria-valuemax="1800" aria-valuenow="0"></canvas>
  </section>
  <section class="glass tw-sheet tw-sheet-right tw-sheet-sel" data-sheet="sel" aria-labelledby="sh-sel" data-open="false" inert>
   <header><h2 id="sh-sel">Груз</h2><button class="tw-x" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg></button></header>

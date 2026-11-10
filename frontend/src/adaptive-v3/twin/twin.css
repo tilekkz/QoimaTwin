@@ -195,7 +195,7 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 .tw-chapters button{flex:none;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.6);font:500 12.5px var(--ui);transition:background-color .2s,scale .25s var(--spring)}
 .tw-chapters button:hover{background:#fff}
 .tw-chapters button:active{scale:.95}
-.tw-river{width:100%;height:150px;display:block;touch-action:none;cursor:col-resize;flex:none}
+.tw-river{width:100%;height:210px;display:block;touch-action:none;cursor:col-resize;flex:none}
 
 /* mode picker */
 
@@ -425,7 +425,7 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
  .tw-brand-name{font-size:14px}
  .tw-sheet-right,.tw-sheet-left,.tw-sheet-bottom{top:auto;left:var(--gap);right:var(--gap);width:auto;translate:none;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));max-height:58svh;transform:translateY(32px) scale(.97);transform-origin:center bottom;border-radius:26px}
  .tw-menu{width:min(300px,calc(100vw - 2*var(--gap)))}
- .tw-river{height:140px}
+ .tw-river{height:210px}
  .tw-present h2{font-size:18px}
  .tw-present p{font-size:13.5px}
 }
@@ -434,6 +434,16 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
  .tw-pop,.tw-sheet{transform:none!important;filter:none!important}
 }
 .tw-motion-nav{position:absolute;z-index:5;left:50%;top:18px;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:5px 8px;border-radius:16px;white-space:nowrap}
+.tw-shift{position:absolute;z-index:4;left:18px;top:80px;width:302px;padding:14px 16px;border-radius:18px;display:grid;gap:7px;pointer-events:none;font:500 12px var(--ui);color:var(--ink)}
+.tw-shift strong{font:650 13px var(--display);color:var(--accent)}
+.tw-shift p{margin:0;line-height:1.5;color:var(--muted)}
+.tw-shift span{line-height:1.5;font-variant-numeric:tabular-nums}
+.tw-shift-a{color:#A85028}.tw-shift-b{color:#147568}
+.tw-shift small{font-size:11px;line-height:1.45;color:var(--muted)}
+.tw-vlabel span small{display:block;font-size:10px;line-height:1.6;color:var(--muted);font-weight:500}
+.tw-shift[data-state="loading"] span:empty,.tw-shift[data-state="error"] span:empty{display:none}
+@media(max-width:1050px){.tw-shift{top:124px;width:250px;padding:10px 12px;font-size:11px}.tw-shift strong{font-size:12px}}
+@media(max-width:720px){.tw-shift{top:72px;left:18px;width:246px;gap:3px}.tw-shift small{display:none}.tw-shift strong{font-size:11px}}
 .tw-motion-nav span{font-size:11px;opacity:.66;margin:0 5px}
 .tw-motion-nav button{border:0;background:transparent;color:inherit;font:inherit;font-size:12px;padding:8px 10px;border-radius:11px;cursor:pointer}
 .tw-motion-nav button:hover,.tw-motion-nav button:focus-visible{background:rgba(255,255,255,.12)}

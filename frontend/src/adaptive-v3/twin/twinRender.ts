@@ -8,9 +8,10 @@ import * as THREE from 'three';
 import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
 import {createWarehouseCargo} from '../warehouseCargo';
 import {createTwinInventoryScene} from './twinInventoryScene';
-import {createTwinCarrierIndicators} from './twinCarrierIndicators';
 import type {createTwinInventory} from './twinInventory';
-import type {createTwinWarehouseMotion} from './twinWarehouseMotion';
+import type {TwinShiftScene} from './twinShiftScene';
+import type {WarehouseLayoutPlan} from '../warehouseLayoutPlan';
+import type {WarehouseLayoutAccessResult} from '../warehouseLayoutAccess';
 import {createTwinLayoutVariant,type TwinLayoutPlan} from './twinLayoutVariant';
 import {ATMO_ZONES,activePulses,sampleAtmosphere,type AtmoState,type Variant} from './twinScenario';
 import {reactionsAt,visibleReactions,type Bubble,type Effects,type WorkerSpot} from './twinScenario';
@@ -57,7 +58,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  const spots:WorkerSpot[]=[],heads=new Map<string,THREE.Vector3>();
  let layout:ReturnType<typeof createTwinLayoutVariant>|undefined;
  let inventory:ReturnType<typeof createTwinInventoryScene>|undefined;
- let motion:Awaited<ReturnType<typeof createTwinWarehouseMotion>>|undefined;
+ let motion:TwinShiftScene|undefined;
  const motionLights=new Map<THREE.Object3D,number>();
  const zoneEdgesA=new Map<string,THREE.BufferGeometry>(),zoneEdgesB=new Map<string,THREE.BufferGeometry>();
  const overlay=new THREE.Scene(),owned:(THREE.BufferGeometry|THREE.Material)[]=[];
@@ -150,13 +151,12 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  for(const v of ['A','B'] as Variant[]){
   const el=document.createElement('div');el.className='tw-layer';el.dataset.variant=v;layer.append(el);layers[v]=el;
   corners[v]=['tl','tr','bl','br'].map(c=>{const d=document.createElement('span');d.className='tw-cm';d.dataset.c=c;el.append(d);return d;});
-  const label=document.createElement('button');label.type='button';label.className='tw-vlabel glass';label.addEventListener('click',()=>onLabel(v));label.innerHTML=`<b>${v}</b><span>${VARIANT_TITLE[v]}</span>`;el.append(label);labels[v]=label;
+  const label=document.createElement('button');label.type='button';label.className='tw-vlabel glass';label.addEventListener('click',()=>onLabel(v));label.innerHTML=`<b>${v}</b><span>${VARIANT_TITLE[v]}<small>${v==='A'?'Спешка · очереди':'Спокойный ритм'}</small></span>`;el.append(label);labels[v]=label;
   const ring=document.createElement('span');ring.className='tw-ring';ring.hidden=true;el.append(ring);rings[v]=ring;
   badges[v]=new Map();for(const z of ATMO_ZONES){if(!zones.has(z.id))continue;const b=document.createElement('span');b.className='tw-badge';b.hidden=true;el.append(b);badges[v].set(z.id,b);}
   pins[v]=[];
   bubbles[v]=Array.from({length:BUDGET_MAX},()=>{const b=document.createElement('button');b.type='button';b.className='tw-bubble';b.hidden=true;b.addEventListener('click',()=>{if(b.dataset.actor)onBubble(b.dataset.actor,v);});el.append(b);return b;});
  }
- const carrierIndicators={A:createTwinCarrierIndicators(layers.A),B:createTwinCarrierIndicators(layers.B)};
  const labelW:Partial<Record<Variant,number>>={},labelH:Partial<Record<Variant,number>>={};
  /** Pixels on the right reserved for open panels on desktop; the window narrows instead of being covered. */
  let inset=0;
@@ -202,11 +202,11 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   const moving=motion?.actorPosition(v,t,id);if(moving)return new THREE.Vector3(...moving);
   const p=heads.get(id)?.clone();return p&&v==='B'&&layout?p.add(layout.actorDelta(id)):p;
  };
- const variantWorkers=(v:Variant='A'):readonly WorkerSpot[]=>v==='A'||!layout?spots:spots.map(s=>{const p=layout!.bounds('actor',s.actor_id)?.position;const zone=p?[...layout!.zones.values()].find(z=>p[0]>=z.floor_bounds_xz_m.min[0]&&p[0]<=z.floor_bounds_xz_m.max[0]&&p[2]>=z.floor_bounds_xz_m.min[1]&&p[2]<=z.floor_bounds_xz_m.max[1])?.zone_id:undefined;return {...s,zone_id:zone??s.zone_id};});
+ const variantWorkers=(v:Variant='A'):readonly WorkerSpot[]=>motion?.workers(v,t)??spots;
  // «Рядом» draws A then B every frame. Rewriting the cargo matrices on each switch, even only the few moved units,
  // updates a buffer the GPU is still drawing from and stalled an integrated GPU by ~20 ms a frame. Each variant owns
  // a fixed matrix buffer instead; switching only swaps which buffer the meshes read.
- function apply(variant:Variant){
+ function apply(variant:Variant,updateMotion=true){
   if(applied!==variant){
    applied=variant;
    if(layout)layout.apply(variant);
@@ -216,7 +216,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     if(moved)h.mesh.updateWorldMatrix(true,false);
    }
   }
-  inventory?.apply(variant);motion?.apply(variant,t);
+  inventory?.apply(variant);if(updateMotion)motion?.apply(variant,t);
  }
 
  function setInventory(next:ReturnType<typeof createTwinInventory>){
@@ -224,16 +224,22 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   inventory??=createTwinInventoryScene(ctx.scene,createWarehouseCargo(bundle).snapshot());
   inventory.setInventory(next);version++;draw();
  }
- function setMotion(next:Awaited<ReturnType<typeof createTwinWarehouseMotion>>){
+ function setMotion(next:TwinShiftScene){
   if(!ctx)throw Error('Warehouse scene is not ready');motion?.dispose();motion=next;
   ctx.scene.traverse(node=>{if(node instanceof THREE.Light){if(!motionLights.has(node))motionLights.set(node,node.layers.mask);node.layers.enable(1);}});
-  version++;draw();
+  motion.setEffects(effects);version++;draw();
  }
+ let motionCalls=0,motionTriangles=0;
  function drawMotion(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.Camera){
-  if(!motion)return;
-  const background=scene.background,mask=camera.layers.mask;
-  try{scene.background=null;camera.layers.set(1);scene.updateMatrixWorld(true);renderer.render(scene,camera);}
-  finally{scene.background=background;camera.layers.mask=mask;}
+  motionCalls=0;motionTriangles=0;if(!motion)return;
+  const background=scene.background,mask=camera.layers.mask,autoUpdate=scene.matrixWorldAutoUpdate;
+  try{
+   scene.background=null;camera.layers.set(1);
+   // Dynamic instances only change their buffers. Their object transforms stay at
+   // the origin; traversing all hidden native rigs twice per pass wastes the cache.
+   for(const light of motionLights.keys()){light.updateWorldMatrix(true,false);if(light instanceof THREE.DirectionalLight)light.target.updateWorldMatrix(true,false);}
+   scene.matrixWorldAutoUpdate=false;renderer.render(scene,camera);motionCalls=renderer.info.render.calls;motionTriangles=renderer.info.render.triangles;
+  }finally{scene.matrixWorldAutoUpdate=autoUpdate;scene.background=background;camera.layers.mask=mask;}
  }
 
  function overlayFor(variant:Variant){
@@ -277,11 +283,17 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   }else{labels[v].style.left=(narrow?sc.x+8:v==='A'?sc.x+sc.w-lw-34:sc.x+34)+'px';labels[v].style.top=sc.y+(sc.y<60||narrow?62:12)+'px';}
   const R=region(W,H),r=22;
   corners[v].forEach(c=>{const k=c.dataset.c!;c.hidden=!pass.round.includes(k);if(c.hidden)return;c.style.left=(k[1]==='r'?R.x+R.w-r:R.x)+'px';c.style.top=(k[0]==='b'?R.y+R.h-r:R.y)+'px';});
+  // Neighbouring zones put their badges side by side; a badge that would cover an earlier one is lifted above it.
+  // Sizes are measured only when the badge content changes, never per frame.
+  const placed:[number,number,number,number][]=[];
   for(const [id,b]of badges[v]){
    const s=sample[id].state,z=zones.get(id)!;b.hidden=s==='control';if(b.hidden)continue;
    const q=project(z.center.clone().setY(6),vp);b.hidden=!inside(q,sc);if(b.hidden)continue;
-   if(b.dataset.state!==s){b.dataset.state=s;b.innerHTML=`<span class="tw-badge-in glass"><i></i>${ATMO_ZONES.find(a=>a.id===id)!.label}<small>${STATE_RU[s]}</small></span>`;}
-   b.style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-100%)`;
+   if(b.dataset.state!==s){b.dataset.state=s;b.innerHTML=`<span class="tw-badge-in glass"><i></i>${ATMO_ZONES.find(a=>a.id===id)!.label}<small>${STATE_RU[s]}</small></span>`;b.dataset.w=String(b.offsetWidth);b.dataset.h=String(b.offsetHeight);}
+   const w=Number(b.dataset.w)||160,h=Number(b.dataset.h)||30;let y=q.y;
+   for(let k=0;k<4;k++){const hit=placed.find(r=>q.x-w/2<r[2]&&q.x+w/2>r[0]&&y-h<r[3]&&y>r[1]);if(!hit)break;y=hit[1]-4;}
+   placed.push([q.x-w/2,y-h,q.x+w/2,y]);
+   b.style.transform=`translate(${q.x}px,${y}px) translate(-50%,-100%)`;
   }
   const gatesHere=v==='A'||mode==='swipe';
   gateEls[v].forEach((e,i)=>{const g=gateTags[i];if(!g||!gatesHere){e.hidden=true;return;}const q=project(new THREE.Vector3(g.pos[0],5,g.pos[2]),vp);e.hidden=!inside(q,sc);if(e.hidden)return;
@@ -291,10 +303,9 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   // Thought bubbles above heads, within the effect budget; the selected worker always keeps its bubble.
   // Far away the zone badge is the aggregated sign; bubbles appear once people are big enough to read.
   const cam=ctx!.camera,pxPerM=vp.w*cam.zoom/(cam.right-cam.left);
-  carrierIndicators[v].update(motion?.carrierFrames(v,t)??[],pxPerM,position=>project(new THREE.Vector3(...position),vp),sc);
   // The budget is spent only on workers inside this pass, so a close-up is not starved by people off screen.
   const onScreen=pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,variantWorkers(v)).map(r=>({r,q:project(variantHead(r.actor_id,v)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
-  const shown=visibleReactions(onScreen.map(x=>x.r),budget,selectedActor),at=new Map(onScreen.map(x=>[x.r.actor_id,x.q]));
+  const shown=visibleReactions(onScreen.map(x=>x.r),v==='B'?Math.min(budget,2):budget,selectedActor),at=new Map(onScreen.map(x=>[x.r.actor_id,x.q]));
   bubbles[v].forEach((b,i)=>{
    const r=shown[i],q=r&&at.get(r.actor_id);
    if(!r||!q){b.hidden=true;delete b.dataset.actor;return;}
@@ -344,7 +355,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     const {p,c,base,key,hw,hh,os}=x;
     // Drawing B beside A = drawing B's scene from a camera moved the other way; the scene's own matrices stay untouched.
     camera.position.sub(p.shift);camera.updateMatrixWorld();shifted=p.shift;
-    overlayFor(p.variant);
+    motion?.setDetail(p.vp.w*camera.zoom/span>13);overlayFor(p.variant);
     let k=performance.now();
     if(renderNow.has(x)){
      // Render the padded frustum into the cache.
@@ -356,7 +367,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
      calls+=renderer.info.render.calls;tris+=renderer.info.render.triangles;rendered++;markRendered();
      Object.assign(c,{key,base,hw:hw*os[0],hh:hh*os[1],at:performance.now()});c.pos.copy(camera.position);c.quat.copy(camera.quaternion);
     }
-    setCamera(camera,span*(p.zoom??1),p.vp);
+    setCamera(camera,span*(p.zoom??1),p.vp);motion?.setView(camera);
     // Map this view into the cached image: exact crop when the camera is unchanged, shifted/scaled while it moves.
     const u=blitMat.uniforms,m=mapping(c,hw,hh,camera);
     u.uScale.value.set(m.kx,m.ky);u.uOffset.value.set(m.ox,m.oy);u.uDepthShift.value=m.dz;
@@ -365,13 +376,13 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
     u.tColor.value=c.rt.texture;u.tDepth.value=c.rt.depthTexture;
     // A pass that shares the view with an earlier one is merged by depth instead of painted over it.
     const at=plan.indexOf(x),merge=at>0&&plan[at-1].p.vp===p.vp;blitMat.depthFunc=merge?THREE.LessEqualDepth:THREE.AlwaysDepth;
-     renderer.autoClear=false;renderer.render(blitScene,camera);apply(p.variant);drawMotion(renderer,scene,camera);renderer.render(overlay,camera);renderer.autoClear=true;
+     renderer.autoClear=false;renderer.render(blitScene,camera);calls+=renderer.info.render.calls;tris+=renderer.info.render.triangles;apply(p.variant);drawMotion(renderer,scene,camera);calls+=motionCalls;tris+=motionTriangles;renderer.render(overlay,camera);calls+=renderer.info.render.calls;tris+=renderer.info.render.triangles;renderer.autoClear=true;
     tScene+=performance.now()-k;k=performance.now();domFor(p,W,H);tDom+=performance.now()-k;
     camera.position.add(shifted);camera.updateMatrixWorld();shifted=NO_SHIFT;
    }
    // Something is still shown from an older camera: finish it on the next frame even if nothing else asks.
    if(reprojected&&!pending)pending=requestAnimationFrame(()=>{pending=0;draw();});
-  }finally{if(shifted!==NO_SHIFT){camera.position.add(shifted);camera.updateMatrixWorld();}blitMat.depthFunc=THREE.AlwaysDepth;scene.matrixWorldAutoUpdate=true;renderer.autoClear=true;renderer.setRenderTarget(null);[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A');renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);}
+  }finally{if(shifted!==NO_SHIFT){camera.position.add(shifted);camera.updateMatrixWorld();}blitMat.depthFunc=THREE.AlwaysDepth;scene.matrixWorldAutoUpdate=true;renderer.autoClear=true;renderer.setRenderTarget(null);[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A',false);renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);}
   totals.draws++;totals.scene_renders+=rendered;totals.reprojected+=reprojected;
   stats={passes:list.length,rendered,reprojected,calls,triangles:tris,cpu_ms:+(performance.now()-t0).toFixed(2),scene_ms:+tScene.toFixed(2),dom_ms:+tDom.toFixed(2)};
  }
@@ -395,7 +406,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   let best:(Pick&{d:number})|null=null;
   try{
    for(const p of list){
-     apply(p.variant);scene.updateMatrixWorld(true);if(!layout)for(const h of hu)h.mesh.computeBoundingSphere();const targets:THREE.Object3D[]=[];scene.traverseVisible(o=>{if(o.userData.semanticKind&&['HU','module','actor','demo-stock'].includes(o.userData.semanticKind))targets.push(o);});setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();
+     setCamera(camera,(base[1]-base[0])*(p.zoom??1),p.vp);camera.position.sub(p.shift);camera.updateMatrixWorld();motion?.setView(camera);apply(p.variant);scene.updateMatrixWorld(true);if(!layout)for(const h of hu)h.mesh.computeBoundingSphere();const targets:THREE.Object3D[]=[];scene.traverseVisible(o=>{if(o.userData.semanticKind&&['HU','module','actor','demo-stock'].includes(o.userData.semanticKind)){if(o instanceof THREE.InstancedMesh&&o.userData.demoShift)o.computeBoundingSphere();targets.push(o);}});
     try{
       const ray=new THREE.Raycaster();ray.layers.enable(1);ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,-(y-p.vp.y)/p.vp.h*2+1),camera);
      for(const hit of ray.intersectObjects(targets,true)){
@@ -426,13 +437,17 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    inventoryBounds:(id:string,v:Variant)=>inventory?.bounds(id,v)??null,
    inventorySnapshot:()=>inventory?.snapshot()??null,
    motionSnapshot:()=>motion?.snapshot()??null,
+   shiftSummary:(v:Variant)=>motion?.summary(v,t)??null,
+   setShiftPlan:(plan:WarehouseLayoutPlan|null,access:WarehouseLayoutAccessResult|null)=>{motion?.setPlan(plan,access);version++;draw();},
+   shiftActor:(id:string)=>motion?.actorInfo(id)??null,
+   shiftRoutes:()=>motion?.routeSummary()??null,
   layoutSnapshot:()=>layout?.snapshot()??null,
   layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>v==='B'?layout?.bounds(kind,id)??null:null,
   /** Camera framing for a zone floor, for 'take me there' from the state list. */
   zoneFocus(id:string,v:Variant='A'){const source=zones.get(id),planned=v==='B'?layout?.zones.get(id)?.floor_bounds_xz_m:undefined;const z=planned??source;if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1],o=mode==='side'&&v==='B'?SIDE_SHIFT[2]:0;return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
   stats:()=>({...stats,totals:{...totals},pixelRatio:ctx?.renderer.getPixelRatio()??0,shadows:ctx?.renderer.shadowMap.enabled??false}),
   actorPosition:(id:string,v:Variant='A')=>variantHead(id,v)?.toArray() as XYZ|undefined,
-  setEffects(next:Effects,nextBudget:number){effects=next;budget=Math.min(BUDGET_MAX,nextBudget);draw();},
+  setEffects(next:Effects,nextBudget:number){effects=next;motion?.setEffects(next);budget=Math.min(BUDGET_MAX,nextBudget);draw();},
   setSelectedActor(id:string|null){selectedActor=id;draw();},
   onBubble(fn:(id:string,v:Variant)=>void){onBubble=fn;},
   onLabel(fn:(v:Variant)=>void){onLabel=fn;},
@@ -448,6 +463,6 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   /** Marks a picked object that is neither a moved unit nor a worker, per copy (null clears). */
   setFocus(f:Partial<Record<Variant,Pose>>|null){focus=f;draw();},
   highlightZone,setGateTags,
-   dispose(){clearMoveArcs();for(const indicators of Object.values(carrierIndicators))indicators.dispose();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
+   dispose(){clearMoveArcs();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }

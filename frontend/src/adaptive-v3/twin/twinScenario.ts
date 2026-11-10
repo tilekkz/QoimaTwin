@@ -5,14 +5,15 @@
  * Sampling is absolute in time, so seek/reset always restore the same states.
  */
 import type {InitialCargo,V3Record,WarehouseBundle,WarehouseSlot,XYZ} from '../warehouseTypes';
+import {SHIFT_DURATION_S,SHIFT_PROBLEMS,shiftProblemEvents} from './twinShiftProblems';
 
 export type AtmoState='control'|'danger'|'sos'|'nodata';
 export type Variant='A'|'B';
 export type AtmoEvent={at_s:number;zone_id:string;state:AtmoState;cause:string;from_zone_id?:string;resource_id?:string};
 export type ZoneSample={state:AtmoState;cause:string;since_s:number};
 
-export const DEMO_DURATION_S=240;
-export const DEMO_SOURCE={source_kind:'visual_fixture',engine_operation:false,fixture_id:'v3:twin:packing-branch-overload:demo:001'} as const;
+export const DEMO_DURATION_S=SHIFT_DURATION_S;
+export const DEMO_SOURCE={source_kind:'visual_fixture',engine_operation:false,fixture_id:'v3:twin:busy-shift:demo:001'} as const;
 
 /** Layout zone IDs from layout-manifest.json; labels are for people. */
 export const ATMO_ZONES:{id:string;label:string}[]=[
@@ -26,45 +27,28 @@ export const ATMO_ZONES:{id:string;label:string}[]=[
  {id:'LONG_W',label:'LONG запад'},
  {id:'LONG_E',label:'LONG восток'},
  {id:'STAGE_OUT_S_EXPRESS',label:'Экспресс-отгрузка'},
+ {id:'STAGE_IN_W_BULK',label:'Приёмка запад'},
+ {id:'STAGE_IN_N_W',label:'Приёмка север'},
+ {id:'STAGE_IN_E_PARCEL',label:'Приёмка посылок'},
+ {id:'STAGE_OUT_W_RETAIL',label:'Розничная отгрузка'},
+ {id:'STAGE_OUT_E_B2B',label:'Отгрузка B2B'},
 ];
-/** Process dependencies: storage/pick zones feed the light packing line. Waves may only travel along these. */
+/** Process dependencies: picking feeds packing, then express dispatch. Waves only travel along these. */
 export const INFLUENCE_EDGES:[string,string][]=[
  ['SMALL_E','PACKING_LIGHT_LINE'],['STANDARD_E','PACKING_LIGHT_LINE'],
  ['SMALL_W','PACKING_LIGHT_LINE'],['STANDARD_W','PACKING_LIGHT_LINE'],
+ ['PACKING_LIGHT_LINE','STAGE_OUT_S_EXPRESS'],
 ];
 const CALM:Record<string,string>={
  PACKING_LIGHT_LINE:'Очередь на ветках в норме',STANDARD_E:'Отбор передаёт на линию вовремя',SMALL_E:'Отбор передаёт на линию вовремя',
  STANDARD_W:'Отбор передаёт на линию вовремя',SMALL_W:'Отбор передаёт на линию вовремя',HEAVY_W:'Независимый участок, свой погрузчик',
  HEAVY_E:'Независимый участок, свой погрузчик',LONG_W:'Независимый участок',LONG_E:'Независимый участок',STAGE_OUT_S_EXPRESS:'Ворота свободны',
 };
-const longRefusal:AtmoEvent[]=[
- {at_s:110,zone_id:'STAGE_OUT_S_EXPRESS',state:'danger',resource_id:'OUT_S_EXPRESS',cause:'Отказ: LONG_BUNDLE не допускается в ворота OUT_S_EXPRESS, там разрешены только SMALL и STANDARD'},
- {at_s:124,zone_id:'STAGE_OUT_S_EXPRESS',state:'control',resource_id:'OUT_E_B2B',cause:'Длинномер направлен в допустимые ворота OUT_E_B2B'},
-];
 export const DEMO_EVENTS:Record<Variant,readonly AtmoEvent[]>={
- A:[
-  {at_s:30,zone_id:'PACKING_LIGHT_LINE',state:'danger',resource_id:'PK03',cause:'Очередь на ветку PK03 растёт'},
-  {at_s:58,zone_id:'PACKING_LIGHT_LINE',state:'sos',resource_id:'PK03',cause:'PK03 недоступен, буфер его ветки заполнен'},
-  {at_s:72,zone_id:'STANDARD_E',state:'danger',from_zone_id:'PACKING_LIGHT_LINE',cause:'Обратное давление: отбор ждёт свободную ячейку ветки'},
-  {at_s:86,zone_id:'SMALL_E',state:'danger',from_zone_id:'PACKING_LIGHT_LINE',cause:'Обратное давление: отбор ждёт свободную ячейку ветки'},
-  ...longRefusal,
-  {at_s:150,zone_id:'PACKING_LIGHT_LINE',state:'danger',resource_id:'PK03',cause:'PK03 снова работает, очередь уходит'},
-  {at_s:166,zone_id:'STANDARD_E',state:'control',from_zone_id:'PACKING_LIGHT_LINE',cause:'Ветка снова принимает передачи'},
-  {at_s:176,zone_id:'SMALL_E',state:'control',from_zone_id:'PACKING_LIGHT_LINE',cause:'Ветка снова принимает передачи'},
-  {at_s:200,zone_id:'PACKING_LIGHT_LINE',state:'control',resource_id:'PK03',cause:'Очередь ниже нижнего порога и держится'},
- ],
- B:[
-  {at_s:30,zone_id:'PACKING_LIGHT_LINE',state:'danger',resource_id:'PK03',cause:'Очередь на ветку PK03 растёт'},
-  {at_s:46,zone_id:'PACKING_LIGHT_LINE',state:'danger',resource_id:'PK05',cause:'Поток ветки PK03 переведён на свободный PK05'},
-  {at_s:60,zone_id:'STANDARD_E',state:'danger',from_zone_id:'PACKING_LIGHT_LINE',cause:'Ветка почти полна, отбор ждёт'},
-  {at_s:88,zone_id:'STANDARD_E',state:'control',from_zone_id:'PACKING_LIGHT_LINE',cause:'Ветка разгружается'},
-  {at_s:104,zone_id:'PACKING_LIGHT_LINE',state:'control',resource_id:'PK05',cause:'Очередь ниже нижнего порога и держится'},
-  ...longRefusal,
- ],
+ A:shiftProblemEvents('A'),B:shiftProblemEvents('B'),
 };
 export const CHAPTERS:{at_s:number;label:string}[]=[
- {at_s:0,label:'Контроль'},{at_s:30,label:'Очередь растёт'},{at_s:58,label:'SOS у PK03'},{at_s:72,label:'Волна назад'},
- {at_s:104,label:'B в контроле'},{at_s:110,label:'Отказ LONG'},{at_s:150,label:'Восстановление A'},
+ ...SHIFT_PROBLEMS.map(p=>({at_s:p.start,label:p.title})),{at_s:1500,label:'Очередь к концу смены'},
 ];
 
 /** Defence walk-through: 3–5 minutes, each step restores the same absolute state (time, mode, camera). */
@@ -73,15 +57,14 @@ export type PresenterStep={title:string;text:string;t:number;mode:'side'|'swipe'
  scenario?:string};
 const OVERVIEW={target:[72,1.5,36] as XYZ,span:184};
 export const PRESENTER_STEPS:PresenterStep[]=[
- {title:'Склад 144 × 72 м',text:'530 грузовых единиц восьми типов, 132 модуля хранения, 24 работника, три входа и три выхода. Сверху склад как сейчас, снизу — после перестройки, в одном пространстве.',t:0,mode:'side',focus:OVERVIEW},
- {title:'Спокойная смена',text:'Все участки справляются с потоком. Зелёный значит под контролем: активных ограничений нет.',t:12,mode:'side',focus:OVERVIEW,play:true},
- {title:'Очередь у поста PK03',text:'Очередь на ветку PK03 растёт, и упаковка переходит в «Опасность». Сначала меняется только источник проблемы.',t:34,mode:'side',focus:{target:[91,0,5],span:40}},
- {title:'SOS и волна назад',text:'PK03 недоступен, буфер ветки заполнен. Давление идёт назад по связям процесса: отбор STANDARD и SMALL на востоке начинает ждать. Независимые зоны остаются зелёными.',t:88,mode:'side',focus:OVERVIEW,sheet:'now'},
- {title:'Отказ длинномера — локально',text:'Длинномер нельзя отгрузить через OUT_S_EXPRESS: там разрешены только SMALL и STANDARD. Отказ виден только у этих ворот и не окрашивает весь склад.',t:114,mode:'side',focus:{target:[30,0,8],span:48}},
- {title:'Что меняет перестройка',text:'B показывает допустимые адреса ближе к исходящим воротам. Числа переносов — расстояния по прямой; физические переносы, ожидание ресурсов и их время здесь не выполняются.',t:104,mode:'side',focus:OVERVIEW,sheet:'diff'},
- {title:'B возвращается раньше',text:'После перестройки поток PK03 уходит на свободный PK05, и упаковка возвращается в контроль к 01:44. Без перестройки — только к 03:20.',t:110,mode:'swipe',focus:OVERVIEW},
- {title:'Что дальше: сценарии N0–N4',text:'Для N0 и N1 входы зафиксированы. Тяжёлая приёмка и длинномер имеют отдельный пакет физических интерфейсов. В каталоге работников доступна учебная проверка смены роли с путём и возвратом. Расчёта эффективности ещё нет.',t:240,mode:'side',focus:OVERVIEW,sheet:'source',scenario:'N1'},
- {title:'Честный вывод',text:'Это демонстрационный эпизод: он показывает механизм «причина → волна → решение → восстановление». Числа эффективности появятся, когда подключим расчётный движок.',t:240,mode:'side',focus:OVERVIEW,sheet:'source'},
+ {title:'Два склада · одна нагрузка',text:'Склад 144 × 72 м, исходные 530 ГЕ и 24 работника сохранены. Дополнительная бригада, техника и груз относятся к насыщенной демонстрационной смене.',t:0,mode:'side',focus:OVERVIEW,play:true},
+ {title:'A спешит · B работает спокойно',text:'Один поток демо-заказов и одна шкала. В A люди торопятся и ждут ресурсы; в B идут спокойно. Темп, задержки и сроки заданы сценарием, а длины путей считаются по геометрии.',t:85,mode:'side',focus:OVERVIEW,sheet:'now'},
+ {title:'Приёмка и затор у ворот',text:'В A поздняя машина и паллеты в буфере задерживают приёмку. В B грузы подаются последовательно. Дополнительные паллеты и машины — демонстрационные.',t:100,mode:'side',focus:{target:[24,0,16],span:48}},
+ {title:'Линия остановилась',text:'В A конвейер и коробки стоят во время затора; у работников появляются сигналы ожидания. В B тот же входной поток продолжает движение.',t:120,mode:'swipe',focus:{target:[93,0,8],span:64}},
+ {title:'Проезд и упаковка',text:'Погрузчик ждёт буфер в A, позже упаковка просит помощь. Выберите проблему в «Состоянии», чтобы увидеть её участок и причины.',t:335,mode:'side',focus:{target:[58,0,16],span:96},sheet:'now'},
+ {title:'Пополнение и негабарит',text:'Отбор ждёт пополнение, а негабаритная демо-паллета остаётся перед стеллажом. B показывает спокойную обработку, без этих постановочных задержек.',t:660,mode:'side',focus:{target:[72,0,36],span:96}},
+ {title:'Не успели к рейсу',text:'В A накапливаются ожидающие задания и просрочки. Все счётчики считаются из демо-заданий; это не результаты расчётного движка.',t:950,mode:'side',focus:{target:[30,0,8],span:50},sheet:'now'},
+ {title:'Геометрия и демонстрация',text:'Дистанции A и B рассчитаны по маршрутам. Темп, очереди и сроки — постановка для объяснения работы склада. Сценарии N0–N4 и исходные факты доступны отдельно.',t:1500,mode:'side',focus:OVERVIEW,sheet:'source'},
 ];
 
 export function sampleAtmosphere(variant:Variant,t:number):Record<string,ZoneSample>{
@@ -166,10 +149,11 @@ export function reactionsAt(variant:Variant,t:number,workers:readonly WorkerSpot
   const z=sample[zone],seed=`${variant}:${zone}:${z.since_s}`;
   // Stable order inside the zone for this interval: decides who signals, who asks, who waits.
   const order=[...ids].sort((a,b)=>hash(seed+a)-hash(seed+b)||a.localeCompare(b));
-  if(z.state==='sos')order.forEach((id,i)=>out.push({actor_id:id,zone_id:zone,bubble:i===0?'alert':i===1?'help':i===2?'question':'wait',text:i===0?`Сигналит: ${z.cause}`:i===1?'Зовёт помощь: ресурс заблокирован':i===2?'Разбирается, что с ресурсом':`Ждёт: ${z.cause}`,priority:30-i}));
+  if(z.state==='sos')order.forEach((id,i)=>out.push({actor_id:id,zone_id:zone,bubble:i===0?'alert':i===1?'help':i===2?'question':'wait',text:i===0?`Не успеваю: ${z.cause}`:i===1?'Нужна помощь, нет места':i===2?'Жду погрузчик':`Ждёт: ${z.cause}`,priority:30-i}));
   else if(z.state==='danger')order.forEach((id,i)=>out.push({actor_id:id,zone_id:zone,bubble:i%3===2?'question':'wait',text:i%3===2?`Разбирается: ${z.cause}`:`Ждёт: ${z.cause}`,priority:20-i}));
   else if(z.state==='control'&&z.since_s>0&&t-z.since_s<=RELIEF_S&&previousState(variant,zone,z.since_s)!=='control')
    order.slice(0,Math.max(1,Math.ceil(order.length/3))).forEach((id,i)=>out.push({actor_id:id,zone_id:zone,bubble:'relief',text:`Снова в ритме: ${z.cause}`,priority:10-i}));
+  else if(variant==='B')order.slice(0,1).forEach(id=>out.push({actor_id:id,zone_id:zone,bubble:'relief',text:'Без спешки: всё по плану · демонстрационная смена',priority:5}));
  }
  return out.sort((a,b)=>b.priority-a.priority||a.actor_id.localeCompare(b.actor_id));
 }

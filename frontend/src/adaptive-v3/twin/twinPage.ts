@@ -1,10 +1,11 @@
 import './twin.css';
 import type {Scene} from 'three';
 import {createTwinInventory,type TwinInventory,type TwinInventoryMode} from './twinInventory';
-import {createTwinWarehouseMotion} from './twinWarehouseMotion';
+import {createTwinShiftScene} from './twinShiftScene';
+import {validateRoutePolicy} from '../warehouseRouting';
 import {mountPlacementComparison} from './twinPlacementComparison';
 import {createLayoutControls,type LayoutMode} from './twinLayoutControls';
-import {createDenseWarehouseLayoutPlan,type WarehouseLayoutPlan} from '../warehouseLayoutPlan';
+import {createBlockRebuildWarehouseLayoutPlan,type WarehouseLayoutPlan} from '../warehouseLayoutPlan';
 import {validateWarehouseLayoutPlanAccess,type WarehouseLayoutAccessResult} from '../warehouseLayoutAccess';
 import {adaptWarehouseV3,WarehouseAdapterError,WAREHOUSE_BASE_FILES,type WarehouseTexts} from '../warehouseAdapter';
 import {createWarehouseScene,type WarehouseView} from '../warehouseScene';
@@ -25,7 +26,7 @@ const app=$('#twin'),host=$('#tw-viewport'),layer=$('#tw-layer'),status=$('#tw-s
 const play=$<HTMLButtonElement>('#tw-play'),clockOut=$('#tw-clock'),progress=$('#tw-progress'),river=$<HTMLCanvasElement>('#tw-river'),alertDot=$('#tw-alert');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)'),phone=matchMedia('(max-width: 720px)');
 let observedReduced=reduced.matches;
-const RIVER_ZONES=['PACKING_LIGHT_LINE','STANDARD_E','SMALL_E','STAGE_OUT_S_EXPRESS'];
+const RIVER_ZONES=['PACKING_LIGHT_LINE','STAGE_IN_W_BULK','SMALL_E','HEAVY_W','STANDARD_W','LONG_E','STAGE_OUT_S_EXPRESS'];
 const MODES:Mode[]=['side','swipe'];
 /** Only two ways to compare remain; old links and API calls with other names land on «Рядом». */
 const asMode=(m:string|null|undefined):Mode=>m==='swipe'?'swipe':'side';
@@ -42,8 +43,8 @@ const SIDE_TARGET:XYZ=[72,1.5,36+SIDE_SHIFT[2]/2];
 /** On a phone the pair stands diagonally in a tall view, so it can be framed closer. */
 const sideOverview=()=>{const r=twin?.region();return {target:SIDE_TARGET,span:phone.matches?178:fittedWarehouseSpan(true,r?.w??host.clientWidth,r?.h??host.clientHeight,[0,1.15,1],250)};};
 const overview=()=>mode==='side'?sideOverview():OVERVIEW;
-/** Presenter focus points are written for one warehouse; in «Рядом» they frame the same spot in both copies. */
-const focusFor=(f:{target:XYZ;span:number},m:Mode)=>m!=='side'?f:f.span>=OVERVIEW.span-1?sideOverview():{target:[f.target[0],f.target[1],f.target[2]+SIDE_SHIFT[2]/2] as XYZ,span:Math.max(f.span*1.25,120)};
+// A close-up step is about A (where the problems are): in «Рядом» it frames that spot in A; B is compared in «Шторка».
+const focusFor=(f:{target:XYZ;span:number},m:Mode)=>m!=='side'?f:f.span>=OVERVIEW.span-1?sideOverview():{target:[...f.target] as XYZ,span:Math.max(f.span,56)};
 const fmt=(n:number,d=0)=>n.toLocaleString('ru-RU',{maximumFractionDigits:d,minimumFractionDigits:d});
 const mmss=(s:number)=>`${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 const ZONE_EXTRA:Record<string,string>={FLEX_W:'FLEX запад',FLEX_E:'FLEX восток',RESERVE_W:'Резерв запад',RESERVE_E:'Резерв восток',STAGE_IN_W_BULK:'Приёмка запад · навал',STAGE_IN_E_PARCEL:'Приёмка восток · посылки',STAGE_IN_N_W:'Приёмка север-запад',STAGE_IN_N_E:'Приёмка север-восток',STAGE_OUT_E_B2B:'Отгрузка восток · B2B',STAGE_OUT_W_RETAIL:'Отгрузка запад · розница'};
@@ -56,7 +57,7 @@ let phase:Phase='initial',serial=0,controller:AbortController|undefined,bundle:W
 let scene:Awaited<ReturnType<typeof createWarehouseScene>>|undefined,twin:ReturnType<typeof createTwinRenderer>|undefined;
 const urlMode=new URL(location.href).searchParams.get('mode') as Mode;
 let mode:Mode=asMode(urlMode);
-let t=0,playing=!reduced.matches&&!document.hidden,speed=4,last=0,raf=0,split=.5,moves:Move[]=[],nowKey='',selectedId:string|null=null;
+let t=85,playing=!reduced.matches&&!document.hidden,speed=4,last=0,raf=0,split=.5,moves:Move[]=[],nowKey='',selectedId:string|null=null;
 let slottingMoves:Move[]=[],layoutCandidate:WarehouseLayoutPlan|null=null,layoutEnabled=false,layoutBusy=false,layoutMessage='Готовим планировку…';
 let layoutSourceTexts:WarehouseTexts|undefined,layoutAccess:WarehouseLayoutAccessResult|null=null;
 let currentInventory:TwinInventory|undefined;
@@ -116,30 +117,30 @@ async function setLayoutMode(next:LayoutMode){
  try{
   if(next==='sections'&&!layoutCandidate){
    if(!layoutSourceTexts)throw Error('LAYOUT_SOURCE_TEXTS_REQUIRED');
-   const candidate=await createDenseWarehouseLayoutPlan(data,layoutSourceTexts),access=await validateWarehouseLayoutPlanAccess(data,candidate);
+   const candidate=await createBlockRebuildWarehouseLayoutPlan(data,layoutSourceTexts),access=await validateWarehouseLayoutPlanAccess(data,candidate);
    if(token!==serial||tw!==twin)return;
    if(!access.ok)throw Error('LAYOUT_ACCESS_REFUSED: '+access.reasons.join(', '));
    layoutCandidate=candidate;layoutAccess=access;
   }
   if(token!==serial||tw!==twin)return;
   const plan=next==='sections'?layoutCandidate:null;
-  tw.setLayoutPlan(plan);mini?.setLayoutPlan(plan);layoutEnabled=!!plan;if(!plan)inventoryMode='source530';moves=layoutEnabled?[]:slottingMoves;tw.setMoves(moves,id=>select(id,'HU'));
+  tw.setLayoutPlan(plan);tw.setShiftPlan(plan,plan?layoutAccess:null);mini?.setLayoutPlan(plan);layoutEnabled=!!plan;if(!plan)inventoryMode='source530';moves=layoutEnabled?[]:slottingMoves;tw.setMoves(moves,id=>select(id,'HU'));
   refreshInventory();clearSelectionState();tw.setSelected(null);tw.setSelectedActor(null);tw.setFocus(null);rebuildSearchIndex();miniKey='';renderMoves();drawMini();scene?.requestRender();
   layoutMessage=layoutEnabled?'В B перестроены секции и стеллажи. Исходные 530 грузовых единиц сохранены; заполнение новых ячеек выбирается ниже.':'Секции исходные. В B меняется размещение исходного груза по принятым ячейкам.';
  }catch(error){
   if(token!==serial||tw!==twin)return;
-  try{tw.setLayoutPlan(previous.plan);mini?.setLayoutPlan(previous.plan);tw.setMoves(previous.moves,id=>select(id,'HU'));layoutEnabled=previous.enabled;inventoryMode=previous.inventoryMode;moves=previous.moves;refreshInventory();rebuildSearchIndex();renderMoves();miniKey='';drawMini();}
+  try{tw.setLayoutPlan(previous.plan);tw.setShiftPlan(previous.plan,previous.plan?layoutAccess:null);mini?.setLayoutPlan(previous.plan);tw.setMoves(previous.moves,id=>select(id,'HU'));layoutEnabled=previous.enabled;inventoryMode=previous.inventoryMode;moves=previous.moves;refreshInventory();rebuildSearchIndex();renderMoves();miniKey='';drawMini();}
   catch{disposeAll();setPhase('error','Не удалось восстановить сравнение. Повторите загрузку склада.');return;}
   layoutMessage='Не удалось принять новую планировку. Текущий вариант сохранён; повторите выбор.';console.warn('LAYOUT_PLAN_REFUSED',error);
  }
- finally{if(token===serial){layoutBusy=false;updateLayoutControls();}}
+ finally{if(token===serial){layoutBusy=false;shiftUiSecond=-1;renderShift();updateLayoutControls();}}
 }
 /* ---------- effects & sound preferences ---------- */
 const store={get:(k:string)=>{try{return localStorage.getItem(k);}catch{return null;}},set:(k:string,v:string)=>{try{localStorage.setItem(k,v);}catch{/* private mode: keep in memory only */}}};
 const EFFECTS:Effects[]=['full','calm','off'];
 let effects:Effects=EFFECTS.includes(store.get('qoima.twin.effects') as Effects)?store.get('qoima.twin.effects') as Effects:reduced.matches?'calm':'full';
-function applyEffects(){app.dataset.effects=effects;for(const b of $$<HTMLButtonElement>('[data-effects]'))b.setAttribute('aria-pressed',String(b.dataset.effects===effects));twin?.setEffects(effects,bubbleBudget(effects,phone.matches));}
-for(const b of $$<HTMLButtonElement>('[data-effects]'))b.addEventListener('click',()=>{effects=b.dataset.effects as Effects;store.set('qoima.twin.effects',effects);applyEffects();});
+function applyEffects(){app.dataset.effects=effects;for(const b of $$<HTMLButtonElement>('button[data-effects]'))b.setAttribute('aria-pressed',String(b.dataset.effects===effects));twin?.setEffects(effects,bubbleBudget(effects,phone.matches));}
+for(const b of $$<HTMLButtonElement>('button[data-effects]'))b.addEventListener('click',()=>{effects=b.dataset.effects as Effects;store.set('qoima.twin.effects',effects);applyEffects();});
 phone.addEventListener('change',()=>{applyEffects();layoutPanels();});
 window.addEventListener('resize',()=>requestAnimationFrame(positionBlade));
 /** Soft synthesized cues. Muted until the viewer turns sound on; at most 4 voices, per-kind cooldown,
@@ -177,7 +178,7 @@ function cuesBetween(from:number,to:number){
  for(const k of fired)cue(k);
 }
 syncSound();
-function setPhase(next:Phase,message:string){phase=next;app.dataset.phase=next;status.textContent=message;retry.hidden=next!=='error';noGl.hidden=true;syncSound();}
+function setPhase(next:Phase,message:string){phase=next;app.dataset.phase=next;status.textContent=message;retry.hidden=next!=='error';noGl.hidden=true;syncSound();if(next==='error')renderShift();}
 /* ---------- no WebGL: say so plainly, show a still frame and pages that work without 3D ---------- */
 const noGl=$('#tw-nogl');
 function webglAvailable(){
@@ -189,7 +190,7 @@ function showNoGl(){setPhase('error','Этот браузер не может п
 
 /* ---------- floating surfaces ---------- */
 const show=(el:HTMLElement,open:boolean)=>{el.dataset.open=String(open);el.toggleAttribute('inert',!open);};
-const sheets=$$('.tw-sheet'),openers=$$<HTMLButtonElement>('button[data-open]'),menu=$('#tw-menu'),menuBtn=$<HTMLButtonElement>('#tw-menu-btn'),modeBtns=$$<HTMLButtonElement>('[data-mode]');
+const sheets=$$('.tw-sheet'),openers=$$<HTMLButtonElement>('button[data-open]'),menu=$('#tw-menu'),menuBtn=$<HTMLButtonElement>('#tw-menu-btn'),modeBtns=$$<HTMLButtonElement>('button[data-mode]');
 let sheet:string|null=null;
 function setPop(which:'menu'|null){show(menu,which==='menu');menuBtn.setAttribute('aria-expanded',String(which==='menu'));}
 /** Desktop panels open on the right and the comparison window narrows instead of hiding under them. */
@@ -360,7 +361,7 @@ const present=$('#tw-present'),pTitle=$('#tw-present-title'),pText=$('#tw-presen
 let stepIndex=-1;
 pDots.innerHTML=PRESENTER_STEPS.map(()=>'<i></i>').join('');
 function goStep(i:number){
- if(phase!=='ready'||layoutBusy)return;if(layoutEnabled)void setLayoutMode('cargo');stepIndex=Math.max(0,Math.min(PRESENTER_STEPS.length-1,i));const s=PRESENTER_STEPS[stepIndex];
+ if(phase!=='ready'||layoutBusy)return;stepIndex=Math.max(0,Math.min(PRESENTER_STEPS.length-1,i));const s=PRESENTER_STEPS[stepIndex];
  app.dataset.presenting='true';show(present,true);setPop(null);select(null);
  pStep.textContent=`Шаг ${stepIndex+1} из ${PRESENTER_STEPS.length}`;[...pDots.children].forEach((d,k)=>d.classList.toggle('is-on',k===stepIndex));
  for(const el of [pTitle,pText])el.style.animation='none';void present.offsetWidth;pTitle.textContent=s.title;pText.textContent=s.text;for(const el of [pTitle,pText])el.style.animation='';
@@ -387,8 +388,18 @@ function syncPlay(){
 }
 function seek(next:number,clockAdvance=false){
  if(!clockAdvance)silenceAudio();
- t=Math.min(DEMO_DURATION_S,Math.max(0,next));clockOut.textContent=mmss(t);progress.style.width=t/DEMO_DURATION_S*100+'%';
- river.setAttribute('aria-valuenow',String(Math.round(t)));twin?.setTime(t);if(sheet==='time')drawRiver();renderNow();renderWorkerStatus();drawMini();
+ if(!Number.isFinite(next))return;
+ t=Math.round(Math.min(DEMO_DURATION_S,Math.max(0,next))*1e6)/1e6;clockOut.textContent=mmss(t);progress.style.width=t/DEMO_DURATION_S*100+'%';
+ river.setAttribute('aria-valuenow',String(Math.round(t)));twin?.setTime(t);if(sheet==='time')drawRiver();renderShift();renderNow();renderWorkerStatus();drawMini();
+}
+let shiftUiSecond=-1;
+function renderShift(){
+ const second=Math.floor(t);if(second===shiftUiSecond&&motionReady)return;shiftUiSecond=second;
+ const surface=$('#tw-shift'),a=twin?.shiftSummary('A'),b=twin?.shiftSummary('B');
+ if(!a||!b){surface.dataset.state=phase==='error'?'error':'loading';$('#tw-shift-status').textContent=phase==='error'?'Смена недоступна. Повторите загрузку склада.':'Подготавливаем бригаду и маршруты…';return;}
+ surface.dataset.state='ready';const statusLine=`${a.people} на смене: ${a.registered} штатных + ${a.extra_crew} демо-бригада · ${a.vehicles} погрузчиков`;if($('#tw-shift-status').textContent!==statusLine)$('#tw-shift-status').textContent=statusLine;
+ const routes=twin?.shiftRoutes();if(routes)$('#tw-shift-routes').textContent=`Геометрия демо-смены: ${routes.count} маршрута туда и обратно · A ${fmt(routes.A_m,1)} м · B ${fmt(routes.B_m,1)} м. Это сумма длин по одному заданию на маршрут; темп, сроки и задержки постановочные.`;
+ for(const [v,s]of [['A',a],['B',b]] as const){$(`#tw-shift-${v}`).textContent=`${v} · ${s.movements_done} передач · ${s.tasks_waiting} в очереди · ${s.late_orders} просрочено`;}
 }
 function tick(now:number){raf=0;if(reconcileReducedMotion()||!playing||phase!=='ready'||!motionReady)return;const dt=Math.min(.1,(now-last)/1000);last=now;const before=t;seek(t+dt*speed,true);cuesBetween(before,t);if(t>=DEMO_DURATION_S){playing=false;silenceAudio();syncPlay();return;}raf=requestAnimationFrame(tick);}
 function setPlaying(next:boolean){playing=next;if(!playing){silenceAudio();if(raf){cancelAnimationFrame(raf);raf=0;}}syncPlay();if(playing&&t>=DEMO_DURATION_S)seek(0);if(playing&&!raf&&phase==='ready'&&motionReady){last=performance.now();raf=requestAnimationFrame(tick);}}
@@ -402,7 +413,7 @@ for(const b of $$<HTMLButtonElement>('[data-speed]'))b.addEventListener('click',
 for(const c of CHAPTERS){const b=document.createElement('button');b.type='button';b.textContent=c.label;b.title=mmss(c.at_s);b.addEventListener('click',()=>{setPlaying(false);seek(c.at_s+.01);});$('#tw-chapters').append(b);}
 
 /* ---------- time river ---------- */
-const RL=128,LANE=11,GAP=4,GROUP=12;
+const RL=150,LANE=8,GAP=3,GROUP=8;
 function drawRiver(){
  const w=river.clientWidth,h=river.clientHeight,d=Math.min(devicePixelRatio||1,2);if(!w||!h)return;
  if(river.width!==Math.round(w*d)||river.height!==Math.round(h*d)){river.width=Math.round(w*d);river.height=Math.round(h*d);}
@@ -564,9 +575,9 @@ function select(id:string|null,kind='HU',copy:Variant='A'){
   if(moved){const a=moved.a.position,b=[moved.b.position[0]+offB[0],moved.b.position[1],moved.b.position[2]+offB[2]],d=Math.hypot(a[0]-b[0],a[2]-b[2]);fly([(a[0]+b[0])/2,0,(a[2]+b[2])/2],Math.min(184,Math.max(18,d*1.5+10)));}
   else{const pos=binding?.position;if(pos)fly([pos[0]+off[0],0,pos[2]+off[2]],16);}
   box.innerHTML=`<h3>${esc(hu.sku_id)}</h3><p class="tw-sub">${esc(hu.archetype_id)} · ${fmt(hu.gross_mass_kg,2)} кг</p>${route}`+kv([['Количество',fmt(hu.quantity_units)+' ед.'],['Габариты',hu.dimensions_xyz_m.map(x=>fmt(x,2)).join(' × ')+' м'],...(moved?[['Ворота',moved.port_id],['До ворот',`${fmt(moved.before_m)} → ${fmt(moved.after_m)} м`],['Перенос',`${fmt(moved.move_m)} м по прямой`]] as [string,string][]:[])]);}
- else{const w=bundle.registry.workers.find(w=>w.actor_id===id);if(!w)return;$('#sh-sel').textContent='Работник';
+ else{const shift=twin?.shiftActor(id),registered=bundle.registry.workers.find(w=>w.actor_id===id),w=registered??(shift?{actor_id:shift.id,baseline_role:shift.role,assigned_vehicle_id:shift.vehicle}:null);if(!w)return;$('#sh-sel').textContent=shift?.extra?'Демо-бригада':'Работник';
   const spot=twin?.workers(copy).find(s=>s.actor_id===id),head=twin?.actorPosition(id,copy);if(head)fly([head[0]+off[0],0,head[2]+off[2]],20);
-  box.innerHTML=`<h3>${esc(w.actor_id)}</h3><p class="tw-sub">${esc(bundle.registry.roles.find(r=>r.role===w.baseline_role)?.label??w.baseline_role)}${spot?.zone_id?` · ${esc(zoneLabel(spot.zone_id))}`:''}</p><div id="tw-wstatus" class="tw-wstatus"></div>`+kv([['Техника',w.assigned_vehicle_id??'—'],['В варианте B',layoutEnabled&&w.baseline_role==='picker'?'та же роль, место в новой секции':'та же роль и место']])+`<p class="tw-note">Реакции — часть демонстрационного эпизода: они объясняют причину и не меняют груз, время или результаты.</p><a href="skills-v3.html?actor=${encodeURIComponent(id)}">Навыки и допуски →</a>`;}
+  box.innerHTML=`<h3>${esc(shift?.extra?'Дополнительная бригада':w.actor_id)}</h3><p class="tw-sub">${esc(bundle.registry.roles.find(r=>r.role===w.baseline_role)?.label??w.baseline_role)}${spot?.zone_id?` · ${esc(zoneLabel(spot.zone_id))}`:''}</p><div id="tw-wstatus" class="tw-wstatus"></div>`+kv([['Смена',shift?.extra?'Демонстрация · дополнительный работник':'Демонстрация · штатный работник'],['Техника',w.assigned_vehicle_id??'—'],...(shift?[['Маршрут A → B',`${fmt(shift.A_m,1)} → ${fmt(shift.B_m,1)} м туда и обратно`],['Основа расстояния','Геометрия маршрутов; темп и ожидания постановочные']] as [string,string][]:[])])+`<p class="tw-note">Насыщенная смена · демонстрация. Задания, очереди и реакции не являются результатом расчётного движка.</p>${registered?`<a href="skills-v3.html?actor=${encodeURIComponent(id)}">Навыки и допуски →</a>`:''}`;}
  show(panel,true);layoutPanels();renderWorkerStatus();
 }
 let selectedKind='HU',statusKey='';
@@ -643,9 +654,10 @@ async function load(){
   if(token!==serial||twin!==tw||scene!==sc||phase!=='ready')return;
    refreshInventory();rebuildSearchIndex();
    if(!world)throw Error('Comparison scene was not created');
-   const motion=await createTwinWarehouseMotion(world,data,sourceTexts,owned.signal);
+   const policy=await validateRoutePolicy(await readLocal('/data/v3/route-policy-v3.json',owned.signal),data);
+   const motion=createTwinShiftScene(world,data,policy,layoutEnabled?layoutCandidate:null,layoutEnabled?layoutAccess:null);
    if(token!==serial||twin!==tw||scene!==sc){motion.dispose();return;}
-   tw.setMotion(motion);motionReady=true;seek(t);setPlaying(playing);
+   tw.setMotion(motion);motionReady=true;shiftUiSecond=-1;seek(t);setPlaying(playing);
   // Start page link «Режим защиты» opens straight into the walk-through.
   if(new URL(location.href).searchParams.get('present')==='1')goStep(0);
   // Start page links open a scenario card straight away.
@@ -676,7 +688,7 @@ reduced.addEventListener('change',reconcileReducedMotion);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){silenceAudio();setPlaying(false);finishCameraMotion();}else syncSound();});
 window.addEventListener('pagehide',()=>{serial++;controller?.abort();silenceAudio(true);setPlaying(false);disposeAll();setPhase('disposed','Просмотр остановлен.');});
 window.addEventListener('pageshow',e=>{if(e.persisted)void load();});
-Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,inventory:currentInventory?{mode:currentInventory.mode,comparison_scope:currentInventory.comparison_scope,A:currentInventory.variants.A.counts,B:currentInventory.variants.B.counts,reserved_empty_slots:currentInventory.reserved_empty_slots,render:twin?.inventorySnapshot()??null}:null,warehouse_motion:twin?.motionSnapshot()??null,layout:{mode:layoutEnabled?'sections':'cargo',busy:layoutBusy,candidate_id:layoutCandidate?.candidate_id??null,counts:layoutMetrics(),access:layoutEnabled&&layoutAccess?{ok:layoutAccess.ok,plan_sha256:layoutAccess.plan_sha256,pedestrian:layoutAccess.manual.pedestrian.ok,manual_cart:layoutAccess.manual.manual_cart.ok,vehicle:layoutAccess.vehicle.ok,required_heavy_HUs:layoutAccess.vehicle.required_service_access.length}:null,render:twin?.layoutSnapshot()??null},sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers('B'))}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>twin?.layoutBounds(kind,id,v)??null,seek,setMode,setLayoutMode,setInventoryMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
+Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase:phase==='ready'&&!motionReady?'loading':phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,inventory:currentInventory?{mode:currentInventory.mode,comparison_scope:currentInventory.comparison_scope,A:currentInventory.variants.A.counts,B:currentInventory.variants.B.counts,reserved_empty_slots:currentInventory.reserved_empty_slots,render:twin?.inventorySnapshot()??null}:null,warehouse_motion:twin?.motionSnapshot()??null,layout:{mode:layoutEnabled?'sections':'cargo',busy:layoutBusy,candidate_id:layoutCandidate?.candidate_id??null,counts:layoutMetrics(),access:layoutEnabled&&layoutAccess?{ok:layoutAccess.ok,plan_sha256:layoutAccess.plan_sha256,pedestrian:layoutAccess.manual.pedestrian.ok,manual_cart:layoutAccess.manual.manual_cart.ok,vehicle:layoutAccess.vehicle.ok,required_heavy_HUs:layoutAccess.vehicle.required_service_access.length}:null,render:twin?.layoutSnapshot()??null},sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers('B'))}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>twin?.layoutBounds(kind,id,v)??null,seek,setMode,setLayoutMode,setInventoryMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
 // Mounted into the panel's single scrolling body, after the moves list.
 const disposePlacementComparison=mountPlacementComparison($('[data-sheet="diff"] .tw-sheet-body'));
 const layoutControls=createLayoutControls($('[data-sheet="diff"]'),setLayoutMode);
