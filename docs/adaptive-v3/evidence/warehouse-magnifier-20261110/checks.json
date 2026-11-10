@@ -1,0 +1,145 @@
+{
+  "schema_id": "qoima.warehouse-magnifier-v3.v1",
+  "created_utc": "2026-11-10T04:30:41.376Z",
+  "passed": true,
+  "scope": "V3 only",
+  "base_commit": "e822a41",
+  "production_build": {
+    "command": "npm run build",
+    "exit_code": 0,
+    "typecheck_passed": true,
+    "modules": 216,
+    "warning": "Existing sharedGLTFLoader chunk size warning only"
+  },
+  "behavior": {
+    "default_zoom": 3,
+    "zoom_range": [
+      1.5,
+      6
+    ],
+    "lens_css_px": 224,
+    "live_composed_frame": true,
+    "global_camera_and_clock_unchanged_on_wheel": true,
+    "paused_pointer_additional_3D_draws": 0,
+    "idle_RAF_added": 0,
+    "context_loss_cleanup": true
+  },
+  "browser_cases": [
+    {
+      "name": "twin-keyboard-toggle-and-escape",
+      "passed": true
+    },
+    {
+      "name": "twin-live-playback-capture",
+      "passed": true
+    },
+    {
+      "name": "twin-wheel-does-not-change-camera-or-clock",
+      "passed": true
+    },
+    {
+      "name": "twin-complete-side-and-swipe-crops",
+      "passed": true
+    },
+    {
+      "name": "twin-paused-cache-edges-resize-and-leave",
+      "passed": true
+    },
+    {
+      "name": "twin-context-loss-reload-cleanup",
+      "passed": true
+    },
+    {
+      "name": "warehouse-v3-magnifier-smoke",
+      "passed": true
+    },
+    {
+      "name": "scenario-N3-and-N4-magnifier-smoke",
+      "passed": true
+    },
+    {
+      "name": "heavy-inbound-magnifier-smoke",
+      "passed": true
+    },
+    {
+      "name": "NativePair-synthetic-warehouse-live-magnifier",
+      "passed": true
+    }
+  ],
+  "GPU": {
+    "renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x000046A3) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (Intel)"
+  },
+  "unexpected_errors": {
+    "page": 0,
+    "console": 0,
+    "HTTP": 0,
+    "request": 0
+  },
+  "source_drift": [],
+  "source_hashes": {
+    "frontend/src/ui/warehouseMagnifier.ts": "7b507d5d201acadf0db2f9a6c22b7bb98b81efec0624982f64f6e999676e5351",
+    "frontend/src/adaptive-v3/warehouseScene.ts": "759d6d4e86e6e58c0c3540ab96f6e8689c76af836b592b94eaba35de4256765c",
+    "frontend/package.json": "b2d7ddcdab2e65f8504655a8486e62691711b0a9375e4fed4ae22470b3d529d8",
+    "frontend/tools/check-warehouse-magnifier-browser-v3.mjs": "4ebf5a6705c0f489f68088dd017412702fbbb21fa866cd38868e6fb8013e9157"
+  },
+  "artifacts": [
+    {
+      "path": "browser.json",
+      "sha256": "8d8794bc45e27587f1b2251b9cb93db0fc24fdfda4cf52bfc7ccfcdb08ef8a45",
+      "bytes": 54425
+    },
+    {
+      "path": "cleanup.json",
+      "sha256": "6f7332d6232b4dacb3f5b84e451d67c94cd35fda3703f0b8809d66eb484f8896",
+      "bytes": 130
+    },
+    {
+      "path": "startup.json",
+      "sha256": "e1c547e33ec757c354ae59a276e54024963263e30ea489de483f6ab86bf0f81d",
+      "bytes": 382
+    },
+    {
+      "path": "Twin-racks-magnified.png",
+      "sha256": "302c93793f42f807300bf1f7c63da4cf745eaa4e2f71cbe7327961910febdfa1",
+      "bytes": 298970
+    },
+    {
+      "path": "twin-side-magnified.png",
+      "sha256": "dd682501ba1ed0de4c06ed5ce65b47a4c8313c31697b52fb73a78a942a6af647",
+      "bytes": 298683
+    },
+    {
+      "path": "twin-swipe-magnified.png",
+      "sha256": "86e381be18320a518382724e64f2b30d3b3f789eddff1c038cd492776398fc69",
+      "bytes": 271856
+    },
+    {
+      "path": "scenario-N3-magnified.png",
+      "sha256": "e5c39a630de47e386baff961ca1cf2966f2830b76b876702cfd058e5dcbcf42b",
+      "bytes": 161597
+    },
+    {
+      "path": "NativePair-synthetic-magnified.png",
+      "sha256": "8c208681771f35ff35105636cd0a2169512e83689aebde0dcd8edef6005a9bee",
+      "bytes": 249694
+    }
+  ],
+  "independent_review": {
+    "scope": "Read-only V3 helper and warehouseScene initialization/render/disposal",
+    "P1_P2_findings": 0,
+    "tests_claimed_by_reviewer": false
+  },
+  "limits": [
+    "The lens magnifies rendered pixels; it does not add model geometry or physically admit operations.",
+    "NativePair test uses synthetic hash-checked empty no-op bundles, not a new backend capture.",
+    "Boundary corner pointer dispatch is labelled synthetic; mouse activation, normal motion, wheel and keyboard are actual Playwright input.",
+    "Desktop V3 only. No V2 behavior tests in the final matrix, no V2 source changes, and no mobile work."
+  ],
+  "graph": {
+    "project": "qoima-twin",
+    "generation": "2026-11-08T05:55:56Z",
+    "evidence_tier": "Verify with exact source fallback for untracked/current paths",
+    "refresh_triggered": false
+  }
+}
