@@ -20,7 +20,7 @@ const context = vm.createContext({
   inventoryMode: 'source530', currentInventory: sourceData, phase: 'ready', layoutBusy: false,
   layoutEnabled: true, layoutCandidate: {id: 'B164'}, bundle: {id: 'source'},
   slottingBindingsB: [relocated],
-  URL, location: {href: 'http://127.0.0.1/twin-v3.html'}, mode: 'side', t: 60,
+  URL, location: {href: 'http://127.0.0.1/twin-v3.html'}, mode: 'side', t: 60, operationFocus: true,
   twin: {
     setInventory(data) {if (context.fail) throw Error('Rejected'); calls.set.push(data);},
     setSelected(id) {calls.selection.push(['HU', id]);},

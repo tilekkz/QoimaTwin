@@ -15,14 +15,40 @@ const cache = path.join(output, 'compiled');
 await mkdir(path.join(cache, 'twin'), {recursive: true});
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const pins = {};
-for (const name of ['workerRegistry', 'workerProfiles', 'warehouseAdapter', 'workerRoleAssignment', 'warehouseLayoutPlan', 'warehouseCargo', 'warehouseCargoHolders', 'twin/twinInventory']) {
-  const filename = path.join(frontend, 'src/adaptive-v3', name + '.ts');
-  const bytes = await readFile(filename);
-  pins[filename] = hash(bytes);
-  let code = ts.transpileModule(bytes.toString(), {compilerOptions: {target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext}}).outputText;
-  code = code.replace(/from (['"])(\.{1,2}\/[^'"]+)\1/g, (_, quote, specifier) => `from ${quote}${specifier}.mjs${quote}`);
-  await writeFile(path.join(cache, name + '.mjs'), code, {flag: 'wx'});
+const compiledModules = new Set();
+async function compileModule(name) {
+  if (compiledModules.has(name)) return;
+  compiledModules.add(name);
+  const relative = 'src/adaptive-v3/' + name + '.ts';
+  const bytes = await readFile(path.join(frontend, relative));
+  pins[path.join(frontend, relative)] = hash(bytes);
+  let code = ts.transpileModule(bytes.toString(), {compilerOptions: {
+    target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext,
+  }}).outputText;
+  for (const match of [...code.matchAll(/import\s+(\w+)\s+from\s+['"]([^'"]+\.json)['"];?/g)]) {
+    const asset = path.posix.normalize(path.posix.join(path.posix.dirname(relative), match[2]));
+    const data = await readFile(path.join(frontend, asset));
+    pins[path.join(frontend, asset)] = hash(data);
+    code = code.replace(match[0], 'const ' + match[1] + '=' + data.toString() + ';');
+  }
+  for (const match of [...code.matchAll(/from ['"]([^'"]+)['"]/g)]) {
+    const specifier = match[1];
+    let target;
+    if (specifier.startsWith('.')) {
+      const dependency = path.posix.normalize(path.posix.join(path.posix.dirname(name), specifier));
+      await compileModule(dependency);
+      target = path.join(cache, dependency + '.mjs');
+    } else if (specifier.startsWith('three')) {
+      target = path.join(frontend, 'node_modules', specifier === 'three' ? 'three/build/three.module.js' : specifier);
+    } else continue;
+    code = code.replace(match[0], 'from ' + JSON.stringify(pathToFileURL(target).href));
+  }
+  code = code.replaceAll('import.meta.env.BASE_URL', "'/'");
+  const output = path.join(cache, name + '.mjs');
+  await mkdir(path.dirname(output), {recursive: true});
+  await writeFile(output, code);
 }
+for (const name of ['workerRegistry', 'workerProfiles', 'warehouseAdapter', 'workerRoleAssignment', 'warehouseLayoutPlan', 'warehouseCargo', 'warehouseCargoHolders', 'twin/twinInventory']) await compileModule(name);
 const texts = {};
 for (const [name, relative] of Object.entries({fixture: 'data/v3/warehouse-fixture-v3.json', layout: 'data/adaptive-v3/layout-manifest.json', registry: 'data/v3/worker-registry-v3.json', profiles: 'data/v3/worker-profiles-v3.json'})) {
   const filename = path.join(frontend, 'public', relative);

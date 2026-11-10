@@ -5,13 +5,15 @@
  * Sampling is absolute in time, so seek/reset always restore the same states.
  */
 import type {InitialCargo,V3Record,WarehouseBundle,WarehouseSlot,XYZ} from '../warehouseTypes';
+import type {TwinFlowScenario} from './twinFlowScenario';
 
 export type AtmoState='control'|'danger'|'sos'|'nodata';
 export type Variant='A'|'B';
 export type AtmoEvent={at_s:number;zone_id:string;state:AtmoState;cause:string;from_zone_id?:string;resource_id?:string};
 export type ZoneSample={state:AtmoState;cause:string;since_s:number};
 
-export const DEMO_DURATION_S=240;
+export let DEMO_DURATION_S=240;
+let activeFlow: TwinFlowScenario|undefined;
 export const DEMO_SOURCE={source_kind:'visual_fixture',engine_operation:false,fixture_id:'v3:twin:packing-branch-overload:demo:001'} as const;
 
 /** Layout zone IDs from layout-manifest.json; labels are for people. */
@@ -62,10 +64,27 @@ export const DEMO_EVENTS:Record<Variant,readonly AtmoEvent[]>={
   ...longRefusal,
  ],
 };
-export const CHAPTERS:{at_s:number;label:string}[]=[
+export let CHAPTERS:{at_s:number;label:string}[]=[
  {at_s:0,label:'Контроль'},{at_s:30,label:'Очередь растёт'},{at_s:58,label:'SOS у PK03'},{at_s:72,label:'Волна назад'},
  {at_s:104,label:'B в контроле'},{at_s:110,label:'Отказ LONG'},{at_s:150,label:'Восстановление A'},
 ];
+
+export function demoEventsFor(variant:Variant):readonly AtmoEvent[]{
+ return activeFlow?.atmosphere_events[variant]??DEMO_EVENTS[variant];
+}
+/** One installed flow supplies clock, zone history, wave pulses and reactions. */
+export function installDemoFlowTimeline(scenario:TwinFlowScenario){
+ if(scenario.source_kind!=='visual_fixture'||scenario.engine_operation
+  ||scenario.operational_admission||!Number.isFinite(scenario.duration_s)||scenario.duration_s<=0)
+  throw Error('Validated finite visual flow timeline required');
+ const chapters=scenario.chapters.map(chapter=>({at_s:chapter.at_s,label:chapter.label}));
+ const previous={flow:activeFlow,duration:DEMO_DURATION_S,chapters:CHAPTERS};
+ activeFlow=scenario;DEMO_DURATION_S=scenario.duration_s;CHAPTERS=chapters;
+ return ()=>{
+  if(activeFlow!==scenario)return;
+  activeFlow=previous.flow;DEMO_DURATION_S=previous.duration;CHAPTERS=previous.chapters;
+ };
+}
 
 /** Defence walk-through: 3–5 minutes, each step restores the same absolute state (time, mode, camera). */
 export type PresenterStep={title:string;text:string;t:number;mode:'side'|'swipe';focus:{target:XYZ;span:number};sheet?:'now'|'diff'|'source';play?:boolean;
@@ -87,28 +106,28 @@ export const PRESENTER_STEPS:PresenterStep[]=[
 export function sampleAtmosphere(variant:Variant,t:number):Record<string,ZoneSample>{
  const out:Record<string,ZoneSample>={};
  for(const z of ATMO_ZONES)out[z.id]={state:'control',cause:CALM[z.id]??'',since_s:0};
- for(const e of DEMO_EVENTS[variant])if(e.at_s<=t&&out[e.zone_id])out[e.zone_id]={state:e.state,cause:e.cause,since_s:e.at_s};
+ for(const e of demoEventsFor(variant))if(e.at_s<=t&&out[e.zone_id])out[e.zone_id]={state:e.state,cause:e.cause,since_s:e.at_s};
  return out;
 }
 /** Wave pulses that are in flight at t: they run for `window_s` before the receiving zone changes. */
 export function activePulses(variant:Variant,t:number,window_s=8){
- return DEMO_EVENTS[variant].filter(e=>e.from_zone_id&&t>=e.at_s-window_s&&t<=e.at_s)
+ return demoEventsFor(variant).filter(e=>e.from_zone_id&&t>=e.at_s-window_s&&t<=e.at_s)
   .map(e=>({from:e.from_zone_id!,to:e.zone_id,state:e.state,progress:(t-(e.at_s-window_s))/window_s}));
 }
 export function stateSegments(variant:Variant,zone:string){
  const out:{from_s:number;to_s:number;state:AtmoState}[]=[];let from=0,state:AtmoState='control';
- for(const e of DEMO_EVENTS[variant].filter(e=>e.zone_id===zone)){if(e.state!==state){out.push({from_s:from,to_s:e.at_s,state});from=e.at_s;state=e.state;}}
+ for(const e of demoEventsFor(variant).filter(e=>e.zone_id===zone)){if(e.state!==state){out.push({from_s:from,to_s:e.at_s,state});from=e.at_s;state=e.state;}}
  out.push({from_s:from,to_s:DEMO_DURATION_S,state});return out;
 }
-export function eventsUpTo(variant:Variant,t:number){return DEMO_EVENTS[variant].filter(e=>e.at_s<=t);}
+export function eventsUpTo(variant:Variant,t:number){return demoEventsFor(variant).filter(e=>e.at_s<=t);}
 /** "Why is this zone here?": its own events up to t, oldest first, each with the zone the wave came from. */
 export function zoneHistory(variant:Variant,zone:string,t:number){
- return DEMO_EVENTS[variant].filter(e=>e.zone_id===zone&&e.at_s<=t).map(e=>({at_s:e.at_s,state:e.state,cause:e.cause,from_id:e.from_zone_id??null,from:e.from_zone_id?ATMO_ZONES.find(z=>z.id===e.from_zone_id)?.label??e.from_zone_id:null}));
+ return demoEventsFor(variant).filter(e=>e.zone_id===zone&&e.at_s<=t).map(e=>({at_s:e.at_s,state:e.state,cause:e.cause,from_id:e.from_zone_id??null,from:e.from_zone_id?ATMO_ZONES.find(z=>z.id===e.from_zone_id)?.label??e.from_zone_id:null}));
 }
 /** Zones back in Контроль at t after having been in trouble earlier in the episode. */
 export function recoveredZones(variant:Variant,t:number){
  const s=sampleAtmosphere(variant,t);
- return ATMO_ZONES.map(z=>z.id).filter(id=>s[id].state==='control'&&DEMO_EVENTS[variant].some(e=>e.zone_id===id&&e.at_s<=t&&e.state!=='control'));
+ return ATMO_ZONES.map(z=>z.id).filter(id=>s[id].state==='control'&&demoEventsFor(variant).some(e=>e.zone_id===id&&e.at_s<=t&&e.state!=='control'));
 }
 
 /** Demonstration slotting idea for B: pre-place each outbound HU in a free slot nearer its outbound port.
@@ -138,7 +157,8 @@ export function outboundCandidates(bundle:WarehouseBundle,minGain_m=10,limit=12)
  * Which workers show a thought bubble at time t, and why. Pure and absolute in t (same answer after any seek);
  * variety comes from a stable hash of actor ID + zone interval, never per-frame randomness.
  * Reactions are presentation only: they never change cargo, durations or any measured result. */
-export type Bubble='wait'|'question'|'alert'|'help'|'relief';
+export type Bubble='wait'|'question'|'alert'|'help'|'relief'|'work'|'walk';
+export type WorkerActivity={actor_id:string;phase:string;station_id:string|null;message:string};
 export type WorkerSpot={actor_id:string;zone_id:string|null};
 export type Reaction={actor_id:string;zone_id:string;bubble:Bubble;text:string;priority:number};
 export type Effects='full'|'calm'|'off';
@@ -148,17 +168,36 @@ export const RELIEF_S=10;
 /** Desktop / phone budgets from the atmosphere spec; 'calm' halves them. */
 export function bubbleBudget(effects:Effects,phone:boolean){if(effects==='off')return 0;const n=phone?3:6;return effects==='calm'?Math.ceil(n/2):n;}
 
-export const BUBBLE_RU:Record<Bubble,string>={wait:'Ждёт',question:'Разбирается',alert:'Сигналит о проблеме',help:'Зовёт помощь',relief:'Снова в ритме'};
+export const BUBBLE_RU:Record<Bubble,string>={wait:'Ждёт',question:'Разбирается',alert:'Сигналит о проблеме',help:'Зовёт помощь',relief:'Снова в ритме',work:'Работает',walk:'Идёт по маршруту'};
 
 function hash(s:string){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 
 /** Previous state of a zone before its current interval (for "relief after trouble"). */
 function previousState(variant:Variant,zone:string,since:number):AtmoState{
- let prev:AtmoState='control';for(const e of DEMO_EVENTS[variant])if(e.zone_id===zone&&e.at_s<since)prev=e.state;return prev;
+ let prev:AtmoState='control';for(const e of demoEventsFor(variant))if(e.zone_id===zone&&e.at_s<since)prev=e.state;return prev;
 }
 
-/** All candidate reactions at t, highest priority first. Workers outside atmosphere zones never react. */
-export function reactionsAt(variant:Variant,t:number,workers:readonly WorkerSpot[]):Reaction[]{
+function activityReactions(activities:readonly WorkerActivity[],workers:readonly WorkerSpot[]):Reaction[]{
+ const out:Reaction[]=[];
+ for(const activity of activities){
+  let bubble:Bubble;
+  if(activity.phase==='working')bubble='work';
+  else if(['walking_to_help','returning','break_walk','break_return'].includes(activity.phase))
+   bubble='walk';
+  else if(activity.phase==='waiting'&&(activity.actor_id==='K03'
+   ||(['K01','K02'].includes(activity.actor_id)&&['PK05','PK06'].includes(activity.station_id??''))))
+   bubble='wait';
+  else continue;
+  out.push({actor_id:activity.actor_id,
+   zone_id:workers.find(worker=>worker.actor_id===activity.actor_id)?.zone_id??'PACKING_LIGHT_LINE',
+   bubble,text:activity.message,priority:bubble==='work'?40:bubble==='walk'?35:15});
+ }
+ return out;
+}
+
+/** All candidate reactions at t, highest priority first. */
+export function reactionsAt(variant:Variant,t:number,workers:readonly WorkerSpot[],
+ activities:readonly WorkerActivity[]=[]):Reaction[]{
  const sample=sampleAtmosphere(variant,t),out:Reaction[]=[];
  const byZone=new Map<string,string[]>();
  for(const w of workers)if(w.zone_id&&sample[w.zone_id])byZone.set(w.zone_id,[...(byZone.get(w.zone_id)??[]),w.actor_id]);
@@ -171,7 +210,11 @@ export function reactionsAt(variant:Variant,t:number,workers:readonly WorkerSpot
   else if(z.state==='control'&&z.since_s>0&&t-z.since_s<=RELIEF_S&&previousState(variant,zone,z.since_s)!=='control')
    order.slice(0,Math.max(1,Math.ceil(order.length/3))).forEach((id,i)=>out.push({actor_id:id,zone_id:zone,bubble:'relief',text:`Снова в ритме: ${z.cause}`,priority:10-i}));
  }
- return out.sort((a,b)=>b.priority-a.priority||a.actor_id.localeCompare(b.actor_id));
+ const controlled=new Set(activities.map(activity=>activity.actor_id));
+ const base=activities.length?out.filter(row=>row.zone_id!=='PACKING_LIGHT_LINE'
+  &&!controlled.has(row.actor_id)):out;
+ return base.concat(activityReactions(activities,workers))
+  .sort((a,b)=>b.priority-a.priority||a.actor_id.localeCompare(b.actor_id));
 }
 
 /** Applies the effect budget. Zones take turns (most urgent first) so a wave stays visible beyond its source;
@@ -186,7 +229,11 @@ export function visibleReactions(all:readonly Reaction[],budget:number,selected:
 }
 
 /** Plain-language status for the worker card; computed over all workers so it matches the bubble. */
-export function workerStatus(variant:Variant,t:number,workers:readonly WorkerSpot[],actor_id:string){
+export function workerStatus(variant:Variant,t:number,workers:readonly WorkerSpot[],actor_id:string,
+ activities:readonly WorkerActivity[]=[]){
+ const activity=activities.find(row=>row.actor_id===actor_id);if(activity)return activity.message;
+ if(activities.length&&workers.find(worker=>worker.actor_id===actor_id)?.zone_id==='PACKING_LIGHT_LINE')
+  return 'Свободен на исходном посту';
  if(!workers.find(w=>w.actor_id===actor_id)?.zone_id)return 'Вне участков эпизода, обычный ритм';
- return reactionsAt(variant,t,workers).find(r=>r.actor_id===actor_id)?.text??'Спокойно: участок под контролем';
+ return reactionsAt(variant,t,workers,activities).find(r=>r.actor_id===actor_id)?.text??'Спокойно: участок под контролем';
 }

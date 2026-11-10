@@ -9,6 +9,8 @@ import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
 import {createWarehouseCargo} from '../warehouseCargo';
 import {createTwinInventoryScene} from './twinInventoryScene';
 import {createTwinCarrierIndicators} from './twinCarrierIndicators';
+import {createTwinStationIndicators,packingStationPositions} from './twinStationIndicators';
+import {operationPanels} from './twinOperationView';
 import type {createTwinInventory} from './twinInventory';
 import type {createTwinWarehouseMotion} from './twinWarehouseMotion';
 import {createTwinLayoutVariant,type TwinLayoutPlan} from './twinLayoutVariant';
@@ -36,6 +38,8 @@ export const ICON:Record<AtmoState,string>={
 };
 /** Thought-bubble glyphs: symbols instead of comic lines. */
 const BUBBLE_ICON:Record<Bubble,string>={
+ work:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5l6-3 6 3v7l-6 3-6-3zM2 5l6 3 6-3M8 8v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+ walk:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  wait:'<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8 4.8V8l2.2 1.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
  question:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.6 5.9a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.2.9-1.2 1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="12.6" r="1.05" fill="currentColor"/></svg>',
  alert:'<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.6v6.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="8" cy="12.7" r="1.25" fill="currentColor"/></svg>',
@@ -53,6 +57,7 @@ function skyTexture(){const c=document.createElement('canvas');c.width=2;c.heigh
 export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,reducedMotion:()=>boolean){
  let ctx:{renderer:THREE.WebGLRenderer;scene:THREE.Scene;camera:THREE.OrthographicCamera}|null=null,ready=false,disposed=false;
  let mode:Mode='side',split=.5,t=0,selected:string|null=null,moves:Move[]=[],focus:Partial<Record<Variant,Pose>>|null=null;
+ let operationFocus=false;
  let effects:Effects='full',budget=BUDGET_MAX,selectedActor:string|null=null,onBubble:(id:string,v:Variant)=>void=()=>{},onLabel:(v:Variant)=>void=()=>{};
  const spots:WorkerSpot[]=[],heads=new Map<string,THREE.Vector3>();
  let layout:ReturnType<typeof createTwinLayoutVariant>|undefined;
@@ -157,6 +162,9 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   bubbles[v]=Array.from({length:BUDGET_MAX},()=>{const b=document.createElement('button');b.type='button';b.className='tw-bubble';b.hidden=true;b.addEventListener('click',()=>{if(b.dataset.actor)onBubble(b.dataset.actor,v);});el.append(b);return b;});
  }
  const carrierIndicators={A:createTwinCarrierIndicators(layers.A),B:createTwinCarrierIndicators(layers.B)};
+ const packingRows=(bundle.layout.data.conveyor as V3Record).packing_stations as {pack_id:string;table_origin:XYZ}[];
+ const stationPositions=packingStationPositions(packingRows);
+ const stationIndicators={A:createTwinStationIndicators(layers.A,stationPositions),B:createTwinStationIndicators(layers.B,stationPositions)};
  const labelW:Partial<Record<Variant,number>>={},labelH:Partial<Record<Variant,number>>={};
  /** Pixels on the right reserved for open panels on desktop; the window narrows instead of being covered. */
  let inset=0;
@@ -271,19 +279,21 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   const lw=labelW[v]||(labelW[v]=labels[v].offsetWidth),lh=labelH[v]||(labelH[v]=labels[v].offsetHeight),narrow=W<720;
   // Desktop stacks the labels as captions at the bottom-left of each half; the top-left belongs to the brand menu.
   // Swipe keeps them either side of the blade; phones put them at the top, under the brand button for A.
-  if(mode==='side'){
+  if(mode==='side'&&operationFocus){
+   labels[v].style.left=sc.x+12+'px';labels[v].style.top=sc.y+10+'px';
+  }else if(mode==='side'){
    // In the shared space each label sits beside its own warehouse, by the short west wall.
    const q=project(new THREE.Vector3(-4,2,36),vp);labels[v].style.left=Math.max(sc.x+8,q.x-lw-6)+'px';labels[v].style.top=q.y-lh/2+'px';
   }else{labels[v].style.left=(narrow?sc.x+8:v==='A'?sc.x+sc.w-lw-34:sc.x+34)+'px';labels[v].style.top=sc.y+(sc.y<60||narrow?62:12)+'px';}
-  const R=region(W,H),r=22;
+  const R=operationFocus&&mode==='side'?sc:region(W,H),r=22;
   corners[v].forEach(c=>{const k=c.dataset.c!;c.hidden=!pass.round.includes(k);if(c.hidden)return;c.style.left=(k[1]==='r'?R.x+R.w-r:R.x)+'px';c.style.top=(k[0]==='b'?R.y+R.h-r:R.y)+'px';});
   for(const [id,b]of badges[v]){
-   const s=sample[id].state,z=zones.get(id)!;b.hidden=s==='control';if(b.hidden)continue;
+   const s=sample[id].state,z=zones.get(id)!;b.hidden=s==='control'||operationFocus&&id==='PACKING_LIGHT_LINE';if(b.hidden)continue;
    const q=project(z.center.clone().setY(6),vp);b.hidden=!inside(q,sc);if(b.hidden)continue;
    if(b.dataset.state!==s){b.dataset.state=s;b.innerHTML=`<span class="tw-badge-in glass"><i></i>${ATMO_ZONES.find(a=>a.id===id)!.label}<small>${STATE_RU[s]}</small></span>`;}
    b.style.transform=`translate(${q.x}px,${q.y}px) translate(-50%,-100%)`;
   }
-  const gatesHere=v==='A'||mode==='swipe';
+  const gatesHere=v==='A'||mode==='swipe'||operationFocus;
   gateEls[v].forEach((e,i)=>{const g=gateTags[i];if(!g||!gatesHere){e.hidden=true;return;}const q=project(new THREE.Vector3(g.pos[0],5,g.pos[2]),vp);e.hidden=!inside(q,sc);if(e.hidden)return;
    // Gates sit on the outer walls: keep the whole tag inside the view (width measured once per content).
    const w=Number(e.dataset.w)||(e.dataset.w=String(e.offsetWidth),e.offsetWidth),x=Math.min(sc.x+sc.w-w/2-8,Math.max(sc.x+w/2+8,q.x));e.style.transform=`translate(${x}px,${q.y}px) translate(-50%,-100%)`;});
@@ -291,9 +301,11 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   // Thought bubbles above heads, within the effect budget; the selected worker always keeps its bubble.
   // Far away the zone badge is the aggregated sign; bubbles appear once people are big enough to read.
   const cam=ctx!.camera,pxPerM=vp.w*cam.zoom/(cam.right-cam.left);
-  carrierIndicators[v].update(motion?.carrierFrames(v,t)??[],pxPerM,position=>project(new THREE.Vector3(...position),vp),sc);
+  const operations=motion?.operations?.(v,t);
+  carrierIndicators[v].update(operations?.cargoFrames??motion?.carrierFrames(v,t)??[],pxPerM,position=>project(new THREE.Vector3(...position),vp),sc);
+  stationIndicators[v].update(operations,position=>project(new THREE.Vector3(...position),vp),sc,operationFocus);
   // The budget is spent only on workers inside this pass, so a close-up is not starved by people off screen.
-  const onScreen=pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,variantWorkers(v)).map(r=>({r,q:project(variantHead(r.actor_id,v)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
+  const onScreen=pxPerM<BUBBLE_MIN_PX_PER_M?[]:reactionsAt(v,t,variantWorkers(v),operations?.staff??[]).map(r=>({r,q:project(variantHead(r.actor_id,v)??new THREE.Vector3(NaN),vp)})).filter(x=>inside(x.q,sc));
   const shown=visibleReactions(onScreen.map(x=>x.r),budget,selectedActor),at=new Map(onScreen.map(x=>[x.r.actor_id,x.q]));
   bubbles[v].forEach((b,i)=>{
    const r=shown[i],q=r&&at.get(r.actor_id);
@@ -314,6 +326,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  function passes(W:number,H:number):Pass[]{
   const R=region(W,H);
   if(mode==='swipe'){const x=Math.round(R.x+R.w*split),zoom=fit(R);return [{variant:'A',vp:R,sc:{x:R.x,y:R.y,w:x-R.x,h:R.h},zoom,round:['tl','bl'],shift:NO_SHIFT},{variant:'B',vp:R,sc:{x,y:R.y,w:R.x+R.w-x,h:R.h},zoom,round:['tr','br'],shift:NO_SHIFT}];}
+  if(operationFocus)return operationPanels(R,W<720).map(({variant,rect})=>({variant,vp:rect,sc:rect,zoom:1,round:['tl','tr','bl','br'],shift:NO_SHIFT}));
   // Side: one view, one camera; B is drawn shifted beside A and merged by depth, so it is one 3D scene.
   return [{variant:'A',vp:R,sc:R,zoom:1,round:['tl','tr','bl','br'],shift:NO_SHIFT},{variant:'B',vp:R,sc:R,zoom:1,round:[],shift:B_SHIFT}];
  }
@@ -429,7 +442,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   layoutSnapshot:()=>layout?.snapshot()??null,
   layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>v==='B'?layout?.bounds(kind,id)??null:null,
   /** Camera framing for a zone floor, for 'take me there' from the state list. */
-  zoneFocus(id:string,v:Variant='A'){const source=zones.get(id),planned=v==='B'?layout?.zones.get(id)?.floor_bounds_xz_m:undefined;const z=planned??source;if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1],o=mode==='side'&&v==='B'?SIDE_SHIFT[2]:0;return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
+  zoneFocus(id:string,v:Variant='A'){const source=zones.get(id),planned=v==='B'?layout?.zones.get(id)?.floor_bounds_xz_m:undefined;const z=planned??source;if(!z)return null;const w=z.max[0]-z.min[0],d=z.max[1]-z.min[1],o=mode==='side'&&!operationFocus&&v==='B'?SIDE_SHIFT[2]:0;return {target:[(z.min[0]+z.max[0])/2,0,(z.min[1]+z.max[1])/2+o] as XYZ,span:Math.min(184,Math.max(24,Math.max(w,d)*1.2+8))};},
   stats:()=>({...stats,totals:{...totals},pixelRatio:ctx?.renderer.getPixelRatio()??0,shadows:ctx?.renderer.shadowMap.enabled??false}),
   actorPosition:(id:string,v:Variant='A')=>variantHead(id,v)?.toArray() as XYZ|undefined,
   setEffects(next:Effects,nextBudget:number){effects=next;budget=Math.min(BUDGET_MAX,nextBudget);draw();},
@@ -437,9 +450,19 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   onBubble(fn:(id:string,v:Variant)=>void){onBubble=fn;},
   onLabel(fn:(v:Variant)=>void){onLabel=fn;},
   /** Where a variant's copy of the warehouse stands in the shared space (only «Рядом» shifts B). */
-  offsetOf:(v:Variant):XYZ=>mode==='side'&&v==='B'?[...SIDE_SHIFT]:[0,0,0],
+  offsetOf:(v:Variant):XYZ=>mode==='side'&&!operationFocus&&v==='B'?[...SIDE_SHIFT]:[0,0,0],
   setMoves,draw,pick,ground,
   setMode(next:Mode){mode=next;draw();},
+  setOperationFocus(next:boolean){
+   operationFocus=next;
+   for(const variant of ['A','B'] as const){
+    const title=next?(variant==='A'?'Исходная схема':'Резервные посты'):VARIANT_TITLE[variant];
+    labels[variant].querySelector('span')!.textContent=title;
+    labelW[variant]=0;labelH[variant]=0;
+   }
+   draw();
+  },
+  operationRegions:()=>ctx&&operationFocus&&mode==='side'?operationPanels(region(...canvasSize(ctx.renderer.domElement)),ctx.renderer.domElement.clientWidth<720):[],
   setInset(px:number){if(px===inset)return;inset=px;draw();},
   region:()=>ctx?region(...canvasSize(ctx.renderer.domElement)):null,
   setSplit(next:number){split=Math.min(.92,Math.max(.08,next));draw();},
@@ -448,6 +471,6 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   /** Marks a picked object that is neither a moved unit nor a worker, per copy (null clears). */
   setFocus(f:Partial<Record<Variant,Pose>>|null){focus=f;draw();},
   highlightZone,setGateTags,
-   dispose(){clearMoveArcs();for(const indicators of Object.values(carrierIndicators))indicators.dispose();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
+   dispose(){clearMoveArcs();for(const indicators of Object.values(stationIndicators))indicators.dispose();for(const indicators of Object.values(carrierIndicators))indicators.dispose();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }

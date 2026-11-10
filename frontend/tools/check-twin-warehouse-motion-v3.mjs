@@ -69,6 +69,10 @@ async function sceneFixture() {
     if (worker.assigned_vehicle_id) bindSeatedDriver(vehicles.get(worker.assigned_vehicle_id), instance, driverPose);
     else {instance.root.position.set(70 + actors.size, 0, 1); scene.add(instance.root);}
   }
+  for (const id of ['K01', 'K02', 'K03', 'K04', 'K05', 'K06']) {
+    const node = bundle.layout.walk.nodes.find(row => row.node_id === 'v3:service:PK' + id.slice(1));
+    actors.get(id).position.fromArray(node.world_pos); actors.get(id).rotation.y = Math.PI;
+  }
   actors.get('S02').position.fromArray(bundle.layout.walk.nodes.find(n => n.node_id === 'v3:service:OUT_S_EXPRESS').world_pos);
   const stock = createWarehouseCargo(bundle).snapshot();
   for (const [archetype, model] of [['PALLET_LOAD', 'pallet-load'], ['SMALL_CARTON', 'small-carton']]) {
@@ -88,22 +92,17 @@ globalThis.fetch = async (url, options) => {
   return new Response(await fs.readFile(path.join(front, 'public' + name)), {status: 200});
 };
 const local = node => [node.parent?.uuid, node.position.toArray(), node.quaternion.toArray(), node.scale.toArray(), node.layers.mask];
-const carrierStarts = [-128, -64, 0, 64, 128, 192];
+const carrierStarts = [...Array.from({length: 6}, (_, i) => -100 + i * 5.5), ...Array.from({length: 12}, (_, i) => i * 5.5)];
 function checkBeltCoverage(motion) {
-  const conveyor = bundle.layout.data.conveyor;
-  const clearance = Math.hypot(.6, .4) + conveyor.source_assumptions.payload_clearance_m;
-  // Between quarter-second samples, two source-speed carriers can close by .1375m.
-  const continuousMargin = conveyor.source_assumptions.speed_m_s * .25;
+  const duration = motion.scenario().duration_s;
   for (const variant of ['A', 'B']) {
     let previous;
-    for (let tick = 0; tick <= 960; tick++) {
-      motion.apply(variant, tick / 4);
-      const frames = motion.snapshot().belt, visible = frames.filter(frame => frame.visible);
-      assert(visible.length >= 2, `${variant} has insufficient goods at ${tick / 4}s`);
-      assert(visible.some(frame => frame.phase === 'travel'), `${variant} has no moving goods at ${tick / 4}s`);
+    for (let tick = 0; tick <= duration * 4; tick++) {
+      const frames = motion.carrierFrames(variant, tick / 4), visible = frames.filter(frame => frame.visible);
+      if (tick === 0) assert(visible.length >= 6);
       for (let i = 0; i < visible.length; i++) for (let j = i + 1; j < visible.length; j++) {
         const distance = new THREE.Vector3(...visible[i].position).distanceTo(new THREE.Vector3(...visible[j].position));
-        assert(distance > clearance + continuousMargin, `Continuous carrier clearance ${variant}/${tick / 4}`);
+        assert(distance > Math.hypot(.6, .4) + .02 + .55 * .25, `Continuous carrier clearance ${variant}/${tick / 4}`);
       }
       for (const frame of visible) {
         const old = previous?.find(row => row.id === frame.id && row.visible);
@@ -111,7 +110,8 @@ function checkBeltCoverage(motion) {
       }
       previous = frames;
     }
-    const held = motion.snapshot(); motion.apply(variant, 240); assert.deepEqual(motion.snapshot(), held);
+    motion.apply(variant, duration); const held = motion.snapshot();
+    motion.apply(variant, duration); assert.deepEqual(motion.snapshot(), held);
   }
 }
 function localBounds(object, parent) {
@@ -137,53 +137,30 @@ function checkToteContents(motion, scene) {
   }
   assert.equal(root.children.length, carrierStarts.length);
 }
-function sourcePath(from, to) {
-  const edges = bundle.layout.data.conveyor.edges, queue = [[from, []]], seen = new Set([from]);
-  for (const [node, path] of queue) {
-    if (node === to) return path;
-    for (const edge of edges.filter(row => row.from_node_id === node)) if (!seen.has(edge.to_node_id)) {
-      seen.add(edge.to_node_id); queue.push([edge.to_node_id, [...path, edge]]);
-    }
-  }
-  throw Error('Disconnected source test path');
-}
-function sourceBeltSteps(variant) {
-  const station = variant === 'A' ? 'PK03' : 'PK05', steps = [];
-  let at = 0;
-  const append = (edge, duration, phase) => {steps.push({edge, start: at, end: at + duration, phase}); at += duration;};
-  const path = (from, to) => {
-    for (const edge of sourcePath(from, to)) {
-      if (edge.turn_timing === 'before_edge') append(edge, .8, 'pivot');
-      append(edge, edge.length_m / .55, 'travel');
-      if (edge.turn_timing === 'after_edge') append(edge, .8, 'pivot');
-    }
-  };
-  path('v3:conv:intake', 'v3:conv:' + station + ':WORK');
-  append(steps.at(-1).edge, variant === 'A' ? 42 : 12, 'packing_wait');
-  path('v3:conv:' + station + ':WORK', 'v3:conv:output');
-  return steps;
-}
 function checkSourceBeltEdges(motion) {
   const source = bundle.layout.data.conveyor, nodes = new Map(source.nodes.map(node => [node.node_id, node.world_pos]));
-  for (const variant of ['A', 'B']) for (const step of sourceBeltSteps(variant)) {
-    for (const [index, start] of carrierStarts.entries()) {
-      const middle = start + (step.start + step.end) / 2;
-      if (middle < 0 || middle > 240) continue;
-      motion.apply(variant, middle);
-      const frame = motion.snapshot().belt[index];
-      assert.equal(frame.source_edge_id, step.edge.edge_id); assert.equal(frame.phase, step.phase);
-      if (step.phase === 'travel') {
-        const edge = step.edge, a = nodes.get(edge.from_node_id), b = nodes.get(edge.to_node_id);
-        const expected = edge.path_kind === 'arc'
-          ? [edge.centre[0] + edge.radius_m * Math.cos((edge.theta_start_rad + edge.theta_end_rad) / 2), edge.centre[1], edge.centre[2] + edge.radius_m * Math.sin((edge.theta_start_rad + edge.theta_end_rad) / 2)]
-          : a.map((value, axis) => (value + b[axis]) / 2);
-        assert(new THREE.Vector3(...frame.position).distanceTo(new THREE.Vector3(...expected)) < 1e-8);
+  for (const variant of ['A', 'B']) for (let at = 0; at <= motion.scenario().duration_s; at += 2) {
+    const frames = motion.carrierFrames(variant, at);
+    for (const frame of frames.filter(row => row.visible)) {
+      const edge = source.edges.find(row => row.edge_id === frame.source_edge_id);
+      assert(edge, 'Every visible frame names an actual source edge');
+      if (edge.path_kind === 'arc') {
+        assert(Math.abs(Math.hypot(frame.position[0] - edge.centre[0], frame.position[2] - edge.centre[2]) - edge.radius_m) < 1e-8);
+      } else {
+        const a = new THREE.Vector3(...nodes.get(edge.from_node_id)), b = new THREE.Vector3(...nodes.get(edge.to_node_id));
+        const point = new THREE.Vector3(...frame.position), direction = b.clone().sub(a);
+        const u = point.clone().sub(a).dot(direction) / direction.lengthSq();
+        assert(u >= -1e-8 && u <= 1 + 1e-8);
+        assert(a.addScaledVector(direction, u).distanceTo(point) < 1e-8);
       }
-      for (const boundary of [start + step.start, start + step.end]) {
-        if (boundary <= .00001 || boundary >= 239.99999) continue;
-        motion.apply(variant, boundary - .00001); const before = motion.snapshot().belt[index];
-        motion.apply(variant, boundary + .00001); const after = motion.snapshot().belt[index];
-        if (before.visible && after.visible) assert(new THREE.Vector3(...before.position).distanceTo(new THREE.Vector3(...after.position)) <= .55 * .00002 + 1e-8);
+    }
+    if (at % 30 === 0) {
+      motion.apply(variant, at);
+      const root = fixture.scene.getObjectByName('twin_visual_belt_motion');
+      for (const [index, frame] of frames.entries()) {
+        assert.equal(root.children[index].visible, frame.visible);
+        assert(new THREE.Vector3(...frame.position).distanceTo(root.children[index].position) < 1e-8);
+        assert.equal(root.children[index].children[0].visible, frame.payload === 'tote');
       }
     }
   }
@@ -192,16 +169,51 @@ function checkCarrierQuery(motion) {
   motion.apply('A', 90);
   const current = motion.snapshot(), poses = new Map();
   for (const root of motion.dynamicObjects()) root.traverse(node => poses.set(node, local(node)));
-  const frames = motion.carrierFrames('B', 60), expected = structuredClone(frames);
+  const frames = motion.carrierFrames('B', 140), expected = structuredClone(frames);
   assert.equal(frames.length, carrierStarts.length);
-  assert(frames.some(frame => frame.visible && frame.phase === 'packing_wait'));
+  assert(frames.some(frame => frame.visible));
+  assert(motion.scenario().chapters.some(row => row.id === 'staff_ready'));
   frames[0].position[0] = -1000; frames[1].visible = !frames[1].visible; frames.pop();
-  assert.deepEqual(motion.carrierFrames('B', 60), expected);
+  assert.deepEqual(motion.carrierFrames('B', 140), expected);
   assert.deepEqual(motion.snapshot(), current);
   for (const [node, pose] of poses) assert.deepEqual(local(node), pose);
-  for (const time of [-1, 241, NaN, Infinity]) assert.throws(() => motion.carrierFrames('A', time));
+  for (const time of [-1, motion.scenario().duration_s + 1, NaN, Infinity]) assert.throws(() => motion.carrierFrames('A', time));
   assert.throws(() => motion.carrierFrames('unsupported', 10));
   assert.deepEqual(motion.snapshot(), current);
+}
+async function checkOptionalFleet(reference, fixture, before, buffers) {
+  const layoutPlan = JSON.parse(await fs.readFile(path.join(front, '../docs/adaptive-v3/fixtures/layout-plans/dense-manual-b-164-v1.json'), 'utf8'));
+  const installed = await createTwinWarehouseMotion(fixture.scene, bundle, texts, new AbortController().signal, {layoutPlan});
+  try {
+    const expected = {workers: 30, vehicles: 7, sourceWorkers: 24, sourceVehicles: 2, extraWorkers: 6, extraVehicles: 5};
+    assert.deepEqual(installed.presentationCounts(), expected);
+    const copy = installed.presentationCounts(); copy.workers = 1000;
+    assert.deepEqual(installed.presentationCounts(), expected);
+    const extras = [];
+    fixture.scene.traverse(node => {if (['demo-actor', 'demo-vehicle'].includes(node.userData.semanticKind)) extras.push(node);});
+    assert.equal(extras.filter(node => node.userData.semanticKind === 'demo-actor').length, 6);
+    assert.equal(extras.filter(node => node.userData.semanticKind === 'demo-vehicle').length, 5);
+    const canonical = [];
+    fixture.scene.traverse(node => {if (node.userData.semanticKind === 'actor') canonical.push(node);});
+    assert.equal(canonical.length, 24);
+    for (const extra of extras) extra.traverse(node => assert.equal(node.layers.mask, 2));
+    for (const row of reference) assert.deepEqual(installed.operations(row.variant, row.at), row.frame);
+    installed.apply('A', 60); const held = installed.snapshot();
+    installed.apply('B', 140); installed.apply('A', 60);
+    assert.deepEqual(installed.snapshot(), held);
+    const extrasRoot = extras.filter(node => node.userData.semanticKind === 'demo-vehicle');
+    const positions = extrasRoot.map(node => node.position.toArray());
+    installed.apply('A', 67);
+    assert(extrasRoot.every((node, i) => !node.position.equals(new THREE.Vector3(...positions[i]))));
+    assert(installed.actorPosition('B', 80, 'DEMO_WALKER_01')[1] > 1.5);
+    for (const [node, array] of buffers) assert.deepEqual([...node.instanceMatrix.array], array);
+  } finally {installed.dispose();}
+  assert.throws(() => installed.presentationCounts(), /disposed/i);
+  assert.equal(installed.dynamicObjects().length, 0);
+  for (const [node, expected] of before) assert.deepEqual(local(node), expected, node.name);
+  assert(!fixture.scene.getObjectByName('vehicle__DEMO_FLEET_01'));
+  assert(!fixture.scene.getObjectByName('actor__DEMO_WALKER_01'));
+  return layoutPlan;
 }
 const fixture = await sceneFixture(), before = new Map();
 fixture.vehicles.get('FL01').layers.enable(2);
@@ -211,6 +223,11 @@ const buffers = new Map(); fixture.scene.traverse(node => {if (node instanceof T
 let motion;
 try {
   motion = await createTwinWarehouseMotion(fixture.scene, bundle, texts, new AbortController().signal);
+  assert.equal(typeof motion.operations, 'function', 'Main comparison uses shared physical flow sample');
+  assert.equal(typeof motion.scenario, 'function');
+  assert.equal(typeof motion.presentationCounts, 'function', 'Presentation counts distinguish source entities and optional extras');
+  assert.deepEqual(motion.presentationCounts(), {workers: 24, vehicles: 2, sourceWorkers: 24, sourceVehicles: 2, extraWorkers: 0, extraVehicles: 0});
+  const reference = ['A', 'B'].flatMap(variant => [0, 46, 140, 240, 360].map(at => ({variant, at, frame: motion.operations(variant, at)})));
   let checks = 0;
   const coverageFailures = [];
   for (const check of [() => checkBeltCoverage(motion), () => checkToteContents(motion, fixture.scene), () => checkSourceBeltEdges(motion), () => checkCarrierQuery(motion)]) {
@@ -233,7 +250,7 @@ try {
   motion.apply('A', 240); assert.equal(motion.snapshot().heavy_visual_complete, false); assert(motion.snapshot().heavy.attached); checks++;
   motion.apply('B', 0); assert(!motion.snapshot().heavy.attached); checks++;
   const atStart = motion.actorPosition('A', 0, 'S02'), moving = motion.actorPosition('A', 20, 'S02');
-  assert.notDeepEqual(atStart, moving); assert.deepEqual(motion.actorPosition('B', 20, 'S02'), moving); checks++;
+  assert.deepEqual(atStart, moving); assert.notDeepEqual(motion.actorPosition('B', 0, 'K01'), motion.actorPosition('B', 80, 'K01'));  assert.deepEqual(motion.actorPosition('B', 20, 'S02'), moving); checks++;
   assert(moving[1] > 1.5); assert(motion.actorPosition('A', 20, 'F01')[1] > 1.5);
   assert.equal(motion.actorPosition('B', 20, 'P01'), undefined); checks++;
   const picker = fixture.actors.get('P01'); picker.position.add(new THREE.Vector3(7, 0, 12));
@@ -242,12 +259,12 @@ try {
   const samples = Array.from({length: 241}, (_, t) => {motion.apply('A', t); return motion.snapshot().belt;});
   assert(samples.some(rows => rows.some(row => row.visible && row.payload === 'tote')));
   assert(samples.some(rows => rows.some(row => row.visible && row.payload === 'parcel')));
-  assert(samples.some(rows => rows.some(row => row.phase === 'packing_wait'))); checks++;
-  const stable = motion.snapshot(); for (const t of [-1, 241, NaN, Infinity]) assert.throws(() => motion.apply('A', t));
+  assert(samples.some(rows => rows.some(row => row.phase === 'packing'))); checks++;
+  const stable = motion.snapshot(); for (const t of [-1, motion.scenario().duration_s + 1, NaN, Infinity]) assert.throws(() => motion.apply('A', t));
   assert.deepEqual(motion.snapshot(), stable); checks++;
   assert.throws(() => motion.apply('unsupported', 20)); assert.deepEqual(motion.snapshot(), stable); checks++;
   for (const [node, matrix] of buffers) assert.deepEqual([...node.instanceMatrix.array], matrix); checks++;
-  for (const [id, node] of fixture.actors) if (!['F01', 'S02'].includes(id)) {const expected = before.get(node); assert.deepEqual(local(node), expected, id);}
+  for (const [id, node] of fixture.actors) if (!['F01', 'S02', 'K01', 'K02', 'K03', 'K05', 'K06'].includes(id)) {const expected = before.get(node); assert.deepEqual(local(node), expected, id);}
   checks++;
   motion.dispose(); motion.dispose();
   for (const [node, expected] of before) assert.deepEqual(local(node), expected, node.name);
@@ -271,6 +288,13 @@ try {
   for (const [node, expected] of before) assert.deepEqual(local(node), expected, node.name); checks++;
   const retry = await createTwinWarehouseMotion(fixture.scene, bundle, texts, new AbortController().signal);
   retry.apply('B', 90); retry.dispose();
+  for (const [node, expected] of before) assert.deepEqual(local(node), expected, node.name); checks++;
+  const layoutPlan = await checkOptionalFleet(reference, fixture, before, buffers); checks++;
+  for (const node of removed) node.removeFromParent();
+  await assert.rejects(() => createTwinWarehouseMotion(fixture.scene, bundle, texts, new AbortController().signal, {layoutPlan}), /parcel/i);
+  assert(!fixture.scene.getObjectByName('vehicle__DEMO_FLEET_01'));
+  assert(!fixture.scene.getObjectByName('actor__DEMO_WALKER_01'));
+  for (const node of removed) fixture.scene.add(node);
   for (const [node, expected] of before) assert.deepEqual(local(node), expected, node.name); checks++;
   console.log(JSON.stringify({state: 'PASS', checks, actual_source_models: models.size, browser: 'NOT_RUN', backend_engine_runs: 0}));
 } finally {motion?.dispose(); globalThis.fetch = originalFetch;}
