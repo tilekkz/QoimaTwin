@@ -86,41 +86,41 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W02](tasks/W02.md) | PASS | root | W01 | Создан изолированный adapter v3 |
 | [W03](tasks/W03.md) | PASS | root | W02,L06,L07 | Подключены движения по реальному графу |
 | [W04](tasks/W04.md) | PASS | root | W02,M06,M07,M08,M09,M10,M11,M12 | Подключены cargo attachment и storage placement |
-| [W05](tasks/W05.md) | ACTIVE | root_fullworkflow | W03,W04,P10 | Подключён единый clock действий и clips |
-| [W06](tasks/W06.md) | VERIFY | root_mvp | W05 | Реализовано восстановление pause/reset/seek |
-| [W07](tasks/W07.md) | TODO | unassigned | W05 | Подключены локальные VFX по событиям |
-| [W08](tasks/W08.md) | VERIFY | root | W05 | Подключены управляемые SFX |
-| [W09](tasks/W09.md) | TODO | unassigned | W02,C10,C11 | Готов normal/no-op сценарий |
-| [W10](tasks/W10.md) | TODO | unassigned | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
-| [W11](tasks/W11.md) | TODO | root | W02,C07,M08,M09 | Готов сценарий heavy inbound |
-| [W12](tasks/W12.md) | READY | unassigned | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
+| [W05](tasks/W05.md) | PASS | root | W03,W04,P10 | Подключён единый clock действий и clips |
+| [W06](tasks/W06.md) | PASS | root | W05 | Реализовано восстановление pause/reset/seek |
+| [W07](tasks/W07.md) | PASS | root | W05 | Подключены локальные VFX по событиям |
+| [W08](tasks/W08.md) | PASS | root | W05 | Подключены управляемые SFX |
+| [W09](tasks/W09.md) | PASS | root | W02,C10,C11 | Готов normal/no-op сценарий |
+| [W10](tasks/W10.md) | PASS | root | W02,L03,L04,C11 | Готов сценарий west/east port mix shift |
+| [W11](tasks/W11.md) | PASS | root | W02,C07,M08,M09 | Готов сценарий heavy inbound |
+| [W12](tasks/W12.md) | PASS | root | W02,C08,M10,P09 | Готов сценарий long freight / large gate |
 | [W12.1](tasks/W12.1.md) | PASS | account2 | W02,C08,M10,P09 | Frozen long-freight / large-gate scenario inputs |
-| [W13](tasks/W13.md) | TODO | unassigned | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
-| [W14](tasks/W14.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Готов экран slotting baseline/adapt сравнения |
-| [W15](tasks/W15.md) | VERIFY | root | W06,P11 | Реализовано безопасное RoleAssignment event |
-| [W16](tasks/W16.md) | VERIFY | root | W15,L06,L07 | Реализован переход к новому рабочему месту |
-| [W17](tasks/W17.md) | VERIFY | root | W16,W06 | Проверено восстановление роли при seek/reset |
-| [W18](tasks/W18.md) | VERIFY | root | W17,W14 | Готов отдельный N4 STAFFING comparison |
-| [Q01](tasks/Q01.md) | VERIFY | account2 | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
-| [Q02](tasks/Q02.md) | TODO | unassigned | Q01,P09,P10 | Выполнена браузерная проверка финальных GLB |
+| [W13](tasks/W13.md) | PASS | root | W10,W11,W12 | Готов сценарий нескольких одновременных портов |
+| [W14](tasks/W14.md) | PASS | root | W06,W09,W10,W11,W12,W13 | Готов экран slotting baseline/adapt сравнения |
+| [W15](tasks/W15.md) | PASS | root | W06,P11 | Реализовано безопасное RoleAssignment event |
+| [W16](tasks/W16.md) | PASS | root | W15,L06,L07 | Реализован переход к новому рабочему месту |
+| [W17](tasks/W17.md) | PASS | root | W16,W06 | Проверено восстановление роли при seek/reset |
+| [W18](tasks/W18.md) | PASS | root | W17,W14 | Готов отдельный N4 STAFFING comparison |
+| [Q01](tasks/Q01.md) | PASS | root | M01,M02,M03,M04,M05,M06,M07,M08,M09,M10,M11,M12,M13,M14,P01,P02,P03,P04,P05,P06,P07,P08,P09 | Завершена reference/render матрица моделей |
+| [Q02](tasks/Q02.md) | PASS | root | Q01,P09,P10 | Выполнена браузерная проверка финальных GLB |
 | [Q03](tasks/Q03.md) | PASS | root | C12,W04 | Проверена совместимость всех SKU/slots |
-| [Q04](tasks/Q04.md) | TODO | unassigned | Q03,W11,W12 | Проверены ориентации и handling |
-| [Q05](tasks/Q05.md) | TODO | unassigned | W03,W12,W13 | Проверены clearance и графовые маршруты |
-| [Q06](tasks/Q06.md) | TODO | unassigned | W05,Q02 | Проверены контакты и захваты в clips |
-| [Q07](tasks/Q07.md) | TODO | unassigned | W06 | Проверена детерминированность replay |
-| [Q08](tasks/Q08.md) | TODO | unassigned | W07,W08 | Проверены SFX/VFX при ускорении |
-| [Q09](tasks/Q09.md) | TODO | unassigned | W14,W18 | Проверена корректность what-if пары |
-| [Q10](tasks/Q10.md) | TODO | unassigned | Q02,W14 | Измерен performance большого склада |
-| [Q11](tasks/Q11.md) | TODO | unassigned | Q06,Q07,Q08,Q10 | Выполнен визуальный обзор всего сюжета |
-| [Q12](tasks/Q12.md) | TODO | unassigned | Q03,Q04,Q05,Q09,Q11 | Выполнена независимая итоговая приёмка |
-| [H01](tasks/H01.md) | VERIFY | root | Q12 | Собран asset manifest v3 |
-| [H02](tasks/H02.md) | VERIFY | root | H01 | Собрана animation/event map |
-| [H03](tasks/H03.md) | VERIFY | root | Q12 | Собран индекс visual evidence |
-| [H04](tasks/H04.md) | TODO | unassigned | Q11,Q12 | Подготовлен короткий обзорный MP4 |
-| [H05](tasks/H05.md) | VERIFY | root | H01,H04 | Подготовлен credits/provenance список |
-| [H06](tasks/H06.md) | TODO | unassigned | H01,H02 | Подготовлена одна проверенная команда запуска |
-| [H07](tasks/H07.md) | TODO | unassigned | H03,H04,H05,H06 | Подготовлен утренний README и resume checkpoint |
-| [H08](tasks/H08.md) | TODO | unassigned | H07,I07 | Зафиксирована собственная поставка без потери чужих правок |
+| [Q04](tasks/Q04.md) | PASS | root | Q03,W11,W12 | Проверены ориентации и handling |
+| [Q05](tasks/Q05.md) | PASS | root | W03,W12,W13 | Проверены clearance и графовые маршруты |
+| [Q06](tasks/Q06.md) | PASS | root | W05,Q02 | Проверены контакты и захваты в clips |
+| [Q07](tasks/Q07.md) | PASS | root | W06 | Проверена детерминированность replay |
+| [Q08](tasks/Q08.md) | PASS | root | W07,W08 | Проверены SFX/VFX при ускорении |
+| [Q09](tasks/Q09.md) | PASS | root | W14,W18 | Проверена корректность what-if пары |
+| [Q10](tasks/Q10.md) | PASS | root | Q02,W14 | Измерен performance большого склада |
+| [Q11](tasks/Q11.md) | PASS | root | Q06,Q07,Q08,Q10 | Выполнен визуальный обзор всего сюжета |
+| [Q12](tasks/Q12.md) | PASS | root | Q03,Q04,Q05,Q09,Q11 | Выполнена независимая итоговая приёмка |
+| [H01](tasks/H01.md) | PASS | root | Q12 | Собран asset manifest v3 |
+| [H02](tasks/H02.md) | PASS | root | H01 | Собрана animation/event map |
+| [H03](tasks/H03.md) | PASS | root | Q12 | Собран индекс visual evidence |
+| [H04](tasks/H04.md) | PASS | root | Q11,Q12 | Подготовлен короткий обзорный MP4 |
+| [H05](tasks/H05.md) | PASS | root | H01,H04 | Подготовлен credits/provenance список |
+| [H06](tasks/H06.md) | PASS | root | H01,H02 | Подготовлена одна проверенная команда запуска |
+| [H07](tasks/H07.md) | PASS | root | H03,H04,H05,H06 | Подготовлен утренний README и resume checkpoint |
+| [H08](tasks/H08.md) | PASS | root | H07,I07 | Зафиксирована собственная поставка без потери чужих правок |
 | [M06.1](tasks/M06.1.md) | PASS | warehouse_props | R10,R03,C02,I09 | Small carton: folded thin-wall tan box, centred/support origin; no duplicate oversized rim |
 | [M06.2](tasks/M06.2.md) | PASS | warehouse_props | R10,R03,C02,I09 | Standard carton: different proportions and coherent folded/taped lid |
 | [M06.3](tasks/M06.3.md) | PASS | warehouse_props | R10,R03,C02,I09 | Heavy case: handles, grounded fork-access base and mass/handler binding |
@@ -148,14 +148,14 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [M14.7](tasks/M14.7.md) | PASS | root | R10,R06,C08,M14.6,I09 | Final GLB in actual browser stand: metric axes/normals/materials |
 | [M14.8](tasks/M14.8.md) | PASS | root | R10,R06,C08,M14.7,I09 | Pickup/load action checked at3timestamps, no floating/interpenetration |
 | [M14.9](tasks/M14.9.md) | PASS | root | R10,R06,C08,M14.8,I09 | Every child evidence read, final reference/render/browser/action integration verified |
-| [W14.1](tasks/W14.1.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13 | Declare plan differences and invariant ports/staff for placement-only comparison |
-| [W14.2](tasks/W14.2.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.1 | Materialize orders/receipts/stock/ports/assumptions and compare input hashes |
-| [W14.3](tasks/W14.3.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.2 | Baseline is compatible and ordinary popular-near-packing comparator is included |
-| [W14.4](tasks/W14.4.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.3 | Candidate passes type/dimensions/mass/handler/path before cost |
-| [W14.5](tasks/W14.5.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.4 | Charge take/place/travel/resource waits/return and valid swap buffer |
-| [W14.6](tasks/W14.6.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.5 | Two viewers share input clock/camera/time control without changing business inputs |
-| [W14.7](tasks/W14.7.md) | VERIFY | root | W06,W09,W10,W11,W12,W13,W14.6 | Show assumptions, gain/cost and legitimate zero/negative/no-op outcome |
-| [W14.8](tasks/W14.8.md) | TODO | unassigned | W06,W09,W10,W11,W12,W13,W14.7 | Correct visual/analytical/actual-run label and complete comparison evidence |
+| [W14.1](tasks/W14.1.md) | PASS | root | W06,W09,W10,W11,W12,W13 | Declare plan differences and invariant ports/staff for placement-only comparison |
+| [W14.2](tasks/W14.2.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.1 | Materialize orders/receipts/stock/ports/assumptions and compare input hashes |
+| [W14.3](tasks/W14.3.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.2 | Baseline is compatible and ordinary popular-near-packing comparator is included |
+| [W14.4](tasks/W14.4.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.3 | Candidate passes type/dimensions/mass/handler/path before cost |
+| [W14.5](tasks/W14.5.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.4 | Charge take/place/travel/resource waits/return and valid swap buffer |
+| [W14.6](tasks/W14.6.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.5 | Two viewers share input clock/camera/time control without changing business inputs |
+| [W14.7](tasks/W14.7.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.6 | Show assumptions, gain/cost and legitimate zero/negative/no-op outcome |
+| [W14.8](tasks/W14.8.md) | PASS | root | W06,W09,W10,W11,W12,W13,W14.7 | Correct visual/analytical/actual-run label and complete comparison evidence |
 | [R11](tasks/R11.md) | PASS | people_packing | R01,R04,R05 | Dedicated picking-cart four-view reference |
 | [I09](tasks/I09.md) | PASS | root | R10 | Verified V3 export and browser asset-stand pipeline |
 | [I09.1](tasks/I09.1.md) | PASS | people_packing | R10 | V3 Blender helpers and numeric calibration export |
@@ -214,18 +214,18 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W04.2](tasks/W04.2.md) | PASS | root | W04.1 | Actual shared cargo instances and physical storage placement |
 | [W04.3](tasks/W04.3.md) | PASS | root | W04.2,W03,P10,P11,M14,P03 | Connected actor vehicle cart and belt support anchors |
 | [W09.1](tasks/W09.1.md) | PASS | scenario_inputs | W02,C10,C11 | Frozen preregistered scenario input and paired source identity |
-| [W09.2](tasks/W09.2.md) | TODO | root | W09.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
+| [W09.2](tasks/W09.2.md) | PASS | root | W09.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
 | [W10.1](tasks/W10.1.md) | PASS | scenario_inputs | W02,L03,L04,C11 | Frozen preregistered scenario input and paired source identity |
-| [W10.2](tasks/W10.2.md) | TODO | root | W10.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
+| [W10.2](tasks/W10.2.md) | PASS | root | W10.1,W05,W06 | Connected scenario actions replay and no-op or shift acceptance |
 | [W11.1](tasks/W11.1.md) | PASS | account2 | W02,C07,M08,M09 | Frozen heavy-inbound input pair and independent admission/source checks |
 | [W05.1](tasks/W05.1.md) | PASS | action_timeline | W03,W04,P10,P11 | Source-bound absolute action timeline and exclusive resource intervals |
 | [W05.2](tasks/W05.2.md) | PASS | action_walking | W05.1 | Grounded canonical worker walking and action-frame bindings |
-| [W05.3](tasks/W05.3.md) | VERIFY | root_light_join | W05.2 | Light cargo pick/pack joins with complete units and support |
-| [W05.4](tasks/W05.4.md) | VERIFY | root_pallet_review | W05.1 | Loaded forklift physical joins and route/resource admission |
+| [W05.3](tasks/W05.3.md) | PASS | root | W05.2 | Light cargo pick/pack joins with complete units and support |
+| [W05.4](tasks/W05.4.md) | PASS | root | W05.1 | Loaded forklift physical joins and route/resource admission |
 | [W05.4.3](tasks/W05.4.3.md) | PASS | transfer_applicator | W05.4.1,W04,P07 | Same-instance native pallet transfer applicator |
 | [W05.4.2](tasks/W05.4.2.md) | PASS | account2 | W05.4.1,W04,P07 | Native same-pallet transfer geometry gate |
 | [W05.4.1](tasks/W05.4.1.md) | PASS | pallet_plan_fix | W05.1,W03,W04,M14.8,P07 | Source-bound single-pallet transfer plan and absolute phases |
-| [W05.5](tasks/W05.5.md) | TODO | unassigned | W05.3,W05.4 | Unified scene clock integration for walk pick pack load |
+| [W05.5](tasks/W05.5.md) | PASS | root | W05.3,W05.4 | Unified scene clock integration for walk pick pack load |
 | [W05.5.1](tasks/W05.5.1.md) | PASS | root | W05.1,W04 | Browser-deployable verified action source reader |
 | [P05.4](tasks/P05.4.md) | PASS | receiver_elbow | P05.3 | Natural receiver elbow branch and complete trajectory |
 | [P06.4](tasks/P06.4.md) | PASS | shipper_elbow | P06.3 | Natural shipper elbow branch and complete trajectory |
@@ -239,11 +239,11 @@ V2 preserved; visual fixtures and backend runs have separate labels. Root alone 
 | [W05.3.4](tasks/W05.3.4.md) | PASS | dynamic_cargo_binding | W04.2,W05.3.1 | World-preserving native HU render-binding handoff for precise loaded motion |
 | [W05.3.5](tasks/W05.3.5.md) | PASS | account2_pickup_feasibility | W05.3.1,W04.2 | Independent native source-grip feasibility for an upper SMALL stock unit |
 | [W05.3.6](tasks/W05.3.6.md) | PASS | account2_source_torso_grip | W05.3.1,W05.3.5 | Native upper-stock source-grip endpoint with original torso freedom |
-| [W11.2](tasks/W11.2.md) | VERIFY | root_mvp | W11.1.1,W05,W06 | Connected heavy-inbound actions and source-identical comparison |
+| [W11.2](tasks/W11.2.md) | PASS | root | W11.1.1,W05,W06 | Connected heavy-inbound actions and source-identical comparison |
 | [W11.1.1](tasks/W11.1.1.md) | PASS | heavy_scenario_inputs | W11.1 | Current-source heavy-inbound pair with explicit source-epoch compatibility |
 | [W05.3.7](tasks/W05.3.7.md) | PASS | root_natural_stance | W05.3.3 | Natural carry cadence and grounded double-support calibration |
-| [W05.3.8](tasks/W05.3.8.md) | FIX | account2_cart_release | P03.5.3.3,W04.3 | Native manual-picker cart hand-release calibration without pose snap |
-| [W05.3.9](tasks/W05.3.9.md) | FIX | account2_cart_natural_grip | W04.3 | Corrected natural original-manual cart-grip arm calibration |
+| [W05.3.8](tasks/W05.3.8.md) | PASS | root | P03.5.3.3,W04.3 | Native manual-picker cart hand-release calibration without pose snap |
+| [W05.3.9](tasks/W05.3.9.md) | PASS | root | W04.3 | Corrected natural original-manual cart-grip arm calibration |
 | [W05.3.7.1](tasks/W05.3.7.1.md) | PASS | root | W05.3.7 | Ship portable project page for natural character-motion review |
 | [W05.3.10](tasks/W05.3.10.md) | PASS | root | W05.3.7 | Lower and closer natural P02 box hold requested by user |
 | [W05.3.11](tasks/W05.3.11.md) | PASS | root | W05.3.7 | Subtle deterministic breathing with planted feet and preserved hand contact |

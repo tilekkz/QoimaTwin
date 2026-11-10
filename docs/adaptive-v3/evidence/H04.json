@@ -1,0 +1,44 @@
+{
+  "schema_id": "qoima.visual-root-handoff-acceptance.v1",
+  "task_id": "H04",
+  "passed": true,
+  "reviewer": "root",
+  "reviewed_utc": "2026-11-10T01:33:36.766Z",
+  "source_kind": "visual_fixture",
+  "engine_operation": false,
+  "runtime_source_commit": "b9f23d10e381b5e179a853c473da2f0eca09e517",
+  "criterion": "60–90 секунд из работающего viewer; версии и fixture/backend источник подписаны",
+  "observed_result": "84s realdesktopMP4,3,325,903bytes/SHA1dcee8ff…; actualchronological cuts without time scaling/fakeframes; originalsource labels.",
+  "evidence": [
+    {
+      "key": "video",
+      "path": "docs/adaptive-v3/evidence/final-desktop-video-20261110/export.json",
+      "bytes": 11963,
+      "sha256": "4be53b436dae1dab258c20490126c119a7b324b03b7f653f1251156a8b0c73ea"
+    },
+    {
+      "key": "video_capture",
+      "path": "docs/adaptive-v3/evidence/final-desktop-video-20261110/capture-metadata.json",
+      "bytes": 579748,
+      "sha256": "66d071b2fc4be99ff4deaf055e0266f7bb94b78d1d7bf1c843b85fdf85d704bd"
+    },
+    {
+      "key": "video_manifest",
+      "path": "docs/adaptive-v3/evidence/final-desktop-video-20261110/delivery-manifest.json",
+      "bytes": 3028,
+      "sha256": "fd32d8f66a596ec0d588016d55ee97b641c3cf7dd1e6811bff12c812e0f3648c"
+    }
+  ],
+  "limitations": [
+    "Desktop delivery; original542 preserved; same-input scenario A/B and structural configuration demonstration are distinct.",
+    "SourceLONG remains retained outside; no recipient unload or backend KPI claimed."
+  ],
+  "video": {
+    "duration_s": 84,
+    "bytes": 3325903,
+    "sha256": "1dcee8ffbe673f24d78b2beaa9d6590240b29071a2d96b8e77b582c591085978",
+    "forced_owned_browser_cleanup": true,
+    "fresh_process_absence": true,
+    "unscaled_actual_chapter_cuts": true
+  }
+}

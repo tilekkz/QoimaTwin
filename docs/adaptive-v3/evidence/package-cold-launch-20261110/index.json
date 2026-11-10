@@ -1,0 +1,260 @@
+{
+  "schema_id": "qoima.package-cold-launch-H06.composite.v1",
+  "passed": true,
+  "status": "CANDIDATE_CORE_PASS_WITH_EXPLICIT_OPTIONAL_FAVICON_404",
+  "single_clean_run": false,
+  "raw_failures_preserved": true,
+  "candidate_folder": "C:\\Users\\izbas\\Documents\\Codex\\_qt-release-1110\\QoimaTwin_V3_Desktop_20261110_012501Z",
+  "candidate_archive": "C:\\Users\\izbas\\Documents\\Codex\\_qt-release-1110\\QoimaTwin_V3_Desktop_20261110_012501Z.zip",
+  "archive_bytes": 86792443,
+  "archive_sha256": "43a55969b948f1c33fe7c14ccd255fea2033ca2a5344ba0c35bf25602b02aa5d",
+  "release_sha256": "f0d466a57b84134f65161b28de234172b46c066d6e3749d2f0d02eccf95a2cdd",
+  "source_runtime_commit": "b9f23d10e381b5e179a853c473da2f0eca09e517",
+  "candidate_full_TZ_claim": false,
+  "original_character_sha256": "542591db818c349e60cb33006415a865347bd9e57ef0d128a36aaf0a34b0f163",
+  "per_file_manifest_verified": 392,
+  "viewer_files_verified": 343,
+  "package_bytes_unchanged_across_every_component": true,
+  "accepted_components": {
+    "manifest_allfiles_13GET_HEAD_root_home_MIME_Twin196_source530_24_N3terminal21_2700_oneClamp_SourceHeld": "primary-raw/checks.json before checker-only fieldset assertion",
+    "actual_Stand_idle0": {
+      "source": "primary-raw/checks.json",
+      "observation": {
+        "kind": "actual_packaged_Stand_idle",
+        "before": {
+          "draws": 104,
+          "executed": 12,
+          "pending": 0,
+          "wall_ms": 2598.9000000059605
+        },
+        "after": {
+          "draws": 104,
+          "executed": 12,
+          "pending": 0,
+          "wall_ms": 3606.9000000059605
+        },
+        "dimensions_m": [
+          1.050000000745058,
+          2,
+          3.050000000745058
+        ],
+        "triangles": 116
+      }
+    },
+    "native_pair_IDLE_file_form_disabled_controls_no_backend": {
+      "source": "native-idle-affected/checks.json",
+      "snapshot": {
+        "kind": "actual_packaged_native_pair_idle_only",
+        "snapshot": {
+          "phase": "empty",
+          "pair_id": null,
+          "source_kind": "verified_saved_native_pair",
+          "arm": "baseline",
+          "tick": null,
+          "playing": false,
+          "retained_bytes": 0,
+          "physical_admission": false,
+          "full_n1_acceptance": false,
+          "presentation_interpolation": true
+        },
+        "fieldset": {
+          "disabled": true,
+          "attribute": true
+        },
+        "descendant_play_disabled": true,
+        "backend_requested": false
+      }
+    }
+  },
+  "provenance": [
+    {
+      "source": "primary-raw/checks.json",
+      "raw_passed": false,
+      "reason": "Playwright isDisabled() was applied to fieldset itself; source DOM fieldset.disabled and disabled descendant are now checked."
+    },
+    {
+      "source": "inflight-retry-raw/checks.json",
+      "raw_passed": false,
+      "reason": "Already launched before affected-only steering; all runtime groups reached, then strict console check exposed browser default favicon404. Never represented as clean PASS."
+    },
+    {
+      "source": "native-idle-affected/checks.json",
+      "raw_passed": true,
+      "scope": "Only affected native-pair IDLE plus fresh server/manifest/cleanup; exact optional favicon URL retained."
+    },
+    {
+      "source": "favicon-HTTP-witness/checks.json",
+      "raw_passed": true,
+      "scope": "No browser. Fresh standalone server GET/HEAD exact missing favicon witness only."
+    }
+  ],
+  "optional_browser_diagnostic": {
+    "url": "http://127.0.0.1:4279/favicon.ico",
+    "status": 404,
+    "manifest_file_present": false,
+    "HTTP_witness": [
+      {
+        "path": "/favicon.ico",
+        "url": "http://127.0.0.1:4279/favicon.ico",
+        "method": "GET",
+        "status": 404,
+        "content_type": "text/plain; charset=utf-8",
+        "content_length": "15",
+        "body_bytes": 15,
+        "manifest_file_present": false,
+        "classification": "Browser default optional favicon absent from manifest; explicit HTTP witness, not app/API asset",
+        "body": "File not found."
+      },
+      {
+        "path": "/favicon.ico",
+        "url": "http://127.0.0.1:4279/favicon.ico",
+        "method": "HEAD",
+        "status": 404,
+        "content_type": "text/plain; charset=utf-8",
+        "content_length": "15",
+        "body_bytes": 0,
+        "manifest_file_present": false,
+        "classification": "Browser default optional favicon absent from manifest; explicit HTTP witness, not app/API asset",
+        "body": ""
+      }
+    ],
+    "classification": "Browser default optional icon, not an application/API request; no general404 exemption.",
+    "final_adapter_verification_pending": true
+  },
+  "all_owned_browser_and_server_PIDs_absent": true,
+  "no_npm_build_repair_or_source_server_fallback": true,
+  "full_TZ_complete": false,
+  "exact_byte_delivery_files": [
+    {
+      "file": "primary-raw/checks.json",
+      "bytes": 50613,
+      "sha256": "e0e6f6301cf9b5ba318031e8c8d9e427b6f008c7982bd864f713eac4b83dad18"
+    },
+    {
+      "file": "primary-raw/fresh-process-absence.json",
+      "bytes": 198,
+      "sha256": "51726e8183202db4a73700f2b8bd1cb823d10aa796c243bd849a5e1b7be46a3b"
+    },
+    {
+      "file": "primary-raw/owned-processes.json",
+      "bytes": 12061,
+      "sha256": "e2da46642c08580c9383ee2f7a7751aafc7d87a39040e15bfc52c2749e878a56"
+    },
+    {
+      "file": "primary-raw/packaged-server-stdout.txt",
+      "bytes": 128,
+      "sha256": "9dc100f9bdaa2887a0233efbab09d07d432a0735e4503c2cc32350468e87e0ec"
+    },
+    {
+      "file": "primary-raw/packaged-server-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "primary-raw/failure.png",
+      "bytes": 65491,
+      "sha256": "3ef152b07db7abdacb35175095e5bb34d41cd8e927a107784ada20cd4b10344e"
+    },
+    {
+      "file": "primary-raw/package-home.png",
+      "bytes": 302189,
+      "sha256": "b111d118a57b76fea1ee5bdc6bf70824ae728b5abf4dd12c8f0f0ee7f698ec6c"
+    },
+    {
+      "file": "primary-raw/package-N3-outside-held.png",
+      "bytes": 120907,
+      "sha256": "ecf74ecea0fc828f1af9a9a176bda115de2e8f4885c12eafff7b0afdd42cfe66"
+    },
+    {
+      "file": "primary-raw/package-stand.png",
+      "bytes": 141997,
+      "sha256": "6fe2638d6c5d163978523893c41b9ca2bce1cbb17715c75baf972523911a24b1"
+    },
+    {
+      "file": "primary-raw/package-twin.png",
+      "bytes": 170747,
+      "sha256": "d5afe514bd46e0ac13662eaad4e193cced5bd138dc9a6e581fd4f7681bd1ccbf"
+    },
+    {
+      "file": "inflight-retry-raw/checks.json",
+      "bytes": 110504,
+      "sha256": "27b6d3d22c918c0c575ccb9d5949f9ea0d6197e863dd62aa2415236360bae451"
+    },
+    {
+      "file": "inflight-retry-raw/fresh-process-absence.json",
+      "bytes": 198,
+      "sha256": "51726e8183202db4a73700f2b8bd1cb823d10aa796c243bd849a5e1b7be46a3b"
+    },
+    {
+      "file": "inflight-retry-raw/owned-processes.json",
+      "bytes": 12075,
+      "sha256": "b74a5a929ebd5a334af7b0dadb43915eee920f26cf6c37951a56879dd5966a3f"
+    },
+    {
+      "file": "inflight-retry-raw/packaged-server-stdout.txt",
+      "bytes": 128,
+      "sha256": "9dc100f9bdaa2887a0233efbab09d07d432a0735e4503c2cc32350468e87e0ec"
+    },
+    {
+      "file": "inflight-retry-raw/packaged-server-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-idle-affected/checks.json",
+      "bytes": 67789,
+      "sha256": "b974e8b6a243ca0edc49b648d0099c7880f8ffad465f18cd8274c879bd064fdb"
+    },
+    {
+      "file": "native-idle-affected/fresh-process-absence.json",
+      "bytes": 198,
+      "sha256": "51726e8183202db4a73700f2b8bd1cb823d10aa796c243bd849a5e1b7be46a3b"
+    },
+    {
+      "file": "native-idle-affected/owned-processes.json",
+      "bytes": 12073,
+      "sha256": "866014e2a386abe1e4a27104da45b4bb6fffa1c4047547b971a0f8ec8b37aafa"
+    },
+    {
+      "file": "native-idle-affected/packaged-server-stdout.txt",
+      "bytes": 128,
+      "sha256": "9dc100f9bdaa2887a0233efbab09d07d432a0735e4503c2cc32350468e87e0ec"
+    },
+    {
+      "file": "native-idle-affected/packaged-server-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "native-idle-affected/package-native-pair-IDLE.png",
+      "bytes": 65491,
+      "sha256": "3ef152b07db7abdacb35175095e5bb34d41cd8e927a107784ada20cd4b10344e"
+    },
+    {
+      "file": "favicon-HTTP-witness/checks.json",
+      "bytes": 64292,
+      "sha256": "f2417bac0b06bf636cfef7d6a176de52d63f1f73168467bab75f40a85d8a3f25"
+    },
+    {
+      "file": "favicon-HTTP-witness/fresh-process-absence.json",
+      "bytes": 198,
+      "sha256": "51726e8183202db4a73700f2b8bd1cb823d10aa796c243bd849a5e1b7be46a3b"
+    },
+    {
+      "file": "favicon-HTTP-witness/owned-processes.json",
+      "bytes": 325,
+      "sha256": "b49e9f4cc727d4f67c4b12d7772ca11ad7be0560899570d78d95c2635bf042b1"
+    },
+    {
+      "file": "favicon-HTTP-witness/packaged-server-stdout.txt",
+      "bytes": 128,
+      "sha256": "9dc100f9bdaa2887a0233efbab09d07d432a0735e4503c2cc32350468e87e0ec"
+    },
+    {
+      "file": "favicon-HTTP-witness/packaged-server-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "H06 candidate composition only. First RAW checker RED positives plus affected-only native form PASS, same immutable candidate release/ZIP/runtime; optional favicon remains explicit. Final server204 adapter needs only targeted adapter/native/HTTP verification, not repeated workflows."
+}
