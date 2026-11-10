@@ -19,7 +19,7 @@ const declaration=name=>find(node=>ts.isVariableDeclaration(node)&&node.name.get
 const transpile=text=>ts.transpileModule(text,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
 const scenarioContext=vm.createContext({exports:{}});vm.runInContext(transpile(scenarioSource),scenarioContext,{filename:scenarioPath});const scenario=scenarioContext.exports;
 class Element{
- constructor(){this.dataset={};this.style={};this.children=[];this.attributes={};this.hidden=false;this.offsetWidth=60;this.title='';this.htmlWrites=0;this.animations=0;this.listeners=new Map();this.classList={toggle(){},remove(){},add(){}};}
+ constructor(){this.dataset={};this.style={};this.children=[];this.attributes={};this.hidden=false;this.offsetWidth=60;this.offsetHeight=24;this.title='';this.htmlWrites=0;this.animations=0;this.listeners=new Map();this.classList={toggle(){},remove(){},add(){}};}
  append(node){this.children.push(node);}setAttribute(key,value){this.attributes[key]=value;}getAttribute(key){return this.attributes[key]??null;}
  set innerHTML(value){this.html=value;this.htmlWrites++;}get innerHTML(){return this.html;}
  addEventListener(type,fn){this.listeners.set(type,[...(this.listeners.get(type)??[]),fn]);}fire(type){for(const fn of this.listeners.get(type)??[])fn();}
@@ -30,10 +30,16 @@ function setup({variant='B',ids=['K01'],phone=false,reduced=false}={}){
  const clicks=[],layer=new Element(),layers={A:new Element(),B:new Element()},bubbles={A:[],B:[]};
  const state=vm.createContext({...scenario,document:{createElement:()=>new Element()},onBubble:id=>clicks.push(id),v:variant,el:layer,bubbles,layers,labels:{A:new Element(),B:new Element()},labelW:{},corners:{A:[],B:[]},badges:{A:new Map(),B:new Map()},pins:{A:[],B:[]},rings:{A:new Element(),B:new Element()},moves:[],selected:null,selectedActor:null,t:34,mode:'overlay',effects:'full',budget:scenario.bubbleBudget('full',phone),spots:[],heads:new Map(),ctx:{camera:{zoom:1,left:-50,right:50}},projection:{inside:true},project:()=>state.projection.inside?{x:100,y:100}:{x:1200,y:100},inside:(q,r)=>q.x>=r.x&&q.x<=r.x+r.w&&q.y>=r.y&&q.y<=r.y+r.h,reducedMotion:()=>reduced,THREE:{Vector3:class{}}});
  vm.runInContext(transpile(['const '+declaration('BUDGET_MAX')+';','const '+declaration('BUBBLE_MIN_PX_PER_M')+';','const '+declaration('BUBBLE_ICON')+';',poolNode.getText(ast)+';',domNode.getText(ast)].join('\n')),state,{filename:renderPath});
+ Object.assign(state,{
+  labelH:{},operationFocus:false,region:()=>({x:0,y:0,w:1000,h:600}),
+  gateEls:{A:[],B:[]},gateTags:[],motion:undefined,
+  carrierIndicators:{A:{update(){}},B:{update(){}}},
+  stationIndicators:{A:{update(){}},B:{update(){}}},
+  variantWorkers:()=>state.spots,variantHead:id=>state.heads.get(id)??null,focusPose:()=>null});
  const current=pass(variant);
  function workers(next){state.spots=next.map(actor_id=>({actor_id,zone_id:'PACKING_LIGHT_LINE'}));state.heads=new Map(next.map(id=>[id,{}]));}
  workers(ids);
- return{state,clicks,buttons:bubbles[variant],pass:current,workers,draw(){state.domFor(current,1000,600);},effects(next){state.effects=next;state.budget=scenario.bubbleBudget(next,phone);},expected(){if(current.gray||current.vp.w*state.ctx.camera.zoom/100<3.5||!state.projection.inside)return[];return scenario.visibleReactions(scenario.reactionsAt(variant,state.t,state.spots),state.budget,state.selectedActor);}};
+ return{state,clicks,buttons:bubbles[variant],pass:current,workers,draw(){state.domFor(current,1000,600);},effects(next){state.effects=next;state.budget=scenario.bubbleBudget(next,phone);},expected(){if(current.vp.w*state.ctx.camera.zoom/100<3.5||!state.projection.inside||!state.inside(state.project(),current.sc))return[];return scenario.visibleReactions(scenario.reactionsAt(variant,state.t,state.spots),state.budget,state.selectedActor);}};
 }
 function assertSemantic(h){
  const expected=h.expected();assert.equal(h.buttons.filter(b=>!b.hidden).length,expected.length);
@@ -51,7 +57,7 @@ check('C04_full_calm_full_restores_hidden_pool_slots',()=>{const h=setup({ids:['
 check('C05_full_calm_off_calm_full_repeated_cycles',()=>{const h=setup({ids:['K01','K02','K03','K04','K05','K06']});for(const effect of ['full','calm','off','calm','full','off','full']){h.effects(effect);h.draw();assertSemantic(h);}});
 check('C06_phone_calm_full_budget_reappearance',()=>{const h=setup({phone:true,ids:['K01','K02','K03','K04','K05','K06']});for(const [effect,count]of [['full',3],['calm',2],['full',3],['off',0],['calm',2]]){h.effects(effect);h.draw();assert.equal(h.expected().length,count);assertSemantic(h);}});
 check('C07_scale_threshold_exact_and_reappearance',()=>{const h=setup();h.draw();assertSemantic(h);h.state.ctx.camera.zoom=.349;h.draw();assertSemantic(h);h.state.ctx.camera.zoom=.35;h.draw();assert.equal(h.expected().length,1);assertSemantic(h);h.state.ctx.camera.zoom=1;h.draw();assertSemantic(h);});
-check('C08_gray_pass_hide_and_reappearance',()=>{const h=setup();h.draw();assertSemantic(h);h.pass.gray=true;h.draw();assertSemantic(h);h.pass.gray=false;h.draw();assertSemantic(h);});
+check('C08_offscreen_pass_hide_and_reappearance',()=>{const h=setup();h.draw();assertSemantic(h);const sc=h.pass.sc;h.pass.sc={...sc,x:1100};h.draw();assertSemantic(h);h.pass.sc=sc;h.draw();assertSemantic(h);});
 check('C09_scissor_clipped_worker_reappearance',()=>{const h=setup();h.draw();assertSemantic(h);h.state.projection.inside=false;h.draw();assertSemantic(h);h.state.projection.inside=true;h.draw();assertSemantic(h);});
 check('C10_same_kind_new_cause_updates_aria_and_title',()=>{const h=setup();h.draw();const first=assertSemantic(h)[0],html=h.buttons[0].htmlWrites;h.state.t=48;h.draw();const next=h.expected()[0];assert.equal(first.bubble,next.bubble);assert.notEqual(first.text,next.text);assertSemantic(h);assert.equal(h.buttons[0].title,`${next.actor_id} · ${next.text}`);assert.equal(h.buttons[0].htmlWrites,html,'Same kind/cached key only refreshes semantic text');return{before_text:first.text,after_text:next.text};});
 check('C11_random_absolute_seek_restores_current_semantics',()=>{const h=setup();for(const time of [34,48,34,110,30,46,104,0,72,48]){h.state.t=time;h.draw();assertSemantic(h);}});

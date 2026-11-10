@@ -3,48 +3,44 @@ import { createWarehouseCargo } from '../warehouseCargo';
 import { verifyWarehouseHeavyInboundSources } from '../warehouseHeavyInboundBinding';
 import { compileWarehouseHeavyInboundPlan, type WarehouseHeavyInboundPlan } from '../warehouseHeavyInboundPlan';
 import { createWarehouseHeavyInboundScene } from '../warehouseHeavyInboundScene';
-import { deriveNativeWorkerGaitRig, compileNativeWorkerGait, type WorkerGaitPose } from '../warehouseWorkerGait';
-import { validateRoutePolicy, createWarehouseRouter, type RoutePolicy } from '../warehouseRouting';
+import { validateRoutePolicy } from '../warehouseRouting';
+import { compileTwinFlowScenario, type TwinFlowScenario, type FlowFrame } from './twinFlowScenario';
+import { createTwinStaffResponse, type TwinStaffResponse, type TwinStaffActivity } from './twinStaffResponse';
+import { createTwinFleetTraffic, type TwinFleetTraffic } from './twinFleetTraffic';
+import type { WarehouseLayoutPlan } from '../warehouseLayoutPlan';
 import type { WarehouseBundle, XYZ, V3Record } from '../warehouseTypes';
 import type { WarehouseTexts } from '../warehouseAdapter';
 export type TwinWarehouseMotion = {
     apply(variant: 'A' | 'B', at_s: number): void;
     actorPosition(variant: 'A' | 'B', at_s: number, actor_id: string): XYZ | undefined;
     carrierFrames(variant: 'A' | 'B', at_s: number): readonly BeltFrame[];
+    operations(variant: 'A' | 'B', at_s: number): FlowFrame & {
+        staff: TwinStaffActivity[];
+        working_count: number;
+        hotpost_staff_count: number;
+    };
+    actorActivity(variant: 'A' | 'B', at_s: number, actor_id: string): TwinStaffActivity | undefined;
+    scenario(): TwinFlowScenario;
+    presentationCounts(): PresentationCounts;
     snapshot(): Record<string, unknown>;
     dynamicObjects(): THREE.Object3D[];
     dispose(): void;
 };
+export type PresentationCounts = {
+    workers: number;
+    vehicles: number;
+    sourceWorkers: number;
+    sourceVehicles: number;
+    extraWorkers: number;
+    extraVehicles: number;
+};
+export type TwinWarehouseMotionOptions = {layoutPlan?: WarehouseLayoutPlan};
 type Variant = 'A' | 'B';
 type Local = {
     node: THREE.Object3D;
     position: THREE.Vector3;
     quaternion: THREE.Quaternion;
     scale: THREE.Vector3;
-};
-type Edge = {
-    edge_id: string;
-    from_node_id: string;
-    to_node_id: string;
-    length_m: number;
-    path_kind: string;
-    resource_id: string;
-    turn_timing: string | null;
-    centre?: XYZ;
-    radius_m?: number;
-    theta_start_rad?: number;
-    theta_end_rad?: number;
-};
-type BeltStep = {
-    start: number;
-    end: number;
-    phase: 'travel' | 'pivot' | 'packing_wait';
-    edge: Edge;
-    from: number;
-    to: number;
-    yawFrom: number;
-    yawTo: number;
-    payload: 'tote' | 'parcel';
 };
 export type BeltFrame = {
     id: string;
@@ -55,18 +51,23 @@ export type BeltFrame = {
     yaw: number;
     source_edge_id: string;
 };
-// Finite display episode. Negative starts explicitly place two carriers in transit at t=0.
-const BELT_STARTS = Object.freeze([-128, -64, 0, 64, 128, 192]);
 const Y = new THREE.Vector3(0, 1, 0), UNIT = new THREE.Vector3(1, 1, 1);
-const requireValue = (value: unknown, message: string): void => { if (!value)
-    throw Error(message); };
+const requireValue = (value: unknown, message: string): void => {
+    if (!value)
+        throw Error(message);
+};
 const pose = (position: XYZ, yaw: number) => new THREE.Matrix4().compose(new THREE.Vector3(...position), new THREE.Quaternion().setFromAxisAngle(Y, yaw), UNIT);
-function checkTime(variant: Variant, at: number) {
-    requireValue((variant === 'A' || variant === 'B') && Number.isFinite(at) && at >= 0 && at <= 240, 'Invalid main comparison motion time or variant');
+function checkTime(variant: Variant, at: number, duration: number) {
+    requireValue((variant === 'A' || variant === 'B') && Number.isFinite(at) && at >= 0 && at <= duration, 'Invalid main comparison motion time or variant');
 }
 function save(root: THREE.Object3D): Local[] {
     const rows: Local[] = [];
-    root.traverse(node => rows.push({ node, position: node.position.clone(), quaternion: node.quaternion.clone(), scale: node.scale.clone() }));
+    root.traverse(node => rows.push({
+        node,
+        position: node.position.clone(),
+        quaternion: node.quaternion.clone(),
+        scale: node.scale.clone()
+    }));
     return rows;
 }
 function restore(rows: Local[]) {
@@ -78,8 +79,10 @@ function restore(rows: Local[]) {
 }
 function actor(scene: THREE.Scene, id: string): THREE.Object3D {
     const found: THREE.Object3D[] = [];
-    scene.traverse(node => { if (node.userData.semanticKind === 'actor' && node.userData.semanticId === id)
-        found.push(node); });
+    scene.traverse(node => {
+        if (node.userData.semanticKind === 'actor' && node.userData.semanticId === id)
+            found.push(node);
+    });
     requireValue(found.length === 1, 'Original motion actor missing or duplicated: ' + id);
     return found[0];
 }
@@ -88,118 +91,18 @@ function headPoint(root: THREE.Object3D): THREE.Vector3 {
     const bounds = new THREE.Box3().setFromObject(root), centre = bounds.getCenter(new THREE.Vector3());
     return new THREE.Vector3(centre.x, bounds.max.y + .55, centre.z);
 }
-function prepareWorker(scene: THREE.Scene, bundle: WarehouseBundle, policy: RoutePolicy) {
-    const root = actor(scene, 'S02'), homes = save(root), rig = deriveNativeWorkerGaitRig(root);
-    const router = createWarehouseRouter(bundle, policy), lookup = new Map(bundle.layout.walk.nodes.map(n => [n.node_id, n.world_pos]));
-    const home = 'v3:service:OUT_S_EXPRESS', target = 'v3:ped-node:08400:01000';
-    const route = (from: string, to: string) => {
-        const plan = router.route({ source_kind: 'visual_fixture', engine_operation: false, mode: 'pedestrian', actor_id: 'S02', vehicle_id: null, cargo_archetype_id: null, from_node_id: from, to_node_id: to, service_port_id: null, closed_arc_ids: [] });
-        requireValue(plan.ok, 'Shared apron worker route refused: ' + plan.reason);
-        const ids = [from];
-        for (const id of plan.arc_ids) {
-            const arc = bundle.layout.walk.arcs.find(a => a.arc_id === id)!;
-            ids.push(bundle.layout.walk.nodes[arc.to_node_index].node_id);
-        }
-        const points = ids.map(id => lookup.get(id)!);
-        requireValue(points.every(p => p[2] >= 6 && p[2] <= 10 && p[0] >= 48 && p[0] <= 84), 'Worker route leaves the shared southern apron');
-        return points;
-    };
-    const fixed = bundle.layout.modules.map(m => m.outer_bounds_world);
-    const outward = compileNativeWorkerGait(rig, route(home, target), root.rotation.y, 1.2, fixed);
-    const returning = compileNativeWorkerGait(rig, route(target, home), outward.sample(outward.duration_s).yaw_rad, 1.2, fixed);
-    const head = root.getObjectByName('joint__head')!;
-    const localHead = head.worldToLocal(headPoint(root));
-    const chain: Local[] = [];
-    for (let node: THREE.Object3D | null = head; node && node !== root; node = node.parent)
-        chain.unshift(homes.find(row => row.node === node)!);
-    const sample = (at: number) => at <= outward.duration_s + 4 ? outward.sample(Math.min(at, outward.duration_s)) : returning.sample(Math.min(returning.duration_s, at - outward.duration_s - 4));
-    const position = (p: WorkerGaitPose) => {
-        const matrix = pose(p.root_world, p.yaw_rad);
-        for (const row of chain)
-            matrix.multiply(new THREE.Matrix4().compose(row.position, p.joint_rotations[row.node.name] ? new THREE.Quaternion().fromArray(p.joint_rotations[row.node.name]) : row.quaternion, row.scale));
-        return localHead.clone().applyMatrix4(matrix).toArray() as XYZ;
-    };
-    const apply = (at: number) => {
+function prepareWorker(scene: THREE.Scene) {
+    const root = actor(scene, 'S02'), homes = save(root), head = headPoint(root).toArray() as XYZ;
+    // S02 stays at its original home while source-qualified packers share the apron.
+    const reset = () => {
         restore(homes);
-        const frame = sample(at), matrix = pose(frame.root_world, frame.yaw_rad);
-        if (root.parent)
-            matrix.premultiply(root.parent.matrixWorld.clone().invert());
-        matrix.decompose(root.position, root.quaternion, root.scale);
-        for (const [name, rotation] of Object.entries(frame.joint_rotations))
-            root.getObjectByName(name)!.quaternion.fromArray(rotation);
         root.updateWorldMatrix(true, true);
     };
-    return { root, sample, head: (at: number) => position(sample(at)), apply, reset: () => { restore(homes); root.updateWorldMatrix(true, true); }, duration: outward.duration_s + 4 + returning.duration_s };
-}
-function beltPath(edges: Edge[], from: string, to: string): Edge[] {
-    const queue = [from], seen = new Set(queue), parents = new Map<string, Edge>();
-    for (let i = 0; i < queue.length && !seen.has(to); i++) {
-        for (const edge of edges.filter(e => e.from_node_id === queue[i]))
-            if (!seen.has(edge.to_node_id)) {
-                seen.add(edge.to_node_id);
-                parents.set(edge.to_node_id, edge);
-                queue.push(edge.to_node_id);
-            }
-    }
-    requireValue(seen.has(to), 'Source conveyor route is disconnected');
-    const result: Edge[] = [];
-    for (let node = to; node !== from;) {
-        const edge = parents.get(node)!;
-        result.unshift(edge);
-        node = edge.from_node_id;
-    }
-    return result;
-}
-function compileBelt(bundle: WarehouseBundle, variant: Variant) {
-    const source = bundle.layout.data.conveyor as V3Record, edges = [...source.edges as Edge[]].sort((a, b) => a.edge_id.localeCompare(b.edge_id));
-    const nodes = new Map((source.nodes as V3Record[]).map(n => [n.node_id as string, n.world_pos as XYZ]));
-    const assumptions = source.source_assumptions as {
-        speed_m_s: number;
-        transfer_dwell_s: number;
+    return {
+        root,
+        head: () => [...head] as XYZ,
+        reset
     };
-    requireValue(assumptions.speed_m_s > 0 && assumptions.transfer_dwell_s > 0, 'Source conveyor timing is missing');
-    const station = variant === 'A' ? 'PK03' : 'PK05', steps: BeltStep[] = [];
-    let time = 0;
-    const append = (path: Edge[], payload: 'tote' | 'parcel') => {
-        for (const edge of path) {
-            const yaw = edge.path_kind === 'arc' || edge.resource_id === 'V3_FEED' ? 0 : edge.resource_id.startsWith('V3_SPUR') || edge.turn_timing ? Math.PI : Math.PI / 2;
-            if (edge.turn_timing === 'before_edge') {
-                steps.push({ start: time, end: time + assumptions.transfer_dwell_s, phase: 'pivot', edge, from: 0, to: 0, yawFrom: Math.PI / 2, yawTo: Math.PI, payload });
-                time += assumptions.transfer_dwell_s;
-            }
-            const duration = edge.length_m / assumptions.speed_m_s;
-            steps.push({ start: time, end: time + duration, phase: 'travel', edge, from: 0, to: 1, yawFrom: yaw, yawTo: edge.path_kind === 'arc' ? Math.PI / 2 : yaw, payload });
-            time += duration;
-            if (edge.turn_timing === 'after_edge') {
-                steps.push({ start: time, end: time + assumptions.transfer_dwell_s, phase: 'pivot', edge, from: 1, to: 1, yawFrom: Math.PI, yawTo: Math.PI / 2, payload });
-                time += assumptions.transfer_dwell_s;
-            }
-        }
-    };
-    append(beltPath(edges, 'v3:conv:intake', 'v3:conv:' + station + ':WORK'), 'tote');
-    const last = steps.at(-1)!;
-    steps.push({ ...last, start: time, end: time + (variant === 'A' ? 42 : 12), phase: 'packing_wait', from: 1, to: 1, yawFrom: last.yawTo, yawTo: last.yawTo });
-    time = steps.at(-1)!.end;
-    append(beltPath(edges, 'v3:conv:' + station + ':WORK', 'v3:conv:output'), 'parcel');
-    return { steps, nodes, duration: time };
-}
-function beltPosition(step: BeltStep, at: number, nodes: Map<string, XYZ>) {
-    const u = Math.max(0, Math.min(1, (at - step.start) / (step.end - step.start))), progress = step.from + (step.to - step.from) * u;
-    const edge = step.edge, a = nodes.get(edge.from_node_id)!, b = nodes.get(edge.to_node_id)!;
-    let position = a.map((v, i) => v + (b[i] - v) * progress) as XYZ;
-    if (edge.path_kind === 'arc') {
-        const angle = edge.theta_start_rad! + (edge.theta_end_rad! - edge.theta_start_rad!) * progress;
-        position = [edge.centre![0] + edge.radius_m! * Math.cos(angle), edge.centre![1], edge.centre![2] + edge.radius_m! * Math.sin(angle)];
-    }
-    return { position, yaw: step.yawFrom + (step.yawTo - step.yawFrom) * u };
-}
-function beltFrames(plan: ReturnType<typeof compileBelt>, at: number): BeltFrame[] {
-    return BELT_STARTS.map((start, index) => {
-        const local = at - start, step = plan.steps.find(s => local >= s.start && local < s.end);
-        const held = step ?? (local < 0 ? plan.steps[0]! : plan.steps.at(-1)!);
-        const sampled = beltPosition(held, Math.max(0, Math.min(local, plan.duration)), plan.nodes);
-        return { id: 'twin-visual-carrier-' + (index + 1), visible: !!step, payload: held.payload, phase: step?.phase ?? (local < 0 ? 'not_arrived' : 'finished_visual'), source_edge_id: held.edge.edge_id, ...sampled };
-    });
 }
 type ParcelPart = {
     geometry: THREE.BufferGeometry;
@@ -227,7 +130,11 @@ function parcelParts(scene: THREE.Scene, bundle: WarehouseBundle): ParcelPart[] 
             return;
         const matrix = new THREE.Matrix4();
         node.getMatrixAt(index, matrix);
-        result.push({ geometry: node.geometry, material: node.material, matrix: inverse.clone().multiply(node.matrixWorld).multiply(matrix) });
+        result.push({
+            geometry: node.geometry,
+            material: node.material,
+            matrix: inverse.clone().multiply(node.matrixWorld).multiply(matrix)
+        });
     });
     requireValue(result.length > 0, 'Source parcel carton mesh is missing');
     return result;
@@ -240,7 +147,7 @@ class BeltView {
         parcel: THREE.Group;
     }>();
     private readonly owned: (THREE.BufferGeometry | THREE.Material)[] = [];
-    constructor(scene: THREE.Scene, bundle: WarehouseBundle) {
+    constructor(scene: THREE.Scene, bundle: WarehouseBundle, ids: readonly string[]) {
         const parts = parcelParts(scene, bundle);
         this.root.name = 'twin_visual_belt_motion';
         const dimensions = ((bundle.layout.data.conveyor as V3Record).payload_admission as {
@@ -249,11 +156,15 @@ class BeltView {
         try {
             const material = new THREE.MeshStandardMaterial({ color: '#1d6579', roughness: .65 });
             this.owned.push(material);
-            for (let i = 0; i < BELT_STARTS.length; i++) {
+            for (const id of ids) {
                 const root = new THREE.Group(), tote = this.tote(dimensions, material, parts), parcel = this.parcel(parts);
                 root.add(tote, parcel);
                 this.root.add(root);
-                this.cargo.set('twin-visual-carrier-' + (i + 1), { root, tote, parcel });
+                this.cargo.set(id, {
+                    root,
+                    tote,
+                    parcel
+                });
             }
             scene.add(this.root);
         }
@@ -303,8 +214,12 @@ class BeltView {
         }
         this.root.updateWorldMatrix(true, true);
     }
-    dispose() { this.root.removeFromParent(); for (const item of this.owned)
-        item.dispose(); this.owned.length = 0; }
+    dispose() {
+        this.root.removeFromParent();
+        for (const item of this.owned)
+            item.dispose();
+        this.owned.length = 0;
+    }
 }
 async function readSource(path: string, signal: AbortSignal) {
     const response = await fetch(import.meta.env.BASE_URL + path.replace(/^\//, ''), { signal, cache: 'no-store' });
@@ -314,54 +229,121 @@ async function readSource(path: string, signal: AbortSignal) {
 function dynamicLayers(roots: THREE.Object3D[]) {
     const saved = new Map<THREE.Object3D, number>();
     for (const root of roots)
-        root.traverse(node => { if (!saved.has(node))
-            saved.set(node, node.layers.mask); node.layers.set(1); });
-    return () => { for (const [node, mask] of saved)
-        node.layers.mask = mask; };
+        root.traverse(node => {
+            if (!saved.has(node))
+                saved.set(node, node.layers.mask);
+            node.layers.set(1);
+        });
+    return () => {
+        for (const [node, mask] of saved)
+            node.layers.mask = mask;
+    };
 }
 class MainWarehouseMotion implements TwinWarehouseMotion {
     private disposed = false;
     private variant: Variant = 'A';
     private at = 0;
-    constructor(private readonly scene: THREE.Scene, private readonly plan: WarehouseHeavyInboundPlan, private readonly worker: ReturnType<typeof prepareWorker>, private readonly heavy: ReturnType<typeof createWarehouseHeavyInboundScene>, private readonly belt: BeltView, private readonly tracks: Record<Variant, ReturnType<typeof compileBelt>>, private readonly relativeHead: THREE.Vector3, private readonly roots: THREE.Object3D[], private readonly restoreLayers: () => void) { }
-    apply(variant: Variant, at: number) {
+    constructor(private readonly scene: THREE.Scene,
+        private readonly plan: WarehouseHeavyInboundPlan, private readonly worker: ReturnType<typeof prepareWorker>, private readonly heavy: ReturnType<typeof createWarehouseHeavyInboundScene>, private readonly belt: BeltView, private readonly flow: TwinFlowScenario, private readonly staff: TwinStaffResponse, private readonly relativeHead: THREE.Vector3, private readonly roots: THREE.Object3D[], private readonly restoreLayers: () => void, private readonly fleet?: TwinFleetTraffic) {
+    }
+    private live(variant: Variant, at: number) {
         requireValue(!this.disposed, 'Main warehouse motion is disposed');
-        checkTime(variant, at);
+        checkTime(variant, at, this.flow.duration_s);
+    }
+    operations(variant: Variant, at: number) {
+        this.live(variant, at);
+        const flow = this.flow.sample(variant, at);
+        const mask = flow.stations.filter(row => row.status === 'processing').map(row => row.station_id);
+        const staff = this.staff.sample(variant, at, mask);
+        return {
+            ...flow,
+            staff: staff.workers,
+            working_count: staff.working_count,
+            hotpost_staff_count: staff.hotpost_staff_count
+        };
+    }
+    apply(variant: Variant, at: number) {
+        const flow = this.operations(variant, at);
         this.heavy.apply(at);
-        this.worker.apply(at);
-        this.belt.apply(beltFrames(this.tracks[variant], at));
+        this.worker.reset();
+        this.staff.apply(variant, at, flow.stations.filter(row => row.status === 'processing').map(row => row.station_id));
+        this.fleet?.apply(variant, at);
+        this.belt.apply(flow.cargoFrames);
         this.scene.updateMatrixWorld(true);
         this.variant = variant;
         this.at = at;
     }
     actorPosition(variant: Variant, at: number, id: string): XYZ | undefined {
-        requireValue(!this.disposed, 'Main warehouse motion is disposed');
-        checkTime(variant, at);
+        this.live(variant, at);
         if (id === 'S02')
-            return this.worker.head(at);
+            return this.worker.head();
+        const staff = this.staff.actorPosition(variant, id, at);
+        if (staff)
+            return staff;
         if (id === 'F01') {
             const body = this.plan.sample(at).body;
             return this.relativeHead.clone().applyMatrix4(pose(body.position, body.yaw_rad)).toArray() as XYZ;
         }
-        return undefined;
+        return this.fleet?.actorPosition(variant, at, id) ?? undefined;
+    }
+    actorActivity(variant: Variant, at: number, id: string) {
+        return this.operations(variant, at).staff.find(row => row.actor_id === id);
     }
     carrierFrames(variant: Variant, at: number): readonly BeltFrame[] {
-        requireValue(!this.disposed, 'Main warehouse motion is disposed');
-        checkTime(variant, at);
-        return beltFrames(this.tracks[variant], at);
+        this.live(variant, at);
+        return this.flow.sample(variant, at).cargoFrames;
     }
-    dynamicObjects() { return this.disposed ? [] : [...this.roots]; }
-    snapshot() {
+    scenario() {
+        this.live(this.variant, this.at);
+        return this.flow;
+    }
+    presentationCounts(): PresentationCounts {
+        this.live(this.variant, this.at);
+        const fleet = this.fleet?.summary();
         return {
-            variant: this.variant, at_s: this.at, disposed: this.disposed,
-            source_kind: 'visual_fixture', engine_operation: false, operational_admission: false, cost_evaluated: false,
-            source_stock_HUs: 530, moving_worker_ids: ['S02'], moving_vehicle_ids: ['FL01'], driver_id: 'F01',
-            heavy: this.heavy.snapshot(), heavy_duration_s: this.plan.duration_s,
+            workers: fleet?.people ?? 24,
+            vehicles: fleet?.vehicles ?? 2,
+            sourceWorkers: 24,
+            sourceVehicles: 2,
+            extraWorkers: fleet?.extra_people ?? 0,
+            extraVehicles: fleet?.extra_vehicles ?? 0,
+        };
+    }
+    dynamicObjects() {
+        return this.disposed ? [] : [...this.roots];
+    }
+    snapshot() {
+        const operations = this.operations(this.variant, this.at);
+        return {
+            variant: this.variant,
+            at_s: this.at,
+            disposed: this.disposed,
+            source_kind: 'visual_fixture',
+            engine_operation: false,
+            operational_admission: false,
+            cost_evaluated: false,
+            presentation_counts: this.presentationCounts(),
+            visual_extra_fleet: this.fleet?.snapshot() ?? null,
+            source_stock_HUs: 530,
+            moving_worker_ids: ['K01', 'K02', 'K05', 'K06'],
+            moving_vehicle_ids: ['FL01'],
+            driver_id: 'F01',
+            heavy: this.heavy.snapshot(),
+            heavy_duration_s: this.plan.duration_s,
             heavy_visual_complete: this.plan.sample(this.at).completed_visual_jobs === 1,
-            worker: { position: this.worker.sample(this.at).root_world, phase: this.worker.sample(this.at).stage, duration_s: this.worker.duration },
-            belt: beltFrames(this.tracks[this.variant], this.at), belt_wait_basis: 'authored_visual_fixture',
-            belt_carrier_starts_s: [...BELT_STARTS], belt_initial_state_basis: 'authored_prerolled_visual_carriers', belt_end_hold_s: 240,
-            belt_motion_basis: 'source_geometry_speed_and_dwell', dynamic_roots: this.roots.length,
+            worker: {
+                actor_id: 'S02',
+                phase: 'source_home',
+                patrol_disabled_for_shared_apron: true
+            },
+            belt: operations.cargoFrames,
+            operations,
+            belt_wait_basis: 'common_source_capacity_reservations_and_staff_availability',
+            belt_carrier_starts_s: this.flow.jobs.map(job => job.arrival_s),
+            belt_initial_state_basis: 'common_authored_preroll',
+            belt_end_hold_s: this.flow.duration_s,
+            belt_motion_basis: 'source_geometry_speed_and_dwell',
+            dynamic_roots: this.roots.length,
         };
     }
     dispose() {
@@ -369,37 +351,47 @@ class MainWarehouseMotion implements TwinWarehouseMotion {
             return;
         this.disposed = true;
         this.restoreLayers();
+        this.fleet?.dispose();
+        this.staff.dispose();
         this.worker.reset();
         this.belt.dispose();
         this.heavy.dispose();
         this.scene.updateMatrixWorld(true);
     }
 }
-/** A finite visual episode on the main comparison clock; no engine or KPI production. */
-export async function createTwinWarehouseMotion(scene: THREE.Scene, bundle: WarehouseBundle, texts: WarehouseTexts, signal: AbortSignal): Promise<TwinWarehouseMotion> {
+/** Finite visual packing episode. Source paths and original actors share one clock. */
+export async function createTwinWarehouseMotion(scene: THREE.Scene, bundle: WarehouseBundle, texts: WarehouseTexts, signal: AbortSignal, options: TwinWarehouseMotionOptions = {}): Promise<TwinWarehouseMotion> {
     signal.throwIfAborted();
     requireValue(scene.isScene && bundle.source_kind === 'visual_fixture' && bundle.engine_operation === false, 'Validated warehouse scene required');
     const [fixtureText, policyText] = await Promise.all([readSource('/data/v3/heavy-inbound-fixture.json', signal), readSource('/data/v3/route-policy-v3.json', signal)]);
     const fixture = await verifyWarehouseHeavyInboundSources(texts, fixtureText), policy = await validateRoutePolicy(policyText, bundle);
     signal.throwIfAborted();
-    const plan = compileWarehouseHeavyInboundPlan(bundle, fixture), worker = prepareWorker(scene, bundle, policy);
+    const plan = compileWarehouseHeavyInboundPlan(bundle, fixture), worker = prepareWorker(scene);
     const vehicle = scene.getObjectByName('vehicle__FL01')!;
     requireValue(vehicle, 'Original FL01 is missing');
     const relativeHead = headPoint(actor(scene, 'F01')).applyMatrix4(vehicle.matrixWorld.clone().invert());
-    const existing = new Set(scene.children), tracks = { A: compileBelt(bundle, 'A'), B: compileBelt(bundle, 'B') };
-    const heavy = createWarehouseHeavyInboundScene(scene, bundle, plan);
+    const existing = new Set(scene.children);
+    let staff: TwinStaffResponse | undefined, heavy: ReturnType<typeof createWarehouseHeavyInboundScene> | undefined;
+    let fleet: TwinFleetTraffic | undefined;
     let belt: BeltView | undefined, restoreLayers: (() => void) | undefined;
     try {
-        belt = new BeltView(scene, bundle);
-        const roots = [vehicle, worker.root, ...scene.children.filter(node => !existing.has(node))];
+        staff = await createTwinStaffResponse(scene, bundle, policy);
+        signal.throwIfAborted();
+        const flow = compileTwinFlowScenario(bundle, { staffReady_s: staff.stationReady_s, duration_s: Math.max(360, staff.duration_s) });
+        heavy = createWarehouseHeavyInboundScene(scene, bundle, plan);
+        if (options.layoutPlan) fleet = createTwinFleetTraffic(scene, bundle, options.layoutPlan);
+        belt = new BeltView(scene, bundle, flow.jobs.map(job => job.id));
+        const roots = [...new Set([vehicle, worker.root, ...staff.dynamicRoots, ...(fleet?.dynamicRoots ?? []), ...scene.children.filter(node => !existing.has(node))])];
         restoreLayers = dynamicLayers(roots);
-        return new MainWarehouseMotion(scene, plan, worker, heavy, belt, tracks, relativeHead, roots, restoreLayers);
+        return new MainWarehouseMotion(scene, plan, worker, heavy, belt, flow, staff, relativeHead, roots, restoreLayers, fleet);
     }
     catch (error) {
         restoreLayers?.();
+        fleet?.dispose();
+        staff?.dispose();
         worker.reset();
         belt?.dispose();
-        heavy.dispose();
+        heavy?.dispose();
         throw error;
     }
 }

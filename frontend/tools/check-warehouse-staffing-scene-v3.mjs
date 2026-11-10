@@ -9,7 +9,40 @@ import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 const front=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),repo=path.dirname(front),own=path.join(repo,'work/v3/staffing-scene-20261109'),cache=path.join(own,'cache');await mkdir(cache,{recursive:true});
 const sha=b=>createHash('sha256').update(b).digest('hex'),pins={},names=['warehouseStaffingScene','workerRoles','workerRolesFixture','warehouseAdapter','workerRegistry','workerProfiles','workerRoleAssignment','warehouseRouting'];
-for(const n of names){const rel='frontend/src/adaptive-v3/'+n+'.ts',b=await readFile(path.join(repo,rel));pins[rel]=sha(b);let code=ts.transpileModule(b.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;code=code.replace(/from '\.\/(\w+)'/g,"from './$1.mjs'").replace(/from 'three'/g,"from '"+pathToFileURL(path.join(front,'node_modules/three/build/three.module.js')).href+"'").replace(/from 'three\/([^']+)'/g,(_,p)=>"from '"+pathToFileURL(path.join(front,'node_modules/three',p)).href+"'");await writeFile(path.join(cache,n+'.mjs'),code);}
+const compiledModules = new Set();
+async function compileModule(name) {
+  if (compiledModules.has(name)) return;
+  compiledModules.add(name);
+  const relative = 'src/adaptive-v3/' + name + '.ts';
+  const bytes = await readFile(path.join(front, relative));
+  pins['frontend/' + relative] = sha(bytes);
+  let code = ts.transpileModule(bytes.toString(), {compilerOptions: {
+    target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext,
+  }}).outputText;
+  for (const match of [...code.matchAll(/import\s+(\w+)\s+from\s+['"]([^'"]+\.json)['"];?/g)]) {
+    const asset = path.posix.normalize(path.posix.join(path.posix.dirname(relative), match[2]));
+    const data = await readFile(path.join(front, asset));
+    pins['frontend/' + asset] = sha(data);
+    code = code.replace(match[0], 'const ' + match[1] + '=' + data.toString() + ';');
+  }
+  for (const match of [...code.matchAll(/from ['"]([^'"]+)['"]/g)]) {
+    const specifier = match[1];
+    let target;
+    if (specifier.startsWith('.')) {
+      const dependency = path.posix.normalize(path.posix.join(path.posix.dirname(name), specifier));
+      await compileModule(dependency);
+      target = path.join(cache, dependency + '.mjs');
+    } else if (specifier.startsWith('three')) {
+      target = path.join(front, 'node_modules', specifier === 'three' ? 'three/build/three.module.js' : specifier);
+    } else continue;
+    code = code.replace(match[0], 'from ' + JSON.stringify(pathToFileURL(target).href));
+  }
+  code = code.replaceAll('import.meta.env.BASE_URL', "'/'");
+  const output = path.join(cache, name + '.mjs');
+  await mkdir(path.dirname(output), {recursive: true});
+  await writeFile(output, code);
+}
+for (const name of names) await compileModule(name);
 const {adaptWarehouseV3}=await import(pathToFileURL(path.join(cache,'warehouseAdapter.mjs'))),{createWorkerInstance,disposeWorkerInstance}=await import(pathToFileURL(path.join(cache,'workerRoles.mjs'))),{createStaffingComparison,staffingHomeNodes}=await import(pathToFileURL(path.join(cache,'workerRoleAssignment.mjs'))),{validateRoutePolicy,createWarehouseRouter}=await import(pathToFileURL(path.join(cache,'warehouseRouting.mjs'))),{createWarehouseStaffingScene}=await import(pathToFileURL(path.join(cache,'warehouseStaffingScene.mjs')));
 const texts={};for(const[k,p]of Object.entries({fixture:'frontend/public/data/v3/warehouse-fixture-v3.json',layout:'frontend/public/data/adaptive-v3/layout-manifest.json',registry:'frontend/public/data/v3/worker-registry-v3.json',profiles:'frontend/public/data/v3/worker-profiles-v3.json'})){const b=await readFile(path.join(repo,p));texts[k]=b.toString();pins[p]=sha(b);}
 const read=async p=>{const b=new Uint8Array(await readFile(path.join(repo,p)));pins[p]=sha(b);return b;},bundle=await adaptWarehouseV3(texts),policy=await validateRoutePolicy(new TextDecoder().decode(await read('frontend/public/data/v3/route-policy-v3.json')),bundle),router=createWarehouseRouter(bundle,policy),comparison=await createStaffingComparison(bundle,q=>router.route(q));

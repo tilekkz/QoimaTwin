@@ -1,6 +1,39 @@
 import assert from 'node:assert/strict';import {readFile,writeFile,mkdir} from 'node:fs/promises';import {createHash} from 'node:crypto';import path from 'node:path';import {pathToFileURL} from 'node:url';import ts from 'typescript';
 const own=path.resolve('../work/v3/staffing-functional-20261109'),hash=b=>createHash('sha256').update(b).digest('hex'),pins={};await mkdir(own,{recursive:true});
-for(const name of ['workerRegistry','workerProfiles','warehouseAdapter','warehouseRouting','workerRoleAssignment']){const p='src/adaptive-v3/'+name+'.ts',b=await readFile(p);pins['frontend/'+p]=hash(b);let code=ts.transpileModule(b.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;code=code.replace(/from '\.\/(workerRegistry|workerProfiles)'/g,"from './$1.mjs'");await writeFile(path.join(own,name+'.mjs'),code);}
+const compiledModules = new Set();
+async function compileModule(name) {
+  if (compiledModules.has(name)) return;
+  compiledModules.add(name);
+  const relative = 'src/adaptive-v3/' + name + '.ts';
+  const bytes = await readFile(relative);
+  pins['frontend/' + relative] = hash(bytes);
+  let code = ts.transpileModule(bytes.toString(), {compilerOptions: {
+    target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext,
+  }}).outputText;
+  for (const match of [...code.matchAll(/import\s+(\w+)\s+from\s+['"]([^'"]+\.json)['"];?/g)]) {
+    const asset = path.posix.normalize(path.posix.join(path.posix.dirname(relative), match[2]));
+    const data = await readFile(path.join(path.resolve('.'), asset));
+    pins['frontend/' + asset] = hash(data);
+    code = code.replace(match[0], 'const ' + match[1] + '=' + data.toString() + ';');
+  }
+  for (const match of [...code.matchAll(/from ['"]([^'"]+)['"]/g)]) {
+    const specifier = match[1];
+    let target;
+    if (specifier.startsWith('.')) {
+      const dependency = path.posix.normalize(path.posix.join(path.posix.dirname(name), specifier));
+      await compileModule(dependency);
+      target = path.join(own, dependency + '.mjs');
+    } else if (specifier.startsWith('three')) {
+      target = path.join(path.resolve('.'), 'node_modules', specifier === 'three' ? 'three/build/three.module.js' : specifier);
+    } else continue;
+    code = code.replace(match[0], 'from ' + JSON.stringify(pathToFileURL(target).href));
+  }
+  code = code.replaceAll('import.meta.env.BASE_URL', "'/'");
+  const output = path.join(own, name + '.mjs');
+  await mkdir(path.dirname(output), {recursive: true});
+  await writeFile(output, code);
+}
+for (const name of ['workerRegistry','workerProfiles','warehouseAdapter','warehouseRouting','workerRoleAssignment']) await compileModule(name);
 const {adaptWarehouseV3}=await import(pathToFileURL(path.join(own,'warehouseAdapter.mjs'))),{validateRoutePolicy,createWarehouseRouter}=await import(pathToFileURL(path.join(own,'warehouseRouting.mjs'))),{createStaffingComparison}=await import(pathToFileURL(path.join(own,'workerRoleAssignment.mjs'))),texts={};
 for(const[k,p]of Object.entries({fixture:'public/data/v3/warehouse-fixture-v3.json',layout:'public/data/adaptive-v3/layout-manifest.json',registry:'public/data/v3/worker-registry-v3.json',profiles:'public/data/v3/worker-profiles-v3.json'})){const b=await readFile(p);texts[k]=b.toString();pins['frontend/'+p]=hash(b);}const bundle=await adaptWarehouseV3(texts),pb=await readFile('public/data/v3/route-policy-v3.json');pins['frontend/public/data/v3/route-policy-v3.json']=hash(pb);const router=createWarehouseRouter(bundle,await validateRoutePolicy(pb.toString(),bundle));let routeCalls=0;
 const route=q=>{routeCalls++;return router.route(q);},model=await createStaffingComparison(bundle,route),initial=JSON.stringify(bundle),q=(id,station)=>({event_id:'fixture:'+id,actor_id:id,target_role:'packer',station_id:station,at_s:30,until_s:420,handoff_s:8}),negative=[];

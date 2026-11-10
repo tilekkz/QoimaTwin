@@ -17,18 +17,41 @@ async function source(relative) {
   return bytes;
 }
 
-for (const name of ['workerRegistry', 'workerProfiles', 'warehouseAdapter', 'workerRoleAssignment',
-  'warehouseLayoutPlan', 'warehouseCargo', 'warehouseCargoHolders', 'twin/twinInventory',
-  'twin/twinScenario', 'twin/twinSearch']) {
-  const bytes = await source('src/adaptive-v3/' + name + '.ts');
-  const code = ts.transpileModule(bytes.toString(), {compilerOptions: {
+const compiledModules = new Set();
+async function compileModule(name) {
+  if (compiledModules.has(name)) return;
+  compiledModules.add(name);
+  const relative = 'src/adaptive-v3/' + name + '.ts';
+  const bytes = await source(relative);
+  let code = ts.transpileModule(bytes.toString(), {compilerOptions: {
     target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext,
-  }}).outputText.replace(/from (['"])(\.{1,2}\/[^'"]+)\1/g,
-    (_, quote, specifier) => `from ${quote}${specifier}.mjs${quote}`);
+  }}).outputText;
+  for (const match of [...code.matchAll(/import\s+(\w+)\s+from\s+['"]([^'"]+\.json)['"];?/g)]) {
+    const asset = path.posix.normalize(path.posix.join(path.posix.dirname(relative), match[2]));
+    const data = await readFile(path.join(frontend, asset));
+    pins.set(asset, hash(data));
+    code = code.replace(match[0], 'const ' + match[1] + '=' + data.toString() + ';');
+  }
+  for (const match of [...code.matchAll(/from ['"]([^'"]+)['"]/g)]) {
+    const specifier = match[1];
+    let target;
+    if (specifier.startsWith('.')) {
+      const dependency = path.posix.normalize(path.posix.join(path.posix.dirname(name), specifier));
+      await compileModule(dependency);
+      target = path.join(cache, dependency + '.mjs');
+    } else if (specifier.startsWith('three')) {
+      target = path.join(frontend, 'node_modules', specifier === 'three' ? 'three/build/three.module.js' : specifier);
+    } else continue;
+    code = code.replace(match[0], 'from ' + JSON.stringify(pathToFileURL(target).href));
+  }
+  code = code.replaceAll('import.meta.env.BASE_URL', "'/'");
   const output = path.join(cache, name + '.mjs');
   await mkdir(path.dirname(output), {recursive: true});
-  await writeFile(output, code, {flag: 'wx'});
+  await writeFile(output, code);
 }
+for (const name of ['workerRegistry', 'workerProfiles', 'warehouseAdapter', 'workerRoleAssignment',
+  'warehouseLayoutPlan', 'warehouseCargo', 'warehouseCargoHolders', 'twin/twinInventory',
+  'twin/twinScenario', 'twin/twinSearch']) await compileModule(name);
 const load = name => import(pathToFileURL(path.join(cache, name + '.mjs')));
 const {adaptWarehouseV3} = await load('warehouseAdapter');
 const {createWarehouseCargo} = await load('warehouseCargo');

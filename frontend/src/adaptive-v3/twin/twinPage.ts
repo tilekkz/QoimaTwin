@@ -1,7 +1,9 @@
 import './twin.css';
 import type {Scene} from 'three';
 import {createTwinInventory,type TwinInventory,type TwinInventoryMode} from './twinInventory';
-import {createTwinWarehouseMotion} from './twinWarehouseMotion';
+import {createTwinWarehouseMotion,type TwinWarehouseMotion} from './twinWarehouseMotion';
+import {createTwinOperationsHud} from './twinOperationsHud';
+import {createTwinFlowPresenter} from './twinFlowPresenter';
 import {mountPlacementComparison} from './twinPlacementComparison';
 import {createLayoutControls,type LayoutMode} from './twinLayoutControls';
 import {createDenseWarehouseLayoutPlan,type WarehouseLayoutPlan} from '../warehouseLayoutPlan';
@@ -10,7 +12,7 @@ import {adaptWarehouseV3,WarehouseAdapterError,WAREHOUSE_BASE_FILES,type Warehou
 import {createWarehouseScene,type WarehouseView} from '../warehouseScene';
 import type {WarehouseBundle,XYZ} from '../warehouseTypes';
 import type {BoundCargo} from '../warehouseCargo';
-import {ATMO_ZONES,CHAPTERS,DEMO_DURATION_S,DEMO_EVENTS,PRESENTER_STEPS,outboundCandidates,sampleAtmosphere,stateSegments,type AtmoState,type Variant} from './twinScenario';
+import {ATMO_ZONES,CHAPTERS,DEMO_DURATION_S,demoEventsFor,installDemoFlowTimeline,PRESENTER_STEPS,outboundCandidates,sampleAtmosphere,stateSegments,type AtmoState,type Variant,type PresenterStep} from './twinScenario';
 import {bubbleBudget,reactionsAt,recoveredZones,workerStatus,zoneHistory,type Effects} from './twinScenario';
 import {createNavigation,SPAN_MAX} from './twinNavigation';
 import {createTopPlanControl,fittedWarehouseSpan} from './twinPlanView';
@@ -41,9 +43,10 @@ const OVERVIEW={target:[72,1.5,36] as XYZ,span:184};
 const SIDE_TARGET:XYZ=[72,1.5,36+SIDE_SHIFT[2]/2];
 /** On a phone the pair stands diagonally in a tall view, so it can be framed closer. */
 const sideOverview=()=>{const r=twin?.region();return {target:SIDE_TARGET,span:phone.matches?178:fittedWarehouseSpan(true,r?.w??host.clientWidth,r?.h??host.clientHeight,[0,1.15,1],250)};};
-const overview=()=>mode==='side'?sideOverview():OVERVIEW;
+const OPERATION_FRAME={target:[106.5,1,4] as XYZ,span:52};
+const overview=()=>operationFocus?OPERATION_FRAME:mode==='side'?sideOverview():OVERVIEW;
 /** Presenter focus points are written for one warehouse; in «Рядом» they frame the same spot in both copies. */
-const focusFor=(f:{target:XYZ;span:number},m:Mode)=>m!=='side'?f:f.span>=OVERVIEW.span-1?sideOverview():{target:[f.target[0],f.target[1],f.target[2]+SIDE_SHIFT[2]/2] as XYZ,span:Math.max(f.span*1.25,120)};
+const focusFor=(f:{target:XYZ;span:number},m:Mode)=>m!=='side'||operationFocus?f:f.span>=OVERVIEW.span-1?sideOverview():{target:[f.target[0],f.target[1],f.target[2]+SIDE_SHIFT[2]/2] as XYZ,span:Math.max(f.span*1.25,120)};
 const fmt=(n:number,d=0)=>n.toLocaleString('ru-RU',{maximumFractionDigits:d,minimumFractionDigits:d});
 const mmss=(s:number)=>`${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 const ZONE_EXTRA:Record<string,string>={FLEX_W:'FLEX запад',FLEX_E:'FLEX восток',RESERVE_W:'Резерв запад',RESERVE_E:'Резерв восток',STAGE_IN_W_BULK:'Приёмка запад · навал',STAGE_IN_E_PARCEL:'Приёмка восток · посылки',STAGE_IN_N_W:'Приёмка север-запад',STAGE_IN_N_E:'Приёмка север-восток',STAGE_OUT_E_B2B:'Отгрузка восток · B2B',STAGE_OUT_W_RETAIL:'Отгрузка запад · розница'};
@@ -56,11 +59,26 @@ let phase:Phase='initial',serial=0,controller:AbortController|undefined,bundle:W
 let scene:Awaited<ReturnType<typeof createWarehouseScene>>|undefined,twin:ReturnType<typeof createTwinRenderer>|undefined;
 const urlMode=new URL(location.href).searchParams.get('mode') as Mode;
 let mode:Mode=asMode(urlMode);
+const viewQuery=new URL(location.href).searchParams;
+let operationFocus=viewQuery.get('view')!=='warehouse'
+ &&(!viewQuery.has('cam')||viewQuery.get('view')==='flow');
 let t=0,playing=!reduced.matches&&!document.hidden,speed=4,last=0,raf=0,split=.5,moves:Move[]=[],nowKey='',selectedId:string|null=null;
 let slottingMoves:Move[]=[],layoutCandidate:WarehouseLayoutPlan|null=null,layoutEnabled=false,layoutBusy=false,layoutMessage='Готовим планировку…';
 let layoutSourceTexts:WarehouseTexts|undefined,layoutAccess:WarehouseLayoutAccessResult|null=null;
 let currentInventory:TwinInventory|undefined;
 let motionReady=false;
+let warehouseMotion:TwinWarehouseMotion|undefined;
+let operationsHud:ReturnType<typeof createTwinOperationsHud>|undefined;
+let restoreFlowTimeline:(()=>void)|undefined;
+function updateOperationsHud(){
+ if(!warehouseMotion||!operationsHud||!bundle||!twin)return;
+ const A=warehouseMotion.operations('A',t),B=warehouseMotion.operations('B',t);
+ operationsHud.update({A,B,totalJobs:warehouseMotion.scenario().jobs.length,
+  totalWorkers:warehouseMotion.presentationCounts().workers,
+  totalVehicles:warehouseMotion.presentationCounts().vehicles,
+  helpersTravelling:B.staff.filter(worker=>worker.phase==='walking_to_help').length},
+ twin.operationRegions());
+}
 let slottingBindingsB:readonly BoundCargo[]=[];
 let inventoryMode:TwinInventoryMode=new URL(location.href).searchParams.get('stock')==='source'?'source530':'populated-demo-v1';
 function activeCargo(variant:Variant):readonly BoundCargo[]{
@@ -98,8 +116,8 @@ for(const button of $$<HTMLButtonElement>('[data-stock]'))button.addEventListene
 for(const button of $$<HTMLButtonElement>('[data-motion-focus]'))button.addEventListener('click',()=>{
  if(phase!=='ready'||!motionReady)return;setSheet(null);setSearch(false);setSpeed(1);
  const focus=button.dataset.motionFocus;
- if(focus==='belt'){seek(45);select(null);fly([106.5,1,3],22);}
- else{seek(focus==='forklift'?100:12);select(focus==='forklift'?'F01':'S02','actor','A');}
+ if(focus==='forklift'){setOperationView(false);seek(100);select('F01','actor','A');}
+ else{setOperationView(true);seek(90);select('K01','actor','B');}
  setPlaying(true);
 });
 function layoutMetrics(){
@@ -173,7 +191,7 @@ function cue(kind:Cue){
 }
 function cuesBetween(from:number,to:number){
  const shown:Variant[]=['A','B'],fired=new Set<Cue>();
- for(const v of shown)for(const e of DEMO_EVENTS[v])if(e.at_s>from&&e.at_s<=to)fired.add(e.cause.startsWith('Отказ')?'refuse':e.state==='nodata'?'danger':e.state);
+ for(const v of shown)for(const e of demoEventsFor(v))if(e.at_s>from&&e.at_s<=to)fired.add(e.cause.startsWith('Отказ')?'refuse':e.state==='nodata'?'danger':e.state);
  for(const k of fired)cue(k);
 }
 syncSound();
@@ -337,7 +355,7 @@ const planView=createTopPlanControl({button:$<HTMLButtonElement>('#tw-plan'),sid
 /* ---------- link to this view: same place, moment and mode, opened paused ---------- */
 const shareBtn=$<HTMLButtonElement>('#tw-share'),SHARE_LABEL='Ссылка на этот вид';
 function viewUrl(){
- const u=new URL(location.href);u.searchParams.delete('present');u.searchParams.set('mode',mode);u.searchParams.set('layout',layoutEnabled?'sections':'cargo');u.searchParams.set('stock',inventoryMode==='source530'?'source':'filled');u.searchParams.set('t',String(Math.round(t)));
+ const u=new URL(location.href);u.searchParams.delete('present');u.searchParams.set('mode',mode);u.searchParams.set('layout',layoutEnabled?'sections':'cargo');u.searchParams.set('stock',inventoryMode==='source530'?'source':'filled');u.searchParams.set('t',String(Math.round(t)));u.searchParams.set('view',operationFocus?'flow':'warehouse');
  const s=scene?.frameState();if(s){const [y,e]=yawElev(s.dir);u.searchParams.set('cam',[...s.target,s.span,y*180/Math.PI,e*180/Math.PI].map(n=>+n.toFixed(1)).join(','));}
  return u.href;
 }
@@ -358,19 +376,21 @@ function readViewUrl(sc:NonNullable<typeof scene>){
 /* ---------- defence walk-through ---------- */
 const present=$('#tw-present'),pTitle=$('#tw-present-title'),pText=$('#tw-present-text'),pStep=$('#tw-present-step'),pDots=$('#tw-present-dots'),pPrev=$<HTMLButtonElement>('#tw-present-prev'),pNext=$<HTMLButtonElement>('#tw-present-next');
 let stepIndex=-1;
-pDots.innerHTML=PRESENTER_STEPS.map(()=>'<i></i>').join('');
+let presenterSteps:readonly(PresenterStep&{view?:'flow'|'warehouse'})[]=PRESENTER_STEPS;
+pDots.innerHTML=presenterSteps.map(()=>'<i></i>').join('');
 function goStep(i:number){
- if(phase!=='ready'||layoutBusy)return;if(layoutEnabled)void setLayoutMode('cargo');stepIndex=Math.max(0,Math.min(PRESENTER_STEPS.length-1,i));const s=PRESENTER_STEPS[stepIndex];
+ if(phase!=='ready'||!motionReady||layoutBusy)return;stepIndex=Math.max(0,Math.min(presenterSteps.length-1,i));const s=presenterSteps[stepIndex];
  app.dataset.presenting='true';show(present,true);setPop(null);select(null);
- pStep.textContent=`Шаг ${stepIndex+1} из ${PRESENTER_STEPS.length}`;[...pDots.children].forEach((d,k)=>d.classList.toggle('is-on',k===stepIndex));
+ pStep.textContent=`Шаг ${stepIndex+1} из ${presenterSteps.length}`;[...pDots.children].forEach((d,k)=>d.classList.toggle('is-on',k===stepIndex));
  for(const el of [pTitle,pText])el.style.animation='none';void present.offsetWidth;pTitle.textContent=s.title;pText.textContent=s.text;for(const el of [pTitle,pText])el.style.animation='';
- pPrev.disabled=stepIndex===0;pNext.textContent=stepIndex===PRESENTER_STEPS.length-1?'Завершить':'Дальше';
- setPlaying(false);seek(s.t);setMode(s.mode);setSheet(s.sheet&&!phone.matches?s.sheet:null);const f=focusFor(s.focus,s.mode);fly(f.target,f.span,HOME_DIR);if(s.play)setPlaying(true);
+ pPrev.disabled=stepIndex===0;pNext.textContent=stepIndex===presenterSteps.length-1?'Завершить':'Дальше';
+ setPlaying(false);if(s.view)setOperationView(s.view==='flow',false);
+ seek(s.t);setMode(s.mode);setSheet(s.sheet&&!phone.matches?s.sheet:null);const f=focusFor(s.focus,s.mode);fly(f.target,f.span,HOME_DIR);if(s.play)setPlaying(true);
  // A scenario step outlines and frames that scenario's zones; on a phone without the sheet, the outline alone.
  if(s.scenario)openScenario(s.scenario);else if(openScn)openScenario(null);
 }
 function endPresent(){if(stepIndex<0)return;const had=present.contains(document.activeElement)||document.activeElement===document.body;stepIndex=-1;app.dataset.presenting='false';show(present,false);if(had&&phase==='ready')menuBtn.focus({preventScroll:true});}
-function nextPresent(){if(stepIndex<0)return;if(stepIndex>=PRESENTER_STEPS.length-1)endPresent();else goStep(stepIndex+1);}
+function nextPresent(){if(stepIndex<0)return;if(stepIndex>=presenterSteps.length-1)endPresent();else goStep(stepIndex+1);}
 $('#tw-present-btn').addEventListener('click',()=>goStep(0));
 $('#tw-present-close').addEventListener('click',endPresent);
 pPrev.addEventListener('click',()=>goStep(stepIndex-1));
@@ -383,12 +403,13 @@ function syncPlay(){
  play.setAttribute('aria-label',playing?'Пауза':'Воспроизвести');
  play.disabled=!motionReady;
  play.setAttribute('aria-busy',String(!motionReady));
- for(const button of $$<HTMLButtonElement>('[data-motion-focus]'))button.disabled=!motionReady;
+ for(const button of $$<HTMLButtonElement>('[data-motion-focus],[data-operation-view]'))
+  button.disabled=!motionReady;
 }
 function seek(next:number,clockAdvance=false){
  if(!clockAdvance)silenceAudio();
  t=Math.min(DEMO_DURATION_S,Math.max(0,next));clockOut.textContent=mmss(t);progress.style.width=t/DEMO_DURATION_S*100+'%';
- river.setAttribute('aria-valuenow',String(Math.round(t)));twin?.setTime(t);if(sheet==='time')drawRiver();renderNow();renderWorkerStatus();drawMini();
+ river.setAttribute('aria-valuenow',String(Math.round(t)));twin?.setTime(t);if(sheet==='time')drawRiver();renderNow();renderWorkerStatus();drawMini();updateOperationsHud();
 }
 function tick(now:number){raf=0;if(reconcileReducedMotion()||!playing||phase!=='ready'||!motionReady)return;const dt=Math.min(.1,(now-last)/1000);last=now;const before=t;seek(t+dt*speed,true);cuesBetween(before,t);if(t>=DEMO_DURATION_S){playing=false;silenceAudio();syncPlay();return;}raf=requestAnimationFrame(tick);}
 function setPlaying(next:boolean){playing=next;if(!playing){silenceAudio();if(raf){cancelAnimationFrame(raf);raf=0;}}syncPlay();if(playing&&t>=DEMO_DURATION_S)seek(0);if(playing&&!raf&&phase==='ready'&&motionReady){last=performance.now();raf=requestAnimationFrame(tick);}}
@@ -399,7 +420,17 @@ function setSpeed(next:number){
  for(const button of $$<HTMLButtonElement>('[data-speed]'))button.setAttribute('aria-pressed',String(Number(button.dataset.speed)===next));
 }
 for(const b of $$<HTMLButtonElement>('[data-speed]'))b.addEventListener('click',()=>setSpeed(Number(b.dataset.speed)));
-for(const c of CHAPTERS){const b=document.createElement('button');b.type='button';b.textContent=c.label;b.title=mmss(c.at_s);b.addEventListener('click',()=>{setPlaying(false);seek(c.at_s+.01);});$('#tw-chapters').append(b);}
+function renderChapters(){
+ const host=$('#tw-chapters');host.replaceChildren();
+ for(const chapter of CHAPTERS){
+  const button=document.createElement('button');button.type='button';
+  button.textContent=chapter.label;button.title=mmss(chapter.at_s);
+  button.addEventListener('click',()=>{setPlaying(false);seek(chapter.at_s+.01);});
+  host.append(button);
+ }
+ river.setAttribute('aria-valuemax',String(DEMO_DURATION_S));
+}
+renderChapters();
 
 /* ---------- time river ---------- */
 const RL=128,LANE=11,GAP=4,GROUP=12;
@@ -424,6 +455,32 @@ river.addEventListener('pointerdown',e=>{river.setPointerCapture(e.pointerId);se
 river.addEventListener('pointermove',e=>{if(river.hasPointerCapture(e.pointerId))scrub(e);});
 river.addEventListener('keydown',e=>{const step=e.key==='ArrowRight'?5:e.key==='ArrowLeft'?-5:0;if(!step)return;e.preventDefault();setPlaying(false);seek(t+step);});
 new ResizeObserver(drawRiver).observe(river);
+
+/* ---------- packing detail and warehouse overview ---------- */
+function setOperationView(next:boolean,animate=true){
+ operationFocus=next;
+ app.dataset.operationView=operationFocus?'flow':'warehouse';
+ twin?.setOperationFocus(operationFocus);
+ for(const button of $$<HTMLButtonElement>('[data-operation-view]')){
+  button.setAttribute('aria-pressed',String((button.dataset.operationView==='flow')===next));
+  button.disabled=!motionReady;
+ }
+ const url=new URL(location.href);
+ url.searchParams.set('view',operationFocus?'flow':'warehouse');
+ history.replaceState(null,'',url);
+ if(phase!=='ready'||!scene)return;
+ select(null);
+ const frame=overview();
+ if(animate)fly(frame.target,frame.span,HOME_DIR);
+ else scene.frameAt(frame.target,frame.span,HOME_DIR);
+ homeShown();
+}
+for(const button of $$<HTMLButtonElement>('[data-operation-view]')){
+ button.addEventListener('click',()=>{
+  if(!motionReady)return;
+  setOperationView(button.dataset.operationView==='flow');
+ });
+}
 
 /* ---------- modes, blade ---------- */
 let switchTimer=0;
@@ -566,13 +623,17 @@ function select(id:string|null,kind='HU',copy:Variant='A'){
   box.innerHTML=`<h3>${esc(hu.sku_id)}</h3><p class="tw-sub">${esc(hu.archetype_id)} · ${fmt(hu.gross_mass_kg,2)} кг</p>${route}`+kv([['Количество',fmt(hu.quantity_units)+' ед.'],['Габариты',hu.dimensions_xyz_m.map(x=>fmt(x,2)).join(' × ')+' м'],...(moved?[['Ворота',moved.port_id],['До ворот',`${fmt(moved.before_m)} → ${fmt(moved.after_m)} м`],['Перенос',`${fmt(moved.move_m)} м по прямой`]] as [string,string][]:[])]);}
  else{const w=bundle.registry.workers.find(w=>w.actor_id===id);if(!w)return;$('#sh-sel').textContent='Работник';
   const spot=twin?.workers(copy).find(s=>s.actor_id===id),head=twin?.actorPosition(id,copy);if(head)fly([head[0]+off[0],0,head[2]+off[2]],20);
-  box.innerHTML=`<h3>${esc(w.actor_id)}</h3><p class="tw-sub">${esc(bundle.registry.roles.find(r=>r.role===w.baseline_role)?.label??w.baseline_role)}${spot?.zone_id?` · ${esc(zoneLabel(spot.zone_id))}`:''}</p><div id="tw-wstatus" class="tw-wstatus"></div>`+kv([['Техника',w.assigned_vehicle_id??'—'],['В варианте B',layoutEnabled&&w.baseline_role==='picker'?'та же роль, место в новой секции':'та же роль и место']])+`<p class="tw-note">Реакции — часть демонстрационного эпизода: они объясняют причину и не меняют груз, время или результаты.</p><a href="skills-v3.html?actor=${encodeURIComponent(id)}">Навыки и допуски →</a>`;}
+  box.innerHTML=`<h3>${esc(w.actor_id)}</h3><p class="tw-sub">${esc(bundle.registry.roles.find(r=>r.role===w.baseline_role)?.label??w.baseline_role)}${spot?.zone_id?` · ${esc(zoneLabel(spot.zone_id))}`:''}</p><div id="tw-wstatus" class="tw-wstatus"></div>`+kv([['Техника',w.assigned_vehicle_id??'—'],['В варианте B',warehouseMotion?.actorActivity('B',t,id)?'Работа и переходы по расписанию':layoutEnabled&&w.baseline_role==='picker'?'Место в новой секции':'Исходное назначение']])+`<p class="tw-note">Реакции — часть демонстрационного эпизода: они объясняют причину и не меняют груз, время или результаты.</p><a href="skills-v3.html?actor=${encodeURIComponent(id)}">Навыки и допуски →</a>`;}
  show(panel,true);layoutPanels();renderWorkerStatus();
 }
 let selectedKind='HU',statusKey='';
 function renderWorkerStatus(){
  const box=document.getElementById('tw-wstatus');if(!box||!twin||selectedKind!=='actor'||!selectedId)return;const spots=twin.workers(),id=selectedId;
- const rows=(['A','B'] as Variant[]).map(v=>[v,reactionsAt(v,t,spots).find(r=>r.actor_id===id)?.bubble??'calm',workerStatus(v,t,spots,id)] as const),key=JSON.stringify(rows);
+ const rows=(['A','B'] as Variant[]).map(v=>{
+  const activities=warehouseMotion?.operations(v,t).staff??[];
+  const bubble=reactionsAt(v,t,spots,activities).find(row=>row.actor_id===id)?.bubble??'calm';
+  return [v,bubble,workerStatus(v,t,spots,id,activities)] as const;
+ }),key=JSON.stringify(rows);
  if(key===statusKey)return;statusKey=key;
  box.innerHTML=rows.map(([v,b,text])=>`<p data-b="${b}"><b>${v}</b><span>${esc(text)}</span></p>`).join('');
 }
@@ -601,7 +662,7 @@ host.addEventListener('pointerleave',hideHint);host.addEventListener('pointerdow
 async function readLocal(path:string,signal:AbortSignal){const r=await fetch(import.meta.env.BASE_URL+path.replace(/^\//,''),{signal,cache:'no-store'});if(!r.ok)throw Error(r.status===404?'В локальном пакете не хватает данных склада V3.':'Данные склада временно недоступны. Повторите загрузку.');return r.text();}
 const pose=(b:BoundCargo):Pose=>({position:[...b.position],yaw:b.yaw_rad,dims:[...b.cargo.dimensions_xyz_m]});
 function clearSelectionState(){selectedId=null;selectedKind='HU';statusKey='';for(const button of $$<HTMLButtonElement>('.tw-moves button'))button.setAttribute('aria-pressed','false');show(sheets.find(s=>s.dataset.sheet==='sel')!,false);$('#tw-selection').replaceChildren();}
-function disposeAll(){motionReady=false;syncPlay();silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;currentInventory=undefined;slottingBindingsB=[];moves=[];slottingMoves=[];layoutCandidate=null;layoutSourceTexts=undefined;layoutAccess=null;layoutEnabled=false;layoutBusy=false;nowKey='';clearSelectionState();endPresent();}
+function disposeAll(){motionReady=false;operationsHud?.dispose();operationsHud=undefined;warehouseMotion=undefined;restoreFlowTimeline?.();restoreFlowTimeline=undefined;syncPlay();silenceAudio();nav?.dispose();nav=undefined;mini=undefined;miniKey='';cancelAnimationFrame(raf);raf=0;cancelAnimationFrame(flyRaf);flyRaf=0;flyTarget=null;clearTimeout(switchTimer);switchTimer=0;host.classList.remove('is-switching');twin?.dispose();twin=undefined;scene?.dispose();scene=undefined;bundle=undefined;currentInventory=undefined;slottingBindingsB=[];moves=[];slottingMoves=[];layoutCandidate=null;layoutSourceTexts=undefined;layoutAccess=null;layoutEnabled=false;layoutBusy=false;nowKey='';clearSelectionState();endPresent();}
 async function load(){
  const token=++serial;controller?.abort();controller=new AbortController();const owned=controller;disposeAll();
  if(!webglAvailable()){showNoGl();return;}
@@ -615,7 +676,7 @@ async function load(){
   // The A/B labels stand by their warehouse: a click takes you to that one, to look at it on its own.
   tw.onLabel(v=>{const o=tw.offsetOf(v);fly([OVERVIEW.target[0],OVERVIEW.target[1],OVERVIEW.target[2]+o[2]],mode==='side'?150:OVERVIEW.span);});
   let world:Scene|undefined;
-   const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{world=s;tw.renderPass(r,s,c);positionBlade();drawMini();homeShown();}});
+   const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{world=s;tw.renderPass(r,s,c);positionBlade();drawMini();homeShown();updateOperationsHud();}});
   if(token!==serial){sc.dispose();return;}scene=sc;bundle=data;layoutSourceTexts=sourceTexts;setPhase('loading','Проверяем перестройку…');
   // B: greedy, each move admitted by the real cargo rules; rejected candidates leave state untouched.
   const accepted:{c:ReturnType<typeof outboundCandidates>[number];slot_id:string;after_m:number;move_m:number}[]=[];
@@ -638,14 +699,21 @@ async function load(){
     hover:(z,v)=>{if(z)tw.highlightZone(z,v);else restoreHl();}});
   zoneRects=new Map((data.layout.data.zones as Z[]).map(z=>[z.zone_id,z.floor_bounds_xz_m]));
   setPhase('ready','');
+  tw.setOperationFocus(operationFocus);setOperationView(operationFocus,false);
   setMode(mode,false);setSplit(split);renderMoves();tw.setReady();applyEffects();seek(t);sc.setView('overview' as WarehouseView);{const o=overview();sc.frameAt(o.target,o.span,HOME_DIR);}readViewUrl(sc);
   await setLayoutMode(new URL(location.href).searchParams.get('layout')==='cargo'?'cargo':'sections');
   if(token!==serial||twin!==tw||scene!==sc||phase!=='ready')return;
    refreshInventory();rebuildSearchIndex();
    if(!world)throw Error('Comparison scene was not created');
-   const motion=await createTwinWarehouseMotion(world,data,sourceTexts,owned.signal);
+   const fleetLayout=layoutCandidate??await createDenseWarehouseLayoutPlan(data,sourceTexts);
+   const motion=await createTwinWarehouseMotion(world,data,sourceTexts,owned.signal,{layoutPlan:fleetLayout});
    if(token!==serial||twin!==tw||scene!==sc){motion.dispose();return;}
-   tw.setMotion(motion);motionReady=true;seek(t);setPlaying(playing);
+   warehouseMotion=motion;
+   restoreFlowTimeline=installDemoFlowTimeline(motion.scenario());
+   renderChapters();operationsHud=createTwinOperationsHud(app);
+   presenterSteps=createTwinFlowPresenter(motion.scenario(),motion.presentationCounts());
+   pDots.innerHTML=presenterSteps.map(()=>'<i></i>').join('');
+   tw.setMotion(motion);motionReady=true;readViewUrl(sc);seek(t);setPlaying(playing);
   // Start page link «Режим защиты» opens straight into the walk-through.
   if(new URL(location.href).searchParams.get('present')==='1')goStep(0);
   // Start page links open a scenario card straight away.
@@ -676,7 +744,7 @@ reduced.addEventListener('change',reconcileReducedMotion);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){silenceAudio();setPlaying(false);finishCameraMotion();}else syncSound();});
 window.addEventListener('pagehide',()=>{serial++;controller?.abort();silenceAudio(true);setPlaying(false);disposeAll();setPhase('disposed','Просмотр остановлен.');});
 window.addEventListener('pageshow',e=>{if(e.persisted)void load();});
-Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,inventory:currentInventory?{mode:currentInventory.mode,comparison_scope:currentInventory.comparison_scope,A:currentInventory.variants.A.counts,B:currentInventory.variants.B.counts,reserved_empty_slots:currentInventory.reserved_empty_slots,render:twin?.inventorySnapshot()??null}:null,warehouse_motion:twin?.motionSnapshot()??null,layout:{mode:layoutEnabled?'sections':'cargo',busy:layoutBusy,candidate_id:layoutCandidate?.candidate_id??null,counts:layoutMetrics(),access:layoutEnabled&&layoutAccess?{ok:layoutAccess.ok,plan_sha256:layoutAccess.plan_sha256,pedestrian:layoutAccess.manual.pedestrian.ok,manual_cart:layoutAccess.manual.manual_cart.ok,vehicle:layoutAccess.vehicle.ok,required_heavy_HUs:layoutAccess.vehicle.required_service_access.length}:null,render:twin?.layoutSnapshot()??null},sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers()),B:reactionsAt('B',t,twin.workers('B'))}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>twin?.layoutBounds(kind,id,v)??null,seek,setMode,setLayoutMode,setInventoryMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
+Object.assign(window,{__QOIMA_TWIN_V3__:{snapshot:()=>({phase,mode,t,split,playing,sheet,operation_view:operationFocus?'flow':'warehouse',selected:selectedId,motion:{reduced:reduced.matches,clock_frame:raf!==0,camera_frame:flyRaf!==0,pending_mode_change:switchTimer!==0,camera:scene?.frameState()??null},moves:moves.map(m=>({id:m.id,from:m.from_slot,to:m.to_slot,before_m:m.before_m,after_m:m.after_m,move_m:m.move_m})),atmosphere:{A:sampleAtmosphere('A',t),B:sampleAtmosphere('B',t)},effects,inventory:currentInventory?{mode:currentInventory.mode,comparison_scope:currentInventory.comparison_scope,A:currentInventory.variants.A.counts,B:currentInventory.variants.B.counts,reserved_empty_slots:currentInventory.reserved_empty_slots,render:twin?.inventorySnapshot()??null}:null,warehouse_motion:twin?.motionSnapshot()??null,layout:{mode:layoutEnabled?'sections':'cargo',busy:layoutBusy,candidate_id:layoutCandidate?.candidate_id??null,counts:layoutMetrics(),access:layoutEnabled&&layoutAccess?{ok:layoutAccess.ok,plan_sha256:layoutAccess.plan_sha256,pedestrian:layoutAccess.manual.pedestrian.ok,manual_cart:layoutAccess.manual.manual_cart.ok,vehicle:layoutAccess.vehicle.ok,required_heavy_HUs:layoutAccess.vehicle.required_service_access.length}:null,render:twin?.layoutSnapshot()??null},sound:soundOn,audio:{active_voices:voices.size,state:audio?.state??null},reactions:twin?{A:reactionsAt('A',t,twin.workers(),warehouseMotion?.operations('A',t).staff??[]),B:reactionsAt('B',t,twin.workers('B'),warehouseMotion?.operations('B',t).staff??[])}:null,workers:twin?.workers()??[],perf:twin?.stats()??null,source_kind:'visual_fixture',engine_operation:false,scene:scene?.snapshot()??null}),layoutBounds:(kind:'HU'|'module'|'actor',id:string,v:Variant='B')=>twin?.layoutBounds(kind,id,v)??null,seek,setMode,setOperationView,setLayoutMode,setInventoryMode,setPlaying,setSheet,select,present:goStep,endPresent,fly}});
 // Mounted into the panel's single scrolling body, after the moves list.
 const disposePlacementComparison=mountPlacementComparison($('[data-sheet="diff"] .tw-sheet-body'));
 const layoutControls=createLayoutControls($('[data-sheet="diff"]'),setLayoutMode);

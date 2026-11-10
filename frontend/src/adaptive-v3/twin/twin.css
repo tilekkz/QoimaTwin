@@ -443,3 +443,90 @@ button.tw-issue:hover{background:rgba(255,255,255,.8)}
 @media(max-width:480px){.tw-motion-nav{gap:0;padding:3px}.tw-motion-nav button{font-size:11px;padding:7px}}
 @media(max-width:720px){.tw-motion-nav{top:auto;bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b))}}
 @media(max-width:360px){.tw-brand-name{display:none}}
+
+/* Live packing comparison uses the same flow frames as the native scene. */
+.tw-motion-nav {
+ top:auto;
+ bottom:calc(var(--dock-h) + 2*var(--gap) + var(--safe-b));
+}
+.tw-motion-nav [aria-pressed="true"] {
+ background:var(--accent-soft);
+ color:var(--accent);
+ font-weight:600;
+}
+.tw-operation-story {
+ position:absolute;
+ z-index:5;
+ top:18px;
+ left:50%;
+ translate:-50% 0;
+ display:flex;
+ flex-direction:column;
+ gap:3px;
+ max-width:calc(100% - 500px);
+ text-align:center;
+ pointer-events:none;
+}
+.tw-operation-story strong {font:650 16px/1.25 var(--display);letter-spacing:-.02em}
+.tw-operation-story span {font-size:11px;color:var(--muted)}
+.tw-operation-story small {font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tw-operation-story[data-phase="support"] strong {color:#3478A0}
+.tw-operation-story[data-phase="draining"] strong,
+.tw-operation-story[data-phase="packed"] strong {color:var(--accent)}
+.tw-operation-counts {
+ position:absolute;
+ z-index:4;
+ display:flex;
+ align-items:center;
+ gap:22px;
+ padding:8px 14px;
+ border-radius:16px;
+ pointer-events:none;
+ font-variant-numeric:tabular-nums;
+}
+.tw-operation-counts>span {display:flex;flex-direction:column;gap:2px;min-width:60px}
+.tw-operation-counts small {font-size:10px;color:var(--muted);line-height:1.2}
+.tw-operation-counts strong {font:650 25px/1 var(--display);letter-spacing:-.035em}
+.tw-operation-counts[data-variant="B"] [data-value="packed"] {color:var(--accent)}
+.tw-operation-story[hidden],.tw-operation-counts[hidden] {display:none}
+@media(max-width:1050px) {
+ .tw-operation-story {
+  top:62px;
+  left:24px;
+  right:24px;
+  translate:none;
+  max-width:none;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  text-align:left;
+ }
+ .tw-operation-story strong {font-size:14px}
+ .tw-operation-story span {display:none}
+}
+@media(max-width:720px) {
+ .tw-operation-story {top:58px;left:20px;right:20px;flex-direction:column;align-items:flex-start;gap:1px}
+ .tw-operation-story strong {font-size:13px}
+ .tw-operation-story small {font-size:9px}
+ .tw-operation-counts {width:calc(100% - 40px);max-width:360px;justify-content:space-between;gap:10px;padding:6px 10px;border-radius:12px}
+ .tw-operation-counts>span {min-width:0;flex:1}
+ .tw-operation-counts small {font-size:9px;max-width:85px}
+ .tw-operation-counts strong {font-size:21px}
+}
+
+.tw-bubble[data-b="work"] {--c:var(--accent)}
+.tw-bubble[data-b="walk"] {--c:#3478A0}
+.tw-app[data-operation-view="flow"] .tw-bubble-in {width:22px;height:22px}
+.tw-app[data-operation-view="flow"] .tw-bubble-in svg {width:13px;height:13px}
+.tw-app[data-operation-view="flow"] .tw-bubble-in::after {width:6px;height:6px;bottom:-3px;margin-left:-3px}
+.tw-wstatus p[data-b="work"] {background:rgba(14,128,118,.12)}
+.tw-wstatus p[data-b="walk"] {background:rgba(52,120,160,.12)}
+
+/* Post annotations follow the same clock as cargo and the assigned packers. */
+.tw-station-indicator{position:absolute;transform:translate(-50%,-100%);display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:9px;font-size:11px;white-space:nowrap;pointer-events:none;border:1px solid #b7c6bf;color:#52645a;box-shadow:0 3px 12px #173a2212}
+.tw-station-indicator[hidden]{display:none}
+.tw-station-indicator b{font-size:10px;letter-spacing:.03em}
+.tw-station-indicator[data-state="work"]{color:#066a50;background:#e1f5ec;border-color:#64b99c}
+.tw-station-indicator[data-state="sos"]{color:#ab2730;background:#fff0ef;border-color:#e2a4a6}
+.tw-station-indicator[data-state="support"],.tw-station-indicator[data-state="transfer"]{color:#285ea4;background:#edf4ff;border-color:#9db9df}
+@media(max-width:480px){.tw-station-indicator{padding:4px 5px;transform:translate(-50%,32px)}.tw-station-indicator span{display:none}}
