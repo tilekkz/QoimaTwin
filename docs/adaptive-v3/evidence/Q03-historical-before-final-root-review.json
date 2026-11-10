@@ -1,0 +1,2537 @@
+{
+  "boundary_positives": [
+    {
+      "case_id": "exact_axis_0_budget",
+      "dimension_m": 0.36,
+      "passed": true
+    },
+    {
+      "case_id": "exact_axis_1_budget",
+      "dimension_m": 0.29,
+      "passed": true
+    },
+    {
+      "case_id": "exact_axis_2_budget",
+      "dimension_m": 0.36,
+      "passed": true
+    }
+  ],
+  "cost_evaluated": false,
+  "counts": {
+    "SKUs": 200,
+    "archetypes": 8,
+    "blocked_reserve_pairs": 37600,
+    "boundary_positives": 3,
+    "current_runtime_negatives": 24,
+    "frozen_integrity_negatives": 13,
+    "gross_mass_kg": 9403.85,
+    "initial_HUs": 530,
+    "modules": 132,
+    "mutation_negatives": 30,
+    "negative_pairs": 96496,
+    "positive_pairs": 58704,
+    "slot_pairs": 155200,
+    "slots": 776,
+    "source_bound_reused_images": 8,
+    "units": 12256
+  },
+  "engine_operation": false,
+  "frozen_integrity_negatives": [
+    {
+      "case_id": "same_counts_cross_class_SKU_swap",
+      "reason": "SKU_FROZEN_TEMPLATE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "noncanonical_or_wrong_pointer_/records/-1",
+      "reason": "TEMPLATE_POINTER",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "noncanonical_or_wrong_pointer_/records/+7",
+      "reason": "TEMPLATE_POINTER",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "noncanonical_or_wrong_pointer_/records/07",
+      "reason": "TEMPLATE_POINTER",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "noncanonical_or_wrong_pointer_/records/7extra",
+      "reason": "TEMPLATE_POINTER",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "noncanonical_or_wrong_pointer_/records/8",
+      "reason": "TEMPLATE_POINTER_RANGE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "noncanonical_or_wrong_pointer_/records/1",
+      "reason": "SKU_FROZEN_TEMPLATE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "HU_own_template_valid_but_wrong_SKU",
+      "reason": "HU_SKU_TEMPLATE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "HU_wrong_primitive_quantity_units_bool",
+      "reason": "HU_QUANTITY_TYPE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "HU_wrong_primitive_quantity_units_float",
+      "reason": "HU_QUANTITY_TYPE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "HU_wrong_primitive_gross_mass_kg_float",
+      "reason": "HU_MASS_TYPE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "HU_wrong_primitive_model_scale_factor_bool",
+      "reason": "HU_SCALE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "HU_boolean_dimension_1",
+      "reason": "HU_DIMENSION_TYPE",
+      "rejected_before_cost": true
+    }
+  ],
+  "image_evidence": [
+    {
+      "archetype_id": "SMALL_CARTON",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-SMALL_CARTON.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "8e8a35b3e6122f5021333dac0f2fd26fb553fe5e6df54e0e114d1606e5a4c68f"
+    },
+    {
+      "archetype_id": "STANDARD_CARTON",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-STANDARD_CARTON.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "42a50bff4325274c35a09cae830c3fd62d0c8b2340549e360b2db10588ea279e"
+    },
+    {
+      "archetype_id": "HEAVY_BOX",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-HEAVY_BOX.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "5b82177c8b7e758699c17dd8b4eb91756c9f9b7b49e76948e2c1979e75f6d236"
+    },
+    {
+      "archetype_id": "PALLET_LOAD",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-PALLET_LOAD.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "341ee021eefaf2e6a796609566ae12874ae11e905443955e11dc8e3841446ac7"
+    },
+    {
+      "archetype_id": "IBC",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-IBC.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "ad68f761b98a554a4cdce59fd1e0b22f292a17d0372208f44b73fd15d404b50b"
+    },
+    {
+      "archetype_id": "LONG_BUNDLE",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-LONG_BUNDLE.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "1bb12c1e9d455c2c3c90ae61ce4bf3a55f6899d423c7549c37bb8ac49f780d03"
+    },
+    {
+      "archetype_id": "DRUM",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-DRUM.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "d699c9ad82c12585ee0b3714f64fd8e938b2a8549fe6a85f8e12503db46edd90"
+    },
+    {
+      "archetype_id": "FRAGILE_CRATE",
+      "path": "assets/v3/iterations/warehouse/W04.2/browser/initial-FRAGILE_CRATE.png",
+      "review": "Existing current source-bound PNG opened by root for W04.2 regression; reused exact bytes, no new render or review claim.",
+      "sha256": "1fd143aabdd68dc5076c12267f1792f4fd933d7467a7648335f27bf71a1743fd"
+    }
+  ],
+  "input_hashes": {
+    "assets/v3/iterations/warehouse/W04.2/browser/browser-checks.json": "6327e5ae8d09c1723b2b35d9df1326548359348b04a62fd152d67972922b578c",
+    "assets/v3/iterations/warehouse/W04.2/visual-review.json": "980701a11fa473ae515052d37a50a808ab16296c23e157d741da4094bf9fd19b",
+    "docs/adaptive-v3/evidence/W04.1-checks.json": "b530041822b627eb21421039352b0a7a99f17fb6c9f2ae355c4c24eea4b943b1",
+    "docs/adaptive-v3/evidence/W04.1-independent.json": "13fd087f5e48cedc02cd7deee34744027bbf8a728f0e241bc98e6f1eb9c0faf6",
+    "docs/adaptive-v3/evidence/W04.2-geometry-calibrations.json": "14b157f56d0459ba595de362f8c1d41aab0ccf210ef9f9df2777b33c62de4ddb",
+    "docs/adaptive-v3/evidence/W04.2.json": "647639422a04af31d1e0ea67986966a3469148e95dfe7e31bbc3b2b612c26f52",
+    "docs/adaptive-v3/specs/Q03.md": "036bd76e96cf2bf0b1abdfc5a8527fb580bf446959722ce8c46b97fbb8acf7f5",
+    "docs/v3/contract-proposals/cargo-catalog-v3.json": "1d873698e090604a80ef305be020230b04abe160fd2188735fc42fb95d4056b9",
+    "docs/v3/contract-proposals/sku-catalog-v3.json": "e618e1d075538718d2ed65819348a937113c7add1c8ce865d71f09aa9490c48a",
+    "docs/v3/contract-proposals/storage-slots-v3.json": "09ebe5d0d8f41ce0eea5180a04b6e53c1965a9bfdd4eaa04ce324b2c6cb89681",
+    "frontend/public/data/v3/warehouse-fixture-v3.json": "52aac1c73e9352b9e08ef3c370061932de3abd98c9e2a56beb121ebb70267a91",
+    "tools/visual/v3/build_storage_contract.py": "8169fc3dde18711398c7cb28163aee310e1a858db8e9b65f529264f4df96bcd4",
+    "tools/visual/v3/check_all_sku_slot_compatibility.py": "22f90dc8fac341cf34573893c184e95fe4c253a6b2bcada8a877bac98b548e62",
+    "tools/visual/v3/storage_eligibility.py": "4b3fef1f4d29f0ad9954b9937a800462582b4302f3219cb02bc52626603cc646"
+  },
+  "negative_cases": [
+    {
+      "case_id": "wrong_family",
+      "reason": "CARGO_TYPE_MISMATCH",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "forbidden_yaw",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "reflected_axes",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "axis_0_over_budget_1e-10m",
+      "reason": "DIMENSION_MISMATCH",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "axis_1_over_budget_1e-10m",
+      "reason": "DIMENSION_MISMATCH",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "axis_2_over_budget_1e-10m",
+      "reason": "DIMENSION_MISMATCH",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "dimension_bool",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "dimension_string",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "dimension_nan",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "dimension_infinity",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "dimension_zero",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "dimension_negative",
+      "reason": "ORIENTATION_FORBIDDEN",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_bool",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_string",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_nan",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_infinity",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_zero",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_negative",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "unit_count_bool",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "unit_count_float",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "unit_count_zero",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "unit_count_negative",
+      "reason": "INVALID_MASS",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "mass_conservation_tamper",
+      "reason": "MASS_ARITHMETIC_MISMATCH",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "slot_overweight_with_balanced_ledger",
+      "reason": "OVERWEIGHT",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "occupied_slot",
+      "reason": "SLOT_CAPACITY",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "negative_occupancy",
+      "reason": "INVALID_OCCUPANCY",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "boolean_occupancy",
+      "reason": "INVALID_OCCUPANCY",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "module_overweight",
+      "reason": "OVERWEIGHT",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "missing_handler",
+      "reason": "HANDLER_UNAVAILABLE",
+      "rejected_before_cost": true
+    },
+    {
+      "case_id": "wrong_transport",
+      "reason": "HANDLER_UNAVAILABLE",
+      "rejected_before_cost": true
+    }
+  ],
+  "operational_admission": false,
+  "oracle": "Predeclared frozen10family pairs/8candidate counts, compared with actual C05 evaluator for every SKU and physical slot; independent Decimal geometry and stock conservation audit.",
+  "passed": true,
+  "per_sku": [
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_001"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_002"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_003"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_004"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_005"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_006"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_007"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_008"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_009"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_010"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_011"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_012"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_013"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_014"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_015"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_016"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_017"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_018"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_019"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_020"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_021"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_022"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_023"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_024"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_025"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_026"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_027"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_028"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_029"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_030"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_031"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_032"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_033"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_034"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_035"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_036"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_037"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_038"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_039"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_040"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_041"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_042"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_043"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_044"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_045"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_046"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_047"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_048"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_049"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_050"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_051"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_052"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_053"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_054"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_055"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_056"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_057"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_058"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_059"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_060"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_061"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_062"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_063"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_064"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_065"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_066"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_067"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_068"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_069"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_070"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_071"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_072"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_073"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_074"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_075"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_076"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_077"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_078"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_079"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_080"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_081"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_082"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_083"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_084"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_085"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_086"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_087"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_088"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_089"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_090"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_091"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_092"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_093"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_094"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_095"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_096"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_097"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_098"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_099"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_100"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_101"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_102"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_103"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_104"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_105"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_106"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_107"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_108"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_109"
+    },
+    {
+      "accepted_slot_ids_sha256": "02e16177eb9059ac81bf7fbc25887f4c0ebb603be4861c568950d333fcb0657f",
+      "accepted_slots": 488,
+      "archetype_id": "SMALL_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 100,
+        "DESIGN_COMPATIBLE": 488,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_110"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_111"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_112"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_113"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_114"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_115"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_116"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_117"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_118"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_119"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_120"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_121"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_122"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_123"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_124"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_125"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_126"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_127"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_128"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_129"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_130"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_131"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_132"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_133"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_134"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_135"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_136"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_137"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_138"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_139"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_140"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_141"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_142"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_143"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_144"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_145"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_146"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_147"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_148"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_149"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_150"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_151"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_152"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_153"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_154"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_155"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_156"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_157"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_158"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_159"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_160"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_161"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_162"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_163"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_164"
+    },
+    {
+      "accepted_slot_ids_sha256": "d80c8cd2a2ff4b323abc3c26746b0476e6fd708fe0e92358726cdb8adbb7f948",
+      "accepted_slots": 72,
+      "archetype_id": "STANDARD_CARTON",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 516,
+        "DESIGN_COMPATIBLE": 72,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_165"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "HEAVY_BOX",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_166"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "HEAVY_BOX",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_167"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "HEAVY_BOX",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_168"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "HEAVY_BOX",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_169"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "HEAVY_BOX",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_170"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "HEAVY_BOX",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_171"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "PALLET_LOAD",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_172"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "PALLET_LOAD",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_173"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "PALLET_LOAD",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_174"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "PALLET_LOAD",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_175"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "PALLET_LOAD",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_176"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "IBC",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_177"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "IBC",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_178"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "IBC",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_179"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_180"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_181"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_182"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_183"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_184"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_185"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_186"
+    },
+    {
+      "accepted_slot_ids_sha256": "202d6ce6eff3a69fdea91e3ebaa5af67a2f2d98ee6f3d0482fef4b437090b819",
+      "accepted_slots": 12,
+      "archetype_id": "LONG_BUNDLE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 576,
+        "DESIGN_COMPATIBLE": 12,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_187"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "DRUM",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_188"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "DRUM",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_189"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "DRUM",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_190"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "DRUM",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_191"
+    },
+    {
+      "accepted_slot_ids_sha256": "083bffd95c1ab5841c369e3b37c11a486b5c36ce5c0c149d45af1fbb4d183f17",
+      "accepted_slots": 24,
+      "archetype_id": "DRUM",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 564,
+        "DESIGN_COMPATIBLE": 24,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_192"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_193"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_194"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_195"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_196"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_197"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_198"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_199"
+    },
+    {
+      "accepted_slot_ids_sha256": "ad667007968f4e3a8aeaba74a47b7b305891d71b50a70aee37d769eff96698c4",
+      "accepted_slots": 64,
+      "archetype_id": "FRAGILE_CRATE",
+      "reason_counts": {
+        "CARGO_TYPE_MISMATCH": 524,
+        "DESIGN_COMPATIBLE": 64,
+        "HEIGHT_ACCESS_UNAVAILABLE": 188
+      },
+      "sku_id": "DEMO_200"
+    }
+  ],
+  "reason_counts": {
+    "CARGO_TYPE_MISMATCH": 58896,
+    "DESIGN_COMPATIBLE": 58704,
+    "HEIGHT_ACCESS_UNAVAILABLE": 37600
+  },
+  "scope": "Frozen storage design eligibility for200SKU/776slots plus current same530HU native storage evidence. Alternative candidates share capacity. No dynamic route/handling, actual job, structural certification, engine or complete visual acceptance.",
+  "source_kind": "visual_fixture",
+  "task_id": "Q03"
+}
