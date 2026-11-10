@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,realpath} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
@@ -15,7 +15,12 @@ const helperBytes=await readFile(path.join(root,helperPath)),input_hashes={
  'frontend/package-lock.json':sha(await readFile(path.join(frontend,'package-lock.json'))),
 };
 const threeURL=import.meta.resolve('three');
-assert(threeURL.startsWith(pathToFileURL(path.join(frontend,'node_modules/three')).href+'/'),'Expected project-local THREE');
+const projectThreeRoot=await realpath(path.join(frontend,'node_modules/three'));
+assert.equal(await realpath(fileURLToPath(threeURL)),await realpath(path.join(projectThreeRoot,'build/three.module.js')),'Expected THREE resolved from this frontend dependency, including an explicit node_modules junction');
+const threePackage=JSON.parse(await readFile(path.join(projectThreeRoot,'package.json'),'utf8'));
+const lock=JSON.parse(await readFile(path.join(frontend,'package-lock.json'),'utf8'));
+assert.equal(threePackage.name,'three');assert.equal(threePackage.version,'0.169.0');
+assert.equal(lock.packages['node_modules/three'].version,threePackage.version);assert.equal(THREE.REVISION,'169');
 await mkdir(cache,{recursive:true});
 const compiled=ts.transpileModule(helperBytes.toString(),{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText.replace(/from ['"]three['"]/g,`from '${threeURL}'`);
 await writeFile(path.join(cache,'warehouseCargoGeometry.mjs'),compiled);

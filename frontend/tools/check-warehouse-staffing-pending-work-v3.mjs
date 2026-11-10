@@ -32,7 +32,7 @@ const legacy=await configure(await createStaffingComparison(bundle,router.route)
 for(const p of legacy.plans())times.push(p.arrival_s-1e-7,p.arrival_s,p.return_arrival_s-1e-7,p.return_arrival_s);
 times.sort((a,b)=>a-b);
 const frames=times.flatMap(t=>['A','B'].map(v=>legacy.sample(v,t)));
-const baseline=path.join(own,'legacy-8156-before.json');
+const baseline=path.join(root,'frontend/tools/fixtures/staffing-legacy-8156-before.json');
 if(process.argv.includes('--capture-legacy')){
  assert(!fs.existsSync(baseline),'preserve existing baseline');
  fs.writeFileSync(baseline,JSON.stringify({source_sha256:pins['frontend/src/adaptive-v3/workerRoleAssignment.ts'],times,frames,plans:legacy.plans()},null,2)+'\n');
@@ -63,7 +63,7 @@ for(const t of times)for(const v of ['A','B']){
 }
 checks.push('same_exact_jobs_HU_owner_units_mass_and_unknown_remaining_time_retained_in_both_AB');
 checks.push('handoff_assigned_return_restored_states_preserve_actual_outstanding_work_without_execution');
-const prior=JSON.parse(fs.readFileSync(baseline));assert.deepEqual(times,prior.times);for(let i=0;i<frames.length;i++){const {pending_work_basis,...frame}=frames[i];assert.equal(pending_work_basis,'synthetic_design_reference');assert.deepEqual(frame,prior.frames[i]);}assert.deepEqual(legacy.plans(),prior.plans);
+const priorBytes=read('frontend/tools/fixtures/staffing-legacy-8156-before.json');assert.equal(hash(priorBytes),'a361bae488ac63704d1dd1fb10c4f522e0b38c2b38c491414e32afbba3b134a3','Exact frozen pre-change legacy fixture');const prior=JSON.parse(priorBytes);assert.deepEqual(times,prior.times);for(let i=0;i<frames.length;i++){const {pending_work_basis,...frame}=frames[i];assert.equal(pending_work_basis,'synthetic_design_reference');assert.deepEqual(frame,prior.frames[i]);}assert.deepEqual(legacy.plans(),prior.plans);
 checks.push('legacy_default_frames_and_plans_exactly_preserved_except_explicit_synthetic_basis_label');
 for(const t of[500,0,200,600,40,120,240,350,500])assert.deepEqual(actual.sample('B',t),actual.sample('B',t));actual.reset();const reset=actual.sample('B',0);assert.deepEqual(reset.workers,actual.sample('A',0).workers);assert.equal(reset.allocation_sha256,actual.baseline_allocation_sha256);assert.equal(actual.pending_work,binding);
 checks.push('reverse_repeat_reset_preserves_same_binding_and_returns_jobs_to_original_actor_owners');

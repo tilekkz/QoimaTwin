@@ -4,7 +4,7 @@ import {createTwinInventory,type TwinInventory,type TwinInventoryMode} from './t
 import {createTwinWarehouseMotion} from './twinWarehouseMotion';
 import {mountPlacementComparison} from './twinPlacementComparison';
 import {createLayoutControls,type LayoutMode} from './twinLayoutControls';
-import {createDenseWarehouseLayoutPlan,type WarehouseLayoutPlan} from '../warehouseLayoutPlan';
+import {createBlockRebuildWarehouseLayoutPlan,type WarehouseLayoutPlan} from '../warehouseLayoutPlan';
 import {validateWarehouseLayoutPlanAccess,type WarehouseLayoutAccessResult} from '../warehouseLayoutAccess';
 import {adaptWarehouseV3,WarehouseAdapterError,WAREHOUSE_BASE_FILES,type WarehouseTexts} from '../warehouseAdapter';
 import {createWarehouseScene,type WarehouseView} from '../warehouseScene';
@@ -116,7 +116,7 @@ async function setLayoutMode(next:LayoutMode){
  try{
   if(next==='sections'&&!layoutCandidate){
    if(!layoutSourceTexts)throw Error('LAYOUT_SOURCE_TEXTS_REQUIRED');
-   const candidate=await createDenseWarehouseLayoutPlan(data,layoutSourceTexts),access=await validateWarehouseLayoutPlanAccess(data,candidate);
+   const candidate=await createBlockRebuildWarehouseLayoutPlan(data,layoutSourceTexts),access=await validateWarehouseLayoutPlanAccess(data,candidate);
    if(token!==serial||tw!==twin)return;
    if(!access.ok)throw Error('LAYOUT_ACCESS_REFUSED: '+access.reasons.join(', '));
    layoutCandidate=candidate;layoutAccess=access;
