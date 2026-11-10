@@ -628,7 +628,7 @@ async function load(){
   // The A/B labels stand by their warehouse: a click takes you to that one, to look at it on its own.
   tw.onLabel(v=>{const o=tw.offsetOf(v);fly([OVERVIEW.target[0],OVERVIEW.target[1],OVERVIEW.target[2]+o[2]],mode==='side'?150:OVERVIEW.span);});
   let world:Scene|undefined;
-   const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},renderPass:(r,s,c)=>{world=s;tw.renderPass(r,s,c);positionBlade();drawMini();homeShown();}});
+   const sc=await createWarehouseScene(host,data,{signal:owned.signal,progress:(done,total)=>{if(token===serial)setPhase('loading',`Собираем склад · ${Math.round(done/total*100)}%`);},select:()=>{},lensView:tw.lensView,setLensRender:tw.setLensRender,requestLensRender:tw.draw,renderPass:(r,s,c)=>{world=s;tw.renderPass(r,s,c);positionBlade();drawMini();homeShown();}});
   if(token!==serial){sc.dispose();return;}scene=sc;bundle=data;layoutSourceTexts=sourceTexts;setPhase('loading','Проверяем перестройку…');
   // B: greedy, each move admitted by the real cargo rules; rejected candidates leave state untouched.
   const accepted:{c:ReturnType<typeof outboundCandidates>[number];slot_id:string;after_m:number;move_m:number}[]=[];

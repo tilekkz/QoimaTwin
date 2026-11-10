@@ -50,7 +50,8 @@ const started=Date.now(),compact=s=>({phase:s.phase,t:s.t,playing:s.playing,mode
 async function bound(p,ms=5000){let timer;try{return await Promise.race([p,new Promise((_,reject)=>timer=setTimeout(()=>reject(Error('Motion QA operation exceeded bound')),ms))]);}finally{clearTimeout(timer);}}
 function alive(){if(!server)return false;try{process.kill(server.process().pid,0);return true;}catch(e){if(e.code==='ESRCH')return false;throw e;}}
 function passiveWitness(){const m=matchMedia('(prefers-reduced-motion: reduce)');window.__QOIMA_MOTION_EVENTS__=[];m.addEventListener('change',event=>{window.__QOIMA_MOTION_EVENTS__.push({matches:event.matches,at_ms:performance.now(),trusted:event.isTrusted});},{passive:true});}
-const snap=page=>page.evaluate(()=>window.__QOIMA_TWIN_V3__.snapshot());
+// A ~90 KB nested snapshot is slow through Playwright's value serializer; move it as one JSON string (non-finite numbers and undefined preserved).
+const snap=async page=>JSON.parse(await page.evaluate((()=>JSON.stringify(window.__QOIMA_TWIN_V3__.snapshot(),(k,v)=>typeof v==='number'&&!Number.isFinite(v)?{__num:String(v)}:v===undefined?{__undef:1}:v))),(k,v)=>v&&typeof v==='object'&&!Array.isArray(v)?('__num' in v?Number(v.__num):'__undef' in v?undefined:v):v);
 const noDevOverlay=async page=>assert.equal(await page.locator('vite-error-overlay').count(),0,'Actual dev error overlay must not intercept the UI');
 const twoFrames=page=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
 const camera=page=>page.evaluate(()=>window.__QOIMA_TWIN_V3__.snapshot().motion.camera);

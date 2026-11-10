@@ -36,6 +36,8 @@ body.tw{background:var(--bg);color:var(--ink);font:400 14px/1.45 var(--ui);-webk
 .tw-layer-host *{touch-action:none}
 .tw-sheet:focus{outline:none}
 .tw-layer{position:absolute;inset:0}
+/* Keep the optical image above DOM labels and controls within its circle. */
+.tw-app[data-lens-visible="true"]>[data-lens-obscured]{mask-image:radial-gradient(circle at calc(var(--warehouse-lens-x) - var(--warehouse-mask-left,0px)) calc(var(--warehouse-lens-y) - var(--warehouse-mask-top,0px)),transparent 112px,#000 113px)}
 
 /* rounded viewport corners in side-by-side: masks painted in the page colour */
 .tw-cm{position:absolute;width:22px;height:22px;--c:var(--bg)}

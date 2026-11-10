@@ -5,6 +5,7 @@
  * Overlays (zone states, wave pulses, move markers) live in a separate scene drawn on top.
  */
 import * as THREE from 'three';
+import type {WarehouseLensView} from '../../ui/warehouseMagnifier';
 import type {V3Record,WarehouseBundle,XYZ} from '../warehouseTypes';
 import {createWarehouseCargo} from '../warehouseCargo';
 import {createTwinInventoryScene} from './twinInventoryScene';
@@ -340,6 +341,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  /*  draw() is asked for by the play loop, the scene render, camera input and setters, often several times in one
   *  display frame; each call redraws both copies. At most one draw per frame: a later request in the same frame is
   *  folded into one draw on the next frame (skipped if that frame already drew after the request). */
+ let lensRender:(()=>void)|undefined;
  let lastDrawFrame=-1,deferredDraw=0;
  function draw(){
   if(!ctx||!ready||disposed)return;
@@ -401,8 +403,43 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
    // Something is still shown from an older camera: finish it on the next frame even if nothing else asks.
    if(reprojected&&!pending)pending=requestAnimationFrame(()=>{pending=0;draw();});
   }finally{if(shifted!==NO_SHIFT){camera.position.add(shifted);camera.updateMatrixWorld();}blitMat.depthFunc=THREE.AlwaysDepth;scene.matrixWorldAutoUpdate=true;renderer.autoClear=true;renderer.setRenderTarget(null);[camera.left,camera.right,camera.top,camera.bottom]=base;camera.updateProjectionMatrix();apply('A',false);renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);}
+  lensRender?.();
   totals.draws++;totals.scene_renders+=rendered;totals.reprojected+=reprojected;
   stats={passes:list.length,rendered,reprojected,calls,triangles:tris,cpu_ms:+(performance.now()-t0).toFixed(2),scene_ms:+tScene.toFixed(2),dom_ms:+tDom.toFixed(2)};
+ }
+ /** Use the same pass projection/shift as the screen. In side mode choose the nearest
+  * warehouse volume along the ray, rather than assuming a screen half owns A or B. */
+ let lastLensKey='',lastLensView:WarehouseLensView|null=null;
+ function lensView(x:number,y:number):WarehouseLensView|null{
+  if(!ctx||!ready||disposed)return null;
+  const {renderer,scene,camera}=ctx,[W,H]=canvasSize(renderer.domElement),span=camera.right-camera.left;
+  const key=[version,mode,split,inset,W,H,x,y,camera.zoom,span,...camera.matrixWorld.elements].join(',');if(key===lastLensKey)return lastLensView;
+  lastLensKey=key;lastLensView=null;
+  let best:{pass:Pass;camera:THREE.OrthographicCamera;point:THREE.Vector3;distance:number}|null=null;
+  const all=passes(W,H),under=all.filter(p=>inside({x,y},p.sc));
+  for(const p of under.length?under:all){
+   const view=camera.clone();setCamera(view,span*p.zoom,p.vp);view.position.sub(p.shift);view.updateMatrixWorld();
+   const ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((x-p.vp.x)/p.vp.w*2-1,1-(y-p.vp.y)/p.vp.h*2),view);
+   const floor=ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),new THREE.Vector3());
+   const volume=ray.ray.intersectBox(new THREE.Box3(new THREE.Vector3(-12,-1,-12),new THREE.Vector3(156,9,84)),new THREE.Vector3());
+   const distance=volume?ray.ray.origin.distanceTo(volume):Infinity;
+   if(!best||distance<best.distance)best={pass:p,camera:view,point:floor??volume??new THREE.Vector3(NaN,0,NaN),distance};
+  }
+  if(!best)return null;
+  const {pass:p,camera:view,point}=best;
+  const zone=ATMO_ZONES.find(z=>{const row=zones.get(z.id),bounds=p.variant==='B'?layout?.zones.get(z.id)?.floor_bounds_xz_m:undefined,b=bounds??row;return b&&point.x>=b.min[0]&&point.x<=b.max[0]&&point.z>=b.min[1]&&point.z<=b.max[1];});
+  return lastLensView={camera:view,viewport:p.vp,caption:p.variant+' · '+(zone?.label??'Склад'),cacheKey:version+'|'+p.variant,draw:(lensCamera,stage)=>{
+   const c=lensCamera as THREE.OrthographicCamera,autoUpdate=scene.matrixWorldAutoUpdate;
+   try{
+    // The lens owns a small colour/depth cache; only its dynamic pass runs while playing.
+    scene.matrixWorldAutoUpdate=false;
+    if(stage==='static'){apply(p.variant,false);renderer.render(scene,c);}
+    else{motion?.setView(c);motion?.setDetail(true);motion?.apply(p.variant,t);overlayFor(p.variant);drawMotion(renderer,scene,c);renderer.render(overlay,c);}
+   }finally{
+    scene.matrixWorldAutoUpdate=autoUpdate;apply('A',false);
+    motion?.setDetail(p.vp.w*camera.zoom/span>13);motion?.setView(camera);
+   }
+  }};
  }
  /** Host-relative screen point → point on the horizontal plane y=planeY, in the pass under the pointer. */
  function ground(x:number,y:number,planeY:number):XYZ|null{
@@ -471,7 +508,7 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   onLabel(fn:(v:Variant)=>void){onLabel=fn;},
   /** Where a variant's copy of the warehouse stands in the shared space (only «Рядом» shifts B). */
   offsetOf:(v:Variant):XYZ=>mode==='side'&&v==='B'?[...SIDE_SHIFT]:[0,0,0],
-  setMoves,draw,pick,ground,
+  setMoves,draw,pick,ground,lensView,setLensRender:(fn:()=>void)=>{lensRender=fn;},
   setMode(next:Mode){mode=next;draw();},
   setInset(px:number){if(px===inset)return;inset=px;draw();},
   setInsetLeft(px:number){if(px===insetLeft)return;insetLeft=px;draw();},
@@ -482,6 +519,6 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   /** Marks a picked object that is neither a moved unit nor a worker, per copy (null clears). */
   setFocus(f:Partial<Record<Variant,Pose>>|null){focus=f;draw();},
   highlightZone,setGateTags,
-   dispose(){clearTimeout(sharpenTimer);cancelAnimationFrame(deferredDraw);clearMoveArcs();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of [...caches,...turnCaches]){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;turnCaches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
+   dispose(){lensRender=undefined;clearTimeout(sharpenTimer);cancelAnimationFrame(deferredDraw);clearMoveArcs();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of [...caches,...turnCaches]){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;turnCaches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }
