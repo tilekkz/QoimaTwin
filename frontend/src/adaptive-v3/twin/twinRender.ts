@@ -69,10 +69,14 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   *  image shifted and scaled to the new camera. With a fixed-orientation orthographic camera that reprojection is
   *  exact for colour and depth (only the edge that scrolls into view is missing for one frame). */
  let version=0,renderedThisFrame=false,frameReset=0,pending=0,lastCam='',camMovedAt=0;
+ /*  While the camera turns, no cached image can be reused (reprojection is exact only for a fixed orientation), so
+  *  both copies re-render every frame. Then they render at ROTATING_SCALE without the overscan margin (about 6.5×
+  *  fewer pixels on an integrated GPU) and once more at full size as soon as the turn stops. */
+ const ROTATING_SCALE=.55,ROTATING_HOLD_MS=150;let lastQuat=new THREE.Quaternion(),rotatedAt=-1e9,sharpenTimer=0;
  /** While the camera keeps moving, each pass refreshes at most this often; reprojection fills the frames between. */
  const MOVING_REFRESH_MS=150;
  type Cache={rt:THREE.WebGLRenderTarget;key:string;base:string;pos:THREE.Vector3;quat:THREE.Quaternion;hw:number;hh:number;at:number};
- const caches:Cache[]=[];
+ const caches:Cache[]=[],turnCaches:Cache[]=[];
  const blitMat=own(new THREE.ShaderMaterial({uniforms:{tColor:{value:null},tDepth:{value:null},uScale:{value:new THREE.Vector2(1,1)},uOffset:{value:new THREE.Vector2()},uDepthShift:{value:0}},depthTest:true,depthWrite:true,depthFunc:THREE.AlwaysDepth,
   vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}',
   fragmentShader:'uniform sampler2D tColor;uniform sampler2D tDepth;uniform vec2 uScale;uniform vec2 uOffset;uniform float uDepthShift;varying vec2 vUv;void main(){vec2 st=vUv*uScale+uOffset;if(st.x<0.||st.y<0.||st.x>1.||st.y>1.)discard;gl_FragColor=texture2D(tColor,st);gl_FragDepth=clamp(texture2D(tDepth,st).r+uDepthShift,0.,1.);\n#include <tonemapping_fragment>\n#include <colorspace_fragment>\n}'}));
@@ -85,9 +89,10 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
  }
  function markRendered(){renderedThisFrame=true;if(!frameReset)frameReset=requestAnimationFrame(()=>{frameReset=0;renderedThisFrame=false;});}
  const blitScene=new THREE.Scene(),blitQuad=new THREE.Mesh(own(new THREE.PlaneGeometry(2,2)),blitMat);blitQuad.frustumCulled=false;blitScene.add(blitQuad);
- function cacheFor(i:number,w:number,h:number){
-  let c=caches[i];
-  if(!c){const rt=new THREE.WebGLRenderTarget(w,h,{type:THREE.HalfFloatType,samples:4});rt.depthTexture=new THREE.DepthTexture(w,h);c=caches[i]={rt,key:'',base:'',pos:new THREE.Vector3(),quat:new THREE.Quaternion(),hw:1,hh:1,at:0};}
+ /** Turning frames use their own small single-sample images; the full-quality ones stay for the still view. */
+ function cacheFor(i:number,w:number,h:number,turning=false){
+  const list=turning?turnCaches:caches;let c=list[i];
+  if(!c){const rt=new THREE.WebGLRenderTarget(w,h,{type:THREE.HalfFloatType,samples:turning?0:4});rt.depthTexture=new THREE.DepthTexture(w,h);c=list[i]={rt,key:'',base:'',pos:new THREE.Vector3(),quat:new THREE.Quaternion(),hw:1,hh:1,at:0};}
   else if(c.rt.width!==w||c.rt.height!==h){c.rt.setSize(w,h);c.key='';c.base='';}
   return c;
  }
@@ -329,19 +334,29 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   return [{variant:'A',vp:R,sc:R,zoom:1,round:['tl','tr','bl','br'],shift:NO_SHIFT},{variant:'B',vp:R,sc:R,zoom:1,round:[],shift:B_SHIFT}];
  }
  function setCamera(camera:THREE.OrthographicCamera,span:number,vp:Rect){const half=span/2,aspect=vp.w/vp.h;camera.left=-half;camera.right=half;camera.top=half/aspect;camera.bottom=-half/aspect;camera.updateProjectionMatrix();}
+ /*  draw() is asked for by the play loop, the scene render, camera input and setters, often several times in one
+  *  display frame; each call redraws both copies. At most one draw per frame: a later request in the same frame is
+  *  folded into one draw on the next frame (skipped if that frame already drew after the request). */
+ let lastDrawFrame=-1,deferredDraw=0;
  function draw(){
-  if(!ctx||!ready||disposed)return;const {renderer,scene,camera}=ctx,[W,H]=canvasSize(renderer.domElement);if(!W||!H)return;
+  if(!ctx||!ready||disposed)return;
+  const frame=Number(document.timeline.currentTime??performance.now());
+  if(frame===lastDrawFrame){if(!deferredDraw)deferredDraw=requestAnimationFrame(()=>{deferredDraw=0;if(Number(document.timeline.currentTime??performance.now())!==lastDrawFrame)draw();});return;}
+  lastDrawFrame=frame;const {renderer,scene,camera}=ctx,[W,H]=canvasSize(renderer.domElement);if(!W||!H)return;
   const base=[camera.left,camera.right,camera.top,camera.bottom] as const,span=base[1]-base[0],list=passes(W,H);
   renderer.setScissorTest(false);renderer.setViewport(0,0,W,H);renderer.setClearColor(GAP);renderer.clear();renderer.setScissorTest(true);
   for(const v of ['A','B'] as Variant[])layers[v].hidden=!list.some(p=>p.variant===v);
-  const t0=performance.now(),pr=renderer.getPixelRatio(),view=`${version}|${camera.position.toArray()}|${camera.quaternion.toArray()}|${camera.zoom}|${span}`;
+  if(lastQuat.angleTo(camera.quaternion)>1e-6){lastQuat.copy(camera.quaternion);rotatedAt=performance.now();}
+  const rotating=performance.now()-rotatedAt<ROTATING_HOLD_MS;
+  if(rotating){clearTimeout(sharpenTimer);sharpenTimer=window.setTimeout(()=>{sharpenTimer=0;draw();},ROTATING_HOLD_MS+20);}
+  const t0=performance.now(),pr=renderer.getPixelRatio()*(rotating?ROTATING_SCALE:1),view=`${version}|${camera.position.toArray()}|${camera.quaternion.toArray()}|${camera.zoom}|${span}`;
   let calls=0,tris=0,tScene=0,tDom=0,rendered=0,reprojected=0,shifted=NO_SHIFT;
   // Plan: passes without a usable image must render; of the merely stale ones only the oldest renders this frame.
   // Each cached image is rendered with a whole-pixel margin around the view, so pans and gentle zoom-outs are
   // still covered by the reprojected image; when they are not, that pass re-renders immediately.
   const plan=list.map((p,i)=>{
-   const wpx=Math.round(p.vp.w*pr),hpx=Math.round(p.vp.h*pr),px=Math.round(wpx*OVERSCAN),py=Math.round(hpx*OVERSCAN);
-   const c=cacheFor(i,wpx+2*px,hpx+2*py),base=`${p.variant}|${p.vp.x},${p.vp.y},${p.vp.w}x${p.vp.h}`,key=`${view}|${base}|${p.zoom}`;
+   const wpx=Math.round(p.vp.w*pr),hpx=Math.round(p.vp.h*pr),px=rotating?0:Math.round(wpx*OVERSCAN),py=rotating?0:Math.round(hpx*OVERSCAN);
+   const c=cacheFor(i,wpx+2*px,hpx+2*py,rotating),base=`${p.variant}|${p.vp.x},${p.vp.y},${p.vp.w}x${p.vp.h}`,key=`${view}|${base}|${p.zoom}`;
    const hw=span*(p.zoom??1)/2/camera.zoom,hh=hw*p.vp.h/p.vp.w,os:[number,number]=[(wpx+2*px)/wpx,(hpx+2*py)/hpx];
    const m=c.base===base&&c.quat.angleTo(camera.quaternion)<1e-6?mapping(c,hw,hh,camera,p.shift):null;
    const usable=!!m&&m.ox>-.002&&m.oy>-.002&&m.ox+m.kx<1.002&&m.oy+m.ky<1.002;
@@ -463,6 +478,6 @@ export function createTwinRenderer(bundle:WarehouseBundle,layer:HTMLElement,redu
   /** Marks a picked object that is neither a moved unit nor a worker, per copy (null clears). */
   setFocus(f:Partial<Record<Variant,Pose>>|null){focus=f;draw();},
   highlightZone,setGateTags,
-   dispose(){clearMoveArcs();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of caches){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
+   dispose(){clearTimeout(sharpenTimer);cancelAnimationFrame(deferredDraw);clearMoveArcs();motion?.dispose();motion=undefined;inventory?.dispose();inventory=undefined;for(const[node,mask]of motionLights)node.layers.mask=mask;motionLights.clear();layout?.dispose();layout=undefined;for(const g of zoneEdgesB.values())g.dispose();zoneEdgesB.clear();for(const[id,z]of zones)if(zoneEdgesA.has(id))z.edge.geometry=zoneEdgesA.get(id)!;disposed=true;sizeObs?.disconnect();cancelAnimationFrame(pending);cancelAnimationFrame(frameReset);for(const c of [...caches,...turnCaches]){c.rt.depthTexture?.dispose();c.rt.dispose();}caches.length=0;turnCaches.length=0;for(const x of owned)x.dispose();sky.dispose();overlay.clear();layer.replaceChildren();if(ctx)apply('A');},
  };
 }
